@@ -1,0 +1,134 @@
+/* Fonts */
+$font-sans: Inter, Avenir, Helvetica, sans-serif;
+
+/* Colors */
+
+$bg-color-1: #252627; // Background
+$tx-color-1: #E5E9F0; // Primary
+$tx-color-2: #0070F3; // Link
+$tx-color-3: #96989D; // Secondary
+
+/* General style resets */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+	font-family: $font-sans;
+	font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+@mixin center-x {
+  margin: 0 auto;
+}
+
+/* Styles */
+
+body {
+  width: 75%;
+	padding: 2rem;
+	background: $bg-color-1;
+	color: $tx-color-1;
+	line-height: 1.5;
+	@include center-x;
+}
+
+a {
+  color: $tx-color-2;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  gap: 2.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid white;
+  
+  .active {
+    color: $tx-color-1;
+    text-decoration: none;
+  }
+  
+  a {
+    color: $tx-color-3;
+    text-decoration: none;
+  }
+  
+  a:hover, a:focus {
+    color: $tx-color-2;
+    transition: 0.5s color ease-in-out;
+  }
+  
+  
+  
+}
+
+header {
+  margin: 7rem 0;
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+  }
+}
+
+// For article previews on the main page
+.post-previews {
+  margin: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+
+  article {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0 1rem;
+    
+    h3 {
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  .summary {
+    max-width: 80%;
+  }
+}
+
+// For full page articles
+.post {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 3rem auto;
+  
+  h1, h2, h3, h4, h5, h6 {
+    margin: 1rem 0;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  pre {
+    padding: 1rem 1.5rem;
+    border-radius: 0.25rem;
+    overflow-x: wrap;
+  }
+  
+  .return-link {
+    margin-top: 1.2rem;
+  }
+}

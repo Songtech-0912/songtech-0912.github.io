@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <article class="post">
+        <h1>{{ page.title }}</h2>
+        {{ page.content | safe }}
+        <a href="/" class="return-link">Back to home</a>
+    </article>
+{% endblock content %}
