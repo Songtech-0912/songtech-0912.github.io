@@ -6,7 +6,7 @@ This is to be the beginning of a series of posts focused on creating a prelimina
 
 <!-- more -->
 
-In years, I may look back and create a much more optimized implementation. However, for the present, I want to document my progress (and the associated pains of progress) with abundant code snippets, in the hope that this information may be of use to someone.
+In the years to come, I may look back and create a much more optimized implementation. However, for the present, I want to document my progress (and the associated pains of progress) with abundant code snippets, in the hope that this information may be of use to someone.
 
 ## Why develop black hole superradiance reactors?
 
