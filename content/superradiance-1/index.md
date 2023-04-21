@@ -65,8 +65,8 @@ In my implementation, I used the [Trimesh](https://trimsh.org/) library to creat
 
 ```python
 def is_on_surface(mesh, point):
-    a = sphere.ray.contains_points([point - 0.01])
-    b = sphere.ray.contains_points([point + 0.01])
+    a = mesh.ray.contains_points([point - 0.01])
+    b = mesh.ray.contains_points([point + 0.01])
     return a == True and b == False
 ```
 
