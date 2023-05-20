@@ -2,11 +2,9 @@
 title = "Mass driver interstellar propulsion"
 +++
 
-# Mass driver interstellar propulsion
-
 A very rough sketch of a mass-driver based interstellar propulsion method is discussed and analyzed.
 
-<!---->
+<!-- more -->
 
 The idea is simple:
 
