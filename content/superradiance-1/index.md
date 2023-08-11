@@ -39,7 +39,7 @@ $$
 $$
 
 $$
-\frac{dp_r}{d\tau}=\frac{1}{\Sigma \Delta}(((r^2+a^2) \mu-(Q + L^2 + a^2(E^2 + \mu)))(r-1)+
+\frac{dp_r}{d\tau}=\frac{1}{\Sigma \Delta}(((r^2+a^2) \mu-(Q + L^2 + a^2(E^2 + \mu)))(r-1) + \\\\
 r \Delta \mu+2 r(r^2+a^2) E^2-2 a E L)-\frac{2 p_r^2(r-1)}{\Sigma}
 $$
 
@@ -50,8 +50,7 @@ $$
 Where the constants of motion are $\mu, E, L, Q$, and $\Sigma$ and $\Delta$ are respectively given by:
 
 $$
-\Sigma = r^2 + a^2 \cos^2 \theta
-\quad
+\Sigma = r^2 + a^2 \cos^2 \theta \\\\
 \Delta = r^2 - 2 M r + a^2
 $$
 
