@@ -16,15 +16,15 @@
   <h2>
     A designer and developer with a passion for open source software
   </h2>
-
-  <section class="post-previews">
-  {% for page in paginator.pages %}
-    <article>
-      <h3>{{ page.title }}</h3>
-      <div class="summary">{{ page.summary | safe }}</div>
-      <a href="{{ page.permalink | safe }}">Read more...</a>
-    </article>
-  {% endfor %}
-  </section>
 </header>
+
+ <section class="post-previews">
+ {% for page in paginator.pages %}
+   <article>
+     <h3>{{ page.title }}</h3>
+     <div class="summary">{{ page.summary | safe }}</div>
+     <a href="{{ page.permalink | safe }}">Read more...</a>
+   </article>
+ {% endfor %}
+ </section>
 {% endblock content %}
