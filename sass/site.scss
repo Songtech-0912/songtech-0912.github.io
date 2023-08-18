@@ -35,7 +35,7 @@ html {
 /* Styles */
 
 body {
-  width: 75%;
+  width: 65%;
   @include lg { width: 80%; }
   @include sm { width: 100%; }
 	padding: 2rem;
@@ -86,7 +86,7 @@ header {
   }
 
   h2 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin: 0.7rem 0;
   }
 }
@@ -109,6 +109,7 @@ header {
     }
 
     p {
+      font-size: 1.06rem;
       line-height: 1.5;
     }
   }
@@ -120,11 +121,11 @@ header {
 
 // For full page articles
 .post {
-  width: 70%;
-  @include lg { width: 90%; }
-  @include sm { width: 100%; }
+  // width: 70%;
+  // @include lg { width: 90%; }
+  // @include sm { width: 100%; }
   display: block;
-  margin: 5rem auto;
+  margin: 3rem auto;
 
   img {
     display: block;
@@ -142,14 +143,20 @@ header {
   h1 {
   	font-size: 2rem;
   }
+
+  p, li {
+    font-size: 1.06rem;
+    line-height: 1.7;
+    color: rgba(0, 0, 0, 0.8);
+  }
   
   p {
       margin: 2rem 0;
-      font-size: 1.06rem;
-      line-height: 1.7;
-      color: rgba(0, 0, 0, 0.8);
   }
-  
+
+  li {
+      margin-left: 1.2rem;
+  }
 
   pre {
     padding: 1rem 1.5rem;
