@@ -79,7 +79,10 @@ nav {
 }
 
 header {
+  display: flex;
+  flex-direction: column;
   margin: 5rem 0;
+  row-gap: 1.2rem;
 
   h1 {
     font-size: 2.5rem;
@@ -87,7 +90,6 @@ header {
 
   h2 {
     font-size: 1.2rem;
-    margin: 0.7rem 0;
   }
 }
 
@@ -102,10 +104,6 @@ header {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-
-    h3 {
-      margin-bottom: 0.5rem;
-    }
 
     p {
       font-size: 1.06rem;
