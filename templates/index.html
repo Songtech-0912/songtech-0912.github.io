@@ -14,7 +14,7 @@
  {% for page in paginator.pages %}
    <article>
      <h3>{{ page.title }}</h3>
-     <div class="summary">{{ page.summary | safe }}</div>
+     <p class="summary">{{ page.summary | safe }}</p>
      <a href="{{ page.permalink | safe }}">Read more...</a>
    </article>
  {% endfor %}
