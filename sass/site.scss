@@ -11,6 +11,7 @@ $tx-color-2: #065C84; // Link
 $tx-color-3: rgba(0, 0, 0, 0.3); // Secondary
 $tx-color-4: rgba(255, 255, 255, 0.8); // Code and code blocks
 $tx-color-5: rgba(0, 0, 0, 0.6); // Tertiary
+$border: rgb(229,231,235);
 
 /* General style resets */
 
@@ -150,7 +151,7 @@ header {
   }
   
   p {
-      margin: 2rem 0;
+      margin: 1.5rem 0;
   }
 
   li {
@@ -171,4 +172,22 @@ header {
   .return-link {
     margin-top: 1.2rem;
   }
+
+  table {
+  		border-collapse: collapse;
+  	}
+  
+  	table caption {
+  		font-weight: bold;
+  		margin-bottom: 0.5rem;
+  	}
+  
+  	td, th {
+  		text-align: left;
+  		padding: 0.5rem;
+  	}
+  
+  	tr {
+  		border-bottom: 1px solid $border;
+  	}
 }
