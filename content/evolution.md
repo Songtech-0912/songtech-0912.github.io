@@ -8,7 +8,19 @@ These are notes taken during RPI's BIO 1010 course, relating to a review of evol
 
 It is recommended to use `Ctrl F` or the equivalent search function to find the relevant section, as these notes are quite long.
 
+## The scientific method
+
+- Independent variable - what is varied
+- Potentially confounding (control) variables - what is kept constant
+- Dependent variable - what is measured
+- Experimental group (treatment) - the group that has been subjected to the differing independent variable
+- Control group (treatment) - the group that has not been subjected to the differing independent variable
+- Experimental units - the unit that the experimental group is tested on
+- Replicates - repeated experiments carried out to improve accuracy
+- Scope of inference - how general the results of an experiment are; with more replication the scope is greater
+
 ## Evolution
+
 ### Formation of Earth
 
 Billions of years ago, a supernova explosion created a nebula in where the solar system is today. While the majority of the gases in the solar system gathered to form the sun, the cloud of rocks and dust clumped together to form planets, which became rounded because of gravity. Earth itself was formed around 4.5 billion years ago.
