@@ -77,9 +77,43 @@ And between two points separated in space is given by:
 $$
 \Delta \phi = \frac{2\pi}{\lambda} v\Delta x
 $$
+
 ## Superposition
 
 Traveling waves that pass through each other can be added to form a **superposition**:
 $$
 y(x, t) = y_1(x, t) + y_2(x, t)
+$$
+
+## The importance of amplitude
+
+We see a lot of appearances of the factor of $A^2$ in the study of waves - the square of the amplitude.
+
+The energy carried by many sinusoidal waves is often proportional to the square of the amplitude:
+
+- String: $P = \frac{1}{2} \sqrt{\mu F} \omega^2 A^2$
+- Sound wave: $I = \frac{1}{2} \sqrt{\rho B} \omega^2 A^2$
+- Electromagnetic waves: $I = \frac{1}{2} \frac{{E_{max}^2}}{\mu_0 c}$
+
+(one minor note: intensity $I$ is power per unit area, that is, $\frac{P}{A}$, but in this instance the difference between intensity and power doesn't matter because we are just trying to show a pattern)
+
+In addition, it turns out that for a quantum mechanical wavefunction $\Psi$, the probability of finding a particle at a certain location in space is given by square of the wavefunction's amplitude:
+$$
+|\Psi^2 | dV
+$$
+And the probability current density in quantum mechanics is also related to the amplitude:
+$$
+J = \frac{\hbar k}{m} A^2
+$$
+
+## Addition of waves
+
+When two or more waves arrive at the same point in space and time, **interference** occurs. Interference is only observable if the two waves are in phase - that is, they have approximately the same frequency:
+
+![In phase vs out of phase diagram](https://qph.cf2.quoracdn.net/main-qimg-6d347dab608c1df03d4d45855bb56c5e-lq)
+
+If two waves are out of phase (unequal frequency), then the sum of the two waves at a point would be:
+
+$$
+\sin (\omega_1 t) + \sin(\omega_2 t) = 2 \sin \left(\frac{(\omega_1 + \omega_2)t}{2}\right)\cos \left(\frac{(\omega_1 - \omega_2)t}{2}\right)
 $$
