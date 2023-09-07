@@ -65,7 +65,7 @@ def model(params, x, t):
 Thus, given our wave equation, we can define a custom loss function $L(a, x, t)$, where $a$ denotes the matrix of weights and biases:
 
 $$
-L(a, x, t) = \frac{1}{n} \sum_{i=0}^n \| F(x, t) \|^2 - \| u(x, t) - z \|^2
+L(a, x, t) = \frac{1}{n} \sum_{i=0}^n \left( \| F(x, t) \|^2 - \| u(x, t) - z \|^2 \right)
 $$
 
 Where $z$ denotes the initial conditions of the PDE we set. Note here that the $\frac{1}{n} \sum$ term is just taking the mean of $F(x, t)$ as it is an array, not a scalar, when trained. Thus, through the same method of gradient descent, the neural network learns the function $u(x, t)$:
