@@ -108,7 +108,7 @@ $$
 
 ## Addition of waves
 
-When two or more waves arrive at the same point in space and time, **interference** occurs. Interference is only observable if the two waves are in phase - that is, they have approximately the same frequency:
+When two or more waves arrive at the same point in space and time, **interference** occurs. Interference is only observable (constructive) if the two waves are in phase - that is, their peaks are aligned:
 
 ![In phase vs out of phase diagram](https://qph.cf2.quoracdn.net/main-qimg-6d347dab608c1df03d4d45855bb56c5e-lq)
 
