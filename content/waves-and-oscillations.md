@@ -117,3 +117,75 @@ If two waves are out of phase (unequal frequency), then the sum of the two waves
 $$
 \sin (\omega_1 t) + \sin(\omega_2 t) = 2 \sin \left(\frac{(\omega_1 + \omega_2)t}{2}\right)\cos \left(\frac{(\omega_1 - \omega_2)t}{2}\right)
 $$
+
+## Illustrating phase difference
+
+Here we have two waves that are out of phase:
+
+![Phase difference example](https://dosits.org/wp-content/uploads/2021/01/Phase-1a-500.png)
+
+Recall that the phase difference between two spacial waves ($y$ as a function of $x$) with separation $\Delta x$ between their two peaks is given by:
+$$
+\frac{2\pi}{\lambda} \Delta x
+$$
+And the phase difference between two temporal waves ($y$ as a function of $t$) with separation $\Delta t$ between their two peaks is:
+
+$$
+\frac{2\pi}{T} \Delta t
+$$
+
+(earlier in the notes these were given in a slightly different form, but with the same result)
+
+## Interference of Waves
+
+If we had two waves with the same amplitude and frequency but different phase:
+
+$$
+y_1(t) = y_0 \sin(\omega t + \phi_1)
+$$
+$$
+y_2(t) = y_0 \sin(\omega t + \phi_2)
+$$
+
+Then the new wave that results from the addition of the two waves, using the trig sine addition identity, is:
+
+$$
+y_3 (t) = 2y_0 \cos \left(\frac{\phi_1 - \phi_2}{2} \right) \sin \left(\omega t + \frac{\phi_1 + \phi_2}{2}\right)
+$$
+Therefore, the amplitude of the new sine wave is:
+
+$$
+A = 2y_0 \cos \left(\frac{\phi_1 - \phi_2}{2} \right)
+$$
+## Interference intensity
+
+The time-averaged intensity $I_R$ of two waves is given by:
+
+$$
+I_R = I_1 + I_2 + 2\sqrt{I_1 I_2} \cos(\Delta \phi)
+$$
+
+If the two original waves had the same intensity and have a phase difference $\Delta \phi$, then:
+
+$$
+I_R = 4 I_1 \cos^2 \left(\frac{\Delta \phi}{2}\right)
+$$
+
+### Reasons that phase differences occur
+
+- Waves that come from differing sources
+- Waves that travel through different paths
+- Waves that reflect off surfaces
+
+The phase difference at a distance $L$ from a point source is:
+
+$$
+\Delta \phi_L = \frac{2\pi}{\lambda} L
+$$
+The phase difference in general from multiple sources can be calculated from the difference formula, where for a point source at $(x_1, y_1, z_1)$, we have:
+
+$$
+L = \sqrt{(x - x_1)^2 + (y - y_1)^2 + (z - z_1)^2}
+$$
+
+
