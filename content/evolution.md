@@ -78,3 +78,29 @@ With the combination of RNA and membranes, protocells form. While not life, they
 ### Selection and evolutionary change
 
 The replication of RNA molecules within the protocell creates an osmotic gradient; the cell membrane stretches grabs fatty acids from tmembranes of cells with lower RNA replication rates. Therefore, protocells with higher rates of RNA synthesis grow faster, and outcompete protocells with little or no RNA. The replication process of RNA causes better versions of RNA that in turn get better at replicating.
+
+## Protocells vs living cells
+
+Protocells are **not** living cells, but they had many characteristics similar to modern-day living cells, such as lipid bilayer cell membranes, RNA composed of nucleotides.
+
+## Potential life outside of Earth
+
+Scientists believe that life can exist on worlds other than Earth, especially on planets in a star's habitable zone, which corresponds to the range of orbital distances where liquid water can exist on a planet's surface. We detect planets by looking for dips in brightness of a star, which indicate planets transiting (crossing in front of) the star. Space telescopes we use for this purpose include TESS, Kepler, and JWST. The **Fermi Paradox** is the question of why we haven't found life yet if there are so many planets out there.
+
+## Emergence
+
+Emergence is the property of a system that has different properties than the sum of its parts. For example, the neurons in the brain are each not conscious, but billions of neurons attached together allow human beings to think, reason, and be self-aware. Life is the **ultimate** emergent property.
+
+Due to the increase in entropy in every physical system as demanded by the 2nd law of thermodynamics, highly ordered systems all inevitably decay into disordered systems. Life escapes this process by constantly taking in energy from its environment - this is called a **metabolism**.
+
+## The definition of life
+
+Something is considered alive if it satisfies the following characteristics:
+
+- Growth
+- Response
+- Heredity
+- Homeostasis (regulates its internal state)
+- Metabolism (converting / using energy to perform a function)
+- Reproduction
+- Order
