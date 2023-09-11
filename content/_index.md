@@ -1,3 +1,3 @@
 +++
-paginate_by = 15
+paginate_by = 0
 +++
