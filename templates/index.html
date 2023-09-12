@@ -11,7 +11,7 @@
 </header>
 
  <section class="post-previews">
- {% for page in paginator.pages %}
+ {% for page in section.pages %}
    <article>
      <h3>{{ page.title }}</h3>
      <p class="summary">{{ page.summary | safe }}</p>
