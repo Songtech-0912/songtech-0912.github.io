@@ -46,3 +46,63 @@ $$
 $$
 
 A limit only exists if the left-hand and right-hand limits are **equal**.
+
+## Direct evaluation of limits
+
+If a function is defined and continuous, then:
+
+$$
+\lim_{x \to c} f(x) = f(c)
+$$
+
+## Algebraic limits
+
+Limits can oftentimes be solved algebraically. Limits are linear, which means that:
+
+$$
+\lim_{x \to c} (a f(x) \pm b g(x)) = a \lim_{x \to c} f(x) \pm b \lim_{x \to c} g(x)
+$$
+They also can be multiplied and divided (as long as the denominator $\neq 0$), and taken to the  power of:
+
+$$
+\lim_{x \to c} [f(x)]^{p/q} = (\lim_{x \to c} f(x))^{p/q}
+$$
+
+(here note that $q \neq 0$)
+Algebraic limits work for **algebraic limits** only - that is, if a function is composed of polynomials, roots, rationals (fractions), and powers.
+
+## Continuity
+
+A function is continuous if you can draw its graph without lifting your pencil and without retracing any part of the curve throughout an interval. Otherwise, it is said to have a **discontinuity**, which can be one of several types:
+
+- Jump
+- Hole (also called a "removable discontinuity")
+- Infinite discontinuity (asymptote)
+- Oscillating discontinuity
+
+The formal test of continuity is that $f(x)$ is continuous on $[a, b]$ if:
+
+$$
+\lim_{x \to c} f(x), x \in [a, b]
+$$
+
+Suppose we have a piecewise function:
+
+$$
+\begin{cases}
+x^2 - c, x < 7 \\
+3x + 4c, x > 7
+\end{cases}
+$$
+
+To find the value of $c$ that makes the function continuous, we first set the two pieces of the piecewise equal, and solve for $c$:
+
+$$
+x^2 - c = 3x + 4c \Rightarrow c = \frac{x^2 - 3x}{5} 
+$$
+
+Then we plug in $x = 7$ to get:
+
+$$
+c = \frac{7^2 - 3(7)}{5} = \frac{28}{5}
+$$
