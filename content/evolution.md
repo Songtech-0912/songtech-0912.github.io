@@ -104,3 +104,48 @@ Something is considered alive if it satisfies the following characteristics:
 - Metabolism (converting / using energy to perform a function)
 - Reproduction
 - Order
+
+## Early evolution of life
+
+### Hadean Eon 
+
+Protocells emerge at the start of the Hadeon eon (4 BYA). Bacteria becomes the first type of life to arise (3.8 BYA).
+
+### Archean Eon
+
+Archaea becomes the second domain of life, thriving in extreme environments (3.7 BYA). Later on, (initially anaerobic) photosynthetic bacteria such as _Aquifex_.
+
+### Great oxidation event
+
+Aerobic cyanobacteria develop and form stromatolites (3.5 - 3 BYA). Eukaryotes (complex cells with nucleus and membrane-bound organelles) develop from archea and appear (2.7 BYA).
+
+**Endosymbiotic theory** is used to explain how eukaryote cells formed - various prokaryotic cells that shared a symbiotic relationship engulfed each other to form the first eukaryotic cells.
+
+### Universal features of life
+
+All living cells are:
+
+- Enclosed by a membrane
+- Store hereditary information in DNA
+- Replicate DNA and use RNA for DNA transcription
+- Have ribosomes and proteins to catalyze cellular reactions
+
+### Photosynthesis
+
+Early on in the atmosphere, there was no oxygen, as oxygen is highly reactive. After oxygen levels rose, aerobic respiration became the dominant form of metabolism within cells. Chloroplasts primarily perform photosynthesis in plants.
+
+### Snowball earth
+
+Due to the increase in oxygen from the great oxidation event, greenhouse gases are reduced dramatically, causing the entire planet to cool down and freeze over. Volcanic activity melted the ice and returned Earth to normal temperatures (~650 MYA).
+
+### Ediacaran
+
+The most ancient complex organisms are from the Ediacaran (600 - 540 MYA), and all lived in the oceans and didn't have shells. There is very little we know about them.
+
+### The Cambrian explosion
+
+Most of the Ediacaran life forms were extinct by 540 MYA. In their place, thousands of new species emerged in the **Cambrian Explosion**. These species developed modern body plans, hard shells, locomotion, nervous systems and sensory organs. Theorized causes of the Cambrian explosion include increased oxygen, increased minerals due to weathering, and the development of vision. 
+
+## Tiktaalik
+
+At 360 MYA, the species Tiktaalik appeared, a transitory animal between ocean and land animals. Fully land-bound creatures appeared soon after.
