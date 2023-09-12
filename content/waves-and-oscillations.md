@@ -263,3 +263,50 @@ $$
 r = \sqrt{(x - x_1)^2 + (y - y_1)^2 + (z - z_1)^2}
 $$
 
+## Michelson Interferometer
+
+![Michelson Interferometer illustration](https://cdn.britannica.com/79/279-050-58C1AAC5/mirror-parts-interferometer-Michelson-light-beam-angle.jpg)
+
+(Credit: Encyclopedia Britannica)
+
+In the Michelson interferometer, a beam with intensity $I_0$ leaves the light source (usually a laser) and passes through a beam-splitter. 50% of each beam goes into each mirror, and of that beam 50% goes into the detector. So only a quarter of the original beam actually enters the detector. By measuring how the two beams interfere, it is possible to find the difference in distance
+
+$$
+I_{detector} = I_0 \cos^2 \left(\frac{2\pi}{\lambda}|A - B|\right)
+$$
+(Note: the reason of the factor of 2 is due to the fact that the light beam travels $2A$ lengths and $2B$ lengths from each mirror as it reaches the detector)
+
+## Young double-slit experiment
+
+Given light waves passing through two slits separated by distance $d$ which are a distance $D$ from a distant screen, and that a peak (maximum) in the observed interference pattern on the screen is distance $y$ from the center of the screen, then:
+
+$$
+\theta = \frac{y}{D}
+$$
+$$
+\lambda = \frac{d \sin \theta}{y}
+$$
+
+## The nature of light
+
+Light is an electromagnetic wave with an electric and magnetic field moving together at the speed $c$, and is mathematically modeled as a wave where the $\vec E$ (electric) and $\vec B$ (magnetic) fields oscillate with time:
+
+$$
+\vec E(x, t) = E_0 (\sin k(x - vt))
+$$
+$$
+\vec B(x, t) = B_0 (\cos k(x - vt))
+$$
+where $E_0 = \frac{B_0}{c}$.
+
+## The photoelectric effect
+
+When light is shined on a metal at a high enough frequency, it causes electrons to be emitted from the metal, and a current to be detected - this is the **photoelectric effect**.
+
+## Quantizing light
+
+Einstein proposed that the photoelectric effect was evidence that light was composed of particles called **photons**, where the energy of each photon is given by:
+$$
+E = hf
+$$
+where $h$ is called Planck's constant.
