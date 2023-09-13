@@ -22,7 +22,7 @@ For instance:
 
 $$
 g(x) = \begin{cases}
-x^2 + 1, & x \neq 1 \\
+x^2 + 1, & x \neq 1 \\\\
 0, & x = 1
 \end{cases}
 $$
@@ -90,7 +90,7 @@ Suppose we have a piecewise function:
 
 $$
 \begin{cases}
-x^2 - c, x < 7 \\
+x^2 - c, x < 7 \\\\
 3x + 4c, x > 7
 \end{cases}
 $$
