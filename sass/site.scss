@@ -127,6 +127,39 @@ header {
   display: block;
   margin: 3rem auto;
 
+  // Credits to new.css
+  address,
+  area,
+  aside,
+  audio,
+  blockquote,
+  datalist,
+  details,
+  dl,
+  fieldset,
+  figure,
+  form,
+  input,
+  iframe,
+  img,
+  meter,
+  nav,
+  ol,
+  optgroup,
+  option,
+  output,
+  p,
+  pre,
+  progress,
+  ruby,
+  section,
+  table,
+  textarea,
+  ul,
+  video {
+  	margin-bottom: 1.5rem;
+  }
+
   img {
     display: block;
     width: 50%;
@@ -148,10 +181,6 @@ header {
     font-size: 1rem;
     line-height: 1.7;
     color: rgba(0, 0, 0, 0.8);
-  }
-  
-  p, ul, ol {
-      margin: 1.5rem 0;
   }
 
   li {
