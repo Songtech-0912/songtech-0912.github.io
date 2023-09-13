@@ -1,5 +1,6 @@
 +++
 title = "Waves and oscillations notes"
+date = 2023-09-01
 +++
 
 These are notes taken during RPI's PHYSICS 1140 course, relating to a review of waves and oscillations.

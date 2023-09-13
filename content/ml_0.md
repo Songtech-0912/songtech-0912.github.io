@@ -1,5 +1,6 @@
 +++
 title = "Building a neural network library in Rust, part 0"
+date = 2023-05-25
 +++
 
 This series details the process of building a neural network library in pure Rust.

@@ -1,5 +1,6 @@
 +++
 title = "Notes on limits for calculus"
+date = 2023-09-08
 +++
 
 These are notes taken during RPI's MATH 1010 course, on the topic of limits in calculus.

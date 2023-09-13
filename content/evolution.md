@@ -1,5 +1,6 @@
 +++
 title = "Bio evolution notes"
+date = 2023-09-05
 +++
 
 These are notes taken during RPI's BIO 1010 course, relating to a review of evolution and life.

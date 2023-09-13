@@ -1,5 +1,6 @@
 +++
 title = "Calculus series"
+date = 2023-09-12
 +++
 
 These are my personal calculus notes taken at my time at RPI. They include Precalculus, Calculus I, and will in the future include Calculus II, Calculus III, and Differential Equations.

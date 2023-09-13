@@ -1,5 +1,6 @@
 +++
 title = "Simulating superradiance reactors, part 0"
+date = 2023-04-07
 +++
 
 This is to be the beginning of a series of posts focused on creating a preliminary, naive raytracer for simulating superradiance reactors.

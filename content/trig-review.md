@@ -1,5 +1,6 @@
 +++
 title = "Notes on a review of trigonometry"
+date = 2023-09-01
 +++
 
 These are notes taken during RPI's MATH 1010 course, relating to a review of trigonometry for calculus.

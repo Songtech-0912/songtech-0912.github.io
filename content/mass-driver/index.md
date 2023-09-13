@@ -1,5 +1,6 @@
 +++
 title = "Mass driver interstellar propulsion"
+date = 2023-05-20
 +++
 
 A very rough sketch of a mass-driver based interstellar propulsion method is discussed and analyzed.

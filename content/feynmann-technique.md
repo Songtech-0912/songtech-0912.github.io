@@ -1,5 +1,6 @@
 +++
 title = "Feynmann's technique for integration"
+date = 2023-09-11
 +++
 
 Feynmann's technique is a technique for evaluating certain difficult definite integrals. Note **definite integral** here, it doesn't do anything to help find antiderivatives. In fact, Feynmann's technique is _especially_ helpful with finding definite integrals that have no elementary antiderivative.
