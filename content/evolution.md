@@ -146,6 +146,6 @@ The most ancient complex organisms are from the Ediacaran (600 - 540 MYA), and a
 
 Most of the Ediacaran life forms were extinct by 540 MYA. In their place, thousands of new species emerged in the **Cambrian Explosion**. These species developed modern body plans, hard shells, locomotion, nervous systems and sensory organs. Theorized causes of the Cambrian explosion include increased oxygen, increased minerals due to weathering, and the development of vision. 
 
-## Tiktaalik
+### Tiktaalik
 
 At 360 MYA, the species Tiktaalik appeared, a transitory animal between ocean and land animals. Fully land-bound creatures appeared soon after.
