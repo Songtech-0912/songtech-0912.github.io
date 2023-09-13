@@ -77,7 +77,7 @@ With the combination of RNA and membranes, protocells form. While not life, they
 
 ### Selection and evolutionary change
 
-The replication of RNA molecules within the protocell creates an osmotic gradient; the cell membrane stretches grabs fatty acids from tmembranes of cells with lower RNA replication rates. Therefore, protocells with higher rates of RNA synthesis grow faster, and outcompete protocells with little or no RNA. The replication process of RNA causes better versions of RNA that in turn get better at replicating.
+The replication of RNA molecules within the protocell creates an osmotic gradient; the cell membrane stretches grabs fatty acids from the membranes of cells with lower RNA replication rates. Therefore, protocells with higher rates of RNA synthesis grow faster, and outcompete protocells with little or no RNA. The replication process of RNA causes better versions of RNA that in turn get better at replicating.
 
 ## Protocells vs living cells
 
