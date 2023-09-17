@@ -150,3 +150,32 @@ Most of the Ediacaran life forms were extinct by 540 MYA. In their place, thousa
 ### Tiktaalik
 
 At 360 MYA, the species Tiktaalik appeared, a transitory animal between ocean and land animals. Fully land-bound creatures appeared soon after.
+
+## Early history of evolutionary theory
+
+In 1798, Malthus proposes that many more individuals are born than can possibly survive. Erasmus Darwin proposes that 1800 that all life must be derived from one original ancestor, and slowly changed to become their current forms. Lamarck then proposed that evolution occurs by  passing on acquired traits (which was later disproven). Charles Darwin corrects this theory by realizing that competition leads to advantageous traits to be preserved, causing new species. Alfred Russel Wallace similarly published his idea that any advantageous trait would eventually be dominant.
+
+However, there was an issue - the Cambrian explosion was noted by its abruptness and exceptionality, and there was no fossil record indicating an Ediacaran ancestor to the new species of the Cambrian. It is possible that the reason is due to the fact that not much rock preserving fossil evidence survives from that time period.
+
+## Natural selection
+
+Natural selection, or "survival of the fittest", is based on several mechanisms:
+
+- Overproduction of offspring - organisms produce more offspring than will survive
+- Genetic variation - offspring each have different traits, caused by genetic variation, causing some offspring to be poorly adapted and some to be well adapted to the environment
+- Environmental pressures - offspring face challenges surviving in their environment
+- Differential survival & reproduction - offspring that are well adapted to the environment survive and potentially reproduce
+
+### Origins of variation
+
+Nearly all genes have multiple forms (alleles), which encode the information to generate the phenotype (observed characteristics). For instance, humans that have the red hair allele leads to the phenotype of red hair.
+
+Mutations are usually negative (and thus are not passed on as these individuals don't survive to reproduce) but those that are neutral or useful are passed on, causing genetic variation. Most traits follow a normal distribution within a population, as trait are determined by the _additive_ effects of many genes. Evolutionary change cannot take place without variation.
+
+## Forms of selection
+
+| Type of selection | Consequences |
+|------|-------|
+| Stabilizing selection | Intermediate forms are favored and extremes are eliminated |
+| Directional selection | Forms towards one end of the range of variation are favored |
+| Disruptive selection | Forms at both ends of the range of variation are favored |
