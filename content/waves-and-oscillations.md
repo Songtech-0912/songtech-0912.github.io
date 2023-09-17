@@ -336,3 +336,13 @@ Einstein proposed that:
 - They travel at the speed of light $c$ in a vacuum and are massless
 - They have energy $E = hf = \frac{hc}{\lambda}$ and carry momentum $p = \frac{h}{\lambda} = \frac{E}{c}$
 
+The intensity of light is given by:
+
+$$
+I = \phi E = \phi hf
+$$
+where $\phi$ is the flux, given by:
+
+$$
+\phi = \frac{N}{A t}
+$$
