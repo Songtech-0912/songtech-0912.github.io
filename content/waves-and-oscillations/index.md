@@ -336,7 +336,11 @@ Here, $e$ is the elementary charge, the charge of the electron.
 The **stopping potential** $V_0=-\Delta V$ is the potential that results in no current, and is given by:
 
 $$
-V_0 = \frac{hf}{e} - \frac{h f_0}{e}, f > 0
+V_0 = 
+\begin{cases}
+0, f < f_0
+\frac{hf}{e} - \frac{h f_0}{e}, f \geq f_0
+\end{cases}
 $$
 
 Millikan found that the stopping potential depends only on the **frequency** of the incident light wave, and **not** on the intensity of the light. No current is observed when light has a frequency below a _threshold_ frequency $f_0$. The (confusingly-named) work function, the energy of a photon of the threshold frequency, is given by $W = hf_0$. Additionally, there is no time delay between when the light is turned on and when the cathode emits electrons. Both results violate the classical theory of electromagnetism.
