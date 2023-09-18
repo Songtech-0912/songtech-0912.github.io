@@ -279,6 +279,8 @@ $$
 
 ## Young double-slit experiment
 
+![Young double-slit diagram](young-double-slit.png)
+
 Given light waves passing through two slits separated by distance $d$ which are a distance $D$ from a distant screen, and that a peak (maximum) in the observed interference pattern on the screen is $m$ wavelengths from the center of the screen, then:
 
 $$
