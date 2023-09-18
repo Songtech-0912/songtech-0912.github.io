@@ -279,14 +279,20 @@ $$
 
 ## Young double-slit experiment
 
-Given light waves passing through two slits separated by distance $d$ which are a distance $D$ from a distant screen, and that a peak (maximum) in the observed interference pattern on the screen is distance $y$ from the center of the screen, then:
+Given light waves passing through two slits separated by distance $d$ which are a distance $D$ from a distant screen, and that a peak (maximum) in the observed interference pattern on the screen is $m$ wavelengths from the center of the screen, then:
 
 $$
 \theta = \frac{y}{D}
 $$
+
 $$
-\lambda = \frac{d \sin \theta}{y}
+y = m \lambda
 $$
+
+$$
+\lambda = \frac{d \sin \theta}{m}
+$$
+
 
 ## The nature of light
 
@@ -307,6 +313,7 @@ When light is shined on a metal at a high enough frequency, it causes electrons 
 ## Quantizing light
 
 Einstein proposed that the photoelectric effect was evidence that light was composed of particles called **photons**, where the energy of each photon is given by:
+
 $$
 E = hf
 $$
