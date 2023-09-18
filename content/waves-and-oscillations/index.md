@@ -338,7 +338,7 @@ The **stopping potential** $V_0=-\Delta V$ is the potential that results in no c
 $$
 V_0 = 
 \begin{cases}
-0, f < f_0
+0, f < f_0 \\\\
 \frac{hf}{e} - \frac{h f_0}{e}, f \geq f_0
 \end{cases}
 $$
