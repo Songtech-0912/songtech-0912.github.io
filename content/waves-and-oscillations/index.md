@@ -325,17 +325,21 @@ where $h$ is called Planck's constant.
 
 In the experiment, light is incident on a metal cathode in a vacuum tube. Regardless of the intensity of the light, if the light is low frequency, nothing happens. However, if the light is high enough frequency, electrons are ejected from the cathode, and reach the anode on the other side of the vacuum tube. This creates a current in the circuit, which can be measured.
 
-For electrons traveling from the cathode (C) to the anode (A), if the kinetic energy of electrons at the cathode is denoted by $K_A$, at the anode denoted by $K_c$, and the potential difference between the two metal plates $\Delta V$, the conservation of energy gives:
+For electrons traveling from the cathode (C) to the anode (A), if the kinetic energy of electrons at the cathode is denoted by $K_A$, at the anode denoted by $K_C$, and the potential difference between the two metal plates $\Delta V$, the conservation of energy gives:
 
 $$
-K_c - eV_c = K_A - e V_A \Rightarrow K_A = K_c + e \Delta V
+K_C - eV_C = K_A - e V_A \Rightarrow K_A = K_C + e \Delta V
 $$
-The **stopping potential** $V_0=-\Delta V$ is the potential that results in $K_A = 0$. The maximum kinetic energy of the ejected cathode electrons is given by:
+
+Here, $e$ is the elementary charge, the charge of the electron.
+
+The **stopping potential** $V_0=-\Delta V$ is the potential that results in no current, and is given by:
 
 $$
-K_c = eV_0
+V_0 = h \frac{f_0}{e} - \frac{h f_0}{e}
 $$
-Millikan found that the stopping potential depends only on the **frequency** of the incident light wave, and **not** on the intensity of the light. No current is observed when light has a frequency below a _threshold_ frequency $f_0$, where the work function, the energy of a photon of that frequency, is given by $E = hf_0$. Additionally, there is no time delay between when the light is turned on and when the cathode emits electrons. Both results violate the classical theory of electromagnetism.
+
+Millikan found that the stopping potential depends only on the **frequency** of the incident light wave, and **not** on the intensity of the light. No current is observed when light has a frequency below a _threshold_ frequency $f_0$. The (confusingly-named) work function, the energy of a photon of the threshold frequency, is given by $W = hf_0$. Additionally, there is no time delay between when the light is turned on and when the cathode emits electrons. Both results violate the classical theory of electromagnetism.
 
 ## Photons
 
