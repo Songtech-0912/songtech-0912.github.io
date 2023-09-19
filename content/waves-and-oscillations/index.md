@@ -113,6 +113,8 @@ When two or more waves arrive at the same point in space and time, **interferenc
 
 ![In phase vs out of phase diagram](https://qph.cf2.quoracdn.net/main-qimg-6d347dab608c1df03d4d45855bb56c5e-lq)
 
+(Credit: Quora)
+
 If two waves are out of phase (unequal frequency), then the sum of the two waves at a point would be:
 
 $$
@@ -124,6 +126,7 @@ $$
 Here we have two waves that are out of phase:
 
 ![Phase difference example](https://dosits.org/wp-content/uploads/2021/01/Phase-1a-500.png)
+(Credit: University of Rhode Island and Inner Space Center)
 
 Recall that the phase difference between two spacial waves ($y$ as a function of $x$) with separation $\Delta x$ between their two peaks is given by:
 $$
@@ -194,6 +197,7 @@ $$
 Here we have two waves that are out of phase:
 
 ![Phase difference example](https://dosits.org/wp-content/uploads/2021/01/Phase-1a-500.png)
+(Credit: University of Rhode Island and Inner Space Center)
 
 Recall that the phase difference between two spacial waves ($y$ as a function of $x$) with separation $\Delta x$ between their two peaks is given by:
 
