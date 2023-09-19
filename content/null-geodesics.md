@@ -107,39 +107,39 @@ def christoffel_at_point_4d(metric, inverse_metric, t, r, theta, phi, dims):
 Now, we can finally solve the geodesic equations. However, firstly, we want to rewrite the typical geodesic equations in a slightly differing form:
 
 $$
-\frac{d^2 x^\mu}{ds^2} = -\Gamma^\mu_{ij} \frac{dx^i}{ds} \frac{dx^j}{ds}
+\frac{d^2 x^\mu}{ds^2} = -\Gamma^\mu_{\alpha \beta} \frac{dx^\alpha}{ds} \frac{dx^\beta}{ds}
 $$
 
 Here, note the use of the Einstein summation convention; $i$ and $j$ are summation (dummy) indices, so we have to fully expand out the summations in our code. The geodesic equation describes a system of equations, one equation each for $(t, r, \theta, \phi)$. Therefore, to simplify our code, we group the equations together as a vector. Additionally, because it is a _second_-order equation, we also need to keep track of the 4 components of velocity, one each for $(v_t, v_r, v_\theta, v_\phi)$. So we have a vector of 8 components that stores all the position and velocity information of our solution to the differential equation:
 
 ```py
-def kerr_d_ds(X, s):
-    """
-    The value of the first and second
-    derivatives with respect to an affine
-    parameter s
-    """
-    # Create a new vector to hold the positions and velocities
-    u = np.zeros(X.shape)
-    # X is a vector with 4 components of position
-    # and 4 components of velocity
-    x = X[:4]
-    velocities = X[4:]
-    # Find christoffel symbols given the position and the metric
-    # here t is coordinate time, not the affine parameter s, and
-    # also not the proper time
-    t, r, theta, phi = x
-    Gamma = christoffel_at_point_4d(kerr_metric, kerr_inverse_metric, t, r, theta, phi, 4)
-    # Given the christoffel symbols, calculate the next position
-    for mu in range(4):
-        for i in range(4):
-            for j in range(4):
-                # Solve for x components
-                # we sum due to the Einstein summation convention
-                u[mu] += -Gamma[mu][i][j] * velocities[i] * velocities[j]
-    # Solve for v components
-    u[4:] = velocities
-    return u
+def kerr_d_ds(X, s, metric=kerr_metric, inverse_metric=kerr_inverse_metric):
+        """
+        The value of the first and second
+        derivatives with respect to an affine
+        parameter s
+        """
+        # Create a new vector to hold the positions and velocities
+        u = np.zeros(X.shape)
+        # X is a vector with 4 components of position
+        # and 4 components of velocity
+        x = X[:4]
+        velocities = X[4:]
+        # Find christoffel symbols given the position and the metric
+        # here t is coordinate time, not the affine parameter s, and
+        # also not the proper time
+        x0, x1, x2, x3 = x
+        Gamma = christoffel_at_point_4d(metric, inverse_metric, x0, x1, x2, x3, 4)
+        # Given the christoffel symbols, calculate the next position
+        for mu in range(4):
+            for i in range(4):
+                for j in range(4):
+                    # Solve for x components
+                    # we sum due to the Einstein summation convention
+                    u[mu] += -Gamma[mu][i][j] * velocities[i] * velocities[j]
+        # Solve for v components
+        u[4:] = velocities
+        return u
 ```
 
 We then write a basic RK4 solver to finally solve:
