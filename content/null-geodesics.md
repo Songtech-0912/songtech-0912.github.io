@@ -159,4 +159,4 @@ def rk4(f, u0, t0, tf, n):
     return u, t
 ```
 
-Now it's time to set up the initial conditions. Our initial radius will be a radius of $6M$, with a polar angle $\theta_0 = \frac{\pi}{4}$ and an azimuthal angle $\phi_0 = 0$. These are arbitrary; so long as the photon doesn't start close to the event horizon, it doesn't matter where it starts. Then, we set our velocities $v_r = c$ (by definition), and $v_\theta = v_\phi = 0$ (also by definition, as the speed of light must be $c$). We then integrate to find the geodesics.
+Now it's time to set up the initial conditions. Our initial radius will be a radius of $6M$, with a polar angle $\theta_0 = \frac{\pi}{4}$ and an azimuthal angle $\phi_0 = 0$. These are arbitrary; so long as the photon doesn't start close to the event horizon, it doesn't matter where it starts. Then, we set our velocities $v_r = 1$ (by definition, as $c = 1$), and $v_\theta = v_\phi = 0$ (also by definition, as the speed of light must be $c$). We then integrate to find the geodesics.
