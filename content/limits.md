@@ -7,6 +7,8 @@ These are notes taken during RPI's MATH 1010 course, on the topic of limits in c
 
 <!-- more -->
 
+Note: some problems are taken Rogawski 4e Calculus Early Transcendentals, the questions are not original work.
+
 It is recommended to use `Ctrl F` or the equivalent search function to find the relevant section, as these notes are quite long.
 
 ## Investigating limits
@@ -235,7 +237,7 @@ For trig functions, as they are periodic, the limit as you approach infinity doe
 
 For exponential functions, one side tends to infinity, and the other side tends to zero. Typically the left-hand side tends to infinity for a base $b > 1$, and the left hand side tends to zero for a base $b < 1$.
 
-For rational functions, we divide by the highest degree term in the rational function, and use the relation $\lim_{x \to \pm \infty} \frac{1}{x^n} = 0$. For instance:
+For rational functions, we divide by the highest degree term in denominator of the rational function, and use the relation $\lim_{x \to \pm \infty} \frac{1}{x^n} = 0$. For instance:
 
 $$
 \lim_{x \to \pm \infty} \frac{20 x - 3x^2}{4x^2 + 9}
