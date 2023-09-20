@@ -255,6 +255,32 @@ $$
 \lim_{x \to \pm \infty} \frac{0 - 3}{4 + 0} = -\frac{3}{4}
 $$
 
+With exponential functions, we want to take apart the fraction until we can find the limit. Take, for instance:
+
+$$
+\lim_{t \to \infty} \frac{5e^t}{3-e^{-t}}
+$$
+
+If we rewrite $e^{-t}$ as $\frac{1}{e^t}$, then the limit becomes:
+
+$$
+\lim_{t \to \infty} \frac{5e^t}{3 - \frac{1}{e^t}}
+$$
+
+As $\lim_{t \to \infty} e^t = \infty$, $\lim_{t \to \infty} \frac{1}{e^t} = 0$, so we have:
+
+$$
+\lim_{t \to \infty} \frac{5e^t}{3} = \infty
+$$
+
+We can do the same with negative infinity:
+
+$$
+\lim_{t \to -\infty} \frac{5e^t}{3 - \frac{1}{e^t}} = \frac{5e^{-\infty}}{3} = -\infty
+$$
+
+However, note that as $\lim_{t \to \infty}$ is infinite, we _don't_ have a horizontal asymptote (which must approach a finite number, so the only horizontal asymptote is $y = 0$.
+
 ## Intermediate Value Theorem
 
 The **intermediate value theorem** (IVT) states that if a function is continuous in a _closed_ interval from $a$ to $b$, then it takes on every value from $f(a)$ to $f(b)$. To use the IVT, you must show that:
