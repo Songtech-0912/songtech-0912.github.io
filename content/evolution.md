@@ -179,3 +179,40 @@ Mutations are usually negative (and thus are not passed on as these individuals 
 | Stabilizing selection | Intermediate forms are favored and extremes are eliminated |
 | Directional selection | Forms towards one end of the range of variation are favored |
 | Disruptive selection | Forms at both ends of the range of variation are favored |
+
+## Galapagos finches
+
+During Charles Darwin's voyage aboard the HMS Beagle, he studied the fauna of the Galapagos islands. There were 14 species endemic to the islands, and Darwin realized that they were all descended from one species.
+
+During a 1978 study of _Geospiza fortis_, directional selection was demonstrated after a drought that favored the selection of 
+
+## Coevolution
+
+Predator and prey evolve together over time, as different species place selection pressures on each other. For example, modern-day Pronghorn are very fast due to coevolution with now-extinct large predators. New Zealand's terrestrial birds are nocturnal due to an extinct large eagle that drove birds into the night.
+
+## Sexual selection
+
+In many species, it is typical that the females of the species chose who they wanted to mate with, due to them metabolically using far more resources in the production of offspring. To showcase an individual's favorable genes to pass on to offspring (health, strength, and fitness), and in turn favorability to mate with, many species exhibit elaborate and exaggerated characteristics - such as the tails of peacocks.
+
+## Genetic drift
+
+Genetic drift is the random changes in a gene pool in a population. 
+
+Genetic drift plays a very important role when a population is bottlenecked (few members survive). Genetic drift means that the population is vulnerable, as there is not a lot of genetic variation, so any random change spreads easily in the population and cause the population to die off.
+
+Genetic drift also causes the **founder effect** - when small members of a large population move to a new location, genetic diversity also decreases. So the genetics of the population reflect those of the initial members.
+
+## Classification of species
+
+The **binomial nomenclature** system is the standardized system used to classify organisms. A species is _generally_ defined as a group of individuals that can interbreed naturally and produce viable offspring.
+
+## Causes of speciation
+
+Species can form from three main ways.
+
+| Form of speciation | Cause |
+|----|----|
+| Allopatric speciation | Geographically isolated populations cause different mutations and different selective pressures, becoming new species |
+| Parapatric speciation | Partially geographically isolated populations cause differences over time and form new species |
+| Sympatric speciation | Differences in one population over time cause inability to interbreed and become new species |
+
