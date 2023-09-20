@@ -347,7 +347,7 @@ V_0 =
 \end{cases}
 $$
 
-Millikan found that the stopping potential depends only on the **frequency** of the incident light wave, and **not** on the intensity of the light. No current is observed when light has a frequency below a _threshold_ frequency $f_0$. The (confusingly-named) work function, the energy of a photon of the threshold frequency, is given by $W = hf_0$. Additionally, there is no time delay between when the light is turned on and when the cathode emits electrons. Both results violate the classical theory of electromagnetism.
+Millikan found that the stopping potential depends only on the **frequency** of the incident light wave, and **not** on the intensity of the light. No current is observed when light has a frequency below a _threshold_ frequency $f_0$. The (confusingly-named) work function, the energy of a photon of the threshold frequency, is given by $W = hf_0$, and is a constant. Additionally, there is no time delay between when the light is turned on and when the cathode emits electrons. Both results violate the classical theory of electromagnetism.
 
 ## Photons
 
