@@ -82,7 +82,30 @@ def kerr_inverse_metric(coords, M=2e30, a=0.97):
     ])
 ```
 
-Next, we use automatic differentiation to compute the Christoffel symbols of the Kerr metric. As we know, the Christoffel symbols are formed through the derivatives of the metric, so we need to calculate the derivatives of the metric. To do this, we need to calculate the Jacobian of the metric tensor, as the metric tensor is a matrix-valued function, so its derivative is equal to its Jacobian.
+Next, we will calculate Christoffel symbols by automatic differentiation of the metric tensor. To do this, we compute the Jacobian matrix of the metric tensor. Recall that the Jacobian matrix of a vector valued function, in tensor index notation, is given by:
+
+$$
+J_{mn} = \frac{\partial F_m}{\partial x^n}
+$$
+
+The metric tensor, however, is a matrix-valued function, so we need to add an additional index to the Jacobian, giving:
+
+$$
+J_{\alpha \mu \nu} = \frac{\partial g_{\mu \nu}}{\partial x^\alpha}
+$$
+
+We can then write the Christoffel symbols in terms of the Jacobian:
+
+$$
+\Gamma^\mu_{\gamma \delta} = \frac{1}{2} g^{\mu \eta} \left(
+\frac{\partial g_{\gamma \eta}}{\partial x^\delta} + \frac{\partial g_{\eta \delta}}{\partial x^\gamma} - \frac{\partial g_{\gamma \delta}}{\partial x^\eta}\right) = \frac{1}{2} g^{\mu \eta} (J_{\gamma \eta \delta} + J_{\eta \delta \gamma} - J_{\gamma \delta \eta})
+$$
+
+Or with a change of indices:
+
+$$
+\Gamma^\beta_{\mu \nu} = \frac{1}{2} g^{\beta \alpha} (J_{\mu \alpha \nu} + J_{\eta \alpha \mu} - J_{\mu \nu \alpha})
+$$
 
 This is some code I took from [here](https://github.com/AndreaAntoniali/Riemann-tensor-calculator/blob/main/Riemann_Calculations.ipynb) and modified that calculates the Christoffel symbols in the way outlined:
 
