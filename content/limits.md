@@ -193,4 +193,70 @@ $$
 \lim_{t \to 0} \frac{4\sin(4t)}{9 \cdot 4t} \frac{1}{\cos(4t)} = \lim_{u \to 0} \frac{1}{9} \frac{4\sin(u)}{u} \frac{1}{\cos u} = \frac{4}{9}
 $$
 
+## Limits at infinity
 
+Limits at infinity are used to define **horizontal asymptotes**. Polynomials always either tend to $+\infty$ or $-\infty$ as $x \to \pm \infty$. The highest degree term of a polynomial dominates when $x \to \infty$ or $x \to -\infty$, so we can just focus on the highest degree term and discard all other terms.
+
+For example:
+
+$$
+\lim_{x \to \infty} -x^5 + 5x^2 + 6
+$$
+We can take away all the lower-degree terms:
+
+$$
+\lim_{x \to \infty} -x^5
+$$
+Here, we use the rule that $\lim_{x \to \infty} x^n = \infty$, so:
+
+$$
+\lim_{x \to \infty} -(\infty) = -\infty
+$$
+
+Now, let's work on the limit at $-\infty$:
+
+$$
+\lim_{x \to -\infty} -x^5 + 5x^2 + 6
+$$
+
+Once again, we can take away all the lower degree terms:
+
+$$
+\lim_{x \to -\infty} -x^5
+$$
+
+When approaching $-\infty$, then we can use the degree test. If the degree is even, then $\lim_{x \to -\infty} x^n = \infty$, and if the degree is odd, $\lim_{x \to -\infty} x^n = -\infty$. Thus, we have:
+
+$$
+\lim_{x \to -\infty} -(-\infty) = \infty
+$$
+
+For trig functions, as they are periodic, the limit as you approach infinity does not exist.
+
+For exponential functions, one side tends to infinity, and the other side tends to zero. Typically the left-hand side tends to infinity for a base $b > 1$, and the left hand side tends to zero for a base $b < 1$.
+
+For rational functions, we divide by the highest degree term in the rational function, and use the relation $\lim_{x \to \pm \infty} \frac{1}{x^n} = 0$. For instance:
+
+$$
+\lim_{x \to \pm \infty} \frac{20 x - 3x^2}{4x^2 + 9}
+$$
+
+Here, the highest degree term is $x^2$, so we divide every term by $x^2$ to get:
+
+$$
+\lim_{x \to \pm \infty} \frac{\frac{20}{x} - 3}{4 + \frac{9}{x^2}}
+$$
+
+The parts with $\frac{1}{x^n}$ cancel out to zero, which gives:
+
+$$
+\lim_{x \to \pm \infty} \frac{0 - 3}{4 + 0} = -\frac{3}{4}
+$$
+
+## Intermediate Value Theorem
+
+The **intermediate value theorem** (IVT) states that if a function is continuous in a _closed_ interval from $a$ to $b$, then it takes on every value from $f(a)$ to $f(b)$. To use the IVT, you must show that:
+
+- The interval is **closed**
+- The function is **continuous** on the interval
+- Given a value $a \leq C \leq b$, then $f(a) \leq f(C) \leq f(b)$
