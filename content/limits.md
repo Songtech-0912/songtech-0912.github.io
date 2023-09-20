@@ -281,6 +281,60 @@ $$
 
 However, note that as the limit $\lim_{t \to \infty}$ is infinite, we _don't_ have a horizontal asymptote there (as a horizontal asymptote must approach a finite number), so the only horizontal asymptote is $y = 0$.
 
+Sometimes, we have a messier limit, such as:
+
+$$
+\lim_{x \to \infty} \frac{\sqrt{x^3 + 3x}}{5x^4+4}
+$$
+
+Remember that we need to divide by the greatest power of $x$ on the denominator. However, because we have a square root, we need to factor out the _square_ of the greatest power of $x$ from the square root, which will reduce to the power once we finish the square root. Here, the greatest power is $x^4$, so its square is $x^8$. We can then factor:
+
+$$
+\lim_{x \to \infty} \frac{\sqrt{x^8 \left(\frac{1}{x^5} + \frac{3}{x^7}\right)}}{x^4 \left(5 + \frac{4}{x^4}\right)}
+$$
+
+Using the rules of square roots, we can then simplify to:
+
+$$
+\lim_{x \to \infty} \frac{x^4\sqrt{\frac{1}{x^5} + \frac{3}{x^7}}}{x^4 \left(5 + \frac{4}{x^4}\right)}
+$$
+
+Remember that if you have a square that is $x^2$ (we don't here, but just if you do), then $\sqrt{x^2} = |x| \neq x$. 
+
+Now, if we continue simplifying, we have:
+
+$$
+\lim_{x \to \infty} \frac{\sqrt{\frac{1}{x^5} + \frac{3}{x^7}}}{\left(5 + \frac{4}{x^4}\right)} = \frac{\sqrt{0}}{\sqrt{5}} = 0
+$$
+
+As a final example, sometimes we can have limits in the form:
+
+$$
+\lim_{x \to \infty} \sqrt{x^4+2x} - 2x
+$$
+
+We'd be tempted to say this is just equal to $\infty$, but if we plug it in, we get $\infty - \infty$, which is an indeterminate form. So instead, we need to rewrite it as a fraction of itself over one, and multiply by the conjugate:
+
+$$
+\lim_{x \to \infty} \frac{x^4-4x^2 - 2x}{\sqrt{x^4 + 2x} -2x}
+$$
+
+Now, we can use the greatest power cancelling method as with earlier - we cancel out the greatest power from the denominator:
+
+$$
+\lim_{x \to \infty} \frac{x^4-4x^2 - 2x}{\sqrt{x^4 (1 + \frac{2}{x^3})} - 2x}
+$$
+
+$$
+\lim_{x \to \infty} \frac{x^4(1 - \frac{1}{x^2} - \frac{2}{x^3})}{x^2\left(\sqrt{ 1 + \frac{2}{x^3}} - \frac{2}{x}\right)}
+$$
+
+We end up with (after canceling the zeroes):
+
+$$
+\lim_{x \to \infty} \frac{x^4}{x^2} = \lim_{x \to \infty} x^2 = \infty
+$$
+
 ## Intermediate Value Theorem
 
 The **intermediate value theorem** (IVT) states that if a function is continuous in a _closed_ interval from $a$ to $b$, then it takes on every value from $f(a)$ to $f(b)$. To use the IVT, you must show that:
