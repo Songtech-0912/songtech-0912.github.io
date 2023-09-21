@@ -367,3 +367,24 @@ where $\phi$ is the flux, given by:
 $$
 \phi = \frac{N}{A t}
 $$
+
+## Waves to particles
+
+A light wave with a perfectly defined wavelength (and thus perfectly defined momentum $p$) has **infinite length** $x$.
+
+However, adding several waves together creates **interference**. Some areas constructively interfere, and some areas destructively interfere. The more waves we add together, the more defined the length of the wave becomes (instead of infinity, it approaches a finite number), but the harder it is to say what the wavelength of the wave is.
+
+Adding infinite waves together creates a localized peak of finite length, which we call a **wave packet**. This is what we observe as the photon. Mathematically speaking, we have:
+
+$$
+u(x, t) = \int \limits_{k_1}^{k_2} A\sin\left(kx+\omega t\right) \, dk
+$$
+
+where $k_1$ and $k_2$ define the boundaries of the wave packet. There is **no need** to remember this for the exam.
+
+What is important (and most likely on the exam) is that as wavelength, and thus momentum, becomes less well-defined, the length becomes more well-defined. This is the **Heisenberg uncertainty principle**:
+
+$$
+\sigma_x \sigma_p \geq \frac{\hbar}{2}
+$$
+
