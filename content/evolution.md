@@ -213,6 +213,6 @@ Species can form from three main ways.
 | Form of speciation | Cause |
 |----|----|
 | Allopatric speciation | Geographically isolated populations cause different mutations and different selective pressures, becoming new species |
-| Parapatric speciation | Partially geographically isolated populations cause differences over time and form new species |
+| Parapatric speciation | A species with a large geographic range only reproduces locally, resulting in the formation of new species |
 | Sympatric speciation | Differences in one population over time cause inability to interbreed and become new species |
 
