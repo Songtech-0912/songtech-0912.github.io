@@ -266,7 +266,7 @@ Evidently, the answer is that $\theta = \frac{\pi}{3}$.  You may wonder where we
 |----|----|
 | $\sin^{-1} (x)$ | $[-\frac{\pi}{2}, \frac{\pi}{2}]$ |
 | $\cos^{-1}(x)$ | $[0, \pi]$ |
-| $\tan^{-1} (x)$ | $[-\infty, \infty]$ |
+| $\tan^{-1} (x)$ | $[-\frac{\pi}{2}, \frac{\pi}{2}]$ |
 
 So the format of evaluating inverse trig functions is to swap the $x$ and $\theta$, then set $\theta \in \text{[your bounds]}$, then solve.
 
