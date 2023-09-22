@@ -388,3 +388,12 @@ $$
 \sigma_x \sigma_p \geq \frac{\hbar}{2}
 $$
 
+## The Mach-Zehnder Interferometer
+
+In the Mach-Zehnder interferometer, two light beams are shone through a beam-splitter. Half of both beams then reflect on two mirrors, and the other half reflect in two other mirrors, where they are incident on another beam-splitter. Upon passing or reflecting in the second beam-splitter, they travel into one of two detectors. We can use the following equation to determine the power measured at either detector:
+
+$$
+P = \frac{4 P_0}{2N} \cos^2 \left(\frac{\Delta \phi}{2}\right) 
+$$
+
+where $N$ is the number of beams incident on the detector.
