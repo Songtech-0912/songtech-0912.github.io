@@ -132,11 +132,11 @@ First, we know that $-\frac{3\pi}{4}$ is an integer multiple of $\frac{\pi}{4}$,
 We can then use the trig song to find the values of the trig functions at $\frac{\pi}{4}$:
 
 $$
-\sin \frac{\pi}{4} = \frac{2}{2}
+\sin \frac{\pi}{4} = \frac{\sqrt{2}}{2}
 $$
 
 $$
-\cos \frac{\pi}{4} = \frac{2}{2}
+\cos \frac{\pi}{4} = \frac{\sqrt{2}}{2}
 $$
 
 $$
@@ -146,11 +146,11 @@ $$
 But remember that $-\frac{3\pi}{4}$ is  in the 3rd quadrant, where (using "all students take calculus") only tangent is positive. So we apply the correct signs (-sin, -cos, +tan):
 
 $$
-\sin \left(-\frac{3\pi}{4}\right) = -\frac{2}{2}
+\sin \left(-\frac{3\pi}{4}\right) = -\frac{\sqrt{2}}{2}
 $$
 
 $$
-\cos \left(-\frac{3\pi}{4}\right) = -\frac{2}{2}
+\cos \left(-\frac{3\pi}{4}\right) = -\frac{\sqrt{2}}{2}
 $$
 
 $$
