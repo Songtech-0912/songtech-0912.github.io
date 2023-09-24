@@ -276,7 +276,7 @@ $$
 We can do the same with negative infinity:
 
 $$
-\lim_{t \to -\infty} \frac{5e^t}{3 - \frac{1}{e^t}} = \frac{5e^{-\infty}}{3} = -\infty
+\lim_{t \to -\infty} \frac{5e^t}{3 - \frac{1}{e^t}} = \frac{5e^{-\infty}}{3} = 0
 $$
 
 However, note that as the limit $\lim_{t \to \infty}$ is infinite, we _don't_ have a horizontal asymptote there (as a horizontal asymptote must approach a finite number), so the only horizontal asymptote is $y = 0$.
