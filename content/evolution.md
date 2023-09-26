@@ -184,7 +184,7 @@ Mutations are usually negative (and thus are not passed on as these individuals 
 
 During Charles Darwin's voyage aboard the HMS Beagle, he studied the fauna of the Galapagos islands. There were 14 species endemic to the islands, and Darwin realized that they were all descended from one species.
 
-During a 1978 study of _Geospiza fortis_, directional selection was demonstrated after a drought that favored the selection of 
+During a 1978 study of _Geospiza fortis_, directional selection was demonstrated after a drought that favored the selection of larger-beaked finches.
 
 ## Coevolution
 
