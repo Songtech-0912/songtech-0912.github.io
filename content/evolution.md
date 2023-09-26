@@ -216,3 +216,27 @@ Species can form from three main ways.
 | Parapatric speciation | A species with a large geographic range only reproduces locally, resulting in the formation of new species |
 | Sympatric speciation | Differences in one population over time cause inability to interbreed and become new species |
 
+## Ring species
+
+An original population can populate around different sides of a geographic barrier and spread around the geographic barrier, but by the time the two isolated populations meet, they can no longer interbreed, producing two new species. This is called a **ring species**.
+
+## Mass extinctions
+
+Mass extinctions have caused many species to grow extinct. The Permian extinction event, occurring 200 million years ago, caused 95% of species to go extinct. The K-T (cretaceous-tertiary) extinction event 65 MYA separate the age of reptiles and the age of mammals. An iridium layer at the K-T boundary in the geological record suggests that the K-T extinction event was caused by an asteroid.
+
+Mass extinctions usually cause a radiation of life, as they leave many niches unoccupied by competitors, allowing new species to fill them.
+
+## Evidence for evolution
+
+- Life shares a lot of common genetic information and has molecular commonalities, suggesting it evolved from a universal common ancestor
+- There is fossil evidence of life changing from one type to another (e.g. _Tiktaalik_, _Archaeopteryx_)
+- Anatomically, various different organisms exhibit various homologous morphologies (forms and structures)
+	- Note: **homologous structures** are structures with similar structure and differing function, versus **analogous structures** are structures with different structure and similar function
+
+## Characteristics of primates
+
+Primates are distinguished by having a grasping hand, binocular vision, a large brain, parental care, and sociality. They evolved 80-75 MYA, and have diversified with time. A 47-million year old fossil known as "Ida" was earliest ancestor of humans.
+
+Hominid fossils have been found in different locations around the world. So scientists initially proposed the multiregional hypothesis, which stated that modern-day humans evolved from different species around the world. This has since been disproven with mitochondrial evidence, in which we now believe all modern-day humans originated in Africa and spread around the world.
+
+The first step in human evolution was _Australopithecus Afrarensis_ (or "Lucy") 3.2 MYA, which was the first ape to develop bipedalism - standing on its two feet. The second step was _Homo Habilis_ 2.3 MYA, which had a precision gripping hand for tool-making. This started the pattern of brain growth and complex social behavior for humans. Then came _Homo Erectus_ 1.9 MYA, which moved out of Africa. They innovated building shelters for themselves, and fire. Next, came _Homo Neanderthalensis_ 200,000 years ago, who were almost completely human. They exhibited traits of altruism, burial of their dead, stone tools, art, and likely spoken language. Modern-day humans came out of Africa soon after, likely interbred with Neanderthals, and developed agriculture 10,000 years ago.
