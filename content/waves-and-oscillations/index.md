@@ -209,15 +209,29 @@ $$
 
 ![Young double-slit diagram](young-double-slit.png)
 
-Given light waves passing through two slits separated by distance $d$ which are a distance $D$ from a distant screen, and that a peak (maximum) in the observed interference pattern on the screen is $m$ wavelengths from the center of the screen, then:
+Given light waves passing through two slits separated by distance $d$ which are a distance $D$ from a distant screen, and that a peak (maximum) in the observed interference pattern on the screen is $m$ wavelengths from the center of the screen, then, using geometry, we can model the experiment. The model is shown below, and is rotated 90 degrees from the previous diagram to show detail:
+
+![Young double-slit annotated diagram](young-double-slit-annotated.png)
+
+$$
+y = m \lambda
+$$
+
+$$
+\Delta L = d \sin \theta
+$$
 
 $$
 \theta = \operatorname{arctan} \left(\frac{y}{D}\right)
 $$
 
+Using some geometry, we find that:
+
 $$
-y = m \lambda
+\Delta L = m \lambda
 $$
+
+Which results in:
 
 $$
 \lambda = \frac{d \sin \theta}{m}
