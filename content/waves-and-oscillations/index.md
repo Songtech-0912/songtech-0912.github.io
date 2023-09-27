@@ -212,7 +212,7 @@ $$
 Given light waves passing through two slits separated by distance $d$ which are a distance $D$ from a distant screen, and that a peak (maximum) in the observed interference pattern on the screen is $m$ wavelengths from the center of the screen, then:
 
 $$
-\theta = \frac{y}{D}
+\theta = \operatorname{arctan} \left(\frac{y}{D}\right)
 $$
 
 $$
