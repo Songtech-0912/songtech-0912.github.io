@@ -42,7 +42,7 @@ So the key to evaluating our integral is to find out what $I(1)$ is. But surely 
 At first glance, yes. But notice that we can take the derivative of $I$, to get:
 
 $$
-I'(t) = \frac{d}{dt} \int \limits_0^1 \ln(tx) dx = \int \limits_0^1 \frac{\partial}{\partial t}\ln t(x) dx
+I'(t) = \frac{d}{dt} \int \limits_0^1 \ln(tx) dx = \int \limits_0^1 \frac{\partial}{\partial t}\ln (tx) dx
 $$
 
 $$
