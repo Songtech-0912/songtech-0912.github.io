@@ -89,3 +89,38 @@ $$
 \frac{d}{dx} (e^x) = e^x
 $$
 
+## Differentiability
+
+If a function is **differentiable** at a point, that implies that:
+
+- It has a **defined** left-hand derivative at the point
+- It has a **defined** right-hand derivative at the point
+- The left-hand and right-hand derivatives **match**
+
+If a function is differentiable at $x = a$, it is also continuous, and if it is not continuous, then it is **not** differentiable.
+
+## Product rule and quotient rule
+
+The product rule states that:
+$$
+(f + g)' = f'g + g'f
+$$
+
+The quotient rule states that:
+
+$$
+\left(\frac{f}{g}\right)' = \frac{f'g - g'f}{g^2}
+$$
+
+## Higher-order derivative
+
+The nth-order derivative means you are taking the derivative nth times, and is notated with:
+
+$$
+\frac{d^n f}{dx^n}
+$$
+
+or (less commonly) $f^{(n)}(x)$.
+
+In general, if a polynomial is of nth degree, every higher-order derivative after the $(n + 1)$ derivative is zero. For example, if our polynomial is $x^8$, then all derivatives above the 9th derivative is zero, so $\frac{d^{100}}{dx^{100}} x^8 = 0$. Additionally, all the higher-order derivatives of $e^x$ are $e^x$.
+
