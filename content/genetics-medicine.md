@@ -3,6 +3,10 @@ title = "Genetics & medicine notes"
 date = 2023-10-02
 +++
 
+These notes contain the second unit of notes from BIO 1010 at RPI.
+
+<!-- more -->
+
 ## DNA
 
 **DNA** (deoxyribonucleic acid) contains all the instructions used to build a living organism. It is a molecular blueprint for a living organisms, organized in a double helix shape, and first discovered in 1953.
