@@ -5,6 +5,8 @@ date = 2023-10-03
 
 The wave equation is a ubiquitous partial differential equation found in many areas of physics. We will attempt to solve it within this post.
 
+<!-- more -->
+
 First, let's state the problem. The wave equation is given by:
 
 $$
