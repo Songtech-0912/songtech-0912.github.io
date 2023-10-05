@@ -8,4 +8,4 @@ These are my personal introductory biology notes taken at my time at RPI.
 <!-- more -->
 
 - [Evolution](@/evolution.md)
-- [Genetics & medicine](genetics-medicine.md)
+- [Genetics & medicine](@/genetics-medicine.md)
