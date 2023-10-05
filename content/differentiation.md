@@ -124,3 +124,61 @@ or (less commonly) $f^{(n)}(x)$.
 
 In general, if a polynomial is of nth degree, every higher-order derivative after the $(n + 1)$ derivative is zero. For example, if our polynomial is $x^8$, then all derivatives above the 9th derivative is zero, so $\frac{d^{100}}{dx^{100}} x^8 = 0$. Additionally, all the higher-order derivatives of $e^x$ are $e^x$.
 
+## Trigonometric derivatives
+
+The fundamental trigonometric derivatives can be derived from the limit definition, and are given by:
+
+$$
+\frac{d}{dx} \sin x = \cos x
+$$
+
+$$
+\frac{d}{dx} \cos x = -\sin x
+$$
+
+The rest of the trig derivatives can be calculated using trig identities. They are given by:
+
+$$
+\frac{d}{dx} \tan x = \sec^2 x
+$$
+
+$$
+\frac{d}{dx} \sec x = \sec x \tan x
+$$
+
+$$
+\frac{d}{dx} \csc x = -\csc x \cot x
+$$
+
+$$
+\frac{d}{dx} \cot x = -\csc^2 x
+$$
+
+## Chain rule
+
+When we have a function $y = f(u)$ where $u = g(x)$, then:
+
+$$
+\frac{dy}{dx} = \frac{df}{du}\frac{du}{dx}
+$$
+
+For instance, suppose we want to compute:
+
+$$
+y = \sin(x^3 + 4x^2)
+$$
+
+Then $y = \sin(u)$ and $u = x^3 + 4x^2$. Therefore:
+
+$$
+\frac{df}{du} = \cos u = \cos (x^3 + 4x^2)
+$$
+
+$$
+\frac{du}{dx} = 3x^2 + 8x
+$$
+
+$$
+\frac{dy}{dx} = \frac{df}{du} \frac{du}{dx} = \cos (x^3 + 4x^2)(3x^2 + 8x)
+$$
+
