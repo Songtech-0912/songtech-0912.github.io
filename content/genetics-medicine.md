@@ -182,4 +182,4 @@ Many organisms share much of the same DNA. The reasons for this are:
 - Acetyl groups can attach to histone packaging of DNA and make genes accessible
 - Small RNA molecules can attach to genes and turn genes on and off
 
-RNA interference is when intereference RNA (iRNA) molecules destroy mRNA become they reach ribosomes and causes translation to not occur. This is often used to prevent viral mRNA to prevent viruses from injection their DNA into a cell's DNA, thus protecting a cell from a virus. iRNA can be further divided into micro-interference RNA (miRNA), which can silence many genes, and silencer-interference RNA (siRNA), which silence specific genes.
+RNA interference is when intereference RNA (iRNA) molecules destroy mRNA become they reach ribosomes and causes translation to not occur. This is often used to prevent viral mRNA to prevent viruses from injection their DNA into a cell's DNA, thus protecting a cell from a virus. iRNA can be further divided into micro-interference RNA (miRNA), which can silence many genes, and short-interference RNA (siRNA), which silence specific genes.
