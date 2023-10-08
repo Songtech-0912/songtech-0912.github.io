@@ -157,3 +157,29 @@ Sugars are often used by cells as their source of energy. Lactose must be broken
 One form of gene regulation occurs in transcription. Transcription starts at the **promoter**, a region of DNA that RNA polymerase attaches to. Next to the promoter is the **operator**, a section of DNA to which a **repressor** protein can bind. When lactose is not present, the repressor binds to the operator and prevents the RNA polymerase from transcribing the operon. This represses the gene. When lactose is present, however, lactose binds to the repressor, and changes the shape of the repressor. This makes the repressor unable to bind to the operator, allowing the operon to be transcribed. Mutations in both the repressor and operator can interfere with this process.
 
 Another form of gene regulation also occurs in transcription. Bacteria typically have a preference for glucose over lactose, but when glucose levels are low, levels of cyclic AMP (cAMP) molecule, an indicator of "hunger", increase. The promoter for the _lac_ operon is a **weak promoter**, which means RNA polymerase binds relatively weakly to the promoter. To counter this, there is an **activation site** before the promoter, which an **activator protein** can bind to, in order to make the weak promoter behave like a strong promoter. When cAMP levels are high, cAMP binds to the activator protein, allowing the activation protein to bind. Meanwhile, when cAMP levels are low, cAMP does not bind to the activator protein, preventing the activation protein from binding.
+
+## Eukaryotic gene regulation
+
+First, DNA is packed very tightly around histones and bundled in tight coils around chromosome. By keeping DNA tightly packaged, it cannot be transcribed, which suppresses genes.
+
+Second, upstream (before) the promoter are DNA sequences called **enhancers**. Transcription factors are proteins that can bind to the enhancer to help RNA polymerase bind to the promoter. They can be considered analogous to activator proteins in prokaryotes.
+
+## Homeobox genes
+
+A fly's body has 3 sections - head, thorax, and abdomen. HOX (homeobox) genes are transcription factors that regulate the body plan of an embryo to grow along the head-tail direction. The expression of the HOX genes are crucial for many animals, not just flies - humans have it as well - to develop a proper body plan.
+
+Many organisms share much of the same DNA. The reasons for this are:
+
+- Descent from common ancestor
+- Common cellular mechanisms across all organisms
+- Key genes are conserved because mutations would reduce fitness
+
+## Epigenetics
+
+**Epigenetics** is the study of heritable changes in gene expression that do not involve changes to the underlying DNA sequence. That is, an organism's DNA (genome) can remain unchanged, but gene expression can change. The **epigenome** is how your a is expressed. Epigenome is like "software" if genome is "hardware". Many factors can affect the epigenome:
+
+- Methyl groups can attach to DNA and activate or repress gene expressions
+- Acetyl groups can attach to histone packaging of DNA and make genes accessible
+- Small RNA molecules can attach to genes and turn genes on and off
+
+RNA interference is when intereference RNA (iRNA) molecules destroy mRNA become they reach ribosomes and causes translation to not occur. This is often used to prevent viral mRNA to prevent viruses from injection their DNA into a cell's DNA, thus protecting a cell from a virus. iRNA can be further divided into micro-interference RNA (miRNA), which can silence many genes, and silencer-interference RNA (siRNA), which silence specific genes.
