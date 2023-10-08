@@ -182,3 +182,82 @@ $$
 \frac{dy}{dx} = \frac{df}{du} \frac{du}{dx} = \cos (x^3 + 4x^2)(3x^2 + 8x)
 $$
 
+## Implicit differentiation
+
+Consider the equation:
+
+$$
+x^2 + y^2 = 1
+$$
+
+Here, $y$ is an implicit function of $x$, that is, $y = y(x)$. But we don't know what $y(x)$ is. We just know that $y$ is a function of $x$, even if we don't know what exactly that function's form is - which is why we call it **implicit**.
+
+If we were to differentiate the entire expression, we have:
+
+$$
+\frac{d}{dx} (x^2 + y^2) = \frac{d}{dx} (1)
+$$
+
+The derivative of $x^2$ is easily computed. Meanwhile, we can use the chain rule to differentiate $y^2$:
+
+$$
+\frac{d}{dx} (y^2) = \frac{d}{dx} (y(x)^2) = 2y \frac{dy}{dx}
+$$
+
+Because by the chain rule:
+
+$$
+\frac{df}{dx} = \frac{df}{dy}\frac{dy}{dx}
+$$
+
+So:
+
+$$
+\frac{d}{dx} (y^2) = \frac{d}{dy} (y^2) \frac{dy}{dx}
+$$
+
+Therefore:
+
+$$
+2x + 2y y' = 0
+$$
+
+If we solve this in terms of $y'$, we have:
+
+$$
+y'= -\frac{x}{y}
+$$
+
+So using implicit differentiation, we are able to find the derivative of $y$, even though we didn't know what exactly the function $y$ was. We can then use that derivative to e.g. find the tangent line to the implicit function, which in this case would be the tangent line to the circle.
+
+Note that derivatives of implicit functions must be checked for domain restrictions (such as division over zero and square root of -1).
+
+We can use implicit differentiation to solve for the derivative of the inverse trig functions:
+
+$$
+y = \sin^{-1}(x)
+$$
+
+$$
+\sin(y) = x
+$$
+
+$$
+\cos(y) y' = 1
+$$
+
+$$
+y' = \frac{1}{\cos y}
+$$
+
+But we know that $\cos^2(y) + \sin^2(y) = 1$. Since $\sin(y) = x$, we can say that:
+
+$$
+\cos(y) = \sqrt{1 - x^2}
+$$
+
+Therefore, we have:
+
+$$
+y' = \frac{1}{\sqrt{1 - x^2}}
+$$
