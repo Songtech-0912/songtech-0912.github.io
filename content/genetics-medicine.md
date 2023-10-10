@@ -67,7 +67,7 @@ The genetic code is the set of rules that converts RNA base sequences to amino a
 
 ## Genes and genetic variation
 
-A **gene** is a group of base sequences that code for specific amino acids that form proteins. A gene determines the phenotype (observable characteristics) of an organism and are heritable.
+A **gene** is a group of base sequences that code for specific amino acids that form proteins. A gene determines the phenotype (observable characteristics) of an organism and is heritable.
 
 ## Mutations
 
@@ -176,7 +176,7 @@ Many organisms share much of the same DNA. The reasons for this are:
 
 ## Epigenetics
 
-**Epigenetics** is the study of heritable changes in gene expression that do not involve changes to the underlying DNA sequence. That is, an organism's DNA (genome) can remain unchanged, but gene expression can change. The **epigenome** is how your a is expressed. Epigenome is like "software" if genome is "hardware". Many factors can affect the epigenome:
+**Epigenetics** is the study of heritable changes in gene expression that do not involve changes to the underlying DNA sequence. That is, an organism's DNA (genome) can remain unchanged, but gene expression can change. The **epigenome** is how your genome is expressed. Epigenome is like "software" if genome is "hardware". Many factors can affect the epigenome:
 
 - Methyl groups can attach to DNA and activate or repress gene expressions
 - Acetyl groups can attach to histone packaging of DNA and make genes accessible
