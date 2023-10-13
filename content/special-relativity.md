@@ -26,3 +26,43 @@ Composite particles are composed of elementary particles, and include hadrons (m
 ## Units in physics
 
 Velocity is often measured relative to the speed of light, such as $0.8c$. Charge is often measured with respect to the elementary charge, such as $5e$. Energy is often measured in terms of electron volts (eV), where $1 \text{ eV} = 1.6 \times 10^{-19} \text{ J}$.
+
+## Overview of Special Relativity
+
+A **reference frame** is a specific place you designate as an origin. By constructing a coordinate system from that origin, measurements can be made. An inertial reference frame is a reference frame that isn't accelerating.
+
+The two postulates of special relativity are that 1) the laws of physics are the same for observers in all inertial reference frames, and that 2) the speed of light is **constant** in all reference frames.
+
+The proper frame is the reference frame attached to the comoving observer - the observer that "travels along" with the event. The proper frame for a set of measurements are different depending on whether the value being measured is proper time or proper length.
+
+**Proper time** can be thought of as the time measured by an observer's own clock as the observer travels.
+
+**Coordinate time** can be thought of time measured by a distant observer that is not traveling.
+
+Coordinate time $\Delta t$ is related to proper time $\Delta \tau$ by:
+
+$$
+\Delta \tau = \gamma \Delta t
+$$
+
+where:
+
+$$
+\gamma = \frac{1}{\sqrt{1 - \left(\frac{v}{c}\right)^2}}
+$$
+Using a Taylor series expansion, $\gamma \approx 1$ at very low speeds, and $\gamma \approx 1 + \frac{v^2}{2c^2}$ at low speeds.
+
+**Proper length** is the length of an object as measured in its rest frame. **Coordinate length** is the length of an object as measured when it is moving. Proper length $\Delta \ell$ is related to coordinate length $\Delta L$ by:
+
+$$
+\Delta \ell  = \frac{\gamma}{\Delta L}
+$$
+Relativistic equations are often analogous to the equations of classical mechanics:
+
+$$
+p = \gamma mv
+$$
+
+$$
+E = \gamma mc^2
+$$

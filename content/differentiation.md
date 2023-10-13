@@ -261,3 +261,90 @@ Therefore, we have:
 $$
 y' = \frac{1}{\sqrt{1 - x^2}}
 $$
+
+## General exponential function
+
+The general derivative of the exponential function $e^u$ is given by:
+
+$$
+\frac{d}{dx} e^u = e^u \frac{du}{dx}
+$$
+
+The derivative of the general exponential function $a^u$ is given by:
+
+$$
+\frac{d}{dx} a^u = a^u \ln(a) \frac{du}{dx}
+$$
+
+## Logarithmic function
+
+We want to find the derivative of $\ln(x)$. We can use implicit differentiation to find its derivative:
+
+$$
+y = \ln(x)
+$$
+
+$$
+e^y = x
+$$
+
+$$
+e^y y' = 1
+$$
+$$
+y' = \frac{1}{e^y}
+$$
+
+But we know that $e^y = x$, therefore:
+
+$$
+y' = \frac{1}{x}
+$$
+And the general derivative of the natural log function is:
+
+$$
+\frac{d}{dx} \ln(u) = \frac{u'}{u}
+$$
+
+The derivative of the general logarithmic function can be found through the change of base formula, and is given by:
+
+$$
+\frac{d}{dx} \log_b (u) = \frac{1}{\ln(b)} \frac{u'}{u}
+$$
+
+When doing derivatives of logarithms, using log rules often help simplify a complex logarithm into much simpler logarithms that are easier to evaluate.
+
+## Logarithmic differentiation
+
+Consider the function:
+
+$$
+y = \frac{x(x + 1)^4}{(3x - 1)^{3/2}}
+$$
+Using log rules, this becomes:
+
+$$
+\ln(y) = \ln(x(x+1)^4) - \ln((3x - 1)^{3/2})
+$$
+Which we can then simplify to:
+
+$$
+\ln(y) = \ln(x) + 4\ln(x + 1) - \frac{3}{2} \ln(3x -1)
+$$
+Therefore, differentiating both sides gives us:
+
+$$
+\frac{y'}{y} = \frac{1}{x} + \frac{4}{x + 1} - \frac{9}{2(3x - 1)}
+$$
+
+Which we can rewrite as:
+
+$$
+y' = y \left(\frac{1}{x} + \frac{4}{x + 1} - \frac{9}{2(3x - 1)}\right)
+$$
+
+If we wanted to, we could replace the $y$ here with our original expression, giving:
+
+$$
+y' = \frac{x(x + 1)^4}{(3x - 1)^{3/2}} \left(\frac{1}{x} + \frac{4}{x + 1} - \frac{9}{2(3x - 1)}\right)
+$$
