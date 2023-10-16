@@ -35,14 +35,14 @@ The two postulates of special relativity are that 1) the laws of physics are the
 
 The proper frame is the reference frame attached to the comoving observer - the observer that "travels along" with the event. The proper frame for a set of measurements are different depending on whether the value being measured is proper time or proper length.
 
-**Proper time** can be thought of as the time measured by an observer's own clock as the observer travels.
+**Proper time** can be thought of as the time measured by an observer's own clock as the observer travels, and is the time the observer actually experiences.
 
 **Coordinate time** can be thought of time measured by a distant observer that is not traveling.
 
 Coordinate time $\Delta t$ is related to proper time $\Delta \tau$ by:
 
 $$
-\Delta \tau = \gamma \Delta t
+\Delta t = \gamma \Delta \tau
 $$
 
 where:
@@ -50,6 +50,7 @@ where:
 $$
 \gamma = \frac{1}{\sqrt{1 - \left(\frac{v}{c}\right)^2}}
 $$
+
 Using a Taylor series expansion, $\gamma \approx 1$ at very low speeds, and $\gamma \approx 1 + \frac{v^2}{2c^2}$ at low speeds.
 
 **Proper length** is the length of an object as measured in its rest frame. **Coordinate length** is the length of an object as measured when it is moving. Proper length $\Delta \ell$ is related to coordinate length $\Delta L$ by:
