@@ -348,3 +348,55 @@ If we wanted to, we could replace the $y$ here with our original expression, giv
 $$
 y' = \frac{x(x + 1)^4}{(3x - 1)^{3/2}} \left(\frac{1}{x} + \frac{4}{x + 1} - \frac{9}{2(3x - 1)}\right)
 $$
+
+## Related rates
+
+**Related rates** allows us to know how a related variable changes with respect to another variable.
+
+For example, consider $x = y^3 - y$. If we know $\frac{dy}{dt}$, what is $\frac{dx}{dt}$? Well, we can implicitly differentiate to get:
+
+$$
+\frac{d}{dt} x = \frac{d}{dt} (y^3 - y)
+$$
+$$
+\frac{dx}{dt} = 3y^2 \frac{dy}{dt} - \frac{dy}{dt}
+$$
+This is our answer! However, typically, we are not presented with the equation that relates two related variables directly, and we must infer it from the question itself.
+
+For example, consider a rectangular box. We want to find $\frac{dx}{dt}$ in terms of other related rates. We can deduce that the volume of a box is given by:
+
+$$
+V = xyz
+$$
+Thus, if we differentiate both sides:
+
+$$
+\frac{d}{dt} V = \frac{d}{dt} (x y z)
+$$
+
+We get:
+
+$$
+\frac{dV}{dt} = yz \frac{dx}{dt} + xz \frac{dy}{dt} + xy \frac{dz}{dt}
+$$
+Allowing us to find:
+
+$$
+\frac{dx}{dt} = \frac{1}{yz}\left(\frac{dV}{dt} - xz \frac{dy}{dt} + xy \frac{dz}{dt}\right)
+$$
+
+## Extreme values
+
+An **absolute** minimum or maximum is when $f(x)$ is at its lowest or highest value respectively for its entire domain. There is only one absolute maximum and one maximum minimum at one function. A **local** minimum or maximum is when $f(x)$ is at its lowest or highest value respectively in an open interval around a specified point.
+
+## Critical points
+
+A **critical point** of $f(x)$ is a point in which $f'(x) = 0$ or undefined within the domain of $f$. Critical points can be saddle points, minima, or maxima.
+
+## Extreme Value Theorem (EVT)
+
+The **EVT** states that if $f(x)$ is continuous on a closed interval $[a, b]$, then both an absolute maximum and absolute minimum exist on the interval. To use the EVT, find all critical points and compare them to the endpoints, and then find the largest and smallest value.
+
+## Rolle's Theorem
+
+**Rolle's Theorem** states that if a function $f(x)$ is continuous on a closed interval $[a, b]$ and differentiable on $(a, b)$, and if $f(a) = f(b)$, then there exists at least point point $x = c$ at which $f'(c) = 0$. It is a special case of the MVT (mean value theorem).
