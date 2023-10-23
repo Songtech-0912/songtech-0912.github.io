@@ -183,3 +183,66 @@ Many organisms share much of the same DNA. The reasons for this are:
 - Small RNA molecules can attach to genes and turn genes on and off
 
 RNA interference is when intereference RNA (iRNA) molecules destroy mRNA become they reach ribosomes and causes translation to not occur. This is often used to prevent viral mRNA to prevent viruses from injection their DNA into a cell's DNA, thus protecting a cell from a virus. iRNA can be further divided into micro-interference RNA (miRNA), which can silence many genes, and short-interference RNA (siRNA), which silence specific genes.
+
+## Genomics
+
+DNA sequencing is the process of reading the sequence of nucleotides of DNA. 
+
+The Sanger sequencing method was first invented in 1975. After denaturing DNA using heat, multiple copies are made of a segment using PCR (polymerase chain reaction). Primers are attached, and 4 polymerase solutions are added. This allows the DNA to grow complementary chains until reaching special nucleotides that are missing the hydroxyl on the 3' carbon, at which the DNA chain stops growing. Using electrophoresis followed by autoradiography allows the sequence to be read. Computers helped tremendously with speeding up this process.
+
+Shotgun sequencing was an improvement over Sanger sequencing that allowed for a DNA sequence to be split up into many small fragments that were then Sanger sequenced. The fragments were then assembled back together.
+
+Next-generation sequencing (NGS) was a further improvement on shotgun sequencing that use fluorescently-labeled bases to identify each nucleotide by shining a different wavelength of light.
+
+Sequencing has grown tremendously cheaper over the years since the human genome project in 1988, and costs under $100 a day. Project Encode took the results from the human genome project and assigned a biochemical function to all the functional elements of the human genome. The roadmap of epigenomes did the same for the human epigenome. Finally, the genome 10K project extended sequencing to 10,000 vertebrates, and the Earth biogenome project aims to extend sequencing to all eukaryotic life.
+
+In addition, DNA's ability as a biology storage medium may one day allow for alternative forms of long-term storage of digital information.
+
+## Genetic origins of disease
+
+Many diseases are caused by altered or misshapen chromosomes. **Nondisjunction** refers to the failure of chromosomes or chromatids to separate during meiosis, and can cause zygotes with altered numbers of chromosomes, such as trisomy (3 chromosomes) or monosomy (1 chromosome). Trisomy 21 (trisomy in the 21st chromosome) causes Down syndrome, which is characterized by susceptibility to disease, a shortened life span, and cognitive impairment.
+
+## Personalized medicine
+
+The idea of personalized medicine is to customize a treatment for the right patient at the right time. The goal is to improve effectiveness and efficiency of healthcare delivery and improving health outcomes and quality of life.
+
+Single-nucleotide polymorphisms (SNPS) are variants of a single base pair in the DNA, and are the foundation of personalized medicine. A personal SNP profile can be used to know risks of developing diseases. Research areas that contribute to personalized medicine include:
+
+- Discovering biomarkers - chemical signatures of things occuring in the body
+- Profiling the microbiome - analyzing an individual's microrganisms to adjust treatments
+- Pharmacogenomics - using a patient's genetic profile to predict a drug's efficacy, guide dosage, and improve patient safety
+- Clinomics - using computer science to accurately interpret genetic data and guide healthcare decisions
+- Epigenomics - examines which factors act on individual genes, and how changes in the epigenome affect our health
+
+## Cancer
+
+All cancers derive from uncontrolled cell division of a single cells. DNA in these cells are mutated such that they cause the cells to continually divide. Thus, all cancers are genetic diseases.
+
+Cancer typically developers from an **accumulation of mutations** rather than a singular mutation. Many of these mutations are in genes coding epidermal growth factor receptors (oncogenes) which binds to cells to cause cells to divide. Additionally, mutations often occur in tumor suppressor genes (which are transcription factors), which are often defective in cancer cells. The Cancer Genome Atlas is one project created to learn more about the specific mutations cause cancer by genotyping tumors. The project caused the realization of that the type of tissue does not define the underlying genetic profile, and drugs must target a specific genetic profile for a given individual.
+
+There are a variety of cancer treatments. Targeted cancer treatments include:
+
+- Hormone therapy - slow or stop the growth of hormone-sensitive tumors
+- Signal transduction inhibitors e.g. TKIs (tyrosine kinase inhibitors) - blocks signals passed from one molecule to another inside a cell, leading to cancer cell death
+- Angiogenesis inhibitors - blocks the growth of new blood vessels to tumors
+- Immunotherapy - trigger the immune system to destroy cancer cells
+- Monoclonal antibodies - deliver molecules that bind to cancer cells to mark the cancer cells for destruction
+
+## CRISPR
+
+CRISPR - clustered regularly interspaced short palindromic repeats - is a part of the prokaryotic adaptive immune system. It is composed of short repeats of DNA that have spacer DNA in between. The spacer DNA match bacteriophage DNA (viruses that target bacteria), allowing the bacteria to remember past invaders. The bacteria uses it to create proteins that use special sequences to identify foreign DNA and cut the DNA. By injecting custom DNA, genes can be inserted or inactivated.
+
+## Stem Cells
+
+Stem cells are undifferentiated cells that can be induced to develop into multiple types of cells. Stem cells can be used to replace damaged bodily tissues and organs, and is called **regenerative medicine**. Tissue-specific stem cells can be found in most tissues, but typically become one specific type of tissue. Embryonic stem cells, by contrast, can turn into any cells. Induced pluripotent stem cells are regular tissue-specific stem cells that can behave as embryonic stem cells.
+
+## Synthetic biology
+
+Synthetic biology is the application of engineering processes to biology to create systems that do not already exist in the natural world. It is a combination of genetic engineering and engineering.
+
+## Emerging infectious diseases
+
+An **epidemic** is a disease that affects a large number in one area. A **pandemic** is an epidemic that has spread to multiple areas. **Zoonotic diseases** are infectious diseases that can be transmitted from other vertebrates to humans, and form the majority of diseases. Zoonotic diseases go through 5 stages, where stage 1-2 are animal to human transmission, and 3-4 are human to human transmission. Emerging infectious diseases can be:
+
+- Virus-based: RNA viruses have higher mutation rates than DNA viruses. Viruses spread by attaching and entering into human cells using spike proteins, replicating using the cell's transcription and translation machinery, and releasing many copies of themselves
+- Bacterial - antibacterial resistance is a growing issue
