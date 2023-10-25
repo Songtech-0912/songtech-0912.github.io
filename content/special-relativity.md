@@ -29,17 +29,15 @@ Velocity is often measured relative to the speed of light, such as $0.8c$. Charg
 
 ## Overview of Special Relativity
 
-A **reference frame** is a specific place you designate as an origin. By constructing a coordinate system from that origin, measurements can be made. An inertial reference frame is a reference frame that isn't accelerating.
+A **reference frame** is a specific place you designate as an origin. By constructing a coordinate system from that origin, measurements can be made. An inertial reference frame is a reference frame that isn't accelerating. The laws of special relativity **only** apply to inertial reference frames.
+
+Every observer considers themselves to be at rest with respect to their own reference frame, and everyone else to be moving. For example, an astronaut would consider themselves to not be moving, and the Earth to be moving away from them. Similarly, an observer on Earth would consider themselves to not be moving, and the astronaut in the rocket as moving away from them.
 
 The two postulates of special relativity are that 1) the laws of physics are the same for observers in all inertial reference frames, and that 2) the speed of light is **constant** in all reference frames.
 
-The proper frame is the reference frame attached to the comoving observer - the observer that "travels along" with the event. The proper frame for a set of measurements are different depending on whether the value being measured is proper time or proper length.
+A **proper frame** is a reference frame chosen such that the observer and object being measured are in the same frame. For instance, a person travelling within a spaceship would be in the proper frame of the moving spaceship, because both are in the same frame.
 
-**Proper time** can be thought of as the time measured by an observer's own clock as the observer travels, and is the time the observer actually experiences.
-
-**Coordinate time** can be thought of time measured by a distant observer that is not traveling.
-
-Coordinate time $\Delta t$ is related to proper time $\Delta \tau$ by:
+**Proper time** is the time experienced by an object in its proper frame. It can be thought of as the time measured by an observer's own clock as the observer travels along with the measured object. **Coordinate time** is the time experienced by an object in a non-proper frame. Coordinate time $\Delta t$ is related to proper time $\Delta \tau$ by:
 
 $$
 \Delta t = \gamma \Delta \tau
@@ -53,17 +51,22 @@ $$
 
 Using a Taylor series expansion, $\gamma \approx 1$ at very low speeds, and $\gamma \approx 1 + \frac{v^2}{2c^2}$ at low speeds.
 
-**Proper length** is the length of an object as measured in its rest frame. **Coordinate length** is the length of an object as measured when it is moving. Proper length $\Delta \ell$ is related to coordinate length $\Delta L$ by:
+**Proper length** is the length of an object as measured in its proper frame. **Coordinate length** is the length of an object measured in a non-proper frame. Proper length $\Delta \ell$ is related to coordinate length $\Delta L$ by:
 
 $$
-\Delta \ell  = \frac{\gamma}{\Delta L}
-$$
-Relativistic equations are often analogous to the equations of classical mechanics:
-
-$$
-p = \gamma mv
+\Delta \ell  = \frac{\Delta L}{\gamma}
 $$
 
+## Time dilation and length contraction
+
+Consider an observer in a moving spaceship. The observer measures themselves (and anything in their proper frame) to be at rest, and everything else to be moving with respect to their reference frame. We use the familiar equation:
+
 $$
-E = \gamma mc^2
+\Delta t = \gamma \Delta \tau
 $$
+
+Recall that $\gamma > 1$ for all moving objects. That means for a distant observer who measured a time interval of $\Delta t = 1$ second, the proper time of the observer in the spaceship must be $\Delta t < 1$ second. Therefore, the observer in the spaceship's clock ticks slow.
+
+This is the principle of _time dilation_ - **time ticks slow for moving objects**. Recall that any observer would measure every other observer as moving with respect to their own reference frame, however. This means an observer on a rocket would measure a person on Earth as having a slower clock, whereas a person on Earth would _also_ measure the person on the spaceship as having a slower clock!
+
+One area where this has been demonstrated is with muon decay, where muons are measured to be able to travel longer distances than they possibly could given their short lifetimes, as the "internal decay clock" of a muon ticks slow and allows it to travel longer.
