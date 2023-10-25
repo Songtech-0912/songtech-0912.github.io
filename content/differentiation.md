@@ -400,3 +400,31 @@ The **EVT** states that if $f(x)$ is continuous on a closed interval $[a, b]$, t
 ## Rolle's Theorem
 
 **Rolle's Theorem** states that if a function $f(x)$ is continuous on a closed interval $[a, b]$ and differentiable on $(a, b)$, and if $f(a) = f(b)$, then there exists at least point point $x = c$ at which $f'(c) = 0$. It is a special case of the MVT (mean value theorem).
+
+## Mean Value Theorem (MVT)
+
+The **Mean Value Theorem** states that if $f$ is differentiable on $(a, b)$ and continuous on $[a, b]$, then there exists a value $c$ where:
+
+$$
+f'(c) = \frac{f(b) - f(a)}{b - a}
+$$
+
+Here, when using the MVT, ensure that the $c$ that is solved for is within the interval! If it is not within the interval, then the MVT does not apply.
+
+## Monotonicity
+
+A **monotonic function** is a function that moves in only one direction, i.e. only increasing or only decreasing. Monotonicity can be determined by the following rules:
+
+- If $f'(x) > 0$ then $f(x)$ is monotonic increasing on $(a, b)$
+- If $f'(x) < 0$ then $f(x)$ is monotonic decreasing on $(a, b)$
+- Critical points are where functions _may_ (though are not guaranteed to) change monotonicity
+
+## First derivative test
+
+The **first derivative test for local extrema** states that:
+
+- If $f'(x)$ changes sign from $+ \to -$ around $x = c$, $f'(c)$ is a local maximum
+- If $f'(x)$ changes sign for $- \to +$ around $x = c$, $f'(c)$ is a local minimum
+- If there is no change in sign, $f'(c)$ is neither a maximum nor minimum
+
+Make sure to not just plug in whichever numbers you can compute from the critical points and think you're done! Do not consider critical points that are not in the domain of the original function - for example, if $f(x) = \ln(x)$ and $f'(x) = 1/x$, the point $x = 0$ isn't in the domain of $\ln(x)$ so it is not a valid critical point. Also do not consider functions increasing or increasing on intervals in which they are not defined. For example, the function $f(x) = \frac{e^x}{x}$ cannot be said to be increasing on the interval $(-\infty, e)$ because it has an asymptote at $x = 0$; rather, it can only be said to be increasing on the interval $(-\infty, 0) \cup (0, e)$.
