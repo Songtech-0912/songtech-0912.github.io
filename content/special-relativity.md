@@ -72,3 +72,27 @@ Recall that $\gamma > 1$ for all moving objects. That means for the distant obse
 This is the principle of _time dilation_ - **time ticks slow for moving objects**. Recall that any observer would measure every other observer as moving with respect to their own reference frame, however. This means an observer on a rocket would measure a person on Earth as having a slower clock, whereas a person on Earth would _also_ measure the person on the spaceship as having a slower clock!
 
 One area where this has been demonstrated is with muon decay, where muons are measured to be able to travel longer distances than they possibly could given their short lifetimes, as the "internal decay clock" of a muon ticks slow and allows it to travel longer.
+
+## Lorentz Transformations
+
+The Lorentz transformations give the relativistically correct transformations between an observer's reference frame (the unprimed coordinates) and another reference frame (the primed coordinates). They are given by:
+
+$$
+\Delta t' = \gamma \left(\Delta t - \frac{v\Delta x}{c^2}\right)
+$$
+$$
+\Delta x' = \gamma( \Delta x- v\Delta t)
+$$
+$$
+\Delta y' = \Delta y
+$$
+$$
+\Delta z' = \Delta z
+$$
+## Velocity addition
+
+In relativity, two velocities $u$ and $v$ add by:
+
+$$
+V = \frac{u + v}{1 + \frac{uv}{c^2}}
+$$
