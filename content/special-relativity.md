@@ -35,9 +35,11 @@ Every observer considers themselves to be at rest with respect to their own refe
 
 The two postulates of special relativity are that 1) the laws of physics are the same for observers in all inertial reference frames, and that 2) the speed of light is **constant** in all reference frames.
 
-A **proper frame** is a reference frame chosen such that the observer and object being measured are in the same frame. For instance, a person travelling within a spaceship would be in the proper frame of the moving spaceship, because both are in the same frame.
+A **proper frame** is a reference frame chosen such that the observer and object being measured are in the same frame. You can think of it as inserting an imaginary observer to "travel along" with a measured object, with a clock to measure times and a ruler to measure distances. For instance, an observer travelling within a spaceship would be in the proper frame of the moving spaceship. An observer travelling along with a muon would be in the proper frame of the muon. Everything in a proper frame is considered stationary by the observer.
 
-**Proper time** is the time experienced by an object in its proper frame. It can be thought of as the time measured by an observer's own clock as the observer travels along with the measured object. **Coordinate time** is the time experienced by an object in a non-proper frame. Coordinate time $\Delta t$ is related to proper time $\Delta \tau$ by:
+A **non-proper frame** is any reference frame in which the observer and object being measured are **not** in the same frame. For instance, an observer on Earth would be in a non-proper frame of an astronaut in a rocket moving relative to Earth.
+
+**Proper time** is the time measured by an observer in a proper frame. **Coordinate time** is the time experienced by an observer in a non-proper frame. Coordinate time $\Delta t$ is related to proper time $\Delta \tau$ by:
 
 $$
 \Delta t = \gamma \Delta \tau
@@ -51,7 +53,7 @@ $$
 
 Using a Taylor series expansion, $\gamma \approx 1$ at very low speeds, and $\gamma \approx 1 + \frac{v^2}{2c^2}$ at low speeds.
 
-**Proper length** is the length of an object as measured in its proper frame. **Coordinate length** is the length of an object measured in a non-proper frame. Proper length $\Delta \ell$ is related to coordinate length $\Delta L$ by:
+**Proper length** is the length of an object as measured by an observer in a proper frame. **Coordinate length** is the length of an object measured by an observer in a non-proper frame. Proper length $\Delta \ell$ is related to coordinate length $\Delta L$ by:
 
 $$
 \Delta \ell  = \frac{\Delta L}{\gamma}
@@ -59,13 +61,13 @@ $$
 
 ## Time dilation and length contraction
 
-Consider an observer in a moving spaceship. The observer measures themselves (and anything in their proper frame) to be at rest, and everything else to be moving with respect to their reference frame. We use the familiar equation:
+Consider an observer to be in the proper frame of a moving spaceship. The observer observes the ship's length as the proper length $\Delta \ell$ and the ship's time as proper time $\Delta \tau$. That observer considers the ship (and everything on it) to be stationary with respect to themselves. Meanwhile, consider a distant observer in a non-proper frame, perhaps situated away on Earth. That distant observer observes the ship's length as the coordinate length $\Delta L$, and the ship's time as the coordinate time $\Delta t$.  We use the familiar equation:
 
 $$
 \Delta t = \gamma \Delta \tau
 $$
 
-Recall that $\gamma > 1$ for all moving objects. That means for a distant observer who measured a time interval of $\Delta t = 1$ second, the proper time of the observer in the spaceship must be $\Delta t < 1$ second. Therefore, the observer in the spaceship's clock ticks slow.
+Recall that $\gamma > 1$ for all moving objects. That means for the distant observer who measured a time interval of $\Delta t = 1$ second, the proper time of the observer in the spaceship must be $\Delta \tau < 1$ second. Therefore, the observer in the spaceship's clock ticks slow.
 
 This is the principle of _time dilation_ - **time ticks slow for moving objects**. Recall that any observer would measure every other observer as moving with respect to their own reference frame, however. This means an observer on a rocket would measure a person on Earth as having a slower clock, whereas a person on Earth would _also_ measure the person on the spaceship as having a slower clock!
 
