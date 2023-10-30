@@ -35,11 +35,11 @@ Every observer considers themselves to be at rest with respect to their own refe
 
 The two postulates of special relativity are that 1) the laws of physics are the same for observers in all inertial reference frames, and that 2) the speed of light is **constant** in all reference frames.
 
-A **proper frame** is a reference frame chosen such that the observer and object being measured are in the same frame. You can think of it as inserting an imaginary observer to "travel along" with a measured object, with a clock to measure times and a ruler to measure distances. For instance, an observer travelling within a spaceship would be in the proper frame of the moving spaceship. An observer travelling along with a muon would be in the proper frame of the muon. Everything in a proper frame is considered stationary by the observer.
+A **proper frame** is a reference frame chosen such that the observer and object being measured are in the same frame, or more simply, when the observer is travelling along with the measured object. For instance, an observer travelling within a spaceship would be in the proper frame of the moving spaceship. An observer travelling along with a muon would be in the proper frame of the muon. Everything in a proper frame is considered stationary by the observer.
 
 A **non-proper frame** is any reference frame in which the observer and object being measured are **not** in the same frame. For instance, an observer on Earth would be in a non-proper frame of an astronaut in a rocket moving relative to Earth.
 
-**Proper time** is the time measured by an observer in a proper frame. **Coordinate time** is the time experienced by an observer in a non-proper frame. Coordinate time $\Delta t$ is related to proper time $\Delta \tau$ by:
+**Proper time** is the time measured by an observer in a proper frame. **Coordinate time** is the time measured by an observer in a non-proper frame. Coordinate time $\Delta t$ is related to proper time $\Delta \tau$ by:
 
 $$
 \Delta t = \gamma \Delta \tau
