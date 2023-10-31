@@ -56,7 +56,7 @@ Using a Taylor series expansion, $\gamma \approx 1$ at very low speeds, and $\ga
 **Proper length** is the length of an object as measured by an observer in a proper frame. **Coordinate length** is the length of an object measured by an observer in a non-proper frame. Proper length $\Delta \ell$ is related to coordinate length $\Delta L$ by:
 
 $$
-\Delta \ell  = \frac{\Delta L}{\gamma}
+\Delta L = \frac{\Delta \ell}{\gamma}
 $$
 
 ## Time dilation and length contraction
