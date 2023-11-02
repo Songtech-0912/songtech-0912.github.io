@@ -428,3 +428,52 @@ The **first derivative test for local extrema** states that:
 - If there is no change in sign, $f'(c)$ is neither a maximum nor minimum
 
 Make sure to not just plug in whichever numbers you can compute from the critical points and think you're done! Do not consider critical points that are not in the domain of the original function - for example, if $f(x) = \ln(x)$ and $f'(x) = 1/x$, the point $x = 0$ isn't in the domain of $\ln(x)$ so it is not a valid critical point. Also do not consider functions increasing or increasing on intervals in which they are not defined. For example, the function $f(x) = \frac{e^x}{x}$ cannot be said to be increasing on the interval $(-\infty, e)$ because it has an asymptote at $x = 0$; rather, it can only be said to be increasing on the interval $(-\infty, 0) \cup (0, e)$.
+
+## Concavity & 2nd derivative test
+
+A function is **concave up** if it opens upwards ("smiling"), and **concave down** if it opens downwards ("frowning"). Concavity can be determined through the second derivative: when $f''(x) > 0$, the graph is concave up, and when $f''(x) < 0$, the graph is concave zero.
+
+An **inflection point** is a point a curve changes concavity. That is, at an inflection point, $f''(c) = 0$, and $f''(x)$ switches sign around $x = c$.
+
+The second derivative can also be used to determine local extrema:
+
+- If $f'(c) = 0$ and $f''(c) > 0$ then there is a local max
+- If $f'(c) = 0$ and $f''(c) < 0$ then there is a local min
+- If $f'(c) = 0$ and $f''(c) = 0$ then the test is inconclusive
+
+## Curve sketching
+
+Using information from the first derivative, second derivative, domain of a function, zeroes, increasing/decreasing intervals, concavity, absolute extrema, local extrema, and asymptotic behavior, the graph of a function can be sketched without needing to explicitly evaluate the function.
+
+## L'Hôpital's Rule
+
+L'Hôpital's Rule states that if a limit is in the form $\frac{f(x)}{g(x)}$ and results in the indeterminate form $\frac{0}{0}$ or $\frac{\infty}{\infty}$, then:
+
+$$
+\lim_{x \to a} \frac{f(x)}{g(x)} = \frac{f'(x)}{g'(x)}
+$$
+Note that the rule can be applied multiple times until a limit is found.
+
+For the $\frac{0}{\infty}$ form, then the product must be rewritten as a product or quotient. For $0^0, \infty^0, 1^\infty$ then the function $f(x)^{g(x)} = e^{g(x)\ln f(x)}$. For instance, consider the limit:
+
+$$
+\lim_{x \to \infty} x^{1/x^2}
+$$
+
+This becomes:
+
+$$
+e^{\lim_{x \to \infty} {\ln(x)/x^2}}
+$$
+
+We use L'Hôpital's rule to evaluate the top to get:
+
+$$
+\lim_{x \to \infty} \frac{\ln(x)}{x^2} = 0
+$$
+
+So:
+
+$$
+\lim_{x \to \infty} x^{1/x^2} = e^0 = 1
+$$
