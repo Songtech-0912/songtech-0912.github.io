@@ -9,3 +9,4 @@ These are my personal introductory biology notes taken at my time at RPI.
 
 - [Evolution](@/evolution.md)
 - [Genetics & medicine](@/genetics-medicine.md)
+- [Ecology](@/ecology.md)
