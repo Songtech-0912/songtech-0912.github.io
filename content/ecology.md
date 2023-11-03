@@ -104,3 +104,25 @@ $$
 \Delta P = (B - D) + \Delta M
 $$
 Populations are typically stable in environments without human interference. This is due to territoriality. Unstable populations are usually dependent on a certain factor, such as nutrient limitations. Some populations show exponential growth, but that is not sustainable, and once an organism exceeds the carrying capacity of its environment, the entire population dies off. Other populations show logistic growth, where environmental resistance (such as predators, competition, drought, etc.) brings population within carrying capacity.
+
+## Ecosystem Dynamics
+
+The **first principle of ecosystem dynamics** is that everything is ultimately connected to everything else. To understand ecosystems we need to adopt both reductionist and holistic approaches.
+
+The idea of **feedback** is a process in which the output of a system eventually affects its input. It can cause amplification of output (positive feedback) or diminishing of output (negative feedback).
+
+The **Gaia Hypothesis** states that the life and physical evolve together as a connected system each influencing and shaping the other. The environment is regulated by all life such as to self-regulate and maintaining itself to sustain life. It could be said that the Earth itself becomes homeostatic. The Daisy World simulation was proof that feedback from living organisms could regulate a planet's environment.
+
+## Competition
+
+Resources are limited, and so if one species uses one resources, there are less resources available for another species. Thus, competition leads to a decrease in abundance in all species
+
+| Interference  | Exploitative | Apparent |
+|--------------|-------------|----------|
+| Species fighting over and blocking each other's access to limited resources | Multiple species use the same resource, but one is more efficient | Two species share the same predator |
+
+Competition can be between species, or **interspecies**, or within the same species, or **intraspecies**. Competition is minimized when each species occupies a particular niche, when each species is spatially separated or distributed, and when species' activity occur during specific times. Competition increases with niche expansion. This is why **character displacement occurs** - to reduce competition and thus improve survival rates, species are driven to different ends, which manifests in adaptive radiation.
+
+### The competitive exclusion principle
+
+When species are grown within a lab separately, then two species will reach similar populations. Meanwhile, when species are grown within a lab together, one species dominates and the other species diminishes in population. This is known as **competitive exclusion**. Therefore, if two or more species live together, they must possess different ecological niches.
