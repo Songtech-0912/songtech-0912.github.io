@@ -7,7 +7,7 @@ Again, we return to the superradiance series, a series of posts focused on creat
 
 <!-- more -->
 
-Differential equations are the equations that describe how almost every physical system behave. In the case of black holes, the geodesic equation, a second-order differential equations, governs the trajectories of moving objects around the black hole:
+Differential equations are the equations that describe how almost every physical system behave. In the case of black holes, the geodesic equation, a second-order differential equation, governs the trajectories of moving objects around the black hole:
 
 $$
 \frac{d^2 x^\sigma}{d\tau^2} + \Gamma^\sigma_{\alpha \beta} \frac{dx^\alpha}{d\tau} \frac{dx^\beta}{d\tau} = 0
