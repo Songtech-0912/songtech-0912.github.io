@@ -3,9 +3,9 @@ title="Notes on ecology"
 date=2023-11-02
 +++
 
-## Ecology
+Ecology is the scientific study of organisms and their interactions with each other and the environment. These are my notes on ecology from BIO 1010.
 
-Ecology is the scientific study of organisms and their interactions with each other and the environment.
+<!-- more -->
 
 ## Early ecology
 
