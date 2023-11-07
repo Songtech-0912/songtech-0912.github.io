@@ -91,8 +91,77 @@ $$
 $$
 ## Velocity addition
 
+In classical mechanics, velocity addition is simple: $v' = u + v$. That is, if we have a train moving at speed $v$ measured by an observer, and a person running within the train at speed $u$ in the train frame, then the speed of the person with respect to the observer is $u + v$. So, it is perfectly reasonable to say "she's running at 185 km/h" because the runner might be running at 5 km/h with respect to the train frame and the train frame might be moving at 180 km/h with respect to the observer.
+
 In relativity, two velocities $u$ and $v$ add by:
 
 $$
-V = \frac{u + v}{1 + \frac{uv}{c^2}}
+v' = \frac{u + v}{1 + \frac{uv}{c^2}}
 $$
+
+Here, note that:
+
+- $v'$ is the object's speed to the observer
+- $v$ is the enclosing frame's speed 
+- $u$ is the object's speed within the enclosing frame
+
+## Using spacetime diagrams
+
+To showcase coordinate transforms, we can use a spacetime diagram. To do so, we label the $x$ axis (that is, the line $t = 0$) and the $ct$ axis (that is, the line $x = 0$). The new transformed frames are given by $x' = 0$ (the $t'$ axis) and $t' = 0$ (the $x'$ axis). That is, for the $t'$ axis, we have $x' = 0$, or:
+
+$$
+x' = \gamma(x - vt) = 0 \Rightarrow x = vt
+$$
+
+Meanwhile, for the $x'$ axis, we have $t' = 0$, or:
+
+$$
+t' = \gamma \left(t - \frac{vx}{c^2}\right) = 0 \Rightarrow t = \frac{vx}{c^2}
+$$
+These new axes are shown below:
+
+![Minkowski diagram](https://tikz.net/wp-content/uploads/2023/10/relativity_minkowski_diagram-016.png)
+
+(Credit: TikZ)
+
+To figure out the scaling of axes in the Lorentz transformations, we start with the point $(x, ct) = (1, 0)$ and calculate the resulting $(x', ct')$. We find that $(x', ct') = (\gamma, \gamma \beta)$ where $\beta = \frac{v}{c}$. Thus, the scaling factor of axes for the Lorentz transformations is given by:
+
+$$
+\sqrt{\frac{1 + \beta^2}{1 - \beta^2}}
+$$
+
+## Doppler shift
+
+There are two cases of the Doppler effect - longitudinal, where the emitter and observer are moving towards/away from each other, and transverse, where the emitter and observer are at 90 degrees to each other. The transverse Doppler effect formula is given by:
+
+$$
+\frac{1}{f'} = \gamma \frac{1}{f}
+$$
+Meanwhile, the longitudinal Doppler effect formula is given by:
+
+$$
+f' = f \sqrt{\frac{1 - \beta}{1 + \beta}}
+$$
+## Ordering of events
+
+On a Minkowski spacetime diagram, all events that fall within $\pm 45^\circ$ of the $\pm ct$ axis are known as timelike intervals. This means that if two events are within this region, it is possible for one event to have caused the other event.
+
+Meanwhile, all events that are outside $\pm 45^\circ$ of the $\pm ct$ axis are known as spacelike intervals. This means that if two events are within this region, it is **not** possible for one event to have caused the other event.
+
+Events exactly along the $\pm 45^\circ$ line are known as **lightlike**. This means that only photons can travel between those events.
+
+## The invariant interval
+
+Distances in space and distances in time are dependent on the frame chosen. But a distance in spacetime - a combination of a distance in space and a distance in time - are **invariant**. The invariant interval, also known as the spacetime interval, is given by:
+
+$$
+\Delta s^2 = c^2 \Delta t^2 - \Delta x^2
+$$
+
+This is the same in every reference frame, just as the speed of light is invariant in every reference frame, so it is called a Lorentz invariant quantity.
+
+The invariant interval gives another way to define the ordering of events:
+
+- When $\Delta s^2$ is positive, then it is timelike
+- When $\Delta s^2$ is negative, then it is spacelike
+- When $\Delta s^2$ is zero, then it is lightlike
