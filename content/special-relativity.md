@@ -89,6 +89,67 @@ $$
 $$
 \Delta z' = \Delta z
 $$
+
+## Practicing the Lorentz transformations
+
+Suppose we have light emitted in the direction of the $y$ axis in one observer's frame. Suppose we have another observer that moves with velocity $\vec v$ along the $x$ axis. We can then use the Lorentz transformations to find the speed of light measured in the other observer's frame.
+
+To start with, let's write the Lorentz transformations:
+
+$$
+\Delta x' = \gamma(\Delta x - v \Delta t)
+$$
+$$
+\Delta t' = \gamma \left(\Delta t - \frac{v \Delta x}{c^2}\right)
+$$
+$$
+\Delta y' = \Delta y
+$$
+
+Now note that the speed of light measured in the first observer's frame is $c = \sqrt{v_x^2 + v_y^2}$, where:
+$$
+v_x = \frac{\Delta x}{\Delta t}
+$$
+$$
+v_y = \frac{\Delta y}{\Delta t}
+$$
+Since the light is moving along the $y$ axis, $\Delta x = 0$, and thus $v_x = 0$, and since $c = \sqrt{0^2 + v_y^2}$, this also means that $v_y = c$. Rearranging the $v_y$ equation, we get $\Delta y = c \Delta t$. So, to summarize:
+
+$$
+\Delta x = 0
+$$
+$$
+\Delta y = c \Delta t
+$$
+
+Now, we can plug in these values to the Lorentz transformations, which yields:
+
+$$
+\Delta x' = -\gamma v \Delta t
+$$
+$$
+\Delta t' = \gamma \Delta t
+$$
+$$
+\Delta y' = c \Delta t
+$$
+
+We can then find $v_x'$ and $v_y'$:
+
+$$
+v_x' = \frac{\Delta x'}{\Delta t'} = \frac{-\gamma v\Delta t}{\gamma \Delta t} = - v
+$$
+$$
+v_y' = \frac{\Delta y'}{\Delta t'}= \frac{c\Delta t}{\gamma \Delta t} = \frac{c}{\gamma}
+$$
+
+Then, the speed is given by $\sqrt{(-v)^2 + \frac{c^2}{\gamma^2}} = c$. Thus we verify that the speed of light is constant in different reference frames. 
+
+## Minkowski spacetime diagrams
+
+In a Minkowski spacetime diagram, we have $ct$ on the vertical axis and $x$ on the horizontal axis. A photon would make a 45 degree angle on a Minkowski diagram.
+
+
 ## Velocity addition
 
 In classical mechanics, velocity addition is simple: $v' = u + v$. That is, if we have a train moving at speed $v$ measured by an observer, and a person running within the train at speed $u$ in the train frame, then the speed of the person with respect to the observer is $u + v$. So, it is perfectly reasonable to say "she's running at 185 km/h" because the runner might be running at 5 km/h with respect to the train frame and the train frame might be moving at 180 km/h with respect to the observer.
