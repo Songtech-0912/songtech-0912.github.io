@@ -11,3 +11,4 @@ These are my personal calculus notes taken at my time at RPI. They include Preca
 - [Review of exponentials and logarithms](@/exponential-logs.md)
 - [Limits](@/limits.md)
 - [Derivatives](@/differentiation.md)
+- [Integrals](@/integration.md)
