@@ -477,3 +477,66 @@ So:
 $$
 \lim_{x \to \infty} x^{1/x^2} = e^0 = 1
 $$
+
+## Optimization
+
+Suppose we want to find two numbers $x$ and $y$ such that their sum is 120 and a shape with area $x^2 y$ is as large as possible. That is:
+
+$$
+x + y = 120
+$$
+$$
+A = x^2 y
+$$
+
+To do this, we can solve the first equation for $y$:
+
+$$
+y = 120 - x
+$$
+
+Then we can plug it in to the area function:
+
+$$
+A = x^2 (120 - x) = 120x^2 - x^3
+$$
+We can take the derivative of $A$ to find its maximum:
+
+$$
+\frac{dA}{dx} = 240x - 3x^2
+$$
+
+We will consider the domain of the area function - since areas are never negative, $x > 0$ and $y < 0$. So, our critical points must be in that domain.
+
+Here, we set the derivative to zero to get the critical points:
+
+$$
+200x - 3x^2 = 0
+$$
+
+Where we have a critical point at $x = \frac{200}{3}$. We can plug that in to solve for $y$:
+
+$$
+y = 120 - x = \frac{160}{3}
+$$
+
+So the two numbers are $x = \frac{200}{3}, y = \frac{160}{3}$.
+
+## Linear approximations
+
+From the definition of the derivative we have:
+
+$$
+df = f'(x) dx
+$$
+Thus:
+
+$$
+\Delta f \approx f'(x) \Delta x
+$$
+
+From this, we can find the **linear approximation** of a function at a point $x = a$:
+
+$$
+L(x) = f'(a)(x - a) + f(a)
+$$
