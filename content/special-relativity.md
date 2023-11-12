@@ -35,9 +35,9 @@ Every observer considers themselves to be at rest with respect to their own refe
 
 The two postulates of special relativity are that 1) the laws of physics are the same for observers in all inertial reference frames, and that 2) the speed of light is **constant** in all reference frames.
 
-A **proper frame** is a reference frame chosen such that the observer and object being measured are in the same frame, or more simply, when the observer is travelling along with the measured object. For instance, an observer travelling within a spaceship would be in the proper frame of the moving spaceship. An observer travelling along with a muon would be in the proper frame of the muon. Everything in a proper frame is considered stationary by the observer.
+A **proper frame** is a reference frame that is attached to an object. For instance, the proper frame of a spaceship would be an observer travelling within the spaceship. As the observer travelling within the spaceship is attached to the spaceship (here "attached" is not literal, it can mean "within" or "following along"), it is a proper frame. Everything in a proper frame is considered stationary by the observer.
 
-A **non-proper frame** is any reference frame in which the observer and object being measured are **not** in the same frame. For instance, an observer on Earth would be in a non-proper frame of an astronaut in a rocket moving relative to Earth.
+A **non-proper frame** is any reference frame that is not attached to an object. For instance, an observer on Earth would be in a non-proper frame of a rocket moving relative to Earth, as that observer is not attached to the rocket.
 
 **Proper time** is the time measured by an observer in a proper frame. **Coordinate time** is the time measured by an observer in a non-proper frame. Coordinate time $\Delta t$ is related to proper time $\Delta \tau$ by:
 
@@ -72,6 +72,23 @@ Recall that $\gamma > 1$ for all moving objects. That means for the distant obse
 This is the principle of _time dilation_ - **time ticks slow for moving objects**. Recall that any observer would measure every other observer as moving with respect to their own reference frame, however. This means an observer on a rocket would measure a person on Earth as having a slower clock, whereas a person on Earth would _also_ measure the person on the spaceship as having a slower clock!
 
 One area where this has been demonstrated is with muon decay, where muons are measured to be able to travel longer distances than they possibly could given their short lifetimes, as the "internal decay clock" of a muon ticks slow and allows it to travel longer.
+
+## Practicing time dilation problems
+
+Consider an astronaut on a spaceship moving at $0.927c$ who says that the trip between two stationary stars took 7.49 years. How long does this journey take as measured by an observer at rest relative to the two stars?
+
+To answer this question, we first identify the two observers in the question - the astronaut, who is aboard the spaceship, and the observer who is at rest relative to the two stars. We then identify the object that is considered moving within the problem - in our case, it is the spaceship. Therefore, the proper frame is the frame that is attached to the object, or in other words, the frame of the astronaut. This means the proper time would be the astronaut's measured time, or 7.49 years. After calculating the Lorentz factor for $0.927c$, where $\gamma \approx 2.66$, we can then use:
+
+$$
+\Delta t = \gamma \Delta \tau = (2.66)(7.49) = 20.01 \text{\ yrs}
+$$
+Now, consider an unstable particle moving at a speed of $0.87c$ relative to a laboratory. Its lifetime is measured by a stationary observer in the laboratory to be $4.7 \times 10^{-6}$ seconds. What is the lifetime of the particle, measured by an observer in the frame of the particle?
+
+Here, we note that the object considered to be moving is the particle. Therefore, the proper time is the time measured by an observer attached to the particle. We, however, do not have measurements from the proper frame. We do have the measurements from the non-proper frame, which is the stationary observer's frame. Measurements of time from the non-proper frame are the coordinate time. Therefore, we can write:
+
+$$
+\Delta \tau = \frac{\Delta t}{\gamma} = \frac{4.7 \times 10^{-6}}{2.028} \approx 2.3 \mathrm{\ \mu s}
+$$
 
 ## Lorentz Transformations
 
