@@ -75,14 +75,15 @@ One area where this has been demonstrated is with muon decay, where muons are me
 
 ## Practicing time dilation problems
 
-Consider an astronaut on a spaceship moving at $0.927c$ who says that the trip between two stationary stars took 7.49 years. How long does this journey take as measured by an observer at rest relative to the two stars?
+Consider an astronaut on a spaceship moving at $0.927c$ who says that the trip between two stationary stars took 7.49 years. How long does this journey take as measured by an observer at rest relative to the two stars? (Credit: Peter Persans, RPI)
 
 To answer this question, we first identify the two observers in the question - the astronaut, who is aboard the spaceship, and the observer who is at rest relative to the two stars. We then identify the object that is considered moving within the problem - in our case, it is the spaceship. Therefore, the proper frame is the frame that is attached to the object, or in other words, the frame of the astronaut. This means the proper time would be the astronaut's measured time, or 7.49 years. After calculating the Lorentz factor for $0.927c$, where $\gamma \approx 2.66$, we can then use:
 
 $$
 \Delta t = \gamma \Delta \tau = (2.66)(7.49) = 20.01 \text{\ yrs}
 $$
-Now, consider an unstable particle moving at a speed of $0.87c$ relative to a laboratory. Its lifetime is measured by a stationary observer in the laboratory to be $4.7 \times 10^{-6}$ seconds. What is the lifetime of the particle, measured by an observer in the frame of the particle?
+
+Now, consider an unstable particle moving at a speed of $0.87c$ relative to a laboratory. Its lifetime is measured by a stationary observer in the laboratory to be $4.7 \times 10^{-6}$ seconds. What is the lifetime of the particle, measured by an observer in the frame of the particle? (Credit: Peter Persans, RPI)
 
 Here, we note that the object considered to be moving is the particle. Therefore, the proper time is the time measured by an observer attached to the particle. We, however, do not have measurements from the proper frame. We do have the measurements from the non-proper frame, which is the stationary observer's frame. Measurements of time from the non-proper frame are the coordinate time. Therefore, we can write:
 
@@ -182,6 +183,22 @@ Here, note that:
 - $v'$ is the object's speed to the observer
 - $v$ is the enclosing frame's speed 
 - $u$ is the object's speed within the enclosing frame
+
+## Velocity addition exercises
+
+Consider three spaceships A, B, and C that are in motion. The commander on ship B observes ship C approaching with a relative velocity of $-0.78c$. The commander also observes ship A, advancing in the rear, with a relative velocity of $+0.31c$. What is the velocity of ship C, relative to an observer on ship A? (credit: Peter Persans, RPI)
+
+To solve this question, we must switch frames from spaceship B to spaceship A, as all our velocities are measured with respect to spaceship B. Therefore, spaceship A measures any velocity $u$ measured in B's frame as:
+
+$$
+v = \frac{v_B + u}{1 + \frac{u v_B}{c^2}}
+$$
+where $v_B$ is the velocity of spaceship B with respect to spaceship A. Now, we know that if spaceship B measures spaceship A as travelling at $0.31c$, then spaceship A must also measure spaceship B as travelling at $-0.31c$. This leads to an important result in terms of the velocities of frames:
+
+$$
+v' = -v
+$$
+Thus, if we set $v_B = -0.31c$ and $u = -0.78c$, we get our desired result - $v = -0.877c$.
 
 ## Using spacetime diagrams
 
