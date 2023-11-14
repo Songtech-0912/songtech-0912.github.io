@@ -170,17 +170,17 @@ In a Minkowski spacetime diagram, we have $ct$ on the vertical axis and $x$ on t
 
 ## Velocity addition
 
-In classical mechanics, velocity addition is simple: $v' = u + v$. That is, if we have a train moving at speed $v$ measured by an observer, and a person running within the train at speed $u$ in the train frame, then the speed of the person with respect to the observer is $u + v$. So, it is perfectly reasonable to say "she's running at 185 km/h" because the runner might be running at 5 km/h with respect to the train frame and the train frame might be moving at 180 km/h with respect to the observer.
+In classical mechanics, velocity addition is simple: $u' = u + v$. That is, if we have a train moving at speed $v$ measured by an observer, and a person running within the train at speed $u$ in the train frame, then the speed of the person with respect to the observer is $u + v$. So, it is perfectly reasonable to say "she's running at 185 km/h" because the runner might be running at 5 km/h with respect to the train frame and the train frame might be moving at 180 km/h with respect to the observer.
 
 In relativity, two velocities $u$ and $v$ add by:
 
 $$
-v' = \frac{u + v}{1 + \frac{uv}{c^2}}
+u' = \frac{u + v}{1 + \frac{uv}{c^2}}
 $$
 
 Here, note that:
 
-- $v'$ is the object's speed to the observer
+- $u'$ is the object's speed to the observer
 - $v$ is the enclosing frame's speed 
 - $u$ is the object's speed within the enclosing frame
 
@@ -188,16 +188,23 @@ Here, note that:
 
 Consider three spaceships A, B, and C that are in motion. The commander on ship B observes ship C approaching with a relative velocity of $-0.78c$. The commander also observes ship A, advancing in the rear, with a relative velocity of $+0.31c$. What is the velocity of ship C, relative to an observer on ship A? (credit: Peter Persans, RPI)
 
-To solve this question, we must switch frames from spaceship B to spaceship A, as all our velocities are measured with respect to spaceship B. Therefore, spaceship A measures any velocity $u$ measured in B's frame as:
+To solve this problem, we must switch frames from spaceship B to spaceship A, as all our velocities are measured with respect to spaceship B. Therefore, spaceship A measures any velocity $u$ measured in B's frame as:
 
 $$
 v = \frac{v_B + u}{1 + \frac{u v_B}{c^2}}
 $$
-where $v_B$ is the velocity of spaceship B with respect to spaceship A. Now, we know that if spaceship B measures spaceship A as travelling at $0.31c$, then spaceship A must also measure spaceship B as travelling at $-0.31c$. This leads to an important result in terms of the velocities of frames:
+where $v_B$ is the velocity of spaceship B with respect to spaceship A. We can sketch this problem as follows:
+
+![A sketchy of the velocity-addition problem](velocity-addition-problem.png)
+
+(here, in the sketch, frames that are moving with respect to another frame are placed inside that other frame)
+
+Now, we know that if spaceship B measures spaceship A as travelling at $0.31c$, then spaceship A must also measure spaceship B as travelling at $-0.31c$. This leads to an important result in terms of the velocities of frames:
 
 $$
 v' = -v
 $$
+
 Thus, if we set $v_B = -0.31c$ and $u = -0.78c$, we get our desired result - $v = -0.877c$.
 
 ## Using spacetime diagrams
