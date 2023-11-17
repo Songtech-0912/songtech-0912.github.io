@@ -93,7 +93,7 @@ $$
 The left-hand approximation of an area under the curve is given by:
 
 $$
-A = \sum_{i = 0}^{n - 1} f(x_i) \Delta x
+A_L = \sum_{i = 0}^{n - 1} f(x_i) \Delta x
 $$
 
 Given that:
@@ -111,12 +111,12 @@ $$
 The right-hand approximation of an area under the curve is given by:
 
 $$
-A = \sum_{i = 1}^n f(x_{i + 1}) \Delta x
+A_R = \sum_{i = 1}^n f(x_{i + 1}) \Delta x
 $$
 The midpoint approximation to the area is given by:
 
 $$
-A = \sum_{i = 0}^n f\left(\frac{x_i + x_{i + 1}}{n}\right) \Delta x
+A_R = \sum_{i = 0}^{n - 1} f\left(\frac{x_i + x_{i + 1}}{n}\right) \Delta x
 $$
 ## Finding areas
 
