@@ -163,3 +163,46 @@ Now, taking the limit as $n \to \infty$, we get:
 $$
 A = \frac{32}{3}
 $$
+
+## Riemann sums and the definite integral
+
+A Riemann sum is given by:
+
+$$
+\sum_{k = 1}^N f(c_k) \Delta x_k
+$$
+The definite integral is given by the limit of the Riemann sum, and represents the area under a curve:
+
+$$
+\int_a^b f(x)dx = \lim_{N \to \infty} \sum_{k = 1}^N f(c_k) \Delta x_k
+$$
+The definite integral can be evaluated in simple cases from just geometry, especially when the curve forms a semicircle, triangle, rectangle, or trapezoid with the x-axis.
+
+## Applications of integration
+
+Where do we use integration?
+
+- Finding areas/surface areas/volumes/arc lengths
+- Kinematics - such as finding total displacement, or finding velocity/position from acceleration  
+- Solving differential equations
+- Computing work/potential energy/total energy/
+- Finding total charge/total current/total mass/center of mass/moment of inertia
+- Finding force from potential energy
+- Computing probability and finding average values
+- Calculating electric fields and magnetic fields
+- And many, many more places...
+
+## Rules of definite integrals
+
+$$
+\int_a^b f(x) dx = -\int_b^a f(x) dx
+$$
+$$
+\int_a^a f(x) dx = 0
+$$
+$$
+\int_a^b c f(x) dx = c\int_a^b f(x) dx
+$$
+$$
+\int_a^c f(x) dx = \int_a^b f(x) dx + \int_b^c f(x) dx
+$$
