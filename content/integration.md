@@ -206,3 +206,21 @@ $$
 $$
 \int_a^c f(x) dx = \int_a^b f(x) dx + \int_b^c f(x) dx
 $$
+
+## Fundamental Theorem of Calculus
+
+There are two parts to the Fundamental Theorem of Calculus (FTC). Part 1 of the FTC states that:
+
+$$
+F(x) = \int f(x) dx \Rightarrow \int_a^b f(x) dx = F(b) - F(a) 
+$$
+
+That is, if $F(x)$ is the indefinite integral of $f(x)$, then the definite integral of $f(x)$ can be found by evaluating $F(x)$ at 2 points.
+
+Part 2 of the FTC states that:
+
+$$
+\frac{d}{dx} \int_a^x f(t) dt = f(x)
+$$
+
+That is, the derivative of the indefinite integral of a function from any number to $x$ is equal to the same function evaluated at $x$. Or more simply, integrals are the inverse of derivatives.
