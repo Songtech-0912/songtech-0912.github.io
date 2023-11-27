@@ -304,9 +304,9 @@ Four-vectors are used in special relativity to denote relativistic quantities. T
 
 $$
 \vec r = \begin{bmatrix}
-ct \\
-x \\
-y \\
+ct \\\\
+x \\\\
+y \\\\
 z
 \end{bmatrix}
 $$
@@ -315,9 +315,9 @@ Meanwhile, the four-vector of momentum is given by:
 
 $$
 \vec p = \begin{bmatrix}
-E/c \\
-p_x \\
-p_y \\
+E/c \\\\
+p_x \\\\
+p_y \\\\
 p_z
 \end{bmatrix}
 $$
@@ -330,6 +330,7 @@ $$
 $$
 \vec p \cdot \vec p =\frac{E^2}{c^2} - p^2 = m^2 c^2
 $$
+
 ## Using center of momentum frames
 
 A center of momentum frame is a frame where the total 3-momentum $p$ of a system is equal to zero. Using center of momentum frames is very useful for solving collision problems in special relativity. This is because the center of momentum frame (CM frame) is the frame where **all collision product particles are at rest**. For example, if a collision produces particles A and B, then both A and B are at rest with respect to the CM frame. In addition, the total energy of particles A and B is equal to the total energy of the CM frame $E_{cm}$:
@@ -343,10 +344,11 @@ We will derive this below.
 First, within the CM frame, the total 4-momentum is:
 
 $$
-\mathbf{P}_{cm} = \begin{bmatrix}
-E_{cm} / c \\
-0 \\
-0 \\
+\mathbf{P}\_{cm} = 
+\begin{bmatrix}
+E_{cm} / c \\\\
+0 \\\\
+0 \\\\
 0
 \end{bmatrix}
 $$
@@ -354,17 +356,19 @@ $$
 where $E_{cm}$ is the total energy in the CM frame, and all the momentum components are zero since the 3-momentum of a system is zero in the CM frame. Why is this useful? Because if we compute the dot product of the CM frame 4-momentum, we find:
 
 $$
-\mathbf{P}_{cm} \cdot \mathbf{P}_{cm} = \frac{E_{cm}^2}{c^2}
+\mathbf{P}\_{cm} \cdot \mathbf{P}\_{cm} = \frac{E\_{cm}^2}{c^2}
 $$
+
 However, since the dot product of any 4-momentum vector is invariant, this means we can substitute $\mathbf{P}_{cm}$ with any 4-vector, and this equation will be true! For instance, suppose we already found the total 4-momentum in a lab frame, which we denote $\mathbf{P}_l$. Then, the following equation would be true as well:
 
 $$
-\mathbf{P}_l \cdot \mathbf{P}_l = \frac{E_{cm}^2}{c^2}
+\mathbf{P}\_l \cdot \mathbf{P}\_l = \frac{E\_{cm}^2}{c^2}
 $$
-From there, we can rearrange to solve for $E_{cm}$. Then, we can find $\mathbf{P}_{cm}$ from $E_{cm}$, use $\mathbf{P}_{cm} = \mathbf{P}_A + \mathbf{P}_b$, and then square both sides (only the squaring uses dot products, not regular multiplication). This then becomes:
+
+From there, we can rearrange to solve for $E_{cm}$. Then, we can find $\mathbf{P}\_{cm}$ from $E\_{cm}$, use $\mathbf{P}_{cm} = \mathbf{P}_A + \mathbf{P}_b$, and then square both sides (only the squaring uses dot products, not regular multiplication). This then becomes:
 
 $$
-\mathbf{P}_{cm} \cdot \mathbf{P}_{cm} = (\mathbf{P}_A + \mathbf{P}_B) \cdot (\mathbf{P}_A + \mathbf{P}_B) = \mathbf{P}_A \cdot \mathbf{P}_A + 2(\mathbf{P}_A \cdot \mathbf{P}_B) + \mathbf{P}_B \cdot \mathbf{P}_B
+\mathbf{P}\_{cm} \cdot \mathbf{P}\_{cm} = (\mathbf{P}\_A + \mathbf{P}\_B) \cdot (\mathbf{P}\_A + \mathbf{P}\_B) = \mathbf{P}\_A \cdot \mathbf{P}\_A + 2(\mathbf{P}\_A \cdot \mathbf{P}\_B) + \mathbf{P}\_B \cdot \mathbf{P}\_B
 $$
 
 Using the invariance of the dot product of a 4-vector, that is, $\mathbf{P} \cdot \mathbf{P} = m^2 c^2$, this can then be used to solve for the energies of each of the particles.
