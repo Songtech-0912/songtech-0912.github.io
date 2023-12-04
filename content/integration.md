@@ -224,3 +224,106 @@ $$
 $$
 
 That is, the derivative of the indefinite integral of a function from any number to $x$ is equal to the same function evaluated at $x$. Or more simply, integrals are the inverse of derivatives.
+
+## Integration by substitution
+
+Consider a composite function of the form $f(g(x)) g'(x)$. If we make the substitution $u = g(x)$, then we can rewrite this as $f(u) u'$. Then the chain rule applies in reverse:
+
+$$
+\int f(u) u' dx = \int f(u) du =  F(u) + C
+$$
+This is called integration by **u-substitution**. The trick is to find an "inner function" $u$ in a composite function whose derivative also appears in that same composite function. 
+
+As an example, we want to evaluate:
+
+$$
+\int \frac{2}{t- 4} dt
+$$
+
+We want to find an inner function $u$ whose derivative also appears. That is, we want to rewrite the function in the form:
+
+$$
+\int f(u) u' dt
+$$
+
+Here, we can choose $u = t - 4$, which means $f(u) = \frac{2}{u}$. So this means we have:
+
+$$
+\int f(u) u' dt = \int \frac{2}{u} u' dt
+$$
+But we still need to find $u'$. Taking the derivative of $u$, we have:
+
+$$
+\frac{du}{dt} = 1
+$$
+Then we can apply the substitution rule:
+
+$$
+\int \frac{2}{u} u' dt = \int \frac{2}{u} (1) du = 2\ln |u| + C = 2\ln | t- 4| + C
+$$
+
+For a more complicated example, we may perhaps want to integrate:
+
+$$
+\int \frac{\cos (\ln x)}{x} dx
+$$
+Here, we let $u = \ln x$. We can employ a notational shorthand for expediting the substitution rule that does not require rewriting the function in a form $f(u) u'$. Instead, we can say that:
+
+$$
+u = \ln x \Rightarrow \frac{du}{dx} = \frac{1}{x}
+$$
+$$
+x\, du = dx
+$$
+
+Then, we can substitute in $x\, du$ for $dx$:
+
+$$
+\int \frac{\cos (\ln x)}{x} dx = \int \frac{\cos u}{x} x\, du = \int \cos u~du = \sin(u) + C = \sin(\ln x) + C
+$$
+To evaluate definite integrals with substitution, we have:
+
+$$
+\int_a^b f(u) u' dx = \int_{u(a)}^{u(b)} f(u) du
+$$
+## Integrals of other elementary functions
+
+$$
+\int \frac{dx}{\sqrt{1 - x^2}} = \sin^{-1}(x) + C
+$$
+$$
+\int \frac{dx}{x^2 + 1} = \tan^{-1} (x) + C
+$$
+$$
+\int \frac{dx}{|x| \sqrt{x^2 -1}} = \sec^{-1} |x| + C
+$$
+$$
+\int b^x = \frac{b^x}{\ln b} + C
+$$
+
+## Average value of a function
+
+The average value of a function is given by:
+
+$$
+\frac{1}{b-a} \int f(x) dx
+$$
+The mean value theorem for integrals states that if $f$ is continuous on $[a, b]$, there is at least one $c$ value that satisfies:
+
+$$
+f(c) = \frac{1}{b - a} \int f(x) dx
+$$
+Remember, as with the MVT for derivatives, to ignore any values not in the interval!
+
+## Area between curves
+
+A region is vertically simple if it is bounded on the left and right by vertical lines, and bounded on the top and bottom by functions of $x$. A region is horizontally simple if it is bounded on the top and bottom by horizontal lines, and bounded on the left and right by functions of $y$.
+
+The area between curves $f(x)$ and $g(x)$, assuming $f(x) \geq g(x)$ for all $x \in [a, b]$, is given by:
+
+$$
+\int_a^b f(x) - g(x) dx
+$$
+For curves $f(y)$ and $g(y)$, just replace every $x$ with $y$.
+
+If $f(x) \ngeq g(x)$ for all $x \in [a, b]$, the area must be split into regions that are separately evaluated to make the condition true.

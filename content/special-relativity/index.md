@@ -294,9 +294,10 @@ E^2 = (pc)^2 + (mc^2)^2
 $$
 
 Relativistic momentum, just like classical momentum, and relativistic total energy, just like classical total energy, are **conserved quantities**.
+
 ## Units of relativistic dynamics
 
-Speeds of relativistic particles are often defined in terms of the speed of light $c$ - for example, a speed of $0.5c$ or $0.9c$. Energy is often defined in terms of electron-volts - $1 \text{ eV} = 1.6 \times 10^{-19} \text{ J}$ - or mega-electron-volts (MeV) which are a million electron-volts. Mass is given in units of $\mathrm{MeV/c^2}$, or atomic mass units (AMU), where 1 AMU = 931.5 $\mathrm{MeV/c^2}$.
+Speeds of relativistic particles are often defined in terms of the speed of light $c$ - for example, a speed of $0.5c$ or $0.9c$. Energy is often defined in terms of electron-volts - $1 \text{ eV} = 1.6 \times 10^{-19} \text{ J}$ - or mega-electron-volts (MeV) which are a million electron-volts. Momentum is frequently given in units of $\mathrm{MeV} / c$. Mass is given in units of $\mathrm{MeV/c^2}$, or atomic mass units (AMU), where 1 AMU = 931.5 $\mathrm{MeV/c^2}$.
 
 ## Four-vectors
 
