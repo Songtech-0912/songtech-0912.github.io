@@ -116,8 +116,9 @@ $$
 The midpoint approximation to the area is given by:
 
 $$
-A_R = \sum_{i = 0}^{n - 1} f\left(\frac{x_i + x_{i + 1}}{n}\right) \Delta x
+A_M = \sum_{i = 0}^{n - 1} f\left(\frac{x_i + x_{i + 1}}{n}\right) \Delta x
 $$
+
 ## Finding areas
 
 The precise area under a curve is given by:
