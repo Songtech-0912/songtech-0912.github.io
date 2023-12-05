@@ -233,7 +233,7 @@ That is, the derivative of the indefinite integral of a function from any number
 Consider a composite function of the form $f(g(x)) g'(x)$. If we make the substitution $u = g(x)$, then we can rewrite this as $f(u) u'$. Then the chain rule applies in reverse:
 
 $$
-\int f(u) u' dx = \int f(u) du =  F(u) + C
+\int f(u(x)) u'(x) dx = \int f(u) du =  F(u) + C
 $$
 This is called integration by **u-substitution**. The trick is to find an "inner function" $u$ in a composite function whose derivative also appears in that same composite function. 
 
