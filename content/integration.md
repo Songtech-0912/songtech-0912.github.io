@@ -86,14 +86,14 @@ $$
 \sum_{i = 1}^n i^2 = \frac{n(n + 1)(2n + 1)}{6}
 $$
 $$
-\sum _{i = 1}^n i^3 = \left(\frac{n(n + 1)}{2}\right)^2
+\sum_{i = 1}^n i^3 = \left(\frac{n(n + 1)}{2}\right)^2
 $$
 ## Estimating areas
 
 The left-hand approximation of an area under the curve is given by:
 
 $$
-A_L = \sum_{i = 0}^{n - 1} f(x_i) \Delta x
+A_L = \sum_{i = 1}^{n} f(x_i) \Delta x
 $$
 
 Given that:
@@ -101,11 +101,13 @@ Given that:
 $$
 \Delta x = \frac{b - a}{n}
 $$
+
 $$
-x_i = a + i\Delta x
+x_i = a + (i - 1)\Delta x
 $$
+
 $$
-x_{i + 1} = a + (i + 1) \Delta x
+x_{i + 1} = a + i \Delta x
 $$
 
 The right-hand approximation of an area under the curve is given by:
@@ -116,7 +118,7 @@ $$
 The midpoint approximation to the area is given by:
 
 $$
-A_M = \sum_{i = 0}^{n - 1} f\left(\frac{x_i + x_{i + 1}}{n}\right) \Delta x
+A_M = \sum_{i = 1}^{n} f\left(\frac{x_i + x_{i + 1}}{n}\right) \Delta x
 $$
 
 ## Finding areas
@@ -124,39 +126,39 @@ $$
 The precise area under a curve is given by:
 
 $$
-A = \lim_{n \to \infty} \sum_{i = 0}^n f(x_i) \Delta x
+A = \lim_{n \to \infty} \sum_{i = 1}^n f(x_i) \Delta x
 $$
 
 For example, consider the area under the curve $f(x) = 4 - x^2$ from -2 to 2. We would then have:
 
 $$
-A = \lim_{n \to \infty} \sum_{i = 0}^n (4 - (-2 + i \Delta x)^2) \Delta x
+A = \lim_{n \to \infty} \sum_{i = 1}^n (4 - (-2 + i \Delta x)^2) \Delta x
 $$
 Since $\Delta x = \frac{b - a}{n}$, where $b = 2$ and $a = -2$, we would have:
 
 $$
-A = \lim_{n \to \infty} \sum_{i = 0}^n \left(4 - \left(-2 +  \frac{4i}{n}\right)^2\right) \frac{4}{n}
+A = \lim_{n \to \infty} \sum_{i = 1}^n \left(4 - \left(-2 +  \frac{4i}{n}\right)^2\right) \frac{4}{n}
 $$
 This simplifies to:
 
 $$
-A = \lim_{n \to \infty} \sum_{i = 0}^n \frac{64i}{n^2} - \frac{64i^2}{n^3}
+A = \lim_{n \to \infty} \sum_{i = 1}^n \frac{64i}{n^2} - \frac{64i^2}{n^3}
 $$
 Using the sum rules, we get:
 
 $$
-A = \lim_{n \to \infty} \sum_{i = 0}^n \frac{64}{n^2} \frac{n(n + 1)}{2} - \frac{64}{n^3} \frac{n(n + 1)(2n + 1)}{6}
+A = \lim_{n \to \infty} \sum_{i = 1}^n \frac{64}{n^2} \frac{n(n + 1)}{2} - \frac{64}{n^3} \frac{n(n + 1)(2n + 1)}{6}
 $$
 
 Which simplifies to:
 
 $$
-A = \lim_{n \to \infty} \sum_{i = 0}^n \frac{64(n + 1)}{2n} - \frac{64 (n + 1)(2n + 1)}{6n^2}
+A = \lim_{n \to \infty} \sum_{i = 1}^n \frac{64(n + 1)}{2n} - \frac{64 (n + 1)(2n + 1)}{6n^2}
 $$
-Expanding this, we get:
+Expanding this and simplifying, we get:
 
 $$
-A = \lim_{n \to \infty} \sum_{i = 0}^n \frac{32}{3} - \frac{32}{3n^2}
+A = \lim_{n \to \infty} \sum_{i = 1}^n \frac{32}{3} - \frac{32}{3n^2}
 $$
 
 Now, taking the limit as $n \to \infty$, we get:
