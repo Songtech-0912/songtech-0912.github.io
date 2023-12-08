@@ -330,3 +330,86 @@ $$
 For curves $f(y)$ and $g(y)$, just replace every $x$ with $y$.
 
 If $f(x) \ngeq g(x)$ for all $x \in [a, b]$, the area must be split into regions that are separately evaluated to make the condition true.
+
+## Solids of revolution
+
+Solids of revolution are obtained by the rotation of a region in the xy-plane about an axis. 
+
+Note: Unlike many other areas of calculus, they are not very widely used in physics or applied math areas, but they are a good teaching/learning tool to practice integration.
+
+### Disk method
+
+Using the disk method of finding the volume of a solid of revolution, the solid of revolution created from the region underneath the curve $f(x)$ has the volume:
+
+$$
+V = \int_a^b \pi [f(x)]^2 dx
+$$
+
+And for a function $f(y)$, the volume is given by:
+
+$$
+V = \int_a^b \pi [f(y)]^2 dy
+$$
+
+For example, say we wanted to find the volume of a sphere. A sphere is simply the solid of revolution created by rotating the curve $f(x) = \sqrt{r^2 - x^2}$ about the x-axis. So, we would have:
+
+$$
+V = \pi \int_{-r}^r (\sqrt{r^2 - x^2})^2~dx
+$$
+Which becomes:
+
+$$
+V = \pi \int_{-r}^r r^2 - x^2 dx
+$$
+Since $r$ is a constant, the integral becomes:
+
+$$
+V = \frac{4}{3} \pi r^3
+$$
+Which is the volume of a sphere!
+
+### Washer method
+
+Using the washer method of finding the volume of a solid of revolution, the solid of revolution created by the region between two curves $f(x)$ and $g(x)$ is given by:
+
+$$
+V = \int_a^b \pi [f(x)]^2 - \pi [g(x)]^2 dx
+$$
+And similarly for $y$:
+
+$$
+V = \int_a^b \pi [f(y)]^2 - \pi [g(y)]^2 dy
+$$
+
+### Shells method
+
+Using the shells method of finding the volume of a solid of revolution, the solid of revolution created by the region underneath the curve $f(x)$ is given by:
+
+$$
+V = \int_a^b 2\pi rf(x) dx
+$$
+
+And similarly for $y$:
+
+$$
+V = \int_a^b 2\pi rf(y) dy
+$$
+If the region is instead between two curves $f(x)$ and $g(x)$, then the volume is instead given by:
+
+$$
+V = \int_a^b 2\pi r[f(x) - g(x)] dx
+$$
+
+Or for $y$:
+
+$$
+V = \int_a^b 2\pi r[f(y) - g(y)] dy
+$$
+
+For instance, suppose we were to find the volume of the solid of revolution created by revolving the region bound by $f(x) = x^3, x \in [0, 2]$ and the x-axis about the line $x = 3$. A visualization of this region can be found at https://www.desmos.com/calculator/ymuwqk1xk7.
+
+To compute the area, we'll first find the radii of the shells, and set that. In this case, the radius would be $3 - x$, as that is the distance from the rotational axis to the edge of the shell. The bounds of integration would be from 0 to 2, as we want to create shells that fill up the space of the region, and the region is bounded by $x = 0$ and $x = 2$. Therefore, the integral is:
+
+$$
+2\pi \int_0^2  (3 - x) x^3 dx = \frac{56\pi}{5}
+$$
