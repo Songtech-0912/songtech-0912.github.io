@@ -406,7 +406,7 @@ $$
 V = \int_a^b 2\pi r[f(y) - g(y)] dy
 $$
 
-For instance, suppose we were to find the volume of the solid of revolution created by revolving the region bound by $f(x) = x^3, x \in [0, 2]$ and the x-axis about the line $x = 3$. A visualization of this region can be found at https://www.desmos.com/calculator/ymuwqk1xk7.
+For instance, suppose we were to find the volume of the solid of revolution created by revolving the region bound by $f(x) = x^3, x \in [0, 2]$ and the x-axis about the line $x = 3$. A visualization of this region can be found at <https://www.desmos.com/calculator/ymuwqk1xk7>.
 
 To compute the area, we'll first find the radii of the shells, and set that. In this case, the radius would be $3 - x$, as that is the distance from the rotational axis to the edge of the shell. The bounds of integration would be from 0 to 2, as we want to create shells that fill up the space of the region, and the region is bounded by $x = 0$ and $x = 2$. Therefore, the integral is:
 
