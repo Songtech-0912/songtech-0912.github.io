@@ -123,6 +123,22 @@ $$
 
 For instance, the reference angle of $\frac{5\pi}{6}$ is $\frac{\pi}{6}$.
 
+## Simplifying angles
+
+For any angle that is greater than $\pm 2\pi$:
+
+$$
+\sin \theta = \sin(\theta \pm 2n\pi)
+$$
+$$
+\cos \theta = \cos(\theta \pm 2n\pi)
+$$
+$$
+\tan \theta = \tan(\theta \pm 2n\pi)
+$$
+
+where $n$ is any positive integer. Therefore, $\sin\left(\frac{9\pi}{4}\right) = \sin\left(\frac{\pi}{4}\right)$, and $\cos \left(-\frac{11\pi}{3}\right) =  \cos \left(-\frac{5\pi}{3}\right)$. This can be used to simplify a very large angle into a much smaller one that can be more easy to work with.
+
 ## Finding the trig values of an arbitrary angle
 
 Let's say we want to find the value of the trig functions at $\theta = -\frac{3\pi}{4}$.
