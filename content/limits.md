@@ -137,11 +137,20 @@ $$
 We can rewrite as a fraction and/or find a common denominator, and then use one of the three above methods:
 
 $$
-\lim_{t \to 0^+} \sin(t) \cot(t) = \lim_{t \to 0^+} \frac{\sin(t)}{\tan(t)} = \lim_{t \to 0^+} \sin(t) \frac{\cos(t)}{\sin (t)} = \lim_{t \to 0^+} \cos(t) = 1
+\begin{align*}
+\lim_{t \to 0^+} \sin(t) \cot(t) &= \lim_{t \to 0^+} \frac{\sin(t)}{\tan(t)} \\\\
+&= \lim_{t \to 0^+} \sin(t) \frac{\cos(t)}{\sin (t)} \\\\ 
+&= \lim_{t \to 0^+} \cos(t) \\\\
+&= 1
+\end{align*}
 $$
 
 $$
-\lim_{\theta \to \frac{\pi}{4}} \frac{1}{\tan \theta - 1} - \frac{2}{\tan^2 \theta - 1} = \lim_{\theta \to \frac{\pi}{4}} \frac{\tan \theta + 1 - 2}{(\tan \theta + 1) (\tan \theta - 1)} = \lim_{\theta \to \frac{\pi}{4}} \frac{\tan \theta - 1}{(\tan \theta + 1) (\tan \theta - 1)} = \frac{1}{2}
+\begin{align*}
+\lim_{\theta \to \frac{\pi}{4}} \frac{1}{\tan \theta - 1} - \frac{2}{\tan^2 \theta - 1} &= \lim_{\theta \to \frac{\pi}{4}} \frac{\tan \theta + 1 - 2}{(\tan \theta + 1) (\tan \theta - 1)} \\\\ 
+&= \lim_{\theta \to \frac{\pi}{4}} \frac{\tan \theta - 1}{(\tan \theta + 1) (\tan \theta - 1)} \\\\
+&= \frac{1}{2}
+\end{align*}
 $$
 
 ## Infinite limits
