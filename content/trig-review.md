@@ -216,38 +216,46 @@ $$
 A solution $\theta$ of $\sin \theta = k$ satisfies the fact that if you know one solution $\theta_1$ of the equation, then:
 
 $$
-\theta = \pm \theta_1 + 2\pi n
+\theta = \theta_1 \pm 2\pi n
 $$
 Similarly, a solution of $\theta_1$ of $\cos \theta = k$ satisfies the fact that if you know one solution $\theta_1$ of the equation, then:
 
 $$
-\theta = \pm \theta_1 + 2\pi n
+\theta = \theta_1 \pm 2\pi n
 $$
 
-This is because sine and cosine have **infinite** solutions that are distanced $2\pi$ apart. For tangent, if you know one solution, then there are infinite solutions that are distanced $\pi$ apart:
+This is because sine and cosine have **infinite** solutions that are distanced $2\pi$ apart. The same is true for tangent - there are infinite solutions that are distanced $\pi$ apart:
 
 $$
-\theta = \pm \theta_1 + \pi n
+\theta = \theta_1 \pm \pi n
 $$
 
-For example, if we were to solve $\cos \theta = \frac{1}{2}$, the solution would be:
+For example, if we were to solve $\cos \theta = \frac{1}{2}$, we'd first use the trig song/table to find the values that satisfy that equation. In our case, from the trig song/table, it is clear that:
 
 $$
-\theta = \pm \frac{\pi}{3} + 2\pi n
+\theta_1 = \frac{\pi}{3}
 $$
-The solutions that start from a positive value are equal to:
-$$
-\theta_+ = \frac{\pi}{3} + 2\pi n = \frac{\pi}{3}, \frac{7\pi}{3}, \frac{13\pi}{3}, \dots
-$$
-And the solutions that start from a negative value are equal to:
-$$
-\theta_- = -\frac{\pi}{3} + 2\pi n = \frac{5\pi}{3}, \frac{11\pi}{3}, \frac{17\pi}{3}, \dots
-$$
+satisfies the equation. However, it is not the **only** value that satisfies the equation. To find the other values that satisfy the equation in $[0, 2\pi]$, we consider all the integer multiples of our first solution $\theta$ that are within the interval. That is, we have:
 
-However, only 2 solutions are within $(0, 2\pi)$:
+$$
+\theta = \theta, 2\theta, 3\theta, \dots n\theta
+$$
+In our case, the integer multiple angles of our solution $\theta_1$ within $[0, 2\pi]$ are:
+
+$$
+\frac{\pi}{3}, \frac{2\pi}{3}, \frac{3\pi}{3}, \frac{4\pi}{3}, \frac{5\pi}{3}, \frac{6\pi}{3}
+$$
+Now, from these angles, we choose the angles that lie in a quadrant that yield the **same sign** as $\theta_1$ for the given trig function in the problem. For example, if $\theta_1$ was positive, then we'd choose the angles that lie in quadrants 1 and 4, as those quadrants are where cosine (the trig function in the problem) is positive. Likewise, if $\theta_1$ was negative, then we'd choose the integer multiples that lie in quadrants 2 and 3, as those quadrants are where cosine is negative. Adjust this based on the type of trig function used (sine/cosine/tangent) and the sign of $\theta_1$ (+ or -). E.g. if $\theta_1$ is a solution of the tangent function and negative, then we'd choose solutions in quadrants 2 and 4.
+
+For our case, $\theta_1$ is positive and a solution to the cosine function, so we choose only the angles that lie in quadrants 1 and 4. Therefore, the solutions in $[0, 2\pi]$ are:
 
 $$
 \theta = \frac{\pi}{3}, \frac{5\pi}{3}
+$$
+Since there are infinitely many solutions in general, however, it would be more correct to say that:
+
+$$
+\theta = \frac{\pi}{3} \pm 2\pi n, \frac{5\pi}{3} \pm 2\pi n
 $$
 
 ## Inverse functions
