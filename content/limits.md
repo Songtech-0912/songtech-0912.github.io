@@ -165,7 +165,7 @@ $$
 \lim_{x \to 0} x^2 \cos \left(\frac{1}{x}\right)
 $$
 
-We know that $-1 \leq \cos(\frac{1}{x}) \leq 1$, so $-x^2 \leq x^2 \cos (\frac{1}{x}) \leq x^2$. We also know that $\lim_{x \to 0} -x^2 = \lim_{x \to 0} x^2 = 0$. Thus:
+We know that $-1 \leq \cos(\frac{1}{x}) \leq 1$ (to prove this you can use the substitution $u = \frac{1}{x}$, then $-1 \leq \cos(u) \leq 1$, and then substituting gives this result). Therefore, it follows that $-x^2 \leq x^2 \cos (\frac{1}{x}) \leq x^2$. We also know that $\lim_{x \to 0} -x^2 = \lim_{x \to 0} x^2 = 0$. Thus:
 
 $$
 \lim_{x \to 0} x^2 \cos \left(\frac{1}{x}\right) = 0
