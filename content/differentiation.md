@@ -478,6 +478,12 @@ $$
 \lim_{x \to \infty} x^{1/x^2} = e^0 = 1
 $$
 
+We can also use the rule by turning a limit that is a product functions into a fraction of functions. That is:
+
+$$
+\lim_{x \to a} f(x) g(x) = \lim_{x \to a} \frac{f(x)}{1 / g(x)} = \lim_{x \to a} \frac{g(x)}{1 / f(x)}
+$$
+
 ## Optimization
 
 Suppose we want to find two numbers $x$ and $y$ such that their sum is 120 and a shape with area $x^2 y$ is as large as possible. That is:

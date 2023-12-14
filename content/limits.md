@@ -344,6 +344,10 @@ $$
 \lim_{x \to \infty} \frac{x^4}{x^2} = \lim_{x \to \infty} x^2 = \infty
 $$
 
+## L'Hôpital's Rule
+
+See [derivative notes](@/differentiation.md) for discussion of this limit evaluation technique.
+
 ## Intermediate Value Theorem
 
 The **intermediate value theorem** (IVT) states that if a function is continuous in a _closed_ interval from $a$ to $b$, then it takes on every value from $f(a)$ to $f(b)$. To use the IVT, you must show that:
