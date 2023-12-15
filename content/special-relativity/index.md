@@ -373,3 +373,14 @@ $$
 $$
 
 Using the invariance of the dot product of a 4-vector, that is, $\mathbf{P} \cdot \mathbf{P} = m^2 c^2$, this can then be used to solve for the energies of each of the particles.
+
+## SR problem-solving strategies
+
+- When doing calculations in different frames:
+	- Use the energy-momentum relation $E^2 = (pc)^2 + (mc^2)^2$
+	- Use the fact that the dot product of any 4-momentum with itself is given by $\mathbf{P} \cdot \mathbf{P} = m^2 c^2$
+	- Use a center of momentum frame, compute the invariant dot product of the system's 4-momentum, and then find the dot product of the 4-momentum of the system in the lab frame, and set them equal - that is, $\mathbf{P}_{cm} \cdot \mathbf{P}_{cm} = \mathbf{P}_l \cdot \mathbf{P}_l$
+- When doing calculations in one chosen frame (such as the lab frame):
+	- Use conservation of momentum $p = p_1 + p_2$ and conservation of energy $E = E_1 + E_2$
+	- Use the fact that $\frac{v}{c} = \frac{pc}{E}$
+	- Square an energy conservation equation and expand using the energy-momentum relation to cancel out the momentum
