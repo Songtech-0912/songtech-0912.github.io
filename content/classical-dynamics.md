@@ -136,3 +136,157 @@ f(x) \approx f(x_0) + f'(x_0)(x - x_0)
 $$
 
 For example, $e^x \approx 1 + x$, and $\sin(x) \approx x$.
+
+## Kinematics with calculus
+
+Recall the derivative relationships between velocity and acceleration:
+
+$$
+v(t) = \frac{dx}{dt}
+$$
+$$
+a(t) = \frac{dv}{dt} = \frac{d^2 x}{dt^2}
+$$
+And recall the inverse integral relationships:
+$$
+\Delta x = \int_{t_0}^{t_1} v(t) dt
+$$
+$$
+\Delta v = \int_{t_0}^{t_1} a(t) dt
+$$
+In addition, to solve differential equations (such as those that result from applying Newton's 2nd law), use the method of **separation of variables**.
+
+## Vectors and their representations
+
+A vector is a mathematical object with special properties that is often used to model physical phenomena.
+
+A **coordinate system** is a measurement grid centered at a particular origin. Vectors can be written in any coordinate system. To do so, they are written in terms of unit (basis) vectors, which are the vectors of length 1 that align with each of the axes of the given coordinate system.
+
+For instance, vectors in Cartesian space can be written in terms of the $\hat i, \hat j, \hat k$ vectors that correspond to the x, y, z Cartesian axes. They are notationally written as follows:
+$$
+\vec a = a_x \hat i + a_y \hat j = \langle a_x, a_y\rangle
+$$
+There are other coordinate systems that can be used, including polar, spherical, and cylindrical. For example, polar vectors are written with:
+
+$$
+\hat a = a_r \hat r + a_\phi \hat \phi = \langle a_r, a_\phi \rangle
+$$
+Coordinate systems can be converted - for example, these are conversions of polar to cartesian:
+
+$$
+x = r \cos \phi, \quad
+y = r \sin \phi
+$$
+
+And these are the conversions from cartesian to polar:
+
+$$
+r = \sqrt{x^2 + y^2}, \quad \phi = \tan^{-1} \left(\frac{y}{x}\right)
+$$
+The length of a vector, also called the magnitude or norm, is found by taking the square root of the sum of the squares of each component:
+
+$$
+\| \vec s \| = \sqrt{s_x^2 + s_y^2}
+$$
+
+Vectors sum and subtract elementwise. To do so, just add/subtract each of the vector's components:
+
+$$
+\vec s = \vec a + \vec b = \langle a_x + b_x, a_y + b_y \rangle
+$$
+
+Vectors can also be multiplied by scalars, which are simply numbers. Scalar multiplication is performed by multiplying the scalar by each of their components:
+
+$$
+\vec s = c \vec a = \langle c \cdot a_x, c \cdot a_y \rangle
+$$
+
+The dot product of two vectors results in a scalar, and is given by:
+
+$$
+\vec a \cdot \vec b = \|a \| \|b \| \cos \phi = a_x b_x + a_y b_y
+$$
+The cross product of two vectors results in a new vector, and is given by:
+
+$$
+\vec a \times \vec b = \| a \| \| b \|  \sin \phi = \langle a_y b_z - a_z b_y, a_z b_x - a_x b_z, a_x b_y - a_y b_x \rangle
+$$
+To remember this formula:
+
+- Remember that the components' subscripts are in the order $yz$, $zx$, $yx$ (e.g. $yz$ expands into $a_y b_z - a_z b_y$)
+- Follow the cycle $yzx$, the first component is the $y \to z$, the second is $z \to x$, the third is $y \to x$
+
+(to remember this, just remember the $yz, zx, yx$ pattern)
+
+The cross product is defined only for 3D space, and is anticommutative: $\vec a \times \vec b = - (\vec b \times \vec a)$. Taking the cross product of 2D vectors requires making them 3D vectors with a z-component of zero.
+
+The area of a parallelogram is given by the _magnitude_ of the cross product of the two vectors:
+
+$$
+A = ab \sin \theta = \| \vec a \times \vec b \|
+$$
+
+## Vector kinematics
+
+The position vector is given by $\vec s = \langle x(t), y(t), z(t) \rangle$ in Cartesian coordinates. The velocity vector is given by the derivative of position vector with respect to time. That is:
+
+$$
+\vec v = \frac{d \vec s}{dt} = \left\langle \frac{dx}{dt}, \frac{dy}{dt}, \frac{dz}{dt} \right\rangle
+$$
+
+And similarly, the acceleration vector is defined by the time derivative of the velocity vector:
+
+$$
+\vec a = \frac{d \vec v}{dt} = \frac{d^2 \vec s}{dt^2} = \left \langle \frac{d^2 x}{dt^2}, \frac{d^2 y}{dt^2}, \frac{d^2 z}{dt^2} \right \rangle
+$$
+
+Note that Newton's second law in vector form (for 2D or 3D) is given by a vector differential equation that expand to 4 (in 2D) or 6 (in 3D) coupled ordinary differential equations:
+
+$$
+m \frac{d^2 \vec s}{dt^2} = m\frac{d \vec v}{dt} = \vec F \left(\vec r, \frac{d\vec s}{dt}, t\right)
+$$
+
+Luckily, a shift of coordinates is typically sufficient to be able to treat most 2D and 3D problems as 2D or 1D problems, reducing the need to solve such a complex vector differential equation.
+
+**Projectile motion** (motion under constant downward acceleration) in 2D is a special case of this vector differential equation that is able to be solved analytically:
+
+$$
+m \frac{dv_x}{dt} = 0, \quad m \frac{dv_y}{dt} = -mg
+$$
+$$
+v_x (0) = v_0 \cos \theta, \quad v_y(0) = v_0 \sin (\theta)
+$$
+
+The analytical solution is given by:
+
+$$
+\vec s(t) = \langle x(t), y(t) \rangle
+$$
+$$
+x(t) = x_0 + v_0 \cos (\theta) t, \quad y(t) = y_0 + v_0 \sin (\theta) t - \frac{1}{2} gt^2
+$$
+We can find the range of a projectile (how far it travels horizontally) by solving for the value of $t$ where $y(t) = 0$ and then substituting that value of $t$ into $x(t)$. That is:
+
+$$
+y(t) = 0 \Rightarrow t = 0, t=\frac{2v_0 \sin \theta}{g}
+$$
+
+The first solution is trivial (not useful) but the second is nontrivial. Substituting into $x(t)$, we have:
+
+$$
+R = x_0 + v_0 \cos \theta \left(\frac{2 v_0 \sin \theta}{g}\right) = x_0 + \frac{v_0^2 \sin (2 \theta)}{g}
+$$
+
+To maximize the range $R$ given the angle $\theta$, we simply set $\frac{dR}{d\theta} = 0$ as with typical methods of optimization in calculus. From there, it can be found that the optimal angle is at $\theta = \frac{\pi}{4}$.
+
+Lastly, it can be shown that this traces out the trajectory of a parabola. To do so, we take the two parametric equations $x(t)$ and $y(t)$ and eliminate the parameter. From this we get:
+
+
+$$
+y = -\frac{g}{2v_{0x}^2 } x^2 + \frac{v_{0y}}{v_{0x}}x
+$$
+Which can be written as:
+
+$$
+y = -\frac{g}{2 v_0^2 \cos^2 \theta} x^2 + v_0 \tan (\theta) x
+$$
