@@ -68,3 +68,24 @@ To solve a differential equation, there are 3 general steps:
 
 Generally, existence and uniqueness are topics handled by formal proofs, and one only usually needs to determine the solution via the appropriate method. To check that the solution is correct, it is possible to verify by putting the solution back into the equation.
 
+## Separation of variables
+
+Consider a first-order ODE in the form:
+
+$$
+\frac{dy}{dx} = g(x) f(y)
+$$
+Such an ODE can be rewritten in the form:
+
+$$
+a(y) dy = b(x) dx
+$$
+
+And with integration, it can be solved:
+
+$$
+\int a(y) dy = \int b(x) dx
+$$
+
+The idea is to move all the terms in $x$ to one side, move all the terms in $y$ to the other side, and integrate both sides. This gives a **general solution** to the differential equation, which is a family of functions. A particular solution (a single exact function) can be found if initial conditions are provided.
+
