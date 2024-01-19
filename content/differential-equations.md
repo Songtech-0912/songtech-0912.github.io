@@ -19,12 +19,18 @@ Differential equations are classified via three main characteristics.
 
 These characteristics determine how they should be solved.
 
-First, we can classify differential equations as either ordinary (ODE) or partial (PDE). ODEs contain only one independent variable, typically $x$, whereas PDEs contain more than one independent variable. How to distinguish? Just look for the derivative sign - if it contains $\partial$ (the partial derivative symbol), then it's a PDE, otherwise it's most likely an ODE.
+First, we can classify differential equations as either ordinary (ODE) or partial (PDE). ODEs contain an unknown function, typically $y$, of only one independent variable, typically $x$ or $t$. Meanwhile PDEs contain an unknown function, typically $u$, or more than one independent variable, such as $x, y, z$. How to distinguish? Just look for the derivative sign - if it contains $\partial$ (the partial derivative symbol), then it's a PDE, otherwise it's most likely an ODE.
 
 For instance, an ODE could be:
 
 $$
 \frac{d^2 y}{dx^2} + x \frac{dy}{dx} = 2y
+$$
+
+Note that an ODE could contain several unknown functions (especially in systems of differential equations) so long as each function has only one independent variable:
+
+$$
+\frac{d^2 x}{dt^2} + 3 \frac{dy}{dt} = 3x + 5y
 $$
 
 And a PDE could be:
@@ -39,13 +45,15 @@ Second, we can classify differential equations by order. The order is the order 
 
 Third, we can classify differential equations as either linear or nonlinear. In general, linear differential equations are easier to solve and analyze. A linear equation is **only** composed of derivative terms multiplied by functions of $x$ (or whatever the independent variable is). This is the most important distinguishing factor of a linear differential equation: there are **no functions of $y$ or functions of the derivatives of $y$ present**. 
 
-The general form of a linear differential equation is:
+The general form of a linear ordinary differential equation is:
 
 $$
 f(x) \frac{d^n y}{dx^n} + \dots + g(x) \frac{d^2 y}{dx^2} + h(x) \frac{dy}{dx} + k(x) y = a(x)
 $$
 
-If the equation can be rewritten such that $a(x) = 0$, then the differential equation is called _homogeneous_; otherwise, it is called _non-homogeneous_. In simpler terms, if there is a term in a linear differential equation that involves only $x$, then the equation is non-homogeneous; if that term doesn't exist (is zero), then the equation is homogeneous. 
+
+
+If the equation can be rewritten such that $a(x) = 0$, then the differential equation is called _homogeneous_; otherwise, it is called _non-homogeneous_. Homogeneity only applies for linear ODEs; any nonlinear ODE cannot be classified in this way.
 
 In addition, if a differential equation doesn't follow the general form of a linear differential equation, it is called _nonlinear_. For instance, the following is a nonlinear differential equation, because there is a function of the derivative $y'$ present:
 
@@ -69,6 +77,12 @@ Modifying it makes it homogeneous:
 
 $$
 x \frac{dy}{dx} + 3xy = 0
+$$
+
+Partial differential equations can also be linear so long as they don't have functions that depend on the dependent variable. For example, if the dependent variable is $u$, then the following is linear, because there is no function $f(u)$ in the equation:
+
+$$
+\frac{\partial u}{\partial x} + 2 \frac{\partial u}{\partial y} + xy = 0
 $$
 
 To solve a differential equation, there are 3 general steps:
