@@ -290,3 +290,93 @@ Which can be written as:
 $$
 y = -\frac{g}{2 v_0^2 \cos^2 \theta} x^2 + v_0 \tan (\theta) x
 $$
+
+## Work
+
+Work is the transfer of energy by a force applied along a displacement. It is a scalar quantity defined by:
+
+$$
+W = \int_{x_0}^{x_1} F(x) dx
+$$
+Note that force can be defined by:
+
+$$
+F = m \frac{dv}{dt}
+$$
+
+We can use this alternate definition of force to obtain the work-energy theorem:
+
+$$
+W = \int_{x_0}^{x_1} m\frac{dv}{dt} dx = \int_{x_0}^{x_1} m\frac{dv}{dt} \frac{dx}{dt} dt = \int_{x_0}^{x_1} m \frac{dv}{dt} v dt = \int_{v_0}^{v_1} mvdv = \frac{1}{2} m(v_2^2 - v_1^2) = \frac{1}{2} m \Delta v^2 = \Delta K
+$$
+
+## Conservation of energy
+
+If a force depends only on position, it is called a **conservative force**. Conservative forces are associated with a potential energy function $U(x)$ in 1D via:
+
+$$
+F(x) = -\frac{dU}{dx}
+$$
+
+Using the same method as prior to obtain the work-energy theorem, we can:
+
+$$
+W = \int_{x_0}^{x_1} -\frac{dU}{dx} dx = -\int_{x_0}^{x_1} dU = -U(x) \bigg |_{x_0}^{x_1} = -\Delta U
+$$
+
+Therefore:
+
+$$
+W = -\Delta U = \Delta K
+$$
+$$
+K_1 + U_1 = K_2 + U_2
+$$
+
+The total mechanical energy $E$ is conserved for conservative forces (this means it's a constant):
+
+$$
+E = K + U, \quad \frac{dE}{dt} = 0
+$$
+Recall that while force can be perfectly defined from potential energy, the potential energy cannot be perfectly defined by the force. This is because:
+
+$$
+U(x) = -\int F(x) dx + C
+$$
+And therefore any $C$ could possibly be chosen. So, one often choses the constant such that the potential energy is zero at a conveniently specified location $x_0$, which we can call the "ground level":
+
+$$
+U(x) = -\int_{x_0}^x F(x') dx'
+$$
+For instance, consider the example of 1D constant gravity, where $F(x) = -mg$ and $U(0) = 0$, we have:
+
+$$
+U(x) = -\int_0^h F(x) dx = mgh
+$$
+Given that $x(0) = h, v(0) = 0$, and using conservation of energy, we have:
+
+$$
+E_1 = E_2
+$$
+$$
+mgh = \frac{1}{2} mv^2 \Rightarrow v = \sqrt{2gh}
+$$
+For the more general 1D case, we can write the conservation of energy as a differential equation, where $E$ is constant:
+
+$$
+\frac{1}{2} m \left(\frac{dx}{dt}\right)^2 + U(x) = E
+$$
+Rearranging, we get the **separable 1st-order ODE**:
+
+$$
+\frac{dx}{dt} = \pm \sqrt{\frac{2}{m}(E - U(x))}
+$$
+
+## Potential energy landscapes
+
+By plotting the graph of $U(x)$, the potential energy function, we can determine the characteristics of the motion of an object. The following features of $U(x)$ are especially important:
+
+- Local minimum of $U(x)$ - stable equilibrium position
+- Local maximum $U(x)$ - unstable equilibrium position
+- Lower potential energy regions - the object has more kinetic energy and so moves faster
+- Higher potential energy regions - the object has less kinetic energy and so moves slower
