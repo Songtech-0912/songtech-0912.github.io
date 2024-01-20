@@ -274,11 +274,12 @@ Or in simplified notation:
 $$
 \mu y' + \mu p y = \mu q
 $$
-Now we're going to impose the restriction that $\mu(x)$ can't just be any function - it has to satisfy $\mu'(x) = \mu(x) p(x)$. Therefore we have:
+Now we're going to impose the restriction that $\mu(x)$ can't just be any function - it has to satisfy $\mu'(x) = \mu(x) p(x)$. Therefore we can say that $\mu p y = \mu' y$, so if we substitute that in, we have:
 
 $$
 \mu y' + \mu'y = \mu q
 $$
+
 Notice now that the LHS looks a lot like the expanded version of the product rule! Indeed it is, so we can rewrite it as:
 
 $$
