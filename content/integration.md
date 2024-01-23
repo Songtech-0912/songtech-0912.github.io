@@ -633,8 +633,8 @@ The substitutions make use of the 3 Pythagorean identities:
 
 $$
 \begin{cases}
-\sin^2 \theta + \cos^2 \theta = 1 \\
-1 + \tan^2 \theta = \sec^2 \theta \\
+\sin^2 \theta + \cos^2 \theta = 1 \\\\
+1 + \tan^2 \theta = \sec^2 \theta \\\\
 1 + \cot^2 \theta = \csc^2 \theta
 \end{cases}
 $$
