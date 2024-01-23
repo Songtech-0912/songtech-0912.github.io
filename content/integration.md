@@ -413,3 +413,386 @@ To compute the area, we'll first find the radii of the shells, and set that. In 
 $$
 2\pi \int_0^2  (3 - x) x^3 dx = \frac{56\pi}{5}
 $$
+
+## Integration by Parts
+
+**Integration by parts** is analagous to the product rule for derivatives. It is given by:
+
+$$
+\int udv = uv - \int vdu
+$$
+
+where:
+
+$$
+v = \int dv
+$$
+
+Typically, we want $u$ to be a function that has a simple derivative (such as a polynomial or $\ln x$), and $v$ to be a function that has a simple integral (such as $\cos x$ or $\sec^2 x$ or $e^x$). It's typically much harder to integrate than differentiate, so pick $dv$ first, and $u$ second.
+
+In addition, integration by parts can be done multiple times over and over to repeatedly expand out an integral until it can be solved.
+
+As an example of integration by parts, consider:
+
+$$
+\int x \cos (2x) dx
+$$
+
+Here, we want our $u$ to be $x$ (because that's easy to differentiate), and $dv = \cos 2x$. This means that $du = dx$. To find $v$, we simply do:
+
+$$
+v = \int dv = \int \cos (2x) = \frac{1}{2} \sin(2x)
+$$
+
+After substitution, we obtain:
+
+$$
+\int udv = \frac{1}{2}x \sin(2x) - \int \frac{1}{2} \sin(2x) dx
+$$
+
+Which evaluates to:
+
+$$
+\frac{1}{2} x \sin(2x) + \frac{1}{4} \cos(2x) + C
+$$
+
+For a faster method of integration by parts, we can use the tabular method, which works so long as $u$ is a polynomial. For instance, consider:
+
+$$
+\int x^3 e^x dx
+$$
+
+We construct a table of $u$ and all its derivatives on the left, and $dv$ and all its integrals (I) on the right, and alternating signs in front, until the derivative is zero:
+
+| Sign | D | I |
+|----|---|---|
+| + | $x^3$ | $e^x $ |
+| - | $3x^2$ | $e^x$ |
+| + | $6x$ | $e^x$ |
+| - | $6$ | $e^x$ |
+| + | $0$ | $e^x$ |
+
+Now, we start from the first "D" term, and match terms crosswise down diagonally like this:
+
+| Sign | D | I |
+|----|---|----|
+| + | 1 | |
+| - | 2 | 1 |
+| + | 3 | 2 |
+| - | 4 | 3 |
+| + | 5 | 4 |
+| + | ... | ... |
+
+In front of each derivative term we put the sign associated with it. Therefore, our result is:
+
+$$
+(+) x^3 e^x (-) 3x^2 e^x (+)6x e^x (-) 6e^x + C
+$$
+
+Or simplified:
+
+$$
+x^3 e^x - 3x^2 e^x + 6xe^x - 6e^x + C
+$$
+
+A third type of integration-by-parts integrals utilize a specialized technique. Consider:
+
+$$
+\int e^x \cos x dx
+$$
+Doing a first integration by parts with $u = e^x$ and $dv = \cos x$, we get:
+
+$$
+\int e^x \cos x dx = e^x \sin x - \int e^x \sin x dx
+$$
+Now repeating the integration by parts on the second integral with $u = e^x$ and $dv = \sin x$, we get:
+
+$$
+\int e^x \cos x dx = e^x \sin x - \left(-e^x \cos x - \int(-e^x\cos x dx)\right)
+$$
+
+Or simplifying:
+
+$$
+\int e^x \cos x dx = e^x \sin x + e^x \cos x - \int e^x \cos x dx
+$$
+Notice how the integral appears twice in the expression. If we say that:
+
+$$
+I = \int e^x \cos x dx
+$$
+We can rewrite the integral as:
+
+$$
+I = e^x \sin x + e^x \cos x- I
+$$
+
+Solving for $I$, we get:
+
+$$
+I = \frac{e^x \sin x + e^x \cos x}{2} + C
+$$
+which is the solution to the integral.
+
+## Trigonometric integrals
+
+Trigonometric integrals are integrals that involve combination of trigonometric functions.
+
+The first general category of trigonometric integrals are in the form:
+
+$$
+\int \sin^m x \cos^n x dx
+$$
+
+There are several common approaches for such integrals:
+
+- If $m$ is odd ($n = 2k + 1$), rewrite $\sin^m x = (\sin^2 x)^k \sin x = (1 - \cos^2 x)^k \sin x$, then use u-substitution
+- If $n$ is odd ($n = 2k + 1$), rewrite $\cos^n x = (\cos^2 x)^k \cos x = (1 - \sin^2 x)^k \cos x$, then use u-substitution
+- If both $m$ and $n$ are even, use the half-angle identities:
+
+$$
+\sin^2x = \frac{1 - \cos 2x}{2}
+$$
+
+$$
+\cos^2 x = \frac{1 + \cos 2x}{2}
+$$
+
+$$
+\sin x \cos x = \frac{\sin 2x}{2}
+$$
+
+Meanwhile, for trigonometric integrals in the general form:
+
+$$
+\int \tan^m x \sec^n x dx
+$$
+
+- If $n$ is even ($n = 2k, k \geq 2$), rewrite $\sec^n x = (\sec^2 x)^{k - 1} \sec^2 x = (\tan^2 x + 1)^{k - 1} \sec^2 x$, then use u-substitution with $u = \tan x$
+- If $m$ is odd ($m = 2k + 1$), rewrite $\tan^m x = (\tan^2 x)^k \tan x = (\sec^2 x - 1)^k \tan x$, then use u-substitution with $u = \sec x$
+
+For instance, consider:
+
+$$
+\int \sin^5 x \cos^4 x dx
+$$
+
+We can break this into:
+
+$$
+\int \sin^4 x \sin x \cos^4 xdx
+$$
+
+Which we can simplify into:
+
+$$
+\int (\sin^2 x)^2 \sin x \cos^4 x dx
+$$
+
+And again, into:
+
+$$
+\int (1 - \cos^2 x)^2 \sin x \cos^4 x dx
+$$
+
+Now, we can use $u = \cos x$, thus the integral becomes:
+
+$$
+-\int (1 - u^2)^2 u^4 du
+$$
+
+Or expanded and with the negative sign distributed:
+
+$$
+\int 2u^6 - u^4 - u^8 du
+$$
+
+This becomes:
+
+$$
+\frac{2u^7}{7} - \frac{u^5}{5} - \frac{u^9}{9} + C
+$$
+
+And substituting back, we have:
+
+$$
+\frac{2 \cos^7 x}{7} - \frac{\cos^5 x}{5} - \frac{\cos^9 x}{9} + C
+$$
+
+## Trigonometric substitutions
+
+For integrals in the form:
+
+$$
+\int (a^2 \pm x^{2n})^m dx
+$$
+
+or generally, any integrals that have $\sqrt{a^2 - u^2}$, $\sqrt{a^2 + u^2}$, or $a^2 + u^2$, a trigonometric substitution is often helpful.
+
+The substitutions make use of the 3 Pythagorean identities:
+
+$$
+\begin{cases}
+\sin^2 \theta + \cos^2 \theta = 1 \\
+1 + \tan^2 \theta = \sec^2 \theta \\
+1 + \cot^2 \theta = \csc^2 \theta
+\end{cases}
+$$
+
+Performing a trigonometric substitution involves fitting an integrand into one of these forms. For instance, consider the integral:
+
+$$
+\int \frac{\sqrt{4 - x^2}}{x^2} dx
+$$
+
+Here, we see the square root, which suggests the use of a trigonometric substitution. We first simplify the integral with:
+
+$$
+\int \frac{\sqrt{4(1 - \frac{x^2}{4})}}{x^2} dx
+$$
+
+We now have an expression in the form $1 - u^2$. It makes sense to use the first Pythagorean identity. We say that:
+
+$$
+\frac{x^2}{4} = \sin^2 \theta
+$$
+
+Which means:
+
+$$
+1 - \frac{x^2}{4} = 1 - \sin^2 \theta = \cos^2 \theta
+$$
+
+If we solve for $x$, we get:
+
+$$
+x = 2\sin \theta
+$$
+
+So:
+
+$$
+dx = 2\cos \theta d\theta
+$$
+
+Plugging in $1 - \frac{x^2}{4} = \cos^2 \theta$ and $dx = 2\cos \theta d\theta$ into the integral, we get:
+
+$$
+\int \frac{\sqrt{4\cos^2 \theta}}{4\sin^2 \theta} 2 \cos \theta d\theta
+$$
+
+Which simplifies to:
+
+$$
+\int \cot^2 \theta d\theta
+$$
+
+We use the identity $\cot^2 \theta + 1 = \csc^2 \theta$ to get:
+
+$$
+\int \csc^2\theta - 1 d\theta
+$$
+
+Whose solution is:
+
+$$
+-\cot \theta - \theta + C
+$$
+
+We now need to convert the answer in terms of $\theta$ back into an answer in terms of $x$. To do so, remember that:
+
+$$
+x = 2 \sin \theta
+$$
+
+Therefore:
+
+$$
+\sin \theta = \frac{x}{2} = \frac{\text{Opposite}}{\text{Hypotenuse}}
+$$
+
+We also know that:
+
+$$
+\cot \theta = \frac{1}{\tan \theta} = \frac{\text{Adjacent}}{\text{Opposite}}
+$$
+
+And by Pythagoras:
+
+$$
+\text{Adjacent}^2 = \text{Hypotenuse}^2 - \text{Opposite}^2 = 2^2 - x^2 = 4 - x^2
+$$
+
+So:
+
+$$
+\text{Adjacent} = \sqrt{4 - x^2}
+$$
+
+And:
+
+$$
+\cot \theta = \frac{\sqrt{4 - x^2}}{x}
+$$
+
+$$
+\theta = \operatorname{arcsin} \left(\frac{x}{2}\right)
+$$
+
+We can now rewrite the solution in terms of $x$:
+
+$$
+-\frac{\sqrt{4 - x^2}}{x} - \operatorname{arcsin} \left(\frac{x}{2}\right) + C
+$$
+
+Similarly, we can solve the following integral by trigonometric substitution:
+
+$$
+\int \frac{dt}{(9t^2 + 4)^2}
+$$
+
+We first factor:
+
+$$
+\int \frac{dt}{(4(\frac{9}{4}t^2 + 1))^2}
+$$
+
+We set:
+
+$$
+1 + \frac{9}{4} t^2 = \sec^2 \theta
+$$
+
+$$
+\frac{9}{4} t^2 = \tan^2 \theta
+$$
+
+Therefore:
+
+$$
+t = \frac{2}{3} \tan \theta
+$$
+
+$$
+dt = \frac{2}{3} \sec^2 \theta d \theta
+$$
+
+Subtituting, we get:
+
+$$
+\frac{2}{3} \int \frac{dt}{(4\sec^2 \theta)^2)} \sec^2 \theta d \theta
+$$
+
+Which becomes:
+
+$$
+\frac{1}{48} \int \cos^2 \theta d \theta
+$$
+
+Trigonometric substitutions are incredibly easy to mess up, so be careful with them, and make sure to avoid these errors:
+- Not cancelling out the powers correctly
+- Using the incorrect trigonometric identity
+- Calculating the incorrect differential
+- Forgetting to carry over constants
+- Simplification errors in the trigonometric integrand
+- Errors in converting the solution in $\theta$ back to a solution in $x$, often due to forgetting a square root or a square when using Pythagoras
