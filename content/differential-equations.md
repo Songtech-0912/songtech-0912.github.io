@@ -327,3 +327,109 @@ Which we can solve for $y$ with:
 $$
 y = e^{-\int p(x) dx} \int q(x) e^{\int p(x) dx} dx + Ce^{-\int p(x) dx}
 $$
+
+## 2nd-order ODE general forms
+
+The general form of a 2nd-order linear ODE is given by:
+
+$$
+a_2(x) \frac{d^2 y}{dx^2} + a_1 (x) \frac{dy}{dx} + a_0(x)y = g(x)
+$$
+
+Two initial conditions must be specified to uniquely solve a 2nd-order ODE - the value of $y(0)$ and $y'(0)$. This also means that the general solution of a 2nd-order ODE has two constants of integration. Therefore, a solution to the 2nd-order ODE must be in the form:
+
+$$
+y(x) = c_1 y_0(x) + c_2
+$$
+where $y_0(x)$ is a solution. Therefore there are two linearly independent solutions, denoted $y_1(x)$ and $y_2(x)$. Linearly independent means that $y_1(x) \neq c y_2(x)$ and $y_2(x) \neq c y_1(x)$ - one cannot be expressed as a constant multiple of the other. The general solution is obtained by a linear combination of both solutions:
+
+$$
+y(x) = c_1 y_1(x) + c_2 y_2(x)
+$$
+
+To find whether two solutions $y_1(x)$ and $y_2(x)$ are linearly independent, we check the **Wronskian**. Suppose the IVP has two solutions $y_1$ and $y_2$:
+
+$$
+\begin{align}
+c_1 y_1 (x) + c_2 y_2 (x) &= 0 \\
+c_2 y_1'(x) + c_2 y_2'(x) &= 0
+\end{align}
+$$
+
+We can write this as a matrix $A \mathbf{x} = \mathbf{b}$:
+
+$$
+\begin{pmatrix}
+y_1 & y_2 \\
+y_1' & y_2'
+\end{pmatrix}
+\begin{pmatrix}
+c_1 \\
+c_2
+\end{pmatrix} =
+\begin{pmatrix}
+0 \\
+0
+\end{pmatrix}
+$$
+The Wronskian is the determinant of $A$:
+
+$$
+W = \det(A) = \begin{vmatrix}
+y_1 & y_2 \\
+y_1' & y_2'
+\end{vmatrix} = y_1 y_2' - y_1' y_2
+$$
+If $W \neq 0$, then the solutions are linearly independent. The derivation is straightforward but long and won't be presented here.
+
+### Abel's formula
+
+Abel's formulas says that if $y_1(x)$ and $y_2(x)$ are solutions of $y''' + p(x) y' + q(x) y = 0$, then:
+
+$$
+W = c \exp \left(-\int p(x) dx\right)
+$$
+Note that the general form of a linear 2nd-order ODE can be cast into this form by dividing by $a_2(x)$:
+
+$$
+y'' + \frac{a_1(x)}{a_2(x)} y'' + \frac{a_0(x)}{a_2(x)}y = 0 \Rightarrow p(x) = \frac{a_1(x)}{a_2(x)}, q(x) = \frac{a_0(x)}{a_2(x)}
+$$
+
+To prove this, we first know that:
+
+$$
+\begin{align}
+y_1'' + py_1' + qy_1 &= 0 \\
+y_2'' + py_2' + qy_2 &= 0
+\end{align}
+$$
+If we eliminate $q$ by multiplying the top equation by $y_2$ and the bottom equation by $y_1$, we get:
+
+$$
+y_2 y_1 '' + py_2 y_1' - y_1 y_2'' - py_1 y_2' = 0
+$$
+
+We recognize the Wronskian $W = y_1 y_2' - y_2 y_1'$ if we factor out the second term:
+
+$$
+(y_2 y_1'' - y_1 y_2'') - p(y_2 y_1' + y_1 y_2')
+$$
+$$
+(y_2 y_1'' - y_1 y_2'') + p(-W) = 0
+$$
+In addition, given the definition of the Wronskian, we can find that $W' = y_1 y_2'' - y_2 y_1''$. Therefore, the entire equation reduces down to:
+
+$$
+-W' -pW = 0
+$$
+
+Or:
+
+$$
+W' + pW = 0
+$$
+Solving this results in:
+
+$$
+W = C \exp \left(-\int p(x) dx \right)
+$$
