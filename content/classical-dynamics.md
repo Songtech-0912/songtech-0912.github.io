@@ -380,3 +380,172 @@ By plotting the graph of $U(x)$, the potential energy function, we can determine
 - Local maximum $U(x)$ - unstable equilibrium position
 - Lower potential energy regions - the object has more kinetic energy and so moves faster
 - Higher potential energy regions - the object has less kinetic energy and so moves slower
+
+## Multivariable functions and partial derivatives
+
+Consider a multivariable function $f(x, y, z)$. How would the derivative of this function be defined? Since the function depends on multiple variables, you can differentiate with respect to each individual variable. Each derivative is known as a _partial derivative_, and is denoted as follows:
+
+$$
+\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z}
+$$
+When differentiating with respect to one variable, all the other variables are kept constant. That is, if $f(x, y) = x^2 y^3$, then when taking the partial derivative with respect to $x$, we factor out all terms in $y$ and consider them a constant:
+
+$$
+\frac{\partial f}{\partial x} = \frac{\partial}{\partial x} x^2 y^3 = y^3 \frac{\partial}{\partial x} x^2 = 2xy^3
+$$
+Similarly, if taking the partial derivative with respect to $y$, we factor out all terms in $x$ and consider them a constant:
+
+$$
+\frac{\partial f}{\partial y} = \frac{\partial}{\partial y} x^2 y^3 = x^2 \frac{\partial}{\partial y} y^3 = 3x^2 y^2
+$$
+The total differential of a multivariable function is given by:
+
+$$
+df = \frac{\partial f}{\partial x} dx + \frac{\partial f}{\partial y} dy + \frac{\partial f}{\partial z} dz
+$$
+
+## Vector calculus
+
+We say that the gradient of a multivariable function $f(x, y, z)$ is given by:
+
+$$
+\left(\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z}\right)
+$$
+This is often notated $\nabla f$ for "gradient of $f$", where $\nabla$ is a vector operator defined by:
+
+$$
+\nabla = \left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right)
+$$
+Similarly an infinitesimal displacement can be written as:
+$$
+d \vec s = (dx, dy, dz)
+$$
+Using this notation:
+
+$$
+df = \nabla f \cdot d\vec s
+$$
+There are two other vector operations of relevance in vector calculus. These operate on vector-valued multivariable functions, which are typically in the form:
+
+$$
+\vec F = \vec F(x, y, z) = \begin{bmatrix}
+F_x(x, y, z) \\\\
+F_y(x, y, z) \\\\
+F_z(x, y, z)
+\end{bmatrix} =
+F_x(x, y, z) \hat i + F_y(x, y, z) \hat j + F_z (x, y, z) \hat k
+$$
+
+First, the divergence operation measures flow rate, and is given by:
+
+$$
+\nabla \cdot \vec F = \left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right) \cdot (F_x, F_y. F_z) =\frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}
+$$
+Second, the curl operation measures rotation, and is given by:
+
+$$
+\nabla \cdot \vec F = \left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right) \times (F_x, F_y. F_z)  = \left(
+\frac{\partial F_z}{\partial y} - \frac{\partial F_y}{\partial z},
+\frac{\partial F_x}{\partial z} - \frac{\partial F_z}{\partial x},
+\frac{\partial F_{y}}{\partial x}- \frac {\partial F_x}{\partial y}
+\right)
+$$
+## Work in higher dimensions
+
+In higher dimensions, force is a vector-valued function of the position $\vec r(t)$, which itself has three components $x(t)$, $y(t)$, and $z(t)$. So force depends on position, which depends on $x$, $y$, and $z$, which themselves depend on time. That's a mouthful! We can mathematically express this relationship as:
+
+$$
+\vec F = \vec F(\vec r) = \vec F(x, y, z) = \vec F(x(t), y(t), z(t))
+$$
+
+Extending the definition of 1D work, the differential of the work in higher dimensions would be given by:
+
+$$
+dW = \vec F \cdot d\vec s
+$$
+The force is applied along a path in 3D space, which we call $C$ (for "curve"). The total work is given by the integral of this quantity along the curve, which we call a **line integral**:
+
+$$
+W = \int_C \vec F \cdot d\vec s
+$$
+Line integrals can be evaluated by expanding them component-by-component:
+
+$$
+\int_C \vec F \cdot d\vec s = \int_{C(a)}^{C(b)} \vec F(x(t), y(t), z(t)) \cdot (dx, dy, dz)
+$$
+Using the fact that:
+
+$$
+d\vec s = \frac{d\vec s}{dt} dt = (x'(t) dt, y'(t) dt, z'(t) dt) = \vec r'(t) dt
+$$
+where $r'(t) = (x', y', z')$, line integrals can be rewritten as:
+
+$$
+\int_C \vec F(\vec r) \cdot d\vec s = \int_{C(a)}^{C(b)} (F_x(t) x'(t)+ F_y(t) y'(t) + F_z(t) z'(t) )dt = \int_{C(a)}^{C(b)} \vec F(t) \cdot \vec r'(t) dt
+$$
+
+In higher dimensions, Newton's 2nd Law can be written as:
+
+$$
+m \frac{d^2 \vec r}{dt^2} = m \frac{d \vec v}{dt} = \vec F
+$$
+
+The work-energy theorem can also be expressed in higher dimensions. Using the fact that:
+
+$$
+d\vec s = \frac{d\vec s}{dt} dt = \vec v dt
+$$
+We obtain:
+
+$$
+W = \int_C \vec F \cdot d\vec s = \int_C m\frac{d\vec v}{dt} \cdot \frac{d\vec s}{dt} dt = \int_C m \vec v \cdot d\vec v = \frac{1}{2} m(\vec v \cdot \vec v) \bigg |_a^b = \frac{1}{2} m \Delta v^2 = \Delta K
+$$
+
+## Conservation of energy in higher dimensions
+
+A force $\vec F$ is called **conservative** if there is a scalar function $U(x, y, z)$ such that:
+
+$$
+\vec F = -\nabla U = -\left(\frac{\partial U}{\partial x}, \frac{\partial U}{\partial y}, \frac{\partial U}{\partial z}\right)
+$$
+
+This function $U(x, y, z)$ is known as the potential function, and particles naturally flow from a region of higher potential to a region of lower potential. For conservative forces, there are several important properties:
+
+- The line integral of the force is independent of path
+- The line integral of the force vanishes for any closed path
+- $\nabla \times \vec F(\vec r) = 0$
+
+Therefore the work (in the case of conservative forces only!) can be rewritten as:
+
+$$
+W = \int_C \vec F \cdot d\vec s = -\int_C \nabla U \cdot d\vec s = -\int_a^b dU = U(a) - U(b) = -\Delta  U
+$$
+
+Here we use the expression of the total differential to arrive at the prior result:
+
+$$
+\nabla U \cdot d\vec s = \left(\frac{\partial U}{\partial x}, \frac{\partial U}{\partial y}, \frac{\partial U}{\partial z}\right) \cdot (dx, dy, dz) = \frac{\partial U}{\partial x} dx + \frac{\partial U}{\partial y} dy + \frac{\partial U}{\partial z} dx = dU
+$$
+
+Equating the two equivalent definitions of work (for kinetic and potential energy respectively), we find that the work-energy theorem still holds true:
+
+$$
+\Delta K = -\Delta U
+$$
+Or:
+
+$$
+K(b) - K(a) = U(a) - U(b)
+$$
+
+Rearranging, we find that:
+
+$$
+K(a) + U(a) = K(b) + U(b)
+$$
+
+Therefore, total energy is conserved in the case of conservative forces, even in higher dimensions:
+
+$$
+\frac{d}{dt} (K + U) = 0
+$$
