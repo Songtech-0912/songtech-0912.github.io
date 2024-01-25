@@ -351,7 +351,7 @@ To find whether two solutions $y_1(x)$ and $y_2(x)$ are linearly independent, we
 
 $$
 \begin{align}
-c_1 y_1 (x) + c_2 y_2 (x) &= 0 \\
+c_1 y_1 (x) + c_2 y_2 (x) &= 0 \\\\
 c_2 y_1'(x) + c_2 y_2'(x) &= 0
 \end{align}
 $$
@@ -360,15 +360,15 @@ We can write this as a matrix $A \mathbf{x} = \mathbf{b}$:
 
 $$
 \begin{pmatrix}
-y_1 & y_2 \\
+y_1 & y_2 \\\\
 y_1' & y_2'
 \end{pmatrix}
 \begin{pmatrix}
-c_1 \\
+c_1 \\\\
 c_2
 \end{pmatrix} =
 \begin{pmatrix}
-0 \\
+0 \\\\
 0
 \end{pmatrix}
 $$
@@ -376,7 +376,7 @@ The Wronskian is the determinant of $A$:
 
 $$
 W = \det(A) = \begin{vmatrix}
-y_1 & y_2 \\
+y_1 & y_2 \\\\
 y_1' & y_2'
 \end{vmatrix} = y_1 y_2' - y_1' y_2
 $$
@@ -399,7 +399,7 @@ To prove this, we first know that:
 
 $$
 \begin{align}
-y_1'' + py_1' + qy_1 &= 0 \\
+y_1'' + py_1' + qy_1 &= 0 \\\\
 y_2'' + py_2' + qy_2 &= 0
 \end{align}
 $$
