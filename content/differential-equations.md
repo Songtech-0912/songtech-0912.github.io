@@ -336,12 +336,22 @@ $$
 a_2(x) \frac{d^2 y}{dx^2} + a_1 (x) \frac{dy}{dx} + a_0(x)y = g(x)
 $$
 
-Two initial conditions must be specified to uniquely solve a 2nd-order ODE - the value of $y(0)$ and $y'(0)$. This also means that the general solution of a 2nd-order ODE has two constants of integration. Therefore, a solution to the 2nd-order ODE must be in the form:
+Or in Lagrange notation:
 
 $$
-y(x) = c_1 y_0(x) + c_2
+a_2(x) y'' + a_1(x) y' + a_0(x) y = g(x)
 $$
-where $y_0(x)$ is a solution. Therefore there are two linearly independent solutions, denoted $y_1(x)$ and $y_2(x)$. Linearly independent means that $y_1(x) \neq c y_2(x)$ and $y_2(x) \neq c y_1(x)$ - one cannot be expressed as a constant multiple of the other. The general solution is obtained by a linear combination of both solutions:
+
+Note that this means that any 2nd-order linear ODE can be written as a system of 2 first-order differential equations. If we let $v = y'$, then we can say:
+
+$$
+\begin{align}
+a_2(x) v' + a_1(x) v + a_0(x)y &= g(x) \\\\
+y' &= v
+\end{align}
+$$
+
+Each of these two first-order differential equations has a unique solution given an initial condition - $v(0)$ (which is equal to $y'(0)$) for the first and $y(0)$ for the second. This means that the original 2nd-order linear ODE must have two solutions and two initial conditions. The two solutions, denoted $y_1(x)$ and $y_2(x)$, must also be _linearly independent_. Linearly independent means that $y_1(x) \neq c y_2(x)$ and $y_2(x) \neq c y_1(x)$ - one cannot be expressed as a constant multiple of the other. The general solution is obtained by a linear combination of both solutions:
 
 $$
 y(x) = c_1 y_1(x) + c_2 y_2(x)
