@@ -549,3 +549,117 @@ Therefore, total energy is conserved in the case of conservative forces, even in
 $$
 \frac{d}{dt} (K + U) = 0
 $$
+
+## Uniform circular motion
+
+Uniform circular motion describes motion in which an object moves with constant velocity in a circular path of fixed radius. In this situation, the object does not have any tangential acceleration (acceleration along its velocity vector) but it does have **centripetal acceleration** towards the center, with a magnitude given by:
+$$
+a = \frac{v^2}{R}
+$$
+Or in vector form:
+$$
+\vec a = -\frac{v^2}{R} \hat r
+$$
+The object moving along the circular path would trace out a distance $ds = Rd\theta$ when it advances along an angle $d\theta$. Therefore
+
+$$
+\frac{ds}{dt} = R \frac{d\theta}{dt} \Rightarrow v =R \omega
+$$
+The angular velocity $\omega$ can be found from differentiation of $\theta(t)$, but in the special case of uniform circular motion it can be more easily found from the period (the time it takes for the object to complete a full revolution):
+$$
+\omega = \frac{2\pi}{T}
+$$
+Note that:
+$$
+f = \frac{1}{T}
+$$
+In the case of non-uniform circular motion, there is both tangential and centripetal acceleration present. The tangential acceleration in this case is given by:
+
+$$
+\vec a_t = \frac{d\vec v}{dt}
+$$
+The centripetal acceleration, however, remains the same:
+$$
+\vec a_c = -\frac{v^2}{R} \hat r
+$$
+The overall acceleration $\vec a$ is given by:
+$$
+\vec a = \vec a_t + \vec a_c
+$$
+When considering problems of circular motion, instead of using $\sum F_i = ma$, instead use $\sum F_i = \frac{mv^2}{R}$. The centripetal force is not an isolated force, but is rather the net force in the radial direction, and the forces that provide it are other forces, such as gravitational force and normal force.
+
+### Example cases of circular motion
+
+Consider a bead of mass $m$ attached to a string and is revolving in a circular fashion. We can decompose the forces into vertical and horizontal components. Using Newton's second law, the horizontal net force is given only by the radial tension force $\vec T$. Therefore, considering the magnitudes of the forces only:
+
+$$
+m a_c = m\frac{v^2}{R}=  T
+$$
+Meanwhile, the vertical net force depends on the location of the bead. At the very top of the circle, then:
+
+$$
+m a_c = m\frac{v^2}{R} = T + mg
+$$
+At the very bottom of the circle, then:
+
+$$
+m a_c = m\frac{v^2}{R} = T - mg
+$$
+At the leftmost and rightmost edges of the circle, then:
+
+$$
+m a_c = m\frac{v^2}{R} = T
+$$
+## Newton's theory of gravity
+
+In Newtonian mechanics, the gravitational force is given by:
+
+$$
+\vec F_g = -\frac{Gm_1 m_2}{r^2} \hat r
+$$
+### Perfectly circular orbits
+
+The simplest case of planetary motion can be modeled with uniform circular motion, that is, equating centripetal force and the gravitational force:
+
+$$
+m\frac{v^2}{R} = G \frac{Mm}{r^2}
+$$
+Solving for $v$, we have:
+$$
+v = \sqrt{\frac{GM}{r}}
+$$
+
+And the orbital period $T$ is given by:
+
+$$
+T = 2\pi \sqrt{\frac{r^3}{GM}}
+$$
+
+This is often rewritten as:
+
+$$
+T^2 = \frac{4\pi r^3}{GM}
+$$
+### Newton's shell theorem
+
+Newton found that a uniformly dense thin spherical shell attracts an external particle identically to a point mass. In addition, a particle _inside_ such a shell would feel no gravitational force. This is often called **Newton's shell theorem**.
+
+Using the shell theorem, we can divide a solid sphere of radius $R$ and mass $M$ into infinitely many infinitesimally-thin shells, and apply the shell theorem additively for each. Therefore we find again that the sphere attracts an external particle identically to a point mass. A particle inside such a sphere at a radius $r$ would feel a gravitational force that comes only from the amount of mass underneath the particle (that is, within $r$). 
+
+To compute the value of this force, we want to first find the amount of mass inside a radius $r$. Given $dm = \rho dV$, and $dV = 4\pi r^2 dr$, we can say that:
+$$
+M(r) = \int_0^r dm = \int_0^r 4\pi (r^*)^2\rho(r^*) dV
+$$
+where we relabel from $r \to r^*$ in the integrand to avoid confusing integration bounds and variables. This results in a linear force inside the spherical mass given by:
+$$
+F = \frac{GMm}{R^3} r
+$$
+Therefore given the spherical mass $M$ of radius $R$, the magnitude of the gravitational force $F$ is a piecewise function:
+
+$$
+F = 
+\begin{cases}
+\frac{GMm}{r^2}, & r > R \\\\
+\frac{GMm}{R^3}r, & r < R \\\\
+\end{cases}
+$$
