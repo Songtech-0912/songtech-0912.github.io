@@ -443,3 +443,85 @@ Solving this results in:
 $$
 W = C \exp \left(-\int p(x) dx \right)
 $$
+
+## Characteristic equations for 2nd-order homogenous ODEs
+
+A typical 2nd-order constant-coefficient homogenous ODE is an ODE that can be written in the form:
+
+$$
+a_2 y'' + a_1 y' + a_0 y = 0
+$$
+Again, note that:
+- It's _2nd-order_ because the highest order of derivatives is 2nd-order
+- It's _constant-coefficient_ because the derivatives are only scaled by a constant
+- It's homogenous because it doesn't contain any constant terms or a standalone $a(x)$ term on the LHS when written in standard form $F(y'', y', y, x) = 0$
+
+To solve this type of ODE, we first _propose_ a solution in the form $y = e^{rx}$. When we substitute this solution into the ODE, we have:
+
+$$
+a_2 r^2 e^{rx} + a_1 re^{rx} + a_0e^{rx} = 0
+$$
+
+Factoring, we have:
+
+$$
+e^{rx} (a_2 r^2 + a_1 r + a_0) = 0
+$$
+We call the quadratic quantity in brackets the _characteristic equation_. Given that $e^{rx}$ is always positive (a property of exponential functions), the characteristic equation can only be true if the quantity in the brackets is zero. Therefore, solving for the characteristic equation $a_2 r^2 + a_1 r + a_0 = 0$ for $r$ will yield the solution to the differential equation. There are several possible cases:
+
+1. 2 real but distinct roots $r_1, r_2$
+2. 2 real but repeated root $r_1, r_2$
+3. 2 imaginary roots $r_1, r_2$
+
+In the first case, the general solution is given by:
+
+$$
+y = C_1 e^{r_1 x} + C_2 e^{r_2 x}
+$$
+
+In the second case where $r_1 = r_2 = a$, the quadratic becomes $(x - a)^2 = 0$, and so the first general solution is no longer applicable because the two solutions $C_1 e^{ax}$ and $C_2 e^{ax}$ would be linearly dependent (i.e. just constant multiples of each other). Instead, the proposed solution can be modified to $y = ue^{ax}$, where $u$ is an unknown function. After computing $y''$ and $y'$ from this proposed solution, the general form of the ODE reduces to:
+
+$$
+u'' e^{ax} = 0
+$$
+
+Since $e^{ax} \neq 0$ (the exponential is always positive), the above differential equation simplifies to $u'' = 0$, which has the general solution $u = C_1 x + C_2$. Therefore, the general solution of the second case is:
+
+$$
+y = (C_1 x + C_2) e^{r_1 x}
+$$
+
+In the third case, we know that the roots $r_1, r_2$ are a conjugate pair, which means that if $r_1 = \alpha + \beta i$ then $r_2 = \alpha - \beta i$. Then the general form is given by:
+$$
+y = c_1 e^{(\alpha + i\beta)} + c_1 e^{(\alpha - i\beta)}
+$$
+Using the identity $e^{ix} = \cos x + i\sin x$, we can rewrite as:
+
+$$
+y = e^{ax} (c_3 \cos \beta x + c_4 \sin \beta x)
+$$
+
+## The method of undetermined coefficients
+
+A 2nd-order constant-coefficient _inhomogeneous_ ODE is in the form:
+
+$$
+a_2 y'' + a_1 y' + a_0 y = g(x)
+$$
+
+The general solution of this type of ODE is given by:
+
+$$
+y(x) = y_h(x) + y_f(x)
+$$
+
+Here, $y_h(x)$ is the homogenous solution, which is the solution if it was true that $g(x) = 0$ (that is, if the ODE was homogeneous). Meanwhile, $y_f(x)$ is a solution that "fits" the homogeneous solution $y_h(x)$ to work with the inhomogeneous term in the ODE.
+
+The method of undetermined coefficients works with cases in which $g(x)$ has a finite number of linearly independent derivatives. For instance, these are functions that could work:
+
+- $x^k$ - there are $k$ linearly independent derivatives, and then the remaining derivatives are zero
+- $e^{\alpha x}$
+- $\sin \alpha x$
+- $\cos \alpha x$
+
+The idea is to first solve for the homogenous version of the ODE - this solution we call $y_h(x)$. Then we solve for a "fitting solution" $y_f(x)$. This fitting solution unfortunately has to be guessed, there is no direct procedure for doing so. However, the fitting solution should contain a linear combination of terms similar to the terms in $g(x)$, with each term multiplied by an _undetermined coefficient_. The fitting solution should also not contain any terms that repeat terms in the homogenous solution.
