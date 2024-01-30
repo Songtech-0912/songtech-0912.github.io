@@ -7,6 +7,8 @@ These are notes taken in RPI's MATH 2400 course, on an introduction to different
 
 <!-- more -->
 
+Note that the general [[Calculus series]](@/calculus-series.md) and specifically the [[Integration notes]](@/integration.md) might be good to read alongside.
+
 ## Introduction
 
 A _differential equation_ is an equation that contains derivatives of an unknown function. They are a powerful tool to describe a variety of physical processes.
@@ -118,7 +120,93 @@ $$
 
 The idea is to move all the terms in $x$ to one side, move all the terms in $y$ to the other side, and integrate both sides. This gives a **general solution** to the differential equation, which is a family of functions. A particular solution (a single exact function) can be found if initial conditions are provided.
 
-As an example, consider the differential equation of a falling object undergoing drag, where $m$ and $k$ are constants:
+As an example, consider the exponential change differential equation, where $k$ is a constant:
+
+$$
+\frac{dy}{dt} = ky
+$$
+
+This differential equation is saying that an unknown function $y(t)$ changes through time proportionally to its value. It's natural that this would lead to exponential behavior: as the value of $y$ it changes more and more rapidly. The precise type of change depends on sign - if $k$ is positive, then the change is growth, if $k$ is negative, the change is decay.
+
+To solve, we will use separation of variables, which involves treating the derivative as almost a fraction. We first multiply both sides by $dt$:
+
+$$
+\frac{dy}{dt} dt = ky dt
+$$
+
+The two $dt$'s cancel out so the result is:
+
+$$
+dy = ky dt
+$$
+
+Now we divide both sides by $y$ so that on the left of the equation, we only have variables in terms of $y$, and on the right, we only have variables in terms of $t$. So:
+
+$$
+\frac{dy}{y} = kdt
+$$
+
+We now integrate both sides:
+
+$$
+\int \frac{dy}{y} = \int kdt
+$$
+
+The result is:
+
+$$
+\ln |y| + C_1 = kt + C_2
+$$
+
+Here, we can define $C_3 = C_2 - C_1$. Remember, these are arbitrary constants of integration, so we can add them and subtract them and multiply and divide them at will, as long as they remain constants, the solution will still be satisfied. So the result is:
+
+$$
+\ln |y| = kt + C_3
+$$
+
+We take the exponential of both sides:
+
+$$
+e^{\ln |y |} = e^{kt + C_3}
+$$
+
+The left side cancels out so we just have:
+
+$$
+y = e^{kt + C_3}
+$$
+
+We can write this in a slightly more elegant way though. To do so, we first note that:
+
+$$
+e^{kt + C_3} = e^{kt} e^{C_3}
+$$
+
+Now we can define a fourth constant $C_4 = e^{C_3}$ - remember we can perform arbitrary manipulation on integration constants so long as they remain _constants_. We are left with:
+
+$$
+e^{kt + C_3} = C_4 e^{kt}
+$$
+
+So plugging that back in for $y$, we have:
+
+$$
+y = C_4 e^{kt}
+$$
+
+This is called the _general solution_, because it represents a family of solutions, each with a different constant for $C_4$. To find a _particular solution_, we need to know an initial value, which is typically provided. For instance, we may be told that $y(0) = 1$. That means:
+
+$$
+1 = C_4 e^{k \cdot 0} \Rightarrow 1= C_4
+$$
+
+We can now substitute $C_4 = 1$. Therefore, for the initial value $y(0) = 1$, the _particular solution_ is:
+
+$$
+y(t) = e^{kt}
+$$
+
+As another example, consider the differential equation of a falling object undergoing drag, where $m$ and $k$ are constants:
 
 $$
 m \frac{dv}{dt} = mg - kv
