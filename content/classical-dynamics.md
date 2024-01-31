@@ -647,10 +647,12 @@ Newton found that a uniformly dense thin spherical shell attracts an external pa
 Using the shell theorem, we can divide a solid sphere of radius $R$ and mass $M$ into infinitely many infinitesimally-thin shells, and apply the shell theorem additively for each. Therefore we find again that the sphere attracts an external particle identically to a point mass. A particle inside such a sphere at a radius $r$ would feel a gravitational force that comes only from the amount of mass underneath the particle (that is, within $r$). 
 
 To compute the value of this force, we want to first find the amount of mass inside a radius $r$. Given $dm = \rho dV$, and $dV = 4\pi r^2 dr$, we can say that:
+
 $$
-M(r) = \int_0^r dm = \int_0^r 4\pi (r^*)^2\rho(r^*) dV
+M(r) = \int_0^r dm = \int_0^r 4\pi (r')^2\rho(r') dV
 $$
-where we relabel from $r \to r^*$ in the integrand to avoid confusing integration bounds and variables. This results in a linear force inside the spherical mass given by:
+
+where we relabel from $r \to r'$ in the integrand to avoid confusing integration bounds and variables. This results in a linear force inside the spherical mass given by:
 $$
 F = \frac{GMm}{R^3} r
 $$
