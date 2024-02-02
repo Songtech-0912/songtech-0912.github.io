@@ -532,7 +532,7 @@ $$
 W = C \exp \left(-\int p(x) dx \right)
 $$
 
-## Characteristic equations for 2nd-order homogenous ODEs
+## The method of the characteristic equation
 
 A typical 2nd-order constant-coefficient homogenous ODE is an ODE that can be written in the form:
 
@@ -555,7 +555,14 @@ Factoring, we have:
 $$
 e^{rx} (a_2 r^2 + a_1 r + a_0) = 0
 $$
-We call the quadratic quantity in brackets the _characteristic equation_. Given that $e^{rx}$ is always positive (a property of exponential functions), the characteristic equation can only be true if the quantity in the brackets is zero. Therefore, solving for the characteristic equation $a_2 r^2 + a_1 r + a_0 = 0$ for $r$ will yield the solution to the differential equation. There are several possible cases:
+
+Given that $e^{rx}$ is always positive (a property of exponential functions), this can only be true if:
+
+$$
+a_2 r^2 + a_1 r + a_0 = 0
+$$
+
+We call this quadratic equation the _characteristic equation_. Therefore, solving for the roots of the characteristic equation $a_2 r^2 + a_1 r + a_0 = 0$ will yield the solution to the differential equation. There are several possible cases:
 
 1. 2 real but distinct roots $r_1, r_2$
 2. 2 real but repeated root $r_1, r_2$
