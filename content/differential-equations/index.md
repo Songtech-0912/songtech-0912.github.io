@@ -470,6 +470,14 @@ $$
 I(t) = \frac{E}{2L} t + \frac{C}{t}
 $$
 
+## Interlude: the desmos checking approach
+
+Even after painstakingly finding a solution to a differential equation, it can be very, very tedious to manually verify that the solution to a differential equation is correct. Desmos can help tremendously. To do so, enter the proposed solution into desmos as a function of $x$. Then, enter in the differential equation cast in the form (LHS = 0). For example, the LR circuit differential equation shown previously might look something like this in desmos:
+
+![A demonstration of using desmos to verify the solution of a differential equation](desmos-method-demo.png)
+
+If the solution is correct, the plot of (ODE LHS = 0) should look like the line $y = 0$. If not, then it might be helpful to check if the solution is indeed correct.
+
 ## 2nd-order ODE general forms
 
 The general form of a 2nd-order linear ODE is given by:
