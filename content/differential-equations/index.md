@@ -678,13 +678,30 @@ $$
 y(x) = y_h(x) + y_f(x)
 $$
 
-Here, $y_h(x)$ is the homogenous solution, which is the solution if it was true that $g(x) = 0$ (that is, if the ODE was homogeneous). Meanwhile, $y_f(x)$ is a solution that "fits" the homogeneous solution $y_h(x)$ to work with the inhomogeneous term in the ODE.
+Here, $y_h(x)$ is the homogenous solution, which is the solution if it was true that $g(x) = 0$ (that is, if the ODE was homogeneous). Meanwhile, $y_f(x)$ is a fitting solution that "fits" the homogeneous solution $y_h(x)$ to work with the inhomogeneous term in the ODE.
 
-The method of undetermined coefficients works with cases in which $g(x)$ has a finite number of linearly independent derivatives. For instance, these are functions that could work:
+> Note: for historical reasons, the fitting solution $y_f$ is often confusingly referred to as the _particular_ solution. This has nothing to do with the other definition of particular solution (the unique solution for a given initial-value problem).
 
-- $x^k$ - there are $k$ linearly independent derivatives, and then the remaining derivatives are zero
+The method of undetermined coefficients works with cases in which $g(x)$ has a finite number of linearly independent derivatives. For instance, $g(x)$ can take the form of these following functions:
+
+- $x^k$
 - $e^{\alpha x}$
 - $\sin \alpha x$
 - $\cos \alpha x$
+- Any linear combination of the above functions in the form $a f_1(x) + b f_2(x) + c f_3(x) + \dots + z f_n(x)$, where $a, b, c$ are constant coefficients 
 
-The idea is to first solve for the homogenous version of the ODE - this solution we call $y_h(x)$. Then we solve for a "fitting solution" $y_f(x)$. This fitting solution unfortunately has to be guessed, there is no direct procedure for doing so. However, the fitting solution should contain a linear combination of terms similar to the terms in $g(x)$, with each term multiplied by an _undetermined coefficient_. The fitting solution should also not contain any terms that repeat terms in the homogenous solution.
+The idea is to first solve for the homogenous version of the ODE - this solution we call $y_h(x)$. Then we solve for a "fitting solution" $y_f(x)$. This fitting solution unfortunately has to be guessed, there is no direct procedure for doing so. However, there are a few general strategies for finding a good guess. First, each term in the guess should have an adjacent _undetermined coefficient_. Second, each term in the guess should ideally match a similar term in $g(x)$, like so:
+
+| Term present in $g(x)$ | Term to add to fitting solution guess |
+|----|-----|
+| $x^k$ | $Ax^k + Bx^{k - 1} + \dots + Nx + M$ |
+| $e^{kx}$ | $Ae^{kx}$ |
+| $\sin kx$ or $\cos kx$ | $A \sin kx + B \cos kx$ |
+
+For instance, if $g(x) = 3x^2 + 5e^{-2t}$, a possible guess could be:
+
+$$
+y_f(x) = Ax^2 + Bx + C + De^{-2t}
+$$
+
+And third, the fitting solution shouldn't contain any terms that are linearly dependent, or repeat terms in the homogeneous solution. For instance, it would be incorrect to write $Ax + Bx$ because those two terms are linearly dependent. Similarly, if the homogeneous solution (when fully distributed-out) contained a term $5 \sin 2x$, then the guess cannot contain a term $A \sin 2x$, because those two terms would be linearly dependent. Instead, a term $A x \sin (2x)$ could be added instead, which would not be linearly dependent with $5 \sin 2x$. This can be extended to a general technique - add powers of $x$ in front of a term every time a term could potentially be linearly dependent.
