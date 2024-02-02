@@ -796,3 +796,117 @@ Trigonometric substitutions are incredibly easy to mess up, so be careful with t
 - Forgetting to carry over constants
 - Simplification errors in the trigonometric integrand
 - Errors in converting the solution in $\theta$ back to a solution in $x$, often due to forgetting a square root or a square when using Pythagoras
+
+## Integration by long division and partial fractions
+
+Consider an integral in the form:
+
+$$
+\int \frac{P(x)}{Q(x)} dx
+$$
+
+If the degree of $P(x)$ is higher than the degree of $Q(x)$, then the integrand can be simplified by dividing $P(x)$ by $Q(x)$ using polynomial long division. The process is analogous to arithmetic long division.
+
+When doing long division, be very careful of signs while subtracting. It is easy to get the wrong result just by forgetting a negative sign when doing a subtraction. Also, don't forget to carry over the remainder. Whenever possible, split up the resulting fraction when you integrate, so for instance, something like:
+
+$$
+\int 2x dx + \frac{5x + 3}{x - 1} dx
+$$
+
+becomes:
+
+$$
+\int 2x dx + \int \frac{5x}{x - 1} dx + \frac{3}{x - 1} dx
+$$ 
+
+In cases where long division cannot be done, a partial fraction decomposition can be performed instead. The goal of partial fraction decomposition is to write the integrand as a sum of simpler fractions. That is:
+
+$$
+\frac{P(x)}{Q(x)} = \frac{A}{F_1(x)} + \frac{B}{F_2(x)} + \frac{C}{F_3(x)} + \dots + \frac{Z}{F_n(x)}
+$$
+
+The first step of a partial fraction decomposition is to factor $Q(x)$ as completely as possible. That is, the integrand should take the following form:
+
+$$
+\frac{P(x)}{Q(x)} = \frac{P(x)}{F_1(x)F_2(x)F_3(x)\dots F_n(x)}
+$$
+
+If a factor is in the form $(x - a)^n$, where $a$ is not a complex number or radical, it is called a **linear factor**. Such a factor contributes a partial fraction decomposition of the form:
+
+$$
+\frac{1}{(x - a)^n} = \frac{A}{x - a} + \frac{B}{(x - a)^2} + \frac{C}{(x - a)^3} + \dots + \frac{Z}{(x - a)^n}
+$$
+
+Note that a factor in the form $x^n$ (such as $x^2$ or $x$) can technically be written in the form $(x - 0)^n$, and so also qualifies as a linear factor.
+
+Meanwhile, if the factor is in the form $(x^2 + ax + b)^n$, and cannot be simplified further without using radicals or complex numbers, it is called an **irreducible quadratic factor**. Such a factor contributes a partial fraction decomposition of the form:
+
+$$
+\frac{1}{(x^2 + ax + b)^n} = \frac{A}{x^2 + ax + b} + \frac{B}{(x^2 + ax + b)^2} + \dots + \frac{Z}{(x^2 + ax + b)^n}
+$$
+
+As an example, consider the integral:
+
+$$
+\int \frac{x + 5}{x^2 + x - 2} dx
+$$
+
+We first factor:
+
+$$
+\int \frac{x + 5}{(x - 1)(x + 2)} dx
+$$
+
+Now we perform a partial fraction composition of the integrand. Since we see that the factors are linear, we propose that the integrand take the form:
+
+$$
+\frac{x + 5}{(x - 1)(x + 2)} = \frac{A}{x - 1} + \frac{B}{x + 2}
+$$
+
+If we distribute by multiplying every term by $(x - 1)(x + 2)$, we get:
+
+$$
+x + 5 = A(x + 2) + B(x - 1)
+$$
+
+We can now substitute in convenient values to find $A$ and $B$. For instance, if we evaluate with $x = 1$, then:
+
+$$
+(1 + 5) = A(1 + 2) + B(1 - 1)
+$$
+
+which simplifies to:
+
+$$
+6 = 3A
+$$
+
+Therefore $A = 2$. Similarly, if we evaluate with $x = -2$, then:
+
+$$
+(-2 + 5) = A(-2 + 2) + B(-2 - 1)
+$$
+
+which simplifies to:
+
+$$
+3 = -3B
+$$
+
+Therefore $A = 2, B = -1$. Placing the partial fraction decomposition back into the integrand, we have:
+
+$$
+\int \frac{2}{x - 1} - \frac{1}{x + 2}~dx
+$$
+
+which becomes:
+
+$$
+2 \ln | x - 1 | - \ln | x + 2 | + C
+$$
+
+When doing partial fraction decompositions, make sure that if the fraction is improper, that you first do long division, and then (if the result isn't simple enough to directly integrate) decompose using partial fractions. In addition, be careful about identifying factors - sometimes factors that might look linear factorable might be irreducible quadratics, and factors that look like quadratics are linear factorable.
+
+Finally, when convenient cancelling isn't possible, use variations of x-values (e.g. evaluate when $x = 0$, then $x = 1$, then $x = 2$) for getting partial fraction decompositions when there are multiple repeated factors. This allows you to setup a system of equations that you can solve to find the coefficients of the partial fraction decomposition.
+
+After finding the partial fraction decomposition of a rational function, it is always best to plug in a value of $x$ (such as $x = 0$ or $x = 1$) and check that the partial fraction outputs the same value as the original integrand. This means the partial fraction decomposition is correct.
