@@ -12,4 +12,4 @@ These are my personal calculus notes taken at my time at RPI. They include Preca
 - [Limits](@/limits.md)
 - [Derivatives](@/differentiation.md)
 - [Integrals](@/integration.md)
-- [Differential Equations](@/differential-equations.md)
+- [Differential Equations](@/differential-equations/index.md)
