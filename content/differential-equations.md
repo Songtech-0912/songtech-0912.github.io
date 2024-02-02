@@ -380,7 +380,7 @@ $$
 \mu y = \int \mu(x) q(x) dx
 $$
 
-We can isolate $y$ by solving $\mu'(x) = \mu(x) p(x)$. This is a separable differential equation, which we can easily solve (here we call the integration constant $A$):
+However, we still haven't figured out $\mu$, other than knowing it satisfies the differential equation $\mu' = \mu p$. Luckily this is a separable differential equation, which we can solve straightforwardly (here we call the integration constant $A$):
 
 $$
 \frac{d\mu}{dx} = \mu p
@@ -395,25 +395,79 @@ $$
 $$
 
 $$
-\mu = Ae^{\int p(dx)}
+\mu = Ae^{\int p(x) dx)}
 $$
 
 If we substitute this back in, we have:
 
 $$
-Ae^{\int p(x) dx} y = \int q(x) Ae^{\int p(x)dx} dx
+\mu y = \int \mu(x) q(x) dx \Rightarrow Ae^{\int p(x) dx} y = \int q(x) Ae^{\int p(x)dx} dx
 $$
 
-The two integration constants on the LHS and RHS cancel out to have:
+The two integration constants $A$ on the LHS and RHS cancel out to have:
 
 $$
 e^{\int p(x) dx} y = \int q(x) e^{\int p(x) dx} dx
 $$
 
-Which we can solve for $y$ with:
+Which we can solve for $y$ by multiplying by the inverse of $\displaystyle e^{\int p(x) dx}$ on the left:
 
 $$
 y = e^{-\int p(x) dx} \int q(x) e^{\int p(x) dx} dx + Ce^{-\int p(x) dx}
+$$
+
+This can seem very complicated, but at its core, it is just two important results that provide all we need to solve any differential equation in the form $y' + py = q$:
+
+$$
+\mu y = \int \mu q(x) dx, \quad \mu' = \mu p(x)
+$$
+
+As an example, consider the differential equation of an electrical circuit with an inductor and a resistor:
+
+$$
+L \frac{dI}{dt} + R(t) I = \mathcal{E}
+$$
+
+where $R(t) = \frac{L}{t}$ (this is a made-up resistance function, but the differential equation itself is real). We can use the method of integrating factors to solve. To do so, we first write out $R(t)$ explictly and divide by $L$ so that the equation takes the standard form of $y' + p(x) y = q(x)$. This results in:
+
+$$
+\frac{dI}{dt} + \frac{1}{t} I = \frac{\mathcal{E}}{L}
+$$
+
+Now, we can multiply an integrating factor $\mu(t)$ to every term:
+
+$$
+\mu \frac{dI}{dt} + \mu \frac{1}{t} I = \mu \frac{\mathcal{E}}{L}
+$$
+
+We find $\mu$ through integration:
+
+$$
+\mu = \exp \left(\int p(x) dx \right) = \exp \left(\int \frac{1}{t} dt \right) = t
+$$
+
+And now, we can finally use the integrating factor to solve for $I$:
+
+$$
+\mu I = \int \mu q(t) dt \Rightarrow t I = \int t \frac{\mathcal{E}}{L} dt
+$$
+
+Solving the integral, the result is:
+
+$$
+t I = \frac{\mathcal{E}}{L} \frac{t^2}{2} + C
+$$
+
+We isolate $I$ by dividing by $\frac{t}{L}$ to find the explicit general solution:
+
+$$
+I(t) = \frac{1}{t} \left(\frac{E}{L} \frac{t^2}{2} + C\right)
+$$
+
+So the final result is:
+
+$$
+I(t) = \frac{E}{2L} t + \frac{C}{t}
 $$
 
 ## 2nd-order ODE general forms
@@ -439,7 +493,9 @@ y' &= v
 \end{align}
 $$
 
-Each of these two first-order differential equations has a unique solution given an initial condition - $v(0)$ (which is equal to $y'(0)$) for the first and $y(0)$ for the second. This means that the original 2nd-order linear ODE must have two solutions and two initial conditions. The two solutions, denoted $y_1(x)$ and $y_2(x)$, must also be _linearly independent_. Linearly independent means that $y_1(x) \neq c y_2(x)$ and $y_2(x) \neq c y_1(x)$ - one cannot be expressed as a constant multiple of the other. The general solution is obtained by a linear combination of both solutions:
+Each of these two first-order differential equations has a unique solution given an initial condition - $v(0)$ (which is equal to $y'(0)$) for the first and $y(0)$ for the second. This means that the original 2nd-order linear ODE must have two solutions and two initial conditions. The two solutions, denoted $y_1(x)$ and $y_2(x)$, must also be _linearly independent_. Linearly independent means that $y_1(x) \neq c y_2(x)$ and $y_2(x) \neq c y_1(x)$ - one cannot be expressed as a constant multiple of the other. The reason for this is that we want two unique solutions, and if one can be expressed in terms of the other we essentially just have one solution, but we know that would be inconsistent with the fact two solutions must exist. Thus, the two solutions must be linearly independent.
+
+The general solution of such a 2nd-order differential equation is obtained by a linear combination of both solutions:
 
 $$
 y(x) = c_1 y_1(x) + c_2 y_2(x)
@@ -515,6 +571,7 @@ $$
 $$
 (y_2 y_1'' - y_1 y_2'') + p(-W) = 0
 $$
+
 In addition, given the definition of the Wronskian, we can find that $W' = y_1 y_2'' - y_2 y_1''$. Therefore, the entire equation reduces down to:
 
 $$
@@ -539,10 +596,11 @@ A typical 2nd-order constant-coefficient homogenous ODE is an ODE that can be wr
 $$
 a_2 y'' + a_1 y' + a_0 y = 0
 $$
+
 Again, note that:
 - It's _2nd-order_ because the highest order of derivatives is 2nd-order
-- It's _constant-coefficient_ because the derivatives are only scaled by a constant
-- It's homogenous because it doesn't contain any constant terms or a standalone $a(x)$ term on the LHS when written in standard form $F(y'', y', y, x) = 0$
+- It's _constant-coefficient_ because $a_2$, $a_1$, and $a_0$ are all constants
+- It's homogeneous because it doesn't contain any constant terms or a standalone $a(x)$ term on the LHS when written in the standard form (LHS = 0)
 
 To solve this type of ODE, we first _propose_ a solution in the form $y = e^{rx}$. When we substitute this solution into the ODE, we have:
 
@@ -587,9 +645,11 @@ y = (C_1 x + C_2) e^{r_1 x}
 $$
 
 In the third case, we know that the roots $r_1, r_2$ are a conjugate pair, which means that if $r_1 = \alpha + \beta i$ then $r_2 = \alpha - \beta i$. Then the general form is given by:
+
 $$
 y = c_1 e^{(\alpha + i\beta)} + c_1 e^{(\alpha - i\beta)}
 $$
+
 Using the identity $e^{ix} = \cos x + i\sin x$, we can rewrite as:
 
 $$
