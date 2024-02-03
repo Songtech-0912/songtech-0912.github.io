@@ -57,7 +57,18 @@ $$
 
 If the equation can be rewritten such that $a(x) = 0$, then the differential equation is called _homogeneous_; otherwise, it is called _non-homogeneous_. The more informal definition is that a homogeneous differential equation must have either $y$ or a derivative of $y$ in every term when written in the form (left-hand-side) = 0. Homogeneity only applies for linear ODEs; any nonlinear ODE cannot be classified in this way.
 
-In addition, if a differential equation doesn't follow the general form of a linear differential equation, it is called _nonlinear_. For instance, the following is a nonlinear differential equation, because there is a function of the derivative $y'$ present:
+An intuitive idea of homogeneity is to compare the general forms of a 1st-order homogeneous ODE with a 1st-order non-homogeneous ODE:
+
+$$
+\begin{matrix}
+\text{Homogeneous:} & y' + a(x) y = 0 \\\\
+\text{Non-homogeneous:} & y' + a(x) y + b(x) + c = 0
+\end{matrix}
+$$
+
+Notice how the non-homogeneous equation has an extra $b(x) + c$ term but the homogeneous equation does not. This is a good way to tell the difference: if the differential equation has any isolated terms involving only $x$ or only a constant when written in the form (LHS) = 0, then it is non-homogeneous.
+
+If a differential equation doesn't follow the general form of a linear differential equation, it is called _nonlinear_. For instance, the following is a nonlinear differential equation, because there is a function of the derivative $y'$ present:
 
 $$
 \left(\frac{dy}{dx}\right)^3 + xy = 0
@@ -662,6 +673,49 @@ Using the identity $e^{ix} = \cos x + i\sin x$, we can rewrite as:
 
 $$
 y = e^{ax} (c_3 \cos \beta x + c_4 \sin \beta x)
+$$
+
+As an example, **Hooke's law** describes the motion of an oscillating spring. It states that the force to extend or compress the spring by a certain distance $x$ is given by:
+
+$$
+F = -kx
+$$
+Since $F = ma$, and acceleration can be written as the second derivative of position, Hooke's law therefore naturally generalizes to the differential equation:
+
+$$
+m\frac{d^2 x}{dt^2} = -kx
+$$
+After some rearranging, the equation can be cast into the form:
+
+$$
+\frac{d^2 x}{dt^2} + \frac{k}{m} x = 0
+$$
+This is a homogeneous, linear second-order ODE, and can be solved by the method of the characteristic equation. First, we note that the characteristic equation is given by:
+
+$$
+r^2 + \frac{k}{m} = 0
+$$
+Solving for $r$, we find that:
+
+$$
+r = \sqrt{\frac{k}{m}}i
+$$
+And if we say that $r = \alpha + \beta i$, then:
+
+$$
+\beta = \sqrt{\frac{k}{m}}
+$$
+
+Recalling that when imaginary roots exist, the solution is given by $y = e^{\alpha t} (C_1 \cos \beta t + C_2 \sin \beta t)$, we can substitute $\alpha = 0$ and $\beta = \sqrt{\frac{k}{m}}$ to find:
+
+$$
+y = e^{0t} \left(C_1 \cos \sqrt{\frac{k}{m}}t + C_2 \sin \sqrt{\frac{k}{m}} t \right)
+$$
+
+We can now simplify by noting that $e^{0x} = 1$ and by defining $\omega = \sqrt{\frac{k}{m}}$, allowing the general solution to become:
+
+$$
+y = C_1 \cos \omega t + C_2 \sin \omega t
 $$
 
 ## The method of undetermined coefficients
