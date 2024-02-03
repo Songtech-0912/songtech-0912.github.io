@@ -638,8 +638,9 @@ $$
 This is often rewritten as:
 
 $$
-T^2 = \frac{4\pi r^3}{GM}
+T^2 = \frac{4\pi^2 r^3}{GM}
 $$
+
 ### Newton's shell theorem
 
 Newton found that a uniformly dense thin spherical shell attracts an external particle identically to a point mass. In addition, a particle _inside_ such a shell would feel no gravitational force. This is often called **Newton's shell theorem**.
@@ -664,4 +665,116 @@ F =
 \frac{GMm}{r^2}, & r > R \\\\
 \frac{GMm}{R^3}r, & r < R \\\\
 \end{cases}
+$$
+
+### Gravitational potential energy
+
+The gravitational potential energy, like any potential energy for a conservative force, is given by:
+
+$$
+U = -\int_C \vec F \cdot d\vec s
+$$
+
+Potential energy is always defined with respect to a reference point. Previously, this was often assumed to be the ground - $U = 0$ when $y = 0$. In the case of generalized gravitation, the reference point of the potential energy is a point infinitely far away (that is, $U = 0$ at $r = \infty$). Therefore, the line integral simplifies to:
+
+$$
+U = -\int_\infty^r -\frac{GMm}{r^2} dr = -\frac{GMm}{r}
+$$
+
+This can be approximated for objects near the Earth as:
+
+$$
+U(y) \approx mgy
+$$
+
+### Gravitational total energy
+
+The total energy in gravitation is given by:
+
+$$
+E = K + U = \frac{1}{2} mv^2 -\frac{GMm}{r}
+$$
+
+$E$ must be less than zero for an object to remain in orbit. Solving for $v$ in the case $E \geq 0$, we find that the **escape velocity** of an object in orbit is given by:
+
+$$
+v_{\mathrm{esc}} = \sqrt{\frac{2GM}{r}}
+$$
+
+## Angular momentum
+
+Newton's second law can be formulated in terms of momentum $\vec p$:
+
+$$
+F = \frac{d\vec p}{dt}
+$$
+However, for radial problems, it is often more helpful to formulate Newton's second law in terms of _angular momentum_ $\vec L$, defined:
+$$
+\vec L = \vec r \times \vec p
+$$
+In this case, Newton's second law becomes the equation for **torque** $\vec \tau$, the radial equivalent of force:
+
+$$
+\vec \tau = \frac{d\vec L}{dt} = \vec r \times \vec F
+$$
+
+## Kepler's laws
+
+1. Each planet moves in an elliptical orbit described by the parameters $a$ and $b$
+2. A line from the Sun to a given planet sweeps out equal areas in equal times
+3. The square of the period of the orbit is proportional to the cube of $a$
+
+For the first, this means that the orbits of planets follow the equation:
+
+$$
+\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1
+$$
+Where:
+
+$$
+a = \frac{GMm}{2|E|}
+$$
+$$
+b = \frac{L}{\sqrt{2m|E|}}
+$$
+For the second, it is due to the fact that as the gravitational force and angular momentum are parallel vectors, their cross product is zero, and thus angular momentum is conserved.
+
+The third was proven earlier in the case of perfectly circular orbits. For an improved generalization that extends to elliptical orbits, the relationship is given by:
+
+$$
+T^2 = \sqrt{\frac{4\pi^2 a^3}{GM}}
+$$
+## Mathematical interlude: Taylor series
+
+A function can be approximated near a point $x_0$ via:
+
+$$
+f(x) \approx f(x_0) + f'(x_0)(x - x_0) + \frac{1}{2} (x - x_0)^2 + \dots
+$$
+
+If infinite terms are used, then the function can be _exactly_ represented by its approximation:
+$$
+f(x) = \sum_{n = 0}^\infty \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n
+$$
+In practice, however, only a few terms (typically up to 2nd-order or 3rd-order) are necessary, and we usually set $x_0 = 0$. For instance:
+
+| Function | Approximation about $x = 0$ (up to 2nd or 3rd order) |
+| ---- | ---- |
+| $(1 + x)^\alpha$ | $1 + \alpha x + \frac{1}{2}\alpha (\alpha - 1)x^2$ |
+| $e^x$ | $1 + x + \frac{x^2}{2}$ |
+| $\sin x$ | $x - \frac{x^3}{6}$ |
+| $\cos x$ | $1 - \frac{x^2}{2}$ |
+| $\ln (1 + x)$ | $x - \frac{x^2}{2}$ |
+| $\tan x$ | $x + \frac{x^3}{3}$ |
+| $1/(x + \alpha)^n$ | $\frac{1}{\alpha^{n}}-\frac{nx}{\alpha^{n+1}}+\frac{n(n+1)x^{2}}{2\alpha^{n+2}}$ |
+
+This means, for instance, that for an object a small distance $\alpha$ above the surface of the Earth, where the radius of the Earth is given by $r_E$, then the magnitude of the gravitational force can be reasonably approximated by a Taylor expansion about $r = r_E$:
+
+$$
+F_g = \frac{GMm}{r_E^2} -\frac{GMm}{r_E^3} (r - r_E) + \frac{GMm}{2r_E^4} (r-r_E)^2 + \dots
+$$
+If we define $g = \frac{GM}{r_E^2}$, then to the first term of the Taylor expansion, we have:
+
+$$
+F_g = mg
 $$
