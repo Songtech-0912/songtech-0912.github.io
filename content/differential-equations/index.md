@@ -355,6 +355,55 @@ $$
 v(t) = \frac{m}{k} \left(g - \frac{mg}{k} e^{-\frac{k}{m}t} \right)
 $$
 
+## The method of substitution
+
+Substitutions are often useful for turning inseparable differential equations into separable ones that are much easier to solve. However, they are not frequently taught, and were not a topic covered in RPI's MATH 2400. Thus, this is a supplemental section. 
+
+There is _no_ general rule for a substitution - the only real guideline is that they simplify the differential equation, but knowing _what_ exactly to substitute is typically a matter of inspired guesswork. As an example, consider the following equation:
+
+$$
+\frac{dy}{dx} = 6x + 2y
+$$
+ In this case, a substitution that seems reasonable might be $u = 6x + 2y$. Therefore, the differential equation can be rewritten as:
+
+$$
+\frac{dy}{dx} = u
+$$
+If we take the derivative of $u$ with respect to $x$, we can use implicit differentiation to find:
+
+$$
+\frac{du}{dx} = 6 + 2 \frac{dy}{dx}
+$$
+Since $\frac{dy}{dx} = u$, we can substitute that in:
+
+$$
+\frac{du}{dx} = 6 + 2 u
+$$
+This is a separable equation, which can be straightforwardly solved - the steps are essentially identical to any other separable 1st-order ODE:
+
+$$
+\int \frac{du}{6 + 2u} = \int dx \Rightarrow u = \frac{1}{2} Ce^{2x} - 3
+$$
+
+We now simply need to substitute $6x + 20y$ back in for $u$, to obtain:
+
+$$
+6x + 2 y = \frac{1}{2} Ce^{2x} - 3
+$$
+
+Solving for $y$, we have:
+
+$$
+y = \frac{1}{4} Ce^{2x} - 3x - \frac{3}{2}
+$$
+Or written in a cleaned-up form:
+
+$$
+y = \frac{1}{4} Ce^{2x} - 3\left(x + \frac{1}{2}\right)
+$$
+
+There are many more substitutions, such as $u = \ln x$, $u = \frac{1}{x}$, $u = \frac{y}{x}$ that are useful for ODEs, and even more that extend to PDEs. They are a powerful tool in solving some differential equations that seem untackable.
+
 ## The method of integrating factors
 
 Consider the first-order linear ODE:
