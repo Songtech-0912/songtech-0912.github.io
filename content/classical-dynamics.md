@@ -3,7 +3,7 @@ title = "Notes on introductory classical dynamics"
 date = 2024-01-08
 +++
 
-These are notes taken in RPI's Physics 1150 class, relating to introductory classical dynamics. Make sure to read the [calculus series](@/calculus-series.md) first as these notes are calculus-heavy.
+These are notes taken in RPI's Physics 1150 class, relating to introductory classical dynamics - essentially, Newtonian mechanics. Make sure to read the [calculus series](@/calculus-series.md) first as these notes are calculus-heavy.
 
 <!-- more -->
 
@@ -291,6 +291,10 @@ $$
 y = -\frac{g}{2 v_0^2 \cos^2 \theta} x^2 + v_0 \tan (\theta) x
 $$
 
+## Energy
+
+Energy can be understood as a measure of the ability to make things move. It comes in two primary types: kinetic energy, which is associated with moving, and potential energy, which is associated with being able to move.
+
 ## Work
 
 Work is the transfer of energy by a force applied along a displacement. It is a scalar quantity defined by:
@@ -312,13 +316,13 @@ $$
 
 ## Conservation of energy
 
-If a force depends only on position, it is called a **conservative force**. Conservative forces are associated with a potential energy function $U(x)$ in 1D via:
+If a force depends only on position, it is called a **conservative force**. A conservative force stores energy in the form of potential energy, and releases energy in the form of kinetic energy. Conservative forces are associated with a potential energy function $U(x)$ in 1D via:
 
 $$
 F(x) = -\frac{dU}{dx}
 $$
 
-Using the same method as prior to obtain the work-energy theorem, we can:
+Using the same method as prior to obtain the work-energy theorem, we find that:
 
 $$
 W = \int_{x_0}^{x_1} -\frac{dU}{dx} dx = -\int_{x_0}^{x_1} dU = -U(x) \bigg |_{x_0}^{x_1} = -\Delta U
@@ -463,11 +467,14 @@ Extending the definition of 1D work, the differential of the work in higher dime
 $$
 dW = \vec F \cdot d\vec s
 $$
-The force is applied along a path in 3D space, which we call $C$ (for "curve"). The total work is given by the integral of this quantity along the curve, which we call a **line integral**:
+The force is applied along a path from $a = (x_0, y_0, z_0)$ to $b = (x_1, y_1, z_1)$ in 3D space, which we denote with $C$ (for "curve"). The total work is given by the integral of this quantity along the path, which we call a **line integral**:
 
 $$
-W = \int_C \vec F \cdot d\vec s
+W = \int_{C[a \to b]} \vec F \cdot d\vec s
 $$
+
+Note that the subscript under the integral is optional and not required.
+
 Line integrals can be evaluated by expanding them component-by-component:
 
 $$
@@ -481,7 +488,9 @@ $$
 where $r'(t) = (x', y', z')$, line integrals can be rewritten as:
 
 $$
-\int_C \vec F(\vec r) \cdot d\vec s = \int_{C(a)}^{C(b)} (F_x(t) x'(t)+ F_y(t) y'(t) + F_z(t) z'(t) )dt = \int_{C(a)}^{C(b)} \vec F(t) \cdot \vec r'(t) dt
+\begin{align}
+& \int_C \vec F(\vec r) \cdot d\vec s \\\\ &= \int_{C(a)}^{C(b)} (F_x(t) x'(t)+ F_y(t) y'(t) + F_z(t) z'(t) )dt \\\\ &= \int_{C(a)}^{C(b)} \vec F(t) \cdot \vec r'(t) dt
+\end{align}
 $$
 
 In higher dimensions, Newton's 2nd Law can be written as:
@@ -498,33 +507,58 @@ $$
 We obtain:
 
 $$
-W = \int_C \vec F \cdot d\vec s = \int_C m\frac{d\vec v}{dt} \cdot \frac{d\vec s}{dt} dt = \int_C m \vec v \cdot d\vec v = \frac{1}{2} m(\vec v \cdot \vec v) \bigg |_a^b = \frac{1}{2} m \Delta v^2 = \Delta K
+\begin{align}
+W &= \int_C \vec F \cdot d\vec s \\\\ & = \int_C m\frac{d\vec v}{dt} \cdot \frac{d\vec s}{dt} dt \\\\ &= \int_C m \vec v \cdot d\vec v \\\\ &= \frac{1}{2} m(\vec v \cdot \vec v) \bigg |_a^b \\\\ &= \frac{1}{2} m \Delta v^2 = \Delta K
+\end{align}
 $$
 
 ## Conservation of energy in higher dimensions
 
-A force $\vec F$ is called **conservative** if there is a scalar function $U(x, y, z)$ such that:
+In higher dimensions, kinetic energy is still a scalar function, but involves derivatives in more than one dimension:
+
+$$
+K = \frac{1}{2} mv^2 = \frac{1}{2} m \left[\left( \frac{dx}{dt} \right)^2 + \left( \frac{dy}{dt} \right)^2 + \left( \frac{dz}{dt} \right)^2 \right]
+$$
+
+Potential energy is also still a scalar function, but becomes multivariable:
+
+$$
+U = U(x, y, z)
+$$
+
+A force $\vec F$ is called **conservative** if there is a potential energy function $U(x, y, z)$ such that:
 
 $$
 \vec F = -\nabla U = -\left(\frac{\partial U}{\partial x}, \frac{\partial U}{\partial y}, \frac{\partial U}{\partial z}\right)
 $$
 
-This function $U(x, y, z)$ is known as the potential function, and particles naturally flow from a region of higher potential to a region of lower potential. For conservative forces, there are several important properties:
+This means that particles naturally flow from a region of higher potential energy to a region of lower potential energy. We can also write this in (line) integral form; in this form, the potential energy at $r = (x, y, z)$ defined with respect to a reference point $r_0 = (x_0, y_0, z_0)$ is given by:
+
+$$
+U(x, y, z) = -\int_{C[r_0 \to r]} \vec F \cdot d\vec s
+$$
+
+For conservative forces, there are several important properties:
 
 - The line integral of the force is independent of path
 - The line integral of the force vanishes for any closed path
-- $\nabla \times \vec F(\vec r) = 0$
+- $\nabla \times \vec F = 0$
 
 Therefore the work (in the case of conservative forces only!) can be rewritten as:
 
 $$
-W = \int_C \vec F \cdot d\vec s = -\int_C \nabla U \cdot d\vec s = -\int_a^b dU = U(a) - U(b) = -\Delta  U
+\begin{align}
+W &= \int_{C[a \to b]} \vec F \cdot d\vec s \\\\ &= -\int_{C[a \to b]} \nabla U \cdot d\vec s \\\\ &= -\int_a^b dU = U(a) - U(b) = -\Delta  U
+\end{align}
 $$
 
 Here we use the expression of the total differential to arrive at the prior result:
 
 $$
-\nabla U \cdot d\vec s = \left(\frac{\partial U}{\partial x}, \frac{\partial U}{\partial y}, \frac{\partial U}{\partial z}\right) \cdot (dx, dy, dz) = \frac{\partial U}{\partial x} dx + \frac{\partial U}{\partial y} dy + \frac{\partial U}{\partial z} dx = dU
+\begin{align}
+\nabla U \cdot d\vec s &= \left(\frac{\partial U}{\partial x}, \frac{\partial U}{\partial y}, \frac{\partial U}{\partial z}\right) \cdot (dx, dy, dz)
+\\\\ &= \frac{\partial U}{\partial x} dx + \frac{\partial U}{\partial y} dy + \frac{\partial U}{\partial z} dx \\\\ &= dU
+\end{align}
 $$
 
 Equating the two equivalent definitions of work (for kinetic and potential energy respectively), we find that the work-energy theorem still holds true:
@@ -669,16 +703,16 @@ $$
 
 ### Gravitational potential energy
 
-The gravitational potential energy, like any potential energy for a conservative force, is given by:
+The gravitational potential energy, like any potential energy for a conservative force, is given by the negative work (work done against the force of gravity) to bring a mass to its position $r$:
 
 $$
-U = -\int_C \vec F \cdot d\vec s
+U = -\int_{C[r_0 \to r]} \vec F \cdot d\vec s
 $$
 
-Potential energy is always defined with respect to a reference point. Previously, this was often assumed to be the ground - $U = 0$ when $y = 0$. In the case of generalized gravitation, the reference point of the potential energy is a point infinitely far away (that is, $U = 0$ at $r = \infty$). Therefore, the line integral simplifies to:
+More precisely, this negative work is done along a path from a reference point $r_0$ to the object's current position $r$, where we choose the reference point such that $U(r_0) = 0$. Previously, this reference point was often assumed to be the ground - that is, $U = 0$ when $y = 0$. In the case of generalized gravitation, we choose a point infinitely far away as the reference point for the gravitational potential energy (that is, $U = 0$ at $r = \infty$). Therefore, the line integral simplifies to:
 
 $$
-U = -\int_\infty^r -\frac{GMm}{r^2} dr = -\frac{GMm}{r}
+U(r) = -\int_\infty^r -\frac{GMm}{{r'}^2} dr' = -\frac{GMm}{r}
 $$
 
 This can be approximated for objects near the Earth as:
@@ -724,12 +758,19 @@ $$
 2. A line from the Sun to a given planet sweeps out equal areas in equal times
 3. The square of the period of the orbit is proportional to the cube of $a$
 
-For the first, this means that the orbits of planets follow the equation:
+Kepler's first law means that the orbits of planets follow the equation of an ellipse:
 
 $$
 \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1
 $$
-Where:
+
+Here, $a$ is the semi-major axis, which is half the distance across the longer diameter of the ellipse. $b$ is the semi-minor axis, which is half the distance across the shorter diameter of the ellipse. 
+
+![Image of an ellipse, showing the semi-major and semi-minor axes](https://upload.wikimedia.org/wikipedia/commons/9/96/Ellipse-def0.svg)
+
+(Credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ellipse-def0.svg))
+
+For gravitational orbits, the values of $a$ and $b$ are given by:
 
 $$
 a = \frac{GMm}{2|E|}
@@ -737,13 +778,15 @@ $$
 $$
 b = \frac{L}{\sqrt{2m|E|}}
 $$
-For the second, it is due to the fact that as the gravitational force and angular momentum are parallel vectors, their cross product is zero, and thus angular momentum is conserved.
 
-The third was proven earlier in the case of perfectly circular orbits. For an improved generalization that extends to elliptical orbits, the relationship is given by:
+Kepler's second law is due to the fact that as the gravitational force and angular momentum are parallel vectors, their cross product is zero, and thus angular momentum is conserved.
+
+Kepler's third law was proven earlier in the case of perfectly circular orbits. For an improved generalization that extends to elliptical orbits, the relationship is given by:
 
 $$
 T^2 = \sqrt{\frac{4\pi^2 a^3}{GM}}
 $$
+
 ## Mathematical interlude: Taylor series
 
 A function can be approximated near a point $x_0$ via:
