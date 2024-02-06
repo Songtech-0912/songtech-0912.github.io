@@ -910,3 +910,96 @@ When doing partial fraction decompositions, make sure that if the fraction is im
 Finally, when convenient cancelling isn't possible, use variations of x-values (e.g. evaluate when $x = 0$, then $x = 1$, then $x = 2$) for getting partial fraction decompositions when there are multiple repeated factors. This allows you to setup a system of equations that you can solve to find the coefficients of the partial fraction decomposition.
 
 After finding the partial fraction decomposition of a rational function, it is always best to plug in a value of $x$ (such as $x = 0$ or $x = 1$) and check that the partial fraction outputs the same value as the original integrand. This means the partial fraction decomposition is correct.
+
+## Improper integrals
+
+A improper integral is an integral defined either on an unbounded domain, or a domain that is not integratabtle, then:
+
+$$
+\int_a^k f(x) dx = \lim_{b \to k} \int_a^b f(x) dx
+$$
+
+For instance:
+
+$$
+\int_0^\infty f(x)dx = \lim_{b \to \infty} \int_0^b f(x) dx
+$$
+
+$$
+\int_{-\infty}^0 f(x)dx = \lim_{b \to -\infty} \int_b^0 f(x) dx
+$$
+
+$$
+\int_{-\infty}^\infty f(x) dx = \lim_{a \to -\infty} \int_a^0 f(x) dx + \lim_{b \to \infty} \int_0^b f(x) dx
+$$
+
+If the limit exists (evaluates to a finite number), then the integral is said to **converge**; otherwise, the integral is said to **diverge**.
+
+For instance, consider the integral:
+
+$$
+\int_1^\infty \frac{1}{x^2} dx
+$$
+Using the approach outlined previously, we rewrite as a limit:
+
+$$
+\lim_{b \to \infty} \int_1^b \frac{1}{x^2} dx = \lim_{b \to \infty} -\frac{1}{x} \bigg |_1^b = \lim_{b \to \infty} 1 - \frac{1}{b} = 1
+$$
+
+### The p-integral test
+
+For an improper integral of the function $x^{-p}$, there are three possible cases.
+
+| Value of $p$ | Convergent integral | Divergent integral |
+| ---- | ---- | ---- |
+| $p > 1$ | $\displaystyle \int_a^\infty \frac{dx}{x^p}$ | $\displaystyle \int_0^a \frac{dx}{x^p}$ |
+| $p < 1$ | $\displaystyle \int_0^a \frac{dx}{x^p}$ | $\displaystyle \int_a^\infty \frac{dx}{x^p}$ |
+| $p = 1$ | None | All integrals diverge |
+
+
+
+## Arc length
+
+For a curve $y = f(x)$, an infinitesimal segment can be found by the Pythagorean theorem:
+
+$$
+ds^2 = dx^2 + dy^2
+$$
+
+The right-hand side can be expressed purely in terms of $dx$ by factoring (here note that $dy^2 = (dy)(dy)$ and similarly for $dx$):
+
+$$
+ds^2 = dx^2 \left(1 + \frac{dy^2}{dx^2}\right)
+$$
+
+Square rooting both sides, we have:
+
+$$
+ds = \sqrt{1 + \left(\frac{dy}{dx}\right)^2} dx
+$$
+
+Now taking the integral of this infinitesimal arc length, we find the length $S$ of the complete curve:
+
+$$
+S = \int ds = \int_a^b \sqrt{1 + \left(\frac{dy}{dx}\right)^2} dx
+$$
+
+## Surface area of a surface of revolution
+
+An infinitesimal area is given by:
+
+$$
+dA = 2\pi r ds
+$$
+
+where $ds$ is the infinitesimal arc length, and $r = f(x)$. The complete surface area is given by:
+
+$$
+A = \int dA
+$$
+
+Therefore, the surface area of a surface of revolution is given by:
+
+$$
+A = \int_a^b 2\pi r ds = \int_a^b 2\pi f(x) \sqrt{1 + \left(\frac{dy}{dx}\right)^2} dx
+$$
