@@ -821,3 +821,85 @@ If we define $g = \frac{GM}{r_E^2}$, then to the first term of the Taylor expans
 $$
 F_g = mg
 $$
+
+## Complex numbers
+
+The **imaginary unit** is defined by $i = \sqrt{-1}$. Complex numbers are made of a real part and an imaginary part, and are written with $z = a + bi$. Complex numbers can also be represented in polar coordinates, where the magnitude $\|z\| = \sqrt{a^2 + b^2}$ and they can be written as $z = \|z\| \cos \phi + \|z\| i \sin \phi$. The complex conjugation is given by $z^*$ where if $z = a + bi$, then $z^* = a - bi$, and there is the special property $z \cdot z^* = a^2 + b^2$.
+
+Using Euler's formula, we can extend the exponential function to the complex plane:
+$$
+e^z = e^a(\cos b + i \sin b)
+$$
+If we let $a = 0$ and $b = i\phi$, then it simplifies to:
+
+$$
+e^{i\phi} = \cos \phi + i \sin \phi
+$$
+
+Therefore, any complex number can be written in the form:
+
+$$
+z = \|z\| e^{i\phi}
+$$
+And the trigonometric functions can be written in terms of exponentials:
+
+$$
+\cos \phi = \frac{e^{i\phi} + e^{-i\phi}}{2}, \quad \sin \phi = \frac{e^{i\phi} - e^{-i\phi}}{2i}
+$$
+## Small oscillators and the simple harmonic oscillators
+
+Newton's second law can be written in the form:
+$$
+m\frac{d^2 x}{dt^2} =-\frac{dU}{dx}
+$$
+Around a certain point $x_0$, the Taylor expansion of the potential energy around that point is given by:
+
+$$
+U(x) = U_0 + U'(x_0)(x - x_0) + \frac{1}{2} U''(x_0)(x - x_0)^2 + \frac{1}{6} U'''(x_0) (x - x_0)^3 + \dots
+$$
+When a system only slightly deviates from equilibrium (that is, it is at a point close to a local minimum of the potential energy), the Taylor expansion to first-order is given by:
+
+$$
+U(x) \approx U_0 + U'(x_0) (x - x_0) + \frac{1}{2} U''(x_0)(x - x_0)^2
+$$
+Therefore:
+
+$$
+\frac{dU}{dx} = U'(x_0) + U''(x_0) (x-x_0)
+$$
+Given that the system is very close to its local minimum, the first derivative $U'$ at $x_0$ vanishes as well, so:
+
+$$
+\frac{dU}{dx} = U''(x_0) (x - x_0)
+$$
+
+If we set $k = U''(x_0)$ and perform the change of variables $y = x - x_0$ then Newton's second law is approximately:
+
+$$
+m\frac{d^2 y}{dt^2} = -ky
+$$
+Which can be written as:
+
+$$
+\frac{d^2 y}{dt^2} + \frac{k}{m}y = 0
+$$
+Or, with $\omega = \sqrt{\frac{k}{m}}$, we have:
+
+$$
+\frac{d^2 y}{dt^2} + \omega^2 y = 0
+$$
+
+Which has the exact general solution:
+
+$$
+y = A e^{i \omega t} + Be^{-i\omega t}
+$$
+Using Euler's formula we can rewrite as:
+
+$$
+y = C_1 \cos \omega t + C_2 \sin \omega t
+$$
+Examples of systems described in this form include the simple pendulum equation:
+$$
+\frac{d^2 \theta}{dt^2} + \frac{g}{L} \theta = 0
+$$
