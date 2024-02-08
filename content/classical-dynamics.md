@@ -31,7 +31,7 @@ So it's correct!
 In 1 dimension, Newton's second law relates the net force $F$ with position and time:
 
 $$
-F(x, \dot x, t) = m \frac{d^2 x}{dt^2}
+F(x(t), \dot x(t), t) = m \frac{d^2 x}{dt^2}
 $$
 
 This is a **2nd-order ordinary differential equation of motion** that describes how an object moves.
@@ -903,3 +903,73 @@ Examples of systems described in this form include the simple pendulum equation:
 $$
 \frac{d^2 \theta}{dt^2} + \frac{g}{L} \theta = 0
 $$
+
+## Oscillators
+
+Oscillators are a very important system in physics because, as mentioned previously, many systems from classical and even quantum mechanics can be approximated as a (oftentimes coupled) system of oscillators. In regions close to a potential well, a particle typically oscillates back and forth about the potential well, 
+
+### The damped oscillator
+
+A dampening force (such as drag) can be added to more realistically model an oscillator. A good approximation for the dampening force is a force proportional to velocity, such as $F_d = -bv$. Then Newton's second law becomes:
+
+$$
+m\frac{d^2 x}{dt^2} = -kx - bv
+$$
+Since $v = dx/dt$, we can rewrite this equation as:
+
+$$
+\frac{d^2 x}{dt^2} + \frac{b}{m} \frac{dx}{dt} + \frac{k}{m} x = 0
+$$
+If we let $\omega_0^2 = k / m$ and $\beta = b / 2m$, then the differential equation becomes:
+
+$$
+\frac{d^2 x}{dt^2} + 2\beta \frac{dx}{dt} + \omega_0^2 x = 0
+$$
+This equation is a 2nd-order homogeneous differential equation. The solution of this differential equation is given by three cases:
+
+- $\beta > \omega_0$ is the case of over-dampening, which tends to an exponential decay with a general solution of $x(t) = Ae^{-\beta t + \sqrt{\beta^2 - \omega_0^2} t} + Be^{-\beta t - \sqrt{\beta^2 - \omega_0^2}t}$
+- $\beta = \omega_0$ is the case of critical-dampening, which also tends to an exponential decay with a general solution $x(t) = (At + B)e^{-\beta t}$
+- $\beta < \omega_0$ is the case of under-dampening (or weak dampening), which leads to a slow decay with the general solution of $x(t) = Ae^{-\beta t} \cos (\sqrt{\omega_0^2 - \beta^2} t + \phi)$
+
+### Driven damped harmonic oscillators
+
+A driven harmonic oscillator adds a a driving force in addition to a dampening force to the model of an oscillator. Such a driving force could be in the form $F = F_0 \cos \omega t$ (here note that $\omega$ is not the same as $\omega_0$). Therefore, the differential equation becomes:
+
+$$
+m\frac{d^2 x}{dt^2} = -kx - bv + F_0 \cos (\omega t)
+$$
+
+Which we can rearrange to obtain:
+
+$$
+\frac{d^2 x}{dt^2} + 2\beta \frac{dx}{dt} + \omega_0^2 x = \frac{F_0}{m} \cos (\omega t)
+$$
+This equation is still a 2nd-order differential equation, but it is now _inhomogeneous_. The solution to this equation is given by:
+
+$$
+x(t) = x_H(t) + D(\omega) \cos(\omega t - \delta(\omega))
+$$
+Where:
+$$
+D(\omega) = \frac{F_0}{m} \frac{1}{\sqrt{(\omega_0^2 - \omega^2)^2 + 4\beta^2 \omega^2}}
+$$
+$$
+\delta(\omega) = \tan^{-1} \left(\frac{2\beta \omega}{\omega_0^2 - \omega^2}\right)
+$$
+And $x_H(t)$ is the general solution of the dampened harmonic oscillator for the given $\beta$ and $\omega_0$. For instance, for a weak-dampening driven harmonic oscillator, then the general solution is:
+
+$$
+x(t) = Ae^{-\beta t} \cos (\sqrt{\omega_0^2 - \beta^2} t + \phi) + D(\omega) \cos(\omega t - \delta(\omega))
+$$
+Typically, as $t \to \infty$, $x_H(t)$ decays exponentially, so $x_H(t) \approx 0$ and only the driving force (also called "transient") part of the solution remains.
+
+Unlike purely dampened or simple harmonic oscillators, driven damped oscillators have the phenomena of **resonance**. This is the idea that $D(\omega)$ can be _tuned_ to maximize its value and thereby maximize the amplitude. As a paraphrased example from _Waves: An Interactive Tutorial_ by Forinash and Christian, an example is a sound wave tuned with a value of $\omega$ that maximizes its amplitude sufficient break a wine glass.
+
+### Applied harmonic oscillators
+
+A LRC circuit is an oscillating system which is described by a very similar differential equation:
+
+$$
+L \frac{d^2 Q}{dt^2} + R \frac{dQ}{dt} + \frac{Q(t)}{C} = \mathcal{E}_0 \cos \omega t
+$$
+Here, we can cast the differential equation into the general form of a harmonic oscillator by using $\beta = R / 2L$ and $\omega_0^2 = \frac{1}{LC}$. This can be readily solved using the same method as the harmonic oscillator.
