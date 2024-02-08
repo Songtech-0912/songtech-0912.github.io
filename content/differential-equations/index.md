@@ -606,7 +606,7 @@ If $W \neq 0$, then the solutions are linearly independent. The derivation is st
 
 ### Abel's formula
 
-Abel's formulas says that if $y_1(x)$ and $y_2(x)$ are solutions of $y''' + p(x) y' + q(x) y = 0$, then:
+Abel's formulas says that if $y_1(x)$ and $y_2(x)$ are solutions of $y'' + p(x) y' + q(x) y = 0$, then:
 
 $$
 W = c \exp \left(-\int p(x) dx\right)
