@@ -609,7 +609,7 @@ If $W \neq 0$, then the solutions are linearly independent. The derivation is st
 Abel's formulas says that if $y_1(x)$ and $y_2(x)$ are solutions of $y'' + p(x) y' + q(x) y = 0$, then:
 
 $$
-W = c \exp \left(-\int p(x) dx\right)
+W = C \exp \left(-\int p(x) dx\right)
 $$
 Note that the general form of a linear 2nd-order ODE can be cast into this form by dividing by $a_2(x)$:
 
