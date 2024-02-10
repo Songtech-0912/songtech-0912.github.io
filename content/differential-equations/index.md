@@ -875,7 +875,7 @@ $$
 y = e^{0t} \left(C_1 \cos \sqrt{\frac{k}{m}}t + C_2 \sin \sqrt{\frac{k}{m}} t \right)
 $$
 
-We can now simplify by noting that $e^{0x} = 1$ and by defining $\omega = \sqrt{\frac{k}{m}}$, allowing the general solution to become:
+We can now simplify by noting that $e^{0t} = 1$ and by defining $\omega = \sqrt{\frac{k}{m}}$, allowing the general solution to become:
 
 $$
 y = C_1 \cos \omega t + C_2 \sin \omega t
@@ -921,7 +921,84 @@ $$
 y_f(x) = Ax^2 + Bx + C + De^{-2t}
 $$
 
-And third, the fitting solution shouldn't contain any terms that are linearly dependent, or repeat terms in the homogeneous solution. For instance, it would be incorrect to write $Ax + Bx$ because those two terms are linearly dependent. Similarly, if the homogeneous solution (when fully distributed-out) contained a term $5 \sin 2x$, then the guess cannot contain a term $A \sin 2x$, because those two terms would be linearly dependent. Instead, a term $A x \sin (2x)$ could be added instead, which would not be linearly dependent with $5 \sin 2x$. This can be extended to a general technique - add powers of $x$ in front of a term every time a term could potentially be linearly dependent.
+And third, the fitting solution shouldn't contain any terms that are linearly dependent, or repeat terms in the homogeneous solution. For instance, it would be incorrect to write $Ax + Bx$ because those two terms are linearly dependent. Similarly, if the homogeneous solution (when fully distributed-out) contained a term $5 \sin 2x$, then the guess cannot contain a term $A \sin 2x$, because those two terms would be linearly dependent. Instead, a term $A x \sin (2x)$ could be added instead, which would not be linearly dependent with $5 \sin 2x$. This can be extended to a general technique - add powers of $x$ in front of a term every time a term could potentially be linearly dependent. Essentially, if $A\sin(2x)$ is linearly dependent, try $Ax \sin(2x)$, and if that still is linearly dependent, try $Ax^2 \sin(2x)$, and if that still doesn't work try $Ax^3 \sin(2x)$, and so on and so forth.
+
+As an example of using this method, consider a rocket that is escaping a gravitational field, like that of the Earth. Without going too much into the physics, the basic idea is that the effect of gravity can be approximated, at least when the rocket is not too far from earth, by the differential equation:
+
+$$
+\frac{d^2 r}{dt^2} + \sigma^2 r = \frac{F_0}{m}
+$$
+where $\sigma$ is a constant, $m$ is the rocket's mass, and $F_0$ is the rocket engine's thrust force, and the solution is given by $r(t)$. For precise reasons about why this works, see the classical dynamics notes on the Taylor expansion of potential energy. In any case, the precise derivation of this differential equation isn't important; we only need to solve it, and we can use the **method of undetermined coefficients**.
+
+To do so, we first need to find a homogeneous solution $r_h$ for the homogeneous version of this differential equation, and then a fitting solution $r_f$ (note: $r$ instead of $y$ because $r$ is the dependent variable here). Recall that the homogeneous version is just this differential equation with the RHS = 0, that is:
+
+$$
+r'' + \sigma^2 r = 0
+$$
+We solve this using the method of the characteristic equation. Since we are already using the variable $r$, we will switch to $q$ for the characteristic equation. As a reminder, a differential equation in the form $ay'' + by' + cy = 0$ has the characteristic equation $aq^2 + bq + c = 0$. In this case, we have $q^2 + \sigma^2 = 0$. The solutions to this characteristic equation are $q = \pm \sigma i$. So the general homogeneous solution is given by the imaginary roots case (mentioned previously), resulting in:
+
+$$
+r_h = e^{0t} (C_1 \cos \sigma t + C_2 \sin \sigma t) = C_1 \cos \sigma t + C_2 \sin \sigma t
+$$
+Now, we need to solve for a fitting solution. Since the RHS of the equation is a constant, which is essentially a term in the form $k \cdot t^0$, we use the terms table (mentioned above) to guess a fitting solution in the form:
+
+$$
+r_f = At^2 + Bt + C
+$$
+How do we find $A$, $B$, and $C$? We just plug $y_f$ into the LHS of the differential equation and see what those constants have to be to satisfy the RHS. To do this, we take derivatives of $r_f$:
+
+| $r_f$ | $r_f'$ (first derivative) | $r_f''$ (second derivative) |
+| ---- | ---- | ---- |
+| $At^2 + Bt + C$ | $2At + B$ | $2A$ |
+If we plug these back into the original differential equation $r'' + \sigma^2 r = \frac{F_0}{m}$ we get:
+
+$$
+(2A) + \sigma^2 (At^2 + Bt + C) = \frac{F_0}{m}
+$$
+We can just distribute and solve this equation for $A$, $B$, and $C$, but that is a lot of tedious algebra and it would be easy to make mistakes. Instead, we can use an equivalent tabular approach. To do this, we split the terms on the LHS of the differential equation to get:
+
+| $r''$ | $\sigma^2 r$ |
+| ---- | ---- |
+| (to be filled...) | (to be filled...) |
+
+Now we can fill in these columns with our calculated values of $r_f$, $r_f'$, and $r_f''$ from our earlier derivatives table. Here we can omit $r_f'$ here since there isn't a $r'$ term in the differential equation, and put the rest in:
+
+| $r''$ | $\sigma^2 r$ |
+| ---- | ---- |
+| $2A$ | $A \sigma^2 t^2 + B \sigma^2 t + C \sigma^2$ |
+Then, since we had a $t^2$ term, a $t$ term, and a constant ($t^0$) term in our guess for $r_f$, we count the number of $t^2$ terms, $t$ terms, and constant terms on both the LHS (our previous table) and RHS of the differential equation:
+
+| Term | Coefficients in $r''$ term | Coefficients in $\sigma^2 r$ term | Coefficients on RHS |
+| ---- | ---- | ---- | ---- |
+| $t^2$ | 0 | $A \sigma^2$ | 0 |
+| $t$ | 0 | $B \sigma^2$ | 0 |
+| $t^0$ (i.e. constant) | $2A$ | $C \sigma^2$ | $\frac{F_0}{m}$ |
+From here, we get three simultaneous equations:
+
+$$
+\begin{align}
+0 + A\sigma^2 &= 0 \\
+0 + B \sigma^2 &= 0 \\
+2A + C \sigma^2 &= \frac{F_0}{m}
+\end{align}
+$$
+The first two equations tell us that $A = B = 0$, and substituting $A = 0$ for the third equation tells us that $C = \frac{F_0}{\sigma^2 m}$. Substituting these values back into our fitting solution $r_f = At^2 + Bt + C$ gives us:
+
+$$
+r_f = 0x^2 + 0x + \frac{F_0}{\sigma^2 m} \Rightarrow r_f = \frac{F_0}{\sigma^2 m}
+$$
+Recalling that the solution to an inhomogeneous differential equation is the sum of the homogeneous solution $r_h$ and the fitting solution $r_f$, we have:
+
+$$
+r(t) = r_h + r_f = C_1 \cos \sigma t + C_2 \sin \sigma t + \frac{F_0}{\sigma^2 m}
+$$
+
+So the general solution is given by:
+
+$$
+r(t) =  C_1 \cos \sigma t + C_2 \sin \sigma t + \frac{F_0}{\sigma^2 m}
+$$
+For model rockets launched close to the surface of the Earth, this should be a reasonably good approximation. However, please do not launch a human-carrying rocket bound for space using this equation, unless you want to see a rocket blow up!
 
 ## Variation of parameters
 
