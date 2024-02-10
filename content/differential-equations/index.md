@@ -110,6 +110,32 @@ Solutions can be of two main types - explicit and implicit. An explicit solution
 
 Finally, differential equations are by no means a finished field. New methods of solving them and analyzing them are constantly being developed, but even so, there are many differential equations that simply have not yet been solved.
 
+## A note on solutions
+
+This is something that wasn't really mentioned much in MATH 2400, but is definitely crucial for solving differential equations outside the classroom. When we say that we "solve" a differential equation, we can mean a lot of different things.
+
+The first idea of a solution is an **explicit solution** expressed in terms of **elementary functions**. For instance, the equation $y = \sin x$ is an explicit and elementary solution to the differential equation $y'' + y = 0$. It is explicit because it is in the form $y = y(x)$, with only $x$ terms on the right-hand side, and it is elementary because it involves combinations of only rational, trigonometric, exponential, logarithmic, and power functions. Or, more informally, it is elementary because it is written in terms of "familiar" functions.
+
+Note that it is _a_ solution and not _the_ solution. This is because $y = 3\sin x$ is _also_ an explicit, elementary solution to $y'' + y' = 0$. In fact, so is $y = 6\sin x$ or $y = 11\sin x + 9 \cos x$ or $y = 2 \cos x$. So we typically want **general solutions** that describe all the possibilities that satisfy the differential equation. In this case, we can say that the explicit, elementary general solution to $y'' + y = 0$ is $y = A\sin x + B \cos x$, where $A$ and $B$ can be any constants. If we know the value of $y$ at one point, we can determine a _particular_ solution. For instance, if we know that $y(0) = 1$, then it must be true that $A = 0$ and $B = 1$, so the particular solution is $y = \cos x$, whereas if we know that $y(0) = 0$, then it must be true that $A = 1$ and $B = 0$, and so the particular solution is $y = \sin x$. 
+
+General explicit solutions that are expressed in terms of elementary functions are the "nicest" type of solution, but these solutions are very rare. The next best thing is typically a general **implicit solution** expressed in terms of elementary functions. These are solutions that are in the form $F(x, y) = 0$, but still using the familiar set of functions (rational, trig, exponential, power, etc.). For example, the equation of a unit circle, that is, $x^2 + y^2 = 1$, is an implicit equation. These are more difficult to work with by hand, but modern graphing software like Desmos can plot implicit solutions just as well as explicit solutions, and so an implicit solution is "good enough" when it is the only thing available. In addition, a general solution, whether implicit or explicit, is almost always preferred, but in cases where a general solution cannot be found (which is often true for PDEs), a solution that isn't general is sufficient.
+
+Finally, sometimes a solution cannot even be expressed in terms of elementary functions. However, they can be expressed using integrals. For instance, the solution to the differential equation $y'' + 2xy' = 0$ cannot be expressed using elementary functions, but can be written in terms of an integral:
+
+$$
+y(x) = \int_0^x e^{-t^2}dt
+$$
+These types of solutions are often called **reduction to quadrature** (quadrature is an antiquated term for what we would now call integration). They can be implicit or explicit, and modern computer software can plot both to good precision, albeit with more difficulty than solutions that don't involve integrals.
+
+What if a differential equation can't be expressed in terms of elementary functions, and can't be expressed either implicitly or explicitly in terms of quadratures? There is then a third option - a **series solution**, which is a solution expressed in terms of infinite series. For example, the solution to the exponential growth equation is given by:
+
+$$
+y = \sum_{n = 0}^\infty \frac{x^n}{n!}
+$$
+Series solutions can be plotted readily using a computer, but are much less useful, because they often converge extremely slowly. A famous example is the three-body problem in astrophysics; a series solution exists, but for all intents and purposes it is useless because it takes millions of terms to converge.
+
+Finally, there are differential equations that cannot be solved by _any_ of these methods. So instead, we aim for a **numerical solution** - an approximation to the differential equation using numerical algorithms, usually using a computer (though in the past there were analog machines that were constructed for this purpose, see [differential analyzer](https://en.wikipedia.org/wiki/Differential_analyser)). The vast majority of differential equations are solved this way.
+
 ## Separation of variables
 
 Consider a first-order ODE in the form:
