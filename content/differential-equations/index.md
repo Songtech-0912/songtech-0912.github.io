@@ -530,6 +530,120 @@ $$
 I(t) = \frac{E}{2L} t + \frac{C}{t}
 $$
 
+As another more nontrivial example, consider the logistic differential equation, whose solution is the famous sigmoid function. This differential equation is given by:
+
+$$
+y' - y = -y^2
+$$
+We can simplify this differential equation by dividing by $y^2$ from all sides:
+
+$$
+y^{-2} y' - y^{-1} = -1
+$$
+And then moving every term other than $y'$ to the RHS:
+
+$$
+y^{-2} y' = y^{-1} -1
+$$
+
+The logistic differential equation is a special case of the Bernoulli differential equation with $n = 2$; the general form of a Bernoulli differential equation is:
+
+$$
+y' + p(x) y = q(x) y^n
+$$
+
+The Bernoulli differential equations can all be solved using the substitution $u = y^{1 - n}$. In this case, since $n = 2$, we use $u = y^{-1}$. Then, using implicit differentiation:
+
+$$
+u' = \frac{du}{dx} = \frac{du}{dy}\frac{dy}{dx} = -y^{-2} y'
+$$
+
+So, plugging in $u'$ and $u$, for $-y^{-2} y'$ and $y^{-1}$, we have:
+
+$$
+-u' = u - 1
+$$
+
+Or simplified:
+
+$$
+u' + u = 1
+$$
+
+This can be solved using the method of integrating factors. However, since we already used $u$, we would desire to use a different symbol for the integrating factor to avoid confusion - for instance, our integrating factor can be $\beta$. Then:
+
+$$
+\beta u' - \beta u = \beta
+$$
+
+We can compare this to the general form $\beta u' + p(x) \beta u = q(x)$ and use the definition of the integrating factor - that is, $\beta' = p(x) \beta$, where $p(x) = 1$ - in order to obtain:
+
+$$
+\beta = \exp \left(\int 1dx\right) = e^x
+$$
+
+If we substitute in $\beta'$, we have:
+
+$$
+\beta u' + \beta' p(x) u = \beta
+$$
+
+The LHS is just a product rule, so we can rewrite as:
+
+$$
+(\beta u)' = \beta
+$$
+
+We integrate both sides to get:
+
+$$
+\beta u = \int \beta~dx
+$$
+
+If we substitute in $\beta = e^{-x}$ we have:
+
+$$
+e^x u = \int e^x~dx
+$$
+
+Which becomes:
+
+$$
+e^x u = e^x + C
+$$
+
+We divide both sides by $e^{-x}$ to get:
+
+$$
+u = \frac{e^x + C}{e^x}
+$$
+
+We can now substitute $u = y^{-1}$ back to get:
+
+$$
+y^{-1} = \frac{e^x + C}{e^x}
+$$
+
+From which we can find $y$, the general solution:
+
+$$
+y = \frac{e^x}{e^x + C}
+$$
+
+If we solve for the condition $y(0) = 0.5$, then we have:
+
+$$
+0.5 = \frac{e^0}{e^0 + C} \Rightarrow C = 1
+$$
+
+Which means the _particular_ solution to the logistic differential equation given $y(0) = 0.5$ is given by:
+
+$$
+y = \frac{e^x}{e^x + 1} = \frac{1}{1 + e^{-x}}
+$$
+
+This is the easily recognizable sigmoid function extensively used in machine learning.
+
 ## Interlude: the desmos checking approach
 
 Even after painstakingly finding a solution to a differential equation, it can be very, very tedious to manually verify that the solution to a differential equation is correct. Desmos can help tremendously. To do so, enter the proposed solution into desmos as a function of $x$. Then, enter in the differential equation cast in the form (LHS = 0). For example, the LR circuit differential equation shown previously might look something like this in desmos:
