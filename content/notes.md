@@ -9,3 +9,5 @@ These are notes I've taken while pursuing a degree in Applied Physics at Renssel
 
 - [Calculus Series](@/calculus-series.md)
 - [Physics Series](@/physics-series.md)
+- [Biology Series](@/intro-bio-series.md)
+- [Computer Science Series](@/cs-series.md)
