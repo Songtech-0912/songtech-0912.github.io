@@ -11,3 +11,4 @@ These are notes I've taken while pursuing a degree in Applied Physics at Renssel
 - [Physics Series](@/physics-series.md)
 - [Biology Series](@/intro-bio-series.md)
 - [Computer Science Series](@/cs-series.md)
+- [Philosophy notes](@/philosophy.md)
