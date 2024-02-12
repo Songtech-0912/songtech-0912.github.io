@@ -546,3 +546,59 @@ From this, we can find the **linear approximation** of a function at a point $x 
 $$
 L(x) = f'(a)(x - a) + f(a)
 $$
+
+## Inverse function derivatives
+
+Given a function $f(x)$, the derivative of its inverse is given by:
+
+$$
+\mathrm{inv}'(x) = \frac{1}{f'(\mathrm{inv}(x))}
+$$
+
+For instance, consider the function:
+
+$$
+f(x) = \sqrt{x - 4}
+$$
+
+First, we want to find the inverse function. To do so, we swap $x$ and $y$:
+
+$$
+x = \sqrt{y - 4}
+$$
+
+$$
+x^2 = y - 4
+$$
+
+$$
+y = x^2 + 4
+$$
+
+$$
+f^{-1} (x) = x^2 + 4
+$$
+
+Now, we can find the derivative of our inverse function:
+
+$$
+\mathrm{inv}'(x) = \frac{1}{f'(x^2 + 4)}
+$$
+
+$$
+f'(x) = \frac{1}{2\sqrt{x-4}}
+$$
+
+$$
+\mathrm{inv}'(x) = \frac{1}{f'(x^2 + 4)}
+$$
+
+$$
+\mathrm{inv}'(x) = 2\sqrt{(x^2 + 4) - 4}
+$$
+
+We finally obtain:
+
+$$
+\mathrm{inv}'(x) = 2x
+$$
