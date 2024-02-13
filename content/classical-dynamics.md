@@ -293,16 +293,25 @@ $$
 
 ## Energy
 
-Energy can be understood as a measure of the ability to make things move. It comes in two primary types: kinetic energy, which is associated with moving, and potential energy, which is associated with being able to move.
+Energy can be understood as a measure of the ability to make things happen - causing a ball to move, a plane to fly, or a star to shine. Without energy, the universe would be boring and nothing interesting would happen.
 
-## Work
+Energy (at least in non-quantum physics) comes in two main types: **kinetic energy**, which is associated with current motion, and **potential energy**, which is associated with future motion. An object's kinetic energy causes it to move; an object's potential energy gives it the ability to move at a future time. The total energy in a closed system is always constant.
 
-Work is the transfer of energy by a force applied along a displacement. It is a scalar quantity defined by:
+## Work and conservation of energy
+
+Energy can never be created nor destroyed, only transferred. Work is the transfer of energy by a force applied along a path. It is a scalar quantity defined by:
 
 $$
 W = \int_{x_0}^{x_1} F(x) dx
 $$
-Note that force can be defined by:
+
+A force stores energy in the form of potential energy, and releases energy in the form of kinetic energy. The kinetic energy released by a force is equal to the work done by the force and equal to the negative of the potential energy stored:
+
+$$
+W = \Delta K = -\Delta U
+$$
+
+To prove this, note that force can be defined by:
 
 $$
 F = m \frac{dv}{dt}
@@ -311,12 +320,18 @@ $$
 We can use this alternate definition of force to obtain the work-energy theorem:
 
 $$
-W = \int_{x_0}^{x_1} m\frac{dv}{dt} dx = \int_{x_0}^{x_1} m\frac{dv}{dt} \frac{dx}{dt} dt = \int_{x_0}^{x_1} m \frac{dv}{dt} v dt = \int_{v_0}^{v_1} mvdv = \frac{1}{2} m(v_2^2 - v_1^2) = \frac{1}{2} m \Delta v^2 = \Delta K
+\begin{align}
+W &= \int_{x_0}^{x_1} m\frac{dv}{dt} dx \\\\
+&= \int_{x_0}^{x_1} m\frac{dv}{dt} \frac{dx}{dt} dt \\\\
+&= \int_{x_0}^{x_1} m \frac{dv}{dt} v dt \\\\
+&= \int_{v_0}^{v_1} mvdv \\\\
+&= \frac{1}{2} m(v_2^2 - v_1^2) \\\\
+&= \frac{1}{2} m \Delta v^2 \\\\
+&= \Delta K
+\end{align}
 $$
 
-## Conservation of energy
-
-If a force depends only on position, it is called a **conservative force**. A conservative force stores energy in the form of potential energy, and releases energy in the form of kinetic energy. Conservative forces are associated with a potential energy function $U(x)$ in 1D via:
+If a force depends only on position, it is called a **conservative force**. Conservative forces can be written in terms of a potential energy function $U(x)$ in 1D via:
 
 $$
 F(x) = -\frac{dU}{dx}
@@ -333,6 +348,9 @@ Therefore:
 $$
 W = -\Delta U = \Delta K
 $$
+
+Or written differently:
+
 $$
 K_1 + U_1 = K_2 + U_2
 $$
@@ -342,12 +360,15 @@ The total mechanical energy $E$ is conserved for conservative forces (this means
 $$
 E = K + U, \quad \frac{dE}{dt} = 0
 $$
-Recall that while force can be perfectly defined from potential energy, the potential energy cannot be perfectly defined by the force. This is because:
+
+> Note: for non-conservative forces such as friction, the total energy is conserved, but the total energy is not equal to the total mechanical energy.
+
+Recall that while a conservative force can be perfectly defined by the associated potential energy, the potential energy cannot be perfectly defined by the force. This is because:
 
 $$
 U(x) = -\int F(x) dx + C
 $$
-And therefore any $C$ could possibly be chosen. So, one often choses the constant such that the potential energy is zero at a conveniently specified location $x_0$, which we can call the "ground level":
+And therefore any $C$ could possibly be chosen. So, one often choses the constant such that the potential energy is zero at a conveniently specified location $x_0$, which we can call the "ground level" or "reference point" of the potential energy:
 
 $$
 U(x) = -\int_{x_0}^x F(x') dx'
@@ -456,10 +477,22 @@ $$
 $$
 ## Work in higher dimensions
 
-In higher dimensions, force is a vector-valued function of the position $\vec r(t)$, which itself has three components $x(t)$, $y(t)$, and $z(t)$. So force depends on position, which depends on $x$, $y$, and $z$, which themselves depend on time. That's a mouthful! We can mathematically express this relationship as:
+In higher dimensions, force is a vector-valued function of the position $\vec r(t)$, given as follows:
 
 $$
-\vec F = \vec F(\vec r) = \vec F(x, y, z) = \vec F(x(t), y(t), z(t))
+\vec r(t) = x(t) \hat i + y(t) \hat j + z(t) \hat k
+$$
+
+Therefore the force can generally be written in component form as:
+
+$$
+\vec F = F_x \hat i + F_y \hat j + F_z \hat k
+$$
+
+Do remember that $F_x, F_y, F_z$ are each functions of $x(t), y(t), z(t)$, so this expands to:
+
+$$
+\vec F = F_x(x(t), y(t), z(t)) \hat i + F_y(x(t), y(t), z(t)) \hat j + F_z(x(t), y(t), z(t)) \hat k
 $$
 
 Extending the definition of 1D work, the differential of the work in higher dimensions would be given by:
@@ -470,10 +503,10 @@ $$
 The force is applied along a path from $a = (x_0, y_0, z_0)$ to $b = (x_1, y_1, z_1)$ in 3D space, which we denote with $C$ (for "curve"). The total work is given by the integral of this quantity along the path, which we call a **line integral**:
 
 $$
-W = \int_{C[a \to b]} \vec F \cdot d\vec s
+W = \int_{C[a \to b]} \vec F \cdot d\vec s = \int_C F_x~dx + F_y~dy + F_z~dz
 $$
 
-Note that the subscript under the integral is optional and not required.
+> Note that the subscript $C[a \to b]$ under the integral is for illustrative purposes; it is optional and not required.
 
 Line integrals can be evaluated by expanding them component-by-component:
 
@@ -492,6 +525,8 @@ $$
 & \int_C \vec F(\vec r) \cdot d\vec s \\\\ &= \int_{C(a)}^{C(b)} (F_x(t) x'(t)+ F_y(t) y'(t) + F_z(t) z'(t) )dt \\\\ &= \int_{C(a)}^{C(b)} \vec F(t) \cdot \vec r'(t) dt
 \end{align}
 $$
+
+The line integral of a force (or component of a force) that is _perpendicular_ to the path along which the force is applied is zero. For instance, given a force dependent on $y$, applied on a path along the $x$ axis, the line integral - and therefore the work done - is zero.
 
 In higher dimensions, Newton's 2nd Law can be written as:
 
@@ -543,6 +578,7 @@ For conservative forces, there are several important properties:
 - The line integral of the force is independent of path
 - The line integral of the force vanishes for any closed path
 - $\nabla \times \vec F = 0$
+- The force is uniquely determined through $\vec F = -\nabla U$
 
 Therefore the work (in the case of conservative forces only!) can be rewritten as:
 
@@ -584,6 +620,14 @@ $$
 \frac{d}{dt} (K + U) = 0
 $$
 
+### Addendum: non-conservative forces
+
+In nature, essentially all forces can be considered conservative if analyzed on the microscopic level. That is, the total energy of an object is actually an approximation for the sum of the kinetic energies and potential energies of all of its individual atoms interacting with each other (we won't go into subatomic particles because the effects of quantum mechanics make notions of energy blurry). However, it is impractical to analyze systems on the microscopic level and perform detailed calculations of millions of atoms. Therefore, we consider certain forces, such as friction, non-conservative, meaning that while total energy is conserved, total _mechanical_ energy is not. Through Helmholtz's theorem, a non-conservative force can still be written in terms of the potential energy $U$, but also must include a vector potential $\vec A$:
+
+$$
+\vec F = -\nabla U + \nabla \times \vec A
+$$
+
 ## Uniform circular motion
 
 Uniform circular motion describes motion in which an object moves with constant velocity in a circular path of fixed radius. In this situation, the object does not have any tangential acceleration (acceleration along its velocity vector) but it does have **centripetal acceleration** towards the center, with a magnitude given by:
@@ -614,7 +658,7 @@ $$
 $$
 The centripetal acceleration, however, remains the same:
 $$
-\vec a_c = -\frac{v^2}{R} \hat r
+a_c = \frac{v^2}{R}
 $$
 The overall acceleration $\vec a$ is given by:
 $$
@@ -646,11 +690,18 @@ m a_c = m\frac{v^2}{R} = T
 $$
 ## Newton's theory of gravity
 
-In Newtonian mechanics, the gravitational force is given by:
+In Newtonian mechanics, the gravitational force between two masses $M$ and $m$ is given by:
 
 $$
-\vec F_g = -\frac{Gm_1 m_2}{r^2} \hat r
+\vec F_g = -\frac{GMm}{r^2} \hat r
 $$
+
+The magnitude of the gravitational force is given by:
+
+$$
+F_g = \|F_g\| = \frac{GMm}{r^2}
+$$
+
 ### Perfectly circular orbits
 
 The simplest case of planetary motion can be modeled with uniform circular motion, that is, equating centripetal force and the gravitational force:
