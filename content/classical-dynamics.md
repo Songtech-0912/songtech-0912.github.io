@@ -243,7 +243,7 @@ $$
 Note that Newton's second law in vector form (for 2D or 3D) is given by a vector differential equation that expand to 4 (in 2D) or 6 (in 3D) coupled ordinary differential equations:
 
 $$
-m \frac{d^2 \vec s}{dt^2} = m\frac{d \vec v}{dt} = \vec F \left(\vec r, \frac{d\vec s}{dt}, t\right)
+m \frac{d^2 \vec s}{dt^2} = m\frac{d \vec v}{dt} = \vec F \left(\vec s, \frac{d\vec s}{dt}, t\right)
 $$
 
 Luckily, a shift of coordinates is typically sufficient to be able to treat most 2D and 3D problems as 2D or 1D problems, reducing the need to solve such a complex vector differential equation.
@@ -824,7 +824,7 @@ $$
 
 ## Complex numbers
 
-The **imaginary unit** is defined by $i = \sqrt{-1}$. Complex numbers are made of a real part and an imaginary part, and are written with $z = a + bi$. Complex numbers can also be represented in polar coordinates, where the magnitude $\|z\| = \sqrt{a^2 + b^2}$ and they can be written as $z = \|z\| \cos \phi + \|z\| i \sin \phi$. The complex conjugation is given by $z^*$ where if $z = a + bi$, then $z^* = a - bi$, and there is the special property $z \cdot z^* = a^2 + b^2$.
+The **imaginary unit** is defined by $i = \sqrt{-1}$. Complex numbers are made of a real part and an imaginary part, and are written with $z = a + bi$. Complex numbers can also be represented in polar coordinates, where the magnitude $\|z\| = \sqrt{a^2 + b^2}$ and they can be written as $z = \|z\| \cos \phi + \|z\| i \sin \phi$. The complex conjugation is given by $z^\*$ where if $z = a + bi$, then $z^\* = a - bi$, and there is the special property $z \cdot z^* = a^2 + b^2$.
 
 Using Euler's formula, we can extend the exponential function to the complex plane:
 $$
