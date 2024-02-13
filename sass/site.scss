@@ -206,6 +206,16 @@ header {
     margin-top: 1.2rem;
   }
 
+  blockquote {
+	padding: 0.5rem 0 0.5rem 1rem;
+	border-left: 3px solid rgba(0, 0, 0, 0.3);
+
+	p {
+	    margin-bottom: 0;
+	    font-style: italic;
+	}
+ }
+
   table {
   		border-collapse: collapse;
   	}
