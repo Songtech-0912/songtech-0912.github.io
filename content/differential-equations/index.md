@@ -1077,3 +1077,234 @@ y_1' & g(x)
 $$
 
 Note that the order of the determinants can be remembered by looking at the system of equations from right-to-left column order and cycling in the "right-middle-left-right" order. $W_1$ has the right and middle columns, and $W_2$ has the left and right columns.
+
+## Special cases of linear second-order ODEs
+
+We consider the Euler differential equation:
+
+$$
+a_2 x^2 y'' + a_1 x y' + a_0 y = 0
+$$
+
+To solve, we propose the solution $y = x^k$. If we substitute into the equation, we have:
+
+$$
+a_2 x^2 k(k - 1) x^{k - 2} + a_1 x kx^{k - 1} + a_0 x^k = 0
+$$
+
+If we now factor out $x^k$, we have:
+
+$$
+x^k (a_2 k(k - 1)  + a_1 k + a_0) = 0
+$$
+
+Therefore, the characteristic equation becomes:
+
+$$
+a_2 k^2 + (a_1 - a_2) k + a_0 = 0
+$$
+
+For the case where $a_2 = 1$, which we can get by dividing all the terms of the differential equation by the leading coefficient of the $y''$, we have:
+
+$$
+k^2 + (a_1 - 1) k + a_0 = 0
+$$
+
+As with before, there are several cases:
+
+- Two distinct real roots $k_1, k_2$
+- One repeated real root $k_1$
+- Two distinct complex root $k_1, k_2$
+
+For the first case, the general solution is given by the linear combination of $y = x^k$ for each root:
+
+$$
+y = C_1 x^{k_1} + C_2 x^{k_2}
+$$
+
+For the second case, the previous general solution fails as it would be linearly dependent. Instead, we propose an alternate solution $y_2 = u(t)x^k$ and if we solve and use the substitution $x = e^t$, we get the general solution:
+
+$$
+y = (C_1 \ln x + C_2) x^{k_1}
+$$
+
+And for the third case, the general solution given the root $k = \alpha + \beta i$ is given by:
+
+$$
+y = x^{\alpha k} (C_1 \cos (\beta \ln x) + C_2 \sin(\beta \ln x))
+$$
+
+For the non-homogeneous case, the method is similar as that of non-homogeneous constant-coefficient 2nd-order ODEs. In particular, both variation of parameters and the method of undetermined coefficients would work.
+
+## Reduction of order for 2nd-order ODEs
+
+Consider the general 2nd-order homogeneous linear ODE:
+
+$$
+f_2(x) y'' + f_1(x) y' + f_0(x) y = 0
+$$
+
+If a known solution $y_1$ is known, the general solution is in the form:
+
+$$
+y(x) = y_1 (x) v(x)
+$$
+
+To find $v(x)$, we first substitute this general solution into the general form of the differential equation. 
+
+$$
+f_2(y_1'' v + 2y_1'v' + y_1 v'') + f_1(y_1' v + y_1 v') + f_0 y_1 v= 0
+$$
+
+The terms cancel out and we can factor to get:
+
+$$
+f_2 y_1 v'' + (2 f_2 y_1' + f_1 y_1)v' = 0
+$$
+
+If we let $u = v'(x)$, then we get the first-order _separable_ differential equation:
+
+$$
+f_2 y_1 \frac{du}{dx} + (2 f_2 y_1' + f_1 y_1)u = 0
+$$
+
+We can also consider the inhomogeneous case:
+
+$$
+f_2(x) y'' + f_1(x) y' + f_0(x) y = g(x)
+$$
+
+Which results in:
+
+$$
+f_2 y_1 v'' + (2 f_2 y_1' + f_1 y_1)v' = g(x)
+$$
+
+Again with the substitution $u = v'$, we end up with:
+
+$$
+f_2 y_1 u' + (2 f_2 y_1' + f_1 y_1)u = g(x)
+$$
+
+This a linear 1st-order differential equation that can be solved using the method of integrating factors.
+
+Reduction of order isn't just useful for solving differential equations analytically. For the general 2nd-order differential equation $y'' = f_1 y' + f_2 y + g(x)$, then we can use $u_1 = y$, $u_2 = y'$. Then the equation can be written as two first-order differential equations:
+
+$$
+u_1' = u_2 \\\\
+u_2' = f_1 u_2 + f_2 u_1
+$$
+
+Or:
+
+$$
+\begin{pmatrix}
+u_1' \\\\ u_2'
+\end{pmatrix} =
+\begin{pmatrix}
+0 & 1 \\\\
+f_2 & f_1
+\end{pmatrix}
+\begin{pmatrix}
+u_1 \\\\ u_2
+\end{pmatrix} +
+\begin{pmatrix}
+0 \\\\ g(x)
+\end{pmatrix}
+$$
+
+Which can be solved by computer algorithms.
+
+## Systems of linear ODEs
+
+As a review of solving linear systems, consider the following system of two linear equations:
+
+$$
+\begin{align}
+ax + by = k_1 \\\\
+cx + dy = k_2
+\end{align}
+$$
+
+This system of equations can be written in the form $A\mathbf{x} = \mathbf{B}$ in the following manner:
+
+$$
+\begin{bmatrix}
+a & b \\\\
+c & d \\\\
+\end{bmatrix}
+\begin{bmatrix}
+x \\\\
+y
+\end{bmatrix} = 
+\begin{bmatrix}
+k_1 \\\\
+k_2
+\end{bmatrix}
+$$
+
+Where $A$ is a $2 \times 2$ matrix in the general form:
+
+$$
+A = 
+\begin{pmatrix}
+a & b \\\\
+c & d \\\\
+\end{pmatrix}
+$$
+
+The determinant of $A$, denoted $\det(A)$, is given by$ad - bc$. If $\det(A) \neq 0$, then it is said to be non-singular, which means it has an inverse given by:
+
+$$
+\frac{1}{\det(A)} 
+\begin{bmatrix}
+d & -b \\\\
+-c & a
+\end{bmatrix}
+$$
+
+The significance of finding the inverse is that if the inverse of $A$, denoted $A^{-1}$, is known, then:
+
+$$
+\mathbf{x} = A^{-1} b
+$$
+
+A special case is that of a homogeneous system $A \mathbf{x} = 0$. In this case, if $A$ is singular, then the only solution is $\mathbf{x} = 0$; if $A$ is non-singular, then there exist infinitely many solutions.
+
+Finally, two solution vectors $\mathbf{x}_1$ and $\mathbf{x}_2$ are linearly independent if one cannot be written in terms of the other multiplied by a constant. For instance $(1, 2)$ and $(2, 4)$ aren't linearly independent, but $(1, 2)$ and $(1, 3)$ are. Linear independence can be rigorously proven by checking that the equation $c_1 \mathbf{x}_1 + c_2 \mathbf{x}_2 = 0$ is satisfied only if $c_1 = c_2 = 0$.
+
+In addition to the previously-given formula, we can also solve linear systems of equations by rewriting them as eigenvalue problems. First, it is helpful to define what eigenvalues are. Typically, a matrix applied to a nonzero vector $\mathbf{x}$ outputs a vector that isn't a scalar multiple of the original vector. However, in some cases, a matrix applied to a vector outputs a vector that _is_ a scalar multiple of the original vector. That is, we can write that:
+
+$$
+A \mathbf{x} = \lambda \mathbf{x}
+$$
+
+Any vector $\mathbf{x}$ that satisfies this property is called an **eigenvalue** of $A$, and the eigenvalue is $\lambda$. This is important because the eigenvalue equation above can be rewritten as:
+
+$$
+\det (A-I\lambda) \mathbf{x} = 0
+$$
+
+Therefore:
+
+$$
+\det (A-I\lambda) = 0
+$$
+
+For a general $2 \times 2$ matrix $A$ as given before in the form:
+
+$$
+A = 
+\begin{pmatrix}
+a & b \\\\
+c & d \\\\
+\end{pmatrix}
+$$
+
+Then the eigenvalue equation becomes:
+
+$$
+(a - \lambda)(d - \lambda) - bc = 0
+$$
+
+and can be solved for $\lambda$ using typical quadratic methods. In the special case that one value of $\lambda$ is imaginary, the other value of $\lambda$ is its conjugate pair.
