@@ -24,21 +24,51 @@ $$
 L = \frac{1}{2} \times LT^{-2} \times T^2 = L
 $$
 
-So it's correct!
+we have the correct units, so we have verified it is correct!
 
-## Newton's 2nd Law
+## Kinematics with calculus
 
-In 1 dimension, Newton's second law relates the net force $F$ with position and time:
+Position, velocity, and acceleration are fundamental quantities in physics whose collective study is known as **kinematics**. The quantities are related through differential and integral calculus. For instance, they can be written as derivatives of each other:
 
 $$
-F(x(t), \dot x(t), t) = m \frac{d^2 x}{dt^2}
+v(t) = \frac{dx}{dt}
+$$
+$$
+a(t) = \frac{dv}{dt} = \frac{d^2 x}{dt^2}
 $$
 
-This is a **2nd-order ordinary differential equation of motion** that describes how an object moves.
+And accumulated changes in position and velocity are given by integrals of velocity and acceleration, respectively:
+
+$$
+\Delta x = \int_{t_0}^{t_1} v(t) dt
+$$
+$$
+\Delta v = \int_{t_0}^{t_1} a(t) dt
+$$
+
+## Introduction to Newtonian mechanics
+
+Newtonian mechanics are a formulation of physics developed primarily by Isaac Newton and his contemporaries. In Newtonian mechanics, _forces_ are the cause of motion. When there are no forces acting on an object, or when all the forces are balanced, the object stays in constant motion. When the forces are not balanced, then the object experiences a change in its motion. Both of these observations, and more, are described by **Newton's second law**:
+
+$$
+F_\mathrm{net}(x(t), \dot x(t), t) = m \frac{d^2 x}{dt^2}
+$$
+
+where the net force $F_\mathrm{net}$ is given by the sum of all forces:
+
+$$
+F_\mathrm{net} = \sum_i F_i(x, \dot x, t) = F_1 (x, \dot x, t) + F_2 (x, \dot x, t) + \dots + F_n (x, \dot x, t)
+$$
+
+This is a **2nd-order ordinary differential equation** that describes how an object moves, which is also why it's called an _equation of motion_. In fact, it's one of the most important equations of motion in physics. It describes the physics of many different systems, from planetary orbits to springs to projectiles to charged particles moving through electromagnetic fields.
+
+However, to actually apply Newton's 2nd Law can be quite difficult. Other than a few special cases with known general solutions, the differential equation often cannot be solved exactly, and even when exact solutions exist, there is no general formula for them. Luckily, the special cases of Newton's 2nd law are still sufficient to describe the physics of many systems, and a brief overview of these special cases is given in the following section. 
 
 ### Special cases of Newton's 2nd Law
 
-In a **constant-force problems**, then we assume $F$ is a constant. Therefore:
+The following special cases of Newton's 2nd law are cases in which the differential equation can be solved with the method of **separation of variables**. This is a technique used widely throughout physics to solve differential equations.
+
+In a **constant-force problems**, we assume $F$ is a constant. Therefore:
 
 $$
 F = m \frac{d^2 x}{dt^2}
@@ -75,9 +105,23 @@ $$
 x(t) = \int v(t) dt
 $$
 
+which can be rewritten as one integral:
+
+$$
+x(t) = \frac{1}{m} \int_0^t \int_0^t F(s) ~ds~ds
+$$
+
+> Note here we are replacing $F(t)$ with $F(s)$ to avoid mixing the integration bounds with integration variable.
+
+Finally, in a **position-dependent force problem**, then the general solution is an implicit solution given by:
+
+$$
+\int \left(\frac{2}{m} \int F(x)~dx + C \right)^{-{1 \over 2}} dx - t = 0
+$$
+
 ### Drag force application
 
-For an object falling through atmosphere, the drag force is given by $F_D = -bv$, and the gravitational force is given by $F_G = mg$.
+An example of the time-dependent case of Newton's 2nd law is an object experiencing drag. For an object falling through atmosphere, the drag force is given by $F_D = -bv$, and the gravitational force is given by $F_G = mg$.
 
 Using the principle of superposition of forces, we can add all the individual forces acting on a falling object to obtain:
 
@@ -136,25 +180,6 @@ f(x) \approx f(x_0) + f'(x_0)(x - x_0)
 $$
 
 For example, $e^x \approx 1 + x$, and $\sin(x) \approx x$.
-
-## Kinematics with calculus
-
-Recall the derivative relationships between velocity and acceleration:
-
-$$
-v(t) = \frac{dx}{dt}
-$$
-$$
-a(t) = \frac{dv}{dt} = \frac{d^2 x}{dt^2}
-$$
-And recall the inverse integral relationships:
-$$
-\Delta x = \int_{t_0}^{t_1} v(t) dt
-$$
-$$
-\Delta v = \int_{t_0}^{t_1} a(t) dt
-$$
-In addition, to solve differential equations (such as those that result from applying Newton's 2nd law), use the method of **separation of variables**.
 
 ## Vectors and their representations
 
@@ -299,7 +324,7 @@ Energy (at least in non-quantum physics) comes in two main types: **kinetic ener
 
 ## Work and conservation of energy
 
-Energy can never be created nor destroyed, only transferred. Work is the transfer of energy by a force applied along a path. It is a scalar quantity defined by:
+Energy can never be created nor destroyed, only transferred. Work is the transfer of energy by a force applied along a path between two points. It is a scalar quantity, and in one dimension it is defined by:
 
 $$
 W = \int_{x_0}^{x_1} F(x) dx
@@ -612,6 +637,12 @@ Rearranging, we find that:
 
 $$
 K(a) + U(a) = K(b) + U(b)
+$$
+
+Or, to generalize to the $n$-body case:
+
+$$
+\sum_i K_i(a) + \sum_i U_i (a) = \sum_i K_i(b) + \sum_i U_i (b) 
 $$
 
 Therefore, total energy is conserved in the case of conservative forces, even in higher dimensions:
@@ -1024,3 +1055,285 @@ $$
 L \frac{d^2 Q}{dt^2} + R \frac{dQ}{dt} + \frac{Q(t)}{C} = \mathcal{E}_0 \cos \omega t
 $$
 Here, we can cast the differential equation into the general form of a harmonic oscillator by using $\beta = R / 2L$ and $\omega_0^2 = \frac{1}{LC}$. This can be readily solved using the same method as the harmonic oscillator.
+
+## Momentum and Impulse
+
+**Momentum** is a measure of an object's quantity of motion. More massive and faster objects both have a greater quantity of motion, and thus a greater momentum, whereas less massive and slower objects have a smaller momentum. We define an object's momentum along the object's trajectory by $\vec p = m\vec v$. Newton's 2nd law can be formulated (and indeed, was originally formulated) in terms of momentum:
+
+$$
+\vec F_\mathrm{net} = \frac{d\vec p}{dt}
+$$
+
+Given that $dp = \vec F dt$, we can integrate over time to get the **impulse**:
+
+$$
+\Delta p = \int_{t_0}^{t_1} \vec F~dt
+$$
+
+Newton's 3rd law states that:
+
+$$
+\vec F_{12} = -\vec F_{21}
+$$
+
+If we combine the definitions of impulse and Newton's 3rd law:
+
+$$
+\Delta \vec p_1 = \int_{t_0}^{t_1} \vec F_{12}~dt = \int_{t_0}^{t_1} (-\vec F_{21})~dt = -\int_{t_0}^{t_1} \vec F_{21}~dt = -\Delta \vec p_2
+$$
+
+We arrive at the **conservation of momentum**, which states that momentum is conserved in a closed system (with no external forces):
+
+$$
+\Delta \vec p_1 = -\Delta \vec p_2
+$$
+
+If there are external forces present in a system, then the total momentum evolves as:
+
+$$
+\frac{d \vec P}{dt} = \sum_i \vec F_\mathrm{ext}
+$$
+
+Where the total momentum can be determined by:
+
+$$
+\vec P = \sum_i m_i \vec v_i = m_1 \vec v_1 + m_2 \vec v_2 + \dots + m_n \vec v_n
+$$
+
+## Collisions
+
+The conservation of momentum is readily applied to _collision_ problems in physics, whether that be a billiard ball shot toward another, a neutron colliding into an atomic nucleus, or even a close gravitational encounter. Collisions typically take one of the following forms:
+
+- Elastic collisions are collisions where momentum and energy are conserved, or informally where the two colliding objects are deflected from each other and move apart from each other with different velocities after the collision
+- Inelastic collisions are collisions where only momentum is conserved, or informally, where there is loss in total mechanical energy to heat, light, or sound
+- Perfectly inealstic collisions are collisions where the total mechanical energy is entirely dissipated after the collision, or informally when the two colliding objects stick together and move together with the same velocity after the collision
+
+> Note: when two objects are said to have different _velocities_, that doesn't mean they have the same speed, as two different velocities with the same magnitude can have opposite directions.
+
+Most collisions, at least on a non-atomic level, are inelastic, dissipating some but not all of their initial total mechanical energy during the collision. However, when the loss is small enough to be considered negligible, collisions can be modelled as elastic, and when the loss is sufficiently large as to be considered total, collisions can be modelled as perfectly inelastic.
+
+### Elastic case
+
+In an elastic collision, the final velocities of the colliding objects are **completely determined** by the initial velocities and masses of the two colliding objects. That is, given initial velocities $v_1(a)$ and $v_2(a)$ and initial masses $m_1$ and $m_2$, we can find the final velocities $v_1(b)$ and $v_2(b)$. 
+
+Both energy and momentum are conserved in elastic collisions. Conservation of energy and momentum together give:
+
+$$
+\sum_i K_i(a) + \sum_i U_i(a) = \sum_i K_i(b) + \sum_i U_i(b)
+$$
+$$
+\sum_i p_i(a) = \sum_i p_i(b)
+$$
+
+> **A note about conservation of total mechanical energy:** elastic collisions are idealizations, because most collisions do end up generating heat, light, sound, or radiate away some of their total mechanical energy otherwise. Thus, while total _energy_ is conserved in all collisions, total _mechanical energy_ - that is, the sum of the kinetic and potential energies of all objects in a system - typically is not. 
+
+The higher dimensional generalization can be written in vector form:
+
+$$
+\sum_i \mathbf{P}_i(a) = \sum_i \mathbf{P}_i(b)
+$$
+Which yields three separate equations for each component:
+
+$$
+\begin{align}
+\sum_i P_{i, x}(a) = \sum_i P_{i, x}(b) \\\\
+\sum_i P_{i, y}(a) = \sum_i P_{i, y}(b) \\\\
+\sum_i P_{i, z}(a) = \sum_i P_{i, z}(b)
+\end{align}
+$$
+
+A general form can be found in the case of a two-body system of two masses $m_1$ and $m_2$. When the collision between the two bodies results in a negligible change in their respective potential energies, or where any increase in potential energy during the collision is immediately released back as kinetic energy afterwards, we can ignore the potential energy terms in the conservation of energy equation. Therefore, the resulting system of conservation equations becomes:
+
+$$
+\frac{1}{2} m_1 v_1(a)^2 + \frac{1}{2} m_2 v_2(a)^2 = \frac{1}{2} m_1 v_1(b)^2 + \frac{1}{2} m_2 v_2(b)^2 
+$$
+$$
+m_1 v_1(a) + m_2 v_2(a) = m_1 v_1(b) + m_2 v_2(b)
+$$
+
+The solution to this system of equations is given by:
+
+$$
+v_1(b) = \frac{2m_2 v_2(a)}{m_1 + m_2} + v_1(a) \frac{m_1 - m_2}{m_1 + m_2}
+$$
+$$
+v_2(b) = \frac{2m_1 v_1(a)}{m_1 + m_2} + v_2(a) \frac{m_2 - m_1}{m_1 + m_2}
+$$
+
+A full derivation is given [here](@/collision-derivations.md).
+
+### Perfectly inelastic case
+
+In a perfectly inelastic collision, the final velocities of the two colliding objects are the same, and is also **completely determined** by the initial velocities and masses. For two bodies of masses $m_1$ and $m_2$, conservation of momentum takes the form of the following equation, where $v_\mathrm{after}$ is the final velocity of both bodies after the collision:
+
+$$
+m_1 v_1(a) + m_2 v_2(a) = (m_1 + m_2)v_\mathrm{after}
+$$
+
+### Ballistic pendulum
+
+A ballistic pendulum is a device consisting of a wooden block of mass $M$ hanging from two sets of strings. When a projectile (for instance, a bullet) of mass $m$ and velocity $v_1$ is shot into the wooden block, the collision between the projectile and the block is a _perfectly inelastic_ collision where only conservation of momentum applies:
+
+$$
+mv_1 + M(0) = (m + M)v
+$$
+
+Afterwards, the project and block move upwards together, causing the pendulum swings up by distance $h$. As this is separate from the prior collision, energy conservation can be applied in this case:
+
+$$
+\frac{1}{2} (m + M)v^2 = (m + M)gh
+$$
+
+Solving the system of equations, we can obtain the speed $v_1$ of the projectile from only knowing the masses $M$ and $m$ (of the block and bullet respectively) and the height $h$ by which the pendulum swung upwards:
+
+$$
+v_1 = \frac{m + M}{m} \sqrt{2gh} 
+$$
+
+## Center of mass
+
+A system of many bodies can often be analyzed more simply as an equivalent single body whose mass $M$ is equal to the sum of the masses of the constituent bodies $m_1, m_2, \dots, m_n$, and whose position is at the center of mass of the body $\vec r_{CM}$. The expressions for the total mass $M$ and the center of mass $\vec r_{CM}$ are given by:
+
+$$
+M = \sum_i m_i
+$$
+
+$$
+\vec r_{CM} = \frac{\displaystyle \sum \nolimits_i m_i \vec r_i}{\displaystyle \sum \nolimits_i m_i} = \frac{1}{M} \sum_i m_i \vec r_i
+$$
+
+An extended body can be considered a system of all its individual atoms, and therefore a many-body system as well. For the case of extended bodies, however, we compute the total mass and center of mass over a continuum of values, and therefore the expression for the center of mass becomes an integral. 
+
+| Dimension | Expression for density function | Expression for total mass $M$ | Expression for center of mass $\vec r_{CM}$ |
+|-----|-----|-----|----|
+| 1D | Linear density $\lambda(x)$ | $\displaystyle \int_{L_1}^{L_2} \lambda(x)~dx$ | $\displaystyle \frac{1}{M} \int_{L_1}^{L_2} x\lambda(x)~dx$ |
+| 2D | Area density $\sigma(\vec r)$ | $\displaystyle \iint_\Sigma \sigma(\vec r)~dA$ | $\displaystyle \frac{1}{M} \iint_\Sigma \vec r \sigma(\vec r)~dA$ |
+| 3D | Volume density $\rho(\vec r)$ | $\displaystyle \iiint_\Omega \rho(\vec r)~dV$ | $\displaystyle \frac{1}{M} \iiint_\Omega \vec r \rho(\vec r)~dV$ |
+
+Symmetries can be used to rewrite higher-dimensional integrals in terms of one-dimension integrals. For instance, for a sphere, $dV = 4\pi r^2~dr$, so the triple integral becomes just a single-variable integral.
+
+## Rigid body motion
+
+Rigid body motion occurs for bodies that move in rotational as well as translational (straight-line) motion. Consider a rotating rigid body a distance $r$ from its axis of rotation. Then its tangential velocity is given by:
+
+$$
+ds = rd\phi \Rightarrow v = \frac{ds}{dt} = r\frac{d\phi}{dt} = r \omega
+$$
+
+Therefore, rotational motion can be entirely characterized by the object's angle as a function of time $\phi(t)$. The angle can be used to derive both angular velocity $\omega$ and angular acceleration $\alpha$:
+
+$$
+\omega(t) = \frac{d\phi}{dt}
+$$
+
+$$
+\alpha(t) = \frac{d\omega}{dt} = \frac{d^2 \phi}{dt^2}
+$$
+
+Note that $\alpha(t)$ can also be written as:
+
+$$
+\alpha(t) = \omega v = \omega^2 r = \frac{v^2}{r}
+$$
+
+In cases of constant angular acceleration, then the following kinematic equations result from straightforward integration:
+
+$$
+\omega(t) = \omega_0 + \alpha t
+$$
+
+$$
+\phi(t) = \phi_0 + \omega_0 t + \frac{1}{2} \alpha t^2
+$$
+
+### Vector representations of rotations
+
+Rotations in higher dimensions can be represented with vectors. That is, a rotation about the $x$, $y$, and $z$ axes respectively can be represented as:
+
+$$
+\vec \phi = (\phi_x, \phi_y, \phi_z)
+$$
+
+Therefore, the angular velocity $\vec \omega$ and angular acceleration $\alpha$ are also both vector quantities in higher dimensions. The expression for the tangential velocity $\vec v$ also becomes a cross product:
+
+$$
+\vec v = \omega \times \vec r
+$$
+
+The direction of the angular velocity can be found through the right-hand rule. Aligning the fingers to point along the direction of the object's rotation (clockwise or counterclockwise), the thumb would point in the direction of $\vec \omega$.
+
+The tangential acceleration in vector form is given by:
+
+$$
+\vec a_\mathrm{tan} = \frac{d\vec v}{dt} = \vec \alpha \times \vec r
+$$
+
+And the radial acceleration in vector form is given by:
+
+$$
+\vec \alpha_\mathrm{rad} = \frac{d\vec \omega}{dt} = \vec \omega \times \vec v = \vec \omega \times (\omega \times \vec r)
+$$
+
+The total acceleration of a rigid body is the combination of its tangential and radial acceleration:
+
+$$
+\vec a = \vec a_\mathrm{tan} + \vec \alpha_\mathrm{rad} = \vec a \times \vec r + \vec \omega \times \vec r
+$$
+
+The **torque** is the rotational equivalent of linear force, and is given by:
+
+$$
+\tau = \vec r \times \vec F
+$$
+
+For a rigid body of total mass $m$, the total external gravitational torque for uniform $\vec g$ is given by:
+
+$$
+\vec \tau = \vec r_{CM} \times m \vec g
+$$
+
+where $\vec r_{CM}$ is its center of mass.
+
+### 1D rotational equations of motion
+
+For a particle undergoing a net force $\vec F_\perp$ perpendicular to its radial vector $\vec r$, then Newton's 2nd law gives:
+
+$$
+m \vec a_\mathrm{tan} = \vec F_\perp
+$$
+
+This can also be rewritten as:
+
+$$
+\tau_\mathrm{net} = \sum_i \tau_i = I\alpha
+$$
+
+Where $I$ is the moment of inertia, the rotational equivalent of mass, given by:
+
+$$
+I = \sum_i m_i r_i^2
+$$
+
+Often, the axis of rotation (which runs through the center of mass) is not always The moment of inertia of the body can be found through any arbitrary coordinate system with its origin $\vec h$ from the center of mass of the body by the **parallel-axis theorem**:
+
+$$
+I = I_{CM} + mh^2
+$$
+
+For a continuous rigid body of non-uniform density, then the moment of inertia is given by:
+
+$$
+I = \int m r^2~dm = \iiint r^2 \rho~dV
+$$
+
+As an example, for a rod of length $L$, mass $M$, and linear mass density $\lambda = \frac{M}{L}$, then the moment of inertia about an axis that runs through either one of its endpoints is given by:
+
+$$
+I = \int m r^2 dm = \int_0^L x^2 \lambda dx = \frac{1}{3} ML^2
+$$
+
+The parallel-axis theorem can be used to derive its moment of inertia at its center of mass:
+
+$$
+I_{CM} = I - Mh^2 = \frac{1}{12} ML^2
+$$
