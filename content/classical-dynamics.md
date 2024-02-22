@@ -320,7 +320,7 @@ $$
 
 Energy can be understood as a measure of the ability to make things happen - causing a ball to move, a plane to fly, or a star to shine. Without energy, the universe would be boring and nothing interesting would happen.
 
-Energy (at least in non-quantum physics) comes in two main types: **kinetic energy**, which is associated with current motion, and **potential energy**, which is associated with future motion. An object's kinetic energy causes it to move; an object's potential energy gives it the ability to move at a future time. The total energy in a closed system is always constant.
+Energy (at least in non-quantum physics) comes in two main types: **kinetic energy**, which is energy that causes things to move, and **potential energy**, which is stored energy that _can_ be released to cause things to move. The total energy in a closed system is always constant.
 
 ## Work and conservation of energy
 
@@ -330,7 +330,7 @@ $$
 W = \int_{x_0}^{x_1} F(x) dx
 $$
 
-A force stores energy in the form of potential energy, and releases energy in the form of kinetic energy. The kinetic energy released by a force is equal to the work done by the force and equal to the negative of the potential energy stored:
+A force can release potential energy - that is, the stored energy - and transfer the released energy to objects in the form of kinetic energy. The kinetic energy gained by an object acted on by a force is equal to the work done by the force and equal to the negative of the potential energy released:
 
 $$
 W = \Delta K = -\Delta U
