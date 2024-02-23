@@ -462,7 +462,7 @@ $$
 \int x^3 e^x dx
 $$
 
-We construct a table of $u$ and all its derivatives on the left, and $dv$ and all its integrals (I) on the right, and alternating signs in front, until the derivative is zero:
+We construct a table of $u$ and all its derivatives (D) on the left, and $dv$ and all its integrals (I) on the right, and alternating signs in front, until the derivative is zero:
 
 | Sign | D | I |
 |----|---|---|
@@ -481,7 +481,7 @@ Now, we start from the first "D" term, and match terms crosswise down diagonally
 | + | 3 | 2 |
 | - | 4 | 3 |
 | + | 5 | 4 |
-| + | ... | ... |
+| ... | ... | ... |
 
 In front of each derivative term we put the sign associated with it. Therefore, our result is:
 
