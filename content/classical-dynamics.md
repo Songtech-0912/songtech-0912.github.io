@@ -834,6 +834,8 @@ $$
 \vec \tau = \frac{d\vec L}{dt} = \vec r \times \vec F
 $$
 
+> Note that torque is covered more in-depth in the section on rotational motion.
+
 ## Kepler's laws
 
 1. Each planet moves in an elliptical orbit described by the parameters $a$ and $b$
@@ -1064,10 +1066,10 @@ $$
 \vec F_\mathrm{net} = \frac{d\vec p}{dt}
 $$
 
-Given that $dp = \vec F dt$, we can integrate over time to get the **impulse**:
+**Impulse** is the change in an object's motion produced by a net force acting over a time interval. In mathematical terms, it is the time integral of force. Given that $dp = \vec F dt$, we can integrate over time to get the **impulse**:
 
 $$
-\Delta p = \int_{t_0}^{t_1} \vec F~dt
+J = \int_{t_0}^{t_1} \vec F~dt = \Delta p
 $$
 
 Newton's 3rd law states that:
@@ -1280,11 +1282,21 @@ $$
 \vec a = \vec a_\mathrm{tan} + \vec \alpha_\mathrm{rad} = \vec a \times \vec r + \vec \omega \times \vec r
 $$
 
-The **torque** is the rotational equivalent of linear force, and is given by:
+## Torque
+
+The **torque** is the rotational equivalent of linear force, akin to a measure of twisting of a rotating body, and is given by:
 
 $$
 \tau = \vec r \times \vec F
 $$
+
+The magnitude of the torque is given by:
+
+$$
+\\| \tau \\| = rF\sin \theta
+$$
+
+Here, $\theta$ is measured counter-clockwise. An angle measured clockwise between $\vec r$ and $\vec F$ would be equivalent to an angle of $-\theta$.
 
 For a rigid body of total mass $m$, the total external gravitational torque for uniform $\vec g$ is given by:
 
