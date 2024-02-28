@@ -66,6 +66,12 @@ $$
 \sum_{i = 1}^\infty a_n = \sum_{i = 0}^\infty a_{n + 1}
 $$
 
+And:
+
+$$
+\sum_{i = 0}^\infty a_n = \sum_{i = 1}^\infty a_{n - 1}
+$$
+
 ## Geometric series
 
 The geometric series is given by:
@@ -525,7 +531,7 @@ $$
 \text{max}|f^{n + 1}(z)| \frac{(0.6 - 0)^{n + 1}}{(n + 1)!} < 0.001
 $$
 
-The derivatives of $e^x$ are all $e^x$, so the maximum value of $f^{n + 1}(z)$ in $z \in [0, 0.6]$ is $e^{0.6} = 1.8221. Therefore:
+The derivatives of $e^x$ are all $e^x$, so the maximum value of $f^{n + 1}(z)$ in $z \in [0, 0.6]$ is $e^{0.6} = 1.8221$. Therefore:
 
 $$
 \frac{1.8221 \cdot (0.6 - 0)^{n + 1}}{(n + 1)!} < 0.001
@@ -543,13 +549,42 @@ $$
 f(x) = \sum_{n=0}^\infty a_n (x-c)^n
 $$
 
-Every power series has a **radius of convergence** $R$:
+Power series are widely used to approximate known functions and solve for unknown functions, as a convergent infinite power series is equivalent to the function it approximates. Taylor series are a special type of power series, but power series can generalize to approximate almost any type of function imaginable.
+
+## Radius of convergence
+
+If given a power series $\displaystyle \sum_{n = 0}^\infty a_n (x-c)^n$, then the _common ratio_ $r$ is given by the ratio test:
+
+$$
+r = \lim_{n \to \infty} \left| \frac{a_{n + 1} (x - c)^{n + 1}}{a_n (x - c)^n} \right | = \lim_{n \to \infty} \left| \frac{a_{n + 1}}{a_n} \right| \cdot |x - c|
+$$
+By the ratio test, a series can only converge if $r < 1$. Therefore, if we substitute in the obtained value of $r$:
+
+$$
+r < 1 \Rightarrow \lim_{n \to \infty} \left| \frac{a_{n + 1}}{a_n} \right| \cdot |x - c| < 1
+$$
+If we rearrange the terms so that the left-hand side is $|x - c|$ (by dividing by the limit), we have:
+
+$$
+|x - c| < \lim_{n \to \infty} \left| \frac{a_n}{a_{n + 1}} \right|
+$$
+
+We may rewrite this as $|x - c| < R$, where $R$ is called the **radius of convergence**, and is simply the right-hand side of the above equation:
+
+$$
+R = \lim_{n \to \infty} \left| \frac{a_n}{a_{n + 1}} \right|
+$$
+Note that this is only true if the limit exists (the limit can be finite or infinite, but must exist). The interpretation of the radius of convergence is that the power series in the general form $\displaystyle \sum_{n = 0}^\infty a_n (x-c)^n$ _must_ converge for all values $x \in (c - R, c + R)$ and _may_ converge at $x = c - R$ and $x = c + R$. The two cases where the series may converge are called the _endpoints_ and their convergence must be checked separately.
+
+> Note: here $r$ and $R$ are different things. $r$ is the common ratio, which is the result of the ratio test; $R$ is the radius of convergence, which is the distance from the center $c$ for which the series converges.
+
+In general, given a power series with radius of convergence $R$:
 
 - If $R = 0$, the series only converges at $x = c$
 - If $R > 0$, the series converges for $|x - c| < R$
 - If $R = \infty$, the series converges for all real numbers
 
-**Example question:** Determine the radius of convergence for the following power series:
+**Example question:** Determine the radius of convergence for the following power series, _without_ using the radius of convergence formula:
 
 $$
 \sum_{n = 0}^\infty \frac{(-1)^n x^n}{2^n}
@@ -570,6 +605,34 @@ r = \lim_{n \to \infty} \left|\frac{\frac{x^{n + 1}}{2^{n + 1}}}{\frac{x^n}{2^n}
 $$
 
 Now, recall that the series only converges if $r < 1$, thus $|x| < 2$. This means that the **radius of convergence** of the power series is 2.
+
+**Example question:** Determine the radius of convergence for the power series given below, with use of the radius of convergence formula:
+
+$$
+\sum_{n = 0}^\infty \frac{(-1)^n (x - 4)^n}{n^2}
+$$
+
+**Answer:**
+
+Since the general power series is given by $\displaystyle \sum_{n = 0}^\infty a_n (x - c)^n$, then here:
+
+$$
+a_n = \frac{(-1)^n}{n^2}
+$$
+
+The radius of convergence formula is given by:
+
+$$
+R = \lim_{n \to \infty} \left| \frac{a_n}{a_{n + 1}} \right|
+$$
+
+If we substitute, noting that $|(-1)^n| = 1$, we have:
+
+$$
+R = \lim_{n \to \infty} \frac{1}{n^2} \frac{(n + 1)^2}{1} = 1
+$$
+
+Therefore the power series has the radius of convergence $R = 1$.
 
 **Example question:** Determine the interval of convergence for the power series:
 
@@ -626,6 +689,8 @@ $$
 $$
 
 The power series, its derivative, and its integral all have the **same** radius of convergence (though not necessary same _interval_ of convergence - the value of $c$ about which they converge can be different).
+
+> Note that in both integration and differentiation, any $(-1)^n$ term stays constant and is not differentiated or integrated over. Also note that differentiation causes a shift of one index to the right.
 
 ### Power series representations of functions
 
