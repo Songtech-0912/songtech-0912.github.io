@@ -766,7 +766,7 @@ Using the shell theorem, we can divide a solid sphere of radius $R$ and mass $M$
 To compute the value of this force, we want to first find the amount of mass inside a radius $r$. Given $dm = \rho dV$, and $dV = 4\pi r^2 dr$, we can say that:
 
 $$
-M(r) = \int_0^r dm = \int_0^r 4\pi (r')^2\rho(r') dV
+M(r) = \int_0^r dm = \int_0^r 4\pi (r')^2\rho(r') dr
 $$
 
 where we relabel from $r \to r'$ in the integrand to avoid confusing integration bounds and variables. This results in a linear force inside the spherical mass given by:
@@ -1204,15 +1204,25 @@ $$
 \vec r_{CM} = \frac{\displaystyle \sum \nolimits_i m_i \vec r_i}{\displaystyle \sum \nolimits_i m_i} = \frac{1}{M} \sum_i m_i \vec r_i
 $$
 
-An extended body can be considered a system of all its individual atoms, and therefore a many-body system as well. For the case of extended bodies, however, we compute the total mass and center of mass over a continuum of values, and therefore the expression for the center of mass becomes an integral. 
+An extended body can be considered a system of all its individual atoms, and therefore a many-body system as well. For the case of extended bodies, however, we compute the total mass and center of mass over a continuum of values, and therefore the expression for the center of mass becomes an integral. The general expressions of a single extended body's mass $M$ and center of mass $r_{CM}$ are:
+
+$$
+M = \int dm
+$$
+
+$$
+r_{CM} = \frac{1}{M} \int rdm
+$$
+
+As $dm$ can be written in terms of density functions, the general expressions expand to specific integrals in different dimensions:
 
 | Dimension | Expression for density function | Expression for total mass $M$ | Expression for center of mass $\vec r_{CM}$ |
 |-----|-----|-----|----|
 | 1D | Linear density $\lambda(x)$ | $\displaystyle \int_{L_1}^{L_2} \lambda(x)~dx$ | $\displaystyle \frac{1}{M} \int_{L_1}^{L_2} x\lambda(x)~dx$ |
-| 2D | Area density $\sigma(\vec r)$ | $\displaystyle \iint_\Sigma \sigma(\vec r)~dA$ | $\displaystyle \frac{1}{M} \iint_\Sigma \vec r \sigma(\vec r)~dA$ |
+| 2D | Surface density $\sigma(\vec r)$ | $\displaystyle \iint_\Sigma \sigma(\vec r)~dA$ | $\displaystyle \frac{1}{M} \iint_\Sigma \vec r \sigma(\vec r)~dA$ |
 | 3D | Volume density $\rho(\vec r)$ | $\displaystyle \iiint_\Omega \rho(\vec r)~dV$ | $\displaystyle \frac{1}{M} \iiint_\Omega \vec r \rho(\vec r)~dV$ |
 
-Symmetries can be used to rewrite higher-dimensional integrals in terms of one-dimension integrals. For instance, for a sphere, $dV = 4\pi r^2~dr$, so the triple integral becomes just a single-variable integral.
+Symmetries can be used to rewrite higher-dimensional integrals in terms of one-dimension integrals. For instance, for a sphere, $dV = 4\pi r^2~dr$, so the multivariable integral becomes just a single-variable integral.
 
 ## Rigid body motion
 
@@ -1338,14 +1348,210 @@ $$
 I = \int m r^2~dm = \iiint r^2 \rho~dV
 $$
 
-As an example, for a rod of length $L$, mass $M$, and linear mass density $\lambda = \frac{M}{L}$, then the moment of inertia about an axis that runs through either one of its endpoints is given by:
+As an example, for a rod of length $L$, mass $M$, and linear mass density $\lambda = \frac{M}{L}$, then $dm = \lambda dx$ and the moment of inertia about an axis that runs through its left end (that is, where $x = 0$) is given by:
 
 $$
-I = \int m r^2 dm = \int_0^L x^2 \lambda dx = \frac{1}{3} ML^2
+I = \int m r^2 dm = \int_0^L x^2 \lambda dx = \int_0^L x^2 \frac{M}{L} dx = \frac{1}{3} ML^2
 $$
 
-The parallel-axis theorem can be used to derive its moment of inertia at its center of mass:
+The parallel-axis theorem can be used to derive its moment of inertia at its center of mass (where $x = L/2$):
 
 $$
-I_{CM} = I - Mh^2 = \frac{1}{12} ML^2
+I_{CM} = I - Mh^2 = I - M\left(\frac{L}{2}\right)^2 = \frac{1}{12} ML^2
+$$
+
+## Rigid body dynamics
+
+A rigid body is a body that does not deform under motion; while rigid bodies are an idealization, many objects that do not deform much under motion can be approximately modelled by rigid bodies. Motion can always be decomposed into the translational motion of the center of mass and rotational motion about the center of mass:
+
+$$
+M\vec a_{CM} = M \frac{d \vec v_{CM}}{dt} = \sum_i \vec F_i
+$$
+
+$$
+I \vec \alpha_{CM} = I_{CM} \frac{d \vec \omega}{dt} = \sum_i \tau_i
+$$
+
+Rigid body dynamics may have the condition of slipping. An object is formally said to be slipping if its motion follows the property:
+
+$$
+v_{CM} - R\omega = 0
+$$
+
+### Kinetic dynamics
+
+$$
+K = \frac{1}{2} I \omega^2
+$$
+
+> More will be added soon.
+
+## Fields
+
+A field is a continuous quantity spread out over space. Fields can be scalar fields - e.g. a density field, like $\rho(r, t)$ - or vector fields - e.g. a fluid velocity field, like $\mathbf{v}(r, t)$.
+
+### Addenum: integral notations
+
+We encountered line integrals previously, as well as integrals over areas and volumes. We notated scalar and vector line integrals respectively with:
+
+$$
+\int_C f(x, y, z)~d\ell \quad \text{and} \quad \int_C \mathbf{F} \cdot \mathbf{d\ell}
+$$
+
+We will now properly define names for integrals over areas and volumes. An _area integral_ is notated:
+
+$$
+\iint f(x, y)~dA
+$$
+
+Meanwhile, a _volume integral_ is notated:
+
+$$
+\iiint f(x, y, z)~dV
+$$
+
+In some cases, symmetries allow area and volume integrals to be evaluated without needing to integrate. However, in nontrivial cases, area integrals can be evaluated using double integrals, and volume integrals can be evaluated using triple integrals, though that will not be covered here.
+
+### Flux
+
+Flux is a measure of the flow of a field. Typically, this flow is measured with respect to an imaginary surface $\Sigma$ that encloses some part of the field.
+
+$$
+\phi = \iint_\Sigma \mathbf{v} \cdot d\mathbf{S}
+$$
+
+For relatively constant fields, the flux simplifies to:
+
+$$
+\phi = S \mathbf{v} \cos \theta 
+$$
+
+Where $S$ is the surface area of the surface.
+
+In addition, if the flux is over a _closed_ surface, then the flux is notated:
+
+$$
+\phi = \oiint_\Sigma \mathbf{v} \cdot d\mathbf{A}
+$$
+
+### Gauss's theorem (divergence theorem)
+
+Gauss's theorem states that the flux of a vector field over a surface is equal to the volume integral of its divergence:
+
+$$
+\oiint_\Sigma \mathbf{v} \cdot d\mathbf{A} = \iiint \nabla \cdot \mathbf{v}~dV
+$$
+
+The general idea is that integrating over the divergence of a vector field results in the divergence on all the interior points of a surface to cancel out. Therefore, the remaining divergence is located only at the surface, resulting in the flux.
+
+## The continuity equation
+
+The mass flow rate of a fluid with velocity field $\mathbf{v}$ and density $\rho(r, t)$ into a region is given by:
+
+$$
+\frac{dm}{dt}_\mathrm{in} = \frac{d}{dt} \iiint \rho(r, t)~dV
+$$
+
+The mass flow rate of a fluid out of a region is given by:
+
+$$
+\frac{dm}{dt}_\mathrm{out} = -\oiint \rho \mathbf{v} \cdot d\mathbf{S}
+$$
+
+If we define a new vector field $\mathbf{J}$ from the velocity field:
+
+$$
+\mathbf{J} = \rho \mathbf{v}
+$$
+
+Then:
+
+$$
+\frac{dm}{dt}_\mathrm{out} = -\oiint \mathbf{J} \cdot d\mathbf{S}
+$$
+
+By conservation of mass, the mass flow rate into and out of a region must be exactly equation. Therefore:
+
+$$
+\frac{dm}{dt}_\mathrm{in} = \frac{dm}{dt}_\mathrm{out}
+$$
+
+Or, after substitution with the previous definitions:
+
+$$
+\frac{d}{dt} \iiint \rho(r, t)~dV = -\oiint \rho \mathbf{v} \cdot d\mathbf{S}
+$$
+
+By Gauss's theorem, this integral equation can be written as a partial differential equation:
+
+$$
+\frac{\partial \rho}{\partial t} = -\nabla \cdot \mathbf{J}
+$$
+
+Or written in another way:
+
+$$
+\frac{\partial \rho}{\partial t} + \nabla \cdot \mathbf{J} = 0
+$$
+
+This is the **continuity equation**, a generalized description of the conservation of a physical quantity. It describes a quantity that cannot be created nor destroyed, and can only change due to flow into or out of a region.
+
+Note that for an incompressible fluid the continuity equation simplifies to:
+
+$$
+\nabla \cdot \mathbf{J} = 0
+$$
+
+Stress-energy tensor (maybe?):
+
+$$
+T^{\mu \nu} = \iint P^\mu ~dA^\nu
+$$
+
+(flux of $\mu$-component of 4-momentum through a surface of constant $\nu$)
+
+## Flux for other fields
+
+The gravitational field is represented by a vector field $\mathbf{g}$. The flux of $\mathbf{g}$ is given by:
+
+$$
+\oiint \mathbf{g} \cdot d\mathbf{S} = -4\pi GM
+$$
+
+This is called **Gauss's laww for gravity**, and is useful because it can be used to solve for $\mathbf{g}$ in the case of an arbitrary mass distribution. Recall also that the total mass can be written in terms of the mass density $\rho:
+
+$$
+M = \iiint \rho~dV
+$$
+
+Therefore:
+
+$$
+\oiint \mathbf{g} \cdot d\mathbf{S} = -4\pi G \iiint \rho~dV
+$$
+
+If we define a scalar field called the _gravitational potential_ $\varphi$, where $\mathbf{g} = -\nabla \mathbf{g}$, then we can write:
+
+$$
+\nabla \cdot (\nabla \mathbf{g}) = \nabla^2 \phi = 4\pi G\rho
+$$
+
+> Note that calling this a scalar potential is not an arbitrary name. The fact that $\mathbf{g} = -\nabla \varphi$ is _directly_ analogous to the relationship between force and potential energy, $\mathbf{F} = -\nabla U$.
+
+Using Gauss's theorem (the divergence theorem) we can equivalently rewrite this integral equation as a _partial differential equation_:
+
+$$
+\nabla \cdot g = -4\pi G\rho
+$$
+
+The same methodology applies to the analysis of the electric field as well. The flux of the electric field is given by:
+
+$$
+\oiint \mathbf{E} \cdot d\mathbf{S} = 4\pi kQ
+$$
+
+Which is **Maxwell's 1st equation** in integral form. The equivalent equation for the magnetic field is **Maxwell's 2nd equation** in integral form:
+
+$$
+\oiint \mathbf{B} \cdot d\mathbf{S} = 0
 $$
