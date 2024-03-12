@@ -13,6 +13,8 @@ Note that the general [[Calculus series]](@/calculus-series.md) and specifically
 
 A _differential equation_ is an equation that contains derivatives of an unknown function. They are a powerful tool to describe a variety of physical processes.
 
+We write differential equations because many relationships in physics, engineering, and other sciences relate one changing quantity to another. For instance, the radioactive decay rate $r$ is proportional to the amount of a radioactive substance $N$, so $r = kN$. But $r = \frac{dN}{dt}$, so we rewrite $r = kN$ as $\frac{dN}{dt} = kN$. We've now derived a differential equation.
+
 Differential equations are classified via three main characteristics.
 
 - Ordinary vs partial
@@ -1036,12 +1038,12 @@ which means that to cast a differential equation in this form, any coefficients 
 $$
 y(x) = y_h + y_f
 $$
-The process starts by extracting the two solutions $y_1$ and $y_2$ from the homogeneous solution $y_h (x)$.  We are now going to guess that the fitting solution $y_f(x)$ is given by:
+The process starts by extracting the two solutions $y_1$ and $y_2$ from the homogeneous solution $y_h (x)$.  We are now going to _guess_ that the fitting solution $y_f(x)$ is given by:
 
 $$
 y_f(x) = u_1(x) y_1 + u_2(x) y_2
 $$
-What constraints can we use to obtain $u_1(x)$ and $u_2(x)$? First, we know that $y_f$ must satisfy the differential equation. Second, we're going to impose the additional constraint that $u_1' y_1 + u_2' y_2 = 0$. These facts allow us to write $u_1$ and $u_2$ as a system of two linear equations in the form $A \mathbf{x} = \mathbf{b}$:
+What constraints can we use to obtain $u_1(x)$ and $u_2(x)$? First, we know that $y_f$ must satisfy the differential equation. Second, we're going to impose (guess) the additional constraint that $u_1' y_1 + u_2' y_2 = 0$. These facts allow us to write $u_1$ and $u_2$ as a system of two linear equations in the form $A \mathbf{x} = \mathbf{b}$:
 
 $$
 \begin{bmatrix}
