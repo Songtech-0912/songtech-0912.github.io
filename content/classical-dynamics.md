@@ -1470,16 +1470,16 @@ $$
 \frac{dm}{dt}_\mathrm{out} = -\oiint \mathbf{J} \cdot d\mathbf{S}
 $$
 
-By conservation of mass, the mass flow rate into and out of a region must be exactly equation. Therefore:
+By conservation of mass, the mass flow rate into and out of a region must be exactly equal. Therefore:
 
 $$
-\frac{dm}{dt}_\mathrm{in} = \frac{dm}{dt}_\mathrm{out}
+\frac{dm}{dt}\_\mathrm{in} = \frac{dm}{dt}\_\mathrm{out}
 $$
 
 Or, after substitution with the previous definitions:
 
 $$
-\frac{d}{dt} \iiint \rho(r, t)~dV = -\oiint \rho \mathbf{v} \cdot d\mathbf{S}
+\frac{d}{dt} \iiint \rho(r, t)~dV = -\oiint \mathbf{J} \cdot d\mathbf{S}
 $$
 
 By Gauss's theorem, this integral equation can be written as a partial differential equation:
@@ -1502,14 +1502,6 @@ $$
 \nabla \cdot \mathbf{J} = 0
 $$
 
-Stress-energy tensor (maybe?):
-
-$$
-T^{\mu \nu} = \iint P^\mu ~dA^\nu
-$$
-
-(flux of $\mu$-component of 4-momentum through a surface of constant $\nu$)
-
 ## Flux for other fields
 
 The gravitational field is represented by a vector field $\mathbf{g}$. The flux of $\mathbf{g}$ is given by:
@@ -1518,7 +1510,7 @@ $$
 \oiint \mathbf{g} \cdot d\mathbf{S} = -4\pi GM
 $$
 
-This is called **Gauss's laww for gravity**, and is useful because it can be used to solve for $\mathbf{g}$ in the case of an arbitrary mass distribution. Recall also that the total mass can be written in terms of the mass density $\rho:
+This is called **Gauss's law for gravity**, and is useful because it can be used to solve for $\mathbf{g}$ in the case of an arbitrary mass distribution. Recall also that the total mass can be written in terms of the mass density $\rho$:
 
 $$
 M = \iiint \rho~dV
@@ -1538,7 +1530,7 @@ $$
 
 > Note that calling this a scalar potential is not an arbitrary name. The fact that $\mathbf{g} = -\nabla \varphi$ is _directly_ analogous to the relationship between force and potential energy, $\mathbf{F} = -\nabla U$.
 
-Using Gauss's theorem (the divergence theorem) we can equivalently rewrite this integral equation as a _partial differential equation_:
+Using Gauss's theorem (the divergence theorem) we can equivalently rewrite this integral equation as a partial differential equation:
 
 $$
 \nabla \cdot g = -4\pi G\rho
