@@ -26,3 +26,5 @@ Now we know that $C = \pi d = 2\pi r$. Therefore:
 $$
 A = \frac{1}{2} r(2\pi r) = \pi r^2
 $$
+
+That just leaves determining what that mysterious constant $\pi = C/D$ is. But that will be a topic for another time!
