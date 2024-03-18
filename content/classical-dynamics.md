@@ -1386,9 +1386,106 @@ $$
 
 > More will be added soon.
 
+
+## Fluid mechanics
+
+Fluids are any substances that can flow and change shape. They include both liquids and gases (but also include other substances, such as plasmas). Fluids are not characterized by their mass, but rather by their **density**. A fluid's density $\rho$ is defined by:
+$$
+\rho(x, y, z) = \frac{dm}{dV}
+$$
+The density of many fluids can vary. However, liquids in particular are typically _incompressible_, that is, $\rho = \text{const.}$
+
+### Fluid pressure
+
+Like solids, fluids can be acted on by forces. However, unlike solids, fluids distribute force across a continuum, and thus the fluid equivalent of force is **pressure**. The pressure $P$ of a fluid is defined as:
+
+$$
+P = \frac{dF}{dA}
+$$
+> Note that one **pascal** is equal to $\pu{1 N/m^2}$ and is the standard unit for pressure.
+
+Fluid pressure in a single dimension is described by the differential equation:
+$$
+\frac{dP}{dy} = -\rho(y) g
+$$
+For incompressible fluids, $\rho = C$ and thus:
+
+$$
+P(y) = P_0 + \rho g(y_0 - y)
+$$
+
+For other fluids, such as air in the atmosphere, a good approximation is $\rho(y) = cP(y)$. That is:
+
+$$
+\frac{dp}{dy} = -kPg
+$$
+The solution to this differential equation is:
+
+$$
+P(y) = P_0 e^{-kgy} = P_e e^{-y/a}
+$$
+
+Where $a = \frac{P_0}{\rho_0 g}$. This pressure function is used in the barometric formula for atmospheric pressure, where in this case $a \approx \pu{8,500 m}$ and $P_0 = \pu{1.01e5 Pa}$.
+
+### Pascal's law
+
+Fluids aren't only able to be acted on by forces, they can also transmit forces. In fact, their incompressible nature makes them highly desirable for this purpose, as used in applications such as hydraulic lifts. **Pascal's Law** states that at constant height, fluid pressure is identical at all points in the fluid:
+
+$$
+P_1 = P_2 \Rightarrow \frac{F_1}{A_1} = \frac{F_2}{A_2}
+$$
+That is, with $h = \text{const}$, if a force $F_1$ is applied to a fluid along a surface of area $A_1$, then the fluid exerts a force of $F_2$ on any surface of $A_2$ it touches.
+
+### Archimedes' principle
+
+When an object is immersed in a fluid, the fluid exerts an upward **buoyant force** on the object given by:
+$$
+F_B = \rho V_\mathrm{disp}g = \rho V_\mathrm{im}g
+$$
+
+Where $\rho$ is the fluid's density, $V_\mathrm{disp}$ is the displaced volume of fluid, and $V_\mathrm{im}$ is the submerged volume of the immersed object. Notice that the buoyant force does **not** depend on the immersed object's mass at all!
+
+### Fluid flow
+
+Previously, all examples applied only to fluid statics; fluids that are unchanging in time. For fluids that do change in time - that is, fluids that flow - fluid dynamics is necessary.
+
+For an ideal fluid that is steady, non-viscous, and irrotational, then the _equation of continuity_ applies:
+
+$$
+\rho_1 A_1 v_1 = \rho_2 A_2 v_2
+$$
+
+If the fluid is also incompressible, then the equation of continuity simplifies to:
+
+$$
+A_1 v_1 = A_2 v_2
+$$
+By these definitions, the mass flow rate is a constant given by:
+
+$$
+\frac{dm}{dt} = \rho Av
+$$
+And the volume flow rate is a constant given by:
+
+$$
+\frac{dV}{dt} = Av
+$$
+
+### Bernoulli's equation
+
+For incompressible ideal fluid (i.e. no turbulence, constant density), then **Bernoulli's equation** applies:
+
+$$
+\Delta P + \frac{1}{2} \rho (v_2^2 - v_1^2) + \rho g\Delta y = 0
+$$
+
+Where $\Delta P$ is the difference in pressure between the fluid measured at two points, $\Delta y$ is the difference in height between those points, and $v_1, v_2$ are the fluid's respective velocities at those points.
+
+> Note: for fluids that are exposed to the atmosphere, such as a glass of water left on a table, all points where the fluid is in contact with the air have the _same_ pressure of $\pu{1 atm}$. For a fluid whose surface is level and unchanging, then at that point $v = 0$.
+
 ## Fields
 
-A field is a continuous quantity spread out over space. Fields can be scalar fields - e.g. a density field, like $\rho(r, t)$ - or vector fields - e.g. a fluid velocity field, like $\mathbf{v}(r, t)$.
+A field is a model for a quantity spread out over space with a measurable value at each point. Fields can be scalar fields - e.g. a temperature field, like $T(r, t)$ - or vector fields - e.g. a velocity field, like $\mathbf{v}(r, t)$. They are used to model phenomena ranging from electromagnetism to gravity to fluid flow to plasma confinement.
 
 ### Addenum: integral notations
 
