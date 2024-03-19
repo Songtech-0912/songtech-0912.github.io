@@ -1255,7 +1255,7 @@ c & d \\\\
 \end{pmatrix}
 $$
 
-The determinant of $A$, denoted $\det(A)$, is given by$ad - bc$. If $\det(A) \neq 0$, then it is said to be non-singular, which means it has an inverse given by:
+The determinant of $A$, denoted $\det(A)$, is given by $ad - bc$. If $\det(A) \neq 0$, then it is said to be non-singular, which means it has an inverse given by:
 
 $$
 \frac{1}{\det(A)} 
@@ -1275,7 +1275,9 @@ A special case is that of a homogeneous system $A \mathbf{x} = 0$. In this case,
 
 Finally, two solution vectors $\mathbf{x}_1$ and $\mathbf{x}_2$ are linearly independent if one cannot be written in terms of the other multiplied by a constant. For instance $(1, 2)$ and $(2, 4)$ aren't linearly independent, but $(1, 2)$ and $(1, 3)$ are. Linear independence can be rigorously proven by checking that the equation $c_1 \mathbf{x}_1 + c_2 \mathbf{x}_2 = 0$ is satisfied only if $c_1 = c_2 = 0$.
 
-In addition to the previously-given formula, we can also solve linear systems of equations by rewriting them as eigenvalue problems. First, it is helpful to define what eigenvalues are. Typically, a matrix applied to a nonzero vector $\mathbf{x}$ outputs a vector that isn't a scalar multiple of the original vector. However, in some cases, a matrix applied to a vector outputs a vector that _is_ a scalar multiple of the original vector. That is, we can write that:
+### Eigenvalue problems
+
+We can solve special cases of linear systems of equations by rewriting them as eigenvalue problems. First, it is helpful to define what eigenvalues are. Typically, a matrix applied to a nonzero vector $\mathbf{x}$ outputs a vector that isn't a scalar multiple of the original vector. However, in some cases, a matrix applied to a vector outputs a vector that _is_ a scalar multiple of the original vector. That is, we can write that:
 
 $$
 A \mathbf{x} = \lambda \mathbf{x}
@@ -1292,6 +1294,8 @@ Therefore:
 $$
 \det (A-I\lambda) = 0
 $$
+
+And _any_ linear system of equations in the form $A\mathbf{x} = \lambda \mathbf{x}$ can be solved using techniques of eigenvalue problems.
 
 For a general $2 \times 2$ matrix $A$ as given before in the form:
 
@@ -1310,3 +1314,273 @@ $$
 $$
 
 and can be solved for $\lambda$ using typical quadratic methods. In the special case that one value of $\lambda$ is imaginary, the other value of $\lambda$ is its conjugate pair.
+
+Then, from substitution of each eigenvalue into the eigenvector equation $(A - \lambda I) \mathbf{x} = 0$, the eigenvectors $\mathbf{x}$ can be found. Note that a $N \times N$ matrix has at most $N$ eigenvectors. In the case that the matrix is a $2 \times 2$ matrix, it has at most 2 (but possibly fewer) eigenvectors.
+
+### Finding eigenvalues and eigenvectors
+
+As an example, consider the matrix:
+
+$$
+A = \begin{pmatrix}
+6 & -1 \\\\
+2 & 3
+\end{pmatrix}
+$$
+
+We want to find its eigenvalues and its eigenvectors. To do so, we recall that $\det (A - \lambda I) = 0$. Therefore:
+
+$$
+\det
+\begin{pmatrix}
+\begin{bmatrix}
+6 & -1 \\\\
+2 & 3
+\end{bmatrix} - \lambda \begin{bmatrix}
+1 & 0 \\\\
+0 & 1
+\end{bmatrix}
+\end{pmatrix} = 0
+$$
+Which simplifies to:
+
+$$
+\det \begin{pmatrix}
+6 - \lambda & -1 \\\\
+2  & 3 - \lambda
+\end{pmatrix} = 0
+$$
+
+If we compute the determinant, we have:
+
+$$
+(6 - \lambda) (3 - \lambda) - (-1)(2) = 0 \Rightarrow \lambda^2 -9\lambda + 20 = 0
+$$
+The solution is:
+
+$$
+(\lambda - 4)(\lambda - 5) \Rightarrow \lambda_1 = 4, \lambda_2 = 5
+$$
+
+Now we must find the actual eigenvectors $\mathbf{x}_{e, i}$ (there may be one eigenvector or two eigenvectors for a 2D matrix). To do so, we substitute each eigenvalue into $(A - \lambda\_i I) \mathbf{x}\_{e, i} = 0$. We first compute $A - \lambda_i I$ for $i = 1$:
+
+$$
+A - \lambda_1 I=
+\begin{pmatrix}
+6 & -1 \\\\
+2 & 3
+\end{pmatrix} - 4 \begin{pmatrix}
+1 & 0 \\\\
+0 & 1
+\end{pmatrix}
+ = \begin{pmatrix}
+2 & -1 \\\\
+2 & -1
+\end{pmatrix}
+$$
+
+So the eigenvector equation $(A - \lambda_1 I) \mathbf{x}_{e, 1} = 0$ becomes:
+
+$$
+(A - \lambda_1 I) \mathbf{x}_{e, 1} =
+\begin{pmatrix}
+2 & -1 \\\\
+2 & -1
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\\\
+x_2
+\end{pmatrix} =
+\begin{pmatrix} 0 \\\\ 0 \end{pmatrix}
+$$
+> The mathematical reader may note that here $C = A - \lambda I$ must be a _singular_ matrix with infinitely many solutions for nonzero $\mathbf{x}$. 
+
+We want to solve for the eigenvectors of this matrix. To do so, we first assume the eigenvector is in the form:
+
+$$
+\mathbf{x}_{e, 1} = \begin{pmatrix} a \\\\ x_2 \end{pmatrix}
+$$
+
+Where $a$ is an arbitrary constant. If we do the matrix-vector multiplication on the first row, we get:
+
+$$
+\begin{pmatrix} 2 & -1 \end{pmatrix}
+\begin{pmatrix} a \\\\ x_2 \end{pmatrix} = 0 \Rightarrow 2a - x_2 = 0
+$$
+
+From here, we can solve $x_2 = 2a$. Therefore, the **first eigenvector** is $\mathbf{x}_{e, 1} = (a, 2a)$, which we can rewrite as:
+
+$$
+\mathbf{x}_{e, 1} = \begin{pmatrix} a \\\\ 2a \end{pmatrix} = a \begin{pmatrix} 1 \\\\ 2 \end{pmatrix}
+$$
+
+Any scalar multiple of an eigenvector is also an eigenvector, since $a$ is an arbitrary constant, and we typically prefer to write eigenvectors in their simplest integer form, so there are no denominators in the eigenvector. Therefore, we can set $a = 1$ to get the eigenvector in simplest integer form:
+
+$$
+\mathbf{x}_{e, 1} = \begin{pmatrix} 1 \\\\ 2 \end{pmatrix}
+$$
+
+Since the first row and second row in the matrix $A - \lambda_1 I$ are identical, we do not need to repeat the process for the second row. Therefore, we have our first set of associated eigenvalues and eigenvectors:
+
+$$
+\lambda_1 = 4, \quad \mathbf{x}_{e, 1} = \begin{pmatrix} 1 \\\\ 2 \end{pmatrix}
+$$
+
+We do the same with $\lambda_2 = 5$. Then the matrix $A - \lambda_2 I$ expands to:
+
+$$
+A - \lambda_2 I = 
+\begin{pmatrix}
+6 & -1 \\\\
+2 & 3
+\end{pmatrix} - 5 \begin{pmatrix}
+1 & 0 \\\\
+0 & 1
+\end{pmatrix}
+ = \begin{pmatrix}
+1 & -1 \\\\
+2 & -2
+\end{pmatrix}
+$$
+
+Therefore, the eigenvector equation becomes:
+
+$$
+(A - \lambda_2 I) \mathbf{x}_{e, 2} = 
+\begin{pmatrix}
+1 & -1 \\\\
+2 & -2
+\end{pmatrix} 
+\begin{pmatrix} a \\\\ x_2 \end{pmatrix} = 
+\begin{pmatrix} 0 \\\\ 0 \end{pmatrix}
+$$
+
+We again assume an eigenvector in the form:
+
+$$
+\mathbf{x}_{e, 2} = \begin{pmatrix} a \\\\ x_2 \end{pmatrix}
+$$
+
+By doing matrix-vector multiplication we get $1 a - 1 x_2 = a - x_2 = 0 \Rightarrow x_2 = a$. Therefore:
+
+$$
+\mathbf{x}_{e, 2} = \begin{pmatrix} a \\\\ a \end{pmatrix} = a\begin{pmatrix} 1 \\\\ 1 \end{pmatrix}
+$$
+
+Again we want the simplest integer form of $\mathbf{x}_{e, 2}$, so we can set $a = 1$ to obtain:
+
+$$
+\mathbf{x}_{e, 2} = \begin{pmatrix} 1 \\\\ 1 \end{pmatrix}
+$$
+
+Therefore our second set of associated eigenvalues and eigenvectors:
+
+$$
+\lambda_2 = 5, \quad \mathbf{x}_{e, 2} = \begin{pmatrix} 1 \\\\ 1 \end{pmatrix}
+$$
+
+So our two eigenvectors for $\lambda_1 = 4, \lambda_2 = 5$ are:
+
+$$
+\mathbf{x}\_{e, 1} = \begin{pmatrix} 1 \\\\ 2 \end{pmatrix}, \quad
+\mathbf{x}\_{e, 2} = \begin{pmatrix} 1 \\\\ 1 \end{pmatrix}
+$$
+
+The same process can be repeated for any other matrix. The process is simpler with complex eigenvalues: once one eigenvector is computed, the other eigenvector is the complex conjugate of the first. A helpful identity for simplifying complex eigenvectors is $\frac{1}{a + bi} = \frac{a-bi}{a^2 - b^2}$ - for instance $\frac{1}{i} = -1$.
+
+> Note: sometimes, it is desirable to multiply complex-valued eigenvectors by $i$ in order to allow the components to be entirely positive, or to make one of the components real instead of complex. This has no effect on the eigenvector, since a scalar multiple of an eigenvector is still an eigenvector.
+
+## Linear systems of ODEs
+
+Any nth-order linear system of ODEs can be written as a first-order ODE system in the form $\mathbf{y'} = A\mathbf{y}$. The general solution of such an ODE can then be found by taking the eigenvalues and eigenvectors of $A$.
+
+In the case that there are two distinct real eigenvalues $\lambda_1, \lambda_2$, and two associated eigenvectors $\mathbf{x}\_{e, 1}$ and $\mathbf{x}\_{e, 2}$, then the general solution is given by:
+
+$$
+\mathbf{y} = C\_1 \mathbf{x}\_{e, 1} e^{\lambda_1 t} + C\_2 \mathbf{x}\_{e, 2} e^{\lambda_2 t}
+$$
+
+Meanwhile, in the case there is one repeated real eigenvalue $\lambda$, and therefore one associated eigenvector $\mathbf{x}_e$:
+
+$$
+\mathbf{y} = C_1 \mathbf{x}_e e^{\lambda t} + C_2 (t\mathbf{x}_e + \vec \varphi)e^{\lambda t}
+$$
+
+where $(A - \lambda I) \vec \varphi = \mathbf{x}_e$.
+
+Finally, in the case that there are two complex eigenvalues $\lambda_1 = \alpha + \beta i$ and $\lambda_2 = \alpha - \beta i$, then the eigenvectors are a conjugate pair. If the associated eigenvector of $\lambda_1$ is denoted $\mathbf{x}_e$, then:
+
+$$
+\mathbf{u}_1 = e^{\alpha t} [\mathbf{x}_e (\cos \beta t + i\sin \beta t)]
+$$
+
+And the general solution is:
+
+$$
+\mathbf{y} = C_1 \operatorname{Re}(\mathbf{u}_1) + C_2 \operatorname{Im}(\mathbf{u}_2)
+$$
+
+## Steady states
+
+Most solutions to differential equations, even within the small category that can be written in exact form, are dynamic - they take on different values at different times. However, some solutions to differential equations stay constant through time. These solutions are known as **steady-state solutions** or steady states.
+
+The steady states can be found for a system $\mathbf{y}' = A \mathbf{y}$ by solving for $A\mathbf{y} = 0$. The corresponding value of $\mathbf{y}$ is called a steady state solution. For nonlinear systems $\mathbf{y'} = F(\mathbf{y})$, then solve for $F(\mathbf{y}) = 0$, and the corresponding value(s) of $\mathbf{y}$ are all steady-state solutions. There are three cases:
+
+- If there are *any* eigenvalues that have a *positive* real part, then the steady state is unstable
+- If *all* eigenvalues have a *negative* real part, then the steady state is asymptotically stable
+- If *all* eigenvalues are purely imaginary, then the steady state is stable (also called *neutrally stable*)
+
+> Note that steady states of higher-order linear ODEs can be found by rewriting them as a first-order system.
+
+## Phase portraits
+
+Differential equations can be visualized with phase portraits. Phase portraits are a plot of $(x, y)$ for a first-order ODE system, or $(x, v) = (x, \dot x)$ for a second-order ODE recast as a first-order system. In both cases it shows trajectories of differential equations.
+
+Phase portraits are difficult to draw exactly by hand. However, the geometrical characteristics of phase portraits can be determined by the eigenvalues of the linear system:
+- Real distinct and opposite signs - saddle
+- Real (can be distinct or repeated) and same sign - source/sink node
+- Complex - spiral (or circle or ellipse)
+- Imaginary - rays shooting towards or away from a center
+
+Plotting a few points of the phase portrait on a plot is often helpful in determining how exactly the phase portrait will look. Phase portraits can also be drawn by computer automatically to save time and effort. For instance, the first-order ODE system given by:
+
+$$
+\frac{d}{dt} \begin{pmatrix} y \\\\ y \end{pmatrix} = 
+\begin{pmatrix} y \\\\ -x - y \end{pmatrix}
+$$
+
+Has the phase portrait given below:
+
+![Phase portrait for linear first-order system, shaped like a spiral](phase_portrait.png)
+
+## Nonlinear systems
+
+Nonlinear first-order systems of ODEs can also be written in vector form $\mathbf{y'} = F(\mathbf{y})$. Exact solutions typically cannot be found for nonlinear systems. Therefore, we find local linearizations about a nonlinear system's steady-states $\mathbf{y_s} = (x_s, y_s)$ to solve approximately. These local linearizations require the use of a special matrix known as the **Jacobian**.
+
+For nonlinear systems given by:
+
+$$
+\frac{d}{dt} \begin{pmatrix} x \\\\ y \end{pmatrix} = \begin{pmatrix} F_1 \\\\ F_2 \end{pmatrix}
+$$
+
+Then the Jacobian matrix of the system is given by:
+
+$$
+J = 
+\begin{pmatrix}
+\nabla F_1 \\\\
+\nabla F_2
+\end{pmatrix} =
+\begin{pmatrix}
+\partial_x F_1 & \partial_y F_1 \\\\
+\partial_x F_2 & \partial_y F_2
+\end{pmatrix}
+$$
+
+And the linear version of the system is given by evaluating the Jacobian at the steady states:
+
+$$
+\mathbf{y'} = J(x_s, y_s) \mathbf{y}
+$$
+
+We can then solve the system approximately about each steady state as a linear system.

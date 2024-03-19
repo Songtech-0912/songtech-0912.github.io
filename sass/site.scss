@@ -170,6 +170,7 @@ header {
     @include lg { width: 70%; }
     @include sm { width: 100%; }
     margin: auto;
+    margin-top: -1.5rem;
   }
 
   h1, h2, h3, h4, h5 {
