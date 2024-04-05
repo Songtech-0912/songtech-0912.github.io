@@ -842,7 +842,7 @@ Note that a factor in the form $x^n$ (such as $x^2$ or $x$) can technically be w
 Meanwhile, if the factor is in the form $(x^2 + ax + b)^n$, and cannot be simplified further without using radicals or complex numbers, it is called an **irreducible quadratic factor**. Such a factor contributes a partial fraction decomposition of the form:
 
 $$
-\frac{1}{(x^2 + ax + b)^n} = \frac{A}{x^2 + ax + b} + \frac{B}{(x^2 + ax + b)^2} + \dots + \frac{Z}{(x^2 + ax + b)^n}
+\frac{1}{(x^2 + ax + b)^n} = \frac{Ax + C_1}{x^2 + ax + b} + \frac{Bx + C_2}{(x^2 + ax + b)^2} + \dots + \frac{Zx + C_n}{(x^2 + ax + b)^n}
 $$
 
 As an example, consider the integral:
