@@ -1060,7 +1060,7 @@ Here, we can cast the differential equation into the general form of a harmonic 
 
 ## Momentum and Impulse
 
-**Momentum** is a measure of an object's quantity of motion. More massive and faster objects both have a greater quantity of motion, and thus a greater momentum, whereas less massive and slower objects have a smaller momentum. We define an object's momentum along the object's trajectory by $\vec p = m\vec v$. Newton's 2nd law can be formulated (and indeed, was originally formulated) in terms of momentum:
+**Momentum** is a measure of how much an object is moving. More massive and faster objects have a greater momentum, whereas less massive and slower objects have a lesser momentum. We define an object's momentum along the object's trajectory by $\vec p = m\vec v$. Newton's 2nd law can be formulated (and indeed, was originally formulated) in terms of momentum:
 
 $$
 \vec F_\mathrm{net} = \frac{d\vec p}{dt}
@@ -1644,3 +1644,314 @@ Which is **Maxwell's 1st equation** in integral form. The equivalent equation fo
 $$
 \oiint \mathbf{B} \cdot d\mathbf{S} = 0
 $$
+
+## Waves
+
+Waves are vibrations that propagate through space or along a material. There are two typical forms of waves:
+
+- Transverse waves, such as waves on a vibrating string and electromagnetic waves
+- Longitudinal waves, such as fluid waves (such as surface waves on water or sound waves in air) and seismic waves 
+
+A travelling wave in 1D is given by:
+
+$$
+y(x, t) = A \cos(kx - \omega t + \varphi)
+$$
+
+Where $k = \frac{2\pi}{\lambda}$ is the _wavenumber_, $\varphi$ is the _phase shift_, $\omega = \frac{2\pi v}{\lambda} = \frac{2\pi}{T} = 2\pi f$ is the _angular frequency_, and $\omega = kv$.
+
+> Note that while $y(x, t)$ models a 1D wave, it is a **multivariable function** so its derivatives are partial derivatives.
+
+All waves are described by the **wave equation**, which is a partial differential equation. The wave equation in 1D is given by:
+
+$$
+\frac{\partial^2 y}{\partial t^2} - c^2 \frac{\partial^2 y}{\partial x^2} = 0
+$$
+
+Where $v$ is the speed of propagation of the wave. Specific cases of the wave equations have different $v$:
+
+| Case | Value of $v$ |
+|-----|---------|
+| Mechanical waves | $v = \sqrt{F_T / \mu}$ where $F_T$ is the tension force and $\mu$ is the linear mass density |
+| Electromagnetic waves (such as visible light) | $v = c$ |
+| General waves | $v = v(x)$ |
+
+Waves propagate (their wavefront moves forward) at a fixed speed, but this is not necessarily true of the particles they act upon. So we distinguish between the _wavefront speed_ $v$, which is the speed at which the wave itself moves, and the _transverse velocity_ (or _longitudinal velocity_) $v_y$, which is the velocity at which particles that the wave is moving through move. The expressions for transverse (longitudinal) velocity and transverse (longitudinal) acceleration are as follows:
+
+$$
+v_y(x, t) = \frac{\partial y}{\partial t} = -A\omega \sin(kx - \omega t)
+$$
+
+$$
+a_y(x, t) = \frac{\partial^2 y}{\partial t^2} = -A\omega^2 \cos(kx - \omega t)
+$$
+
+Waves transfer energy. The energy carried (and thus transferred) by a travelling wave is given by:
+
+$$
+P(x, t) = \mu v A^2 \omega^2 \cos^2 (kx - \omega t)
+$$
+
+The _average_ power is given by:
+
+$$
+P_\mathrm{avg} = \frac{1}{T} \int_0^T P(t)~dt = \frac{1}{2} \sqrt{\mu F_0} \omega^2 A^2 = \frac{1}{2} \mu v^3 k^2 A^2
+$$
+
+(add in the proper equation, remember $v = \sqrt{F/\mu}$)
+
+For a more in-depth discussion of waves, see the [waves and oscillations notes](@/waves-and-oscillations/index.md).
+
+### Principle of Superposition
+
+The wave equation is a second-order _linear_ partial differential equation. Therefore, if one function $f(x \pm ct)$ satisfies the wave equation, and another function $g(x \pm ct)$ also does, then any linear combination $af(x \pm ct) + bg(x \pm ct)$. Physically speaking, waves can pass through each other and add up with each other.
+
+### Interference
+
+Two waves that have different phases, that is $y_1 = f(x + ct + \phi_1)$ and $y_2 = f(x + ct + \phi_2)$. In the sinusoidal case, where $y(x, t) = A\sin(kx - \omega t + \phi_i)$, the resultant wave is:
+
+$$
+\begin{align}
+y(x, t) &= 2A \cos \left(\frac{\phi_2 - \phi_1}{2}\right) \left(kx - \omega t - \frac{\phi_1 + \phi_2}{2}\right) \\\\ &= 2A \phi_\mathrm{rel} \left(kx - \omega t - \frac{\phi_1 + \phi_2}{2}\right)
+\end{align}
+$$
+
+Where $\phi_\mathrm{rel}$ is the relative phase shift:
+
+$$
+\phi_\mathrm{rel} = \cos \left(\frac{\Delta \phi}{2}\right)
+$$
+
+Therefore when $\Delta \phi = 0$ (when the waves are in phase) then $\phi_\mathrm{rel} = 1$ which is known as **constructive** interference, and when $\Delta \phi = \pi$ (when the waves are completely out of phase) then $\phi_\mathrm{rel} = 0$ which is known as **destructive** interference.
+
+> Note: this is the case only when the waves have the same amplitude. Otherwise, it is often more helpful to describe waves with complex exponentials i.e. $y(x, t) = Ae^{i(kx - \omega t)}
+
+### Waves in fluids
+
+In a fluid, density is given by:
+
+$$
+\rho(x, t) = -\rho_0 \frac{\partial y}{\partial x}
+$$
+
+Pressure is given by:
+
+$$
+P(x, t) = -B \frac{\partial y}{\partial x}
+$$
+
+This leads to the following two partial differential equations:
+
+$$
+\frac{\partial y}{\partial x} = -\frac{P(x, t)}{B}
+$$
+
+$$
+\frac{\partial y}{\partial x} = -\frac{\rho(x, t)}{\rho_0} 
+$$
+
+And the following connection between density and pressure:
+
+$$
+\rho(x, t) = \frac{\rho_0}{B} P(x, t)
+$$
+
+If oscilations in a particular fluid result in sinusoidal longitudinal plane waves, then:
+
+$$
+P(x, t) = BkA \sin(kx - \omega t)
+$$
+
+$$
+\rho(x, t) = \rho_0 k A\sin(kx - \omega t)
+$$
+
+And $P_\mathrm{max} = BkA$, $\rho_\mathrm{max} = \rho_0 kA$, where $A = y_\mathrm{max}$, $k = \frac{\omega}{v}$ as is typical. The speed $v$ is given by:
+
+$$
+v = \sqrt{\frac{B}{\rho_0}}
+$$
+
+Finally, the power $\frac{dE}{dt}$ of the fluid wave is given by:
+
+$$
+\frac{dE}{dt} = PAv = BkA^3 \omega \sin^2(kx - \omega t)
+$$
+
+And the intensity $I$ is given by:
+
+$$
+I = Pv = BkA^2 \omega \sin^2(kx - \omega t)
+$$
+
+The average intensity is given by:
+
+$$
+I_\mathrm{avg} = \frac{1}{T} \int_0^T I(x, t)~dt = \frac{A^2 \omega}{2 v} = \frac{1}{2} \sqrt{B \rho_0} A^2 \omega^2
+$$
+
+Note that in the specific case where the waves are longitudinal but radiating outwards spherically, then by conservation of energy, the intensity follows an inverse square law:
+
+$$
+I \propto \frac{1}{r^2}
+$$
+
+### Electromagnetic waves
+
+Electromagnetism is completely described by the four Maxwell's equations:
+
+$$
+\begin{align}
+\nabla \cdot \mathbf{E} = \frac{\rho(\mathrm{x}, t)}{\epsilon_0} \\\\
+\nabla \cdot \mathbf{B} = 0 \\\\
+\nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t} \\\\
+\nabla \times \mathbf{B} = \mu_0 \mathbf{J} + \epsilon_0 \mu_0 \frac{\partial \mathbf{E}}{\partial t}
+\end{align}
+$$
+
+In free space, $\rho = 0$ and $\mathbf{J} = 0$. Therefore, Maxwell's equations transform to two **wave equations**:
+
+$$
+\begin{align}
+\frac{\partial^2 \mathbf{E}}{\partial t^2} = \left(\frac{1}{\sqrt{\epsilon_0 \mu_0}}\right)^2 \nabla^2 \mathbf{E} \\\\
+\frac{\partial^2 \mathbf{B}}{\partial t^2} = \left(\frac{1}{\sqrt{\epsilon_0 \mu_0}}\right)^2 \nabla^2 \mathbf{B}
+\end{align}
+$$
+
+This leads to the result that electromagnetic fields propogate through space as waves, and even more surprisingly, $\frac{1}{\sqrt{\epsilon_0 \mu_0}}$ matches the known speed of light, suggesting that light _is_ an electromagnetic wave.
+
+## Dynamics of special relativity
+
+In special relativity, all space and all time is considered relative, and combined into a single continuum of **spacetime**. The spacetime interval is an invariant measure of distances both of space and of time in special relativity:
+
+$$
+ds^2 = \eta_{\mu \nu} dx^\mu dx^\nu = -c^2 dt^2 + dx^2 + dy^2 + dz^2
+$$
+
+### Relativistic equations of motion
+
+The relativistic equivalent of Newton's second law is given by:
+
+$$
+\frac{d}{dt} \left(\frac{mv}{\sqrt{1 - \frac{v^2}{c^2}}}) = F(x, t)
+$$
+
+Which can be written in terms of a quantity known as **4-momentum** $\mathbf{p}$, which is conserved in all frames:
+
+$$
+\frac{d\mathbf{p}}{dt} = F(x, t)
+$$
+
+For more on special relativity, see the [special relativity series](@/special-relativity/index.md)
+
+## Thermodynamics
+
+Thermodynamics is concerned with the flow of energy between and within systems. For instance, consider two bodies in thermal contact with each other. Thermodynamics predicts that the final equilibrium temperature of the two bodies, assuming they are of masses $m_1$ and $m_2$ and had initial temperatures $T_1$ and $T_2$, is given by:
+
+$$
+T_\mathrm{end} = \frac{m_1 T_1 + m_2 T_2}{m_1 + m_2}
+$$
+
+The methods of thermodynamics are used for calculating the **state variables** $P, V, T$ (pressure, volume, and temperature) of a thermal body. A specific case commonly studied in thermodynamics would be that of an ideal gas - that is, a gas that obeys the **equation of state** $PV = nRT$, where $n$ is the moles of particles in a gas, and $R$ is the ideal gas constant. An ideal gas expands under a changing temperature according to:
+
+$$
+\Delta V = \beta V \Delta T
+$$
+
+where $\beta$ is defined as follows when thermodynamic variable $X$ (e.g. pressure, temperature, etc.) is kept constant:
+
+$$
+\beta = \frac{1}{V} \left(\frac{\partial V}{\partial T}\right)_X
+$$
+
+For instance, the thermal expansion at **constant pressure** is given by:
+
+$$
+\beta = \frac{1}{T}
+$$
+
+Meanwhile, an ideal gas expands under a changing pressure according to:
+
+$$
+\Delta V = -\kappa V \Delta P
+$$
+
+where analogously $\kappa$ is defined as:
+
+$$
+\kappa = -\frac{1}{V} \left(\frac{\partial V}{\partial P}\right)_X
+$$
+
+For instance, the compressibility at **constant temperature** is given by:
+
+$$
+\kappa = \frac{1}{P}
+$$
+
+### Thermodynamic work
+
+Analogous to mechanical work, thermodynamic work is given by the line integral:
+
+$$
+W = \int_C P(V)~dV
+$$
+
+In many cases, this line integral reduces down to a regular integral. For instance, in an ideal gas whose equation of state is given by $PV = Nk_B T$, then:
+
+$$
+P(V) = \frac{Nk_B T}{V}
+$$
+
+Therefore the work done as the gas expands from $V_1$ to $V_2$ is given by:
+
+$$
+W = \int_{V_1}^{V_2} \frac{NkT}{V}~dV = Nk_B T \ln \left(\frac{V_2}{V_1}\right)
+$$
+
+The **first law of thermodynamics** states that the total change in the internal energy $U$ of a system is related to the line integral of the infinitesimal change in heat $\delta Q$ and the work done by the system by:
+
+$$
+\Delta U = \int_\gamma dQ - \int_\gamma dW
+$$
+
+Or in turns of discrete changes:
+
+$$
+\Delta U = \Delta Q - \Delta W
+$$
+
+> Note: there are two expressions for the first law of thermodynamics, the Clausius convention (the one used here) and the IUPAC convention, which differ in the sign used.
+
+### Thermodynamic processes
+
+In general, any thermodynamic process can be broken down into a combination of the following distinct types of processes:
+
+- **Isobaric** (constant pressure)
+- **Isochoric** (constant volume)
+- **Isothermic** (constant temperature)
+- **Adiabatic** (constant heat)
+
+The thermodynamic variables of state can be calculated via the following table of relations:
+
+| Isobaric ($P = \text{const.}$) | Isochoric ($V = \text{const.}$) | Isothermic ($T = \text{const.}$) | Adiabatic |
+|---|---|---|---|
+| $\Delta U = Q - W$ | $\Delta U = Q$ | $\Delta U = 0$ | $\Delta U = -W$ |
+| $Q = nC_P \Delta T$ | $Q = nC_V \Delta T$ | $Q = W$ | $Q = 0$ |
+| $W = P\Delta V$ | $W = 0$ | $W = nRT \ln \left(\frac{V_2}{V_1}\right)$ | $\frac{C_V}{R} (P_1 V_1 - P_2 V_2)$ |
+| $\frac{T_1}{T_2} = \frac{V_1}{V_2}$ | $\frac{P_1}{T_1} = \frac{P_2}{T_2}$ | $\frac{P_1}{V_1} = \frac{P_2}{V_2}$ | $PV^\gamma = \text{const.}$, $TV^{\gamma - 1} = \text{const.}$
+
+### Entropy
+
+**Entropy** is a statistical measure of the disorder of a system. The entropy of a thermodynamic system $S$ can be roughly understood as how far a system has progressed towards a state of thermodynamic equilibrium. In terms of the state variables, entropy can be calculated via:
+
+$$
+\Delta S = mc\int_{T_1}^{T_2} \frac{dQ}{T}
+$$
+
+The **second law of thermodynamics** expresses the change in heat as a line integral:
+
+$$
+\Delta Q = \int_\Lambda T~dS
+$$
+
+As temperature is a statistical measure of itself, the second law predicts that **it is probabilistically likely entropy will increase in a closed system**. This prevents processes from being reversible; a cup falling off a table is unlikely to return back to the top of the table.
