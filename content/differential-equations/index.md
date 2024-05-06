@@ -3,7 +3,7 @@ title = "Notes on Differential Equations"
 date = 2024-01-10
 +++
 
-These are notes taken in RPI's MATH 2400 course, on an introduction to differential equations.
+These are notes taken in RPI's MATH 2400 course, on an introduction to differential equations. A special thanks to Dr. Kam of Rensselaer Polytechnic Institute for her excellent instruction and permission to share these notes.
 
 <!-- more -->
 
@@ -909,6 +909,48 @@ $$
 y = C_1 \cos \omega t + C_2 \sin \omega t
 $$
 
+## Primer: simultaneous equations
+
+In the study of differential equations it is sadly often necessary to solve systems of two (or occasionally more) simultaneous equations. That is, simultaneous equations in the form:
+
+$$
+\begin{align}
+a_1 x + b_1 y = c_1 \\\\
+a_2 x + b_2 y = c_2
+\end{align}
+$$
+
+To be able to solve these equations quickly and efficiently, we can take advantage of **Cramer's rule**. First, we define a quantity $D$ via the determinant of a special matrix:
+
+$$
+D = \begin{vmatrix}
+a_1 & b_1 \\\\
+a_2 & b_2
+\end{vmatrix}
+$$
+
+We also define two quantities $D_1$ and $D_2$, where we count columns cycling from the right to the left:
+
+$$
+D_1 = \begin{vmatrix}
+c_1 & b_1 \\\\
+c_2 & b_2
+\end{vmatrix}
+$$
+
+$$
+D_2 = \begin{vmatrix}
+a_1 & c_1 \\\\
+a_2 & c_2
+\end{vmatrix}
+$$
+
+Then the solution of the system of simultaneous equations is:
+
+$$
+x = \frac{D_1}{D}, \quad y = \frac{D_2}{D}
+$$
+
 ## The method of undetermined coefficients
 
 A 2nd-order constant-coefficient _inhomogeneous_ ODE is in the form:
@@ -1283,7 +1325,7 @@ $$
 A \mathbf{x} = \lambda \mathbf{x}
 $$
 
-Any vector $\mathbf{x}$ that satisfies this property is called an **eigenvalue** of $A$, and the eigenvalue is $\lambda$. This is important because the eigenvalue equation above can be rewritten as:
+Any vector $\mathbf{x}$ that satisfies this property is called an **eigenvector** of $A$, and $\lambda$ is called the **eigenvalue**. This is important because the eigenvalue equation above can be rewritten as:
 
 $$
 \det (A-I\lambda) \mathbf{x} = 0
@@ -1584,3 +1626,401 @@ $$
 $$
 
 We can then solve the system approximately about each steady state as a linear system.
+
+(MUST CHANGE PROBLEM SOON AS IT IS HW TEXTBOOK PROBLEM)
+
+As an example of finding the steady states, consider the nonlinear system:
+
+$$
+\begin{align}
+x' &= x - x^2 - xy \\\\
+y' &= \frac{3}{2} y - y^2 - xy
+\end{align}
+$$
+
+
+Note that keeping $x$ constant, in the first equation, $x'$ decreases as $y$ increases. Meanwhile, keeping $y$ constant, in the second equation, $y'$ decreases as $x$ increases. Therefore an initial constant value of $x$ would decrease following an increase in $y$, and an initial constant value of $y$ would decrease following an increase in $x$. So the system is in competition.
+
+Critical points are found by setting $x' = 0$ and $y' = 0$ and solving for the values in which this is true. For the first:
+
+
+$$
+\begin{align}
+x(1 - x - y) = 0 \\\\
+y \left(\frac{3}{2} - y - x\right) = 0
+\end{align}
+$$
+
+We can consider this a system of the following:
+
+$$
+\begin{align}
+AB = 0 \\\\
+CD = 0 \\\\
+\end{align}
+$$
+
+Therefore, there are 4 pairs of resulting simultaneous equations to solve each for a $(x, y)$ solution pair:
+
+$$
+\begin{align}
+\begin{cases}
+A = 0 \\\\ C = 0
+\end{cases} \\\\
+\begin{cases}
+A = 0 \\\\ D = 0
+\end{cases} \\\\
+\begin{cases}
+B = 0 \\\\ C = 0
+\end{cases} \\\\
+\begin{cases}
+B = 0 \\\\ D = 0
+\end{cases}
+\end{align}
+$$
+
+Or in this case:
+
+$$
+\begin{cases}
+x = 0 \\\\ y = 0
+\end{cases} \\\\
+\begin{cases}
+x = 0 \\\\ \frac{3}{2} - y - x = 0
+\end{cases} \\\\
+\begin{cases}
+1-x-y = 0 \\\\ y = 0
+\end{cases} \\\\
+\begin{cases}
+1-x-y \\\\ \frac{3}{2} - y - x = 0
+\end{cases}
+$$
+
+So the critical points are $(0, 0), (0, \frac{3}{2}), (1, 0)$.
+
+### Nonlinear systems in population growth
+
+Consider a closed environment where two species $x$ and $y$ are competing. Let $x(t)$ and $y(t)$ be the population of each respective species. Then the Lotkaâ€“Volterra equations model the two populations' evolution through time:
+
+$$
+\begin{align*}
+\frac{dx}{dt} &= x(a_1 - b_1 x - c_1 y) \\\\
+\frac{dy}{dt} &= y(a_2 - b_2 y - c_2 x)
+\end{align*}
+$$
+
+Where:
+- $a_1, a_2$ are the growth rates of each population
+- $a_1 / b_1, a_2 / b_2$ are the saturation levels
+- $c_1, c_2$ are the degree of interference by the opposite species
+
+As this is a nonlinear system, it must be linearized about its steady-states to be solved approximately using analytical methods.
+
+In the specific case that $x(t)$ is the prey and $y(t)$ is the predator, then the Lotka-Volterra equations become:
+
+$$
+\begin{align*}
+\frac{dx}{dt} &= a_1 x - a_1 xy \\\\
+\frac{dy}{dt} &= \beta xy - cy
+\end{align*}
+$$
+
+(add things from Scratch notes)
+
+## Laplace transforms
+
+The Laplace transform is a tool for solving differential equations by converting differential equations to algebraic equations. The Laplace transform of a function $f(t)$ gives a new function $f(x)$, and is notated:
+
+$$
+\mathscr{L} \{f\} (s) = \int_0^\infty f(t) e^{-st}dt
+$$
+
+> Note: The Laplace transform is _only_ defined when the improper integral converges.
+
+### Introduction to Laplace transform
+
+Consider the function $f(t) = 1$. Then, its Laplace transform would be given by:
+
+$$
+f(s) = \int_0^\infty 1 e^{-st} dt = \lim_{b \to \infty} -\frac{1}{s}e^{-st} \bigg|_0^b = \frac{1}{s},\quad s > 0
+$$
+
+### Table of Laplace transforms
+
+Manually computing Laplace transforms is very tedious and time-consuming. Therefore (link to a table of Laplace transforms on my website created using TeXmacs)
+
+(also fix incorrect Laplace transform braces formatting)
+
+### Laplace transform for piecewise functions
+
+A piecewise function given by:
+
+$$
+f(t) = \begin{cases}
+a(t), x < k \\\\
+b(t), x \geq k \\\\
+\end{cases}
+$$
+
+has a Laplace transform given by:
+
+$$
+\mathscr{L}\{f(t)\} = \int_0^k a(t) e^{-st}dt + \int_k^\infty b(t) e^{-st}dt
+$$
+
+### Heaviside step function
+
+The **Heaviside step function** is a special function defined as:
+
+$$
+H(t - c) = H_c(t) = \begin{cases}
+0, t < c \\\\
+1/2, t = c \\\\
+1, t > c
+\end{cases}
+$$
+
+One very useful property of the Heaviside step function is that it has a very elegant Laplace transform:
+
+$$
+\mathscr{L} \{H_c (t) f(t - c)\} = \mathscr{L} \{f(t)\} e^{-cs} = F(s) e^{-cs}
+$$
+
+### Inverse Laplace transform
+
+It is often desirable to find the original function from its Laplace transform, a problem solved by an _inverse_ Laplace transform. This involves a process of reverse pattern-matching using Laplace transform tables. Techniques to fit a function's Laplace transform to their original function include:
+
+- Using the linearity of the Laplace transform - constants can just be factored out
+- Partial fraction decomposition
+- Completing the square
+
+### Laplace transform for derivatives
+
+The Laplace transforms for the first and second derivatives are given by:
+
+$$
+\mathscr{L} \{y'\} = s \mathscr{L}\{y\} - y(0)
+$$
+
+$$
+\mathscr{L} \{y''\} = s^2 \mathscr{L}\{y\} - y'(0) - sy(0)
+$$
+
+Taking the Laplace transform of a differential equation gives an algebraic solution that can then be solved.
+
+### The Dirac Delta Function
+
+The **Dirac Delta function** is a "spike" function defined with:
+
+$$
+\delta(t - c) = \begin{cases}
+0, t \neq c \\\\
+1, t = c
+\end{cases}
+$$
+
+It has the special properties that:
+
+$$
+\int_{-\infty}^\infty \delta(t - c)~dt = 1
+$$
+
+$$
+\int_{c - \epsilon}^{c + \epsilon} f(t) \delta(t - c)~dt = f(c)
+$$
+
+The Laplace transform of the Dirac Delta function is therefore:
+
+$$
+\mathscr{L}\{\delta(t - c)\} = e^{-sc}
+$$
+
+## Fourier Series
+
+A periodic function is a function that satisfies $f(x + T) = f(x)$ where $T$ is the period and the frequency is given by $f \equiv \frac{1}{T}$. A **Fourier series** represents such types of functions as the the sum of an infinite number of sinusoidal waves. The Fourier series of a periodic function $f(x)$ is given by:
+
+$$
+f(x) = \frac{a_0}{2} + \sum_{n = 1}^\infty \left(a_n \cos \frac{n\pi x}{L} + b_n \sin \frac{n\pi x}{L}\right)
+$$
+
+where $T = 2L$ and:
+
+$$
+a_0 = \frac{1}{L}\int_{-L}^L f(x)~dx
+$$
+
+$$
+a_n = \frac{1}{L} \int_{-L}^L f(x) \cos \frac{n\pi x}{L} dx
+$$
+
+$$
+b_n = \frac{1}{L} \int_{-L}^L f(x) \sin \frac{n\pi x}{L} dx
+$$
+
+(Add more from my math cheatsheet on my notebook)
+
+## Sine and cosine series
+
+The full Fourier series is sometimes not necessary to represent a function when the function can be represented by a sine or cosine series. This is possible when a function exhibits _parity_.
+
+It is helpful to first review the two forms of parity for functions: even functions and odd functions. An **even function** is symmetric about the $y$ axis - that is, $f(x) = f(-x)$. Intuitively, it looks exactly the same to the left and to the right. For example, $f(x) = x^2$ is even. An **odd function**, meanwhile, is symmetric about the origin - that is $f(x) = -f(-x)$. Intuitively, the left is the flipped version of the right. Importantly, $\cos x$ is even, and $\sin x$ is odd.
+
+The cosine series of an **even function** $f(x)$ is a variation of the Fourier series, given by:
+
+$$
+f(x) = \frac{a_0}{2} + \sum_{n = 1}^\infty a_n \cos \left(\frac{n\pi x}{L}\right)~dx
+$$
+
+$$
+a_0 = \frac{2}{L} \int_0^L f(x)~dx
+$$
+
+$$
+a_n  = \frac{2}{L} \int_0^L f(x) \cos \left(\frac{n\pi x}{L} \right)~dx
+$$
+
+The sine series of an **odd function** $f(x)$ is also a variation of the Fourier series, and is given by:
+
+$$
+f(x) = \sum_{n = 1}^\infty b_n \sin \frac{n \pi x}{L}
+$$
+
+$$
+b_n = \frac{2}{L} \int_0^L f(x) \sin \left(\frac{n \pi x}{L} \right)~dx
+$$
+
+## Partial differential equations
+
+**Partial differential equations** form the majority of the differential equations that describe natural and mechanical phenomena. They describe an unknown _multivariable_ function in terms of its partial derivatives.
+
+### The heat equation
+
+The heat equation describes the conduction of heat within a material. In one dimension, such as in the case of a thin rod of length $L$, it takes the form:
+
+$$
+\frac{\partial u}{\partial t} = \alpha^2 \frac{\partial^2 u}{\partial x^2}
+$$
+
+Where $u = u(x, t)$ describes the heat distribution within the rod and $\alpha$ is the constant of thermal diffusivity.
+
+The general solution to the heat equation can be found through the method of _separation of variables_. To do so, we assume that the solution is in the form $u(x, t) = X(x) T(t)$. Therefore, taking the partial derivatives in space and time of $u(x, t)$ results in:
+
+$$
+\begin{align}
+\frac{\partial u}{\partial x} &= \frac{dX}{dx} T + \cancel{X \frac{dT}{dx}} = X'T \\
+\frac{\partial^2 u}{\partial x^2} &= \frac{d}{dt}(X'T) = X''T \\
+\frac{\partial u}{\partial t} &= XT'
+\end{align}
+$$
+
+Notice how the partial derivatives result in zeros . Therefore the heat equation results in:
+
+$$
+\alpha^2 X''T = XT'
+$$
+
+which we can rearrange to:
+
+$$
+\frac{X''}{X} = \frac{1}{\alpha^2} \frac{T'}{T}
+$$
+
+Or written more explicitly:
+
+$$
+\frac{1}{X} \frac{d^2 X}{dx^2} = \frac{1}{\alpha^2 T} \frac{dT}{dt}
+$$
+
+However, if value is equal to two derivatives in different variables, then the value must be equal to a constant. We name this constant $-\lambda^2$ (the square and negative make it more convenient to solve for later), but we could just as well use $C$, any constant or product of constants will work. Therefore:
+
+$$
+\frac{1}{X} \frac{d^2 X}{dx^2} = \frac{1}{\alpha^2 T} \frac{dT}{dt} = -\lambda^2
+$$
+
+This results in two ODEs:
+
+$$
+\begin{align}
+\frac{X''}{X} &= -\lambda^2 \Rightarrow X'' + \lambda^2 X = 0 \\
+\frac{T'}{\alpha^2 T} &= -\lambda^2 T \Rightarrow T' = -\lambda^2 \alpha^2 T
+\end{align}
+$$
+
+The first ODE may be solved using the method of the characteristic equation, which results in:
+
+$$
+X(x) = k_1 \cos \lambda x + k_2 \sin \lambda x
+$$
+
+The second ODE can simply be solved by separation of variables for ODEs, which results in:
+
+$$
+T(t) = k_3 e^{-\lambda^2 \alpha^2 t}
+$$
+
+Therefore, the general solution is given by substituting $X(t)$ and $T(t)$ back into the guessed solution $u(x, t) = X(x) T(t)$, resulting in: 
+
+$$
+u(x, t) = XT = k_3 e^{-\lambda^2 \alpha^2 t} (k_1 \cos \lambda x + k_2 \sin \lambda x)
+$$
+
+which has 4 unknown constants $\lambda, k_1, k_2, k_3$, allowing it to describe the full set of solutions to the heat equation.
+
+However, a unique solution of the heat equation can only be obtained when _boundary conditions_ are specified, resulting in **boundary value problems** or BVPs. These are analogous to IVPs for ODEs, with the primary difference that the boundary conditions are _functions_ rather than constants. A boundary condition in time (that is, when $u(x, t=0)$ is provided) is often called an _initial condition_. Several common boundary conditions for the heat equation include:
+
+| Type | Physical description | Spatial part | Temporal part | 
+|----|----|----|---|
+| Dirichlet | Constant temperature at edges | $u(x=0, t) = 0$ and $u(x=L, t) = 0$ | $u(x, t=0) = f(x)$ in time |
+| Neumann | Insulated boundary (no heat loss through edges) | $\frac{\partial u}{\partial x} \big\|\_{(x = 0, t)} = \frac{\partial u}{\partial x} \big\|\_{(x = L, t)} = 0$ | $u(x, t=0) = f(x)$ in time |
+
+To solve with the Dirichlet boundary condition, we substitute in the respective boundary conditions into $u(x, t)$ to find the value of the 4 unknown constants. This results in:
+
+$$
+u(x, t) = k_2 k_3 e^{-\frac{n^2 \pi^2 \alpha^2}{L^2}t} \sin \left(\frac{n \pi x}{L}\right)
+$$
+
+We can relabel with $C_1 = k_2 k_3$:
+
+$$
+u(x, t) = C_1 e^{-\frac{n^2 \pi^2 \alpha^2}{L^2}t} \sin \left(\frac{n \pi x}{L}\right)
+$$
+
+For all values of $n$, that is, $n = 1, 2, \dots n_i$. By the **principle of superposition**, which is due to the fact that the heat equation is a linear differential equation, $u(x, t)$ can be written as a linear combination of
+
+$$
+u(x, t) = \cancel{u_0 (x, t)} + \sum_{n = 1}^\infty C_n e^{-\frac{n^2 \pi^2 \alpha^2}{L^2}t} \sin \left(\frac{n \pi x}{L}\right)
+$$
+
+where $u_0(x, t) = u(x=0, t=0)$, which due to $\sin(0) = 0$, reduces to zero. The initial condition $u(x, t=0) = f(x)$ can finally be applied to find $C_n$. By using the Fourier series representation of $f(x)$, we can find that $C_n$ is given by:
+
+$$
+C_n = \frac{2}{L} \int_0^L f(x) \sin \left(\frac{n \pi x}{L} \right)dx
+$$
+
+### The wave equation
+
+Equation:
+
+$$
+\frac{\partial^2 u}{\partial t^2} = v^2 \frac{\partial^2 u}{\partial x^2}
+$$
+
+General solution:
+
+$$
+u(x, t) = (k_1 \cos \lambda x + k_2 \sin \lambda x)(k_3 \cos \lambda v t + k_4 \sin \lambda v t)
+$$
+
+Particular solution for waves on a string with applied boundary conditions:
+
+$$
+u(x, t) = \sum_{n = 1}^\infty a_n \sin \left(\frac{n\pi x}{L}\right) \cos \left(\frac{n\pi ct}{L}\right) + \sum_{n = 1}^\infty b_n \sin \left(\frac{n\pi x}{L}) \sin \left(\frac{n \pi ct}{L}\right)
+$$
+
+(add more from the crib sheet)
+
+### The fundamental nature of differential equations
+
+All ODEs + PDEs from standard model + Einstein field equations -> describe all physics.
+
+Everything in the universe results from these PDEs, or are derived from phenomena that result from various large-scale or limiting cases of these PDEs. Being able to solve these PDEs, essentially, **allows you to know everything knowable about the universe**. _This_ is why learning differential equations matters.
