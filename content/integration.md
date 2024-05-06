@@ -943,7 +943,7 @@ $$
 Using the approach outlined previously, we rewrite as a limit:
 
 $$
-\lim_{b \to \infty} \int_1^b \frac{1}{x^2} dx = \lim_{b \to \infty} -\frac{1}{x} \bigg |_1^b = \lim_{b \to \infty} 1 - \frac{1}{b} = 1
+\lim_{b \to \infty} \int_1^b \frac{1}{x^2} dx = \lim_{b \to \infty} -\frac{1}{x} \bigg |\_1^b = \lim_{b \to \infty} 1 - \frac{1}{b} = 1
 $$
 
 ### The p-integral test
