@@ -388,7 +388,7 @@ Given that $r < 1$, the series converges.
 
 ## Root test
 
-The **root test** states that for a series $\sum_{n = 1}^\infty a_n$, let the root be given by $p = \displaystyle \lim_{n \to \infty} \sqrt[n]{|a_n|}$. Then:
+The **root test** states that for a series $\displaystyle \sum_{n = 1}^\infty a_n$, let the root be given by $p = \displaystyle \lim_{n \to \infty} \sqrt[n]{|a_n|}$. Then:
 
 - If $p < 1$, the series converges
 - If $p > 1$, the series diverges
