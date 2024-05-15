@@ -9,7 +9,7 @@ Tensors are some of the most elegant ways to write the laws of physics, used ext
 
 ## What is a tensor?
 
-A tensor is a coordinate-independent object typically associated with a physical quantity. A scalar is a tensor, so is a vector, a matrix, and anything made of a combination of these. Whether we use spherical or cylindrical or cartesian coordinates, after all, the air temperature (a scalar field) doesn't change, the wind current velocity (a vector field) doesn't change, and the moment of inertia of a baseball hurtling towards me (a matrix) also doesn't change. These are all examples of a general principle:
+A tensor is a general name for a class of coordinate-independent objects. A scalar is a tensor, so is a vector, a matrix, and anything made of a combination of these. Whether we use spherical or cylindrical or cartesian coordinates, after all, the air temperature (a scalar field) doesn't change, the wind current velocity (a vector field) doesn't change, and the moment of inertia of a baseball hurtling towards me (a matrix) also doesn't change. These are all examples of a general principle:
 
 > The universe just doesn't care what coordinates we use to measure it.
 
