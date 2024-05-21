@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jacky Song</title>
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://songtech-0912.github.io/favicon.svg">
+      <link rel="icon" type="image/png" href="https://songtech-0912.github.io/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://songtech-0912.github.io/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://songtech-0912.github.io/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://songtech-0912.github.io/inter/inter.css">
+
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://songtech-0912.github.io/notes/">Notes</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+  
+    <article class="post">
+        <h1>Simulating superradiance reactors, part 1</h2>
+        <p>We return to the superradiance series, a series of posts focused on creating a preliminary, naive raytracer for simulating superradiance reactors. This time, we will explore geodesics in the Kerr spacetime, and write a Runge-Kutta solver for systems of differential equations.</p>
+<span id="continue-reading"></span>
+<p>As a brief overview, geodesics are the paths freely-falling particles travel through spacetime. As spacetime around a black hole is heavily curved by the black hole, geodesics are not straight lines around a black hole. To get a good idea of how they would actually look like, take a look at <a href="https://alexnieddu.github.io/Kerr-Black-Holes/Web/KerrGeodesicSimulator.html">this simulator</a>.</p>
+<p>To find the equations of motion around a black hole requires the geodesic equations, given below:</p>
+<p>$$
+\frac{d^2 x^\sigma}{d\tau^2} + \Gamma^\sigma_{\alpha \beta} \frac{dx^\alpha}{d\tau} \frac{dx^\beta}{d\tau} = 0
+$$</p>
+<p>However, given its second-order derivatives, this form of the geodesic equations is often hard to solve. In practice, an alternate form of the geodesic equations is frequently easier to solve:</p>
+<p>$$
+\frac{d}{d \tau}\left[g_{\alpha \beta} \frac{d x^\beta}{d \tau}\right]-\frac{1}{2} \partial_\alpha g_{\mu \nu} \frac{d x^\mu}{d \tau} \frac{d x^\nu}{d \tau} = 0
+$$</p>
+<p>This method yields the equations of motion for Kerr spacetime, which I have taken from <a href="https://alexnieddu.github.io/Kerr-Black-Holes/">here</a>:</p>
+<p>$$
+\frac{dt}{d\tau}=E+\frac{2 r\left(r^2+a^2\right) E-2 a r L}{\Sigma \Delta}
+$$</p>
+<p>$$
+\frac{dr}{d\tau}=\frac{\Delta}{\Sigma} p_r
+$$</p>
+<p>$$
+\frac{d\theta}{d\tau}=\frac{p_\theta}{\Sigma}
+$$</p>
+<p>$$
+\frac{d\phi}{d\tau}=\frac{2 a r E+(\Sigma-2 r) L / \sin ^2 \theta}{\Sigma \Delta}
+$$</p>
+<p>$$
+\frac{dp_r}{d\tau}=\frac{1}{\Sigma \Delta}(((r^2+a^2) \mu-(Q + L^2 + a^2(E^2 + \mu)))(r-1) + \\
+r \Delta \mu+2 r(r^2+a^2) E^2-2 a E L)-\frac{2 p_r^2(r-1)}{\Sigma}
+$$</p>
+<p>$$
+\frac{dp_\theta}{d\tau}=\frac{\sin \theta \cos \theta}{\Sigma}\left(\frac{L^2}{\sin ^4 \theta}-a^2\left(E^2+\mu\right)\right)
+$$</p>
+<p>Where the constants of motion are $\mu, E, L, Q$, and $\Sigma$ and $\Delta$ are respectively given by:</p>
+<p>$$
+\Sigma = r^2 + a^2 \cos^2 \theta \\
+\Delta = r^2 - 2 M r + a^2
+$$</p>
+<p>It is straightforward to plot Kerr geodesics by numerically solving the equations of motion:</p>
+<p><img src="https://songtech-0912.github.io/superradiance-1/kerr_geodesics.png" alt="Kerr geodesics" /></p>
+<p>The goal is to be able to adapt the Kerr geodesics to find the intersection point of a light ray and the surface of the mirror. To do so, we need to create a <code>kerr_intersection()</code> function that returns a point $(x, y, z)$ which is the intersection point.</p>
+<p>In my implementation, I used the <a href="https://trimsh.org/">Trimesh</a> library to create a rough function that gives whether a point is on the surface of the mirror. While Trimesh does not explicitly have a function that detects if a point is a surface point, it does have a function to detect if a point is inside or outside the geometry. So it makes sense that if a point is on the surface, the point $[x - \Delta, y - \Delta, z - \Delta]$ would be inside the geometry, while the point $[x + \Delta, y + \Delta, z + \Delta]$ would be correspondingly outside. Thus, in combination with trimesh's <code>contains_points()</code> function, which detects whether a point is inside or outside, we have a rudimentary surface test with:</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">is_on_surface</span><span>(</span><span style="color:#bf616a;">mesh</span><span>, </span><span style="color:#bf616a;">point</span><span>):
+</span><span>    a = mesh.ray.</span><span style="color:#bf616a;">contains_points</span><span>([point - </span><span style="color:#d08770;">0.01</span><span>])
+</span><span>    b = mesh.ray.</span><span style="color:#bf616a;">contains_points</span><span>([point + </span><span style="color:#d08770;">0.01</span><span>])
+</span><span>    </span><span style="color:#b48ead;">return </span><span>a == </span><span style="color:#d08770;">True </span><span>and b == </span><span style="color:#d08770;">False
+</span></code></pre>
+<p>Finally, we can use a <a href="https://stackoverflow.com/questions/63811138/solving-system-of-coupled-differential-equations-using-runge-kutta-in-python">Runge-Kutta 4th order method</a> to solve for the intersection point by numerically integrating alone Kerr geodesics:</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">kerr_intersection</span><span>(</span><span style="color:#bf616a;">mesh</span><span>, </span><span style="color:#bf616a;">f</span><span>, </span><span style="color:#bf616a;">u0</span><span>, </span><span style="color:#bf616a;">t0</span><span>, </span><span style="color:#bf616a;">tf</span><span>, </span><span style="color:#bf616a;">n</span><span>):
+</span><span>    </span><span style="color:#65737e;">&quot;&quot;&quot;
+</span><span style="color:#65737e;">    Expects a function in the form y&#39; = f(y, t) to solve
+</span><span style="color:#65737e;">    f - function, MUST return numpy array of derivatives
+</span><span style="color:#65737e;">    u0 - initial values
+</span><span style="color:#65737e;">    t0 - initial time
+</span><span style="color:#65737e;">    tf - final time
+</span><span style="color:#65737e;">    n - number of samples
+</span><span style="color:#65737e;">    &quot;&quot;&quot;
+</span><span>    t = np.</span><span style="color:#bf616a;">linspace</span><span>(t0, tf, n+</span><span style="color:#d08770;">1</span><span>)
+</span><span>    u = np.</span><span style="color:#bf616a;">array</span><span>((n+</span><span style="color:#d08770;">1</span><span>)*[u0])
+</span><span>    h = t[</span><span style="color:#d08770;">1</span><span>]-t[</span><span style="color:#d08770;">0</span><span>]
+</span><span>    </span><span style="color:#b48ead;">for </span><span>i </span><span style="color:#b48ead;">in </span><span style="color:#96b5b4;">range</span><span>(n):
+</span><span>        k1 = h * </span><span style="color:#bf616a;">f</span><span>(u[i], t[i])
+</span><span>        k2 = h * </span><span style="color:#bf616a;">f</span><span>(u[i] + </span><span style="color:#d08770;">0.5 </span><span>* k1, t[i] + </span><span style="color:#d08770;">0.5</span><span>*h)
+</span><span>        k3 = h * </span><span style="color:#bf616a;">f</span><span>(u[i] + </span><span style="color:#d08770;">0.5 </span><span>* k2, t[i] + </span><span style="color:#d08770;">0.5</span><span>*h)
+</span><span>        k4 = h * </span><span style="color:#bf616a;">f</span><span>(u[i] + k3, t[i] + h)
+</span><span>        u[i+</span><span style="color:#d08770;">1</span><span>] = u[i] + (k1 + </span><span style="color:#d08770;">2</span><span>*(k2 + k3 ) + k4) / </span><span style="color:#d08770;">6
+</span><span>        </span><span style="color:#65737e;"># Get the position from the step
+</span><span>        r = u[i + </span><span style="color:#d08770;">1</span><span>][</span><span style="color:#d08770;">1</span><span>]
+</span><span>        theta = u[i + </span><span style="color:#d08770;">1</span><span>][</span><span style="color:#d08770;">2</span><span>]
+</span><span>        phi = u[i + </span><span style="color:#d08770;">1</span><span>][</span><span style="color:#d08770;">3</span><span>]
+</span><span>        </span><span style="color:#65737e;"># Convert spherical to cartesian
+</span><span>        x = r * np.</span><span style="color:#bf616a;">sin</span><span>(theta) * np.</span><span style="color:#bf616a;">cos</span><span>(phi)
+</span><span>        y = r * np.</span><span style="color:#bf616a;">sin</span><span>(theta) * np.</span><span style="color:#bf616a;">sin</span><span>(phi)
+</span><span>        z = r * np.</span><span style="color:#bf616a;">cos</span><span>(theta)
+</span><span>        point = np.</span><span style="color:#bf616a;">array</span><span>([x, y, z])
+</span><span>        </span><span style="color:#b48ead;">if </span><span style="color:#bf616a;">is_on_surface</span><span>(mesh, point):
+</span><span>            </span><span style="color:#b48ead;">return </span><span>point
+</span></code></pre>
+<p>And finally, we can input our Kerr differential equations as follows:</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span>r0 = </span><span style="color:#d08770;">3
+</span><span>theta0 = np.pi / </span><span style="color:#d08770;">2
+</span><span>phi0 = </span><span style="color:#d08770;">0.1
+</span><span>t0 = </span><span style="color:#d08770;">0
+</span><span>p_r0 = </span><span style="color:#d08770;">0.1
+</span><span>p_theta0 = </span><span style="color:#d08770;">1.9558
+</span><span>
+</span><span style="color:#65737e;"># Initial conditions
+</span><span>initial_kerr = [r0, theta0, phi0, t0, p_r0, p_theta0]
+</span><span>
+</span><span style="color:#65737e;"># Values of derivatives
+</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">kerr_d_dt</span><span>(</span><span style="color:#bf616a;">t</span><span>, </span><span style="color:#bf616a;">X</span><span>, </span><span style="color:#bf616a;">mu</span><span>=-</span><span style="color:#d08770;">1</span><span>, </span><span style="color:#bf616a;">E</span><span>=</span><span style="color:#d08770;">0.935179</span><span>, </span><span style="color:#bf616a;">L</span><span>=</span><span style="color:#d08770;">2.37176</span><span>, </span><span style="color:#bf616a;">Q</span><span>=</span><span style="color:#d08770;">3.82514</span><span>, </span><span style="color:#bf616a;">a</span><span>=</span><span style="color:#d08770;">0.9</span><span>, </span><span style="color:#bf616a;">M</span><span>=</span><span style="color:#d08770;">6e30</span><span>):
+</span><span>    t, r, theta, phi, p_r, p_theta = X
+</span><span>    delta = r ** </span><span style="color:#d08770;">2 </span><span>- </span><span style="color:#d08770;">2 </span><span>* M * r + a ** </span><span style="color:#d08770;">2
+</span><span>    sigma = r ** </span><span style="color:#d08770;">2 </span><span>+ a ** </span><span style="color:#d08770;">2 </span><span>* np.</span><span style="color:#bf616a;">cos</span><span>(theta) ** </span><span style="color:#d08770;">2
+</span><span>    dt_dt = E + (</span><span style="color:#d08770;">2 </span><span>* r * (r ** </span><span style="color:#d08770;">2 </span><span>+ a ** </span><span style="color:#d08770;">2</span><span>) * E - </span><span style="color:#d08770;">2 </span><span>* a * r * L) / (sigma * delta)
+</span><span>    dr_dt = delta / sigma * p_r
+</span><span>    dtheta_dt = p_theta / sigma
+</span><span>    dphi_dt = (</span><span style="color:#d08770;">2 </span><span>* a * r * E + (sigma - </span><span style="color:#d08770;">2 </span><span>* r) * (L / (np.</span><span style="color:#bf616a;">sin</span><span>(theta) ** </span><span style="color:#d08770;">2</span><span>))) / (sigma * delta)
+</span><span>    dp_r_dt = </span><span style="color:#d08770;">1 </span><span>/ (sigma * delta) * (((r ** </span><span style="color:#d08770;">2 </span><span>+ a ** </span><span style="color:#d08770;">2</span><span>) * mu - (Q + L ** </span><span style="color:#d08770;">2 </span><span>+ a ** </span><span style="color:#d08770;">2 </span><span>* (E ** </span><span style="color:#d08770;">2 </span><span>+ mu))) * (r - </span><span style="color:#d08770;">1</span><span>) + r * delta * mu + </span><span style="color:#d08770;">2 </span><span>* r * (r ** </span><span style="color:#d08770;">2 </span><span>+ a ** </span><span style="color:#d08770;">2</span><span>) * E ** </span><span style="color:#d08770;">2 </span><span>- </span><span style="color:#d08770;">2 </span><span>* a * E * L - (</span><span style="color:#d08770;">2 </span><span>* (p_r ** </span><span style="color:#d08770;">2</span><span>) * (r-</span><span style="color:#d08770;">1</span><span>)) / sigma)
+</span><span>    dp_theta_dt = (np.</span><span style="color:#bf616a;">sin</span><span>(theta) * np.</span><span style="color:#bf616a;">cos</span><span>(theta)) / sigma * ((L ** </span><span style="color:#d08770;">2</span><span>) / ((np.</span><span style="color:#bf616a;">sin</span><span>(theta) ** </span><span style="color:#d08770;">4</span><span>)) - a ** </span><span style="color:#d08770;">2 </span><span>* (E ** </span><span style="color:#d08770;">2 </span><span>+ mu))
+</span><span>    </span><span style="color:#b48ead;">return </span><span>[dt_dt, dr_dt, dtheta_dt, dphi_dt, dp_r_dt, dp_theta_dt]
+</span></code></pre>
+<p>So, the first task of implementing a naive superradiance raytracer - a numerical integrator for kerr geodesics - is complete. Next post, I will describe how I implement the utility library for the angle between vectors and ray direction calculations.</p>
+
+        <a href="/" class="return-link">Back to home</a>
+    </article>
+
+
+  <script defer src="https://songtech-0912.github.io/katex/katex.min.js"></script>
+  <script defer src="https://songtech-0912.github.io/katex/contrib/auto-render.min.js"></script>
+  <script defer src="https://songtech-0912.github.io/katex/contrib/mhchem.min.js"></script>
+  <script defer src="https://songtech-0912.github.io/katex/contrib/copy-tex.min.js"></script>
+  
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    });
+</script></body>
+
+</html>
