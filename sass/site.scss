@@ -37,6 +37,7 @@ html {
 /* Styles */
 
 body {
+  max-width: 70ch
   width: 65%;
   @include lg { width: 80%; }
   @include sm { width: 100%; }
@@ -114,6 +115,7 @@ header {
 
     p {
       font-size: 1rem;
+      @include sm { font-size: 0.9rem; }
       line-height: 1.5;
     }
   }
