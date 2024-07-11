@@ -11,13 +11,19 @@ These are notes taken in preparation of and during Quantum Physics I (PHYS 2210)
 
 Familiarity with the underlying math is expected, including a background in multivariable calculus, differential equations, and some linear algebra (vectors, matrices, and eigenvalues). Don't worry if these are alien topics! There are full guides to each in the [calculus series](@/calculus-series.md). In addition, while not required, the [introductory classical dynamics series](@/classical-dynamics.md) can be very helpful as well.
 
+## Why quantum theory?
+
+Quantum theory is our best understanding of how the universe works at its most fundamental level. It is fundamentally paradoxical to human experience, but it is the bedrock of almost all of modern physics, and essential for many advanced technologies. In addition, it is also a very scientifically and philosophically interesting theory to learn. These notes form the basis of an introduction to quantum mechanics.  
+
+In the following sections, we will first preview the essential features of quantum mechanics, laying out _what_ exactly quantum mechanics is. Don't worry if this does not make sense yet! We will dive into each topic in detail and gently build up an explanation of them throughout the rest of these notes.
+
 ## The fundamental postulates of quantum mechanics
 
 As a whole, the theory of quantum mechanics can be said to originate from 5 fundamental postulates:
 
 1. In the quantum mechanical description of a system, all physical quantities are _quantized_.
-2. A quantum system is completely described by a **quantum state** $|\Psi\rangle$. The time-evolution of a quantum state is described by the Schrödinger equation $\displaystyle i\hbar \frac{\partial}{\partial t} |\Psi\rangle = \hat H |\Psi\rangle$. 
-3. Physical quantities are known as **observables**, and are represented by linear operators acting on the quantum state
+2. A quantum system is completely described by a **quantum state** $|\Psi\rangle$, which is a complex-valued vector in a Hilbert space. The time-evolution of a quantum state is described by the Schrödinger equation.
+3. Physical quantities are known as **observables**, and are represented by linear Hermitian operators acting on the quantum state.
 4. The _eigenvalues_ of each observable correspond to possible _measured values_ of the associated physical quantity (e.g. position, momentum, energy)
 5. It is **not possible** to predict in advance the measured value a physical quantity may take. However, it is possible to predict the _probability_ of a physical quantity taking a particular value $\lambda$ through the Born rule $\rho = |\langle \lambda | \Psi\rangle |^2$
 
@@ -29,7 +35,13 @@ The following sections will go in-depth into what each of these postulates actua
 
 When a quantitiy is said to be **quantized**, it _cannot take on continuous values_; it can only come in discrete steps. In addition, all possible values of that quantity must be an integer multiple of some base indivisible value. 
 
-For example, consider electrical charge. The base value of electric charge is the elementary charge constant $e$ (not to be confused with Euler's number). It is _only_ possible for an object in the universe to have a charge of $1e, 2e, 3e, \dots ne$. It is not possible for an object to have a charge of $3.516e$. 
+For example, consider electrical charge. The base value of electric charge is the elementary charge constant $e$ (not to be confused with Euler's number), associated with a single electron. It is _only_ possible for an object in the universe to have a charge of $1e, 2e, 3e, \dots ne$. It is not possible for an object to have a charge of $3.516e$.
+
+> Note to the advanced reader: yes, indeed, quarks have a different quantum of charge, but since quarks can never be found on their own, and are always grouped together into composite, not elementary particles, we consider $e$ the quantum of charge, associated with an electron.
+
+Similarly, consider electromagnetic radiation. The base value of electromagnetic radiation is given by $hf$, the radiation of a single photon of frequency $f$, where $h = \pu{6.626e-34 J*Hz^{-1}}$ is the Planck constant. All electromagnetic radiation of a given frequency $f$ must be composed of multiples of this value.
+
+Note that in quantum mechanics, the particle is simply regarded as an indivisible constituent of matter or energy, and are not the same as classical particles.
 
 ### Postulate 2: quantum states
 
@@ -61,6 +73,14 @@ p\_{y_0} \\\\
 p\_{z_0}
 \end{pmatrix}
 $$
+
+In quantum mechanics, the future state of a system is determined via a **quantum state**. This quantum state is typically denoted by an abstract vector $|\psi\rangle$ whose components are complex numbers, with the specialized notation (called bra-ket notation) used to differentiate quantum states from classical states. Abstract vectors reside in a Hilbert space $\mathcal{H}$, and unlike ordinary Cartesian vectors, they can be infinite-dimensional. However, since quantum states are so abstract, it is more convenient to interpret them not as vectors but as functions, as the two formulations are equivalent. Specifically, the function is known as a **wavefunction** $\Psi(\mathbf{x}, t)$, which obeys the Schrödinger wave equation:
+
+$$
+i\hbar \frac{\partial}{\partial t} \Psi(\mathbf{x}, t) = \left(-\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x, t)\right) \Psi(\mathbf{x}, t) 
+$$
+
+ The physical interpretation of the Schrödinger equation is that all quantum particles (such as electrons, quarks, etc.) have wave-like properties as well as particle-like properties, and their wave nature is associated with the wavefunction $\Psi(\mathbf{x}, t)$. This allows them to exhibit effects such as wave interference and diffraction, as well as to have an associated wavelength. However, quantum particles are localized on measurement, like classical particles, and this is due to the fact that the wavefunction is associated with particle probability distributions. This fact is known as **wave-particle duality**.
 
 ## The question of observation
 
