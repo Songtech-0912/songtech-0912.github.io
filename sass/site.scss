@@ -37,7 +37,7 @@ html {
 /* Styles */
 
 body {
-  max-width: 70ch
+  max-width: 70ch;
   width: 65%;
   @include lg { width: 80%; }
   @include sm { width: 100%; }
@@ -93,6 +93,7 @@ header {
 
   p {
     font-size: 1.2rem;
+    line-height: 1.5;
     color: $tx-color-5;
   }
 }
@@ -173,6 +174,11 @@ header {
     @include sm { width: 100%; }
     margin: auto;
     margin-top: -1.5rem;
+  }
+
+  .mathcell {
+  	width: 100%;
+  	overflow-x: scroll;
   }
 
   h1, h2, h3, h4, h5 {
