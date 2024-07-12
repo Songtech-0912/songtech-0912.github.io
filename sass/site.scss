@@ -201,7 +201,7 @@ header {
   }
 
   pre {
-    padding: 1rem 1.5rem;
+    padding: 1rem;
     border-radius: 0.25rem;
   }
 
@@ -209,6 +209,8 @@ header {
     display: block;
     width: 100%;
     overflow-x: auto;
+    line-height: 1.5;
+    font-size: 0.85rem;
   }
 
   .return-link {
