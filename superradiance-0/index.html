@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jacky Song</title>
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://songtech-0912.github.io/favicon.svg">
+      <link rel="icon" type="image/png" href="https://songtech-0912.github.io/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://songtech-0912.github.io/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://songtech-0912.github.io/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://songtech-0912.github.io/inter/inter.css">
+
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://songtech-0912.github.io/notes/">Notes</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+  
+    <article class="post">
+        <h1>Simulating superradiance reactors, part 0</h2>
+        <p>This is to be the beginning of a series of posts focused on creating a preliminary, naive raytracer for simulating superradiance reactors.</p>
+<span id="continue-reading"></span>
+<p>In the years to come, I may look back and create a much more optimized implementation. However, for the present, I want to document my progress (and the associated pains of progress) with abundant code snippets, in the hope that this information may be of use to someone.</p>
+<h2 id="why-develop-black-hole-superradiance-reactors">Why develop black hole superradiance reactors?</h2>
+<p>Human advancement has gone hand-in-hand with the discovery of new energy sources: from coal, to petroleum, to nuclear fission, and most recently, to renewable sources of energy. Black holes are an untapped energy source, capable of augmenting, and perhaps one day replacing, traditional energy sources.</p>
+<p>Due to the effect of frame-dragging predicted through General Relativity, rotating bodies drag spacetime with them, causing objects in the immediate vicinity to co-rotate with the rotating body. Rotating black holes, described by the Kerr metric, contain a region where the effect of frame-dragging is sufficient that even light must co-rotate with the black hole. Such a region is known as the ergosphere, and it is this feature which allows for the possibility of energy extraction from black holes.</p>
+<p>My research is centered on black hole energy generation through utilizing the superradiance effect, where light trapped around a rotating black hole would be amplified in the black hole's ergosphere. A reflective cavity enclosing the black hole would cause exponential amplification, and an outlet in the cavity would produce a concentrated super-high-energy beam, capable of then being distributed.  Such reactors would also require the creation and manipulation of artificial kugelblitz black holes, generated from extreme concentrations of energy. Currently, both kugelblitz black holes and superradiant scattering are poorly understood; it is hoped that with computer simulations of superradiance reactors, insights may be gained into both phenomena, and we may be one step closer to realizing black hole energy generation.</p>
+<h2 id="the-basic-design-of-the-raytracer">The basic design of the raytracer</h2>
+<p>The raytracer is designed to follow light rays emitted from a point inside an icospherical shell mirror. The mirror is assumed to be a perfect mirror of approximately 1m radius. The black hole will be of mass $M$, where its mass is given in terms of its effective lifespan $t_\mathrm{ev}$ as:</p>
+<p class="mathcell">
+$$
+M = \left(\frac{t_{\mathrm {ev}} \hbar c^4}{5120 \pi G^2}\right)^{1&#x2F;3}
+$$
+</p>
+<p>I assume a black hole of ~1.2 billion kg, with a lifetime of approximately 5,000 years, to be the black hole in question. This black hole would have a schwarzschild radius of $1.78 \times 10^{-18}$ meters, which is approximately equivalent to a proton's radius.</p>
+<p>With the basic parameters of the problem defined, I'll now go through the design of the raytracer.</p>
+<p>The raytracer uses perhaps the most naive method of raytracing: it shoots a single ray, then records the trajectories of the rays as they reflect in the mirror and travel along Kerr geodesics. The basic algorithm can be described as follows:</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span>mesh = </span><span style="color:#bf616a;">loadmesh</span><span>(&quot;</span><span style="color:#a3be8c;">geometry.stl</span><span>&quot;)
+</span><span>
+</span><span>ray_origin = np.</span><span style="color:#bf616a;">array</span><span>([</span><span style="color:#d08770;">0.0</span><span>, </span><span style="color:#d08770;">0.0</span><span>, </span><span style="color:#d08770;">0.0</span><span>])
+</span><span>
+</span><span style="color:#65737e;"># Rays pointing vertically down
+</span><span>ray_initial_direction = np.</span><span style="color:#bf616a;">array</span><span>([</span><span style="color:#d08770;">0.0</span><span>, </span><span style="color:#d08770;">0.0</span><span>, -</span><span style="color:#d08770;">1.0</span><span>])
+</span><span>
+</span><span>ray_positions = [ray_origin]
+</span><span>ray_directions = [ray_initial direction]
+</span><span>
+</span><span style="color:#b48ead;">for </span><span>i </span><span style="color:#b48ead;">in </span><span style="color:#96b5b4;">range</span><span>(</span><span style="color:#d08770;">10000</span><span>):
+</span><span>  </span><span style="color:#65737e;"># Find the point of intersection accounting for curving
+</span><span>  </span><span style="color:#65737e;"># of straight path in Kerr spacetime
+</span><span>  intersection_point = </span><span style="color:#bf616a;">KerrIntersection</span><span>(ray_positions[i - </span><span style="color:#d08770;">1</span><span>], ray_directions[i - </span><span style="color:#d08770;">1</span><span>])
+</span><span>  </span><span style="color:#65737e;"># New ray origin is intersection point
+</span><span>  ray_positions[i] = intersection_point
+</span><span>  normal = </span><span style="color:#bf616a;">normal_at_point</span><span>(intersection_point)
+</span><span>  angle = </span><span style="color:#bf616a;">angle_between_vectors</span><span>(normal, ray_directions[i - </span><span style="color:#d08770;">1</span><span>])
+</span><span>  </span><span style="color:#65737e;"># We compute the new direction from the angle
+</span><span>  ray_directions[i] = </span><span style="color:#bf616a;">direction_from_angle</span><span>(angle, intersection_point)
+</span><span>
+</span><span>t = np.</span><span style="color:#bf616a;">arange</span><span>(</span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">10000</span><span>)
+</span><span style="color:#bf616a;">plot_3d_path</span><span>(t, ray_positions);
+</span><span style="color:#bf616a;">plot_3d_geom</span><span>(mesh)
+</span></code></pre>
+<p>Thus, the algorithm requires three pieces:</p>
+<ul>
+<li>A numerical integrator for Kerr geodesics to find the location a ray intersects the mirror as it travels along a Kerr geodesic</li>
+<li>A library with functions to calculate the angle between vectors and find the new ray direction from a given angle</li>
+<li>A 3D model of a icosphere with a cut-out to allow light rays to exit</li>
+</ul>
+<p>The next blog posts in this series will cover my implementations of each piece.</p>
+
+        <a href="/" class="return-link">Back to home</a>
+    </article>
+
+
+  <script defer src="https://songtech-0912.github.io/katex/katex.min.js"></script>
+  <script defer src="https://songtech-0912.github.io/katex/contrib/auto-render.min.js"></script>
+  <script defer src="https://songtech-0912.github.io/katex/contrib/mhchem.min.js"></script>
+  <script defer src="https://songtech-0912.github.io/katex/contrib/copy-tex.min.js"></script>
+  
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    });
+</script></body>
+
+</html>
