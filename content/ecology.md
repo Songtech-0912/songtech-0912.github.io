@@ -100,9 +100,10 @@ Species' populations are determined by 3 factors:
 
 Populations grow through birth and migration in, and decline through death and migration change. The population change equation is:
 
-$$
+{% math() %}
 \Delta P = (B - D) + \Delta M
-$$
+{% end %}
+
 Populations are typically stable in environments without human interference. This is due to territoriality. Unstable populations are usually dependent on a certain factor, such as nutrient limitations. Some populations show exponential growth, but that is not sustainable, and once an organism exceeds the carrying capacity of its environment, the entire population dies off. Other populations show logistic growth, where environmental resistance (such as predators, competition, drought, etc.) brings population within carrying capacity.
 
 ## Ecosystem Dynamics

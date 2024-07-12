@@ -47,38 +47,38 @@ Note that in quantum mechanics, the particle is simply regarded as an indivisibl
 
 In classical mechanics, the future state of any system can be known by knowing its current state and its equations of motion. The equations of motion are Newton's 2nd law:
 
-$$
+{% math() %}
 m \frac{d^2 \mathbf{r}}{dt^2} = \mathbf{F}(\mathbf{r}, t)
-$$
+{% end %}
 
 Which can be rewritten as system of 2 coupled first-order ODEs:
 
-$$
+{% math() %}
 \frac{d\mathbf{p}}{dt} = \mathbf{F}(\mathbf{r}, t)
-$$
+{% end %}
 
-$$
+{% math() %}
 m \frac{d\mathbf{r}}{dt} = \mathbf{p}
-$$
+{% end %}
 
 The initial condition for this system is the **classical state** of the particle, and is the following 6-vector, consisting of three components of position and three components of momentum:
 
-$$
-\mathbf{X}\_0 = \begin{pmatrix}
-x_0 \\\\
-y_0 \\\\
-z_0 \\\\
-p\_{x_0} \\\\
-p\_{y_0} \\\\
-p\_{z_0}
+{% math() %}
+\mathbf{X}_0 = \begin{pmatrix}
+x_0 \\
+y_0 \\
+z_0 \\
+p_{x_0} \\
+p_{y_0} \\
+p_{z_0}
 \end{pmatrix}
-$$
+{% end %}
 
 In quantum mechanics, the future state of a system is determined via a **quantum state**. This quantum state is typically denoted by an abstract vector $|\psi\rangle$ whose components are complex numbers, with the specialized notation (called bra-ket notation) used to differentiate quantum states from classical states. Abstract vectors reside in a Hilbert space $\mathcal{H}$, and unlike ordinary Cartesian vectors, they can be infinite-dimensional. However, since quantum states are so abstract, it is more convenient to interpret them not as vectors but as functions, as the two formulations are equivalent. Specifically, the function is known as a **wavefunction** $\Psi(\mathbf{x}, t)$, which obeys the Schrödinger wave equation:
 
-$$
+{% math() %}
 i\hbar \frac{\partial}{\partial t} \Psi(\mathbf{x}, t) = \left(-\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x, t)\right) \Psi(\mathbf{x}, t) 
-$$
+{% end %}
 
  The physical interpretation of the Schrödinger equation is that all quantum particles (such as electrons, quarks, etc.) have wave-like properties as well as particle-like properties, and their wave nature is associated with the wavefunction $\Psi(\mathbf{x}, t)$. This allows them to exhibit effects such as wave interference and diffraction, as well as to have an associated wavelength. However, quantum particles are localized on measurement, like classical particles, and this is due to the fact that the wavefunction is associated with particle probability distributions. This fact is known as **wave-particle duality**.
 

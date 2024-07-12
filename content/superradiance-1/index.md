@@ -11,49 +11,49 @@ As a brief overview, geodesics are the paths freely-falling particles travel thr
 
 To find the equations of motion around a black hole requires the geodesic equations, given below:
 
-$$
+{% math() %}
 \frac{d^2 x^\sigma}{d\tau^2} + \Gamma^\sigma_{\alpha \beta} \frac{dx^\alpha}{d\tau} \frac{dx^\beta}{d\tau} = 0
-$$
+{% end %}
 
 However, given its second-order derivatives, this form of the geodesic equations is often hard to solve. In practice, an alternate form of the geodesic equations is frequently easier to solve:
 
-$$
+{% math() %}
 \frac{d}{d \tau}\left[g_{\alpha \beta} \frac{d x^\beta}{d \tau}\right]-\frac{1}{2} \partial_\alpha g_{\mu \nu} \frac{d x^\mu}{d \tau} \frac{d x^\nu}{d \tau} = 0
-$$
+{% end %}
 
 This method yields the equations of motion for Kerr spacetime, which I have taken from [here](https://alexnieddu.github.io/Kerr-Black-Holes/):
 
-$$
+{% math() %}
 \frac{dt}{d\tau}=E+\frac{2 r\left(r^2+a^2\right) E-2 a r L}{\Sigma \Delta}
-$$
+{% end %}
 
-$$
+{% math() %}
 \frac{dr}{d\tau}=\frac{\Delta}{\Sigma} p_r
-$$
+{% end %}
 
-$$
+{% math() %}
 \frac{d\theta}{d\tau}=\frac{p_\theta}{\Sigma}
-$$
+{% end %}
 
-$$
+{% math() %}
 \frac{d\phi}{d\tau}=\frac{2 a r E+(\Sigma-2 r) L / \sin ^2 \theta}{\Sigma \Delta}
-$$
+{% end %}
 
-$$
-\frac{dp_r}{d\tau}=\frac{1}{\Sigma \Delta}(((r^2+a^2) \mu-(Q + L^2 + a^2(E^2 + \mu)))(r-1) + \\\\
+{% math() %}
+\frac{dp_r}{d\tau}=\frac{1}{\Sigma \Delta}(((r^2+a^2) \mu-(Q + L^2 + a^2(E^2 + \mu)))(r-1) + \\
 r \Delta \mu+2 r(r^2+a^2) E^2-2 a E L)-\frac{2 p_r^2(r-1)}{\Sigma}
-$$
+{% end %}
 
-$$
+{% math() %}
 \frac{dp_\theta}{d\tau}=\frac{\sin \theta \cos \theta}{\Sigma}\left(\frac{L^2}{\sin ^4 \theta}-a^2\left(E^2+\mu\right)\right)
-$$
+{% end %}
 
 Where the constants of motion are $\mu, E, L, Q$, and $\Sigma$ and $\Delta$ are respectively given by:
 
-$$
-\Sigma = r^2 + a^2 \cos^2 \theta \\\\
+{% math() %}
+\Sigma = r^2 + a^2 \cos^2 \theta \\
 \Delta = r^2 - 2 M r + a^2
-$$
+{% end %}
 
 It is straightforward to plot Kerr geodesics by numerically solving the equations of motion:
 

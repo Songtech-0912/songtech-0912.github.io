@@ -21,9 +21,9 @@ My research is centered on black hole energy generation through utilizing the su
 
 The raytracer is designed to follow light rays emitted from a point inside an icospherical shell mirror. The mirror is assumed to be a perfect mirror of approximately 1m radius. The black hole will be of mass $M$, where its mass is given in terms of its effective lifespan $t_\mathrm{ev}$ as:
 
-$$
+{% math() %}
 M = \left(\frac{t_{\mathrm {ev}} \hbar c^4}{5120 \pi G^2}\right)^{1/3}
-$$
+{% end %}
 
 I assume a black hole of ~1.2 billion kg, with a lifetime of approximately 5,000 years, to be the black hole in question. This black hole would have a schwarzschild radius of $1.78 \times 10^{-18}$ meters, which is approximately equivalent to a proton's radius.
 

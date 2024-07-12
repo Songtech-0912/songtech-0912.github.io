@@ -41,31 +41,31 @@ A **non-proper frame** is any reference frame that is not attached to an object.
 
 **Proper time** is the time measured by an observer in a proper frame. **Coordinate time** is the time measured by an observer in a non-proper frame. Coordinate time $\Delta t$ is related to proper time $\Delta \tau$ by:
 
-$$
+{% math() %}
 \Delta t = \gamma \Delta \tau
-$$
+{% end %}
 
 where:
 
-$$
+{% math() %}
 \gamma = \frac{1}{\sqrt{1 - \left(\frac{v}{c}\right)^2}}
-$$
+{% end %}
 
 Using a Taylor series expansion, $\gamma \approx 1$ at very low speeds, and $\gamma \approx 1 + \frac{v^2}{2c^2}$ at low speeds.
 
 **Proper length** is the length of an object as measured by an observer in a proper frame. **Coordinate length** is the length of an object measured by an observer in a non-proper frame. Proper length $\Delta \ell$ is related to coordinate length $\Delta L$ by:
 
-$$
+{% math() %}
 \Delta L = \frac{\Delta \ell}{\gamma}
-$$
+{% end %}
 
 ## Time dilation and length contraction
 
 Consider an observer to be in the proper frame of a moving spaceship. The observer observes the ship's length as the proper length $\Delta \ell$ and the ship's time as proper time $\Delta \tau$. That observer considers the ship (and everything on it) to be stationary with respect to themselves. Meanwhile, consider a distant observer in a non-proper frame, perhaps situated away on Earth. That distant observer observes the ship's length as the coordinate length $\Delta L$, and the ship's time as the coordinate time $\Delta t$.  We use the familiar equation:
 
-$$
+{% math() %}
 \Delta t = \gamma \Delta \tau
-$$
+{% end %}
 
 Recall that $\gamma > 1$ for all moving objects. That means for the distant observer who measured a time interval of $\Delta t = 1$ second, the proper time of the observer in the spaceship must be $\Delta \tau < 1$ second. Therefore, the observer in the spaceship's clock ticks slow.
 
@@ -79,34 +79,34 @@ Consider an astronaut on a spaceship moving at $0.927c$ who says that the trip b
 
 To answer this question, we first identify the two observers in the question - the astronaut, who is aboard the spaceship, and the observer who is at rest relative to the two stars. We then identify the object that is considered moving within the problem - in our case, it is the spaceship. Therefore, the proper frame is the frame that is attached to the object, or in other words, the frame of the astronaut. This means the proper time would be the astronaut's measured time, or 7.49 years. After calculating the Lorentz factor for $0.927c$, where $\gamma \approx 2.66$, we can then use:
 
-$$
+{% math() %}
 \Delta t = \gamma \Delta \tau = (2.66)(7.49) = 20.01 \text{\ yrs}
-$$
+{% end %}
 
 Now, consider an unstable particle moving at a speed of $0.87c$ relative to a laboratory. Its lifetime is measured by a stationary observer in the laboratory to be $4.7 \times 10^{-6}$ seconds. What is the lifetime of the particle, measured by an observer in the frame of the particle? (Credit: Peter Persans, RPI)
 
 Here, we note that the object considered to be moving is the particle. Therefore, the proper time is the time measured by an observer attached to the particle. We, however, do not have measurements from the proper frame. We do have the measurements from the non-proper frame, which is the stationary observer's frame. Measurements of time from the non-proper frame are the coordinate time. Therefore, we can write:
 
-$$
+{% math() %}
 \Delta \tau = \frac{\Delta t}{\gamma} = \frac{4.7 \times 10^{-6}}{2.028} \approx 2.3 \mathrm{\ \mu s}
-$$
+{% end %}
 
 ## Lorentz Transformations
 
 The Lorentz transformations give the relativistically correct transformations between an observer's reference frame (the unprimed coordinates) and another reference frame (the primed coordinates). They are given by:
 
-$$
+{% math() %}
 \Delta t' = \gamma \left(\Delta t - \frac{v\Delta x}{c^2}\right)
-$$
-$$
+{% end %}
+{% math() %}
 \Delta x' = \gamma( \Delta x- v\Delta t)
-$$
-$$
+{% end %}
+{% math() %}
 \Delta y' = \Delta y
-$$
-$$
+{% end %}
+{% math() %}
 \Delta z' = \Delta z
-$$
+{% end %}
 
 ## Practicing the Lorentz transformations
 
@@ -114,52 +114,53 @@ Suppose we have light emitted in the direction of the $y$ axis in one observer's
 
 To start with, let's write the Lorentz transformations:
 
-$$
+{% math() %}
 \Delta x' = \gamma(\Delta x - v \Delta t)
-$$
-$$
+{% end %}
+{% math() %}
 \Delta t' = \gamma \left(\Delta t - \frac{v \Delta x}{c^2}\right)
-$$
-$$
+{% end %}
+{% math() %}
 \Delta y' = \Delta y
-$$
+{% end %}
 
 Now note that the speed of light measured in the first observer's frame is $c = \sqrt{v_x^2 + v_y^2}$, where:
-$$
+{% math() %}
 v_x = \frac{\Delta x}{\Delta t}
-$$
-$$
+{% end %}
+{% math() %}
 v_y = \frac{\Delta y}{\Delta t}
-$$
+{% end %}
+
 Since the light is moving along the $y$ axis, $\Delta x = 0$, and thus $v_x = 0$, and since $c = \sqrt{0^2 + v_y^2}$, this also means that $v_y = c$. Rearranging the $v_y$ equation, we get $\Delta y = c \Delta t$. So, to summarize:
 
-$$
+{% math() %}
 \Delta x = 0
-$$
-$$
+{% end %}
+{% math() %}
 \Delta y = c \Delta t
-$$
+{% end %}
 
 Now, we can plug in these values to the Lorentz transformations, which yields:
 
-$$
+{% math() %}
 \Delta x' = -\gamma v \Delta t
-$$
-$$
+{% end %}
+{% math() %}
 \Delta t' = \gamma \Delta t
-$$
-$$
+{% end %}
+{% math() %}
 \Delta y' = c \Delta t
-$$
+{% end %}
 
 We can then find $v_x'$ and $v_y'$:
 
-$$
+{% math() %}
 v_x' = \frac{\Delta x'}{\Delta t'} = \frac{-\gamma v\Delta t}{\gamma \Delta t} = - v
-$$
-$$
+{% end %}
+{% math() %}
 v_y' = \frac{\Delta y'}{\Delta t'}= \frac{c\Delta t}{\gamma \Delta t} = \frac{c}{\gamma}
-$$
+{% end %}
 
 Then, the speed is given by $\sqrt{(-v)^2 + \frac{c^2}{\gamma^2}} = c$. Thus we verify that the speed of light is constant in different reference frames. 
 
@@ -174,9 +175,9 @@ In classical mechanics, velocity addition is simple: $u' = u + v$. That is, if w
 
 In relativity, two velocities $u$ and $v$ add by:
 
-$$
+{% math() %}
 u' = \frac{u + v}{1 + \frac{uv}{c^2}}
-$$
+{% end %}
 
 Here, note that:
 
@@ -190,9 +191,10 @@ Consider three spaceships A, B, and C that are in motion. The commander on ship 
 
 To solve this problem, we must switch frames from spaceship B to spaceship A, as all our velocities are measured with respect to spaceship B. Therefore, spaceship A measures any velocity $u$ measured in B's frame as:
 
-$$
+{% math() %}
 v = \frac{v_B + u}{1 + \frac{u v_B}{c^2}}
-$$
+{% end %}
+
 where $v_B$ is the velocity of spaceship B with respect to spaceship A. We can sketch this problem as follows:
 
 ![A sketchy of the velocity-addition problem](velocity-addition-problem.png)
@@ -201,9 +203,9 @@ where $v_B$ is the velocity of spaceship B with respect to spaceship A. We can s
 
 Now, we know that if spaceship B measures spaceship A as travelling at $0.31c$, then spaceship A must also measure spaceship B as travelling at $-0.31c$. This leads to an important result in terms of the velocities of frames:
 
-$$
+{% math() %}
 v' = -v
-$$
+{% end %}
 
 Thus, if we set $v_B = -0.31c$ and $u = -0.78c$, we get our desired result - $v = -0.877c$.
 
@@ -211,15 +213,16 @@ Thus, if we set $v_B = -0.31c$ and $u = -0.78c$, we get our desired result - $v 
 
 To showcase coordinate transforms, we can use a spacetime diagram. To do so, we label the $x$ axis (that is, the line $t = 0$) and the $ct$ axis (that is, the line $x = 0$). The new transformed frames are given by $x' = 0$ (the $t'$ axis) and $t' = 0$ (the $x'$ axis). That is, for the $t'$ axis, we have $x' = 0$, or:
 
-$$
+{% math() %}
 x' = \gamma(x - vt) = 0 \Rightarrow x = vt
-$$
+{% end %}
 
 Meanwhile, for the $x'$ axis, we have $t' = 0$, or:
 
-$$
+{% math() %}
 t' = \gamma \left(t - \frac{vx}{c^2}\right) = 0 \Rightarrow t = \frac{vx}{c^2}
-$$
+{% end %}
+
 These new axes are shown below:
 
 ![Minkowski diagram](https://tikz.net/wp-content/uploads/2023/10/relativity_minkowski_diagram-016.png)
@@ -228,22 +231,23 @@ These new axes are shown below:
 
 To figure out the scaling of axes in the Lorentz transformations, we start with the point $(x, ct) = (1, 0)$ and calculate the resulting $(x', ct')$. We find that $(x', ct') = (\gamma, \gamma \beta)$ where $\beta = \frac{v}{c}$. Thus, the scaling factor of axes for the Lorentz transformations is given by:
 
-$$
+{% math() %}
 \sqrt{\frac{1 + \beta^2}{1 - \beta^2}}
-$$
+{% end %}
 
 ## Doppler shift
 
 There are two cases of the Doppler effect - longitudinal, where the emitter and observer are moving towards/away from each other, and transverse, where the emitter and observer are at 90 degrees to each other. The transverse Doppler effect formula is given by:
 
-$$
+{% math() %}
 \frac{1}{f'} = \gamma \frac{1}{f}
-$$
+{% end %}
+
 Meanwhile, the longitudinal Doppler effect formula is given by:
 
-$$
+{% math() %}
 f' = f \sqrt{\frac{1 - \beta}{1 + \beta}}
-$$
+{% end %}
 ## Ordering of events
 
 On a Minkowski spacetime diagram, all events that fall within $\pm 45^\circ$ of the $\pm ct$ axis are known as timelike intervals. This means that if two events are within this region, it is possible for one event to have caused the other event.
@@ -256,9 +260,9 @@ Events exactly along the $\pm 45^\circ$ line are known as **lightlike**. This me
 
 Distances in space and distances in time are dependent on the frame chosen. But a distance in spacetime - a combination of a distance in space and a distance in time - are **invariant**. The invariant interval, also known as the spacetime interval, is given by:
 
-$$
+{% math() %}
 \Delta s^2 = c^2 \Delta t^2 - \Delta x^2
-$$
+{% end %}
 
 This is the same in every reference frame, just as the speed of light is invariant in every reference frame, so it is called a Lorentz invariant quantity.
 
@@ -272,26 +276,27 @@ The invariant interval gives another way to define the ordering of events:
 
 Relativistic momentum is given by:
 
-$$
+{% math() %}
 p = \gamma mv
-$$
+{% end %}
 
 Relativistic total energy (in the absence of potential energy) is given by:
 
-$$
+{% math() %}
 E = K + mc^2 = \gamma mc^2
-$$
+{% end %}
+
 where:
 
-$$
+{% math() %}
 K = (\gamma - 1) mc^2
-$$
+{% end %}
 
 The energy-momentum relationship is given by:
 
-$$
+{% math() %}
 E^2 = (pc)^2 + (mc^2)^2
-$$
+{% end %}
 
 Relativistic momentum, just like classical momentum, and relativistic total energy, just like classical total energy, are **conserved quantities**.
 
@@ -303,74 +308,75 @@ Speeds of relativistic particles are often defined in terms of the speed of ligh
 
 Four-vectors are used in special relativity to denote relativistic quantities. The four-vector of position is:
 
-$$
+{% math() %}
 \vec r = \begin{bmatrix}
-ct \\\\
-x \\\\
-y \\\\
+ct \\
+x \\
+y \\
 z
 \end{bmatrix}
-$$
+{% end %}
 
 Meanwhile, the four-vector of momentum is given by:
 
-$$
+{% math() %}
 \vec p = \begin{bmatrix}
-E/c \\\\
-p_x \\\\
-p_y \\\\
+E/c \\
+p_x \\
+p_y \\
 p_z
 \end{bmatrix}
-$$
+{% end %}
+
 Inner products of 4-vectors are invariant quantities. For example:
 
-$$
+{% math() %}
 \vec r \cdot \vec r = s^2
-$$
+{% end %}
 
-$$
+{% math() %}
 \vec p \cdot \vec p =\frac{E^2}{c^2} - p^2 = m^2 c^2
-$$
+{% end %}
 
 ## Using center of momentum frames
 
 A center of momentum frame is a frame where the total 3-momentum $p$ of a system is equal to zero. Using center of momentum frames is very useful for solving collision problems in special relativity. This is because the center of momentum frame (CM frame) is the frame where **all collision product particles are at rest**. For example, if a collision produces particles A and B, then both A and B are at rest with respect to the CM frame. In addition, the total energy of particles A and B is equal to the total energy of the CM frame $E_{cm}$:
 
-$$
+{% math() %}
 E_A + E_B = E_{cm}
-$$
+{% end %}
 
 We will derive this below.
 
 First, within the CM frame, the total 4-momentum is:
 
-$$
-\mathbf{P}\_{cm} = 
+{% math() %}
+\mathbf{P}_{cm} = 
 \begin{bmatrix}
-E_{cm} / c \\\\
-0 \\\\
-0 \\\\
+E_{cm} / c \\
+0 \\
+0 \\
 0
 \end{bmatrix}
-$$
+{% end %}
 
 where $E_{cm}$ is the total energy in the CM frame, and all the momentum components are zero since the 3-momentum of a system is zero in the CM frame. Why is this useful? Because if we compute the dot product of the CM frame 4-momentum, we find:
 
-$$
-\mathbf{P}\_{cm} \cdot \mathbf{P}\_{cm} = \frac{E\_{cm}^2}{c^2}
-$$
+{% math() %}
+\mathbf{P}_{cm} \cdot \mathbf{P}_{cm} = \frac{E_{cm}^2}{c^2}
+{% end %}
 
 However, since the dot product of any 4-momentum vector is invariant, this means we can substitute $\mathbf{P}_{cm}$ with any 4-vector, and this equation will be true! For instance, suppose we already found the total 4-momentum in a lab frame, which we denote $\mathbf{P}_l$. Then, the following equation would be true as well:
 
-$$
-\mathbf{P}\_l \cdot \mathbf{P}\_l = \frac{E\_{cm}^2}{c^2}
-$$
+{% math() %}
+\mathbf{P}_l \cdot \mathbf{P}_l = \frac{E_{cm}^2}{c^2}
+{% end %}
 
-From there, we can rearrange to solve for $E_{cm}$. Then, we can find $\mathbf{P}\_{cm}$ from $E\_{cm}$, use $\mathbf{P}_{cm} = \mathbf{P}_A + \mathbf{P}_b$, and then square both sides (only the squaring uses dot products, not regular multiplication). This then becomes:
+From there, we can rearrange to solve for $E_{cm}$. Then, we can find $\mathbf{P}_{cm}$ from $E_{cm}$, use $\mathbf{P}_{cm} = \mathbf{P}_A + \mathbf{P}_b$, and then square both sides (only the squaring uses dot products, not regular multiplication). This then becomes:
 
-$$
-\mathbf{P}\_{cm} \cdot \mathbf{P}\_{cm} = (\mathbf{P}\_A + \mathbf{P}\_B) \cdot (\mathbf{P}\_A + \mathbf{P}\_B) = \mathbf{P}\_A \cdot \mathbf{P}\_A + 2(\mathbf{P}\_A \cdot \mathbf{P}\_B) + \mathbf{P}\_B \cdot \mathbf{P}\_B
-$$
+{% math() %}
+\mathbf{P}_{cm} \cdot \mathbf{P}_{cm} = (\mathbf{P}_A + \mathbf{P}_B) \cdot (\mathbf{P}_A + \mathbf{P}_B) = \mathbf{P}_A \cdot \mathbf{P}_A + 2(\mathbf{P}_A \cdot \mathbf{P}_B) + \mathbf{P}_B \cdot \mathbf{P}_B
+{% end %}
 
 Using the invariance of the dot product of a 4-vector, that is, $\mathbf{P} \cdot \mathbf{P} = m^2 c^2$, this can then be used to solve for the energies of each of the particles.
 
@@ -379,7 +385,7 @@ Using the invariance of the dot product of a 4-vector, that is, $\mathbf{P} \cdo
 - When doing calculations in different frames:
 	- Use the energy-momentum relation $E^2 = (pc)^2 + (mc^2)^2$
 	- Use the fact that the dot product of any 4-momentum with itself is given by $\mathbf{P} \cdot \mathbf{P} = m^2 c^2$
-	- Use a center of momentum frame, compute the invariant dot product of the system's 4-momentum, and then find the dot product of the 4-momentum of the system in the lab frame, and set them equal - that is, $\mathbf{P}\_{cm} \cdot \mathbf{P}\_{cm} = \mathbf{P}\_l \cdot \mathbf{P}\_l$
+	- Use a center of momentum frame, compute the invariant dot product of the system's 4-momentum, and then find the dot product of the 4-momentum of the system in the lab frame, and set them equal - that is, {% inlmath() %}\mathbf{P}_{cm} \cdot \mathbf{P}_{cm} = \mathbf{P}_l \cdot \mathbf{P}_l{% end %}
 - When doing calculations in one chosen frame (such as the lab frame):
 	- Use conservation of momentum $p = p_1 + p_2$ and conservation of energy $E = E_1 + E_2$
 	- Use the fact that $\frac{v}{c} = \frac{pc}{E}$

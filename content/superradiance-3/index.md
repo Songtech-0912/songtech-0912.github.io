@@ -9,27 +9,27 @@ In this third part of the superradiance series, a series of posts focused on cre
 
 Light rays follow a very special property, known as the law of reflection. This law states that the angle of incidence (the angle at which a light ray approaches a surface) must be equal to the angle of reflection:
 
-$$
+{% math() %}
 \theta_i = \theta_r
-$$
+{% end %}
 
 Using the law of reflection, we can find the direction of an outgoing vector $\vec v_o$ given an incoming vector $\vec v_i$, a normal vector $\vec N$, and a point of surface intersection $(P_x, P_y, P_z)$.
 
 First, the angle between the normal vector and incoming vector can be found like so:
 
-$$
+{% math() %}
 \cos \theta = \frac{\vec v_i \cdot \vec N}{\| \vec v_i \| \| \vec N \|}
-$$
+{% end %}
 
 Then, the resulting vector can be found as follows:
 
-$$
+{% math() %}
 \vec v_0 = -\vec N \times 
 \begin{bmatrix}
-\cos \theta & -\sin \theta \\\\
+\cos \theta & -\sin \theta \\
 \sin \theta & \cos \theta
 \end{bmatrix}
-$$
+{% end %}
 
 In Python, we can compute the vectors:
 
@@ -74,67 +74,67 @@ plt.show()
 
 Now, we extend this concept to 3D space. We can use the same reflectance formula as 2D space by decomposing the 3D incoming vector $\vec a$ and normal vector $\vec N$ into two 2D vectors in the $y = 0$ and $x = 0$ plane. This is done by respectively setting $y = 0$ for $\vec a_y$ to get the projection of the vector in the plane $y = 0$, and setting $x = 0$ for $\vec a_x$ to get the projection of the vector in the plane $x = 0$, and doing the same for the normal vector:
 
-$$
+{% math() %}
 \vec a_y = 
 \begin{bmatrix}
-a.x \\\\
+a.x \\
 a.z
 \end{bmatrix}
-$$
+{% end %}
 
-$$
+{% math() %}
 \vec a_x = 
 \begin{bmatrix}
-a.y \\\\
+a.y \\
 a.z
 \end{bmatrix}
-$$
+{% end %}
 
-$$
+{% math() %}
 \vec N_y = 
 \begin{bmatrix}
-N.x \\\\
+N.x \\
 N.z
 \end{bmatrix}
-$$
+{% end %}
 
-$$
+{% math() %}
 \vec N_x = 
 \begin{bmatrix}
-N.y \\\\
+N.y \\
 N.z
 \end{bmatrix}
-$$
+{% end %}
 
 Then, the angles can be found in 2D using the 2D projections of the 3D incoming and normal vectors:
 
-$$
+{% math() %}
 \theta_y = \operatorname{angle} \left(\vec a_y, \vec N_y\right)
-$$
+{% end %}
 
-$$
+{% math() %}
 \theta_x = \operatorname{angle} \left(\vec a_x, \vec N_x\right)
-$$
+{% end %}
 
 Finally, the 2D projections of the outgoing vector $\vec b$ can be found by applying the rotation matrix $R(\theta)$ to the flipped 2D normal projection vector: 
 
-$$
+{% math() %}
 \vec b_y = R(\theta_y) \times (-\vec N_y)
-$$
+{% end %}
 
-$$
+{% math() %}
 \vec b_x = R(\theta_x) \times (-\vec N_x)
-$$
+{% end %}
 
 From which the final outgoing vector $\vec b$ can be found:
 
-$$
+{% math() %}
 \vec b = \begin{bmatrix}
-c_y.x \\\\
-c_x.x \\\\
+c_y.x \\
+c_x.x \\
 c_y.z
 \end{bmatrix}
-$$
+{% end %}
 
 The python code for this is as follows:
 

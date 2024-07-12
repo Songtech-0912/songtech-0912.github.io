@@ -11,43 +11,43 @@ It should be noted that we are using units of $G = c = 1$ here.
 
 First, we need to write out the Kerr metric. The metric is given by:
 
-$$
+{% math() %}
 g_{\mu\nu} = \begin{pmatrix}
-	-(1 - \frac{2 M r}{\Sigma}) & 0 & 0 & -\frac{2 M r a \sin^2 \theta}{\Sigma} \\\\
-	0 & \frac{\Sigma}{\Delta} & 0 & 0 \\\\
-	0 & 0 & \Sigma & 0 \\\\
+	-(1 - \frac{2 M r}{\Sigma}) & 0 & 0 & -\frac{2 M r a \sin^2 \theta}{\Sigma} \\
+	0 & \frac{\Sigma}{\Delta} & 0 & 0 \\
+	0 & 0 & \Sigma & 0 \\
 	-\frac{2 M r a \sin^2 \theta}{\Sigma} & 0 & 0 & (r^2 + a^2 + \frac{2 M r a^2}{\Sigma} \sin^2 \theta) \sin^2 \theta
 \end{pmatrix}
-$$
+{% end %}
 
 Where:
 
-$$
+{% math() %}
 a = \frac{J}{M}
-$$
-$$
+{% end %}
+{% math() %}
 \Sigma = r^2 + a^2 \cos^2 \theta
-$$
-$$
+{% end %}
+{% math() %}
 \Delta = r^2 - 2Mr + a^2
-$$
+{% end %}
 
 And the inverse metric is given by:
 
-$$
+{% math() %}
 g^{\mu\nu} = \begin{pmatrix}
 	-\frac{1}{\Delta} (r^2 + a^2 + \frac{2 M r a^2}{\Sigma} \sin^2 \theta) &
 		0 &
 		0 &
-		-\frac{2 M r a}{\Delta \Sigma} \\\\
-	0 & \frac{\Delta}{\Sigma} & 0 & 0 \\\\
-	0 & 0 & \frac{1}{\Sigma} & 0 \\\\
+		-\frac{2 M r a}{\Delta \Sigma} \\
+	0 & \frac{\Delta}{\Sigma} & 0 & 0 \\
+	0 & 0 & \frac{1}{\Sigma} & 0 \\
 	-\frac{2 M r a}{\Delta \Sigma} &
 		0 & 
 		0 & 
 		\frac{1}{\Delta \sin^2 \theta} (1 - \frac{2 M r}{\Sigma})
 \end{pmatrix}
-$$
+{% end %}
 
 So, in code, we have:
 
@@ -84,28 +84,28 @@ def kerr_inverse_metric(coords, M=2e30, a=0.97):
 
 Next, we will calculate Christoffel symbols by automatic differentiation of the metric tensor. To do this, we compute the Jacobian matrix of the metric tensor. Recall that the Jacobian matrix of a vector valued function, in tensor index notation, is given by:
 
-$$
+{% math() %}
 J_{mn} = \frac{\partial F_m}{\partial x^n}
-$$
+{% end %}
 
 The metric tensor, however, is a matrix-valued function, so we need to add an additional index to the Jacobian, giving:
 
-$$
+{% math() %}
 J_{\alpha \mu \nu} = \frac{\partial g_{\mu \nu}}{\partial x^\alpha}
-$$
+{% end %}
 
 We can then write the Christoffel symbols in terms of the Jacobian:
 
-$$
+{% math() %}
 \Gamma^\mu_{\gamma \delta} = \frac{1}{2} g^{\mu \eta} \left(
 \frac{\partial g_{\gamma \eta}}{\partial x^\delta} + \frac{\partial g_{\eta \delta}}{\partial x^\gamma} - \frac{\partial g_{\gamma \delta}}{\partial x^\eta}\right) = \frac{1}{2} g^{\mu \eta} (J_{\gamma \eta \delta} + J_{\eta \delta \gamma} - J_{\gamma \delta \eta})
-$$
+{% end %}
 
 Or with a change of indices:
 
-$$
+{% math() %}
 \Gamma^\beta_{\mu \nu} = \frac{1}{2} g^{\beta \alpha} (J_{\mu \alpha \nu} + J_{\eta \alpha \mu} - J_{\mu \nu \alpha})
-$$
+{% end %}
 
 This is some code I took from [here](https://github.com/AndreaAntoniali/Riemann-tensor-calculator/blob/main/Riemann_Calculations.ipynb) and modified that calculates the Christoffel symbols in the way outlined:
 
@@ -129,9 +129,9 @@ def christoffel_at_point_4d(metric, inverse_metric, t, r, theta, phi, dims):
 
 Now, we can finally solve the geodesic equations. However, firstly, we want to rewrite the typical geodesic equations in a slightly differing form:
 
-$$
+{% math() %}
 \frac{d^2 x^\mu}{ds^2} = -\Gamma^\mu_{\alpha \beta} \frac{dx^\alpha}{ds} \frac{dx^\beta}{ds}
-$$
+{% end %}
 
 Here, note the use of the Einstein summation convention; $i$ and $j$ are summation (dummy) indices, so we have to fully expand out the summations in our code. The geodesic equation describes a system of equations, one equation each for $(t, r, \theta, \phi)$. Therefore, to simplify our code, we group the equations together as a vector. Additionally, because it is a _second_-order equation, we also need to keep track of the 4 components of velocity, one each for $(v_t, v_r, v_\theta, v_\phi)$. So we have a vector of 8 components that stores all the position and velocity information of our solution to the differential equation:
 

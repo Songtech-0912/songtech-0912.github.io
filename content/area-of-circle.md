@@ -11,20 +11,20 @@ To start with, we need to find a way to calculate the circumference of a circle 
 
 Now that we've defined $\pi = \frac{C}{D}$, or $C = \pi D$, we know that $C = 2\pi r$ by definition. But that still leaves us with the area of a circle. To solve, suppose we cut a tiny sector of a circle. Since the sector is infinitesimal, then we can approximate its area as the area of a sector, where $\ell$ is the arc length:
 
-$$
+{% math() %}
 dA = \frac{1}{2} r d\ell
-$$
+{% end %}
 
 Now we simply need to integrate $dA$ to be able to find $A$, the total area. Note that $\int d\ell = C$, because adding up every little arc length adds to the arc length of a circle, i.e. the circumference:
 
-$$
+{% math() %}
 A = \int \frac{1}{2} r d\ell = \frac{1}{2} rC
-$$
+{% end %}
 
 Now we know that $C = \pi d = 2\pi r$. Therefore:
 
-$$
+{% math() %}
 A = \frac{1}{2} r(2\pi r) = \pi r^2
-$$
+{% end %}
 
 That just leaves determining what that mysterious constant $\pi = C/D$ is. But that will be a topic for another time!

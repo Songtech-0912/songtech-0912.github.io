@@ -9,47 +9,47 @@ Again, we return to the superradiance series, a series of posts focused on creat
 
 Differential equations are the equations that describe how almost every physical system behave. In the case of black holes, the geodesic equation, a second-order differential equation, governs the trajectories of moving objects around the black hole:
 
-$$
+{% math() %}
 \frac{d^2 x^\sigma}{d\tau^2} + \Gamma^\sigma_{\alpha \beta} \frac{dx^\alpha}{d\tau} \frac{dx^\beta}{d\tau} = 0
-$$
+{% end %}
 
 Differential equations are typically unsolvable or very difficult to solve exactly through analytical means. However, they can be solved numerically. This is where numerical methods for differential equations comes in. To demonstrate them, we can solve the Lorentz system of equations, a system of differential equations defined by:
 
-$$
+{% math() %}
 \frac{dx}{dt} = \sigma (y - x)
-$$
+{% end %}
 
-$$
+{% math() %}
 \frac{dy}{dt} = x (\rho - z) - y
-$$
+{% end %}
 
-$$
+{% math() %}
 \frac{dz}{dt} = xy - \beta z
-$$
+{% end %}
 
 The Runge-Kutta 4th order method, often called RK4, is one of the most common numerical methods used for solving differential equations. It is defined by:
 
-$$
+{% math() %}
 y_{n + 1} = y_n + \frac{1}{6} (k_1 + 2k_2 + 2k_3 + k_4)h
-$$
+{% end %}
 
 Where:
 
-$$
+{% math() %}
 k1 = f(t_n, y_n)
-$$
+{% end %}
 
-$$
+{% math() %}
 k2 = f(t_n + h / 2, y_n + h k_1 / 2)
-$$
+{% end %}
 
-$$
+{% math() %}
 k3 = f(t_n + h / 2, y_n + h k_2 / 2)
-$$
+{% end %}
 
-$$
+{% math() %}
 k4 = f(t_n + h, y_n + h k_3)
-$$
+{% end %}
 
 A simple implementation in Python is given as follows:
 
