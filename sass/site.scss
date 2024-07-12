@@ -167,6 +167,13 @@ header {
   	margin-bottom: 1.5rem;
   }
 
+  // We just don't want the extra
+  // bottom spacing for lists
+  // within lists
+  li ul, li ol {
+  	margin-bottom: 0;
+  }
+
   img {
     display: block;
     width: 50%;
