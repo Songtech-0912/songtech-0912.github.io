@@ -7,4 +7,4 @@ General relativity is doubtlessly one of the most beautiful theories of physics 
 
 <!-- more -->
 
-Also - lots of pictures! Traditional physics texts often don't include a lot of images, which can make the material quite difficult to read and boring. For readers who are blind or have low vision, don't worry, there are rich image descriptions AI-generated for each image, courtesy of HuggingFace's transformers.
+Also - lots of pictures! Traditional physics texts often don't include a lot of images, which can make the material quite difficult to read and boring. For readers who are blind or have low vision, don't worry, there are AI-generated image descriptions for each image, courtesy of HuggingFace's transformers.

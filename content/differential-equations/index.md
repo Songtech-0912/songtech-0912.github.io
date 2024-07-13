@@ -7,7 +7,7 @@ These are notes taken in RPI's MATH 2400 course, on an introduction to different
 
 <!-- more -->
 
-Note that the general [[Calculus series]](@/calculus-series.md) and specifically the [[Integration notes]](@/integration.md) might be good to read alongside.
+Note that the general [Calculus series](@/calculus-series.md) and specifically the [Integration notes](@/integration.md) might be good to read alongside.
 
 ## Introduction
 
