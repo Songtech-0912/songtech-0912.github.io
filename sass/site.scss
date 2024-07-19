@@ -2,6 +2,7 @@
 
 /* Fonts */
 $font-sans: Inter, Avenir, Helvetica, sans-serif;
+$font-monospace: "Fira Code", "Source Code Pro", "IBX Plex Mono", "Consolas", "Menlo", "Courier", monospace;
 
 /* Colors */
 
@@ -246,9 +247,24 @@ header {
   	td, th {
   		text-align: left;
   		padding: 0.5rem;
+
+  		code {
+  			color: magenta;
+  			background: none;
+  		}
   	}
   
   	tr {
   		border-bottom: 1px solid $border;
   	}
+}
+
+
+.api {
+	font-family: $font-monospace;
+	font-weight: normal;
+
+	.function {
+		color: magenta;
+	}
 }
