@@ -3,7 +3,7 @@ title = "Directory of all notes"
 date = 2024-01-10
 +++
 
-These are notes I've taken while pursuing a degree in Applied Physics at Rensselaer Polytechnic Institute, as well in my independent research and learning. Most of these notes are aimed at a college undergraduate or advanced high school level.
+These are notes (well, more mini-books), some I've taken while pursuing a degree in applied physics at Rensselaer Polytechnic Institute, others in my independent research and learning. Most of these notes are aimed at a college undergraduate or advanced high school level, some at a graduate level, but I firmly believe that anyone with a curious mind and a determined willingness to learn can read through and get to understand all of them.
 
 <!-- more -->
 
