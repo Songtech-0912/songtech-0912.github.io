@@ -3,7 +3,7 @@ title = "Introductory Quantum Physics notes"
 date = 2024-05-07
 +++
 
-These are notes taken in preparation of and during Quantum Physics I (PHYS 2210) at RPI, with topics covered including wavefunctions, various solutions of the time-dependent and independent Schrödinger equation, the uncertainty principle, and expectation values.
+This a mini-book on quantum physics, with topics covered including wavefunctions, various solutions of the time-dependent and independent Schrödinger equation, the uncertainty principle, and expectation values.
 
 <!-- more -->
 
