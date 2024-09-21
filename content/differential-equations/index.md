@@ -708,10 +708,10 @@ a_2(x) y'' + a_1(x) y' + a_0(x) y = g(x)
 Note that this means that any 2nd-order linear ODE can be written as a system of 2 first-order differential equations. If we let $v = y'$, then we can say:
 
 {% math() %}
-\begin{align}
+\begin{align*}
 a_2(x) v' + a_1(x) v + a_0(x)y &= g(x) \\
 y' &= v
-\end{align}
+\end{align*}
 {% end %}
 
 Each of these two first-order differential equations has a unique solution given an initial condition - $v(0)$ (which is equal to $y'(0)$) for the first and $y(0)$ for the second. This means that the original 2nd-order linear ODE must have two solutions and two initial conditions. The two solutions, denoted $y_1(x)$ and $y_2(x)$, must also be _linearly independent_. Linearly independent means that $y_1(x) \neq c y_2(x)$ and $y_2(x) \neq c y_1(x)$ - one cannot be expressed as a constant multiple of the other. The reason for this is that we want two unique solutions, and if one can be expressed in terms of the other we essentially just have one solution, but we know that would be inconsistent with the fact two solutions must exist. Thus, the two solutions must be linearly independent.
@@ -725,10 +725,10 @@ y(x) = c_1 y_1(x) + c_2 y_2(x)
 To find whether two solutions $y_1(x)$ and $y_2(x)$ are linearly independent, we check the **Wronskian**. Suppose the IVP has two solutions $y_1$ and $y_2$:
 
 {% math() %}
-\begin{align}
+\begin{align*}
 c_1 y_1 (x) + c_2 y_2 (x) &= 0 \\
 c_2 y_1'(x) + c_2 y_2'(x) &= 0
-\end{align}
+\end{align*}
 {% end %}
 
 We can write this as a matrix $A \mathbf{x} = \mathbf{b}$:
@@ -776,10 +776,10 @@ y'' + \frac{a_1(x)}{a_2(x)} y'' + \frac{a_0(x)}{a_2(x)}y = 0 \Rightarrow p(x) = 
 To prove this, we first know that:
 
 {% math() %}
-\begin{align}
+\begin{align*}
 y_1'' + py_1' + qy_1 &= 0 \\
 y_2'' + py_2' + qy_2 &= 0
-\end{align}
+\end{align*}
 {% end %}
 
 If we eliminate $q$ by multiplying the top equation by $y_2$ and the bottom equation by $y_1$, we get:
@@ -935,10 +935,10 @@ y = C_1 \cos \omega t + C_2 \sin \omega t
 In the study of differential equations it is sadly often necessary to solve systems of two (or occasionally more) simultaneous equations. That is, simultaneous equations in the form:
 
 {% math() %}
-\begin{align}
+\begin{align*}
 a_1 x + b_1 y = c_1 \\
 a_2 x + b_2 y = c_2
-\end{align}
+\end{align*}
 {% end %}
 
 To be able to solve these equations quickly and efficiently, we can take advantage of **Cramer's rule**. First, we define a quantity $D$ via the determinant of a special matrix:
@@ -1073,11 +1073,11 @@ Then, since we had a $t^2$ term, a $t$ term, and a constant ($t^0$) term in our 
 From here, we get three simultaneous equations:
 
 {% math() %}
-\begin{align}
+\begin{align*}
 0 + A\sigma^2 &= 0 \\
 0 + B \sigma^2 &= 0 \\
 2A + C \sigma^2 &= \frac{F_0}{m}
-\end{align}
+\end{align*}
 {% end %}
 
 The first two equations tell us that $A = B = 0$, and substituting $A = 0$ for the third equation tells us that $C = \frac{F_0}{\sigma^2 m}$. Substituting these values back into our fitting solution $r_f = At^2 + Bt + C$ gives us:
@@ -1299,10 +1299,10 @@ Which can be solved by computer algorithms.
 As a review of solving linear systems, consider the following system of two linear equations:
 
 {% math() %}
-\begin{align}
+\begin{align*}
 ax + by = k_1 \\
 cx + dy = k_2
-\end{align}
+\end{align*}
 {% end %}
 
 This system of equations can be written in the form $A\mathbf{x} = \mathbf{B}$ in the following manner:
@@ -1669,10 +1669,10 @@ We can then solve the system approximately about each steady state as a linear s
 As an example of finding the steady states, consider the nonlinear system:
 
 {% math() %}
-\begin{align}
+\begin{align*}
 x' &= x - x^2 - xy \\
 y' &= \frac{3}{2} y - y^2 - xy
-\end{align}
+\end{align*}
 {% end %}
 
 
@@ -1682,25 +1682,25 @@ Critical points are found by setting $x' = 0$ and $y' = 0$ and solving for the v
 
 
 {% math() %}
-\begin{align}
+\begin{align*}
 x(1 - x - y) = 0 \\
 y \left(\frac{3}{2} - y - x\right) = 0
-\end{align}
+\end{align*}
 {% end %}
 
 We can consider this a system of the following:
 
 {% math() %}
-\begin{align}
+\begin{align*}
 AB = 0 \\
 CD = 0 \\
-\end{align}
+\end{align*}
 {% end %}
 
 Therefore, there are 4 pairs of resulting simultaneous equations to solve each for a $(x, y)$ solution pair:
 
 {% math() %}
-\begin{align}
+\begin{align*}
 \begin{cases}
 A = 0 \\ C = 0
 \end{cases} \\
@@ -1713,7 +1713,7 @@ B = 0 \\ C = 0
 \begin{cases}
 B = 0 \\ D = 0
 \end{cases}
-\end{align}
+\end{align*}
 {% end %}
 
 Or in this case:
@@ -1943,11 +1943,11 @@ Where $u = u(x, t)$ describes the heat distribution within the rod and $\alpha$ 
 The general solution to the heat equation can be found through the method of _separation of variables_. To do so, we assume that the solution is in the form $u(x, t) = X(x) T(t)$. Therefore, taking the partial derivatives in space and time of $u(x, t)$ results in:
 
 {% math() %}
-\begin{align}
+\begin{align*}
 \frac{\partial u}{\partial x} &= \frac{dX}{dx} T + \cancel{X \frac{dT}{dx}} = X'T \\
 \frac{\partial^2 u}{\partial x^2} &= \frac{d}{dt}(X'T) = X''T \\
 \frac{\partial u}{\partial t} &= XT'
-\end{align}
+\end{align*}
 {% end %}
 
 Notice how the partial derivatives result in zeros . Therefore the heat equation results in:
@@ -1977,10 +1977,10 @@ However, if value is equal to two derivatives in different variables, then the v
 This results in two ODEs:
 
 {% math() %}
-\begin{align}
+\begin{align*}
 \frac{X''}{X} &= -\lambda^2 \Rightarrow X'' + \lambda^2 X = 0 \\
 \frac{T'}{\alpha^2 T} &= -\lambda^2 T \Rightarrow T' = -\lambda^2 \alpha^2 T
-\end{align}
+\end{align*}
 {% end %}
 
 The first ODE may be solved using the method of the characteristic equation, which results in:

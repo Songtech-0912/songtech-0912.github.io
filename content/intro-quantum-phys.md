@@ -39,13 +39,11 @@ For example, consider electrical charge. The base value of electric charge is th
 
 > Note to the advanced reader: yes, indeed, quarks have a different quantum of charge, but since quarks can never be found on their own, and are always grouped together into composite, not elementary particles, we consider $e$ the quantum of charge, associated with an electron.
 
-Similarly, consider electromagnetic radiation. The base value of electromagnetic radiation is given by $hf$, the radiation of a single photon of frequency $f$, where $h = \pu{6.626e-34 J*Hz^{-1}}$ is the Planck constant. All electromagnetic radiation of a given frequency $f$ must be composed of multiples of this value.
-
-Note that in quantum mechanics, the particle is simply regarded as an indivisible constituent of matter or energy, and are not the same as classical particles.
+Similarly, consider electromagnetic radiation. The base value of electromagnetic energy is given by $hf = \dfrac{hc}{\lambda}$, the radiation of a single photon of frequency $f$ and wavelength $\lambda$, where $h = \pu{6.626e-34 J*Hz^{-1}}$ is the Planck constant. All electromagnetic energy of a given frequency $f$ and wavelength $\lambda$ must be composed of multiples of this value.
 
 ### Postulate 2: quantum states
 
-In classical mechanics, the future state of any system can be known by knowing its current state and its equations of motion. The equations of motion are Newton's 2nd law:
+In classical mechanics, the future state of any system of particles can be known by knowing its current state and its equations of motion. The equations of motion are Newton's 2nd law:
 
 {% math() %}
 m \frac{d^2 \mathbf{r}}{dt^2} = \mathbf{F}(\mathbf{r}, t)
@@ -54,14 +52,13 @@ m \frac{d^2 \mathbf{r}}{dt^2} = \mathbf{F}(\mathbf{r}, t)
 Which can be rewritten as system of 2 coupled first-order ODEs:
 
 {% math() %}
-\frac{d\mathbf{p}}{dt} = \mathbf{F}(\mathbf{r}, t)
-{% end %}
-
-{% math() %}
+\begin{align*}
+\frac{d\mathbf{p}}{dt} = \mathbf{F}(\mathbf{r}, t) \\
 m \frac{d\mathbf{r}}{dt} = \mathbf{p}
+\end{align*}
 {% end %}
 
-The initial condition for this system is the **classical state** of the particle, and is the following 6-vector, consisting of three components of position and three components of momentum:
+The initial condition for this system is the **classical state** of the particle, and is the following 6-component vector, consisting of three components of position and three components of momentum:
 
 {% math() %}
 \mathbf{X}_0 = \begin{pmatrix}
@@ -74,7 +71,7 @@ p_{z_0}
 \end{pmatrix}
 {% end %}
 
-In quantum mechanics, the future state of a system is determined via a **quantum state**. This quantum state is typically denoted by an abstract vector $|\psi\rangle$ whose components are complex numbers, with the specialized notation (called bra-ket notation) used to differentiate quantum states from classical states. Abstract vectors reside in a Hilbert space $\mathcal{H}$, and unlike ordinary Cartesian vectors, they can be infinite-dimensional. However, since quantum states are so abstract, it is more convenient to interpret them not as vectors but as functions, as the two formulations are equivalent. Specifically, the function is known as a **wavefunction** $\Psi(\mathbf{x}, t)$, which obeys the Schrödinger wave equation:
+In quantum mechanics, the future state of a system is determined via a **quantum state**. This quantum state is typically denoted by an abstract vector $|\psi\rangle$ whose components are complex numbers, with the specialized notation (called bra-ket notation or Dirac notation) used to differentiate quantum states from classical states. Abstract vectors reside in a Hilbert space $\mathcal{H}$ which is complex, and unlike ordinary Cartesian vectors, they can be infinite-dimensional. However, since quantum states are so abstract, there is an equivalent formulation of quantum mechanics in terms of partial differential equations, as the two formulations are equivalent. In the differential equation formulation, we solve for **wavefunction** $\Psi(\mathbf{x}, t)$, which obey the Schrödinger wave equation:
 
 {% math() %}
 i\hbar \frac{\partial}{\partial t} \Psi(\mathbf{x}, t) = \left(-\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x, t)\right) \Psi(\mathbf{x}, t) 

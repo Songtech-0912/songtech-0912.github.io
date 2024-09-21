@@ -358,7 +358,7 @@ F = m \frac{dv}{dt}
 We can use this alternate definition of force to obtain the work-energy theorem:
 
 {% math() %}
-\begin{align}
+\begin{align*}
 W &= \int_{x_0}^{x_1} m\frac{dv}{dt} dx \\
 &= \int_{x_0}^{x_1} m\frac{dv}{dt} \frac{dx}{dt} dt \\
 &= \int_{x_0}^{x_1} m \frac{dv}{dt} v dt \\
@@ -366,7 +366,7 @@ W &= \int_{x_0}^{x_1} m\frac{dv}{dt} dx \\
 &= \frac{1}{2} m(v_2^2 - v_1^2) \\
 &= \frac{1}{2} m \Delta v^2 \\
 &= \Delta K
-\end{align}
+\end{align*}
 {% end %}
 
 If a force depends only on position, it is called a **conservative force**. Conservative forces can be written in terms of a potential energy function $U(x)$ in 1D via:
@@ -575,9 +575,9 @@ d\vec s = \frac{d\vec s}{dt} dt = (x'(t) dt, y'(t) dt, z'(t) dt) = \vec r'(t) dt
 where $r'(t) = (x', y', z')$, line integrals can be rewritten as:
 
 {% math() %}
-\begin{align}
+\begin{align*}
 & \int_C \vec F(\vec r) \cdot d\vec s \\ &= \int_{C(a)}^{C(b)} (F_x(t) x'(t)+ F_y(t) y'(t) + F_z(t) z'(t) )dt \\ &= \int_{C(a)}^{C(b)} \vec F(t) \cdot \vec r'(t) dt
-\end{align}
+\end{align*}
 {% end %}
 
 The line integral of a force (or component of a force) that is _perpendicular_ to the path along which the force is applied is zero. For instance, given a force dependent on $y$, applied on a path along the $x$ axis, the line integral - and therefore the work done - is zero.
@@ -597,9 +597,9 @@ d\vec s = \frac{d\vec s}{dt} dt = \vec v dt
 We obtain:
 
 {% math() %}
-\begin{align}
+\begin{align*}
 W &= \int_C \vec F \cdot d\vec s \\ & = \int_C m\frac{d\vec v}{dt} \cdot \frac{d\vec s}{dt} dt \\ &= \int_C m \vec v \cdot d\vec v \\ &= \frac{1}{2} m(\vec v \cdot \vec v) \bigg |_a^b \\ &= \frac{1}{2} m \Delta v^2 = \Delta K
-\end{align}
+\end{align*}
 {% end %}
 
 ## Conservation of energy in higher dimensions
@@ -638,18 +638,18 @@ For conservative forces, there are several important properties:
 Therefore the work (in the case of conservative forces only!) can be rewritten as:
 
 {% math() %}
-\begin{align}
+\begin{align*}
 W &= \int_{C[a \to b]} \vec F \cdot d\vec s \\ &= -\int_{C[a \to b]} \nabla U \cdot d\vec s \\ &= -\int_a^b dU = U(a) - U(b) = -\Delta  U
-\end{align}
+\end{align*}
 {% end %}
 
 Here we use the expression of the total differential to arrive at the prior result:
 
 {% math() %}
-\begin{align}
+\begin{align*}
 \nabla U \cdot d\vec s &= \left(\frac{\partial U}{\partial x}, \frac{\partial U}{\partial y}, \frac{\partial U}{\partial z}\right) \cdot (dx, dy, dz)
 \\ &= \frac{\partial U}{\partial x} dx + \frac{\partial U}{\partial y} dy + \frac{\partial U}{\partial z} dx \\ &= dU
-\end{align}
+\end{align*}
 {% end %}
 
 Equating the two equivalent definitions of work (for kinetic and potential energy respectively), we find that the work-energy theorem still holds true:
@@ -1204,11 +1204,11 @@ The higher dimensional generalization can be written in vector form:
 Which yields three separate equations for each component:
 
 {% math() %}
-\begin{align}
+\begin{align*}
 \sum_i P_{i, x}(a) = \sum_i P_{i, x}(b) \\
 \sum_i P_{i, y}(a) = \sum_i P_{i, y}(b) \\
 \sum_i P_{i, z}(a) = \sum_i P_{i, z}(b)
-\end{align}
+\end{align*}
 {% end %}
 
 A general form can be found in the case of a two-body system of two masses $m_1$ and $m_2$. When the collision between the two bodies results in a negligible change in their respective potential energies, or where any increase in potential energy during the collision is immediately released back as kinetic energy afterwards, we can ignore the potential energy terms in the conservation of energy equation. Therefore, the resulting system of conservation equations becomes:
@@ -1784,9 +1784,9 @@ The wave equation is a second-order _linear_ partial differential equation. Ther
 Two waves that have different phases, that is $y_1 = f(x + ct + \phi_1)$ and $y_2 = f(x + ct + \phi_2)$. In the sinusoidal case, where $y(x, t) = A\sin(kx - \omega t + \phi_i)$, the resultant wave is:
 
 {% math() %}
-\begin{align}
+\begin{align*}
 y(x, t) &= 2A \cos \left(\frac{\phi_2 - \phi_1}{2}\right) \left(kx - \omega t - \frac{\phi_1 + \phi_2}{2}\right) \\ &= 2A \phi_\mathrm{rel} \left(kx - \omega t - \frac{\phi_1 + \phi_2}{2}\right)
-\end{align}
+\end{align*}
 {% end %}
 
 Where $\phi_\mathrm{rel}$ is the relative phase shift:
@@ -1874,21 +1874,21 @@ I \propto \frac{1}{r^2}
 Electromagnetism is completely described by the four Maxwell's equations:
 
 {% math() %}
-\begin{align}
+\begin{align*}
 \nabla \cdot \mathbf{E} = \frac{\rho(\mathrm{x}, t)}{\epsilon_0} \\
 \nabla \cdot \mathbf{B} = 0 \\
 \nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t} \\
 \nabla \times \mathbf{B} = \mu_0 \mathbf{J} + \epsilon_0 \mu_0 \frac{\partial \mathbf{E}}{\partial t}
-\end{align}
+\end{align*}
 {% end %}
 
 In free space, $\rho = 0$ and $\mathbf{J} = 0$. Therefore, Maxwell's equations transform to two **wave equations**:
 
 {% math() %}
-\begin{align}
+\begin{align*}
 \frac{\partial^2 \mathbf{E}}{\partial t^2} = \left(\frac{1}{\sqrt{\epsilon_0 \mu_0}}\right)^2 \nabla^2 \mathbf{E} \\
 \frac{\partial^2 \mathbf{B}}{\partial t^2} = \left(\frac{1}{\sqrt{\epsilon_0 \mu_0}}\right)^2 \nabla^2 \mathbf{B}
-\end{align}
+\end{align*}
 {% end %}
 
 This leads to the result that electromagnetic fields propogate through space as waves, and even more surprisingly, $\frac{1}{\sqrt{\epsilon_0 \mu_0}}$ matches the known speed of light, suggesting that light _is_ an electromagnetic wave.
