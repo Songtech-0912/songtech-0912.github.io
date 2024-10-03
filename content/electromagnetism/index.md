@@ -308,9 +308,19 @@ An infinite single-sided sheet of charge is a good approximation for the electri
 
  Additionally, by a similar argument, we may show that the **electric field between two charged plates** both of uniform surface charge density is also $\mathbf{E} = \dfrac{\sigma}{\epsilon_0}\hat z$.
 
+ #### Near surface of an ideal conductor
+
+ This is _equal_ to an infinite single-sided sheet of charge, because the electric field near the surface of an ideal conductor is equal to that of an infinite single-sided sheet of charge. Therefore:
+
+{% math() %}
+\mathbf{E} = \frac{\sigma}{\epsilon_0} \hat z
+{% end %}
+
 #### Inside a spherical insulating sphere
 
 We consider the electric field inside a spherically insulating sphere of uniform charge density $\rho$. Note that this is **not the same** as that of the electric field outside the sphere $\mathbf{E} = \dfrac{kq}{r^2} \hat r$. In this case the total charge within the sphere at radius $r$ becomes $Q(r) = \rho V(r) = \dfrac{4}{3} \pi r^3 \rho$ (where $V(r)$ is the volume at distance $r$ from the center of the sphere, not the electrical potential) and thus the electric field is $\mathbf{E} = \dfrac{\rho r}{3 \epsilon_0} \hat r$.
+
+Note that the electric field inside a **spherical conducting sphere** is simply zero, and likewise for a **spherical shell of charge**.
 
 #### Outside a conducting infinitely-long cylinder
 
@@ -600,7 +610,7 @@ Recall that there are various ways that the electric field can be solved for:
 
 - **Coulomb's law**, which is universal in the **electrostatic case** (time-independent fields)
 - The *integral* form of **Gauss's law**, which is universal in the general case, including time-varying fields
-- The *differential* form of **Gauss's law**, which can be (painfully) solved via the Maxwell system of four differential equations (but can be shown to reduce to just two equations so long as the initial and boundary conditions satisfy Gauss's law)
+- The *differential* form of **Gauss's law**
 - The *electrical potential integral* $V = \dfrac{1}{4\pi \epsilon_0} \displaystyle \int \dfrac{r - r'}{|\mathbf{r} - \mathbf{r}'|}\,dq$ and using $\mathbf{E} = -\nabla V$
 - The solution of the *Poisson equation* $\nabla^2 V = -\rho/\epsilon_0$ of electric potentials, which can in a lot of cases be reduced to *Laplace's equation* $\nabla^2 V = 0$; with appropriate boundary conditions applied through physical analysis, this can be solved exactly and be used to obtain the electric field, again through $\mathbf{E} = -\nabla V$
 
@@ -642,6 +652,19 @@ E_z = -\dfrac{2kqh}{[x^2 + y^2 + h^2]^{3 \over 2}}
 {% end %}
 
 But recall the charge $-q$ on the opposite side is an image i.e. virtual charge. Therefore, $E_z$ is only valid on the side of the conductor of the real charge $+q$. In this way we have solved for the electric field given the boundary-value problem without needing to use any methods for partial differential equations.
+
+We may also calculate, with a little more work, the **surface charge density** on the conductor below the point charge. opposite sign to the point charge
+
+Recall that $\mathbf{E} = -\nabla V$, and that the surface of a hypothetical conductor that would have an equal electric field as this boundary value problem would have the electric field given by $\mathbf{E} = \dfrac{\sigma}{\varepsilon_0}$. Therefore rearranging we have:
+
+{% math() %}
+\begin{align*}
+\sigma &= -\varepsilon_0 \nabla V \big|_{z = 0} = -\varepsilon_0 \left(\dfrac{\partial V}{\partial x} + \dfrac{\partial V}{\partial z}\right)\bigg|_{z = 0} = -\varepsilon_0 \dfrac{\partial V}{\partial z} \bigg|_{z = 0} \\
+&= \dfrac{2h\varepsilon_0 kq}{(x^2 + y^2 + h^2)^{3/2}}
+\end{align*}
+{% end %}
+
+We note that this has a _negative_ sign; in general, the surface charge density must be opposite in sign compared to the point charge $q$. The physical reason is because conductors must have a zero **interior electric field**. Therefore, charges of the opposite sign within the conductor will drift to the surface of the conductor to create a opposing electric field that cancels out the external field to keep the interior field zero. This is why $\sigma$ must have the _opposite_ sign as compared to $q$.
 
 ## Capacitance
 
@@ -807,9 +830,9 @@ We may also define the **conductivity** $\sigma_C$ (not to be confused with the 
 \sigma_C = \dfrac{1}{\rho_R}
 {% end %}
 
-> **Note:** it is also common to see the resistivity and conductivity denoted by $\rho$ and $\sigma$ respectively without the disambiguation subscripts, which can be very confusing because these are the same symbols used for volume charge density and surface charge density respectively. Just be aware of what the symbols are used for in each problem.
->
-> Both resistivity and conductivity are _properties of materials_ and depend _only_ on material composition and temperature. Resistivity and conductivity **do not depend** on the length or cross-sectional area, which means that they can be effectively regarded as **constants**. Conductors generally have low resistivity, insulators have high resistivity, and semiconductors have intermediate resistivity. However, from resistivity, we may define a _macroscopic_ quantity called the **resistance** $R$ measured in the unit Ohms (which uses the symbol $\Omega$), by:
+Note that it is also common to see the resistivity and conductivity denoted by $\rho$ and $\sigma$ respectively without the disambiguation subscripts, which can be very confusing because these are the same symbols used for volume charge density and surface charge density respectively. Just be aware of what the symbols are used for in each problem.
+
+It bears repeating that both resistivity and conductivity are _properties of materials_ and depend _only_ on material composition and temperature. Resistivity and conductivity **do not depend** on the length or cross-sectional area, which means that they can be effectively regarded as **constants**. Conductors generally have low resistivity, insulators have high resistivity, and semiconductors have intermediate resistivity. However, from resistivity, we may define a _macroscopic_ quantity called the **resistance** $R$ measured in the unit Ohms (which uses the symbol $\Omega$), by:
 
 {% math() %}
 R = \rho_R \dfrac{\ell}{A}
@@ -825,7 +848,7 @@ Recall that for a specific charge in the case of constant current, the change in
 P = I \Delta V
 {% end %}
 
-> **Note:** unlike the formulas of power as a function of resistance given later, $P = I \Delta V$ is _always_ applicable.
+> **Note:** unlike the formulas of dissipated power as a function of resistance given later, $P = I \Delta V$ is _always_ applicable.
 
 The power is then radiated by the conductor, producing heat, where the *radiated power* is equal to the *power lost from the moving charges*, that is, $P_\mathrm{radiated} = P_\mathrm{loss} = I \Delta V$. Recall, however, also that the potential difference between two points can be found through its line integral definition:
 
@@ -845,7 +868,7 @@ This is the conventional (macroscopic) form of **Ohm's law**. It is important to
 
 Ohm's law in its macroscopic form is typically only an approximation; resistivity is dependent on the material properties and may be nonlinear. Therefore, we speak of Ohm's law as only applying to _Ohmic_ materials and being an approximate description to the complex behavior of charges that we observe macroscopically as a current.
 
-In all cases where Ohm's law holds, we can rearrange to write the equation for power as three equivalent relations:
+In all cases where Ohm's law holds, we can rearrange to write the equation for dissipated power as three equivalent relations:
 
 {% math() %}
 P = I\Delta V = I^2 R = \dfrac{\Delta V^2}{R}
@@ -853,7 +876,7 @@ P = I\Delta V = I^2 R = \dfrac{\Delta V^2}{R}
 
 ### More on electric power in circuits and resistance
 
-Recall the relation $P = I \Delta V$. This is a generalization of $U = q \Delta V$, and has a very similar concept: the power delivered by the electric field is produced by the flow of charges (current) through a potential difference.
+Recall the relation $P = I \Delta V$. This is a generalization of $U = q \Delta V$, and has a very similar concept: the power supplied by the electric field is produced by the flow of charges (current) through a potential difference.
 
 In a system that has resistance, we have $\Delta V = I R$. This is because, at least approximately, the current is proportional to the applied potential difference with the proportionality being the resistance $R$. Since the current is the same for all components connected in series, we can write an expression for the **effective resistance** of all connected resistors in series as:
 
@@ -924,7 +947,7 @@ To apply Kirchhoff's second rule, the sign of $\Delta V$ is significant: due to 
 	- Resistors are **positive**
 	- Capacitors are **positive**
 
-> A perhaps helpful intuitive picture is that current is like a river, an EMF source is like a water pump, a resistor is a place where the river narrows, and a capacitor is like a dam. The pump brings the water (charges) to a higher potential, so it is a **positive** potential difference, i.e. voltage rise. A narrow part of the river (resistor) dissipates energy from the river (circuit) by slowing it down, so it is a **negative** potential difference i.e. voltage drop. A dam (capacitor) uses the water to extract useful power, meaning the river downstream (remaining circuit) will flow more slowly, so it is also a **negative** potential difference. However, this is when we are calculating in the _downstream direction_ (measuring in the same direction as current); if you calculate in the _upstream_ direction, everything will be reversed.
+A perhaps helpful intuitive picture is that current is like a river, an EMF source is like a water pump, a resistor is a place where the river narrows, and a capacitor is like a dam. The pump brings the water (charges) to a higher potential, so it is a **positive** potential difference, i.e. voltage rise. A narrow part of the river (resistor) dissipates energy from the river (circuit) by slowing it down, so it is a **negative** potential difference i.e. voltage drop. A dam (capacitor) uses the water to extract useful power, meaning the river downstream (remaining circuit) will flow more slowly, so it is also a **negative** potential difference. However, this is when we are calculating in the _downstream direction_ (measuring in the same direction as current); if you calculate in the _upstream_ direction, everything will be reversed.
 
 #### Addendum: Ammeters and voltmeters
 
@@ -933,7 +956,7 @@ Ammeters and voltmeters are different scientific instruments used in electrical 
 - Ammeters are designed to measure **current**, are connected in **series** with the circuit, and have minimal resistance. Therefore, by Ohm's law, the *current* across an ammeter is **equal** to the current in the circuit, and the *voltage* across an (ideal) ammeter is **zero**.
 - Voltmeters are designed to measure **voltage** (potential difference), are connected in **parallel** with the circuit, and have a high (or at least nonzero) resistance. This means that (ideally) they draw as little current as possible, since parallel circuits divide current across branches but have the same potential difference, so since $I = \dfrac{\Delta V}{R}$, a high resistance means that they draw very little current and don't affect the circuit (much). They internally consist of a joined resistor and ammeter, and therefore, by $\Delta V = I R$ where $I$ is found by the interior ammeter and $R$ is the resistance of the interior resistor, they can calculate and display the voltage.
 
-## The Maxwell equations, explained
+## The Maxwell equations, summarized
 
 Recall that electromagnetism is a **classical field theory**, where knowing the fields is sufficient to uniquely determine the motion of every charge within the fields (which is also every charge creating the field). The equations that govern how electromagnetic fields (the electric field $\mathbf{E}$ and the magnetic field $\mathbf{B}$) are the **Maxwell equations**, and here is a brief description of each:
 
