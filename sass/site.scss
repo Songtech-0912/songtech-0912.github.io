@@ -38,7 +38,7 @@ html {
 /* Styles */
 
 body {
-  max-width: 70ch;
+  max-width: 73ch;
   width: 65%;
   @include lg { width: 80%; }
   @include sm { width: 100%; }
@@ -198,14 +198,32 @@ header {
   	font-size: 2rem;
   }
 
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+  }
+
+  h5 {
+    font-size: 1.12rem;
+  }
+
   p, li {
-    font-size: 1rem;
-    line-height: 1.7;
+    font-size: 1.06rem;
+    line-height: 1.65;
     color: rgba(0, 0, 0, 0.8);
   }
 
   li {
       margin-left: 1.2rem;
+      margin-top: 0.3rem;
+      margin-bottom: 0.3rem;
   }
 
   pre {
