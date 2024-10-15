@@ -983,3 +983,9 @@ If an imaginary surface (that is not closed) was placed in space, the flux of th
 {% end %}
 
 If an imaginary surface (not closed) were placed in space, the flux of the electric field across the surface induces a magnetic field that circulates in a loop across the boundary of the surface.
+
+The Maxwell equations are astoundingly universal in scope. They govern electromagnetic interactions down to the atomic level, and only at the subatomic level are quantum descriptions necessary.
+
+## A peek at quantum electrodynamics
+
+At the subatomic level, the electromagnetic field itself becomes quantized; instead of being continuous, it can only take discrete states. In these situations, Maxwell's equations hold only approximately, and a fully quantum treatment of electromagnetism is necessary. This guide will not go into full depth about quantum electrodynamics (QED); a full treatment of QED and quantum field theory can go on for many pages. However, good free online resources to learn quantum electrodynamics are [David Tong's lecture notes](https://www.damtp.cam.ac.uk/user/tong/qft.html) and [Nicolas Ford's Physics for Mathematicians series](https://nicf.net/articles/physics-for-mathematicians/).
