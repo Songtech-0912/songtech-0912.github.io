@@ -1045,6 +1045,7 @@ How do we find $A$, $B$, and $C$? We just plug $y_f$ into the LHS of the differe
 | $r_f$ | $r_f'$ (first derivative) | $r_f''$ (second derivative) |
 | ---- | ---- | ---- |
 | $At^2 + Bt + C$ | $2At + B$ | $2A$ |
+
 If we plug these back into the original differential equation $r'' + \sigma^2 r = \frac{F_0}{m}$ we get:
 
 {% math() %}
@@ -1070,6 +1071,7 @@ Then, since we had a $t^2$ term, a $t$ term, and a constant ($t^0$) term in our 
 | $t^2$ | 0 | $A \sigma^2$ | 0 |
 | $t$ | 0 | $B \sigma^2$ | 0 |
 | $t^0$ (i.e. constant) | $2A$ | $C \sigma^2$ | $\frac{F_0}{m}$ |
+
 From here, we get three simultaneous equations:
 
 {% math() %}
