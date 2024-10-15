@@ -12,7 +12,6 @@ These are notes (well, more mini-books), some I've taken while pursuing a degree
 - [Biology Series](@/intro-bio-series.md)
 - [Computer Science Series](@/cs-series.md)
 - [Philosophy notes](@/philosophy.md)
-- [Tensor analysis](@/tensors-guide.md)
 
 Where external licensed/copyrighted material is included, it is used under fair-use for purely educational purposes. Other than that, these notes are my own work and are **freely usable with no restrictions**. That is to say, they are dedicated to the public domain, or if your jurisdiction does not support that, provided under [CC0](https://creativecommons.org/public-domain/cc0/).
 
