@@ -1,6 +1,7 @@
 +++
 title = "A guide to tensors"
 date = 2024-02-12
+draft = true
 +++
 
 Tensors are some of the most elegant ways to write the laws of physics, used extensively in relativistic mechanics and relativistic quantum theory. However, their use goes beyond advanced theoretical physics. So here is a guide to tensors that hopefully is more accessible and appeals to a broader audience.
@@ -259,5 +260,7 @@ This is even easier for the vacuum EFEs which reduce to just $R_{\mu \nu} = 0$, 
 &+ \frac{1}{4} g^{\beta m} g^{\lambda m} \left(\partial_\lambda g_{m \mu} + \partial_\mu g_{m \lambda} - \partial_m g_{\mu \lambda} \right) \left(\partial_\beta g_{m \nu} + \partial_\nu g_{m \beta} - \partial_m g_{\nu \beta} \right) (1 - \delta^\nu {}_m \delta^m {}_\lambda \delta^\beta {}_m \delta^m {}_\nu \delta^\lambda {}_m \delta^m {}_\beta) = 0
 \end{aligned}
 {% end %}
+
+(note to self: change the kronecker delta to the metric tensor, the euclidean metric $\Delta_{ij}$ is no longer valid in curved spacetime)
 
 However, that is not mentioning the _ungodly_ number of summation signs required to make it actually usable, or mention how technically it is 10 PDEs packaged into one using tensors...that is, as every physics textbook author would say, "an exercise left for the reader".
