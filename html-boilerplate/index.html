@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My HTML boilerplate</title>
+  <meta name="description" content="<p>Starting an HTML file for a website or webapp can be a very frustrating process; it requires a lot of boilerplate. So this is one that I generally use, that I'm sharing here for hope that others might find it useful.</p>
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://songtech-0912.github.io/favicon.svg">
+      <link rel="icon" type="image/png" href="https://songtech-0912.github.io/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://songtech-0912.github.io/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://songtech-0912.github.io/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://songtech-0912.github.io/inter/inter.css">
+
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://songtech-0912.github.io/notes/">Notes</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+  
+    <article class="post">
+        <h1>My HTML boilerplate</h2>
+        <p>Starting an HTML file for a website or webapp can be a very frustrating process; it requires a lot of boilerplate. So this is one that I generally use, that I'm sharing here for hope that others might find it useful.</p>
+<span id="continue-reading"></span>
+<p>Here it is:</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;!</span><span style="color:#b48ead;">DOCTYPE </span><span style="color:#d08770;">html</span><span>&gt;
+</span><span>&lt;</span><span style="color:#bf616a;">html </span><span style="color:#d08770;">lang</span><span>=&quot;</span><span style="color:#a3be8c;">en</span><span>&quot;&gt;
+</span><span>&lt;</span><span style="color:#bf616a;">head</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">meta </span><span style="color:#d08770;">charset</span><span>=&quot;</span><span style="color:#a3be8c;">UTF-8</span><span>&quot;&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">meta </span><span style="color:#d08770;">name</span><span>=&quot;</span><span style="color:#a3be8c;">viewport</span><span>&quot; </span><span style="color:#d08770;">content</span><span>=&quot;</span><span style="color:#a3be8c;">width=device-width, initial-scale=1.0</span><span>&quot;&gt;
+</span><span>  </span><span style="color:#65737e;">&lt;!-- Set your page title here --&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">title</span><span>&gt;Your title&lt;/</span><span style="color:#bf616a;">title</span><span>&gt;
+</span><span>  </span><span style="color:#65737e;">&lt;!-- Add in your css stylesheets here --&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">link </span><span style="color:#d08770;">rel</span><span>=&quot;</span><span style="color:#a3be8c;">stylesheet</span><span>&quot; </span><span style="color:#d08770;">href</span><span>=&quot;</span><span style="color:#a3be8c;">yourstyle.css</span><span>&quot;&gt;
+</span><span>  </span><span style="color:#65737e;">&lt;!-- Add in your favicon here or generate 
+</span><span style="color:#65737e;">  	   from https://favycon.vercel.app/--&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">link </span><span style="color:#d08770;">rel</span><span>=&quot;</span><span style="color:#a3be8c;">icon</span><span>&quot; </span><span style="color:#d08770;">href</span><span>=&quot;</span><span style="color:#a3be8c;">yourfavicon.ico</span><span>&quot;&gt;
+</span><span>  </span><span style="color:#65737e;">&lt;!-- Meta tags - these are for webpage info, 
+</span><span style="color:#65737e;">  	   edit to your liking --&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">meta </span><span style="color:#d08770;">name</span><span>=&quot;</span><span style="color:#a3be8c;">title</span><span>&quot; </span><span style="color:#d08770;">content</span><span>=&quot;</span><span style="color:#a3be8c;">Your website title</span><span>&quot;&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">meta </span><span style="color:#d08770;">name</span><span>=&quot;</span><span style="color:#a3be8c;">description</span><span>&quot; </span><span style="color:#d08770;">content</span><span>=&quot;</span><span style="color:#a3be8c;">A website description</span><span>&quot;&gt;
+</span><span>  </span><span style="color:#65737e;">&lt;!-- You can auto-generate meta tags 
+</span><span style="color:#65737e;">  	   with a tool like https://metatags.io --&gt;
+</span><span>&lt;/</span><span style="color:#bf616a;">head</span><span>&gt;
+</span><span>&lt;</span><span style="color:#bf616a;">body</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">div</span><span>&gt;Write your markup...&lt;/</span><span style="color:#bf616a;">div</span><span>&gt;
+</span><span>  </span><span style="color:#65737e;">&lt;!-- Add in your scripts here --&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">script </span><span style="color:#d08770;">src</span><span>=&quot;</span><span style="color:#a3be8c;">myscript.js</span><span>&quot;&gt;&lt;/</span><span style="color:#bf616a;">script</span><span>&gt;
+</span><span>&lt;/</span><span style="color:#bf616a;">body</span><span>&gt;
+</span><span>&lt;/</span><span style="color:#bf616a;">html</span><span>&gt;
+</span></code></pre>
+
+        <a href="/" class="return-link">Back to home</a>
+    </article>
+
+
+  <script defer src="https://songtech-0912.github.io/katex/katex.min.js"></script>
+  <script defer src="https://songtech-0912.github.io/katex/contrib/auto-render.min.js"></script>
+  <script defer src="https://songtech-0912.github.io/katex/contrib/mhchem.min.js"></script>
+  <script defer src="https://songtech-0912.github.io/katex/contrib/copy-tex.min.js"></script>
+  
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    });
+</script></body>
+
+</html>

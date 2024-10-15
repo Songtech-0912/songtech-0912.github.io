@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The more general kinematic equations</title>
+  <meta name="description" content="<p>Kinematics is one of the most fundamental parts of physics. In fact, determining the motion of objects is essentially where physics originated. Today, we'll take a close look at kinematics, and in particular, a more nonstandard formulation of kinematics.</p>
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://songtech-0912.github.io/favicon.svg">
+      <link rel="icon" type="image/png" href="https://songtech-0912.github.io/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://songtech-0912.github.io/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://songtech-0912.github.io/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://songtech-0912.github.io/inter/inter.css">
+
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://songtech-0912.github.io/notes/">Notes</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+  
+    <article class="post">
+        <h1>The more general kinematic equations</h2>
+        <p>Kinematics is one of the most fundamental parts of physics. In fact, determining the motion of objects is essentially where physics originated. Today, we'll take a close look at kinematics, and in particular, a more nonstandard formulation of kinematics.</p>
+<span id="continue-reading"></span>
+<p>We've all seen the typical kinematic equations. But those are only for the case of constant acceleration. The more general kinematic equations are given by:</p>
+<p><p class="mathcell">
+$$
+v(t) = v_0 + \int_0^t a(u) du
+$$
+</p>
+<p class="mathcell">
+$$
+x(t) = x_0 + v_0 t + \int_0^t v(u)du
+$$
+</p></p>
+<p>Let's explain what that means. First, we start with the acceleration function:</p>
+<p class="mathcell">
+$$
+a = a(t)
+$$
+</p>
+<p>Acceleration here is not a constant - it is a function. To get velocity, we simply integrate the acceleration:</p>
+<p class="mathcell">
+$$
+v(t) = \int a(t) dt
+$$
+</p>
+<p>Using the fundamental theorem of calculus, we can rewrite this indefinite integral as a definite integral:</p>
+<p class="mathcell">
+$$
+v(t) = \int_0^t a(u) du
+$$
+</p>
+<p>Note that because the definite integral from 0 to 0 is always zero, while not every function starts at $(0, 0)$, we need to shift the function by the initial value, thus we add the $v_0$. You can also think of $v_0$ as the constant of integration.</p>
+<p>We can do the same with velocity to get position.</p>
+<p>Does this have many applications in physics? No, not many. This isn't because an acceleration function is hard to determine analytically. Indeed, using Newton's second law $a = \frac{F}{m}$, an acceleration function is often readily determined. The issue is that usually, the acceleration function usually isn't in terms of $t$. For instance, using Hooke's law $F = -kx$, we can determine that $a(t) = -\frac{k}{m} x(t)$. The issue is, this isn't an explicit equation in terms of $t$, so we can't integrate to find the solution.</p>
+<p>So rather, the more useful equation is usually the differential equation form of Newton's second law:</p>
+<p class="mathcell">
+$$
+\frac{d^2 x}{dt^2} = \frac{F(x, t)}{m}
+$$
+</p>
+<p>Or:</p>
+<p class="mathcell">
+$$
+\frac{d^2 x}{dt^2} = -\frac{1}{m} \frac{dU}{dx}
+$$
+</p>
+<p>These are tremendously more helpful, but requires differential equation solving techniques, making them more difficult to compute. So again, the general kinematic equations aren't exactly very useful, but they are an interesting quirk of physics.</p>
+
+        <a href="/" class="return-link">Back to home</a>
+    </article>
+
+
+  <script defer src="https://songtech-0912.github.io/katex/katex.min.js"></script>
+  <script defer src="https://songtech-0912.github.io/katex/contrib/auto-render.min.js"></script>
+  <script defer src="https://songtech-0912.github.io/katex/contrib/mhchem.min.js"></script>
+  <script defer src="https://songtech-0912.github.io/katex/contrib/copy-tex.min.js"></script>
+  
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    });
+</script></body>
+
+</html>
