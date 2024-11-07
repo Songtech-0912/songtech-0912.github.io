@@ -8,7 +8,7 @@
   <!-- Enable responsiveness on mobile devices-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title | default(value="Jacky Song") }}</title>
-  <meta name="description" content="{{ page.summary | default(value='Website of Jacky Song') | safe }}">
+  <meta name="description" content="{%- if page.summary %} {{ page.summary | striptags }} {%- else %}Website of Jacky Song{%- endif %}">
 
   {% block favicon %}
       <link rel="icon" type="image/svg+xml" href="{{ get_url(path="favicon.svg", trailing_slash=false) | safe }}">
@@ -60,6 +60,7 @@
           throwOnError : false
         });
     });
-</script></body>
+</script>
+</body>
 
 </html>
