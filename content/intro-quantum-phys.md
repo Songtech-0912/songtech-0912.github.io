@@ -1,5 +1,5 @@
 +++
-title = "Introductory Quantum Physics notes"
+title = "Introductory Quantum Physics"
 date = 2024-05-07
 +++
 
@@ -7,29 +7,308 @@ This a mini-book on quantum physics, with topics covered including wavefunctions
 
 <!-- more -->
 
-## Foreword
-
-Familiarity with the underlying math is expected, including a background in multivariable calculus, differential equations, and some linear algebra (vectors, matrices, and eigenvalues). Don't worry if these are alien topics! There are full guides to each in the [calculus series](@/calculus-series.md). In addition, while not required, the [introductory classical dynamics series](@/classical-dynamics.md) can be very helpful as well.
-
 ## Why quantum theory?
 
-Quantum theory is our best understanding of how the universe works at its most fundamental level. It is fundamentally paradoxical to human experience, but it is the bedrock of almost all of modern physics, and essential for many advanced technologies. In addition, it is also a very scientifically and philosophically interesting theory to learn. These notes form the basis of an introduction to quantum mechanics.  
+Quantum theory is our best understanding of how the universe works at its most fundamental level. It is fundamentally paradoxical to human experience, but it is the bedrock of almost all of modern physics and its predictive power has made technological innovations possible. In addition, it is also a very scientifically and philosophically interesting theory to learn. This article forms the basis of an introduction to quantum mechanics.
 
-In the following sections, we will first preview the essential features of quantum mechanics, laying out _what_ exactly quantum mechanics is. Don't worry if this does not make sense yet! We will dive into each topic in detail and gently build up an explanation of them throughout the rest of these notes.
+## Getting started with quantum mechanics
 
-## The fundamental postulates of quantum mechanics
+Our understanding of classical physics has served us well for centuries and still makes very accurate predictions about the world. But since the 20th century, we have found that the classical mechanics is actually only part of a much broader theory - quantum mechanics - that applies in many areas that classical theory fails. Quantum theory can explain the same phenomena that classical physics can, but it explains so much more that classical physics can't. It is truly a pillar - and wonder - of modern physics. In fact, it is the most accurate theory of physics ever created, especially with its subdiscipline of quantum field theory - and specifically, quantum electodynamics - that predicts quantities so precisely that they have been confirmed to [ten parts in a billion](https://en.wikipedia.org/wiki/Precision_tests_of_QED).
 
-As a whole, the theory of quantum mechanics can be said to originate from 5 fundamental postulates:
+But quantum theory can be difficult to comprehend, in part because it is founded on very different principles as compared to classical physics:
 
-1. In the quantum mechanical description of a system, all physical quantities are _quantized_.
-2. A quantum system is completely described by a **quantum state** $|\Psi\rangle$, which is a complex-valued vector in a Hilbert space. The time-evolution of a quantum state is described by the Schrödinger equation.
-3. Physical quantities are known as **observables**, and are represented by linear Hermitian operators acting on the quantum state.
-4. The _eigenvalues_ of each observable correspond to possible _measured values_ of the associated physical quantity (e.g. position, momentum, energy)
-5. It is **not possible** to predict in advance the measured value a physical quantity may take. However, it is possible to predict the _probability_ of a physical quantity taking a particular value $\lambda$ through the Born rule $\rho = |\langle \lambda | \Psi\rangle |^2$
+- The Universe is fundamentally described by probability distributions, as opposed to objects with exact positions and trajectories
+- Physical quantities can only take on particular values and exact knowledge about them is often impossible
+- Properties of quantum particles include many that don't exist for classical particles, such as the ability to pass through a solid barrier and having a nonzero energy even when stationary in a region of zero potential energy
 
-The following sections will go in-depth into what each of these postulates actually means.
+We **don't** know why we observe the world to behave in this way, and the interpretation of quantum mechanics is a separate philosophical question. Rather, we will simply consider the theory as a model that makes accurate predictions about the world without delving into _why_.
 
-> Note that quantum mechanics is a theory that describes _all objects_ including macroscopic ones. However, the theory is primarily used at very small scales (typically subatomic scales) because calculations with macroscopic objects quickly become intractable; this is because they are composed of many billions of subatomic particles, and statistical physics is often necessary to sufficiently describe them. See [this Physics SE post](https://physics.stackexchange.com/questions/567596/is-quantum-mechanics-applicable-to-only-small-things) for more details.
+In the first few sections, we'll introduce quantum mechanics without explaining why it works. Consider this as simply a preview of the essential features of quantum mechanics. In the sections after, we'll actually explain why quantum theory works, and derive many of the relations we take for granted in applying quantum mechanics. 
+
+## Mathematical foundations
+
+What follows is a relatively brief mathematical overview of only the fundamentals required for starting quantum physics. However, it would certainly be helpful to have a background in multivariable calculus, differential equations, and some linear algebra (vectors, matrices, and eigenvalues). Don't worry if these are alien topics! There are expanded guides to each in the [calculus series](@/calculus-series.md). In addition, while not required, the [introductory classical dynamics series](@/classical-dynamics.md) can be very helpful as well.
+
+### Eigenvalues and eigenfunctions
+
+To start with understanding quantum theory, we must first start with a concept that may be familiar to those who have studied linear algebra, although knowledge of linear algebra is not required. Consider the function $y(x) = e^{kx}$. If we take its derivative, we find that:
+
+{% math() %}
+\dfrac{dy}{dx} = ke^{kx}
+{% end %}
+
+Which we notice, can also be written as:
+
+{% math() %}
+\frac{dy}{dx} = ky
+{% end %}
+
+Notice that the derivative of $y(x)$ is just $y(x)$ multiplied by $k$. We call $y(x)$ an **eigenfunction**, because when we apply the derivative, it just becomes multiplied by a constant, and we call the constant here, $k$, an **eigenvalue**. The exponential function is not the only function that can be an eigenfunction, however. Consider the cosine function $y(x) = \cos kx$. Taking its _second derivative_ results in:
+
+{% math() %}
+\frac{d^2 y}{dx^2} = -k^2 \cos kx = -k^2 y
+{% end %}
+
+So cosine is _also_ an eigenfunction, except its eigenvalue is $-k^2$ rather than $k$. We can show something very similar with sine - which makes sense because a sine curve is just a shifted cosine curve.
+
+### Complex numbers
+
+In quantum mechanics, we find that real numbers are not enough to fully describe the physics we observe. Rather, we need to use an _expanded number system_, that being the complex numbers.
+
+A complex number can be thought of as a pair of two real numbers. First, we define the _imaginary unit_ $i = \sqrt{-1}$. To start, this seems absurd. We know that no real number can have this property. But the fact that _complex_ numbers do have this properties gives rise to many useful mathematical properties. For instance, it allows for a class of solutions to polynomial equations that can't be expressed in terms of real numbers.
+
+We often write a complex number in the form $z = \alpha + \beta i$, where $\alpha$ is called the _real_ part and $\beta$ is called the _imaginary_ part. For a complex number $z$, we can also define a _conjugate_ given by $\bar z = \alpha - \beta i$ (some texts use $z^*$ as an alternative notation). Uniquely, $z \bar z = (\alpha + \beta i)(\alpha - \beta i) = \alpha^2 + \beta^2$.
+
+Complex numbers also have another essential property. If we define the exponential function $f(x) = e^x$ in a way that allows for complex arguments, i.e. $f(z) = e^{z} = e^{\alpha + \beta i}$, we find that $e^{i\phi} = \cos \phi + i \sin \phi$. This is called **Euler's formula** and means we can use complex exponentials to write complex numbers in the form $z = re^{i\phi}$ where $r = \sqrt{\alpha^2 + \beta^2}$ and $\phi = \tan^{-1} \beta/\alpha$, converting to trigonometric functions whenever more convenient and vice-versa.
+
+The study of calculus that applies to complex numbers is called _complex analysis_. For most of quantum mechanics, we won't need to do full complex analysis, and can treat $i$ as simply a constant. There are, however, some advanced branches of quantum mechanics that _do_ need complex analysis.
+
+### The wave equation
+
+In classical physics, the laws of physics are described using _differential equations_. Differential equations are a very, very broad topic, and if unfamiliar, feel free to read [the dedicated article on differential equations](@/differential-equations/index.md). Their usefulness comes from the fact that differential equations permit descriptions of large classes of different physical scenarios. Consider, for instance, the wave equation:
+
+{% math() %}
+\frac{\partial^2 y}{\partial t^2} = \dfrac{1}{v^2} \frac{\partial^2 y}{\partial x^2} 
+{% end %}
+
+This partial differential equation models everything from water ripples in a pond to the vibrations of a drum and even to light - which is an _electromagnetic wave_. The last one, however, is particularly important for quantum mechanics.
+
+Solutions to the wave equation generally take the form:
+
+{% math() %}
+y(x, t) = Ae^{ikx - i\omega t} + Be^{-ikx -i\omega t}
+{% end %}
+
+In classical physics, however, we ignore the imaginary part of the solution and only extract the real part, so this becomes:
+
+{% math() %}
+y(x, t) = A\cos kx \cos \omega t + B \cos kx \cos \omega t
+{% end %}
+
+We call these solutions *wave solutions* (unsurprisingly) and all wave solutions have an associated **wavelength** $\lambda$ and **frequency** $f$ as well as amplitude(s) $A$ and $B$. From these we can derived more quantities that explicitly appear in the solution: $k = 2\pi/\lambda$ is known as the **wavevector** and $\omega = 2\pi f$ is the **angular frequency** related through $\omega = k v$. Here, $v$ is the speed the wave propagates forward, and $v = \lambda f$. In the case of waves of light, we take $v = c$, where $c$ is the speed of light in vacuum. We can therefore write the solution explicitly in terms of the wavelength, $c$, and the amplitudes, as:
+
+{% math() %}
+y(x, t) = A \cos \left(\frac{2\pi x}{\lambda}\right) \cos \left(\frac{2\pi ct}{\lambda}\right) + 
+B \cos \left(\frac{2\pi x}{\lambda}\right) \cos \left(\frac{2\pi ct}{\lambda}\right)
+{% end %}
+
+Wave solutions have some particular characteristics: they oscillate in time in predictable ways (which is why we can ascribe a frequency to them), and complete each spatial oscillation over a predictable distance (which is why we can ascribe a wavelength). Despite not being waves, quantum particles behave in ways strikingly similar to solutions of the wave equation, and _also_ have a frequency and wavelength as well as derived quantities such as $k$ and $\omega$.
+
+### The Schrödinger equation
+
+In the quantum world, particles no longer follow the laws of classical physics. Instead, they follow the **Schrödinger wave equation**, a famous partial differential equation given by:
+
+{% math() %}
+i\hbar \frac{\partial}{\partial t} \Psi(\mathbf{x}, t)  = \left(-\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x, t)\right) \Psi(\mathbf{x}, t)
+{% end %}
+
+> This is the 1D Schrödinger equation, but we will look at the full 3D Schrödinger equation later.
+
+The solutions to the Schrödinger equation $\Psi(x, t)$ are called **wavefunctions**. Conceivably, _any_ quantum system can be described by a solution of the Schrödinger equation, although the actual solving process is rather tedious and more of a mathematical exercise than physics. **Separation of variables** is a common method to solve the Schrödinger equation, but lots of solutions are very well-known and just looking them up in a textbook, reference book, or online is far faster than actually solving the equation.
+
+> **Note for the advanced reader:** Yes, the Schrödinger equation with a _generalized_ Hamiltonian does actually apply to **any** quantum system that can exist. It is only the most well-known Hamiltonian - which is non-relativistic and omits spin - that has limited applicability.
+
+Wavefunctions encode *states* that quantum particles can be in. For instance, an electron can be in its _ground state_ (lowest-energy state). But it can also be in a number of other *excited* states (energetic states). Within each state, the particle has specific energies and momenta and is distributed through space in specific ways. In fact, wavefunctions *are* complex-valued **probability distributions**. Squaring the wavefunction and taking its absolute value, which we write as $|\Psi|^2$, gives the **probability density** of the particle's location through space. For instance, the following plot showcases the probability distributions found by $|\Psi|^2$ for three wavefunctions:
+
+![A graph of several wavefunctions, which describe how likely a particle is to be at a particular location](https://cdn.kastatic.org/ka-perseus-images/a5e18b829f12622a749e2f131bd029f8783eaf92.jpg)
+
+_Source: [Khan Academy](https://www.khanacademy.org/science/chemistry/atomic-structure-and-properties/orbitals-and-electrons/a/the-quantum-mechanical-model-of-the-atom)_
+
+Since quantum particles are described through probability distribution functions (PDFs), they aren't truly point particles, but spread throughout space - hence _wave_ equation, because these PDFs carry a wavelike nature. In fact, these PDFs display cyclical (symmetric in space) and oscillatory (repeating in time) behavior, meaning that just like classical waves, we describe them in terms of wave quantities like the wavelength $\lambda$, angular frequency $\omega$, wave propagation speed $v$, and wavevector $k$. However, when we measure a quantum particle, we find that it then behaves particle-like and _occupies_ a particular position. The likelihood of a particle being at a particular position can be calculated from the $|\Psi|^2$ rule, and we can find which positions the particle is more (or less) likely to be located. But the *precise* position cannot be predicted in advance.
+
+> **Definition:** A **quantum state** $\varphi(x)$ is a solution to the Schrödinger equation that gives a **unique probability distribution function** describing a quantum particle (or system). Each state is also associated with specific values of energy and momentum, among other physical properties.
+
+### Addenum: the time-independent Schrödinger equation
+
+It is often convenient to write out a wavefunction in terms of separate time-dependent and time-independent components. We denote the full wavefunction as $\Psi(x, t)$, and the time-independent part as $\psi(x)$, where $\Psi(x, t) = \psi(x) e^{-i E/\hbar}$ for some value of the energy $E$. 
+
+This is not simply a manner of convention. The underlying reason is that by the separation of variables technique, the Schrödinger equation can be rewritten as _two_ differential equations in the form:
+
+{% math() %}
+\begin{align*}
+i\hbar \dfrac{\partial}{\partial t} \phi(t) &= E \phi(t) \\
+-\dfrac{\hbar^2}{2m} \dfrac{\partial^2 \psi}{\partial x^2} + V(x) \psi &= E \psi(x)
+\end{align*}
+{% end %}
+
+Where we refer to the bottom differential equation as the _time-independent_ Schrödinger equation, and $\Psi(x, t) = \psi(x) \phi(t)$. Thus we say that $\psi(x)$ is a solution of the _time-independent_ Schrödinger equation and represents the time-independent component of the wavefunction.
+
+## Solutions as eigenstates
+
+The solutions to the Schrödinger equation have an important characteristic: they are _linear_ in nature. This means that we can write the general solution in terms of a **superposition** of solutions, each of which is a possible state for a quantum particle (or particles) - see the [differential equation series](@/differential-equations/index.md) for why this works. Taking $\varphi_1, \varphi_2, \varphi_3, \dots$ to be the individual solutions with energies $E_1, E_2, E_3, \dots$, the general time-independent solution would be given by:
+
+{% math() %}
+\begin{align*}
+\psi(x) &= \sum_n C_n \varphi_n(x)  \\ &= C_1 \varphi_1(x) + C_2 \varphi_2(x) + \dots + C_n \varphi_n(x) 
+\end{align*}
+{% end %}
+
+And therefore the general (time-dependent) wavefunction $\Psi(x, t)$ would be given by:
+
+{% math() %}
+\begin{align*}
+\Psi(x, t) &= \sum_n C_n \varphi_n(x) e^{-iE_n t/\hbar} \\ &= C_1 \varphi_1(x)e^{-iE_1t/\hbar} + C_2 \varphi_2(x)e^{-iE_2t/\hbar} + \dots + C_n \varphi_n(x) e^{-iE_nt/\hbar}
+\end{align*}
+{% end %}
+
+Each individual solution $\varphi_n(x)$ is called an **eigenstate**, a possible state that a quantum particle can take. Eigenstate is just another word for *eigenfunction*, which we've already seen. This is because we note that each eigenstate individually satisfies the Schrödinger equation, which can be recast into the form of an eigenvalue equation:
+
+{% math() %}
+\left(-\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x, t)\right) \varphi_n(x) = E_n \varphi_n(x)
+{% end %}
+
+> **Note for the advanced reader:** This is because mathematically speaking, the separation of variables results in a separation constant $E_n$ which results in an eigenvalue problem. We'll later see that $E_n$ acquires a physical interpretation as the energy.
+
+As a demonstration of this principle, the solution to the Schrödinger equation for a particle confined in a region $0 < x < L$ is a series of eigenstates given by:
+
+{% math() %}
+\varphi_n(x) = \sqrt{\dfrac{2}{L}} \sin \dfrac{n \pi x}{L},\quad E_n = \dfrac{n^2 \hbar^2 \pi^2}{2mL^2}
+{% end %}
+
+> $n$ is often called the **principal quantum number**, it is a good idea to keep this in mind.
+
+Below is a plot of several of these eigenstates:
+
+![A plot of several overlapped eigenstates of the quantum particle confined to a small region of space](https://www.researchgate.net/profile/Susana-Valdez-3/publication/260767966/figure/fig2/AS:669067904036876@1536529627958/Exact-solution-for-the-particle-in-a-one-dimensional-box-Left-Real-part-of-the-wave.ppm)
+
+_Source: [ResearchGate](https://www.researchgate.net/figure/Exact-solution-for-the-particle-in-a-one-dimensional-box-Left-Real-part-of-the-wave_fig2_260767966)_
+
+The general wavefunction of the particle would be given by the superposition:
+
+{% math() %}
+\Psi(x, t) = \varphi_1 + \varphi_2 + \dots = \small \sqrt{\dfrac{2}{L}} \normalsize \sum_n C_n \sin \dfrac{n \pi x}{L} e^{-iE_nt / \hbar}
+{% end %}
+
+Since the general wavefunction $\Psi(x, t)$ is a superposition of eigenstates, _each eigenstate_ represents one state - and thus **probability distribution** - that a quantum particle can be in. A particle may be more or less likely to take a particular state. Typically, eigenstates are associated with energy, so a particle could have a number of different possible states, from a lowest-energy state to a highest-energy state and everything in between.
+
+However, the actual state the particle takes **cannot be predicted** (as with many things in quantum mechanics). Only the probabilities of a quantum particle being in a particular state are predictable. As an oversimplified example, while an electron could theoretically be in an eigenstate where it has the same amount of energy as a star, the probability of that state is very, very low. Instead, we typically observe electrons with more "normal" energies, as electrons have a much higher probability of being in lower-energy eigenstates.
+
+To quantify this statement in mathematical terms, the _coefficients_ $C_n$ for each eigenstate are directly related to the probability of each eigenstate. In fact, the probability of each eigenstate is given by $P_n = |C_n|^2$. And we may calculate $C_n$ for a particular eigenstate $\varphi_n$ given the initial condition $\Psi(x, 0)$ with:
+
+{% math() %}
+C_n = \int_{-\infty}^\infty \bar \varphi_n(x) \Psi(x, 0)\, dx
+{% end %}
+
+## Quantum operators
+
+We have seen that we can solve for wavefunctions, which are the probability distributions of a quantum particle in space, by solving the Schrödinger equation. But we also want to calculate other physically-relevant quantities. How do we do so? Quantum theory uses the concept of **operators** to describe physical quantities. An operator is something that is _applied_ to a function to get another function. A table of the most important operators is shown below:
+
+| Name | Mathematical form|
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Position operator| $\hat X = x$ (multiplication by x) |
+| Momentum operator| $\hat p = -i\hbar \dfrac{\partial}{\partial x}$ (1D), $\hat p = -i\hbar \nabla$ (general) |
+| Angular momentum operator| $\hat L$ |
+| Kinetic energy operator| $K = -\dfrac{\hbar}{2m} \nabla^2$ |
+| Potential (energy) operator| $\hat V = V$ (multiplication by the potential $V(x)$) |
+| Total energy operator (time-independent) | $\hat H$ often called the **Hamiltonian**, the precise formulation may vary but the most common non-relativistic one is $\hat H = -\dfrac{\hbar}{2m} \nabla^2 + \hat V$ |
+| Total energy operator (time-dependent) | $\hat E = -i\hbar \dfrac{\partial}{\partial t}$ |
+
+> Note that $\hat H$, the energy operator, is named so due to its correspondence with the [Hamiltonian](https://en.wikipedia.org/wiki/Hamiltonian_mechanics) in classical mechanics
+
+To find the eigenstates and eigenvalues of physical properties of a quantum particle, we apply each operator to the wavefunction, which results in an eigenvalue equation that we can solve for the eigenvalues. For example, for finding the momentum eigenstates, we can apply $\hat p$ the momentum operator:
+
+{% math() %}
+\hat p \varphi = -i\hbar \dfrac{\partial}{\partial x} \varphi(x)
+{% end %}
+
+Now, writing $p$ as the eigenvalues of momentum in terms of an eigenvalue equation, we have:
+
+{% math() %}
+-i\hbar \dfrac{\partial}{\partial x} \varphi(x) = p\varphi(x)
+{% end %}
+
+This is a differential equation that we can in fact solve for $\varphi(x)$ to obtain the solution:
+
+{% math() %}
+\varphi(x) = e^{ip x / \hbar}
+{% end %}
+
+We have now found a _momentum eigenstate_ which has a momentum $p$. More generally, by the principle of superposition we saw earlier, this would correspond to a wavefunction given by:
+
+{% math() %}
+\psi(x) = C_1 e^{ip_1 x / \hbar} + C_2 e^{ip_2 x / \hbar} + \dots + C_n e^{ip_n x / \hbar}
+{% end %}
+
+> Remember that $\psi$ is just the time-independent part of the full wavefunction $\Psi$, which is given by $\Psi(x, t) = \psi(x, t) e^{-iE t/ \hbar}$
+
+The fact that operators represent physical properties is very powerful. For instance, by identification of $\hat H = -\dfrac{\hbar^2}{2m} \dfrac{\partial^2}{\partial x^2} + V$ as the left-hand side of the time-independent Schrödinger equation, we have:
+
+{% math() %}
+\hat H \psi = E\psi
+{% end %}
+
+And we can similarly write the full (time-dependent) Schrödinger equation as:
+
+{% math() %}
+i\hbar \dfrac{\partial}{\partial t} = \hat H \psi
+{% end %}
+
+That is to say, the Schrödinger equation is the **eigenvalue problem for the energy**. This is an incredibly significant statement that we will use extensively going forwards.
+
+### Continuous and discrete eigenvalues
+
+So far, we have restricted a lot of our analysis to purely discrete eigenvalues. Let us explore a bit more in this direction, then change course to continuous eigenvalues.
+
+When a system possesses discrete eigenstates (and this is more easily seen with the fact that eigenstates are notated $\varphi_n(x)$) the system is also **bounded**, meaning that there are (infinite or finite) barriers that confine a particle. The specific feature is that these eigenstates are parametrized by an integer value, so they can be denoted $\varphi_1, \varphi_2, \dots, \varphi_n$. Then the general form of the time-independent wavefunction is given by:
+
+{% math() %}
+\psi(x) = \sum_n C_n \varphi_n(x)
+{% end %}
+
+One perhaps unexpected result is that since an infinitely many number of eigenstates is in theory possible, the _wavefunction_ may not itself be an eigenstate even though it consists of a linear superposition of eigenstates. If having knowledge of Fourier series or reading the [differential equation series](@/differential-equations/index.md), this may sound familiar. For instance, consider the wavefunction $\psi(x) = \Psi(x, 0) = A\left(x^{3}-x\right)$ for $(-1, 1)$. This is not an eigenstate, but we may write it in series form as the real part of the following, whose individual terms _are_ eigenstates, and from which we can find the ground state and the other eigenstates:
+
+{% math() %}
+\psi(x) = -\dfrac{16A}{\pi^4} (\pi^2 - 12) e^{i(\pi x/ 2 + \pi/2)} - \dfrac{16A}{81\pi^4}(9\pi^2-12) e^{3i(\pi x/ 2 + \pi/2)} + \dots
+{% end %}
+
+In the continuous case, which is the case for momentum eigenstates, we have an eigenstate for every possible value, instead of just integers. Therefore, we now have an integral:
+
+{% math() %}
+\psi(x) = \int_{-\infty}^\infty C(k) e^{i k x} dx = \int_{-\infty}^\infty C(p) e^{i p x/\hbar} dp
+{% end %}
+
+
+### A recap
+
+
+So, to sum up, the fundamental procedure in introductory quantum mechanics is as follows:
+
+- Solve the Schrödinger equation with the appropriate initial and boundary conditions to determine the solutions, which are eigenstates 
+- For each of the eigenstates, find the probability density function with $\rho(x, t) = |\Psi(x, t)|^2 = \Psi(x, t) \bar \Psi(x, t)$, which yields the probability distribution of the particle in space
+- Apply all the operators (Hamiltonian, momentum, angular momentum, etc.) to analyze the different properties of the quantum system being studied. The eigenvalues of each operator are the measurable values of the physical quantity (e.g. energy, momentum, etc.)
+- Compute the expectation (average) values of each operator, as well as the uncertainties through $\Delta A = \sqrt{\langle A^2\rangle - \langle A\rangle^2}$
+- You may also calculate the probabilities of each eigenstate (and of their associated energy, momentum, and other properties) through $P_n = |C_n|^2$ where $C_n$ is the coefficient of the eigenstate in the superposition.
+
+### A brief interlude on spin
+
+For all its predictive power, the simplest form of the Schrödinger equation does not explain one quantum phenomenon: **spin**. Spin is the property that allows quantum particles like electrons to act as tiny magnets and generate magnetic fields. The name is technically a misnomer: in classical mechanics, a spinning charge would create a magnetic field, but subatomic particles don't actually spin, they just behave *as if they did*.
+
+To make this idea more concrete, consider an electron placed in a magnetic field $\mathbf{B}$. It would then experience a torque given by $\vec \tau = \vec \mu \times \mathbf{B}$, where $\vec \mu$ is the magnetic moment given by:
+
+{% math() %}
+\vec \mu = -\dfrac{g_s e}{2m} \mathbf{S}
+{% end %}
+
+Where $e$ is the electron charge, $m$ is the electron mass, $g \approx 2.00232$, and $\|S\| = \hbar \sqrt{s(s + 1)}$ is the spin angular momentum vector. Here, $s = \pm \frac{1}{2}$ is called the _spin quantum number_, which we often shorten to _spin_. Spin explains how some materials are able to act as permanent magnets: the torque caused by their magnetic moments aligns them in the same direction. In this way, they behave just like little (classical) magnets, except their magnetic moments are a consequence of their spin. The alignment of spins amplifies the tiny magnetic fields of each electron strongly enough that we can observe their combined effect as a _macroscopic_ magnetic field.
+
+Spin modifies a quantum state because a quantum state must _additionally_ include information about a quantum particle's spin. For electrons, all spins must either be $+\frac{1}{2}$ (spin-up) or $-\frac{1}{2}$ (spin-down); these are the _only_ two possible spins.
+
+
+We formulate spin mathematically as an operator, just like energy and momentum. However, unlike the differential operators we've seen, the spin operators $\hat \sigma_x, \hat \sigma_y, \hat \sigma_z$ (there is one for each direction $x, y, z$) are matrices, and specifically the **Pauli matrices**:
+
+{% math() %}
+\begin{align*}
+\hat \sigma _{x} &={\begin{pmatrix}0 & 1\\1 & 0\end{pmatrix}}\\
+\hat \sigma_{y} & ={\begin{pmatrix}0 & -i\\i & 0\end{pmatrix}}\\
+\hat \sigma_{z} & ={\begin{pmatrix}1 & 0\\0 & -1\end{pmatrix}}\\
+\end{align*}
+{% end %}
+
+ The inclusion of spin means that even electrons with otherwise identical eigenstates are not the same; their wavefunctions must also include whether they are spin-up or spin-down. While the Schrödinger equation does not include spin, more advanced formulations of the Schrödinger equation **do include** the effects of spin, and are essential for very accurate calculations. We will return to spin later, in our discussion of advanced quantum mechanics.
+
+## The fundamentals of quantum mechanics
+
+The Schrödinger equation is certainly a very useful tool and all problems in non-relativistic quantum theory, with the exception of problems that involve spin, can be solved from the Schrödinger equation. However, simply taking the Schrödinger equation for granted is somewhat ignoring _why_ it works the way it does. So we will now take many steps back and build up quantum theory from its mathematical and physical fundamentals.
 
 ### Postulate 1: quantization
 
@@ -71,14 +350,541 @@ p_{z_0}
 \end{pmatrix}
 {% end %}
 
-In quantum mechanics, the future state of a system is determined via a **quantum state**. This quantum state is typically denoted by an abstract vector $|\psi\rangle$ whose components are complex numbers, with the specialized notation (called bra-ket notation or Dirac notation) used to differentiate quantum states from classical states. Abstract vectors reside in a Hilbert space $\mathcal{H}$ which is complex, and unlike ordinary Cartesian vectors, they can be infinite-dimensional. However, since quantum states are so abstract, there is an equivalent formulation of quantum mechanics in terms of partial differential equations, as the two formulations are equivalent. In the differential equation formulation, we solve for **wavefunction** $\Psi(\mathbf{x}, t)$, which obey the Schrödinger wave equation:
+In quantum mechanics, the current state of a system is described with a **quantum state-vector**. This is typically written abstractly as a complex vector $|\Psi\rangle$ whose components are complex numbers, with the specialized notation (called bra-ket or Dirac notation) used to differentiate quantum states from classical states. 
+
+> **Note on notation:** in bra-ket notation, all vectors are denoted with the right angle-bracket $| V \rangle$, and a scalar multiplication of a vector is written $a | V \rangle$.
+
+Quantum state-vectors can be hard to understand, so it is worth taking some time to get to know them. Recall that ordinary Cartesian vectors in the form $\langle x, y, z \rangle$ can be written in terms of the Cartesian basis vectors $\hat i, \hat j, \hat k$:
 
 {% math() %}
-i\hbar \frac{\partial}{\partial t} \Psi(\mathbf{x}, t) = \left(-\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x, t)\right) \Psi(\mathbf{x}, t) 
+\mathbf{V} = V_x \hat i + V_y \hat j + V_z \hat k
 {% end %}
 
- The physical interpretation of the Schrödinger equation is that all quantum particles (such as electrons, quarks, etc.) have wave-like properties as well as particle-like properties, and their wave nature is associated with the wavefunction $\Psi(\mathbf{x}, t)$. This allows them to exhibit effects such as wave interference and diffraction, as well as to have an associated wavelength. However, quantum particles are localized on measurement, like classical particles, and this is due to the fact that the wavefunction is associated with particle probability distributions. This fact is known as **wave-particle duality**.
+We can alternatively denote the Cartesian basis vectors with $\hat e_x, \hat e_y, \hat e_z$, in which notation the same vector can be written as:
 
-## The question of observation
+{% math() %}
+\mathbf{V} = V_x \hat e_x + V_y \hat e_y + V_z \hat e_z
+{% end %}
 
-How do particles know they are being observed? Because the act of observation involves detecting a photon that interacts with (and disturbs) the particle.
+We can also write the same using index notation. Let $i = 1, 2, 3$ equal the coordinates $x, y, z$, and let $\hat e_1, \hat e_2, \hat e_3 = \hat e_x, \hat e_y, \hat e_z$. Then we may write:
+
+{% math() %}
+\mathbf{V} = V_1 \hat e_1 + V_2 \hat e_2 + V_3 \hat e_3 = \sum_{i = 1}^3 V_i e_i
+{% end %}
+
+Thus we can write ordinary vectors as a **superposition** (sum of constant multiple terms) of the Cartesian basis vectors and their components. Quantum state-vectors can also be written as a superposition of basis vectors and components, but unlike ordinary Cartesian vectors in Euclidean 3D space $\mathbb{R^3}$, they reside in a complex Hilbert space $\mathcal{H}$, and can have infinitely many components. Expressed as a superposition, they take the form:
+
+{% math() %}
+| \Psi \rangle = 
+\begin{pmatrix}
+\Psi_1 \\ 
+\Psi_2 \\ 
+\Psi_3 \\ 
+\vdots \\ 
+\Psi_n
+\end{pmatrix} =
+\Psi_1 | \phi_1 \rangle + \Psi_2 | \phi_2 \rangle + \Psi_3 | \phi_3 \rangle + \dots
+{% end %}
+
+where $\Psi_1, \Psi_2, \dots \Psi_n$ are the components (which are in general complex-valued) and $| \phi_1 \rangle, | \phi_2 \rangle, \dots | \phi_n \rangle$ are the basis vectors. What these basis vectors and components represent, we'll see in a moment. Using the index notation introduced earlier, the superposition form of a quantum state-vector can be compactly written as:
+
+{% math() %}
+|\Psi\rangle = \sum_{i = 1}^n \Psi_i | \phi_i \rangle
+{% end %}
+
+Consider, for instance, a quantum coin. A real coin, of course, is technically not truly random; if you could measure the exact position and velocity of the coin at the moment it was flipped, you could determine if it would land heads or tails. However, imagine a quantum coin that was fully probabilistic - not even full knowledge of its state $|\Psi \rangle$ could be enough to predict its future outcome. The only thing we _do_ know about this quantum coin is that, just like a regular coin, it has a 50% probability of landing heads, and a 50% probability of landing tails, and those are the _only two possible states_ it could be in. Then we could write its quantum state as:
+
+{% math() %}
+|\Psi \rangle = \frac{1}{\sqrt{2}} | \Psi_H \rangle + \frac{1}{\sqrt{2}} | \Psi_T \rangle
+{% end %}
+
+Where $| \Psi_H \rangle$ is the "heads" state, $| \Psi_T \rangle$ is the "tails" state, and the coefficients are both $\frac{1}{\sqrt{2}}$ because the square of $\frac{1}{\sqrt{2}} = \frac{1}{2} = 50\\%$ which was the probability we know the coin can be in either one of its states. So now we can give a _physical_ interpretation of the coefficients and basis vectors that make up the superposition of $| \Psi \rangle$:
+
+> For any given quantum state-vector $| \Psi \rangle = \Psi_1 | \phi_1 \rangle + \Psi_2 | \phi_2 \rangle + \Psi_3 | \phi_3 \rangle + \dots$ the basis vectors are to be interpreted as _possible states_ (such as possible locations, possible momenta, possible energies, etc.) and the squares of coefficients are to be interpreted as _probabilities_ of being in a particular state.
+
+To get out of over-abstractness it is helpful to explicitly write down these superpositions. For instance, a wave-vector of a one-dimensional particle can be written using basis vectors of position, where each basis vector $| x \rangle$ represents the state where the particle is at point $x$:
+
+{% math() %}
+| \Psi \rangle = \Psi_1 | x_1 \rangle + \Psi_2 | x_2 \rangle + \Psi_3 | x_3 \rangle + \dots
+{% end %}
+
+Or perhaps more concretely:
+
+{% math() %}
+| \Psi \rangle = 0.1~| \text{ at 1 cm } \rangle + 0.2~| \text{ at 1.5 cm } \rangle + 0.7~| \text{ at 2 cm } \rangle + \dots
+{% end %}
+
+Here, each squared coefficient becomes the _probability_ of the particle being at point $x$. For instance, the square of the $\Psi_1$ coefficient is the probability of the particle being at the point $x_1 = \pu{1cm}$. 
+
+The same wave-vector can be written using basis vectors of momentum, where each basis vector $| p \rangle$ represents the state of the particle having momentum $p$:
+
+{% math() %}
+| \Psi \rangle = \Psi_1 | p_1 \rangle + \Psi_2 | p_2 \rangle + \Psi_3 | p_3 \rangle + \dots
+{% end %}
+
+Each squared coefficient now becomes the probability of the particle having that momentum $p$. For instance, the square of $\Psi_1$ will be the probability of the particle of having momentum $p_1$.
+
+We can do the same with energy basis vectors, with each basis vector $|E \rangle$ representing the state where the particle has energy $E$, and each squared coefficient is the associated probability:
+
+{% math() %}
+| \Psi \rangle = \Psi_1 | E_1 \rangle + \Psi_2 | E_2 \rangle + \Psi_3 | E_3 \rangle + \dots
+{% end %}
+
+All vectors, quantum state-vectors included, exist independently of their basis vectors. For instance, a regular 3D vector can be equivalently written in Cartesian coordinates, polar coordinates, cylindrical coordinates, or any other coordinate system, each of which uses different basis vectors. A quantum state-vector can similarly be written in any chosen set of basis vectors, although only a few, like the position, momentum, and energy basis vectors shown, are physically meaningful. The square of the coefficients associated with the choice of basis vectors returns the probabilities of being in a particular state, such as the probabilities of a particle being in a state of a certain position, or energy, as we just showed.
+
+Be aware, however that saying "the square of the coefficients" is a loose way of describing the process of actually computing the probability, as the coefficients of $| \Psi \rangle$ are, in general, complex-valued. So in actuality, we typically mean the **squared norm** of the components of $| \Psi \rangle$, that is:
+
+{% math() %}
+P = | \Psi_i |^2
+{% end %}
+
+And we can use the complex identity $|z|^2 = z z^*$ to rewrite as:
+
+{% math() %}
+P = \Psi_i \Psi_i^*
+{% end %}
+
+For instance, the probability a particle is in its $|E_1 \rangle$ state corresponding to having an energy of $E_1$ is given by;
+
+{% math() %}
+P = \Psi_1 \Psi_1^*
+{% end %}
+
+But you may ask, isn't it absurd that a particle's position, momentum, energy, and so forth all come from writing down the same state-vector using different basis vectors? This is a good question to ask, but recall that in classical mechanics, position, momentum, and energy can _also_ all be found from the same classical state of $(\mathbf{x}_0, \mathbf{p}_0)$ packaged together as one vector.
+
+And remember Newton's 2nd law as the key equation governing how a classical state can evolve? Quantum states evolve too, but under a partial differential equation called the **Schrödinger equation**:
+
+{% math() %}
+i \hbar \frac{\partial}{\partial t} | \Psi \rangle = \hat H | \psi \rangle
+{% end %}
+
+Where $\hat H$ can be thought of as a type of matrix that acts on the state-vector $| \Psi \rangle$. What is its physical interpretation? That is what we'll see in the next section.
+
+### Postulate 3: observables
+
+The rules of linear algebra apply when working with quantum state-vectors, as they do for regular vectors. For instance, matrices, which encode linear transformations, act on vectors in linear algebra. Similarly, linear operators act on state-vectors in quantum mechanics.
+
+First, what is a linear operator? Put simply, a linear operator does some sort of operation on a state-vector, be it multiplication, differentiation, or even exponentiation (more on that later). Linear operators are commonly either denoted with hats like $\hat M$, or with boldface like $\mathbf{M}$, of which the hat notation will be predominantly used. What makes linear operators _linear_ is the fact that it doesn't matter whether you scalar-multiply and sum a state-vector _before_ or _after_ you apply the linear operator, the result is the same. Mathematically speaking, we can represent this fact with:
+
+{% math() %}
+a \hat M | \Psi \rangle_A + b \hat M | \Psi \rangle_B = \hat M (a | \Psi \rangle_A + b | \Psi \rangle_B)
+{% end %}
+
+This looks _very_ similar to the constant and sum rules for derivatives:
+
+{% math() %}
+a \frac{d}{dx} f(x) + b \frac{d}{dx} g(x) = \frac{d}{dx} (a f(x) + b g(x))
+{% end %}
+
+In fact, the differentiation operator $\frac{d}{dx}$ **is** a linear operator. So is the integration operator, the partial differentiation operator, and the gradient operator from vector calculus. In addition, so is an operator that does multiplication by a scalarvalue, or of a function; one could define an operator $\hat C$ that simply multiplies the state-vector by a certain constant, or a certain function. You can check by substitution that such an operator is linear.
+
+But that is mathematics, we want to do physics, and so we will only use the operators that are physically meaningful, of which there are just a few, with some examples being the position, momentum, and energy (Hamiltonian) operators. These can be derived from taking the classical limit and finding out what the operators must be to reproduce classical mechanics. Recall that the Schrödinger equation is given by:
+
+{% math() %}
+i \hbar \frac{\partial}{\partial t} | \Psi \rangle = \hat H | \psi \rangle
+{% end %}
+
+The interpretation of this equation now is clearer: it specifies that the change through time of the state-vector (left-hand side of the equation) is proportional to the energy operator acting on the state-vector (right-hand side of the equation). That is, energy drives the evolution of a quantum system. The proportionality constant $i \hbar$ is simply there for 1) dimensional consistency and 2) to ensure both sides of the equation are complex-valued. Operators also allow us to write the time-independent form of the Schrödinger equation:
+
+{% math() %}
+E | \Psi \rangle = \hat H | \psi \rangle
+{% end %}
+
+Where $E$ is a constant associated with, understandably, the energy. This form is easier to solve, and can be used to find explicit analytical solutions for a variety of quantum systems.
+
+#### Interlude: concrete representations of state-vectors
+
+Up to this point we have been working with state-vectors abstractly as a linear superposition of basis vectors:
+
+{% math() %}
+| \Psi \rangle = \Psi_1 | \phi_1 \rangle + \Psi_2 | \phi_2 \rangle + \Psi_3 | \phi_3 \rangle + \dots
+{% end %}
+
+This form works out nicely when the possible states of a quantum system are small - such as the quantum coin we saw earlier, which can only be in two states, heads or tails. However, it is not as helpful when considering many possible states, where the superposition has so many terms that writing it all out becomes ridiculous. We want a more concrete, more familiar representation of state-vectors for actual calculations. And for this, we turn to the **inner product**.
+
+The inner product is a generalization of the dot product, familiar from physics formulas such as the definition of work $W = \mathbf{F} \cdot \Delta \mathbf{x}$. Recall that you can take the dot product by writing out a regular vector in column vector form, and their associated row vector, which is just the same vector but written out in row form. Then the respective elements are multiplied together, like this:
+
+{% math() %}
+\mathbf{A} \cdot \mathbf{B} =
+\begin{pmatrix}
+A_x & A_y & A_z
+\end{pmatrix}
+\begin{pmatrix}
+B_x \\ B_y \\ B_z
+\end{pmatrix} = A_x B_x + A_y B_y + A_z B_z
+{% end %}
+
+In quantum mechanics, the analogue of column and row vectors are **bra-vectors** and **ket-vectors**, or bras and kets for short. For a bra-vector, such as the quantum state-vector $| \Psi \rangle$, the associated ket-vector $\langle \Psi |$ is found by taking the complex conjugate of each of its components $z \to z^*$, and then transposing (converting all columns to rows, and vice-versa). The ket-vector version of a given bra-vector is also called the **adjoint**. We can write this in the specialized notation (Dirac notation) as:
+
+{% math() %}
+\langle \Psi | = (| \Psi \rangle^*)^T
+{% end %}
+
+Taking the inner product of a ket-vector and its adjoint (associated bra-vector) is then just a modified version of the regular dot product:
+
+{% math() %}
+\langle \Psi | \cdot | \Psi \rangle = \langle \Psi | \Psi \rangle = 
+\begin{pmatrix}
+\Psi_1 \\ \Psi_2 \\ \Psi_3 \\ \vdots \\ \Psi_n
+\end{pmatrix}
+\begin{pmatrix}
+\Psi_1^* \quad \Psi_2^* \quad \Psi_3^* ~ \dots ~ \Psi_n^*
+\end{pmatrix}
+{% end %}
+
+> Just like regular dot products, inner products in quantum mechanics are associative - $\langle A | B \rangle = \langle B | A \rangle$
+
+Quantum state-vectors are also _normalized_, which means that their magnitude is equal to one. This means that the dot product of a quantum state-vector with its respective ket-vector is equal to one (from the dot product property $A \cdot A = \|A\|^2$):
+
+{% math() %}
+\langle \Psi | \Psi \rangle = 1
+{% end %}
+
+Since we end up with a bra next to a ket, we now have a "bra-ket" - a _bracket_, a physics pun by Dirac. And yes, that is why we call them bra-vectors and ket-vectors!
+
+There is one other important property of inner products to mention, which carries over from dot products in classical mechanics. Recall how the Cartesian basis vectors $\hat i, \hat j, \hat k$ used in normal 3D space are _mutually orthogonal_ (perpendicular to each other). That means taking the dot product of any basis vector with another basis vector returns zero:
+
+{% math() %}
+\hat i \cdot \hat j = \hat j \cdot \hat k = \hat i \cdot \hat k = 0
+{% end %}
+
+In addition, the Cartesian basis vectors are _normalized_, which means that they each have unit magnitude, so:
+
+{% math() %}
+\hat i \cdot \hat i = \hat j \cdot \hat j = \hat k \cdot \hat k = 1
+{% end %}
+
+In quantum mechanics, any set of basis vectors must also be mutually orthogonal and normalized. The combination of basis vectors that have unit magnitude and orthogonality has a technical name: an **orthonormal basis**.
+
+Now we are ready to proceed to find a useful representation of state-vectors. We start by taking the dot product of a quantum state-vector with a position basis bra-vector $\langle x |$. In Dirac notation, we write this as:
+
+{% math() %}
+\langle x | \Psi \rangle
+{% end %}
+
+We expand out $| \Psi \rangle$ using its superposition form, using position basis vectors:
+
+{% math() %}
+\langle x | \Psi \rangle = \langle x | \sum_{i = 1}^n \Psi_i | x_i \rangle
+{% end %}
+
+Which, if we write component-by-component, becomes:
+
+{% math() %}
+\langle x | \Psi \rangle = \langle x | \Psi_1 | x_1 \rangle + \langle x | \Psi_2 | x_2 \rangle + \langle x | \Psi_3 | x_3 \rangle + \dots + \langle x | \Psi_i | x_i \rangle
+{% end %}
+
+This is where you get to blame Paul Dirac for inventing a notation so terse as to be incredibly confusing. Remember that the $\Psi_i$'s are the components, whereas $\langle x|$ and the $| x_i \rangle$'s are the position basis bras and kets. Inner products, like dot products, are linear: you can factor any constant coefficients out, and it won't affect the calculation. So let's do that now:
+
+{% math() %}
+\langle x | \Psi \rangle = \Psi_1 \langle x | x_1 \rangle + \Psi_2 \langle x | x_2 \rangle + \Psi_3 \langle x | x_3 \rangle + \dots + \Psi_i \langle x | x_i \rangle
+{% end %}
+
+Remember that basis vectors in quantum mechanics are **orthonormal**. This means that $\langle x | x_i \rangle = 0$, unless $x_i = x$, in which case the dot product returns one. This is a very abstract mathematical argument, so let me rephrase this with plainer language: given any random position basis bra-vector, say $\langle x | = \langle x_3 |$, taking its inner product with itself $\langle x_3 | x_3 \rangle = 1$, while taking its inner product with **any other position basis ket-vector** will equal zero. In practical terms, we can satisfyingly cancel out nearly every term in the superposition, giving:
+
+{% math() %}
+\langle x | \Psi \rangle = \cancel{\Psi_1 \langle x | x_1 \rangle} + \cancel{\Psi_2 \langle x | x_2 \rangle} + \cancel{\Psi_3 \langle x | x_3 \rangle + \dots} + \Psi_i \cancel{\langle x | x_i} \rangle^1 = \Psi_i
+{% end %}
+
+So we have found a way to extract the components of the state-vector!
+
+{% math() %}
+\langle x | \Psi \rangle = \Psi_i
+{% end %}
+
+The collection of components of the state-vector we've found here is in the position basis, because we used position basis vectors. Index notation is quite compact; $\Psi_i$ is actually a collection of _infinitely_ many complex numbers, each of which is a complex-valued coefficient for a given position state at every position in space $x$. That is:
+
+{% math() %}
+\Psi_i = \begin{pmatrix}
+\Psi_1 \\ \Psi_2 \\ \Psi_3 \\ \Psi_4 \\ \vdots \\ \Psi_n
+\end{pmatrix}
+{% end %}
+
+What else assigns a complex number to every position in space? A function! We can interpret $\Psi_i$ as a complex-valued function of $x$, which we will call $\psi(x)$:
+
+{% math() %}
+\Psi_i = \langle x | \Psi \rangle = \psi(x)
+{% end %}
+
+We call $\psi(x)$ by a special name - a **wavefunction**. In general, the wavefunction also depends on time, so $\psi = \psi(x, t)$. Just like the relation $P = \Psi_i \Psi_i^*$ we found before, we can write:
+
+{% math() %}
+\rho = \psi(x, t) \psi^*(x, t)
+{% end %}
+
+Note that $\rho$ here is the probability _density_, that is, the probability per unit volume, not the probability itself. This is to ensure that the probability of a particle to be somewhere over all space is 100% (because the particle must exist and be _somewhere_). Put mathematically:
+
+{% math() %}
+P = \int_{-\infty}^\infty \rho(x)~dx = \int_{-\infty}^\infty \psi(x, t) \psi^*(x, t)~dx = 1
+{% end %}
+
+Or, if we are analyzing a system in 3 dimensions rather than just 1, we would have:
+
+{% math() %}
+P = \int_{-\infty}^\infty \int_{-\infty}^\infty \int_{-\infty}^\infty \rho(x)dx,dy,dz = \int_{-\infty}^\infty \psi(x, t) \psi^*(x, t)~dx\,dy\,dz = 1
+{% end %}
+
+In addition, the complex-valued outputs of $\psi(x, t)$ are more correctly called **probability amplitudes** - it is a better term than "coefficients whose squared norm is associated with the probability". Thus the Schrödinger wave equation simplifies to something far more familiar, a partial differential equation:
+
+{% math() %}
+i\hbar \frac{\partial}{\partial t} \psi(x, t) = \left(-\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x, t)\right) \psi(x, t) 
+{% end %}
+
+ The physical interpretation of the Schrödinger equation is that all quantum particles (such as electrons, quarks, etc.) have wave-like properties as well as particle-like properties, and their wave nature is associated with the wavefunction $\psi(x, t)$. This allows them to exhibit effects such as wave interference and diffraction, as well as to have an associated wavelength and frequency. However, quantum particles are localized on measurement, like classical particles, and this is due to the fact that the wavefunction is associated with particle probability distributions. This fact is known as **wave-particle duality**.
+
+But in addition to its physical significance, the Schrödinger equation expressed in terms of wavefunctions also provides a systematic process of actually doing calculations. Rather than working with Hilbert spaces and abstract vectors represented as superpositions, we simply need to solve a PDE for the wavefunction, or at worst, plug it into a computer to solve. From the wavefunction, we can calculate the probability density $\rho(x, t) = \psi(x, t) \psi^*(x, t)$ to find the probability of the quantum system taking a particular position state. In other words, we will be able to predict, with perfect certainty, the likelihood a quantum particle is present at a particular location.
+
+And it is not only the probabilities of positions that we are able to calculate. Recall that while we chose the position basis for the wavefunction, there is no reason why we are restricted to just the position basis. We can define a wavefunction in any orthonormal basis we would like in quantum mechanics, so wavefunctions that are a function of momentum (or any other continuous basis) are also perfectly valid:
+
+{% math() %}
+\psi(x) = \langle x | \Psi \rangle \Rightarrow \psi(p) = \langle p | \Psi \rangle 
+{% end %}
+
+### Postulate 4: measurements and eigenvalues
+
+ Up to this point, we have learned what quantum state-vectors are, how they can be represented in a particular basis as a wavefunction, and how operators act on state-vectors. Now is the time to finally begin to understand what happens when we take a measurement.
+
+ First, recall that physical observables such as momentum and position take the form of operators that act on a quantum state-vector $| \Psi \rangle$. Usually, an operator applied to a state-vector results in a new state-vector completely different from the first. But sometimes, that operator outputs a new state-vector that is a constant multiple of the first. In this case we can write:
+
+ {% math() %}
+ \hat M | \Psi \rangle = a | \Psi \rangle
+ {% end %}
+
+ This is called an **eigenvalue equation**, where $a$, the constant multiple, is called the **eigenvalue**, and the state-vector $| \Psi \rangle$ that satisfies the equation is called the **eigenvector**. Eigenvectors that are infinite and continuous are also called _eigenfunctions_, because (as we learned earlier) functions are essentially just vectors with an infinite number of components. 
+
+ As a more concrete example, consider the differentiation operator $\frac{d}{dx}$ applied to the function $f(x) = e^{kx}$. Then we end up with an eigenvalue equation where $k$ is the eigenvalue and $f(x)$ is the eigenfunction:
+
+ {% math() %}
+ \frac{d}{dx} f(x) = \frac{d}{dx} (e^{kx}) = ke^{kx} = k \cdot f(x) \Rightarrow \frac{d}{dx} f(x) = k f(x)
+ {% end %}
+
+ Now, this is the key: in quantum mechanics, the eigenvectors of any operator **must** form a set of orthonormal basis vectors for the state-vector $| \Psi \rangle$. That's a lot to unpack, so let's take it bit by bit. Consider the $\hat p$ momentum operator. Its eigenvectors $|p_1 \rangle, |p_2 \rangle, |p_3 \rangle, \dots |p_i \rangle$ correspond to states of having momenta $p_1, p_2, p_3$, and so on, and thus are often called momentum _eigenstates_. These momentum eigenstates are the basis vectors that we can use to express the superposition form of the state-vector $|\Psi \rangle$:
+
+ {% math() %}
+ | \Psi \rangle = \Psi_1 | p_1 \rangle + \Psi_2 | p_2 \rangle + \dots + \Psi_i | p_i \rangle
+ {% end %}
+
+ The possible measured values of the momentum are the eigenvalues $p_1, p_2, p_3$ and so on, and the momentum can _only_ be one of these eigenvalues. This satisfies the requirement that physical quantities be _quantized_. While the exact value of the momentum can jump randomly between the momentum eigenvalues, the average value (denoted $\langle p \rangle$) found after many measurements follows the rule:
+
+ {% math() %}
+ \langle p \rangle = \langle \Psi | \hat p | \Psi \rangle
+ {% end %}
+
+ Where this notation means that we _apply_ $\hat p$ to the state-vector ket, then take the result's inner product with the state-vector bra. Using the (position basis) wavefunction representation for clarity, we can rewrite this as:
+
+ {% math() %}
+ \langle p \rangle = \int_{-\infty}^\infty \psi^*(x, t) \hat p\, \psi(x, t)~dx
+ {% end %}
+
+ Where from the operator table earlier, we know that:
+
+ {% math() %}
+ \hat p = -i\hbar \frac{\partial}{\partial x}
+ {% end %}
+
+ This is called the **expectation value of the momentum**, and is one case of the more general formula for the expectation values of an operator $\hat A$ in quantum mechanics:
+
+ {% math() %}
+ \langle A \rangle = \langle \Psi | \hat A | \Psi \rangle = \int_{-\infty}^\infty \psi^*(x, t) \hat A \psi(x, t)~dx
+ {% end %}
+
+### Postulate 5: the Born rule and probabilities
+
+ We have gone in-depth about quantum state-vectors and their representations as wavefunctions. But for all their fundamental relevance in quantum mechanics, state-vectors are complex-valued and can never be directly measured, because measurements are always real numbers. How do we get a real-valued measurement out of a complex-valued state-vector? This is where the **Born rule** applies.
+
+ Consider a quantum particle with state-vector $|\Psi\rangle$. Recall that expressing its state-vector in the position basis gives the position wavefunction $\psi(x) = \langle x | \Psi \rangle$.
+
+ Before we measure the particle, the wavefunction evolves naturally by the Schrödinger equation, which we can solve with the help of a math wizard or unwillingly-recruited professor. But now we want to measure the particle. This is a bit of a problem, because to measure a quantum particle involves causing it to interact with _something_, such as a photon that encounters it or the electron of an atom in our detector. So all quantum measurements are indirect; essentially, using one quantum system to learn information about another system. This also means that all quantum measurements are _disruptive_: on quantum scales, anything you use to measure with will disturb the system you measure.
+
+> How do particles know they are being observed? Because the act of observation involves detecting changes in another particle that interacts with (and disturbs) the particle being measured.
+
+ So it's not actually that unintuitive that we don't know where a particle is or what its properties are until we observe it. Taking a measurement, even in very careful conditions with very sensitive equipment, will alter the system in some way - a change that will make it impossible to reconstruct the previous state of the particle from its current state. Even light disturbs a system, "seeing" a quantum particle like an electron is only possible through bouncing a photon at that electron, and that interaction fundamentally changes the state of the electron. Naturally, we can't know everything with perfect detail when all the information we can find about any quantum particle will require doing something that also affects their properties.
+
+ But let's say that with some apparatus, we have managed to make a measurement of some physical quantity. What happens now? We know from the previous section on eigenvalues and measurement that the measurement must result in some value that is an eigenvalue of the operator associated with that physical quantity. For instance, if we take a measurement of the momentum $\hat p$, then the result is going to be an eigenvalue of the momentum operator $\hat p$. But which exact eigenvalue? **We can't know.** As far as we understand, quantum mechanics is probabilistic and no certain measurements can be made, only statistical likelihoods of a particular measurement. And the probability of measuring an eigenvalue $\alpha$ associated with the eigenstate $\langle \alpha |$ of an operator is given by the **Born rule**:
+
+ {% math() %}
+P = |\langle \alpha | \Psi \rangle|^2
+ {% end %}
+
+> And yes, we are using an abuse of terminology, technically it is the inner product of the adjoint of the eigenvector (remember: complex conjugate transpose) and the state-vector.
+
+ For any operator that has _continuous_ eigenstates, such as position and momentum, we can equivalently rewrite the Born rule in terms of the probability density $P$ and wavefunction $\psi(x)$:
+
+ {% math() %}
+ P = |\psi(\alpha)|^2 = \psi(\alpha) \psi^*(\alpha)
+ {% end %}
+
+ And this is the physical interpretation of what seemed like a math trick to represent the quantum state as a wavefunction - a wavefunction is actually a collection of infinitely-many eigenvalues of an operator with continuous eigenstates, such as the eigenvalues of the position and momentum operators. _This_ is why it makes sense that you can extract the probability of a certain measurement from the wavefunction. More accurately, you can extract the probability _density_ from the wavefunction, and then integrate to find the probability of a certain range of measurements:
+
+ {% math() %}
+ \text{Prob} = \int_{\alpha_1}^{\alpha_2} |\psi(\alpha)|^2 d\alpha = \int_{\alpha_1}^{\alpha_2} \psi(\alpha) \psi^*(\alpha) d\alpha 
+ {% end %}
+
+ At the moment where that measurement is performed, the wavefunction jumps to a single spike at one of its eigenvalues, which gives us the measured value; after the measurement is done, the wavefunction continues to evolve by the Schrödinger equation. However, if we take measurements in quick succession, the wavefunction does not have much time to evolve before another measurement is taken, so the result of the measurement will be the same. If we give more time to let the wavefunction evolve, then the measurements no longer yield the same results and return to being random, although they will always follow the Born rule of probabilities. Together with the rule of expectation values, the Born rule requires that quantum mechanics reproduce the results of classical mechanics at the classical limit, in which probabilities of measurements become certain measurements.
+
+ In other words, the Born rule allows a physicist making theoretical predictions about a quantum particle to say "the particle is _most likely_ at $x$" or "the particle is relatively likely (or unlikely) to be somewhere between $x_1$ or $x_2$" or "the particle has a 60% likelihood of having energy $E$", but _not_ "the particle is definitely at $x$". Only after measurement can a definite value be found for an observable.
+
+ However - if only it were so simple! There is an additional issue when considering certain operators that places a restriction on how accurately we can even make probability predictions. To understand it, consider the example of the position and momentum operators. From the table of operators (or Wikipedia) we know that they are respectively:
+
+ {% math() %}
+ \hat x = x, \quad \hat p = -i\hbar \frac{\partial}{\partial x}
+ {% end %}
+
+ Something interesting happens when we apply the operators in different orders to a wavefunction. Applying the momentum operator first, and then the position operator, gives:
+
+ {% math() %}
+ \hat x \hat p \psi(x) = -i\hbar x \frac{\partial \psi}{\partial x}
+ {% end %}
+
+ But if we apply the operators in the opposite order, such that we apply the position operator first, and then the momentum operator, we have:
+
+ {% math() %}
+ \hat p \hat x \psi(x) = -i\hbar \frac{\partial}{\partial x} (x \psi(x)) = -i\hbar \left(\psi(x) + x\frac{\partial \psi}{\partial x}\right) 
+ {% end %}
+
+ These are not the same, and the difference between them is given by:
+
+ {% math() %}
+ \hat x \hat p \psi(x) - \hat p \hat x \psi(x) = i\hbar \psi(x)
+ {% end %}
+
+ We can express that difference as a new operator, the **commutator**, applied to the wavefunction, which we denote with square brackets $[\hat x, \hat p]$:
+
+ {% math() %}
+ [\hat x, \hat p] = \hat x \hat p - \hat p \hat x = i\hbar \Rightarrow [\hat x, \hat p] \psi(x) = i\hbar \psi(x)
+ {% end %}
+
+ This is the famous **canonical commutation relation** $[\hat x, \hat p] = i\hbar$. There are other commutation relations but this is the most important one to encounter in studying quantum physics.
+
+ What is the relevance of commutation? From the requirements of probability theory (read about the Cauchy-Schwarz inequality if interested), commuting operators must obey the general uncertainty principle:
+
+> Given two commutating operators $\hat A$ and $\hat B$, the values of their eigenvalues cannot both be precisely measured. The more precise you want to measure an eigenvalue of $\hat A$, the less precise you can measure an eigenvalue of $\hat B$.
+
+ A famous example is the uncertainty relation between $\hat x$ and $\hat p$, also known as the **Heisenberg uncertainty principle**, which says that the standard deviations $\sigma$ of momentum and position eigenvalues must obey:
+
+ {% math() %}
+ \sigma_x \sigma_p \geq \frac{\hbar}{2}
+ {% end %}
+
+ The standard deviation can be thought of the "spread of measurements", so the Heisenberg uncertainty principle says that the momentum and position eigenvalues cannot both be predicted with certainty. What does this mean in practice? Suppose we had an detector that was purpose-built to measure the momentum and position of a quantum particle. Like any scientific instrument, it has a certain measurement uncertainty, which we will call $\mathcal{E}$. We turn it on, make a position measurement, and then we get a number - perhaps it measures a position of 1.4 nanometers from the measurement device. However, it probably is not _exactly_ at 1.4 nm; since the detector itself has a certain measurement uncertainty, the actual measurement is $\pu{1.4 nm} \pm \mathcal{E}$. We also simultaneously measure the momentum of the particle, and we get another number - perhaps {% inlmath() %}\pu{5.5e-31 kg*ms^{-1}}{% end %}. Conventional wisdom would suggest that the momentum measurement should be {% inlmath() %}\pu{5.5e-31 kg*ms^{-1}} \pm \mathcal{E}{% end %}, just like the position measurement. But the Heisenberg uncertainty principle says that $\sigma_x \sigma_p \geq \frac{\hbar}{2}$. This means that:
+
+ {% math() %}
+ \sigma_p \geq \frac{\hbar}{2 \sigma_x} \Rightarrow \sigma_p \geq \frac{\hbar}{2 \mathcal{E}}
+ {% end %}
+
+ So even if the detector's measurement uncertainty $\mathcal{E}$ is made arbitrarily small, the _most accurate_ measurement you can get of the momentum while simultaneously measuring the position is {% inlmath() %}\pu{5.5 kg*ms^{-1}} \pm \hbar/2\mathcal{E}{% end %}. This means that in practice, only one property of a quantum particle can usually be measured to full precision at a time.
+
+## Analytical quantum systems
+
+### The hydrogen atom
+
+A very famous quantum system is that of the hydrogen atom - the simplest atom, with one electron and one proton. We can simplify the system even further by modelling the contribution of the proton with the _classical_ Coloumb charge potential, since the proton is "large enough" compared to the electron (almost a thousand times more massive) that its behavior deviates only slightly from the classical description. Thus, we only need to consider the quantum behavior of the electron for the wavefunction of the entire hydrogen atom system.
+
+Using the time-independent Schrödinger equation with the Coloumb potential, we have the partial differential equation:
+
+ {% math() %}
+ -\frac{\hbar}{2m} \nabla^2 \psi - \frac{e^2}{4\pi \epsilon_0 r} \psi = E \psi
+ {% end %}
+
+ This is typically solved in spherical coordinates, where the $\nabla^2$ (Laplacian) operator becomes a mess, resulting in the overwhelmingly long equation (copied from Wikipedia):
+
+ {% math() %}
+ -{\frac {\hbar ^{2}}{2m}}\left[{\frac {1}{r^{2}}}{\frac {\partial }{\partial r}}\left(r^{2}{\frac {\partial \psi }{\partial r}}\right)+{\frac {1}{r^{2}\sin \theta }}{\frac {\partial }{\partial \theta }}\left(\sin \theta {\frac {\partial \psi }{\partial \theta }}\right)+{\frac {1}{r^{2}\sin ^{2}\theta }}{\frac {\partial ^{2}\psi }{\partial \varphi ^{2}}}\right]-{\frac {e^{2}}{4\pi \varepsilon _{0}r}}\psi =E\psi
+ {% end %}
+
+ The one saving grace is that this PDE happens to be a _separable_ differential equation, and can be solved using separation of variables. But solving this is a matter of mathematics, not physics, and so we will omit the solving steps and just give the general solution:
+
+ {% math() %}
+ \psi _{n\ell m}(r,\theta ,\varphi )={\sqrt {{\left({\frac {2}{na_{0}^{*}}}\right)}^{3}{\frac {(n-\ell -1)!}{2n(n+\ell )!}}}}e^{-\rho /2}\rho ^{\ell }L_{n-\ell -1}^{2\ell +1}(\rho )Y_{\ell }^{m}(\theta ,\varphi )
+ {% end %}
+
+ Where:
+
+- $a_0^* = \frac{4\pi \epsilon_0 \hbar^2}{me^2}$ is the reduced Bohr radius
+- $\rho = \frac{2r}{na_0^*}$
+- $L_{n - \ell - 1}^{2 \ell + 1}(\rho)$ is a Laguerre polynomial
+- $Y_\ell^m (\theta, \varphi)$ is a spherical harmonic function
+- $n = 1, 2, 3, \dots$ is the principal quantum number that determines the energy level and parametrizes each eigenstate
+- $\ell = 0, 1, 2, \dots, n-1$ is the azimuthal quantum number
+- $m = -\ell, \dots, \ell$ is the magnetic quantum number
+
+The energy levels of hydrogen are given by $E$, the energy eigenvalue in the time-independent Schrödinger equation:
+
+{% math() %}
+E_{j, n} = \frac{-mc^2}{1 - \left(1 + \alpha^2 \left(n - j - \frac{1}{2} + \sqrt{(j + \frac{1}{2})^2 - \alpha^2}\right)^{-2}\right)}
+{% end %}
+
+Where:
+
+- $j$ is the total angular momentum quantum number
+- $\alpha$ is the fine-structure constant and approximately equal to $1/137$
+
+### The quantum harmonic oscillator
+
+We'll now take a look at the quantum harmonic oscillator, a quantum system describing a particle that oscillates within a harmonic (i.e. quadratic) potential. But first, why study it? The reason is because all potentials are _approximately_ harmonic potentials close to their local minimums. Why? Because, in one line:
+
+{% math() %}
+V(x) = V(x_0) + \cancel{V'(x_0) x} + \frac{1}{2} V''(x_0) x^2 + \cancel{\frac{1}{6} V'''(x_0) x^3} + \cancel \dots = V_0 + kx^2
+{% end %}
+
+In words, any potential can be written as a Taylor series, and close to a local minimum, the first derivative is zero, and the second derivative is a constant, with all higher-order terms vanishing. That means for _any_ quantum system constrained to evolve under a potential $V(x)$, their behavior close to a local minimum of the potential will be that of the quantum harmonic oscillator, no matter how complicated the potential is.
+
+## The fundamental postulates of quantum mechanics
+
+To summarize what we've covered, we can distill the theory of quantum mechanics into these fundamental postulates:
+
+1. A quantum system is completely described by a **quantum state** $|\Psi\rangle$, which is a complex-valued vector in a Hilbert space. The time-evolution of a quantum state is described by the Schrödinger equation.
+2. A quantum state is a superposition of all possible eigenstates of the system, that is, $|\Psi \rangle = \displaystyle \sum_i \phi_i |\varphi_i \rangle$.
+3. Physical quantities are known as **observables**, and are represented by linear operators acting on the quantum state. For instance, $\hat x = x, \hat p = -i\hbar \nabla, \hat H = -\frac{\hbar^2}{2m} \nabla^2 + V$.
+4. Applying an observable results in an eigenvalue equation to solve in the form $\hat A |\varphi_i\rangle = A |\varphi_i\rangle$, where $A$ is the eigenvalue and $|\varphi_i\rangle$ is the eigenstate. The *eigenvalues* of each observable correspond to *possible values* of the associated physical quantity (e.g. position, momentum, energy). The eigenvalues can be quantized or continuous. Each eigenvalue is associated with an eigenstate of the system.
+6. It is **not possible** to predict in advance the measured value a physical quantity may take. However, it is possible to predict the *probability* $P$ of a particular eigenstate $|\varphi_i\rangle$ through the Born rule $P= |\langle \varphi_i| \Psi\rangle |^2 = |\phi_i|^2$
+
+## Applications
+
+Quantum mechanics is the most comprehensive theory of physics ever devised, because it governs the mechanics of everything in the universe. In practice, however, quantum calculations are often so involved that we only apply quantum mechanics to systems where quantum effects deviate significantly from classical behavior. In fact, any calculations with macroscopic objects that treat them as larger versions of idealized quantum systems quickly become intractable. This is because they are composed of many billions of subatomic particles, and a combination of advanced methods in quantum mechanics and statistical physics is often necessary to sufficiently describe them. See [this Physics SE post](https://physics.stackexchange.com/questions/567596/is-quantum-mechanics-applicable-to-only-small-things) for more details.
+
+To understand where quantum mechanics can be sufficiently well-approximated by quantum mechanics, we turn to the _correspondence principle_. This says that quantum mechanics reproduces the results of classical mechanics _on average_.
+
+So as a takeaway, quantum mechanics is conventionally only _required_ for analyzing systems smaller than an atom, but below that limit, many things simply cannot be explained classically. We can (and should) use the classical theory for all scales above the atomic scale; we must use quantum for anything below.
+
+## A brief peek at more advanced quantum mechanics
+
+Up to this point, we have considered quantum mechanics primarily using the Schrödinger equation as well as working with pure quantum states. There are more advanced derivatives of the Schrödinger equation that incorporate the effects of relativity and spin in their description of quantum particles. First, we have the Klein-Gordon equation:
+
+{% math() %}
+\left(\partial_\mu \partial^\mu \psi + \dfrac{m^2 c^2}{\hbar^2}\right) \psi = 0
+{% end %}
+
+The Klein-Gordon equation describes spinless elementary particles, like the Higgs boson, and certain spinless composite particles, such as mesons and pions. But for fermions - including quarks, electrons, and muons - we use the **Dirac equation**, which is a four-component PDE often written in condensed form as:
+
+{% math() %}
+(i\hbar \gamma^\mu \partial_\mu - m c) \psi = 0
+{% end %}
+
+We can expand it to show it as a system of equations for a four-component wavefunction $\psi$, where:
+
+{% math() %}
+\psi = \begin{pmatrix} \psi_1 \\ \psi_2 \\ \psi_3 \\ \psi_4 \end{pmatrix}, \quad
+\begin{align*}
+i\hbar \frac{\partial}{\partial t} \psi_1 - \frac{\partial}{\partial x} \psi_3 + \frac{\partial}{\partial y} \psi_4 - \frac{\partial}{\partial z} \psi_3 - mc \psi_1 &= 0, \\
+i\hbar \frac{\partial}{\partial t} \psi_2 - \frac{\partial}{\partial x} \psi_4 - \frac{\partial}{\partial y} \psi_3 + \frac{\partial}{\partial z} \psi_4 - mc \psi_2 &= 0, \\
+i\hbar \frac{\partial}{\partial t} \psi_3 + \frac{\partial}{\partial x} \psi_1 + \frac{\partial}{\partial y} \psi_2 + \frac{\partial}{\partial z} \psi_1 - mc \psi_3 &= 0, \\
+i\hbar \frac{\partial}{\partial t} \psi_4 + \frac{\partial}{\partial x} \psi_2 - \frac{\partial}{\partial y} \psi_1 + \frac{\partial}{\partial z} \psi_2 - mc \psi_4 &= 0.
+\end{align*}
+{% end %}
+
+> **Note:** in gauge field theory and specifically quantum electrodynamics, which is discussed at the end of the [electromagnetic theory article](@/electromagnetism/index.md), we find that the Dirac equation describing fermions coupled to an electromagnetic field (i.e. electrons) must be modified to $(i\hbar \gamma^\mu D_\mu - m c) \psi$, where $D_\mu = \partial_\mu + \dfrac{ie}{\hbar c} A_\mu$ is the **gauge covariant derivative**.
+
+The most precise theory of quantum mechanics is the **Standard Model**, which extends the Dirac equation into describing **quantum fields**. The Standard Model makes highly-accurate predictions that are even more precise than the Schrödinger equation, including tiny corrections to the energy levels of the hydrogen atom. However, it is a theory that is far too complex to cover here and best left to an in-depth textbook treatment.
+
+## Beyond the introduction
+
+Introductory quantum mechanics covers only a tiny part of the much larger landscape of quantum theory. There are _so_ many more things to learn, enough to study for an entire career:
+
+- Applied quantum mechanics to more systems, including many-body systems
+- Relativistic quantum mechanics such as the Dirac equation
+- Quantum field theory and the standard model
+- Quantum cosmology, quantum thermodynamics, and other advanced topics
+- Quantum gravity and a possible quantum theory of everything
+
+Some very useful resources are the free courses at MIT OpenCourseWare, the _Theoretical Minimum_ series (and associated YouTube lectures) of Leonard Susskind, the _In a Nutshell_ books by A. Zee, and of course, the standard texts by David Griffiths, namely _Introduction to Quantum Mechanics_ and _Introduction to Elementary Particles_. The quantum world is mysterious - but at the same time, endlessly fascinating, and richly rewarding to learn. 
