@@ -108,11 +108,17 @@ The solutions to the Schrödinger equation $\Psi(x, t)$ are called **wavefunctio
 
 > **Note for the advanced reader:** Yes, the Schrödinger equation with a _generalized_ Hamiltonian does actually apply to **any** quantum system that can exist. It is only the most well-known Hamiltonian - which is non-relativistic and omits spin - that has limited applicability.
 
-Wavefunctions encode *states* that quantum particles can be in. For instance, an electron can be in its _ground state_ (lowest-energy state). But it can also be in a number of other *excited* states (energetic states). Within each state, the particle has specific energies and momenta and is distributed through space in specific ways. In fact, wavefunctions *are* complex-valued **probability distributions**. Squaring the wavefunction and taking its absolute value, which we write as $|\Psi|^2$, gives the **probability density** of the particle's location through space. For instance, the following plot showcases the probability distributions found by $|\Psi|^2$ for three wavefunctions:
+Wavefunctions encode *states* that quantum particles can be in. For instance, an electron can be in its _ground state_ (lowest-energy state). But it can also be in a number of other *excited* states (energetic states). Within each state, the particle has specific energies and momenta and is distributed through space in specific ways. In fact, wavefunctions *are* complex-valued **probability distributions**. Squaring the wavefunction and taking its absolute value, which we write as $\rho(x) = |\Psi|^2$, gives the **probability density** of the particle's location through space. For instance, the following plot showcases the probability density found by $\rho(x) = |\Psi|^2$ for three wavefunctions:
 
 ![A graph of several wavefunctions, which describe how likely a particle is to be at a particular location](https://cdn.kastatic.org/ka-perseus-images/a5e18b829f12622a749e2f131bd029f8783eaf92.jpg)
 
 _Source: [Khan Academy](https://www.khanacademy.org/science/chemistry/atomic-structure-and-properties/orbitals-and-electrons/a/the-quantum-mechanical-model-of-the-atom)_
+
+When we consider quantum problems in 3 dimensions, the associated probability density takes the form $\rho(x, y, z) = |\Psi(x, y, z)|^2$. 3D slices of the probability density for several solutions of the Schrödinger equation are shown below:
+
+![Plots of wavefunctions of the hydrogen atom](https://chem.libretexts.org/@api/deki/files/41592/e74241a7f09f0952511cff1994da750c.jpg?revision=1&size=bestfit&width=749&height=522)
+
+_Source: [LibreTexts](https://chem.libretexts.org/Bookshelves/General_Chemistry/Map%3A_Chemistry_-_The_Central_Science_%28Brown_et_al.%29/06%3A_Electronic_Structure_of_Atoms/6.06%3A_3D_Representation_of_Orbitals)_
 
 Since quantum particles are described through probability distribution functions (PDFs), they aren't truly point particles, but spread throughout space - hence _wave_ equation, because these PDFs carry a wavelike nature. In fact, these PDFs display cyclical (symmetric in space) and oscillatory (repeating in time) behavior, meaning that just like classical waves, we describe them in terms of wave quantities like the wavelength $\lambda$, angular frequency $\omega$, wave propagation speed $v$, and wavevector $k$. However, when we measure a quantum particle, we find that it then behaves particle-like and _occupies_ a particular position. The likelihood of a particle being at a particular position can be calculated from the $|\Psi|^2$ rule, and we can find which positions the particle is more (or less) likely to be located. But the *precise* position cannot be predicted in advance.
 
@@ -189,6 +195,8 @@ To quantify this statement in mathematical terms, the _coefficients_ $C_n$ for e
 C_n = \int_{-\infty}^\infty \bar \varphi_n(x) \Psi(x, 0)\, dx
 {% end %}
 
+> The coefficients $C_n$ are referred to by different names; we may call them _probability coefficients_, _probability amplitudes_, or simply _coefficients_. Whichever name is used, it represents the same thing, where $P_n = |C_n|^2$ is the probability of measuring a given eigenstate.
+
 ## Quantum operators
 
 We have seen that we can solve for wavefunctions, which are the probability distributions of a quantum particle in space, by solving the Schrödinger equation. But we also want to calculate other physically-relevant quantities. How do we do so? Quantum theory uses the concept of **operators** to describe physical quantities. An operator is something that is _applied_ to a function to get another function. A table of the most important operators is shown below:
@@ -197,10 +205,10 @@ We have seen that we can solve for wavefunctions, which are the probability dist
 | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | Position operator| $\hat X = x$ (multiplication by x) |
 | Momentum operator| $\hat p = -i\hbar \dfrac{\partial}{\partial x}$ (1D), $\hat p = -i\hbar \nabla$ (general) |
-| Angular momentum operator| $\hat L$ |
-| Kinetic energy operator| $K = -\dfrac{\hbar}{2m} \nabla^2$ |
+| Angular momentum operator| $\hat L = -i\hbar \dfrac{\partial}{\partial \phi}$ where $\phi$ is the azimuthal angle $\phi$ in spherical coordinates |
+| Kinetic energy operator| $K = -\dfrac{\hbar^2}{2m} \nabla^2$ |
 | Potential (energy) operator| $\hat V = V$ (multiplication by the potential $V(x)$) |
-| Total energy operator (time-independent) | $\hat H$ often called the **Hamiltonian**, the precise formulation may vary but the most common non-relativistic one is $\hat H = -\dfrac{\hbar}{2m} \nabla^2 + \hat V$ |
+| Total energy operator (time-independent) | $\hat H$ often called the **Hamiltonian**, the precise formulation may vary but the most common non-relativistic one is $\hat H = -\dfrac{\hbar^2}{2m} \nabla^2 + \hat V$ |
 | Total energy operator (time-dependent) | $\hat E = -i\hbar \dfrac{\partial}{\partial t}$ |
 
 > Note that $\hat H$, the energy operator, is named so due to its correspondence with the [Hamiltonian](https://en.wikipedia.org/wiki/Hamiltonian_mechanics) in classical mechanics
@@ -243,7 +251,7 @@ And we can similarly write the full (time-dependent) Schrödinger equation as:
 i\hbar \dfrac{\partial}{\partial t} = \hat H \psi
 {% end %}
 
-That is to say, the Schrödinger equation is the **eigenvalue problem for the energy**. This is an incredibly significant statement that we will use extensively going forwards.
+That is to say, the Schrödinger equation is the **eigenvalue equation for the energy operator**. This is an incredibly significant statement that we will use extensively going forwards.
 
 ### Continuous and discrete eigenvalues
 
@@ -255,29 +263,114 @@ When a system possesses discrete eigenstates (and this is more easily seen with 
 \psi(x) = \sum_n C_n \varphi_n(x)
 {% end %}
 
-One perhaps unexpected result is that since an infinitely many number of eigenstates is in theory possible, the _wavefunction_ may not itself be an eigenstate even though it consists of a linear superposition of eigenstates. If having knowledge of Fourier series or reading the [differential equation series](@/differential-equations/index.md), this may sound familiar. For instance, consider the wavefunction $\psi(x) = \Psi(x, 0) = A\left(x^{3}-x\right)$ for $(-1, 1)$. This is not an eigenstate, but we may write it in series form as the real part of the following, whose individual terms _are_ eigenstates, and from which we can find the ground state and the other eigenstates:
+One perhaps unexpected result is that since an infinitely many number of eigenstates is in theory possible, a particle's _wavefunction_ at a specific instant $t$ may not itself be an eigenstate even though it consists of a linear superposition of eigenstates. If having knowledge of Fourier series or reading the [differential equation series](@/differential-equations/index.md), this may sound familiar. 
+
+For instance, consider the wavefunction $\psi(x) = \Psi(x, 0) = A\left(x^{3}-x\right)$ for $-1 \leq x \leq 1$. This is not an eigenstate, but we may write it in series form, whose individual terms _are_ eigenstates, and from which we can find the ground state and the other eigenstates:
 
 {% math() %}
 \psi(x) = -\dfrac{16A}{\pi^4} (\pi^2 - 12) e^{i(\pi x/ 2 + \pi/2)} - \dfrac{16A}{81\pi^4}(9\pi^2-12) e^{3i(\pi x/ 2 + \pi/2)} + \dots
 {% end %}
 
-In the continuous case, which is the case for momentum eigenstates, we have an eigenstate for every possible value, instead of just integers. Therefore, we now have an integral:
+In the continuous case, which is the case for position and momentum eigenstates, we have an eigenstate for every possible value of the physical quantity, instead of just integers. The position and momentum are examples where we observe continuous eigenstates; they can take a continuous spectrum of values _including_ non-integer values. In addition, instead of discrete probability coefficients $C_n$ whose squares give the probability, we now have a continuous **probability coefficient function** $C(\lambda)$, where $\lambda$ is a continuous eigenvalue, such as $C(x)$ or $C(p)$ for position and momentum respectively. Therefore, we now have an integral for writing down the general wavefunction in terms of the continuous eigenstates; for momentum eigenstates, we have:
 
 {% math() %}
-\psi(x) = \int_{-\infty}^\infty C(k) e^{i k x} dx = \int_{-\infty}^\infty C(p) e^{i p x/\hbar} dp
+\psi(x) = \int_{-\infty}^\infty C(k) e^{i k x} dk = \int_{-\infty}^\infty C(p) e^{i p x/\hbar} dp
 {% end %}
 
+#### Addenum: position eigenstates
+
+Position eigenstates are similar in nature to momentum eigenstates, but they are not discussed as often because position eigenstates run into some complicated technicalities. First, by solving for $\hat x \psi = x \psi$, we can find that the eigenstates are given by $\varphi(x) = \delta(x - x')$ where $\delta$ is the Dirac delta function, which is zero everywhere except for a point $x'$ where the function has a spike. Then the general wavefunction is given by:
+
+{% math() %}
+\psi(x) = \int_{-\infty}^\infty C(x)\delta(x - x')\, dx
+{% end %}
+
+But the Dirac delta function obeys the identity:
+
+{% math() %}
+\int_{-\infty}^\infty f(x)\delta(x - x') dx = f(x)
+{% end %}
+
+Which means that:
+
+{% math() %}
+\psi(x) = \int_{-\infty}^\infty C(x)\delta(x - x')\, dx = C(x)
+{% end %}
+
+We now see that $\psi(x) = C(x)$ - that is to say, the spectrum of probability coefficients for continuous position eigenstates _are_ the wavefunction. This somewhat perplexing result means that there are _infinitely-many position eigenstates_ $\varphi(x) = \delta(x - x')$, one at every point in space, and the wavefunction is just the collection of probability coefficients of all of those eigenstates. 
+
+If this is all too abstract, that is completely understandable. We will re-examine the idea of the wavefunction being a probability coefficient function of eigenstates later, when we discuss the Dirac formulation of quantum mechanics.
+
+### Expectation values
+
+We have seen that operators represent physical properties (such as position or momentum), that eigenstates are solutions to eigenvalue equations, and that eigenvalues are the possible measurable values of the physical property. We have also seen that a superposition of eigenstates of an operator can be used to write out the wavefunction, and that the probability coefficients $C_n$ in the superposition are related to the probability $|P_n|$ associated with each state. 
+
+Recall that the actual properties of a quantum particle are unknown and random, and the best we can do is to predict probabilities. However, just as we can predict the probabilities of the particle being in a particular state through the probability coefficients of each eigenstate, we can predict the _average_ measured value. We call this the **expectation value**.
+
+In the discrete case, for a given operator $\hat A$ with eigenstates $\varphi_n(x)$, the expectation value is notated $\langle \hat A\rangle$ and is given by:
+
+{% math() %}
+\langle \hat A\rangle = \sum_n |C_n|^2 A_n
+{% end %}
+
+Meanwhile, in the continuous case, for a given operator $\hat A$, the expectation value is given by:
+
+{% math() %}
+\langle \hat A\rangle = \int_{-\infty}^\infty \bar \Psi(x, t) \hat A \Psi(x, t)\, dx
+{% end %}
+
+In the cases of the position and momentum operators $\hat x = x$ and $\hat p = -i\hbar \dfrac{\partial}{\partial x}$, by substituting into the above formula, the expectation values are given by:
+
+{% math() %}
+\begin{align*}
+\langle x \rangle &= \int_{-\infty}^\infty \bar \Psi(x, t) x\, \Psi(x, t) dx \\
+\langle p \rangle &= \int_{-\infty}^\infty \bar \Psi(x, t) \left(-i\hbar \dfrac{\partial}{\partial x} \Psi(x, t)\right) dx
+\end{align*}
+{% end %}
+
+It may seem strange at first glance that expectation values are not time-dependent (i.e. that we don't also have to integrate with respect to time). The reason, however, is that when a wavefunction and its conjugate are multiplied, the time-components of the wavefunction combine to form $e^{i E t / \hbar}e^{-i E t / \hbar} = 1$.
+
+We may also take the expectation value of a given operator applied twice, which we denote $\langle \hat A^2\rangle$, where $\hat A^2 \varphi = \hat A(\hat A \varphi)$. This notation means that in the discrete case, we have:
+
+{% math() %}
+\langle \hat A^2\rangle = \sum_n |C_n|^2 A_n {}^2
+{% end %}
+
+And in the continuous case we have:
+
+{% math() %}
+\langle \hat A^2\rangle = \int_{-\infty}^\infty \bar \Psi(x, t) \hat A^2 \Psi(x, t)\, dx
+{% end %}
+
+Calculating the expectation values further leads to an incredibly important result. From statistical theory, the **uncertainty** (standard deviation) $\Delta X$ of a given variable $X$ is given by $\Delta X = \sqrt{\langle X^2 \rangle - \langle X \rangle^2}$. This means that in quantum mechanics, for a given physical quantity $A$ which has a corresponding operator $\hat A$, then the uncertainty in measuring $A$ is given by:
+
+{% math() %}
+\Delta A = \sqrt{\langle \hat A^2 \rangle - \langle \hat A \rangle^2}
+{% end %}
+
+In the case of the momentum $p$ and position $x$, we obtain the famous result of the **Heisenberg uncertainty principle**:
+
+{% math() %}
+\Delta x \Delta p \geq \dfrac{\hbar}{2}
+{% end %}
+
+The standard deviations $\Delta x$ and $\Delta p$ can be thought of the "spread of measurements", so the Heisenberg uncertainty principle says that the momentum and position eigenvalues cannot both be predicted with certainty. What does this mean in practice? Suppose we had an detector that was purpose-built to measure the momentum and position of a quantum particle. Like any scientific instrument, it has a certain measurement uncertainty, which we will call $\epsilon$. We turn it on, make a position measurement, and then we get a number - perhaps it measures a position of 1.4 nanometers from the measurement device. However, it probably is not _exactly_ at 1.4 nm; since the detector itself has a certain measurement uncertainty, the actual measurement is $\pu{1.4 nm} \pm \epsilon$. We also simultaneously measure the momentum of the particle, and we get another number - perhaps {% inlmath() %}\pu{5.5e-31 kg*ms^{-1}}{% end %}. Conventional wisdom would suggest that the momentum measurement should be {% inlmath() %}\pu{5.5e-31 kg*ms^{-1}} \pm \epsilon{% end %}, just like the position measurement. But the Heisenberg uncertainty principle says that $\Delta x \Delta p \geq \frac{\hbar}{2}$. This means that:
+
+ {% math() %}
+ \Delta p \geq \frac{\hbar}{2 \Delta x} \Rightarrow \Delta p \geq \frac{\hbar}{2 \epsilon}
+ {% end %}
+
+ So even if the detector's measurement uncertainty $\epsilon$ is made arbitrarily small, the _most accurate_ measurement you can get of the momentum while simultaneously measuring the position is {% inlmath() %}\pu{5.5 kg*ms^{-1}} \pm \hbar/2\epsilon{% end %}. This means that in practice, only one property of a quantum particle can usually be measured to full precision at a time.
 
 ### A recap
-
 
 So, to sum up, the fundamental procedure in introductory quantum mechanics is as follows:
 
 - Solve the Schrödinger equation with the appropriate initial and boundary conditions to determine the solutions, which are eigenstates 
 - For each of the eigenstates, find the probability density function with $\rho(x, t) = |\Psi(x, t)|^2 = \Psi(x, t) \bar \Psi(x, t)$, which yields the probability distribution of the particle in space
 - Apply all the operators (Hamiltonian, momentum, angular momentum, etc.) to analyze the different properties of the quantum system being studied. The eigenvalues of each operator are the measurable values of the physical quantity (e.g. energy, momentum, etc.)
-- Compute the expectation (average) values of each operator, as well as the uncertainties through $\Delta A = \sqrt{\langle A^2\rangle - \langle A\rangle^2}$
-- You may also calculate the probabilities of each eigenstate (and of their associated energy, momentum, and other properties) through $P_n = |C_n|^2$ where $C_n$ is the coefficient of the eigenstate in the superposition.
+- Compute the expectation (average) values of each operator, as well as the uncertainties through $\Delta A = \sqrt{\langle \hat A^2\rangle - \langle \hat A\rangle^2}$
+- You may also calculate the probabilities of each eigenstate (and of their associated energy, momentum, and other properties) through $P_n = |C_n|^2$ where $C_n$ is the _probability coefficient_ of the eigenstate in the superposition. This becomes a _probability coefficient function_ $C(\lambda)$ for the continuous spectrum case, which includes $C(x)$ for position and $C(p)$ for momentum.
 
 ### A brief interlude on spin
 
@@ -304,9 +397,9 @@ We formulate spin mathematically as an operator, just like energy and momentum. 
 \end{align*}
 {% end %}
 
- The inclusion of spin means that even electrons with otherwise identical eigenstates are not the same; their wavefunctions must also include whether they are spin-up or spin-down. While the Schrödinger equation does not include spin, more advanced formulations of the Schrödinger equation **do include** the effects of spin, and are essential for very accurate calculations. We will return to spin later, in our discussion of advanced quantum mechanics.
+The inclusion of spin means that even electrons with otherwise identical eigenstates are not the same; their wavefunctions must also include whether they are spin-up or spin-down. While the Schrödinger equation does not include spin, more advanced formulations of the Schrödinger equation **do include** the effects of spin, and are essential for very accurate calculations. We will return to spin later, in our discussion of advanced quantum mechanics.
 
-## The fundamentals of quantum mechanics
+## The postulates of quantum mechanics
 
 The Schrödinger equation is certainly a very useful tool and all problems in non-relativistic quantum theory, with the exception of problems that involve spin, can be solved from the Schrödinger equation. However, simply taking the Schrödinger equation for granted is somewhat ignoring _why_ it works the way it does. So we will now take many steps back and build up quantum theory from its mathematical and physical fundamentals.
 
@@ -624,7 +717,7 @@ Or, if we are analyzing a system in 3 dimensions rather than just 1, we would ha
 P = \int_{-\infty}^\infty \int_{-\infty}^\infty \int_{-\infty}^\infty \rho(x)dx,dy,dz = \int_{-\infty}^\infty \psi(x, t) \psi^*(x, t)~dx\,dy\,dz = 1
 {% end %}
 
-In addition, the complex-valued outputs of $\psi(x, t)$ are more correctly called **probability amplitudes** - it is a better term than "coefficients whose squared norm is associated with the probability". Thus the Schrödinger wave equation simplifies to something far more familiar, a partial differential equation:
+In addition, the complex-valued outputs of $\psi(x, t)$ are more correctly called **probability amplitudes** - we referred to these equivalently as _probability coefficients_ earlier. Thus the Schrödinger wave equation simplifies to something far more familiar, a partial differential equation:
 
 {% math() %}
 i\hbar \frac{\partial}{\partial t} \psi(x, t) = \left(-\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x, t)\right) \psi(x, t) 
@@ -760,21 +853,21 @@ P = |\langle \alpha | \Psi \rangle|^2
 
 > Given two commutating operators $\hat A$ and $\hat B$, the values of their eigenvalues cannot both be precisely measured. The more precise you want to measure an eigenvalue of $\hat A$, the less precise you can measure an eigenvalue of $\hat B$.
 
- A famous example is the uncertainty relation between $\hat x$ and $\hat p$, also known as the **Heisenberg uncertainty principle**, which says that the standard deviations $\sigma$ of momentum and position eigenvalues must obey:
+ A famous example is the uncertainty relation between $\hat x$ and $\hat p$, one that we have already seen earlier - the Heisenberg uncertainty principle:
 
  {% math() %}
- \sigma_x \sigma_p \geq \frac{\hbar}{2}
+ \Delta x \Delta pp \geq \frac{\hbar}{2}
  {% end %}
 
- The standard deviation can be thought of the "spread of measurements", so the Heisenberg uncertainty principle says that the momentum and position eigenvalues cannot both be predicted with certainty. What does this mean in practice? Suppose we had an detector that was purpose-built to measure the momentum and position of a quantum particle. Like any scientific instrument, it has a certain measurement uncertainty, which we will call $\mathcal{E}$. We turn it on, make a position measurement, and then we get a number - perhaps it measures a position of 1.4 nanometers from the measurement device. However, it probably is not _exactly_ at 1.4 nm; since the detector itself has a certain measurement uncertainty, the actual measurement is $\pu{1.4 nm} \pm \mathcal{E}$. We also simultaneously measure the momentum of the particle, and we get another number - perhaps {% inlmath() %}\pu{5.5e-31 kg*ms^{-1}}{% end %}. Conventional wisdom would suggest that the momentum measurement should be {% inlmath() %}\pu{5.5e-31 kg*ms^{-1}} \pm \mathcal{E}{% end %}, just like the position measurement. But the Heisenberg uncertainty principle says that $\sigma_x \sigma_p \geq \frac{\hbar}{2}$. This means that:
+## Solving quantum systems
 
- {% math() %}
- \sigma_p \geq \frac{\hbar}{2 \sigma_x} \Rightarrow \sigma_p \geq \frac{\hbar}{2 \mathcal{E}}
- {% end %}
+We will now apply quantum mechanics to solve a variety of quantum systems.
 
- So even if the detector's measurement uncertainty $\mathcal{E}$ is made arbitrarily small, the _most accurate_ measurement you can get of the momentum while simultaneously measuring the position is {% inlmath() %}\pu{5.5 kg*ms^{-1}} \pm \hbar/2\mathcal{E}{% end %}. This means that in practice, only one property of a quantum particle can usually be measured to full precision at a time.
+### The free particle
 
-## Analytical quantum systems
+### The infinite square well
+
+### Understanding wavefunctions qualitatively
 
 ### The hydrogen atom
 
@@ -808,16 +901,29 @@ Using the time-independent Schrödinger equation with the Coloumb potential, we 
 - $\ell = 0, 1, 2, \dots, n-1$ is the azimuthal quantum number
 - $m = -\ell, \dots, \ell$ is the magnetic quantum number
 
-The energy levels of hydrogen are given by $E$, the energy eigenvalue in the time-independent Schrödinger equation:
+The energy levels of hydrogen are given by the energy eigenvalues of its wavefunction:
 
 {% math() %}
-E_{j, n} = \frac{-mc^2}{1 - \left(1 + \alpha^2 \left(n - j - \frac{1}{2} + \sqrt{(j + \frac{1}{2})^2 - \alpha^2}\right)^{-2}\right)}
+E^j_n = -\frac{\mu c^2}{1 - \left(1 + \alpha^2 \left(n - j - \frac{1}{2} + \sqrt{(j + \frac{1}{2})^2 - \alpha^2}\right)^{-2}\right)}
 {% end %}
 
 Where:
 
 - $j$ is the total angular momentum quantum number
+- $\mu$ is the reduced mass of the hydrogen atom, which is very close to (but not exactly equal to) $m_e$, the mass of an electron
 - $\alpha$ is the fine-structure constant and approximately equal to $1/137$
+
+A good approximation for the energy eigenvalues with a much simpler form is:
+
+{% math() %}
+E_n = \dfrac{m_e c^2 \alpha^2}{2n^2}
+{% end %}
+
+Which can be written in even simpler form as $E_n = \dfrac{R}{n^2}$ where $R = \dfrac{m_e c^2 \alpha^2}{2}$, known as the **Rydberg energy**.
+
+> **An important note:** Yes, these energy eigenvalues are negative, because the Coulomb potential is negative as well. In fact, we say that the negative energies reflect the fact that the associated eigenstates are _bound states_, and the magnitude of their energy is the energy necessary to overcome the Coulomb potential. As their energies are negative, they do not have enough energy to escape the potential, and thus stay in place - the more negative the energy, the more stable and static the system.
+
+The historical discovery of the solution to the Schrödinger equation for the hydrogen atom and the calculation of its eigenvalues proved to be one of the first experimental results that confirmed the predictions of quantum mechanics. By using $E = \dfrac{hc}{\lambda}$ with the value of $E_n = \dfrac{m_e c^2 \alpha^2}{2n^2}$ predicted by the Schrödinger equation, the calculated wavelengths of light almost exactly matched measurements of those emitted by hydrogen. To read more about this discovery, see the quantum chemistry portion of the [general chemistry series](@/fundamentals-of-chemistry.md). This result revolutionized physics and brought quantum mechanics to its forefront. To this day, quantum mechanics remains the building block of modern physics.
 
 ### The quantum harmonic oscillator
 
@@ -827,19 +933,24 @@ We'll now take a look at the quantum harmonic oscillator, a quantum system descr
 V(x) = V(x_0) + \cancel{V'(x_0) x} + \frac{1}{2} V''(x_0) x^2 + \cancel{\frac{1}{6} V'''(x_0) x^3} + \cancel \dots = V_0 + kx^2
 {% end %}
 
-In words, any potential can be written as a Taylor series, and close to a local minimum, the first derivative is zero, and the second derivative is a constant, with all higher-order terms vanishing. That means for _any_ quantum system constrained to evolve under a potential $V(x)$, their behavior close to a local minimum of the potential will be that of the quantum harmonic oscillator, no matter how complicated the potential is.
+In words, any potential can be expanded as a Taylor series, and close to a local minimum, the first derivative is zero, and the second derivative is a constant, with all higher-order terms vanishing. That means for _any_ quantum system constrained to evolve under a potential $V(x)$, their behavior close to a local minimum of the potential will be that of the quantum harmonic oscillator, no matter how complicated the potential is.
 
 ## The fundamental postulates of quantum mechanics
 
 To summarize what we've covered, we can distill the theory of quantum mechanics into these fundamental postulates:
 
-1. A quantum system is completely described by a **quantum state** $|\Psi\rangle$, which is a complex-valued vector in a Hilbert space. The time-evolution of a quantum state is described by the Schrödinger equation.
-2. A quantum state is a superposition of all possible eigenstates of the system, that is, $|\Psi \rangle = \displaystyle \sum_i \phi_i |\varphi_i \rangle$.
+1. A quantum system is completely described by a **quantum state** $|\Psi\rangle$, also represented by $\psi(x) \equiv \Psi(x, 0)$, which is a complex-valued vector in a Hilbert space.
+	- A state describes a quantum particle at a particular instant in terms of its probability distribution. 
+	- Further, a state also evolves through time by the Schrödinger equation $i\hbar \dfrac{\partial}{\partial t} |\Psi(t)\rangle = \hat H |\Psi(t)\rangle$, which we may represent by $|\Psi(t)\rangle$ or $\Psi(x, t)$.
+2. A quantum state is a superposition of all possible eigenstates of the system, that is, $|\Psi \rangle = \displaystyle \sum_i C_i |\varphi_i \rangle$.
 3. Physical quantities are known as **observables**, and are represented by linear operators acting on the quantum state. For instance, $\hat x = x, \hat p = -i\hbar \nabla, \hat H = -\frac{\hbar^2}{2m} \nabla^2 + V$.
 4. Applying an observable results in an eigenvalue equation to solve in the form $\hat A |\varphi_i\rangle = A |\varphi_i\rangle$, where $A$ is the eigenvalue and $|\varphi_i\rangle$ is the eigenstate. The *eigenvalues* of each observable correspond to *possible values* of the associated physical quantity (e.g. position, momentum, energy). The eigenvalues can be quantized or continuous. Each eigenvalue is associated with an eigenstate of the system.
-6. It is **not possible** to predict in advance the measured value a physical quantity may take. However, it is possible to predict the *probability* $P$ of a particular eigenstate $|\varphi_i\rangle$ through the Born rule $P= |\langle \varphi_i| \Psi\rangle |^2 = |\phi_i|^2$
+6. It is **not possible** to predict in advance the measured value a physical quantity may take. However, it is possible to predict the *probability* $P$ of a particular eigenstate $|\varphi_i\rangle$ through the Born rule $P= |\langle \varphi_i| \Psi\rangle |^2 = |C_i|^2$
+7. We may use the _wave formulation_ or _matrix-vector formulation_ to obtain the same results, and the two are completely equivalnet:
+	- In the **wave formulation**, we have $\psi(x)$ as a quantum state, represented as a time-indepedent wavefunction, $\varphi_i(x)$ as a component eigenstate, and $\Psi(x, t) = \psi(x) e^{-iE t/\hbar}$ as the general wavefunction
+	- In the **matrix-vector formulation**, we have $|\Psi\rangle$ as a quantum state, $|\varphi_i\rangle$ as a component eigenstate, and $|\Psi(t)\rangle$ as the general time-evolving state
 
-## Applications
+## The classical limit of quantum mechanics
 
 Quantum mechanics is the most comprehensive theory of physics ever devised, because it governs the mechanics of everything in the universe. In practice, however, quantum calculations are often so involved that we only apply quantum mechanics to systems where quantum effects deviate significantly from classical behavior. In fact, any calculations with macroscopic objects that treat them as larger versions of idealized quantum systems quickly become intractable. This is because they are composed of many billions of subatomic particles, and a combination of advanced methods in quantum mechanics and statistical physics is often necessary to sufficiently describe them. See [this Physics SE post](https://physics.stackexchange.com/questions/567596/is-quantum-mechanics-applicable-to-only-small-things) for more details.
 
