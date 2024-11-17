@@ -205,7 +205,7 @@ We have seen that we can solve for wavefunctions, which are the probability dist
 | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | Position operator| $\hat X = x$ (multiplication by x) |
 | Momentum operator| $\hat p = -i\hbar \dfrac{\partial}{\partial x}$ (1D), $\hat p = -i\hbar \nabla$ (general) |
-| Angular momentum operator| $\hat L = -i\hbar \dfrac{\partial}{\partial \phi}$ where $\phi$ is the azimuthal angle $\phi$ in spherical coordinates |
+| Angular momentum operator| General $\hat L = \mathbf{r} \times \hat p = \mathbf{r} \times -i\hbar\nabla$, z-component $\hat L_z = -i\hbar \dfrac{\partial}{\partial \phi}$ where $\phi$ is the azimuthal angle $\phi$ in spherical coordinates |
 | Kinetic energy operator| $K = -\dfrac{\hbar^2}{2m} \nabla^2$ |
 | Potential (energy) operator| $\hat V = V$ (multiplication by the potential $V(x)$) |
 | Total energy operator (time-independent) | $\hat H$ often called the **Hamiltonian**, the precise formulation may vary but the most common non-relativistic one is $\hat H = -\dfrac{\hbar^2}{2m} \nabla^2 + \hat V$ |
@@ -865,7 +865,11 @@ We will now apply quantum mechanics to solve a variety of quantum systems.
 
 ### The free particle
 
+The free particle is among the simplest quantum systems that have an exact solution to the Schrödinger equation.
+
 ### The infinite square well
+
+### The finite square well
 
 ### Understanding wavefunctions qualitatively
 
@@ -888,12 +892,12 @@ Using the time-independent Schrödinger equation with the Coloumb potential, we 
  The one saving grace is that this PDE happens to be a _separable_ differential equation, and can be solved using separation of variables. But solving this is a matter of mathematics, not physics, and so we will omit the solving steps and just give the general solution:
 
  {% math() %}
- \psi _{n\ell m}(r,\theta ,\varphi )={\sqrt {{\left({\frac {2}{na_{0}^{*}}}\right)}^{3}{\frac {(n-\ell -1)!}{2n(n+\ell )!}}}}e^{-\rho /2}\rho ^{\ell }L_{n-\ell -1}^{2\ell +1}(\rho )Y_{\ell }^{m}(\theta ,\varphi )
+ \psi _{n\ell m}(r,\theta ,\varphi )={\sqrt {{\left({\frac {2}{na_{0}}}\right)}^{3}{\frac {(n-\ell -1)!}{2n(n+\ell )!}}}}e^{-\rho /2}\rho ^{\ell }L_{n-\ell -1}^{2\ell +1}(\rho )Y_{\ell }^{m}(\theta ,\varphi )
  {% end %}
 
  Where:
 
-- $a_0^* = \frac{4\pi \epsilon_0 \hbar^2}{me^2}$ is the reduced Bohr radius
+- $a_0 = \frac{4\pi \epsilon_0 \hbar^2}{me^2}$ is the Bohr radius, where the Bo
 - $\rho = \frac{2r}{na_0^*}$
 - $L_{n - \ell - 1}^{2 \ell + 1}(\rho)$ is a Laguerre polynomial
 - $Y_\ell^m (\theta, \varphi)$ is a spherical harmonic function
@@ -904,26 +908,25 @@ Using the time-independent Schrödinger equation with the Coloumb potential, we 
 The energy levels of hydrogen are given by the energy eigenvalues of its wavefunction:
 
 {% math() %}
-E^j_n = -\frac{\mu c^2}{1 - \left(1 + \alpha^2 \left(n - j - \frac{1}{2} + \sqrt{(j + \frac{1}{2})^2 - \alpha^2}\right)^{-2}\right)}
+E_n = -\dfrac{m_e c^2 \alpha^2}{2n^2} = -\dfrac{\hbar^2}{2 m a_0^2 n^2}
 {% end %}
 
+Which can be written in even simpler form as $E_n = -\dfrac{R}{n^2}$ where $R = \dfrac{m_e c^2 \alpha^2}{2}$, known as the **Rydberg energy**.
 Where:
 
 - $j$ is the total angular momentum quantum number
 - $\mu$ is the reduced mass of the hydrogen atom, which is very close to (but not exactly equal to) $m_e$, the mass of an electron
 - $\alpha$ is the fine-structure constant and approximately equal to $1/137$
 
-A good approximation for the energy eigenvalues with a much simpler form is:
-
-{% math() %}
-E_n = \dfrac{m_e c^2 \alpha^2}{2n^2}
-{% end %}
-
-Which can be written in even simpler form as $E_n = \dfrac{R}{n^2}$ where $R = \dfrac{m_e c^2 \alpha^2}{2}$, known as the **Rydberg energy**.
-
 > **An important note:** Yes, these energy eigenvalues are negative, because the Coulomb potential is negative as well. In fact, we say that the negative energies reflect the fact that the associated eigenstates are _bound states_, and the magnitude of their energy is the energy necessary to overcome the Coulomb potential. As their energies are negative, they do not have enough energy to escape the potential, and thus stay in place - the more negative the energy, the more stable and static the system.
 
-The historical discovery of the solution to the Schrödinger equation for the hydrogen atom and the calculation of its eigenvalues proved to be one of the first experimental results that confirmed the predictions of quantum mechanics. By using $E = \dfrac{hc}{\lambda}$ with the value of $E_n = \dfrac{m_e c^2 \alpha^2}{2n^2}$ predicted by the Schrödinger equation, the calculated wavelengths of light almost exactly matched measurements of those emitted by hydrogen. To read more about this discovery, see the quantum chemistry portion of the [general chemistry series](@/fundamentals-of-chemistry.md). This result revolutionized physics and brought quantum mechanics to its forefront. To this day, quantum mechanics remains the building block of modern physics.
+Later on, refinements to quantum theory found that the predicted energy levels, when also including relativistic corrections, are more accurately given by:
+
+{% math() %}
+E^j_n = -\frac{\mu c^2}{1 - \left(1 + \alpha^2 \left(n - j - \frac{1}{2} + \sqrt{(j + \frac{1}{2})^2 - \alpha^2}\right)^{-2}\right)}
+{% end %}
+
+Where $\mu$ is the _reduced mass_, i.e. $\mu \equiv \dfrac{m_e m_p}{m_e + m_p}$ where $m_e, m_p$ are the electron and proton mass. The historical discovery of the solution to the Schrödinger equation for the hydrogen atom and the calculation of its eigenvalues proved to be one of the first experimental results that confirmed the predictions of quantum mechanics. By using $E = \dfrac{hc}{\lambda}$ with the value of $E_n = \dfrac{m_e c^2 \alpha^2}{2n^2}$ predicted by the Schrödinger equation, the calculated wavelengths of light almost exactly matched measurements of those emitted by hydrogen. To read more about this discovery, see the quantum chemistry portion of the [general chemistry series](@/fundamentals-of-chemistry.md). This result revolutionized physics and brought quantum mechanics to its forefront. To this day, quantum mechanics remains the building block of modern physics.
 
 ### The quantum harmonic oscillator
 
@@ -988,7 +991,13 @@ i\hbar \frac{\partial}{\partial t} \psi_4 + \frac{\partial}{\partial x} \psi_2 -
 
 The most precise theory of quantum mechanics is the **Standard Model**, which extends the Dirac equation into describing **quantum fields**. The Standard Model makes highly-accurate predictions that are even more precise than the Schrödinger equation, including tiny corrections to the energy levels of the hydrogen atom. However, it is a theory that is far too complex to cover here and best left to an in-depth textbook treatment.
 
-## Beyond the introduction
+### An epistemological remark
+
+Quantum mechanics is perhaps one of the most profoundly impactful and _useful_ theories of physics ever devised. Its uses are numerous and essentially anything to do with microscopic processes - for instance, semiconductors, diodes, superconductors, atomic spectroscopy, nuclear technologies, quantum optics, lasers, scanning electron microscopy, quantum chemistry, and advanced materials research - all involve quantum mechanics in some way. That is to say, quantum mechanics has many _practical applications_.
+
+However, these are essentially all applications of non-relativistic quantum mechanics. Going beyond and into relativistic quantum mechanics becomes more and more the realm of purely precision science (except for some applications in condensed matter physics). Elementary particle physics, in particular, does not (yet) have many day-to-day applications, other than simply advancing our understanding of physics and science. It is motivated purely by human curiosity. One day, our civilization may reach the levels of technological development that require relativistic quantum field theory on a regular basis, but this has not come yet. Bearing that in mind, it is nonetheless a fascinating intellectual pursuit and well-worth the time to dive into.
+
+## Further reading
 
 Introductory quantum mechanics covers only a tiny part of the much larger landscape of quantum theory. There are _so_ many more things to learn, enough to study for an entire career:
 
