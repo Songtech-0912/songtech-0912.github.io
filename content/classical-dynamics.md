@@ -1,5 +1,5 @@
 +++
-title = "Notes on introductory classical dynamics"
+title = "Introductory classical dynamics"
 date = 2024-01-08
 +++
 
@@ -32,19 +32,19 @@ we have the correct units, so we have verified it is correct!
 Position, velocity, and acceleration are fundamental quantities in physics whose collective study is known as **kinematics**. The quantities are related through differential and integral calculus. For instance, they can be written as derivatives of each other:
 
 {% math() %}
-v(t) = \frac{dx}{dt}
-{% end %}
-{% math() %}
-a(t) = \frac{dv}{dt} = \frac{d^2 x}{dt^2}
+\begin{align*}
+v(t) &= \frac{dx}{dt} \\
+a(t) &= \frac{dv}{dt} = \frac{d^2 x}{dt^2}
+\end{align*}
 {% end %}
 
 And accumulated changes in position and velocity are given by integrals of velocity and acceleration, respectively:
 
 {% math() %}
-\Delta x = \int_{t_0}^{t_1} v(t) dt
-{% end %}
-{% math() %}
+\begin{align*}
+\Delta x = \int_{t_0}^{t_1} v(t) dt \\
 \Delta v = \int_{t_0}^{t_1} a(t) dt
+\end{align*}
 {% end %}
 
 ## Introduction to Newtonian mechanics
@@ -287,19 +287,19 @@ Luckily, a shift of coordinates is typically sufficient to be able to treat most
 **Projectile motion** (motion under constant downward acceleration) in 2D is a special case of this vector differential equation that is able to be solved analytically:
 
 {% math() %}
-m \frac{dv_x}{dt} = 0, \quad m \frac{dv_y}{dt} = -mg
-{% end %}
-{% math() %}
-v_x (0) = v_0 \cos \theta, \quad v_y(0) = v_0 \sin (\theta)
+\begin{align*}
+&m \frac{dv_x}{dt} = 0, &m \frac{dv_y}{dt} = -mg \\
+&v_x (0) = v_0 \cos \theta, &v_y(0) = v_0 \sin (\theta)
+\end{align*}
 {% end %}
 
 The analytical solution is given by:
 
 {% math() %}
-\vec s(t) = \langle x(t), y(t) \rangle
-{% end %}
-{% math() %}
+\begin{gather*}
+\vec s(t) = \langle x(t), y(t) \rangle \\
 x(t) = x_0 + v_0 \cos (\theta) t, \quad y(t) = y_0 + v_0 \sin (\theta) t - \frac{1}{2} gt^2
+\end{gather*}
 {% end %}
 
 We can find the range of a projectile (how far it travels horizontally) by solving for the value of $t$ where $y(t) = 0$ and then substituting that value of $t$ into $x(t)$. That is:
@@ -503,29 +503,36 @@ df = \nabla f \cdot d\vec s
 There are two other vector operations of relevance in vector calculus. These operate on vector-valued multivariable functions, which are typically in the form:
 
 {% math() %}
-\vec F = \vec F(x, y, z) = \begin{bmatrix}
+\begin{align*}
+\vec F(x, y, z) &= \begin{bmatrix}
 F_x(x, y, z) \\
 F_y(x, y, z) \\
 F_z(x, y, z)
-\end{bmatrix} =
+\end{bmatrix} \\ &=
 F_x(x, y, z) \hat i + F_y(x, y, z) \hat j + F_z (x, y, z) \hat k
+\end{align*}
 {% end %}
 
-First, the divergence operation measures flow rate, and is given by:
+First, the **divergence** operation measures flow rate, and is given by:
 
 {% math() %}
-\nabla \cdot \vec F = \left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right) \cdot (F_x, F_y. F_z) =\frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}
+\begin{align*}
+\nabla \cdot \vec F &= \left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right) \cdot (F_x, F_y, F_z) \\ &=\frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}
+\end{align*}
 {% end %}
 
-Second, the curl operation measures rotation, and is given by:
+Second, the **curl** operation measures rotation, and is given by:
 
 {% math() %}
-\nabla \cdot \vec F = \left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right) \times (F_x, F_y. F_z)  = \left(
+\begin{align*}
+\nabla \cdot \vec F &= \left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right) \times (F_x, F_y. F_z) \\ &= \left(
 \frac{\partial F_z}{\partial y} - \frac{\partial F_y}{\partial z},
 \frac{\partial F_x}{\partial z} - \frac{\partial F_z}{\partial x},
 \frac{\partial F_{y}}{\partial x}- \frac {\partial F_x}{\partial y}
 \right)
+\end{align*}
 {% end %}
+
 ## Work in higher dimensions
 
 In higher dimensions, force is a vector-valued function of the position $\vec r(t)$, given as follows:
@@ -540,13 +547,7 @@ Therefore the force can generally be written in component form as:
 \vec F = F_x \hat i + F_y \hat j + F_z \hat k
 {% end %}
 
-Do remember that $F_x, F_y, F_z$ are each functions of $x(t), y(t), z(t)$, so this expands to:
-
-{% math() %}
-\vec F = F_x(x(t), y(t), z(t)) \hat i + F_y(x(t), y(t), z(t)) \hat j + F_z(x(t), y(t), z(t)) \hat k
-{% end %}
-
-Extending the definition of 1D work, the differential of the work in higher dimensions would be given by:
+Do remember that $F_x, F_y, F_z$ are each functions of $x, y, z$. Extending the definition of 1D work, the differential of the work in higher dimensions would be given by:
 
 {% math() %}
 dW = \vec F \cdot d\vec s
@@ -942,13 +943,13 @@ In practice, however, only a few terms (typically up to 2nd-order or 3rd-order) 
 | $\tan x$ | $x + \frac{x^3}{3}$ |
 | $1/(x + \alpha)^n$ | $\frac{1}{\alpha^{n}}-\frac{nx}{\alpha^{n+1}}+\frac{n(n+1)x^{2}}{2\alpha^{n+2}}$ |
 
-This means, for instance, that for an object a small distance $\alpha$ above the surface of the Earth, where the radius of the Earth is given by $r_E$, then the magnitude of the gravitational force can be reasonably approximated by a Taylor expansion about $r = r_E$:
+This means, for instance, that for an object a small distance $\alpha$ above the surface of the Earth, where the radius of the Earth is given by $r_\oplus$, then the magnitude of the gravitational force can be reasonably approximated by a Taylor expansion about $r = r_\oplus$:
 
 {% math() %}
-F_g = \frac{GMm}{r_E^2} -\frac{GMm}{r_E^3} (r - r_E) + \frac{GMm}{2r_E^4} (r-r_E)^2 + \dots
+F_g = \frac{GMm}{r_\oplus^2} -\frac{GMm}{r_\oplus^3} (r - r_\oplus) + \frac{GMm}{2r_\oplus^4} (r-r_\oplus)^2 + \dots
 {% end %}
 
-If we define $g = \frac{GM}{r_E^2}$, then to the first term of the Taylor expansion, we have:
+If we define $g = \frac{GM}{r_\oplus^2}$, then to the first term of the Taylor expansion, we recover the familiar expression:
 
 {% math() %}
 F_g = mg
@@ -1112,7 +1113,7 @@ x(t) = Ae^{-\beta t} \cos (\sqrt{\omega_0^2 - \beta^2} t + \phi) + D(\omega) \co
 
 Typically, as $t \to \infty$, $x_H(t)$ decays exponentially, so $x_H(t) \approx 0$ and only the driving force (also called "transient") part of the solution remains.
 
-Unlike purely dampened or simple harmonic oscillators, driven damped oscillators have the phenomena of **resonance**. This is the idea that $D(\omega)$ can be _tuned_ to maximize its value and thereby maximize the amplitude. As a paraphrased example from _Waves: An Interactive Tutorial_ by Forinash and Christian, an example is a sound wave tuned with a value of $\omega$ that maximizes its amplitude sufficient break a wine glass.
+Unlike purely dampened or simple harmonic oscillators, driven damped oscillators have the phenomena of **resonance**. This is the idea that $D(\omega)$ can be _tuned_ to maximize its value and thereby maximize the amplitude. As a paraphrased example from _Waves: An Interactive Tutorial_ by Forinash and Christian, an example is a sound wave tuned with a value of $\omega$ that maximizes its amplitude sufficiently to break a wine glass.
 
 ### Applied harmonic oscillators
 
@@ -1370,7 +1371,7 @@ The **torque** is the rotational equivalent of linear force, akin to a measure o
 The magnitude of the torque is given by:
 
 {% math() %}
-\\| \tau \\| = rF\sin \theta
+\| \tau \| = rF\sin \theta
 {% end %}
 
 Here, $\theta$ is measured counter-clockwise. An angle measured clockwise between $\vec r$ and $\vec F$ would be equivalent to an angle of $-\theta$.
@@ -1427,6 +1428,21 @@ The parallel-axis theorem can be used to derive its moment of inertia at its cen
 I_{CM} = I - Mh^2 = I - M\left(\frac{L}{2}\right)^2 = \frac{1}{12} ML^2
 {% end %}
 
+> Note that in general, the moment of inertia at a rigid body's center of mass is always going to be lower than the moment of inertia at any other point on a rigid body.
+
+The moments of inertia of some common geometries (each of mass $m$) are shown in the table below:
+
+| Geometry | Momentum of inertia |
+|-----|----|
+| Thin rod of length $L$, rotating about its center of mass | $I = \dfrac{1}{12} mL^2$ |
+| Thin rod of length $L$, rotating about one of its ends | $I = \dfrac{1}{3} mL^2$ |
+| Thin circular loop of radius $R$, rotating about its center, placed on the XY-plane | $I_z = mR^2, I_x = I_y = \dfrac{1}{2}mR^2$ |
+| Hollow sphere of radius $R$ | $I = \dfrac{2}{3} mR^2$ |
+| Solid sphere of radius $R$ | $I = \dfrac{2}{5} mR^2$ |
+| Cube of side length $s$, rotating about the vertical axis passing through its center of mass | $I = \dfrac{1}{6} ms^2$ |
+
+_For more formulas, see [this Wikipedia page](https://en.wikipedia.org/wiki/List_of_moments_of_inertia), which was the basis for these formulas._
+
 ## Rigid body dynamics
 
 A rigid body is a body that does not deform under motion; while rigid bodies are an idealization, many objects that do not deform much under motion can be approximately modelled by rigid bodies. Motion can always be decomposed into the translational motion of the center of mass and rotational motion about the center of mass:
@@ -1445,14 +1461,19 @@ Rigid body dynamics may have the condition of slipping. An object is formally sa
 v_{CM} - R\omega = 0
 {% end %}
 
-### Kinetic dynamics
+### Rotational dynamics
+
+Analogous to translational motion, rotational motion also possesses dynamical quantities. For instance, the rotational kinetic energy is given by:
 
 {% math() %}
 K = \frac{1}{2} I \omega^2
 {% end %}
 
-> More will be added soon.
+We have also already seen the rotational equivalent of Newton's second law, defined in terms of the rotational acceleration and torque:
 
+$$
+I \alpha = I \dfrac{d^2 \phi}{dt^2} = I \dfrac{d\omega}{dt} = \sum_i \tau_i
+$$
 
 ## Fluid mechanics
 
@@ -1470,7 +1491,7 @@ Like solids, fluids can be acted on by forces. However, unlike solids, fluids di
 {% math() %}
 P = \frac{dF}{dA}
 {% end %}
-> Note that one **pascal** is equal to $\pu{1 N/m^2}$ and is the standard unit for pressure.
+> Note that one **pascal** (denoted $\pu{Pa}$) is equal to $\pu{1 N/m^2}$ and is the standard unit for pressure.
 
 Fluid pressure in a single dimension is described by the differential equation:
 {% math() %}
@@ -1495,7 +1516,7 @@ The solution to this differential equation is:
 P(y) = P_0 e^{-kgy} = P_e e^{-y/a}
 {% end %}
 
-Where $a = \frac{P_0}{\rho_0 g}$. This pressure function is used in the barometric formula for atmospheric pressure, where in this case $a \approx \pu{8,500 m}$ and $P_0 = \pu{1.01e5 Pa}$.
+Where $a = \dfrac{P_0}{\rho_0 g}$. This pressure function is used in the barometric formula for atmospheric pressure, where in this case $a \approx \pu{8,500 m}$ and $P_0 = \pu{1.01e5 Pa}$.
 
 ### Pascal's law
 
@@ -1771,8 +1792,6 @@ The _average_ power is given by:
 P_\mathrm{avg} = \frac{1}{T} \int_0^T P(t)~dt = \frac{1}{2} \sqrt{\mu F_0} \omega^2 A^2 = \frac{1}{2} \mu v^3 k^2 A^2
 {% end %}
 
-(add in the proper equation, remember $v = \sqrt{F/\mu}$)
-
 For a more in-depth discussion of waves, see the [waves and oscillations notes](@/waves-and-oscillations/index.md).
 
 ### Principle of Superposition
@@ -1797,7 +1816,7 @@ Where $\phi_\mathrm{rel}$ is the relative phase shift:
 
 Therefore when $\Delta \phi = 0$ (when the waves are in phase) then $\phi_\mathrm{rel} = 1$ which is known as **constructive** interference, and when $\Delta \phi = \pi$ (when the waves are completely out of phase) then $\phi_\mathrm{rel} = 0$ which is known as **destructive** interference.
 
-> Note: this is the case only when the waves have the same amplitude. Otherwise, it is often more helpful to describe waves with complex exponentials i.e. $y(x, t) = Ae^{i(kx - \omega t)}
+> Note: this is the case only when the waves have the same amplitude. Otherwise, it is often more helpful to describe waves with complex exponentials i.e. $y(x, t) = Ae^{i(kx - \omega t)}$
 
 ### Waves in fluids
 
@@ -1816,11 +1835,10 @@ P(x, t) = -B \frac{\partial y}{\partial x}
 This leads to the following two partial differential equations:
 
 {% math() %}
-\frac{\partial y}{\partial x} = -\frac{P(x, t)}{B}
-{% end %}
-
-{% math() %}
+\begin{align*}
+\frac{\partial y}{\partial x} = -\frac{P(x, t)}{B} \\
 \frac{\partial y}{\partial x} = -\frac{\rho(x, t)}{\rho_0} 
+\end{align*}
 {% end %}
 
 And the following connection between density and pressure:
@@ -1832,11 +1850,10 @@ And the following connection between density and pressure:
 If oscilations in a particular fluid result in sinusoidal longitudinal plane waves, then:
 
 {% math() %}
-P(x, t) = BkA \sin(kx - \omega t)
-{% end %}
-
-{% math() %}
-\rho(x, t) = \rho_0 k A\sin(kx - \omega t)
+\begin{align*}
+P(x, t) &= BkA \sin(kx - \omega t) \\
+\rho(x, t) &= \rho_0 k A\sin(kx - \omega t)
+\end{align*}
 {% end %}
 
 And $P_\mathrm{max} = BkA$, $\rho_\mathrm{max} = \rho_0 kA$, where $A = y_\mathrm{max}$, $k = \frac{\omega}{v}$ as is typical. The speed $v$ is given by:
@@ -1891,22 +1908,22 @@ In free space, $\rho = 0$ and $\mathbf{J} = 0$. Therefore, Maxwell's equations t
 \end{align*}
 {% end %}
 
-This leads to the result that electromagnetic fields propogate through space as waves, and even more surprisingly, $\frac{1}{\sqrt{\epsilon_0 \mu_0}}$ matches the known speed of light, suggesting that light _is_ an electromagnetic wave.
+This leads to the result that electromagnetic fields propogate through space as waves, and even more surprisingly, $\frac{1}{\sqrt{\epsilon_0 \mu_0}}$ matches the known speed of light $c$, suggesting that light _is_ an electromagnetic wave.
 
 ## Dynamics of special relativity
 
 In special relativity, all space and all time is considered relative, and combined into a single continuum of **spacetime**. The spacetime interval is an invariant measure of distances both of space and of time in special relativity:
 
 {% math() %}
-ds^2 = \eta_{\mu \nu} dx^\mu dx^\nu = -c^2 dt^2 + dx^2 + dy^2 + dz^2
+ds^2 = -c^2 dt^2 + dx^2 + dy^2 + dz^2
 {% end %}
 
-### Relativistic equations of motion
+This means that traditional classical concepts of time and distance are no longer the same when measured from frames that are moving with respect to another. Observers experience times and distances that can be different from other observers. For more on special relativity, see the [special relativity series](@/special-relativity/index.md).
 
 The relativistic equivalent of Newton's second law is given by:
 
 {% math() %}
-\frac{d}{dt} \left(\frac{mv}{\sqrt{1 - \frac{v^2}{c^2}}}) = F(x, t)
+\frac{d}{dt} \left[\frac{mv}{\sqrt{1 - \frac{v^2}{c^2}}}\right] = F(x, t)
 {% end %}
 
 Which can be written in terms of a quantity known as **4-momentum** $\mathbf{p}$, which is conserved in all frames:
@@ -1914,8 +1931,6 @@ Which can be written in terms of a quantity known as **4-momentum** $\mathbf{p}$
 {% math() %}
 \frac{d\mathbf{p}}{dt} = F(x, t)
 {% end %}
-
-For more on special relativity, see the [special relativity series](@/special-relativity/index.md)
 
 ## Thermodynamics
 
@@ -2027,4 +2042,4 @@ The **second law of thermodynamics** expresses the change in heat as a line inte
 \Delta Q = \int_\Lambda T~dS
 {% end %}
 
-As temperature is a statistical measure of itself, the second law predicts that **it is probabilistically likely entropy will increase in a closed system**. This prevents processes from being reversible; a cup falling off a table is unlikely to return back to the top of the table.
+As temperature is a statistical measure of itself, the second law predicts that **it is probabilistically most likely that entropy will increase in a closed system**. This prevents processes from being reversible; a cup falling off a table is unlikely to return back to the top of the table. In fact, the likelihood of a falling cup returning to the table is so, so low that in any non-astronomical timespan, it will essentially never occur.
