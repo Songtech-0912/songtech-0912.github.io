@@ -1443,7 +1443,7 @@ The solution is:
 (\lambda - 4)(\lambda - 5) \Rightarrow \lambda_1 = 4, \lambda_2 = 5
 {% end %}
 
-Now we must find the actual eigenvectors $\mathbf{x}_{e, i}$ (there may be one eigenvector or two eigenvectors for a 2D matrix). To do so, we substitute each eigenvalue into $(A - \lambda_i I) \mathbf{x}_{e, i} = 0$. We first compute $A - \lambda_i I$ for $i = 1$:
+Now we must find the actual eigenvectors {% inlmath() %}\mathbf{x}_{e, i}{% end %} (there may be one eigenvector or two eigenvectors for a 2D matrix). To do so, we substitute each eigenvalue into $(A - \lambda_i I) \mathbf{x}_{e, i} = 0$. We first compute $A - \lambda_i I$ for $i = 1$:
 
 {% math() %}
 A - \lambda_1 I=
@@ -1575,7 +1575,7 @@ The same process can be repeated for any other matrix. The process is simpler wi
 
 Any nth-order linear system of ODEs can be written as a first-order ODE system in the form $\mathbf{y'} = A\mathbf{y}$. The general solution of such an ODE can then be found by taking the eigenvalues and eigenvectors of $A$.
 
-In the case that there are two distinct real eigenvalues $\lambda_1, \lambda_2$, and two associated eigenvectors $\mathbf{x}_{e, 1}$ and $\mathbf{x}_{e, 2}$, then the general solution is given by:
+In the case that there are two distinct real eigenvalues $\lambda_1, \lambda_2$, and two associated eigenvectors {% inlmath() %}\mathbf{x}_{e, 1}$ and $\mathbf{x}_{e, 2}{% end %}, then the general solution is given by:
 
 {% math() %}
 \mathbf{y} = C_1 \mathbf{x}_{e, 1} e^{\lambda_1 t} + C_2 \mathbf{x}_{e, 2} e^{\lambda_2 t}
@@ -1664,11 +1664,7 @@ And the linear version of the system is given by evaluating the Jacobian at the 
 \mathbf{y'} = J(x_s, y_s) \mathbf{y}
 {% end %}
 
-We can then solve the system approximately about each steady state as a linear system.
-
-(MUST CHANGE PROBLEM SOON AS IT IS HW TEXTBOOK PROBLEM)
-
-As an example of finding the steady states, consider the nonlinear system:
+We can then solve the system approximately about each steady state as a linear system. As an example of finding the steady states, consider the nonlinear system (taken from a textbook):
 
 {% math() %}
 \begin{align*}
@@ -1702,44 +1698,46 @@ CD = 0 \\
 Therefore, there are 4 pairs of resulting simultaneous equations to solve each for a $(x, y)$ solution pair:
 
 {% math() %}
-\begin{align*}
+\begin{matrix}
 \begin{cases}
 A = 0 \\ C = 0
-\end{cases} \\
+\end{cases} &
 \begin{cases}
 A = 0 \\ D = 0
-\end{cases} \\
+\end{cases} \\\\
 \begin{cases}
 B = 0 \\ C = 0
-\end{cases} \\
+\end{cases} &
 \begin{cases}
 B = 0 \\ D = 0
 \end{cases}
-\end{align*}
+\end{matrix}
 {% end %}
 
 Or in this case:
 
 {% math() %}
-\begin{cases}
+\begin{align*}
+&\begin{cases}
 x = 0 \\ y = 0
-\end{cases} \\
-\begin{cases}
+\end{cases} 
+&\begin{cases}
 x = 0 \\ \frac{3}{2} - y - x = 0
-\end{cases} \\
-\begin{cases}
+\end{cases} \\\\
+&\begin{cases}
 1-x-y = 0 \\ y = 0
-\end{cases} \\
+\end{cases} &
 \begin{cases}
 1-x-y \\ \frac{3}{2} - y - x = 0
 \end{cases}
+\end{align*}
 {% end %}
 
 So the critical points are $(0, 0), (0, \frac{3}{2}), (1, 0)$.
 
 ### Nonlinear systems in population growth
 
-Consider a closed environment where two species $x$ and $y$ are competing. Let $x(t)$ and $y(t)$ be the population of each respective species. Then the Lotkaâ€“Volterra equations model the two populations' evolution through time:
+Consider a closed environment where two species $x$ and $y$ are competing. Let $x(t)$ and $y(t)$ be the population of each respective species. Then the Lotka-Volterra equations model the two populations' evolution through time:
 
 {% math() %}
 \begin{align*}
@@ -1764,8 +1762,6 @@ In the specific case that $x(t)$ is the prey and $y(t)$ is the predator, then th
 \end{align*}
 {% end %}
 
-(add things from Scratch notes)
-
 ## Laplace transforms
 
 The Laplace transform is a tool for solving differential equations by converting differential equations to algebraic equations. The Laplace transform of a function $f(t)$ gives a new function $f(x)$, and is notated:
@@ -1786,9 +1782,25 @@ f(s) = \int_0^\infty 1 e^{-st} dt = \lim_{b \to \infty} -\frac{1}{s}e^{-st} \big
 
 ### Table of Laplace transforms
 
-Manually computing Laplace transforms is very tedious and time-consuming. Therefore (link to a table of Laplace transforms on my website created using TeXmacs)
+Manually computing Laplace transforms is very tedious and time-consuming. Therefore, it is useful to consult a table of Laplace transforms. A full table is available [here](https://web.stanford.edu/~boyd/ee102/laplace-table.pdf), but the essentials are as follows:
 
-(also fix incorrect Laplace transform braces formatting)
+| Function $f(t)$ | Laplace transform $F(s) = \mathscr{L}(f(t))$ |
+|------|-----|
+| 1 | $\dfrac{1}{s}$ |
+| $e^{\alpha t}$ | $\dfrac{1}{s-\alpha}$ |
+| $t^n, n = 1, 2, \dots$ | $\dfrac{n!}{s^{n + 1}}$ |
+| $\sin \alpha t$ | $\dfrac{\alpha}{s^2 + \alpha^2}$|
+| $\cos \alpha t$ | $\dfrac{s}{s^2 + \alpha^2}$|
+| $e^{\alpha t} \sin \beta t$ | $\dfrac{b}{(s-\alpha)^2 + \beta^2}$ |
+| $e^{\alpha t} \cos \beta t$ | $\dfrac{s-\alpha}{(s-\alpha)^2 + \beta^2}$ |
+| $H_c(t) \equiv H(t - c)$ (Heaviside function) | $\dfrac{1}{s}e^{-cs}$ |
+| $\delta(t - c)$ (Dirac delta) | $e^{-cs}$ |
+| $e^{\kappa t} f(t)$ | $F(s - c)$ |
+| $t^n f(t), n = 1, 2, \dots$ | $(-1)^n \dfrac{d^n F(s)}{ds^n}$ |
+| $\dfrac{df}{dt}$ | $sF(s) - f(0)$ |
+| $\dfrac{d^2 f}{dt^2}$ | $s^2 F(s) - sf(0) - f'(0)$ |
+
+_Thanks to [Lamar's online notes](https://tutorial.math.lamar.edu/classes/de/laplace_table.aspx), which served as the basis for this table._
 
 ### Laplace transform for piecewise functions
 
@@ -1827,7 +1839,9 @@ One very useful property of the Heaviside step function is that it has a very el
 
 ### Inverse Laplace transform
 
-It is often desirable to find the original function from its Laplace transform, a problem solved by an _inverse_ Laplace transform. This involves a process of reverse pattern-matching using Laplace transform tables. Techniques to fit a function's Laplace transform to their original function include:
+It is often desirable to find the original function from its Laplace transform, a problem solved by an _inverse_ Laplace transform. This involves a process of reverse pattern-matching using Laplace transform tables. That is to say, we identify the Laplace transformed function (on the right column of the table), and we match it to the original function (on the left column of the table) - that original function is the _inverse Laplace transform_.
+
+However, in many cases, it is difficult to find an inverse Laplace transform that perfectly matches the Laplace transform table. Techniques we may then use to fit a function's Laplace transform to their original function include:
 
 - Using the linearity of the Laplace transform - constants can just be factored out
 - Partial fraction decomposition
@@ -1895,8 +1909,6 @@ a_n = \frac{1}{L} \int_{-L}^L f(x) \cos \frac{n\pi x}{L} dx
 {% math() %}
 b_n = \frac{1}{L} \int_{-L}^L f(x) \sin \frac{n\pi x}{L} dx
 {% end %}
-
-(Add more from my math cheatsheet on my notebook)
 
 ## Sine and cosine series
 
@@ -2010,7 +2022,7 @@ However, a unique solution of the heat equation can only be obtained when _bound
 | Type | Physical description | Spatial part | Temporal part | 
 |----|----|----|---|
 | Dirichlet | Constant temperature at edges | $u(x=0, t) = 0$ and $u(x=L, t) = 0$ | $u(x, t=0) = f(x)$ in time |
-| Neumann | Insulated boundary (no heat loss through edges) | $\frac{\partial u}{\partial x} \big\|_{(x = 0, t)} = \frac{\partial u}{\partial x} \big\|_{(x = L, t)} = 0$ | $u(x, t=0) = f(x)$ in time |
+| Neumann | Insulated boundary (no heat loss through edges) | {% inlmath() %}\frac{\partial u}{\partial x} \big|_{(x = 0, t)}{% end %} and {% inlmath() %} \frac{\partial u}{\partial x} \big|_{(x = L, t)} = 0{% end %} | $u(x, t=0) = f(x)$ in time |
 
 To solve with the Dirichlet boundary condition, we substitute in the respective boundary conditions into $u(x, t)$ to find the value of the 4 unknown constants. This results in:
 
@@ -2038,28 +2050,26 @@ C_n = \frac{2}{L} \int_0^L f(x) \sin \left(\frac{n \pi x}{L} \right)dx
 
 ### The wave equation
 
-Equation:
+The wave equation is given by:
 
 {% math() %}
 \frac{\partial^2 u}{\partial t^2} = v^2 \frac{\partial^2 u}{\partial x^2}
 {% end %}
 
-General solution:
+We may use the same method of the separation of variables to find the general solution of the wave equation, given by:
 
 {% math() %}
 u(x, t) = (k_1 \cos \lambda x + k_2 \sin \lambda x)(k_3 \cos \lambda v t + k_4 \sin \lambda v t)
 {% end %}
 
-Particular solution for waves on a string with applied boundary conditions:
+We may also take a superposition of waves, which still solves the wave equation by the superposition principle. For instance, in Fourier series form, the particular solution for waves on a string with applied boundary conditions are given by:
 
 {% math() %}
-u(x, t) = \sum_{n = 1}^\infty a_n \sin \left(\frac{n\pi x}{L}\right) \cos \left(\frac{n\pi ct}{L}\right) + \sum_{n = 1}^\infty b_n \sin \left(\frac{n\pi x}{L}\right) \sin \left(\frac{n \pi ct}{L}\right)
+\begin{align*}
+u(x, t) &= \sum_{n = 1}^\infty a_n \sin \left(\frac{n\pi x}{L}\right) \cos \left(\frac{n\pi ct}{L}\right) \\ &+ \sum_{n = 1}^\infty b_n \sin \left(\frac{n\pi x}{L}\right) \sin \left(\frac{n \pi ct}{L}\right)
+\end{align*}
 {% end %}
-
-(add more from the crib sheet)
 
 ### The fundamental nature of differential equations
 
-All ODEs + PDEs from standard model + Einstein field equations -> describe all physics.
-
-Everything in the universe results from these PDEs, or are derived from phenomena that result from various large-scale or limiting cases of these PDEs. Being able to solve these PDEs, essentially, **allows you to know everything (classically) knowable about the universe**. _This_ is why learning differential equations matters.
+We have now come to the end of this introductory series, where we will take a brief section to explain the motivation behind why we learn about differential equations. Differential equations are not just mathematically elegant - they are powerful mathematical tools that describe the Universe. The most fundamental phenomena in the Universe are modelled by differential equations, or are derived from phenomena that result from various large-scale or limiting cases of these PDEs. Being able to solve these PDEs, essentially, **allows you to know everything (classically) knowable about the universe**. _This_ is why learning differential equations matters.
