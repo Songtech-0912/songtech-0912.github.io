@@ -9,6 +9,10 @@ This a mini-book on quantum physics, with topics covered including wavefunctions
 
 ## Why quantum theory?
 
+![An image of physicist Niels Bohr, an early proponent of quantum mechanics, standing at a whiteboard](https://cdn10.picryl.com/photo/2014/12/31/niels-bohr-standing-at-blackboard-principal-investigatorproject-analog-conversion-85f94c-1024.jpg)
+
+_Niels Bohr doing quantum mechanics - [source](https://nara.getarchive.net/media/niels-bohr-standing-at-blackboard-principal-investigatorproject-analog-conversion-85f94c)_
+
 Quantum theory is our best understanding of how the universe works at its most fundamental level. It is fundamentally paradoxical to human experience, but it is the bedrock of almost all of modern physics and its predictive power has made technological innovations possible. In addition, it is also a very scientifically and philosophically interesting theory to learn. This article forms the basis of an introduction to quantum mechanics.
 
 ## Getting started with quantum mechanics
@@ -128,16 +132,18 @@ Since quantum particles are described through probability distribution functions
 
 It is often convenient to write out a wavefunction in terms of separate time-dependent and time-independent components. We denote the full wavefunction as $\Psi(x, t)$, and the time-independent part as $\psi(x)$, where $\Psi(x, t) = \psi(x) e^{-i E/\hbar}$ for some value of the energy $E$. 
 
-This is not simply a manner of convention. The underlying reason is that by the separation of variables technique, the Schrödinger equation can be rewritten as _two_ differential equations in the form:
+This is not simply a matter of convention. The underlying reason is that by the separation of variables technique, the Schrödinger equation can be rewritten as _two_ differential equations in the form:
 
 {% math() %}
 \begin{align*}
-i\hbar \dfrac{\partial}{\partial t} \phi(t) &= E \phi(t) \\
+i\hbar \dfrac{d}{d t} \phi(t) &= E \phi(t) \\
 -\dfrac{\hbar^2}{2m} \dfrac{\partial^2 \psi}{\partial x^2} + V(x) \psi &= E \psi(x)
 \end{align*}
 {% end %}
 
 Where we refer to the bottom differential equation as the _time-independent_ Schrödinger equation, and $\Psi(x, t) = \psi(x) \phi(t)$. Thus we say that $\psi(x)$ is a solution of the _time-independent_ Schrödinger equation and represents the time-independent component of the wavefunction.
+
+> When applying the Schrödinger equation, it is convention (though not a rule) that a lowercase $\psi$ for $\psi(x)$ is used for the spatial component of the wavefunction that is the solution to the time-independent Schrödinger equation, and an uppercase $\Psi$ for $\Psi(x, t) = \psi(x) \phi(t)$ is used for the complete wavefunction in both time and space. This also means that $\psi(x) = \Psi(x, 0)$. 
 
 ## Solutions as eigenstates
 
@@ -387,19 +393,293 @@ Where $e$ is the electron charge, $m$ is the electron mass, $g \approx 2.00232$,
 Spin modifies a quantum state because a quantum state must _additionally_ include information about a quantum particle's spin. For electrons, all spins must either be $+\frac{1}{2}$ (spin-up) or $-\frac{1}{2}$ (spin-down); these are the _only_ two possible spins.
 
 
-We formulate spin mathematically as an operator, just like energy and momentum. However, unlike the differential operators we've seen, the spin operators $\hat \sigma_x, \hat \sigma_y, \hat \sigma_z$ (there is one for each direction $x, y, z$) are matrices, and specifically the **Pauli matrices**:
+We formulate spin mathematically as an operator, just like energy and momentum. However, unlike the differential operators we've seen, the spin operators $\hat S_x, \hat S_y, \hat S_z$ (there is one for each direction $x, y, z$) are matrices. In the case of elementary fermions (quarks, electrons, and neutrinos) which have spin-1/2 these are specifically expressed as:
 
 {% math() %}
 \begin{align*}
-\hat \sigma _{x} &={\begin{pmatrix}0 & 1\\1 & 0\end{pmatrix}}\\
-\hat \sigma_{y} & ={\begin{pmatrix}0 & -i\\i & 0\end{pmatrix}}\\
-\hat \sigma_{z} & ={\begin{pmatrix}1 & 0\\0 & -1\end{pmatrix}}\\
+\hat \sigma _{x} &=\dfrac{\hbar}{2}{\begin{pmatrix}0 & 1\\1 & 0\end{pmatrix}}\\
+\hat \sigma_{y} & =\dfrac{\hbar}{2}{\begin{pmatrix}0 & -i\\i & 0\end{pmatrix}}\\
+\hat \sigma_{z} & =\dfrac{\hbar}{2}{\begin{pmatrix}1 & 0\\0 & -1\end{pmatrix}}\\
 \end{align*}
 {% end %}
 
-The inclusion of spin means that even electrons with otherwise identical eigenstates are not the same; their wavefunctions must also include whether they are spin-up or spin-down. While the Schrödinger equation does not include spin, more advanced formulations of the Schrödinger equation **do include** the effects of spin, and are essential for very accurate calculations. We will return to spin later, in our discussion of advanced quantum mechanics.
+The inclusion of spin means that even electrons with otherwise identical eigenstates are not the same; their wavefunctions must also include whether they are spin-up or spin-down. While the Schrödinger equation does not include spin, more advanced formulations of the Schrödinger equation **do include** the effects of spin, and are essential for very accurate calculations. We will return to spin later at the end.
 
-## The postulates of quantum mechanics
+## Solving quantum systems
+
+We will now apply quantum mechanics to solve a variety of quantum systems, to get a feel for how exactly you _do_ quantum mechanics. Note that there are only a few exact solutions to quantum problems, and approximate methods are required for the vast majority of quantum systems, so these should be (with some exceptions) considered _idealized_ systems.
+
+### The free particle
+
+The free particle is among the simplest quantum systems that have an exact solution to the Schrödinger equation. We start from the one-dimensional Schrödinger equation for $V(x) = 0$, for which we may solve for the wavefunction:
+
+{% math() %}
+\begin{align*}
+-\dfrac{\hbar^2}{2m} \dfrac{\partial^2 \Psi(x, t)}{\partial x^2} + \cancel{V(x)} &= i \hbar \dfrac{\partial \Psi(x, t)}{\partial t} \Rightarrow \\
+-\dfrac{\hbar^2}{2m} \dfrac{\partial^2 \Psi(x, t)}{\partial x^2} &= i \hbar \dfrac{\partial \Psi(x, t)}{\partial t}
+\end{align*}
+{% end %}
+
+If we assume a solution in the form $\Psi(x) = \psi(x) f(t)$, we may substitute to find that:
+
+{% math() %}
+\begin{align*}
+\dfrac{\partial^2 \Psi(x, t)}{\partial x^2} &= f(t)\dfrac{d^2 \psi}{dx^2} \\
+\dfrac{\partial \Psi(x, t)}{\partial t} &= \psi(x) \dfrac{df}{dt}
+\end{align*}
+{% end %}
+
+> These are ordinary derivatives because $\psi(x)$ and $f(t)$ are functions of only one variable.
+
+Thus if we substitute these derivatives back into the Schrödinger equation we get:
+
+{% math() %}
+-\dfrac{\hbar^2}{2m} f(t)\dfrac{d^2 \psi}{dx^2} = i \hbar \psi(x) \dfrac{df}{dt}
+{% end %}
+
+Now dividing both sides by $\psi(x)f(t)$ we have:
+
+{% math() %}
+\begin{align*}
+-\dfrac{1}{\psi(x) f(t)}\dfrac{\hbar^2}{2m} f(t)\dfrac{d^2 \psi}{dx^2} = \dfrac{1}{\psi(x) f(t)} i \hbar \psi(x) \dfrac{df}{dt} \\
+-\dfrac{\hbar^2}{2m} \dfrac{1}{\psi(x)}\dfrac{d^2 \psi}{dx^2} = i \hbar\dfrac{1}{f(t)} \dfrac{df}{dt} = \text{const.}
+\end{align*}
+{% end %}
+
+This is the method of **separation of variables**, which is covered in the [differential equations guide](@/differential-equations/index.md) as well as the [solving separable PDEs guide](@/solving-pdes.md). If we call the separation constant $E$, we have:
+
+{% math() %}
+\begin{align*}
+-\dfrac{\hbar^2}{2m} \dfrac{1}{\psi(x)}\dfrac{d^2 \psi}{dx^2} = i \hbar\dfrac{1}{f(t)} \dfrac{df}{dt} = E \Rightarrow \\
+-\dfrac{\hbar^2}{2m} \dfrac{1}{\psi(x)}\dfrac{d^2 \psi}{dx^2} = E \\
+i \hbar\dfrac{1}{f(t)} \dfrac{df}{dt} = E
+\end{align*}
+{% end %}
+
+The two ODEs can be rewritten in a more easily-read form as:
+
+{% math() %}
+\begin{align*}
+-\dfrac{\hbar^2}{2m} \dfrac{d^2 \psi}{dx^2} = E\psi(x) \\
+i \hbar\dfrac{df}{dt} = Ef(t)
+\end{align*}
+{% end %}
+
+> The top differential equation is the **time-independent Schrödinger equation** we saw before, just we $V(x) = 0$.
+
+We can use the traditional methods of solving first- and second-order differential equations (or just make an educated guess, that's called an _ansatz_) to find the solutions are:
+
+{% math() %}
+\begin{align*}
+\psi(x) &= e^{i k x}, \quad k \equiv \dfrac{\sqrt{2mE}}{\hbar} \\
+f(t) &= e^{-i \omega t}, \quad \omega \equiv \dfrac{E}{\hbar} \\
+\Psi(x, t) &= \psi(x) f(t) = e^{ikx} e^{-i\omega t} \\ &= e^{ik x - i\omega t}
+\end{align*}
+{% end %}
+
+> We call this solution a **plane-wave** solution.
+
+We now encounter an issue: the plane-wave solution $\Psi(x, t) = e^{i(kx -\omega t)}$ is non-normalizable; if we try to perform the normalization integral, we'll find that its total probability is infinite and thus is unphysical. However, if we create a superposition of plane waves by adding them together (which, again, are still solutions to the Schrödinger equation because it is a linear combination), we _do_ get a physical solution, which we call a **wave packet**:
+
+![A wave packet, created by summing many plane waves](https://phys.libretexts.org/@api/deki/files/38619/Screen_Shot_2022-01-27_at_2.45.04_PM.png?revision=1&size=bestfit&width=670&height=240)
+
+<em>Source: <a href="https://phys.libretexts.org/Bookshelves/Classical_Mechanics/Essential_Graduate_Physics_-_Classical_Mechanics_(Likharev)/06%3A_From_Oscillations_to_Waves/6.03%3A_1D_Waves">LibreTexts</a></em>
+
+We can create this superposition by adding plane waves of different wavevectors $k$ and frequencies $\omega$, which are related by $\omega = k v_g$ where $v_g$ is the _group velocity_, meaning the velocity at which the wave packet moves over time. This becomes an integral as the number of summed waves approaches infinity:
+
+{% math() %}
+\Psi(x, t) = \dfrac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty A(k) e^{i(kx - \omega t)}\, dk
+{% end %}
+
+Where $A(k)$ is a function that gives the wavevector $k$ for each summed wave. A common choice of $A(k)$ is the Gaussian, given by:
+
+{% math() %}
+A(k) = \sqrt{\sigma}\left(\dfrac{2}{\pi}\right)^{1/4} e^{-\sigma^2 (k - k_0)^2}
+{% end %}
+
+And therefore the wavefunction $\Psi(x, t)$ is given by:
+
+{% math() %}
+\Psi(x, t) =\left( \dfrac{1}{2 \pi} \right)^{1 / 4} \dfrac{1}{\sqrt{\sigma}} e^{i k_0 x -
+\frac{x^2}{4 \sigma^2}} e^{-i \omega t}
+{% end %}
+
+### The infinite square well
+
+Consider a particle that is trapped at a bottom of a well with length $L$ and walls that are infinitely high. We may model this with a potential given by:
+
+{% math() %}
+V(x) = \begin{cases}
+\infty, & x < 0 \\
+0, & 0 \leq x \leq L \\
+\infty, & x > L
+\end{cases}
+{% end %}
+
+The general solution of the time-independent Schrödinger equation is given by:
+
+{% math() %}
+\psi(x, t) = A e^{i k x} + B e^{-ik x}
+{% end %}
+
+For some yet-to-be determined constants $A$ and $B$. As the particle is confined within the region $0 \leq x \leq L$, the wavefunction must satisfy the boundary conditions that $\psi(0) = \psi(L) = 0$. By substituting $\psi(0) = 0$ into the equation we have:
+
+{% math() %}
+\psi(0) = A + B = 0 \Rightarrow B = -A
+{% end %}
+
+Thus our solution becomes:
+
+{% math() %}
+\psi(x, t) = A e^{i k x} + (-A) e^{-ik x} = A(e^{i k x} - e^{-ikx})
+{% end %}
+
+The, we substitute $\psi(L) = 0$. Therefore we have:
+
+{% math() %}
+A(e^{i k L} - e^{-ikL}) = 0
+{% end %}
+
+We may convert this using Euler's formula to be expressed in terms of trigonometric functions, recalling that $e^{i\theta} - e^{-i\theta} = 2 i\sin \theta$:
+
+{% math() %}
+A(e^{i k L} - e^{-ikL}) = 2Ai \sin (kL) = 0
+{% end %}
+
+Sine is equal to zero at $\theta = 0, \pi, 2\pi, 3\pi, \dots = n\pi$ so we have:
+
+{% math() %}
+kL = n\pi
+{% end %}
+
+Which we can rearrange to:
+
+{% math() %}
+k = \dfrac{n\pi}{L}
+{% end %}
+
+Thus our solution can now be written as:
+
+{% math() %}
+\psi(x) = 2A i \sin \left(\dfrac{n\pi x}{L}\right)
+{% end %}
+
+With associated probability density:
+
+{% math() %}
+\rho(x) = |\psi(x)|^2 = -4A^2 \sin^2 \left(\dfrac{n\pi x}{L}\right)
+{% end %}
+
+We may solve for $A$, the normalization factor, by demanding that the integral of the probability density over all space be equal to one:
+
+{% math() %}
+\int_{-\infty}^\infty \rho(x)\, dx = 1
+{% end %}
+
+From here, we can find that $2Ai = \sqrt{\dfrac{2}{L}}$ and therefore the spatial wavefunction is:
+
+{% math() %}
+\psi(x) = \sqrt{\dfrac{2}{L}} \sin \left(\dfrac{n\pi x}{L}\right)
+{% end %}
+
+To find the wavefunction in time, we simply apply the Hamiltonian to $\psi$, recalling the $\hat H \psi = E\psi$, where we find that:
+
+{% math() %}
+\begin{align*}
+\hat H \psi &= -\frac{\hbar^2}{2m} \dfrac{\partial^2}{\partial x^2} \sqrt{\dfrac{2}{L}} \sin \left(\dfrac{n\pi x}{L}\right) \\
+& = \dfrac{n^2 \pi^2 \hbar^2}{2 m L^2} \sqrt{\dfrac{2}{L}} \sin \left(\dfrac{n\pi x}{L}\right) \\
+&= E \psi
+\end{align*}
+{% end %}
+
+Thus we identify the energies as given by:
+
+{% math() %}
+E_n = \dfrac{n^2 \pi^2 \hbar^2}{2 m L^2}, \quad n = 1, 2, 3, \dots
+{% end %}
+
+Note that instead of one energy or a continuous energy spectrum, we have _discrete_ energies $E_1, E_2, E_3, \dots$, one for each integer value of $n$. The $E_1$ state, which is the lowest energy state, is called the **ground state**. Interestingly, this is nonzero; its energy is given by:
+
+{% math() %}
+E_1 = \dfrac{\pi^2 \hbar^2}{2 m L^2}
+{% end %}
+
+This is due to the fact that the energy and momentum operators commute, so that if $E = 0$, then we know the precise energy of the quantum particle (zero) and the precise momentum (also zero). But if the momentum were known precisely (and thus have zero uncertainty), then the Heisenberg uncertainty principle would be violated:
+
+{% math() %}
+\Delta x \Delta p = \Delta x (0) = 0 \ngeq \dfrac{\hbar}{2}
+{% end %}
+
+Thus the energy in the ground state cannot be zero; rather, it is a nonzero value we often call the **zero-point energy**. In addition, since energy can only come in steps of integer $n$, we say that the energy is **quantized** - hence _quantum_ mechanics.
+
+> The zero-point energy is the origin of many physical processes, and is explored in-depth in quantum field theory. It is also of interest in cosmology, where the expansion of the Universe is, according to our best understanding at present, driven by zero-point energy.
+
+### The hydrogen atom
+
+A very famous quantum system is that of the hydrogen atom - the simplest atom, with one electron and one proton. We can simplify the system even further by modelling the contribution of the proton with the _classical_ Coloumb charge potential, since the proton is "large enough" compared to the electron (almost a thousand times more massive) that its behavior deviates only slightly from the classical description. Thus, we only need to consider the quantum behavior of the electron for the wavefunction of the entire hydrogen atom system.
+
+Using the time-independent Schrödinger equation with the Coloumb potential, we have the partial differential equation:
+
+ {% math() %}
+ -\frac{\hbar}{2m} \nabla^2 \psi - \frac{e^2}{4\pi \epsilon_0 r} \psi = E \psi
+ {% end %}
+
+ This is typically solved in spherical coordinates, where the $\nabla^2$ (Laplacian) operator becomes a mess, resulting in the overwhelmingly long equation (copied from Wikipedia):
+
+ {% math() %}
+ -{\frac {\hbar ^{2}}{2m}}\left[{\frac {1}{r^{2}}}{\frac {\partial }{\partial r}}\left(r^{2}{\frac {\partial \psi }{\partial r}}\right)+{\frac {1}{r^{2}\sin \theta }}{\frac {\partial }{\partial \theta }}\left(\sin \theta {\frac {\partial \psi }{\partial \theta }}\right)+{\frac {1}{r^{2}\sin ^{2}\theta }}{\frac {\partial ^{2}\psi }{\partial \varphi ^{2}}}\right]-{\frac {e^{2}}{4\pi \varepsilon _{0}r}}\psi =E\psi
+ {% end %}
+
+ The one saving grace is that this PDE happens to be a _separable_ differential equation, and can be solved using separation of variables. But solving this is a matter of mathematics, not physics, and so we will omit the solving steps and just give the general solution:
+
+ {% math() %}
+ \psi _{n\ell m}(r,\theta ,\varphi )={\sqrt {{\left({\frac {2}{na_{0}}}\right)}^{3}{\frac {(n-\ell -1)!}{2n(n+\ell )!}}}}e^{-\rho /2}\rho ^{\ell }L_{n-\ell -1}^{2\ell +1}(\rho )Y_{\ell }^{m}(\theta ,\varphi )
+ {% end %}
+
+ Where:
+
+- $a_0 = \frac{4\pi \epsilon_0 \hbar^2}{me^2}$ is the Bohr radius, where the Bo
+- $\rho = \frac{2r}{na_0^*}$
+- $L_{n - \ell - 1}^{2 \ell + 1}(\rho)$ is a Laguerre polynomial
+- $Y_\ell^m (\theta, \varphi)$ is a spherical harmonic function
+- $n = 1, 2, 3, \dots$ is the principal quantum number that determines the energy level and parametrizes each eigenstate
+- $\ell = 0, 1, 2, \dots, n-1$ is the azimuthal quantum number
+- $m = -\ell, \dots, \ell$ is the magnetic quantum number
+
+The energy levels of hydrogen are given by the energy eigenvalues of its wavefunction:
+
+{% math() %}
+E_n = -\dfrac{m_e c^2 \alpha^2}{2n^2} = -\dfrac{\hbar^2}{2 m a_0^2 n^2}
+{% end %}
+
+Which can be written in even simpler form as $E_n = -\dfrac{R}{n^2}$ where $R = \dfrac{m_e c^2 \alpha^2}{2}$, known as the **Rydberg energy** which is approximately -13.6 eV.
+In this expression:
+
+- $j$ is the total angular momentum quantum number
+- $\mu$ is the reduced mass of the hydrogen atom, which is very close to (but not exactly equal to) $m_e$, the mass of an electron
+- $\alpha$ is the fine-structure constant and approximately equal to $1/137$
+
+> **An important note:** Yes, these energy eigenvalues are negative, because the Coulomb potential is negative as well. In fact, we say that the negative energies reflect the fact that the associated eigenstates are _bound states_, and the magnitude of their energy is the energy necessary to overcome the Coulomb potential. As their energies are negative, they do not have enough energy to escape the potential, and thus stay in place - the more negative the energy, the more stable and static the system.
+
+Later on, refinements to quantum theory found that the predicted energy levels, when also including relativistic corrections, are more accurately given by:
+
+{% math() %}
+E_{j, n} = -{\mu c^2}\left[{1 - \left(1 + \alpha^2 \left(n - j - \frac{1}{2} + \sqrt{\left(j + \frac{1}{2}\right)^2 - \alpha^2}\right)^{-2}\right)}\right]
+{% end %}
+
+Where $\mu$ is the _reduced mass_, i.e. $\mu \equiv \dfrac{m_e m_p}{m_e + m_p}$ where $m_e, m_p$ are the electron and proton mass and $j_\pm = |\ell \pm \frac{1}{2}|$. The historical discovery of the solution to the Schrödinger equation for the hydrogen atom and the calculation of its eigenvalues proved to be one of the first experimental results that confirmed the predictions of quantum mechanics. By using $E_n = \dfrac{hc}{\lambda_n}$ with the value of $E_n = -\dfrac{m_e c^2 \alpha^2}{2n^2}$ predicted by the Schrödinger equation, the calculated wavelengths of light almost exactly matched measurements of those emitted by hydrogen. To read more about this discovery, see the quantum chemistry portion of the [general chemistry series](@/fundamentals-of-chemistry.md). This result revolutionized physics and brought quantum mechanics to its forefront. To this day, quantum mechanics remains the building block of modern physics.
+
+### The quantum harmonic oscillator
+
+We'll now take a look at the quantum harmonic oscillator, a quantum system describing a particle that oscillates within a harmonic (i.e. quadratic) potential. But first, why study it? The reason is because all potentials are _approximately_ harmonic potentials close to their local minimums. Why? Because, in one line:
+
+{% math() %}
+V(x) = V(x_0) + \cancel{V'(x_0) x} + \frac{1}{2} V''(x_0) x^2 + \cancel{\frac{1}{6} V'''(x_0) x^3} + \cancel \dots = V_0 + kx^2
+{% end %}
+
+In words, any potential can be expanded as a Taylor series, and close to a local minimum, the first derivative is zero, and the second derivative is a constant, with all higher-order terms vanishing. That means for _any_ quantum system constrained to evolve under a potential $V(x)$, their behavior close to a local minimum of the potential will be that of the quantum harmonic oscillator, no matter how complicated the potential is.
+
+## The mathematics behind quantum mechanics
 
 The Schrödinger equation is certainly a very useful tool and all problems in non-relativistic quantum theory, with the exception of problems that involve spin, can be solved from the Schrödinger equation. However, simply taking the Schrödinger equation for granted is somewhat ignoring _why_ it works the way it does. So we will now take many steps back and build up quantum theory from its mathematical and physical fundamentals.
 
@@ -856,91 +1136,12 @@ P = |\langle \alpha | \Psi \rangle|^2
  A famous example is the uncertainty relation between $\hat x$ and $\hat p$, one that we have already seen earlier - the Heisenberg uncertainty principle:
 
  {% math() %}
- \Delta x \Delta pp \geq \frac{\hbar}{2}
+ \Delta x \Delta p \geq \frac{\hbar}{2}
  {% end %}
-
-## Solving quantum systems
-
-We will now apply quantum mechanics to solve a variety of quantum systems.
-
-### The free particle
-
-The free particle is among the simplest quantum systems that have an exact solution to the Schrödinger equation.
-
-### The infinite square well
-
-### The finite square well
-
-### Understanding wavefunctions qualitatively
-
-### The hydrogen atom
-
-A very famous quantum system is that of the hydrogen atom - the simplest atom, with one electron and one proton. We can simplify the system even further by modelling the contribution of the proton with the _classical_ Coloumb charge potential, since the proton is "large enough" compared to the electron (almost a thousand times more massive) that its behavior deviates only slightly from the classical description. Thus, we only need to consider the quantum behavior of the electron for the wavefunction of the entire hydrogen atom system.
-
-Using the time-independent Schrödinger equation with the Coloumb potential, we have the partial differential equation:
-
- {% math() %}
- -\frac{\hbar}{2m} \nabla^2 \psi - \frac{e^2}{4\pi \epsilon_0 r} \psi = E \psi
- {% end %}
-
- This is typically solved in spherical coordinates, where the $\nabla^2$ (Laplacian) operator becomes a mess, resulting in the overwhelmingly long equation (copied from Wikipedia):
-
- {% math() %}
- -{\frac {\hbar ^{2}}{2m}}\left[{\frac {1}{r^{2}}}{\frac {\partial }{\partial r}}\left(r^{2}{\frac {\partial \psi }{\partial r}}\right)+{\frac {1}{r^{2}\sin \theta }}{\frac {\partial }{\partial \theta }}\left(\sin \theta {\frac {\partial \psi }{\partial \theta }}\right)+{\frac {1}{r^{2}\sin ^{2}\theta }}{\frac {\partial ^{2}\psi }{\partial \varphi ^{2}}}\right]-{\frac {e^{2}}{4\pi \varepsilon _{0}r}}\psi =E\psi
- {% end %}
-
- The one saving grace is that this PDE happens to be a _separable_ differential equation, and can be solved using separation of variables. But solving this is a matter of mathematics, not physics, and so we will omit the solving steps and just give the general solution:
-
- {% math() %}
- \psi _{n\ell m}(r,\theta ,\varphi )={\sqrt {{\left({\frac {2}{na_{0}}}\right)}^{3}{\frac {(n-\ell -1)!}{2n(n+\ell )!}}}}e^{-\rho /2}\rho ^{\ell }L_{n-\ell -1}^{2\ell +1}(\rho )Y_{\ell }^{m}(\theta ,\varphi )
- {% end %}
-
- Where:
-
-- $a_0 = \frac{4\pi \epsilon_0 \hbar^2}{me^2}$ is the Bohr radius, where the Bo
-- $\rho = \frac{2r}{na_0^*}$
-- $L_{n - \ell - 1}^{2 \ell + 1}(\rho)$ is a Laguerre polynomial
-- $Y_\ell^m (\theta, \varphi)$ is a spherical harmonic function
-- $n = 1, 2, 3, \dots$ is the principal quantum number that determines the energy level and parametrizes each eigenstate
-- $\ell = 0, 1, 2, \dots, n-1$ is the azimuthal quantum number
-- $m = -\ell, \dots, \ell$ is the magnetic quantum number
-
-The energy levels of hydrogen are given by the energy eigenvalues of its wavefunction:
-
-{% math() %}
-E_n = -\dfrac{m_e c^2 \alpha^2}{2n^2} = -\dfrac{\hbar^2}{2 m a_0^2 n^2}
-{% end %}
-
-Which can be written in even simpler form as $E_n = -\dfrac{R}{n^2}$ where $R = \dfrac{m_e c^2 \alpha^2}{2}$, known as the **Rydberg energy**.
-Where:
-
-- $j$ is the total angular momentum quantum number
-- $\mu$ is the reduced mass of the hydrogen atom, which is very close to (but not exactly equal to) $m_e$, the mass of an electron
-- $\alpha$ is the fine-structure constant and approximately equal to $1/137$
-
-> **An important note:** Yes, these energy eigenvalues are negative, because the Coulomb potential is negative as well. In fact, we say that the negative energies reflect the fact that the associated eigenstates are _bound states_, and the magnitude of their energy is the energy necessary to overcome the Coulomb potential. As their energies are negative, they do not have enough energy to escape the potential, and thus stay in place - the more negative the energy, the more stable and static the system.
-
-Later on, refinements to quantum theory found that the predicted energy levels, when also including relativistic corrections, are more accurately given by:
-
-{% math() %}
-E^j_n = -\frac{\mu c^2}{1 - \left(1 + \alpha^2 \left(n - j - \frac{1}{2} + \sqrt{(j + \frac{1}{2})^2 - \alpha^2}\right)^{-2}\right)}
-{% end %}
-
-Where $\mu$ is the _reduced mass_, i.e. $\mu \equiv \dfrac{m_e m_p}{m_e + m_p}$ where $m_e, m_p$ are the electron and proton mass. The historical discovery of the solution to the Schrödinger equation for the hydrogen atom and the calculation of its eigenvalues proved to be one of the first experimental results that confirmed the predictions of quantum mechanics. By using $E = \dfrac{hc}{\lambda}$ with the value of $E_n = \dfrac{m_e c^2 \alpha^2}{2n^2}$ predicted by the Schrödinger equation, the calculated wavelengths of light almost exactly matched measurements of those emitted by hydrogen. To read more about this discovery, see the quantum chemistry portion of the [general chemistry series](@/fundamentals-of-chemistry.md). This result revolutionized physics and brought quantum mechanics to its forefront. To this day, quantum mechanics remains the building block of modern physics.
-
-### The quantum harmonic oscillator
-
-We'll now take a look at the quantum harmonic oscillator, a quantum system describing a particle that oscillates within a harmonic (i.e. quadratic) potential. But first, why study it? The reason is because all potentials are _approximately_ harmonic potentials close to their local minimums. Why? Because, in one line:
-
-{% math() %}
-V(x) = V(x_0) + \cancel{V'(x_0) x} + \frac{1}{2} V''(x_0) x^2 + \cancel{\frac{1}{6} V'''(x_0) x^3} + \cancel \dots = V_0 + kx^2
-{% end %}
-
-In words, any potential can be expanded as a Taylor series, and close to a local minimum, the first derivative is zero, and the second derivative is a constant, with all higher-order terms vanishing. That means for _any_ quantum system constrained to evolve under a potential $V(x)$, their behavior close to a local minimum of the potential will be that of the quantum harmonic oscillator, no matter how complicated the potential is.
 
 ## The fundamental postulates of quantum mechanics
 
-To summarize what we've covered, we can distill the theory of quantum mechanics into these fundamental postulates:
+To summarize what we've covered, we can distill the theory of quantum mechanics into these fundamental _mathematical_ postulates:
 
 1. A quantum system is completely described by a **quantum state** $|\Psi\rangle$, also represented by $\psi(x) \equiv \Psi(x, 0)$, which is a complex-valued vector in a Hilbert space.
 	- A state describes a quantum particle at a particular instant in terms of its probability distribution. 
@@ -995,7 +1196,7 @@ The most precise theory of quantum mechanics is the **Standard Model**, which ex
 
 Quantum mechanics is perhaps one of the most profoundly impactful and _useful_ theories of physics ever devised. Its uses are numerous and essentially anything to do with microscopic processes - for instance, semiconductors, diodes, superconductors, atomic spectroscopy, nuclear technologies, quantum optics, lasers, scanning electron microscopy, quantum chemistry, and advanced materials research - all involve quantum mechanics in some way. That is to say, quantum mechanics has many _practical applications_.
 
-However, these are essentially all applications of non-relativistic quantum mechanics. Going beyond and into relativistic quantum mechanics becomes more and more the realm of purely precision science (except for some applications in condensed matter physics). Elementary particle physics, in particular, does not (yet) have many day-to-day applications, other than simply advancing our understanding of physics and science. It is motivated purely by human curiosity. One day, our civilization may reach the levels of technological development that require relativistic quantum field theory on a regular basis, but this has not come yet. Bearing that in mind, it is nonetheless a fascinating intellectual pursuit and well-worth the time to dive into.
+However, these are essentially all applications of non-relativistic quantum mechanics. Going beyond and into relativistic quantum mechanics becomes more and more the realm of purely precision science (except for some applications in condensed matter physics). Elementary particle physics, in particular, does not (yet) have many day-to-day applications, other than simply advancing our understanding of physics and science. It is motivated purely by human curiosity and the pursuit of pushing the frontiers of science ever further. One day, our civilization may reach the levels of technological development that require relativistic quantum field theory on a regular basis, but this has not come yet. Bearing that in mind, it is nonetheless a fascinating intellectual pursuit, providing us with valuable scientific knowledge to advance our current understanding of science, and worth doing simply by virtue of itself.
 
 ## Further reading
 
