@@ -14,14 +14,20 @@
    <div class="contact">
      <h2>Professional inquiries</h2>
      <p>Interested in working with me or hiring me? See my resume, portfolio and contact information on
-     <a href="#">this info page &#x2192;</a></p>
+     <a href="/portfolio">this info page &#x2192;</a></p>
   </div>
+  <h2>My articles</h2>
+  <p>
+  This is an index of mostly scientific and technical writing on my website.
+  </p>
  {% for page in section.pages %}
+  {% if not page.extra.nonarticle %}
    <article>
-     <h2>{{ page.title }}</h3>
+     <h3>{{ page.title }}</h3>
      <p class="summary">{{ page.summary | safe }}</p>
      <a href="{{ page.permalink | safe }}">Read more...</a>
    </article>
+   {% endif %}
  {% endfor %}
  </section>
 {% endblock content %}
