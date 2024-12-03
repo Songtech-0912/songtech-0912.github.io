@@ -1298,7 +1298,7 @@ Which can be solved by computer algorithms.
 
 ## Systems of linear ODEs
 
-As a review of solving linear systems, consider the following system of two linear equations:
+We will now proceed to discussing _systems_ of linear ODEs. The methods of solving systems of linear ODEs come from linear algebra, which studies systems of **linear equations**. As a review of solving linear systems, consider the following system of two linear equations:
 
 {% math() %}
 \begin{align*}
@@ -1334,7 +1334,7 @@ c & d \\
 \end{pmatrix}
 {% end %}
 
-The determinant of $A$, denoted $\det(A)$, is given by $ad - bc$. If $\det(A) \neq 0$, then it is said to be non-singular, which means it has an inverse given by:
+The determinant of $A$, denoted $\det(A)$, is given by $ad - bc$. If $\det(A) \neq 0$, then it is said to have an **inverse** $A^{-1}$:
 
 {% math() %}
 \frac{1}{\det(A)} 
@@ -1344,13 +1344,18 @@ d & -b \\
 \end{bmatrix}
 {% end %}
 
-The significance of finding the inverse is that if the inverse of $A$, denoted $A^{-1}$, is known, then:
+The significance of finding the inverse is that if the inverse $A^{-1}$, is known, then:
 
 {% math() %}
 \mathbf{x} = A^{-1} b
 {% end %}
 
-A special case is that of a homogeneous system $A \mathbf{x} = 0$. In this case, if $A$ is singular, then the only solution is $\mathbf{x} = 0$; if $A$ is non-singular, then there exist infinitely many solutions.
+A special case is that of a homogeneous system $A \mathbf{x} = 0$. In this case, if $A$ is **non-singular**, then there exists one unique solution; if $A$ is **singular**, there exists infinitely many solutions.
+
+| Matrix Type | Invertibility  | Homogeneous System $ A\mathbf{x} = \mathbf{0} $ | Inhomogeneous System $ A\mathbf{x} = \mathbf{b} $ |
+|----|----|----|---|
+| **Non-Singular** | Invertible | Unique solution: $ \mathbf{x} = \mathbf{0} $ | Unique solution: $ \mathbf{x} = A^{-1} \mathbf{b} $ |
+| **Singular** | Non-Invertible | Infinitely many solutions (non-trivial solutions) | No solution or infinitely many solutions |
 
 Finally, two solution vectors $\mathbf{x}_1$ and $\mathbf{x}_2$ are linearly independent if one cannot be written in terms of the other multiplied by a constant. For instance $(1, 2)$ and $(2, 4)$ aren't linearly independent, but $(1, 2)$ and $(1, 3)$ are. Linear independence can be rigorously proven by checking that the equation $c_1 \mathbf{x}_1 + c_2 \mathbf{x}_2 = 0$ is satisfied only if $c_1 = c_2 = 0$.
 
@@ -1626,8 +1631,8 @@ Phase portraits are difficult to draw exactly by hand. However, the geometrical 
 Plotting a few points of the phase portrait on a plot is often helpful in determining how exactly the phase portrait will look. Phase portraits can also be drawn by computer automatically to save time and effort. For instance, the first-order ODE system given by:
 
 {% math() %}
-\frac{d}{dt} \begin{pmatrix} y \\ y \end{pmatrix} = 
-\begin{pmatrix} y \\ -x - y \end{pmatrix}
+\frac{d}{dt} \begin{pmatrix} x \\ y \end{pmatrix} = 
+\begin{pmatrix} y \\ -x - y \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ -1 & -1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}
 {% end %}
 
 Has the phase portrait given below:
