@@ -465,7 +465,7 @@ i \hbar\dfrac{df}{dt} = Ef(t)
 \end{align*}
 {% end %}
 
-> The top differential equation is the **time-independent Schrödinger equation** we saw before, just we $V(x) = 0$.
+> The top differential equation is the **time-independent Schrödinger equation** we saw before, just with $V(x) = 0$.
 
 We can use the traditional methods of solving first- and second-order differential equations (or just make an educated guess, that's called an _ansatz_) to find the solutions are:
 
@@ -633,7 +633,7 @@ Using the time-independent Schrödinger equation with the Coloumb potential, we 
  The one saving grace is that this PDE happens to be a _separable_ differential equation, and can be solved using separation of variables. But solving this is a matter of mathematics, not physics, and so we will omit the solving steps and just give the general solution:
 
  {% math() %}
- \psi _{n\ell m}(r,\theta ,\varphi )={\sqrt {{\left({\frac {2}{na_{0}}}\right)}^{3}{\frac {(n-\ell -1)!}{2n(n+\ell )!}}}}e^{-\rho /2}\rho ^{\ell }L_{n-\ell -1}^{2\ell +1}(\rho )Y_{\ell }^{m}(\theta ,\varphi )
+ \psi _{n\ell m}(r,\theta ,\varphi )={\sqrt {{\left({\frac {2}{na_{0}}}\right)}^{3}{\frac {(n-\ell -1)!}{2n(n+\ell )!}}}}e^{-r /2}r^{\ell }L_{n-\ell -1}^{2\ell +1}(r )Y_{\ell }^{m}(\theta ,\varphi )
  {% end %}
 
  Where:
@@ -645,6 +645,12 @@ Using the time-independent Schrödinger equation with the Coloumb potential, we 
 - $n = 1, 2, 3, \dots$ is the principal quantum number that determines the energy level and parametrizes each eigenstate
 - $\ell = 0, 1, 2, \dots, n-1$ is the azimuthal quantum number
 - $m = -\ell, \dots, \ell$ is the magnetic quantum number
+
+We can visualize the hydrogen wavefunction (or more precisely, the hydrogen eigenstates) by ploting the probability density:
+
+![](https://miro.medium.com/v2/resize:fit:1400/1*kqtDZDdum_mLQLezPlemsA.png)
+
+_Source: [Sebastian Mag, Medium](https://ssebastianmag.medium.com/computational-physics-with-python-hydrogen-wavefunctions-electron-density-plots-8fede44b7b12)_
 
 The energy levels of hydrogen are given by the energy eigenvalues of its wavefunction:
 
@@ -659,7 +665,9 @@ In this expression:
 - $\mu$ is the reduced mass of the hydrogen atom, which is very close to (but not exactly equal to) $m_e$, the mass of an electron
 - $\alpha$ is the fine-structure constant and approximately equal to $1/137$
 
-> **An important note:** Yes, these energy eigenvalues are negative, because the Coulomb potential is negative as well. In fact, we say that the negative energies reflect the fact that the associated eigenstates are _bound states_, and the magnitude of their energy is the energy necessary to overcome the Coulomb potential. As their energies are negative, they do not have enough energy to escape the potential, and thus stay in place - the more negative the energy, the more stable and static the system.
+> **An important note:** Yes, these energy eigenvalues are negative, because the Coulomb potential is negative as well. In fact, we say that the negative energies reflect the fact that the associated eigenstates are _bound states_, and the magnitude of their energy is the energy necessary to overcome the Coulomb potential. As their energies are negative, they do not have enough energy to escape the potential, and thus stay in place - the more negative the energy, the more energy must be put in to "kick" electrons out of place, and the stabler the system.
+
+The historical discovery of the solution to the Schrödinger equation for the hydrogen atom and the calculation of its eigenvalues proved to be one of the first experimental results that confirmed the predictions of quantum mechanics. By using $E_n = \dfrac{hc}{\lambda_n}$ with the value of $E_n = -\dfrac{m_e c^2 \alpha^2}{2n^2}$ predicted by the Schrödinger equation, the calculated wavelengths of light almost exactly matched measurements of those emitted by hydrogen. To read more about this discovery, see the quantum chemistry portion of the [general chemistry series](@/fundamentals-of-chemistry.md). This result revolutionized physics and brought quantum mechanics to its forefront. To this day, quantum mechanics remains the building block of modern physics.
 
 Later on, refinements to quantum theory found that the predicted energy levels, when also including relativistic corrections, are more accurately given by:
 
@@ -667,7 +675,7 @@ Later on, refinements to quantum theory found that the predicted energy levels, 
 E_{j, n} = -{\mu c^2}\left[{1 - \left(1 + \alpha^2 \left(n - j - \frac{1}{2} + \sqrt{\left(j + \frac{1}{2}\right)^2 - \alpha^2}\right)^{-2}\right)}\right]
 {% end %}
 
-Where $\mu$ is the _reduced mass_, i.e. $\mu \equiv \dfrac{m_e m_p}{m_e + m_p}$ where $m_e, m_p$ are the electron and proton mass and $j_\pm = |\ell \pm \frac{1}{2}|$. The historical discovery of the solution to the Schrödinger equation for the hydrogen atom and the calculation of its eigenvalues proved to be one of the first experimental results that confirmed the predictions of quantum mechanics. By using $E_n = \dfrac{hc}{\lambda_n}$ with the value of $E_n = -\dfrac{m_e c^2 \alpha^2}{2n^2}$ predicted by the Schrödinger equation, the calculated wavelengths of light almost exactly matched measurements of those emitted by hydrogen. To read more about this discovery, see the quantum chemistry portion of the [general chemistry series](@/fundamentals-of-chemistry.md). This result revolutionized physics and brought quantum mechanics to its forefront. To this day, quantum mechanics remains the building block of modern physics.
+Where $\mu$ is the _reduced mass_, i.e. $\mu \equiv \dfrac{m_e m_p}{m_e + m_p}$ where $m_e, m_p$ are the electron and proton mass and $j_\pm = |\ell \pm \frac{1}{2}|$. We will touch on relativistic quantum mechanics briefly at the end of this guide.
 
 ### The quantum harmonic oscillator
 
@@ -1150,7 +1158,7 @@ To summarize what we've covered, we can distill the theory of quantum mechanics 
 3. Physical quantities are known as **observables**, and are represented by linear operators acting on the quantum state. For instance, $\hat x = x, \hat p = -i\hbar \nabla, \hat H = -\frac{\hbar^2}{2m} \nabla^2 + V$.
 4. Applying an observable results in an eigenvalue equation to solve in the form $\hat A |\varphi_i\rangle = A |\varphi_i\rangle$, where $A$ is the eigenvalue and $|\varphi_i\rangle$ is the eigenstate. The *eigenvalues* of each observable correspond to *possible values* of the associated physical quantity (e.g. position, momentum, energy). The eigenvalues can be quantized or continuous. Each eigenvalue is associated with an eigenstate of the system.
 6. It is **not possible** to predict in advance the measured value a physical quantity may take. However, it is possible to predict the *probability* $P$ of a particular eigenstate $|\varphi_i\rangle$ through the Born rule $P= |\langle \varphi_i| \Psi\rangle |^2 = |C_i|^2$
-7. We may use the _wave formulation_ or _matrix-vector formulation_ to obtain the same results, and the two are completely equivalnet:
+7. We may use the _wave formulation_ or _matrix formulation_ to obtain the same results, and the two are completely equivalnet:
 	- In the **wave formulation**, we have $\psi(x)$ as a quantum state, represented as a time-indepedent wavefunction, $\varphi_i(x)$ as a component eigenstate, and $\Psi(x, t) = \psi(x) e^{-iE t/\hbar}$ as the general wavefunction
 	- In the **matrix-vector formulation**, we have $|\Psi\rangle$ as a quantum state, $|\varphi_i\rangle$ as a component eigenstate, and $|\Psi(t)\rangle$ as the general time-evolving state
 
