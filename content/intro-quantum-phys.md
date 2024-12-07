@@ -63,7 +63,13 @@ A complex number can be thought of as a pair of two real numbers. First, we defi
 
 We often write a complex number in the form $z = \alpha + \beta i$, where $\alpha$ is called the _real_ part and $\beta$ is called the _imaginary_ part. For a complex number $z$, we can also define a _conjugate_ given by $\bar z = \alpha - \beta i$ (some texts use $z^*$ as an alternative notation). Uniquely, $z \bar z = (\alpha + \beta i)(\alpha - \beta i) = \alpha^2 + \beta^2$.
 
-Complex numbers also have another essential property. If we define the exponential function $f(x) = e^x$ in a way that allows for complex arguments, i.e. $f(z) = e^{z} = e^{\alpha + \beta i}$, we find that $e^{i\phi} = \cos \phi + i \sin \phi$. This is called **Euler's formula** and means we can use complex exponentials to write complex numbers in the form $z = re^{i\phi}$ where $r = \sqrt{\alpha^2 + \beta^2}$ and $\phi = \tan^{-1} \beta/\alpha$, converting to trigonometric functions whenever more convenient and vice-versa.
+Complex numbers also have another essential property. If we define the exponential function $f(x) = e^x$ in a way that allows for complex arguments, i.e. $f(z) = e^{z} = e^{\alpha + \beta i}$, we find that $e^{i\phi} = \cos \phi + i \sin \phi$. This is called **Euler's formula** and means we can use complex exponentials to write complex numbers in the form $z = re^{i\phi}$ where $r = \sqrt{\alpha^2 + \beta^2}$ and $\phi = \tan^{-1} \beta/\alpha$, converting to trigonometric functions whenever more convenient and vice-versa. 
+
+But why do we use - or care - about complex exponentials? Mathematically speaking, complex exponentials satisfy all the properties of exponential functions, such as $e^{iA} e^{iB} = e^{i(A + B)} and $e^{iA} e^{-iB} = e^{A-B}$. This greatly simplifies calculations. 
+
+> For a more in-depth review, it may be helpful to see the refresher on [logarithmic and exponential functions here](@/exponential-logs.md).
+
+In addition, Euler's formula results in several identities that are also very helpful in calculations. From $e^{i\phi} = \cos \phi + i\sin \phi$ we can in turn find that $e^{i\phi} + e^{-i\phi} = 2\cos \phi$ and $e^{i\phi} - e^{-i\phi} = 2i \sin \phi$. We will use these extensively later on.
 
 The study of calculus that applies to complex numbers is called _complex analysis_. For most of quantum mechanics, we won't need to do full complex analysis, and can treat $i$ as simply a constant. There are, however, some advanced branches of quantum mechanics that _do_ need complex analysis.
 
@@ -72,47 +78,196 @@ The study of calculus that applies to complex numbers is called _complex analysi
 In classical physics, the laws of physics are described using _differential equations_. Differential equations are a very, very broad topic, and if unfamiliar, feel free to read [the dedicated article on differential equations](@/differential-equations/index.md). Their usefulness comes from the fact that differential equations permit descriptions of large classes of different physical scenarios. Consider, for instance, the wave equation:
 
 {% math() %}
-\frac{\partial^2 y}{\partial t^2} = \dfrac{1}{v^2} \frac{\partial^2 y}{\partial x^2} 
+\frac{\partial^2 y}{\partial t^2} = v^2 \frac{\partial^2 y}{\partial x^2} 
 {% end %}
 
-This partial differential equation models everything from water ripples in a pond to the vibrations of a drum and even to light - which is an _electromagnetic wave_. The last one, however, is particularly important for quantum mechanics.
+This partial differential equation models everything from water ripples in a pond to the vibrations of a drum and even to light - which is an _electromagnetic wave_. The last one, however, is particularly important for quantum mechanics, because light is fundamentally quantum in nature, and the study of light is a crucial part of quantum mechanics.
 
-Solutions to the wave equation generally take the form:
+To solve the wave equation, we may use the _separation of variables_. That is to say, we assume that the solution $y(x, t)$ is a product of two functions $f(x)$ and $g(t)$, such that:
 
 {% math() %}
-y(x, t) = Ae^{ikx - i\omega t} + Be^{-ikx -i\omega t}
+y(x, t) = f(x) g(t)
 {% end %}
 
-In classical physics, however, we ignore the imaginary part of the solution and only extract the real part, so this becomes:
+This means that we can take the second partial derivatives of $y(x, t)$ as follows.
 
 {% math() %}
-y(x, t) = A\cos kx \cos \omega t + B \cos kx \cos \omega t
+\begin{align*}
+\dfrac{\partial^2 y}{\partial x^2} &= \dfrac{\partial^2}{\partial x^2} \left(f(x) g(t)\right) = g(t) \dfrac{\partial^2}{\partial x^2} f(x) \\ &= g(t) \dfrac{\partial^2 f}{\partial x^2} \\
+\dfrac{\partial^2 y}{\partial t^2} &= \dfrac{\partial^2}{\partial t^2} \left(f(x) g(t)\right) = f(x) \dfrac{\partial^2}{\partial t^2} g(t) \\ &= f(x) \dfrac{\partial^2 g}{\partial t^2} \\
+\end{align*}
 {% end %}
 
-We call these solutions *wave solutions* (unsurprisingly) and all wave solutions have an associated **wavelength** $\lambda$ and **frequency** $f$ as well as amplitude(s) $A$ and $B$. From these we can derived more quantities that explicitly appear in the solution: $k = 2\pi/\lambda$ is known as the **wavevector** and $\omega = 2\pi f$ is the **angular frequency** related through $\omega = k v$. Here, $v$ is the speed the wave propagates forward, and $v = \lambda f$. In the case of waves of light, we take $v = c$, where $c$ is the speed of light in vacuum. We can therefore write the solution explicitly in terms of the wavelength, $c$, and the amplitudes, as:
+> Note that we are able to factor out $g(t)$ when taking the second derivative of $y(x, t)$ with respect to $x$ because $g(t)$ _doesn't_ depend on $x$, and therefore we can treat it as a **constant**. The same principle applies when taking the second derivative of $y(x, t)$ with respect to $t$; as $f(x)$ doesn't depend on $t$, we can also treat it as a constant and factor it out of the second derivative.
+
+If we substitute these expressions for the second derivatives back into the wave equation $\partial_{t}{}^2 y = v^2 \partial_{x}{}^2 y$ we have:
 
 {% math() %}
-y(x, t) = A \cos \left(\frac{2\pi x}{\lambda}\right) \cos \left(\frac{2\pi ct}{\lambda}\right) + 
-B \cos \left(\frac{2\pi x}{\lambda}\right) \cos \left(\frac{2\pi ct}{\lambda}\right)
+f(x) \dfrac{\partial^2 g}{\partial t^2} = v^2 g(t) \dfrac{\partial^2 f}{\partial x^2}
 {% end %}
 
-Wave solutions have some particular characteristics: they oscillate in time in predictable ways (which is why we can ascribe a frequency to them), and complete each spatial oscillation over a predictable distance (which is why we can ascribe a wavelength). Despite not being waves, quantum particles behave in ways strikingly similar to solutions of the wave equation, and _also_ have a frequency and wavelength as well as derived quantities such as $k$ and $\omega$.
+> **Note on notation:** Here $\partial_{t}{}^2 y$ is a shorthand for $\dfrac{\partial^2 y}{\partial t^2}$ and $\partial_{x}{}^2 y$ is a shorthand for $\dfrac{\partial^2 y}{\partial x^2}$.
+
+From our substituted wave equation, we can now perform some algebraic manipulations by dividing both sides by $f(x) g(t)$ and then multiplying both sides by $\dfrac{1}{v^2}$, as shown:
+
+{% math() %}
+\begin{align*}
+\dfrac{1}{f(x) g(t)} f(x) \dfrac{\partial^2 g}{\partial t^2} &= \dfrac{1}{f(x) g(t)}v^2 g(t) \dfrac{\partial^2 f}{\partial x^2} \Rightarrow \\
+\dfrac{1}{g(t)} \dfrac{\partial^2 g}{\partial t^2} &= v^2 \dfrac{1}{f(x)}\dfrac{\partial^2 f}{\partial x^2} \\
+\dfrac{1}{v^2 g(t)} \dfrac{\partial^2 g}{\partial t^2} &= \dfrac{1}{f(x)}\dfrac{\partial^2 f}{\partial x^2}
+\end{align*}
+{% end %}
+
+However, if two expressions involving different partial derivatives are equal each other, then they must both be equal to a constant. This is called the **separation constant**, which we can set to a generic constant that can be positive or negative in sign (as the sign doesn't change the fact that it is constant), multiplied by any other constant, or raised to any power, as none of these operations change the fact that the end result is a constant. If we let that constant be $-k^2$ (we can choose any other constant or sign but this particular choice makes calculations easier later), we have:
+
+{% math() %}
+\dfrac{1}{v^2 g(t)} \dfrac{\partial^2 g}{\partial t^2} = \dfrac{1}{f(x)}\dfrac{\partial^2 f}{\partial x^2} = -k^2
+{% end %}
+
+Which means we have _separated_ the wave equation into two differential equations, one only involving $f(x)$, and one only involving $g(t)$:
+
+{% math() %}
+\dfrac{1}{v^2 g(t)} \dfrac{\partial^2 g}{\partial t^2} = -k^2 \\
+\dfrac{1}{f(x)}\dfrac{\partial^2 f}{\partial x^2} = -k^2
+{% end %}
+
+At this point we should note that since $g(t)$ is purely a function of $t$ and $f(x)$ is purely a function of $x$, neither are multivariable functions and thus the partial derivatives reduce to ordinary derivatives:
+
+{% math() %}
+\dfrac{1}{v^2 g(t)} \dfrac{d^2 g}{d t^2} = -k^2 \\
+\dfrac{1}{f(x)}\dfrac{d^2 f}{d x^2} = -k^2
+{% end %}
+
+We can algebraically rearrange terms in both equations to get them into a slightly nicer and cleaner form:
+
+{% math() %}
+\begin{align*}
+\dfrac{d^2 g}{d t^2} &= -k^2 v^2 g(t) \\
+\dfrac{d^2 f}{d x^2} &= -k^2 f(x) 
+\end{align*}
+{% end %}
+
+If we define another constant named $\omega$ which is defined as $\omega \equiv kv$ ($\equiv$ is the symbol for "defined as") we can rewrite even more nicely as:
+
+{% math() %}
+\begin{align*}
+\dfrac{d^2 g}{d t^2} &= -\omega^2 g \\
+\dfrac{d^2 f}{d x^2} &= -k^2 f
+\end{align*}
+{% end %}
+
+Solving these ordinary differential equations involves finding functions $g(t)$ and $f(x)$ whose second derivatives are equal to themselves, multiplied by a constant. We can use the _ansatz_'s (_ansatz_ is a fancy German-derived word for "educated guess") of complex exponential functions as the solutions, and then check that this does indeed work:
+
+{% math() %}
+\begin{align*}
+g(t) &= e^{-i\omega t} \rightarrow \dfrac{d^2 g}{dt^2} = -\omega^2 e^{-i\omega t} = -\omega^2 g(t) \\
+f(x) &= e^{-ik t} \rightarrow \dfrac{d^2 f}{dt^2} = -k^2 e^{-ik t} = -k^2 f(x) \\
+\end{align*}
+{% end %}
+
+However, we find that $g(t) = e^{i\omega t}$ and $f(x) = e^{ikx}$ _also_ works:
+
+{% math() %}
+\begin{align*}
+g(t) &= e^{i\omega t} \rightarrow \dfrac{d^2 g}{dt^2} = -\omega^2 e^{i\omega t} = -\omega^2 g(t) \\
+f(x) &= e^{ik t} \rightarrow \dfrac{d^2 f}{dt^2} = -k^2 e^{ik t} = -k^2 f(x) \\
+\end{align*}
+{% end %}
+
+So we write the general solution as a _linear combination_ (i.e. sum with constant coefficients) of the two respective solutions for each:
+
+{% math() %}
+g(t) = C_1 e^{i\omega t} + C_2 e^{-i\omega t} \\
+f(x) = C_3 e^{ik x} + C_4 e^{-ik x} \\
+{% end %}
+
+Now recalling that we set $y(x, t) = f(x) g(t)$ we can substitute our solutions to get the **general solution** for the 1D wave equation:
+
+{% math() %}
+y(x, t) = \left(C_1 e^{i\omega t} + C_2 e^{-i\omega t}\right)\left(C_3 e^{ik x} + C_4 e^{-ik x}\right)
+{% end %}
+
+> **Note for the mathematical reader:** Technically speaking, this is not the _most_ general solution, as any linear combination of this solution is a solution, given that the wave equation is a linear partial differential equation (PDE). Furthermore, given that one may always add a function to a solution to a PDE that gets differentiated away (as taking a partial derivative of a function with respect to a variable that the function doesn't depend on gives zero), the most general solution is actually $y(x, t) = u(x - vt) + w(x + vt)$ for _any_ two twice-differentiable functions $u, w$.
+
+Expanding the solution we obtained out, we have:
+
+{% math() %}
+\begin{align*}
+y(x, t) &= C_1 C_3 e^{i\omega t} e^{ikx} + C_1 C_4 e^{i\omega t} e^{-ikx} + C_2 C_3 e^{-i\omega t} e^{ikx} + C_2 C_4 e^{-i\omega t} e^{-ikx} \\
+&= (C_2 C_3 e^{ikx - i\omega t} + C_1 C_4 e^{-ikx + i\omega t}) + (C_1 C_3 e^{ikx + i\omega t} + C_2 C_4 e^{-ikx -i\omega t}) \\
+& = (C_2 C_3 e^{i(kx - \omega t)} + C_1 C_4 e^{-i(kx - \omega t)}) + (C_1 C_3 e^{i(kx + \omega t)} + C_2 C_4 e^{-i(kx + \omega t)})
+\end{align*}
+{% end %}
+
+We note that this general solution is actually a sum of **two** wave solutions, one that travels along the $+x$ axis as time progresses, and one that travels along the $-x$ axis as time progresses. Thus we may write $y(x, t)$ as a sum of the rightward-traveling solution $y_1(x, t)$ and the leftward-traveling solution $y_2(x, t)$:
+
+{% math() %}
+\begin{align*}
+y(x, t) &= y_1(x, t) + y_2(x, t) \\
+y_1(x, t) &= C_2 C_3 e^{i(kx - \omega t)} + C_1 C_4 e^{-i(kx - \omega t)} \\
+y_2(x, t) &= C_1 C_3 e^{i(kx + \omega t)} + C_2 C_4 e^{-i(kx + \omega t)}
+\end{align*}
+{% end %}
+
+We can write this in a neater form by defining {% inlmath() %}A \equiv C_2 C_3, B \equiv C_1C_4, C \equiv C_1 C_3, D \equiv C_2 C_4{% end %} and therefore we may write:
+
+{% math() %}
+\begin{align*}
+y(x, t) &= y_1(x, t) + y_2(x, t) \\
+y_1(x, t) &= Ae^{i(kx - \omega t)} + B e^{-i(kx - \omega t)} \\
+y_2(x, t) &= C e^{i(kx + \omega t)} + D e^{-i(kx + \omega t)}
+\end{align*}
+{% end %}
+
+ We call these solutions *wave solutions* (unsurprisingly) and all wave solutions have an associated **wavelength** $\lambda$ and **frequency** $f$ as well as amplitude(s) $A, B, C, D$. From these we can derived more quantities that explicitly appear in the solution: $k = 2\pi/\lambda$ is known as the **wavevector** and $\omega = 2\pi f$ is the **angular frequency** related through $\omega = k v$ (as we saw earlier in the solving process). Here, $v$ is the speed the wave propagates forward.
+
+A pecular feature is that $y(x, t)$ is actually a _standing wave_, meaning that it does actually move, because $y_1, y_2$ move in opposite directions to each other, and thus their effects cancel out when they are added together. 
+
+Now, let us turn our attention to a wave equation that can be considered the classical entryway into quantum theory. The **electromagnetic (EM) wave equation** is a special case of the wave equation given by:
+
+{% math() %}
+\dfrac{\partial^2 E}{\partial t^2} = c^2 \dfrac{\partial^2 E}{\partial x^2}
+{% end %}
+
+ where $c$ is the speed of light in vacuum and $E(x, t)$ is the magnitude of the **electric field**, whose oscillations produce electromagnetic waves, that is, light. The solutions to the EM wave equation are also a special case of the general solution we have just derived for the wave equation:
+
+ {% math() %}
+\begin{align*}
+E(x, t) &= E_1(x, t) + E_2(x, t) \\
+E_1(x, t) &= Ae^{i(kx - \omega t)} + B e^{-i(kx - \omega t)} \\
+E_2(x, t) &= C e^{i(kx + \omega t)} + D e^{-i(kx + \omega t)}
+\end{align*}
+{% end %}
+
+Where {% inlmath() %}A, B, C, D{% end %} are amplitudes derived from the boundary conditions of a specific problem. The solution characterizes all forms of light and radiation propagations, including all the light we see. The solution is uniquely characterized by two fundamental quantities, the speed of light $c$ and the wavelength of light $\lambda$, as well as its amplitudes (the electric field strength, in physical terms). All other quantities appearing in the solution can be derived from these two:
+
+| Quantity | Expression in terms of $\lambda$ and $c$ |
+|-----|------|
+| $k$ | $\dfrac{2\pi}{\lambda}$ |
+| $f$ | $\dfrac{c}{\lambda}$ |
+| $\omega$ | $k c = 2\pi f = \dfrac{2\pi c}{\lambda}$ |
+
+Wave solutions have some particular characteristics: they oscillate in time in predictable ways (which is why we can ascribe a frequency to them), and complete each spatial oscillation over a predictable distance (which is why we can ascribe a wavelength). Despite not being waves, quantum particles behave in ways strikingly similar to solutions of the wave equation, and _also_ have a frequency and wavelength as well as derived quantities such as $k$ and $\omega$. In addition, characterics of waves and how they interact with objects have a big part to play in quantum phenomena, as we will soon see. 
 
 ### The Schrödinger equation
 
 In the quantum world, particles no longer follow the laws of classical physics. Instead, they follow the **Schrödinger wave equation**, a famous partial differential equation given by:
 
 {% math() %}
-i\hbar \frac{\partial}{\partial t} \Psi(\mathbf{x}, t)  = \left(-\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x, t)\right) \Psi(\mathbf{x}, t)
+i\hbar \frac{\partial}{\partial t} \Psi(x, t)  = \left(-\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x, t)\right) \Psi(x, t)
 {% end %}
 
 > This is the 1D Schrödinger equation, but we will look at the full 3D Schrödinger equation later.
 
-The solutions to the Schrödinger equation $\Psi(x, t)$ are called **wavefunctions**. Conceivably, _any_ quantum system can be described by a solution of the Schrödinger equation, although the actual solving process is rather tedious and more of a mathematical exercise than physics. **Separation of variables** is a common method to solve the Schrödinger equation, but lots of solutions are very well-known and just looking them up in a textbook, reference book, or online is far faster than actually solving the equation.
+The solutions to the Schrödinger equation $\Psi(x, t)$ for given initial and boundary conditions are called **wavefunctions**. The Schrödinger equation tells us that when undisturbed, quantum particles are waves spread out in space, instead of possessing definite positions. A quantum particle (or system) can be analyzed by finding the particular solution of the Schrödinger equation for that particle (or system), although the actual solving process is rather tedious and more of a mathematical exercise than physics. Using **separation of variables** is a common method to solve the Schrödinger equation, and we will work through several examples. However, lots of solutions are very well-known and just looking them up in a textbook, reference book, or online is far faster than actually solving the equation.
 
 > **Note for the advanced reader:** Yes, the Schrödinger equation with a _generalized_ Hamiltonian does actually apply to **any** quantum system that can exist. It is only the most well-known Hamiltonian - which is non-relativistic and omits spin - that has limited applicability.
 
-Wavefunctions encode *states* that quantum particles can be in. For instance, an electron can be in its _ground state_ (lowest-energy state). But it can also be in a number of other *excited* states (energetic states). Within each state, the particle has specific energies and momenta and is distributed through space in specific ways. In fact, wavefunctions *are* complex-valued **probability distributions**. Squaring the wavefunction and taking its absolute value, which we write as $\rho(x) = |\Psi|^2$, gives the **probability density** of the particle's location through space. For instance, the following plot showcases the probability density found by $\rho(x) = |\Psi|^2$ for three wavefunctions:
+As is suggestive of the name, wavefunctions describe the _matter wave_ associated with a particular quantum particle (or system of quantum particles). Just like classical waves, all quantum particles have a wavelength $\lambda$ which is related to the momentum by $\lambda = \dfrac{h}{p}$ and the energy by $\lambda = \dfrac{hc}{E}$. Here, $h = \pu{6.62607E-34 J\cdot s}$ is the **Planck constant**, a fundamental constant of nature, alongside the **reduced Planck constant** $\hbar \equiv \dfrac{h}{2\pi} = \pu{1.05457E-34 J\cdot s}$.
+
+As a bizarre consequence of the Schrödinger equation, wavefunctions - that is, the matter waves - are **complex-valued** and actually contain all possible *states* that a quantum particle can be in, where each state is a unique wave solution to the Schrödinger equation. At a given moment, a quantum particle's actual state can be _any_ of the states contained in the wavefunction, but _which one_ is impossible to predict in advance. 
+
+Thus, rather than physical individual waves in space, wavefunctions are more of a mathematical description of _many_ possible quantum waves of a particle that is non-localized and cannot be predicted exactly. For instance, an electron can be in its _ground state_ (lowest-energy state). But it can also be in a number of other *excited* states (energetic states). Within each state, the particle has specific energies and momenta and has different probabilities to be located at a particular point in space. In fact, squaring the wavefunction and taking its absolute value, which we write as $\rho(x) = |\Psi|^2$, gives the **probability density**, indicating how likely it is to find a quantum particle at a specific point $x$ in space - although theoretically the particle can be almost anywhere. For instance, the following plot showcases the probability density for three wavefunctions:
 
 ![A graph of several wavefunctions, which describe how likely a particle is to be at a particular location](https://cdn.kastatic.org/ka-perseus-images/a5e18b829f12622a749e2f131bd029f8783eaf92.jpg)
 
@@ -124,9 +279,9 @@ When we consider quantum problems in 3 dimensions, the associated probability de
 
 _Source: [LibreTexts](https://chem.libretexts.org/Bookshelves/General_Chemistry/Map%3A_Chemistry_-_The_Central_Science_%28Brown_et_al.%29/06%3A_Electronic_Structure_of_Atoms/6.06%3A_3D_Representation_of_Orbitals)_
 
-Since quantum particles are described through probability distribution functions (PDFs), they aren't truly point particles, but spread throughout space - hence _wave_ equation, because these PDFs carry a wavelike nature. In fact, these PDFs display cyclical (symmetric in space) and oscillatory (repeating in time) behavior, meaning that just like classical waves, we describe them in terms of wave quantities like the wavelength $\lambda$, angular frequency $\omega$, wave propagation speed $v$, and wavevector $k$. However, when we measure a quantum particle, we find that it then behaves particle-like and _occupies_ a particular position. The likelihood of a particle being at a particular position can be calculated from the $|\Psi|^2$ rule, and we can find which positions the particle is more (or less) likely to be located. But the *precise* position cannot be predicted in advance.
+To re-emphasize, since quantum particles are described as complex-valued matter waves, they aren't truly point particles, but spread throughout space - hence _wave_ equation, because these solutions carry a wavelike nature. Since these solutions display cyclical (symmetric in space) and oscillatory (repeating in time) behavior, meaning that just like classical waves, we describe them in terms of wave quantities like the wavelength $\lambda$, angular frequency $\omega$, wave propagation speed $v$, and wavevector $k$. However, when we measure a quantum particle, we find that it then behaves particle-like and _occupies_ a particular position. The likelihood of a particle being at a particular position can be calculated from the probability density $\rho = |\Psi|^2$, and we can find which positions the particle is more (or less) likely to be located. But the *precise* position cannot be predicted in advance.
 
-> **Definition:** A **quantum state** $\varphi(x)$ is a solution to the Schrödinger equation that gives a **unique probability distribution function** describing a quantum particle (or system). Each state is also associated with specific values of energy and momentum, among other physical properties.
+> **Definition:** A **quantum state** $\psi(x)$ is a solution to the Schrödinger equation for a given time $t$ whose physical interpretation is the matter wave of a quantum particle (or system). Taking the squared amplitude $|\psi(x)|^2$ of the quantum state gives a **unique probability distribution function** describing a quantum particle (or system).
 
 ### Addenum: the time-independent Schrödinger equation
 
@@ -218,6 +373,8 @@ We have seen that we can solve for wavefunctions, which are the probability dist
 | Total energy operator (time-dependent) | $\hat E = -i\hbar \dfrac{\partial}{\partial t}$ |
 
 > Note that $\hat H$, the energy operator, is named so due to its correspondence with the [Hamiltonian](https://en.wikipedia.org/wiki/Hamiltonian_mechanics) in classical mechanics
+
+There is a very important _physical_ interpretation of a quantum operator: the **eigenvalues** of each eigenstate of a given quantum operator acting on a state gives the specific _values_ of measurable values. For instance, the energy of one particular state is the eigenvalue of the Hamiltonian operator, and the momentum of one particular state is the eigenvalue of the momentum operator, and so forth.
 
 To find the eigenstates and eigenvalues of physical properties of a quantum particle, we apply each operator to the wavefunction, which results in an eigenvalue equation that we can solve for the eigenvalues. For example, for finding the momentum eigenstates, we can apply $\hat p$ the momentum operator:
 
@@ -1169,6 +1326,8 @@ Quantum mechanics is the most comprehensive theory of physics ever devised, beca
 To understand where quantum mechanics can be sufficiently well-approximated by quantum mechanics, we turn to the _correspondence principle_. This says that quantum mechanics reproduces the results of classical mechanics _on average_.
 
 So as a takeaway, quantum mechanics is conventionally only _required_ for analyzing systems smaller than an atom, but below that limit, many things simply cannot be explained classically. We can (and should) use the classical theory for all scales above the atomic scale; we must use quantum for anything below.
+
+### Ehrenfest's theorem
 
 ## A brief peek at more advanced quantum mechanics
 
