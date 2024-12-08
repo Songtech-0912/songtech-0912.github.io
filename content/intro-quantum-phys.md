@@ -65,7 +65,7 @@ We often write a complex number in the form $z = \alpha + \beta i$, where $\alph
 
 Complex numbers also have another essential property. If we define the exponential function $f(x) = e^x$ in a way that allows for complex arguments, i.e. $f(z) = e^{z} = e^{\alpha + \beta i}$, we find that $e^{i\phi} = \cos \phi + i \sin \phi$. This is called **Euler's formula** and means we can use complex exponentials to write complex numbers in the form $z = re^{i\phi}$ where $r = \sqrt{\alpha^2 + \beta^2}$ and $\phi = \tan^{-1} \beta/\alpha$, converting to trigonometric functions whenever more convenient and vice-versa. 
 
-But why do we use - or care - about complex exponentials? Mathematically speaking, complex exponentials satisfy all the properties of exponential functions, such as $e^{iA} e^{iB} = e^{i(A + B)} and $e^{iA} e^{-iB} = e^{A-B}$. This greatly simplifies calculations. 
+But why do we use - or care - about complex exponentials? Mathematically speaking, complex exponentials satisfy all the properties of exponential functions, such as $e^{iA} e^{iB} = e^{i(A + B)}$ and $e^{iA} e^{-iB} = e^{A-B}$. This greatly simplifies calculations. 
 
 > For a more in-depth review, it may be helpful to see the refresher on [logarithmic and exponential functions here](@/exponential-logs.md).
 
@@ -130,6 +130,8 @@ Which means we have _separated_ the wave equation into two differential equation
 \dfrac{1}{v^2 g(t)} \dfrac{\partial^2 g}{\partial t^2} = -k^2 \\
 \dfrac{1}{f(x)}\dfrac{\partial^2 f}{\partial x^2} = -k^2
 {% end %}
+
+This is the method of **separation of variables**, which is covered in the [differential equations guide](@/differential-equations/index.md) as well as the [solving separable PDEs guide](@/solving-pdes.md). The idea is to reduce a partial differential equation into several ordinary differential equations that are easier to solve.
 
 At this point we should note that since $g(t)$ is purely a function of $t$ and $f(x)$ is purely a function of $x$, neither are multivariable functions and thus the partial derivatives reduce to ordinary derivatives:
 
@@ -259,13 +261,15 @@ i\hbar \frac{\partial}{\partial t} \Psi(x, t)  = \left(-\frac{\hbar^2}{2m} \frac
 
 > This is the 1D Schrödinger equation, but we will look at the full 3D Schrödinger equation later.
 
-The solutions to the Schrödinger equation $\Psi(x, t)$ for given initial and boundary conditions are called **wavefunctions**. The Schrödinger equation tells us that when undisturbed, quantum particles are waves spread out in space, instead of possessing definite positions. A quantum particle (or system) can be analyzed by finding the particular solution of the Schrödinger equation for that particle (or system), although the actual solving process is rather tedious and more of a mathematical exercise than physics. Using **separation of variables** is a common method to solve the Schrödinger equation, and we will work through several examples. However, lots of solutions are very well-known and just looking them up in a textbook, reference book, or online is far faster than actually solving the equation.
+Here, $\hbar$ is the **reduced Planck constant**, $m$ is the particle's mass, $V(x, t)$ is the particle's potential energy (which is often referred to simply as "the potential"), and the function to be solved for is $\Psi(x, t)$.
 
-> **Note for the advanced reader:** Yes, the Schrödinger equation with a _generalized_ Hamiltonian does actually apply to **any** quantum system that can exist. It is only the most well-known Hamiltonian - which is non-relativistic and omits spin - that has limited applicability.
+The solutions to the Schrödinger equation $\Psi(x, t)$ for given initial and boundary conditions are called **wavefunctions**. The Schrödinger equation tells us that when undisturbed, quantum particles are waves spread out in space, instead of possessing definite positions. We call these waves **matter waves**. A quantum particle (or system) can be analyzed by finding the particular solution of the Schrödinger equation for that particle (or system), although the actual solving process is rather tedious and more of a mathematical exercise than physics. Using **separation of variables** is a common method to solve the Schrödinger equation, and we will work through several examples. However, lots of solutions are very well-known and just looking them up in a textbook, reference book, or online is far faster than actually solving the equation.
 
-As is suggestive of the name, wavefunctions describe the _matter wave_ associated with a particular quantum particle (or system of quantum particles). Just like classical waves, all quantum particles have a wavelength $\lambda$ which is related to the momentum by $\lambda = \dfrac{h}{p}$ and the energy by $\lambda = \dfrac{hc}{E}$. Here, $h = \pu{6.62607E-34 J\cdot s}$ is the **Planck constant**, a fundamental constant of nature, alongside the **reduced Planck constant** $\hbar \equiv \dfrac{h}{2\pi} = \pu{1.05457E-34 J\cdot s}$.
+As is suggestive of the name, wavefunctions describe the matter wave associated with a particular quantum particle (or system of quantum particles). Just like classical waves, all quantum particles have a wavelength $\lambda$ which is related to the momentum by $\lambda = \dfrac{h}{p}$ and the energy by $\lambda = \dfrac{hc}{E}$. Here, $h = \pu{6.62607E-34 J\cdot s}$ is the **Planck constant**, a fundamental constant of nature, alongside the **reduced Planck constant** $\hbar \equiv \dfrac{h}{2\pi} = \pu{1.05457E-34 J\cdot s}$.
 
-As a bizarre consequence of the Schrödinger equation, wavefunctions - that is, the matter waves - are **complex-valued** and actually contain all possible *states* that a quantum particle can be in, where each state is a unique wave solution to the Schrödinger equation. At a given moment, a quantum particle's actual state can be _any_ of the states contained in the wavefunction, but _which one_ is impossible to predict in advance. 
+> The equations $\lambda = \dfrac{h}{p}$ and the energy $\lambda = \dfrac{hc}{E}$ can be rewritten as $p = \hbar k$ (the **de Broglie relation**) and $E = \hbar \omega$ (the **Planck-Einstein relation**).
+
+As a bizarre consequence of the Schrödinger equation, wavefunctions - that is, the matter waves - are **complex-valued**. That is to say, matter waves are not physical quantities that are observable in the real world. Furthermore, matter waves are not simply _one wave_, but actually contain all possible *states* that a quantum particle can be in, where each state is a unique wave solution to the Schrödinger equation. At a given moment, a quantum particle's actual state can be _any_ of the states contained in the wavefunction, but _which one_ is impossible to predict in advance.
 
 Thus, rather than physical individual waves in space, wavefunctions are more of a mathematical description of _many_ possible quantum waves of a particle that is non-localized and cannot be predicted exactly. For instance, an electron can be in its _ground state_ (lowest-energy state). But it can also be in a number of other *excited* states (energetic states). Within each state, the particle has specific energies and momenta and has different probabilities to be located at a particular point in space. In fact, squaring the wavefunction and taking its absolute value, which we write as $\rho(x) = |\Psi|^2$, gives the **probability density**, indicating how likely it is to find a quantum particle at a specific point $x$ in space - although theoretically the particle can be almost anywhere. For instance, the following plot showcases the probability density for three wavefunctions:
 
@@ -426,7 +430,7 @@ When a system possesses discrete eigenstates (and this is more easily seen with 
 \psi(x) = \sum_n C_n \varphi_n(x)
 {% end %}
 
-One perhaps unexpected result is that since an infinitely many number of eigenstates is in theory possible, a particle's _wavefunction_ at a specific instant $t$ may not itself be an eigenstate even though it consists of a linear superposition of eigenstates. If having knowledge of Fourier series or reading the [differential equation series](@/differential-equations/index.md), this may sound familiar. 
+One perhaps unexpected result is that since an infinitely many number of eigenstates is in theory possible, a particle's _wavefunction_ at a specific instant $t$ may not itself be an eigenstate - however, it can always be decomposed into a linear superposition of eigenstates. If having knowledge of Fourier series or reading the [differential equation series](@/differential-equations/index.md), this may sound familiar. 
 
 For instance, consider the wavefunction $\psi(x) = \Psi(x, 0) = A\left(x^{3}-x\right)$ for $-1 \leq x \leq 1$. This is not an eigenstate, but we may write it in series form, whose individual terms _are_ eigenstates, and from which we can find the ground state and the other eigenstates:
 
@@ -568,7 +572,7 @@ We will now apply quantum mechanics to solve a variety of quantum systems, to ge
 
 ### The free particle
 
-The free particle is among the simplest quantum systems that have an exact solution to the Schrödinger equation. We start from the one-dimensional Schrödinger equation for $V(x) = 0$, for which we may solve for the wavefunction:
+The free particle is among the simplest quantum systems that have an exact solution to the Schrödinger equation. It describes a quantum particle in free space is unconstrained by any potential, and thus has zero potential energy. We start from the one-dimensional Schrödinger equation for $V(x) = 0$, for which we may solve for the wavefunction:
 
 {% math() %}
 \begin{align*}
@@ -603,7 +607,7 @@ Now dividing both sides by $\psi(x)f(t)$ we have:
 \end{align*}
 {% end %}
 
-This is the method of **separation of variables**, which is covered in the [differential equations guide](@/differential-equations/index.md) as well as the [solving separable PDEs guide](@/solving-pdes.md). If we call the separation constant $E$, we have:
+If we call the separation constant $E$, we have:
 
 {% math() %}
 \begin{align*}
@@ -660,6 +664,110 @@ And therefore the wavefunction $\Psi(x, t)$ is given by:
 \Psi(x, t) =\left( \dfrac{1}{2 \pi} \right)^{1 / 4} \dfrac{1}{\sqrt{\sigma}} e^{i k_0 x -
 \frac{x^2}{4 \sigma^2}} e^{-i \omega t}
 {% end %}
+
+We may calculate the expectation values - that is, the average values - of the free particle's position and momentum. Let us begin with that of position. We have:
+
+{% math() %}
+\begin{align*}
+\langle x \rangle &= \int_{-\infty}^\infty \Psi^*(x, t) \hat x \Psi(x, t)\,dx \\
+&= \int_{-\infty}^\infty \Psi^*(x, t) x \Psi(x, t)\,dx \\
+&= \left[\left( \dfrac{1}{2 \pi} \right)^{1 / 4} \dfrac{1}{\sqrt{\sigma}}\right]^2 \int_{-\infty}^\infty (e^{-ik_0 x}e^{-\frac{x^2}{4\sigma^2}} e^{i\omega t}) x (e^{ik_0 x}e^{-\frac{x^2}{4\sigma^2}} e^{-i\omega t})\, dx \\
+&= \dfrac{1}{\sqrt{2\pi}} \dfrac{1}{\sigma} \int_{-\infty}^\infty e^{-\frac{x^2}{4\sigma^2}} x e^{-\frac{x^2}{4\sigma^2}}\, dx \\
+&= \dfrac{1}{\sigma \sqrt{2\pi}} \int_{-\infty}^\infty xe^{-\frac{x^2}{2\sigma^2}}\, dx
+\end{align*}
+{% end %}
+
+> The squared quantity in brackets $\left( \dfrac{1}{2 \pi} \right)^{1 / 4} \dfrac{1}{\sqrt{\sigma}}$ that is factored out of the integral is the amplitude from the wavefunction. It is squared because $\psi$ and $\psi^*$ both have this amplitude, and therefore multiplying them together gives a squared amplitude. 
+
+However, $xe^{-\frac{x^2}{2\sigma^2}}$ is an _odd_ function. An odd function has $f(-x) = -f(x)$, that is, it flips as you go from $-x$ to $x$, and odd functions satisfy the identity:
+
+{% math() %}
+\int_{-\infty}^\infty f(x)\, dx = 0
+{% end %}
+
+> This is because odd functions have a positive area for $x > 0$ and a negative area for $x < 0$ that, once added together, cancel each other out.
+
+Therefore we have:
+
+{% math() %}
+\langle x \rangle = \dfrac{1}{\sigma \sqrt{2\pi}} \int_{-\infty}^\infty xe^{-\frac{x^2}{2\sigma^2}}\, dx = 0
+{% end %}
+
+This means that the particle is most likely to be found at $x = 0$ - which makes sense given that the peak of its wavefunction is located at $x = 0$.
+
+We may also find the expectation value of the momentum. For this, we recall that the momentum expectation value is found by the following equation:
+
+{% math() %}
+\begin{align*}
+\langle p\rangle &= \int_{-\infty}^\infty \psi^*(x) \hat p \psi(x)\, dx \\
+&= \int_{-\infty}^\infty \psi^*(x) \dfrac{\hbar}{i} \dfrac{\partial}{\partial x} \psi(x)\, dx \\
+\end{align*}
+{% end %}
+
+> Note the identity $-i\hbar = \dfrac{\hbar}{i}$. This is why the momentum operator $\hat p$ is sometimes written $\dfrac{\hbar}{i} \dfrac{\partial}{\partial x}$ and sometimes written $-i\hbar \dfrac{\partial}{\partial x}$. They are **completely equivalent**.
+
+We may find $\hat p \psi$ as follows:
+
+{% math() %}
+\begin{align*}
+\hat p \psi &= \dfrac{\hbar}{i} \dfrac{\partial}{\partial x} \\
+&= \dfrac{\hbar}{i}\dfrac{\partial}{\partial x}\left[\left( \dfrac{1}{2 \pi} \right)^{1 / 4} \dfrac{1}{\sqrt{\sigma}} e^{i k_0 x -
+\frac{x^2}{4 \sigma^2}} e^{-i \omega t}\right] \\
+&= \dfrac{\hbar}{i} \left( \dfrac{1}{2 \pi} \right)^{1 / 4} \dfrac{1}{\sqrt{\sigma}} e^{-i\omega t} \left[\dfrac{\partial}{\partial x} 
+\left(e^{i k_0 x - \frac{x^2}{4 \sigma^2}}\right)\right] \\
+&= \dfrac{\hbar}{i} \left( \dfrac{1}{2 \pi} \right)^{1 / 4} \dfrac{1}{\sqrt{\sigma}} e^{-i\omega t} \left[ 
+\left(ik_0 - \dfrac{x}{2\sigma^2}\right)e^{i k_0 x - \frac{x^2}{4 \sigma^2}}\right] \\
+\end{align*}
+{% end %}
+
+Substituting this expression into the equation for $\langle p\rangle$ we have:
+
+{% math() %}
+\begin{align*}
+\langle p\rangle &= \int_{-\infty}^\infty \psi^*(x) \dfrac{\hbar}{i} \dfrac{\partial}{\partial x} \psi(x)\, dx \\
+&= \left[\frac{\hbar}{i} \left[\left( \frac{1}{2 \pi} \right)^{1 / 4} \frac{1}{\sqrt{\sigma}}\right]^2 \cancel{e^{i\omega t}e^{-i\omega t}}^{{}^1} \right]\int_{-\infty}^\infty e^{-i k_0 x - \frac{x^2}{4 \sigma^2}}
+\left(ik_0 - \frac{x}{2\sigma^2}\right)e^{i k_0 x - \frac{x^2}{4 \sigma^2}}\,dx \\
+&= \frac{\hbar}{i} \left[\left( \frac{1}{2 \pi} \right)^{1 / 4} \frac{1}{\sqrt{\sigma}}\right]^2
+\int_{-\infty}^\infty \cancel{e^{i k_0 x} e^{-ik_0x}}^{{}^1} \left(ik_0 - \frac{x}{2\sigma^2}\right) e^{-\frac{x^2}{4 \sigma^2}}e^{-\frac{x^2}{4 \sigma^2}}\,dx \\
+&= \frac{\hbar}{i} \left[\left( \frac{1}{2 \pi} \right)^{1 / 4} \frac{1}{\sqrt{\sigma}}\right]^2
+\int_{-\infty}^\infty \left(ik_0 - \frac{x}{2\sigma^2}\right) e^{-\frac{2x^2}{4 \sigma^2}} \,dx \\
+&= \frac{\hbar}{i} \left[\left( \frac{1}{2 \pi} \right)^{1 / 4} \frac{1}{\sqrt{\sigma}}\right]^2
+\int_{-\infty}^\infty \left(ik_0 - \frac{x}{2\sigma^2}\right) e^{-\frac{x^2}{2 \sigma^2}} \,dx \\
+&= \frac{\hbar}{i} \left[\left( \frac{1}{2 \pi} \right)^{1 / 4} \frac{1}{\sqrt{\sigma}}\right]^2
+\left(\int_{-\infty}^\infty ik_0 e^{-\frac{x^2}{2 \sigma^2}} \,dx - \int_{-\infty}^\infty \frac{x}{2\sigma^2} e^{-\frac{x^2}{2 \sigma^2}} \,dx \right)
+\end{align*}
+{% end %}
+
+> It is helpful to remember that the conjugate of anything real-valued is itself (e.g. the conjugate of $e^{-\frac{x^2}{2\sigma^2}}$ is itself. Meanwhile, anything complex-valued in the form $e^{\pm i \phi}$ has $e^{\mp i\phi}$ as its conjugate. For instance, $e^{-i\omega t}$ has the conjugate $e^{i\omega t}$, and $e^{-i\omega t} e^{i\omega t} = 1$. 
+
+Note, however, that the second integral in the last line of our expression is an odd function, so the integral goes to zero. Therefore, we have the simplified integral (relief!) as follows:
+
+{% math() %}
+\begin{align*}
+\langle p \rangle &= \frac{\hbar}{i} \left[\left( \frac{1}{2 \pi} \right)^{1 / 4} \frac{1}{\sqrt{\sigma}}\right]^2
+\int_{-\infty}^\infty ik_0 e^{-\frac{x^2}{2 \sigma^2}} \,dx \\
+&= \dfrac{\hbar k_0}{\sigma \sqrt{2\pi}} \int_{-\infty}^\infty e^{-\frac{x^2}{2 \sigma^2}} \,dx
+\end{align*}
+{% end %}
+
+This is a _Gaussian integral_ that we can solve with the following identity:
+
+{% math() %}
+\displaystyle \int_{- \infty}^{\infty} e^{- \alpha y^2} d y = \sqrt{\dfrac{\pi}{a}}
+{% end %}
+
+If we use the substitution that $a = \dfrac{1}{2\sigma^2}$ then we have:
+
+{% math() %}
+\begin{align*}
+\langle p \rangle &= \dfrac{\hbar k_0}{\sigma \sqrt{2\pi}} \int_{-\infty}^\infty e^{-\frac{x^2}{2 \sigma^2}} \,dx \\
+&= \dfrac{\hbar k_0}{\sigma \sqrt{2\pi}} \sqrt{2\pi \sigma^2} \\
+&= \dfrac{\hbar k_0}{\sigma \sqrt{2\pi}} \sigma \sqrt{2\pi} \\
+&= \hbar k_0
+\end{align*}
+{% end %}
+
+This is indeed the momentum we expect of a single particle of wavevector $k_0$. While a free particle's momentum can be any eigenvalue of the momentum operator, and cannot be predicted in advance, the _average_ momentum over several measurements $p = \hbar k_0$ is **equal** to the de Broglie expression for the momentum. Thus, _on average_, quantum mechanics reduces to deterministic laws.
 
 ### The infinite square well
 
@@ -836,13 +944,140 @@ Where $\mu$ is the _reduced mass_, i.e. $\mu \equiv \dfrac{m_e m_p}{m_e + m_p}$ 
 
 ### The quantum harmonic oscillator
 
-We'll now take a look at the quantum harmonic oscillator, a quantum system describing a particle that oscillates within a harmonic (i.e. quadratic) potential. But first, why study it? The reason is because all potentials are _approximately_ harmonic potentials close to their local minimums. Why? Because, in one line:
+We'll now take a look at the quantum harmonic oscillator, a quantum system describing a particle that oscillates within a harmonic (i.e. quadratic) potential. But first, why study it? The reason is because all potentials are _approximately_ harmonic potentials close to their local minimums. Let us see why this gives us powerful tools to solve non-trivial quantum systems
+
+Consider solving the Schrödinger equation with a non-trivial potential $V(x)$ for some given quantum system. We may expand it as a Taylor series. When the system oscillates about a local minimum of the potential - which, in physical terms, corresponds to having a total energy $E$ slightly above the potential minimum $V_0$ - then the first derivative is approximately zero. The second derivative is a constant, and all higher-order terms vanish. Therefore, the potential can be written as:
 
 {% math() %}
-V(x) = V(x_0) + \cancel{V'(x_0) x} + \frac{1}{2} V''(x_0) x^2 + \cancel{\frac{1}{6} V'''(x_0) x^3} + \cancel \dots = V_0 + kx^2
+V(x) = V(x_0) + \cancel{V'(x_0) x} + \frac{1}{2} V''(x_0) x^2 + \cancel{\frac{1}{6} V'''(x_0) x^3} + \cancel \dots = V_0 + \dfrac{1}{2}kx^2
 {% end %}
 
-In words, any potential can be expanded as a Taylor series, and close to a local minimum, the first derivative is zero, and the second derivative is a constant, with all higher-order terms vanishing. That means for _any_ quantum system constrained to evolve under a potential $V(x)$, their behavior close to a local minimum of the potential will be that of the quantum harmonic oscillator, no matter how complicated the potential is.
+As the potential energy can be defined against an arbitrarily-chosen reference point, we may add or subtract any constant from the potential without affecting the physics. Thus, we can just as well write the potential as:
+
+{% math() %}
+V(x) = \dfrac{1}{2} kx^2
+{% end %}
+
+If we set $\omega = \sqrt{\frac{k}{m}}$ to be the _angular frequency_ of the oscillations about the potential, then we may rewrite this as:
+
+{% math() %}
+V(x) = \dfrac{1}{2} m \omega^2 x^2
+{% end %}
+
+Ultimately, the point of studying the quantum harmonic oscillator is that for _any_ quantum system constrained to evolve under a potential $V(x)$, their behavior close to a local minimum of the potential will be approximately that of the quantum harmonic oscillator, no matter how complicated the potential is. This greatly increases the number of systems we can find (at least) approximate analytical solutions of.
+
+With all that said, we may now begin solving the Schrödinger equation for the quantum harmonic oscillator. Inserting the harmonic potential into the time-independent Schrödinger equation results in the following PDE:
+
+{% math() %}
+-\dfrac{\hbar^2}{2m} \dfrac{\partial^2 \psi}{\partial x^2} + \dfrac{1}{2} m \omega^2 x^2 \psi = E\psi
+{% end %}
+
+Given that the solution is dependent only on position we may replace the partial derivatives with ordinary derivatives:
+
+{% math() %}
+-\dfrac{\hbar^2}{2m} \dfrac{d^2 \psi}{dx^2} + \dfrac{1}{2} m \omega^2 x^2 \psi = E\psi
+{% end %}
+
+This is not an easy differential equation to solve. However, we can make the problem tractable by assuming the ground state of the quantum harmonic oscillation has a very small energy, so that $E_0 \psi \approx 0$. This reduces the differential equation to: 
+
+{% math() %}
+-\dfrac{\hbar^2}{2m} \dfrac{d^2 \psi}{dx^2} + \dfrac{1}{2} m \omega^2 x^2 \psi = 0
+{% end %}
+
+We may now algebraically rearrange the differential equation into the form:
+
+{% math() %}
+\dfrac{d^2 \psi}{dx^2} = \dfrac{m^2 \omega^2}{\hbar^2} x^2 \psi
+{% end %}
+
+Now note that this can be rewritten as:
+
+{% math() %}
+\dfrac{d^2 \psi}{dx^2} = \left(\dfrac{m \omega}{\hbar}\right)^2 x^2 \psi
+{% end %}
+
+If we define a constant $k_s \equiv \dfrac{m \omega}{2\hbar}$ - the physical meaning of this constant will be discussed later - then we can write this as:
+
+{% math() %}
+\dfrac{d^2 \psi}{dx^2} = k_s^2 x^2 \psi
+{% end %}
+
+To understand why we do this, we can do some dimensional analysis. The units of $\dfrac{m\omega}{\hbar}$ on the right-hand side of the differential equation are those of inverse squared meters, that is, $\pu{m^{-2}}$. We know of a quantity that has units of inverse meters - the wavevector $k$ - so therefore $\dfrac{m\omega}{\hbar}$ must be proportional to the square of the wavevector. Thus we write $k_s \propto k^2$, with some undetermined proportionality constant.
+
+Recalling that $p = \hbar k$ and therefore $p^2 = \hbar^2 k^2$, we may rearrange to $k^2 = \dfrac{p^2}{\hbar^2}$. But also recalling that $E = \dfrac{p^2}{2m}$ we can rearrange this to find that $p^2 = 2mE$ and thus $k^2 = \dfrac{2mE}{\hbar^2}$. However, we also know _another_ expression for the energy - $E = \hbar \omega$, so if we substitute this in, we have 
+
+{% math() %}
+k^2 = \dfrac{2m\hbar \omega}{\hbar^2} = \dfrac{2m \omega}{\hbar}
+{% end %} 
+
+This is _almost_ there, but not quite - there is the additional factor of two. This is why we include the factor of $1/2$. 
+
+Proceeding from the prior steps, we may consider a solution _ansatz_ in the form: 
+
+{% math() %}
+\psi = A e^{-k_s x^2} = Ae^{-\left(\frac{m\omega}{2\hbar}\right) x^2}
+{% end %} 
+
+where $A$ is some undetermined normalization factor. All of what we have done so far is just an (educated) guess - that is the essence of the _ansatz_ technique - but it is the right guess, because if we proceed from this assumption, it can be shown that we get the correct results, and had we guessed wrong we could've just chosen another guess. 
+
+If we substitute this _ansatz_ into the Hamiltonian, we find that:
+
+{% math() %}
+\begin{align*}
+\hat H \psi &=
+-\dfrac{\hbar^2}{2m} \dfrac{d^2 \psi}{dx^2} + \dfrac{1}{2} m \omega^2 x^2 \psi \\
+&= -\dfrac{\hbar^2}{2m}\dfrac{d^2}{dx^2} \left(Ae^{-k_s x^2}\right) + \dfrac{1}{2} m \omega^2 x^2 \left(Ae^{-k_s x^2}\right) \\
+&= -\dfrac{\hbar^2}{2m} (4 k_s^2 x^2 - 2k_s)Ae^{-k_s x^2}  + \dfrac{1}{2} m \omega^2 x^2 \left(Ae^{-k_s x^2}\right) \\
+&= \left(-\dfrac{\hbar^2}{2m} (4 k_s^2 x^2 - 2k_s) + \dfrac{1}{2} m \omega^2 x^2\right)Ae^{-k_s x^2} \\
+&= \left(-\dfrac{4\hbar^2}{2m}\frac{m^2\omega^2}{4\hbar^2} x^2 + \dfrac{2\hbar^2}{2m} \frac{m\omega}{2\hbar} + \dfrac{1}{2}m\omega^2 x^2\right)Ae^{-k_s x^2} \\
+&= \left(-\dfrac{1}{2}m\omega^2 x^2 + \dfrac{2\hbar^2}{2m} \frac{m\omega}{2\hbar} + \dfrac{1}{2}m\omega^2 x^2\right)Ae^{-k_s x^2} \\
+&= \dfrac{1}{2} \hbar \omega Ae^{-k_s x^2} \\
+&= \dfrac{1}{2}\hbar \omega \psi \\
+&= E \psi
+\end{align*}
+{% end %}
+
+Thus our _ansatz_ does satisfy the Schrödinger equation $\hat H \psi = E\psi$, showing that our solution is indeed valid (even if we had to take some very wild guesses to get there!) We do still need to normalize it, however, to ensure the solution is physical (which also automatically satisfies the boundary conditions of the problem $\psi(-\infty) = \psi(\infty) = 0$). Applying the normalization condition we have:
+
+{% math() %}
+\begin{align*}
+\int_{-\infty}^\infty \psi^*(x)\psi(x)\, dx
+&= \int_{-\infty}^\infty Ae^{-k_s x^2} Ae^{-k_s x^2} dx \\
+&= A^2 \int_{-\infty}^\infty e^{-2k_s x^2} dx \\
+&= A^2\sqrt{\dfrac{\pi}{2k_s}}
+\end{align*}
+{% end %}
+
+Where we solved the integral using the Gaussian integral identity:
+
+{% math() %}
+\int_{-\infty}^\infty e^{-a x^2} = \sqrt{\dfrac{\pi}{a}}
+{% end %}
+
+For probability to be conserved, we must have the $A^2\sqrt{\dfrac{\pi}{2k_s}} = 1$, using which we can solve for $A$:
+
+{% math() %}
+\begin{gather*}
+A^2\sqrt{\dfrac{\pi}{2k_s}} = 1 \\
+A^2 = \sqrt{\dfrac{2k_s}{\pi}} \\
+A = \left(\dfrac{2k_s}{\pi}\right)^{1/4}
+\end{gather*} \\
+A = \left(\dfrac{m\omega}{\pi \hbar}\right)^{1/4}
+{% end %}
+
+So the ground state of the quantum harmonic oscillator is given by:
+
+{% math() %}
+\psi_0 = \left(\dfrac{m\omega}{\pi \hbar}\right)^{1/4} e^{-\left(\frac{m\omega}{2\hbar}\right) x^2}
+{% end %}
+
+Furthermore, we note that this solution for the ground state of the quantum harmonic oscillator has energy eigenvalue $E_0 = \dfrac{1}{2}\hbar\omega$. The _general expression_ for the energy eigenvalues of the quantum harmonic oscillator are given by:
+
+{% math() %}
+E_n = \left(n + \dfrac{1}{2}\right)\hbar \omega
+{% end %}
+
+For which we can see that with $n = 0$ we have the familiar expression of $E = \dfrac{1}{2} \hbar \omega$.
 
 ## The mathematics behind quantum mechanics
 
