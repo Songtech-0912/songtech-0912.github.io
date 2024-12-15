@@ -605,11 +605,11 @@ While Lewis theory predicts many of the most important results of ionic bonding,
 
 To demonstrate Lewis theory for covalent compounds, let us consider the classical example of water, $\ce{H2O}$. Water is formed by covalent bonds between a central oxygen atom and two hydrogen atoms. Recall that Lewis theory postulates that in the case of covalent compounds, electrons are _shared_, not transferred, between atoms to form bonds. A hydrogen atom has a **single valence electron**, while an oxygen atom has **six valence electrons**. We can show this by drawing **Lewis structures**, simplified representations of atomic valence orbitals, where dots indicate valence electrons:
 
-![](lewis-hydrogen-oxygen.excalidraw.svg)
+{{ diagram(src="lewis-hydrogen-oxygen.excalidraw.svg") }}
 
 When two hydrogen atoms each share their one electron with an oxygen atom, the result is a water molecule that allows all three atoms to have fully-filled valence shells, as is shown in the Lewis structure below:
 
-![](lewis-water.excalidraw.svg)
+{{ diagram(src="lewis-water.excalidraw.svg") }}
 
 In drawing Lewis structures, we follow these rules:
 
@@ -619,13 +619,13 @@ In drawing Lewis structures, we follow these rules:
 
 Thus, we may also draw the Lewis structure of water as follows:
 
-![](lewis-water-alt.excalidraw.svg)
+{{ diagram(src="lewis-water-alt.excalidraw.svg") }}
 
 > Remember! A bond is formed by a **pair** of electrons, so a single bond is actually two electrons, a double bond four, a triple bond six, and so on. Similarly, we always speak of _lone pairs_ of electrons - not single electrons!
 
 Given this process of 1) identifying the number of valence electrons of atoms, 2) deducing how many electrons are necessary to form full valence shells (equivalent to the valence shell of the closest noble gas, and 3) drawing Lewis structures to join different atoms together with the bonds that produce these full valence shells, Lewis theory allows us to predict the chemical formulas of covalently-bonded and ionically-bonded compounds. This is how we know, for instance, that nitrogen gas is composed of two nitrogen atoms that are triple-bonded, as this allows both nitrogen atoms to gain a full valence shell:
 
-![](lewis-nitrogen.excalidraw.svg)
+{{ diagram(src="lewis-nitrogen.excalidraw.svg") }}
 
 The triple bond means that diatomic nitrogen (i.e. $\ce{N2}$) is _extremely_ unreactive as breaking the triple bond requires a lot of energy. Conversely, nitrogen-based compounds can be highly reactive (e.g. nitroglycerin, a component of many explosives) as a nitrogen triple bond is formed by the reaction, releasing a _lot_ of energy _very quickly_ in the process - given that the constituent atoms in these nitrogen-based compounds readily break their (single or double) bonds to be able to form a far stabler nitrogen triple bond.
 
@@ -647,7 +647,7 @@ Electronegativity is generally determined empirically; there are many published 
 
 In many cases, the geometry of a given molecule means that multiple Lewis structures are possible. The true molecule actually occurs in all the different predicted Lewis structures in different proportions, which we refer to as **resonance**. This is also called a **delocalized bond**, and we call the structure a **resonance structure**. Consider, for instance, the carbon dioxide molecule, which has three resonance structures:
 
-![](lewis-resonance-structures.excalidraw.svg)
+{{ diagram(src="lewis-resonance-structures.excalidraw.svg") }}
 
 Resonant structures must have the **same bonds**. The only difference between the respective Lewis structures is that the bonds are placed in different locations. We draw a resonance structure by placing several Lewis structures adjacent to each other and draw a double sided arrow $\leftrightarrow$ to show that multiple structures are possible. Of these Lewis structures, we choose the *preferred* Lewis structure. There are several criteria used to determine the "best" Lewis structure, and we will discuss each of these below.
 
@@ -739,7 +739,7 @@ Molecular geometry introduces several new types of geometry:
 
 A visual chart of the molecular geometries are shown below:
 
-![A diagram of the comparison between electron geometries and molecular geometries](VSEPR-geometries.excalidraw.svg)
+{{ wideimg(src="VSEPR-geometries.excalidraw.svg" desc="A diagram of the comparison between electron geometries and molecular geometries") }}
 
 > **An important thing to remember:** a molecule with $N$ electron groups can have at most $N - 1$ different molecular geometries _including_ its idealized (electron) geometry. For instance, a molecule with **5 electron groups** can only have at most **4 different molecular geometries**, and this is indeed what we observe: the possible molecular geometries are trigonal bipyramidal (the ideal geometry), sawhorse, T-shaped, and linear.
 
@@ -802,9 +802,9 @@ We draw organic compounds in several different ways. Take, for instance, $\ce{C5
 
 | Name of representation                  | Format                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Example for pentane ($\ce{C5H12}$)   |
 | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
-| Lewis structure (structural formula)    | This is the conventional Lewis structure diagram that uses dots or dashes to represent bonds.                                                                                                                                                                                                                                                                                                                                                                                   | ![Lewis dot structure for pentane](dot-structure-demo.png) |
+| Lewis structure (structural formula)    | This is the conventional Lewis structure diagram that uses dots or dashes to represent bonds.                                                                                                                                                                                                                                                                                                                                                                                   | ![](dot-structure-demo.png) |
 | Condensed structure (condensed formula) | Same as Lewis structure except groups of atoms are written as one condensed constituent element.                                                                                                                                                                                                                                                                                                                                                                                | $\ce{CH3-CH2-CH2-CH2-CH3}$           |
-| Skeleton structure (skeleton formula)   | Only shows the position of the carbon bonds (i.e. bonds between carbon atoms). Carbon atoms are located at **points where lines meet** or the **ends of the lines**, and hydrogen atoms are not shown; it is implied that there are **attached hydrogens to every carbon**, and the number of hydrogens bonded to each carbon is however many is necessary to fulfill the octet rule. Some skeleton diagrams also include the carbon groups (e.g. $\ce{CH3}$) on the endpoints. | ![Skeleton structure for pentane](skeleton-structure-demo.gif)           |
+| Skeleton structure (skeleton formula)   | Only shows the position of the carbon bonds (i.e. bonds between carbon atoms). Carbon atoms are located at **points where lines meet** or the **ends of the lines**, and hydrogen atoms are not shown; it is implied that there are **attached hydrogens to every carbon**, and the number of hydrogens bonded to each carbon is however many is necessary to fulfill the octet rule. Some skeleton diagrams also include the carbon groups (e.g. $\ce{CH3}$) on the endpoints. | ![](skeleton-structure-demo.gif)           |
 
 > In addition to these representations, software can be used to create **3D visualizations** of organic compounds by rendering the actual molecular geometry. See the [PubChem 3D viewer](https://pubchem.ncbi.nlm.nih.gov/pc3d/) for examples of how to do this.
 
@@ -829,15 +829,15 @@ The names of alkanes start with -ane. Each alkane has two hydrogen atoms at eith
 | Alkane Name | Molecular Formula | Condensed formula          | Skeleton Formula                                                                                                                                                             |
 | ----------- | ----------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Methane     | $\ce{CH4}$        | $\ce{CH4}$                 | There isn't one (because there are no carbon-carbon bonds to represent). But its Lewis structure is very straightforward - 4 hydrogens branching out of a single carbon atom |
-| Ethane      | $\ce{C2H6}$       | $\ce{CH3-CH3}$             | ![Ethane diagram: CC](http://hulab.rxnfinder.org/smi2img/CC?height=100)                                                                                                      |
-| Propane     | $\ce{C3H8}$       | $\ce{CH3-CH2-CH3}$         | ![Propane diagram: CCC](http://hulab.rxnfinder.org/smi2img/CCC?height=100)                                                                                                   |
-| Butane      | $\ce{C4H10}$      | $\ce{CH3-CH2-CH2-CH3}$     | ![Butane diagram: CCCC](http://hulab.rxnfinder.org/smi2img/CCCC?height=100)                                                                                                  |
-| Pentane     | $\ce{C5H12}$      | $\ce{CH3-CH2-CH2-CH2-CH3}$ | ![Pentane diagram: CCCCC](http://hulab.rxnfinder.org/smi2img/CCCCC?height=100)                                                                                               |
-| Hexane      | $\ce{C6H14}$      | $\ce{CH3-(CH2)4-CH3}$      | ![Hexane diagram: CCCCCC](http://hulab.rxnfinder.org/smi2img/CCCCCC?height=100)                                                                                              |
-| Heptane     | $\ce{C7H16}$      | $\ce{CH3-(CH2)5-CH3}$      | ![Heptane diagram: CCCCCCC](http://hulab.rxnfinder.org/smi2img/CCCCCCC?height=100)                                                                                           |
-| Octane      | $\ce{C8H18}$      | $\ce{CH3-(CH2)6-CH3}$      | ![Octane diagram: CCCCCCCC](http://hulab.rxnfinder.org/smi2img/CCCCCCCC?height=100)                                                                                          |
-| Nonane      | $\ce{C9H20}$      | $\ce{CH3-(CH2)7-CH3}$      | ![Nonane diagram: CCCCCCCCC](http://hulab.rxnfinder.org/smi2img/CCCCCCCCC?height=100)                                                                                        |
-| Decane      | $\ce{C10H22}$     | $\ce{CH3-(CH2)8-CH3}$      | ![Decane diagram: CCCCCCCCCC](http://hulab.rxnfinder.org/smi2img/CCCCCCCCCC?height=100)                                                                                      |
+| Ethane      | $\ce{C2H6}$       | $\ce{CH3-CH3}$             | ![Ethane diagram: CC](smiles/CC.svg)                                                                                                      |
+| Propane     | $\ce{C3H8}$       | $\ce{CH3-CH2-CH3}$         | ![Propane diagram: CCC](smiles/CCC.svg)                                                                                                   |
+| Butane      | $\ce{C4H10}$      | $\ce{CH3-CH2-CH2-CH3}$     | ![Butane diagram: CCCC](smiles/CCCC.svg)                                                                                                  |
+| Pentane     | $\ce{C5H12}$      | $\ce{CH3-CH2-CH2-CH2-CH3}$ | ![Pentane diagram: CCCCC](smiles/CCCCC.svg)                                                                                               |
+| Hexane      | $\ce{C6H14}$      | $\ce{CH3-(CH2)4-CH3}$      | ![Hexane diagram: CCCCCC](smiles/CCCCCC.svg)                                                                                              |
+| Heptane     | $\ce{C7H16}$      | $\ce{CH3-(CH2)5-CH3}$      | ![Heptane diagram: CCCCCCC](smiles/CCCCCCC.svg)                                                                                           |
+| Octane      | $\ce{C8H18}$      | $\ce{CH3-(CH2)6-CH3}$      | ![Octane diagram: CCCCCCCC](smiles/CCCCCCCC.svg)                                                                                          |
+| Nonane      | $\ce{C9H20}$      | $\ce{CH3-(CH2)7-CH3}$      | ![Nonane diagram: CCCCCCCCC](smiles/CCCCCCCCC.svg)                                                                                        |
+| Decane      | $\ce{C10H22}$     | $\ce{CH3-(CH2)8-CH3}$      | ![Decane diagram: CCCCCCCCCC](smiles/CCCCCCCCCC.svg)                                                                                      |
 
 > **Note:** a mnemonic that may be helpful is that for all the alkanes after butane, additionally, follow the typical naming conventions, e.g. _hept-_ for five, _hex-_ for six, _oct-_ for octane, and so forth. In addition, due to the extremely long structural formulas of the larger alkanes (hexane, heptane, octane, nonane, decane) we use an abbreviated notation. As an example, hexane, given by $\ce{CH3-(CH2)4-CH3}$ is equivalent to $\ce{CH3-CH2-CH2-CH2-CH2-CH3}$, i.e. has 4 repeated $\ce{CH2}$ groups. Meanwhile, for the first four alkanes, just memorize "M.E.P.B", this will be extremely useful going forwards
 
@@ -862,7 +862,7 @@ Alkanes can form more sophisticated structures through the process of adding add
 
 The **name** of alkanes is derived from their longest chain in their structural formula. For instance, consider iso-octane, which, despite its common name, is not actually derived from octane. The structural formula is as follows:
 
-![2,2-4-trimethylpentane skeleton formula - SMILES code below](2,2-4-trimethylpentane.excalidraw.svg)
+{{ diagram(src="2,2-4-trimethylpentane.excalidraw.svg") }}
 
 _SMILES format: `CC(C)(C)CC(C)C`_
 
@@ -894,21 +894,21 @@ Alkenes are very similar to alkanes in that they only contain carbon and hydroge
 
 | Alkane Name                   | Molecular Formula | Condensed formula             | Skeleton Formula                                                                          |
 | ----------------------------- | ----------------- | ----------------------------- | ----------------------------------------------------------------------------------------- |
-| Ethene (also called ethylene) | $\ce{C2H4}$       | $\ce{CH2=CH2}$                | ![Ethene diagram: C=C](http://hulab.rxnfinder.org/smi2img/C=C?height=100)                 |
-| Propene                       | $\ce{C3H6}$       | $\ce{CH2=CH-CH3}$             | ![Propene diagram: C=CC](http://hulab.rxnfinder.org/smi2img/C=CC?height=100)              |
-| Butene                        | $\ce{C4H8}$       | $\ce{CH2=CH-CH2-CH3}$         | ![Butene diagram: C=CCC](http://hulab.rxnfinder.org/smi2img/C=CCC?height=100)             |
-| Pentene                       | $\ce{C5H10}$      | $\ce{CH2=CH-CH2-CH2-CH3}$     | ![Pentene diagram: C=CCCC](http://hulab.rxnfinder.org/smi2img/C=CCCC?height=100)          |
-| Hexene                        | $\ce{C6H12}$      | $\ce{CH2=CH-CH2-CH2-CH2-CH3}$ | ![Hexene diagram: C=CCCCC](http://hulab.rxnfinder.org/smi2img/C=CCCCC?height=100)         |
-| Heptene                       | $\ce{C7H14}$      | $\ce{CH2=CH-(CH2)4-CH3}$      | ![Heptene diagram: C=CCCCCC](http://hulab.rxnfinder.org/smi2img/C=CCCCCC?height=100)      |
-| Octene                        | $\ce{C8H16}$      | $\ce{CH2=CH-(CH2)5-CH3}$      | ![Octene diagram: C=CCCCCCC](http://hulab.rxnfinder.org/smi2img/C=CCCCCCC?height=100)     |
-| Nonene                        | $\ce{C9H18}$      | $\ce{CH2=CH-(CH2)6-CH3}$      | ![Nonene diagram: C=CCCCCCCC](http://hulab.rxnfinder.org/smi2img/C=CCCCCCCC?height=100)   |
-| Decene                        | $\ce{C10H20}$     | $\ce{CH2=CH-(CH2)7-CH3}$      | ![Decene diagram: C=CCCCCCCCC](http://hulab.rxnfinder.org/smi2img/C=CCCCCCCCC?height=100) |
+| Ethene (also called ethylene) | $\ce{C2H4}$       | $\ce{CH2=CH2}$                | ![Ethene diagram: C=C](smiles/C=C.svg)                 |
+| Propene                       | $\ce{C3H6}$       | $\ce{CH2=CH-CH3}$             | ![Propene diagram: C=CC](smiles/C=CC.svg)              |
+| Butene                        | $\ce{C4H8}$       | $\ce{CH2=CH-CH2-CH3}$         | ![Butene diagram: C=CCC](smiles/C=CCC.svg)             |
+| Pentene                       | $\ce{C5H10}$      | $\ce{CH2=CH-CH2-CH2-CH3}$     | ![Pentene diagram: C=CCCC](smiles/C=CCCC.svg)          |
+| Hexene                        | $\ce{C6H12}$      | $\ce{CH2=CH-CH2-CH2-CH2-CH3}$ | ![Hexene diagram: C=CCCCC](smiles/C=CCCCC.svg)         |
+| Heptene                       | $\ce{C7H14}$      | $\ce{CH2=CH-(CH2)4-CH3}$      | ![Heptene diagram: C=CCCCCC](smiles/C=CCCCCC.svg)      |
+| Octene                        | $\ce{C8H16}$      | $\ce{CH2=CH-(CH2)5-CH3}$      | ![Octene diagram: C=CCCCCCC](smiles/C=CCCCCCC.svg)     |
+| Nonene                        | $\ce{C9H18}$      | $\ce{CH2=CH-(CH2)6-CH3}$      | ![Nonene diagram: C=CCCCCCCC](smiles/C=CCCCCCCC.svg)   |
+| Decene                        | $\ce{C10H20}$     | $\ce{CH2=CH-(CH2)7-CH3}$      | ![Decene diagram: C=CCCCCCCCC](smiles/C=CCCCCCCCC.svg) |
 
 The molecular formulas of alkenes can be determined either through the same method as alkanes (writing out the condensed formula and counting the carbons and hydrogens) or by using the general formula $\ce{C_nH_{2n}}$. 
 
 In an alkene, the longest carbon chain that contains the double bond is what establishes the root name of the alkene. We still count from edge to edge, but we start from the edge that is _closest_ to the double bond. If the double bond is *equidistant* from either side, we count from the side that is closer to the *first* substituent group. When naming alkenes, we _also_ insert the position of the double bond just before the root name of the alkene, and multiple groups are (again) given in alphabetical order. For instance, consider the following annotated alkene:
 
-![The skeleton structure of 3-ethyl-4-methyl-1-pentene, SMILES code below](diagram-3-ethyl-4-metheyl-1-pentene.excalidraw.svg)
+{{ diagram(src="diagram-3-ethyl-4-metheyl-1-pentene.excalidraw.svg") }}
 
 _Associated SMILES format: `C=CC(CC)C(C)C`_
 
@@ -918,9 +918,9 @@ Note that we referred to the base ethyl as _1-pentene_ rather than simply _pente
 
 | Name      | Location of double bond | Condensed formula        | Skeleton structure                                                                          |
 | --------- | ----------------------- | ------------------------ | ------------------------------------------------------------------------------------------- |
-| 1-pentene | 1st-position carbon     | $\ce{CH2=CH-(CH2)2-CH3}$ | ![1-pentene, SMILES format: C=CCCC](http://hulab.rxnfinder.org/smi2img/C=CCCC?height=100)   |
-| 2-pentene | 2nd-position carbon     | $\ce{CH3-CH=CH-CH2-CH3}$ | ![2-pentene, SMILES format: CC=CCC](http://hulab.rxnfinder.org/smi2img/C/C=CC\C?height=100) |
-| 3-pentene | 3rd-position carbon     | $\ce{CH3-CH2-CH=CH-CH3}$ | ![3-pentene, SMILES format: CCC=CC](http://hulab.rxnfinder.org/smi2img/CCC=CC?height=100)   |
+| 1-pentene | 1st-position carbon     | $\ce{CH2=CH-(CH2)2-CH3}$ | ![1-pentene, SMILES format: C=CCCC](smiles/C=CCCC.svg)   |
+| 2-pentene | 2nd-position carbon     | $\ce{CH3-CH=CH-CH2-CH3}$ | ![2-pentene, SMILES format: CC=CCC](smiles/C%2FC%3DCC%5CC.svg) |
+| 3-pentene | 3rd-position carbon     | $\ce{CH3-CH2-CH=CH-CH3}$ | ![3-pentene, SMILES format: CCC=CC](smiles/CCC=CC.svg)   |
 
 > **Note:** bare skeleton structures are very simplified and it is important to remember that implied carbons are located at all endpoints of each line and all points where lines join. Hydrogen atoms are also implied to be attached to the carbon atoms, however many is necessary to fill the carbon atoms' orbitals.
 
@@ -932,15 +932,15 @@ Alkynes follow the general formula $C_n H_{2n-2}$. The same general structure of
 
 | Alkane Name | Molecular Formula | Condensed formula               | Skeleton Formula                                                                                   |
 | ----------- | ----------------- | ------------------------------- | -------------------------------------------------------------------------------------------------- |
-| Ethyne      | $\ce{C2H2}$       | $\ce{CH#CH}$                    | ![Ethylyne, SMILES format: C#C](http://hulab.rxnfinder.org/smi2img/C%23C?height=100)               |
-| Propyne     | $\ce{C3H4}$       | $\ce{CH#C-CH3}$                 | ![Propyne, SMILES format: C#CC](http://hulab.rxnfinder.org/smi2img/C%23CC?height=100)              |
-| Butyne      | $\ce{C4H6}$       | $\ce{CH#C-CH2-CH3}$             | ![Butyne, SMILES format: C#CCC](http://hulab.rxnfinder.org/smi2img/C%23CCC?height=100)             |
-| Pentyne     | $\ce{C5H8}$       | $\ce{CH#C-CH2-CH2-CH3}$         | ![Pentyne, SMILES format: C#CCCC](http://hulab.rxnfinder.org/smi2img/C%23CCCC?height=100)          |
-| Hexyne      | $\ce{C6H10}$      | $\ce{CH#C-CH2-CH2-CH2-CH3}$     | ![Hexyne, SMILES format: C#CCCCC](http://hulab.rxnfinder.org/smi2img/C%23CCCCC?height=100)         |
-| Heptyne     | $\ce{C7H12}$      | $\ce{CH#C-CH2-CH2-CH2-CH2-CH3}$ | ![Heptyne, SMILES format: C#CCCCCC](http://hulab.rxnfinder.org/smi2img/C%23CCCCCC?height=100)      |
-| Octyne      | $\ce{C8H14}$      | $\ce{CH#C-(CH2)5-CH3}$          | ![Octyne, SMILES format: C#CCCCCCC](http://hulab.rxnfinder.org/smi2img/C%23CCCCCCC?height=100)     |
-| Nonyne      | $\ce{C9H16}$      | $\ce{CH#C-(CH2)6-CH3}$          | ![Nonyne, SMILES format: C#CCCCCCCC](http://hulab.rxnfinder.org/smi2img/C%23CCCCCCCC?height=100)   |
-| Decyne      | $\ce{C10H18}$     | $\ce{CH#C-(CH2)7-CH3}$          | ![Decyne, SMILES format: C#CCCCCCCCC](http://hulab.rxnfinder.org/smi2img/C%23CCCCCCCCC?height=100) |
+| Ethyne      | $\ce{C2H2}$       | $\ce{CH#CH}$                    | ![Ethylyne, SMILES format: C#C](smiles/C#C.svg)               |
+| Propyne     | $\ce{C3H4}$       | $\ce{CH#C-CH3}$                 | ![Propyne, SMILES format: C#CC](smiles/C#CC.svg)              |
+| Butyne      | $\ce{C4H6}$       | $\ce{CH#C-CH2-CH3}$             | ![Butyne, SMILES format: C#CCC](smiles/C#CCC.svg)             |
+| Pentyne     | $\ce{C5H8}$       | $\ce{CH#C-CH2-CH2-CH3}$         | ![Pentyne, SMILES format: C#CCCC](smiles/C#CCCC.svg)          |
+| Hexyne      | $\ce{C6H10}$      | $\ce{CH#C-CH2-CH2-CH2-CH3}$     | ![Hexyne, SMILES format: C#CCCCC](smiles/C#CCCCC.svg)         |
+| Heptyne     | $\ce{C7H12}$      | $\ce{CH#C-CH2-CH2-CH2-CH2-CH3}$ | ![Heptyne, SMILES format: C#CCCCCC](smiles/C#CCCCCC.svg)      |
+| Octyne      | $\ce{C8H14}$      | $\ce{CH#C-(CH2)5-CH3}$          | ![Octyne, SMILES format: C#CCCCCCC](smiles/C#CCCCCCC.svg)     |
+| Nonyne      | $\ce{C9H16}$      | $\ce{CH#C-(CH2)6-CH3}$          | ![Nonyne, SMILES format: C#CCCCCCCC](smiles/C#CCCCCCCC.svg)   |
+| Decyne      | $\ce{C10H18}$     | $\ce{CH#C-(CH2)7-CH3}$          | ![Decyne, SMILES format: C#CCCCCCCCC](smiles/C#CCCCCCCCC.svg) |
 
 > **Note:** Ethyne is also called *acetylene* and *vinylene* and (even more confusingly) _ethenylene_. These common names all refer to to the same compound, just with different naming conventions.
 
@@ -948,23 +948,23 @@ Alkynes follow the general formula $C_n H_{2n-2}$. The same general structure of
 
 We have already seen alkanes, alkenes and alkynes. Now we will examine _benzenes_, also referred to as aromatic hydrocarbons. Benzenes are distinguished by their benzene hexagonal ring composed of 6 hydrogen and 6 carbon atoms, shown as follows:
 
-![Benzene C6H6, SMILES format](http://hulab.rxnfinder.org/smi2img/C1=CC=CC=CC1?height=100)
+![Benzene C6H6, SMILES format](smiles/C1=CC=CC=CC1.svg)
 
 Benzene groups have the name _phenyl-_ when they are part of the dominant chain in an organic molecule molecule (i.e. when the chain is much bigger than the benzene). When that is the case, we simply follow the general conventions for naming the molecule, such as the naming conventions of alkanes, alkenes, or alkynes, and append _phenyl-_ and the position number to the compound. For instance, here is 2-phenyl-2-pentene:
 
-![](http://hulab.rxnfinder.org/smi2img/CC(C1=CC=CC=CC1)=CCC?height=100)
+![](smiles/CC(C1=CC=CC=CC1)=CCC.svg)
 
 However, there are also cases where the benzene ring is the predominant structure of the compound and is where other groups branch off from. In this case, we follow a separate naming convention. We can start counting from wherever we want because benzene is a **cyclic compound** (i.e. has a ring). For instance, consider the following benzene-containing molecule:
 
-![1-chloro-2-methylbenzene, SMILES format: C1(Cl)=CC=CC=C(C)](http://hulab.rxnfinder.org/smi2img/C1(Cl)=CC=CC=C(C)1?height=100)
+![1-chloro-2-methylbenzene, SMILES format: C1(Cl)=CC=CC=C(C)](smiles/C1(Cl)=CC=CC=C(C)1.svg)
 
 We start counting from the chlorine because it comes in alphabetical order before the methyl group. We then count in either clockwise or counterclockwise order, whichever order makes for the smallest progression of numbers. Thus, we _can_ call it *1-chloro-2-methylbenzene* but **not** 1-chloro-6-methylbenzene because (1, 6) is a larger progression of numbers compared to (1, 2). We may _also_ call it **ortho-chloromethylbenzene**, where we reference the table below:
 
 | Prefix | Abbreviation | Meaning                                                                   | Example                                                                                                                            |
 | ------ | ------------ | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| Para-  | P-           | Two branches that are on directly opposing sides of the ring              | ![Para-chloromethylbenzene, SMILES format: C1(Cl)=CC=C(C)C=C1](http://hulab.rxnfinder.org/smi2img/C1(Cl)=CC=C(C)C=C1?height=100)   |
-| Meta-  | M-           | Two branches attached to carbon atoms that have another carbon in between | ![Meta-chloromethylbenzene, SMILES format: C1(Cl)=CC(C)=CC=CC1](http://hulab.rxnfinder.org/smi2img/C1(Cl)=CC(C)=CC=CC1?height=100) |
-| Ortho- | O-           | Two branches attached to two adjacent carbons                             | ![Ortho-chloromethylbenzene, SMILES format: C1(Cl)=CC=CC=C(C)C1](http://hulab.rxnfinder.org/smi2img/C1(Cl)=CC=CC=C(C)1?height=100) |
+| Para-  | P-           | Two branches that are on directly opposing sides of the ring              | ![Para-chloromethylbenzene, SMILES format: C1(Cl)=CC=C(C)C=C1](smiles/C1(Cl)=CC=C(C)C=C1.svg)   |
+| Meta-  | M-           | Two branches attached to carbon atoms that have another carbon in between | ![Meta-chloromethylbenzene, SMILES format: C1(Cl)=CC(C)=CC=CC1](smiles/C1(Cl)=CC(C)=CC=CC1.svg) |
+| Ortho- | O-           | Two branches attached to two adjacent carbons                             | ![Ortho-chloromethylbenzene, SMILES format: C1(Cl)=CC=CC=C(C)C1](smiles/C1(Cl)=CC=CC=C(C)1.svg) |
 
 ## Alcohols
 
@@ -972,11 +972,11 @@ An **alcohol** is the next type of organic compounds. Alcohols are any organic c
 
 | Alkane Name | Molecular Formula | Condensed formula             | Skeleton Formula                                                                               |
 | ----------- | ----------------- | ----------------------------- | ---------------------------------------------------------------------------------------------- |
-| Methanol    | $\ce{CH3OH}$      | $\ce{CH3-OH}$                 | ![Methanol, SMILES format: C[OH]](http://hulab.rxnfinder.org/smi2img/C[OH]?height=100)         |
-| Ethanol     | $\ce{C2H5OH}$     | $\ce{CH3-CH2-OH}$             | ![Ethanol, SMILES format: CC[OH]](http://hulab.rxnfinder.org/smi2img/CC[OH]?height=100)        |
-| Butanol     | $\ce{C3H7OH}$     | $\ce{CH3-CH2-CH2-OH}$         | ![Butanol, SMILES format: CCC[OH]](http://hulab.rxnfinder.org/smi2img/CCC[OH]?height=100)      |
-| Propenol    | $\ce{C4H9OH}$     | $\ce{CH3-CH2-CH2-CH2-OH}$     | ![Propenol, SMILES format: CCCC[OH]](http://hulab.rxnfinder.org/smi2img/CCCC[OH]?height=100)   |
-| Pentanol    | $\ce{C5H11OH}$    | $\ce{CH3-CH2-CH2-CH2-CH2-OH}$ | ![Pentanol, SMILES format: CCCCC[OH]](http://hulab.rxnfinder.org/smi2img/CCCCC[OH]?height=100) |
+| Methanol    | $\ce{CH3OH}$      | $\ce{CH3-OH}$                 | ![Methanol, SMILES format: C[OH]](smiles/C[OH].svg)         |
+| Ethanol     | $\ce{C2H5OH}$     | $\ce{CH3-CH2-OH}$             | ![Ethanol, SMILES format: CC[OH]](smiles/CC[OH].svg)        |
+| Butanol     | $\ce{C3H7OH}$     | $\ce{CH3-CH2-CH2-OH}$         | ![Butanol, SMILES format: CCC[OH]](smiles/CCC[OH].svg)      |
+| Propenol    | $\ce{C4H9OH}$     | $\ce{CH3-CH2-CH2-CH2-OH}$     | ![Propenol, SMILES format: CCCC[OH]](smiles/CCCC[OH].svg)   |
+| Pentanol    | $\ce{C5H11OH}$    | $\ce{CH3-CH2-CH2-CH2-CH2-OH}$ | ![Pentanol, SMILES format: CCCCC[OH]](smiles/CCCCC[OH].svg) |
 
 > **Note:** hexanol, heptanol, octanol, and so forth follow in the same pattern.
 
@@ -984,8 +984,8 @@ When naming alcohols, we must *also* indicate the position of the hydroxyl group
 
 | Name       | Location of $\ce{OH}$ group | Skeleton Formula                                                                                     |
 | ---------- | --------------------------- | ---------------------------------------------------------------------------------------------------- |
-| 1-pentanol | 1st-position carbon         | ![1-Pentanol, SMILES format: CCCCC[OH]](http://hulab.rxnfinder.org/smi2img/CCCCC[OH]?height=100)     |
-| 2-pentanol | 2nd-position carbon         | ![2-Pentanol, SMILES format: CCCC([OH])C](http://hulab.rxnfinder.org/smi2img/CCCC([OH])C?height=100) |
-| 3-pentanol | 3rd-position carbon         | ![3-Pentanol, SMILES format: CCC([OH])CC](http://hulab.rxnfinder.org/smi2img/CCC([OH])CC?height=100) |
+| 1-pentanol | 1st-position carbon         | ![1-Pentanol, SMILES format: CCCCC[OH]](smiles/CCCCC[OH].svg)     |
+| 2-pentanol | 2nd-position carbon         | ![2-Pentanol, SMILES format: CCCC([OH])C](smiles/CCCC([OH])C.svg) |
+| 3-pentanol | 3rd-position carbon         | ![3-Pentanol, SMILES format: CCC([OH])CC](smiles/CCC([OH])CC.svg) |
 
 > **Note:** there is no 4-pentanol or 5-pentanol because 4-pentanol would just be 2-pentanol backwards and 5-pentanol would just be 1-pentanol backwards. We only count sub-variants that are structurally different, if a sub-variant is the same, we don't count it.
