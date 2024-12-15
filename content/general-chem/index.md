@@ -989,3 +989,262 @@ When naming alcohols, we must *also* indicate the position of the hydroxyl group
 | 3-pentanol | 3rd-position carbon         | ![3-Pentanol, SMILES format: CCC([OH])CC](smiles/CCC([OH])CC.svg) |
 
 > **Note:** there is no 4-pentanol or 5-pentanol because 4-pentanol would just be 2-pentanol backwards and 5-pentanol would just be 1-pentanol backwards. We only count sub-variants that are structurally different, if a sub-variant is the same, we don't count it.
+
+## The kinetic theory of gases
+
+The kinetic theory of gases is the most widely-used theory of molecular gases, developed over the course of countless experiments. It models gases as composed of countless gas particles, which are each very small in size, very rapidly moving, and only interact with each other when they collide. In addition, collisions between gas particles are assumed to be **perfectly elastic**, meaning that there is no loss of energy during collisions. Kinetic theory explains that **temperature** is just a manifestation of the _average kinetic energy_ of the gas molecules, and that **pressure** is just a macroscopic description of the sum of all collision forces between gas molecules.
+
+> Note that the kinetic theory of gases is only an _approximate_ model. The behavior of real gases is far more complex, and has its own field of study, that being **thermodynamics** and more generally **statistical mechanics**. Please see the section on thermodynamics in the [classical dynamics series](@/classical-dynamics.md) for more.
+
+### State variables and units
+
+In kinetic theory, we describe gases based on five characteristics: quantity ($n$, expressed in moles), pressure ($P\,$), volume ($n$), and temperature ($T$). These characteristics are called **state variables**. Note that while we can substitute quantity (moles) for mass, gases often have so little mass and their masses are so hard to measure that it is far more convenient to speak of a number of moles of a gas than a number of grams of a gas. The units of the state variables are respectively as follows:
+
+| State variable | Symbol | Unit(s)                                                                                                                                               |
+| -------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Quantity       | $n$    | $\pu{mol}$ (moles)                                                                                                                                    |
+| Pressure       | $P$    | $\pu{Pa}$ (pascals), $\pu{kPa}$ (kilopascals), $\ce{atm}$ (atmospheres), $\pu{Torr}$ (torr, no plural), $\pu{bar}$ (bar), $\pu{mmHg}$ (mm of mercury) |
+| Volume         | $V$    | $\pu{L}$ (liters) or $\pu{mL}$ (milli-liters), equivalently $\pu{1 cm^3 = 1 mL}$, much less commonly $\pu{1m^3} \equiv \pu{1000 L}$                   |
+| Temperature    | $T$    | $\pu{\degree C}$ (degrees Celsius) or $\pu{K}$ (kelvin) where $\pu{1 K = \degree C + 273.15}$                                                         |
+
+The units for pressure are quite a hassle to work with, given the myriad of units to choose from. The **pascal**, symbol $\pu{Pa}$, is the standard SI unit for pressure, but chemists more often use **atmospheres**, where $\pu{1 atm = 101.325 kPa}$ is the standard pressure at sea level on Earth. The **torr** is defined as 1/760th of an atmosphere, which is _approximately_ the same as a **millimeter of mercury** (mmHg), a mostly-legacy unit from the times that mercury barometers were used to measure pressure. The torr and mmHg are so close - they are different by only $1.5 \times 10^{-5}$ percent - that they can well be considered the same unit. Meanwhile, the **bar**, defined as 100 kPa, is _almost_ the same as an atmosphere - $\pu{1 atm = 1.01325 bar}$.
+
+### Ideal gases
+
+Gases are frequently studied in chemistry and many gases are well-approximated as an _ideal gas_ that behaves predictably. The **ideal gas law** relates the three key thermodynamic variables of gases, that being the pressure $P$, volume $V$, and temperature $T$ as follows:
+
+{% math() %}
+PV = n RT
+{% end %}
+
+Where $n$ is the number of moles of the gas, $R$ is the ideal gas constant, and all variables are in SI units (e.g. $T$ must be given in Kelvin, $V$ in liters, and $P$ in $\pu{kPa}$ _not_ pascals). The precise value of the ideal constant depends on the units used; the most common combinations are shown in the table below, with the numerical values expressed to 4 significant figures:
+
+| Ideal constant value                     | Units                                                                                                    |
+| ---------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| {% inlmath() %}R = \pu{8.314 L*kPa*K^{-1}mol^{-1}}{% end %} | Pressure in $\pu{kPa}$, temperature in $\pu{K}$, volume in $\pu{L}$ (all formulations use moles for $n$) |
+| {% inlmath() %}R = \pu{0.08206 L*atm*K^{-1}*mol^{-1}}{% end %} | Pressure in $\pu{atm}$, temperature in $\pu{K}$, volume in $\pu{L}$                                      |
+| {% inlmath() %}R = \pu{62.36 L*Torr*K^{-1}*mol^{-1}}{% end %}  | Pressure in $\pu{Torr}$, temperature in $\pu{K}$, volume in $\pu{L}$                                     |
+
+**All** ideal gases obey the ideal gas law regardless of chemical composition, and as such, under the same conditions (same pressure, same temperature, same volume, and same number of moles), two ideal gases (say, oxygen gas and water vapour) have the **exact** same properties. Further, keeping one of the thermodynamic variables constant provides the following proportionality relationships for ideal gases, which can be used to solve for $P, V, n, T$ for some given conditions:
+
+{% math() %}
+\begin{align*}
+n, T &= \text{const.} \rightarrow P_1 V_1 = P_2 V_2 \\
+n, P &= \text{const.} \rightarrow \dfrac{T_1}{V_1} = \dfrac{T_2}{V_2} \\
+n, V &= \text{const.} \rightarrow \dfrac{T_1}{P_1} = \dfrac{T_2}{P_2} \\
+\end{align*}
+{% end %}
+
+> **Note:** Be careful to note that two gases with equivalent pressure, temperature, and volume do not necessarily behave the same way by the ideal gas law. They **must** also contain the same number of moles.
+
+These relationships can be derived by some intuition. For instance, holding all other variables constant, we know that as _temperature increases_, the greater heat and thus kinetic energy of the gas molecules must increase, so _pressure also increases_. That is to say, $T \propto P$. We may rewrite this as $T = C P$ for some constant $C$, which we may rearrange to $\dfrac{T}{P} = C$. Given that $C$ is a constant, we have $\dfrac{T_1}{P_1} = \dfrac{T_2}{P_2} = C$. By constrast, holding all other variables constant, we know that as _volume increases_, the longer it takes for the gas molecules to collide with the walls of their container, so _pressure decreases_. Therefore, $V \propto \dfrac{1}{P}$. We may again rewrite this as $V = \dfrac{C}{P}$ for some constant $C$, which we can rearrange to $VP = C$. Given that $C$ is a constant, we have $V_1 P_2 = V_2 P_2 = C$.
+
+> We often analyze ideal gases under **standard temperature and pressure**, abbreviated STP. STP conditions are a temperature of 0 Celsius (273.15 Kelvin) and (depending on convention) 1 atmosphere or $10^5$ Pascals (approximately 9.869 atmospheres) of pressure.
+
+From the ideal gas law, we may also derive an expression for the **density** $\rho$ of a gas:
+
+{% math() %}
+\rho = M_\mathrm{molar} \dfrac{P}{RT}
+{% end %}
+
+Where $M_\mathrm{molar}$ is the molar mass of the gas in units of $\pu{g/mol}$, and $\rho$ is in units of $\pu{g/L}$. We may also write the density in terms of the **molar volume** $V_m \equiv \dfrac{V}{n} = \dfrac{RT}{P}$ as follows:
+
+{% math() %}
+\rho = \dfrac{M_\mathrm{molar}}{V_m}
+{% end %}
+
+When we are analyzing a mixture of gases, so long as the gases are not reacting with each other, the ideal gas law still applies. All gases in a gas mixture share the _same volume_; thus we simply need to account for the individual amounts and pressures of each gas in the mixture. 
+
+Let us consider a mixture with gases $A, B, C$ where there are $n_A$ moles of gas $A$, $n_B$ moles of gas $B$, and $n_C$ moles of gas $C$. We may define a quantity known as the **partial pressure** $P_i$ of the gases, allowing each gas to be analyzed using the ideal gas law:
+
+{% math() %}
+P_i V = n_i RT \quad \Rightarrow \quad P_i = \dfrac{n_i RT}{V}
+{% end %}
+
+That is to say, for our mixture, the partial pressures of gases $A, B, C$ are respectively $P_A, P_B, P_C$ and are given by:
+
+{% math() %}
+\begin{matrix}
+P_A = \dfrac{n_A RT}{V}, &P_B = \dfrac{n_B RT}{V}, &P_C = \dfrac{n_C RT}{V}
+\end{matrix}
+{% end %}
+
+The **total pressure** of the gas mixture is given by the sum of the partial pressures:
+
+{% math() %}
+P_\mathrm{total} = \sum_i P_i = P_A + P_B + P_C
+{% end %}
+
+We may calculate the partial pressures, if they are not known, by:
+
+{% math() %}
+\dfrac{P_i}{P_\mathrm{total}} = \dfrac{n_i}{n_\mathrm{total}}\quad \Rightarrow \quad P_i = P_\mathrm{total}\,\dfrac{n_i}{n_\mathrm{total}}
+{% end %}
+
+Where $n_i$ is the number of moles of each gas and $n_{total}$ is the sum of the moles of every gas in the mixture. Thus in our 3-gas mixture case we have:
+
+{% math() %}
+\begin{align*}
+P_A = P_\mathrm{total}\,\dfrac{n_A}{n_\mathrm{total}} \\
+P_B = P_\mathrm{total}\,\dfrac{n_B}{n_\mathrm{total}} \\
+P_C = P_\mathrm{total}\,\dfrac{n_C}{n_\mathrm{total}}
+\end{align*}
+{% end %}
+
+We can write this in terms of the **mole fraction** $\chi_i = \dfrac{n_i}{n_\mathrm{total}}$ as:
+
+{% math() %}
+\begin{align*}
+P_A = P_\mathrm{total} \chi_A \\
+P_B = P_\mathrm{total} \chi_B \\
+P_C = P_\mathrm{total} \chi_C \\
+\end{align*}
+{% end %}
+
+Finally, note that we may find the number of moles of a gas by rearranging the ideal gas law to $n = \dfrac{PV}{RT}$. This is very useful for stoichiometric calculations, along with the previously-stated fact that **the component gases in gas mixtures share the same total volume**. Therefore, if we needed to find the total volume of a mixture of gases produced from a reaction, we can just consider one of the product gases rather than all of them, greatly simplifying the problem. Note, however, in these situations, that when calculating $V_\mathrm{total} = \dfrac{nRT}{P}$, the pressure is the _partial pressure_ of that particular gas in the mixture of product gases, **not** the total pressure.  Thus we may more accurately write, that for each component product gas in a gas reaction, we have $V_\mathrm{total} = \dfrac{n_\mathrm{product}RT}{P_\mathrm{partial}}$.
+
+### Kinetic energy and effusion
+
+Recall that kinetic energy takes its name due to the fact that it models the observed properties of gases in terms of the microscopic motion of its constituent molecules. Gas molecules are travelling very fast, meaning that they have a lot of **kinetic energy** - that is, energy due to motion. The average kinetic energy of gas particles in a gas is **directly proportional** to its temperature, and is given by:
+
+{% math() %}
+K = \dfrac{3}{2} k_B T
+{% end %}
+
+Where $k_B$ is the Boltzmann constant from thermodynamics and $T$ is the temperature. Given that $K \propto T$, all ideal gases at a particular temperature, no matter their chemical composition, have gas particles with the *same* average kinetic energy.
+
+We also observe that due to the constant motion of gas particles, gases spread over time, becoming less concentrated in the process (effusion) and escape slowly through the walls of their container (diffusion). While the exact mathematical equations describing diffusion and effusion are highly complex, the _rates_ of diffusion and effusion (expressed in $\pu{m/s}$) can be found more straightforwardly by **Graham's law**, which states that the rate of diffusion/effusion of a gas is inversely proportional to the square root of the molar mass of a gas. Thus, for two gases that have molar masses $m_\mathrm{molar, 1}$ and $m_\mathrm{molar, 2}$, their respective rates of effusion/diffusion $r_1, r_2$ are related by:
+
+{% math() %}
+\dfrac{r_1}{r_2} = \sqrt{\dfrac{m_\mathrm{molar, 2}}{m_\mathrm{molar, 1}}}
+{% end %}
+
+### Real gases and the van der Waals equation
+
+Recall that the ideal gas is an approximate model of gases that makes accurate predictions are **high temperatures and low pressures**. However, modelling the behavior of gases at low temperatures (such as cryogenic gases), high pressures (such as compressed gases), or both requires a more sophisticated model. This is because the assumptions that gas molecules have negligible volume and do not interact with each other except through collisions no longer hold. Instead of the ideal gas law, we instead have the **van der Waals equation**:
+
+{% math() %}
+\left(P + a \left(\dfrac{n}{V}\right)^2\right)(V - n b) = n RT
+{% end %}
+
+Where $a$ is a correction coefficient to describe the molecular interactions (attraction as well as repulsion) between gas molecules, and $b$ is a correction coefficient to describe the nonzero volume of gas molecules.
+
+## Thermochemistry
+
+We have, up until this point, referred to the concept of temperature in only vague terms. In the ideal gas law, it was simply an input parameter; in kinetic gas theory, we described it as a measure of the average kinetic energy of molecules. We must now quantify the concept of temperature.
+
+The concept of temperature is closely linked to two other concepts: **energy** and **heat**. Energy is the ability, broadly speaking, to "make things happen" in physics and chemistry. The more technical definition is that energy is a conserved quantity (i.e. something that cannot be created or destroyed) that can be exchanged between different objects or systems (groups) of objects, and whose exchange drives dynamical processes. When we say _dynamical process_, we mean that is, processes that involve some sort of motion or change of a system through time.
+
+> **For the advanced and very advanced reader:** In physics, we may also define energy as a combination of potential energy $U$ and kinetic energy $K$, where $E = K + U$. In terms of Newton's second law we say that $\mathbf{F} = -\nabla U$ and $K = \dfrac{1}{2} m \left(\dfrac{d\mathbf{x}}{dt}\right)^2$. In even more advanced physics we say that energy $H$ (also termed the **Hamiltonian**) is the conserved quantity under the time-invariance of the Lagrangian, and is the generator of time-evolution, which generalizes to its quantum analogue $\hat H$. **This is only relevant to physical and quantum chemistry**.
+
+In chemistry, we categorized energy in one of two main forms: **chemical energy**, associated fundamentally with the locations of atomic and molecular orbitals (which give rise to differing potential energies, recall the energy levels of atoms), and **thermal energy**, associated with the nonzero kinetic energies of atoms.
+
+The total thermal energy, which is conserved, may flow between the system and its surroundings in one of two forms: **heat** and **work**. Heat, symbol $\Delta q$, is the energy transfer caused by a temperature difference (also called _temperature gradient_) between a system and its surroundings, and may be positive or negative. Work, symbol $\Delta w$, is the energy transfer caused by by some driving force moving atoms or molecules (as an example, a paddlewheel, which lifts water, doing work and therefore increasing its energy). This is the **first law of thermodynamics**: any change $\Delta E$ in the total energy of the system plus its surroundings may be expressed as a sum of the relative amounts of heat and work:
+
+{% math() %}
+\Delta E = \Delta q + \Delta w
+{% end %}
+
+We may also write the first law of thermodynamics for continuously-varying quantities (which is useful in physics) as:
+
+{% math() %}
+dE = dq + dw
+{% end %}
+
+> **Note:** unlike temperature, which is a property of the system itself, heat and work are both measures of changes in energy into and out of a system. Thus we never write $q$, we write $\Delta q$ or $dq$ (although some texts omit the $\Delta$ sign for brevity), and likewise for $\Delta w$ for which we write $\Delta w$ or $dw$, depending on whether the application necessitates calculus.
+
+Certain processes may draw energy from the surroundings to effect a change in the system, and other processes may release energy into the surroundings due to a change in the system. Thus, a system may grow hotter or cooler, dependent on the process in question. We typically use a *minus* sign to denote **heat flowing out** of a system, and a *plus* sign to denote **heat flowing into** the system. This sign convention is elaborated in the table below:
+
+| Symbol     | Positive sign means...                                                                         | Negative sign means...                                                                                     |
+| ---------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| $q$, heat  | System _gains_ energy from surroundings                                                        | System _loses_ energy to surroundings                                                                      |
+| $w$, work  | Work is done _on_ the system (e.g. an external force is applied on a piston to compress a gas) | Work is done _by_ the system (e.g. a gas expands rapidly, applying pressure to the walls of its container) |
+| $\Delta E$ | Energy is transferred from system to surroundings                                              | Energy is transferred from surroundings to system                                                          |
+
+### Heat
+
+Changes in heat depend both on the system's chemical composition, mass, and the initial and final temperatures of the system. The expression for the change in heat $\Delta q$ is given by:
+
+{% math() %}
+\Delta q = m c \Delta T
+{% end %}
+
+Where $c$ is the specific heat capacity associated with its chemical composition (always positive), $m$ is the reactant, and $\Delta T$ is the temperature change in the reaction. 
+
+#### Enthalpy
+
+In the special case that the change in heat $\Delta q$ occurs under constant pressure conditions (such as atmospheric pressure, which, in one location, is constant), we define a quantity $\Delta H$ known as the **enthapy** given by:
+
+{% math() %}
+\Delta H = \Delta q\, \bigg|_{p = \text{const.}} = \Delta E + p\Delta V \bigg|_{p = \text{const.}}
+{% end %}
+
+> **Note:** If a reaction that produces a change in heat of $\Delta q$ *does not* take place under constant pressure, we can find the **equivalent enthalpy** of the same reaction assuming it was redone under constant pressure conditions. The equivalent enthalpy in terms of the original non-constant reaction quantities $q_\mathrm{original}, \Delta w_\mathrm{original}, \Delta E_\mathrm{original}$ would be given by $\Delta H_\mathrm{equiv.} = \Delta q_\mathrm{original} = \Delta E_\mathrm{original} - \Delta w_\mathrm{original}$.
+
+Enthalpy is **negative** when a physical process releases heat from a system into its surroundings, causing the system to cool down; we call such a process **exothermic**, _exo-_ for _out_ of the system. An example would be water becoming ice in a fridge. Meanwhile, enthalpy is **positive** when a physical process absorbs heat from the surroundings into a system, causing the system to heat up; we call such a process **endothermic**. An example would be boiling water in a kettle.
+
+{{ diagram(src="endothermic-exothermic.excalidraw.svg") }}
+
+We may relate our _macroscopic_ observations of endothermic vs. exothermic reactions with _microscopic_ interactions. Recall that breaking bonds requires using energy, but forming bonds releases energy, and atoms descend to a more stable state and therefore lower their potential energy. A lower potential energy results in the release of excess energy that we perceive macroscopically as _heat_ (as well as sound and light, which are also forms of energy).
+
+**Exothermic** reactions **release more energy** forming bonds than **use energy** breaking bonds, which results in a net release of energy, that is, energy is liberated and *leaves* the system. Therefore, for exothermic reactions, $\Delta H < 0$, the negative sign indicating that energy is transferred _out_ of the system into the environment. By contrast, **endothermic** reactions **use more energy** breaking bonds than **release energy** breaking bonds. Therefore, for endothermic reactions, $\Delta H > 0$, the positive sign indicating that energy is taken from the environment and _enters_ the system.
+
+In a chemical reaction, the change in enthalpy is given by the **enthalpy of reaction** $\Delta H_\mathrm{rxn}$. The total change in enthalpy $\Delta H$ can be calculated from the enthalpy of reaction for a given generic chemical reaction $n_a A + n_b B \to n_c C + n_d D$ involving reactants $A, B$ and products $C, D$ via:
+
+{% math() %}
+\Delta H = \dfrac{n_\mathrm{mol, A}}{n_A} \Delta H_\mathrm{rxn} = \dfrac{n_\mathrm{mol, B}}{n_B}  \Delta H_\mathrm{rxn}
+{% end %}
+
+Where $n_\mathrm{mol, A}$ is the number of moles of reactant $A$ (which can be calculated from the number of grams via the molar mass) and similarly $n_\mathrm{mol, B}$ is the number of moles of reactant $B$.
+
+> **Note:** The total enthalpy always has the same sign as the enthalpy of reaction.
+
+The enthalpy of reaction follows the following mathematical properties:
+
+- If the reaction is reversed, $\Delta H_\mathrm{rxn}$ switches sign
+- If the reaction is scaled by some constant value, $\Delta H_\mathrm{rxn}$ is also scaled by the same value
+- For several reactions taking place one after the other, the total $\Delta H_\mathrm{rxn}$ is the sum of the enthalpies of reaction of each individual reaction (also called **Hess's law**)
+
+When we write a chemical equation, we may include the enthalpy in the reaction to show the intake or release of heat. For *exothermic* reactions we put the magnitude (i.e. absolute value) of the enthalpy $\Delta H\degree$ on the right-hand (product) side of the chemical equation to show that the reaction _releases_ energy into the surroundings. Meanwhile, for *endothermic* reactions we put the enthalpy $\Delta H\degree$ on the left-hand (reactant) side of the chemical equation to show that the reaction _takes_ energy from the surroundings. 
+
+#### Calculation of enthalpy of reaction
+
+Recall that by the conservation of energy, it must be the case that the energy transfer *into* the surroundings must equal the energy *loss* in the system (system of substances participating in the reaction), and analogously, energy transfer _from_ the surroundings must equal energy _gain_ in the reaction. In the constant-pressure case, we may express this principle as follows:
+
+{% math() %}
+\Delta q_\mathrm{surr.} = -\Delta q_\mathrm{rxn}
+{% end %}
+
+Where $\Delta q_\mathrm{surr.}$ is the change in heat in the surroundings, and $\Delta q_\mathrm{rxn}$ is the change in heat in the reaction. If the surrounding medium is water, as is often the case for many chemical and physical processes (e.g. change of state, dissolving a salt in war, acid-base neutralization), then we have $\Delta q_\mathrm{surr.} = -q_\mathrm{water}$. The enthalpy of reaction can therefore be calculated as follows:
+
+{% math() %}
+\Delta H_\mathrm{rxn} = -\dfrac{q_\mathrm{rxn}}{n} = -\dfrac{m_\mathrm{water} c_\mathrm{water}\Delta T\mathrm{water}}{n_\mathrm{rxn}}
+{% end %}
+
+Where $n_\mathrm{rxn}$ is the molar mass of all substances that are reacting (excluding water and any aqueous solutions).
+
+> The enthalpy of reaction is reaction-specific. For one reaction, assuming it takes place under constant-pressure situations, the enthalpy of reaction will depend on the concentrations, masses, and quantities of reactants used. One may, however, find the [standard enthalpies of reaction](https://en.wikipedia.org/wiki/Standard_enthalpy_of_reaction) assuming a fixed temperature, pressure, and the molar quantity of reactants involved.
+
+#### Enthalpy of formation
+
+We may characterize the enthalpy of reaction, which is a property of the reaction and a non-intensive property of its constituents, to **standard enthalpies of formation** $\Delta H^F$, which is a property of the constituents. The enthalpy of formation is the change in heat $\Delta q$ that must be put in to form 1 mole of a compound. Standard enthalpies of formation can be found by consulting tables of experimental values from a reference sheet or textbook.
+
+> Substances made of only one element (e.g. solid carbon, $\ce{O2}$ gas, liquid $\ce{Br2}$) in their standard phase (i.e. solid, liquid, gas) have a zero enthalpy of formation as they do not require different atoms to be bonded together or energy to change their phase of matter to form them.
+
+We may calculate the enthalpy of reaction $\Delta H_\mathrm{rxn}$ for a given chemical reaction by summing up the enthalpies of formation of the products and subtracting the enthalpies of formation of the reactants, both multiplied by their molar coefficients in the balanced equation. For a given reaction $n_a A + n_b B \to n_c C + n_d D$ the enthalpy of reaction is given by:
+
+{% math() %}
+\Delta H_\mathrm{rxn} = \left[n_c\Delta H^F_{(C)} + n_d \Delta H^F_{(D)}\right] - \left[n_a\Delta H^F_{(A)} + n_b \Delta H^F_{(B)}\right]
+{% end %}
+
+> In the general case this becomes $\Delta H_\mathrm{rxn} = \displaystyle \sum \limits_\mathrm{products} n_i \Delta H^F_{(i)} - \displaystyle \sum \limits_\mathrm{reactants} n_i \Delta H^F_{(i)}$
+
+### Work
+
+An expanding (or contracting) gas that has a change in volume $\Delta V$ that expands (or contracts) into surroundings that have pressure $p_\mathrm{ext.}$ does work given by:
+
+{% math() %}
+\Delta w =-p_\mathrm{ext.}\Delta V 
+{% end %}
+
+This has the broader consequence that **for _any_ process taking place under constant volume**, $\Delta w = 0$, that is, there is no work done.
