@@ -3,7 +3,7 @@ title = "Fundamentals of Chemistry"
 date = 2024-09-26
 +++
 
-This is a mini-book on chemistry, including atomic structure, general chemistry and the theory of reactions, using chemical equations, stoichiometry, Lewis theory, and a brief introduction to quantum chemistry. Topics to be added with time include valence bonding theory, VSEPR theory, and energy changes within reactions.
+This is a mini-book covering the topics of a typical general chemistry course, including atomic structure, the theory of reactions, chemical equations, stoichiometry, Lewis theory, and a brief introduction to quantum chemistry. Additional topics covered include valence bonding theory, VSEPR theory, the kinetic theory of gases, and energy changes within reactions.
 
 <!-- more -->
 
@@ -29,7 +29,7 @@ Atoms are not the only important factor in the chemical properties of matter. Fo
 
 As a high-level overview, matter is anything that occupies space (more technically, a cross-sectional area in which it interacts) and has mass. The **structure and composition** of matter determines its **properties**. In addition, the energy present in matter determines its state and structure. Energy is divided into two general types, kinetic energy and potential energy (energy that is stored in some thing and capable of being released). In chemistry, kinetic energy measured macroscopically typically takes the form of **thermal energy** (heat) and potential energy measured macroscopically typically takes the form of **chemical energy**.
 
-> **Note for the advanced reader:** Chemical energy, which we can broadly speak of as energy stored in chemical bonds, is actually the sum of the individual electromagnetic potential energies associated with each of the electrons in matter. Quantum electrodynamics (a type of quantum field theory) and particle physics is necessary for a complete description of chemical energy in terms of the energy of the individual electrons that form the total chemical energy we consider in chemistry. This will be explained in an optional section but is **not** necessary for general chemistry or even conventional treatments of the quantum chemistry which simply use the Sch.
+> **Note for the advanced reader:** Chemical energy, which we can broadly speak of as energy stored in chemical bonds, is actually the sum of the individual electromagnetic potential energies associated with each of the electrons in matter. Quantum chemistry provides quantitative methods to describe chemical energy in terms of potential surfaces and atomic wavefunctions, but this is far beyond the scope of a general chemistry course.
 
 ## The chemistry lexicon
 
@@ -571,3 +571,421 @@ For atoms that have valence orbitals in which every electron is *paired*, the op
 | Paramagnetism             | Attractive magnetic force | Weak              | Some elements, including aluminium, oxygen, and titanium              |
 | Ferromagnetic             | Attractive magnetic force | Strong, permanent | Very few elements - specifically iron, nickel, and cobalt             |
 
+### From quantum to simpler models
+
+While quantum mechanics is the basis of all chemistry and indeed all chemistry can be understood through quantum mechanics, quantum calculations are tedious and painstaking. Therefore, we typically resort to models that capture only some of the aspects of the full quantum theory. Several examples include the **Lewis theory**, **Valence bond theory**, and **Valence shell electron pair repulsion (VSEPR) theory**, which each explain the formation and structure of chemical compounds from different perspectives.
+
+## The Lewis model of chemical bonding
+
+The Lewis model predicts how atoms of different elements form ions, molecules, and compounds by several key properties of valence electrons. The key ideas of Lewis theory follow from some simplifying assumptions based on the physical characteristics of atoms:
+
+- Chemical bonds are formed by the transfer of electrons (in the case of ionic compounds) or sharing of electrons (in the case of covalent compounds) between different atoms.
+- When forming bonds, the only electrons that participate are the **valence electrons** (also referred to as _outer shell electrons_), and all inner electrons can be effectively ignored.
+- A **stable configurations** of atoms is achieved with a full valence shell, which determines which types of bonds are formed and _how_ they are formed.
+
+At the fundamental level, a chemical bond forms because it lowers the potential energy of a system of bonded atoms - and a stable configuration is that of the lowest potential energy. In the process of forming a bond, the decrease of potential energy of the atoms corresponds to a release of energy into the environment (in the form of light, heat, or sound) due to the conservation of energy.
+
+### Ionic bonding
+
+We see recurring patterns of valence electrons throughout the periodic table. The alkali metals have one valence electron. The alkali earth metals have two valence electrons. The chalcogens (group 6, including oxygen and sulfur) have 6 valence electrons. The halogens (group 7) have 7 valence electrons. The noble gases all have eight electrons. Most transition elements have 2 valence electrons. 
+
+By examining these compounds, we observe that the noble gases are _very_ stable and unreactive, but elements with atomic numbers _adjacent_ to each noble gas are _very_ reactive. This is because these adjacent elements need to gain or lose electrons to be able to have a stable configuration. Therefore, they form bonds readily by transferring or receiving electrons from another atom, with combustive (oxygen) or explosive (magnesium) effect. Therefore, we deduce that atoms transfer the number of electrons necessary to **attain the valence-shell configuration of the closest noble gas**. For instance, in losing one electron, sodium attains the valence-shell configuration of neon; similarly, in gaining one electron, chlorine attains the valence-shell configuration of argon, allowing them to both become stable.
+
+> In general, noble gases predominantly have 8 valence-shell electrons, so we often call this rule the **octet rule**. However, note that helium (the first noble gas) has 2 valence-shell electrons and thus it is the special case where the elements closest to helium (hydrogen and boron) can achieve the same valence shell as helium by just having 2 electrons in their valence shell.
+
+This is the process of **ionic bonding**: Metals form **cations** (positively-charged ions) by *losing* enough electrons to get the same electron configuration as the **previous noble gas**, and non-metals form **anions** (negatively-charged ions) by *gaining* enough electrons to get the same electron configuration as the **next noble gas**. In our previous example, sodium and chlorine respectively gain and lose one electron to become the ions $\ce{Na^+}$ and $\ce{Cl^-}$.
+
+Once bonded, the ions are arranged in a highly-ordered crystal lattice, held together by their electrostatic forces. The individual ions are all joined together with no starting or ending atom, so we do not speak of _molecules_ of ionic compounds. We can only speak of _formula units_ of ionic compounds, i.e. the same number of atoms as are within the chemical formula.
+
+Lewis Theory predicts several important properties of ionic compounds. The strong and highly stable bonds mean that solid ionic compounds have **high melting points** and **even higher boiling points**, as a lot of energy must be put in to separate individual atoms from each other. The crystal lattice structure means that ionic compounds are **hard**, but also **brittle** because crystal layers can easily slide over each other even if they are individually very strong. When an ionic compound is dissolved, such as when salt is dissolved into water, the constituent ions are free to move and thus the ionic compound can **conduct electricity**.
+
+### Covalent bonding
+
+While Lewis theory predicts many of the most important results of ionic bonding, its real power comes in its elegant explanation of _covalent bonding_ and the resulting covalent compounds formed through covalent bonds.
+
+To demonstrate Lewis theory for covalent compounds, let us consider the classical example of water, $\ce{H2O}$. Water is formed by covalent bonds between a central oxygen atom and two hydrogen atoms. Recall that Lewis theory postulates that in the case of covalent compounds, electrons are _shared_, not transferred, between atoms to form bonds. A hydrogen atom has a **single valence electron**, while an oxygen atom has **six valence electrons**. We can show this by drawing **Lewis structures**, simplified representations of atomic valence orbitals, where dots indicate valence electrons:
+
+![](lewis-hydrogen-oxygen.excalidraw.svg)
+
+When two hydrogen atoms each share their one electron with an oxygen atom, the result is a water molecule that allows all three atoms to have fully-filled valence shells, as is shown in the Lewis structure below:
+
+![](lewis-water.excalidraw.svg)
+
+In drawing Lewis structures, we follow these rules:
+
+- The positions of the electrons around the atom doesn't matter, you can place them at the top, right, bottom, or left, or diagonally, that is a matter of personal preference as well as drawing convenience
+- However, when electrons come in even pairs, they should be grouped together
+- A pair of electrons form a bond between atoms, and can be represented with a straight line for readability (although using dots is also perfectly fine)
+
+Thus, we may also draw the Lewis structure of water as follows:
+
+![](lewis-water-alt.excalidraw.svg)
+
+> Remember! A bond is formed by a **pair** of electrons, so a single bond is actually two electrons, a double bond four, a triple bond six, and so on. Similarly, we always speak of _lone pairs_ of electrons - not single electrons!
+
+Given this process of 1) identifying the number of valence electrons of atoms, 2) deducing how many electrons are necessary to form full valence shells (equivalent to the valence shell of the closest noble gas, and 3) drawing Lewis structures to join different atoms together with the bonds that produce these full valence shells, Lewis theory allows us to predict the chemical formulas of covalently-bonded and ionically-bonded compounds. This is how we know, for instance, that nitrogen gas is composed of two nitrogen atoms that are triple-bonded, as this allows both nitrogen atoms to gain a full valence shell:
+
+![](lewis-nitrogen.excalidraw.svg)
+
+The triple bond means that diatomic nitrogen (i.e. $\ce{N2}$) is _extremely_ unreactive as breaking the triple bond requires a lot of energy. Conversely, nitrogen-based compounds can be highly reactive (e.g. nitroglycerin, a component of many explosives) as a nitrogen triple bond is formed by the reaction, releasing a _lot_ of energy _very quickly_ in the process - given that the constituent atoms in these nitrogen-based compounds readily break their (single or double) bonds to be able to form a far stabler nitrogen triple bond.
+
+### Bond polarity
+
+The distinction between ionic and covalent bonding is sometimes not as distinct as it would first appear. Recall that when atoms bond, they may not be atoms of an equal number of valence electrons. For example, hydrogen chloride $\ce{HCl}$ is formed from a hydrogen atom that has one valence electron and chloride that has 7 valence electrons. This means that the hydrogen chloride molecule is negatively-charged on the chlorine atom end and positively-charged on the hydrogen atom end. We call such a bond a **polar covalent bond** and the molecule as a **polar molecule** with a **dipole moment**, a dipole moment being a charge difference across the molecule that produces a tiny electric field. At a certain point, the polarity is extensive to the point that we consider compounds no longer covalent compounds, instead considering them ionic compounds. Most compounds, however, fall somewhere between pure ionic and pure covalent.
+
+We measure the polarity by **electronegativity**. Electronegativity is a measure of how strong an atom pulls in electrons towards itself. Higher electronegativity is generally associated with decreasing atomic radius and vice versa. The halogens have the highest electronegativities, receiving electrons to form ionic bonds. The alkali metals and alkali earth metals have the lowest electronegativities, as they pull on their electrons weakly and lose electrons easily to form ionic bonds. We exclude noble gases from measurements for electronegativity, in general. We also typically denote electronegativity by the symbol $\chi$.
+
+Electronegativity is generally determined empirically; there are many published tables of electronegativities that can be looked up for reference. In a compound, the difference in the electronegativities of the individual atoms predicts the polarity. The following table explains:
+
+| Type of bond   | Difference in electronegativities ($\Delta \chi$) |
+| -------------- | ------------------------------------------------- |
+| Pure covalent  | $\Delta \chi < 0.4$                               |
+| Polar covalent | $0.4 \leq \Delta\chi < 1.9$                       |
+| Pure polar     | $\Delta \chi > 1.9$                               |
+
+### Resonance
+
+In many cases, the geometry of a given molecule means that multiple Lewis structures are possible. The true molecule actually occurs in all the different predicted Lewis structures in different proportions, which we refer to as **resonance**. This is also called a **delocalized bond**, and we call the structure a **resonance structure**. Consider, for instance, the carbon dioxide molecule, which has three resonance structures:
+
+![](lewis-resonance-structures.excalidraw.svg)
+
+Resonant structures must have the **same bonds**. The only difference between the respective Lewis structures is that the bonds are placed in different locations. We draw a resonance structure by placing several Lewis structures adjacent to each other and draw a double sided arrow $\leftrightarrow$ to show that multiple structures are possible. Of these Lewis structures, we choose the *preferred* Lewis structure. There are several criteria used to determine the "best" Lewis structure, and we will discuss each of these below.
+
+#### Formal charge
+
+Recall that the reason covalent bonds form at all is to _lower potential energy_ of atoms, which means minimizing the electrostatic repulsion between electrons. The reason for this is that all electrons have a negative charge, and charges of the same sign repel, which _increases_ potential energy. Therefore, the configuration of electrons within a covalently-bonded compound will seek to lower the potential energy as much as possible by decreasing the effective charge, which decreases the electrostatic repulsion. We may quantify the effective charge of a compound with a "book-keeping" number called the **formal charge**, which we can calculate by taking the number of _valence_ electrons of each atom (in its elemental state), and then subtracing both the number of nonbonding electrons and half the number of bonding electrons. Mathematically, we can formulate it as follows: 
+
+$$
+Q_F = \sum \limits_\mathrm{atoms} \left(\text{valence\ }e^- - \text{nonbonding\ }e^- - \dfrac{1}{2} \text{bonding\ }e^-\right)
+$$
+
+In the case where multiple Lewis structures are possible, the best Lewis structure is typically the one that minimizes formal charge, and thus, this is also the most common Lewis structure that is observed experimentally.
+
+#### Covalent bond strengths
+
+Triple bonds are strongest, followed by double bonds, followed last by single bonds (which are weakest). We may quantify this with a metric known as the **bond order**.
+
+Bond order = Total number of bonds (for a double bond we count it as two bonds, for a triple bond we count it as three bonds, etc.) divided by number of bond groups (a group can be a single bond, a double bond, or a triple bond; all of these are considered a _single_ bond group). For example, $\ce{N2}$ has one bond group (since it has just one $\mathrm{N}\equiv\mathrm{N}$ bond, which we consider a single group) but has three bonds (since its nitrogen-nitrogen bond is a triple bond). So its **bond order** is $3 / 1 = 3$. In general, the higher the bond order, the more stable the molecule.
+
+#### Exceptions to the octet rule
+
+Odd-electron species, that is, molecules in which the sum of all the valence electrons (of each atom) is an odd number, have an **incomplete octet** on the central atom(s). For instance, nitrogen dioxide ($\ce{NO2}$) is an odd-electron species. In this case, as nitrogen is the central atom in $\ce{NO2}$, it simply does not have enough valence electrons to form a full octet. Thus, it forms the most stable configuration it can - which results in $\ce{O-N=O}$, a single bond to one oxygen atom and a double bond to the other oxygen atom.
+
+For third-row elements and beyond, we also have **expanded octets**, where an element can hold more than an octet in its outer shell. This gives them more bonding electrons, allowing for more and stabler bonds (for instance, double instead of single bonds) and also lowering their formal charge (as bonded electrons count half as much as lone pair electrons when calculating formal charge).
+
+## VSEPR theory and bond geometries
+
+We have already seen that Lewis structures can predict many properties of molecules, especially after the inclusion of formal charges. However, Lewis structures do not tell us much about the true _geometries_ of molecules. For this, we turn to **valence shell electron-pair repulsion (VSEPR) theory**.
+
+The central idea behind VSEPR is that the electrostatic repulsion between electrons causes electrons to arrange themselves to minimize the repulsion between the electrons. This leads to molecules with different but predictable shapes.
+
+> **Note:** In VSEPR the lone pairs of **non-central atoms** has no effect - we consider a central atom as an atom that has at least two bonds attached to it and (typically) resides in the center of a molecule and has the most bonds attached. So in VSEPR we usually analyze molecules that are composed of at least three atoms. Lewis theory is sufficient for two-atom molecules.
+
+### Electron geometry
+
+We first consider idealized geometries in the VSEPR theory. Both bonding pairs and lone pairs constitute electron groups. Each bond (whether single, double, or triple bond) counts as **one electron group**, and each lone pair **also counts** as one group. E.g. for $\ce{PCl3}$ which has a single lone pair and three bonding pairs, there are four total electron groups. By writing down the number of **bond groups** we can find the electron geometry - that is, the 3D arrangement of the electrons across the molecule - by the table below:
+
+| Number of electron groups | Electron geometry                 | Bond angle                                                                             | Visual appearance                                                                                                                                                                                                                                                                             |
+| -------------------------------- | --------------------------------- | -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2                                | **Linear** geometry               | 180 degrees                                                                            | ![A diagram of the linear geometry, consisting of one atom at either end of a center atom with single bonds](https://upload.wikimedia.org/wikipedia/commons/7/78/Linear-3D-balls.png)                                                                                              |
+| 3                                | **Trigonal planar** geometry      | 120 degrees                                                                            | ![Trigonal planar geometry, showing three bonds in a triangle around a central atom](https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Trigonal-3D-balls.png/1024px-Trigonal-3D-balls.png)                                                                                 |
+| 4                                | **Tetrahedral** geometry          | 109.5 degrees                                                                          | ![A graphic showing the tetrahedral geometry, with four atoms, three to the bottom arranged in a triangle and one to the top, connected to the central atom](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Tetrahedral-3D-balls.png/800px-Tetrahedral-3D-balls.png)    |
+| 5                                | **Trigonal bipyramidal** geometry | 120 degrees between equatorial (middle) atoms, 90 degrees for axial (top/bottom) atoms | ![An illustration of trigonal bipyramidal geometry, with two atoms on the top and bottom respectively, and three arranged flat in the middle](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Trigonal-bipyramidal-3D-balls.png/800px-Trigonal-bipyramidal-3D-balls.png) |
+| 6                                | **Octahedral** geometry           | 90 degrees (all bonds perpendicular)                                                   | ![An illustration of the octahedral geometry, with two atoms, one top one bottom, and a further four in the middle in a plane](https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/AX6E0-3D-balls.png/800px-AX6E0-3D-balls.png)                                              |
+<details>
+  <summary>Bond diagrams licensing information</summary>
+  <ul>
+    <li>Linear geometry: Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=1454713">Link</a></li>
+    <li>Trigonal planar geometry: Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=1454629">Link</a></li>
+    <li>Tetrahedral geometry: By n.a. - n.a., Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=1454649">Link</a></li>
+    <li>Trigonal bipyramidal geometry: Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=1454616">Link</a></li>
+    <li>Octahedral geometry: By <a href="//commons.wikimedia.org/wiki/User:Benjah-bmm27" title="User:Benjah-bmm27">Benjah-bmm27</a> - <span class="int-own-work" lang="en">Own work</span>, Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=2035641">Link</a></li>
+  </ul>
+</details>
+
+For instance, take note of the following examples of electron geometry:
+
+| Compound    | Lone pairs | Bonding pairs | Total pairs | Electron geometry    | Idealized bond angle                                                               |
+| ----------- | ---------- | ------------- | ----------- | -------------------- | ---------------------------------------------------------------------------------- |
+| $\ce{CO2}$  | 0          | 2             | 2           | Linear               | 180 degrees                                                                        |
+| $\ce{H2O}$  | 2          | 2             | 4           | Tetrahedral          | 109.5 degrees                                                                      |
+| $\ce{SO2}$  | 1          | 2             | 3           | Trigonal planar      | 120 degrees                                                                        |
+| $\ce{PCl5}$ | 0          | 5             | 5           | Trigonal bipyramidal | 120 degrees for middle bonds, 90 degrees for upper and lower (perpendicular) bonds |
+| $\ce{SCl6}$ | 0          | 6             | 6           | Octahedral           | 90 degrees, all bonds perpendicular                                                |
+
+One thing to note is that these are **idealized angles** and that the electron geometry only considers the number electron groups, considering bond pairs and lone pairs as the same and each as a single group, and considering every type of bond (single, double, or triple) as a single bond group.
+
+#### A quick way to determine the electron geometry
+
+We begin by summing up the total number of valence electrons of a compound. For instance, consider sulfur hexafluoride, $\ce{SF6}$. Sulfur has 6 valence electrons and fluorine has 7 valence electrons, so the total number of valence electrons would be $6 + (7 \times 6) = 48$. Now we use the following rule:
+
+- If the total number of valence electrons is divisible by 8, the electron geometry is _identical_ to the molecular geometry. The number of bond groups _is_ the total number of electron groups
+- If the total number of valence electrons is _not_ divisible by 8, the electron geometry is _not identical_ to the molecular geometry and the number of lone pairs is the remainder divided by two. The number of bond groups + the number of lone pair groups is the total number of electron groups
+- From here, the number of total electron groups determines the electron geometry
+
+### Molecular geometry and the effect of lone pairs
+
+In **molecular geometry**, as opposed to electron geometry, we count the number of bond groups as the number of bonding electron groups _only_. Lone pairs are invisible in molecular geometry and only indirectly affect the bonds outgoing from the **central atom**. This because lone pairs occupy more space on the central atom, and lone pair-lone pair interactions are the _most_ repulsive. Therefore, when lone pairs are present, VSEPR predicts that the _actual_ molecular geometry is **not the same** as the electron geometry. Rather, it is distorted. The physical reason for why this is the case is that minimizing the repulsion between electron groups lowers the potential energy of the whole molecule, making the molecule more stable.
+
+To emphasize this point: electron geometries represent _ideal_ shapes of molecules, but electron geometries are often not what molecules actually look like. The molecular geometry, unlike electron geometry, factors in the effects of lone pair repulsion but ultimately the molecular geometry **does not include (count) lone pairs**. Only the bonding pairs appear in the molecular geometry. So, for instance, even if a compound has 3 lone pairs and 2 bonding pairs (so 5 electron groups in total), the number of electron groups in the _molecular geometry_ would be two (the two bonding pairs), as opposed to the five electron groups in the _electron geometry_.
+
+Molecular geometry introduces several new types of geometry:
+
+- **Bent geometry**: this comes from the trigonal planar or tetrahedral base (electron) geometries where **two bonding groups** are present. As the name suggests, it has a bent line shape because of the repulsive effects of the (one or two) lone pairs
+- **Trigonal pyramidal geometry**: this comes from the tetrahedral base geometry where **three bonding groups** are present. It looks like a triangular flattened pyramid, again because of its own lone pair.
+- **Sawhorse and T-shaped geometry**: this comes from the trigonal bipyramidal base geometry where **three or four bonding groups are present** but **nonzero lone pairs**. The bonded outer atoms are deflected away from the lone pair electrons
+- **Square pyramidal geometry:** this comes from the octahedral geometry
+- **(Modified) linear geometry**: a linear geometry where there are **two bonding pairs present** but **nonzero lone pairs** (unlike the idealized electron geometry of the same name). This is otherwise identical to the linear electron geometry, except the bonds are oriented perpendicular (up and down) from the bonding pairs around the central atom
+
+A visual chart of the molecular geometries are shown below:
+
+![A diagram of the comparison between electron geometries and molecular geometries](VSEPR-geometries.excalidraw.svg)
+
+> **An important thing to remember:** a molecule with $N$ electron groups can have at most $N - 1$ different molecular geometries _including_ its idealized (electron) geometry. For instance, a molecule with **5 electron groups** can only have at most **4 different molecular geometries**, and this is indeed what we observe: the possible molecular geometries are trigonal bipyramidal (the ideal geometry), sawhorse, T-shaped, and linear.
+
+These are the case because the _effective_ number of bonding electrons decreases for greater numbers of lone pairs, producing geometries where the remaining electron groups are deflected (repulsed) as far away from the lone pairs as possible while retaining a symmetrical structure. 
+
+For instance, water ($\ce{H2O}$) theoretically has a tetrahedral geometry, but because there are two lone pairs, there are only _two_ effective electron groups. Therefore, its molecular geometry becomes an angled molecule with just two lines extending to its outer atoms, making it a _bent_ geometry. 
+
+The same sort of reasoning can be used to guess the geometry from simply the number of lone pairs versus total pairs. For instance, a molecule with a theoretically octahedral geometry with four lone pairs would only have two effective electron groups as well, _even though_ it has 6 total electron groups. The two lone pairs would want to be as far away from each electron group as possible, producing a (vertically) _linear_ geometry.
+
+## Valence bond theory
+
+VSEPR theory creates good predictions for molecular geometries, but recall that all interactions on the atomic level are quantum mechanical in nature. There are two theories that explain molecular geometry and the nature of bonds in terms of quantum mechanical principles: **valence bond theory** and **molecular orbital theory**. We will cover the first.
+
+In valence bond theory we use the electron configuration of the component atoms to find the geometry of the molecule and structure of the bonds. Valence bond theory postulates that **molecular bonds are created by overlapping atomic orbitals**.
+
+Without a full quantitative treatment (i.e. actual mathematical calculations), we can treat hybridization qualitatively as being determined through the electron geometry of the molecule found through VSEPR theory. Using this as a starting point, we can then work out the particular hybridization.
+
+> **Note:** In addition, in this preliminary treatment, we will _only_ consider hybridization to occur on the **central atom**.
+
+### Hybridization
+
+We have already seen that bonds in valence bond theory occur when electrons that overlap between one fully-filled orbital and one half-filled orbital, can complete an orbital with its opposite spin. However, we observe that the reality is more complex than this simplified model. Indeed, in many cases, several orbitals combine together and act as one orbital to be able to fill more half-filled orbitals. This mixing of orbitals is known as **hybridization**.
+
+There are five predominant types of hybridization: $sp, sp^2, sp^3, sp^3 d$, and $sp^3 d^2$. Each type of hybridization is associated with a _specific electron geometry_ (recall this is the idealized geometry counting all bonding and lone pairs as electron groups). The type of hybridization may be determined by establishing the **electron geometry** (_not_ molecular geometry) of the underlying molecule:
+
+- $sp$ hybridization occurs with **linear** electron geometry
+- $sp^2$ hybridization occurs with **trigonal planar** electron geometry
+- $sp^3$ hybridization occurs with **tetrahedral** electron geometry
+- $sp^3 d$ hybridization occurs with **trigonal bipyramidal** electron geometry
+- $sp^3 d^2$ hybridization occurs with **octahedral** electron geometry
+
+After hybridization, mixed orbitals combine into what is effectively a single new orbital, which is able to overlap with another atom's valence orbitals to form bonds. Indeed, we observe these to follow the patterns in the table below:
+
+| Occurence                | Corresponding hybridization | Orbitals before hybridization                    | Orbitals after hybridization                    |
+| ------------------------ | --------------------------- | ------------------------------------------------ | ----------------------------------------------- |
+| Linear geometry          | $sp$                        | 1 $s$ orbital and 1 $p$ orbital                  | 2 $sp$ orbitals plus two leftover $p$ orbitals  |
+| Trigonal planar geometry | $sp^2$                      | 1 $s$ orbital and 2 $p$ orbitals                 | 3 $sp^2$ orbitals plus one leftover $p$ orbital |
+| Tetrahedral              | $sp^3$                      | 1 $s$ orbital and 3 $p$ orbitals                 | 4 $sp^3$ orbitals                               |
+| Trigonal bipyramidal     | $sp^3 d$                    | 1 $s$ orbital, 3 $p$ orbitals, and 1 $d$ orbital | 5 $sp^3 d$ orbitals                             |
+| Octahedral               | $sp^3 d^2$                  | 1 $s$ orbital, 3 $p$ orbital, and 2 $d$ orbitals | 6 $sp^3 d^2$ orbitals                           |
+
+We must also be more specific when we speak of bonds, as by the overlapping orbital definition of a bond in valence bond theory, we can categorize two distinct types of bonds:
+
+- Sigma ($\sigma$) bonds are end-to-end bonds typically formed between _hybridized_ orbitals and other hybridized or unhybridized orbitals
+- Pi ($\pi$) bonds are vertically overlapping bonds formed _only_ between _unhybridized orbitals_ (usually unhybridized $p$ orbitals)
+- All single bonds are sigma bonds
+- For double and triple bonds, the first bond formed is always a sigma bond, remaining bonds are all pi bonds, so for instance, a triple bond will be one sigma and two pi bonds
+
+## Organic chemistry
+
+**Organic chemistry** studies the chemistry of carbon-containing compounds, also called **organic compounds**. Carbon is special in the incredible diversity of compounds it can form due to its four valence electrons. The complexity of large organic molecules, including DNA and RNA, makes the complex functions of living cells possible. In fact, the ability for organic chemistry to take place is a prerequisite for life itself - as life is, in essense, a self-sustaining self-replicating chemical reaction.
+
+Organic compounds are typically composed of carbon, hydrogen, oxygen, nitrogen, sulfur, and phosphorus. To be classified as an organic compound, a compound must be made of _at least_ one carbon-hydrogen bond; all substances that do not meet this requirement are considered _inorganic_. Organic compounds can be of any state at room temperature, but are typically covalent compounds, volatile, and have low melting and boiling points.
+
+> Note: this section is very image-heavy and thus may take somewhat longer to load. In addition, there is some important accessibility information below.
+
+### Representations of organic compounds
+
+We draw organic compounds in several different ways. Take, for instance, $\ce{C5H12}$ more conventionally known as **pentane**. We may represent pentane graphically using any of the ways shown below in the table:
+
+| Name of representation                  | Format                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Example for pentane ($\ce{C5H12}$)   |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| Lewis structure (structural formula)    | This is the conventional Lewis structure diagram that uses dots or dashes to represent bonds.                                                                                                                                                                                                                                                                                                                                                                                   | ![Lewis dot structure for pentane](dot-structure-demo.png) |
+| Condensed structure (condensed formula) | Same as Lewis structure except groups of atoms are written as one condensed constituent element.                                                                                                                                                                                                                                                                                                                                                                                | $\ce{CH3-CH2-CH2-CH2-CH3}$           |
+| Skeleton structure (skeleton formula)   | Only shows the position of the carbon bonds (i.e. bonds between carbon atoms). Carbon atoms are located at **points where lines meet** or the **ends of the lines**, and hydrogen atoms are not shown; it is implied that there are **attached hydrogens to every carbon**, and the number of hydrogens bonded to each carbon is however many is necessary to fulfill the octet rule. Some skeleton diagrams also include the carbon groups (e.g. $\ce{CH3}$) on the endpoints. | ![Skeleton structure for pentane](skeleton-structure-demo.gif)           |
+
+> In addition to these representations, software can be used to create **3D visualizations** of organic compounds by rendering the actual molecular geometry. See the [PubChem 3D viewer](https://pubchem.ncbi.nlm.nih.gov/pc3d/) for examples of how to do this.
+
+The representations have different uses - pure Lewis structures are good at showing all the lone pairs and atoms, condensed structures show all the important groups while staying rather compact, and line (skeleton) structures are good for very complex molecules and for describing non-trivial geometries such as rings and branches (we'll see more about this later).
+
+> **How do we know our structural representations are correct?** The oversimplified answer is that we often don't. We can come up with an empirical formula based on experimental measurements of a compound in various ways such as mass spectroscopy (we covered this earlier in stoichiometry). The law of the conservation of mass and the law of definite proportions guarantees this to be the case. However, beyond that, we can only _theorize_ structural representations based on our best understanding of bonding and molecular stability as well as the behavior of compounds. The more advanced answer is that with certain techniques such as [X-ray crystallography](https://en.wikipedia.org/wiki/X-ray_crystallography) and [electron diffraction](https://en.wikipedia.org/wiki/Gas_electron_diffraction) can be used to actually find the structure, and you can [read more about this here](https://en.wikipedia.org/wiki/Chemical_structure#Structural_elucidation).
+
+## Types of organic compounds
+
+### Hydrocarbons
+
+Hydrocarbons are organic compounds that **only contain carbon and hydrogen**. These are insoluble in water but often used as fuels as they undergo combustion reactions in the presence of oxygen. There are four types of hydrocarbons: **alkanes**, **alkenes**, **alkynes**, and **aromatics**. We will now explore the first three in detail.
+
+#### Alkanes
+
+Alkanes are the least reactive type of hydrocarbon and have only **single** carbon-carbon bonds. They are also considered **saturated**, which means that they are maximally filled with hydrogen atoms. These properties mean that they are highly unreactive and are generally gaseous at room temperature.
+
+The names of alkanes start with -ane. Each alkane has two hydrogen atoms at either end, and $\ce{CH2}$ groups between the ends. The below table lists the most common basic alkanes (up to $\ce{C10H22}$ although there are theoretically an unlimited number of alkanes possible):
+
+> **Note:** unless otherwise noted, all of the below images (and all skeleton formulae of organic compounds from this point) contain alt text (label text) with the organic compound's name in [SMILES](https://en.wikipedia.org/wiki/Simplified_Molecular_Input_Line_Entry_System) format, which can be entered into a cheminformatics system, including several freely available online, for an accessible view of the skeleton formula.
+
+| Alkane Name | Molecular Formula | Condensed formula          | Skeleton Formula                                                                                                                                                             |
+| ----------- | ----------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Methane     | $\ce{CH4}$        | $\ce{CH4}$                 | There isn't one (because there are no carbon-carbon bonds to represent). But its Lewis structure is very straightforward - 4 hydrogens branching out of a single carbon atom |
+| Ethane      | $\ce{C2H6}$       | $\ce{CH3-CH3}$             | ![Ethane diagram: CC](http://hulab.rxnfinder.org/smi2img/CC?height=100)                                                                                                      |
+| Propane     | $\ce{C3H8}$       | $\ce{CH3-CH2-CH3}$         | ![Propane diagram: CCC](http://hulab.rxnfinder.org/smi2img/CCC?height=100)                                                                                                   |
+| Butane      | $\ce{C4H10}$      | $\ce{CH3-CH2-CH2-CH3}$     | ![Butane diagram: CCCC](http://hulab.rxnfinder.org/smi2img/CCCC?height=100)                                                                                                  |
+| Pentane     | $\ce{C5H12}$      | $\ce{CH3-CH2-CH2-CH2-CH3}$ | ![Pentane diagram: CCCCC](http://hulab.rxnfinder.org/smi2img/CCCCC?height=100)                                                                                               |
+| Hexane      | $\ce{C6H14}$      | $\ce{CH3-(CH2)4-CH3}$      | ![Hexane diagram: CCCCCC](http://hulab.rxnfinder.org/smi2img/CCCCCC?height=100)                                                                                              |
+| Heptane     | $\ce{C7H16}$      | $\ce{CH3-(CH2)5-CH3}$      | ![Heptane diagram: CCCCCCC](http://hulab.rxnfinder.org/smi2img/CCCCCCC?height=100)                                                                                           |
+| Octane      | $\ce{C8H18}$      | $\ce{CH3-(CH2)6-CH3}$      | ![Octane diagram: CCCCCCCC](http://hulab.rxnfinder.org/smi2img/CCCCCCCC?height=100)                                                                                          |
+| Nonane      | $\ce{C9H20}$      | $\ce{CH3-(CH2)7-CH3}$      | ![Nonane diagram: CCCCCCCCC](http://hulab.rxnfinder.org/smi2img/CCCCCCCCC?height=100)                                                                                        |
+| Decane      | $\ce{C10H22}$     | $\ce{CH3-(CH2)8-CH3}$      | ![Decane diagram: CCCCCCCCCC](http://hulab.rxnfinder.org/smi2img/CCCCCCCCCC?height=100)                                                                                      |
+
+> **Note:** a mnemonic that may be helpful is that for all the alkanes after butane, additionally, follow the typical naming conventions, e.g. _hept-_ for five, _hex-_ for six, _oct-_ for octane, and so forth. In addition, due to the extremely long structural formulas of the larger alkanes (hexane, heptane, octane, nonane, decane) we use an abbreviated notation. As an example, hexane, given by $\ce{CH3-(CH2)4-CH3}$ is equivalent to $\ce{CH3-CH2-CH2-CH2-CH2-CH3}$, i.e. has 4 repeated $\ce{CH2}$ groups. Meanwhile, for the first four alkanes, just memorize "M.E.P.B", this will be extremely useful going forwards
+
+To determine the chemical formula of an alkane is fairly straightforward; simply write out the condensed formula, count the number of carbon atoms (it is always one per substituent group in the condensed formula), and then count the number of hydrogen atoms. One may also devise a general formula for alkanes: they follow the chemical formula $\ce{C_nH_{2n + 2}}$. 
+
+Alkanes can form more sophisticated structures through the process of adding additional alkane groups. An alkane group is a base alkane (like methane) but bonded to another group of atoms. The names of the alkane groups are very similar to their base alkanes. We simply take the base alkane's name and replace _-ane_ with _-yl_. For instance, methane becomes _methyl_, ethane becomes _ethyl_, and propane becomes _propyl_. The alkane groups also share the same basic structure as their base alkanes, in fact identical except for the fact that one of the end $\ce{CH3}$ groups is changed to a $\ce{CH2}$ group. This correspondence means that the skeleton formula of the alkane groups is in fact _identical_ to that of their base alkanes (unless if we choose to also draw on the $\ce{CH3}$ and $\ce{CH2}$ groups on the endpoints), which we can see below:
+
+| Alkane group | Derived from | Condensed formula          |
+| ------------ | ------------ | -------------------------- |
+| Methyl       | Methane      | $\ce{CH3}$                 |
+| Ethyl        | Ethane       | $\ce{CH2-CH3}$             |
+| Propyl       | Propane      | $\ce{CH2-CH2-CH3}$         |
+| Butyl        | Butane       | $\ce{CH2-CH2-CH2-CH3}$     |
+| Pentyl       | Pentane      | $\ce{CH2-CH2-CH2-CH2-CH3}$ |
+| Hexyl        | Hexane       | $\ce{CH2-(CH2)4-CH3}$      |
+| Heptyl       | Heptane      | $\ce{CH2-(CH2)5-CH3}$      |
+| Octyl        | Octane       | $\ce{CH2-(CH2)6-CH3}$      |
+| Nonyl        | Nonane       | $\ce{CH2-(CH2)7-CH3}$      |
+| Decyl        | Decane       | $\ce{CH2-(CH2)8-CH3}$      |
+
+> **Notation:** it is also common to write $\ce{H2C-CH3}$ for ethyl, $\ce{H2C-CH2-CH3}$ for propyl, and so forth. These are equivalent to $\ce{CH2-CH3}$ and $\ce{CH2-CH2-CH3}$ for ethyl and propyl, but the reversed order is sometimes helpful for establishing one side as the start of the alkane chain and one side as the end.
+
+The **name** of alkanes is derived from their longest chain in their structural formula. For instance, consider iso-octane, which, despite its common name, is not actually derived from octane. The structural formula is as follows:
+
+![2,2-4-trimethylpentane skeleton formula - SMILES code below](2,2-4-trimethylpentane.excalidraw.svg)
+
+_SMILES format: `CC(C)(C)CC(C)C`_
+
+The base name of alkanes is the name of their longest continuous chain, which, in this case, has 5 carbon atoms (starting from the leftmost carbon atom on the very left edge and ending at the right-bottom carbon atom on the very right edge), making it a **pentane**. If there are multiple chains that have the same maximal length, choose the one has the **greatest number of substituent groups** (i.e. group that branches outwards from the main chain, which we also call a _branch_). Keep this in mind as we continue.
+
+We start counting from the end of the chain **closest to the first substituent group**, or if both ends are equidistant from the first substituent group, we count from the end with a) the substituent that comes first alphabetically, or if that is also identical, B) comparing the next substituent that comes, repeating as many times as necessary until there is one that is non-identical. Since both ends have the first bond in second position, our numbering would start from the left. Remember that carbon atoms are present both at the **edges** and **connections** between lines. The first position carbon is on the left edge. In counting, we find **two methyl** groups at the **second atom**, one on each side, which we denote _2, 2-dimethyl_ (the prefix _di-_ to indicate two methyl groups). We then find another **methyl** group on the **fourth atom**, which we denote as _4-methyl_. Therefore, the IUPAC name (scientific name) of iso-octane is _2,2-dimethyl-4-methyl-pentane_ which we can shorten to _2,2,4-trimethylpentane_, with prefix _tri-_ to indicate three methyl groups.
+
+> Note here that we use _2,2,4-methyl-pentane_ (counting from the left) rather than _2,4,4-dimethyl-pentane_ (counting from the right) because (2, 2, 4) is a smaller progression of numbers than (2, 4, 4) i.e. it  increases term-by-term by smaller numbers. This is a general principle with IUPAC notation: whichever arrangement makes for the lowest sequence of numbers is the one we choose, which generally takes precedence over other rules (other than the alphabetical precedence rule).
+
+In counting the groups, there are subtle nuances that are easily missed:
+
+- The longest continuous chain may not be in a straight line. In fact, it may be a bent chain.
+- When finding the longest continuous chain, we do _not_ count any branching groups. That is to say, any groups that branch out of the main chain are _not_ counted
+- When there are **repeated groups**, we must use a prefix to indicate this. For instance, *3-methyl-4-methyl-hexane* would be called *3,4-methyl-hexane*
+- When there is **a branch on either side** (or more than one branch on either side, we must repeat the position number, and following the previous rule, we must also add the suitable prefix. For instance, earlier we had to denote the 2 methyl groups that branched out from the same carbon by _2,2-dimethyl_ because of the two (_di-_) methyl groups that are both at second position
+- When there is **more than one group**, we list the groups in alphabetical order. For instance, an ethyl group is named before a methyl group because E comes before M in the alphabet. 
+
+While relatively unreactive, alkanes can participate in certain chemical reactions. First, they can burn in oxygen, releasing heat. This is known as a **combustion reaction**. For instance, the balanced chemical reaction for the combustion of methane in normally oxygenated air is:
+
+$$
+\ce{CH4}(g) + 2\ce{O2}(g) \to 2\ce{H2O}(g) + \ce{CO2}(g)
+$$
+
+In addition, alkanes can undergo **substitution reactions** when the hydrogen atoms are substituted for atoms of a more reactive element. Such reactions need energy put in to start the reaction. A very common type of substitution reaction is a **chlorination reaction**, where hydrogen atoms are replaced by chlorine atoms. The number of hydrogen atoms replaced is shown in the name of the reaction product; _(mono)chloromethane_, for instance, has one hydrogen atom substituted for one chlorine atom, and thus has the formula $\ce{CH3Cl}$; meanwhile, _trichloromethane_ has three hydrogen atoms substituted for three chlorine atoms, and thus has the formula $\ce{CHCl3}$.
+
+#### Alkenes
+
+Alkenes are very similar to alkanes in that they only contain carbon and hydrogen, except unlike alkanes, they contain a **double carbon-carbon bond**. For this reason, they follow a slightly different structure. An alkene is based in a $\ce{CH2=CH}$ group (we often write this as $\ce{H2C=CH}$ as we mentioned above to differentiate as the endpoint). The $\ce{CH2=CH}$ group is then attached to any number of $\ce{CH2}$ groups, with a $\ce{CH3}$ group at its end. Unlike alkanes, we consider alkenes **unsaturated hydrocarbons**.
+
+| Alkane Name                   | Molecular Formula | Condensed formula             | Skeleton Formula                                                                          |
+| ----------------------------- | ----------------- | ----------------------------- | ----------------------------------------------------------------------------------------- |
+| Ethene (also called ethylene) | $\ce{C2H4}$       | $\ce{CH2=CH2}$                | ![Ethene diagram: C=C](http://hulab.rxnfinder.org/smi2img/C=C?height=100)                 |
+| Propene                       | $\ce{C3H6}$       | $\ce{CH2=CH-CH3}$             | ![Propene diagram: C=CC](http://hulab.rxnfinder.org/smi2img/C=CC?height=100)              |
+| Butene                        | $\ce{C4H8}$       | $\ce{CH2=CH-CH2-CH3}$         | ![Butene diagram: C=CCC](http://hulab.rxnfinder.org/smi2img/C=CCC?height=100)             |
+| Pentene                       | $\ce{C5H10}$      | $\ce{CH2=CH-CH2-CH2-CH3}$     | ![Pentene diagram: C=CCCC](http://hulab.rxnfinder.org/smi2img/C=CCCC?height=100)          |
+| Hexene                        | $\ce{C6H12}$      | $\ce{CH2=CH-CH2-CH2-CH2-CH3}$ | ![Hexene diagram: C=CCCCC](http://hulab.rxnfinder.org/smi2img/C=CCCCC?height=100)         |
+| Heptene                       | $\ce{C7H14}$      | $\ce{CH2=CH-(CH2)4-CH3}$      | ![Heptene diagram: C=CCCCCC](http://hulab.rxnfinder.org/smi2img/C=CCCCCC?height=100)      |
+| Octene                        | $\ce{C8H16}$      | $\ce{CH2=CH-(CH2)5-CH3}$      | ![Octene diagram: C=CCCCCCC](http://hulab.rxnfinder.org/smi2img/C=CCCCCCC?height=100)     |
+| Nonene                        | $\ce{C9H18}$      | $\ce{CH2=CH-(CH2)6-CH3}$      | ![Nonene diagram: C=CCCCCCCC](http://hulab.rxnfinder.org/smi2img/C=CCCCCCCC?height=100)   |
+| Decene                        | $\ce{C10H20}$     | $\ce{CH2=CH-(CH2)7-CH3}$      | ![Decene diagram: C=CCCCCCCCC](http://hulab.rxnfinder.org/smi2img/C=CCCCCCCCC?height=100) |
+
+The molecular formulas of alkenes can be determined either through the same method as alkanes (writing out the condensed formula and counting the carbons and hydrogens) or by using the general formula $\ce{C_nH_{2n}}$. 
+
+In an alkene, the longest carbon chain that contains the double bond is what establishes the root name of the alkene. We still count from edge to edge, but we start from the edge that is _closest_ to the double bond. If the double bond is *equidistant* from either side, we count from the side that is closer to the *first* substituent group. When naming alkenes, we _also_ insert the position of the double bond just before the root name of the alkene, and multiple groups are (again) given in alphabetical order. For instance, consider the following annotated alkene:
+
+![The skeleton structure of 3-ethyl-4-methyl-1-pentene, SMILES code below](diagram-3-ethyl-4-metheyl-1-pentene.excalidraw.svg)
+
+_Associated SMILES format: `C=CC(CC)C(C)C`_
+
+The longest chain extends from the top left to the bottom right (yes, this is somewhat confusing given the orientation of the skeleton structure) and has **five** carbon atoms, making it a _pentene_. The side with the double bond is the top left, so we begin counting from there, and we let the **top-left carbon** (implied to be on the left side of the double bond) be in **first position**. After the double bond at **first position**, we count one right, where we find an **ethyl group** to the right at **third position**. Then we count one down, where we find a **methyl group** to the left at **fourth position**, before finally reaching the bottom right carbon. Therefore its name is *3-ethyl-4-metheyl-1-pentene*, remembering that after our counting, we put the ethyl first because it comes first in alphabetical order.
+
+Note that we referred to the base ethyl as _1-pentene_ rather than simply _pentene_, as this is necessary to specify that the double bond occurs at first position. In alkanes that have their double bond at non-first position, the first position is still located on the carbon on the endpoint of the longest chain closer to the double bond, but we must be careful to note down the position of the double bond. That is to say, 1-pentene is not the same as 2-pentene or 3-pentene, and we show the difference in the table below:
+
+| Name      | Location of double bond | Condensed formula        | Skeleton structure                                                                          |
+| --------- | ----------------------- | ------------------------ | ------------------------------------------------------------------------------------------- |
+| 1-pentene | 1st-position carbon     | $\ce{CH2=CH-(CH2)2-CH3}$ | ![1-pentene, SMILES format: C=CCCC](http://hulab.rxnfinder.org/smi2img/C=CCCC?height=100)   |
+| 2-pentene | 2nd-position carbon     | $\ce{CH3-CH=CH-CH2-CH3}$ | ![2-pentene, SMILES format: CC=CCC](http://hulab.rxnfinder.org/smi2img/C/C=CC\C?height=100) |
+| 3-pentene | 3rd-position carbon     | $\ce{CH3-CH2-CH=CH-CH3}$ | ![3-pentene, SMILES format: CCC=CC](http://hulab.rxnfinder.org/smi2img/CCC=CC?height=100)   |
+
+> **Note:** bare skeleton structures are very simplified and it is important to remember that implied carbons are located at all endpoints of each line and all points where lines join. Hydrogen atoms are also implied to be attached to the carbon atoms, however many is necessary to fill the carbon atoms' orbitals.
+
+### Alkynes
+
+Alkynes are similar to alkenes in that they are also unsaturated hydrocarbons, and thus contain only carbon and hydrogen, but they are distinct in that they have **triple carbon-carbon bonds**. Their naming convention is almost the same as that of alkenes, except the counting starts from the end with the triple bond. Again, their numbering in the case of both ends being equidistant from the triple bond follows the lowest-number-progression order, and when multiple groups are present, they are ordered in alphabetical order. Additionally, when naming alkynes, we must add the position of the bond to the base alkyne name, such as _2-pentyne_ or _1-butyne_.
+
+Alkynes follow the general formula $C_n H_{2n-2}$. The same general structure of alkanes and alkenes carry over to alkynes, as can be seen in the following table:
+
+| Alkane Name | Molecular Formula | Condensed formula               | Skeleton Formula                                                                                   |
+| ----------- | ----------------- | ------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Ethyne      | $\ce{C2H2}$       | $\ce{CH#CH}$                    | ![Ethylyne, SMILES format: C#C](http://hulab.rxnfinder.org/smi2img/C%23C?height=100)               |
+| Propyne     | $\ce{C3H4}$       | $\ce{CH#C-CH3}$                 | ![Propyne, SMILES format: C#CC](http://hulab.rxnfinder.org/smi2img/C%23CC?height=100)              |
+| Butyne      | $\ce{C4H6}$       | $\ce{CH#C-CH2-CH3}$             | ![Butyne, SMILES format: C#CCC](http://hulab.rxnfinder.org/smi2img/C%23CCC?height=100)             |
+| Pentyne     | $\ce{C5H8}$       | $\ce{CH#C-CH2-CH2-CH3}$         | ![Pentyne, SMILES format: C#CCCC](http://hulab.rxnfinder.org/smi2img/C%23CCCC?height=100)          |
+| Hexyne      | $\ce{C6H10}$      | $\ce{CH#C-CH2-CH2-CH2-CH3}$     | ![Hexyne, SMILES format: C#CCCCC](http://hulab.rxnfinder.org/smi2img/C%23CCCCC?height=100)         |
+| Heptyne     | $\ce{C7H12}$      | $\ce{CH#C-CH2-CH2-CH2-CH2-CH3}$ | ![Heptyne, SMILES format: C#CCCCCC](http://hulab.rxnfinder.org/smi2img/C%23CCCCCC?height=100)      |
+| Octyne      | $\ce{C8H14}$      | $\ce{CH#C-(CH2)5-CH3}$          | ![Octyne, SMILES format: C#CCCCCCC](http://hulab.rxnfinder.org/smi2img/C%23CCCCCCC?height=100)     |
+| Nonyne      | $\ce{C9H16}$      | $\ce{CH#C-(CH2)6-CH3}$          | ![Nonyne, SMILES format: C#CCCCCCCC](http://hulab.rxnfinder.org/smi2img/C%23CCCCCCCC?height=100)   |
+| Decyne      | $\ce{C10H18}$     | $\ce{CH#C-(CH2)7-CH3}$          | ![Decyne, SMILES format: C#CCCCCCCCC](http://hulab.rxnfinder.org/smi2img/C%23CCCCCCCCC?height=100) |
+
+> **Note:** Ethyne is also called *acetylene* and *vinylene* and (even more confusingly) _ethenylene_. These common names all refer to to the same compound, just with different naming conventions.
+
+### Benzenes
+
+We have already seen alkanes, alkenes and alkynes. Now we will examine _benzenes_, also referred to as aromatic hydrocarbons. Benzenes are distinguished by their benzene hexagonal ring composed of 6 hydrogen and 6 carbon atoms, shown as follows:
+
+![Benzene C6H6, SMILES format](http://hulab.rxnfinder.org/smi2img/C1=CC=CC=CC1?height=100)
+
+Benzene groups have the name _phenyl-_ when they are part of the dominant chain in an organic molecule molecule (i.e. when the chain is much bigger than the benzene). When that is the case, we simply follow the general conventions for naming the molecule, such as the naming conventions of alkanes, alkenes, or alkynes, and append _phenyl-_ and the position number to the compound. For instance, here is 2-phenyl-2-pentene:
+
+![](http://hulab.rxnfinder.org/smi2img/CC(C1=CC=CC=CC1)=CCC?height=100)
+
+However, there are also cases where the benzene ring is the predominant structure of the compound and is where other groups branch off from. In this case, we follow a separate naming convention. We can start counting from wherever we want because benzene is a **cyclic compound** (i.e. has a ring). For instance, consider the following benzene-containing molecule:
+
+![1-chloro-2-methylbenzene, SMILES format: C1(Cl)=CC=CC=C(C)](http://hulab.rxnfinder.org/smi2img/C1(Cl)=CC=CC=C(C)1?height=100)
+
+We start counting from the chlorine because it comes in alphabetical order before the methyl group. We then count in either clockwise or counterclockwise order, whichever order makes for the smallest progression of numbers. Thus, we _can_ call it *1-chloro-2-methylbenzene* but **not** 1-chloro-6-methylbenzene because (1, 6) is a larger progression of numbers compared to (1, 2). We may _also_ call it **ortho-chloromethylbenzene**, where we reference the table below:
+
+| Prefix | Abbreviation | Meaning                                                                   | Example                                                                                                                            |
+| ------ | ------------ | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Para-  | P-           | Two branches that are on directly opposing sides of the ring              | ![Para-chloromethylbenzene, SMILES format: C1(Cl)=CC=C(C)C=C1](http://hulab.rxnfinder.org/smi2img/C1(Cl)=CC=C(C)C=C1?height=100)   |
+| Meta-  | M-           | Two branches attached to carbon atoms that have another carbon in between | ![Meta-chloromethylbenzene, SMILES format: C1(Cl)=CC(C)=CC=CC1](http://hulab.rxnfinder.org/smi2img/C1(Cl)=CC(C)=CC=CC1?height=100) |
+| Ortho- | O-           | Two branches attached to two adjacent carbons                             | ![Ortho-chloromethylbenzene, SMILES format: C1(Cl)=CC=CC=C(C)C1](http://hulab.rxnfinder.org/smi2img/C1(Cl)=CC=CC=C(C)1?height=100) |
+
+## Alcohols
+
+An **alcohol** is the next type of organic compounds. Alcohols are any organic compound that contain a hydroxyl ($\ce{OH}$) group at some point on their primary (longest) chain, and correspondingly have names that end with _-ol_, such as _ethanol_ and _hexanol_. Typically, they are similar to their corresponding alkanes, but have an appended hydroxyl group on the last carbon. The base names of the alcohols are based on the number of carbon atoms in the chain that the hydroxyl group is attached to, **not counting the hydroxyl group**. The first few alcohols are shown in the table below:
+
+| Alkane Name | Molecular Formula | Condensed formula             | Skeleton Formula                                                                               |
+| ----------- | ----------------- | ----------------------------- | ---------------------------------------------------------------------------------------------- |
+| Methanol    | $\ce{CH3OH}$      | $\ce{CH3-OH}$                 | ![Methanol, SMILES format: C[OH]](http://hulab.rxnfinder.org/smi2img/C[OH]?height=100)         |
+| Ethanol     | $\ce{C2H5OH}$     | $\ce{CH3-CH2-OH}$             | ![Ethanol, SMILES format: CC[OH]](http://hulab.rxnfinder.org/smi2img/CC[OH]?height=100)        |
+| Butanol     | $\ce{C3H7OH}$     | $\ce{CH3-CH2-CH2-OH}$         | ![Butanol, SMILES format: CCC[OH]](http://hulab.rxnfinder.org/smi2img/CCC[OH]?height=100)      |
+| Propenol    | $\ce{C4H9OH}$     | $\ce{CH3-CH2-CH2-CH2-OH}$     | ![Propenol, SMILES format: CCCC[OH]](http://hulab.rxnfinder.org/smi2img/CCCC[OH]?height=100)   |
+| Pentanol    | $\ce{C5H11OH}$    | $\ce{CH3-CH2-CH2-CH2-CH2-OH}$ | ![Pentanol, SMILES format: CCCCC[OH]](http://hulab.rxnfinder.org/smi2img/CCCCC[OH]?height=100) |
+
+> **Note:** hexanol, heptanol, octanol, and so forth follow in the same pattern.
+
+When naming alcohols, we must *also* indicate the position of the hydroxyl group as a prefix before the alcohol. For instance, 2-pentanol means that the hydroxyl group is at the second position of the longest chain. Remember we would still need to use alphabetical order in the case that multiple branching groups are present. For general reference, these are different sub-variants of pentanol:
+
+| Name       | Location of $\ce{OH}$ group | Skeleton Formula                                                                                     |
+| ---------- | --------------------------- | ---------------------------------------------------------------------------------------------------- |
+| 1-pentanol | 1st-position carbon         | ![1-Pentanol, SMILES format: CCCCC[OH]](http://hulab.rxnfinder.org/smi2img/CCCCC[OH]?height=100)     |
+| 2-pentanol | 2nd-position carbon         | ![2-Pentanol, SMILES format: CCCC([OH])C](http://hulab.rxnfinder.org/smi2img/CCCC([OH])C?height=100) |
+| 3-pentanol | 3rd-position carbon         | ![3-Pentanol, SMILES format: CCC([OH])CC](http://hulab.rxnfinder.org/smi2img/CCC([OH])CC?height=100) |
+
+> **Note:** there is no 4-pentanol or 5-pentanol because 4-pentanol would just be 2-pentanol backwards and 5-pentanol would just be 1-pentanol backwards. We only count sub-variants that are structurally different, if a sub-variant is the same, we don't count it.
