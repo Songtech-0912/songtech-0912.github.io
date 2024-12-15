@@ -196,8 +196,23 @@ header {
   img {
     display: block;
     width: 80%;
+    max-height: 10rem;
     @include lg { width: 70%; }
     @include sm { width: 100%; }
+    margin: 1.5rem auto;
+  }
+
+  .wide-img {
+    display: block;
+    width: 90%;
+    max-height: revert;
+    margin: 1.5rem auto;
+  }
+
+  .diagram {
+    display: block;
+    max-width: 80%;
+    min-height: 15rem;
     margin: 1.5rem auto;
   }
 
@@ -287,6 +302,12 @@ header {
   			color: magenta;
   			background: none;
   		}
+
+      img {
+        height: 6rem;
+        width: auto;
+        margin: auto;
+      }
   	}
   
   	tr {
