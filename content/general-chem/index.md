@@ -172,7 +172,7 @@ The limiting reactant determines the **theoretical yield**, the idealized amount
 
 **Ionic compounds** are compounds formed by the transfer of electrons between ions. In ionic bonding, an electron (or several) is transferred from a positively-charged ion to a negatively-charged ion, creating a structured lattice. Ions are atoms or combinations of atoms that have a net electric charge.
 
-> **Note for the advanced reader:** the ions have a precise description via electromagnetic theory, which can be used to analyze the fundamental electromagnetic interactions of ions by their interaction through the electric field. The most precise description is through **quantum electrodynamics** which can calculate the dynamics and chemical processes of any ion up to the subatomic level.
+> **Note for the advanced reader:** ions have a precise description via electromagnetic theory, which can be used to analyze the fundamental electromagnetic interactions of ions by their interaction through the _microscopic_ electric field. However, in general chemistry, we will only describe ions on a _macroscopic_ level.
 
 The word "molecule" applies technically _only_ to covalent compounds. Ionic compounds do not form molecules because their atoms are arranged in lattices in which there is no distinct separation between bonded atoms.
 
@@ -255,7 +255,7 @@ Ionic compounds have simpler naming conventions as opposed to covalent compounds
 
 Acids and bases are some of the most common chemical substances. The simplest theory of acids and bases is _Arrhenius theory_. A more accurate theory is the later _Brønsted–Lowry theory_ We will examine both.
 
-The **Arrhenius definition of an acid** is a compound that releases hydrogen ions $\ce{H^+}$ when dissolved in water, and typically denoted $\ce{aq}$ (for _aqueous_) in chemical reactions. The extent to which ionization occurs determines the strength of the acid. Hydrogen ions, which are single protons, form hydronium ions $\ce{H3O^+}$ in water, and the concentration of hydronium, notated $[\ce{H3O^+}]$, determines the $\ce{pH}$ of the solution by the following relationship:
+The **Arrhenius definition of an acid** is a compound that releases hydrogen ions $\ce{H^+}$ when dissolved in water, and is typically denoted $\ce{aq}$ in chemical reactions (it stands for _aqueous_, i.e. a solution where water is the solver). The extent to which ionization occurs determines the strength of the acid. Hydrogen ions, which are single protons, form hydronium ions $\ce{H3O^+}$ in water, and the concentration of hydronium, notated $[\ce{H3O^+}]$, determines the $\ce{pH}$ of the solution by the following relationship:
 
 {% math() %}
 \ce{pH} = - \log [\ce{H3O^+}], \quad [\ce{H3O^+}] = 10^{-\ce{pH}}
@@ -267,7 +267,7 @@ The **Arrhenius definition** of a base is a compound that releases hydroxide ion
 \ce{pOH} = - \log [\ce{OH^-}], \quad [\ce{OH-}] = 10^{-\ce{pOH}}
 {% end %}
 
-> When studying acids and bases, it is useful to think of the $\ce{H2O}$ molecule as  $\ce{H^+-OH^-}$, i.e. a hydrogen ion bonded to a hydroxide ion. 
+> When studying acids and bases, it is useful to think of the $\ce{H2O}$ molecule as  $\ce{(H^+)-(OH^-)}$, i.e. a hydrogen ion bonded to a hydroxide ion. 
 
 We observe, however, many substances that _act_ like acids or bases but are not technically acids or bases under the Arrhenius definitions. A more useful and modern definition of acids and bases is given by **Brønsted-Lowry theory**. The Brønsted-Lowry definition of an *acid* is any substance that donates protons, while the Brønsted-Lowry definition of a *base* is any substance that accepts (receives) protons.
 
@@ -360,8 +360,6 @@ Equations that involve electron transfer from one atom to another are known as *
 
 By virtue of their ability to lose electrons, reducers donate electrons in a chemical reaction. Common reducers include the alkali-metal-based compounds and hydrogen-based compounds, but are not limited to these. Meanwhile, oxidizers readily accept electrons from reducers. Common oxidizers include the halogens, hydrogen peroxide, and yes, **oxygen** as well as halogen-based compounds and oxygen-based compounds. Oxidizers can be thought of as "electron-stealers" that take electrons from other atoms.
 
-> It is helpful to remember the mnemonic **OILRIG**: **O**xidation **I**s **L**oss **R**eduction **I**s **G**ain
-
 In a redox reaction, we may write the complete reaction as a combination of two _half-reactions_, one being the *oxidation* half-reaction and one being the *reduction* half-reaction. Consider, for instance, the combustion of hydrogen gas (a reducer) in oxygen (an oxidizer). This is the familiar reaction:
 
 {% math() %}
@@ -383,7 +381,13 @@ Two hydrogen cations then combine with one oxygen anion to form the water molecu
 \ce{2H^+ + O^- -> H2O}
 {% end %}
 
-This completes the reaction, forming water. However, the reaction can also easily be reversed if water becomes ionized, that is, split into its constituent ions. Given that hydrogen is a strong reducing agent and oxygen is a strong oxidizing agent, water spontaneously ionizes itself to a certain degree. Full ionization can be done through **electrolysis** where electricity is used to ionize water, allowing recovery of oxygen and hydrogen gas by the reverse reaction $\ce{2H2O(g)} + \pu{285.8 kJ} \ce{-> 2H2(g) + O2(g)}$.  
+This completes the reaction, forming water. However, the reaction can also easily be reversed if water becomes ionized, that is, split into its constituent ions. Given that hydrogen is a strong reducing agent and oxygen is a strong oxidizing agent, water spontaneously ionizes itself to a certain degree. Full ionization can be done through **electrolysis** where electricity is used to ionize water, allowing recovery of oxygen and hydrogen gas by the reverse reaction:
+
+{% math() %}
+\ce{2H2O(l)} + \pu{285.8 kJ} \ce{-> 2H2(g) + O2(g)}
+{% end %}
+
+> Note, however, that this is a reaction that needs energy _put in_ to occur. We will discuss such types of reactions, known as **endothermic reactions**, in the thermochemistry section.
 
 ## The quantum theory of the atom
 
@@ -418,7 +422,21 @@ In addition, our familiar sense of "light", that being visible light, constitute
  
 ### The Schrödinger equation
 
-The **Schrödinger equation** is a partial differential equation given by $i\hbar \dfrac{\partial}{\partial t} = -\dfrac{\hbar^2}{2m} \nabla^2\psi + V(x, y, z)\psi$ describes the quantum nature of electrons in an atom. From a technical point of view, it is given by. The eigenstate solutions of the Schrödinger equation gives the energy levels of electrons within an atom, and is the origin of the Rydberg formula that predicts the energies and wavelengths of emission spectra from the transition of energy levels. Each solution is known as a _wavefunction_, a complex-valued function whose squared absolute value represents the _probability_ per unit volume of an electron occupying that location. These solution wavefunctions are characterized by three integer numbers (and one additional extension added later):
+The **Schrödinger equation** is a partial differential equation studied extensively in quantum physics, as it describes the quantum nature of electrons in an atom. It takes the form:
+
+{% math() %}
+i\hbar \dfrac{\partial}{\partial t}\Psi = -\dfrac{\hbar^2}{2m} \nabla^2\Psi + V(x, y, z)\Psi
+{% end %}
+
+While the equation itself and how to solve it are *not necessary* to know for general chemistry, the eigenstate solutions of the Schrödinger equation give the *energy levels* of electrons within an atom, and is the origin of the **Rydberg formula**:
+
+{% math() %}
+\dfrac{1}{\lambda} = R_H \left(\dfrac{1}{{n_f}^2} - \dfrac{1}{{n_i}^2}\right)
+{% end %}
+
+This is the formula that predicts the wavelengths of emission spectra from the transition of energy levels, where $R_H$ is the hydrogen Rydberg constant, $n_i$ is the initial energy level of an electron, and $n_f$ is its energy level after the transition.
+
+Each solution to the Schrödinger equation is known as a _wavefunction_, a complex-valued function whose squared absolute value represents the _probability_ per unit volume of an electron occupying that location. These solution wavefunctions are characterized by three quantum numbers, $n, \ell, m_s$, which, along with a fourth number, $s$, that have special significance in quantum chemistry:
 
 | Number name                                                           | Symbol   | Physical interpretation                                                                                                                                                                         | Values                                                                     |
 | --------------------------------------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
@@ -444,7 +462,7 @@ For an orbital of $n = 1, \ell = 0$ for instance, we would call it a $1s$ orbita
 
 > **Note for the reader:** rather than $1s, 2s, 2p, \dots$ an alternative notation is ${^1}S, {^2}S, {^2}P, \dots$
 
-The solution of the Schrödinger equation for hydrogen is of particular interest, because an exact solution can be found. This allows prediction of many quantum properties of the hydrogen atomic in particular and all atoms in general. First, the solution predicted that when an electron undergoes a transition between orbitals, it emits a photon of wavelength $\lambda$, where $\lambda$ is given by the Rydberg formula:
+The solution of the Schrödinger equation for hydrogen is of particular interest, because an exact solution can be found. This allows prediction of many quantum properties of the hydrogen atomic in particular and all atoms in general. First, the solution predicted that when an electron undergoes a transition between orbitals, it emits a photon of wavelength $\lambda$, where $\lambda$ is given by the Rydberg formula, just as we discussed earlier:
 
 {% math() %}
 \dfrac{1}{\lambda} = R_H \left(\dfrac{1}{n^2_\mathrm{after}} - \dfrac{1}{n^2_\mathrm{initial}}\right)
@@ -483,9 +501,24 @@ Each subshell fixes the $n$ and $\ell$ quantum numbers but still allows electron
 - Within each subshell, there are distinct _orientations_ of angular momenta that electrons may have. Each possible value of orientation is called an **orbital** and is characterized by the **magnetic quantum number** $m_\ell$, in addition to the principal and orbital angular momentum quantum numbers $n, \ell$.
 - Within each orbital, there are different _spins_ that electrons must have, which means that electrons may only come individually or in pairs of opposite spin. Thus, each electron shares its orbital with at most _one other electron_ of opposite spin (although it could also be a lone electron). So each electron is characterized by its **spin quantum number** $s$ as well as $n, \ell, m_\ell$.
 
-#### Electron configurations of some common elements
+#### Electron configurations
 
-For convenience, below are the electron configurations of some common elements:
+To describe the orbials of atoms, we write them via **electron configurations**, where we list out each orbital of an atom. To do so, we follow the **Aufbau principle**, which gives the order that orbitals are filled as follows:
+
+![A depiction of the Aufbau principle, showing how diagonal lines between s, d, p, f orbitals can be used to find the order of filling orbitals](https://upload.wikimedia.org/wikipedia/commons/2/2e/Aufbau_Principle-en.svg)
+
+_Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Aufbau_Principle-en.svg)_
+
+That is to say, an element's atoms contain as many orbitals as are needed to hold all its electrons, and orbitals are filled in the following order:
+
+{% math() %}
+\begin{gather*}
+1s^2 \to 2s^2 \to 2p^6 \to 3s^2 \to 3p^6 \to 4s^2 \to 3d^{10} \\
+ \to 4p^6 \to 5s^2 \to 4d^{10} \to 5p^6 \to 6s^2 \dots
+\end{gather*}
+{% end %}
+
+For convenience, we often abbreviate the electron configuration by writing it relative to the _closest noble gas_ (as we'll see, noble gases have relatively easy-to-determine electron configurations). For instance, lithium has the electron configuration $1s^2 2s^1$ which can also be written in terms of helium, the closest noble gas, which has electron configuration $1s^2$, as $\ce{[He]} 2s^1$. Below are the electron configurations of some common elements:
 
 | Element    | Symbol    | Atomic number | Electron configuration                                                                               |
 | ---------- | --------- | ------------- | ---------------------------------------------------------------------------------------------------- |
@@ -523,6 +556,22 @@ For convenience, below are the electron configurations of some common elements:
 | Gold       | $\ce{Au}$ | 79            | $\ce{[Xe]} 6s^1 5d^{10}$                                                                             |
 
 _Based on Mastering Chemistry Textbook. Shared under Fair Use._
+
+
+#### Exceptions to the Aufbau principle
+
+While it is possible to deduce the electron configurations of most elements using the Aufbau principle, there are certain exceptions. Recall that energy levels scale as $1/n^2$ so higher electron shells are closer together. This means that electrons of higher orbitals readily move into other higher orbitals, leading to the following elements having unusual electronic configurations:
+
+| Element | Symbol | Electron configuration |
+|-----|-----|------|
+| Copper | $\ce{Cu}$ | $\ce{[Ar]} 3d^{10} 4s^1$ |
+| Silver | $\ce{Ag}$ | $\ce{[Kr]} 4d^{10} 5s^1$ |
+| Gold | $\ce{Au}$ | $\ce{[Xe]} 4f^{14} 5d^{10} 6s^1$ |
+| Palladium | $\ce{Pd}$ | $\ce{[Kr] 4d^{10}}$ |
+| Chromium | $\ce{Cr}$ | $\ce{[Ar]} 3d^5 4s^1$ |
+| Molybdenum | $\ce{Mo}$ | $\ce{[Kr]} 4d^5 5s^1$ |
+
+These must be determined experimentally and memorized or looked up in a reference handbook.
 
 #### Periodicity from electron configuration
 
