@@ -425,7 +425,7 @@ The **Schrödinger equation** is a partial differential equation given by $i\hba
 | Principal quantum number                                              | $n$      | The number associated with an **energy level** of an electron.                                                                                                                                  | $n \geq 1$                                                                 |
 | Azimuthal quantum number _also called angular momenum quantum number_ | $\ell$   | The number associated with the **shape and angular spread** of the electron's probability distribution, and also the **orbital angular momentum** of the electron.                              | $0 \le \ell \le n -1$ (where $n$ is the principal quantum number)          |
 | Magnetic quantum number                                               | $m_\ell$ | The number associated with the **orientation** of the electron, and contributes to the **magnetic moment** that decides how an electron aligns with a magnetic field.                           | $-\ell \le m_\ell \le \ell$ (where $\ell$ is the azimuthal quantum number) |
-| Spin quantum number (a later extension, not in the original solution) | $m_S$    | The number associated with the $z$ component of the **spin angular momentum**, a distinct form of angular momentum carried by subatomic particles, and also contributes to the magnetic moment. | $m_S = \pm \dfrac{1}{2}$ (for electrons)                                   |
+| Spin quantum number (a later extension, not in the original solution) | $s$    | The number associated with the $z$ component of the **spin angular momentum**, a distinct form of angular momentum carried by subatomic particles, and also contributes to the magnetic moment. | $s = \pm \dfrac{1}{2}$ (for electrons)                                   |
 
 
 > **Note for the _very_ advanced reader:** the spin quantum number does **not** describe _actual_ spinning particles, but rather, the **phase** transformation $e^{i\theta} \to e^{i \theta + d\theta}$ that denotes a *rotation about the complex plane*. Since the complex-valued wavefunction describing electrons from the Dirac equation $i\hbar \gamma^\mu \partial_\mu \psi - mc \psi = 0$ has a Dirac spinor solution $\psi \sim e^{-ipx}$, and thus as the wavefunction evolves, its phase revolves about the complex plane. The angular momentum depends on the phase, producing the effect of **spin** as a form of angular momentum without any actual spinning, one that is distinct from classical notions of angular momentum and only found in subatomic particles.
@@ -476,11 +476,12 @@ All orbitals of the same subshell (that is, if either are both $s$, both $p$, bo
 - $f$ subshells can contain at most **fourteen electrons**
 - $g$ subshells contain the rest (at most eighteen)
 
-In addition, each electron orbital fixes the $n$ and $\ell$ quantum numbers but still allows electrons to be differentiated based on their $m_\ell$ and $m_S$ quantum numbers. The magnetic quantum number $m_\ell$ specifies the projection of the orbital angular momentum $L_z$ along the $z$ axis by $L_z = m_\ell \hbar$. 
+Each subshell fixes the $n$ and $\ell$ quantum numbers but still allows electrons to be differentiated based on their $m_\ell$ and $s$ quantum numbers. The magnetic quantum number $m_\ell$ specifies the projection of the orbital angular momentum $L_z$ along the $z$ axis by $L_z = m_\ell \hbar$. Meanwhile, the spin, which is another form of angular momentum, can take either one of spin-up or spin-down states (so two possible values). Since no two electrons in an atom may have the same set of four quantum numbers, which is known as the **Pauli Exclusion Principle**, all orbitals must have electrons with opposite spin. Therefore, we can subdivide orbitals as follows:
 
-The spin is a distinct form of angular momentum, separate from the classical angular momentum, carried by subatomic particles.
-
-No two electrons in an atom may have the same set of four quantum numbers, which is known as the **Pauli Exclusion Principle**. Therefore, all orbitals must have electrons with opposite spin.
+- Each atom has distinct **energy levels** that electrons may have. Each energy level is called an **electron shell** and is characterized by the principal quantum number $n$.
+- Within each electron shell, there are distinct **orbital angular momenta** that electrons may have. Each possible value of orbital angular momentum is called a **subshell** and is characterized by the **orbital angular momentum quantum number** $\ell$, in addition to the principal quantum number $n$.
+- Within each subshell, there are distinct _orientations_ of angular momenta that electrons may have. Each possible value of orientation is called an **orbital** and is characterized by the **magnetic quantum number** $m_\ell$, in addition to the principal and orbital angular momentum quantum numbers $n, \ell$.
+- Within each orbital, there are different _spins_ that electrons must have, which means that electrons may only come individually or in pairs of opposite spin. Thus, each electron shares its orbital with at most _one other electron_ of opposite spin (although it could also be a lone electron). So each electron is characterized by its **spin quantum number** $s$ as well as $n, \ell, m_\ell$.
 
 #### Electron configurations of some common elements
 
@@ -737,7 +738,7 @@ Molecular geometry introduces several new types of geometry:
 - **Square pyramidal geometry:** this comes from the octahedral geometry
 - **(Modified) linear geometry**: a linear geometry where there are **two bonding pairs present** but **nonzero lone pairs** (unlike the idealized electron geometry of the same name). This is otherwise identical to the linear electron geometry, except the bonds are oriented perpendicular (up and down) from the bonding pairs around the central atom
 
-A visual chart of the molecular geometries are shown below:
+A visual chart of the molecular geometries are shown below. We represent lone pairs with dashed outlines, illustrating how they deflect the other electrons aside, leading to different molecular geometries:
 
 {{ wideimg(src="VSEPR-geometries.excalidraw.svg" desc="A diagram of the comparison between electron geometries and molecular geometries") }}
 
@@ -753,7 +754,9 @@ The same sort of reasoning can be used to guess the geometry from simply the num
 
 VSEPR theory creates good predictions for molecular geometries, but recall that all interactions on the atomic level are quantum mechanical in nature. There are two theories that explain molecular geometry and the nature of bonds in terms of quantum mechanical principles: **valence bond theory** and **molecular orbital theory**. We will cover the first.
 
-In valence bond theory we use the electron configuration of the component atoms to find the geometry of the molecule and structure of the bonds. Valence bond theory postulates that **molecular bonds are created by overlapping atomic orbitals**.
+In valence bond theory we use the electron configuration of the component atoms to find the geometry of the molecule and structure of the bonds. Valence bond theory postulates that **molecular bonds are created by overlapping atomic orbitals**. The valence shells of many atoms contain _unpaired electrons_. As each orbital has room for _two_ electrons - one spin-up, and one spin-down - when the orbital only has a single electron, we refer to it as a **half-filled orbital**. Thus, if a _fully-filled orbital_ of one atom overlaps with a _half-filled orbital_ of another atom, the half-filled orbital can then be filled with the shared electrons, completing the orbital, and forming a bond.
+
+While in some cases, the overlap is between two singular orbitals, in many other cases, _several_ orbitals together overlap with another orbital, which is known as **hybridization**. This allows for the formation of double and triple bonds, instead of just single bonds.
 
 Without a full quantitative treatment (i.e. actual mathematical calculations), we can treat hybridization qualitatively as being determined through the electron geometry of the molecule found through VSEPR theory. Using this as a starting point, we can then work out the particular hybridization.
 
