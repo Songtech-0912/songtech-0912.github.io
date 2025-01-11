@@ -124,7 +124,9 @@ Finally, in a **position-dependent force problem**, then the general solution is
 
 ### Drag force application
 
-An example of the time-dependent case of Newton's 2nd law is an object experiencing drag. For an object falling through atmosphere, the drag force is given by $F_D = -bv$, and the gravitational force is given by $F_G = mg$.
+An example of the time-dependent case of Newton's 2nd law is an object experiencing drag. The drag force is a general class of forces that includes (dyamic, i.e motional) friction, air resistance, water drag, and so forth, **all of which point _opposite_ to the direction of motion**.
+
+We first choose our coordinate system to solve the problem. For optimal convenience, since the object is falling downwards, it is convenient to choose the $-z$ axis as our positive direction. Then, for an object falling through the atmosphere, the drag force is given by $F_D = -bv$, and is velocity-dependent; the gravitational force is given by $F_G = mg$, and is constant.
 
 Using the principle of superposition of forces, we can add all the individual forces acting on a falling object to obtain:
 
