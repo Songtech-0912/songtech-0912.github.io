@@ -195,18 +195,27 @@ header {
 
   img {
     display: block;
-    width: 80%;
+    max-width: 80%;
     max-height: 10rem;
-    @include lg { width: 70%; }
-    @include sm { width: 100%; }
+    @include lg { max-width: 70%; }
+    @include sm { max-width: 100%; }
     margin: 1.5rem auto;
   }
 
   .wide-img {
     display: block;
-    width: 90%;
+    width: 95%;
+    max-width: revert;
     max-height: revert;
     margin: 1.5rem auto;
+  }
+
+  .natural-img {
+  	display: block;
+  	width: 95%;
+  	max-width: 45ch !important;
+  	max-height: unset;
+  	height: auto !important;
   }
 
   .diagram {

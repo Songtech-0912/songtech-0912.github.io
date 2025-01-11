@@ -9,7 +9,7 @@ This a mini-book on quantum physics, with topics covered including wavefunctions
 
 ## Why quantum theory?
 
-![An image of physicist Niels Bohr, an early proponent of quantum mechanics, standing at a whiteboard](https://cdn10.picryl.com/photo/2014/12/31/niels-bohr-standing-at-blackboard-principal-investigatorproject-analog-conversion-85f94c-1024.jpg)
+{{ natural_img(src="https://cdn10.picryl.com/photo/2014/12/31/niels-bohr-standing-at-blackboard-principal-investigatorproject-analog-conversion-85f94c-1024.jpg", desc="An image of physicist Niels Bohr, an early proponent of quantum mechanics, standing at a whiteboard") }}
 
 _Niels Bohr doing quantum mechanics - [source](https://nara.getarchive.net/media/niels-bohr-standing-at-blackboard-principal-investigatorproject-analog-conversion-85f94c)_
 
