@@ -1354,8 +1354,8 @@ A special case is that of a homogeneous system $A \mathbf{x} = 0$. In this case,
 
 | Matrix Type | Invertibility  | Homogeneous System $ A\mathbf{x} = \mathbf{0} $ | Inhomogeneous System $ A\mathbf{x} = \mathbf{b} $ |
 |----|----|----|---|
-| **Non-Singular** | Invertible | Unique solution: $ \mathbf{x} = \mathbf{0} $ | Unique solution: $ \mathbf{x} = A^{-1} \mathbf{b} $ |
-| **Singular** | Non-Invertible | Infinitely many solutions (non-trivial solutions) | No solution or infinitely many solutions |
+| **Non-Singular** | Invertible | Unique solution: $ \mathbf{x} = \mathbf{0} $ (trivial solution) | Unique solution: $ \mathbf{x} = A^{-1} \mathbf{b} $ (non-trivial solution) |
+| **Singular** | Non-Invertible | Infinitely many non-trivial solutions | No solution or infinitely many non-trivial solutions |
 
 Finally, two solution vectors $\mathbf{x}_1$ and $\mathbf{x}_2$ are linearly independent if one cannot be written in terms of the other multiplied by a constant. For instance $(1, 2)$ and $(2, 4)$ aren't linearly independent, but $(1, 2)$ and $(1, 3)$ are. Linear independence can be rigorously proven by checking that the equation $c_1 \mathbf{x}_1 + c_2 \mathbf{x}_2 = 0$ is satisfied only if $c_1 = c_2 = 0$.
 
