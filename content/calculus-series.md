@@ -13,4 +13,6 @@ These are my personal calculus notes taken at my time at RPI. They include Preca
 - [Derivatives](@/differentiation.md)
 - [Integrals](@/integration.md)
 - [Series & Sequences](@/series-sequences.md)
-- [Differential Equations](@/differential-equations/index.md)
+- [Introductory differential equations](@/differential-equations/index.md)
+- [Partial differential equations](@/intro-pdes/index.md)
+- [Vector and advanced calculus](@/vector-and-advanced-calculus.md)
