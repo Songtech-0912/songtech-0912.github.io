@@ -287,6 +287,28 @@ Therefore, we write $\dfrac{d}{dt}$ for the left-hand-side integral, as $G(t)$ i
 \dfrac{d}{dt} \int_{x=a(t)}^{x=b(t)} f(x, t) dx = f(b, t) \dfrac{db}{dt} - f(a, t) \dfrac{da}{dt}  + \int_{x=a(t)}^{x=b(t)} \dfrac{\partial}{\partial t} f(x, t) dx
 {% end %}
 
+Another very useful relationship used extensively in studying PDEs is the divergence theorem, which relates the volume integral of the _divergence_ of a vector-valued function over a volume $\Omega$ to its surface integral across the _boundary surface_ of $\Omega$, written $\partial \Omega$:
+
+{% math() %}
+\oiint \limits_{\partial \Omega} \mathbf{F} \cdot d\mathbf{A} = \iiint \limits_\Omega (\nabla \cdot \mathbf{F})\, dV
+{% end %}
+
+Note that this can also be written with slightly different but mathematically-equivalent notation as:
+
+{% math() %}
+\oint \limits_{\partial \Omega} \mathbf{F} \cdot d\mathbf{A} = \int \limits_\Omega (\nabla \cdot \mathbf{F})\, dV
+{% end %}
+
+That is to say, the number of integral signs does not matter, that is a notational choice; only the integration variables ($d\mathbf{A}$ and $dV$) matter. However, the multiple-integral notation often used since it is sometimes more illustrative to write a volume integral with triple integral signs to signify it is computed over a three-dimensional volume, and a surface integral with double integral signs to signify it is computed over a two-dimensional surface.
+
+From the divergence theorem, it is possible to derive the **vanishing theorem**:
+
+{% math() %}
+\begin{matrix*}
+\displaystyle \iiint \limits_\Omega F(\mathbf{r})\, dV = 0& \Leftrightarrow &F(\mathbf{r}) = 0
+\end{matrix*}
+{% end %}
+
 ## Solutions to linear PDEs
 
 ### Solving for homogenous vs. inhomogenous PDEs
