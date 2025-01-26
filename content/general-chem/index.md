@@ -571,6 +571,8 @@ While it is possible to deduce the electron configurations of most elements usin
 | Chromium | $\ce{Cr}$ | $\ce{[Ar]} 3d^5 4s^1$ |
 | Molybdenum | $\ce{Mo}$ | $\ce{[Kr]} 4d^5 5s^1$ |
 
+_[Source](https://villanovachemistry.wordpress.com/electron-configuration-anomalies/)_
+
 These must be determined experimentally and memorized or looked up in a reference handbook.
 
 #### Periodicity from electron configuration
