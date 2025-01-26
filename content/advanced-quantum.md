@@ -18,6 +18,10 @@ The topics covered here will be very broad.
 
 Quantum field theory (QFT) is the our most accurate description of the universe. The **Standard Model**, a comprehensive quantum field theory, is the backbone of modern physics, and has been tested to extreme precision. Despite this, quantum field theory has a reputation for not being very accessible, in part due to its scary-long Lagrangians and incredibly formidable integrals. So this is an informal self-learning guide to QFT, targetted for 
 
+## Overview of the mathematics of advanced quantum mechanics
+
+See the [tensors guide](@/tensors-guide.md) for an in-depth dive into tensor calculus.
+
 ## Why learn quantum field theory?
 
 All matter in the universe is quantum in nature. Quantum mechanics governs the behavior of all matter, and at an introductory and intermediate level, the dynamics of quantum systems is typically solved with the Schrödinger equation:
