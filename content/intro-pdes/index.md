@@ -1,6 +1,6 @@
 +++
-title = "A gentle guide to partial differential equations"
-date = 2024-01-14
+title = "A Gentle Guide to Partial Differential Equations"
+date = 2025-01-14
 +++
 
 This is a short guide/mini-book on introducing various topics in partial differential equations, including analytical methods of finding solutions, boundary-value problems, and discussions of widely-known PDEs.

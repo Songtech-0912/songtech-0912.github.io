@@ -1,6 +1,6 @@
 +++
-title = "Vector calculus and advanced topics in calculus"
-date = 2024-01-14
+title = "Vector Calculus and Advanced Topics in Calculus"
+date = 2026-01-14
 +++
 
 These notes covers the methods of calculus that go beyond multivariable calculus, including vector calculus, tensor calculus, the calculus of variations, and applications for each.
