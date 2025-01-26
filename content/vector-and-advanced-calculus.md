@@ -11,7 +11,7 @@ I thank [Professor Jeffrey Banks](https://faculty.rpi.edu/jeffrey-banks) of RPI 
 
 ## Overview of multivariable calculus
 
-Vector calculus is based off analytic geometry (a fancy name for the mathematics of points, lines, surfaces, and vectors) and multivariable calculus - the calculus of functions of several variables. Such functions can be scalar-valued, meaning that they output a quantity that is a number (scalar), or vector-valued, meaning that they output a quantity that is a vector. We will start by going over the fundamentals of multivariable calculus.
+Vector calculus is based off analytic geometry (a fancy name for the mathematics of points, lines, surfaces, and vectors) and multivariable calculus - the calculus of functions of several variables. Such functions can be scalar-valued, meaning that they output a quantity that is a number (scalar), or vector-valued, meaning that they output a quantity that is a vector. We will start by going over the fundamentals of multivariable calculus. Note that a more beginner-friendly introductory treatment of multivariable calculus can be found in the dedicated [intro to multivariable calculus guide](@/multivariable-calculus/index.md).
 
 ### Vectors
 
