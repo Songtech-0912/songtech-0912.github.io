@@ -91,7 +91,9 @@ Electric fields from one charge and another charge sum; this is known as **super
 \mathbf{E}(x, y, z) = \sum_i \frac{q_i}{4\pi \epsilon_0} \frac{(x-x_i)\hat{\mathbf{i}} + (y-y_i)\hat{\mathbf{j}}+ (z-z_i)\hat{\mathbf{k}}}{((x-x_i)^2 + (y-y_i)^2 + (z-z_i)^2)^{3 \over 2}}
 {% end %}
 
-Where $(x_i, y_i, z_i)$ are the position of the charges and $(x, y, z)$ is the position of a point in space. Note that both for the discrete single-charge and multiple charge case, these equations for the $\mathbf{E}$ are only valid for localized charges (i.e. when charges can be considered approximately pointlike). Point charges do not exist in the real world and the whole expression blows up at $r = 0$, so rather these equations for the field must be used only within the limits of validity for these equations of the electric field. This could be a coupled condition $r > D$ where $D$ is some form of inner bound of the region where the approximation works.
+Where $(x_i, y_i, z_i)$ are the position of each of the charges and $(x, y, z)$ is the position of a point in space. Note that both for the discrete single-charge and multiple-charge case, these equations for the $\mathbf{E}$ are only valid for localized charges (i.e. when charges can be considered approximately pointlike). Point charges do not exist in the real world and the whole expression blows up at $r = 0$, so rather these equations for the field are approximate for a distance $r \gg 0$ that is far from the charges.
+
+> **Note of nuance for the advanced reader:** We will later see that by Gauss's law, any *spherically-symmetric* distribution of charge (such as a sphere of charge) acts as if all of its charge were concentrated at its center, i.e. act the same as point charges. This means that non-point particles _do_ exactly follow Coulomb's law so long as they are spherically-symmetric. In addition, protons and electrons do indeed act similar (but not exactly) like point particles, or at least can be treated as such. So this is not as bad of an approximation as it may seem.
 
 ### Other formulations for the electric field produced by discrete charges
 
@@ -101,18 +103,19 @@ We may write the electric field produced by discrete charges in a simpler fashio
 \mathbf{E}(x, y, z) = \sum_i \frac{q_i}{4\pi \epsilon_0} \frac{1}{(r-r_i)^2} \hat{\mathbf{r}}
 {% end %}
 
-Where $\hat{\mathbf{r}}$ is the unit vector pointing at point $(x, y, z)$ and $r = \sqrt{(x-x_i)^2 + (y-y_i)^2 + (z-z_i)^2}$ is the distance from a point $(x, y,z)$ in space and $(x_i, y_i, z_i)$. We may show this with:
+Where $\hat{\mathbf{r}}$ is the unit vector of the vector $\langle x-x_i, y-y_i, z-z_i\rangle$, and $r = \|\langle x-x_i, y-y_i, z-z_i\rangle\| = \sqrt{(x-x_i)^2 + (y-y_i)^2 + (z-z_i)^2}$ is the distance from a point $(x, y,z)$ in space and $(x_i, y_i, z_i)$. We may show this with:
 
 {% math() %}
 \begin{align*}
 \mathbf{E}(x, y, z) &= \sum_i \frac{q_i}{4\pi \epsilon_0} \frac{(x-x_i)\hat{\mathbf{i}} + (y-y_i)\hat{\mathbf{j}}+ (z-z_i)\hat{\mathbf{k}}}{((x-x_i)^2 + (y-y_i)^2 + (z-z_i)^2)^{3 \over 2}} \\
-&= \sum_i \frac{q_i}{4\pi \epsilon_0} \frac{(x-x_i) + (y-y_i)+ (z-z_i)}{((x-x_i)^2 + (y-y_i)^2 + (z-z_i)^2)^{3 \over 2}} \hat{\mathbf{r}} \\
+&= \sum_i \frac{q_i}{4\pi \epsilon_0} \frac{\langle x-x_i, y-y_i, z-z_i\rangle}{((x-x_i)^2 + (y-y_i)^2 + (z-z_i)^2)^{3 \over 2}}  \\
+&= \sum_i \frac{q_i}{4\pi \epsilon_0} \frac{\|\langle x-x_i, y-y_i, z-z_i\rangle\|}{((x-x_i)^2 + (y-y_i)^2 + (z-z_i)^2)^{3 \over 2}} \hat{\mathbf{r}} \\
 &= \sum_i  \frac{q_i}{4\pi \epsilon_0} \frac{r-r_i}{(r - r_i)^\frac{3}{2}} \hat{\mathbf{r}} \\
 &= \sum_i  \frac{q_i}{4\pi \epsilon_0} \frac{1}{(r - r_i)^2} \hat{\mathbf{r}}
 \end{align*}
 {% end %}
 
-This formulation is also very useful when there are symmetries in the field that simplify the formulation of the field, and also for simplicity when there is a simple expression for $r$.
+This formulation is also very useful when there are symmetries in the field that simplify the formulation of the field, and also for simplicity when there is a simple expression for $r$. Note, however, that this involves care in ensuring that the unit vector $\hat{\mathbf{x}} = \dfrac{\langle x - x_i, y - y_i, z - z_i\rangle	}{\\| \langle x - x_i, y - y_i, z- z_i\rangle \\|}$ is chosen correctly, because $\hat{\mathbf{r}}$ is **not** the same as the Cartesian space unit vector $\hat r = \hat x + \hat y + \hat z$, which it can easily be confused with.
 
 ## Continuous distributions of charges
 
@@ -122,25 +125,32 @@ We have seen the case of a discrete distribution of static charges $q_1, q_2, q_
 \mathbf{E}(x, y, z) = \sum_i \frac{q_i}{4\pi \epsilon_0} \frac{(x-x_i)\hat{\mathbf{i}} + (y-y_i)\hat{\mathbf{j}}+ (z-z_i)\hat{\mathbf{k}}}{((x-x_i)^2 + (y-y_i)^2 + (z-z_i)^2)^{3/2}}
 {% end %}
 
-So long as we consider *all* the charges in the superposition of charges, then the electric field contains the contribution of every charge and knowledge of the electric field uniquely determines the motion of each charge in the system by $\mathbf{F} = m \ddot{\mathbf{r}} = q\mathbf{E}$; unlike Newtonian mechanics, there is no need to compute all the inter-particle forces to find the equations of motion.
+So long as we consider *all* the charges in the superposition of charges, then the electric field contains the contribution of every charge and knowledge of the electric field uniquely determines the motion of each charge in the system for _all_ times $t$ by $\mathbf{F} = m \ddot{\mathbf{r}} = q\mathbf{E}$; unlike Newtonian mechanics, there is no need to compute all the inter-particle forces to find the equations of motion.
 
-One unique feature of electric fields is that the electric field *magnitude* at each point _only_ depends on the **position** of each charge and the **total charge** in the system, given by the sum of the **absolute value** of each charge. Neither the sign of each of the charges, or the vector direction of the electric field, have **any effect** on the electric filed.
+One unique feature of electric fields is that the electric field *magnitude* at each point _only_ depends on the **position** of each charge and the **total charge** in the system, given by the sum of the **absolute value** of each charge. Neither the sign of each of the charges, or the vector direction of the electric field, have **any effect** on the electric field's magnitude (though they _do_ impact the direction).
 
 Consider a distribution of static charges arranged throughout space such that we may model all the charges as a single object of continuous density function. This may be a curved metal rod that contains a great number of static charges (electrons), such that the object may be modelled as a continuous distribution of charge. Remember that for continuous problems, we must use integration. In integral form, the electric field caused by a continuous and non-uniform distribution of charges is given by:
 
 {% math() %}
-\mathbf{E}(x, y, z) =  \frac{1}{4\pi \epsilon_0} \int \frac{(x-x')\hat{\mathbf{i}} + (y-y')\hat{\mathbf{j}}+ (z-z')\hat{\mathbf{k}}}{\left[(x-x')^2 + (y-y')^2+ (z-z')^2\right]^{3/2}} dq'
+\begin{align*}
+\mathbf{E}(x, y, z) &= \frac{1}{4\pi \epsilon_0} \int \frac{(x-x')\hat{\mathbf{i}} + (y-y')\hat{\mathbf{j}}+ (z-z')\hat{\mathbf{k}}}{\left[(x-x')^2 + (y-y')^2+ (z-z')^2\right]^{3/2}} dq' \\
+&= \frac{1}{4\pi \epsilon_0} \int \frac{\mathbf{r} - \mathbf{r}'}{\|\mathbf{r} - \mathbf{r}'\|^3} dq'
+\end{align*}
 {% end %}
 
 This expression may seem very complex and confusing; therefore it must be clarified as follows:
 
-* $x, y, z$ denotes a point in space at $(x, y, z)$, from which the field is measured, i.e. the same $x, y, z$ as in $\mathbf{E}(x, y, z)$
-- $x', y', z'$ denotes the location of an infinitesimal element (e.g. line element, surface element, volume element) along the object of continuous charge, which is integrated over the entire object
-- $dq' = \lambda dx' = \sigma\, dA' = \rho\, dV'$ where $dx', dA', dV'$ are the line element, surface element, and volume element respectively expressed in the coordinates $(x', y', z')$, and substitution of one of these is necessary to be able to solve the integral
+- $\mathbf{r} = \langle x, y, z \rangle$ denotes a point in 3D space at $(x, y, z)$ from which the field is measured, which can be chosen arbitrarily when computing the integral. This is the same $x, y, z$ as in $\mathbf{E}(x, y, z)$.
+- $\mathbf{r}' = \langle x', y', z'\rangle$ denotes the location of an infinitesimal element (e.g. line element, surface element, volume element) along the object of continuous charge, which is integrated over the entire object.
+- $dq' = \lambda dx' = \sigma dA' = \rho dV'$ where $dx', dA', dV'$ are the line element, surface element, and volume element respectively along the coordinates $(x', y', z')$, and substitution of one of these is necessary to be able to solve the integral explicitly.
+
+> **Mathematical interlude:** some texts use the notation $| \mathbf{r} - \mathbf{r}'|$ instead, this is functionally equivalent to {% inlmath() %}\|\mathbf{r} - \mathbf{r}' \|{% end %} because of the vector identity {% inlmath() %}| \mathbf{v} | = \sqrt{v^2} = \sqrt{\mathbf{v} \cdot \mathbf{v}} = \| \mathbf{v}\|{% end %}. We will use both interchangeably.
 
 Visually, we may represent the integration process as shown in the below diagram:
 
-![A diagram of the integration process, where the distance between a given point in space and a given point on the charge distribution surface is integrated over the entire surface](coulomb-integration.png)
+{{ wideimg(src="coulomb-integration.png",
+   desc="A diagram of the integration process, where the distance between a given point in space and a given point on the charge distribution surface is integrated over the entire surface")
+}}
 
 Note that these equations apply only for static fields (i.e. unchanging with time). The integrals in general are non-trivial and can only be solved numerically, but symmetries in the problem may simply the integral sufficiently to be solved analytically.
 
@@ -149,16 +159,14 @@ In practice, due to the difficulties of modelling, when there is a dominant char
 > **Note for the advanced reader:** We can, in fact, model multiple charged objects that are each continuous charge distributions but separated by space, such as several non-uniform metal shapes. In this case for $N$ objects that have varying charge distributions that are separated by space we may use the Dirac delta "function" (it technically is not a function but can be treated as a function by:
 
 {% math() %}
-\mathbf{E}(x, y, z) = \frac{1}{4\pi \epsilon_0} \int \sum_{i=1}^N \frac{\delta(\mathbf{r} - \mathbf{r}_i')}{\|\mathbf{r} - \mathbf{r}_i'\|^{3/2}} \,dq'
+\mathbf{E}(x, y, z) = \frac{1}{4\pi \epsilon_0} \int \sum_{i=1}^N \frac{\delta(\mathbf{r} - \mathbf{r}_i')}{\|\mathbf{r} - \mathbf{r}_i'\|^{3/2}} \,dq_i'
 {% end %}
-
-> **Mathematical interlude:** some texts use the notation $| \mathbf{r} - \mathbf{r}_i'|^{3/2}$ instead, this is functionally equivalent to $\|\mathbf{r} - \mathbf{r}_i' \|^{3/2}$ because of the vector identity $| \mathbf{v} | = \sqrt{v^2} = \sqrt{\mathbf{v} \cdot \mathbf{v}} = \| \mathbf{v}\|$
 
 There are some symmetries that can be used to simplify the integral in special cases:
 
 - The electric field is **always zero** within a conductor, even when placed beside a charged object, because the mutual attraction and repulsion of electrons cancels out
-- The electric field is **always zero** within a spherically-symmetric shell of charge
-- The electric field **outside** a spherically-symmetric object is equivalent to $\mathbf{E} = \frac{kQ}{r^2} \hat r$ **even if** the interior charge density is non-uniform; the interior charge density simply must be spherically symmetric
+- The electric field is **always zero** within a spherically-symmetric shell of charge (we'll see why later when we study Gauss's law)
+- The electric field **outside** a spherically-symmetric object is equivalent to $\mathbf{E} = \frac{kQ}{r^2} \hat r$ **even if** the interior charge density is non-uniform; this holds as long as the interior charge density is spherically symmetric.
 
 ### Other formulations for the electric field produced by continuous charges
 
@@ -170,12 +178,6 @@ E_x =  \frac{1}{4\pi \epsilon_0} \int \frac{x-x'}{\left[(x-x')^2 + (y-y')^2+ (z-
 E_y =  \frac{1}{4\pi \epsilon_0} \int \frac{y - y'}{\left[(x-x')^2 + (y-y')^2+ (z-z')^2\right]^{3/2}} dq' \\
 E_z =  \frac{1}{4\pi \epsilon_0} \int \frac{z-z'}{\left[(x-x')^2 + (y-y')^2+ (z-z')^2\right]^{3/2}} dq' 
 \end{align*}
-{% end %}
-
-In addition, we can also use the radial formulation, where $r'$ is the distance to the location of an infinitesimal charge element along the charged object's surface:
-
-{% math() %}
-\mathbf{E}  = \frac{1}{4\pi \epsilon_0} \int \frac{r - r'}{[(r - r')^2]^{3/2}} dq'
 {% end %}
 
 ### Problems analytically solvable by Coulomb's law
@@ -217,13 +219,15 @@ The electric field inside a conductor **must** be zero, no matter the charge(s) 
 
 ## Gauss's law
 
-We will now introduce another method to calculate the electric field: **Gauss's law**. Gauss's law relates the **flux** $\Phi_E$ (directional spread) of an electric field within a region of space to the **total charge** *enclosed* by a shape in that region of space:
+We will now introduce another method to calculate the electric field: **Gauss's law**. Gauss's law relates the **flux** $\Phi_E$ (directional spread) of an electric field within a region of space to the **total charge** *enclosed* by an (imaginary) shape in that region of space:
 
 {% math() %}
 \Phi_E =\oint\limits_\mathrm{closed} \mathbf{E} \cdot \, d\mathbf{A}  = \frac{Q_\mathrm{enclosed}}{\epsilon_0}
 {% end %}
 
-Where $d\mathbf{A} = \hat{\mathbf{n}}\, dA$ is an infinitesimal patch of the shape's surface, $\hat{\mathbf{n}}$ is the normal vector to that patch and the circled integral is a **surface integral** over the surface of the shape. For instance, if the shape was a square, then $d\mathbf{A} = \hat{\mathbf{n}}\,dx\,dy$; if the shape was a sphere, then $d\mathbf{A} =  4\pi r^2 \hat{\mathbf{n}} dr$ (from the surface area formula of a sphere. In the general case, the flux can be visualized as follows:
+> The imaginary enclosing surface is called a **Gaussian surface**. It must be a _closed_ three-dimensional surface, meaning that all electric field vectors that come from electric fields inside the surface must "pass through" Gaussian surface. This also means that the Gaussian surface must _enclose_ any charges that are within it, and have no holes.
+
+Here, $d\mathbf{A} = \hat{\mathbf{n}}\, dA$ is an infinitesimal patch of the shape's surface, $\hat{\mathbf{n}}$ is the normal vector to that patch and the circled integral is a **surface integral** over the surface of the shape. For instance, if the shape was a square, then $d\mathbf{A} = \hat{\mathbf{n}}\,dx\,dy$; if the shape was a sphere, then $d\mathbf{A} =  4\pi r^2 \hat{\mathbf{n}} dr$ (from the surface area formula of a sphere. In the general case, the flux can be visualized as follows:
 
 ![Flux of the electric field visualized as arrows pointing out of a surface](https://upload.wikimedia.org/wikipedia/commons/b/bd/Surface_integral_-_definition.svg)
 
@@ -247,15 +251,23 @@ The normal vector to the sphere's surface is given by $\hat r$ and the electric 
 \oint\limits_\mathrm{closed} E\, \hat r \cdot \, 4\pi r^2\, \hat{\mathbf{n}}\,dr
 {% end %}
 
+In addition, the flux within a Gaussian sphere surrounding any **spherically symmetric** charge or charge distribution is always $\Phi(r) = E\, 4\pi r^2$ for any spherically symmetric object. This is because the normal vectors and electric field vectors both point along $\hat r$.
+
 When applying Gauss's law, there are a lot of specific areas to take notice, lest they mess up your calculation:
 
-- The flux within an imaginary sphere surrounding any **spherically symmetric** charge or charge distribution is always $\Phi(r) = E\, 4\pi r^2$ for any spherically symmetric object. This is because the normal vectors and electric field vectors both point along $\hat r$.
 - Gauss's law does **not** apply to a non-closed surface.
 - Gauss's law is typically not analytically computable when a surface has non-constant normal vectors
 - Gauss's law works by taking _one region_ of the field and the integrating over the surface of that region, which then equates the field globally so long as the field is symmetric. That is why it works even for infinitely long wires or infinitely large diameter sheets, because we can surround the electric field in a _finite_ region and integrate over the _finite_ charge within that region. Remember that **you are only considering the enclosed charge, not the total charge** (which may very well be infinite for infinitely long wires and sheets)
-- While there is zero electric field within a Gaussian surface of zero enclosed charge, this **does not mean** there are no charges within the Gaussian surface. There may certainly be charges that cancel out each other, resulting in **zero net charge, but nonzero regions of charge**. 
-- **Nothing outside a Gaussian surface**, even the presence of other charges and external fields, can affect the electric field inside a Gaussian surface. This is because the flux of **any external electric field** across a closed Gaussian surface is **always zero**.
-- Simply knowing the electric field within a Gaussian surface does not tell you anything about the electric field _outside the Gaussian surface_.
+
+Several important facts about Gauss's law are very counterintuitive, so we will go over them in detail. The first is that while there is _zero electric field_ within a Gaussian surface of zero enclosed charge, this **does not mean** there are no charges within the Gaussian surface. There may certainly be charges that cancel out each other, resulting in **zero net charge, but nonzero regions of charge**. That is to say:
+
+> Zero electric field does **not** necessarily imply zero charge within the Gaussian surface.
+
+The second fact is that **nothing outside a Gaussian surface**, even the presence of other charges and external fields, can affect the electric field inside a Gaussian surface. This is because the flux of **any external electric field** across a closed Gaussian surface is **always zero**. An external electric field is not possible to be enclosed in a closed surface, so by definition it has no effect. To summarize:
+
+> External fields outside a Gaussian surface have **no effect** on the field within the Gaussian surface.
+
+Finally, simply knowing the electric field within a Gaussian surface does not tell you anything about the electric field _outside the Gaussian surface_, except in one specific case. The electric field outside the surface of a charged conductor has field lines that are _always perpendicular_ to the surface. The magnitude, however, can be anything, and this is _not_ true in the general case of a non-conductor.
 
 ### Problems analytically solvable via Gauss's law
 
@@ -310,7 +322,7 @@ An infinite single-sided sheet of charge is a good approximation for the electri
 
  #### Near surface of an ideal conductor
 
- This is _equal_ to an infinite single-sided sheet of charge, because the electric field near the surface of an ideal conductor is equal to that of an infinite single-sided sheet of charge. Therefore:
+ This is _equal_ to an infinite single-sided sheet of charge, because the electric field *near* the surface of an ideal conductor is approximately flat and therefore (approximately) equal to that of an infinite single-sided sheet of charge. Therefore:
 
 {% math() %}
 \mathbf{E} = \frac{\sigma}{\epsilon_0} \hat z
@@ -352,13 +364,23 @@ U_E = \frac{1}{2} \sum_{i = 1}^N \sum_{j = 1}^N \frac{kq_i q_j}{r_{ij}}
 
 However, this is not a very useful formula as it is quite verbose. Rather, it is more useful to use another (more conceptual) approach. Suppose we had a system of three charges, with the magnitude of each charge being $Q$, arranged in an equilateral triangle of side lengths $L$:
 
-![A system of charges, separated by equal lengths L and in a triangular arrangement, the bottom left negative and the rest positive charged](three-charges.png)
+{{
+	wideimg(
+		src="three-charges.png",
+		desc="A system of charges, separated by equal lengths L and in a triangular arrangement, the bottom left negative and the rest positive charged"
+	)
+}}
 
 We aim to obtain the electric potential energy of the system; that is, how much energy is stored in the system of charges if we consider the energy to be zero at infinity, which is important when considering problems that are solved using the conservation of energy.
 
 To do so, we consider the process of bringing in each charge one by one, as illustrated below (the charges have been color-coded for clarity):
 
-![The process of calculating electrical potential energy illustrated, by summing the individual potential energy of bringing in each charge](electric-potential-energy-calculation.png)
+{{
+	wideimg(
+		src="electric-potential-energy-calculation.png",
+		desc="The process of calculating electrical potential energy illustrated, by summing the individual potential energy of bringing in each charge"
+	)
+}}
 
 In the **first step**, the first charge is brought from infinity. There is nothing to resist its motion, and therefore the contribution to the potential energy is **zero**. In the **second step**, the second charge is brough from infinity to join the system. As it is oppositely charged, the potential energy is negative, meaning that energy must be put _into_ the system to keep the charges separate. Since there are only two charges, $Q$ and $-Q$, the contribution to the potential energy in the second step step is $\dfrac{k(Q)(-Q)}{r} = -\dfrac{kQ^2}{L}$ by application of the electric potential energy formula. In the third step, the third charge is brought from infinity. Its interaction with the existing two-charge system results in a potential energy of $\dfrac{kQ^2}{L}$ with the red charge $+Q$ (the positive charge in the two-charge system) and $-\dfrac{kQ^2}{L}$ with the purple charge $-Q$ (the negative charge in the two-charge system). Therefore the total potential energy contributed by the third step is the sum of these potential energies, i.e. $\dfrac{kQ^2}{L} + \left(-\dfrac{kQ^2}{L}\right) = 0$. Thus the total electrical potential energy is the sum of the potential energy contributions by each of the three steps, that is:
 
@@ -411,9 +433,9 @@ We can then define the potential field $V(r) = U / q$, which gives the potential
 V(r) = -\int_{r_0}^r \mathbf{E} \cdot d\mathbf{r}
 {% end %}
 
-> **Careful!** Here, $V(r)$ is a _field_, so we write it as a function of $r$, but $U$ is an _energy value_ so **do not** consider it as a function and **do not** write it as $U(r)$ even if it is sometimes mathematically convenient. It is better to write $U_r$ or (the somewhat clumsy) $U_{\text{at } r}$.
+> **Careful!** Here, $V(r)$ is a _field_, so we write it as a function of $r$, but $U$ is an _energy value_ relative to some point (usually infinity) so **do not** consider it as a function and **do not** write it as $U(r)$ even if it is sometimes mathematically convenient. It is better to write $U_r$ or (the somewhat clumsy) $U_{\text{at } r}$, _after_ specifying where the zero point of the potential is Remember, adding a constant to the potential energy doesn't change the electric field. It is a good idea to explicitly write out, for instance, that $U$ is the potential energy relative to a point where it is zero, located infinitely far away.
 
-Unlike electrical potential energy $U$, which is the potential energy of a charge, the _electrical potential_ is a field quantity and is defined at every point $r$ in the electric field. This is why we describe it as a field _proportional_ to the potential energy within the electric field. Mathematically, we say that $U_E = q V(r)$ where $U_E$ is the potential energy of a charge $q$ at point $r$, relative to a zero point $r_0$.
+Unlike electrical potential energy $U$, which is the potential energy of a charge (relative to some predefined zero point) and is a single number, the _electrical potential_ is a field quantity, described by a function, and defined at every point $r$ in space. This is why we describe it as a field _proportional_ to the potential energy within the electric field. Mathematically, we say that $U_E = q V(r)$ where $U_E$ is the potential energy of a charge $q$ at point $r$, relative to a zero point $r_0$.
 
 > **A useful visualization:** One can visualize an electrical potential as a landscape with hills and valleys. A positive charge is like a ball placed onto such a landscape; the direction it will move in is towards the **direction of lowest potential**, which would be like **rolling down** the hill. A negative charge is like a ball that sees the landscape upside-down, so it **rolls up** the hill, because it sees everything flipped upside-down and thinks the hill is actually going _down_.
 
@@ -482,17 +504,25 @@ Additionally, the electric field can be computed from the electrical potential b
 \mathbf{E} = -\nabla V = -\left(\frac{\partial V}{\partial x} \hat{\mathbf{i}} + \frac{\partial V}{\partial y} \hat{\mathbf{j}} + \frac{\partial V}{\partial z} \hat{\mathbf{k}}\right)
 {% end %}
 
-In physical terms, this represents the fact that an electric field develops between regions of differing electrical potential, as charges, which form electric fields, are naturally pushed away from high potential regions and drawn towards low potential regions. We say that the two regions have a _potential gradient_ and therefore there is a nonzero electric field present between the regions. This is one of the most useful characteristics of the electric potential as knowledge of the electric potential uniquely determines the associated electrical field. We may graphically illustrate this fact by drawing isolines, which represent equipotential surfaces (surfaces of constant electrical potential). One such drawing is shown below:
+In physical terms, this represents the fact that an electric field develops between regions of differing electrical potential, as charges, which form electric fields, are naturally pushed away from high potential regions and descend towards low potential regions. We say that the two regions have a _potential gradient_ and therefore there is a nonzero electric field present between the regions. 
+
+> We presume that the charges are positive in this case. A negative charge would exhibit the opposite behavior, i.e. be pushed away from low potential regions and drawn toward higher potential regions.
+
+This is one of the most useful characteristics of the electric potential as knowledge of the electric potential uniquely determines the associated electrical field. We may graphically illustrate this fact by drawing isolines, which represent equipotential surfaces (surfaces of constant electrical potential). One such drawing is shown below:
 
 ![An illustration of equipotential surfaces for a given potential, with contour-style lines that represent regions of the same potential](potential-landscape.png)
 
 _Credit: [TeX Stack Exchange](https://tex.stackexchange.com/questions/392942/how-to-draw-force-lines-onto-an-equipotential-contour-plot-using-tikz)_
 
-Electrical field lines run across and perpendicular to equipotential surfaces, and electric fields exert forces on charges, so the trajectories of charges can simply be drawn by tracing curves perpendicular to the isolines. Note that the surface of an electrical conductor is **always** an equipotential surface due to the fact that the electric field within any electrical conductor is always zero.
+Electrical field lines run across and perpendicular to equipotential surfaces, and electric fields exert forces on charges, so the trajectories of charges can simply be drawn by tracing curves perpendicular to the isolines. Note that the surface of an electrical conductor is **always** an equipotential surface due to the fact that the electric field within any electrical conductor is always zero. In addition, every Gaussian surface drawn in a conductor would also be an equipotential surface. We may state this fact as follows:
+
+> The electric potential on the surface and inside a conductor _always forms_ an equipotential surface (i.e. has the same potential everywhere on the surface). Furthermore, the electric potential is **constant** on the surface of and within a conductor.
 
 > **Note for the advanced reader:** the electrical potential can also be understood through the electrostatic Poisson equation $\nabla^2 V = -4\pi k \rho$, where a conductor can be thought of as a specific Dirichlet boundary-value problem, for which that has the unique solution $V = C$ i.e. $V$ is a constant. More on this later.
 
 ## A brief vector calculus interlude
+
+To continue our discussion of electromagnetism, it is helpful to take a brief look at vector calculus, which is the branch of calculus specialized to the study of vector and scalar fields used extensivley in electromagnetic theory.
 
 ### Gradient
 
@@ -678,6 +708,8 @@ The simplest capacitor is that of a **parallel plate capacitor** consisting of t
 \oint \mathbf{E} \cdot d\mathbf{A} = E(2A) = \dfrac{q_\mathrm{enclosed}}{\epsilon_0} = \dfrac{2\sigma A}{\epsilon_0} \Rightarrow  \mathbf{E} = \dfrac{\sigma}{\epsilon_0} \hat z = \dfrac{Q}{\epsilon_0 A} \hat z
 {% end %}
 
+> Note: assuming that there are no external charges outside of the capacitor, the electric field *outside* of a capacitor (within a suitable Gaussian surface) must be **zero** as the positive and negative charges across the two plates result in a net charge of zero, which, by Gauss's law, means that the electric field is also zero (within the chosen Gaussian surface outside of and enclosing the capacitor). This is a classic case where zero electric field **does not** correspond to the absence of charges within a Gaussian surface, just as we elaborated on earlier.
+
 We may take the line integral of the field to find the potential difference:
 
 {% math() %}
@@ -710,7 +742,7 @@ Incidentally, the electric field within a capacitor can be found by using Gauss'
 \mathbf{E} = \dfrac{k C\Delta V}{r^2}\hat r
 {% end %}
 
-Note that the expression for the capacitance **does not depend on the charge**. Rather, it depends on the geometry and material properties of the capacitor.
+Note that the expression for the capacitance **does not depend on the charge or on the voltage**. Rather, it depends on the geometry and material properties of the capacitor.
 
 #### Capacitors with dielectrics
 
@@ -757,7 +789,11 @@ Q_\mathrm{total} = Q_1 + Q_2 + Q_3 + \dots + Q_n
 And therefore we may similarly find an expression for the effective capacitance $C_\mathrm{total}$ as follows:
 
 {% math() %}
-C_\mathrm{total} = \dfrac{Q_\mathrm{total}}{V_\mathrm{total}} = \dfrac{Q_1 + Q_2 + Q_3 + \dots + Q_n}{V_1} = \dfrac{Q_1}{V_1} + \dfrac{Q_2}{V_2} + \dfrac{Q_3}{V_3} + \dots + \dfrac{Q_n}{V_n}
+\begin{align*}
+C_\mathrm{total} &= \dfrac{Q_\mathrm{total}}{V_\mathrm{total}} \\
+&= \dfrac{Q_1 + Q_2 + Q_3 + \dots + Q_n}{V_1} \\
+&= \dfrac{Q_1}{V_1} + \dfrac{Q_2}{V_2} + \dfrac{Q_3}{V_3} + \dots + \dfrac{Q_n}{V_n}
+\end{align*}
 {% end %}
 
 Therefore we may rewrite the above expression in terms of $C_P$, the effective capacitance of a group of capacitors $C_1, C_2, \dots$ in a series combination, in a more elegant way as:
@@ -868,11 +904,19 @@ This is the conventional (macroscopic) form of **Ohm's law**. It is important to
 
 Ohm's law in its macroscopic form is typically only an approximation; resistivity is dependent on the material properties and may be nonlinear. Therefore, we speak of Ohm's law as only applying to _Ohmic_ materials and being an approximate description to the complex behavior of charges that we observe macroscopically as a current.
 
-In all cases where Ohm's law holds, we can rearrange to write the equation for dissipated power as three equivalent relations:
+In all cases where Ohm's law holds, we can rearrange to write the equation for dissipated power as two other equivalent relations:
 
 {% math() %}
-P = I\Delta V = I^2 R = \dfrac{\Delta V^2}{R}
+P = I^2 R = \dfrac{\Delta V^2}{R}
 {% end %}
+
+These equations give the power _transferred_ to the resistor from a source (such as a battery), which the resistor dissipates as heat, which is also known as **Joule heating**. In particular cases, as with incandescent light bulbs, this heat is so substantial that it produces **light**, and the brightness of the light is determined by the power transferred to the resistor. We may then use our understanding of resistors to determine the effect of connecting lightbulbs in series and parallel:
+
+- Recall that $P = \dfrac{\Delta V^2}{R}$ is the expression of the power $P$ transferred to a resistor of resistance $R$ that has a potential difference of $\Delta V$ across its two ends
+- Since the _individual_ resistances of each light bulb remain the same (the effective resistance is the only thing that changes between series/parallel), the only variable to consider is the potential difference across each resistor
+   - Light bulbs connected in series must divide the potential difference (voltage) between the bulbs, but light bulbs connected in parallel receive the *same* potential difference
+   - Therefore, light bulbs connected in parallel have a _higher potential difference_ across them as compared to light bulbs connected in series
+- Given our expression for the power, we have $P \propto \Delta V^2$, and thus, more power is transferred to each of the light bulbs connected in parallel, meaning they shine brighter than the equivalent bulbs connected in series.
 
 ### More on electric power in circuits and resistance
 
@@ -956,36 +1000,191 @@ Ammeters and voltmeters are different scientific instruments used in electrical 
 - Ammeters are designed to measure **current**, are connected in **series** with the circuit, and have minimal resistance. Therefore, by Ohm's law, the *current* across an ammeter is **equal** to the current in the circuit, and the *voltage* across an (ideal) ammeter is **zero**.
 - Voltmeters are designed to measure **voltage** (potential difference), are connected in **parallel** with the circuit, and have a high (or at least nonzero) resistance. This means that (ideally) they draw as little current as possible, since parallel circuits divide current across branches but have the same potential difference, so since $I = \dfrac{\Delta V}{R}$, a high resistance means that they draw very little current and don't affect the circuit (much). They internally consist of a joined resistor and ammeter, and therefore, by $\Delta V = I R$ where $I$ is found by the interior ammeter and $R$ is the resistance of the interior resistor, they can calculate and display the voltage.
 
-## The Maxwell equations, summarized
+## Magnetic forces and fields
 
-Recall that electromagnetism is a **classical field theory**, where knowing the fields is sufficient to uniquely determine the motion of every charge within the fields (which is also every charge creating the field). The equations that govern how electromagnetic fields (the electric field $\mathbf{E}$ and the magnetic field $\mathbf{B}$) are the **Maxwell equations**, and here is a brief description of each:
-
-{% math() %}
-\oiint \limits_\mathrm{surface} \mathbf{E} \cdot d\mathbf{A} = \dfrac{Q_\mathrm{enc.}}{\epsilon_0} = 4\pi k \iiint \limits_\mathrm{volume} \rho\, dV
-{% end %}
-
-If an imaginary closed surface was placed in space, the total flux (outward flow) of the electric field across the surface would be proportional to the total enclosed electric charge.
+We observe, in nature, that in addition to electric forces, moving charges also generate a _magnetic force_. The magnetic force on a charge $q$ moving at velocity $\mathbf{v}$ in a magnetic field $\mathbf{B}$ may be defined as:
 
 {% math() %}
-\oiint \limits_\mathrm{surface} \mathbf{B} \cdot d\mathbf{A} = 0
+\mathbf{F} = q\mathbf{v} \times \mathbf{B}
 {% end %}
 
-If an imaginary closed surface was placed in space, the total flux (outward flow) of the magnetic field across the surface is zero, because ingoing and outgoing field lines cancel out. Thus, there exist no magnetic monopoles (pure sources).
+Where $\mathbf{B}$ is the magnetic field defined in the SI unit **Tesla**, denoted $\pu{T}$, where $\pu{1 T = N*s*C^{-1} * m^{-1}}$. Note that the magnetic force is defined in terms of a _cross product_, which means that the magnetic force is always perpendicular to the charge's direction of motion. In addition, it may be surprising to find that magnetic forces are **velocity-independent** - a magnetic force only exists on a moving charge, a charge at rest in a magnetic field does not experience any magnetic force.
+
+> One easy source of confusion is that the direction of the _force_ is _not_ the direction the charge moves in. The direction of the force is simply the direction of the acceleration, which is _always_ perpendicular to the charge's direction of motion.
+
+We may find that, surprisingly, that the work done by the magnetic field is zero. This means that the magnetic field cannot impart energy onto the charge, and cannot change the kinetic energy of the moving charge; thus it cannot, on its own, cause a charge to speed up or slow down. It is only electric fields (which are also produced by the charge) that _can_ actually do work and speed up (or slow down) a charge. 
 
 {% math() %}
-\oint \limits_\mathrm{loop} \mathbf{E} \cdot d\ell = -\dfrac{\partial}{\partial t} \iint \limits_\mathrm{surface} \mathbf{B} \cdot d\mathbf{A}
+W = \int \mathbf{F} \cdot d\mathbf{r} = q\int (\mathbf{v} \times \mathbf{B}) \cdot \mathbf{v} dt = 0
 {% end %}
 
-If an imaginary surface (that is not closed) was placed in space, the flux of the magnetic field across the surface induces an electric field that circulates in a loop across the boundary of the surface, and creates a current if the loop is a wire or conductor.
+> Here in the line integral, we note that $d\mathbf{r} = \mathbf{v} dt$, and since the cross product means that the magnetic force is perpendicular to the velocity vector, its dot product with the velocity vector becomes zero.
+
+Because it is difficult to draw 3D diagrams on 2D paper, we typically represent the direction of the magnetic field with circled crosses and dots, that look like this:
+
+![A diagram of magnetic fields travelling in and out of a page. A circle with a cross represents a force pointing into the page, and a circle with a dot represents a force pointing out of the page](https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/24022/electrons_in_out_page.PNG)
+
+_Sourced from [Varsity Tutors](https://www.varsitytutors.com/ap_physics_2-help/right-hand-rule-for-charge-in-a-magnetic-field), "Right Hand Rule For Charge In A Magnetic Field"_
+
+The circled dot, on the left, represents a magnetic force pointing _out of_ the page, and the circled dot with a cross, on the right, represents a magnetic force pointing _into_ the page. A good mnemonic is to think of these as arrows for the force vectors; the circled dot is like an arrowhead coming in your direction and the crossed dot is like the tail of the arrowhead moving away from you.
+
+Consider, for instance, an electron moving in a constant magnetic field directed out of the page. Due to the symmetries of the problem, the electron would have a magnetic force that is directed about a fixed center of rotation. This force is a **centripetal force** that causes the electron to "orbit" the center of rotation.
 
 {% math() %}
-\oint \limits_\mathrm{loop} \mathbf{B} \cdot d\ell = \mu_0 I + \mu_0 \epsilon_0 \dfrac{\partial}{\partial t} \iint \limits_\mathrm{surface} \mathbf{E} \cdot d\mathbf{A}
+\mathbf{F} = q\mathbf{v} \times \mathbf{B} = -\dfrac{mv^2}{R} \hat r
 {% end %}
 
-If an imaginary surface (not closed) were placed in space, the flux of the electric field across the surface induces a magnetic field that circulates in a loop across the boundary of the surface.
+Therefore, we can rearrange and write it in terms of the magnitudes as:
 
-The Maxwell equations are astoundingly universal in scope. They govern electromagnetic interactions down to the atomic level, and only at the subatomic level are quantum descriptions necessary.
+{% math() %}
+R = \dfrac{m\|v\|}{q\|B\|}
+{% end %}
 
-## A peek at quantum electrodynamics
+Consider, now, a current through a length of wire, pointing in a certain direction, that can be split into a segment $d\vec\ell$. Recalling that $I = \dfrac{dQ}{dt}$ and $d\vec\ell = \mathbf{v} dt$, we have:
+
+{% math() %}
+\mathbf{F} = q\mathbf{v} \times \mathbf{B} = \int I dt (\mathbf{v} \times \mathbf{B}) = \int I d \ell \times \mathbf{B}
+{% end %}
+
+In the case that the wire is a straight line then this simply becomes $\mathbf{F} = I \vec{\ell} \times \mathbf{B}$.
+
+Now consider a magnetic field passing through a loop of current of area $A$ whose normal vector is given by $\hat A$. If the magnetic field lines are uniform and straight, then there is no magnetic force, in accordance with $\mathbf{F} = I \vec\ell \times \mathbf{B}$. If the magnetic field lines are curved, however, there is a net force in the direction the field spreads outwards. We may describe this effect by a quantity known as the **magnetic moment** $\vec \mu_m = I \vec A$, or for $N$ connected loops, $\vec \mu_m = NI \vec A$. Therefore we have:
+
+{% math() %}
+\mathbf{F} = \nabla(\vec \mu_m \cdot \mathbf{B})
+{% end %}
+
+A coil in a uniform field, however, has no net force, but _can_ have **torque**, defined as $\vec \tau = \vec \mu \times \mathbf{B}$. Thus, the magnetic field can store potential energy in the coil, and that potential energy is given by $U = -\vec \mu \cdot \mathbf{B}$.
+
+> This may seem confusing, because we just said that magnetic forces do no work. We will see later that electric fields associated with magnetic fields in fact _do_ do work, and that a magnetic field is almost always accompanied by an electric field.
+
+### The Biot-Savart Law
+
+The Biot-Savart Law is the equivalent of Coulomb's law for the magnetic field. In the discrete case of the magnetic field generated by a moving charge $q$, the Biot-Savart Law is given by:
+
+{% math() %}
+\mathbf{B} = \dfrac{\mu_0}{4\pi} \dfrac{q\mathbf{v} \times (\mathbf{r} - \mathbf{r'})}{r^3} = \dfrac{\mu_0}{4\pi} \dfrac{q\mathbf{v} \times \hat r}{r^2}
+{% end %}
+
+Where $\mathbf{r} - \mathbf{r'}$ is the vector pointing from the charge that is located at point $\mathbf{r}' = (x', y', z')$ to a point $(x, y, z)$ in space, $\mathbf{v}$ is the velocity vector of the charge, and $\hat r$ is the unit vector of $\mathbf{r} - \mathbf{r}'$. Note that in problems where symmetries are present, it is sometimes useful to write the Biot-Savart law for a single charge in its explicit form in Cartesian coordinates:
+
+{% math() %}
+\mathbf{B} = \dfrac{\mu_0 qv}{4\pi} \left(\dfrac{(\hat v \times x\, \hat i) + (\hat v \times y\, \hat j) + (\hat v \times z\, \hat k)}{(x^2 + y^2 + z^2)^{3/2}}\right)
+{% end %}
+
+The integral expression for the magnetic field, generated by a continuous distribution of charges (i.e., a current), is similarly given by:
+
+{% math() %}
+\mathbf{B} = \dfrac{\mu_0 I}{4\pi} \int \dfrac{d\mathbf{s}' \times (\mathbf{r}-\mathbf{r}')}{|\mathbf{r}-\mathbf{r}'|^3}
+{% end %}
+
+Where $I$ is the current, $d\mathbf{s}'$ is a segment of the current-carrying wire that is located at $\mathbf{r}'$, and again, $\mathbf{r} - \mathbf{r}'$ is the vector pointing from $d\mathbf{s}'$ to $(x, y, z)$. An illustration is shown below for a more visual explanation of the equation (note, however, that in this illustration, $d\mathbf{s}'$ is written as $d\mathbf{s}$):
+
+![A diagram showing a current element that points along a wire, as well as a position vector pointing from the wire to the measuring point](https://tikz.net/alex/biot-savart.png)
+
+The Biot-Savart law was found experimentally, just like Coulomb's law; however, there are some key differences:
+
+- Magnetic fields only exist when a charge is moving
+- The field is perpendicular to the direction of current
+- The field lines form closed circles as opposed to outward or inward flowing lines
+
+![A diagram of magnetic fields that loop around a current](./magnetic-field-wire.jpg)
+
+_A diagram of magnetic fields, sourced from [Physics Stack Exchange](https://physics.stackexchange.com/questions/712884/what-would-be-the-shape-of-the-magnetic-field-around-a-current-carrying-wire-mad)_
+
+
+## Ampère's law
+
+We may also calculate the magnetic field through **Ampère's law**. Ampère's law equates the line integral of the magnetic field through a loop with the *enclosed current* flowing through the cross-section formed by the loop:
+
+$$
+\oint \limits_\mathrm{loop} \mathbf{B} \cdot d\mathbf{r} = \mu_0 I_\mathrm{enc.}
+$$
+
+Where $\mu_0 \approx 4\pi \times 10^{-7}$ is the magnetic constant and $I_\mathrm{enc.}$ is the enclosed current (which may be a function of position). There are also alternative formulations of Ampère's law, which are completely equivalent. For instance, there are cases in which it is helpful to write Ampère's law in terms of the current density, in the following form:
+
+$$
+\oint \limits_\mathrm{loop} \mathbf{B} \cdot d\mathbf{r} = \mu_0 \iint  \mathbf{J} \cdot d\mathbf{A}
+$$
+
+Which, in the particular case that the current flows across a _circular_ cross-sectional area of radius $r$, reduces to:
+
+$$
+\oint \limits_\mathrm{loop} \mathbf{B} \cdot d\mathbf{r} = \mu_0 \int_0^r J(r')2\pi r'\, dr'
+$$
+
+Ampère's law applies in only certain conditions. First, the loop must be around a **closed loop**. Second, the loop must be around the edges of a **cross section** where current is flowing through. 
+
+The diagram below demonstrates the correct application of Ampère's law. We have a cross section $S$ that has current $I_\mathrm{enc}$ passing through. The magnetic field $\mathbf{B} = B \hat \theta$ flows in a circle around the current-carrying wire. Thus, the line integral would be integrating over the boundary of $S$, which forms a closed loop.
+
+![An illustration of a loop around an enclosed current for demonstrating Ampere's law](https://em.geosci.xyz/_images/Ienc.png)
+
+An analytical solution to Ampère's law may be found when the correct loop is chosen such that the magnetic field is *uniform* along the loop. For instance, in the case of an infinitely long current-carrying wire, Ampère's law becomes:
+
+$$
+\oint \mathbf{B} \cdot d\mathbf{r} = B(2\pi r) = \mu_0 I
+$$
+
+Thus the magnetic field is given by:
+
+$$
+\|\mathbf{B}\| = \dfrac{\mu_0 I}{2\pi r}
+$$
+
+We may also consider the case of a **solenoid**, which is a long coil of wire that forms an _electromagnet_ of length $L$. If we consider a rectangular loop that goes into and out of the coil, we find that Ampère's law reduces to:
+
+$$
+\oint \mathbf{B} \cdot d\mathbf{r} = BL = \mu_0 I_\mathrm{enc.} = \mu_0 N I
+$$
+
+Where $N$ is the total number of connected coils and $I$ is the current in each coil. We may rearrange to obtain the **magnetic field of a solenoid**:
+
+$$
+\mathbf{B} = \mu_0 \dfrac{NI}{L} \hat{\mathbf{x}}
+$$
+
+Remember that akin to Gauss's law, a net zero enclosed current _does not imply_ that the magnetic field has to be zero everywhere, or that there are no currents within a region. It may simply be the case that there are currents and fields that cancel each other out. _Also_ recall that just like Gauss's law, any magnetic fields outside the loop have no effect on the magnetic field within the loop; conversely Ampère's law _only_ gives the magnetic field within the loop and says nothing about what is outside.
+
+
+## A peek at relativistic and quantum electrodynamics
 
 At the subatomic level, the electromagnetic field itself becomes quantized; instead of being continuous, it can only take discrete states. In these situations, Maxwell's equations hold only approximately, and a fully quantum treatment of electromagnetism is necessary. This guide will not go into full depth about quantum electrodynamics (QED); a full treatment of QED and quantum field theory can go on for many pages. However, good free online resources to learn quantum electrodynamics are [David Tong's lecture notes](https://www.damtp.cam.ac.uk/user/tong/qft.html) and [Nicolas Ford's Physics for Mathematicians series](https://nicf.net/articles/physics-for-mathematicians/).
+
+To start with, we must recognize that fundamentally there does not exist a _separate_ electric field and magnetic field. Instead, they are rather simply components of an **electromagnetic field**. We can show this via special relativity - an electric field in the rest frame of an observer becomes a magnetic field in a moving frame with respect to an observer. See the [special relativity](@/special-relativity/index.md) notes for more details on why this is true. We define the **electromagnetic field** by a $4 \times 4$ matrix called the _Faraday tensor_:
+
+{% math() %}
+F^{\mu \nu }={\begin{bmatrix}0&-E_{x}/c&-E_{y}/c&-E_{z}/c\\E_{x}/c&0&-B_{z}&B_{y}\\E_{y}/c&B_{z}&0&-B_{x}\\E_{z}/c&-B_{y}&B_{x}&0\end{bmatrix}}
+{% end %}
+
+> **Note:** All equations here will be given in SI units instead of natural units, which are more common in advanced theoretical physics. 
+
+In this case, the Maxwell equations become:
+
+{% math() %}
+\begin{align*}
+\partial_\nu F^{\mu \nu} = -\mu_0 J^\mu \\
+\partial_\gamma F_{\mu \nu} + \partial_\mu F_{\nu \gamma} + \partial_\mu F_{\gamma \mu} = 0
+\end{align*}
+{% end %}
+
+If we define a **electromagnetic four-potential** analogous to the electric potential but for the electromagnetic field instead of just the electric field through {% inlmath() %}F_{\mu \nu }=\partial_{\mu }A_{\nu }-\partial_{\nu }A_{\mu }{% end %}, and impose the boundary condition constraint $\partial_\mu A^\mu = 0$, we can express Maxwell's equations as a modified wave equation:
+
+{% math() %}
+\partial^\nu \partial_\nu A^\mu = \mu_0 J^\mu
+{% end %}
+
+Lastly, in the formulation of electromagnetism in the framework of relativistic quantum mechanics, we can describe quantum particles in an electromagnetic field with four-potential $A_\mu$ with the **Dirac equation**, the relativistic analogue of the Schrödinger equation, with:
+
+{% math() %}
+(i\hbar \gamma^\mu D_\mu - m c) \psi = 0
+{% end %}
+
+where $D_\mu = \partial_\mu + \dfrac{ie}{\hbar c} A_\mu$ and $e$ is the electron charge. Thus the quantum electrodynamics formulation of Maxwell's equations becomes:
+
+{% math() %}
+\partial_\nu F^{\mu \nu} = -\mu_0 \bar \psi \gamma^\mu \psi
+{% end %}
+
+This formulation of Maxwell's equations holds up to the subatomic level at low to medium-high energies where multi-particle interactions can be considered distinct. However, at the highest energies, the electromagnetic field becomes quantized into specific states, and becomes probabilistic in nature. Transitions between states, distributions of electrons and photons, and energies all become probabilities, described by a [S-matrix](https://en.wikipedia.org/wiki/S-matrix). 
+
+This is the realm of quantum field theory and specifically **quantum electrodynamics (QED)**, the most precise formulation of electrodynamics. An in-depth study of QED yields highly-precise predictions about electromagnetic fields at the quantum level, and in conditions where such precision calculations are necessary, quantum electrodynamics is the best theory there is. Indeed, it is our best understanding of how all electromagnetic interactions - which includes the electrons in all atoms - occur as they do.
