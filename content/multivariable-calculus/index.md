@@ -1,6 +1,6 @@
 +++
 title = "Introduction to multivariable calculus"
-date = 2024-02-12
+date = 2024-08-26
 draft = false
 +++
 
