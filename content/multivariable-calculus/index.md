@@ -6,9 +6,9 @@ draft = false
 
 This is a guide to multivariable calculus from its fundamentals. We will cover differentiation of multivariable functions, the gradient, divergence, and curl operators, as well as integration in multiple dimensions, on a beginner's level. It is highly recommended to look over this guide before (or at the same time as) learning any advanced topics in math and physics.
 
-These notes are shared with the permission of [Dr. Elizabeth Brown](https://faculty.rpi.edu/elisabeth-brown) of Rensselaer Polytechnic Institute., to whom much is appreciated.
-
 <!-- more -->
+
+These notes are shared with the permission of [Dr. Elizabeth Brown](https://faculty.rpi.edu/elisabeth-brown) of Rensselaer Polytechnic Institute., to whom much is appreciated.
 
 ## Multivariable functions
 
@@ -20,13 +20,19 @@ As an example, consider the function $f(x, y) = \sqrt{4 - x^2 - y^2}$, which can
 
 We may plot a function of two variables $f(x, y)$ in 3D space, such that $z = f(x, y)$. From doing so, we create a surface. This is usually done by computer, and is shown below:
 
-![A plot of a multivariable function, shown as a surface in 3D space](./math3d-multivariate-function-plot.png)
+{{ wideimg(src="math3d-multivariate-function-plot.png",
+   desc="A plot of a multivariable function, shown as a surface in 3D space")
+}}
+
 
 _Created with [Math3D](https://www.math3d.org/)_
 
 Instead a surface plot, we may alternatively make various 2D representations of functions of 2 variables. To do so, we first find the **horizontal traces** (also called _isolines_), which are all curves in which $f(x, y) = C$ where $C$ is a constant. This results in an implicit equation that can be solved to result in the equation of a curve in one variable. Doing this for equally spaced $C$ results in a contour map, as shown:
 
-![Contour map, showing level curves of constant height](https://upload.wikimedia.org/wikipedia/commons/f/fa/Contour2D.svg)
+{{ natural_img(src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Contour2D.svg",
+   desc="Contour map, showing level curves of constant height"
+)
+}}
 
 We can also plot values of $f(x, y)$ for values of constant $x$ or constant $y$ to find **vertical traces**, curves of constant value in one plane. So as a summary:
 
@@ -396,7 +402,9 @@ Or any of the different orderings possible by switching the order of integration
 
 We may define alternate coordinate systems in addition to Cartesian coordinates. For instance, we can use spherical coordinates $(r, \theta, \varphi)$ where $r$ is the radial distance,  $\theta$ is the polar angle measuring rotation up and down the XY plane, and $\varphi$ is the azimuthal angle measuring the rotation around XY plane. We often also refer to the XY plane as the **equatorial**. A diagram of the spherical coordinates system is shown as follows:
 
-{{ natural_img(src="https://e7.pngegg.com/pngimages/426/969/png-clipart-spherical-coordinate-system-cartesian-coordinate-system-sphere-ellipsoid-6sphere-coordinates-spherical-coordinate-system-coordinate-system-thumbnail.png", desc="Spherical coordinates")}}
+{{ natural_img(src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Coordenadas_esf%C3%A9ricas_01.svg", desc="Spherical coordinates")}}
+
+_Credit: [Wikipedia](https://commons.wikimedia.org/wiki/File:Coordenadas_esf%C3%A9ricas_01.svg)_
 
 > **Note:** this is the _physics convention_. Mathematicians often use the alternate convention $(r, \varphi, \theta)$ rather than $(r, \theta, \varphi)$
 
