@@ -857,7 +857,7 @@ The first step of a partial fraction decomposition is to factor $Q(x)$ as comple
 \frac{P(x)}{Q(x)} = \frac{P(x)}{F_1(x)F_2(x)F_3(x)\dots F_n(x)}
 {% end %}
 
-If a factor is in the form $(x - a)^n$, where $a$ is not a complex number or radical, it is called a **linear factor**. Such a factor contributes a partial fraction decomposition of the form:
+Where $F_1, F_2, F_3, \dots, F_n$ are the factors of $Q(x)$. If a factor of $Q(x)$ is in the form $(x - a)^n$, where $a$ is not a complex number or radical, it is called a **linear factor**. Such a factor contributes a partial fraction decomposition of the form:
 
 {% math() %}
 \frac{1}{(x - a)^n} = \frac{A}{x - a} + \frac{B}{(x - a)^2} + \frac{C}{(x - a)^3} + \dots + \frac{Z}{(x - a)^n}
