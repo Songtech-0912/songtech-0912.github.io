@@ -15,4 +15,5 @@ These are my personal calculus notes taken at my time at RPI. They include Preca
 - [Series & Sequences](@/series-sequences.md)
 - [Introductory differential equations](@/differential-equations/index.md)
 - [Partial differential equations](@/intro-pdes/index.md)
+- [Multivariable calculus](@/multivariable-calculus/index.md)
 - [Vector and advanced calculus](@/vector-and-advanced-calculus/index.md)
