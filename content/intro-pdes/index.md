@@ -9,7 +9,7 @@ This is a short guide/mini-book on introducing various topics in partial differe
 
 These notes are dedicated to [Professor Yuri Lvov](https://faculty.rpi.edu/yuri-lvov) of Rensselaer Polytechnic Institute, who teaches the course on which this guide is based, and to whom I am greatly thankful. They are freely-sharable and released to the public domain.
 
-Note: familiarity with vector calculus and ordinary differential equations is assumed. Full length guides for both are available if a refresher is needed; they can be found on the [vector calculus guide](@/vector-and-advanced-calculus.md) and the [introduction to differential equations](@/differential-equations/index.md).
+Note: familiarity with vector calculus and ordinary differential equations is assumed. Full length guides for both are available if a refresher is needed; they can be found on the [vector calculus guide](@/vector-and-advanced-calculus/index.md) and the [introduction to differential equations](@/differential-equations/index.md).
 
 
 ## Introduction to partial differential equations
