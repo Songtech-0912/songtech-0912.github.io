@@ -3,7 +3,7 @@ title = "Vector Calculus And Beyond"
 date = 2026-01-14
 +++
 
-This guide covers the methods of calculus that go beyond multivariable calculus, including vector calculus, tensor calculus, the calculus of variations, and applications for each. In addition, Derivations and more advanced treatments of topics in single- and multivariable calculus are also included.
+This guide covers the methods of calculus that go beyond multivariable calculus, including vector calculus, tensor calculus, the calculus of variations, and applications for each. In addition, derivations and more advanced treatments of topics in single- and multivariable calculus are also included.
 
 <!-- more -->
 
@@ -134,7 +134,13 @@ We may write parametric equations in this form in a more compact way as $\mathbf
 \mathbf{r} = \mathbf{r}_0 + \mathbf{v} t
 {% end %}
 
-Where $\mathbf{r}_0$ is the starting point of the line, and $\mathbf{v}$ is the vector specifying the direction of the line. More complex parametric curves can be arbitrary functions of $t$. The _length_ $S$ of a parametric curve defined by $\mathbf{r}(t) = \langle x(t), y(t), z(t)\rangle$ is found by the integral for the **arc length**:
+Where $\mathbf{r}_0$ is the starting point of the line, and $\mathbf{v}$ is the vector specifying the direction of the line. A line through two points $\mathbf{r}_0, \mathbf{r}_1$ takes the form:
+
+{% math() %}
+\mathbf{r} = \mathbf{r}_0 + (\mathbf{r}_1 - \mathbf{r}_0)t
+{% end %}
+
+More complex parametric curves can be arbitrary functions of $t$. The _length_ $S$ of a parametric curve defined by $\mathbf{r}(t) = \langle x(t), y(t), z(t)\rangle$ is found by the integral for the **arc length**:
 
 {% math() %}
 S = \int_a^b \sqrt{\left(\dfrac{dx}{dt}\right)^2 + \left(\dfrac{dy}{dt}\right)^2 + \left(\dfrac{dz}{dt}\right)^2} dt
@@ -175,6 +181,92 @@ z = x^2 + y^2
 {% end %}
 
 > Note that implicit surfaces, which are in the form $F(x, y, z) = 0$, can also take more complex forms, where $F(x, y, z) = f(x, y) - g(z)$.
+
+#### Intersections of surfaces
+
+Just as we have _points_ of intersection in 2D space, we have _curves_ of intersection in 3D space. The **intersection of two surfaces** given by $F(x, y, z) = 0$ and $G(x, y, z) = 0$ is a parametric curve $\mathbf{r}(t)$. The precise form of this parametric curve may vary. But we will look at a simple case.
+
+Consider the intersection between the unit sphere, given by $x^2 + y^2 + z^2 = 1$, and the plane $z = 2x$ (see [an interactive visualization here](https://www.math3d.org/K51UuVpjP4)). How would we solve this?
+
+One way we can do so is by converting the plane to _parametric form_. To do so, we need to find two vectors that are parallel to the plane. Luckily, by using the visualization, this is relatively easy to find:
+
+{% math() %}
+\begin{matrix*}
+\mathbf{u} = \begin{bmatrix} 1 \\ 0 \\ 2 \end{bmatrix}, 
+& \mathbf{v} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}
+\end{matrix*}
+{% end %}
+
+From which can define the plane in parametric form as $\mathbf{r} = s\mathbf{u} + t\mathbf{v}$, which expands to:
+
+{% math() %}
+\begin{bmatrix} x \\ y \\ z\end{bmatrix} =
+s\begin{bmatrix} 1 \\ 0 \\ 2 \end{bmatrix} + 
+t\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}
+{% end %}
+
+Thus we have $x = s, y = t, z = 2s$. Now note that if we substitute these into the equation for the sphere, we have:
+
+{% math() %}
+\begin{align*}
+x^2 + y^2 + z^2 &= s^2 + t^2 + (2s)^2 \\
+&= s^2 + t^2 + 4s^2 \\
+&= 5s^2 + t^2 \\
+&= 1
+\end{align*}
+{% end %}
+
+Thus, we may rearrange to find that:
+
+{% math() %}
+\begin{align*}
+5s^2 + t^2 &= 1 \\
+5s^2 &= 1 - t^2 \\
+\end{align*}
+{% end %}
+
+It may seem that we have gotten nowhere. However, the appearance of an expression in the form $a^2 = 1 - b^2$ suggests a Pythagorean trigonometric substitution. For instance, if we were to try to define a new parameter $\lambda$ such that:
+
+{% math() %}
+s = \frac{1}{\sqrt{5}} \cos \lambda \\
+t = \sin \lambda
+{% end %}
+
+Then indeed we have:
+
+{% math() %}
+\begin{align*}
+5s^2 &= 5 \left(\frac{1}{\sqrt{5}} \cos \lambda\right)^2 \\
+&= \cos^2 \lambda \\
+&= 1 - \sin^2 \lambda \\
+&= 1 - t^2
+\end{align*}
+{% end %}
+
+Since we have $x = s, y = t, z = 2s$, we can now rewrite each in terms of $\lambda$:
+
+{% math() %}
+\begin{matrix*}
+x=s & \Rightarrow & x = \dfrac{1}{\sqrt{5}} \cos \lambda \\
+y=t & \Rightarrow & y = \sin \lambda \\
+z=2s & \Rightarrow & z = \dfrac{2}{\sqrt{5}} \cos \lambda
+\end{matrix*}
+{% end %}
+
+Thus the intersection between the unit sphere and the plane $z = 2x$ is given by the following parametric curve:
+
+{% math() %}
+\begin{matrix*}
+\begin{align*}
+x(t) &= \dfrac{1}{\sqrt{5}} \cos \lambda \\
+y(t) &= \sin \lambda \\
+z(t) &= \dfrac{2}{\sqrt{5}} \cos \lambda
+\end{align*}
+& \lambda \in [0, 2\pi]
+\end{matrix*}
+{% end %}
+
+Which is a specific type of curve known as an **ellipse** that will frequently appear in multivariable and vector calculus.
 
 ### Curvilinear coordinate systems
 
