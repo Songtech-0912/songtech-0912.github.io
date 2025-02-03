@@ -188,7 +188,15 @@ Just as we have _points_ of intersection in 2D space, we have _curves_ of inters
 
 Consider the intersection between the unit sphere, given by $x^2 + y^2 + z^2 = 1$, and the plane $z = 2x$ (see [an interactive visualization here](https://www.math3d.org/K51UuVpjP4)). How would we solve this?
 
-One way we can do so is by converting the plane to _parametric form_. To do so, we need to find two vectors that are parallel to the plane. Luckily, by using the visualization, this is relatively easy to find:
+One way we can do so is by converting the plane to _parametric form_. To do so, we need to find two vectors that are parallel to the plane.
+
+{{ wideimg(
+	src="intersection-of-surfaces.png",
+	desc="An illustration of the plane z = 2x as well as two vectors parallel to the plane and lying on the plane"
+)
+}}
+
+Luckily, this is relatively easy to find (see the above picture for a visualization):
 
 {% math() %}
 \begin{matrix*}
