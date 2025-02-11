@@ -502,9 +502,9 @@ For brevity, we will now write $\gamma$ instead of $\gamma(\beta)$, although rem
 
 Now consider a observer (say, standing on the ground) that measures another observer (say, riding on a train) as moving _with respect to_ their rest frame. For simplicity, we will call the observer on the ground as the **stationary observer** and the observer riding the train as the **moving observer**. Of course, this is only true with respect to the ground observer's rest frame; in special relativity we know that _all motion is relative_, and another observer (e.g. on an airplane) could very reasonably complain that *both* of the aforementioned observers are moving! We will simply stick to this convention to keep the clarity of the physics to a maximum and the reader's annoyance to a minimum.
 
-Now assume that the moving observer sees an object moving in their frame (maybe their eyeglasses that they absentmindedly dropped and are now desperately trying to find). This object (the eyeglasses in this case) is measured by the moving observer to have velocity $v_x'$ as it falls (miraculously) *exactly along* the $x$ direction. As the moving observer awkwardly tries to find their glasses with less-than-ideal eyesight, the stationary observer looks on with interest. The stationary observer bets that with their superior physics expertise, they can deduce the velocity of the falling glasses in their frame, $u_x$, and thereby calculate where the glasses will land, long before the moving observer manages to find them.
+Now assume that the moving observer sees an object moving in their frame (maybe their eyeglasses that they absentmindedly dropped and are now desperately trying to find). This object (the eyeglasses in this case) is measured by the moving observer to have velocity $v_x'$ as it falls (miraculously) *exactly along* the $x'$ direction. As the moving observer awkwardly tries to find their glasses with less-than-ideal eyesight, the stationary observer looks on with interest. The stationary observer bets that with their superior physics expertise, they can deduce the velocity of the falling glasses in their frame, $u_x$, and thereby calculate where the glasses will land, long before the moving observer manages to find them.
 
-Let us now write out the Lorentz transformations. Since we consider the case of an object travelling on the $x$ axis, we can ignore the two other transformations of $y$ and $z$, so we are simply left with:
+Let us now write out the Lorentz transformations. Since we consider the case of an object travelling on the $x'$ axis, we can ignore the two other transformations of $y'$ and $z'$, so we are simply left with:
 
 {% math() %}
 \begin{align*}
@@ -584,7 +584,7 @@ v_x' &= \dfrac{c(u_x - \beta c)}{c - \beta u_x} \\
 
 Again, it is important to know what $\beta$, $v_x'$, and $u_x$ mean:
 
-- $v$ is the **speed** of the moving observer's reference frame
+- $v$ is the **speed** of the moving observer's reference frame, measured by the stationary observer
 - $\beta \equiv v/c$ is $v$ as a fraction of the speed of light. E.g. $\beta = 0.3$ is equal to 30% of the speed of light.
 - $v_x' = \dfrac{dx'}{dt'}$ is the velocity along $x'$ of the object within the *moving observer's* reference frame
 - $u_x = \dfrac{dx}{dt}$ is the velocity along $x$ of the object measured within the *stationary observer's reference frame*
