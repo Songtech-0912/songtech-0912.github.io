@@ -402,18 +402,18 @@ Or any of the different orderings possible by switching the order of integration
 
 We may define alternate coordinate systems in addition to Cartesian coordinates. For instance, we can use spherical coordinates $(r, \theta, \varphi)$ where $r$ is the radial distance,  $\theta$ is the polar angle measuring rotation up and down the XY plane, and $\varphi$ is the azimuthal angle measuring the rotation around XY plane. We often also refer to the XY plane as the **equatorial**. A diagram of the spherical coordinates system is shown as follows:
 
-{{ natural_img(src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Coordenadas_esf%C3%A9ricas_01.svg", desc="Spherical coordinates")}}
+{{ natural_img(src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Kugelkoord-lokb-e.svg", desc="An illustration of spherical coordinates, where a point in space is denoted by its radial distance r, its planar rotation phi, and its elevation angle theta")}}
 
 _Credit: [Wikipedia](https://commons.wikimedia.org/wiki/File:Coordenadas_esf%C3%A9ricas_01.svg)_
 
-> **Note:** this is the _physics convention_. Mathematicians often use the alternate convention $(r, \varphi, \theta)$ rather than $(r, \theta, \varphi)$
+> **Note:** this is the _physics convention_. Mathematicians often use the alternate convention $(r, \varphi, \theta)$ rather than $(r, \theta, \varphi)$, in which $\theta$ and $\varphi$ are swapped. Additionally, the letter $\varphi$ is often written as $\phi$ (they are both the same greek letter, just rendered in different styles).
 
 The coordinate transformations for $(r, \theta, \varphi)$ to $(x, y, z)$ are as follows:
 
 {% math() %}
 \begin{align*}
-x &= r\cos \phi \sin \theta \\
-y &= r \sin \phi \sin \theta \\
+x &= r \sin \theta \cos \varphi \\
+y &= r \sin \theta \sin \varphi \\
 z &= r \cos \theta
 \end{align*}
 {% end %}

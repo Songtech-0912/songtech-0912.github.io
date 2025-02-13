@@ -294,7 +294,10 @@ Cylindrical coordinates are useful in for situations when the mathematics of a p
 
 Meanwhile, in spherical coordinates, we describe a point in 3D space also using three coordinates, but with slightly different coordinates. The first coordinate changes from $\rho$ to $r$ (still called radial), the distance from the origin (as opposed to the distance from the z-axis), the second coordinate becomes $\theta$ (azimuthal angle), the angle _above_ the plane of the origin, and the third coordinate is the same $\phi$ as before (polar angle). Therefore, the full set of coordinates describing a point becomes $(r, \theta, \phi)$, as shown in the diagram below:
 
-![A diagram showing spherical coordinates, with a radial (r) coordinate pointing from the origin to the point, a polar angle (theta) pointing up from the plane of the origin, and an azimuthal angle (phi) pointing from the x-axis) pointing up from the plane, and a phi](https://upload.wikimedia.org/wikipedia/commons/f/f9/Kugelkoord-lokb-e.svg)
+{{ natural_img(
+  src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Kugelkoord-lokb-e.svg",
+  desc="A diagram showing spherical coordinates, with a radial (r) coordinate pointing from the origin to the point, a polar angle (theta) pointing up from the plane of the origin, and an azimuthal angle (phi) pointing from the x-axis) pointing up from the plane, and a phi"
+) }}
 
 > **Note on notation:** Again, just as with cylindrical coordinates, the notation conventions for spherical coordinates are myriad, and all conventions are equivalent, but it is important to specify which one is used and the meaning of each symbol.
 
