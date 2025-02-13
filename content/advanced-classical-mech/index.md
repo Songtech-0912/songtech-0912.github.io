@@ -1057,3 +1057,237 @@ m \ddot y = mg - k(y - y_0) \\
 \dfrac{d^2 y}{dt^2} = g - \dfrac{k}{m} (y - y_0)
 \end{align*}
 {% end %}
+
+## More problems in Lagrangian mechanics
+
+Because of how _different_ Lagrangian mechanics is from the traditional Newtonian approach to solving physical systems, it may be quite difficult to get adjusted to it. For this reason, here are a few additional fully-solved problems for Lagrangian mechanics that might be helpful to practice on.
+
+### The simple pendulum
+
+In this problem, a pendulum is attached to a string of length $\ell$ which makes an angle of $\theta$ with the vertical axis. The pendulum swings up and down under the action of gravity. We want to find the equations of motion for the pendulum.
+
+Let us set up the coordinates to make this problem as convenient as possible. First, let us set our $+y$ axis to be the *downward-pointing* direction. Let our $x$ axis be centered at the position at which the pendulum is attached (i.e. its origin is at the pendulum's attachment point).
+
+{{ diagram(src="simple-pendulum.excalidraw.svg") }}
+
+With this information, then the position of the pendulum at time $t$ is given by:
+
+{% math() %}
+\begin{align*}
+x &= \ell \sin \theta(t) \\
+y &= \ell \cos \theta(t)
+\end{align*}
+{% end %}
+
+Where again, the $y$ coordinate is actually the _downward-pointing_ coordinate due to the way we defined our coordinate system. Taking differentiation, we have:
+
+{% math() %}
+\begin{align*}
+\dot x &= (\ell \cos \theta)\dot \theta \\
+\dot y &= (-\ell \sin \theta) \dot \theta
+\end{align*}
+{% end %}
+
+So, the kinetic energy becomes:
+
+{% math() %}
+\begin{align*}
+K &= \dfrac{1}{2} m(\dot x^2 + \dot y^2) \\
+&= \dfrac{1}{2} m[(\ell \cos \theta\, \dot \theta)^2 + (-\ell \sin \theta\, \dot \theta)^2] \\
+&= \dfrac{1}{2} m\ell^2 \dot \theta^2 \cancel{(\cos^2 \theta + \sin^2 \theta)}^1 \\
+&= \dfrac{1}{2} m \ell^2 \dot \theta^2
+\end{align*}
+{% end %}
+
+The (purely-gravitational) potential energy, due to how we have defined our coordinate system, is given by $U = -mgy = -mg(\ell \cos \theta)$. Thus our Lagrangian becomes:
+
+{% math() %}
+\begin{align*}
+\mathcal{L} &= K - U \\ &= \dfrac{1}{2} m \ell^2 \dot \theta^2 + mg \ell \cos \theta
+\end{align*}
+{% end %}
+
+Since our Lagrangian only involves one generalized coordinate (in this case, $\theta$) there is only one Euler-Lagrange equation corresponding to that coordinate:
+
+{% math() %}
+\dfrac{\partial \mathcal{L}}{\partial \theta} - \dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot \theta}\right) = 0
+{% end %}
+
+The derivatives are given by:
+
+{% math() %}
+\begin{align*}
+\dfrac{\partial \mathcal{L}}{\partial \theta} &= -mg \ell \sin \theta \\
+\dfrac{\partial \mathcal{L}}{\partial \dot \theta} &= m \ell^2 \dot \theta\\
+\dfrac{d}{dt}\left(\dfrac{\partial \mathcal{L}}{\partial \dot \theta}\right) &= m \ell^2 \ddot \theta
+\end{align*}
+{% end %}
+
+Thus, substituting into the Euler-Lagrange equation we wrote down previously, we have:
+
+{% math() %}
+-mg\ell \sin \theta - m \ell^2 \ddot \theta = 0
+{% end %}
+
+Which, after simplification and rearranging, becomes:
+
+{% math() %}
+\ddot \theta = -\dfrac{g}{\ell} \sin \theta 
+{% end %}
+
+Or, rewritten:
+
+{% math() %}
+\dfrac{d^2 \theta}{dt^2} = -\dfrac{g}{\ell} \sin \theta
+{% end %}
+
+This is the differential equation of a **simple pendulum**. Despite looking rather simple, it is surprisingly hard to solve, but it is still useful, because it completely describes the simple pendulum, and it possesses approximate solutions that still yield important quantitative insights.
+
+### The centrifugal "force"
+
+When an object is placed within a rotating object, it is common to say that the object experiences a _fictitious_ centrifugal force. We will show that what appears to be a "centrifugal force" is nothing but a radial acceleration caused by a moving coordinate system, and is _not_ a real force.
+
+Consider a moving disk of radius $R$ and mass $M$ that rotates at angular velocity $\omega$ (ignore gravity). A small mass $m$ is placed at the edge of the disk (note: the figure below shows it _slightly_ less than the edge, but it is only for visual clarity). A diagram of our physical scenario is below:
+
+{{ diagram(src="centrifugal-force.excalidraw.svg") }}
+
+If the disk was non-spinning, the position of the mass, relative to the center of the spinnning disk (which is the origin of our rotating coordinate system), would be given by:
+
+{% math() %}
+\begin{matrix*}
+x = R \cos \phi, & y = R \sin \phi \\
+\dot x = -R \sin \phi\, \dot \phi, & \dot y = R \cos \phi\, \dot \phi \\
+\end{matrix*}
+{% end %}
+
+But the disk _is_ spinning, and thus, since we are using a rotating coordinate system that co-rotates with the disk, we must also include the "nudge" caused by the spinning disk on which the mass rests (which contributes an additional angular component $\theta = \omega t$ to the angular displacement of the mass). We therefore have:
+
+{% math() %}
+\begin{matrix*}
+x = R \cos \phi  + R \cos \omega t, & y = R \sin \phi + R \sin \omega t \\
+\dot x = -R \sin \phi\, \dot \phi- R \omega \sin \omega t, 
+& \dot y = R \cos \phi\, \dot \phi + R \omega \cos \omega t \\
+\end{matrix*}
+{% end %}
+
+Thus the total kinetic energy is given by:
+
+{% math() %}
+\begin{align*}
+K &= \dfrac{1}{2} m(\dot x^2 + \dot y^2) \\ &= \dfrac{1}{2} m[(-R \sin \phi\, \dot \phi- R \omega \sin \omega t)^2 + (R \cos \phi\, \dot \phi + R \omega \cos \omega t)^2] \\
+&= \dfrac{1}{2} m \bigg[R^2 \dot \phi^2 \sin^2 \phi + 2 R^2 \omega \sin \phi\, \dot \phi  \sin \omega t + R^2 \omega^2 \sin^2 \omega t \\
+&\qquad \qquad + R^2 \dot \phi^2 \cos^2 \phi + 2 R^2\omega \cos \phi\, \dot \phi \cos \omega t + R^2 \omega^2 \cos^2 \omega t] \\
+&= \dfrac{1}{2} m(R^2 \dot \phi^2(\cancel{\sin^2 \phi + \cos^2 \phi}^1) + 2R^2 \omega \dot \phi\,(\sin \phi \sin \omega t + \cos \phi \cos \omega t) \\
+&\qquad \qquad + R^2 \omega^2 (\cancel{\sin^2 \omega t + \cos^2 \omega t)}^1) \\
+&= \dfrac{1}{2} m(R^2 \dot \phi^2 + 2 R^2 \omega \dot \phi \cos(\phi - \omega t) + R^2 \omega^2)
+\end{align*}
+{% end %}
+
+Where at the end we used the trigonometric identity $\sin A \sin B + \cos A \cos B = cos(A - B)$. Since we are not considering gravity (imagine this spinning disk was in deep space) then the Lagrangian is:
+
+{% math() %}
+\begin{align*}
+\mathcal{L} &= K - \cancel{U} \\
+&= \dfrac{1}{2} m(R^2 \dot \phi^2 + 2 R^2 \omega \dot \phi \cos(\phi - \omega t) + \cancel{R^2 \omega^2})
+\end{align*}
+{% end %}
+
+Where we can effectively ignore the $R^2 \omega^2$ term since it is a constant and constants do not change the Lagrangian. The Euler-Lagrange equation for the only generalized coordinate $\phi$ becomes:
+
+{% math() %}
+\dfrac{\partial \mathcal{L}}{\partial \phi} = \dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot \phi}\right)
+{% end %}
+
+Taking the partial derivatives of our Lagrangian, we find that:
+
+{% math() %}
+\begin{align*}
+\dfrac{\partial \mathcal{L}}{\partial \phi} &= -mR^2 \omega \dot \phi \sin(\phi - \omega t) \\
+\dfrac{\partial \mathcal{L}}{\partial \dot \phi} &= m R^2 \dot \phi \\
+\dfrac{d}{dt}\left(\dfrac{\partial \mathcal{L}}{\partial \dot \phi}\right) &= m R^2 \ddot \phi
+\end{align*}
+{% end %}
+
+If we substitute into the Euler-Lagrange equation we have:
+
+{% math() %}
+\begin{align*}
+m R^2 \ddot \phi &= -mR^2 \omega \dot \phi \sin (\phi - \omega t) \\
+\ddot \phi &= - \omega \dot \phi \sin(\phi - \omega t)
+\end{align*}
+{% end %}
+
+We can write this in terms of an angular acceleration $\vec \alpha$:
+
+{% math() %}
+\vec \alpha = - \omega \dot \phi \sin(\phi - \omega t)
+{% end %}
+
+The negative sign means that the angular acceleration vector is actually pointing vertically _downwards_. Now, the acceleration vector $\vec a$ is related to the angular acceleration by:
+
+{% math() %}
+\vec \alpha = \dfrac{1}{r^2} \vec r \times \vec a
+{% end %}
+
+Where $\vec r$ is the radial vector that points from the axis of rotation to the mass. Thus by the right-hand rule, since the angular acceleration is pointing downards, we find that the acceleration vector actually points _outwards_, as shown in the below diagram:
+
+{{ diagram(src="rotational-lagrangian-example.excalidraw.svg") }}
+
+Thus we find that there _appears_ to be a "force" that pushes the particle outwards and produces the acceleration $\vec a$ observed. In reality, such a force _does not exist_. We can prove this as follows: from the expression $\vec \alpha = - \omega \dot \phi \sin(\phi - \omega t)$, if we take the limit as $\omega \to 0$ (that is, the disk is no longer spinning), then $\vec \alpha \to 0$ and we recover the equations of uniform circular motion (that is, $\ddot \phi = 0$). The "force" (often called the _centrifugal force_) is merely a consequence of our rotating reference frame (remember, we chose a coordinate system that co-rotated with the disk), and if we choose an alternate frame of reference that is _not rotating_, this force vanishes. Thus we have shown that the centrifugal "force" is a fictitious force.
+
+### Getting off a bus
+
+Consider a situation that may be familiar: you were riding a bus (or train) moving at speed $v_0$ that suddenly undergoes a constant deceleration of magnitude $a$ until it comes to a stop. This catches you by surprise, and you end up dropping the precious physics textbook you borrowed from your physics professor. To appease your professor after this unfortunate incident, you intend to demonstrate your understanding of Lagrangian mechanics to calculate your equations of motion and thus explain that the deceleration was substantial enough to make you fall.
+
+In this case, it is again easiest to use a _co-moving_ coordinate system - in this case, we can consider a coordinate system that moves along with the bus. Let $x$ denote your position with respect to a coordinate system centered at the front of the bus. Since the bus (presumably) does not fly into the air, we need only consider the $x$ coordinate. In theory, if the bus was absolutely stationary, then your kinetic energy would be given by:
+
+{% math() %}
+K = \dfrac{1}{2} m\dot x^2
+{% end %}
+
+But because the bus is _also_ moving (in fact, it is decelerating!), we must add an additional contribution from the moving bus. The bus has $\dot v = -a$ and thus $\dot x_\text{bus} = v_0 - a t$.
+
+{% math() %}
+K = \dfrac{1}{2}m(\dot x + v_0 - at)^2
+{% end %}
+
+The Lagrangian in this case contains only the kinetic energy (since the bus is at a constant height above the ground, its gravitational potential energy is a constant, and therefore makes no difference in the Lagrangian). Therefore:
+
+{% math() %}
+\mathcal{L} = \dfrac{1}{2}m(\dot x + v_0 - at)^2
+{% end %}
+
+The derivatives of the Lagrangian become:
+
+{% math() %}
+\begin{align*}
+\dfrac{\partial \mathcal{L}}{\partial x} &= 0 \\
+\dfrac{\partial \mathcal{L}}{\partial \dot x} &= m (\dot x + v_0 - at) \\
+\dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot x}\right)
+&=m (\ddot x - a)
+\end{align*}
+{% end %}
+
+Therefore the singular Euler-Lagrange equation in this case, given by $\dfrac{\partial \mathcal{L}}{\partial x} = \dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot x}\right)$, then simply becomes:
+
+{% math() %}
+m(\ddot x - a) = 0 \quad \Rightarrow \quad \dfrac{d^2 x}{dt^2} = a
+{% end %}
+
+This is interesting - you experience a positive acceleration $a$ that _appears_ to come from a force that pushes you and makes you fall. But there is no force! The "force" actually arises from our choice of a moving coordinate system. Just as with the centrifugal "force", this "force" is also a _fictitious force_.
+
+This is a powerful aspect of Lagrangian mechanics: once you choose your coordinates and write down your Lagrangian in terms of your chosen coordinates, the equations of motion that follow are _guaranteed to hold_ in your coordinate system, without needing to consider any fictitious forces.
+
+### The general procedure
+
+Now that we have worked through several problems, let us distill our insights to determine how to do Lagrangian mechanics in the _general case_. To be able to solve an _arbitrary_ problem using Lagrangian mechanics, we follow these steps:
+
+1. Define a coordinate system using whichever reference frame is _most convenient_ for the problem. For instance, in problems with radial symmetry, polar coordinates may be better (i.e. $x = r \cos \theta, y = r \sin \theta$), and in problems where the reference frame is itself moving (e.g. child jumping on a rotating carousel) it may be helpful to choose a _co-moving coordinate system_ (i.e. a coordinate system that moves with the object)
+	1. For systems of multiple objects (many-body systems), you would have a set of coordinates for every object, e.g. a two-body system would have coordinates $(x_1, y_1, z_1), (x_2, y_2, z_2)$. It is important to explicitly define the _origin_ and the _orientation_ of the axes of each of the coordinates for multi-body systems (in many cases, the origins of the coordinate systems for different objects will _not_ be the same, or the coordinate systems will be oriented differently)
+2. Write down the total kinetic energy of the object(s) you are analyzing
+	1. The kinetic energy of a (single) object is (classically) always $\dfrac{1}{2} mv^2 = \dfrac{1}{2} m (\dot x^2 + \dot y^2 + \dot z^2)$, but if you are using different coordinates, you would want to express $\dot x, \dot y, \dot z$ in terms of those coordinates (especially if there is a constraint on the system e.g. uniform circular motion in which case $\dot x^2 + \dot y^2 = r^2 \dot \theta^2$). In addition, $x(t)$ may include more than one terms if you define your coordinates with respect to a (co-)moving coordinate system. 
+	2. The kinetic energy of a system of objects is the sum of the kinetic energies of each individual object, so you would have $K = K_1 + K_2 + \dots + K_n$, or more explicitly-written (in 1D), $K = \dfrac{1}{2} m\dot x_1^2 + \dfrac{1}{2} m \dot x_2^2 + \dots + \dfrac{1}{2}m \dot x_n^2$.
+3. Write down the total potential energy of the object(s) you are analyzing. Note that this highly depends on what type of potential energy you have (e.g. harmonic oscillator, gravitational, electrostatic, etc.) and be careful to express the potential energy _in terms of your chosen coordinates_ if they are not $x, y, z$ coordinates or not oriented in standard (Cartesian 3D) position
+4. Substitute into the Lagrangian with $\mathcal{L} = K - U$. Note that every system, whether single-body or many-body, should have just _one_ Lagrangian
+5. Take the partial derivatives of the Lagrangian and substitute into the Euler-Lagrange equations $\dfrac{d}{dt} \dfrac{\partial \mathcal{L}}{\partial \dot x_i} - \dfrac{\partial{L}}{\partial x_i} = 0$. There is one Euler-Lagrange equation for _every coordinate_, so if you chose to use coordinates $(x, y, z)$, then you'd have three Euler-Lagrange equations, one for $x$, one for $y$, one for $z$. Thankfully, this process is pretty much just math, not physics; as long as you get the math right, your solution should be sound.
+6. From there, find the equations of motion you get from each of the Euler-Lagrange equations. Then you're done!
