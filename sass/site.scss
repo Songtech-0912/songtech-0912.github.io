@@ -186,6 +186,11 @@ header {
   	margin-bottom: 1.5rem;
   }
 
+  #print-notice {
+    font-size: smaller;
+    width: 90%;
+  }
+
   // We just don't want the extra
   // bottom spacing for lists
   // within lists
@@ -288,46 +293,110 @@ header {
 	padding: 0.5rem 0 0.5rem 1rem;
 	border-left: 3px solid rgba(0, 0, 0, 0.3);
 
-	p {
+  	p {
 	    margin-bottom: 0;
 	    font-style: italic;
-	}
- }
+  	}
+  }
 
   table {
-  		border-collapse: collapse;
-  	}
-  
-  	table caption {
-  		font-weight: bold;
-  		margin-bottom: 0.5rem;
-  	}
-  
-  	td, th {
-  		text-align: left;
-  		padding: 0.5rem;
+		border-collapse: collapse;
+	}
 
-  		code {
-  			color: magenta;
-  			background: none;
-  		}
+	table caption {
+		font-weight: bold;
+		margin-bottom: 0.5rem;
+	}
 
-      img {
-        height: 6rem;
-        width: auto;
-        margin: auto;
-      }
-  	}
-  
-  	tr {
-  		border-bottom: 1px solid $border;
-  	}
+	td, th {
+		text-align: left;
+		padding: 0.5rem;
 
-    .footnote-definition {
-      display: flex;
-      flex-direction: row;
+		code {
+			color: magenta;
+			background: none;
+		}
+
+    img {
+      height: 6rem;
+      width: auto;
+      margin: auto;
     }
+	}
+
+	tr {
+		border-bottom: 1px solid $border;
+	}
+
+  .footnote-definition {
+    display: flex;
+    flex-direction: row;
+  }
 }
+
+@media print {
+  body {
+    width: 85ch;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .post {
+    margin: 1rem auto;
+  }
+
+  #print-notice {
+    display: none;
+  }
+
+  h1, h2, h3, h4, h5 {
+    margin: 1.5rem 0;
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: 1.5rem !important;
+  }
+
+  h2 {
+    font-size: 1.3rem !important;
+  }
+
+  h3 {
+    font-size: 1.1rem !important;
+  }
+
+  h4 {
+    font-size: 0.95rem !important;
+  }
+
+  h5 {
+    font-size: 0.85rem !important;
+  }
+
+  p, li {
+    font-size: 0.8rem !important;
+    line-height: 1.65;
+  }
+
+  li {
+      margin-left: 1.2rem;
+      margin-top: 0.3rem;
+      margin-bottom: 0.3rem;
+  }
+
+  pre code {
+    line-height: 1.5;
+    font-size: 0.85rem;
+  }
+
+  .return-link {
+    display: none;
+  }
+}
+
 
 
 .api {

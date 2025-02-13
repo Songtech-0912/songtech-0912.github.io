@@ -3,6 +3,7 @@
 {% block content %}
     <article class="post">
         <h1>{{ page.title }}</h2>
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
         {{ page.content | safe }}
         <a href="/" class="return-link">Back to home</a>
     </article>
