@@ -9,9 +9,9 @@ These are notes taken during RPI's MATH 1010 course, on the topic of integrals a
 
 ## Antiderivatives
 
-An antiderivative is the original function that a derivative came from. For example, $x^2$ is the antiderivative of $2x$, because the $x^2$ was the original function whose derivative is $2x$.
+To introduce the topic of integral calculus, we must begin with understanding the notion of an _antiderivative_. An antiderivative (also called an _indefinite integral_, and we'll see why later) is the opposite of a derivative. The antiderivative of a particular function $f(x)$ is the function whose _derivative_ is $f(x)$. For example, $x^2$ is the antiderivative of $2x$, because $2x$ is the _derivative_ of $x^2$.
 
-Antiderivatives are represented by the "curly S" integral sign, with a $dx$ representing the variable to take the antiderivative with respect to - in this case $x$:
+Antiderivatives are represented by the "curly S" integral sign (again for reasons that will make sense later), with a $dx$ representing the variable to take the antiderivative with respect to - in this case $x$:
 
 {% math() %}
 \int f(x) dx = F(x) + C
@@ -19,26 +19,36 @@ Antiderivatives are represented by the "curly S" integral sign, with a $dx$ repr
 
 Since the derivative of a constant is zero, the antiderivative of $f(x) + 1$, $f(x) + 3$, or $f(x) + 100$ is the same. Thus we add the $C$ known as the constant of integration to remind us that multiple antiderivatives differing by a constant have the same derivative.
 
-The rules of antiderivatives are the inverse of the rules for derivatives:
+### Rules for antiderivatives (indefinite integral formulas)
+
+The rules of antiderivatives (indefinite integrals) are the inverse of the rules for derivatives:
 
 {% math() %}
-\int k~dx = kx + C
+\begin{align*}
+\int k~dx &= kx + C \\
+\int x^n~dx &= \frac{x^{n + 1}}{n + 1} + C \\
+\int \frac{1}{x}~dx &= \ln |x| + C \\
+\int e^x~dx &= e^x + C \\
+\int b^x &= \frac{b^x}{\ln b} + C \\
+\int \cos(x)~dx &= \sin(x) + C \\
+\int \sin(x)~dx &= -\cos(x) + C \\
+\int \frac{dx}{\sqrt{1 - x^2}} &= \operatorname{arcsin}(x) + C \\
+\int \frac{dx}{1 + x^2} &= \operatorname{arctan}(x) + C \\
+\int \frac{dx}{|x|\sqrt{x^2 - 1}} &= \operatorname{arcsec}(x) + C
+\end{align*}
 {% end %}
+
+Note that the last few formulas for inverse trigonometric functions can be generalized to the following:
+
 {% math() %}
-\int x^n~dx = \frac{x^{n + 1}}{n + 1} + C
+\begin{align*}
+\int \frac{du}{\sqrt{a^2 - u^2}} &= \operatorname{arcsin} \left(\frac{u}{a}\right) + C \\
+\int \frac{du}{a^2 + u^2} &= \frac{1}{a} \operatorname{arctan} \left(\frac{u}{a}\right) + C \\
+\int \frac{du}{|u|\sqrt{u^2 - a^2}} &= \frac{1}{a} \operatorname{arcsec} \left(\frac{u}{a}\right) + C
+\end{align*}
 {% end %}
-{% math() %}
-\int \frac{1}{x}~dx = \ln |x| + C
-{% end %}
-{% math() %}
-\int e^x~dx = e^x + C
-{% end %}
-{% math() %}
-\int \cos(x)~dx = \sin(x) + C
-{% end %}
-{% math() %}
-\int \sin(x)~dx = -\cos(x) + C
-{% end %}
+
+Where $u = u(x)$ is some function of $x$, and $du = u'(x) dx$. For more formulas of integrals, a good resource to reference is <https://www.integral-table.com/>.
 
 ### Initial value problems
 
@@ -54,9 +64,9 @@ Thus, $f(x) = x^2 + C$. Then, plugging in the initial value, $f(0) = 1$, so $(0^
 f(x) = x^2 + 1
 {% end %}
 
-## Summation notation
+## Sums
 
-Summation notation is denoted by the summation sign:
+We will now jump to a topic that might _initially_ appear to be completely unrelated - sums and areas. A sum is just what it means - adding a group of numbers (or variables) together. Sums are denoted by the summation sign $\displaystyle \sum$. For instance, one sum could be:
 
 {% math() %}
 \sum_{i = 0}^n a_i
@@ -67,31 +77,32 @@ This means to sum from $a_0$ to $a_n$ - that is:
 {% math() %}
 \sum_{i = 0}^n a_i = a_0 + a_1 + a_2 + a_3 + \dots + a_{n - 1} + a_n
 {% end %}
-## Rules of sums
+
+### Rules of sums
+
+If we are given a sum, we might be interested in what the sum evaluates to (or we might not, but pretend that we are for the time being). Evaluating sums is actually _not possible_ in many cases. However, in cases where a sum _can_ be evaluated, it often helps to use the below identities:
 
 {% math() %}
-\sum_{i = 1}^n c a_i = c \sum_{i = 1}^n a_i
+\begin{align*}
+\sum_{i = 1}^n c a_i &= c \sum_{i = 1}^n a_i \\
+\sum_{i = 1}^n c &= cn \\
+\sum_{i = 1}^n a_i \pm b_i &= \sum_{i = 1}^n a_i \pm \sum_{i = 1}^n b_i
+\end{align*}
 {% end %}
-{% math() %}
-\sum_{i = 1}^n c = cn
-{% end %}
-{% math() %}
-\sum_{i = 1}^n a_i \pm b_i = \sum_{i = 1}^n a_i \pm \sum_{i = 1}^n b_i
-{% end %}
-### Formulas for sums
+
+There also exist special sums that have well-known solutions - these are extremely helpful for evaluating more complicated sums, and they are given below:
 
 {% math() %}
-\sum_{i = 1}^n i = \frac{n(n + 1)}{2}
+\begin{align*}
+\sum_{i = 1}^n i &= \frac{n(n + 1)}{2} \\
+\sum_{i = 1}^n i^2 &= \frac{n(n + 1)(2n + 1)}{6} \\
+\sum_{i = 1}^n i^3 &= \left(\frac{n(n + 1)}{2}\right)^2
+\end{align*}
 {% end %}
-{% math() %}
-\sum_{i = 1}^n i^2 = \frac{n(n + 1)(2n + 1)}{6}
-{% end %}
-{% math() %}
-\sum_{i = 1}^n i^3 = \left(\frac{n(n + 1)}{2}\right)^2
-{% end %}
-## Estimating areas
 
-The left-hand approximation of an area under the curve is given by:
+### Finding and estimating areas
+
+We will now turn to a very useful application of sums - finding _areas_. The idea is this: if we had some shape modelled by a function $f(x)$, then we can approximate the area under the curve by "slicing" the area under the curve into small rectanges, each of width $\Delta x$ (which is some small number) and of height $f(x_i)$. This is called the **left-hand approximation** of an area under the curve, and is given by:
 
 {% math() %}
 A_L = \sum_{i = 1}^{n} f(x_i) \Delta x
@@ -100,15 +111,11 @@ A_L = \sum_{i = 1}^{n} f(x_i) \Delta x
 Given that:
 
 {% math() %}
-\Delta x = \frac{b - a}{n}
-{% end %}
-
-{% math() %}
-x_i = a + (i - 1)\Delta x
-{% end %}
-
-{% math() %}
-x_{i + 1} = a + i \Delta x
+\begin{matrix*}
+\Delta x = \dfrac{b - a}{n},
+&x_i = a + (i - 1)\Delta x.
+&x_{i + 1} = a + i \Delta x
+\end{matrix*}
 {% end %}
 
 The right-hand approximation of an area under the curve is given by:
@@ -123,9 +130,7 @@ The midpoint approximation to the area is given by:
 A_M = \sum_{i = 1}^{n} f\left(\frac{x_i + x_{i + 1}}{n}\right) \Delta x
 {% end %}
 
-## Finding areas
-
-The precise area under a curve is given by:
+Now, these are approximations for finite sums, but in the limit as we sum over increasingly many and increasingly tiny rectangles, we obtain a formula for the _exact_ area under a curve:
 
 {% math() %}
 A = \lim_{n \to \infty} \sum_{i = 1}^n f(x_i) \Delta x
@@ -173,27 +178,38 @@ Now, taking the limit as $n \to \infty$, we get:
 A = \frac{32}{3}
 {% end %}
 
-## Riemann sums and the definite integral
+### Riemann sums and the definite integral
 
-A Riemann sum is given by:
-
-{% math() %}
-\sum_{k = 1}^N f(c_k) \Delta x_k
-{% end %}
-
-The definite integral is given by the limit of the Riemann sum, and represents the area under a curve:
+From our previous discussion of the limit of sums, we can now formalize the idea of computing the area under a curve. A Riemann sum is given by:
 
 {% math() %}
-\int_a^b f(x)dx = \lim_{N \to \infty} \sum_{k = 1}^N f(c_k) \Delta x_k
+\sum_{k = 1}^N f(x_k) \Delta x_k
 {% end %}
 
-The definite integral can be evaluated in simple cases from just geometry, especially when the curve forms a semicircle, triangle, rectangle, or trapezoid with the x-axis.
+The **definite integral** is given by the limit of the Riemann sum, and represents the area under a curve, where $A$ is the area and $y = f(x)$ is the equation of the curve:
+
+{% math() %}
+A = \int_a^b f(x)dx = \lim_{N \to \infty} \sum_{k = 1}^N f(x_k) \Delta x_k
+{% end %}
+
+The definite integral also has some convenient properties that will come in handy later:
+
+{% math() %}
+\begin{gather*}
+\int_a^b f(x) dx = -\int_b^a f(x) dx \\
+\int_a^a f(x) dx = 0 \\
+\int_a^b c f(x) dx = c\int_a^b f(x) dx \\
+\int_a^c f(x) dx = \int_a^b f(x) dx + \int_b^c f(x) dx
+\end{gather*}
+{% end %}
+
+Evaluating the definite integral is called **integration**. The definite integral can be evaluated in simple cases from just geometry, especially when the curve forms a semicircle, triangle, rectangle, or trapezoid with the x-axis. However, in most cases, integration is not an easy task - some definite integrals are almost impossible to solve!
 
 ## Applications of integration
 
-Where do we use integration?
+We described integration from the point of view of finding the area under a curve, but integration is far more general than an area-finding method. Indeed, integration is ubiquitous in the mathematical sciences, with myriad applications:
 
-- Finding areas/surface areas/volumes/arc lengths
+- Finding areas/surface areas/volumes/distances
 - Kinematics - such as finding total displacement, or finding velocity/position from acceleration  
 - Solving differential equations
 - Computing work/potential energy/total energy/
@@ -203,22 +219,7 @@ Where do we use integration?
 - Calculating electric fields and magnetic fields
 - And many, many more places...
 
-## Rules of definite integrals
-
-{% math() %}
-\int_a^b f(x) dx = -\int_b^a f(x) dx
-{% end %}
-{% math() %}
-\int_a^a f(x) dx = 0
-{% end %}
-{% math() %}
-\int_a^b c f(x) dx = c\int_a^b f(x) dx
-{% end %}
-{% math() %}
-\int_a^c f(x) dx = \int_a^b f(x) dx + \int_b^c f(x) dx
-{% end %}
-
-## Fundamental Theorem of Calculus
+## The Fundamental Theorem of Calculus
 
 There are two parts to the Fundamental Theorem of Calculus (FTC). Part 1 of the FTC states that:
 
@@ -302,24 +303,89 @@ To evaluate definite integrals with substitution, we have:
 {% math() %}
 \int_a^b f(u) u' dx = \int_{u(a)}^{u(b)} f(u) du
 {% end %}
-## Integrals of other elementary functions
+
+Note that a direct consequence of the substitution method is the integral of $u'/u$, where $u = u(x)$, is given by:
 
 {% math() %}
-\int \frac{dx}{\sqrt{1 - x^2}} = \sin^{-1}(x) + C
+\int \frac{u'}{u} = \ln | u | + C
 {% end %}
+
+### Integration of functions using the natural log trick
+
+A consequence of the substitution method for integrals is the "natural log trick":
+
 {% math() %}
-\int \frac{dx}{x^2 + 1} = \tan^{-1} (x) + C
+\int \frac{u'}{u} = \ln | u | + C
 {% end %}
+
+As an example to illustrate why this formula is the case, let us take the example of evaluating the following integral:
+
 {% math() %}
-\int \frac{dx}{|x| \sqrt{x^2 -1}} = \sec^{-1} |x| + C
+\int \tan(5x) dx
 {% end %}
+
+We first rewrite tangent in terms of sine and cosine:
+
 {% math() %}
-\int b^x = \frac{b^x}{\ln b} + C
+\int \frac{\sin x}{\cos x} dx
 {% end %}
+
+If we use the substitution $u = \cos x$, we have::
+
+{% math() %}
+\begin{gather*}
+\frac{du}{dx} = -\sin x
+dx = \frac{du}{-\sin x}
+\end{gather*}
+{% end %}
+
+This means that:
+
+{% math() %}
+\begin{align*}
+\int \frac{\sin x}{\cos x} dx &= \int \frac{\sin x}{-\sin x} \frac{1}{u} du \\
+&= -\int \frac{1}{u} du \\
+&= -\ln | \cos(u) | + C
+\end{align*}
+{% end %}
+
+#### Differential equations with the natural log trick
+
+We may use the natural log trick to solve not only integrals, but also _differential equations_. Differential equations specify a derivative of an unknown function as a function of $x$, $y$, or some other variables; the goal is to find the exact form of the unknown function. Consider, for instance, the differential equation: 
+
+{% math() %}
+\frac{dy}{dx} = \frac{2x}{x^2 - 9}
+{% end %}
+
+To solve this differential equation, we can multiply by $dx$ on both sides. However, this must be done in secret because this operation is technically "illegal" in mathematical terms (derivatives _are not fractions_; it just happens that sometimes they can be treated as such). One must then leave the scene of the mathematical crime and erase all the evidence used to find the answer. So we shall now commit the crime in question, and multiply by $dx$ on both sides, which results in:
+
+{% math() %}
+dy = \frac{2x}{x^2 - 9} dx
+{% end %}
+
+If we integrate both sides, we then have:
+
+{% math() %}
+\int dy = y = \int \frac{2x}{x^2 - 9} dx
+{% end %}
+
+This is where we can use the natural log trick. Let $u = x^2 - 9$. Then:
+
+{% math() %}
+\begin{align*}
+\frac{du}{dx} &= 2x \\
+\frac{du}{2x} &= dx \\
+y &= \int \frac{2x}{2x} \frac{1}{u} du \\
+&= \int \frac{1}{u} du \\
+&= \ln|x^2 - 9| + C
+\end{align*}
+{% end %}
+
+Which is the _general solution_ to our differential equation.
 
 ## Average value of a function
 
-The average value of a function is given by:
+We may also use integration to find the _average_ value of a function, which is very useful for continuously-varying data (like velocity or position). The average value of a function is given by:
 
 {% math() %}
 \frac{1}{b-a} \int f(x) dx
@@ -343,15 +409,13 @@ The area between curves $f(x)$ and $g(x)$, assuming $f(x) \geq g(x)$ for all $x 
 \int_a^b f(x) - g(x) dx
 {% end %}
 
-For curves $f(y)$ and $g(y)$, just replace every $x$ with $y$.
-
-If $f(x) \ngeq g(x)$ for all $x \in [a, b]$, the area must be split into regions that are separately evaluated to make the condition true.
+> **Other specific cases:** For curves $f(y)$ and $g(y)$, just replace every $x$ with $y$. If $f(x) \ngeq g(x)$ for all $x \in [a, b]$, the area must be split into regions that are separately evaluated to make the condition true.
 
 ## Solids of revolution
 
-Solids of revolution are obtained by the rotation of a region in the xy-plane about an axis. 
+Another application of integrals generalizes the area-finding process to finding the surface area and volume of a particular shape. Such shapes must have a specific requirement: they have to be **rotationally-symmetric**, and thus we call them **solids of revolution**. By nature of their rotational symmetry, they are obtained by the rotation of a region in the xy-plane about an axis. 
 
-Note: Unlike many other areas of calculus, they are not very widely used in physics or applied math areas, but they are a good teaching/learning tool to practice integration.
+> **Note:** Unlike many other uses of integration, this particular application of integrals is not very widely used in physics or applied math areas, but they are a good teaching/learning tool to practice integration.
 
 ### Disk method
 
@@ -577,15 +641,11 @@ There are several common approaches for such integrals:
 - If both $m$ and $n$ are even, use the half-angle identities:
 
 {% math() %}
-\sin^2x = \frac{1 - \cos 2x}{2}
-{% end %}
-
-{% math() %}
-\cos^2 x = \frac{1 + \cos 2x}{2}
-{% end %}
-
-{% math() %}
-\sin x \cos x = \frac{\sin 2x}{2}
+\begin{align*}
+\sin^2x &= \frac{1 - \cos 2x}{2} \\
+\cos^2 x &= \frac{1 + \cos 2x}{2} \\
+\sin x \cos x &= \frac{\sin 2x}{2}
+\end{align*}
 {% end %}
 
 Meanwhile, for trigonometric integrals in the general form:
@@ -743,10 +803,13 @@ We also know that:
 \cot \theta = \frac{1}{\tan \theta} = \frac{\text{Adjacent}}{\text{Opposite}}
 {% end %}
 
-And by Pythagoras:
+And by Pythagoras's theorem, we have:
 
 {% math() %}
-\text{Adjacent}^2 = \text{Hypotenuse}^2 - \text{Opposite}^2 = 2^2 - x^2 = 4 - x^2
+\begin{align*}
+\text{Adjacent}^2 &= \text{Hypotenuse}^2 - \text{Opposite}^2 \\
+&= 2^2 - x^2 \\ &= 4 - x^2
+\end{align*}
 {% end %}
 
 So:
@@ -758,11 +821,10 @@ So:
 And:
 
 {% math() %}
-\cot \theta = \frac{\sqrt{4 - x^2}}{x}
-{% end %}
-
-{% math() %}
-\theta = \operatorname{arcsin} \left(\frac{x}{2}\right)
+\begin{align*}
+\cot \theta &= \frac{\sqrt{4 - x^2}}{x} \\
+\theta &= \operatorname{arcsin} \left(\frac{x}{2}\right)
+\end{align*}
 {% end %}
 
 We can now rewrite the solution in terms of $x$:
@@ -786,21 +848,19 @@ We first factor:
 We set:
 
 {% math() %}
-1 + \frac{9}{4} t^2 = \sec^2 \theta
-{% end %}
-
-{% math() %}
-\frac{9}{4} t^2 = \tan^2 \theta
+\begin{align*}
+1 + \frac{9}{4} t^2 &= \sec^2 \theta \\
+\frac{9}{4} t^2 &= \tan^2 \theta
+\end{align*}
 {% end %}
 
 Therefore:
 
 {% math() %}
-t = \frac{2}{3} \tan \theta
-{% end %}
-
-{% math() %}
-dt = \frac{2}{3} \sec^2 \theta d \theta
+\begin{align*}
+t &= \frac{2}{3} \tan \theta \\
+dt &= \frac{2}{3} \sec^2 \theta d \theta
+\end{align*}
 {% end %}
 
 Subtituting, we get:
@@ -939,24 +999,20 @@ After finding the partial fraction decomposition of a rational function, it is a
 
 ## Improper integrals
 
-A improper integral is an integral defined either on an unbounded domain, or a domain that is not integratabtle, then:
+A improper integral is an integral defined either on an unbounded domain, or a domain that is not integratable, then:
 
 {% math() %}
 \int_a^k f(x) dx = \lim_{b \to k} \int_a^b f(x) dx
 {% end %}
 
-For instance:
+An improper integral satisfies the identities:
 
 {% math() %}
-\int_0^\infty f(x)dx = \lim_{b \to \infty} \int_0^b f(x) dx
-{% end %}
-
-{% math() %}
-\int_{-\infty}^0 f(x)dx = \lim_{b \to -\infty} \int_b^0 f(x) dx
-{% end %}
-
-{% math() %}
-\int_{-\infty}^\infty f(x) dx = \lim_{a \to -\infty} \int_a^0 f(x) dx + \lim_{b \to \infty} \int_0^b f(x) dx
+\begin{align*}
+\int_0^\infty f(x)dx &= \lim_{b \to \infty} \int_0^b f(x) dx \\
+\int_{-\infty}^0 f(x)dx &= \lim_{b \to -\infty} \int_b^0 f(x) dx \\
+\int_{-\infty}^\infty f(x) dx &= \lim_{a \to -\infty} \int_a^0 f(x) dx + \lim_{b \to \infty} \int_0^b f(x) dx
+\end{align*}
 {% end %}
 
 If the limit exists (evaluates to a finite number), then the integral is said to **converge**; otherwise, the integral is said to **diverge**.
@@ -984,10 +1040,9 @@ For an improper integral of the function $x^{-p}$, there are three possible case
 | $p = 1$ | None | All integrals diverge |
 
 
-
 ## Arc length
 
-For a curve $y = f(x)$, an infinitesimal segment can be found by the Pythagorean theorem:
+We will cover one last application of integration: finding the total length (called the _arc length_) of a curve. For a curve $y = f(x)$, an infinitesimal segment can be found by the Pythagorean theorem:
 
 {% math() %}
 ds^2 = dx^2 + dy^2
@@ -1011,9 +1066,9 @@ Now taking the integral of this infinitesimal arc length, we find the length $S$
 S = \int ds = \int_a^b \sqrt{1 + \left(\frac{dy}{dx}\right)^2} dx
 {% end %}
 
-## Surface area of a surface of revolution
+### Finding the surface area of a surface of revolution from arc length
 
-An infinitesimal area is given by:
+We may combine our technique for finding the arc length and the methods we used for finding volumes of solids of revolution to find their _surface areas_ instead. To start, we can write out the area of an infinitesimal portion of a rotationally-symmetric surface by:
 
 {% math() %}
 dA = 2\pi r ds

@@ -52,15 +52,12 @@ For instance, suppose we were to compute the derivative of $f(x) = x^2$ at $x = 
 Which becomes:
 
 {% math() %}
-\lim_{h \to 0} \frac{(x^2 + 2hx + h^2) - x^2}{h}
-{% end %}
-
-{% math() %}
-\lim_{h \to 0} \frac{2hx + h^2}{h}
-{% end %}
-
-{% math() %}
-\lim_{h \to 0} 2x + h = 2x
+\begin{align*}
+\lim_{h \to 0} \frac{(x^2 + 2hx + h^2) - x^2}{h} &=
+\lim_{h \to 0} \frac{2hx + h^2}{h} \\
+&=\lim_{h \to 0} 2x + h \\ 
+&= 2x
+\end{align*}
 {% end %}
 
 So the derivative $f'(x) = 2x$. Therefore, $f'(2) = 2(2) = 4$. Taking the derivative is a process called **differentiation**.
@@ -78,16 +75,6 @@ And can be computed using the derivative.
 Given just the definition of the derivative, the derivative of a constant function $f(x) = C$ is $f'(x) = 0$, and the derivative of a linear function $f(x) = ax + b$ is $f'(x) = a$. The derivative of a power function $f(x) = x^n$ is $f'(x) = nx^{n - 1}$. Derivatives are also _linear_: $\frac{d}{dx} (a f(x) \pm b(g(x)) = a \frac{df}{dx} \pm b \frac{dg}{dx}$.
 
 If the right-hand derivative and left-hand derivative exist but are not **equal** at $x = a$, then $f(x)$ has a **corner** at $x = a$ and is not differentiable at $a$. Differentiability implies continuity, but not the other way around.
-
-## More derivative rules
-
-{% math() %}
-\frac{d}{dx} (a^x) = a^x \ln (a)
-{% end %}
-
-{% math() %}
-\frac{d}{dx} (e^x) = e^x
-{% end %}
 
 ## Differentiability
 
@@ -120,38 +107,34 @@ The nth-order derivative means you are taking the derivative nth times, and is n
 \frac{d^n f}{dx^n}
 {% end %}
 
-or (less commonly) $f^{(n)}(x)$.
+or (less commonly) as:
+
+{% math() %}
+f^{(n)}(x)
+{% end %}
 
 In general, if a polynomial is of nth degree, every higher-order derivative after the $(n + 1)$ derivative is zero. For example, if our polynomial is $x^8$, then all derivatives above the 9th derivative is zero, so $\frac{d^{100}}{dx^{100}} x^8 = 0$. Additionally, all the higher-order derivatives of $e^x$ are $e^x$.
 
 ## Trigonometric derivatives
 
-The fundamental trigonometric derivatives can be derived from the limit definition, and are given by:
+The fundamental trigonometriconometric derivatives can be derived from the limit definition, and are given by:
 
 {% math() %}
-\frac{d}{dx} \sin x = \cos x
+\begin{align*}
+\frac{d}{dx} \sin x &= \cos x \\
+\frac{d}{dx} \cos x &= -\sin x
+\end{align*}
 {% end %}
 
-{% math() %}
-\frac{d}{dx} \cos x = -\sin x
-{% end %}
-
-The rest of the trig derivatives can be calculated using trig identities. They are given by:
+The rest of the trigonometric derivatives can be calculated using trigonometriconometric identities. They are given by:
 
 {% math() %}
-\frac{d}{dx} \tan x = \sec^2 x
-{% end %}
-
-{% math() %}
-\frac{d}{dx} \sec x = \sec x \tan x
-{% end %}
-
-{% math() %}
-\frac{d}{dx} \csc x = -\csc x \cot x
-{% end %}
-
-{% math() %}
-\frac{d}{dx} \cot x = -\csc^2 x
+\begin{align*}
+\frac{d}{dx} \tan x &= \sec^2 x \\
+\frac{d}{dx} \sec x &= \sec x \tan x \\
+\frac{d}{dx} \csc x &= -\csc x \cot x \\
+\frac{d}{dx} \cot x &= -\csc^2 x
+\end{align*}
 {% end %}
 
 ## Chain rule
@@ -171,15 +154,12 @@ y = \sin(x^3 + 4x^2)
 Then $y = \sin(u)$ and $u = x^3 + 4x^2$. Therefore:
 
 {% math() %}
-\frac{df}{du} = \cos u = \cos (x^3 + 4x^2)
-{% end %}
-
-{% math() %}
-\frac{du}{dx} = 3x^2 + 8x
-{% end %}
-
-{% math() %}
-\frac{dy}{dx} = \frac{df}{du} \frac{du}{dx} = \cos (x^3 + 4x^2)(3x^2 + 8x)
+\begin{align*}
+\frac{df}{du} &= \cos u = \cos (x^3 + 4x^2) \\
+\frac{du}{dx} &= 3x^2 + 8x \\
+&\Rightarrow \frac{dy}{dx} = \frac{df}{du} \frac{du}{dx} \\ 
+&\qquad \quad = \cos (x^3 + 4x^2)(3x^2 + 8x)
+\end{align*}
 {% end %}
 
 ## Implicit differentiation
@@ -230,24 +210,19 @@ y'= -\frac{x}{y}
 
 So using implicit differentiation, we are able to find the derivative of $y$, even though we didn't know what exactly the function $y$ was. We can then use that derivative to e.g. find the tangent line to the implicit function, which in this case would be the tangent line to the circle.
 
-Note that derivatives of implicit functions must be checked for domain restrictions (such as division over zero and square root of -1).
+> **Note:** there is technically one more step: derivatives of implicit functions must be checked for domain restrictions (such as division over zero and square root of -1), meaning that they _may not exist for all $x$_.
 
-We can use implicit differentiation to solve for the derivative of the inverse trig functions:
+## Derivatives of inverse trigonometric functions
 
-{% math() %}
-y = \sin^{-1}(x)
-{% end %}
+We can use implicit differentiation to solve for derivatives of the inverse trigonometric functions. Let us first solve for the derivative of inverse sign (that is, $\sin^{-1}(x)$). If we implicitly differentiate the equation $y = \sin^{-1}(x)$ we have:
 
 {% math() %}
-\sin(y) = x
-{% end %}
-
-{% math() %}
-\cos(y) y' = 1
-{% end %}
-
-{% math() %}
-y' = \frac{1}{\cos y}
+\begin{align*}
+y & = \sin^{-1}(x) \\
+\sin(y) & = x \\
+\cos(y) y' & = 1 \\
+y' & = \frac{1}{\cos y}
+\end{align*}
 {% end %}
 
 But we know that $\cos^2(y) + \sin^2(y) = 1$. Since $\sin(y) = x$, we can say that:
@@ -262,9 +237,58 @@ Therefore, we have:
 y' = \frac{1}{\sqrt{1 - x^2}}
 {% end %}
 
-## General exponential function
+We can perform the same procedure to find the derivative of inverse tangent (that is, $\tan^{-1}(x)$. If we let $y = \tan^{-1}(x)$, then conversely it must be true that:
 
-The general derivative of the exponential function $e^u$ is given by:
+{% math() %}
+\tan y = x
+{% end %}
+
+Which we can implicitly differentiate to have:
+
+{% math() %}
+\begin{align*}
+\sec^2 y \frac{dy}{dx} &= 1
+\frac{dy}{dx} &= \frac{1}{\sec^2 y}
+\end{align*}
+{% end %}
+
+To solve for $\sec^2 y$, we can make use of the identity:
+
+{% math() %}
+\sec^2 y = 1 + \tan^2 y = 1+ x^2
+{% end %}
+
+Therefore:
+
+{% math() %}
+y' = \frac{1}{1 + x^2}
+{% end %}
+
+Repeating the process yields the generalized derivative formulas for inverse trigonometric functions of an arbitrary variable $u = u(x)$:
+
+{% math() %}
+\begin{align*}
+\frac{d}{dx} \operatorname{arcsin} u &= \frac{u'}{\sqrt{1 - u^2}} \\
+\frac{d}{dx} \operatorname{arccos} u &= -\frac{u'}{\sqrt{1 - u^2}} \\
+\frac{d}{dx} \operatorname{arctan} u &= \frac{u'}{1+ u^2} \\
+\frac{d}{dx} \operatorname{arccsc} u &= -\frac{u'}{|u| \sqrt{u^2 - 1}} \\
+\frac{d}{dx} \operatorname{arcsec} u &= \frac{u'}{|u| \sqrt{u^2 - 1}} \\
+\frac{d}{dx} \operatorname{arccot} u &= -\frac{u'}{1+ u^2}
+\end{align*}
+{% end %}
+
+## Derivatives of exponential functions
+
+We will now take a look at taking derivatives of _exponential functions_. Exponential functions describe _exponential growth_ (or decay); therefore, intuition suggests that such functions have derivatives proportional to themselves (i.e. proportional to $a^x$ or $e^x$). Indeed, this is true. The derivatives of $e^x$ and $a^x$ (where $a$ is a constant) are given by:
+
+{% math() %}
+\begin{align*}
+\frac{d}{dx} (a^x) &= a^x \ln (a) \\
+\frac{d}{dx} (e^x) &= e^x
+\end{align*}
+{% end %}
+
+We may adapt these formulas to more _general_ exponential functions in the form $e^{u(x)}$ or $a^{u(x)}$. The general derivative of the exponential function $e^u$ is given by:
 
 {% math() %}
 \frac{d}{dx} e^u = e^u \frac{du}{dx}
@@ -276,23 +300,17 @@ The derivative of the general exponential function $a^u$ is given by:
 \frac{d}{dx} a^u = a^u \ln(a) \frac{du}{dx}
 {% end %}
 
-## Logarithmic function
+## Derivatives of logarithmic functions
 
 We want to find the derivative of $\ln(x)$. We can use implicit differentiation to find its derivative:
 
 {% math() %}
-y = \ln(x)
-{% end %}
-
-{% math() %}
-e^y = x
-{% end %}
-
-{% math() %}
-e^y y' = 1
-{% end %}
-{% math() %}
+\begin{gather*}
+y = \ln(x) \\
+e^y = x \\
+e^y y' = 1 \\
 y' = \frac{1}{e^y}
+\end{gather*}
 {% end %}
 
 But we know that $e^y = x$, therefore:
@@ -314,6 +332,75 @@ The derivative of the general logarithmic function can be found through the chan
 {% end %}
 
 When doing derivatives of logarithms, using log rules often help simplify a complex logarithm into much simpler logarithms that are easier to evaluate.
+
+## Derivatives of inverse functions
+
+Given a function $f(x)$, the derivative of its inverse is given by:
+
+{% math() %}
+\mathrm{inv}'(x) = \frac{1}{f'(\mathrm{inv}(x))}
+{% end %}
+
+For instance, consider the function:
+
+{% math() %}
+f(x) = \sqrt{x - 4}
+{% end %}
+
+First, we want to find the inverse function. To do so, we swap $x$ and $y$:
+
+{% math() %}
+\begin{align*}
+x &= \sqrt{y - 4} \\
+x^2 &= y - 4 \\
+y &= x^2 + 4 \\
+f^{-1} (x) &= x^2 + 4
+\end{align*}
+{% end %}
+
+Now, we can find the derivative of our inverse function:
+
+{% math() %}
+\begin{align*}
+\mathrm{inv}'(x) &= \frac{1}{f'(x^2 + 4)} \\
+f'(x) &= \frac{1}{2\sqrt{x-4}} \\
+\mathrm{inv}'(x) &= \frac{1}{f'(x^2 + 4)} \\
+\mathrm{inv}'(x) &= 2\sqrt{(x^2 + 4) - 4}
+\end{align*}
+{% end %}
+
+We finally obtain:
+
+{% math() %}
+\mathrm{inv}'(x) = 2x
+{% end %}
+
+As another example, let us consider the problem of finding $f^{-1'}(1/2)$ for $f(x) = \sin x$ given $x \in [-\pi/2, \pi / 2]$. Following the method we mentioned, we first find $f^{-1}(1/2)$:
+
+{% math() %}
+\sin y = \frac{1}{2}\, \Rightarrow \, y = \frac{\pi}{6}
+{% end %}
+
+Then, we find $f'(x)$
+
+{% math() %}
+f'(x) = \cos x
+{% end %}
+
+Then, we can use the formula:
+
+{% math() %}
+\begin{align*}
+\mathrm{inv}'(1/2) &= \frac{1}{f'(\pi/6)} \\
+\mathrm{inv}'(1/2) &= \frac{1}{\cos(\pi/6)}
+\end{align*}
+{% end %}
+
+Giving the final answer of:
+
+{% math() %}
+f^{-1'}(1/2) = \frac{2}{\sqrt{3}}
+{% end %}
 
 ## Logarithmic differentiation
 
@@ -497,7 +584,7 @@ So:
 We can also use the rule by turning a limit that is a product functions into a fraction of functions. That is:
 
 {% math() %}
-\lim_{x \to a} f(x) g(x) = \lim_{x \to a} \frac{f(x)}{1 / g(x)} = \lim_{x \to a} \frac{g(x)}{1 / f(x)}
+\lim_{x \to a} f(x) g(x) = \lim_{x \to a} \frac{f(x)}{1 / g(x)} = \lim_{x \to a} \frac{g(x)}{1 / f(x)} = \lim_{x \to a} \frac{g'(x)}{\left(1 / f(x)\right)'}
 {% end %}
 
 ## Optimization
@@ -582,37 +669,23 @@ f(x) = \sqrt{x - 4}
 First, we want to find the inverse function. To do so, we swap $x$ and $y$:
 
 {% math() %}
-x = \sqrt{y - 4}
-{% end %}
-
-{% math() %}
-x^2 = y - 4
-{% end %}
-
-{% math() %}
-y = x^2 + 4
-{% end %}
-
-{% math() %}
-f^{-1} (x) = x^2 + 4
+\begin{align*}
+x &= \sqrt{y - 4} \\
+x^2 &= y - 4 \\
+y &= x^2 + 4 \\
+f^{-1} (x) &= x^2 + 4
+\end{align*}
 {% end %}
 
 Now, we can find the derivative of our inverse function:
 
 {% math() %}
-\mathrm{inv}'(x) = \frac{1}{f'(x^2 + 4)}
-{% end %}
-
-{% math() %}
-f'(x) = \frac{1}{2\sqrt{x-4}}
-{% end %}
-
-{% math() %}
-\mathrm{inv}'(x) = \frac{1}{f'(x^2 + 4)}
-{% end %}
-
-{% math() %}
-\mathrm{inv}'(x) = 2\sqrt{(x^2 + 4) - 4}
+\begin{align*}
+\mathrm{inv}'(x) &= \frac{1}{f'(x^2 + 4)} \\
+f'(x) &= \frac{1}{2\sqrt{x-4}} \\
+\mathrm{inv}'(x) &= \frac{1}{f'(x^2 + 4)} \\
+\mathrm{inv}'(x) &= 2\sqrt{(x^2 + 4) - 4}
+\end{align*}
 {% end %}
 
 We finally obtain:
