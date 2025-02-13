@@ -353,10 +353,29 @@ We end up with (after canceling the zeroes):
 
 See [derivative notes](@/differentiation.md) for discussion of this limit evaluation technique.
 
-## Intermediate Value Theorem
+## The Epsilon-Delta definition of a limit
 
-The **intermediate value theorem** (IVT) states that if a function is continuous in a _closed_ interval from $a$ to $b$, then it takes on every value from $f(a)$ to $f(b)$. To use the IVT, you must show that:
+Up to this point, our discussion of limits has largely left out _what defines a limit_. The idea of a value that a function "approaches" but never reaches - while intuitive - is logically unsatisfactory and non-rigorous. To rigorously define what a limit is, we must turn to the _formal_ definition of a limit: the **epsilon-delta definition**:
 
-- The interval is **closed**
-- The function is **continuous** on the interval
-- Given a value $a \leq C \leq b$, then $f(a) \leq f(C) \leq f(b)$
+> **Epsilon-Delta ($\varepsilon-\delta$) definition of a limit:** for $\varepsilon > 0$, there exists $\delta > 0$ such that $0 < |x - c| < \delta$ implies $0 < |f(x) - L| < \varepsilon$. Then, $L = \displaystyle \lim_{x \to c} f(x)$.
+
+What this means is that as we approach (but don't actually reach) some value $x=c$, such that we are a tiny (but nonzero!) _distance_ $\delta$ away from $x = c$, then we find that $f(x)$ is a *tiny difference* from $L$, the limiting value of $f(x)$ at $x = c$. We can make the distance $\delta$ as small as we want and approach as close to $x = c$ as we want, such that the difference $\varepsilon$ between $f(x)$ and its limit $L$ becomes as small as we want. Thus we say that the limit $L = \displaystyle \lim_{x \to c} f(x)$.
+
+We may use the epsilon-delta definition to _prove_ that $\displaystyle \lim_{x \to 4} (5x - 3) = 17$. To do so, let us first define $L = 17$ as the limiting value of $5x - 3$ as $x \to 4$. With the epsilon-delta definition, we can follow these steps:
+
+{% math() %}
+\begin{gather*}
+|5x - 3 - L| < \varepsilon \\
+|5x - 3 - 17 | < \varepsilon \\
+|5x - 20| < \varepsilon \\
+|5(x - 4) | < \varepsilon \\
+|x - 4 | < \frac{\varepsilon}{5} \\
+\delta = \frac{\varepsilon}{5}
+\end{gather*}
+{% end %}
+
+And thus we have found a value of $\delta$ which we can make as small as we want such that $f(x)$ is an arbitrarily small difference $\varepsilon$ from the value $L$. For instance, given $\varepsilon = 0.1$, then $\delta = \frac{\varepsilon}{5} = 0.02$. We can show that this works. Since we require the condition that $0 < |x - 4 | < 0.02$, we can pick the value $x = 4.01$ which satisfies this condition. We then indeed find that:
+
+{% math() %}
+|f(4.01) - 17| = 0.05 \Rightarrow 0.05 < \varepsilon
+{% end %}
