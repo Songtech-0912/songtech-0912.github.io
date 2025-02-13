@@ -304,15 +304,9 @@ To evaluate definite integrals with substitution, we have:
 \int_a^b f(u) u' dx = \int_{u(a)}^{u(b)} f(u) du
 {% end %}
 
-Note that a direct consequence of the substitution method is the integral of $u'/u$, where $u = u(x)$, is given by:
-
-{% math() %}
-\int \frac{u'}{u} = \ln | u | + C
-{% end %}
-
 ### Integration of functions using the natural log trick
 
-A consequence of the substitution method for integrals is the "natural log trick":
+A direct consequence of the substitution method for integrals is the "natural log trick":
 
 {% math() %}
 \int \frac{u'}{u} = \ln | u | + C
