@@ -850,7 +850,7 @@ ds^2 = g_{\mu \nu} dx^\mu dx^\nu
 In general relativity, separate space and time coordinates essentially lose most of their meaning. Clocks and rulers don't just not match up; they are _literally_ themselves distorted by spacetime. For this reason it actually becomes _impossible_ to define a coordinate system that stays physically-meaningful outside a local region of spacetime, because the coordinates themselves change as spacetime changes. For all of these reasons (and more), the Minkowski metric $\eta_{\mu \nu}$ is replaced by the more general spacetime metric $g_{\mu \nu}$. The analogous equation to $\dfrac{dP^\mu}{dt} = F^\mu$ is written with the _proper time_ and is given by:
 
 {% math() %}
-\dfrac{d^2 X^\mu}{d\tau^2} = -\Gamma^\mu_{\alpha \beta} \dfrac{dx^\mu}{d\tau} \dfrac{dx^\nu}{d\tau}
+\dfrac{d^2 X^\mu}{d\tau^2} = -\Gamma^\mu_{\alpha \beta} \dfrac{dx^\alpha}{d\tau} \dfrac{dx^\beta}{d\tau}
 {% end %}
 
 The equations that govern spacetime (and correspondingly how all coordinates change) are the **Einstein Field Equations**:
