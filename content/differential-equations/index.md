@@ -162,15 +162,19 @@ And with integration, it can be solved:
 
 The idea is to move all the terms in $x$ to one side, move all the terms in $y$ to the other side, and integrate both sides. This gives a **general solution** to the differential equation, which is a family of functions. A particular solution (a single exact function) can be found if initial conditions are provided.
 
-As an example, consider the exponential change differential equation, where $k$ is a constant:
+### The exponential change equation
+
+A good example of applying the separation of variables is the process of solving the **exponential change** differential equation, where $k$ is a constant:
 
 {% math() %}
 \frac{dy}{dt} = ky
 {% end %}
 
-This differential equation is saying that an unknown function $y(t)$ changes through time proportionally to its value. It's natural that this would lead to exponential behavior: as the value of $y$ it changes more and more rapidly. The precise type of change depends on sign - if $k$ is positive, then the change is growth, if $k$ is negative, the change is decay.
+This differential equation essentially says that an unknown function $y(t)$ changes through time proportionally to its value. It's natural that this would lead to exponential behavior: as the value of $y$ it changes more and more rapidly. The precise type of change depends on sign - if $k$ is positive, then the change is growth, if $k$ is negative, the change is decay. Thus equation is sometimes also known as the _exponential growth_ or _exponential decay_ equation (depending on context). 
 
-To solve, we will use separation of variables, which involves treating the derivative as almost a fraction. We first multiply both sides by $dt$:
+Exponential change equations occur in many areas of math and science. A specific example is the half-life of a radioactive isotope. Radioactive isotopes (such as Uranium-238 or Carbon-14) are unstable atoms that spontaneously decay into other atoms. In this case, $y$ represents the number of atoms of the particular isotope that have not yet decayed, while $k$ is a negative number that controls the _rate of decay_. Another example is the light intensity under the ocean. In this case, $L$ represents the light intensity as a function of distance under the ocean's surface.
+
+But let us put aside the physical details and just examine the mathematics used to solve the differential equation. We will use separation of variables, which involves treating the derivative almost like a fraction. We first multiply both sides by $dt$:
 
 {% math() %}
 \frac{dy}{dt} dt = ky dt
@@ -248,7 +252,9 @@ We can now substitute $C_4 = 1$. Therefore, for the initial value $y(0) = 1$, th
 y(t) = e^{kt}
 {% end %}
 
-As another example, consider the differential equation of a falling object undergoing drag, where $m$ and $k$ are constants:
+### The equation of freefall with air resistance
+
+As another example, consider the differential equation of a falling object undergoing drag (such as air resistance), where $m$ and $k$ are constants:
 
 {% math() %}
 m \frac{dv}{dt} = mg - kv
@@ -384,6 +390,38 @@ If we substitute this value of $C$ back into the equation, we get the _particula
 
 {% math() %}
 v(t) = \frac{m}{k} \left(g - \frac{mg}{k} e^{-\frac{k}{m}t} \right)
+{% end %}
+
+### Other common separable differential equations
+
+Separable differential equations are relatively rare. But this also means that those that are separable are often well-studied. We will show a few more separable differential equations in the following sections and state their solutions (but we will not solve them ourselves).
+
+#### Limited growth differential equation
+
+The differential equation for limited growth is:
+
+{% math() %}
+\frac{dy}{dt} = k(n - y)
+{% end %}
+
+With the general solution:
+
+{% math() %}
+y = n - Ae^{-kt}
+{% end %}
+
+#### Logistic growth differential equation
+
+The differential equation for logistic growth is:
+
+{% math() %}
+\frac{dy}{dt} = ky(n - y)
+{% end %}
+
+With the general solution:
+
+{% math() %}
+y = \frac{n}{1 + Ae^{-nkt}}
 {% end %}
 
 ## The method of substitution
@@ -585,7 +623,7 @@ And then moving every term other than $y'$ to the RHS:
 y^{-2} y' = y^{-1} -1
 {% end %}
 
-The logistic differential equation is a special case of the Bernoulli differential equation with $n = 2$; the general form of a Bernoulli differential equation is:
+The logistic differential equation (which we saw previously) is a special case of the Bernoulli differential equation with $n = 2$; the general form of a Bernoulli differential equation is:
 
 {% math() %}
 y' + p(x) y = q(x) y^n
@@ -1892,6 +1930,43 @@ The Laplace transform of the Dirac Delta function is therefore:
 {% math() %}
 \mathscr{L}\{\delta(t - c)\} = e^{-sc}
 {% end %}
+
+## Euler's method for ODEs
+
+We have explored ways to solve ODEs analytically (i.e. find exact solutions) in detail. But as we discussed previously, an analytical solution cannot _always_ be found. This doesn't mean the solution doesn't exist; it just means that the solution cannot be written in terms of "familiar" functions such as polynomials, trigonometric functions, exponential functions, and so forth (although in some cases they can be written as _infinite sums_ of "familiar" functions, which we will see shortly with Fourier series). Euler's method is a **numerical** method for solving differential equations. It is given by:
+
+$$
+dy = f'(x) dx
+$$
+
+$$
+y_n = y_{n - 1} + dy
+$$
+
+For instance, take the differential equation:
+
+{% math() %}
+\begin{matrix*}
+\dfrac{dy}{dx} = y, & y(0) = 1
+\end{matrix*}
+{% end %}
+
+We already know the solution - $y = e^x$, since the only function for which the derivative of the function equals itself is $e^x$. But suppose we _didn't_ know the solution. We can use Euler's method instead. While Euler's method is typically run on computer, we can also do it manually, just like mathematicians centuries ago. We arrive at the following table:
+
+| $x$ | $y$ | $f'(x)$ | $dy$ |
+|---|---|---------|------------|
+| $x_0$ | $y_0$ | $f'(x_0, y_0)$ | $f'(x_0, y_0) \cdot dx$ |
+| $x_1 = x_0 + dx$ | $y_1 = y_0 + dy$ | $f'(x_1, y_1)$ | $f'(x_1, y_1) \cdot dx$ |
+| $x_2 = x_1 + dx$ | $y_2 = y_1 + dy$ | $f'(x_2, y_2)$ | $f'(x_2, y_2) \cdot dx$ |
+| $\dots$ | | | |
+
+Using $dx = 0.2$, our table becomes:
+
+| $x$ | $y$ | $f'(x)$ | $dy$ |
+|---|---|---------|------------|
+| 0 | 1| 1 | $1 \cdot 0.2 = 0.2$ |
+| 0.2 | $1 + 0.2$ | 1.4 | $1.4 \cdot 0.2 = 0.28$ |
+| $\dots$ | | | |
 
 ## Fourier Series
 
