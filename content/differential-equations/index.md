@@ -1,9 +1,9 @@
 +++
-title = "Notes on Differential Equations"
+title = "Introduction to Differential Equations"
 date = 2024-01-10
 +++
 
-These are notes taken in RPI's MATH 2400 course, on an introduction to differential equations. A special thanks to Dr. Kam of Rensselaer Polytechnic Institute for her excellent instruction and permission to share these notes.
+These are my notes taken in RPI's [MATH 2400 course](https://catalog.rpi.edu/preview_course_nopop.php?catoid=11&coid=18946). A special thanks to Dr. Kam of Rensselaer Polytechnic Institute for her excellent instruction and permission to share these notes.
 
 <!-- more -->
 

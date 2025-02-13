@@ -11,4 +11,5 @@ These are my personal physics notes taken at my time at RPI. They include Classi
 - [Introductory special relativity](@/special-relativity/index.md)
 - [Classical dynamics](@/classical-dynamics.md)
 - [Electromagnetic theory](@/electromagnetism/index.md)
-- [Introductory quantum physics](@/intro-quantum-phys.md)
+- [Introduction to quantum mechanics](@/intro-quantum-phys.md)
+- [Advanced classical mechanics](@/advanced-classical-mech/index.md) (note: this also includes special relativity)
