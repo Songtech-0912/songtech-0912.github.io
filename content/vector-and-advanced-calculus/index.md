@@ -1,6 +1,6 @@
 +++
 title = "Vector Calculus and Beyond"
-date = 2026-01-14
+date = 2025-01-14
 +++
 
 This guide covers the methods of calculus that go beyond multivariable calculus, including vector calculus, tensor calculus, the calculus of variations, and applications for each. In addition, derivations and more advanced treatments of topics in single- and multivariable calculus are also included.
