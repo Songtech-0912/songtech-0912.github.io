@@ -1,5 +1,5 @@
 +++
-title = "Notes on derivatives for calculus"
+title = "Introduction to Differential Calculus"
 date = 2023-09-26
 +++
 
@@ -417,6 +417,14 @@ f'(c) = \frac{f(b) - f(a)}{b - a}
 {% end %}
 
 Here, when using the MVT, ensure that the $c$ that is solved for is within the interval! If it is not within the interval, then the MVT does not apply.
+
+## Intermediate Value Theorem (IVT)
+
+The **intermediate value theorem** (IVT) states that if a function is continuous in a _closed_ interval from $a$ to $b$, then it takes on every value from $f(a)$ to $f(b)$. To use the IVT, you must show that:
+
+- The interval is **closed**
+- The function is **continuous** on the interval
+- Given a value $a \leq C \leq b$, then $f(a) \leq f(C) \leq f(b)$
 
 ## Monotonicity
 

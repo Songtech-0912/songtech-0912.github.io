@@ -1,5 +1,5 @@
 +++
-title = "Notes on integrals for calculus"
+title = "Introduction to Integral Calculus"
 date = 2023-11-07
 +++
 
