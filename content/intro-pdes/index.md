@@ -261,6 +261,8 @@ u(x, t) = w(x) v(t) = (A_2 \cos(kx ) + B_2 \sin (kx))(A_1\cos(\omega t) + B_1 \s
 
 This can be simplified further using trigonometric identities, and is the end result of our successful separation of variables.
 
+> **Note:** In many cases, a PDE may be separable in one coordinate system and _not_ separable in another. This is famously the case for the Schrödinger equation, which is an inhomogeneous linear PDE; when its inhomogeneous term is a term that is proportional to $\dfrac{1}{r}$, as is the case for many atomic solutions, then the Schrödinger equation is no longer separable in Cartesian coordinates, but _remains separable_ in _spherical_ coordinates.
+
 ## Useful calculus identities for PDEs
 
 By nature of partial differentiation, there are several results that are incredibly crucial for the study of PDEs. First, the _order of differentiation_ does not matter. That is to say:
