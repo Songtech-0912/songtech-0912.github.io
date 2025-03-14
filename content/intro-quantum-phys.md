@@ -883,6 +883,8 @@ Thus the energy in the ground state cannot be zero; rather, it is a nonzero valu
 
 A very famous quantum system is that of the hydrogen atom - the simplest atom, with one electron and one proton. We can simplify the system even further by modelling the contribution of the proton with the _classical_ Coloumb charge potential, since the proton is "large enough" compared to the electron (almost a thousand times more massive) that its behavior deviates only slightly from the classical description. Thus, we only need to consider the quantum behavior of the electron for the wavefunction of the entire hydrogen atom system.
 
+> **Note:** In fact, the solution for the hydrogen atom can be generalized to be an exact solution for all _hydrogen-like_ atoms. For instance, it can also be used to solve for the $\ce{He^+}$ atom (helium ion), as well as all the group 1 elements in the periodic table (lithium, sodium, potassium, rubidium, and cesium), ions that have one valence electron (such as $\ce{Ca^+}$ and $\ce{Sr^+}$), and all isotopes of these atoms.
+
 Using the time-independent Schrödinger equation with the Coloumb potential, we have the partial differential equation:
 
  {% math() %}
