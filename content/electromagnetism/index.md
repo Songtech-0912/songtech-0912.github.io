@@ -1145,6 +1145,428 @@ $$
 
 Remember that akin to Gauss's law, a net zero enclosed current _does not imply_ that the magnetic field has to be zero everywhere, or that there are no currents within a region. It may simply be the case that there are currents and fields that cancel each other out. _Also_ recall that just like Gauss's law, any magnetic fields outside the loop have no effect on the magnetic field within the loop; conversely Ampère's law _only_ gives the magnetic field within the loop and says nothing about what is outside.
 
+## Faraday's law and electromagnetic induction
+
+We observe that a changing magnetic flux through a given _non-closed_ surface produces an electric field that circulates around the boundary of the surface. A classic example is moving a magnet through a series of coils (or moving a coil through the magnetic field of a magnet). This phenomenon is known as **electromagnetic induction** because electric fields are _induced_ by changing magnetic flux. This is is **Faraday's Law**:
+
+{% math() %}
+\int_C \mathbf{E} \cdot d \mathbf{r} = -\dfrac{d}{dt}\iint \mathbf{B} \cdot d\mathbf{A} 
+{% end %}
+
+Faraday's law can also be expressed in any of the following ways:
+
+{% math() %}
+\int_C \mathbf{E} \cdot d \mathbf{r} = -\dfrac{d\Phi_B}{dt} = -\dfrac{d}{dt}\iint \mathbf{B} \cdot d\mathbf{A} = \mathcal{E}_\mathrm{loop}
+{% end %}
+
+> **Note of caution:** here, the sign convention is used that positive flux flows out of surface and negative flux enters a surface, where the surface's orientation is defined by the direction of its normal vector. We also use the convention that the surface normal for the area element is the cross product $\hat n = \hat e_1 \times \hat e_2$ where $e_1, e_2$ are the coordinate unit vectors on the surface. For a plane aligned on the XY plane, this would be $\hat n = \hat x \times \hat y$. For any questions that showcase a 2D loop, assume the normals are pointing out of the page unless otherwise stated.
+
+### Calculating magnetic flux
+
+The process of calculating magnetic flux can be tricky, so let us consider an example to demonstrate the calculation process. Consider a very long wire carrying current $I$ in the rightward direction, with a wire loop of width $w$ and height $b-a$ below it, as shown in the diagram below:
+
+![[magnetic-flux-calculation.excalidraw]]
+
+We note that the magnetic field vectors go _into_ the page while the wire loop's normal points _out_ of the page, meaning they are _antiparallel_ (parallel but pointing in opposite directions). Therefore, we know that $\mathbf{B}(r) \cdot d\mathbf{A} = -B(r) dA$ where $dA = dr dx$ is the area of an infinitesimal portion of the loop's surface. Now, recalling that $B = \dfrac{\mu_0 I}{2\pi r}$ for a current-carrying wire of infinite (or at least very long) length, which we derived earlier from Ampère's law, if we substitute our derived expressions into the integral equation for the magnetic flux, we have:
+
+{% math() %}
+\begin{align*}
+\Phi_B &= \iint \limits_\mathrm{surface} \mathbf{B} \cdot d\mathbf{A} \\ &= -\int_0^w \int_a^{a+b} \dfrac{\mu_0 I}{2\pi r} \, dr\, dx \\
+&= \int_0^w\left(-\dfrac{\mu_0 I}{2\pi}\right) \int_a^{a+b} \dfrac{1}{r} dr\, dx \\
+&= \int_0^w \dfrac{\mu_0 I}{2\pi} \int_{a+b}^a \dfrac{1}{r} dr\, dx \\
+&= \dfrac{\mu_0 I}{2\pi} \int_0^w \ln(r) \bigg|_{a+b}^a dx \\
+&= \dfrac{\mu_0 I}{2\pi} \int_0^w (\ln(a) - \ln(a+b)) dx \\
+&= \dfrac{\mu_0 I}{2\pi} \int_0^w \ln\left(\dfrac{a}{a+b}\right) dx\\
+&= \dfrac{\mu_0 I w}{2\pi}\ln\left(\dfrac{a}{a+b}\right)
+\end{align*}
+{% end %}
+
+### Sources of changing magnetic flux
+
+Faraday's law only applies when magnetic flux is _changing with time_. There are three main ways this may occur:
+
+- The **magnetic field** itself is changing. This is the case with a non-constant magnetic field, such as those produced by changing currents, or oscillating magnetic fields in free space (which we'll see more on later)
+- The **area of the surface** through which the flux is measured is changing. This is the case when a wire loop, for instance, is pulled into or out of a region of constant magnetic field; the area of the loop exposed to the field changes, causing a change in flux
+- The **angle** between the magnetic field and the surface's normals is changing. This is the case when we have a rotating wire loop; since flux is dependent on the angle between the surface normals and the magnetic field, a rotating wire loop causes a nonzero magnetic flux
+
+### Sign of Faraday's Law and Lenz's Law
+
+The negative sign on the right-hand side of Faraday's law is due to the fact that the the induced electric field, and $\mathcal{E}$ is known as the **EMF** (confusingly named the _electromotive force_) which is a **potential difference**. And we know from $\mathbf{E} = -\nabla V$ that a potential difference causes an electric field to flow between the points of differing potential. This electric field, however, is **non-conservative** and unlike electrostatic fields, this electric field always forms a _closed loop_.
+
+The negative sign is in fact quite significant. We use it to define **Lenz's law**:
+
+{% math() %}
+\mathcal{E}_\mathrm{loop} = -\dfrac{d\Phi_B}{dt}
+{% end %}
+
+And the average EMF as:
+
+{% math() %}
+\mathcal{E}_\mathrm{avg} = -\dfrac{\Delta \Phi}{\Delta t}
+{% end %}
+
+Lenz's law is significant because it shows that the current produced by a changing magnetic flux is **opposed** to the _change in flux_. This is because the induced current generates _another magnetic field_ that opposes the external magnetic field by $\mathbf{F} = I\vec \ell \times \mathbf{B}_\mathrm{generated}$. In other words, an increasing flux creates a negative current; a decreasing flux creates a positive current. In each case, the induced current produces a magnetic field that opposes the external magnetic field and thus the change in flux.
+
+> **Note on sign:** a positive current is one that flows _counterclockwise_. A negative current is one that flows _clockwise_. Thus **positive flux** creates clockwise current and **negative flux** creates counterclockwise current. In both cases, the current direction is _opposite_ to the current in the loop, and the direction of the current will tell us the induced force on the wire without even needing to calculate the flux.
+
+![[Lenz-law-illustration.excalidraw]]
+
+If a changing flux occurs as a result of the motion of a conducting surface or loop, we call the resulting EMF **motional EMF**. Lenz's law tells us that a given loop of wire (or any other general conductor) moving at velocity $\mathbf{v}$, then the direction of the net force on the loop/conductor by Lenz's law is **opposite the direction of** $\mathbf{v}$. This also means there is **no force** when $\mathbf{v} = 0$ because the magnetic flux is constant in time (it may vary spatially but would not vary in time).
+
+When the induced electric field around the boundary of a loop happens to be in a wire, then we find that the EMF creates a current given by Ohm's law:
+
+{% math() %}
+I = \dfrac{\mathcal{E}}{R}
+{% end %}
+
+> **Aside:** The unit of magnetic flux is called the **Weber** $\pu{Wb}$, where $\pu{1Wb} = \pu{1V} \cdot \pu{s}$. The unit of the EMF is the same as potential difference, i.e. the EMF is in units of $\pu{V}$ (volts). 
+
+## Displacement current
+
+We now need to return to Ampère's law. Recall that the previous formulation of Ampère's law was valid for the electrostatic case, and was given by:
+
+{% math() %}
+\oint \limits_\mathrm{loop} \mathbf{B} \cdot d\mathrm{r} = \mu_0 I_\mathrm{enclosed} = \mu_0 \iint \mathbf{J} \cdot d\mathbf{A}_\text{cross section}
+{% end %}
+
+However, now with the knowledge that changing magnetic flux induces an electric field, we find that there is a contradiction. The current passing through a loop around a magnetic field is _not simply_ the current passing through the cross-sectional area bounded by the loop. There is also an _induced current_ produced by the changing flux of the magntic field through the cross-section area. Therefore, scientist James Clerk Maxwell postulated that a changing electric flux $\dfrac{d\Phi_E}{dt}$ through a _non-closed surface_ _also_ induces a magnetic field:
+
+{% math() %}
+\oint \limits_\mathrm{loop} \mathbf{B} \cdot d\mathrm{r} = \mu_0 I_\mathrm{enc.} + \mu_0 \epsilon_0 \dfrac{d}{dt}\iint \mathbf{E} \cdot d\mathbf{A}
+{% end %}
+
+This additional term is known as the **displacement current** and completes Ampère's law by accounting for the interplay between electric and magnetic fields. With this, the four **Maxwell equations** are complete.
+
+## Inductors
+
+We recall that **Faraday's law** says that an EMF is generated with a time-varying magnetic flux across an open surface. We also recall from Lenz's law that this produces an electric field whose field lines form a _closed loop_ about the boundary of the surface, creating a current _opposed_ to the change in magnetic flux.
+
+**Inductors** are electrical devices that use the principle of electromagnetic induction to _oppose_ the change in current, but unlike resistors that dissipate the energy away as waste heat, inductors store the energy within a magnetic field and slowly release it back into the circuit. We measure this property of an inductor with a quantity known as the **inductance** $L$ given in the unit $\pu{H}$ (henry), that describes the induced current as _proportional_ to the flux with the constant factor $L$. There are two types of inductance:
+
+- **Self-inductance**: inductance $L$ caused by the flux of one conductor acting on itself, resulting in an induced current: $L = \dfrac{\Phi_B}{I}$ for a single coil or $L = \dfrac{N\Phi_B}{I}$ for a coil with $N$ loops/turns
+- **Mutual inductance**: inductance $M$ caused by the flux of one conductor (coil 1) acting on another conductor (coil 2): $M = \dfrac{\Phi_\text{induced in 2}}{I_1}$ for a single coil or $M = \dfrac{N_2\Phi_\text{induced in 2}}{I_1}$ for coil 2 with $N_2$ turns
+
+The inductance has several important properties:
+
+- It is **independent of current**, only depending on the geometry of the conductors/inductors. This means for a given material within the same conditions (pressure, composition, temperature, etc.) it is a **constant**
+- The **mutual inductance** is also independent of the conductor you establish as creating the flux and the conductor you establish as having an inducted current. That is to say, $M = \dfrac{N_2\Phi_\text{induced in 2}}{I_1} = \dfrac{N_1 \Phi_\text{induced in 1}}{I_2}$, where $\Phi_\text{induced in 1}$ is the flux induced in coil 1, $\Phi_\text{induced in 2}$ is the flux induced in coil 2, $I_1$ is the current in coil 1, $I_2$ is the current in coil 2, and $N_1, N_2$ are the respective number of coils in coil 1 and 2
+
+Consider, for instance, a solenoid with $N$ turns and magnetic field $\mathbf{B} = \mu_0 n I \hat{\mathbf{x}}$ where $n = N/\ell$ is the number of turns per unit length. The flux through a cross-section of the solenoid would be given by $\Phi_B = B A = \mu_0 n I A = \mu_0 n I \pi R^2$. The (self-)inductance would be $L = \dfrac{\Phi_B}{I} = \mu_0 n^2 \pi R^2$.
+
+When we take the time derivative of the flux, we note that since $L$ is a constant, we have:
+
+{% math() %}
+\dfrac{d\Phi_B}{dt} =  L \dfrac{dI}{dt}
+{% end %}
+
+Which we may rewrite as:
+
+{% math() %}
+\mathcal{E} = -L \dfrac{dI}{dt}
+{% end %}
+
+Upon examination, we see a quantity that is an EMF that is related to the inductance - the **back EMF**. We will examine its significance in the following section.
+
+### Back EMF
+
+The relationship $\mathcal{E} = -L \dfrac{dI}{dt}$ tells us that a change in current produces a **back EMF** that is _opposed_ to the change in current, because of the negative sign. This back EMF is dependent on the rate of change of a current, so a rapid change in current will result in a back EMF in the opposite direction as the current, reducing the current significantly. This property is very useful in many cases, and is why inductors are often used as surge protectors in circuits and for protection against lightning strikes.
+
+In addition, since the back EMF is opposed to the current, we have $-\Delta V = L \dfrac{dI}{dt} = V(a) - V(b)$ where $V(a)$ is the potential on the inside of the inductor and $V(b)$ is the potential on the outside of the inductor. The induced electric field caused by this potential difference $\mathbf{E}_\mathrm{induced} = -\nabla V$ counters the electrostatic field inside the inductor due to its own charge, meaning that the total electric field $\mathbf{E}_\mathrm{net} = 0$, as we would expect because a conductor must have zero net electric field.
+
+### Inductors as circuit components
+
+The potential induced by a conductor attempts to maintain the current and acts as a voltage drop in the circuit proportional and opposite to the _change in current_. Therefore, aligning our circuit direction such that it is between points $a$ and $b$ where current flows from $a \to b$, the inductance behaves in one of three ways:
+
+- If the current stays constant, the inductor has no effect
+- If the current _increases_, the inductor produces a negative back EMF and thus acts as a **voltage drop** in the direction of the current that slows the change in current
+- If the current _decreases_, the inductor still produces a negative back EMF in the direction of the current and thus still acts as a **voltage drop**
+- Total inductance fo llows $L_P = \left(\dfrac{1}{L_1} + \dfrac{1}{L_2} + \dfrac{1}{L_3} + \dots + \dfrac{1}{L_n}\right)^{-1}$ for parallel circuits and $L_S = L_1 + L_2 + L_3 + \dots + L_n$ for series circuits
+
+### Inductors and magnetic energy
+
+We have seen that static magnetic fields cannot do work (and thus has no defined potential energy in the conventional sense), but this does not mean they cannot store energy. Recall that we may write the magnetic energy as the time integral of the power, from which we may rearrange to find an expression of energy stored in the field:
+
+{% math() %}
+U_B = \int P(t) \,dt = \int I \mathcal E dt = \int I L \dfrac{dI}{dt}\, dt = \dfrac{1}{2} LI^2
+{% end %}
+
+We may find the specific case of the energy stored in the the **time-varying** magnetic field as:
+
+{% math() %}
+U_B = \dfrac{1}{2} L I^2 = \dfrac{1}{2} \mu_0 n^2 \pi R^2 I^2
+{% end %}
+
+But since we know that $B = \mu_0 n I$, and dividing by volume, we have:
+
+{% math() %}
+u_B = \dfrac{1}{2\mu_0} B^2
+{% end %}
+
+This is a general expression that is independent of any circuit, and thus it must be fundamental to electromagetism, beyond just applicable to a specific component. Indeed, later, we show that this is indeed the case.
+
+## Transient circuits
+
+We have already seen and calculated some of the quantitative characteristics of different electrical components, such as resistors, capacitors, and inductors. We will now analyze **circuits**, formed through a *series* of connected electrical components. By careful application of our previously-derived expressions for the potential difference and EMF of electrical components, we can find how the current, voltage, and charge evolves through time. This is termed the analysis of **transient circuits**, _transient_ meaning that such circuits are undergoing transitions.
+
+### RC circuit
+
+An RC circuit refers to a _resistor_ and a _capacitor_ connected in series to an EMF source (i.e. battery). Recall that we may write $\Delta V = \left|\dfrac{Q}{C}\right|$ for a capacitor and $\Delta V = IR$ for a resistor. By Kirchhoff's rules and the associated sign convention (a resistor is a drop in voltage, a capacitor is also a drop in voltage, so both are negative in sign) we have:
+
+{% math() %}
+\sum_i \Delta V_i = \mathcal{E} -\dfrac{Q}{C} - IR = 0 
+{% end %}
+
+Now rewriting $I = \dfrac{dQ}{dt}$ we find a differential equation:
+
+{% math() %}
+\mathcal{E} - \dfrac{Q}{C} -  R\dfrac{dQ}{dt} = 0
+{% end %}
+
+We may rearrange to write it in more conventional form as:
+
+{% math() %}
+\dfrac{dQ}{dt} = \dfrac{\mathcal{E}}{R} - \dfrac{Q}{RC}
+{% end %}
+
+This differential equation may be solved by the method of the separation of variables. The general solution of the differential equation can then be used to find two important particular solutions for different initial conditions of $Q$. In addition, we may further differentiate the solutions for the charge $Q(t)$ to find the current, and use $V = Q/C$ to find the voltage (note: $V$ is a shorthand for $\Delta V$ here). The results are shown in the table below:
+
+| Initial condition                      | Solution                                                                                                                    | Solution description                                                                                  |
+| -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| $Q(0) = 0$                             | $Q(t) = \mathcal{E} C(1 - e^{-t/RC}) = Q_\mathrm{max}\,(1 - e^{-t/\tau})$                                                   | Uncharged open circuit with switch closed at $t = 0$, causing the circuit to start charging.          |
+| $Q(0) = \mathcal{E}C = Q_\mathrm{max}$ | $Q(t) = \mathcal{E} Ce^{-t/RC} = Q_\mathrm{max}\,e^{-t/\tau}$                                                               | Fully-charged closed circuit with switch opened at $t = 0$, causing the circuit to start discharging. |
+| $I(0) = I_0 = \dfrac{\mathcal{E}}{R}$  | $I(t) = \dfrac{\mathcal{E}}{R} e^{-t/RC} = I_0 e^{-t/\tau}$                                                                 | Charging case, where $Q(0) = 0$                                                                       |
+| $I(0) = 0$                             | $I(t) = \dfrac{\mathcal{E}}{R} (1 - e^{-t/RC}) = I_\mathrm{max} (1 - e^{-t/\tau}), I_\mathrm{max} = \dfrac{\mathcal{E}}{R}$ | Discharging case, where $Q(0) = Q_\mathrm{max}$                                                       |
+| $V(0) = 0$                             | $V(t) = \mathcal{E}(1 - e^{-t/RC}) = V_\mathrm{max} (1 - e^{-t/\tau})$                                                      | Charging case, where $Q(0) = 0$                                                                       |
+| $V(0) = V_0 = \mathcal{E}$             | $V(t) = \mathcal{E} e^{-t/RC} = V_0 e^{-t/\tau}$                                                                            | Discharging case, where $Q(0) = Q_\mathrm{max}$                                                       |
+
+> **Note:** Be careful of the interpretations of $I, Q, V$. $I$ is the *current through the series circuit* (which is identical at the resistor and the capacitor as all components are connected in series). By contrast, $V$ is the *potential difference at the resistor* and $Q$ is the *charge stored in the capacitor*. Saying simply "charge" or "voltage" can easily be misleading as these are _not_ applicable to each component.
+
+Note that $\tau = RC$ is the _time constant_, a period-like quantity that measures how much the circuit is charged (for case 1, i.e. $Q(0) = 0$) or how fully the circuit has discharged (for case 2, i.e. $Q(0) = Q_\mathrm{max}$). The specific values of the time constant are related to the charge as follows:
+
+| Time constant | Percent charge relative to $Q_\mathrm{max}$ (in charging case) | Percent charge relative to $Q_\mathrm{max}$ (in discharging case) |
+| ------------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
+| $t = 0$       | 0.0%                                                           | 100.0%                                                            |
+| $t = \tau$    | 63.2%                                                          | 36.8%                                                             |
+| $t = 2\tau$   | 86.5%                                                          | 13.5%                                                             |
+| $t = 3\tau$   | 95.0%                                                          | 5.0%                                                              |
+| $t = 4\tau$   | 98.2%                                                          | 1.8%                                                              |
+| $t = 5\tau$   | 99.3%                                                          | 0.7%                                                              |
+| $t = 6\tau$   | 99.8%                                                          | 0.2%                                                              |
+
+We see that the current in the circuit and potential difference across the resistor _increase_ as the capacitor charges, and _decrease_ as the capacitor discharges. The current behaves the **opposite** way, as it *decreases* to as the capacitor charges and *increases* as the capacitor discharges. This can be intuitively thought of as the charging capacitor "holding" more and more charge until it reaches its maximum charge and no more charge can flow in, meaning the current (which is the flow of charge) becomes zero. The opposite cocurs as the capacitor discharges since the capacitor "releases" more and more charge until it holds no charge, meaning the charges flow out and the current increases until no more charge can flow out of the capacitor, at which point the current has reached its maximum.
+
+### RL circuit
+
+We will now discuss the first of two circuit types that involve an inductor - RL circuits and LC circuits. In the first, let us consider an **RL circuit**: a circuit with an EMF source that provides an EMF $\mathcal{E}$ attached to a *resistor* and an *inductor*, hence the name (given that $L$ is the symbol for inductance). Then by Kirchhoff's loop rule, recalling that both resistors and inductors are voltage drops, we have:
+
+{% math() %}
+\mathcal{E} - IR - L \dfrac{dI}{dt} = 0
+{% end %}
+
+This is a differential equation that can be solved for the current $I$, using the typical methods for differential equations, such that for the initial conditions $I(0) = 0$ (that is, the circuit is closed at $t = 0$, allowing current to flow), we have:
+
+{% math() %}
+\begin{matrix}
+I(t) = I_\mathrm{max} (1 - e^{-t/\tau}), & I_\mathrm{max} = \dfrac{\mathcal{E}}{R} \\
+V_L(t) = -L \dfrac{dI}{dt} =  -\mathcal{E} e^{-t/\tau}, &\tau = L/R
+\end{matrix}
+{% end %}
+
+> **Note:** $V_L$ is the potential difference across the _inductor_, not at every point in the circuit!
+
+### LC circuit
+
+Finally, we examine LC circuits, which are composed of an *inductor* and a *capacitor*. Given that a capacitor stores charge where $Q = CV$, and assuming that the capacitor has nonzero charge at $t= 0$, we can use Kirchhoff's loop rule again to have:
+
+{% math() %}
+-\dfrac{Q}{C} - L \dfrac{dI}{dt} = 0
+{% end %}
+
+Or if we multiply all sides by $-1$ to clean up the equation:
+
+{% math() %}
+\dfrac{Q}{C} + L \dfrac{dI}{dt} = 0
+{% end %}
+
+But recall that current is the time derivative of charge, so we may equivalently write $\dfrac{dI}{dt} = \dfrac{d^2 Q}{dt^2}$ and the differential equation becomes:
+
+{% math() %}
+\begin{gather*}
+\dfrac{Q}{C} + L \dfrac{d^2Q}{dt^2} = 0 \\
+\dfrac{d^2Q}{dt^2} + \dfrac{1}{LC} Q(t) = 0
+\end{gather*}
+{% end %}
+
+If we define a quantity $\omega_0$ called the **resonant frequency** where $\omega_0 = \dfrac{1}{\sqrt{RC}}$ this may be equivalently written as:
+
+{% math() %}
+\dfrac{d^2Q}{dt^2} + \omega_0^2 Q(t) = 0
+{% end %}
+
+Again, by using the typical methods of solving 2nd-order linear differential equations and _assuming_ that the circuit starts off with 100% of the charge on the capacitor we obtain the solution:
+
+{% math() %}
+Q(t) = Q_\mathrm{max} \cos (\omega_0 t + \phi)
+{% end %}
+
+Where $Q(t)$ is the charge on the capacitor - which is oscillating sinusoidally in time, and $\phi$ is a delay factor of the sinusoid, representing a time shift. The corresponding voltage on the inductor is given by:
+
+{% math() %}
+\begin{matrix}
+V(t) = V_0 \cos (\omega_0 t + \phi), &V_0 = LQ_0 \omega_0^2
+\end{matrix}
+{% end %}
+
+## AC circuits and phasors
+
+When considering AC circuits, we find that we encounter **harmonic functions** that vary non-trivially with time for the vast majority of quantities. While we can use sines and cosines to describe harmonic functions, it is more convenient, and indeed sometimes simply more _useful_, to use complex exponentials.
+
+This is possible through Euler's formula $e^{j\phi} = \cos \phi + j \sin \phi$ (and the related identity $e^{-j\phi} = \cos \phi - j \sin \phi$). Thus, we may write the voltage $V(t) = V_0 \cos (\omega t)$ as $V(t) = V_0 e^{j\omega t}$ in **phasor form**. Using the rules of exponential multiplication and division makes it far easier to work with phasors, and we can always use Euler's formula to extract the real part of the phasor.
+
+> **Note on notation:** Here $j$ is the same as the imaginary unit $i$, the only reason why $j$ is the preferred symbol over $i$ is that it is less likely to be confused with the current, which also has symbol $i$.
+
+Consider an AC circuit with a resistor, which has a source of variable EMF $V(t) = V_0 e^{j \omega t}$. With Ohm's law, $I_0 = V_0 / R$, we find that $I(t) = I_0 e^{j \omega t}$. This is a very interesting relationship, as it shows that potential difference and current in an AC circuit are always **in phase** for a resistor.
+
+This is not necessarily always the case for other electrical components. For instance, a capacitor has $Q = CV$, and thus $Q(t) = C V_0 e^{j \omega t}$. Taking the derivative, we have $I(t) = \dfrac{dQ(t)}{dt} = C V_0  j \omega e^{j \omega t}$, where multiplication by $j$ is equivalent to a 90-degree rotation in the complex plane, i.e. $j = e^{j\pi/2}$. Thus, we may equivalently write $I(t) = CV_0 \omega e^{j (\omega t + \pi/2)}$. That is to say, **in capacitors**, the **phase** of the current leads (is ahead of) the **phase** of the voltage by $\pi/2$.
+
+In AC circuits both capacitors and inductors have a form of resistance in addition to resistors, which we call the **reactance** with symbol $X$. For resistors, $X_R = R$ and so its reactance is just the normal resistance, but for capacitors $X_C = \dfrac{1}{\omega C}$ and for inductors $X_L = \omega L$. Ohm's law, which we previously introduced as $V = IR$, becomes modified to $V = I X$. With these definitions, we may write our previous expression for the current passing through a capacitor $I(t) = CV_0 \omega e^{j (\omega t + \pi/2)}$ as $I(t) = \dfrac{V_0}{X_C} e^{j(\omega t + \pi/2)}$. Since $V = IX$ and thus $V_0 = I_0 X_C$ we can _also_ write this as $I(t) = I_0 e^{j(\omega t + \pi/2)}$. This is perhaps the most simplified and easily-understandable form of the current through a capacitor. We may do the same for inductors to determine the current and voltage through an inductor
+
+In an alternating circuit, described by phasors, the reactance forms the imaginary part of a complex number called the _impedance_, denoted $Z$, whose real part is the resistance $R$. Therefore, we have:
+
+{% math() %}
+Z = R + j X
+{% end %}
+
+Thus, the **most general** form of Ohm's law, as applicable to AC circuits, is given by $V = IZ$, and if we substitute the values we found for the reactance into the formula for the impednace, we find the following:
+
+| Component | Impedance              | Current vs. Voltage Phase Shift      |
+| --------- | ---------------------- | ------------------------------------ |
+| Resistor  | $R$                    | Always in phase                      |
+| Capacitor | $\dfrac{1}{j\omega C}$ | Current **leads** voltage by $\pi/2$ |
+| Inductor  | $j\omega L$            | Current **lags** voltage by $\pi/2$  |
+
+## The Maxwell equations
+
+We have now reached the culminating point of classical electromagnetism. Recall that electromagnetism is a **classical field theory**, where knowing the fields is sufficient to uniquely determine the motion of every charge within the fields (which is also every charge creating the field). The equations that govern how electromagnetic fields (the electric field $\mathbf{E}$ and the magnetic field $\mathbf{B}$) are the **Maxwell equations**, and here is a brief description of each:
+
+{% math() %}
+\oiint \limits_\mathrm{surface} \mathbf{E} \cdot d\mathbf{A} = \dfrac{Q_\mathrm{enc.}}{\epsilon_0} = \dfrac{1}{\epsilon_0} \iiint \limits_\mathrm{volume} \rho\, dV
+{% end %}
+
+The first of Maxwell's equations, shown above, is **Gauss's law for electric fields**. Its physical interpretation is that an imaginary closed surface was placed in space, the total flux (outward flow) of the electric field across the surface would be proportional to the total enclosed electric charge.
+
+{% math() %}
+\oiint \limits_\mathrm{surface} \mathbf{B} \cdot d\mathbf{A} = 0
+{% end %}
+
+The second of Maxwell's equations, shown above, is **Gauss's law for magnetic fields**. Its physical interpretation is that if an imaginary closed surface was placed in space, the total flux (outward flow) of the magnetic field across the surface is zero, because ingoing and outgoing field lines cancel out. Thus, there exist no magnetic monopoles (pure sources).
+
+{% math() %}
+\oint \limits_\mathrm{loop} \mathbf{E} \cdot d\ell = -\dfrac{\partial}{\partial t} \iint \limits_\mathrm{surface} \mathbf{B} \cdot d\mathbf{A}
+{% end %}
+
+The third of Maxwell's equations, shown above, is **Faraday's law**. Its physical interpretation is that if an imaginary surface (that is not closed) was placed in space, the change in flux of the magnetic field across the surface induces an EMF and therefore an electric field that circulates in a loop across the boundary of the surface. By Ohm's law, this results in a current if the loop is a wire or conductor. Faraday's law predicts that a magnetic field whose field lines form closed loops is always found alongside an electric field.
+
+{% math() %}
+\oint \limits_\mathrm{loop} \mathbf{B} \cdot d\ell = \mu_0 I + \mu_0 \epsilon_0 \dfrac{\partial}{\partial t} \iint \limits_\mathrm{surface} \mathbf{E} \cdot d\mathbf{A}
+{% end %}
+
+Finally, the fourth of Maxwell's equations, shown above, is the **Maxwell-Ampère law**. If an imaginary surface (not closed) were placed in space, the change in flux of the electric field across the surface induces a magnetic field that circulates in a loop across the boundary of the surface. The Maxwell-Ampère law predicts that a magnetic field whose field lines form closed loops is always found alongside an electric field. 
+
+Recall the **divergence theorem** from vector calculus, which relates the surface integral of a vector field $\mathbf{F}$ over a closed surface to the volume integral of the divergence of $\mathbf{F}$ across the volume bounded by the surface:
+
+{% math() %}
+\oiint_{\partial \Omega} \mathbf{F} \cdot d\mathbf{A} = \iiint_\Omega \nabla \cdot \mathbf{F}\, dV
+{% end %}
+
+In addition, **Stoke's theorem** from vector calculus relates the line integral of a vector field $\mathbf{F}$ around a closed loop to the surface integral of its curl across the cross-section formed by the loop:
+
+{% math() %}
+\oint_{\partial S} \mathbf{F} \cdot d\mathbf{r} = \oiint_S \nabla \times \mathbf{F} \cdot d\mathbf{A}
+{% end %}
+
+From here, we can convert the integral equations into differential equations that are the most common formulation of Maxwell's equations:
+
+{% math() %}
+\begin{align*}
+\nabla \cdot \mathbf{E} &= \dfrac{\rho}{\epsilon_0} \\
+\nabla \cdot \mathbf{B} &= 0 \\
+\nabla \times \mathbf{E} &= -\dfrac{\partial \mathbf{B}}{\partial t} \\
+\nabla \times \mathbf{B} &= \mu_0 \mathbf{J} + \mu_0 \epsilon_0 \dfrac{\partial \mathbf{E}}{\partial t}
+\end{align*}
+{% end %}
+
+From the differential equation form (also called the differential form), the physical interpretation of Maxwell's equations becomes more streamlined. The first two equations show that electric fields are produced by ("flow out of") a _diverging_ charge density $\rho$, and that magnetic fields have **zero divergence**, as they flow from a **north to south pole** in closed field lines. The last two equations show that **time-varying magnetic fields** produce **electric fields** that curl around the magnetic fields, and that **time-varying electric fields** produce **magnetic fields** that curl around the electric fields.
+
+The Maxwell equations are astoundingly universal in scope. They govern electromagnetic interactions down to the atomic level, and only at the subatomic level are quantum descriptions necessary. They are truly one of the most beautiful and successful equations in physics.
+
+### Electromagnetic waves
+
+Among the most famous theoretical predictions of Maxwell's equations is that in the absence of sources, i.e. when $\nabla \cdot \mathbf{E} = 0, \nabla \cdot \mathbf{B} = 0$, the electric field and magnetic field obey a wave equation:
+
+{% math() %}
+\begin{align*}
+\dfrac{\partial^2 \mathbf{E}}{\partial t^2} = \mu_0 \epsilon_0 \nabla^2\mathbf{E} \\
+\dfrac{\partial^2 \mathbf{B}}{\partial t^2} = \mu_0 \epsilon_0 \nabla^2\mathbf{B}
+\end{align*}
+{% end %}
+
+Surprisingly, by comparison with the general form of the wave equation, it can be shown that the velocity of propagation of these waves is a constant, given by $\dfrac{1}{\sqrt{\mu_0 \epsilon_0}}$. This we know more commonly as the speed of light, $c$, meaning that all light is an electromagnetic phenomenon. This fact was empirically verified by Heinrich Hertz, who proved that electric and magnetic fields do indeed create electromagnetic waves that propagate at the speed of light $c$. That is to say, *any* combination of a time-varying electric field and a time-varying magnetic field produces a self-sustaining and self-propagating electromagnetic wave that travels across space. Among the multiple applications and consequences of this fact is one that is essential in everyday life: Wi-Fi signals are carried by electromagnetic waves, in addition to telecommunications and fiberoptic cables, which is to say that the modern digital world and internet is made possible by our understanding of electromagnetic waves.
+
+The simplest solutions to the electromagnetic wave equations, after applying the suitable boundary conditions (for the curious, they are $\mathbf{E}(\mathbf{r}, 0) = \mathbf{E}_0$,  $\mathbf{E}(\mathbf{r}, t) = \mathbf{E}(\mathbf{r}, t + T)$, $\mathbf{E}(\mathbf{r}, t) = \mathbf{E}(\mathbf{r} + \lambda, t)$ where $T$ is the period and $\lambda$ is the wavelength, and analogous for the magnetic field), are given by:
+
+{% math() %}
+\begin{align*}
+\mathbf{E}(\mathbf{r}, t) = \mathbf{E}_0 \cos (\mathbf{k} \cdot \mathbf{r} - \omega t) \\
+\mathbf{B}(\mathbf{r}, t) = \mathbf{B}_0 \cos (\mathbf{k} \cdot \mathbf{r} - \omega t) \\
+\end{align*}
+{% end %}
+
+These solutions are known as **harmonic plane-wave solutions**. Here, $\mathbf{E}_0$ is the _electric field amplitude_ and $\mathbf{B}_0$ is the *magnetic field amplitude*. In addition, $\omega$ is the *angular frequency* given by $\omega = 2\pi f$ where $f = \dfrac{1}{T}$; meanwhile, $\mathbf{k}$ is known as the *wavevector*, whose direction is the direction of propagation of the wave and whose magnitude is given by $\dfrac{2\pi}{\lambda}$ where $\lambda$ (as mentioned previously) is the wavelength, and $\lambda = \dfrac{c}{f}$. 
+
+> **Note:** plane waves are not physically realistic as they have infinite length and would require an infinite amount of energy to create. They, are, however, a good theoretical approximation. Realistic and physically-allowable waves are actually given by continuous superpositions of plane-wave solutions, and thus we have $\mathbf{E}(\mathbf{r}, t) = \displaystyle \iiint \dfrac{d^3k}{(2\pi)^3}\mathbf{A}(\mathbf{k}) \cos (\mathbf{k} \cdot \mathbf{r} - \omega t)$ and analogous for the magnetic field. In addition, realistic waves are typically semi-spherical in nature due to the conservation of energy.
+
+For plane-wave solutions, it is always the case that $\mathbf{E}_0 \cdot \mathbf{B}_0 = 0$, meaning that the electric and magnetic fields are _always_ perpendicular each other, and $\mathbf{E}_0 \cdot \mathbf{k} = \mathbf{B}_0 \cdot \mathbf{k} = 0$, meaning that the electric and magnetic fields always oscillate _transverse_ (perpendicular to) the direction of propagation of the wave. The electric field amplitude and the magnetic field amplitude are further related by $\mathbf{E}_0 = c \mathbf{B}_0$, in the case of plane waves.
+
+Electromagnetic waves also carry energy and momentum. In fact, energy from the Sun is carried to Earth purely in the form of electromagnetic waves. As it does not make a lot of sense to speak of the _total_ energy of an electromagnetic wave (as the electromagnetic wave is spread over all space instead of having a definite position), we instead describe the _energy density_ (energy per unit volume) of electromagnetic waves. This is more applicable given that energy is _transferred_ through electromagnetic waves between different locations in space. The **electrical energy density** $u_E$ and **magnetic energy density** $u_B$ of the electric and magnetic components of an electromagnetic wave are respectively given by:
+
+{% math() %}
+\begin{matrix*}
+u_E = \dfrac{1}{2}\epsilon_0 E_0^2, &u_B = \dfrac{1}{2\mu_0}B_0^2
+\end{matrix*}
+{% end %}
+
+Where the **electromagnetic energy density** is simply their sum:
+
+{% math() %}
+u = u_E + u_B = \dfrac{1}{2} \epsilon_0 E_0^2 + \dfrac{1}{2\mu_0} B_0^2
+{% end %}
+
+The power carried by electromagnetic waves is given by the **Poynting vector**:
+
+{% math() %}
+\mathbf{S} = \dfrac{1}{\mu_0}(\mathbf{E}\times \mathbf{B})
+{% end %}
+
+The Poynting vector is related to the intensity $I$ of the wave by $I = \langle |\mathbf{S}|\rangle$ where $\langle |\mathbf{S}|\rangle$ means the _average_ of the Poynting vector's magnitude across a single period. By substituting $E_0 = cB_0$ we have:
+
+{% math() %}
+I = \dfrac{1}{\mu_0}\langle E B \rangle = \dfrac{1}{2\mu_0} E_0 B_0 = \dfrac{E_0^2}{2\mu_0 c} = \dfrac{cB_0^2}{2\mu_0}
+{% end %}
+
+> Note: the symbol $I$ for intensity can easily be confused with the symbol $I$ for current. When both are in use, it is common to denote current by $i(t)$ and use $j$ for the imaginary unit rather than $i$, to distinguish between current and intensity. One may also use the symbol $S$ for intensity although it is fairly uncommon.
+
+The momentum carried by electromagnetic waves is somewhat harder to define, but taking the limit of Einstein's mass-energy relation $E^2 = (\mathbf{p}c)^2 + (mc^2)^2$ we have $E = pc$, from which we derive (in the case of perfect absorbency) the momentum density $\rho_p$:
+
+{% math() %}
+p = \dfrac{E}{c} \Rightarrow \rho_p = \dfrac{u}{c} = \dfrac{1}{2c}\left[ \epsilon_0 E_0^2 + \dfrac{B_0^2}{\mu_0}\right]
+{% end %}
+
+This momentum is associated with what we term as **radiation pressure**, given by $P = I/c$ ($I$ is the intensity), which means it is possible to transfer momentum between objects purely through electromagnetic waves. In the extreme case, shining a very powerful laser or other light source at a perfect mirror can propel the mirror forward at incredible speed, something that [solar sail technology](https://en.wikipedia.org/wiki/Solar_sail) is built upon.
+
+### Optics
+
+**Optics** is the study of light, and since light is an electromagnetic phenomenon, optics is founded on electromagnetic theory. There are three main approaches to optics. The first approach is known as **geometric optics** and treats light as a series of collimated rays. This is also known as the _paraxial approximation_ and in many cases yields impressive quantitative results with purely geometric reasoning, without the need to solve Maxwell's equations. The second approach is known as **wave optics**, and uses the traditional approaches of electrodynamics, such as solving the electromagnetic wave equation for given boundary conditions. Lastly, the third approach, complementing (and in some cases superceding) wave optics, is **quantum optics**, which uses quantum mechanics to analyze optical systems whose mechanics go beyond the classical realm, such as lasers. We will not go in-depth on the subject, but electromagnetic theory is foundational to optics: optics has historically (and remains) one of the most important applications of electromagnetic theory. It is a reminder that far from being relegated to a textbook, electromagnetic theory is very much alive and used in countless applications in countless different ways.
 
 ## A peek at relativistic and quantum electrodynamics
 
