@@ -1566,6 +1566,72 @@ So as a takeaway, quantum mechanics is conventionally only _required_ for analyz
 
 ### Ehrenfest's theorem
 
+How quantum mechanics reduces to classical mechanics is given by **Ehrenfest's theorem**. To understand the theorem, let us start with the standard quantum Hamiltonian:
+
+{% math() %}
+\hat H = \dfrac{\hat p^2}{2m} + V(x)
+{% end %}
+
+Ehrenfest's theorem relies on the fact that physical time-independent operators obey what's known as the **Heisenberg equation of motion** (which comes from their mathematical properties), given by:
+
+{% math() %}
+\dfrac{d\hat A}{dt} = \dfrac{i}{\hbar} [\hat H, \hat A]
+{% end %}
+
+This also means that the _expectation values_ of the Heisenberg equations of motion satisfy:
+
+{% math() %}
+\dfrac{d\langle A\rangle}{dt} = \dfrac{i}{\hbar} \langle[\hat H, \hat A]\rangle
+{% end %}
+
+One particularly interesting case is when $\hat A = \hat p$, the momentum operator. Then, its commutator with the Hamiltonian becomes:
+
+{% math() %}
+\begin{align*}
+[\hat H, \hat p]\psi &= (\hat H \hat p - \hat p \hat H)\psi \\
+&= \left[-\dfrac{\hbar^2}{2m} \hat p^2 + V(x)\hat p - \hat p\left(-\dfrac{\hbar^2}{2m} \hat p^2 + V(x)\right)\right]\psi \\
+&= -\dfrac{\hbar^2}{2m}\hat p^2 \hat p \psi + V (x)\hat p \psi +\dfrac{\hbar^2}{2m}\hat p \hat p^2 \psi - \hat p (V(x) \psi) \\
+&= -\dfrac{\hbar^2}{2m}\hat p^2 \hat p \psi + V (x)\hat p \psi +\dfrac{\hbar^2}{2m}\hat p \hat p^2 \psi - \hat p (V(x) \psi) \\
+&= -\dfrac{\hbar^2}{2m}\hat p^3 \psi + V (x)\hat p \psi +\dfrac{\hbar^2}{2m}\hat p^3 \psi - \underbrace{(\hat p V(x) \psi + V(x)\hat p \psi)}_\text{product rule}) \\
+&= \cancel{-\dfrac{\hbar^2}{2m}\hat p^3 \psi} + \cancel{V (x)\hat p \psi} + \cancel{\dfrac{\hbar^2}{2m}\hat p^3 \psi} - (\hat p V(x) \psi - \cancel{V(x)\hat p \psi)}) \\
+&= -\hat p V(x) \psi \\
+&= i\hbar \dfrac{\partial V}{\partial x} \psi
+\end{align*}
+{% end %}
+
+Thus we see that:
+
+{% math() %}
+\begin{gather*}
+[\hat H, \hat p]\psi = i\hbar \dfrac{\partial V}{\partial x} \psi \\
+\Rightarrow [\hat H, \hat p] = i\hbar \dfrac{\partial V}{\partial x}
+\end{gather*}
+{% end %}
+
+Now, if we substitute this result into the Heisenberg equation of motion, we have:
+
+{% math() %}
+\begin{align*}
+\dfrac{d\langle p\rangle}{dt} &= \dfrac{i}{\hbar} \langle[\hat H, \hat p]\rangle \\
+&= \dfrac{i}{\hbar} \left\langle i\hbar \dfrac{\partial V}{\partial x} \right\rangle \\
+&= -\left\langle \dfrac{\partial V}{\partial x} \right\rangle
+\end{align*}
+{% end %}
+
+But remember, in classical mechanics, $\dfrac{dp}{dt}$ is the force, and Newton's second law is simply $F = \dfrac{dp}{dt} = -V'(x)$! So we have reproduced something that looks very _similar_ (though not identical) to Newton's second law:
+
+{% math() %}
+\dfrac{d\langle p\rangle}{dt} = -\left\langle \dfrac{\partial V}{\partial x} \right\rangle
+{% end %}
+
+We can follow the same process with the position operator $\hat x$ to see that its Heisenberg equation of motion is given by:
+
+{% math() %}
+\dfrac{d\langle x\rangle}{dt} = \dfrac{\langle p\rangle}{m}
+{% end %}
+
+Which looks very similar to the classical $\dot x = v = p/m$! The two above equations comprise **Ehrenfest's theorem** goes to show that quantum mechanics ultimately reproduces classical mechanics, although its predictions are much more significant at small scales, where classical mechanics fails.
+
 ## A brief peek at more advanced quantum mechanics
 
 Up to this point, we have considered quantum mechanics primarily using the Schrödinger equation as well as working with pure quantum states. There are more advanced derivatives of the Schrödinger equation that incorporate the effects of relativity and spin in their description of quantum particles. First, we have the Klein-Gordon equation:
