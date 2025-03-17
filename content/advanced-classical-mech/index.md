@@ -8,6 +8,8 @@ This is a guide to classical mechanics beyond Newtonian mechanics. Topics discus
 
 <!-- more -->
 
+I thank [Professor Martin](https://faculty.rpi.edu/charles-martin) at Rensselaer Polytechnic Institute for his excellent instruction and the permission to make this guide freely sharable.
+
 ## The general ideas of classical mechanics
 
 From the scientific revolution until 1905, physics was dominated by **classical mechanics** - a collective theory that describes how systems behave and evolve with fixed mathematical rules. The starting paradigm used by classical mechanics was **Newtonian mechanics**, which used concepts of forces, in combination with Newton's three laws of motion, to describe the physics of a system. This was later superceded in favor of **Lagrangian and Hamiltonian mechanics**, which instead focused on concepts of _energy_ and the laws governing energy to determine the motion of objects.
@@ -1183,7 +1185,7 @@ K &= \dfrac{1}{2} m(\dot x^2 + \dot y^2) \\ &= \dfrac{1}{2} m[(-R \sin \phi\, \d
 \end{align*}
 {% end %}
 
-Where at the end we used the trigonometric identity $\sin A \sin B + \cos A \cos B = cos(A - B)$. Since we are not considering gravity (imagine this spinning disk was in deep space) then the Lagrangian is:
+Where at the end we used the trigonometric identity $\sin A \sin B + \cos A \cos B = \cos(A - B)$. Since we are not considering gravity (imagine this spinning disk was in deep space) then the Lagrangian is:
 
 {% math() %}
 \begin{align*}
