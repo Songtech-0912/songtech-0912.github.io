@@ -1564,9 +1564,177 @@ p = \dfrac{E}{c} \Rightarrow \rho_p = \dfrac{u}{c} = \dfrac{1}{2c}\left[ \epsilo
 
 This momentum is associated with what we term as **radiation pressure**, given by $P = I/c$ ($I$ is the intensity), which means it is possible to transfer momentum between objects purely through electromagnetic waves. In the extreme case, shining a very powerful laser or other light source at a perfect mirror can propel the mirror forward at incredible speed, something that [solar sail technology](https://en.wikipedia.org/wiki/Solar_sail) is built upon.
 
-### Optics
+### A short interlude on optics
 
 **Optics** is the study of light, and since light is an electromagnetic phenomenon, optics is founded on electromagnetic theory. There are three main approaches to optics. The first approach is known as **geometric optics** and treats light as a series of collimated rays. This is also known as the _paraxial approximation_ and in many cases yields impressive quantitative results with purely geometric reasoning, without the need to solve Maxwell's equations. The second approach is known as **wave optics**, and uses the traditional approaches of electrodynamics, such as solving the electromagnetic wave equation for given boundary conditions. Lastly, the third approach, complementing (and in some cases superceding) wave optics, is **quantum optics**, which uses quantum mechanics to analyze optical systems whose mechanics go beyond the classical realm, such as lasers. We will not go in-depth on the subject, but electromagnetic theory is foundational to optics: optics has historically (and remains) one of the most important applications of electromagnetic theory. It is a reminder that far from being relegated to a textbook, electromagnetic theory is very much alive and used in countless applications in countless different ways.
+
+## Interference
+
+A peculiar feature of solutions to the electromagnetic wave equation is that a **superposition** of solutions is also a solution to the electromagnetic wave equation. This applies regardless of the shape of the wave and whether it is monochromatic (same-frequency), but it is simplest to first analyze monochromatic plane-waves.
+
+We know that plane waves are written in the form $E(x, t) = E_0 \cos (kx - \omega t)$. We may write this as $E \propto \cos \phi$, where $\phi = kx - \omega t$ is the argument to the cosine, and is measured in radians. At $\phi = 0, E = E_0$, while at $\phi = \pi$, $E = -E_0$. At $\phi = \pi/2$ and $\phi = 3\pi/2$, we find that $E = 0$. This is shown here:
+
+{{ diagram(
+src="./Phase-example-diagram.excalidraw.svg"
+desc="An electromagnetic wave displayed, showing the phase of the wave on the x-axis and the electric field strength on the y-axis"
+) }}
+
+When two waves $E_1(x, t)$ and $E_2(x, t)$ of different phase are added together, we say that the **phase difference** $\Delta \phi$ is simply the difference between the phase of the two waves. By substituting the definition of $\phi \equiv k x - \omega t$ for the two waves of different phase, we find that:
+
+- For two waves that are aligned in time but have spatial separation $\Delta x$ (i.e. the second wave lags behind the first wave by $\Delta x$ units of distance) we have $\Delta \phi = k \Delta x$
+- For two waves that are aligned in space but have time separation $\Delta t$ (i.e. the second wave lags behind the first wave by $\Delta t$ units of time) we have $\Delta \phi = \omega \Delta t$
+- In the case that $\Delta \phi = m\pi, \, m = \pm 1, \pm 3, \pm 5, \pm 7, \dots$ (that is, for odd integers $m$) we have **destructive interference** with a resulting wave that has a *smaller* amplitude than $|E_{0, 1}| + |E_{0, 2}|$ (that is, the sum of the amplitudes of $E_1$ and $E_2$).
+   - In the spatial case this is equal to $\Delta x = \dfrac{m}{2}\lambda = \pm \dfrac{1}{2} \lambda, \pm \dfrac{3}{2} \lambda, \pm \dfrac{5}{2} \lambda, \pm \dfrac{7}{2} \lambda, \dots$
+   - In the special case that the two waves have the **same amplitude**, $E_1 + E_2 = 0$
+- In the case that $\Delta \phi = 2n \pi, \, n = 0, \pm 1, \pm 2, \pm 3, \pm 4, \dots$ (that is, for even integers $n$) we have **constructive interference** with a resulting wave that has a *larger* amplitude than $|E_{0, 1}| + |E_{0, 2}|$ (that is, the sum of the amplitudes of $E_1$ and $E_2$).
+   - In the spatial case this is equal to $\Delta x = n\lambda = 0, \pm \lambda, \pm 2 \lambda, \pm 3 \lambda, \pm 4 \lambda, \dots$
+   - In the special case that the two waves have the **same amplitude**, $E_1 + E_2 = 2E_1 = 2E_2$
+
+> **Note:** It is common to refer to $\Delta x$ as the _path length difference_.
+
+If we recall that the intensity of an electromagnetic wave is given by $U = \dfrac{E^2}{2\mu_0 c}$, we have the formula for the intensity of the resulting wave from two waves that have the same intensity $I_0$:
+
+{% math() %}
+I = 4I_0 \cos^2 \left(\dfrac{\Delta \phi}{2}\right)
+{% end %}
+
+> **Caution:** This also assumes both waves have the same frequency and same polarization (i.e. the waves are parallel to each other in direction). That is to say, we have the same $\omega$ and the same unit vectors $\hat{\mathbf{E}}_1 = \hat{\mathbf{E}}_2$. If the waves *are* polarized (i.e. $\hat{\mathbf{E}}_1 \neq \hat{\mathbf{E}}_2$) or have different frequency, this relation no longer holds.
+
+### The double-slit experiment
+
+The classic demonstration of interference is Young's **double-slit experiment**, where light from some source is passed between two slits, separated by distance $d$, and thus the incident electromagnetic wave $E$ splits into two waves $E_1$ and $E_2$. The incident light has intensity $I_0$ and a screen is placed a distance $D$ away from the slits, where an **interference pattern** of alternating light and dark regions appears:
+
+{{ diagram(
+src="./double-slit.excalidraw.svg"
+desc="A diagram of the double slit experiment, showing a screen with two slits, and a viewing screen behind. The difference in the path length light travels to the viewing screen at different angles theta causes interference phenomena."
+)}}
+
+The angle $\theta$ that the interference fringes make with the centerline (i.e. the straight-line to the screen, labelled $D$ in the below diagram) is given by $\Delta x = d \sin \theta = n \lambda$ where $n = 0, \pm 1, \pm 2, \pm 3, \dots$ where $\Delta x$ is the _path length difference_ (just as we discussed previously). This makes sense because we previously showed that $\Delta x = n \lambda = 0, \pm \lambda, \pm 2 \lambda, \pm 3 \lambda, \dots$ are indeed the values for which **constructive interference** occurs.
+
+We call the interference pattern **maxima** observed on the screen as the interference _fringes_. The distance $\Delta s$ (in some texts, this is called $\Delta y$) from the center of the screen to the _nth_ interference fringe (reference the above diagram) is given by:
+
+{% math() %}
+\begin{matrix}
+\Delta s = D \tan \theta, &\theta = \sin^{-1} \left(\dfrac{n\lambda}{d}\right)
+\end{matrix}
+{% end %}
+
+Which we may rearrange to have:
+
+{% math() %}
+\Delta s = D \tan \left[\sin^{-1} \left(\dfrac{n\lambda}{d}\right)\right]
+{% end %}
+
+The **maxima** (i.e. inteference fringes) are located at $\Delta s$ for *integer* $n$ i.e. $n = 0, \pm 1, \pm 2, \dots$ while the **minima** are located at _half-integer_ $n$ i.e. $n = \dfrac{1}{2}, \dfrac{3}{2}, \dfrac{5}{2}, \dfrac{7}{2}, \dots$ Note that when the angle $\theta$ is small - that is, for interference fringes that are not too far away from the center of the screen - we may use the _small-angle approximation_ to find that:
+
+{% math() %}
+\Delta s \approx \dfrac{n\lambda D}{d}
+{% end %}
+
+We recall that two interfering waves with a phase shift of $\Delta \phi$ has a resulting intensity of $I  = 4I_0 \cos^2 \left(\dfrac{\Delta \phi}{2}\right) = 4I_0 \cos^2 \left(\dfrac{k \Delta x}{2}\right)$. Thus, the intensity of the interference pattern created by the waves, measured at the screen, is given by:
+
+{% math() %}
+I(\theta) = 4I_0 \cos^2 \left(\dfrac{\pi d \sin \theta}{\lambda}\right)
+{% end %}
+
+Which may also be written as:
+
+{% math() %}
+I = 4I_0 \cos^2 \left(\dfrac{\pi d}{\lambda D}\Delta s\right)
+{% end %}
+
+Given that we know that $d \sin \theta = n\lambda$, we may also write the special case of the intensity $I(\theta)$ at the angles $\theta$ for which $\sin \theta = \dfrac{n\lambda}{d}$ as:
+
+{% math() %}
+I = 4I_0 \cos^2 \left(\dfrac{k n \lambda}{2}\right) = 4I_0 \cos^2 \left(n\pi\right)
+{% end %}
+
+Thus for all $n = 0, 1, 2, 3, \dots$ we have constructive interference, and for all $m = \left(n + \dfrac{1}{2}\right) = \dfrac{1}{2}, \dfrac{3}{2}, \dfrac{5}{2}, \dfrac{7}{2}, \dots$ we have destructive interference. 
+
+> Note that we have assumed that the slit width is negligibly small in our analysis. In a more realistic analysis, we may find the slit width $a$ from the distance between the slits $d$ by counting the number of interference fringes $n_f$ between the central maximum and the first *missing* fringe. We will see shortly that the combined effects of interference and diffraction result in every $n_f$ fringe to be missing and a dark spot to appear in its place. Then $a = \dfrac{d}{n_f}$ - for instance, if there are 3 fringes between the central maximum and the first missing fringe, then $a = d / 3$.
+
+## The photoelectric effect
+
+We have discussed the electric and magnetic field at length, and how they give rise to light in the form of electromagnetic waves, but we have only touched briefly on the topic of the other manifestation of light - **photons**.
+
+Consider a glass tube with metallic ends connected to a battery. There exists a potential difference $\Delta V_{CA}$ across the two ends of the tube $\Delta V_{CA} = V_C - V_A$, where $V_C$ is the positively-charged end of the tube (the **cathode**) and $V_A$ is the negatively-charged end of the tube (the **anode**). The battery is tuned such that the anode is at a *higher* potential compared to the cathode.
+
+The tube also has a spot where light can be shined through. The incident light on the cathode transfers energy to electrons in the metallic cathode (remember, light has energy). This increases the electrons' kinetic energy, allowing them to overcome the potential holding them to the metal and escape the metal's surface, flying into the anode. In informal terms, the light "kicks out" electrons from the metal by giving them kinetic energy to overcome the potential difference $\Delta V_{CA}$ holding them back.
+
+{{ diagram(
+src="./photoelectric-effect.excalidraw.svg"
+desc="A diagram showing the photoelectric effect. Incident photons on a metal plate kick out electrons (called photoelectrons) from the plate when their kinetic energy is sufficient to overcome an applied potential "
+) }}
+
+The **stopping potential** $\Delta V_0 = -\Delta V_{CA}$ is the potential obtained from experimental measurements for which electrons have sufficient kinetic energy that they start to be ejected from the metal, measured from the anode to the cathode. When we conduct the experiment we find that no matter the intensity of the light source (corresponding to how many photons are emitted per second), there is no effect on the **kinetic energy** of the photons (though the measured current _does_ depend on the intensity). Furthermore, the emission of electrons from the cathode happens **instantly**.
+
+This bizarre fact - that shining more photons on the cathode (higher intensity) do not correspond to ejected electrons having greater energies - was one of the first pieces of empirical evidence for **quantum mechanics**. 
+
+Consider what would happen in terms of classical electromagnetism. We know from before that the intensity $\langle I\rangle$ is proportional to the electric field, that is, $\langle I\rangle \propto \mathbf{E}^2$. Light is described as an electromagnetic wave (i.e. propagating waves caused by oscillating electric and magnetic fields), and therefore we expect higher intensity to transfer more kinetic energy to the electrons, until the intensity is sufficiently high that the electrons are ejected from the cathode. Intensity, however, is independent of frequency, so we wouldn't expect a change in frequency to affect the kinetic energy of the electrons. But this is _not_ what we observe. What we _actually_ observe is that the kinetic energy of the electrons _only_ depends on the frequency of the incident light, plus a constant. Why this occurs had no explanation, until Einstein offered an explanation in a revolutionary paper in 1905, named "_On a Heuristic Viewpoint Concerning the Production and Transformation of Light_".
+
+Einstein theorized that light was actually composed of **photons**, subatomic particles moving at the speed of light that carry energy. Einstein explained that **if** we assume that the energy of a *single photon* is given by $E \propto f$ where the proportionality constant is $h \approx \pu{6.626E-34 J*s}$, (which we can also write as $E = hf$), then by conservation of energy $K + U = E$, the kinetic energy $K = E - \varphi$ where $\varphi \equiv U$ is the potential energy carried by the electrons, **exactly** matches the experimental results. We can precisely express the kinetic energy as:
+
+{% math() %}
+K = E - \varphi = hf - \varphi, \quad K = 0 \text{ if } f \leq f_0
+{% end %}
+
+Where we call $\varphi$ a **work function**, which, despite its name, actually is a **constant** that has units of energy. The work function is specific to a material (different materials have different work functions). For an electron to be ejected, it must have enough kinetic energy. More specifically, its kinetic energy must be at least equal to the binding energy from the stopping potential $e\Delta V_0$. Thus, solving for $K = e\Delta V_0$, we have:
+
+{% math() %}
+\Delta V_0 = \dfrac{h}{e} (f - f_0)
+{% end %}
+
+> **Note:** Both the work function $\varphi$ and the threshold frequency $f_0$ are **constants** as they represent properties *intrinsic* to a particular material, and independent of the wavelength, frequency, or intensity of the incident light. They are in fact related by $\varphi = h f_0$. Meanwhile, $E, K, f, \lambda$, and $\Delta V_0$ are **variables** as they are dependent on the properties of the incident light.
+
+A summary of the different quantities in the theory of the photoelectric effect is shown in the following table 
+
+| Quantity | Physical Meaning                                                                                | _Dependent_ on                                               | _Independent_ of               |
+| -------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------ |
+| $E$      | Total energy of photoelectrons (electrons that have been passed energy from an incident photon) | $f, \lambda, \varphi$                                        | $I$ (intensity), $i$ (current) |
+| $i$      | Measured current on the anode                                                                   | $I$ (intensity) as well as $\Delta V_0$ for $\Delta V_0 > 0$ | -                              |
+| $f$      | Frequency of light *(typically fixed for the experiment)*                                       | $\lambda$                                                    | $I, \varphi$                   |
+
+From developments in quantum mechanics after the photoelectric effect was discovered, it was found that photons not only carry energy, but also carry momentum, and their momentum is related to their energy by $E = pc$, a result derived from special relativity (also a theory developed by Einstein), which we can rearrange to $p = \dfrac{E}{c} = \dfrac{hf}{c} = \dfrac{h}{\lambda}$. In our current understanding of the nature of photons and quantum mechanics, photons are **neither** wave nor particle but something else. This "something else" doesn't really have a name (some suggested ones are "wave-icles" or "quantum particles" or even "quantum non-classical particles"). To fully describe light (and photons) in quantum terms, we need the theory of **quantum electrodynamics**, which is very complicated. But for now, we can be content with the knowledge that photons have properties that, while bizarre, are actually shared by all the fundamental particles in the Universe - so perhaps, they are not out of the ordinary at all.
+
+## The photoelectric effect
+
+We have discussed the electric and magnetic field at length, and how they give rise to light in the form of electromagnetic waves, but we have only touched briefly on the topic of the other manifestation of light - **photons**.
+
+Consider a glass tube with metallic ends connected to a battery. There exists a potential difference $\Delta V_{CA}$ across the two ends of the tube $\Delta V_{CA} = V_C - V_A$, where $V_C$ is the positively-charged end of the tube (the **cathode**) and $V_A$ is the negatively-charged end of the tube (the **anode**). The battery is tuned such that the anode is at a *higher* potential compared to the cathode.
+
+The tube also has a spot where light can be shined through. The incident light on the cathode transfers energy to electrons in the metallic cathode (remember, light has energy). This increases the electrons' kinetic energy, allowing them to overcome the potential holding them to the metal and escape the metal's surface, flying into the anode. In informal terms, the light "kicks out" electrons from the metal by giving them kinetic energy to overcome the potential difference $\Delta V_{CA}$ holding them back.
+
+![[photoelectric-effect.excalidraw]]
+
+The **stopping potential** $\Delta V_0 = -\Delta V_{CA}$ is the potential obtained from experimental measurements for which electrons have sufficient kinetic energy that they start to be ejected from the metal, measured from the anode to the cathode. When we conduct the experiment we find that no matter the intensity of the light source (corresponding to how many photons are emitted per second), there is no effect on the **kinetic energy** of the photons (though the measured current _does_ depend on the intensity). Furthermore, the emission of electrons from the cathode happens **instantly**.
+
+This bizarre fact - that shining more photons on the cathode (higher intensity) do not correspond to ejected electrons having greater energies - was one of the first pieces of empirical evidence for **quantum mechanics**. 
+
+Consider what would happen in terms of classical electromagnetism. We know from before that the intensity $\langle I\rangle$ is proportional to the electric field, that is, $\langle I\rangle \propto \mathbf{E}^2$. Light is described as an electromagnetic wave (i.e. propagating waves caused by oscillating electric and magnetic fields), and therefore we expect higher intensity to transfer more kinetic energy to the electrons, until the intensity is sufficiently high that the electrons are ejected from the cathode. Intensity, however, is independent of frequency, so we wouldn't expect a change in frequency to affect the kinetic energy of the electrons. But this is _not_ what we observe. What we _actually_ observe is that the kinetic energy of the electrons _only_ depends on the frequency of the incident light, plus a constant. Why this occurs had no explanation, until Einstein offered an explanation in a revolutionary paper in 1905, named "_On a Heuristic Viewpoint Concerning the Production and Transformation of Light_".
+
+Einstein theorized that light was actually composed of **photons**, subatomic particles moving at the speed of light that carry energy. Einstein explained that **if** we assume that the energy of a *single photon* is given by $E \propto f$ where the proportionality constant is $h \approx \pu{6.626E-34 J*s}$, (which we can also write as $E = hf$), then by conservation of energy $K + U = E$, the kinetic energy $K = E - \varphi$ where $\varphi \equiv U$ is the potential energy carried by the electrons, **exactly** matches the experimental results. We can precisely express the kinetic energy as:
+
+{% math() %}
+K = E - \varphi = hf - \varphi, \quad K = 0 \text{ if } f \leq f_0
+{% end %}
+
+Where we call $\varphi$ a **work function**, which, despite its name, actually is a **constant** that has units of energy. The work function is specific to a material (different materials have different work functions). For an electron to be ejected, it must have enough kinetic energy. More specifically, its kinetic energy must be at least equal to the binding energy from the stopping potential $e\Delta V_0$. Thus, solving for $K = e\Delta V_0$, we have:
+
+{% math() %}
+\Delta V_0 = \dfrac{h}{e} (f - f_0)
+{% end %}
+
+> **Note:** Both the work function $\varphi$ and the threshold frequency $f_0$ are **constants** as they represent properties *intrinsic* to a particular material, and independent of the wavelength, frequency, or intensity of the incident light. They are in fact related by $\varphi = h f_0$. Meanwhile, $E, K, f, \lambda$, and $\Delta V_0$ are **variables** as they are dependent on the properties of the incident light.
+
+A summary of the different quantities in the theory of the photoelectric effect is shown in the following table 
+
+| Quantity | Physical Meaning                                                                                | _Dependent_ on                                               | _Independent_ of               |
+| -------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------ |
+| $E$      | Total energy of photoelectrons (electrons that have been passed energy from an incident photon) | $f, \lambda, \varphi$                                        | $I$ (intensity), $i$ (current) |
+| $i$      | Measured current on the anode                                                                   | $I$ (intensity) as well as $\Delta V_0$ for $\Delta V_0 > 0$ | -                              |
+| $f$      | Frequency of light *(typically fixed for the experiment)*                                       | $\lambda$                                                    | $I, \varphi$                   |
+
+From developments in quantum mechanics after the photoelectric effect was discovered, it was found that photons not only carry energy, but also carry momentum, and their momentum is related to their energy by $E = pc$, a result derived from special relativity (also a theory developed by Einstein), which we can rearrange to $p = \dfrac{E}{c} = \dfrac{hf}{c} = \dfrac{h}{\lambda}$. In our current understanding of the nature of photons and quantum mechanics, photons are **neither** wave nor particle but something else. This "something else" doesn't really have a name (some suggested ones are "wave-icles" or "quantum particles" or even "quantum non-classical particles"). To fully describe light (and photons) in quantum terms, we need the theory of **quantum electrodynamics**, which is very complicated. But for now, we can be content with the knowledge that photons have properties that, while bizarre, are actually shared by all the fundamental particles in the Universe - so perhaps, they are not out of the ordinary at all.
 
 ## A peek at relativistic and quantum electrodynamics
 

@@ -264,6 +264,8 @@ header {
     font-size: 1.06rem;
     line-height: 1.65;
     color: rgba(0, 0, 0, 0.8);
+    @include md { font-size: 1rem; }
+    @include sm { font-size: 0.95rem; }
   }
 
   li {
