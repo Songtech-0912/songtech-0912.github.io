@@ -1045,3 +1045,778 @@ The solutions $\lambda$ to the above equation are the eigenvalues of $A$. The ei
 | Hyperbolic            | Opposite signs                  |
 | Parabolic             | At least one eigenvalue is zero |
 | Elliptic              | Same signs                      |
+
+### Mixed-type 2nd-order PDEs
+
+We have seen that 2nd-order PDEs may be classified, based on their coefficients, as _hyperbolic_, _parabolic_, or _elliptic_. But these distinctions are not as clear-cut as they may first appear; in fact, a 2nd-order PDE may be of _mixed type_, which means it can be hyperbolic in one region, parabolic in another region, and elliptic in yet another region. Consider the following 2nd-order PDE:
+
+{% math() %}
+\dfrac{\partial^2 u}{\partial x^2} + (x^2 - y^2) \dfrac{\partial^2 u}{\partial y^2} = 0
+{% end %}
+
+From first appearance, this PDE may _appear_ to be elliptic, as evidenced by the positive sign. But we must exercise caution, as this is not always so; in fact, it is *only true* for $|x| > |y|$. Notice what happens at the origin, where $|x| = |y| = 0$: then second term becomes zero, and we are left with:
+
+{% math() %}
+\dfrac{\partial^2 u}{\partial x^2} = 0
+{% end %}
+
+Which is a _parabolic_ differential equation. Finally, if we have $|x| < |y|$, the second term would then become _negative_, which is a _hyperbolic_ differential equation. This is why we classify this PDE as a mixed-type, as it is classified differently depending on region. Below is a graph of the regions in which the PDE takes each type (red represents $|x|>|y|$ and thus *elliptic*, blue represents $|x| < |y|$ and thus *hyperbolic*, and the dashed black line represents $|x| = |y|$ and thus parabolic):
+
+{{ natural_img(
+src="./mixed-type-pde.svg"
+desc="A graph showing the PDE's different regions, with regions between the lines y = x and y = -x being elliptic, regions on either line being parabolic, and all other regions being hyperbolic."
+) }}
+
+### Existence, uniqueness, and stability
+
+Up to this point, we have been solving PDEs with the assumption that _solutions always exist and are unique_ and that solutions are _stable_. That is, a solution satisfies the following characteristics:
+
+- **Existence:** It is mathematically-possible to find the solution of a PDE for given initial (and/or boundary) conditions
+- **Uniqueness:** The solution of a PDE for given initial (and/or boundary) conditions is the _one and only_ solution
+- **Stability:** A PDE has solutions without shocks, discontinuities, divergent behavior, or any other instabilities that result in unpredictable behavior
+
+It may be odd to think that solutions may not even _exist_ for a given PDE and boundary conditions, but this is possible. Typically, the most straightforward to show that a solution does not exist is to (attempt to) solve a given problem with the provided boundary conditions, and show that the boundary conditions are impossible to be satisfied.
+
+Furthermore, even if a solution exists, there may be multiple solutions possible - a good check is to see if the trivial solution $u = 0$ is a solution to the BVP in addition to some other solution, or if a solution $u + C$ where $C$ is some constant is still a solution to the BVP. If multiple solutions are possible, then we say that the solution is _non-unique_. For example, consider the following BVP for the transport equation:
+
+{% math() %}
+\begin{gather*}
+\dfrac{\partial u}{\partial x} = -\dfrac{\partial u}{\partial y} \\
+u(0, y) = 0 \\
+u(L, y)= 0
+\end{gather*}
+{% end %}
+
+In this case through just guess-and-check we find that one particular solution to the BVP is the function $u(x, y) = \sin \left(\dfrac{\pi}{L}(x - y)\right)$. There is, however, another solution: $u(x, y) = 0$. Thus the solution is certainly **not unique**. 
+
+In many cases, physical intuition can be enough to deduce whether the boundary conditions lead to nonexistent or non-unique solutions. If a PDE doesn't have _sufficiently many_ boundary conditions, a solution often exists but is not unique. For instance.
+
+Finally, a PDE (and particularly hyperbolic PDEs) may have numerical instabilities that make a solution useless to compute even if found. If a problem satisfies all of the three criteria, for which we say that the problem is **well-posed**. This is particularly true for hyperbolic PDEs, which are in the form of the modified wave equation:
+
+{% math() %}
+\dfrac{\partial^2 u}{\partial x^2} - \dfrac{\partial^2 u}{\partial y^2} + \dots = 0
+{% end %}
+
+Such PDEs are highly sensitive to their initial conditions and thus stability depends on the smoothness (i.e. no abrupt jumps, discontinuities, and asymptotic behavior) of their initial conditions. The same is often true with *nonlinear* PDEs. Again, instability is hard to show without explicitly _solving_ the BVP and examining the resulting solution.
+
+It is rarely possible to _prove_ existence, uniqueness, and stability for a general class of boundary-value (or initial-value) problems. It is often much easier to give a _counterexample_ (i.e. _disprove_ existence, uniqueness, and stability). Even when the conditions of existence, uniqueness, and stability are satisfied, it may be impossible to _prove this_ or a proof may only be possible on a case-by-case basis. In this introductory treatment of PDEs, we will not delve into the intricacies of proving existence, uniqueness, and stability, which involves very advanced mathematics.
+
+It is, however, useful to mention several theorems for _specific PDEs_ that provide for existence and uniqueness (and in some cases, stability):
+
+> **Theorem 1:** The solution to Poisson's equation $\nabla^2 f = 0$ (as well as its limiting case, Laplace's equation, given by $\nabla^2 f = 0$) is a **unique** solution for the boundary condition $u(\mathbf{r})_\text{boundary} = f(\mathbf{r})$ *as well as* for the boundary condition $\dfrac{\partial u}{\partial n} = g(\mathbf{r})$. That is to say, _if_ the values of $u$ are specified on the boundary, _or if_ the values of the derivative of $u$ are specified on the boundary (but **not specifying both**), then a solution will always **exist and is unique**.
+
+> **Theorem 2:** By the **Cauchy–Kowalewskaya Theorem**, any second-order PDE in the form of the wave equation or diffusion equation with the Cauchy (initial) conditions $u(\mathbf{r}, 0)_\text{boundary} = f(\mathbf{r})$, $\dfrac{\partial u}{\partial t}(\mathbf{r}, 0) = g(\mathbf{r})$ yields a **unique solution** _if_ **both conditions** are provided and $f$ and $g$ are both functions with well-defined power series. 
+
+> **Theorem 3:** Assuming theorem (2) holds, the solution to the diffusion equation $\dfrac{\partial^2 u}{\partial t^2} = k \nabla^2 u$ is **always stable** for $t \geq 0$ (although unstable for $t < 0$).
+
+> **Theorem 4:** Assuming theorem (1) holds, the solution to Poisson's equation and Laplace's equation is **always stable**.
+
+### Solutions of the wave equation
+
+We have previously seen that the wave equation is the **prototypical hyperbolic PDE**, and is given by: 
+
+{% math() %}
+\dfrac{\partial^2 u}{\partial t^2} = c^2 \dfrac{\partial^2 u}{\partial x^2}
+{% end %}
+
+> **Note:** The fact that the equation has $c^2$ instead of $c$ as a constant is significant. $c^2$ is _guaranteed_ to be positive, while $c$ can be positive or negative, and this makes a massive difference in the behavior of the PDE (and therefore, its solutions).
+
+As the prototypical hyperbolic PDE, the wave equation has a special significance because _any_ hyperbolic PDE can be transformed into the wave equation by a change of coordinates. In addition, it has the desirable characteristic that its general solution is actually rather simple:
+
+{% math() %}
+u(x, t) = f(x - ct) + g(x + ct)
+{% end %}
+
+Which we can find by the method of characteristics or by the method of coordinate transforms and then direct integration (which we previously showed). Particular solutions for the wave equation can be found by giving _initial conditions_. Let us consider the specific initial-value problem given by:
+
+{% math() %}
+\begin{align*}
+u(x, 0) = \varphi(x) \\
+\dfrac{\partial u}{\partial t}(x, 0) = \psi(x) 
+\end{align*}
+{% end %}
+
+Where $\varphi(x), \psi(x)$ are arbitrary functions. This initial-value problem possesses a _particular solution_, given by:
+
+{% math() %}
+u(x, t) = \dfrac{1}{2} [\varphi(x - ct) + \varphi(x + ct)] + \dfrac{1}{2c} \int_{x - ct}^{x + ct}\psi(x')dx'
+{% end %}
+
+In the special case where we have $\dfrac{\partial u}{\partial t}(x, 0)  = \varphi(x) = 0$, then the particular solution reduces to:
+
+{% math() %}
+u(x, y) = \dfrac{1}{2} \varphi(x - ct) + \dfrac{1}{2}\varphi(x + ct)
+{% end %}
+
+Meanwhile in the special case we have $u(x, 0) = \psi(x) = 0$, then the particular solution reduces to:
+
+{% math() %}
+u(x, t) = \dfrac{1}{2c} \int_{x - ct}^{x + ct}\psi(x')dx'
+{% end %}
+
+#### Solutions of relevance in physics
+
+One of the most useful particular solutions to the wave equation (particularly in Physics) is found by imposing the additional periodic boundary conditions that $u(x, t) = u(x + \lambda, t)$ and $u(x, t) = u(x, t + T)$. The solution then becomes:
+
+{% math() %}
+u(x, t) = A\cos \left(\dfrac{2\pi x}{\lambda} - \dfrac{2\pi}{T} t\right) + 
+B \sin \left(\dfrac{2\pi x}{\lambda} + \dfrac{2\pi}{T} t\right)
+{% end %}
+
+Which can also be written in a more compact form if we define $\omega = \dfrac{2\pi}{T}$ and $k = \dfrac{2\pi}{\lambda}$, as follows:
+
+{% math() %}
+u(x, t) = A \cos (k x - \omega t) + B\sin (kx + \omega t)
+{% end %}
+
+In physics, each of these quantities has a very specific _physical interpretation_ - $\lambda$ is called the _wavelength_, $T$ is called the _period_, $\omega$ is the _angular frequency_ and $k$ is called the wavenumber. Such solutions are known as **plane-wave solutions** (also called traveling waves) as they describe waves that propagate sinusoidally to infinity, with their wavefronts being uniform (thus, planar). See the guide on [waves and oscillations in physics](@/waves-and-oscillations/index.md) for more details.
+
+> **Note:** we can construct a more general solution if we write this solution as $u(x, t) = C e^{ikx - i\omega t}$ by _Euler's formula_ $e^{i\phi} = \cos \phi + i \sin \phi$. As the wave equation is linear, we can sum over an infinite number of plane waves spaced out in space (with different values of $k$) to have $u(x, t) = \dfrac{1}{\sqrt{2\pi}} \displaystyle \int C(k) e^{ikx - i\omega t} dk$. This is also a form often used in physics.
+
+Note that a particular case of this particular solution can _also_ be found with the following boundary conditions:
+
+{% math() %}
+\begin{align*}
+u(x, 0) &= 0 \\
+\dfrac{\partial u}{\partial x}(x, 0) &= \psi(x) \\ &=\cos x
+\end{align*}
+{% end %}
+
+Where we have:
+
+{% math() %}
+\begin{align*}
+u(x, t) &= \dfrac{1}{2c} \int_{x - ct}^{x + ct}\psi(x')dx' \\
+&= \dfrac{1}{2c} \int_{x - ct}^{x + ct} \cos x' dx' \\
+&= \dfrac{1}{2c} (\sin x) \bigg|_{x - ct}^{x + ct} \\
+&= \dfrac{1}{2c}[ \sin(x + ct) - \sin(x - ct)]
+\end{align*}
+{% end %}
+
+We may verify that this solution does, indeed, satisfy the wave equation:
+
+{% math() %}
+\begin{align*}
+\frac{\partial^2 u}{\partial x^2} &= -\dfrac{1}{2c}[\sin(x + ct) - \sin(x - ct)] \\
+\frac{\partial^2 u}{\partial t^2} &= -\dfrac{1}{2}c[\sin(x + ct) - \sin(x - ct)] \\
+\frac{\partial^2 u}{\partial t^2} - c^2\frac{\partial^2 u}{\partial x^2} &=
+-\dfrac{1}{2}c[\sin(x + ct) - \sin(x - ct)]-c^2\sin(x + ct) \\ &-c^2\left(-\dfrac{1}{2c}\right)[ \sin(x + ct) -\sin(x - ct)] \\
+&=0\quad \checkmark
+\end{align*}
+{% end %}
+
+As we saw previously, solutions to the wave equation (waves) have the universal feature that the wave travels to the right, that is, $f(x - ct)$, and travels to the left, that is, $f(x +ct)$, at a _speed of propagation_ of $c$. Since $c$ is a constant, $c$ is also the _maximal speed_ at which information at a particular point $x$ of a solution can affect another particular point $x' = x \pm ct$. This has important consequences in physics: light is described in physics as an _electromagnetic wave_, and thus the $c$ is the famous _speed of light_, which is invariant (the same everywhere) and directly led to the development of the **theory of relativity**.
+
+But remember that the wave equation describes _all types of waves_, one of which being the vibrations of a string, attached at its two ends. In this case, $u(x, t)$ represents the _displacement_ of the string from its equilibrium point. If we let the string be of length $L$ and have density $\rho$ under tension force $T$, then the boundary-value problem for the string reads:
+
+{% math() %}
+\begin{align*}
+&\dfrac{\partial^2 u}{\partial t^2} =v^2 \dfrac{\partial^2 u}{\partial x^2}, \\
+& v = \sqrt{\frac{T}{\rho}}, \\
+&u(x, 0) = \begin{cases}
+0, & x< 0 \\
+f(x), &0 \leq x \leq L \\
+0, & x> 0
+\end{cases}, \\
+&\dfrac{\partial u}{\partial t}(0, t) =  \dfrac{\partial u}{\partial t}(L, t) = 0
+\end{align*}
+{% end %}
+
+We note that the wave equation for a string can be _equivalently_ written (by expanding out $v^2$ and distributing) as:
+
+{% math() %}
+\rho\dfrac{\partial^2 u}{\partial t^2} = T\dfrac{\partial^2 u}{\partial x^2}
+{% end %}
+
+The expression for the kinetic energy of the string is given by:
+
+{% math() %}
+K = \dfrac{1}{2} mv^2 = \dfrac{1}{2} \int_0^L \rho \left(\dfrac{\partial u}{\partial t}\right)^2 dx
+{% end %}
+
+Where we must integrate over $x$ as $\rho = \dfrac{dm}{dx}$ and thus to find the total mass we have to integrate the mass density across the string. If we assume constant density, we have:
+
+{% math() %}
+K = \dfrac{1}{2} \rho\int_0^L \left(\dfrac{\partial u}{\partial t}\right)^2 dx
+{% end %}
+
+If we differentiate the kinetic energy we have:
+
+{% math() %}
+\begin{align*}
+\dfrac{dK}{dt} &= \dfrac{d}{dt}\left[ \dfrac{1}{2} \rho\int_0^L \left(\dfrac{\partial u}{\partial t}\right)^2 dx\right] \\
+&= \dfrac{1}{2} \rho\int_0^L \underbrace{\dfrac{\partial}{\partial t}\left(\dfrac{\partial u}{\partial t}\right)^2}_\text{Leibnitz rule} dx \\
+&= \rho \int_0^L \underbrace{\dfrac{\partial u}{\partial t} \dfrac{\partial}{\partial t}\left(\dfrac{\partial u}{\partial t}\right)}_\text{Chain rule}dt \\
+&= \rho \int_0^L \dfrac{\partial u}{\partial t} \dfrac{\partial^2 u}{\partial t^2}dt
+\end{align*}
+{% end %}
+
+But remember the wave equation for a string reads $\rho\dfrac{\partial^2 u}{\partial t^2} = T\dfrac{\partial^2 u}{\partial x^2}$. Therefore, substituting in, we have:
+
+{% math() %}
+\begin{align*}
+\dfrac{dK}{dt} &=\rho \int_0^L \dfrac{\partial u}{\partial t} \dfrac{\partial^2 u}{\partial t^2}dt \\
+&= T \int_0^L \dfrac{\partial u}{\partial t} \dfrac{\partial^2 u}{\partial x^2}dt \\
+&= \underbrace{T \dfrac{\partial u}{\partial t}\dfrac{\partial u}{\partial x}\bigg|_0^L - T \int_0^L \dfrac{\partial}{\partial x}\left(\dfrac{\partial u}{\partial t}\right) \dfrac{\partial u}{\partial x} dx}_\text{integration by parts} \\
+&= T \dfrac{\partial u}{\partial t}\dfrac{\partial u}{\partial x}\bigg|_0^L - T \int_0^L \dfrac{\partial^2 u}{\partial x \partial t} \dfrac{\partial u}{\partial x} dx \\
+&= \underbrace{\cancel{T \dfrac{\partial u}{\partial t}\dfrac{\partial u}{\partial x}\bigg|_0^L}}_{\text{since } u(0, t) = u(0, t) = 0} - T \int_0^L \dfrac{\partial^2 u}{\partial x \partial t} \dfrac{\partial u}{\partial x} dx \\
+&= - T \int_0^L \dfrac{\partial^2 u}{\partial x \partial t} \dfrac{\partial u}{\partial x} dx \\
+&= \underbrace{-T\dfrac{d}{dt}\int_0^L \dfrac{1}{2}\left(\dfrac{\partial u}{\partial x}\right)^2 dx}_\text{total derivative - reverse chain rule}
+\end{align*}
+{% end %}
+
+Meanwhile, the potential energy of a string (which we will not derive, but it comes from the work-energy theorem $K = -U$) is given by:
+
+{% math() %}
+U = -\dfrac{dK}{dt} =\dfrac{1}{2} T\int_0^L \left(\dfrac{\partial u}{\partial x}\right)^2 dx
+{% end %}
+
+Thus we find that the **total mechanical energy**, given by the sum of the kinetic and potential energies, is given by:
+
+{% math() %}
+\begin{align*}
+E &= K + U \\
+&= \dfrac{1}{2} \rho\int_0^L \left(\dfrac{\partial u}{\partial t}\right)^2 dx +
+\dfrac{1}{2} T\int_0^L \left(\dfrac{\partial u}{\partial x}\right)^2 dx \\
+&= \dfrac{1}{2} \int_0^L \rho \left(\dfrac{\partial u}{\partial t}\right)^2 + T\left(\dfrac{\partial u}{\partial x}\right)^2\, dx
+\end{align*}
+{% end %}
+
+But since $K = -U$, then $\dfrac{dK}{dt} = -\dfrac{dU}{dt}$, and therefore $\dfrac{dE}{dt} = \dfrac{dK}{dt} + \dfrac{dU}{dt} = 0$. Therefore, total mechanical energy is *always constant*, as required by the law of the **conservation of energy**, and this constant value of energy is equal to:
+
+{% math() %}
+E = \dfrac{1}{2} \int_0^L \rho \left(\dfrac{\partial u}{\partial t}\right)^2 + T\left(\dfrac{\partial u}{\partial x}\right)^2\, dx
+{% end %}
+
+### Solutions of the diffusion equation
+
+As we recall, the diffusion equation is the **prototypical parabolic equation**. It is given by:
+
+{% math() %}
+\dfrac{\partial u}{\partial t} = k \dfrac{\partial^2 u}{\partial x^2}
+{% end %}
+
+As the prototypical parabolic PDE, the wave equation has a special significance because _any_ hyperbolic PDE can be transformed into the diffusion equation by a change of coordinates. 
+
+> **Note:** A special case of the diffusion equation is the well-studied *heat equation*, which many texts use in place of the diffusion equation. The diffusion equation, however, is more general.
+
+Let us consider the following intial-boundary-value problem (IVBP) for the diffusion equation:
+
+{% math() %}
+\begin{gather*}
+\dfrac{\partial u}{\partial t} = k \dfrac{\partial^2 u}{\partial x^2} \\[10pt]
+u(x, 0) = \varphi(x) \\
+u(L_1, t) = g(t) \\
+u(L_2, t) = f(t) \\
+t \geq 0, L_1 \leq x \leq L_2
+\end{gather*}
+{% end %}
+
+The first (initial) condition for $u(x, 0)$ describes the initial spatial distribution of the function $u(x, t)$ at $t = 0$, whereas the second and third (boundary) conditions describe the value of $u$ through time on the _boundaries_ $x = L_1, x = L_2$. The two boundary conditions must satisfy the _consistency condition_ $f(0) = \varphi(L_2), g(0) = \varphi(L_1)$. The heat equation satisfies four important conditions (which we will not prove and simply state, as the proofs are very lengthy):
+
+> **Maximum principle:** For any solution $u(x, t)$ for a well-posed initial-boundary-value problem, then $u(x, t) \leq u(x, 0)$ at all times $t \geq 0$. The maximum of $u(x, t)$ must lie on either $t = 0$ or at one of the boundaries $x \in [0, L]$
+
+> **Minimum principle:** For any solution $u(x, t)$ for a well-posed initial-boundary-value problem, then $\operatorname{min}u(x, t) \geq \operatorname{min} [\varphi(x), f(t), g(t)]$. The minimum must lie on either $t = 0$ or at one of the boundaries $x \in [0, L]$
+
+> **Well-posedness theorem for the heat equation:** For the aforementioned boundary-value problem, a solution always exists, is unique, and is stable: a small perturbation $u(x + \delta x, 0)$ does not strongly affect the solution $u(x, t)$. That is, for two given points $(x_1, 0), (x_2, 0)$ for which $\|(x_1, 0) - (x_2, 0)\| \leq \epsilon_1$ (where $\epsilon_1$ is a small number), then one may always find a _unique solution_, and $\|u(x_1, t) - u(x_2, t)\| \leq \epsilon_2$ for all times $t$ (i.e. two points initially close together stay together).
+
+> **Linear property of solutions:** For any solution $u(x, t)$, then $u(x - a, t)$ and $u(\sqrt{a}x, a t)$ is also a solution.
+
+> **Differentiation and integration of solutions:** For any solution $u(x, t)$ that possesses a derivative $v = \dfrac{\partial u}{\partial t}$, $v$ _also_ satisfies a diffusion equation $\dfrac{\partial v}{\partial t} = k\dfrac{\partial^2 v}{\partial t^2}$. Likewise, for any solution $u(x, t)$ that possesses an integral $I = \displaystyle \int_a^b u(x, t)\,dx$, $I$ _also_ satisfies a diffusion equation $\dfrac{\partial I}{\partial t} = k\dfrac{\partial^2 I}{\partial t^2}$. The same applies for $I = \displaystyle \int_a^b u(x - y, t)g(y)\,dy$ This directly results from the linearity of the diffusion equation (i.e. the sum $u_1 + u_2$ of two solutions $u_1, u_2$ is also a solution).
+
+Intuitively, these results makes the diffusion equation extremely easy (and powerful) to work with. In addition, they allow us to write the general solution of the diffusion equation either in terms of an infinite series:
+
+{% math() %}
+u(x, t) = \sum_{i = 1}^n a_n u_n(x, t) = a_1 u_1(x, t) + a_2 u_2(x, t) + \dots + a_n u_n(x, t)
+{% end %}
+
+Or in terms of an integral:
+
+{% math() %}
+u(x, t) = \int_{-\infty}^\infty u(x', t)\, dx'
+{% end %}
+
+> **Note:** Whether the general solution should be written as a sum or integral typically depends on the boundary conditions (though it can also depend on other factors).
+
+Let us now consider solving the initial-boundary-value problem for the diffusion equation, as shown:
+
+{% math() %}
+\begin{gather*}
+\dfrac{\partial u}{\partial t} = \alpha \dfrac{\partial^2 u}{\partial x^2} \\
+u(x, 0) = \varphi(x) \\
+\lim_{x \to \pm \infty} \varphi(x) = 0
+\end{gather*}
+{% end %}
+
+This initial-boundary-value problem is often called _diffusion on the real line_. We may solve this problem as follows. It should be noted that this is _not_ the conventional way it is derived and is not a rigorous derivation at all. To start, let us assume a solution in the form $u(x, t) = \varphi(x) Q(t)$ (this is actually a valid assumption because the diffusion equation is separable). In this form, if we differentiate, we find that:
+
+{% math() %}
+\begin{matrix*}
+\dfrac{\partial u}{\partial t} = Q'(t) \varphi(x), 
+&\dfrac{\partial^2 u}{\partial x^2} = Q(t) \varphi''(x)
+\end{matrix*}
+{% end %}
+
+Where we can effectively treat $\varphi$ as a constant when differentiating with respect to $t$ since $Q$ doesn't depend on time, and likewise, we can treat $Q(t)$ as a constant when differentiating with respect to $x$ since $Q$ doesn't depend on position. If we substitute into the PDE then divide both sides by $Q \varphi$, we have:
+
+{% math() %}
+\begin{gather*}
+\dfrac{\partial u}{\partial t} = \alpha \dfrac{\partial^2 u}{\partial x^2} \\
+Q' \varphi = \alpha Q \varphi'' \\
+\dfrac{1}{Q\varphi}Q' \varphi = \dfrac{1}{Q\varphi}\alpha Q \varphi'' \\
+\dfrac{Q'}{Q} = \dfrac{\varphi''}{\alpha \varphi} = \text{const.}
+\end{gather*}
+{% end %}
+
+The last line arises from the property that when two derivatives are equal, both must be equal to a constant. This means we now have two differential equations, $Q'/Q = \text{const.}$ and $\varphi'' / \alpha \varphi = \text{const.}$ Let us look at just the first equation. If we call the constant in the equation $-\kappa$ (the sign does not matter as the constant is arbitrary), then we have:
+
+{% math() %}
+Q' = -\kappa Q
+{% end %}
+
+Which has the solution:
+
+{% math() %}
+Q(t) = e^{-\kappa t}
+{% end %}
+
+Thus our solution becomes:
+
+{% math() %}
+u(x, t) = \varphi(x) e^{-\kappa t}
+{% end %}
+
+But this is not a general solution (yet) because due to the property of linearity of the diffusion equation (which we showed previously), $u_1 + u_2$ is *also* a solution. Therefore, the more general solution is a linear sum of solutions:
+
+{% math() %}
+u(x, t) = \sum_n A_n \varphi(x) e^{-\kappa_n t}
+{% end %}
+
+In the limiting case, this becomes the **general solution** (at least for the given initial and boundary conditions):
+
+{% math() %}
+u(x, t) = \int_{-\infty}^\infty A(x) \varphi(\tilde x) e^{-\kappa t} d \tilde x
+{% end %}
+
+Where we must switch the bounds for the $\varphi$ term from $x \to y$ to distinguish the variables we are integrating over versus the variables that represent the coordinates of $u(x, t)$ - this is due to the fundamental theorem of calculus $\displaystyle \int_0^x f'(\tilde x) dy = f'(\tilde x)$. The above equation is true for *any* $A(x)$ that allows $u(x, t)$ to satisfy the given boundary conditions. An intuitive explanation is as follows: if we sum infinitely-many "clones" of the solution $\varphi(x)$ spaced-out at different positions $x$ and different times $t$ (as governed by $A(x)$), then the solutions can add up to form an arbitrary function (in some ways, similar to Taylor series or Fourier series if that is familiar).
+
+Now, recall the property (which we showed before) that for any solution $v(x, t)$, any shift of the solution $u(x, t) = v(x -a, t)$ is also a solution. If we let our previous solution be written $v(x, t)$, that is:
+
+{% math() %}
+v(x, t) = \int_{-\infty}^\infty A(x) \varphi(\tilde x) e^{-\kappa t} d \tilde x
+{% end %}
+
+then we have:
+
+{% math() %}
+u(x, t) = \int_{-\infty}^\infty A(x-a) \varphi(\tilde x-a) e^{-\kappa t} d \tilde x
+{% end %}
+
+We can write this in a simpler form if we use the change of variables $y = \tilde x- a$, for which the solution simplifies to:
+
+{% math() %}
+u(x, t) = \int_{-\infty}^\infty A(y(x)) \varphi(y) e^{-\kappa t} dy
+{% end %}
+
+The final step is require that the solution does indeed satisfy the boundary conditions - that is, $\varphi \to 0$ for $x \to \pm \infty$ (the other boundary condition $u(x, 0) = \varphi(x)$ is automatically-satisfied from our separation of variables procedure). A specific $A(x, y, t)$ that does indeed satisfy the boundary conditions is the **Gaussian** (which in this case is a shifted Gaussian to accomodated our shifted solution):
+
+{% math() %}
+A(x) = \dfrac{1}{\sqrt{4\pi \kappa t}}e^{-(x-y)^2/4\kappa t + \kappa t}
+{% end %}
+
+Therefore substituting $A(k)$ we have:
+
+{% math() %}
+\begin{align*}
+u(x, t) &= \int_{-\infty}^\infty \left[\dfrac{1}{\sqrt{4\pi \kappa t}}e^{-(x-y)^2/4\kappa t + \kappa t}\right] \varphi(y) e^{-\kappa t} d y \\
+&= \int_{-\infty}^\infty \dfrac{1}{\sqrt{4\pi \kappa t}} e ^{-(x - y)^2/4\kappa t + \cancel{\kappa t - \kappa t}} \varphi(y) dy \\
+&= \int_{-\infty}^\infty \dfrac{1}{\sqrt{4\pi \kappa t}} e ^{-(x - y)^2/4\kappa t} \varphi(y) dy
+\end{align*}
+{% end %}
+
+Since $t$ is not integrated over, we can pull out the factor in $t$ outside the integral:
+
+{% math() %}
+u(x, t) = \dfrac{1}{\sqrt{4\pi \kappa t}}\int_{-\infty}^\infty e ^{-(x - y)^2/4\kappa t} \varphi(y) dy
+{% end %}
+
+Thus the particular solution to the diffusion equation for the given initial-boundary-value problem is then:
+
+{% math() %}
+u(x, t) = \dfrac{1}{\sqrt{4\pi \kappa t}} \int_{-\infty}^\infty e^{-(x - y)^2 / (4 \kappa t)} \varphi(y) dy
+{% end %}
+
+Where the integrand $\dfrac{1}{\sqrt{4\pi \kappa t}}  e^{-(x - y)^2 / (4 \kappa t)}$ is known as a **Green's function** (other names include _source function_, _propagator_, _kernel_, or _fundamental solution_). The Green's function may be thought of as something that "pushes" (evolves) the initial condition $u(x, 0) = \varphi(x)$ to bring it to $u(x, t)$ by time $t$ (for those familiar with the term, it can be thought of as an _operator_). This may be a bit easier to see if we write the solution as follows:
+
+{% math() %}
+u(x, t) = \int_{-\infty}^\infty \underbrace{\dfrac{1}{\sqrt{4\pi \kappa t}} e^{-(x - x')^2 / (4 \kappa t)}}_{\text{at } t = 0 \text{ this is equal to }\delta(x - x')} u(x', 0) dx'
+{% end %}
+
+In this form, we can see that the Green's function serves as a multiplication factor that starts out at $e^{-(x - x')^2/(4\kappa (0))} = \infty$ at $t = 0$ (but luckily, since it also starts out as infinitely thin, the integral is finite). We call this initial state of the Green's function as the **Dirac delta** or _delta function_, written as $\delta(x - x')$. The delta function has the special property that:
+
+{% math() %}
+\int_{-\infty}^\infty \delta(x - x') u(x', 0) = u(x, 0)
+{% end %}
+
+Which means that if we evaluate $u(x, t)$ at $t = 0$ we do indeed get back the initial condition. Now, as $t$ increases, the value of $e^{-(x - x')^2/(4\kappa t)}$ rapidly diminishes. Thus, we find that the _maximum principle_ is also satisfied - that $u(x, t) \leq u(x, 0)$. Since our Green's function $e^{-(x - x')^2/(4\kappa t)}$ smoothly decays to infinity as $x \to \pm \infty$, multiplying $u(x, 0)$ by it and integrating results in the solution being "spread out" over time, exactly analogous to our intuitive understanding of diffusion. Our way of writing the general solution previously was just a renaming - $\varphi(x) = u(x, 0)$, and we changed integration variable we used from $x'$ to $y$, as well as pulling out the factor at the front outside the integral, but otherwise the mathematics are identical:
+
+{% math() %}
+u(x, t) = \dfrac{1}{\sqrt{4\pi \kappa t}} \int_{-\infty}^\infty e^{-(x - y)^2 / (4 \kappa t)} \varphi(y) dy
+{% end %}
+
+We may use this solution to solve the initial-boundary-value problem given by:
+
+{% math() %}
+\begin{gather*}
+\dfrac{\partial u}{\partial t} = \kappa \dfrac{\partial^2 u}{\partial x^2}  \\
+u(x, 0) =\varphi(x) = \begin{cases} 1, & |x| \leq 1 \\ 0, & |x| > 1\end{cases} \\
+\lim_{x \to \pm \infty} \varphi(x) = 0
+\end{gather*}
+{% end %}
+
+This is simply a matter of substituting $\varphi(y) = 1$ in the integral (as long as we also remember the constraint that this is true for only $|x| \leq 1$, i.e. within $-1 \leq x \leq 1$). Since this is a piecewise initial condition, we need to use the integral rule for piecewise functions. For a piecewise function given by:
+
+{% math() %}
+H(x) =\begin{cases}
+f(x) & |x| < 1 \\
+g(x) & |x| > 1
+\end{cases}
+{% end %}
+
+The integral of the function over $x \in (-\infty, \infty)$ is equal to:
+
+{% math() %}
+\begin{align*}
+\int_{-\infty}^\infty H(x) dx &= \int_{-\infty}^{-1} H(x) dx + \int_{-1}^1 H(x) dx +\int_1^\infty H(x) dx \\
+&=  \int_{-\infty}^{-1} g(x) dx + \int_{-1}^1 h(x) dx+ \int_1^\infty g(x) dx \\
+\end{align*}
+{% end %}
+
+Using this identity, and substituting into the Green's function solution, we have:
+
+{% math() %}
+\begin{align*}
+u(x, t) &= \dfrac{1}{\sqrt{4\pi \kappa t}} \int_{-\infty}^\infty e^{-(x - y)^2 / (4 \kappa t)} \varphi(y) dy \\
+&= \dfrac{1}{\sqrt{4\pi \kappa t}} \bigg[\cancel{\int_{-\infty}^{-1} e^{-(x - y)^2 / (4 \kappa t)} (0) dy}^0 \\
+&\qquad +\int_{-1}^{1} e^{-(x - y)^2 / (4 \kappa t)} (1) dy \\
+&\qquad + \cancel{\int_{1}^\infty e^{-(x - y)^2 / (4 \kappa t)} (0) dy\bigg]}^0 \\
+&= \int_{-1}^{1} e^{-(x - y)^2 / (4 \kappa t)} dy
+\end{align*}
+{% end %}
+
+Thus our solution is given by:
+
+{% math() %}
+u(x, t) = \int_{-1}^{1} e^{-(x - y)^2 / (4 \kappa t)} dy
+{% end %}
+
+There is, however, a slightly nicer-looking way to write out this solution, and that is using the **error function**. The error function, denoted $\operatorname{Erf}(x)$, is given by:
+
+{% math() %}
+\operatorname{Erf}(x) = \dfrac{2}{\sqrt{\pi}} \int_0^x e^{-p^2} dp
+{% end %}
+
+To cast the solution into this "nicer" form, we start by dividing the integral into two parts, one between $[0, 1]$ and the other between $[-1, 0]$:
+
+{% math() %}
+u(x, t) = \int_{-1}^0 e^{-(x - y)^2 / (4 \kappa t)} dy + \int_0^1 e^{-(x - y)^2 / (4 \kappa t)} dy
+{% end %}
+
+Now, let $p^2 = \dfrac{(x - y)^2}{4\kappa t}$, for which we have $p = \dfrac{x-y}{\sqrt{4\kappa t}}$ and $dp = -\dfrac{1}{\sqrt{4\kappa t}}dy$. Additionally, we must also change the integral's bounds on substitution, so we must adjust the bounds as follows:
+
+{% math() %}
+\begin{align*}
+y_1 = 0 &\to p_1 = \dfrac{x}{\sqrt{4\kappa t}} \\
+y_2 = 1 &\to p_2 = \dfrac{x-1}{\sqrt{4\kappa t}} \\
+y_3 = -1 &\to p_3 = \dfrac{x+1}{\sqrt{4\kappa t}}
+\end{align*}
+{% end %}
+
+
+Thus, after substitution our integral becomes:
+
+{% math() %}
+\begin{align*}
+u(x, t) &= \left(-\sqrt{4\kappa t} \int_{(x + 1)/\sqrt{4\kappa t}}^{x/\sqrt{4\kappa t}}e^{-p^2}dp\right) + \left(-\sqrt{4\kappa t} \int_{x/\sqrt{4\kappa t}}^{(x - 1)\sqrt{4\kappa t}} e^{-p^2} dp\right) \\
+&= -\sqrt{4\kappa t} \int_{(x + 1)/\sqrt{4\kappa t}}^0 e^{-p^2} dp - \sqrt{4\kappa t} \int_0^{x/\sqrt{4\kappa t}} e^{-p^2}dp \\
+&\qquad \quad -\sqrt{4\kappa t} \int_{x/\sqrt{4\kappa t}}^0 e^{-p^2} dp - \sqrt{4\kappa t} \int_0^{(x - 1)\sqrt{4\kappa t}} e^{-p^2} dp \\
+&= \sqrt{4\kappa t} \int_0^{(x + 1)/\sqrt{4\kappa t}} e^{-p^2} dp - \sqrt{4\kappa t} \int_0^{x/\sqrt{4\kappa t}} e^{-p^2}dp \\
+&\qquad \quad +\sqrt{4\kappa t} \int_0^{x/\sqrt{4\kappa t}} e^{-p^2} dp - \sqrt{4\kappa t} \int_0^{(x - 1)\sqrt{4\kappa t}} e^{-p^2} dp \\
+&= \sqrt{4\kappa t} \int_0^{(x + 1)/\sqrt{4\kappa t}} e^{-p^2} dp - \cancel{\sqrt{4\kappa t} \int_0^{x/\sqrt{4\kappa t}} e^{-p^2}dp} \\
+&\qquad \quad + \cancel{\sqrt{4\kappa t} \int_0^{x/\sqrt{4\kappa t}} e^{-p^2} dp} - \sqrt{4\kappa t} \int_0^{(x - 1)\sqrt{4\kappa t}} e^{-p^2} dp \\
+&= \sqrt{4\kappa t} \left[\int_0^{(x + 1)/\sqrt{4\kappa t}} e^{-p^2} dp - \int_0^{(x - 1)\sqrt{4\kappa t}} e^{-p^2} dp\right] \\
+&= \sqrt{4\kappa t}\operatorname{Erf} \left(\dfrac{x+1}{\sqrt{4\kappa t}}\right) - \sqrt{4\kappa t} \operatorname{Erf} \left(\dfrac{x-1}{\sqrt{4\kappa t}}\right) \\
+&= \sqrt{4\kappa t}\left[\operatorname{Erf} \left(\dfrac{x+1}{\sqrt{4\kappa t}}\right) - \operatorname{Erf} \left(\dfrac{x-1}{\sqrt{4\kappa t}}\right)\right]
+\end{align*}
+{% end %}
+
+Which is the solution to our boundary value problem for our chosen initial condition $u(x, 0) = \varphi(x) = \begin{cases} 1, & |x| \leq 1 \\ 0, & |x| > 1\end{cases}$. Note that this is one of the few cases in which an analytical solution can be written out; in most cases, the integral is simply impossible to evaluate by hand and can only be solved numerically.
+
+> **Note for the interested reader:** the solution of the diffusion equation on the _half-line_, which is very similar to diffusion on the real line, *except* that it requires the additional boundary condition $u(0, t) = 0$, is given by $u(x, t) = \dfrac{1}{\sqrt{4\pi \kappa t}} \displaystyle \int_{-\infty}^\infty (e ^{-(x - y)^2/4\kappa t} + e^{-(x + y)^2/4\kappa t} )\varphi(y) dy$
+
+### Concluding remarks to the diffusion and wave equation
+
+We have studied the diffusion and wave equation in detail and constructed particular solutions to several initial-boundary value problems (IBVPs). As well as solving specific IBVPs, we have found that the wave equation and diffusion equation satisfy particular characteristics:
+
+| PDE                                               | Speed of propagation | Singularities (i.e. shocks/other "not smooth" disturbances) | Energy        | Requirements for well-posedness                   |
+| ------------------------------------------------- | -------------------- | ----------------------------------------------------------- | ------------- | ------------------------------------------------- |
+| Diffusion equation (and all other parabolic PDEs) | Infinite             | Smoothed out immediately                                    | Not conserved | Only for $t \geq 0$; *not well-posed* for $t < 0$ |
+| Wave equation (and all other hyperbolic PDEs)     | $c$                  | Lost (smoothed-out) immediately                             | Conserved     | Well-posed for all time                           |
+
+### Separation of variables for boundary-value problems
+
+At the beginning of the guide, we gave a brief overview of the **separation of variables** procedure. Separation of variables is a powerful technique for solving PDEs, so to develop our understanding of it further, let us now re-examine the same procedure in more detail.
+
+#### Separation of variables for the wave equation
+
+To start, let us consider the wave equation in one dimension on the domain $x \in [0, L], t \in [0, \infty)$, with the following boundary conditions:
+
+{% math() %}
+\begin{gather*}
+\dfrac{\partial^2 u}{\partial t^2} = c^2 \dfrac{\partial^2 u}{\partial x^2} \\
+u(0, t) = 0, \quad u(L, t) = 0 \\
+u(x, 0) = \varphi(x), \quad \dfrac{\partial u}{\partial t}(x, 0) = \psi(x)
+\end{gather*}
+{% end %}
+
+We assume a solution in the form $u(x, t) = X(x) T(t)$, for which we find that upon taking the derivatives, we have:
+
+{% math() %}
+\begin{align*}
+\dfrac{\partial^2 u}{\partial t^2} &= X(x)T''(t) \\
+\dfrac{\partial^2 u}{\partial x^2} &= X''(x) T(t)
+\end{align*}
+{% end %}
+
+> **Note:** You can verify this by direct calculation; the reason why the partial derivatives are so simple is that $X$ only depends on $x$, and $T$ only depends on $t$. This means that when taking the partial derivative with respect to $x$, $T$ can be treated as a constant; similarly, when taking the partial derivative with respect to $t$, $X$ can be treated as a constant.
+
+Therefore, substituting into the wave equation and dividing by $X(x)T(t)$ yields:
+
+{% math() %}
+\begin{gather*}
+XT'' = c^2 X''T \\
+\dfrac{1}{c^2} XT'' = X''T \\
+\dfrac{1}{X(x)T(t)}\dfrac{1}{c^2}XT'' = \dfrac{1}{X(x)T(t)} X''T \\
+\dfrac{T''}{c^2 T} = \dfrac{X''}{X}
+\end{gather*}
+{% end %}
+
+Note how that, in the last line, we have two combinations of derivatives _equal_ to each other. This can only happen if both derivatives are a constant, so it must be the case that:
+
+{% math() %}
+\dfrac{T''}{c^2 T} = \dfrac{X''}{X} = \text{const.} \quad \Rightarrow \quad
+\begin{align*}
+T'' &= c^2 T \times \text{const.} \\
+X'' &= X \times \text{const.}
+\end{align*}
+{% end %}
+
+This constant is what we call the **separation constant**; we now find that the wave equation, a _partial_ differential equation, has reduced (relief!) to two _ordinary_ differential equations that are much easier to solve. Let us name our _separation constant_ $k^2$ (the square does _not_ matter, since the square of a constant is still a constant, it just makes the mathematics easier). Since it is a constant, its value is arbitrary; $k^2$ can have a positive or negative sign, or be zero or complex. This is one of the cases where choosing the appropriate answer requires a fair bit of intuition about what the solution to the ODEs will be. In this particular case, the right choice is for $k^2$ to have a negative sign, as shown:
+
+{% math() %}
+\begin{matrix*}
+T'' = -k^2 c^2 T, & X''=-k^2 X
+\end{matrix*}
+{% end %}
+
+The reason for this is the boundary conditions. The solution to ODEs in the form $y'' = -a^2 y$ (where $a$ is a constant) is either a sine or cosine wave (or a sum of both). Such solutions can be zero at _finite_ values. However, the solutions to ODEs in the form $y'' = a^2 y$ are exponential functions (or sum of exponential functions). Such solutions can only be zero at infinity. Additionally, the solutions to ODEs in the form $y'' = 0$ are linear functions, which can only be zero at one point. Since our boundary conditions are $u(0, t) = u(L, t) = 0$, that is, $u(x, t)$ is zero at $x = 0$ and $x = L$ (which are not at infinity and are zero at two locations), we must choose $-k^2$, not $k^2$ or zero. This means that our solutions are:
+
+{% math() %}
+\begin{align*}
+X(x) &= A \cos k x + B \sin k x \\
+T(t) &= C \cos (kc t) + D \sin (kct)
+\end{align*}
+{% end %}
+
+We may make the solutions look "prettier" by defining $\omega \equiv kc$, so we can rewrite the solutions as follows:
+
+{% math() %}
+\begin{align*}
+X(x) &= A \cos k x + B \sin k x \\
+T(t) &= C \cos \omega t + D \sin \omega t
+\end{align*}
+{% end %}
+
+Recall that we expressed our solution in the form $u(x, t) = X(x)T(t)$. Thus, substituting our found solutions for $X(x)$ and $T(t)$, we have:
+
+{% math() %}
+\begin{align*}
+u(x, t) &= X(x)T(t) \\
+&= (A \cos k x + B \sin k x)( C \cos \omega t + D \sin \omega t)
+\end{align*}
+{% end %}
+
+To determine the values of our coefficients $A, B, C, D$, we must apply the boundary conditions. Applying our first boundary condition $u(0, t) = 0$, we have:
+
+{% math() %}
+\begin{align*}
+u(0, t) &= (A \cancel{\cos(0)}^1 + \cancel{B \sin (0)}^0)(C \cos \omega t + D \sin \omega t) = 0 \\
+&= A(C \cos \omega t + D \sin \omega t) = 0
+\end{align*}
+{% end %}
+
+To satisfy this boundary condition, since $\cos \omega t, \sin \omega t \neq 0$, it must be the case that $A = 0$. Therefore our solution simplifies to:
+
+{% math() %}
+u(x, t) = B \sin k x( C \cos \omega t + D \sin \omega t)
+{% end %}
+
+Applying our second boundary condition $u(L, t) = 0$, we have:
+
+{% math() %}
+u(L, t) = B \sin (k L)( C \cos \omega t + D \sin \omega t) = 0
+{% end %}
+
+Again, since $\cos \omega t, \sin \omega \neq 0$, this can only be satisfied if $B \sin k L = 0$. We find that this condition can be satisfied if $kL = n\pi$, i.e. if $kL$ is equal to an integer multiple of $\pi$, since we know that $\sin(\pi) = \sin(2\pi) = \sin(3\pi) = \dots = \sin(n\pi) = 0$. Therefore, we have found that $k = n\pi/L$, and now our solution becomes:
+
+{% math() %}
+u(x, t) = B \sin \left(\dfrac{n\pi x}{L}\right)( C \cos \omega t + D \sin \omega t)
+{% end %}
+
+We will now take the step of distributing the constant factor of $B$ into each of the two terms. Defining $J \equiv B\cdot C, K \equiv B \cdot D$, we can rewrite the above solution as:
+
+{% math() %}
+u(x, t) = \sin\left(\dfrac{n\pi x}{L}\right)(J \cos \omega t + K \sin \omega t)
+{% end %}
+
+The remaining two initial-boundary conditions are both initial conditions: one for $u(x, 0)$, and one for $\dfrac{\partial u}{\partial t}(x, 0)$. One might wonder how these conditions can be satisfied when our solution is entirely written in terms of sines and cosines. The answer is that because the diffusion equation is _linear_, we can sum solutions together to form new solutions. In fact, we can sum as many solutions as we'd like! This results in a _more general solution_ given by:
+
+{% math() %}
+\begin{align*}
+u(x, t) &= \sum_{n = 1}^\infty \sin\left(\dfrac{n\pi x}{L}\right)(J_n \cos \omega t + K_n \sin \omega t) \\
+&=\sum_{n = 1}^\infty \sin\left(\dfrac{n\pi x}{L}\right)\left[J_n \cos \left(\dfrac{n\pi c t}{L}\right) + K_n \sin \left(\dfrac{n\pi c t}{L}\right)\right]
+\end{align*}
+{% end %}
+
+Where we wrote the second form of the solution (in the previous line) via our definition from before, $\omega \equiv kc$. This is the **solution** to our boundary-value problem. From here, if we substitute $u(x, 0)$, we have:
+
+{% math() %}
+u(x, 0) = \sum_{n = 1}^\infty J_n \sin \left(\dfrac{n\pi x}{L}\right) = \varphi(x)
+{% end %}
+
+This is called a **Fourier sine series**, and any "well-behaved" function can be written using this series expansion. For instance, if we had $\varphi(x) = x$, then the series expansion reads:
+
+{% math() %}
+\varphi(x) = \dfrac{2L}{\pi}\left[\sin \pi x - \dfrac{1}{2} \sin 2\pi x + \dfrac{1}{3} \sin 3\pi x - \dfrac{1}{4} \sin 4\pi x + \dots\right]
+{% end %}
+
+Similarly, if we take the derivative with respect to time, we can write a Fourier series expansion for $\dfrac{\partial u}{\partial t}(x, 0) = \psi(x)$. Using these series, we can effectively write out a solution to _any_ choice of $u(x, 0)$ and $\dfrac{\partial u}{\partial t}(x, 0)$. This is, indeed, one of the reasons why the separation of variables technique is so powerful.
+
+> **Note:** how do we _determine_ what the correct coefficients $K_n, J_n$ should be? We will discover this later, but for now (for just $J_n$) we will provide a formula without proof: $J_n = \dfrac{2}{L} \displaystyle \int_0^L \varphi(x) \sin\left(\dfrac{n\pi x}{L}\right) dx$.
+
+#### Separation of variables for the diffusion equation
+
+Let us now consider the very similar boundary-value problem for the diffusion equation across the domain $x \in [0, L], t \in [0, \infty)$:
+
+{% math() %}
+\begin{gather*}
+\dfrac{\partial u}{\partial t} = \kappa^2 \dfrac{\partial^2 u}{\partial x^2} \\
+u(0, t) = 0, \quad u(L, t) = 0 \\
+u(x, 0) = \varphi(x)
+\end{gather*}
+{% end %}
+
+Here, we again assume a solution in the form $u(x, t) = X(x) T(t)$, for which we have:
+
+{% math() %}
+\begin{align*}
+\dfrac{\partial u}{\partial t} &= X(x)T'(t) \\
+\dfrac{\partial^2 u}{\partial x^2} &= X''(x)T(t)
+\end{align*}
+{% end %}
+
+Therefore, substituting into the diffusion equation, and dividing by $X(x)T(t)$, we have:
+
+{% math() %}
+\begin{gather*}
+XT' = \kappa^2 X''T \\
+\dfrac{1}{\kappa^2}XT' = X''T\\
+\dfrac{1}{XT} \dfrac{1}{\kappa^2}XT' = \dfrac{1}{XT}X''T \\
+\dfrac{T'}{\kappa^2 T} = \dfrac{X''}{X} = \text{const.}
+\end{gather*}
+{% end %}
+
+We choose our separation constant to be $\beta^2$ with a negative sign (with the same reasoning as before, due to our pair of finite boundary conditions). We could've equivalently called it $k^2$, but since $k$ and $\kappa^2$ look too similar, we will use the letter $\beta$ instead. Thus we have reduced the diffusion equation into the set of two ordinary differential equations, given by:
+
+{% math() %}
+\begin{align*}
+T' &= -\beta^2\kappa^2 T \\
+X'' &= -\beta^2 X
+\end{align*}
+{% end %}
+
+The general solutions to the differential equations are:
+
+{% math() %}
+\begin{align*}
+T(t) &= Ae^{\beta \kappa t} + Be^{-\beta \kappa t} \\
+X(x) &= C \cos \beta x + D \sin \beta x
+\end{align*}
+{% end %}
+
+Our solution for $u(x, t)$ therefore becomes:
+
+{% math() %}
+\begin{align*}
+u(x, t) &= X(x)T(t) \\
+&= (Ae^{\beta \kappa t} + Be^{-\beta \kappa t})(C \cos \beta x + D \sin \beta x)
+\end{align*}
+{% end %}
+
+We can now individually substitute our boundary conditions. But first, there is a way that we can simplify the solution just by inspection (that is, by "being clever"). We solve on the domain $t \in [0, \infty)$, which means that we would want our solution to not blow up for large values of $t$. This automatically means that $A$ must be zero; otherwise the $Ae^{\beta x t}$ term grows exponentially as $t$ increases! So we have deduced that the solution must be in the following form if it is to be "reasonable":
+
+{% math() %}
+u(x, t) = Be^{-\beta \kappa t}(C \cos \beta x + D \sin \beta x)
+{% end %}
+
+Which we can write in a "prettier" way by defining $Q \equiv B \cdot C, P \equiv B \cdot D$, with which the solution becomes:
+
+{% math() %}
+u(x, t) = e^{-\beta \kappa t} (Q \cos \beta x + P \sin \beta x)
+{% end %}
+
+Now, we substitute in our boundary conditions $u(0, t) = 0$ and $u(L, t) = 0$. For the first boundary condition, our solution reduces to:
+
+{% math() %}
+\begin{align*}
+u(0, t) &= e^{-\beta \kappa t} (Q \cancel{\cos (0)}^1 + \cancel{P \sin (0)}^0) \\
+&= Q e^{-\beta \kappa t} \\
+&= 0
+\end{align*}
+{% end %}
+
+From which we deduce that $Q = 0$, and with which we are left with:
+
+{% math() %}
+u(x, t) = P \sin(\beta x)\,e^{-\beta \kappa t} 
+{% end %}
+
+For our other boundary condition $u(L, t) = 0$, we substitute to find:
+
+{% math() %}
+\begin{align*}
+u(L, t) &= P \sin(\beta L) e^{-\beta \kappa t} \\
+&= 0 \\
+&\Rightarrow \sin \beta L = 0,\quad \beta L = n\pi
+\end{align*}
+{% end %}
+
+Thus we find that $\beta = n\pi/L$, just as we did for the wave equation. Our solution now becomes:
+
+{% math() %}
+u(x, t) = P \sin\left(\dfrac{n\pi x}{L}\right) \exp\left(-\kappa\dfrac{n\pi t}{L}\right)
+{% end %}
+
+To satisfy the final boundary condition $u(x, 0) = \varphi(x)$, we again write our solution as a Fourier series:
+
+{% math() %}
+u(x, t) = \sum_{n = 1}^\infty P_n \sin\left(\dfrac{n\pi x}{L}\right) \exp\left(-\kappa\dfrac{n\pi t}{L}\right)
+{% end %}
+
+Thus, we can also write $\varphi(x)$ in terms of a series:
+
+{% math() %}
+u(x, 0) = \sum_{n = 1}^\infty A_n \sin\left(\dfrac{n\pi x}{L}\right) = \varphi(x)
+{% end %}
+
+And we find that, indeed, we have found the solution to the diffusion equation for the given boundary-value problem.
