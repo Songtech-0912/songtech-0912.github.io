@@ -1696,46 +1696,6 @@ A summary of the different quantities in the theory of the photoelectric effect 
 
 From developments in quantum mechanics after the photoelectric effect was discovered, it was found that photons not only carry energy, but also carry momentum, and their momentum is related to their energy by $E = pc$, a result derived from special relativity (also a theory developed by Einstein), which we can rearrange to $p = \dfrac{E}{c} = \dfrac{hf}{c} = \dfrac{h}{\lambda}$. In our current understanding of the nature of photons and quantum mechanics, photons are **neither** wave nor particle but something else. This "something else" doesn't really have a name (some suggested ones are "wave-icles" or "quantum particles" or even "quantum non-classical particles"). To fully describe light (and photons) in quantum terms, we need the theory of **quantum electrodynamics**, which is very complicated. But for now, we can be content with the knowledge that photons have properties that, while bizarre, are actually shared by all the fundamental particles in the Universe - so perhaps, they are not out of the ordinary at all.
 
-## The photoelectric effect
-
-We have discussed the electric and magnetic field at length, and how they give rise to light in the form of electromagnetic waves, but we have only touched briefly on the topic of the other manifestation of light - **photons**.
-
-Consider a glass tube with metallic ends connected to a battery. There exists a potential difference $\Delta V_{CA}$ across the two ends of the tube $\Delta V_{CA} = V_C - V_A$, where $V_C$ is the positively-charged end of the tube (the **cathode**) and $V_A$ is the negatively-charged end of the tube (the **anode**). The battery is tuned such that the anode is at a *higher* potential compared to the cathode.
-
-The tube also has a spot where light can be shined through. The incident light on the cathode transfers energy to electrons in the metallic cathode (remember, light has energy). This increases the electrons' kinetic energy, allowing them to overcome the potential holding them to the metal and escape the metal's surface, flying into the anode. In informal terms, the light "kicks out" electrons from the metal by giving them kinetic energy to overcome the potential difference $\Delta V_{CA}$ holding them back.
-
-![[photoelectric-effect.excalidraw]]
-
-The **stopping potential** $\Delta V_0 = -\Delta V_{CA}$ is the potential obtained from experimental measurements for which electrons have sufficient kinetic energy that they start to be ejected from the metal, measured from the anode to the cathode. When we conduct the experiment we find that no matter the intensity of the light source (corresponding to how many photons are emitted per second), there is no effect on the **kinetic energy** of the photons (though the measured current _does_ depend on the intensity). Furthermore, the emission of electrons from the cathode happens **instantly**.
-
-This bizarre fact - that shining more photons on the cathode (higher intensity) do not correspond to ejected electrons having greater energies - was one of the first pieces of empirical evidence for **quantum mechanics**. 
-
-Consider what would happen in terms of classical electromagnetism. We know from before that the intensity $\langle I\rangle$ is proportional to the electric field, that is, $\langle I\rangle \propto \mathbf{E}^2$. Light is described as an electromagnetic wave (i.e. propagating waves caused by oscillating electric and magnetic fields), and therefore we expect higher intensity to transfer more kinetic energy to the electrons, until the intensity is sufficiently high that the electrons are ejected from the cathode. Intensity, however, is independent of frequency, so we wouldn't expect a change in frequency to affect the kinetic energy of the electrons. But this is _not_ what we observe. What we _actually_ observe is that the kinetic energy of the electrons _only_ depends on the frequency of the incident light, plus a constant. Why this occurs had no explanation, until Einstein offered an explanation in a revolutionary paper in 1905, named "_On a Heuristic Viewpoint Concerning the Production and Transformation of Light_".
-
-Einstein theorized that light was actually composed of **photons**, subatomic particles moving at the speed of light that carry energy. Einstein explained that **if** we assume that the energy of a *single photon* is given by $E \propto f$ where the proportionality constant is $h \approx \pu{6.626E-34 J*s}$, (which we can also write as $E = hf$), then by conservation of energy $K + U = E$, the kinetic energy $K = E - \varphi$ where $\varphi \equiv U$ is the potential energy carried by the electrons, **exactly** matches the experimental results. We can precisely express the kinetic energy as:
-
-{% math() %}
-K = E - \varphi = hf - \varphi, \quad K = 0 \text{ if } f \leq f_0
-{% end %}
-
-Where we call $\varphi$ a **work function**, which, despite its name, actually is a **constant** that has units of energy. The work function is specific to a material (different materials have different work functions). For an electron to be ejected, it must have enough kinetic energy. More specifically, its kinetic energy must be at least equal to the binding energy from the stopping potential $e\Delta V_0$. Thus, solving for $K = e\Delta V_0$, we have:
-
-{% math() %}
-\Delta V_0 = \dfrac{h}{e} (f - f_0)
-{% end %}
-
-> **Note:** Both the work function $\varphi$ and the threshold frequency $f_0$ are **constants** as they represent properties *intrinsic* to a particular material, and independent of the wavelength, frequency, or intensity of the incident light. They are in fact related by $\varphi = h f_0$. Meanwhile, $E, K, f, \lambda$, and $\Delta V_0$ are **variables** as they are dependent on the properties of the incident light.
-
-A summary of the different quantities in the theory of the photoelectric effect is shown in the following table 
-
-| Quantity | Physical Meaning                                                                                | _Dependent_ on                                               | _Independent_ of               |
-| -------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------ |
-| $E$      | Total energy of photoelectrons (electrons that have been passed energy from an incident photon) | $f, \lambda, \varphi$                                        | $I$ (intensity), $i$ (current) |
-| $i$      | Measured current on the anode                                                                   | $I$ (intensity) as well as $\Delta V_0$ for $\Delta V_0 > 0$ | -                              |
-| $f$      | Frequency of light *(typically fixed for the experiment)*                                       | $\lambda$                                                    | $I, \varphi$                   |
-
-From developments in quantum mechanics after the photoelectric effect was discovered, it was found that photons not only carry energy, but also carry momentum, and their momentum is related to their energy by $E = pc$, a result derived from special relativity (also a theory developed by Einstein), which we can rearrange to $p = \dfrac{E}{c} = \dfrac{hf}{c} = \dfrac{h}{\lambda}$. In our current understanding of the nature of photons and quantum mechanics, photons are **neither** wave nor particle but something else. This "something else" doesn't really have a name (some suggested ones are "wave-icles" or "quantum particles" or even "quantum non-classical particles"). To fully describe light (and photons) in quantum terms, we need the theory of **quantum electrodynamics**, which is very complicated. But for now, we can be content with the knowledge that photons have properties that, while bizarre, are actually shared by all the fundamental particles in the Universe - so perhaps, they are not out of the ordinary at all.
-
 ## A peek at relativistic and quantum electrodynamics
 
 At the subatomic level, the electromagnetic field itself becomes quantized; instead of being continuous, it can only take discrete states. In these situations, Maxwell's equations hold only approximately, and a fully quantum treatment of electromagnetism is necessary. This guide will not go into full depth about quantum electrodynamics (QED); a full treatment of QED and quantum field theory can go on for many pages. However, good free online resources to learn quantum electrodynamics are [David Tong's lecture notes](https://www.damtp.cam.ac.uk/user/tong/qft.html) and [Nicolas Ford's Physics for Mathematicians series](https://nicf.net/articles/physics-for-mathematicians/).
