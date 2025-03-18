@@ -4,6 +4,33 @@
     <article class="post">
         <h1>{{ page.title }}</h2>
         <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        <!-- table of contents -->
+        {% if not page.extra.nonarticle %}
+        <details class="toc" open>
+        <summary>Table of contents</summary>
+        <div>
+            <ul>
+            {% for h2 in page.toc %}
+                <li>
+                    <a href="{{ h2.permalink | safe }}">{{ h2.title }}</a>
+                    {% if h2.children %}
+                        <ul>
+                            {% for h3 in h2.children %}
+                                <li>
+                                    <a href="{{ h3.permalink | safe }}">{{ h3.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        </details>
+        {% endif %}
+
+        <!-- page content -->
         {{ page.content | safe }}
         <a href="/" class="return-link">Back to home</a>
     </article>

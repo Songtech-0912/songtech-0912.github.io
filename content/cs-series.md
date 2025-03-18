@@ -1,6 +1,9 @@
 +++
 title = "Computer Science series"
 date = 2024-02-11
+
+[extra]
+nonarticle = true
 +++
 
 These are my personal notes on computer science, programming, and numerical computing taken at my time at RPI.

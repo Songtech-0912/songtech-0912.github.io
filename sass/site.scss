@@ -12,6 +12,9 @@ $tx-color-2: #065C84; // Link
 $tx-color-3: rgba(0, 0, 0, 0.3); // Secondary
 $tx-color-5: rgba(0, 0, 0, 0.6); // Tertiary
 $border: rgb(229,231,235);
+// from tailwind's box-shadow shadow-sm class
+// see https://tailwindcss.com/docs/box-shadow
+$block-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 // Code and code block color schemes are
 // based on the syntax highlight theme
 
@@ -194,6 +197,33 @@ header {
   	margin-bottom: 0;
   }
 
+  .toc {
+    margin: 2rem 0;
+    @include md { margin: 0; }
+    background: lighten(gray, 48%);
+    border-radius: 0.25rem;
+    font-size: 0.95rem;
+    padding: 1.5rem 1rem;
+    box-shadow: $block-shadow;
+
+    div {
+      margin: 0.5rem 0 0 1rem;
+
+      // TOC entries
+      li {
+        font-size: 0.95rem;
+      }
+    }
+
+    summary {
+      list-style-position: outside;
+      margin-left: 1.5rem;
+      @include sm { margin-left: 0.6rem; }
+      line-height: 1.5;
+      font-weight: bold;
+    }
+  }
+
   img {
     display: block;
     max-width: 80%;
@@ -273,9 +303,7 @@ header {
   pre {
     padding: 1rem;
     border-radius: 0.25rem;
-    // from tailwind's box-shadow shadow-sm class
-    // see https://tailwindcss.com/docs/box-shadow
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    box-shadow: $block-shadow;
   }
 
   pre code {
