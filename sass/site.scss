@@ -11,6 +11,7 @@ $tx-color-1: rgba(0, 0, 0, 0.8); // Primary
 $tx-color-2: #065C84; // Link
 $tx-color-3: rgba(0, 0, 0, 0.3); // Secondary
 $tx-color-5: rgba(0, 0, 0, 0.6); // Tertiary
+$primary-btn-bg: #2587b5; // for primary buttons
 $border: rgb(229,231,235);
 // from tailwind's box-shadow shadow-sm class
 // see https://tailwindcss.com/docs/box-shadow
@@ -111,9 +112,7 @@ header {
 	h2 {
 		font-size: 1.4rem;
 		margin-bottom: 1rem;
-	}
-
-	
+	}	
 }
 
 // For article previews on the main page
@@ -142,6 +141,20 @@ header {
   .summary {
     max-width: 80%;
   }
+}
+
+// For the jump to TOC button
+#jump-toc-btn {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  padding: 0.5rem;
+  box-shadow: $block-shadow;
+  background-color: $primary-btn-bg;
+  color: white;
+  text-decoration: none;
+  font-size: 0.85rem;
+  border-radius: 0.3rem;
 }
 
 // For full page articles
@@ -205,6 +218,12 @@ header {
     font-size: 0.95rem;
     padding: 1.5rem 1rem;
     box-shadow: $block-shadow;
+
+    .toc-info {
+      margin-top: 1rem;
+      margin-left: 1.5rem;
+      font-size: smaller;
+    }
 
     div {
       margin: 0.5rem 0 0 1rem;
@@ -380,6 +399,14 @@ header {
     display: none;
   }
 
+  #jump-toc-btn {
+    display: none !important;
+  }
+
+  .toc {
+    display: none;
+  }
+
   h1, h2, h3, h4, h5 {
     margin: 1.5rem 0;
     line-height: 1.2;
@@ -408,6 +435,10 @@ header {
   p, li {
     font-size: 0.8rem !important;
     line-height: 1.65;
+  }
+
+  td, th {
+    font-size: 0.7rem !important;
   }
 
   li {
