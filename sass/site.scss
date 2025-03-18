@@ -15,7 +15,7 @@ $primary-btn-bg: #2587b5; // for primary buttons
 $border: rgb(229,231,235);
 // from tailwind's box-shadow shadow-sm class
 // see https://tailwindcss.com/docs/box-shadow
-$block-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+$block-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
 // Code and code block color schemes are
 // based on the syntax highlight theme
 
