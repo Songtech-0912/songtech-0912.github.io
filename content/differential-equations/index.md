@@ -548,7 +548,7 @@ e^{\int p(x) dx} y = \int q(x) e^{\int p(x) dx} dx
 Which we can solve for $y$ by multiplying by the inverse of $\displaystyle e^{\int p(x) dx}$ on the left:
 
 {% math() %}
-y = e^{-\int p(x) dx} \int q(x) e^{\int p(x) dx} dx + Ce^{-\int p(x) dx}
+y = Ce^{-\int p(x) dx} + e^{-\int p(x) dx} \int q(x) e^{\int p(x) dx} dx
 {% end %}
 
 This can seem very complicated, but at its core, it is just two important results that provide all we need to solve any differential equation in the form $y' + py = q$:
