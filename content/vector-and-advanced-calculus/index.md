@@ -1016,3 +1016,22 @@ L = \int_a^b |\mathbf{r}'(t)|dt = \int_0^{2\pi} R\, dt = 2\pi R - 0(R) = 2\pi R
 {% end %}
 
 Which reproduces the expected result for the circumference of a circle. Note that the arc length is just one topic in the broad field of **differential geometry** that studies geometry using methods of calculus. We will not go into it, but it is a very fun topic to read about for those interested.
+
+#### Reparametrization of parametric curves
+
+A final topic to mention is that since the parametrization is non-unique, we can choose an arbitrary parametrization. One often-useful parametrization is the **arclength reparametrization**. To do so, we first define the arc length function $s(t)$ as:
+
+{% math() %}
+\begin{align*}
+s(t) &= \int_a^t |\dot{\mathbf{r}}(t')| dt' \\
+&= \int_a^t \small{\sqrt{\left(\frac{dx}{dt'}\right)^2 + \left(\frac{dy}{dt'}\right)^2 + \left(\frac{dz}{dt'}\right)^2}}\, dt'
+\end{align*}
+{% end %}
+
+Here, since we want the arclength function in terms of $t$, we relabel our integration variable from $t$ to $t'$ (but otherwise the integrand stays identical, this is just a _relabelling_). From $s(t)$, we obtain the inverse function $t(s) = s^{-1}(t)$. Substituting in the parametric path $\mathbf{r}$, we have:
+
+{% math() %}
+\mathbf{r}(t) = \mathbf{r}(t(s)) = \mathbf{r}(s)
+{% end %}
+
+This allows us to obtain the parametric equations expressed with respect to the distance along the path, which can be very useful.
