@@ -9,15 +9,15 @@ Modern theoretical physics is a vast and technically challenging subject, which 
 
 For more advanced readers or those familiar with graduate-level mathematics and advanced physics, there is something for you too: I have placed in the footnotes section an extended and unabridged version of the theories and mathematics.
 
-![A picture of physics](https://miro.medium.com/v2/resize:fit:1400/0*NqBOJPUZuRVlw4K9.jpg)
+{{ natural_img(src="https://miro.medium.com/v2/resize:fit:1400/0*NqBOJPUZuRVlw4K9.jpg", desc="A picture of physics") }}
 
 _Just a picture of physics, sourced from [Medium](https://medium.com/dr-alice-g-on-education/physics-with-maths-teacher-training-a-bogus-good-idea-7943aa2c23b3)._
 
 ## What is $SU(3)$, $SU(2)$, or $U(1)$?
 
-Let's start from what these come from - the fact that physicists like to generalize things. As a basic and somewhat childish example, it is like a toddler seeing a green toy, a blue toy, and a red toy, and exclaiming "wow all of these are toys!" Physicists like to do the same, unifying different theories of physics into very general theories that describe all the results of those different theories in terms of one model. This allows us to package all the diverse phenomena of this Universe into a neat theoretical framework, like a tiny book containing the contents of all the libraries in the world.
+You may have heard theoretical physicists talk about "$SU(3)$ symmetry" or the "$U(1)$ group" - which can be utterly perplexing, what do they even mean? Let's start from what these mathematical objects come from - the fact that physicists like to generalize things. As a basic and somewhat childish example, it is like a toddler seeing a green toy, a blue toy, and a red toy, and exclaiming "wow all of these are toys!" Physicists like to do the same, unifying different theories of physics into very general theories that describe all the results of those different theories in terms of one model. This allows us to package all the diverse phenomena of this Universe into a neat theoretical framework, like a tiny book containing the contents of all the libraries in the world.
 
-![Janga tower picture](https://media.wired.com/photos/5c50f2c878c63d4dfaaf9b5a/master/pass/jenga-488252207.jpg)
+{{ natural_img(src="https://media.wired.com/photos/5c50f2c878c63d4dfaaf9b5a/master/pass/jenga-488252207.jpg", desc="Janga tower picture") }}
 
 _A picture of a Janga tower, sourced from [WIRED magazine](https://www.wired.com/story/a-robot-teaches-itself-to-play-jenga/)._
 
@@ -31,11 +31,17 @@ The first category is what physicists write as shorthand as $U(1)$. What does th
 
 In the late 19th-century, after decades of both experiments and theoretical work, scientists thought they finally had a consistent theory to describe both electricity (e.g. wires, lightbulbs, generators) and magnetism (e.g. compasses, electromagnets, the Earth's magnetic field) which described the two together as one combined thing called **electromagnetism**. They had found that electricity and magnetism obeyed a set of consistent mathematical laws, which you can solve to predict what things subject to electricity or magnetism do (including if you accidentally get a bit of a shock touching a metal door handle). The mathematical laws were actually a set of **vector equations**. There is a specifically interesting thing about vectors. To do that, imagine that you were walking down a hill. Then your direction vector would just be pointing down that hill. But how to actually calculate it? You could take two really really close points (I drew it with exaggerated spacing) and find the vector that points between them, like this:
 
-![A simplified image showcasing the slope potential landscape as a means of calculating a direction vector, an analogy for defining vector fields by a scalar potential](demo-of-potential.png)
+{{ diagram(
+src="demo-of-potential.png"
+desc="A simplified image showcasing the slope potential landscape as a means of calculating a direction vector, an analogy for defining vector fields by a scalar potential"
+) }}
 
 But suppose you were in a silly mood that day and decided that you were going to make a friend measure the same two points from an underground bunker (highly not recommended). Your friend will give you different height measurements, but you'd get the same direction vector to finish:
 
-![A simplified image showcasing the slope potential landscape shifted by a constant amount, but the direction vector being the same, an analogy for a gauge transformation where a change of the potential does not affect a vector field](demo-of-gauge-transform.png)
+{{ diagram(
+src="demo-of-gauge-transform.png"
+desc="A simplified image showcasing the slope potential landscape shifted by a constant amount, but the direction vector being the same, an analogy for a gauge transformation where a change of the potential does not affect a vector field"
+) }}
 
 This is a property of vectors in general. We can describe vectors as something that points betwen two (close) points we measure from some place[^1]. _Where_ we measure from doesn't actually matter, because the **end result** - the vector we get after calculating - is **the same**. In physics language we call that an **invariant**, which is a fancy name for just something that does not change. Now, back to electricity and magnetism - remember we said the laws that describe them are **vector equations**. This means that if we solve for them, no matter what starting points we measure from, **we still get the same vector**. Extended to the Standard Model, we say that electromagnetism (the general term for both electricity and magnetism) has two properties derived from using vector equations:
 
@@ -64,7 +70,10 @@ The key question Einstein asked was this: how could you possibly know that you w
 
 Einstein realized that actually, everything under the influence of gravity, which is everything in the Universe, is actually moving on an ordinary path - stationary if nothing makes them move, and forward at constant speed if they are already moving and nothing makes them stop or go faster. This path is a straight line, which is the shortest path between two points. But what happens if the shortest path between two points is _not_ a straight line? An example from everyday life you'd notice is that long-distance international flights, such as those from Asia to North America, _aren't_ actually straight lines. Rather, they are what are called _great circles_, which are the actual shortest paths between the plane's departure and destination airports because of the fact that the Earth is *curved*. Of course, airplanes that flew such far distances didn't exist until late in Einstein's lifetime, but airplanes aren't the only way to discover this principle. If you draw a straight line on a piece of flat paper, then fold the paper into a non-flat curved shape, you'd notice that the line you drew isn't flat anymore. In fact, this is true for _any_ shortest line on a curved surface. A nice interactive version can be found [here](https://timhutton.github.io/GravityIsNotAForce/constant_gravity_4d.html) and here is another excellent visualization:
 
-![A showcase that the shortest path on a torus, essentially a donut, is actually curved, and such paths are considered geodesics](torus-geodesic-roadtoreality.png)
+{{ diagram(
+src="torus-geodesic-roadtoreality.png"
+desc="A showcase that the shortest path on a torus, essentially a donut, is actually curved, and such paths are considered geodesics"
+) }}
 
 _A visualization of shortest paths becoming curved on a simple curved space (a torus, the mathematical shape of a donut), all credit to [Road to Reality](https://sritchie.github.io/clojure-conj-2023/notebooks/conj/toroid.html)_
 
@@ -74,13 +83,16 @@ Visualizing GR using the method of hyperspace foliations as little 3D surfaces t
 
 But this all sounds very theoretical: where do you need to use General Relativity in practical matters? One big application is GPS satellites, something anyone who drives absolutely knows the importance of. GPS satellites use highly, highly precise synchronized clocks to measure the tiny deviations of microwaves sent by your GPS to the different GPS satellites. The difference in travel times for those microwaves to reach each satellite determines your position. Another big application is in determining the orbits of planets in our solar system. Knowing where planets were in the past and where they will be in the future allows us to better understand the past and future of the solar system. The calculations of general relativity are crucial in this respect because they differ from Newtonian gravity. It is a tiny amount - 43 arcseconds per century (an arcsecond is 1/3600th of a degree) - but it builds up over timescales of millions, if not billions, of years. For scientists investigating the origins and formation of our solar system, and of its future evolution over cosmic timescales, this information is crucial and can tell us the answer to big questions, like why Earth is the only planet we know of that can support life. So general relativity is both a very interesting theory in general, and something that finds applications even for things that you might not expect needing heavy theoretical physics for.
 
-## What is special relativity?
+## What is Special Relativity?
 
 Special relativity (SR) is a special case of General Relativity (GR) that applies in relatively empty space where there is not much or no gravitating mass (or energy). This is not how it is usually taught - students are usually introduced to SR first and GR second, so as to avoid an exam failure rate of 99% and student brain meltdowns - but General Relativity is the more complete theory and special relativity is only part of it.
 
 The specific features of special relativity come from the fact that spacetime takes a particular form in empty space. Spacetime is still a 4D geometric structure that has a dimension of time and three of space, and is different from Euclidean 3D geometry, but in empty space spacetime is flat, not curved. This specific form of spacetime is usually called **Minkowski spacetime** after a professor who Einstein hated (long story). Geodesics are straight lines through Minkowski spacetime, but spacetime has a hyperbolic (non-parallel) grid rather than square grid as in Euclidean geometry.
 
-![Spacetime Minkowski geometry which is hyperbolic](https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Hyperbolic_coordinates.svg/1024px-Hyperbolic_coordinates.svg.png)
+{{ diagram(
+src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Hyperbolic_coordinates.svg/1024px-Hyperbolic_coordinates.svg.png"
+desc="A plot of spacetime's minkowski geometry, which is hyperbolic, meaning it does not follow a straight-line grid"
+) }}
 
 _A showcase of the (hyperbolic) spacetime geometry of Minkowski space. Sourced from [Wikipedia](https://commons.wikimedia.org/wiki/File:Hyperbolic_coordinates.svg) and all credit to the original author. We usually take the horizontal (left-to-right) axis to represent position $x$, and the vertical (bottom-to-top) axis to represent time $t$._
 
@@ -110,7 +122,10 @@ You may hear various terms from differential geometry in advanced physics, such 
 
 Spacetime is our name for a *specific 4D geometric structure* (the technical term is _pseudo-Riemannian manifold_) that we use to model space and time in the universe. You can visualize Euclidean geometry, which is 3D, as an infinite grid that stretches out in all directions where the gridlines form perfect right angles and all the grid spaces look like big cubes:
 
-![A picture showing a Euclidean geometrical grid that has constant grid spacings and straight lines](perspective-euclidean.png)
+{{ diagram(
+src="perspective-euclidean.png"
+desc="A picture showing a Euclidean geometrical grid that has constant grid spacings and straight lines"
+) }}
 
 _Euclidean (3D) space, our geometric structure for classical physics. Image sourced from [pngtree](https://pngtree.com/freepng/room-grid-black-line-perspective_6957320.html)_
 
@@ -120,18 +135,19 @@ Finally, we can extend spacetime to quantum mechanics. Quantum mechanics fundame
 
 For those wanting a more in-depth treatment of these topics, you would want to learn the right mathematics for each. For general relativity it is highly recommended to look into tensor calculus, which deals with differential geometry and is the mathematical basis of general relativity, as well as ordinary and partial differential equations (ODEs & PDEs), as well as Lagrangian mechanics in general as the formalism of classical physics. For quantum field theory, introductory quantum mechanics and the Heisenberg picture of quantum mechanics specifically, as well as basic complex analysis and functional analysis is essential, such an understanding of Hilbert spaces, the theory of linear operators and of eigenvectors and eigenvalues, and Fourier transforms. Abstract algebra including Lie groups and group theory in general are necessary for advanced study and are very powerful. There is much to learn - but it is worth it!
 
-## Appendix
+## Concluding thoughts
 
 There is more that can be covered. Theoretical physicists can seem like magicians when they create theories that decipher the complex but beautiful workings of our Universe from simply mathematical manipulations, universal principles, and sets of fundamental postulates[^5]. Going into how to do all of that is a wonderful learning experience but also guaranteed to take years of study to truly get it. For our psych modeling course, we just need to have the general idea of the landscape of modern physics. And I hope this has offered that to you.
 
 ## Useful readings to learn more
 
-- (What I think is the best and coolest resource ever) [the scienceclic english youtube channel](https://www.youtube.com/@ScienceClicEN) which explains all of this super well while not oversimplifying anything, and I personally consulted it to make sure things in this guide were accurate
-- For people who are super passionate about this sort of stuff and want much more intensive (though still absolutely amazingly explained) content, see [Richard Behiel's youtube channel](https://www.youtube.com/@RichBehiel)
+- The [ScienceClic English YouTube channel](https://www.YouTube.com/@ScienceClicEN) which explains all of this super well while not oversimplifying anything, and I personally consulted it to make sure things in this guide were accurate
+- For people who are super passionate about this sort of stuff and want much more intensive (though still absolutely amazingly explained) content, see [Richard Behiel's YouTube channel](https://www.YouTube.com/@RichBehiel)
 - The [Feynmann Lectures on Physics](https://www.feynmanlectures.caltech.edu/) (free!)
-- Sean Caroll's No Nonsense General Relativity [here](https://preposterousuniverse.com/wp-content/uploads/grtinypdf.pdf)
-- The pages on [General Relativity](https://brilliant.org/wiki/general-relativity-overview/), the [Standard Model](https://brilliant.org/wiki/standard-model/), [String Theory](https://brilliant.org/wiki/string-theory/), [Quantum Mechanics](https://brilliant.org/wiki/quantum-mechanics/),   [Gravitation](https://brilliant.org/wiki/gravitation/) on Brilliant wiki (you may have seen a lot of ads for [Brilliant](https://brilliant.org/) on youtube, personally I'm not sold on their educational platform but I think their wiki with lots of articles and is relatively more gentle-paced is super good for self-learning and study)
-- The [MinutePhysics](https://www.youtube.com/user/minutephysics) youtube channel which explains physics using cute animations and is just enjoyable to watch in general even if you're not into advanced physics
+- Sean Caroll's [No Nonsense General Relativity Guide](https://preposterousuniverse.com/wp-content/uploads/grtinypdf.pdf)
+- The pages on [General Relativity](https://brilliant.org/wiki/general-relativity-overview/), the [Standard Model](https://brilliant.org/wiki/standard-model/), [String Theory](https://brilliant.org/wiki/string-theory/), [Quantum Mechanics](https://brilliant.org/wiki/quantum-mechanics/),   [Gravitation](https://brilliant.org/wiki/gravitation/) on Brilliant wiki (you may have seen a lot of ads for [Brilliant](https://brilliant.org/) on YouTube, personally I'm not sold on their educational platform but I think their wiki with lots of articles and is relatively more gentle-paced is super good for self-learning and study)
+- The [MinutePhysics](https://www.YouTube.com/user/minutephysics) YouTube channel which explains physics using cute animations and is just enjoyable to watch in general even if you're not into advanced physics
+- The free [Theoretical Minimum lectures](https://theoreticalminimum.com/courses) taught by world-reknown physicist Leonard Susskind, which are free to watch online. If you have time, these are absolutely amazing to watch.
 
 ## The appendix for advanced readers
 
