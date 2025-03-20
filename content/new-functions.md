@@ -1,5 +1,5 @@
 +++
-title = "A new way to define functions"
+title = 'A "new" way to define functions'
 date = 2023-12-24
 +++
 
