@@ -17,6 +17,7 @@ Most of these notes are at a college undergraduate level, some at a graduate lev
 - [Biology Series](@/intro-bio-series.md) - an introductory series to topics in biology, roughly equivalent to a Biology I course. Topics covered include the biological mechanisms of life, evolution and genetics, natural history, ecosystems, and the biosphere.
 - [Fundamentals of Chemistry](@/general-chem/index.md) - a standalone guide covering general chemistry, with content approximately equivalent to a college-level Chemistry I course. A vast number of topics are covered, including atomic theory, chemical bonding, the Lewis model, VSEPR and valence bond theory, organic chemistry, and a basic overview of quantum chemistry and thermochemistry. 
 - [Philosophy notes](@/philosophy.md) - a standalone guide to a number of topics in philosophy, covering the Platonic and Socratic schools of antiquity as the philosophers of the early modern era. Epistemology and metaphysics, as well as aesthetics and some civic philosophy is also explored.
+- [LaTeX math typesetting short guide](@/latex-math-tutorial.md) - a standalone guide to get started with math typesetting in [LaTeX](https://www.latex-project.org/). LaTeX is the predominant markup language used in scientific publishing, and it produces very high quality math typesetting, but it can be a bit difficult to learn. This guide will hopefully be a useful resource to learn and understand LaTeX.
 <!-- 
 I've removed CS series because it's too incomplete and fragmentary
 to really be put on the same page with my other notes/guides
