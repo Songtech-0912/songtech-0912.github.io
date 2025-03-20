@@ -861,7 +861,7 @@ The equations that govern spacetime (and correspondingly how all coordinates cha
 G_{\mu \nu} + \Lambda g_{\mu \nu} = \dfrac{8\pi G}{c^4} T_{\mu \nu}
 {% end %}
 
-Where $G_{\mu \nu}$ is a tensor that describes the _curvature_ of spacetime, $\Lambda$ is called the **cosmological constant**, and $T_{\mu \nu}$ is an extension of the four-momentum. A full explanation of general relativity is very complicated. But for those readers interested, see https://galaxiesbook.org/chapters/C.-General-Relativity.html, which contains a concise but still accurate summary of General Relativity.
+Where $G_{\mu \nu}$ is a tensor that describes the _curvature_ of spacetime, $\Lambda$ is called the **cosmological constant**, and $T_{\mu \nu}$ is an extension of the four-momentum. A full explanation of general relativity is very complicated. But for those readers interested, see [this online astronomy textbook's chapter on GR](https://galaxiesbook.org/chapters/C.-General-Relativity.html), which contains a concise but still accurate summary of General Relativity.
 
 ## Lagrangian mechanics
 
