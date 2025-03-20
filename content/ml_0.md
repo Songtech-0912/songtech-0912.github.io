@@ -3,7 +3,7 @@ title = "Building a neural network library in Rust, part 0"
 date = 2023-05-25
 +++
 
-This series details the process of building a neural network library in pure Rust.
+This is the first article in a multi-part series detailing the process of building a neural network library in pure Rust, based off my experience making the [`elara-math`](https://github.com/elaraproject/elara-math) library.
 
 <!-- more -->
 
@@ -59,13 +59,12 @@ z = a + b
 Then:
 
 {% math() %}
-\frac{\partial z}{\partial x} = \frac{\partial z}{\partial a}
-\frac{\partial a}{\partial x}
-{% end %}
-
-{% math() %}
-\frac{\partial z}{\partial y} = \frac{\partial z}{\partial a}
+\begin{align*}
+\frac{\partial z}{\partial x} &= \frac{\partial z}{\partial a}
+\frac{\partial a}{\partial x} \\
+\frac{\partial z}{\partial y} &= \frac{\partial z}{\partial a}
 \frac{\partial a}{\partial y}
+\end{align*}
 {% end %}
 
 This is really just the multivariable chain rule, and it is the basic technique by which automatic differentiation works. In Rust, this is implemented through a `Value` struct:
@@ -89,13 +88,12 @@ And operations are implemented on `Value` in such a way that it transforms the g
 Finally, it would be helpful to talk about the difference between forward-mode automatic differentiation, which was shown earlier, and _reverse-mode_ automatic differentiation. Reverse-mode automatic differentiation is simply turning forward-mode upside down, so:
 
 {% math() %}
-\frac{\partial z}{\partial x} = \frac{\partial a}{\partial x}
+\begin{align*}
+\frac{\partial z}{\partial x} &= \frac{\partial a}{\partial x}
+\frac{\partial z}{\partial a} \\
+\frac{\partial z}{\partial y} &= \frac{\partial a}{\partial y}
 \frac{\partial z}{\partial a}
-{% end %}
-
-{% math() %}
-\frac{\partial z}{\partial y} = \frac{\partial a}{\partial y}
-\frac{\partial z}{\partial a}
+\end{align*}
 {% end %}
 
 This means that while forward-mode yields every output derivative given a single input, reverse-mode yields every input derivative given a single output - drastically speeding up automatic differentiation for training neural networks.
@@ -105,12 +103,10 @@ This means that while forward-mode yields every output derivative given a single
 The key building blocks of a neural network are three components:
 
 - A (preferably fast!) n-dimensional array
-
 - An automatic differentiation library
-
 - A tensor class (in Rust, it would be a struct)
 
-While building `elara-math`, I aimed to build all three components from scratch in pure Rust, using as few dependencies as possible.
+While building my personal neural network library [`elara-math`](https://github.com/elaraproject/elara-math), I aimed to build all three components from scratch in pure Rust, using as few dependencies as possible.
 
 To start with, I built `NdArray`, my n-dimensional array, by heavily referencing [nd_array](https://crates.io/crates/nd_array). The trick both `elara-math` and `nd_array` used for fast n-dimensional arrays is to define `NdArray` like so:
 
