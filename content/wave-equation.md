@@ -3,7 +3,7 @@ title = "Solving the wave equation"
 date = 2023-10-03
 +++
 
-The wave equation is a ubiquitous partial differential equation found in many areas of physics. We will attempt to solve it within this post.
+The wave equation is a ubiquitous partial differential equation found in many areas of physics. In this guide, we will sketch out the basic approach to solving it.
 
 <!-- more -->
 
@@ -13,7 +13,7 @@ First, let's state the problem. The wave equation is given by:
 \frac{\partial^2 u}{\partial t^2} - c^2 \frac{\partial^2 u}{\partial x^2} = 0
 {% end %}
 
-Unlike many partial differential equations, it is actually solvable.
+Unlike many partial differential equations, the wave equation is actually solvable, and as such it not only carries significant physical importance, but also serves as a useful demonstration of the methods of solving PDEs.
 
 First, notice that the equation is **linear**. That means all the terms of $u(x, t)$ and its derivatives are at most, scaled by a constant, and added (or subtracted) together. This is a powerful fact, because that means any two solutions can be added (or subtracted) together and scaled by constants to form a new solution that satisfies the equation:
 
@@ -36,11 +36,10 @@ u(x, t) = f(x) g(t)
 Now, we can take the derivatives of $u(x, t)$ with respect to each variable:
 
 {% math() %}
-\frac{\partial^2 u}{\partial x^2} = \frac{d^2 f}{dx^2} g(t) = f'' g
-{% end %}
-
-{% math() %}
+\begin{align*}
+\frac{\partial^2 u}{\partial x^2} = \frac{d^2 f}{dx^2} g(t) = f'' g \\
 \frac{\partial^2 u}{\partial t^2} = \frac{d^2 g}{dt^2} f(x) = g'' f
+\end{align*}
 {% end %}
 
 We can plug these derivatives into the equation, to have:
@@ -70,21 +69,19 @@ Now, recognize that the left hand side depends on $g$, and the right hand side d
 This yields a set of two ordinary differential equations:
 
 {% math() %}
-f'' = C_1 f
-{% end %}
-
-{% math() %}
-g'' = c^2 C_1 g
+\begin{align*}
+f'' &= C_1 f \\
+g'' &= c^2 C_1 g
+\end{align*}
 {% end %}
 
 If we set $C_2 = -C_1$, and rewrite both equations in terms of $C_2$, the equations immediately start to look familiar: they are the differential equations of both the sine and cosine functions.
 
 {% math() %}
-f'' = -C_2 f
-{% end %}
-
-{% math() %}
-g'' = -c^2 C_2 g
+\begin{align*}
+f'' &= -C_2 f \\
+g'' &= -c^2 C_2 g
+\end{align*}
 {% end %}
 
 The solution to the first differential equation is:
@@ -93,7 +90,7 @@ The solution to the first differential equation is:
 f(x) = C_2 \sin (x)
 {% end %}
 
-And:
+And that of the second is:
 
 {% math() %}
 g(t) = C_2 \sin(ct)
@@ -117,11 +114,11 @@ Since we can write any cosine as a sine with a phase shift, we have:
 u(x, t) = C_3 \sin(x - ct + \phi_0) - C_3 \sin(x + ct + \phi_0)
 {% end %}
 
-Replacing $C_3$ with arbitrary constants $A$ and $B$, and changing the subtraction to $\pm$, which we can do due to the principle of linearity, we have:
+Replacing $C_3$ with arbitrary constants $A$ and $B$, and changing the subtraction to $\pm$, which we can do by simply defining $B = -C_3$, we have:
 
 {% math() %}
 u(x, t) = A \sin (x - vt + \phi_0) \pm B \sin(x + vt + \phi_0)
 {% end %}
 
-Which is the **solution** of the differential equation.
+Which is the **solution** of the wave equation. Note that it is not the only solution, as the specific solution to the wave equations depends on the _boundary conditions_, which are additional constraints on the form of $u(x, t)$ - we did not provide boundary conditions to the problem for simplicity. However, it is a solution, and indeed, an important solution, because it describes **standing waves** in physics, like the vibrations of a string or a drumhead, as well as radio waves in a metal box. To learn more, please feel free to take a look at the [full guide to PDEs](@/intro-pdes/index.md).
 
