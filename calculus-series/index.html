@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculus series</title>
+  <meta name="description" content=" This is a series of calculus guides based off my calculus notes at RPI. Starting at a high school algebra&#x2F;precalculus level, they build up to encompass most of the contents of a multi-year set of courses in calculus, including (ordinary) calculus, multivariable calculus, vector calculus, differential equations, and more.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://songtech-0912.github.io/favicon.svg">
+      <link rel="icon" type="image/png" href="https://songtech-0912.github.io/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://songtech-0912.github.io/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://songtech-0912.github.io/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://songtech-0912.github.io/inter/inter.css">
+
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://songtech-0912.github.io/notes/">Notes</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+  
+    <article class="post">
+        <h1>Calculus series</h2>
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        <!-- table of contents -->
+        
+
+        <!-- page content -->
+        <p>This is a series of calculus guides based off my calculus notes at RPI. Starting at a high school algebra/precalculus level, they build up to encompass most of the contents of a multi-year set of courses in calculus, including (ordinary) calculus, multivariable calculus, vector calculus, differential equations, and more.</p>
+<span id="continue-reading"></span>
+<p>The guides in the series are listed below:</p>
+<ul>
+<li>Precalculus guide - a review of the essentials of high school-level algebra before starting calculus.
+<ul>
+<li><a href="https://songtech-0912.github.io/trig-review/">Review of trigonometry</a></li>
+<li><a href="https://songtech-0912.github.io/exponential-logs/">Review of exponentials and logarithms</a></li>
+</ul>
+</li>
+<li>Calculus in one variable - the basics of calculus, including the concept of a limit, derivative, and integral in one dimension, how to compute derivatives and integrals, as well as infinite series. Most colleges offer the topics covered in their Calculus I and Calculus II courses.
+<ul>
+<li><a href="https://songtech-0912.github.io/limits/">Limits</a></li>
+<li><a href="https://songtech-0912.github.io/differentiation/">Differential calculus</a></li>
+<li><a href="https://songtech-0912.github.io/integration/">Integral calculus</a>
+<ul>
+<li>Bonus: <a href="https://songtech-0912.github.io/feynmann-technique/">Feynmann's integration trick</a></li>
+</ul>
+</li>
+<li><a href="https://songtech-0912.github.io/series-sequences/">Series &amp; Sequences</a></li>
+</ul>
+</li>
+<li><a href="https://songtech-0912.github.io/multivariable-calculus/">Multivariable calculus</a> - extensions of single-variable calculus to multiple dimensions, including multiple integrals, partial derivatives, optimization of multivariate functions, line integration, and vector derivatives.</li>
+<li><a href="https://songtech-0912.github.io/vector-and-advanced-calculus/">Vector calculus and beyond</a> - a more advanced treatment of the topics in multivariable calculus, as well as Green's theorem, Stoke's theorem, and the Divergence Theorem. This also covers topics beyond a standard vector calculus class, including the calculus of variations and tensor calculus.</li>
+<li><a href="https://songtech-0912.github.io/differential-equations/">Introduction to differential equations</a> - an introductory guide to the theory of differential equations, covering mostly ODEs (ordinary differential equations). The topics covered including classifying ODEs, applying the basic solution techniques to various types of ODEs, and solving eigenvalue problems.</li>
+<li><a href="https://songtech-0912.github.io/intro-pdes/">Partial differential equations</a> - a more advanced guide that specifically covers partial differential equations (PDEs). This includes a deep dive into the standard PDEs of mathematical physics (wave equation, diffusion equation, and Laplace's equation), as well as solving a variety of boundary-value problems.
+<ul>
+<li>For a crash course in PDEs, see the mini-guides <a href="https://songtech-0912.github.io/solving-pdes/">solving separable PDEs</a> and <a href="https://songtech-0912.github.io/wave-equation/">solving the wave equation</a></li>
+</ul>
+</li>
+</ul>
+
+        
+        <a href="/" class="return-link">Back to home</a>
+    </article>
+
+    <script>
+        var toc = document.getElementById("toc");
+        var tocPos = toc.offsetTop + toc.offsetHeight;
+        var tocBtn = document.getElementById("jump-toc-btn");
+        function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var scrollPosTop = document.documentElement.scrollTop;
+            // get bottom of viewport scroll position
+            if (scrollPosTop + window.innerHeight > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+        window.onscroll = showTocBtnOnScroll;
+        showTocBtnOnScroll();
+    </script>
+
+
+  <script defer src="https://songtech-0912.github.io/katex/katex.min.js"></script>
+  <script defer src="https://songtech-0912.github.io/katex/contrib/auto-render.min.js"></script>
+  <script defer src="https://songtech-0912.github.io/katex/contrib/mhchem.min.js"></script>
+  <script defer src="https://songtech-0912.github.io/katex/contrib/copy-tex.min.js"></script>
+  
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    });
+</script>
+</body>
+
+</html>

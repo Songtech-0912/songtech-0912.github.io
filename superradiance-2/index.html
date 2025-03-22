@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulating superradiance reactors, part 2</title>
+  <meta name="description" content=" Again, we return to the superradiance series, a series of posts focused on creating a preliminary, naive raytracer for simulating superradiance reactors. This time, we will explore differential equation solvers.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://songtech-0912.github.io/favicon.svg">
+      <link rel="icon" type="image/png" href="https://songtech-0912.github.io/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://songtech-0912.github.io/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://songtech-0912.github.io/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://songtech-0912.github.io/inter/inter.css">
+
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://songtech-0912.github.io/notes/">Notes</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+  
+    <article class="post">
+        <h1>Simulating superradiance reactors, part 2</h2>
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        <!-- table of contents -->
+        
+        <details class="toc" id="toc" open>
+        <summary>Table of contents</summary>
+        <p class="toc-info">Note: it is highly recommended to navigate by clicking links in the table of contents! It means you can use the back button in your browser to go back to any section you were reading, so you can jump back and forth between sections!</p>
+        <div>
+            <ul>
+            
+            </ul>
+        </div>
+        </details>
+        
+
+        <!-- page content -->
+        <p>Again, we return to the superradiance series, a series of posts focused on creating a preliminary, naive raytracer for simulating superradiance reactors. This time, we will explore differential equation solvers.</p>
+<span id="continue-reading"></span>
+<p>Differential equations are the equations that describe how almost every physical system behave. In the case of black holes, the geodesic equation, a second-order differential equation, governs the trajectories of moving objects around the black hole:</p>
+<p class="mathcell">
+$$
+\frac{d^2 x^\sigma}{d\tau^2} + \Gamma^\sigma_{\alpha \beta} \frac{dx^\alpha}{d\tau} \frac{dx^\beta}{d\tau} = 0
+$$
+</p>
+<p>Differential equations are typically unsolvable or very difficult to solve exactly through analytical means. However, they can be solved numerically. This is where numerical methods for differential equations comes in. To demonstrate them, we can solve the Lorentz system of equations, a system of differential equations defined by:</p>
+<p class="mathcell">
+$$
+\frac{dx}{dt} = \sigma (y - x)
+$$
+</p><p class="mathcell">
+$$
+\frac{dy}{dt} = x (\rho - z) - y
+$$
+</p><p class="mathcell">
+$$
+\frac{dz}{dt} = xy - \beta z
+$$
+</p>
+<p>The Runge-Kutta 4th order method, often called RK4, is one of the most common numerical methods used for solving differential equations. It is defined by:</p>
+<p class="mathcell">
+$$
+y_{n + 1} = y_n + \frac{1}{6} (k_1 + 2k_2 + 2k_3 + k_4)h
+$$
+</p>
+<p>Where:</p>
+<p class="mathcell">
+$$
+k1 = f(t_n, y_n)
+$$
+</p><p class="mathcell">
+$$
+k2 = f(t_n + h &#x2F; 2, y_n + h k_1 &#x2F; 2)
+$$
+</p><p class="mathcell">
+$$
+k3 = f(t_n + h &#x2F; 2, y_n + h k_2 &#x2F; 2)
+$$
+</p><p class="mathcell">
+$$
+k4 = f(t_n + h, y_n + h k_3)
+$$
+</p>
+<p>A simple implementation in Python is given as follows:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#fa6e32;">def </span><span style="color:#f29718;">rk4</span><span>(</span><span style="color:#ff8f40;">f</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">u0</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">t0</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">tf</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">n</span><span>):
+</span><span>    </span><span style="font-style:italic;color:#abb0b6;">&quot;&quot;&quot;
+</span><span style="font-style:italic;color:#abb0b6;">    Expects a function in the form y&#39; = f(y, t) to solve
+</span><span style="font-style:italic;color:#abb0b6;">    f - function, MUST return numpy array of derivatives
+</span><span style="font-style:italic;color:#abb0b6;">    u0 - initial values
+</span><span style="font-style:italic;color:#abb0b6;">    t0 - initial time
+</span><span style="font-style:italic;color:#abb0b6;">    tf - final time
+</span><span style="font-style:italic;color:#abb0b6;">    n - number of samples
+</span><span style="font-style:italic;color:#abb0b6;">    &quot;&quot;&quot;
+</span><span>    t </span><span style="color:#ed9366;">= </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">linspace</span><span>(t0</span><span style="color:#61676ccc;">, </span><span>tf</span><span style="color:#61676ccc;">, </span><span>n</span><span style="color:#ed9366;">+</span><span style="color:#ff8f40;">1</span><span>)
+</span><span>    u </span><span style="color:#ed9366;">= </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">array</span><span>((n</span><span style="color:#ed9366;">+</span><span style="color:#ff8f40;">1</span><span>)</span><span style="color:#ed9366;">*</span><span>[u0])
+</span><span>    h </span><span style="color:#ed9366;">= </span><span>t[</span><span style="color:#ff8f40;">1</span><span>]</span><span style="color:#ed9366;">-</span><span>t[</span><span style="color:#ff8f40;">0</span><span>]
+</span><span>    </span><span style="color:#fa6e32;">for </span><span>i </span><span style="color:#fa6e32;">in </span><span style="color:#f07171;">range</span><span>(n):
+</span><span>        k1 </span><span style="color:#ed9366;">= </span><span>h </span><span style="color:#ed9366;">* </span><span style="color:#f29718;">f</span><span>(u[i]</span><span style="color:#61676ccc;">, </span><span>t[i])    
+</span><span>        k2 </span><span style="color:#ed9366;">= </span><span>h </span><span style="color:#ed9366;">* </span><span style="color:#f29718;">f</span><span>(u[i] </span><span style="color:#ed9366;">+ </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">.</span><span style="color:#ff8f40;">5 </span><span style="color:#ed9366;">* </span><span>k1</span><span style="color:#61676ccc;">, </span><span>t[i] </span><span style="color:#ed9366;">+ </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">.</span><span style="color:#ff8f40;">5</span><span style="color:#ed9366;">*</span><span>h)
+</span><span>        k3 </span><span style="color:#ed9366;">= </span><span>h </span><span style="color:#ed9366;">* </span><span style="color:#f29718;">f</span><span>(u[i] </span><span style="color:#ed9366;">+ </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">.</span><span style="color:#ff8f40;">5 </span><span style="color:#ed9366;">* </span><span>k2</span><span style="color:#61676ccc;">, </span><span>t[i] </span><span style="color:#ed9366;">+ </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">.</span><span style="color:#ff8f40;">5</span><span style="color:#ed9366;">*</span><span>h)
+</span><span>        k4 </span><span style="color:#ed9366;">= </span><span>h </span><span style="color:#ed9366;">* </span><span style="color:#f29718;">f</span><span>(u[i] </span><span style="color:#ed9366;">+ </span><span>k3</span><span style="color:#61676ccc;">, </span><span>t[i] </span><span style="color:#ed9366;">+ </span><span>h)
+</span><span>        u[i</span><span style="color:#ed9366;">+</span><span style="color:#ff8f40;">1</span><span>] </span><span style="color:#ed9366;">= </span><span>u[i] </span><span style="color:#ed9366;">+ </span><span>(k1 </span><span style="color:#ed9366;">+ </span><span style="color:#ff8f40;">2</span><span style="color:#ed9366;">*</span><span>(k2 </span><span style="color:#ed9366;">+ </span><span>k3 ) </span><span style="color:#ed9366;">+ </span><span>k4) </span><span style="color:#ed9366;">/ </span><span style="color:#ff8f40;">6
+</span><span>    </span><span style="color:#fa6e32;">return </span><span>u, t
+</span></code></pre>
+<p>We can use the basic RK4 method to solve the Lorentz equations and plot the results:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#fa6e32;">def </span><span style="color:#f29718;">lorentz</span><span>(</span><span style="color:#ff8f40;">X</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">t</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">rho</span><span style="color:#ed9366;">=</span><span style="color:#ff8f40;">28</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">sigma</span><span style="color:#ed9366;">=</span><span style="color:#ff8f40;">10</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">beta</span><span style="color:#ed9366;">=</span><span style="color:#ff8f40;">8</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">3</span><span>):
+</span><span>    x, y, z </span><span style="color:#ed9366;">= </span><span>X
+</span><span>    dx_dt </span><span style="color:#ed9366;">= </span><span>sigma </span><span style="color:#ed9366;">* </span><span>(y </span><span style="color:#ed9366;">- </span><span>x)
+</span><span>    dy_dt </span><span style="color:#ed9366;">= </span><span>x </span><span style="color:#ed9366;">* </span><span>(rho </span><span style="color:#ed9366;">- </span><span>z) </span><span style="color:#ed9366;">- </span><span>y
+</span><span>    dz_dt </span><span style="color:#ed9366;">= </span><span>x </span><span style="color:#ed9366;">* </span><span>y </span><span style="color:#ed9366;">- </span><span>beta </span><span style="color:#ed9366;">* </span><span>z
+</span><span>    </span><span style="color:#fa6e32;">return </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">array</span><span>([dx_dt</span><span style="color:#61676ccc;">, </span><span>dy_dt</span><span style="color:#61676ccc;">, </span><span>dz_dt])
+</span></code></pre>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span>initial </span><span style="color:#ed9366;">= </span><span>[</span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">., </span><span style="color:#ff8f40;">1</span><span style="color:#61676ccc;">., </span><span style="color:#ff8f40;">1</span><span style="color:#61676ccc;">.</span><span style="color:#ff8f40;">05</span><span>]
+</span><span>sol </span><span style="color:#ed9366;">= </span><span style="color:#f29718;">rk4</span><span>(lorentz</span><span style="color:#61676ccc;">, </span><span>initial</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">t0</span><span style="color:#ed9366;">=</span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">tf</span><span style="color:#ed9366;">=</span><span style="color:#ff8f40;">50</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">n</span><span style="color:#ed9366;">=</span><span style="color:#ff8f40;">5000</span><span>)
+</span><span>
+</span><span>x </span><span style="color:#ed9366;">= </span><span>sol[</span><span style="color:#ff8f40;">0</span><span>][</span><span style="color:#61676ccc;">:</span><span>,</span><span style="color:#ff8f40;">0</span><span>]
+</span><span>y </span><span style="color:#ed9366;">= </span><span>sol[</span><span style="color:#ff8f40;">0</span><span>][</span><span style="color:#61676ccc;">:</span><span>,</span><span style="color:#ff8f40;">1</span><span>]
+</span><span>z </span><span style="color:#ed9366;">= </span><span>sol[</span><span style="color:#ff8f40;">0</span><span>][</span><span style="color:#61676ccc;">:</span><span>,</span><span style="color:#ff8f40;">2</span><span>]
+</span><span>
+</span><span>fig </span><span style="color:#ed9366;">= </span><span>plt</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">figure</span><span>()
+</span><span>ax </span><span style="color:#ed9366;">= </span><span>fig</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">add_subplot</span><span>(</span><span style="color:#ff8f40;">projection</span><span style="color:#ed9366;">=</span><span style="color:#86b300;">&#39;3d&#39;</span><span>)
+</span><span>
+</span><span>ax</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">plot3D</span><span>(x</span><span style="color:#61676ccc;">, </span><span>y</span><span style="color:#61676ccc;">, </span><span>z)
+</span><span>ax</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">set_title</span><span>(</span><span style="color:#86b300;">&quot;Lorentz system of equations&quot;</span><span>)
+</span><span>plt</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">show</span><span>()
+</span></code></pre>
+<p>And the result:</p>
+<p><img src="https://songtech-0912.github.io/superradiance-2/lorentz_1.png" alt="Lorentz RK4 plot" /></p>
+<p>However, note that we can get higher accuracy with an <em>adaptive</em> step size rather than the fixed step size we have been using with RK4. To do this, we need two methods, a fourth-order method and fifth order method. By comparing the difference between the predictions of the two methods, we can find the error, which we can use to adjust the step size. Here is the code for the RK45 solver:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#fa6e32;">def </span><span style="color:#f29718;">rk45</span><span>(</span><span style="color:#ff8f40;">f</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">u0</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">t0</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">tf</span><span style="color:#ed9366;">=</span><span style="color:#ff8f40;">100000</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">epsilon</span><span style="color:#ed9366;">=</span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">.</span><span style="color:#ff8f40;">00001</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">hmax </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">.</span><span style="color:#ff8f40;">2</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">debug</span><span style="color:#ed9366;">=</span><span style="color:#ff8f40;">False</span><span>):
+</span><span>    </span><span style="font-style:italic;color:#abb0b6;">&quot;&quot;&quot;
+</span><span style="font-style:italic;color:#abb0b6;">    Expects a function in the form y&#39; = f(y, t) to solve
+</span><span style="font-style:italic;color:#abb0b6;">    f - function, MUST return numpy array of derivatives
+</span><span style="font-style:italic;color:#abb0b6;">    u0 - initial values
+</span><span style="font-style:italic;color:#abb0b6;">    t0 - initial time
+</span><span style="font-style:italic;color:#abb0b6;">    tf (optional) - final time
+</span><span style="font-style:italic;color:#abb0b6;">    No step size is required to be inputted as
+</span><span style="font-style:italic;color:#abb0b6;">    RK45 uses an adaptive step size
+</span><span style="font-style:italic;color:#abb0b6;">    &quot;&quot;&quot;
+</span><span>    </span><span style="font-style:italic;color:#abb0b6;"># h0 doesn&#39;t really matter as the step size is adaptive
+</span><span>    </span><span style="font-style:italic;color:#abb0b6;"># it can really be anything, just a suitably small number
+</span><span>    h </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">.</span><span style="color:#ff8f40;">0002
+</span><span>    u </span><span style="color:#ed9366;">= </span><span>u0
+</span><span>    t </span><span style="color:#ed9366;">= </span><span>t0
+</span><span>    </span><span style="font-style:italic;color:#abb0b6;"># solution array
+</span><span>    u_array </span><span style="color:#ed9366;">= </span><span>[u0]
+</span><span>    t_array </span><span style="color:#ed9366;">= </span><span>[t0]
+</span><span>    
+</span><span>    </span><span style="color:#fa6e32;">if </span><span>debug:
+</span><span>        </span><span style="color:#f07171;">print</span><span>(</span><span style="color:#fa6e32;">f</span><span style="color:#86b300;">&quot;t0 = </span><span>{t}</span><span style="color:#86b300;">, u0 = </span><span>{u}</span><span style="color:#86b300;">, h = </span><span>{h}</span><span style="color:#86b300;">&quot;</span><span>)
+</span><span>    </span><span style="color:#fa6e32;">while </span><span>t </span><span style="color:#ed9366;">&lt; </span><span>tf:
+</span><span>        h </span><span style="color:#ed9366;">= </span><span style="color:#f07171;">min</span><span>(h</span><span style="color:#61676ccc;">, </span><span>tf</span><span style="color:#ed9366;">-</span><span>t)
+</span><span>        k1 </span><span style="color:#ed9366;">= </span><span>h </span><span style="color:#ed9366;">* </span><span style="color:#f29718;">f</span><span>(u</span><span style="color:#61676ccc;">, </span><span>t)
+</span><span>        k2 </span><span style="color:#ed9366;">= </span><span>h </span><span style="color:#ed9366;">* </span><span style="color:#f29718;">f</span><span>(u</span><span style="color:#ed9366;">+</span><span>k1</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">4</span><span style="color:#61676ccc;">, </span><span>t</span><span style="color:#ed9366;">+</span><span>h</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">4</span><span>)
+</span><span>        k3 </span><span style="color:#ed9366;">= </span><span>h </span><span style="color:#ed9366;">* </span><span style="color:#f29718;">f</span><span>(u</span><span style="color:#ed9366;">+</span><span style="color:#ff8f40;">3</span><span style="color:#ed9366;">*</span><span>k1</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">32</span><span style="color:#ed9366;">+</span><span style="color:#ff8f40;">9</span><span style="color:#ed9366;">*</span><span>k2</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">32</span><span style="color:#61676ccc;">, </span><span>t</span><span style="color:#ed9366;">+</span><span style="color:#ff8f40;">3</span><span style="color:#ed9366;">*</span><span>h</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">8</span><span>)
+</span><span>        k4 </span><span style="color:#ed9366;">= </span><span>h </span><span style="color:#ed9366;">* </span><span style="color:#f29718;">f</span><span>(u</span><span style="color:#ed9366;">+</span><span style="color:#ff8f40;">1932</span><span style="color:#ed9366;">*</span><span>k1</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">2197</span><span style="color:#ed9366;">-</span><span style="color:#ff8f40;">7200</span><span style="color:#ed9366;">*</span><span>k2</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">2197</span><span style="color:#ed9366;">+</span><span style="color:#ff8f40;">7296</span><span style="color:#ed9366;">*</span><span>k3</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">2197</span><span style="color:#61676ccc;">, </span><span>t</span><span style="color:#ed9366;">+</span><span style="color:#ff8f40;">12</span><span style="color:#ed9366;">*</span><span>h</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">13</span><span>)
+</span><span>        k5 </span><span style="color:#ed9366;">= </span><span>h </span><span style="color:#ed9366;">* </span><span style="color:#f29718;">f</span><span>(u</span><span style="color:#ed9366;">+</span><span style="color:#ff8f40;">439</span><span style="color:#ed9366;">*</span><span>k1</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">216</span><span style="color:#ed9366;">-</span><span style="color:#ff8f40;">8</span><span style="color:#ed9366;">*</span><span>k2</span><span style="color:#ed9366;">+</span><span style="color:#ff8f40;">3680</span><span style="color:#ed9366;">*</span><span>k3</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">513</span><span style="color:#ed9366;">-</span><span style="color:#ff8f40;">845</span><span style="color:#ed9366;">*</span><span>k4</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">4104</span><span style="color:#61676ccc;">, </span><span>t</span><span style="color:#ed9366;">+</span><span>h)
+</span><span>        k6 </span><span style="color:#ed9366;">= </span><span>h </span><span style="color:#ed9366;">* </span><span style="color:#f29718;">f</span><span>(u</span><span style="color:#ed9366;">-</span><span style="color:#ff8f40;">8</span><span style="color:#ed9366;">*</span><span>k1</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">27</span><span style="color:#ed9366;">+</span><span style="color:#ff8f40;">2</span><span style="color:#ed9366;">*</span><span>k2</span><span style="color:#ed9366;">-</span><span style="color:#ff8f40;">3544</span><span style="color:#ed9366;">*</span><span>k3</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">2565</span><span style="color:#ed9366;">+</span><span style="color:#ff8f40;">1859</span><span style="color:#ed9366;">*</span><span>k4</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">4104</span><span style="color:#ed9366;">-</span><span style="color:#ff8f40;">11</span><span style="color:#ed9366;">*</span><span>k5</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">40</span><span style="color:#61676ccc;">, </span><span>t</span><span style="color:#ed9366;">+</span><span>h</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">2</span><span>)
+</span><span>        u1 </span><span style="color:#ed9366;">= </span><span>u </span><span style="color:#ed9366;">+ </span><span style="color:#ff8f40;">25</span><span style="color:#ed9366;">*</span><span>k1</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">216</span><span style="color:#ed9366;">+</span><span style="color:#ff8f40;">1408</span><span style="color:#ed9366;">*</span><span>k3</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">2565</span><span style="color:#ed9366;">+</span><span style="color:#ff8f40;">2197</span><span style="color:#ed9366;">*</span><span>k4</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">4104</span><span style="color:#ed9366;">-</span><span>k5</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">5
+</span><span>        u2 </span><span style="color:#ed9366;">= </span><span>u </span><span style="color:#ed9366;">+ </span><span style="color:#ff8f40;">16</span><span style="color:#ed9366;">*</span><span>k1</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">135</span><span style="color:#ed9366;">+</span><span style="color:#ff8f40;">6656</span><span style="color:#ed9366;">*</span><span>k3</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">12825</span><span style="color:#ed9366;">+</span><span style="color:#ff8f40;">28561</span><span style="color:#ed9366;">*</span><span>k4</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">56430</span><span style="color:#ed9366;">-</span><span style="color:#ff8f40;">9</span><span style="color:#ed9366;">*</span><span>k5</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">50</span><span style="color:#ed9366;">+</span><span style="color:#ff8f40;">2</span><span style="color:#ed9366;">*</span><span>k6</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">55
+</span><span>        R </span><span style="color:#ed9366;">= </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">mean</span><span>(</span><span style="color:#f07171;">abs</span><span>(u1</span><span style="color:#ed9366;">-</span><span>u2) </span><span style="color:#ed9366;">/ </span><span>h)
+</span><span>        </span><span style="color:#fa6e32;">if </span><span>R </span><span style="color:#ed9366;">== </span><span style="color:#ff8f40;">0</span><span>:
+</span><span>            delta </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">1
+</span><span>        </span><span style="color:#fa6e32;">else</span><span>:
+</span><span>            delta </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">.</span><span style="color:#ff8f40;">84</span><span style="color:#ed9366;">*</span><span>(epsilon</span><span style="color:#ed9366;">/</span><span>R) </span><span style="color:#ed9366;">** </span><span>(</span><span style="color:#ff8f40;">1</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">4</span><span>)
+</span><span>        
+</span><span>        </span><span style="color:#fa6e32;">if </span><span>R </span><span style="color:#ed9366;">&lt;= </span><span>epsilon:
+</span><span>            </span><span style="font-style:italic;color:#abb0b6;"># Keep u1 as the solution for the current time step
+</span><span>            </span><span style="font-style:italic;color:#abb0b6;"># and move to the next step
+</span><span>            </span><span style="font-style:italic;color:#abb0b6;"># otherwise recalculate current step with more accurate step
+</span><span>            u </span><span style="color:#ed9366;">= </span><span>u1
+</span><span>            t </span><span style="color:#ed9366;">+= </span><span>h
+</span><span>            u_array</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">append</span><span>(u)
+</span><span>            t_array</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">append</span><span>(t)
+</span><span>        </span><span style="font-style:italic;color:#abb0b6;"># base step size for next step on current step
+</span><span>        </span><span style="font-style:italic;color:#abb0b6;"># limit maximum size of step to hmax
+</span><span>        </span><span style="color:#fa6e32;">if </span><span>delta </span><span style="color:#ed9366;">* </span><span>h </span><span style="color:#ed9366;">&gt; </span><span>hmax:
+</span><span>            h </span><span style="color:#ed9366;">= </span><span>hmax
+</span><span>        </span><span style="color:#fa6e32;">else</span><span>:
+</span><span>            h </span><span style="color:#ed9366;">= </span><span>delta </span><span style="color:#ed9366;">* </span><span>h
+</span><span>        </span><span style="color:#fa6e32;">if </span><span>debug:
+</span><span>            </span><span style="color:#f07171;">print</span><span>(</span><span style="color:#fa6e32;">f</span><span style="color:#86b300;">&quot;t = </span><span>{t}</span><span style="color:#86b300;">, u = </span><span>{u1}</span><span style="color:#86b300;">, h = </span><span>{h}</span><span style="color:#86b300;">&quot;</span><span>)
+</span><span>    </span><span style="color:#fa6e32;">return </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">array</span><span>(u_array), np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">array</span><span>(t_array)
+</span></code></pre>
+<p>When plotted, we have a much more accurate result:</p>
+<p><img src="https://songtech-0912.github.io/superradiance-2/lorentz_2.png" alt="Lorentz RK45 plot" /></p>
+<p>The average error of the RK45 method is approximately $1 \times 10^{-15}$ off from the analytical solution. This is accurate enough for nearly all applications of a differential equation solver. In fact, the superradiance simulation will be using this exact method.</p>
+
+        
+        <a id="jump-toc-btn" href="#toc">Show table of contents</a>
+        
+        <a href="/" class="return-link">Back to home</a>
+    </article>
+
+    <script>
+        var toc = document.getElementById("toc");
+        var tocPos = toc.offsetTop + toc.offsetHeight;
+        var tocBtn = document.getElementById("jump-toc-btn");
+        function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var scrollPosTop = document.documentElement.scrollTop;
+            // get bottom of viewport scroll position
+            if (scrollPosTop + window.innerHeight > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+        window.onscroll = showTocBtnOnScroll;
+        showTocBtnOnScroll();
+    </script>
+
+
+  <script defer src="https://songtech-0912.github.io/katex/katex.min.js"></script>
+  <script defer src="https://songtech-0912.github.io/katex/contrib/auto-render.min.js"></script>
+  <script defer src="https://songtech-0912.github.io/katex/contrib/mhchem.min.js"></script>
+  <script defer src="https://songtech-0912.github.io/katex/contrib/copy-tex.min.js"></script>
+  
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    });
+</script>
+</body>
+
+</html>
