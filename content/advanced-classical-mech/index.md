@@ -1060,6 +1060,35 @@ m \ddot y = mg - k(y - y_0) \\
 \end{align*}
 {% end %}
 
+### The Newtonian limit
+
+We have already seen that Lagrangian mechanics yields the same equations of motion as Newtonian mechanics in several examples, but what about the general case? Does Lagrangian mechanics _always_ make the same predictions as Newtonian mechanics? The answer is yes, and we will show why.
+
+Consider a particle under the influence of some conservative force, whose potential energy is given by $U(x)$ (we work in one dimension but the same argument can be made for any number of dimensions). Then, the particle's Lagrangian would be given by:
+
+{% math() %}
+\begin{align*}
+\mathcal{L} &= K - U \\
+&= \dfrac{1}{2} m \ddot x^2 - U(x)
+\end{align*}
+{% end %}
+
+Thus, the derivatives of the Lagrangian are given by:
+
+{% math() %}
+\begin{matrix*}
+\dfrac{\partial \mathcal{L}}{\partial x} = -U'(x), & \dfrac{\partial \mathcal{L}}{\partial \dot x} = m\dot x, & \dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot x}\right) = m \ddot x
+\end{matrix*}
+{% end %}
+
+So the Euler-Lagrange equation for our only coordinate $x$ would be given by:
+
+{% math() %}
+m \ddot x = -U'(x)
+{% end %}
+
+But this is exactly Newton's second law, $m\dfrac{d^2 x}{dt^2} = -\dfrac{dU}{dx}$! Thus, in _all cases_, Lagrangian mechanics _always_ gives the same results as Newtonian mechanics. So Lagrangian mechanics doesn't actually introduce any new physics; it is better to think of it as simply an alternative way to solve problems that sometimes works better or makes finding a solution easier than using the Newtonian method.
+
 ## More problems in Lagrangian mechanics
 
 Because of how _different_ Lagrangian mechanics is from the traditional Newtonian approach to solving physical systems, it may be quite difficult to get adjusted to it. For this reason, here are a few additional fully-solved problems for Lagrangian mechanics that might be helpful to practice on.
