@@ -1165,7 +1165,10 @@ Faraday's law can also be expressed in any of the following ways:
 
 The process of calculating magnetic flux can be tricky, so let us consider an example to demonstrate the calculation process. Consider a very long wire carrying current $I$ in the rightward direction, with a wire loop of width $w$ and height $b-a$ below it, as shown in the diagram below:
 
-![[magnetic-flux-calculation.excalidraw]]
+{{ wideimg(
+src="magnetic-flux-calculation.excalidraw.svg"
+desc="A diagram showing the magnetic flux through a wire loop below a current-carrying wire. The magnetic field forms circular loops around the wire, which pass into the loop."
+) }}
 
 We note that the magnetic field vectors go _into_ the page while the wire loop's normal points _out_ of the page, meaning they are _antiparallel_ (parallel but pointing in opposite directions). Therefore, we know that $\mathbf{B}(r) \cdot d\mathbf{A} = -B(r) dA$ where $dA = dr dx$ is the area of an infinitesimal portion of the loop's surface. Now, recalling that $B = \dfrac{\mu_0 I}{2\pi r}$ for a current-carrying wire of infinite (or at least very long) length, which we derived earlier from Ampère's law, if we substitute our derived expressions into the integral equation for the magnetic flux, we have:
 
@@ -1207,9 +1210,14 @@ And the average EMF as:
 
 Lenz's law is significant because it shows that the current produced by a changing magnetic flux is **opposed** to the _change in flux_. This is because the induced current generates _another magnetic field_ that opposes the external magnetic field by $\mathbf{F} = I\vec \ell \times \mathbf{B}_\mathrm{generated}$. In other words, an increasing flux creates a negative current; a decreasing flux creates a positive current. In each case, the induced current produces a magnetic field that opposes the external magnetic field and thus the change in flux.
 
-> **Note on sign:** a positive current is one that flows _counterclockwise_. A negative current is one that flows _clockwise_. Thus **positive flux** creates clockwise current and **negative flux** creates counterclockwise current. In both cases, the current direction is _opposite_ to the current in the loop, and the direction of the current will tell us the induced force on the wire without even needing to calculate the flux.
+> **Note on sign:** a positive current is (by convention) one that flows _counterclockwise_. A negative current is one that flows _clockwise_. Thus **positive flux** creates clockwise current and **negative flux** creates counterclockwise current. In both cases, the current direction is _opposite_ to the current in the loop, and the direction of the current will tell us the induced force on the wire without even needing to calculate the flux.
 
-![[Lenz-law-illustration.excalidraw]]
+We showcase Lenz's law in the diagram below:
+
+{{ wideimg(
+src="Lenz-law-illustration.excalidraw.svg"
+desc="A diagram of Lenz's law, showing an upwards time-varying magnetic field passing through a loop. This produces an EMF and thus an induced current, which is itself countered by an induced magnetic field caused by the induced current."
+) }}
 
 If a changing flux occurs as a result of the motion of a conducting surface or loop, we call the resulting EMF **motional EMF**. Lenz's law tells us that a given loop of wire (or any other general conductor) moving at velocity $\mathbf{v}$, then the direction of the net force on the loop/conductor by Lenz's law is **opposite the direction of** $\mathbf{v}$. This also means there is **no force** when $\mathbf{v} = 0$ because the magnetic flux is constant in time (it may vary spatially but would not vary in time).
 
