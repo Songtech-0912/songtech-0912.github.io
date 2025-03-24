@@ -12,10 +12,10 @@ This is a series of calculus guides based off my calculus notes at RPI. Starting
 
 The guides in the series are listed below:
 
-- Precalculus guide - a review of the essentials of high school-level algebra before starting calculus.
+- **Precalculus guide** - a review of the essentials of high school-level algebra before starting calculus.
 	- [Review of trigonometry](@/trig-review.md)
 	- [Review of exponentials and logarithms](@/exponential-logs.md)
-- Calculus in one variable - the basics of calculus, including the concept of a limit, derivative, and integral in one dimension, how to compute derivatives and integrals, as well as infinite series. Most colleges offer the topics covered in their Calculus I and Calculus II courses.
+- **Calculus in one variable** - the basics of calculus, including the concept of a limit, derivative, and integral in one dimension, how to compute derivatives and integrals, as well as infinite series. Most colleges offer the topics covered in their Calculus I and Calculus II courses.
 	- [Limits](@/limits.md)
 	- [Differential calculus](@/differentiation.md)
 	- [Integral calculus](@/integration.md)
