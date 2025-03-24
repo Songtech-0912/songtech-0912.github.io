@@ -3,21 +3,23 @@ title = "Introductory classical dynamics"
 date = 2024-01-08
 +++
 
-These are notes taken in RPI's Physics 1150 class, relating to introductory classical dynamics - essentially, Newtonian mechanics. Make sure to read the [calculus series](@/calculus-series.md) first as these notes are calculus-heavy.
+This is a guide to the essentials of calculus-based physics and Newtonian mechanics, covering a variety of topics, including kinematics, dynamics, translational and rotational motion, gravity, and short introductions to fluid mechanics, special relativity, and thermodynamics.
 
 <!-- more -->
 
+This guide is adapted from notes taken in RPI's Physics 1150 course, taught by Professor [Gyorgy Korniss](https://faculty.rpi.edu/gyorgy-korniss), to whom I give my thanks. I should also mention that it is recommended to have the [calculus series](@/calculus-series.md) notes open at the same time while reading, as these notes are calculus-heavy.
+
 ## Dimensional analysis
 
-Dimensional analysis is a method of doing a "sanity check" for _numerical computations_ with units. That is, an equation only makes sense if the units check out.
+Before we even start doing any physics, it is important to mention a key tool in the physicist's toolbox: **dimensional analysis**. Dimensional analysis is a method of doing a "sanity check" for _numerical computations_ with units. That is, an equation only makes sense if the units checks out.
 
-For instance, consider:
+For instance, consider the following equation, which gives an object's position $x$ as a function of its acceleration $a$ at time $t$:
 
 {% math() %}
 x(t) = \frac{1}{2} at^2
 {% end %}
 
-Does this make sense with dimensional analysis? Well, acceleration is in units of $ms^{-2}$ and time is in units of $s^2$, so multiplying them together and by 1/2 (a dimensionless value) gives units of $m$ (meters). And meters are a reasonable unit for a position $x(t)$.
+Does this make sense with dimensional analysis? Well, acceleration is in units of $\pu{ms^{-2}}$ and time is in units of $\pu{s^2}$, so multiplying them together and by 1/2 (a dimensionless value) gives units of $m$ (meters). And meters are a reasonable unit for the position of an object. The units do look correct! And indeed, this equation is the correct equation for an object undergoing constant acceleration from rest. 
 
 To keep track of dimensions, it is often more useful to use general dimensions for each term - $M$ for the mass dimension, $L$ for the length dimension, $T$ for the time dimension. So, plugging in this:
 
@@ -122,6 +124,22 @@ Finally, in a **position-dependent force problem**, then the general solution is
 \int \left(\frac{2}{m} \int F(x)~dx + C \right)^{-{1 \over 2}} dx - t = 0
 {% end %}
 
+### Constant acceleration and the kinematic equations
+
+A very important case of Newton's 2nd law follows from a force that provides a constant acceleration $a$ along the $x$ axis. This is also known as **constant-acceleration motion**, and it possesses an analytical solution by direct integration. The solution can be rearranged in terms of the variables $x(t), v(t), a, v_0, t$ to form the 4 **kinematic equations**:
+
+{% math() %}
+\begin{align*}
+x(t) &= \dfrac{v_0 + v}{2}t \\
+x(t) &= x_0 + v_0 t + \dfrac{1}{2} at^2 \\
+v(t) &= v_0 + a t \\
+v^2 &= v_0^2 + 2a (x - x_0)
+\end{align*}
+{% end %}
+
+> **Note:** the format the kinematic equations are presented in varies from source to source. For instance, some sources define $\Delta x \equiv x - x_0$, and some sources use $s(t)$ rather than $x(t)$, but the overall content is the same.
+
+
 ### Drag force application
 
 An example of the time-dependent case of Newton's 2nd law is an object experiencing drag. The drag force is a general class of forces that includes (dyamic, i.e motional) friction, air resistance, water drag, and so forth, **all of which point _opposite_ to the direction of motion**.
@@ -172,22 +190,6 @@ Note that if we take the limit of $v(t)$ as $t \to \infty$, then we reach a term
 {% math() %}
 \lim_{t \to \infty} v(t) = \frac{mg}{b}
 {% end %}
-
-## Approximation techniques
-
-To first-order (when a point is close to $x_0$), the derivative is approximately a finite difference:
-
-{% math() %}
-\frac{df}{dx} \bigg|_{x = x_0} \approx \frac{\Delta f}{\Delta x}
-{% end %}
-
-So a linear approximation to a function at an arbitrary point $x_0$ is:
-
-{% math() %}
-f(x) \approx f(x_0) + f'(x_0)(x - x_0)
-{% end %}
-
-For example, $e^x \approx 1 + x$, and $\sin(x) \approx x$.
 
 ## Vectors and their representations
 
@@ -337,7 +339,7 @@ Energy can be understood as a measure of the ability to make things happen - cau
 
 Energy (at least in non-quantum physics) comes in two main types: **kinetic energy**, which is energy that causes things to move, and **potential energy**, which is stored energy that _can_ be released to cause things to move. The total energy in a closed system is always constant.
 
-## Work and conservation of energy
+### Work and conservation of energy
 
 Energy can never be created nor destroyed, only transferred. Work is the transfer of energy by a force applied along a path between two points. It is a scalar quantity, and in one dimension it is defined by:
 
@@ -442,14 +444,18 @@ Rearranging, we get the **separable 1st-order ODE**:
 \frac{dx}{dt} = \pm \sqrt{\frac{2}{m}(E - U(x))}
 {% end %}
 
-## Potential energy landscapes
+### Potential energy landscapes
 
-By plotting the graph of $U(x)$, the potential energy function, we can determine the characteristics of the motion of an object. The following features of $U(x)$ are especially important:
+Why is it beneficial to work with the potential energy, rather than, say, the force? One important reason is that the _shape_ of the potential energy function $U(x)$ characterizes the motion of an object. In general, all objects in physics want to lower their potential energy to as low as possible. In fact, it is a common (though not universal) convention in physics to define the potential energy with respect to a _specific_ reference point such that if the object's potential energy $U(x) > 0$, then it is veering towards an **unstable position**, whereas if $U(x) < 0$, then it is approaching a **stable position**. The object is at a **permanently stable position** (which we call a _stable equilibrium_) when it is at a minimum of $U(x)$.
 
-- Local minimum of $U(x)$ - stable equilibrium position
-- Local maximum $U(x)$ - unstable equilibrium position
-- Lower potential energy regions - the object has more kinetic energy and so moves faster
-- Higher potential energy regions - the object has less kinetic energy and so moves slower
+> **Note:** There is nothing particularly special about negative potential energy values - it is just a matter of this convention that is commonly used throughout physics.
+
+The important takeaway is this: by plotting the graph of $U(x)$, the potential energy function, we can therefore determine the characteristics of the motion of an object without even needing to solve the (often unsolvable) equations of motion! The following features of $U(x)$ are especially important:
+
+- Local minimum of $U(x)$ - **stable** equilibrium position
+- Local maximum $U(x)$ - **unstable** equilibrium position
+- Lower potential energy regions - the object has **more** kinetic energy and so moves **faster**
+- Higher potential energy regions - the object has **less** kinetic energy and so moves **slower**
 
 ## Multivariable functions and partial derivatives
 
@@ -502,7 +508,7 @@ Using this notation:
 df = \nabla f \cdot d\vec s
 {% end %}
 
-There are two other vector operations of relevance in vector calculus. These operate on vector-valued multivariable functions, which are typically in the form:
+There are two other vector operatior of relevance in vector calculus. These operate on vector-valued multivariable functions, which are typically in the form:
 
 {% math() %}
 \begin{align*}
@@ -515,7 +521,7 @@ F_x(x, y, z) \hat i + F_y(x, y, z) \hat j + F_z (x, y, z) \hat k
 \end{align*}
 {% end %}
 
-First, the **divergence** operation measures flow rate, and is given by:
+First, the **divergence** operator measures flow rate, and is given by:
 
 {% math() %}
 \begin{align*}
@@ -523,11 +529,11 @@ First, the **divergence** operation measures flow rate, and is given by:
 \end{align*}
 {% end %}
 
-Second, the **curl** operation measures rotation, and is given by:
+Second, the **curl** operator measures rotation, and is given by:
 
 {% math() %}
 \begin{align*}
-\nabla \cdot \vec F &= \left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right) \times (F_x, F_y. F_z) \\ &= \left(
+\nabla \times \vec F &= \left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right) \times (F_x, F_y. F_z) \\ &= \left(
 \frac{\partial F_z}{\partial y} - \frac{\partial F_y}{\partial z},
 \frac{\partial F_x}{\partial z} - \frac{\partial F_z}{\partial x},
 \frac{\partial F_{y}}{\partial x}- \frac {\partial F_x}{\partial y}
@@ -687,22 +693,22 @@ Therefore, total energy is conserved in the case of conservative forces, even in
 
 ### Addendum: non-conservative forces
 
-In nature, essentially all forces can be considered conservative if analyzed on the microscopic level. That is, the total energy of an object is actually an approximation for the sum of the kinetic energies and potential energies of all of its individual atoms interacting with each other (we won't go into subatomic particles because the effects of quantum mechanics make notions of energy blurry). However, it is impractical to analyze systems on the microscopic level and perform detailed calculations of millions of atoms. Therefore, we consider certain forces, such as friction, non-conservative, meaning that while total energy is conserved, total _mechanical_ energy is not. Through Helmholtz's theorem, a non-conservative force can still be written in terms of the potential energy $U$, but also must include a vector potential $\vec A$:
+In nature, essentially all forces can be considered conservative if analyzed on the microscopic level. That is, the total energy of an object is actually an approximation for the sum of the kinetic energies and potential energies of all of its individual atoms interacting with each other (we won't go into subatomic particles because the effects of quantum mechanics make notions of energy blurry). However, it is impractical to analyze systems on the microscopic level and perform detailed calculations of millions of atoms. Therefore, we consider certain forces, such as friction, non-conservative, meaning that while total energy is conserved, total _mechanical_ energy is not.
 
-{% math() %}
-\vec F = -\nabla U + \nabla \times \vec A
-{% end %}
+> **Note for the advanced reader:** Through Helmholtz's theorem, a non-conservative force $\vec F$ can still be associated with a potential energy $U$, but also must include a vector potential $\vec A$, such that $\vec F = -\nabla U + \nabla \times \vec A$. This is mostly relevant in [electromagnetic theory](@/electromagnetism/index.md) and not really used when describing friction and other drag forces.
 
 ## Uniform circular motion
 
 Uniform circular motion describes motion in which an object moves with constant velocity in a circular path of fixed radius. In this situation, the object does not have any tangential acceleration (acceleration along its velocity vector) but it does have **centripetal acceleration** towards the center, with a magnitude given by:
+
 {% math() %}
 a = \frac{v^2}{R}
 {% end %}
 
-Or in vector form:
+Or in vector form, where _we define $\hat r$ to point **inwards** towards the center of the circular path_:
+
 {% math() %}
-\vec a = -\frac{v^2}{R} \hat r
+\vec a = \frac{v^2}{R} \hat r
 {% end %}
 
 The object moving along the circular path would trace out a distance $ds = Rd\theta$ when it advances along an angle $d\theta$. Therefore
@@ -739,7 +745,7 @@ The overall acceleration $\vec a$ is given by:
 
 When considering problems of circular motion, instead of using $\sum F_i = ma$, instead use $\sum F_i = \frac{mv^2}{R}$. The centripetal force is not an isolated force, but is rather the net force in the radial direction, and the forces that provide it are other forces, such as gravitational force and normal force.
 
-### Example cases of circular motion
+### A case study of uniform circular motion
 
 Consider a bead of mass $m$ attached to a string and is revolving in a circular fashion. We can decompose the forces into vertical and horizontal components. Using Newton's second law, the horizontal net force is given only by the radial tension force $\vec T$. Therefore, considering the magnitudes of the forces only:
 
@@ -764,6 +770,7 @@ At the leftmost and rightmost edges of the circle, then:
 {% math() %}
 m a_c = m\frac{v^2}{R} = T
 {% end %}
+
 ## Newton's theory of gravity
 
 In Newtonian mechanics, the gravitational force between two masses $M$ and $m$ is given by:
@@ -780,13 +787,14 @@ F_g = \|F_g\| = \frac{GMm}{r^2}
 
 ### Perfectly circular orbits
 
-The simplest case of planetary motion can be modeled with uniform circular motion, that is, equating centripetal force and the gravitational force:
+The simplest case of planetary motion can be modeled with uniform circular motion. This is not true to reality - the orbits of planets _aren't_ perfect circles - but is a useful first approximation. The result comes by equating the centripetal force and the gravitational force, that is:
 
 {% math() %}
 m\frac{v^2}{R} = G \frac{Mm}{r^2}
 {% end %}
 
-Solving for $v$, we have:
+Solving for $v$, we thus have:
+
 {% math() %}
 v = \sqrt{\frac{GM}{r}}
 {% end %}
@@ -802,6 +810,8 @@ This is often rewritten as:
 {% math() %}
 T^2 = \frac{4\pi^2 r^3}{GM}
 {% end %}
+
+From which, for instance, we can calculate the orbital period of a planet in terms of its _mean radius_ from its star. Using the solar mass $M_\odot = \pu{2E30 kg}$, mean Earth-Sun distance $r = \pu{1.49E8 km}$, and the universal gravitational constant $G = \pu{6.674E−11 m^3*kg^{−1}*s^{−2}}$, the value of $T$ calculated for Earth's orbit would be around 364.2 days, just shy of the accepted value of Earth's orbital period of 365.242 days, so this is indeed a very good approximation.
 
 ### Newton's shell theorem
 
@@ -850,7 +860,9 @@ This can be approximated for objects near the Earth as:
 U(y) \approx mgy
 {% end %}
 
-### Gravitational total energy
+Where $g = \pu{9.81 m/s}$, also called **standard gravity** or the **acceleration of freefall**. The approximation $U(y) = mgy$ is one that we commonly use throughout physics, and is a reasonably accurate approximation assuming we are relatively close to the Earth (which is typically the case).
+
+### Gravitational total energy and escape velocity
 
 The total energy in gravitation is given by:
 
@@ -858,40 +870,44 @@ The total energy in gravitation is given by:
 E = K + U = \frac{1}{2} mv^2 -\frac{GMm}{r}
 {% end %}
 
-$E$ must be less than zero for an object to remain in orbit. Solving for $v$ in the case $E \geq 0$, we find that the **escape velocity** of an object in orbit is given by:
+Remember how we discussed that when we have an object with $U(r) > 0$, the object is heading towards an unstable position? The same applies to the gravitational potential energy: $E$ must be less than zero for an object to remain in orbit. Solving for $v$ in the case $E \geq 0$, we find that the **escape velocity** of an object in orbit is given by:
 
 {% math() %}
 v_{\mathrm{esc}} = \sqrt{\frac{2GM}{r}}
 {% end %}
 
-## Angular momentum
+### Angular momentum
 
-Newton's second law can be formulated in terms of momentum $\vec p$:
+For gravitational problems, due to the _radial_ nature of the gravitational force, it is often helpful to formulate Newton's second law in terms of _angular momentum_ $\vec L$, defined:
+{% math() %}
+\vec L = \vec r \times \vec p
+{% end %}
+
+This is directly analogous to Newton's second law formulated in terms of the regular (linear) momentum $\vec p$:
 
 {% math() %}
 F = \frac{d\vec p}{dt}
 {% end %}
 
-However, for radial problems, it is often more helpful to formulate Newton's second law in terms of _angular momentum_ $\vec L$, defined:
-{% math() %}
-\vec L = \vec r \times \vec p
-{% end %}
-
-In this case, Newton's second law becomes the equation for **torque** $\vec \tau$, the radial equivalent of force:
+By switching from the linear momentum to the angular momentum, Newton's second law becomes the equation for **torque** $\vec \tau$, the radial equivalent of force:
 
 {% math() %}
 \vec \tau = \frac{d\vec L}{dt} = \vec r \times \vec F
 {% end %}
 
-> Note that torque is covered more in-depth in the section on rotational motion.
+> Note that torque is covered more in-depth in the [section on rotational motion](#rigid-body-and-rotational-motion) later on in the guide.
 
-## Kepler's laws
+Why is this significant? Because gravity obeys the **conservation of angular momentum**, meaning that the angular momentum of any orbiting body bound gravitationally is always **constant**. This seemingly-obscure result famously explained one of the three **Kepler's laws**, which we will see next.
+
+### Kepler's laws
+
+Kepler's laws are a set of three laws devised by the astronomer [Johannes Kepler](https://en.wikipedia.org/wiki/Johannes_Kepler). Kepler worked in an era when the motion of celestial bodies, which we now know is a consequence of gravity, was poorly understood. Kepler, who arrived at his laws by data-fitting the observational data collected by his superior [Tycho Brahe](https://en.wikipedia.org/wiki/Tycho_Brahe), likely had no idea _why_ his laws worked: the full explanation would have to wait until Newton devised his three laws of motion and his theory of universal gravitation. Kepler's laws were as follows:
 
 1. Each planet moves in an elliptical orbit described by the parameters $a$ and $b$
 2. A line from the Sun to a given planet sweeps out equal areas in equal times
 3. The square of the period of the orbit is proportional to the cube of $a$
 
-Kepler's first law means that the orbits of planets follow the equation of an ellipse:
+**Kepler's first law** means that the orbits of planets follow the equation of an ellipse:
 
 {% math() %}
 \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1
@@ -906,21 +922,21 @@ Here, $a$ is the semi-major axis, which is half the distance across the longer d
 For gravitational orbits, the values of $a$ and $b$ are given by:
 
 {% math() %}
-a = \frac{GMm}{2|E|}
-{% end %}
-{% math() %}
-b = \frac{L}{\sqrt{2m|E|}}
+\begin{align*}
+a &= \frac{GMm}{2|E|}
+b &= \frac{L}{\sqrt{2m|E|}}
+\end{align*}
 {% end %}
 
-Kepler's second law is due to the fact that as the gravitational force and angular momentum are parallel vectors, their cross product is zero, and thus angular momentum is conserved.
+**Kepler's second law** is due to the fact that as the gravitational force and angular momentum are parallel vectors, their cross product is zero, and thus angular momentum is conserved. This leads to constant areas being traced out over constant times, despite the orbits being non-circular.
 
-Kepler's third law was proven earlier in the case of perfectly circular orbits. For an improved generalization that extends to elliptical orbits, the relationship is given by:
+We already (without saying so) proved **Kepler's third law** earlier in the case of perfectly circular orbits, using the physics of uniform circular motion. For an improved generalization that extends to elliptical orbits, the relationship is given by:
 
 {% math() %}
 T^2 = \sqrt{\frac{4\pi^2 a^3}{GM}}
 {% end %}
 
-## Mathematical interlude: Taylor series
+## Mathematical interlude A: Taylor series
 
 A function can be approximated near a point $x_0$ via:
 
@@ -945,19 +961,33 @@ In practice, however, only a few terms (typically up to 2nd-order or 3rd-order) 
 | $\tan x$ | $x + \frac{x^3}{3}$ |
 | $1/(x + \alpha)^n$ | $\frac{1}{\alpha^{n}}-\frac{nx}{\alpha^{n+1}}+\frac{n(n+1)x^{2}}{2\alpha^{n+2}}$ |
 
-This means, for instance, that for an object a small distance $\alpha$ above the surface of the Earth, where the radius of the Earth is given by $r_\oplus$, then the magnitude of the gravitational force can be reasonably approximated by a Taylor expansion about $r = r_\oplus$:
+This means, for instance, that for an object a small distance $\alpha$ above the surface of the Earth, where the radius of the Earth is given by $r_E$, then the magnitude of the gravitational force can be reasonably approximated by a Taylor expansion about $r = r_E$:
 
 {% math() %}
-F_g = \frac{GMm}{r_\oplus^2} -\frac{GMm}{r_\oplus^3} (r - r_\oplus) + \frac{GMm}{2r_\oplus^4} (r-r_\oplus)^2 + \dots
+F_g = \dfrac{GMm}{(r_E + \alpha)^2} \approx \frac{GMm}{r_E^2} -\frac{GMm}{r_E^3} (r - r_E) + \frac{GMm}{2r_E^4} (r-r_E)^2 + \dots
 {% end %}
 
-If we define $g = \frac{GM}{r_\oplus^2}$, then to the first term of the Taylor expansion, we recover the familiar expression:
+If we define $g = \frac{GM}{r_E^2}$, then to the first term of the Taylor expansion, we recover the familiar expression:
 
 {% math() %}
 F_g = mg
 {% end %}
 
-## Complex numbers
+Similarly, if we truncate the Taylor series to first-order, then for any point $x$ close to $x_0$, the derivative is approximately a finite difference:
+
+{% math() %}
+\frac{df}{dx} \bigg|_{x = x_0} \approx \frac{\Delta f}{\Delta x}
+{% end %}
+
+So a linear approximation to that function around the point $x=x_0$ is:
+
+{% math() %}
+f(x) \approx f(x_0) + f'(x_0)(x - x_0)
+{% end %}
+
+This is very useful for finding the linear approximations of many common functions about $x = 0$. Two of the most frequently-used are the approximations $e^x \approx 1 + x$, and $\sin(x) \approx x$, and (especially the second) we will use them very frequently in the rest of this guide.
+
+## Mathematical interlude B: Complex numbers
 
 The **imaginary unit** is defined by $i = \sqrt{-1}$. Complex numbers are made of a real part and an imaginary part, and are written with $z = a + bi$. Complex numbers can also be represented in polar coordinates, where the magnitude $\|z\| = \sqrt{a^2 + b^2}$ and they can be written as $z = \|z\| \cos \phi + \|z\| i \sin \phi$. The complex conjugation is given by $z^\*$ where if $z = a + bi$, then $z^\* = a - bi$, and there is the special property $z \cdot z^* = a^2 + b^2$.
 
@@ -983,7 +1013,12 @@ And the trigonometric functions can be written in terms of exponentials:
 {% math() %}
 \cos \phi = \frac{e^{i\phi} + e^{-i\phi}}{2}, \quad \sin \phi = \frac{e^{i\phi} - e^{-i\phi}}{2i}
 {% end %}
-## Small oscillators and the simple harmonic oscillators
+
+## Oscillators
+
+Oscillators are a very important system in physics because, as mentioned previously, many systems from classical and even quantum mechanics can be approximated as a (oftentimes coupled) system of oscillators. In regions close to a potential well, a particle typically oscillates back and forth about the potential well, allowing it to be well-approximated as a harmonic (oscillatory) potential. We will develop the theory of oscillators throughout this section.
+
+### The simple harmonic oscillator and small oscillations
 
 Newton's second law can be written in the form:
 {% math() %}
@@ -1049,10 +1084,6 @@ Examples of systems described in this form include the simple pendulum equation:
 \frac{d^2 \theta}{dt^2} + \frac{g}{L} \theta = 0
 {% end %}
 
-## Oscillators
-
-Oscillators are a very important system in physics because, as mentioned previously, many systems from classical and even quantum mechanics can be approximated as a (oftentimes coupled) system of oscillators. In regions close to a potential well, a particle typically oscillates back and forth about the potential well, 
-
 ### The damped oscillator
 
 A dampening force (such as drag) can be added to more realistically model an oscillator. A good approximation for the dampening force is a force proportional to velocity, such as $F_d = -bv$. Then Newton's second law becomes:
@@ -1117,7 +1148,7 @@ Typically, as $t \to \infty$, $x_H(t)$ decays exponentially, so $x_H(t) \approx 
 
 Unlike purely dampened or simple harmonic oscillators, driven damped oscillators have the phenomena of **resonance**. This is the idea that $D(\omega)$ can be _tuned_ to maximize its value and thereby maximize the amplitude. As a paraphrased example from _Waves: An Interactive Tutorial_ by Forinash and Christian, an example is a sound wave tuned with a value of $\omega$ that maximizes its amplitude sufficiently to break a wine glass.
 
-### Applied harmonic oscillators
+### Applications of the harmonic oscillator
 
 A LRC circuit is an oscillating system which is described by a very similar differential equation:
 
@@ -1125,9 +1156,9 @@ A LRC circuit is an oscillating system which is described by a very similar diff
 L \frac{d^2 Q}{dt^2} + R \frac{dQ}{dt} + \frac{Q(t)}{C} = \mathcal{E}_0 \cos \omega t
 {% end %}
 
-Here, we can cast the differential equation into the general form of a harmonic oscillator by using $\beta = R / 2L$ and $\omega_0^2 = \frac{1}{LC}$. This can be readily solved using the same method as the harmonic oscillator.
+Here, we can cast the differential equation into the general form of a harmonic oscillator by using $\beta = R / 2L$ and $\omega_0^2 = \frac{1}{LC}$. This can be readily solved using the same method as the driven, damped harmonic oscillator. Indeed, it is just one example of numerous examples in physics where a system can be well-described (or at least approximated) as a harmonic oscillator. Other examples include the vibrations of molecules, a mass on a spring, a pendulum swinging back and forth, and even waves propagating through space, among many, many others.
 
-## Momentum and Impulse
+## Momentum and impulse
 
 **Momentum** is a measure of how much an object is moving. More massive and faster objects have a greater momentum, whereas less massive and slower objects have a lesser momentum. We define an object's momentum along the object's trajectory by $\vec p = m\vec v$. Newton's 2nd law can be formulated (and indeed, was originally formulated) in terms of momentum:
 
@@ -1171,7 +1202,7 @@ Where the total momentum can be determined by:
 \vec P = \sum_i m_i \vec v_i = m_1 \vec v_1 + m_2 \vec v_2 + \dots + m_n \vec v_n
 {% end %}
 
-## Collisions
+### Introduction to collisions
 
 The conservation of momentum is readily applied to _collision_ problems in physics, whether that be a billiard ball shot toward another, a neutron colliding into an atomic nucleus, or even a close gravitational encounter. Collisions typically take one of the following forms:
 
@@ -1183,20 +1214,20 @@ The conservation of momentum is readily applied to _collision_ problems in physi
 
 Most collisions, at least on a non-atomic level, are inelastic, dissipating some but not all of their initial total mechanical energy during the collision. However, when the loss is small enough to be considered negligible, collisions can be modelled as elastic, and when the loss is sufficiently large as to be considered total, collisions can be modelled as perfectly inelastic.
 
-### Elastic case
+### Elastic collisions
 
 In an elastic collision, the final velocities of the colliding objects are **completely determined** by the initial velocities and masses of the two colliding objects. That is, given initial velocities $v_1(a)$ and $v_2(a)$ and initial masses $m_1$ and $m_2$, we can find the final velocities $v_1(b)$ and $v_2(b)$. 
 
 Both energy and momentum are conserved in elastic collisions. Conservation of energy and momentum together give:
 
 {% math() %}
-\sum_i K_i(a) + \sum_i U_i(a) = \sum_i K_i(b) + \sum_i U_i(b)
-{% end %}
-{% math() %}
+\begin{gather*}
+\sum_i K_i(a) + \sum_i U_i(a) = \sum_i K_i(b) + \sum_i U_i(b) \\
 \sum_i p_i(a) = \sum_i p_i(b)
+\end{gather*}
 {% end %}
 
-> **A note about conservation of total mechanical energy:** elastic collisions are idealizations, because most collisions do end up generating heat, light, sound, or radiate away some of their total mechanical energy otherwise. Thus, while total _energy_ is conserved in all collisions, total _mechanical energy_ - that is, the sum of the kinetic and potential energies of all objects in a system - typically is not. 
+> **A note about conservation of total mechanical energy:** elastic collisions are idealizations, because most collisions do end up generating heat, light, sound, or radiate away some of their total mechanical energy in some other way. Thus, while total _energy_ is conserved in all collisions, total _mechanical energy_ - that is, the sum of the kinetic and potential energies of all objects in a system - typically is not. 
 
 The higher dimensional generalization can be written in vector form:
 
@@ -1217,24 +1248,24 @@ Which yields three separate equations for each component:
 A general form can be found in the case of a two-body system of two masses $m_1$ and $m_2$. When the collision between the two bodies results in a negligible change in their respective potential energies, or where any increase in potential energy during the collision is immediately released back as kinetic energy afterwards, we can ignore the potential energy terms in the conservation of energy equation. Therefore, the resulting system of conservation equations becomes:
 
 {% math() %}
-\frac{1}{2} m_1 v_1(a)^2 + \frac{1}{2} m_2 v_2(a)^2 = \frac{1}{2} m_1 v_1(b)^2 + \frac{1}{2} m_2 v_2(b)^2 
-{% end %}
-{% math() %}
-m_1 v_1(a) + m_2 v_2(a) = m_1 v_1(b) + m_2 v_2(b)
+\begin{align*}
+\frac{1}{2} m_1 v_1(a)^2 + \frac{1}{2} m_2 v_2(a)^2 &= \frac{1}{2} m_1 v_1(b)^2 + \frac{1}{2} m_2 v_2(b)^2 \\
+m_1 v_1(a) + m_2 v_2(a) &= m_1 v_1(b) + m_2 v_2(b)
+\end{align*}
 {% end %}
 
 The solution to this system of equations is given by:
 
 {% math() %}
-v_1(b) = \frac{2m_2 v_2(a)}{m_1 + m_2} + v_1(a) \frac{m_1 - m_2}{m_1 + m_2}
-{% end %}
-{% math() %}
-v_2(b) = \frac{2m_1 v_1(a)}{m_1 + m_2} + v_2(a) \frac{m_2 - m_1}{m_1 + m_2}
+\begin{align*}
+v_1(b) &= \frac{2m_2 v_2(a)}{m_1 + m_2} + v_1(a) \frac{m_1 - m_2}{m_1 + m_2}
+v_2(b) &= \frac{2m_1 v_1(a)}{m_1 + m_2} + v_2(a) \frac{m_2 - m_1}{m_1 + m_2}
+\end{align*}
 {% end %}
 
-A full derivation is given [here](@/collision-derivations.md).
+A full derivation is given [on a separate page with the calculations](@/collision-derivations.md).
 
-### Perfectly inelastic case
+### Perfectly inelastic collisions
 
 In a perfectly inelastic collision, the final velocities of the two colliding objects are the same, and is also **completely determined** by the initial velocities and masses. For two bodies of masses $m_1$ and $m_2$, conservation of momentum takes the form of the following equation, where $v_\mathrm{after}$ is the final velocity of both bodies after the collision:
 
@@ -1242,7 +1273,7 @@ In a perfectly inelastic collision, the final velocities of the two colliding ob
 m_1 v_1(a) + m_2 v_2(a) = (m_1 + m_2)v_\mathrm{after}
 {% end %}
 
-### Ballistic pendulum
+### The ballistic pendulum
 
 A ballistic pendulum is a device consisting of a wooden block of mass $M$ hanging from two sets of strings. When a projectile (for instance, a bullet) of mass $m$ and velocity $v_1$ is shot into the wooden block, the collision between the projectile and the block is a _perfectly inelastic_ collision where only conservation of momentum applies:
 
@@ -1262,26 +1293,28 @@ Solving the system of equations, we can obtain the speed $v_1$ of the projectile
 v_1 = \frac{m + M}{m} \sqrt{2gh} 
 {% end %}
 
-## Center of mass
+## Many-body systems
+
+We have already seen some examples where we analyze the motion of more than one object: for instance, two colliding particles in our discussion on collisions, and the gravitational system of the Earth and the Sun. But we can go further, and describe a system with an _arbitrary_ number of particles. We call such systems **many-body systems**; more specifically, for a system that has $N$ interacting particles, we call it an $N$-body system.
+
+### Center of mass for many-body systems
 
 A system of many bodies can often be analyzed more simply as an equivalent single body whose mass $M$ is equal to the sum of the masses of the constituent bodies $m_1, m_2, \dots, m_n$, and whose position is at the center of mass of the body $\vec r_{CM}$. The expressions for the total mass $M$ and the center of mass $\vec r_{CM}$ are given by:
 
 {% math() %}
-M = \sum_i m_i
-{% end %}
-
-{% math() %}
+\begin{gather*}
+M = \sum_i m_i \\
 \vec r_{CM} = \frac{\displaystyle \sum \nolimits_i m_i \vec r_i}{\displaystyle \sum \nolimits_i m_i} = \frac{1}{M} \sum_i m_i \vec r_i
+\end{gather*}
 {% end %}
 
 An extended body can be considered a system of all its individual atoms, and therefore a many-body system as well. For the case of extended bodies, however, we compute the total mass and center of mass over a continuum of values, and therefore the expression for the center of mass becomes an integral. The general expressions of a single extended body's mass $M$ and center of mass $r_{CM}$ are:
 
 {% math() %}
-M = \int dm
-{% end %}
-
-{% math() %}
-r_{CM} = \frac{1}{M} \int rdm
+\begin{align*}
+M &= \int dm \\
+r_{CM} &= \frac{1}{M} \int rdm
+\end{align*}
 {% end %}
 
 As $dm$ can be written in terms of density functions, the general expressions expand to specific integrals in different dimensions:
@@ -1292,11 +1325,13 @@ As $dm$ can be written in terms of density functions, the general expressions ex
 | 2D | Surface density $\sigma(\vec r)$ | $\displaystyle \iint_\Sigma \sigma(\vec r)~dA$ | $\displaystyle \frac{1}{M} \iint_\Sigma \vec r \sigma(\vec r)~dA$ |
 | 3D | Volume density $\rho(\vec r)$ | $\displaystyle \iiint_\Omega \rho(\vec r)~dV$ | $\displaystyle \frac{1}{M} \iiint_\Omega \vec r \rho(\vec r)~dV$ |
 
-Symmetries can be used to rewrite higher-dimensional integrals in terms of one-dimension integrals. For instance, for a sphere, $dV = 4\pi r^2~dr$, so the multivariable integral becomes just a single-variable integral.
+> **Note:** symmetries can often be used to rewrite higher-dimensional integrals in terms of one-dimension integrals. For instance, if a system possesses spherical symmetry, we have $dV = 4\pi r^2~dr$, so the multivariable integral becomes just a single-variable integral.
 
-## Rigid body motion
+## Rigid body and rotational motion
 
-Rigid body motion occurs for bodies that move in rotational as well as translational (straight-line) motion. Consider a rotating rigid body a distance $r$ from its axis of rotation. Then its tangential velocity is given by:
+Up to this point, we have described objects following trajectories through space (following Newton's laws), but we haven't yet discussed objects that both move _and_ rotate in space. A **rigid body** is an object that does not deform under motion; while rigid bodies are an idealization, many objects that do not deform much under motion can be approximately modelled by rigid bodies. When we speak of **rigid-body motion**, we describe both the rotation and forwards motion of a rigid body through space, and therefore include both rotational as well as translational (straight-line) motion. 
+
+Let us begin by consider a rotating rigid body a distance $r$ from its axis of rotation. Then its tangential velocity is given by:
 
 {% math() %}
 ds = rd\phi \Rightarrow v = \frac{ds}{dt} = r\frac{d\phi}{dt} = r \omega
@@ -1305,11 +1340,10 @@ ds = rd\phi \Rightarrow v = \frac{ds}{dt} = r\frac{d\phi}{dt} = r \omega
 Therefore, rotational motion can be entirely characterized by the object's angle as a function of time $\phi(t)$. The angle can be used to derive both angular velocity $\omega$ and angular acceleration $\alpha$:
 
 {% math() %}
-\omega(t) = \frac{d\phi}{dt}
-{% end %}
-
-{% math() %}
+\begin{gather*}
+\omega(t) = \frac{d\phi}{dt} \\
 \alpha(t) = \frac{d\omega}{dt} = \frac{d^2 \phi}{dt^2}
+\end{gather*}
 {% end %}
 
 Note that $\alpha(t)$ can also be written as:
@@ -1318,14 +1352,15 @@ Note that $\alpha(t)$ can also be written as:
 \alpha(t) = \omega v = \omega^2 r = \frac{v^2}{r}
 {% end %}
 
-In cases of constant angular acceleration, then the following kinematic equations result from straightforward integration:
+In cases of constant angular acceleration, then the following kinematic equations result from straightforward integration. We call them the **rotational kinematic equations**, and they are very similar to the standard kinematic equations we saw earlier:
 
 {% math() %}
-\omega(t) = \omega_0 + \alpha t
-{% end %}
-
-{% math() %}
-\phi(t) = \phi_0 + \omega_0 t + \frac{1}{2} \alpha t^2
+\begin{align*}
+\phi(t) &= \left(\dfrac{\omega_0 + \omega}{2}\right) t \\
+\omega(t) &= \omega_0 + \alpha t \\
+\phi(t) &= \phi_0 + \omega_0 t + \frac{1}{2} \alpha t^2 \\
+\omega^2 &= {\omega_0}^2 + 2\alpha (\phi - \phi_0)
+\end{align*}
 {% end %}
 
 ### Vector representations of rotations
@@ -1362,7 +1397,7 @@ The total acceleration of a rigid body is the combination of its tangential and 
 \vec a = \vec a_\mathrm{tan} + \vec \alpha_\mathrm{rad} = \vec a \times \vec r + \vec \omega \times \vec r
 {% end %}
 
-## Torque
+### Torque
 
 The **torque** is the rotational equivalent of linear force, akin to a measure of twisting of a rotating body, and is given by:
 
@@ -1386,15 +1421,15 @@ For a rigid body of total mass $m$, the total external gravitational torque for 
 
 where $\vec r_{CM}$ is its center of mass.
 
-### 1D rotational equations of motion
+### Moment of inertia in rotational motion
 
-For a particle undergoing a net force $\vec F_\perp$ perpendicular to its radial vector $\vec r$, then Newton's 2nd law gives:
+We will now introduce a new concept unique to rotational motion, known as the **moment of inertia**. Consider a particle undergoing a net force $\vec F_\perp$ perpendicular to its radial vector $\vec r$. Then, we can use Newton's 2nd law to find that:
 
 {% math() %}
 m \vec a_\mathrm{tan} = \vec F_\perp
 {% end %}
 
-This can also be rewritten as:
+This result seems fairly ordinary. But note that with a bit of mathematical rearrangement, it can _also_ be rewritten as:
 
 {% math() %}
 \tau_\mathrm{net} = \sum_i \tau_i = I\alpha
@@ -1445,24 +1480,6 @@ The moments of inertia of some common geometries (each of mass $m$) are shown in
 
 _For more formulas, see [this Wikipedia page](https://en.wikipedia.org/wiki/List_of_moments_of_inertia), which was the basis for these formulas._
 
-## Rigid body dynamics
-
-A rigid body is a body that does not deform under motion; while rigid bodies are an idealization, many objects that do not deform much under motion can be approximately modelled by rigid bodies. Motion can always be decomposed into the translational motion of the center of mass and rotational motion about the center of mass:
-
-{% math() %}
-M\vec a_{CM} = M \frac{d \vec v_{CM}}{dt} = \sum_i \vec F_i
-{% end %}
-
-{% math() %}
-I \vec \alpha_{CM} = I_{CM} \frac{d \vec \omega}{dt} = \sum_i \tau_i
-{% end %}
-
-Rigid body dynamics may have the condition of slipping. An object is formally said to be slipping if its motion follows the property:
-
-{% math() %}
-v_{CM} - R\omega = 0
-{% end %}
-
 ### Rotational dynamics
 
 Analogous to translational motion, rotational motion also possesses dynamical quantities. For instance, the rotational kinetic energy is given by:
@@ -1473,9 +1490,38 @@ K = \frac{1}{2} I \omega^2
 
 We have also already seen the rotational equivalent of Newton's second law, defined in terms of the rotational acceleration and torque:
 
-$$
+{% math() %}
 I \alpha = I \dfrac{d^2 \phi}{dt^2} = I \dfrac{d\omega}{dt} = \sum_i \tau_i
-$$
+{% end %}
+
+And in addition, we have angular momentum, which is the analogue of (linear) momentum in rotational motion:
+
+{% math() %}
+\begin{matrix*}
+\vec L = \vec r \times \vec p, & \tau = \dfrac{d\vec L}{dt}
+\end{matrix*}
+{% end %}
+
+So, when we want to analyze rigid-body motion, we decompose the motion into the translational motion of its center of mass and its rotational motion about its center of mass:
+
+{% math() %}
+\begin{gather*}
+M\vec a_{CM} = M \frac{d \vec v_{CM}}{dt} = \sum_i \vec F_i \\
+I \vec \alpha_{CM} = I_{CM} \frac{d \vec \omega}{dt} = \sum_i \tau_i
+\end{gather*}
+{% end %}
+
+By solving both differential equations, we can then find the rotational motion _and_ the translational motion, allowing us to see both how the object moves and spins.
+
+### Rolling with and without slipping
+
+When a rigid body (e.g. a solid sphere) rotates while traveling across a frictionless surface, it exhibits a phenomenon known as _slipping_. This is because the spinning motion and the forwards motion of the object are _not_ equal, so as the object spins, when its forward motion is faster than its spin can catch up, the object skids. This occurs on frictionless surfaces because there is nothing to counter the forwards motion of the object. However, when a rigid body rotates while traveling along a surface _with friction_, it can roll without slipping. In such a situation, the object's spinning (angular) velocity $\omega$ and forwards velocity $v_{CM}$ are precisely correlated such that:
+
+{% math() %}
+v_{CM} - R\omega = 0
+{% end %}
+
+Physically speaking, the counteracting effect of friction on the surface means that the object no longer skids, so it is able to exhibit **rolling without slipping**.
 
 ## Fluid mechanics
 
@@ -1484,7 +1530,7 @@ Fluids are any substances that can flow and change shape. They include both liqu
 \rho(x, y, z) = \frac{dm}{dV}
 {% end %}
 
-The density of many fluids can vary. However, liquids in particular are typically _incompressible_, that is, $\rho = \text{const.}$
+The density of many fluids can vary. However, liquids in particular are typically _incompressible_, that is, $\rho = \text{const.}$, while gases have highly-dependent densities that may vary with their temperature or volume, among other factors. We will see soon that this is in fact very significant to understanding how fluids behave.
 
 ### Fluid pressure
 
@@ -1637,7 +1683,7 @@ Gauss's theorem states that the flux of a vector field over a surface is equal t
 
 The general idea is that integrating over the divergence of a vector field results in the divergence on all the interior points of a surface to cancel out. Therefore, the remaining divergence is located only at the surface, resulting in the flux.
 
-## The continuity equation
+### The continuity equation
 
 The mass flow rate of a fluid with velocity field $\mathbf{v}$ and density $\rho(r, t)$ into a region is given by:
 
@@ -1695,7 +1741,7 @@ Note that for an incompressible fluid the continuity equation simplifies to:
 \nabla \cdot \mathbf{J} = 0
 {% end %}
 
-## Flux for other fields
+### Flux for other fields
 
 The gravitational field is represented by a vector field $\mathbf{g}$. The flux of $\mathbf{g}$ is given by:
 
@@ -1912,7 +1958,7 @@ In free space, $\rho = 0$ and $\mathbf{J} = 0$. Therefore, Maxwell's equations t
 
 This leads to the result that electromagnetic fields propogate through space as waves, and even more surprisingly, $\frac{1}{\sqrt{\epsilon_0 \mu_0}}$ matches the known speed of light $c$, suggesting that light _is_ an electromagnetic wave.
 
-## Dynamics of special relativity
+## A very short introduction to Special Relativity
 
 In special relativity, all space and all time is considered relative, and combined into a single continuum of **spacetime**. The spacetime interval is an invariant measure of distances both of space and of time in special relativity:
 
@@ -1920,9 +1966,7 @@ In special relativity, all space and all time is considered relative, and combin
 ds^2 = -c^2 dt^2 + dx^2 + dy^2 + dz^2
 {% end %}
 
-This means that traditional classical concepts of time and distance are no longer the same when measured from frames that are moving with respect to another. Observers experience times and distances that can be different from other observers. For more on special relativity, see the [special relativity series](@/special-relativity/index.md).
-
-The relativistic equivalent of Newton's second law is given by:
+This means that traditional classical concepts of time and distance are no longer the same when measured from frames that are moving with respect to another. Observers experience times and distances that can be different from other observers. Thus, the equations of Newtonian mechanics must be modified to account for the effects of relativity. For instance, the relativistic corrected version of Newton's second law is given by:
 
 {% math() %}
 \frac{d}{dt} \left[\frac{mv}{\sqrt{1 - \frac{v^2}{c^2}}}\right] = F(x, t)
@@ -1933,6 +1977,8 @@ Which can be written in terms of a quantity known as **4-momentum** $\mathbf{p}$
 {% math() %}
 \frac{d\mathbf{p}}{dt} = F(x, t)
 {% end %}
+
+What we have covered is a very, very brief look at special relativity. For more on special relativity, see the dedicated [special relativity series](@/special-relativity/index.md).
 
 ## Thermodynamics
 
@@ -2045,3 +2091,7 @@ The **second law of thermodynamics** expresses the change in heat as a line inte
 {% end %}
 
 As temperature is a statistical measure of itself, the second law predicts that **it is probabilistically most likely that entropy will increase in a closed system**. This prevents processes from being reversible; a cup falling off a table is unlikely to return back to the top of the table. In fact, the likelihood of a falling cup returning to the table is so, so low that in any non-astronomical timespan, it will essentially never occur.
+
+## Conclusion
+
+In this guide, we have gone through a tour of the essentials of classical physics, but this is far from all physics has to offer! For more on classical mechanics and special relativity, see the [advanced classical mechanics](@/advanced-classical-mech/index.md) guide; to learn about the classical theory of electricity and magnetism, see the [electromagnetic theory](@/electromagnetism/index.md) guide; and for physics beyond the classical realm, see the [introductory quantum mechanics](@/intro-quantum-phys.md) guide. The world of physics awaits you!
