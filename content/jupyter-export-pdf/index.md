@@ -1,6 +1,9 @@
 +++
 title = "How to export PDFs from Jupyter notebooks"
 date = 2025-02-12
+
+[extra]
+non_note = true
 +++
 
 It can be a huge hassle trying to export a jupyter notebook to a PDF - there are some ways that involve needing to download hundreds of megabytes (or even gigabytes!) of packages! So I thought I would share the way I use, a very simple way that doesn't involve needing to install _anything_ and is incredibly fast and simple.

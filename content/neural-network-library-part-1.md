@@ -1,6 +1,9 @@
 +++
 title = "Building a neural network library in Rust, part 1"
 date = 2023-05-25
+
+[extra]
+non_note = true
 +++
 
 This is the first article in a multi-part series detailing the process of building a neural network library in pure Rust, based off my experience making the [`elara-math`](https://github.com/elaraproject/elara-math) library.

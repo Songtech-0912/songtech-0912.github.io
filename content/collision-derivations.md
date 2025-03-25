@@ -1,6 +1,9 @@
 +++
 title = "Derivations of formulas for elastic collisions"
 date = 2024-02-21
+
+[extra]
+notoc = true
 +++
 
 This is an in-depth step-by-step derivation for elastic collisions in 1D, a companion guide to the [Classical Dynamics Notes](@/classical-dynamics.md).

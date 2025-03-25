@@ -1,6 +1,9 @@
 +++
 title = "Visualizing curvature in General Relativity"
 date = 2023-11-17
+
+[extra]
+non_note = true
 +++
 
 General Relativity is a theory of gravity that is formulated in a 4-dimensional spacetime. So how do we visualize spacetimes, if they're 4D? This article will hopefully explain the mathematics of how one type of visualization, embedding diagrams, work.

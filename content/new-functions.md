@@ -1,6 +1,9 @@
 +++
 title = 'A "new" way to define functions'
 date = 2023-12-24
+
+[extra]
+non_note = true
 +++
 
 When we start to learn about differential equations, one of the first things we're taught about them is that they're often unsolvable - a fact that most students just learn to accept. What we're not often taught is _why_ so many differential equations are considered unsolvable. It turns out, it has everything to do with how we define "solving" a differential equation.

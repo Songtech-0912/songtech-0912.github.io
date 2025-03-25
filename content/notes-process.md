@@ -1,6 +1,9 @@
 +++
 title = "How I make my online notes"
 date = 2024-07-12
+
+[extra]
+non_note = true
 +++
 
 In the spirit of sharing and open-source, I thought it might be helpful to share I make these free online notes.

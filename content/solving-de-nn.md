@@ -1,6 +1,9 @@
 +++
 title = "Solving ODEs and PDEs with neural networks"
 date = 2023-09-07
+
+[extra]
+notoc = true
 +++
 
 Typical numerical methods to solve ordinary differential equations and especially partial differential equations require very fine grids to be able to attain accurate results, and suffer from the curse of dimensionality. This is an alternate method to solve ODEs and PDEs with neural networks, which solves both these issues.

@@ -1,6 +1,9 @@
 +++
 title = "A proof of the area of a circle"
 date = 2023-10-22
+
+[extra]
+non_note = true
 +++
 
 Circles are one of the most ubiquitous yet most mysterious objects found in math. This is because its area formula involves a seemingly unlikely object - an irrational number. And yet circles are some of the most common shapes in the universe, and finding the area of circles (or circle-derived objects) is a must for so many applications in math and physics. So we need a way to find the area of a circle.

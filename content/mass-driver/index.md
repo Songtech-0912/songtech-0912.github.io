@@ -1,6 +1,9 @@
 +++
 title = "Mass driver interstellar propulsion"
 date = 2023-05-20
+
+[extra]
+non_note = true
 +++
 
 In this short article, we'll analyze a mass-driver based interstellar propulsion method. This is a good physical example to practice [relativistic mechanics](@/special-relativity/index.md) and [electromagnetic theory](@/electromagnetism/index.md) as well as (my personal opinion!) a fun exercise in general.

@@ -4,6 +4,7 @@ date = 2024-01-10
 
 [extra]
 nonarticle = true
+non_note = true
 +++
 
 These are notes (well, more mini-books), some I've taken while pursuing a degree in applied physics at Rensselaer Polytechnic Institute, others in my independent research and learning.

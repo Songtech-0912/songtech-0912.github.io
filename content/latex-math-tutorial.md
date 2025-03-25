@@ -1,6 +1,9 @@
 +++
 title = "LaTeX math tutorial"
 date = 2023-09-14
+
+[extra]
+notoc = true
 +++
 
 LaTeX is a powerful language used for writing academic papers. In this article, we'll focus not on the full language, but only the portions relevant to math typesetting.

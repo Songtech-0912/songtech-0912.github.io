@@ -1,6 +1,9 @@
 +++
 title = "Solving the wave equation"
 date = 2023-10-03
+
+[extra]
+notoc = true
 +++
 
 The wave equation is a ubiquitous partial differential equation found in many areas of physics. In this guide, we will sketch out the basic approach to solving it.

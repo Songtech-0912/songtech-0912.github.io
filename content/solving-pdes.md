@@ -1,6 +1,9 @@
 +++
 title = "Solving separable partial differential equations"
 date = 2023-09-30
+
+[extra]
+notoc = true
 +++
 
 Partial differential equations have a reputation for being impossible to solve. And in many cases, this is true - they are extremely difficult to analytically solve for a general solution. However, when a partial differential equation is separable, it can be solved fairly straightforwardly, as a system of ordinary differential equations. Here is how to do so.

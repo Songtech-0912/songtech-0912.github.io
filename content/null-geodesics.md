@@ -1,6 +1,9 @@
 +++
 title = "Null Geodesics"
 date = 2023-09-19
+
+[extra]
+non_note = true
 +++
 
 It has always been an aim of mine to write a physically-based black hole path tracer. However, before doing that, I thought I would take on an easier challenge - plotting the orbits of photons around Kerr black holes, but with code generalizable to any black hole spacetime.
