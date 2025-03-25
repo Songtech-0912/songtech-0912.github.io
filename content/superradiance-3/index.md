@@ -1,6 +1,7 @@
 +++
 title = "Simulating superradiance reactors, part 3"
 date = 2023-04-19
+draft = true
 +++
 
 In this third part of the superradiance series, a series of posts focused on creating a preliminary, naive raytracer for simulating superradiance reactors, we will explore solving for the vector of a reflected light ray.

@@ -1,6 +1,7 @@
 +++
 title = "Simulating superradiance reactors, part 1"
 date = 2023-04-12
+draft = true
 +++
 
 We return to the superradiance series, a series of posts focused on creating a preliminary, naive raytracer for simulating superradiance reactors. This time, we will explore geodesics in the Kerr spacetime, and write a Runge-Kutta solver for systems of differential equations.

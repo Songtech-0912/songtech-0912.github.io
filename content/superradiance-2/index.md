@@ -1,6 +1,7 @@
 +++
 title = "Simulating superradiance reactors, part 2"
 date = 2023-04-17
+draft = true
 +++
 
 Again, we return to the superradiance series, a series of posts focused on creating a preliminary, naive raytracer for simulating superradiance reactors. This time, we will explore differential equation solvers.
