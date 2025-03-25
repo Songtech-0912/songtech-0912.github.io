@@ -1450,13 +1450,13 @@ I = I_{CM} + mh^2
 For a continuous rigid body of non-uniform density, then the moment of inertia is given by:
 
 {% math() %}
-I = \int m r^2~dm = \iiint r^2 \rho~dV
+I = \int r^2~dm = \iiint r^2 \rho~dV
 {% end %}
 
 As an example, for a rod of length $L$, mass $M$, and linear mass density $\lambda = \frac{M}{L}$, then $dm = \lambda dx$ and the moment of inertia about an axis that runs through its left end (that is, where $x = 0$) is given by:
 
 {% math() %}
-I = \int m r^2 dm = \int_0^L x^2 \lambda dx = \int_0^L x^2 \frac{M}{L} dx = \frac{1}{3} ML^2
+I = \int r^2 dm = \int_0^L x^2 \lambda dx = \int_0^L x^2 \frac{M}{L} dx = \frac{1}{3} ML^2
 {% end %}
 
 The parallel-axis theorem can be used to derive its moment of inertia at its center of mass (where $x = L/2$):

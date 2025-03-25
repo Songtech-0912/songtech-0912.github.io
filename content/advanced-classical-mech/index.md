@@ -2575,7 +2575,7 @@ If we have a _continuous mass density_ described by a mass density function $\rh
 {% math() %}
 \begin{align*}
 M_\text{total} = \int \rho dV \\
-\mathbf{R}_{CM} = \int \rho \mathbf{r} dV
+\mathbf{R}_{CM} = \dfrac{1}{M_\text{total}}\int \rho\, \mathbf{r}\, dV
 \end{align*}
 {% end %}
 
