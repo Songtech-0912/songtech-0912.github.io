@@ -10,7 +10,7 @@ These are notes (well, more mini-books), some I've taken while pursuing a degree
 
 <!-- more -->
 
-Most of these notes are at a college undergraduate level, some at a graduate level, but they are written to be self-contained so they require **no prerequisites** except a general high school education; everything else is developed on the way. I firmly believe that anyone with a curious mind and a determined willingness to learn can read through and get to understand all of them.
+Most of these notes are at a college undergraduate level, some at a graduate level, but they are written to be self-contained so that if you read them in order, they require **no prerequisites** except a general high school education; everything else is developed on the way. I firmly believe that anyone with a curious mind and a determined willingness to learn can read through and get to understand all of them.
 
 - [Calculus Series](@/calculus-series.md) - a comprehensive series that includes precalculus, the standard Calculus I - III college curriculum (limits, derivatives and integrals in one and several variables, series and sequences, and applications), vector calculus (often taught as Calculus IV), as well as ordinary and partial differential equations. A few other topics are also covered, including tensors and the Calculus of Variations.
 - [Physics Series](@/physics-series.md) - a comprehensive series covering most (if not all) parts of an undergraduate education in physics. Newtonian mechanics, Lagrangian and Hamiltonian mechanics, the theory of waves and oscillators, electromagnetic theory, special relativity, and quantum physics are all included, among many other topics.
