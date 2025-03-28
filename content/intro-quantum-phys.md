@@ -1632,6 +1632,15 @@ We can follow the same process with the position operator $\hat x$ to see that i
 
 Which looks very similar to the classical $\dot x = v = p/m$! The two above equations comprise **Ehrenfest's theorem** goes to show that quantum mechanics ultimately reproduces classical mechanics, although its predictions are much more significant at small scales, where classical mechanics fails.
 
+### The general ideas of the classical limit
+
+To go through a full treatment of the classical limit of quantum mechanics would take quite a lot of time and involve a lot of advanced mathematics. However, to get an intuitive idea of how quantum mechanics reproduces classical mechanics, there are a few key ideas:
+
+- The **expectation values** of quantum operators reproduce their respective classical expressions (for instance, $\langle \hat x \rangle \approx x(t)$, $\langle \hat p \rangle \approx p(t), \langle \hat H \rangle \approx E$ and so forth)
+- In the limits of large quantum numbers, **quantized values become continuous values**; for instance, in the limit as $m$ grows very large the quantized angular momentum $L_z = m\hbar$, the difference in angular momentum $\Delta L_z = (m + 1) \hbar - m \hbar$ between two angular momentum eigenstates becomes so small that $\Delta L_z \approx 0$, that is, the eigenstates are spaced so closely together that $L_z$ becomes approximately continuous
+- **Probability amplitudes for large objects** are such that the state that matches classical behavior is _overwhelmingly_ the most likely state, and such that the time-evolution of a system follows classical laws. (This is especially relevant in the [path integral formulation of quantum mechanics](https://www.quantamagazine.org/how-our-reality-may-be-a-sum-of-all-possible-realities-20230206/) but we won't go into that here)
+- The **de Broglie wavelength** grows _extremely small_ for large objects, meaning that the wavelike properties of quantum particle vanish, and objects become well-approximated by discrete point particles (or systems of infinitely many point particles for continuum objects)
+
 ## A brief peek at more advanced quantum mechanics
 
 Up to this point, we have considered quantum mechanics primarily using the Schrödinger equation as well as working with pure quantum states. There are more advanced derivatives of the Schrödinger equation that incorporate the effects of relativity and spin in their description of quantum particles. First, we have the Klein-Gordon equation:
