@@ -19,7 +19,7 @@ Antiderivatives are represented by the "curly S" integral sign (again for reason
 
 Since the derivative of a constant is zero, the antiderivative of $f(x) + 1$, $f(x) + 3$, or $f(x) + 100$ is the same. Thus we add the $C$ known as the constant of integration to remind us that multiple antiderivatives differing by a constant have the same derivative.
 
-### Rules for antiderivatives (indefinite integral formulas)
+### Rules for antiderivatives (elementary integral formulas)
 
 The rules of antiderivatives (indefinite integrals) are the inverse of the rules for derivatives:
 
@@ -37,6 +37,8 @@ The rules of antiderivatives (indefinite integrals) are the inverse of the rules
 \int \frac{dx}{|x|\sqrt{x^2 - 1}} &= \operatorname{arcsec}(x) + C
 \end{align*}
 {% end %}
+
+> **For the advanced reader:** We say they are _elementary_ integrals because they are standard integrals that have relatively simple algebraic expressions, unlike some more complex integrals that do not.
 
 Note that the last few formulas for inverse trigonometric functions can be generalized to the following:
 
@@ -869,10 +871,16 @@ Which becomes:
 \frac{1}{48} \int \cos^2 \theta d \theta
 {% end %}
 
+In general, we can use the **following rules** to set up a trigonometric substitution:
+
+- If we have $x^2 + a^2$ in the integrand, we use the substitution $x = a \tan \theta$
+- If we have $a^2 - x^2$ in the integrand, we use the substitution $x = a \sin \theta$
+- If we have $x^2 - a^2$ in the integrand, we use the substitution$x = a \sec \theta$
+
 Trigonometric substitutions are incredibly easy to mess up, so be careful with them, and make sure to avoid these errors:
 - Not cancelling out the powers correctly
 - Using the incorrect trigonometric identity
-- Calculating the incorrect differential
+- Calculating the incorrect differential (expression for $d\theta$)
 - Forgetting to carry over constants
 - Simplification errors in the trigonometric integrand
 - Errors in converting the solution in $\theta$ back to a solution in $x$, often due to forgetting a square root or a square when using Pythagoras
