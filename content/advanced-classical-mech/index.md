@@ -2923,3 +2923,242 @@ In the case of a particle of mass $m$ (such as a small spacecraft) scattering ov
 Where $U(r) = -\dfrac{GMm}{r}$ is the gravitational potential energy of the particle, $\mu = \dfrac{mM}{m+M}$ is the reduced mass of the two-body system, where $r_0$ is the distance from the center of the solid sphere that the particle starts off at $t  = 0$, and $r_\text{min}$ is the _point of closest approach_. Remember that since the particle is scattering off a gravitational field, there is no solid object that the particle actually "bounces off" of; rather, the particle approaches from some distance $r_0$ until it reaches the closest point $r = r_\text{min}$, before it is deflected away and goes the opposite direction. We can often get away by setting $r_0 = \infty$, meaning that the particle approaches from sufficiently far away that it can be considered to initially infinitely distant. From here, we "just" need to compute the integral, and then use $\dfrac{d\sigma}{d\Omega} = \left|\dfrac{b}{\sin \theta} \left(\dfrac{db}{d\theta}\right)\right|$ to find the differential cross-section.
 
 > **Note:** This expression is more general than just for gravitational fields; in fact, it applies for _any_ central force field with potential $U = U(r)$, so it equally applies for harmonic potentials and electrostatic force fields!
+
+### Non-inertial reference frames
+
+We have seen in our study of moving reference frames that due to the constraints in a rotating coordinate system, fictitious "forces" arise when attempting to apply Newton's second law $\mathbf{F} = m \mathbf{a}$. While these are not real forces, they can be _mathematically treated_ as parts of an **effective force** to allow us to treat the problem in the same way as we would treat a problem that used a stationary (inertial) reference frame. In a rotating frame, the effective force $\mathbf{F}_\text{eff.}$ experienced by an observer is given by:
+
+{% math() %}
+\mathbf{F}_\text{eff.} = \underbrace{\mathbf{F}_\text{fixed} - m \ddot{\mathbf{R}}_F}_\text{inertial terms} - \underbrace{m \vec{\dot \omega} \times \mathbf{r}  - m \vec \omega \times(\vec \omega \times \mathbf{r}) - 2m\vec \omega \times \mathbf{v}_r}_\text{non-inertial terms}
+{% end %}
+
+Where {% inlmath() %}\mathbf{F}_\text{fixed}{% end %} describes all physical (real) forces in the _fixed reference frame_, {% inlmath() %}m \ddot{\mathbf{R}}_F{% end %} describes the acceleration due to translation of the rotating system, {% inlmath() %}m \vec{\dot \omega} \times \mathbf{r}{% end %} describes the angular acceleration, {% inlmath() %}m \vec \omega \times(\vec \omega \times \mathbf{r}){% end %} is the acceleration due to the centrifugal "force", and {% inlmath() %}2m\vec \omega \times \mathbf{v}_r{% end %} is due to the Coriolis force. Note that all terms after {% inlmath() %}\mathbf{F}_\text{fixed} - m\ddot{\mathbf{R}}_F{% end %} are terms unique to the non-inertial frame; these _non-inertial terms_ come as a result of the coordinate system. The only _real_ forces (e.g. gravity, electric force, etc.) are contained within {% inlmath() %}\mathbf{F}_\text{fixed}{% end %}; all other "force" terms arise due to the motion (translational and rotational) of the rotating frame and should be considered as **fictitious forces**.
+
+To solve for the equations of motion, we must set {% inlmath() %}\mathbf{F}_\text{eff.} = m\mathbf{a}_r{% end %}, where we solve for {% inlmath() %}\mathbf{a}_r{% end %}, the effective force on some moving body inside the rotating reference frame. Consider, for instance, a fixed reference frame located at the center of the Earth. We are interested in what is happening within a reference frame at the Earth's surface. The surface reference frame rotates as the Earth rotates, so it is a _rotating reference frame_. We want to describe the motion of an object on the Earth's surface (which means that it is in our surface reference frame) by finding the equations of motion.
+
+To be able to solve for the equations of motion, we begin by isolating the forces in the fixed frame. The forces in the fixed frame are:
+
+{% math() %}
+\mathbf{F}_\text{fixed} = m\ddot{\mathbf{R}}_F = \mathbf{S} + m\mathbf{g}_0
+{% end %}
+
+Where $\mathbf{g}_0 = -\dfrac{GM}{r^2} \hat r$ and $\mathbf{S}$ includes all other physical forces (e.g. geothermal pressure). These are forces that _do not arise_ as a result of the rotating coordinate system, hence why we say that they are _physical_ forces, rather than fictitious forces that are the result of a rotating reference frame.
+
+Let us now consider the terms that *are* dependent on the rotating coordinate system. First, the Earth's rotation has an approximately constant angular velocity, which we may denote $\omega_0$, such that:
+
+{% math() %}
+\vec \omega = \omega_0 \hat z
+{% end %}
+
+We have:
+
+{% math() %}
+\ddot{\mathbf{R}}_F = \vec \omega \times (\vec \omega \times \mathbf{R}_F)
+{% end %}
+
+Such that the effective force takes the form:
+
+{% math() %}
+\begin{align*}
+\mathbf{F}_\text{eff} &= \mathbf{F}_\text{fixed} - m\ddot{\mathbf{R}}_F - m \vec \omega \times(\vec \omega \times \mathbf{r}) - 2m\vec \omega \times \mathbf{v}_r \\
+&= \mathbf{S} + m\mathbf{g}_0 - m\vec \omega \times (\vec \omega \times (\mathbf{R} + \mathbf{r})) - 2m\vec \omega \times \mathbf{v}_r
+\end{align*}
+{% end %}
+
+We note that the gravitational acceleration interestingly does not point _directly_ towards the center of the Earth. This is because of the contribution of the centrifugal "force", which _modifies_ the direction of the gravitational acceleration away from the direction of the gravitational field $\mathbf{g}_0$. Thus, it is convenient to define the _effective_ gravitational acceleration as measured on the Earth's surface, given by:
+
+{% math() %}
+\mathbf{g} = \mathbf{g}_0 - \vec \omega \times (\vec \omega \times (\mathbf{R} + \mathbf{r}))
+{% end %}
+
+> **Note:** In general, $\mathbf{g} - \mathbf{g}_0 \approx \pu{0.034 m/s}$ (while the precise value depends on your latitude, this is the approximate maximum value). This discrepancy is the contribution due to centrifugal effects (what we call the centrifugal "force").
+
+Using the effective gravitational acceleration, we can rewrite our expression for the effective force as:
+
+{% math() %}
+\mathbf{F}_\text{eff.} = \mathbf{S} + m\mathbf{g} - \underbrace{2m \vec \omega \times \mathbf{v}_r}_\text{coriolis "force"}
+{% end %}
+
+Let us now consider the case of a particle falling to Earth's surface from some height $h$. We will use $z$ as our radial coordinate, $x$ as the horizontal coordinate, and $\theta$ as the angle made with respect to the center of the Earth, as we show in the below diagram:
+
+{{ diagram(
+src="coriolis-earth.excalidraw.svg"
+desc="A diagram of the problem's coordinate system, showing z as the distance above earth's surface, theta as the angle with respect to the center of the earth, and y as the direction tangent to the Earth's surface"
+) }}
+
+The angular velocity of the Earth about its rotational axis is given by:
+
+{% math() %}
+\vec \omega = -\omega_0 \cos \theta \hat x + \omega_0 \sin \theta \hat z
+{% end %}
+
+From here, substituting our result for the effective force on the surface of the Earth, we find that:
+
+{% math() %}
+\begin{align*}
+\mathbf{F}_\text{eff.} &= m \mathbf{g} - 2m \vec \omega \times \vec{\mathbf{v}}_r \\
+m\mathbf{a}_r &= m \mathbf{g} - 2m \vec \omega \times \vec{\mathbf{v}}_r \\
+\mathbf{a}_r &= \mathbf{g} - 2\vec \omega \times \vec{\mathbf{v}}_r \\
+\end{align*}
+{% end %}
+
+The velocity $\mathbf{v}_r$ is given, in this configuration by:
+
+{% math() %}
+\mathbf{v}_r = \begin{pmatrix} 0 \\ 0 \\ -gt \end{pmatrix}
+{% end %}
+
+From which we can calculate the cross product of the angular velocity vector with:
+
+{% math() %}
+\begin{align*}
+\vec \omega \times \mathbf{v}_r &= \begin{vmatrix}
+ \hat x & \hat y & \hat z \\
+ -\omega_0 \cos \theta & 0 & \omega_0 \sin \theta \\
+ 0 & 0 & -gt
+\end{vmatrix} \\
+&= -g \omega_0 t \cos \theta \hat y
+\end{align*}
+{% end %}
+
+Thus, expanding out $\mathbf{a}_r = \mathbf{g} - 2\vec \omega \times \vec{\mathbf{v}}_r$ in vector form, we have:
+
+{% math() %}
+\mathbf{a}_r =
+\begin{pmatrix}
+a_{rx} \\
+a_{ry} \\
+a_{rz}
+\end{pmatrix} =
+\begin{pmatrix}
+\ddot x_r \\
+\ddot y_r \\
+\ddot z_r
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\
+2g\omega t \cos \theta \\
+-g
+\end{pmatrix}
+{% end %}
+
+These can be solved as a system of 2nd-order differential equations, with the initial conditions $\mathbf{r}(0) = \langle 0, 0, h\rangle$, $\mathbf{r}'(0) = 0$ to yield the solutions:
+
+{% math() %}
+\begin{align*}
+x(t) &= 0 \\
+y(t) &= \dfrac{1}{3} \omega_0 g t^3 \cos \theta \\
+z(t) &= h - \dfrac{1}{2} gt^2
+\end{align*}
+{% end %}
+
+Thus, the amount of deflection from a straight-line path caused by the Coriolis "force" is given by:
+
+{% math() %}
+\Delta y = \dfrac{1}{3} \omega_0 g \left(\dfrac{2h}{g}\right)^{3/2}\cos \theta
+{% end %}
+
+## Dynamics of rigid bodies
+
+It is common to consider purely point-like particles in physics, and up to this point, we have had considered objects to be located at a definite location. However, we know that _real_ (macroscopic) objects have internal volume and size, so point particles are only an approximation to describe them. A better description uses the model of a **rigid body**, which more accurately accounts for the internal volume and nonzero size of real objects.
+
+Rigid bodies can be thought of as a system of $n$ particles of masses $m_1, m_2, m_3, \dots$ which allows them to be modelled as such a system. Each particle would then have velocity $\mathbf{v}_i$, given by:
+
+{% math() %}
+\mathbf{v}_i = \mathbf{v}_{CM} + \vec \omega \times \mathbf{r}_i
+{% end %}
+
+where as with before, $\mathbf{v}_{CM}$ is the velocity of the center-of-mass of the system, and $\omega \times \mathbf{r}_i$ describe the particle's velocity about the center-of-mass (equivalently, the rate of rotation of the particle with respect to the rotating reference frame):
+
+{% math() %}
+\underbrace{\mathbf{r}_i = \begin{pmatrix} x_i \\ y_i \\ z_i \end{pmatrix},}_{\text{position of particle } i} \quad
+\underbrace{\vec \omega = \begin{pmatrix}
+\omega_x \\ \omega_y \\ \omega_z
+\end{pmatrix}}_\text{angular velocity of particle w.r.t CoM}
+{% end %}
+
+For a rigid body, the distance of every point on its surface from the center of mass will remain constant in time as we assume the object cannot stretch or shrink. Rigid bodies can be analyzed by positioning our coordinate system such that the origin of our coordinate system is exactly positioned at the center of Earth's.
+
+Let us consider the total kinetic energy of a rigid body. Using our definition of $\mathbf{v}_i$, we have:
+
+{% math() %}
+\begin{align*}
+K_\text{total} &= \sum \dfrac{1}{2} m_i \mathbf{v}_i^2 \\
+&= \dfrac{1}{2} \sum_i m_i (\mathbf{v}_{CM} + \vec \omega \times \mathbf{r}_i)^2 \\
+&= \dfrac{1}{2} \sum_i m_i (\mathbf{v}_{CM}^2 + 2 \mathbf{v}_{CM}\cdot (\vec \omega \times \mathbf{r}) + (\vec \omega + \mathbf{r}_i)^2) \\
+&= \underbrace{\dfrac{1}{2} \sum_i m_i \mathbf{v}_{CM}^2}_\text{translational KE} + \underbrace{\dfrac{1}{2} \sum_i m_i (\vec \omega \times \mathbf{r}_i)^2}_\text{rotational KE}
+\end{align*}
+{% end %}
+
+Where we note that the total kinetic energy $K_\text{total} = K_\text{transl.} + K_\text{rot.}$ which is the sum of the translational and rotational kinetic energies. Note that if we use the identity $(\mathbf{A} \times \mathbf{B})^2 = \mathbf{A}^2 \mathbf{B}^2 - (\mathbf{A} \cdot \mathbf{B})^2$, we can rewrite the above expression as:
+
+{% math() %}
+\begin{align*}
+K_\text{rot.} &= \dfrac{1}{2} \sum_i m_i (\vec \omega \times \mathbf{r}_i)^2 \\
+&= \dfrac{1}{2} \sum_i m_i \left[\omega^2 \mathbf{r}_i^2 - (\vec \omega \cdot \mathbf{r}_i)^2\right]
+\end{align*}
+{% end %}
+
+Where here, $\omega^2 = \vec \omega \cdot \vec \omega$ and {% inlmath() %}\mathbf{r}_i^2 = \mathbf{r}_i \cdot \mathbf{r}_i{% end %}. But the angular velocity is a _vector_ (technically, pseudovector, but that distinction can be ignored here), which can be written in tensor form as {% inlmath() %}\omega_j = \sum_{k=1}^3 \omega_k \delta_{jk}{% end %}, where {% inlmath() %}\delta_{jk}{% end %} is the identity matrix, given by:
+
+{% math() %}
+\delta_{ij} = \begin{pmatrix*}
+\delta_{11} & \delta_{12} & \delta_{13} \\
+\delta_{21} & \delta_{22} & \delta_{23} \\
+\delta_{31} & \delta_{32} & \delta_{33}
+\end{pmatrix*} =\begin{pmatrix*}
+1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1
+\end{pmatrix*}
+{% end %}
+
+If this tensor notation is unfamiliar, the idea is that when we want to compute the $j$-th component of the angular velocity (for instance, $\omega_1$, the $x$-component of $\vec \omega$), we substitute in $j = x$ and plug that into the sum, which gives:
+
+{% math() %}
+\begin{align*}
+\omega_1 &= \sum_{k=1}^3 \omega_k \delta_{1k} \\
+&= \omega_1 \delta_{11} + \omega_2{\delta}_{12} + \omega_3 \delta_{13} \\
+&= \omega_1 (1) + 0 + 0 \\
+&= \omega_1
+\end{align*}
+{% end %}
+
+Similarly, notice that the position of each particle, which we referred to as {% inlmath() %}\mathbf{r}_i{% end %}, may be written as {% inlmath() %}r_b = \sum_{a = 1}^3 r_a^{(i)}\delta_{ab}{% end %}, such that {% inlmath() %}\mathbf{r}_i \cdot \mathbf{r}_i{% end %} becomes:
+
+{% math() %}
+\begin{align*}
+\mathbf{r}_i \cdot \mathbf{r}_i &= r_b\, r_b \\
+&= \sum_{a = 1}^3 r_a^{(i)}\delta_{ab} \sum_{a = 1}^3 r_a^{(i)}\delta_{ab} \\
+&= \sum_{a = 1}^3 {r_a^{(i)}}^2
+\end{align*}
+{% end %}
+
+Since $\delta_{ab} \delta_{ab} = \delta_{ab}$ (the matrix product of the identity matrix with an identity matrix is still an identity matrix) - note that this is true for the identity matrix regardless of which indices you use, so we find that:
+
+{% math() %}
+\begin{align*}
+\omega^2 &= \vec \omega \cdot \vec \omega \\
+&= \omega_j \,\omega_j \\
+&= \sum_{k=1}^3 \omega_k \delta_{jk} \sum_{k=1}^3 \omega_k \delta_{jk} \\
+&= \sum_{k=1}^3 \omega_k^2 \cancel{\delta_{jk} \delta_{jk}}^1 \\
+&= \sum_{k=1}^3 \omega_k^2
+\end{align*}
+{% end %}
+
+On substituting our new definitions for $\omega^2$ and $\mathbf{r}_i^2$, we have:
+
+{% math() %}
+\begin{align*}
+K_\text{rot.} &= \dfrac{1}{2} \sum_i m_i \left[\omega^2 \mathbf{r}_i^2 - (\vec \omega \cdot \mathbf{r}_i)^2\right] \\
+&=\dfrac{1}{2} \sum_i m_i \left[\left(\sum_{k=1}^3 \omega_k^2\right)^2 \left(\sum_{a = 1}^3 {r_a^{(i)}}^2\right) - \left(\sum_{a = 1}^3 r_a^{(i)}\omega_a\right)\left(\sum_{k = 1}^3 r_k^{(i)}\omega_k\right)\right] \\
+&= \dfrac{1}{2} \sum_i m_i \sum_{a= 1}^3 \sum_{k = 1}^3\left[\omega_a \omega_k \delta_{ak} \sum_{a=1}^3 {r_a^{(i)}}^2 - \omega_a \omega_k r_a^{(i)} r_k^{(i)}\right] \\
+&= \dfrac{1}{2} \sum_{a= 1}^3 \sum_{k = 1}^3 \omega_a \omega_k\underbrace{\sum_im_i \left[\delta_{ak} \sum_{a=1}^3 {r_a^{(i)}}^2 - r_a^{(i)} r_k^{(i)}\right]}_{I_{ak}} \\
+&= \sum_{a= 1}^3 \sum_{k = 1}^3 \dfrac{1}{2} I_{ak} \omega_a \omega_k
+\end{align*}
+{% end %}
+
+Note how in the second-last line, we defined a special matrix $I_{ak}$. This is the **moment of inertia** in its _most general form_, called the _moment of inertia tensor_. We notice that in the limiting case, as the number of particles grows very large, this expression reduces to the familiar expression of the rotational kinetic energy:
+
+{% math() %}
+K = \dfrac{1}{2} I \omega^2
+{% end %}
