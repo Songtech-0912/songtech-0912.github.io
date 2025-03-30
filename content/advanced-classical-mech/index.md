@@ -258,8 +258,6 @@ That is to say, any _gain_ in kinetic energy of an object moving between two poi
 
 > **Energy cannot be created or destroyed. The total energy of a system, given by $E = K + U$, must remain constant**.
 
----
-
 Conservation of energy offers an alternative route to deriving the trajectories of objects that does not involve Newton's laws. To show how this is the case, let us explicitly write out the conservation of energy in 1 dimension:
 
 {% math() %}
@@ -2053,7 +2051,9 @@ H = \sum_i \dot q_i \underbrace{\dfrac{\partial \mathcal{L}}{\partial \dot q_i}}
 
 Where $p_j = \dfrac{\partial \mathcal{L}}{\partial \dot q_i}$ is the _generalized momentum_. Unlike the Lagrangian, which is a function of position and velocity through time, the Hamiltonian is a function of position and _momentum_, and this is a crucial difference. These two coordinates uniquely determine the state of a system at a given time, and at all future times. In fact, they are so essential that they have a special name: the combined set of the position and momentum coordinates $(q_i, p_i)$ are known as the **canonical coordinates** of the system, and the set of all positions and all momenta $\{q_i(t),\, p_i(t)\}$ for all $t$ is known as the _phase space_. A single particle moving through Cartesian 3D space, for instance, would have 3 position coordinates $x, y, z$ and 3 momentum coordinates $p_x, p_y, p_z$, meaning that it has a total of 6 canonical coordinates and moves through a 6-dimensional phase space.
 
-> **Note:** Be careful to not confuse _generalized coordinates_ and _canonical coordinates_. General coordinates come from Lagrangian mechanics, and they are the most optimal number of coordinates that can fully describe the motion of all objects in a system. _Canonical coordinates_, on the other hand, come from Hamiltonian mechanics, and they are the combination of position and momentum coordinates.
+> **Note:** Be careful to not confuse **generalized coordinates** and **canonical coordinates**. General coordinates come from Lagrangian mechanics, and they are the most optimal number of coordinates that can fully describe the motion of all objects in a system. **Canonical coordinates**, on the other hand, come from Hamiltonian mechanics, and they are the combination of position and momentum coordinates that describes the state of the system as a path in a 6-dimensional (phase) space.
+
+### Deriving Hamilton's equations
 
 We may now show that we can derive equations of motion from the Hamiltonian and our knowledge of Lagrangian mechanics. To do this, we express the velocity in terms of position and momentum, that is $\dot q_i = \dot q_i(q_k, p_k, t)$. Remember we are working in index notation, so $q_k = \mathbf{r}, p_k = \mathbf{p}$, and $\dot q_i$ ranges over each component of the velocity. For instance, in Cartesian coordinate where $i = x, y, z$, then $\dot q_i = \dot q_i(q_k, p_k, t)$ expands to the following:
 
@@ -2110,6 +2110,10 @@ Thus, we have derived **Hamilton's equations of motion**:
 {% end %}
 
 Hamilton's equations of motion are useful because they are first-order differential equations which are often easier to solve than the second-order differential equations obtained from the Lagrangian. In addition, they possess [special numerical properties](https://en.wikipedia.org/wiki/Symplectic_geometry) that guarantee properties such as energy conservation in a numerical solution. This is why, even two centuries after Hamilton introduced his equations of motion, they are still used extensively for numerical methods for solving ODEs (and PDEs).
+
+> **Note** Be very careful in the physical interpretation of the _generalized momentum_. The generalized momentum $p_k$ in Hamiltonian mechanics does **not** always correspond to the Newtonian momentum $p = mv$. It is instead defined through $p_k = \dfrac{\partial \mathcal{L}}{\partial \dot q_k}$ and that is the foolproof way to find the generalized momentum. Do **not** assume you can just plug in $p_k = m \dot q_k$ or some other variation of $p = mv$!
+
+### The free particle in Hamiltonian mechanics
 
 Let us demonstrate our use of Hamiltonian mechanics with an introductory example: the **free particle** in one dimension moving along coordinate $q$. The Lagrangian for this particle is given by:
 
@@ -2522,7 +2526,13 @@ The left-hand side has units of force, so we can call it (times a negative sign)
 F_\text{eff.} = -\dfrac{dU_\text{eff.}}{dr}
 {% end %}
 
-Which reproduces the form of Newton's second law! And this is not all. Let us take another look at the effective potential:
+Or even more simply:
+
+{% math() %}
+\mu \ddot r = -\dfrac{dU_\text{eff.}}{dr}
+{% end %}
+
+Which reproduces the form of Newton's second law $F = m \ddot r = -\dfrac{dU}{dr}$ (just with effective potential and reduced mass)! And this is not all. Let us take another look at the effective potential:
 
 {% math() %}
 U_\text{eff.}(r) = U(r) + \dfrac{\ell^2}{2\mu r^2}
@@ -2552,7 +2562,43 @@ If we take $\mu \approx m$, where $m$ is the mass of the orbiting, and use the r
 F_c = m \dfrac{v^2}{r}
 {% end %}
 
-Which is just the Newtonian centripetal force! From our Lagrangian examination of the central-force problem, we have therefore seen that we can write an _effective potential_ that can be used to reproduce Newton's second law. From here, the familiar forces of Newtonian mechanics naturally appear.
+Which is just the Newtonian centripetal force! Additionally, if we expand our effective potential as a Taylor series around some point $r_0$ for $U_\text{eff.}(r)$ up to second order, we have:
+
+{% math() %}
+U_\text{eff.}(r) \approx U_\text{eff.}(r_0) + U_\text{eff.}'(r_0)(r - r_0) + \dfrac{1}{2} U_\text{eff.}''(r_0)(r - r_0)^2
+{% end %}
+
+Recall that the stationary points (minima/maxima/saddle points) of a potential are **equilibrium points of a system** (review our section at the [start of the guide](#potential-energy-and-conservation-of-energy) about potential landscapes if this is unfamiliar). In the case of central force problems, that means that particles at some stationary point $r_0$ will _orbit_ at a fixed radius $r = r_0$. Depending on the specific form of the central force, these orbits may be stable or unstable (there is [a theorem](https://en.wikipedia.org/wiki/Bertrand%27s_theorem) that states that only central forces with associated potentials in the form $U(r) \sim r^2$ or $U(r) \sim r^{-1}$ are stable). But if $r_0$ also happens to be a _local minimum_, then it is a **stable equilibrium** and thus a **stable orbit**. If an orbiting particle strays slightly from that stable equilibrium, then it will "wiggle" around the stable orbit $r = r_0$, just like a simple harmonic oscillator.
+
+In fact, we can prove this. If we expand $U_\text{eff.}(r)$ about a point $r_0$, which is _also_ a local minimum, then (since we're at a local minimum) $U_\text{eff.}'(r_0) \approx 0$. Thus our expansion for the effective potential becomes:
+
+{% math() %}
+\begin{align*}
+U_\text{eff.}(r) &\approx U_\text{eff.}(r_0) + U_\text{eff.}'(r_0)(r - r_0) \\
+&= U_\text{eff.}(r_0) + \cancel{U_\text{eff.}'(r_0)(r - r_0)} + \dfrac{1}{2} U_\text{eff.}''(r_0)(r - r_0)^2 \\
+&= U_\text{eff.}(r_0) + \dfrac{1}{2} U_\text{eff.}''(r_0)(r - r_0)^2 \\
+&\approx U_\text{eff.}(r_0) + \dfrac{1}{2} U_\text{eff.}''r^2
+\end{align*}
+{% end %}
+
+Where our last simplification comes from the fact that since our orbiting particle strays only a short distance from the stable equilibrium $r = r_0$, then $(r - r_0)^2 \approx r^2$ (you can show this with the binomial expansion if you're not satisfied with this argument). If we substitute our expansion into our equation of motion $\mu \ddot r = -\dfrac{dU_\text{eff.}}{dr}$, we have:
+
+{% math() %}
+\begin{align*}
+\mu \ddot r &= -\dfrac{d}{dr} \left[U_\text{eff.}(r_0) + \dfrac{1}{2} U_\text{eff.}''r^2\right] \\
+&= -U_\text{eff.}''(r_0)r \\
+\Rightarrow \ddot r &= -U_\text{eff.}''(r_0)r \\
+\Rightarrow \ddot r &= -\underbrace{\dfrac{U_\text{eff.}''(r_0)}{\mu}}_\text{const.} r
+\end{align*}
+{% end %}
+
+This looks like the differential equation of a simple harmonic oscillator, $\ddot r = -\omega^2 r$! And indeed, it is! In fact, by comparing terms, we find that $\omega^2$ corresponds to $U_\text{eff.}''(r_0)/\mu$, and thus the _frequency_ of oscillations is given by:
+
+{% math() %}
+f = \dfrac{\omega}{2\pi} = \dfrac{1}{2\pi} \sqrt{\dfrac{U_\text{eff.}''(r_0)}{\mu}}
+{% end %}
+
+From our Lagrangian examination of the central-force problem, we have therefore seen that we can write an _effective potential_ that can be used to reproduce Newton's second law. From here, the familiar forces of Newtonian mechanics naturally appear.
 
 ## Dynamics of systems of particles
 
@@ -3158,13 +3204,15 @@ On substituting our new definitions for $\omega^2$ and $\mathbf{r}_i^2$, we have
 K_\text{rot.} &= \dfrac{1}{2} \sum_i m_i \left[\omega^2 \mathbf{r}_i^2 - (\vec \omega \cdot \mathbf{r}_i)^2\right] \\
 &=\dfrac{1}{2} \sum_i m_i \left[\left(\sum_{k=1}^3 \omega_k^2\right)^2 \left(\sum_{a = 1}^3 {r_a^{(i)}}^2\right) - \left(\sum_{a = 1}^3 r_a^{(i)}\omega_a\right)\left(\sum_{k = 1}^3 r_k^{(i)}\omega_k\right)\right] \\
 &= \dfrac{1}{2} \sum_i m_i \sum_{a= 1}^3 \sum_{k = 1}^3\left[\omega_a \omega_k \delta_{ak} \sum_{a=1}^3 {r_a^{(i)}}^2 - \omega_a \omega_k r_a^{(i)} r_k^{(i)}\right] \\
-&= \dfrac{1}{2} \sum_{a= 1}^3 \sum_{k = 1}^3 \omega_a \omega_k\underbrace{\sum_im_i \left[\delta_{ak} \sum_{a=1}^3 {r_a^{(i)}}^2 - r_a^{(i)} r_k^{(i)}\right]}_{I_{ak}} \\
+&= \dfrac{1}{2} \sum_{a= 1}^3 \sum_{k = 1}^3 \omega_a \omega_k\underbrace{\sum_i m_i \left[\delta_{ak} \sum_{a=1}^3 {r_a^{(i)}}^2 - r_a^{(i)} r_k^{(i)}\right]}_{I_{ak}} \\
 &= \sum_{a= 1}^3 \sum_{k = 1}^3 \dfrac{1}{2} I_{ak} \omega_a \omega_k
 \end{align*}
 {% end %}
 
-Note how in the second-last line, we defined a special matrix $I_{ak}$. This is the **moment of inertia** in its _most general form_, called the _moment of inertia tensor_. We notice that in the limiting case, as the number of particles grows very large, this expression reduces to the familiar expression of the rotational kinetic energy:
+Note how in the second-last line, we defined a special matrix $I_{ak}$. This is the **moment of inertia** in its _most general form_, called the _moment of inertia tensor_, or just **inertia tensor** for short. We notice that in the limiting case, as the number of particles grows very large, this expression reduces to the familiar expression of the rotational kinetic energy:
 
 {% math() %}
 K = \dfrac{1}{2} I \omega^2
 {% end %}
+
+> **Note:** The inertia tensor $I_{ak}$ is the collective description of the moment of inertia of a _system_ of $N$ particles, where $N$ can be arbitrarily-large. This means that in our definition of the inertia tensor $I_{ak} = \displaystyle \sum_i m_i \left[\delta_{ak} \sum_{a=1}^3 {r_a^{(i)}}^2 - r_a^{(i)} r_k^{(i)}\right]$, we must remember to sum over every particle; that is, the index $i$ sums from the first particle to the last ($N$-th) particle.
