@@ -1667,8 +1667,8 @@ But what if the constraint is non-holomonic? We may then use the method of _Lagr
 
 {% math() %}
 \begin{align*}
-\tilde{\mathcal{L}} &= \mathcal{L} + \lambda_i F_i \\ 
-&=\mathcal{L}(x_i, \dot x_i, t) + \lambda_i F_i(x_i, \dot x_i, t)
+\tilde{\mathcal{L}} &= \mathcal{L} + \sum_i \lambda_i F_i \\ 
+&=\mathcal{L}(x_i, \dot x_i, t) + \sum_i \lambda_i F_i(x_i, \dot x_i, t)
 \end{align*}
 {% end %}
 
@@ -1686,7 +1686,13 @@ Therefore if we substitute the Lagrangian $\tilde{\mathcal{L}}$ into the Euler-L
 - \dfrac{d}{dt}\left[\lambda_i(t) \dfrac{\partial F_i}{\partial \dot x_i}\right]\right) = 0
 {% end %}
 
-This is the _generalized Euler-Lagrange equation_ that incorporates the non-holomonic constraints $F_i(x, \dot x_i, t)  = 0$.
+This is the _generalized Euler-Lagrange equation_ that incorporates the non-holomonic constraints $F_i(x, \dot x_i, t)  = 0$. But the _much easier_ and completely equivalent form (remember, because of how we showed that the Euler-Lagrange equation is symmetric under transformations) is given by:
+
+{% math() %}
+\dfrac{\partial \tilde{\mathcal{L}}}{\partial q_i} - \dfrac{d}{dt} \left(\dfrac{\partial \tilde{\mathcal{L}}}{\partial \dot q_i}\right) = 0
+{% end %}
+
+Thus, by simply using the modified version of the Euler-Lagrange equations that contains a transformed Lagrangian $\mathcal{L} \to \mathcal{L} + \sum_i \lambda_i F_i$, we are able to solve for constrained systems (relatively) straightforwardly!
 
 ### Rolling without slipping with constraints
 
