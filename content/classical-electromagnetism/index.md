@@ -357,19 +357,19 @@ And thus we have recovered the vector form of Coulomb's law, as would be expecte
 
 ### Notes on Gaussian surfaces
 
-Gauss's law requires surface integration over a **closed surface** called a _Gaussian surface_. The surface normal is _always chosen_ to be the outward-pointing normal of the surface. In many cases, the normal can be found without explicit calculation by simply analyzing the symmetries of the problem - for instance, in our spherical configuration, which possesses radial symmetry, the surface normals are given by $\mathbf{n} = \hat r$. 
+Gauss's law requires surface integration over a **closed surface** called a _Gaussian surface_. The surface normal is _always chosen_ to be the outward-pointing normal of the surface. In many cases, the normal can be found without explicit calculation by simply analyzing the symmetries of the problem - for instance, in our spherical configuration, which possesses radial symmetry, the surface normals are given by $\hat{\mathbf{n}} = \hat r$. 
 
 In some other cases, we must explicitly find the normal vector from the surface. From multivariable calculus, given a surface implicitly-defined as $F(x, y, z) = 0$, the normal vector is given by:
 
 {% math() %}
-\mathbf{n} = \dfrac{\nabla F}{|\nabla F|}
+\hat{\mathbf{n}} = \dfrac{\nabla F}{|\nabla F|}
 {% end %}
 
 A sphere, for instance, is a surface defined by the implicit equation $F(x, y, z) = x^2 + y^2 + z^2 - R^2 = 0$, where $R$ is a constant. Therefore, $\nabla F = \langle 2x, 2y, 2y \rangle = 2 \mathbf{r}$ which has a magnitude of $2\sqrt{x^2 + y^2 + z^2} = 2|\mathbf{r}|$, so:
 
 {% math() %}
-\mathbf{n} = \dfrac{2\mathbf{r}}{2|\mathbf{r}|} = \dfrac{\mathbf{r}}{|\mathbf{r}|} = \hat r
-{% end %}
+\hat{\mathbf{n}} = \dfrac{2\mathbf{r}}{2|\mathbf{r}|} = \dfrac{\mathbf{r}}{|\mathbf{r}|} = \hat r
+{% end %}.
 
 ### Common solutions for electric fields from Gauss's law
 
@@ -383,6 +383,8 @@ The majority of electric fields cannot be solved analytically by using Gauss's l
 | Above a single-sided infinite sheet of charge                                            | Box with rectangular tops/bottoms of area $A$, placed at $z = 0$                                                                    | $\Phi_E =  \|\mathbf{E}\|A$                                                                               | $Q = \sigma A$  | $\mathbf{E} = \dfrac{\sigma}{\varepsilon_0} \hat{\mathbf{z}}, \quad z > 0$                                                             |
 | Above (or below) a double-sided infinite sheet of charge                                 | Box with  rectangular tops/bottoms of area $A$ centered at $z = 0$ (i.e. it is halfway above and halfway below the sheet of charge) | $\Phi_E = 2\|\mathbf{E}\|A$ (flux contribution from both the top and bottom side of the Gaussian surface) | $Q = \sigma A$  | $\mathbf{E} = \dfrac{\sigma}{2\varepsilon_0} \hat{\mathbf{z}}, \quad \|z\| > 0$                                                        |
 | Around infinite line of charge (e.g. infinitely long wire) with charge density $\lambda$ | Coaxial cylinder (aligned along same axis as line of charge) of radius $\rho$ and length $L$                                        | $\Phi_E = 2\pi r L \lambda$                                                                               | $Q = \lambda L$ | $\mathbf{E} = \dfrac{\lambda}{2\pi \rho \varepsilon_0} \hat{\rho}$ (here $\rho$ is distance from wire)                                 |
+
+> **Note:** An interesting consequence of Gauss's law that an infinitely-long uniformly-charged wire would have the _same amount of charge_ regardless of its thickness. In fact, it doesn't even matter if you are inside the wire! The reason why is that their total charge $Q = \lambda L$ is **independent** of the thickness of the wire and also independent of the radial distance. Why? Because any infinite wire would have infinite length, and thus **infinite charge**, no matter its thickness, so the total charge of any infinite wire (regardless of thickness) is $\infty$, so the same! Of course, in actual calculations with real wires, we would set $L$ to a large but non-infinite value, and thus the solution would only be an approximate solution (because the electric field of real wires _does_ depend on their thickness). But in the limit of infinite length, all wires and cylindrical charges with a uniform linear charge density $\lambda$ always have the _same total charge_.
 
 ## Electric potential
 
@@ -1245,7 +1247,7 @@ V_1 = \dfrac{1}{4\pi \varepsilon_0} \dfrac{p_r}{r^2}
 
 Which again also looks (and is!) the potential of a **perfect dipole**! We can continue this process as much as we want, leading to the origin of the name _multipole expansion_. Essentially, we assume that the potential very far away "looks" like a monopole, plus a dipole, plus all the other _nth_-poles, and that by summing all of them together, we get the true potential.
 
-## Dielectrics and polarization fields
+## Fields of polarized dielectrics
 
 We recall that in a conductor, the electric field is very simple - $\mathbf{E}_\text{interior} = 0$ is true for _all conductors_. But the field is not so simple in _dielectric materials_ (which can be thought of at this stage as the same thing as insulators, though there _is_ a distinction). Dielectrics have _immobile charges_, meaning that their charges are **not free** to move freely throughout the material, although they can rotate and slightly shift in place. When a neutral dielectric is placed in an external electric field, **polarization** occurs, which, like in conductors, is due to negative charges experiencing a repulsive force and positive charges experiencing an attractive force in the direction of the external field. Unlike in a conductor, however, the negative and positive charges cannot move, so there is no charge separation; rather, they rotate (or in some cases stretch) in place to align with (or against) the field, as we show in the below diagram. 
 
@@ -1259,6 +1261,8 @@ This process during polarization leads to a net **dipole moment**, denoted $\mat
 > **Note:** For materials that consist of a single type of atom, $\alpha$ is a constant that is only dependent on the type of material; for molecular compounds, however, $\alpha$ is a matrix (technically, a _tensor_, and we will see the distinction later).
 
 > **Note for advanced readers:** This is a classical description that does _not_ account for the quantum-mechanical nature of the atom. In reality, the electron _density_ is what is deflected to one side, as opposed to point particles aligning with and against the field, since quantum mechanics tells us that electrons have indeterminate positions and can thus be at *any* point in space around the nucleus - though the probability of finding an electron _is_ determined by the electron (probability) density function, whose density does show a noticeable change on polarization. But that is a much more extensive topic that will not (yet) be covered.
+
+### Polarization field and bound charge
 
 During polarization, the *combined dipole moments* of all the paired positive-negative charges within the dielectric produces a **polarization field**, denoted $\mathbf{P}$ (it is more commonly called the _polarization density_). When there is no applied field, there is no polarization, so $\mathbf{P} = 0$; but when there is an applied field $\mathbf{E}_\text{ext.}$, there _is_ polarization, so $\mathbf{P} \neq 0$, and thus the polarization field _changes_ the total electric field within the dielectric.
 
@@ -1325,7 +1329,9 @@ Q_{\text{bound}, T} = Q_\text{surface} + Q_\text{interior}
 
 >**Note:** As a reminder, all of this is a simplified model! The fields within a dielectric are extremely complicated at a microscopic level and our simplifying assumptions (especially the approximation of paired charges in the dielectric as perfect electric dipoles) no longer work at microscopic scales (although Maxwell's equations still apply), so it is best to think of all of this as an **approximate** model that provides reasonably-accurate results _on big length scales_ (big = length scales of micrometers or bigger, which is much larger than atomic scales, but still small compared to observable sizes).
 
-In any given physical scenario, not all of the charges are going to be bound charges nor can be considered negligible because they cancel out. This is because (1) we need some outside charge to actually *cause* the polarization in the first place, (2) dielectrics can contain "pockets" where charges (e.g. ions) can move, and (3) not all charges are located within the dielectric itself. Such non-bound charges are referred to as **free charges**, denoted $Q_\text{free}$, with the _free charge density_ being $\rho_\text{free}$. As you can see, physicists do not possess much creative flair when it comes to naming things. Free charges are useful because they are usually **known**, and **Gauss's law for free charges** tells us the field generated by those free charges, which is typically written as $\mathbf{D}$ (also called the _electric displacement field_):
+### Free charges and Gauss's law in matter
+
+In any given physical scenario, not all of the charges are going to be bound charges nor can be considered negligible because they cancel out. This is because (1) we need some outside charge to actually *cause* the polarization in the first place, (2) dielectrics can contain "pockets" where charges (e.g. ions) can move, and (3) not all charges are located within the dielectric itself. Such non-bound charges are referred to as **free charges**, denoted $Q_\text{free}$, with the _free charge density_ being $\rho_\text{free}$. As you can see, physicists do not possess much creative flair when it comes to naming things. Free charges are useful because they are usually **known**, and **Gauss's law for free charges** (also called **Gauss's law in matter**) tells us the field generated by those free charges, which is typically written as $\mathbf{D}$ (also called the _electric displacement field_):
 
 {% math() %}
 \nabla \cdot \mathbf{D} = \rho_\text{free} \Leftrightarrow \oint \mathbf{D} \cdot d\mathbf{A} = Q_\text{free}
@@ -1342,6 +1348,8 @@ Where, in the above integral version of Gauss's law for free charges, the integr
 In the special case of a conductor, we have $\mathbf{D} = \mathbf{P}$. In physical terms, it means that the field created by all the free charges is _perfectly opposed_ by the polarization field arising from the polarization of the charges inside the conductor, leading to zero total field, that is, $\mathbf{E} = 0$. This is why the electric field in a conductor is _zero_, mathematically-speaking. But this is **not true** in dielectrics. Here, the $\mathbf{P}$ (polarization) field _does not_ cancel out the $\mathbf{D}$ field of the free charges, leading to a nonzero total field, that is, $\mathbf{E} \neq 0$.
 
 > **Note:** What about a _neutral_ material? Regardless of whether the material is a conductor or dielectric, the random alignment of charges in the absence of polarization means that $\mathbf{P} = 0$. Meanwhile, since the positive and negative free charges exactly cancel out, $\mathbf{D} = 0$. Therefore, $\mathbf{E} = \frac{1}{\varepsilon_0}(\mathbf{D} - \mathbf{P})$ predicts that the total field would be zero as well, as we would expect.
+
+### The field of a wire surrounded by a dielectric
 
 Borrowing an example from Griffiths (Example 4.4), consider the case of a long and thin wire of linear charge density $\lambda$, surrounded by some insulating casing made of a dielectric material. In this example, the whole wire (including the casing) has radius $R$. Using Gauss's law for free charges, we can surround the long, thin wire with a cylindrical Gaussian surface of length $L$ and radius $r$, which has surface area $2\pi r L$. Meanwhile, the enclosed free charge within the cylinder would be $Q_\text{free} = \lambda L$. Thus:
 
@@ -1373,11 +1381,11 @@ Inside the wire (and thus in the dielectric region), the total electric field is
 \end{align*}
 {% end %}
 
-Which we could write as an explicit expression _if_ we knew $\mathbf{P}$. Assuming that the dielectric material was a _linear material_ (this is usually a good approximation for most materials under normal conditions), such that $\mathbf{P} = \varepsilon_0 \chi_e \mathbf{E}$, then by rearranging $\mathbf{E} = \dfrac{1}{\varepsilon_0}(\mathbf{D} - \mathbf{P})$ we get:
+Which we could write as an explicit expression _if_ we knew $\mathbf{P}$. Assuming that the dielectric material was a _linear material_ (this is usually a good approximation for most materials under normal conditions), then the $\mathbf{P}$ field satisfies $\mathbf{P} = \varepsilon_0 \chi_e \mathbf{E}$, where $\chi_e$ is the **electric susceptibility**. So, by rearranging $\mathbf{E} = \dfrac{1}{\varepsilon_0}(\mathbf{D} - \mathbf{P})$ we get:
 
 {% math() %}
 \begin{align*}
-\mathbf{E} &= \dfrac{1}{\varepsilon_0}(\mathbf{D} - \mathbf{P})\\
+\mathbf{E} &= \dfrac{1}{\varepsilon_0}(\mathbf{D} - \mathbf{P}) \\
 &= \dfrac{1}{\varepsilon_0}\mathbf{D} - \dfrac{1}{\cancel{\varepsilon_0}}\cancel{\varepsilon_0} \chi_e \mathbf{E} \\
 &=\dfrac{1}{\varepsilon_0}\mathbf{D} - \chi_e \mathbf{E} \\
 \Rightarrow \mathbf{E} &+ \chi_e \mathbf{E} = \dfrac{1}{\varepsilon_0}\mathbf{D} \\
@@ -1413,7 +1421,9 @@ Thus, the total electric field, inside as well as outside the material, would be
 \end{cases}
 {% end %}
 
-Let us now consider the case of a uniformly polarized sphere of radius $R$ (Griffiths example 4.2). Knowing that it is _uniformly polarized_, then it must be the case that there is no interior bound charge, that is, $\rho_\text{bound} = 0$. But there is still surface bound charge $\sigma_\text{bound} = \mathbf{P} \cdot \hat{\mathbf{n}}$. In this case, we can solve Laplace's equation for the boundary conditions $V(R, \theta) = \sigma_\text{bound}$ as well as requiring that $V \to 0$ either as $r \to 0$ or as $r \to \infty$. The resulting solution for the potential is:
+### The field of a uniformly polarized sphere
+
+Let us now consider the case of a uniformly polarized sphere of radius $R$ (Griffiths example 4.2). Knowing that it is _uniformly polarized_, then it must be the case that there is no interior bound charge, that is, $\rho_\text{bound} = 0$. But there is still surface bound charge, and the surface bound charge density is given by $\sigma_\text{bound} = \mathbf{P} \cdot \hat{\mathbf{n}}$. In this case, we can solve Laplace's equation for the boundary conditions $V(R, \theta) = \sigma_\text{bound}$ as well as requiring that $V \to 0$ either as $r \to 0$ or as $r \to \infty$. We solved this earlier in our section on the [method of images](#the-method-of-images); the solution for the potential is:
 
 {% math() %}
 V(r, \theta) = \begin{cases}
@@ -1426,12 +1436,10 @@ From which, substituting $\sigma_\text{bound} = \mathbf{P} \cdot \hat{\mathbf{n}
 
 {% math() %}
 \mathbf{E} = \begin{cases}
--\dfrac{1}{3\varepsilon_0} \mathbf{P}, & r \leq R \\
+-\dfrac{1}{3\varepsilon_0} \mathbf{P}, & r \leq R \\[10pt]
 \dfrac{2R^3}{3 \varepsilon_0r^3} \mathbf{P}, & r > R
 \end{cases}
 {% end %}
-
-As we have seen, the free and bound charges give us a way to express the total electric field in a dielectric in a simpler way, because we can then use **Gauss's law for free charges** to find the field's contribution from the free charge, and the problem proceeds from there. Since the total electric field in a polarized dielectric consists of both the $\mathbf{D}$ field from free charges as well as the $\mathbf{P}$ field from the bound charges (due to the effects of polarization), the total charge density can be written as:
 
 {% math() %}
 \rho_\text{total} = \rho_\text{free} + \rho_\text{bound}
