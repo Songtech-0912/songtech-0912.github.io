@@ -1423,7 +1423,7 @@ Thus, the total electric field, inside as well as outside the material, would be
 
 ### The field of a uniformly polarized sphere
 
-Let us now consider the case of a uniformly polarized sphere of radius $R$ (Griffiths example 4.2). Knowing that it is _uniformly polarized_, then it must be the case that there is no interior bound charge, that is, $\rho_\text{bound} = 0$. But there is still surface bound charge, and the surface bound charge density is given by $\sigma_\text{bound} = \mathbf{P} \cdot \hat{\mathbf{n}}$. In this case, we can solve Laplace's equation for the boundary conditions $V(R, \theta) = \sigma_\text{bound}$ as well as requiring that $V \to 0$ either as $r \to 0$ or as $r \to \infty$. We solved this earlier in our section on the [method of images](#the-method-of-images); the solution for the potential is:
+Let us now consider the case of a uniformly polarized sphere of radius $R$ (Griffiths example 4.2) with _no free charge_. Knowing that it is _uniformly polarized_, then it must be the case that there is no interior bound charge, that is, $\rho_\text{bound} = 0$. But there is still surface bound charge, and the surface bound charge density is given by $\sigma_\text{bound} = \mathbf{P} \cdot \hat{\mathbf{n}}$. In this case, we can solve Laplace's equation with the boundary condition $V \to 0$ for $r \to \infty$. We solved this earlier in our section on the [method of images](#the-method-of-images) for a charged sphere with constant charge $Q_0$ (where here, $Q_0 = 4\pi R^2 \sigma_\text{bound}$); the solution for the potential is:
 
 {% math() %}
 V(r, \theta) = \begin{cases}
@@ -1440,6 +1440,24 @@ From which, substituting $\sigma_\text{bound} = \mathbf{P} \cdot \hat{\mathbf{n}
 \dfrac{2R^3}{3 \varepsilon_0r^3} \mathbf{P}, & r > R
 \end{cases}
 {% end %}
+
+Unfortunately, this is a case where we cannot (in general) solve for the field using the _constitutive relation_ $\mathbf{E} = \dfrac{1}{\varepsilon_0}(\mathbf{D} + \mathbf{P})$. Let's take a moment to understand why this is the case. Recall that Gauss's law for free charges takes the form:
+
+{% math() %}
+\oint \mathbf{D} \cdot d\mathbf{A} = Q_\text{free}
+{% end %}
+
+Now, we stated previously that our uniformly-polarized sphere has no free charge, so _in theory_ we would have:
+
+{% math() %}
+\oint \mathbf{D} \cdot d\mathbf{A} = 0
+{% end %}
+
+The issue arises because while we may think $\displaystyle \oint \mathbf{D} \cdot d\mathbf{A} = 0$ _implies_ $\mathbf{D} = 0$, this is not necessarily the case if the polarization is along a _non-radial axis_. The polarization will still be uniform (a constant value), but because it is _directional_, we lose radial symmetry, and therefore we can no longer make the assumption that just because $\displaystyle \oint \mathbf{D} \cdot d\mathbf{A} = 0$ means $\mathbf{D} = 0$.
+
+### A conclusion on free and bound charges
+
+As we have seen, the free and bound charges give us a way to express the total electric field in a dielectric in a more straightforward way than needing to solve Maxwell's equations for every single charge. By using **Gauss's law for free charges** to find the field's contribution from the free charge, and the constitutive relations to find the bound charge, we can then calculate the total electric field. Since the total field in a polarized dielectric consists of both the $\mathbf{D}$ field from free charges as well as the $\mathbf{P}$ field from the bound charges (due to the effects of polarization), the total charge density can be written as:
 
 {% math() %}
 \rho_\text{total} = \rho_\text{free} + \rho_\text{bound}
