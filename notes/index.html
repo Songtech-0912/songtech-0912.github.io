@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Directory of all notes</title>
+  <meta name="description" content=" These are notes (well, more mini-books), some I&#x27;ve taken while pursuing a degree in applied physics at Rensselaer Polytechnic Institute, others in my independent research and learning.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://songtech-0912.github.io/favicon.svg">
+      <link rel="icon" type="image/png" href="https://songtech-0912.github.io/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://songtech-0912.github.io/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://songtech-0912.github.io/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://songtech-0912.github.io/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://songtech-0912.github.io/notes/">Notes</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Directory of all notes</h2>
+        
+        
+        <!-- table of contents -->
+        
+
+        <!-- page content -->
+        <p>These are notes (well, more mini-books), some I've taken while pursuing a degree in applied physics at Rensselaer Polytechnic Institute, others in my independent research and learning.</p>
+<span id="continue-reading"></span>
+<p>Most of these notes are at a college undergraduate level, some at a graduate level, but they are written to be self-contained so that if you read them in order, they require <strong>no prerequisites</strong> except a general high school education; everything else is developed on the way. I firmly believe that anyone with a curious mind and a determined willingness to learn can read through and get to understand all of them.</p>
+<ul>
+<li><a href="https://songtech-0912.github.io/calculus-series/">Calculus Series</a> - a comprehensive series that includes precalculus, the standard Calculus I - III college curriculum (limits, derivatives and integrals in one and several variables, series and sequences, and applications), vector calculus (often taught as Calculus IV), as well as ordinary and partial differential equations. A few other topics are also covered, including tensors and the Calculus of Variations.</li>
+<li><a href="https://songtech-0912.github.io/physics-series/">Physics Series</a> - a comprehensive series covering most (if not all) parts of an undergraduate education in physics. Newtonian mechanics, Lagrangian and Hamiltonian mechanics, the theory of waves and oscillators, electromagnetic theory, special relativity, and quantum physics are all included, among many other topics.</li>
+<li><a href="https://songtech-0912.github.io/intro-bio-series/">Biology Series</a> - an introductory series to topics in biology, roughly equivalent to a Biology I course. Topics covered include the biological mechanisms of life, evolution and genetics, natural history, ecosystems, and the biosphere.</li>
+<li><a href="https://songtech-0912.github.io/general-chem/">Fundamentals of Chemistry</a> - a standalone guide covering general chemistry, with content approximately equivalent to a college-level Chemistry I course. A vast number of topics are covered, including atomic theory, chemical bonding, the Lewis model, VSEPR and valence bond theory, organic chemistry, and a basic overview of quantum chemistry and thermochemistry. </li>
+<li><a href="https://songtech-0912.github.io/philosophy/">Philosophy notes</a> - a standalone guide to a number of topics in philosophy, covering the Platonic and Socratic schools of antiquity as the philosophers of the early modern era. Epistemology and metaphysics, as well as aesthetics and some civic philosophy is also explored.</li>
+<li><a href="https://songtech-0912.github.io/latex-math-tutorial/">LaTeX math typesetting short guide</a> - a standalone guide to get started with math typesetting in <a href="https://www.latex-project.org/">LaTeX</a>. LaTeX is the predominant markup language used in scientific publishing, and it produces very high quality math typesetting, but it can be a bit difficult to learn. This guide will hopefully be a useful resource to learn and understand LaTeX.</li>
+</ul>
+<!-- 
+I've removed CS series because it's too incomplete and fragmentary
+to really be put on the same page with my other notes/guides
+- [Computer Science Series](@/cs-series.md)
+-->
+<p>Where external licensed/copyrighted material is included, it is used under fair-use for purely educational purposes. Other than that, these notes are my own work and are <strong>freely usable with no restrictions</strong>. That is to say, they are dedicated to the public domain, or if your jurisdiction does not support that, provided under <a href="https://creativecommons.org/public-domain/cc0/">CC0</a>. However, while I don't enforce it, I would <em>prefer</em> that you don't sell these notes or make/sell print editions. These notes are meant to be freely available online, and it is only right to show respect to the professors whose courses made these notes possible.</p>
+<p>Also note that a lot of these notes contain graphics/equations. Equations can be copied just by selecting and Ctrl/Command + C; for graphics, right-click and you should be able to choose &quot;save as image&quot; to download. There is work-in-progress support for AI-generated image descriptions for screenreaders.</p>
+<p>Interested in how I make these notes? See <a href="https://songtech-0912.github.io/notes-process/">here</a> for my workflow.</p>
+
+        
+        <a href="/" class="return-link">Back to home</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://songtech-0912.github.io/katex/katex.min.js"></script>
+    <script defer src="https://songtech-0912.github.io/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://songtech-0912.github.io/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://songtech-0912.github.io/katex/contrib/copy-tex.min.js"></script>
+
+    <script defer>
+        var toc = document.getElementById("toc");
+        var tocPos = toc.offsetTop + toc.offsetHeight;
+        var tocBtn = document.getElementById("jump-toc-btn");
+
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+        function renderMath(element) {
+            // renders math using KaTeX in a particular element
+            renderMathInElement(element, {
+              // customised options
+              // • auto-render specific keys, e.g.:
+              delimiters: [
+                  {left: '$$', right: '$$', display: true},
+                  {left: '$', right: '$', display: false},
+              ],
+              // • rendering keys, e.g.:
+              throwOnError : false
+            });
+        }
+
+        // for performance reasons, we **only** render a certain
+        // number of equations that the viewer is actually viewing
+        function VisibleMathRenderer(config) {
+            /*
+            Renders only a limited number of equations on page load
+            to avoid poor performance
+             Params:
+                lastRenderedEquation: the most recently rendered equation.
+                        when this goes out of view, equations under it are rendered. 
+            */
+            var startElement = config.startElement
+            var maxEquations = config.maxEquations ? config?.maxEquations : 30;
+            this.startElement = startElement
+            this.maxEquations = maxEquations
+            // we wait until the user scrolls past the starting/
+            // ending elements to start rendering the whole page
+            this.canRenderWholePage = false;
+            this.pageRendered = false;
+            this.lastRenderedTopEquation = null;
+            this.lastRenderedBottomEquation = null;
+
+            this.render = function() {
+                renderMath(this.startElement);
+                // render previous 25 and following 25 equations
+                var prev = this.startElement.previousElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left prior to the element
+                    if (prev == null) {
+                        break;
+                    }
+                    renderMath(prev);
+                    prev = prev.previousElementSibling;
+                }
+                // store our last rendered equations
+                // we'll track scroll position later to
+                // check when the rest of the page should be rendered
+                this.lastRenderedTopEquation = prev;
+                console.log(this.lastRenderedTopEquation)
+
+                var next = this.startElement.nextElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left following the element
+                    if (next.nextElementSibling == null) {
+                        break;
+                    }
+                    renderMath(next);
+                    next = next.nextElementSibling;
+                }
+                this.lastRenderedBottomEquation = next;
+                // now allow rendering the rest of the equations
+                this.canRenderWholePage = true;
+            }
+
+            // render all math on the whole page
+            this.renderMathOnPage = function() {
+                // don't run until preliminary tasks
+                // are done so that the whole page
+                // can/should be rendered
+                if (!this.canRenderWholePage) {
+                    return;
+                }
+                // if the whole page's worth of equations
+                // are already rendered, don't render more
+                if (this.pageRendered) {
+                    return;
+                }
+                var topBound = this.lastRenderedTopEquation.getBoundingClientRect.top;
+                var bottomBound = this.lastRenderedBottomEquation.getBoundingClientRect.bottom;
+                var scrollTop, scrollBottom = getViewport();
+                // if the user is about to scroll past the initially-rendered equations
+                // we will render the whole page
+                if (scrollTop - 50 + window.scrollY < topBound || scrollBottom + 50 + window.scrollY > bottomBound) {
+                    console.log("Scrolled beyond!")
+                    var article = document.querySelector(".post");
+                    if (article) {
+                        this.renderMath(article);
+                    }
+                    this.pageRendered = true;
+                }
+                
+            }
+            
+        }
+
+        function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        function findFirstRelevantElement() {
+            // finds the first <p> tage that's closest to
+            // the viewer's viewport
+            var regex = /#.*/;
+            var m = regex.exec(window.location.href);
+            if (m !== null) {
+                return document.querySelector(m[0]);
+            } else {
+                return document.querySelector(".post p");
+            }
+        }
+        
+        // initialize page JS components
+        /*
+        var mathRenderer = new VisibleMathRenderer({
+            // start rendering with first <p> tag on the
+            // post
+            startElement: findFirstRelevantElement()
+        });
+        */
+        document.addEventListener("DOMContentLoaded", function() {
+            showTocBtnOnScroll();
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+
+        window.onscroll = function(){
+            // if (!mathRenderer.pageRendered) {
+            //     mathRenderer.renderMathOnPage();
+            // }
+            showTocBtnOnScroll();
+        };
+
+
+    </script>
+
+</body>
+
+</html>

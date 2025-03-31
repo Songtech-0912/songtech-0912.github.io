@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LaTeX math tutorial</title>
+  <meta name="description" content=" LaTeX is a powerful language used for writing academic papers. In this article, we&#x27;ll focus not on the full language, but only the portions relevant to math typesetting.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://songtech-0912.github.io/favicon.svg">
+      <link rel="icon" type="image/png" href="https://songtech-0912.github.io/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://songtech-0912.github.io/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://songtech-0912.github.io/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://songtech-0912.github.io/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://songtech-0912.github.io/notes/">Notes</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>LaTeX math tutorial</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+
+        <!-- page content -->
+        <p>LaTeX is a powerful language used for writing academic papers. In this article, we'll focus not on the full language, but only the portions relevant to math typesetting.</p>
+<span id="continue-reading"></span>
+<p>In this article, there will be one code block for the LaTeX code, as well as one equation block right after with the rendered results.</p>
+<h2 id="basic-equations">Basic equations</h2>
+<p>Variables in LaTeX can be written much as you'd expect:</p>
+<pre style="background-color:#fafafa;color:#61676c;"><code><span>x + y
+</span></code></pre>
+<p class="mathcell">
+$$
+x + y
+$$
+</p>
+<p>You can add multiplication with <code>\times</code> or <code>\cdot</code>:</p>
+<pre style="background-color:#fafafa;color:#61676c;"><code><span>3 \times 3 = 9
+</span></code></pre>
+<p class="mathcell">
+$$
+3 \times 3 = 9
+$$
+</p><pre style="background-color:#fafafa;color:#61676c;"><code><span>4 \cdot 1 = 4
+</span></code></pre>
+<p class="mathcell">
+$$
+4 \cdot 1 = 4
+$$
+</p>
+<p>Fractions are written with <code>\frac{}{}</code>, with the first argument being the numerator, and second argument being the denominator:</p>
+<pre style="background-color:#fafafa;color:#61676c;"><code><span>\frac{3x + 1}{x^2}
+</span></code></pre>
+<p class="mathcell">
+$$
+\frac{3x + 1}{x^2}
+$$
+</p>
+<p>Superscripts are written with <code>^</code> and subscripts are written with <code>_</code>:</p>
+<pre style="background-color:#fafafa;color:#61676c;"><code><span>E = mc^2
+</span></code></pre>
+<p class="mathcell">
+$$
+E = mc^2
+$$
+</p><pre style="background-color:#fafafa;color:#61676c;"><code><span>x_i = 3
+</span></code></pre>
+<p class="mathcell">
+$$
+x_i = 3
+$$
+</p>
+<p>If we have some content inside of a superscript or subscript, we wrap it in curly braces <code>{}</code>:</p>
+<pre style="background-color:#fafafa;color:#61676c;"><code><span>x_{i + 1} = x_i + 1
+</span></code></pre>
+<p class="mathcell">
+$$
+x_{i + 1} = x_i + 1
+$$
+</p>
+<p>Sums are written with <code>\sum</code> followed by the starting index on the subscript and the ending index on the superscript:</p>
+<pre style="background-color:#fafafa;color:#61676c;"><code><span>\sum_{i = 0}^n i
+</span></code></pre>
+<p class="mathcell">
+$$
+\sum_{i = 0}^n i
+$$
+</p>
+<p>Derivatives and integrals can be written like this:</p>
+<pre style="background-color:#fafafa;color:#61676c;"><code><span>\frac{dy}{dx}
+</span></code></pre>
+<p class="mathcell">
+$$
+\frac{dy}{dx}
+$$
+</p><pre style="background-color:#fafafa;color:#61676c;"><code><span>\int \limits_0^5 x^2 dx
+</span></code></pre>
+<p class="mathcell">
+$$
+\int \limits_0^5 x^2 dx
+$$
+</p>
+<p>Text can be rendered with <code>\text{}</code> or <code>\mathrm{}</code>:</p>
+<pre style="background-color:#fafafa;color:#61676c;"><code><span>x = 3 \text{ or } x = -5
+</span></code></pre>
+<p class="mathcell">
+$$
+x = 3 \text{ or } x = -5
+$$
+</p>
+<p>Sine, cosine, and tangent each have their respective functions:</p>
+<pre style="background-color:#fafafa;color:#61676c;"><code><span>2 \sin(x) + 5 \cos(x) - \tan(x)
+</span></code></pre>
+<p class="mathcell">
+$$
+2 \sin(x) + 5 \cos(x) - \tan(x)
+$$
+</p>
+<p>Square roots can be written with <code>\sqrt{}</code>:</p>
+<pre style="background-color:#fafafa;color:#61676c;"><code><span>\sqrt{x + 5}
+</span></code></pre>
+<p class="mathcell">
+$$
+\sqrt{x + 5}
+$$
+</p>
+<p>And nth roots can be written with <code>\sqrt[n]{}</code>:</p>
+<p class="mathcell">
+$$
+\sqrt[3]{81}
+$$
+</p><pre style="background-color:#fafafa;color:#61676c;"><code><span>\sqrt[3]{81}
+</span></code></pre>
+<p>Natural log is denoted by <code>\ln</code> and log by <code>\log</code>:</p>
+<pre style="background-color:#fafafa;color:#61676c;"><code><span>\ln (x) = \log_e (x)
+</span></code></pre>
+<p class="mathcell">
+$$
+\ln (x) = \log_e (x)
+$$
+</p>
+<p>That should be enough for a working knowledge of LaTeX math!</p>
+
+        
+        <a id="jump-toc-btn" href="#toc">Show table of contents</a>
+        <a href="/notes" class="return-link">Back to all notes</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://songtech-0912.github.io/katex/katex.min.js"></script>
+    <script defer src="https://songtech-0912.github.io/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://songtech-0912.github.io/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://songtech-0912.github.io/katex/contrib/copy-tex.min.js"></script>
+
+    <script defer>
+        var toc = document.getElementById("toc");
+        var tocPos = toc.offsetTop + toc.offsetHeight;
+        var tocBtn = document.getElementById("jump-toc-btn");
+
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+        function renderMath(element) {
+            // renders math using KaTeX in a particular element
+            renderMathInElement(element, {
+              // customised options
+              // • auto-render specific keys, e.g.:
+              delimiters: [
+                  {left: '$$', right: '$$', display: true},
+                  {left: '$', right: '$', display: false},
+              ],
+              // • rendering keys, e.g.:
+              throwOnError : false
+            });
+        }
+
+        // for performance reasons, we **only** render a certain
+        // number of equations that the viewer is actually viewing
+        function VisibleMathRenderer(config) {
+            /*
+            Renders only a limited number of equations on page load
+            to avoid poor performance
+             Params:
+                lastRenderedEquation: the most recently rendered equation.
+                        when this goes out of view, equations under it are rendered. 
+            */
+            var startElement = config.startElement
+            var maxEquations = config.maxEquations ? config?.maxEquations : 30;
+            this.startElement = startElement
+            this.maxEquations = maxEquations
+            // we wait until the user scrolls past the starting/
+            // ending elements to start rendering the whole page
+            this.canRenderWholePage = false;
+            this.pageRendered = false;
+            this.lastRenderedTopEquation = null;
+            this.lastRenderedBottomEquation = null;
+
+            this.render = function() {
+                renderMath(this.startElement);
+                // render previous 25 and following 25 equations
+                var prev = this.startElement.previousElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left prior to the element
+                    if (prev == null) {
+                        break;
+                    }
+                    renderMath(prev);
+                    prev = prev.previousElementSibling;
+                }
+                // store our last rendered equations
+                // we'll track scroll position later to
+                // check when the rest of the page should be rendered
+                this.lastRenderedTopEquation = prev;
+                console.log(this.lastRenderedTopEquation)
+
+                var next = this.startElement.nextElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left following the element
+                    if (next.nextElementSibling == null) {
+                        break;
+                    }
+                    renderMath(next);
+                    next = next.nextElementSibling;
+                }
+                this.lastRenderedBottomEquation = next;
+                // now allow rendering the rest of the equations
+                this.canRenderWholePage = true;
+            }
+
+            // render all math on the whole page
+            this.renderMathOnPage = function() {
+                // don't run until preliminary tasks
+                // are done so that the whole page
+                // can/should be rendered
+                if (!this.canRenderWholePage) {
+                    return;
+                }
+                // if the whole page's worth of equations
+                // are already rendered, don't render more
+                if (this.pageRendered) {
+                    return;
+                }
+                var topBound = this.lastRenderedTopEquation.getBoundingClientRect.top;
+                var bottomBound = this.lastRenderedBottomEquation.getBoundingClientRect.bottom;
+                var scrollTop, scrollBottom = getViewport();
+                // if the user is about to scroll past the initially-rendered equations
+                // we will render the whole page
+                if (scrollTop - 50 + window.scrollY < topBound || scrollBottom + 50 + window.scrollY > bottomBound) {
+                    console.log("Scrolled beyond!")
+                    var article = document.querySelector(".post");
+                    if (article) {
+                        this.renderMath(article);
+                    }
+                    this.pageRendered = true;
+                }
+                
+            }
+            
+        }
+
+        function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        function findFirstRelevantElement() {
+            // finds the first <p> tage that's closest to
+            // the viewer's viewport
+            var regex = /#.*/;
+            var m = regex.exec(window.location.href);
+            if (m !== null) {
+                return document.querySelector(m[0]);
+            } else {
+                return document.querySelector(".post p");
+            }
+        }
+        
+        // initialize page JS components
+        /*
+        var mathRenderer = new VisibleMathRenderer({
+            // start rendering with first <p> tag on the
+            // post
+            startElement: findFirstRelevantElement()
+        });
+        */
+        document.addEventListener("DOMContentLoaded", function() {
+            showTocBtnOnScroll();
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+
+        window.onscroll = function(){
+            // if (!mathRenderer.pageRendered) {
+            //     mathRenderer.renderMathOnPage();
+            // }
+            showTocBtnOnScroll();
+        };
+
+
+    </script>
+
+</body>
+
+</html>
