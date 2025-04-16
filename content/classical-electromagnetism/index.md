@@ -1455,6 +1455,8 @@ Now, we stated previously that our uniformly-polarized sphere has no free charge
 
 The issue arises because while we may think $\displaystyle \oint \mathbf{D} \cdot d\mathbf{A} = 0$ _implies_ $\mathbf{D} = 0$, this is not necessarily the case if the polarization is along a _non-radial axis_. The polarization will still be uniform (a constant value), but because it is _directional_, we lose radial symmetry, and therefore we can no longer make the assumption that just because $\displaystyle \oint \mathbf{D} \cdot d\mathbf{A} = 0$ means $\mathbf{D} = 0$.
 
+> **Note for the advanced reader:** Here's a tricky question - what if we had a polarized sphere with a _spherical cavity_ cut out from it? The answer is that we can use the principle of superposition to find the field by simply adding the same amount of _bound charge_ as a negatively-charged sphere of the same size as the cavity (which means the same surface bound charge _and_ volume bound charge).
+
 ### A conclusion on free and bound charges
 
 As we have seen, the free and bound charges give us a way to express the total electric field in a dielectric in a more straightforward way than needing to solve Maxwell's equations for every single charge. By using **Gauss's law for free charges** to find the field's contribution from the free charge, and the constitutive relations to find the bound charge, we can then calculate the total electric field. Since the total field in a polarized dielectric consists of both the $\mathbf{D}$ field from free charges as well as the $\mathbf{P}$ field from the bound charges (due to the effects of polarization), the total charge density can be written as:

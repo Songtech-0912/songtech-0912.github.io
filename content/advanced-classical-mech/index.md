@@ -3204,15 +3204,33 @@ On substituting our new definitions for $\omega^2$ and $\mathbf{r}_i^2$, we have
 K_\text{rot.} &= \dfrac{1}{2} \sum_i m_i \left[\omega^2 \mathbf{r}_i^2 - (\vec \omega \cdot \mathbf{r}_i)^2\right] \\
 &=\dfrac{1}{2} \sum_i m_i \left[\left(\sum_{k=1}^3 \omega_k^2\right)^2 \left(\sum_{a = 1}^3 {r_a^{(i)}}^2\right) - \left(\sum_{a = 1}^3 r_a^{(i)}\omega_a\right)\left(\sum_{k = 1}^3 r_k^{(i)}\omega_k\right)\right] \\
 &= \dfrac{1}{2} \sum_i m_i \sum_{a= 1}^3 \sum_{k = 1}^3\left[\omega_a \omega_k \delta_{ak} \sum_{a=1}^3 {r_a^{(i)}}^2 - \omega_a \omega_k r_a^{(i)} r_k^{(i)}\right] \\
-&= \dfrac{1}{2} \sum_{a= 1}^3 \sum_{k = 1}^3 \omega_a \omega_k\underbrace{\sum_i m_i \left[\delta_{ak} \sum_{a=1}^3 {r_a^{(i)}}^2 - r_a^{(i)} r_k^{(i)}\right]}_{I_{ak}} \\
+&= \dfrac{1}{2} \sum_{a= 1}^3 \sum_{k = 1}^3 \omega_a \omega_k\underbrace{\sum_i m_i \left[\left(\delta_{ak} \sum_{a=1}^3 {r_a^{(i)}}^2\right) - r_a^{(i)} r_k^{(i)}\right]}_{I_{ak}} \\
 &= \sum_{a= 1}^3 \sum_{k = 1}^3 \dfrac{1}{2} I_{ak} \omega_a \omega_k
 \end{align*}
 {% end %}
 
-Note how in the second-last line, we defined a special matrix $I_{ak}$. This is the **moment of inertia** in its _most general form_, called the _moment of inertia tensor_, or just **inertia tensor** for short. We notice that in the limiting case, as the number of particles grows very large, this expression reduces to the familiar expression of the rotational kinetic energy:
+Note how in the second-last line, we defined a special matrix $I_{ak}$, given by:
+
+{% math() %}
+I_{ak} = \sum_i m_i \left[\left(\delta_{ak} \sum_{a=1}^3 {r_a^{(i)}}^2\right) - r_a^{(i)} r_k^{(i)}\right]
+{% end %}
+
+This is the **moment of inertia** in its _most general form_, called the _moment of inertia tensor_, or just **inertia tensor** for short. In 3D, it is written as a $(3 \times 3)$ matrix. Note that along the diagonals of the inertia tensor, since $\delta_{ak} = 1$ when $a = k$, we have:
+
+{% math() %}
+I_{aa} = \sum_i m_i \left[\left(x_a^{{(i)}^2} + y_a^{{(i)}^2} + z_a^{{(i)}^2}\right) - \left(r_a^{(i)}\right)^2\right]
+{% end %}
+
+Where $r_a = (r_1, r_2, r_3) = (x, y, z)$ is the tensor expression for the $a$-th component of the position, and $r_a^{(i)} = (r_1^{(i)}, r_2^{(i)}, r_3^{(i)}) = (x^{(i)}, y^{(i)}, z^{(i)})$ is the position of the $i$-th particle. Meanwhile, for the non-diagonals (cross terms) of the inertia tensor, since $\delta_{ak} = 0$ when $a \neq k$, we have:
+
+{% math() %}
+I_{{ak},\, \text{cross}} = -\sum_i m_i r_a^{(i)} r_k^{(i)}
+{% end %}
+
+We notice that in the limiting case, as the number of particles grows very large, this expression reduces to the familiar expression of the rotational kinetic energy:
 
 {% math() %}
 K = \dfrac{1}{2} I \omega^2
 {% end %}
 
-> **Note:** The inertia tensor $I_{ak}$ is the collective description of the moment of inertia of a _system_ of $N$ particles, where $N$ can be arbitrarily-large. This means that in our definition of the inertia tensor $I_{ak} = \displaystyle \sum_i m_i \left[\delta_{ak} \sum_{a=1}^3 {r_a^{(i)}}^2 - r_a^{(i)} r_k^{(i)}\right]$, we must remember to sum over every particle; that is, the index $i$ sums from the first particle to the last ($N$-th) particle.
+> **Note:** The inertia tensor $I_{ak}$ is the collective description of the moment of inertia of a _system_ of $N$ particles, where $N$ can be arbitrarily-large. This means that in our definition of the inertia tensor $I_{ak} = \displaystyle \left[\sum_i m_i \left(\delta_{ak} \sum_{a=1}^3 {r_a^{(i)}}^2 \right) - r_a^{(i)} r_k^{(i)}\right]$, we must remember to sum over every particle; that is, the index $i$ sums from the first particle to the last ($N$-th) particle.
