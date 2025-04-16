@@ -35,7 +35,7 @@
 
         <!-- page content -->
         {{ page.content | safe }}
-        {% if not page.extra.nonarticle and not page.extra.non_note %}
+        {% if not page.extra.nonarticle and not page.extra.non_note and not page.extra.notoc %}
         <a id="jump-toc-btn" href="#toc">Show table of contents</a>
         <a href="/notes" class="return-link">Back to all notes</a>
         {% else %}
@@ -48,7 +48,22 @@
     <script defer src="{{ get_url(path='katex/contrib/auto-render.min.js', trailing_slash=false) | safe }}"></script>
     <script defer src="{{ get_url(path='katex/contrib/mhchem.min.js', trailing_slash=false) | safe }}"></script>
     <script defer src="{{ get_url(path='katex/contrib/copy-tex.min.js', trailing_slash=false) | safe }}"></script>
-
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    {% if not page.extra.nonarticle and not page.extra.non_note and not page.extra.notoc %}
     <script defer>
         var toc = document.getElementById("toc");
         var tocPos = toc.offsetTop + toc.offsetHeight;
@@ -60,20 +75,6 @@
             var scrollPosTop = document.documentElement.scrollTop;
             var scrollPosBottom = scrollPosTop + window.innerHeight;
             return scrollPosTop, scrollPosBottom
-        }
-
-        function renderMath(element) {
-            // renders math using KaTeX in a particular element
-            renderMathInElement(element, {
-              // customised options
-              // • auto-render specific keys, e.g.:
-              delimiters: [
-                  {left: '$$', right: '$$', display: true},
-                  {left: '$', right: '$', display: false},
-              ],
-              // • rendering keys, e.g.:
-              throwOnError : false
-            });
         }
 
         // for performance reasons, we **only** render a certain
@@ -209,4 +210,15 @@
 
 
     </script>
+    {% else %}
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function() {
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+    </script>
+    {% endif %}
+
 {% endblock content %}
