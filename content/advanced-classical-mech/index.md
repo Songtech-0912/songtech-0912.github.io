@@ -1058,7 +1058,7 @@ m \ddot y = mg - k(y - y_0) \\
 \end{align*}
 {% end %}
 
-### The Newtonian limit
+### The equivalence of Newtonian and Lagrangian mechanics
 
 We have already seen that Lagrangian mechanics yields the same equations of motion as Newtonian mechanics in several examples, but what about the general case? Does Lagrangian mechanics _always_ make the same predictions as Newtonian mechanics? The answer is yes, and we will show why.
 
@@ -1171,6 +1171,8 @@ Or, rewritten:
 {% end %}
 
 This is the differential equation of a **simple pendulum**. Despite looking rather simple, it is surprisingly hard to solve, but it is still useful, because it completely describes the simple pendulum, and it possesses approximate solutions that still yield important quantitative insights.
+
+> **Note:** Interested in a more complicated pendulum problem? See the [worked-out solution to the elastic pendulum](@/elastic-pendulum/index.md).
 
 ### The centrifugal "force"
 
