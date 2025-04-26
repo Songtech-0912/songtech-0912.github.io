@@ -10,7 +10,7 @@ One of the most surprising aspects of physics is how complex even everyday syste
 
 <!-- more -->
 
-> **Note:** If you're unfamiliar with Lagrangian mechanics, or need a refresher, see the [relevant section](@/advanced-classical-mech/index.md#lagrangian-mechanics) on the (advanced) classical mechanics guide.
+> **Note:** If you're unfamiliar with Lagrangian mechanics, or need a refresher, see the [relevant section](@/advanced-classical-mech/part-2.md#lagrangian-mechanics) on the (advanced) classical mechanics guide.
 
 We consider a block of mass $m$ attached to an ideal string of length $L$, which is itself attached to a spring of variable length $l(t)$ and spring constant $k$ that hangs from the ceiling. We assume that the string is sufficiently short to be approximated as perfectly straight, such that the spring and the string form a straight line. Using a coordinate system centered at the attachment point of the spring, with $+x$ being the downward direction and $+y$ being the rightward direction, the position of the spring would be given by:
 
