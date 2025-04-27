@@ -13,7 +13,7 @@ Again, remember that this is part of the **advanced classical mechanics series**
 > ### The advanced classical mechanics series
 >
 > - [Go to part 1 of the series](@/advanced-classical-mech/index.md) for Newtonian mechanics and special relativity
-> - [Go to part 2 of the series](@/advanced-classical-mech/part-2.md) for Lagrangian and Hamiltonian formulations of classicial mechanics
+> - [Go to part 2 of the series](@/advanced-classical-mech/part-2.md) for Lagrangian and Hamiltonian formulations of classical mechanics
 > - [Go to part 3 of the series](@/advanced-classical-mech/part-3.md) for rigid-body dynamics, many-body systems, the harmonic oscillator, and systems of coupled oscillators (**this is the part you're reading right now**)
 
 ## Dynamics of systems of particles

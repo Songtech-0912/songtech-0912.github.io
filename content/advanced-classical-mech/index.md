@@ -19,7 +19,7 @@ As this guide is quite long, I have split it into several parts, which are shown
 > ### The advanced classical mechanics series
 >
 > - [Go to part 1 of the series](@/advanced-classical-mech/index.md) for Newtonian mechanics and special relativity (**this is the part you're reading right now**)
-> - [Go to part 2 of the series](@/advanced-classical-mech/part-2.md) for Lagrangian and Hamiltonian formulations of classicial mechanics
+> - [Go to part 2 of the series](@/advanced-classical-mech/part-2.md) for Lagrangian and Hamiltonian formulations of classical mechanics
 > - [Go to part 3 of the series](@/advanced-classical-mech/part-3.md) for rigid-body dynamics, many-body systems, the harmonic oscillator, and systems of coupled oscillators
 
 While we will briefly review the prerequisites, we assume a familiarity with introductory physics, multivariable calculus, and differential equations. See the [classical dynamics](@/classical-dynamics.md), [differential equations](@/differential-equations/index.md), and [multivariable calculus](@/multivariable-calculus/index.md) guides that explain these topics in detail.
