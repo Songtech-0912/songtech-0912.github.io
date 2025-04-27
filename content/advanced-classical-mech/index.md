@@ -306,9 +306,10 @@ Where we would typically want to rearrange $t(x) \to x(t)$ upon evaluating the i
 
 But it is often not even necessary to solve the equation for $t(x) \rightarrow x(t)$. In fact, knowledge of $U(x)$ is often sufficient to understand a great deal about the motion of a moving object. A graph of the potential energy function, for instance, is shown below:
 
-![A graph of a potential energy function U(x) that curves up to a local maximum, then curves down to a local minimum, then curves upwards again](http://spiff.rit.edu/classes/phys211/workshops/w_force_pote/cubic_a_label.png)
-
-_Source: [Michael Richmond, RIT](http://spiff.rit.edu/classes/phys211/workshops/w_force_pote/pote_graph.html)_
+{{ diagram(
+src="./stable-unstable-equilibrium.excalidraw.svg"
+desc="A graph of a potential energy function U(x) that curves up to a local maximum, then curves down to a local minimum, then curves upwards again"
+) }}
 
 By the equation $\mathbf{F} = -\nabla U$, objects naturally travel _down_ a potential towards minima. Therefore, maxima of the potential function $U$ are considered _unstable points_. An object with a potential energy $U = U_\mathrm{max}$, that is, a potential energy equal to a maximum of $U(\mathbf{r})$, is easy to "nudge" away from the maximum. The object proceeds to "fall" towards a minimum, which may be a local or global minimum. When the minimum is U-shaped, we frequently call it a _potential well_ - such potentials contain a minimum at their center that is a _stable point_. Thus objects with a potential energy at a minimum of a potential well actually require a force to increase their energy to "climb out" of the well. There exist many famous examples of potential wells - the **gravitational potential energy** and **electrostatic potential energy** both have potential wells that constrain the motions of massive (i.e. having mass) objects and charged objects, respectively. For those forces, it is common to define a **potential**, which is the potential energy assuming an object has unit (i.e. exactly $m = 1$) mass (for gravity) or unit charge (for electrostatics). An approximate plot of the gravitational potential looks as follows:
 
@@ -317,6 +318,8 @@ By the equation $\mathbf{F} = -\nabla U$, objects naturally travel _down_ a pote
 _Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:GravityPotential.jpg)_
 
 Before we conclude our preliminary discussion of potential energy, there is one burning question we must address: **is the potential energy truly a function?** Throughout the majority of our discussion we have treated potential energy as a _function_. Many texts would shun the idea of describing potential energy as a function, and consider only the _change_ in potential to be a real quantity. Which is correct? Actually, both. It doesn't _actually matter_ what the potential is, since the _change in potential_ is what truly matters; in $\mathbf{F} = -\nabla U$ as well as $\Delta K = -\Delta U$, we don't see $U(\mathbf{r})$ itself appear, only its derivative, which measures _changes_ in potential. So we *can* call the potential energy a function. The only caveat is that since the derivative of a constant is zero, $U(\mathbf{r}) + C$ is physically equivalent to $U(\mathbf{r})$. In fact, the potential energy can even be negative(!) since that has no effect on _changes_ in potential energy. Therefore, to specify a unique potential energy function, we typically set $U(\mathbf{r}_0) = 0$ at a specific point $\mathbf{r}_0$, meaning that we agree that at a particular point, the potential energy is zero. This often is at $\mathbf{r}_0 = \infty$, i.e. a point infinitely far away, although it depends on the problem.
+
+> **Note:** negative potential energy means energy must be put in to get an object in a stable equilibrium to move back out of equilibrium. For instance, an object is in a stable equilibrium when it is at the surface of the Earth, and is thus at rest. To get it moving upwards, you have to put in work with an **external applied force** to lift it into the air. Otherwise, the gravitational force (by $\mathbf{F} = -\nabla U = -\frac{dU}{dz}$) will naturally push the object down until it reaches the ground and achieves (and stays in) stable equilibrium.
 
 ## Special relativity
 
