@@ -649,4 +649,4 @@ We notice that in the limiting case, as the number of particles grows very large
 K = \dfrac{1}{2} I \omega^2
 {% end %}
 
-> **Note:** The inertia tensor $I_{ak}$ is the collective description of the moment of inertia of a _system_ of $N$ particles, where $N$ can be arbitrarily-large. This means that in our definition of the inertia tensor $I_{ak} = \displaystyle \left[\sum_i m_i \left(\delta_{ak} \sum_{a=1}^3 {r_a^{(i)}}^2 \right) - r_a^{(i)} r_k^{(i)}\right]$, we must remember to sum over every particle; that is, the index $i$ sums from the first particle to the last ($N$-th) particle.
+> **Note:** The inertia tensor $I_{ak}$ is the collective description of the moment of inertia of a _system_ of $N$ particles, where $N$ can be arbitrarily-large. This means that in our definition of the inertia tensor $I_{ak} = \displaystyle \sum_i m_i \left[\left(\delta_{ak} \sum_{a=1}^3 {r_a^{(i)}}^2 \right) - r_a^{(i)} r_k^{(i)}\right]$, we must remember to sum over every particle; that is, the index $i$ sums from the first particle to the last ($N$-th) particle.

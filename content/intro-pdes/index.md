@@ -406,7 +406,7 @@ u(x, y) &= F(y)
 \end{align*}
 {% end %}
 
-Notice here that instead of a _constant_ of integration, we have an arbitrary _function_ of integration $F(y)$, since we are taking the partial integral.
+> Notice here that instead of a _constant_ of integration, we have an arbitrary _function_ of integration $F(y)$, since we are taking the **partial integral**.
 
 Now, let us recall that since $u(x, y) = \text{const.}$ for *all points along the characteristic curve*, then this must be true for the point $(0, y(0))$ as well, meaning that $u(x, y) = u(0, y(0)) = \text{const.}$ Therefore:
 
