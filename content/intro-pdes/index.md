@@ -1322,7 +1322,7 @@ The first (initial) condition for $u(x, 0)$ describes the initial spatial distri
 
 > **Linear property of solutions:** For any solution $u(x, t)$, then $u(x - a, t)$ and $u(\sqrt{a}x, a t)$ is also a solution.
 
-> **Differentiation and integration of solutions:** For any solution $u(x, t)$ that possesses a derivative $v = \dfrac{\partial u}{\partial t}$, $v$ _also_ satisfies a diffusion equation $\dfrac{\partial v}{\partial t} = k\dfrac{\partial^2 v}{\partial t^2}$. Likewise, for any solution $u(x, t)$ that possesses an integral $I = \displaystyle \int_a^b u(x, t) dx$, $I$ _also_ satisfies a diffusion equation $\dfrac{\partial I}{\partial t} = k\dfrac{\partial^2 I}{\partial t^2}$. The same applies for $I = \displaystyle \int_a^b u(x - y, t)g(y)\,dy$ This directly results from the linearity of the diffusion equation (i.e. the sum $u_1 + u_2$ of two solutions $u_1, u_2$ is also a solution).
+> **Differentiation and integration of solutions:** For any solution $u(x, t)$ that possesses a derivative $v = \dfrac{\partial u}{\partial t}$, $v$ _also_ satisfies a diffusion equation $\dfrac{\partial v}{\partial t} = k\dfrac{\partial^2 v}{\partial t^2}$. Likewise, for any solution $u(x, t)$ that possesses an integral $I = \displaystyle \int_a^b u(x, t) dx$, $I$ _also_ satisfies a diffusion equation $\dfrac{\partial I}{\partial t} = k\dfrac{\partial^2 I}{\partial t^2}$. The same applies for {% inlmath() %}I = \displaystyle \int_a^b u(x - y, t)g(y)\,dy{% end %} This directly results from the linearity of the diffusion equation (i.e. the sum $u_1 + u_2$ of two solutions $u_1, u_2$ is also a solution).
 
 Intuitively, these results makes the diffusion equation extremely easy (and powerful) to work with. In addition, they allow us to write the general solution of the diffusion equation either in terms of an infinite series:
 
@@ -2101,7 +2101,7 @@ Having discussed the importance of a function's _parity_ (whether it is an even 
 
 Additionally, for Fourier series in particular, we are also interested in another _class_ of function:
 
-- **Periodic** functions satisfy $h(x) = H(x\, \text{mod}\, 2L)$ (or more simply, $h(x) = h(x + 2L)$) where $2L$ is the **period** of the function
+- **Periodic** functions satisfy {% inlmath() %}h(x) = H(x\, \text{mod}\, 2L){% end %} (or more simply, $h(x) = h(x + 2L)$) where $2L$ is the **period** of the function
 
 For Fourier series, we often want to _extend_ a function to make it even or odd across a symmetric interval. For instance, if we wanted to describe a triangle-shaped function, it would be natural to _extend_ the function $f(x) = x$ so that it is symmetric about the $y$-axis. The **even extension** of a function about $x = 0$ is given by:
 
