@@ -2092,6 +2092,43 @@ B_n = \dfrac{1}{L} \int_{-L}^L f(x) \sin \dfrac{n\pi x}{L} dx \\
 \end{gather*}
 {% end %}
 
+### Even and odd functions
+
+Having discussed the importance of a function's _parity_ (whether it is an even or odd function) for Fourier series, let us now take a more detailed look. Recall that even and odd functions are defined as follows:
+
+- **Odd** functions satisfy $f(-x) = -f(x)$
+- **Even** functions satisfy $g(x) = g(-x)$
+
+Additionally, for Fourier series in particular, we are also interested in another _class_ of function:
+
+- **Periodic** functions satisfy $h(x) = H(x\, \text{mod}\, 2L)$ (or more simply, $h(x) = h(x + 2L)$) where $2L$ is the **period** of the function
+
+For Fourier series, we often want to _extend_ a function to make it even or odd across a symmetric interval. For instance, if we wanted to describe a triangle-shaped function, it would be natural to _extend_ the function $f(x) = x$ so that it is symmetric about the $y$-axis. The **even extension** of a function about $x = 0$ is given by:
+
+{% math() %}
+F_\text{even}(x) = \begin{cases}
+F(x),& x > 0 \\
+0, & x = 0 \\
+F(-x),& x < 0
+\end{cases}
+{% end %}
+
+Meanwhile, the **odd extension** of a function about $x = 0$ is given by:
+
+{% math() %}
+F_\text{odd}(x) = \begin{cases}
+F(x), & x > 0 \\
+0, & x = 0 \\
+-F(-x), & x < 0
+\end{cases}
+{% end %}
+
+In general, an *arbitrary* function can be decomposed into purely even and odd parts, as follows:
+
+{% math() %}
+\varphi(x) = \underbrace{\dfrac{1}{2}(\varphi(x) + \varphi(-x))}_\text{even part} + \underbrace{\dfrac{1}{2} (\varphi(x) - \varphi(-x))}_\text{odd part}
+{% end %}
+
 ### Complex form of the Fourier Series
 
 We have extensively discussed the Fourier Series in its most conventional trigonometric form, as an infinite sum of sines and cosines. But there is also an _alternative_ form of the Fourier series, expressed using complex-valued functions. To show why this is the case, recall **Euler's formula**, which relates sinusoids to complex exponential functions:
