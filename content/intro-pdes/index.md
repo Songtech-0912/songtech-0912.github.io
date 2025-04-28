@@ -1820,3 +1820,525 @@ u(x, 0) = \sum_{n = 1}^\infty A_n \sin\left(\dfrac{n\pi x}{L}\right) = \varphi(x
 {% end %}
 
 And we find that, indeed, we have found the solution to the diffusion equation for the given boundary-value problem.
+
+### The heat and wave equations with Neumann boundary conditions
+
+We have seen how to solve the diffusion equation for zero Dirichlet boundary conditions, i.e. where $u(0, t) = u(L, t) = 0$. Let us now examine the more _general_ constant boundary conditions given by $\frac{\partial u}{\partial x}(0, t) = \frac{\partial u}{\partial x}(L, t) = 0$. Then the complete initial-boundary value problem for the diffusion equation becomes:
+
+{% math() %}
+\begin{gather*}
+\dfrac{\partial u}{\partial t} = \kappa^2 \dfrac{\partial^2 u}{\partial x^2} \\
+u(x, 0) = \psi(x) \\
+\frac{\partial u}{\partial x}(0, t) = \frac{\partial u}{\partial x}(L, t) = 0
+\end{gather*}
+{% end %}
+
+To start, we begin with the same method of separation of variables, which result in the following ODEs:
+
+{% math() %}
+\begin{align*}
+T' &= -\beta^2\kappa^2 T \\
+X'' &= -\beta^2 X
+\end{align*}
+{% end %}
+
+Which have the general solutions:
+
+{% math() %}
+\begin{align*}
+T(t) &= Je^{\beta \kappa t} + Ke^{-\beta \kappa t} \\
+X(x) &= C \cos \beta x + D \sin \beta x
+\end{align*}
+{% end %}
+
+From which we can find $u(x, t) = X(x)T(t)$:
+
+{% math() %}
+\begin{align*}
+u(x, t) &= X(x)T(t) \\
+&= (Je^{\beta \kappa t} + Ke^{-\beta \kappa t})(C \cos \beta x + D \sin \beta x)
+\end{align*}
+{% end %}
+
+The time derivative of our solution is given by:
+
+{% math() %}
+\dfrac{\partial u}{\partial x} = (Je^{\beta \kappa t} + Ke^{-\beta \kappa t})\beta(D \cos \beta x - C \sin \beta x)
+{% end %}
+
+Let us start with the two (spatial) boundary conditions: $u(0, t) = A, u(L, t) = B$. For the first, setting $x = 0$, we have:
+
+{% math() %}
+\begin{align*}
+\dfrac{\partial u}{\partial x}(0, t) = (Je^{\beta \kappa t} + Ke^{-\beta \kappa t})\beta D = 0 \\
+\Rightarrow D = 0
+\end{align*}
+{% end %}
+
+Thus our solution simplifies to:
+
+{% math() %}
+u(x, t) = (Je^{\beta \kappa t} + Ke^{-\beta \kappa t})\cos \beta x
+{% end %}
+
+Where we made the implicit transform $J = J \cdot C, K = K \cdot C$ to absorb in the constant $C$. This also means that the spatial derivative is now:
+
+{% math() %}
+\dfrac{\partial u}{\partial x} = (Je^{\beta \kappa t} + Ke^{-\beta \kappa t})(-\beta \sin \beta x)
+{% end %}
+
+So, setting $x = L$, we have:
+
+{% math() %}
+\begin{align*}
+\dfrac{\partial u}{\partial x}(L, t) = (Je^{\beta \kappa t} + Ke^{-\beta \kappa t})(-\beta \sin \beta x) = 0 \\
+\Rightarrow \beta = n\pi/L
+\end{align*}
+{% end %}
+
+We therefore have:
+
+{% math() %}
+u(x, t) = (Je^{\beta \kappa t} + Ke^{-(n\pi/L) \kappa t})\cos \left(\dfrac{n\pi x}{L}\right)
+{% end %}
+
+Lastly, if we have $J \neq 0$, then the solution would grow exponentially large in time, which would be unphysical behavior. So we let $J = 0$, and thus our solution becomes:
+
+{% math() %}
+u(x, t) = Ke^{-(n\pi/L) \kappa t}\cos \left(\dfrac{n\pi x}{L}\right)
+{% end %}
+
+Which we can write in the most general form as a Fourier series, given by:
+
+{% math() %}
+u(x, t) = \sum_{n = 0}^\infty K_n e^{-(n\pi/L) \kappa t}\cos \left(\dfrac{n\pi x}{L}\right)
+{% end %}
+
+It is customary to "shift" the series to start from $n = 1$, like the solutions we previously found for Dirichlet boundary conditions. This does mean that we will need to include a constant-valued term at the front, giving the **solution to the heat equation** in its most general form for Neumann boundary conditions to be:
+
+{% math() %}
+u(x, t) = \dfrac{1}{2}K_0 + \sum_{n = 1}^\infty K_n e^{-(n\pi/L) \kappa t}\cos \left(\dfrac{n\pi x}{L}\right)
+{% end %}
+
+As a side note, we can perform the same to find the **solution of the wave equation** for Neumann boundary conditions, which comes out to be:
+
+{% math() %}
+\begin{align*}
+u(x, t) &= \dfrac{1}{2} A_0 + \dfrac{1}{2}B_0 t \\
+&\quad + \sum_{n = 1}^\infty \left(A_n \cos \dfrac{n\pi ct}{L} + B_n \sin \dfrac{n\pi ct}{L}\right)\cos \dfrac{n\pi x}{L}
+\end{align*}
+{% end %}
+
+## Fourier series
+
+Previously, we found that solutions to several boundary-value problems for the wave and diffusion equation could be written as a **series solution**. We also briefly mentioned that these series were called **Fourier series**. 
+
+A Fourier series takes advantage of the fact that many sine and cosine waves can be added together to create a good approximation for a non-sinusoidal function. In theory, a Fourier series can be used to expand any periodic function in terms of sines and cosines. But - you may say - not all functions are periodic! While you are right, we can always expand a function across _one single period_ and disregard all of the others. For finite (spatial) boundary conditions in one dimension in which the function vanishes outside of $[-L, L]$, we can regard $[-L, L]$ as our only region of interest for the Fourier series expansion. A Fourier series defined over $[-L, L]$ takes the general form:
+
+{% math() %}
+f(x) = \dfrac{A_0}{2} + \sum_{n = 1}^\infty A_n \cos \dfrac{n\pi x}{L} + B_n \sin \dfrac{n\pi x}{L} 
+{% end %}
+
+Where the coefficients $A_n, B_n$ and $A_0$ are respectively given by:
+
+{% math() %}
+\begin{align*}
+A_0 &= \dfrac{1}{L} \int_{-L}^L f(x)dx \\
+A_n &= \dfrac{2}{L} \int_0^L f(x) \cos \dfrac{n\pi x}{L} dx \\
+B_n &= \dfrac{2}{L} \int_0^L f(x) \sin \dfrac{n\pi x}{L} dx
+\end{align*}
+{% end %}
+
+> **Note:** We must emphasize again that when using Fourier series for solving partial differential equations, we usually **only care** about the region $[0, L]$ and ignore the series for all other regions.
+
+Such functions $f(x)$, as mentioned, often arise from the _initial conditions_ $u(x, 0) = f(x)$ and/or $\frac{\partial u}{\partial t}(x, 0) = g(x)$ defined over a finite boundary $[-L, L]$, and thus are very useful in expressing solutions to parabolic and hyperbolic PDEs, which commonly have these initial conditions. In addition, boundary-value problems that have _periodic_ boundary conditions also often require solutions in terms of Fourier expansions.
+
+In some cases, it is possible to simplify the Fourier series into one of two simpler series. If $f(x)$ is an **even function** (symmetric about the $y$ axis), then the Fourier series reduces to the **cosine series**:
+
+{% math() %}
+\begin{align*}
+f(x) = \dfrac{A_0}{2} + \sum_{n = 1}^\infty A_n \cos \dfrac{n\pi x}{L} \\
+A_n = \dfrac{2}{L} \int_0^L f(x)\cos \dfrac{n\pi x}{L} dx
+\end{align*}
+{% end %}
+
+Whereas if $f(x)$ is an **odd function** (symmetric about the origin, but "flipped" about the $y$ axis), then the Fourier series reduces to the **sine series**:
+
+{% math() %}
+\begin{align*}
+f(x) &= \sum_{n = 1}^\infty B_n \sin \dfrac{n\pi x}{L} \\
+B_n &= \dfrac{2}{L} \int_0^L f(x) \sin \dfrac{n\pi x}{L} dx
+\end{align*}
+{% end %}
+
+We may also view this in another way: the complete Fourier series is a *combination* of the cosine and sine series that respectively describe even and odd parts of a function. Put together, the Fourier series is then able to describe the _complete_ function, which includes both the odd and even parts.
+
+### The general theory of Fourier series
+
+The Fourier series relies on the key property that over a finite interval $[-L, L]$, (nearly) any integrable function can be represented by a finite sum of sines and cosines. That is to say, (nearly) any function may be represented as an infinite series of the form:
+
+{% math() %}
+f(x) = \dfrac{A_0}{2} + \sum_{n = 1}^\infty \left[A_n \cos \dfrac{n\pi x}{L} + B_n \sin \dfrac{n\pi x}{L}\right]
+{% end %}
+
+What is important is that this is a **convergent series**, meaning that the equality is **exact**, not simply an approximation. And when we _are_ indeed interested in truncating the (infinite) series to a finite number of terms to get an approximate answer, we can calculate as many terms as necessary to achieve our desired accuracy.
+
+To calculate the terms in the series it is necessary to have knowledge of $A_n, B_n$. Luckily, there is a straightforward means to do so. Let us integrate the function across the domain $[-L, L]$.
+
+{% math() %}
+\int_{-L}^L f(x)dx = \int_{-L}^L\dfrac{A_0}{2}dx + \int_{-L}^L\sum_{n = 1}^\infty \left[A_n \cos \dfrac{n\pi x}{L} + B_n \sin \dfrac{n\pi x}{L}\right] d x
+{% end %}
+
+Since $A_n$ and $B_n$ are constants that don't depend on $x$, we can factor them out of the integral:
+
+{% math() %}
+\int_{-L}^L f(x)dx = \int_{-L}^L\dfrac{A_0}{2}dx + \sum_{n = 1}^\infty \left[A_n\int_{-L}^L \cos \dfrac{n\pi x}{L}dx + B_n\int_{-L}^L \sin \dfrac{n\pi x}{L}dx\right] d x
+{% end %}
+
+We will now use the two very important properties of the sine and cosine functions, which comes from the even and odd identities of the sine and cosine. They are, respectively:
+
+{% math() %}
+\begin{gather*}
+\int_{-L}^L \sin \dfrac{n\pi x}{L} dx = 0 \\
+\int_{-L}^L \cos \dfrac{n\pi x}{L} dx = 0
+\end{gather*}
+{% end %}
+
+This means that entire second term goes to zero, giving us:
+
+{% math() %}
+\begin{align*}
+\int_{-L}^L f(x)dx &= \int_{-L}^L\dfrac{A_0}{2}dx + \cancel{\sum_{n = 1}^\infty \left[A_n\int_{-L}^L \cos \dfrac{n\pi x}{L}dx + B_n\int_{-L}^L \sin \dfrac{n\pi x}{L}dx\right] dx}^0 \\
+&= \int_{-L}^L\dfrac{A_0}{2}dx \\
+&= \dfrac{A_0}{2} (L - (-L)) \\
+&= \dfrac{A_0}{2} (2L)  \\
+&= A_0 L
+\end{align*}
+{% end %}
+
+Therefore, rearranging yields an exact expression for $A_0$:
+
+{% math() %}
+A_0 = \dfrac{1}{L} \int_{-L}^L f(x)dx
+{% end %}
+
+To obtain $A_n$ and $B_n$, we use the integral identities:
+
+{% math() %}
+\begin{align*}
+\int_{-L}^L \cos \dfrac{n\pi x}{L} \cos \dfrac{m\pi x}{L} dx &= \begin{cases}
+L, & n = m, \text{ where } n, m \neq 0 \\
+0, & n \neq m \\
+2L, & n = m, n = m = 0 \\
+\end{cases}  \\
+\int_{-L}^L \cos \dfrac{n\pi x}{L} \sin \dfrac{m\pi x}{L} dx &= 0 \\
+\int_{-L}^L \sin \dfrac{n\pi x}{L} \sin \dfrac{m\pi x}{L} dx &= \begin{cases}
+1, & n = m \text{ where } n, m \neq 0 \\
+0, & n \neq m
+\end{cases}
+\end{align*}
+{% end %}
+
+The $A_n$ coefficient can be found by multiplying $f(x)$ by $\cos \dfrac{m\pi x}{L}$ and integrating both sides. Upon then applying the integral identities, we have:
+
+{% math() %}
+\begin{align*}
+f(x) &= \dfrac{A_0}{2} + \sum_{n = 1}^\infty \left[A_n \cos \dfrac{n\pi x}{L}  + B_n \sin \dfrac{n\pi x}{L}\right] \\
+f(x) \cos \dfrac{m\pi x}{L} &= \dfrac{A_0}{2}\cos \dfrac{m\pi x}{L} + \sum_{n = 1}^\infty \bigg[A_n \cos \dfrac{n\pi x}{L}\cos \dfrac{m\pi x}{L} \\ &\qquad+ B_n \sin \dfrac{n\pi x}{L}\cos \dfrac{m\pi x}{L}\bigg] \\
+\int_{-L}^L  f(x) \cos \dfrac{n\pi x}{L} dx &= \int_{-L}^L\dfrac{A_0}{2}dx + \sum_{n = 1}^\infty \bigg[A_n\int_{-L}^L \cos \dfrac{n\pi x}{L} \cos \dfrac{m\pi x}{L}dx \\
+&\qquad + B_n\int_{-L}^L \sin \dfrac{n\pi x}{L}\cos \dfrac{m\pi x}{L}dx\bigg] dx \\
+&= \cancel{\int_{-L}^L\dfrac{A_0}{2}dx}^0 + \sum_{n = 1}^\infty \bigg[A_n\int_{-L}^L \cos \dfrac{n\pi x}{L} \cos \dfrac{m\pi x}{L}dx \\
+&\qquad + B_n\cancel{\int_{-L}^L \sin \dfrac{n\pi x}{L}\cos \dfrac{m\pi x}{L}dx}^0\bigg] dx \\
+&= \sum_{n = 1}^\infty A_n\int_{-L}^L \cos \dfrac{n\pi x}{L} \cos \dfrac{m\pi x}{L}dx
+\end{align*}
+{% end %}
+
+Notice that with the above trigonometric identities, since the integral of $\cos(n\pi x/L) \cos (m\pi x/L)$ is zero _unless_ $m = n$, all the terms in the infinite series collapse other than those for which $m = n$ (which evaluates to $L$ by our above integral identities). We ignore the case that $m = n = 0$ since our series sums from $n = 1$. In mathematical terms, since:
+
+{% math() %}
+\begin{align*}
+A_n\int_{-L}^L \cos \dfrac{n\pi x}{L} \cos \dfrac{m\pi x}{L}dx &=
+\begin{cases}
+A_nL, & m = n \\
+0, & m \neq n \\
+\end{cases}
+\end{align*}
+{% end %}
+
+Then it follows that the _only_ term in the series that is nonzero is the term for which $m = n$, and the series converges to:
+
+{% math() %}
+\begin{align*}
+\sum_{n = 1}^\infty A_n\int_{-L}^L \cos \dfrac{n\pi x}{L} \cos \dfrac{m\pi x}{L}dx &= 0 + 0 + \dots + 0 + A_n L \\
+&= A_n L
+\end{align*}
+{% end %}
+
+But we know that above infinite series is _also_ equal to $\displaystyle \int_{-L}^L  f(x) \cos \dfrac{n\pi x}{L} dx$. Thus, we have:
+
+{% math() %}
+\begin{align*}
+\int_{-L}^L  f(x) \cos \dfrac{n\pi x}{L} dx = A_n L \\
+\Rightarrow A_n = \dfrac{1}{L} \int_{-L}^L f(x) \cos \dfrac{n\pi x}{L} dx
+\end{align*}
+{% end %}
+
+Almost the exact same process can be used to find $B_n$: multiply $f(x)$ by $\sin \dfrac{n\pi x}{L}$, and then integrate both sides, leading to an infinite series that is all zero except for the term for which $n = m$, meaning it converges to zero. This process is what leads to the formulas:
+
+{% math() %}
+\begin{gather*}
+A_n = \dfrac{1}{L} \int_{-L}^L f(x) \cos \dfrac{n\pi x}{L} dx \\
+B_n = \dfrac{1}{L} \int_{-L}^L f(x) \sin \dfrac{n\pi x}{L} dx \\
+\end{gather*}
+{% end %}
+
+### Complex form of the Fourier Series
+
+We have extensively discussed the Fourier Series in its most conventional trigonometric form, as an infinite sum of sines and cosines. But there is also an _alternative_ form of the Fourier series, expressed using complex-valued functions. To show why this is the case, recall **Euler's formula**, which relates sinusoids to complex exponential functions:
+
+{% math() %}
+e^{i\phi} = \cos \phi + i \sin \phi
+{% end %}
+
+Euler's formula leads to following _complex-valued_ definitions for the sine and cosine:
+
+{% math() %}
+\begin{matrix*}
+\cos \phi = \dfrac{e^{i\phi} + e^{-i\phi}}{2}, & \sin \phi = \dfrac{e^{i\phi} - e^{-i\phi}}{2i}
+\end{matrix*}
+{% end %}
+
+Using these formulas allows us to find the **complex form** of the Fourier Series, given by:
+
+{% math() %}
+\begin{gather*}
+f(x) = \sum_{n = -\infty}^\infty C_n \exp \left(i\dfrac{n\pi x}{L}\right), \\
+C_n = \dfrac{1}{2L} \int_{-L}^L f(x) \exp \left(-i\dfrac{n\pi x}{L}\right)
+\end{gather*}
+{% end %}
+
+> **Note:** If $f(x)$ is a **real-valued** function, then its Fourier series representation must have coefficients that satisfy $C_n = C_{-n}^*$, where the asterisk represents the complex conjugate.
+
+The complex form of the Fourier series has a number of advantages over the conventional trigonometric form. First, one needs to only compute one coefficient ($C_n$) rather than three ($A_0, A_n, B_n$). In addition, the unique properties of the exponential function, given that it follows the  properties of exponents and has a very simple derivative (and integral), make it much easier to work with. So, it is often preferred over the trigonometric form. For instance, let us compute the coefficients $C_n$ of the exponential function $f(x) = e^x$. We have:
+
+{% math() %}
+\begin{align*}
+C_n &= \dfrac{1}{2L} \int_{-L}^L f(x) \exp \left(-i\dfrac{n\pi x}{L}\right) \\
+&= \dfrac{1}{2} \int_{-1}^1 e^x e^{-i (n\pi x)} dx \\
+&= \dfrac{1}{2} \int_{-1}^1 \exp(x(1 - i\pi n)) dx \\
+&= \dfrac{1}{2}\left[\dfrac{\exp(x(1 - in\pi))}{1- in\pi}\right]_{-1}^1 \\
+&= \dfrac{1}{2} \dfrac{\exp(1 - i n\pi) - \exp(in\pi - 1)}{1 - in\pi} \\
+&= \dfrac{\sinh(1 - in\pi)}{1-in\pi}
+\end{align*}
+{% end %}
+
+Note how the integrals are significantly easier, and in addition, we only needed to solve for one single coefficient $C_n$. But the complex form still carries the same information as the real-valued sinusoidal form; for all real-valued functions, the complex form of the Fourier series (which we will call from this point on as just the "complex form") provides the same information as the sinusoidal form of the Fourier series we have seen so far. In fact, the coefficients $C_n$ in the complex form of the Fourier series can be _directly related_ to the coefficients $A_0, A_n, B_n$ in the trigonometric form:
+
+{% math() %}
+C_n = \begin{cases}
+\dfrac{A_0}{2}, n = 0 \\
+\frac{1}{2}(A_n + B_n), & n = 1, 2, 3, \dots \\
+\dfrac{1}{2}(A_n - B_n), & n = -1, -2, -3, \dots
+\end{cases}
+{% end %}
+
+### Orthogonality and general Fourier Series
+
+The Fourier series written in terms of sines and cosines is not the most general expression of the Fourier series. This is because while we picked sine and cosine to be our basis functions for our Fourier series (or complex exponentials for the generalization to complex-valued functions), _any_ set of orthogonal bases can be expressed as a linear superposition of any other set. For instance, consider the basis of _Legendre polynomials_. These polynomials form a complete, orthogonal set of bases; the first few Legendre polynomials take the form:
+
+{% math() %}
+\begin{align*}
+P_0(x) &= 1 \\
+P_1(x) &= x \\
+P_2(x) &= \dfrac{3x^2 - 1}{2} \\
+P_3(x) &= \dfrac{5x^3 - 3x}{2} \\
+P_4(x) &= \dfrac{35 x^4 - 30x^2 +3}{8} \\
+P_5(x) &= \dfrac{63x^5 - 70x^3 + 15x}{8}
+\end{align*}
+{% end %}
+
+The crucial property of the Legendre polynomials, which allows them to form an orthogonal basis, is their _orthogonality relation_:
+
+{% math() %}
+\int_{-1}^1 P_\ell(x) P_{\ell'}(x) dx = \dfrac{2}{2\ell + 1} \delta_{\ell' \ell} =\begin{cases}
+0, & \ell \neq \ell' \\
+\dfrac{2}{2\ell + 1}, & \ell = \ell'
+\end{cases} 
+{% end %}
+
+In general, the bases of all Fourier series (including sine series, cosine series, full trigonometric series & complex exponential form) are _all_ orthogonal, and therefore we can interchange them freely by a change of basis. For this, we write one basis as a linear superposition of the basis functions of another basis. For instance, for the Legendre polynomials, we may write:
+
+{% math() %}
+\sin(n\pi x) = \sum_{\ell = 1}^\infty A_\ell P_\ell(x)
+{% end %}
+
+More general Fourier series can be composed from *any* orthogonal functional basis, which include the Chebyshev polynomials, Laguerre polynomials, Legendre polynomials, spherical harmonics, and other special functions that possess the properties of **orthogonality** and **completeness**. For some arbitrary functional basis $Y_n(x)$, we may therefore express a given function $f(x)$ in series form as:
+
+{% math() %}
+f(x) = \sum_{n = 1}^\infty A_n Y_n(x)
+{% end %}
+
+And because of orthogonality it must be the case that:
+
+{% math() %}
+\int_a^b f(x) Y_m^*(x)dx = \int_a^b \sum_{n = 1}^\infty A_n Y_n(x) Y_m^*(x) dx = A_m \int_a^b |Y_m(x)|^2 dx
+{% end %}
+
+Therefore, we have a straightforward, if tedious, way to find any coefficient $A_m$. Indeed, _if_ the functional basis is also _orthonormal_, meaning that on an interval $[a, b]$ it obeys $N = \displaystyle \int_a^b |Y_m(x)|^2 dx = 1$, then the expression for $A_m$ becomes simply:
+
+{% math() %}
+A_m = \int_a^b f(x) Y_m^*(x)dx
+{% end %}
+
+Whereas if the functional basis is not orthonormal, we simply divide by $N$, to have:
+
+{% math() %}
+A_m = \dfrac{1}{N}\int_a^b f(x) Y_m^*(x)dx
+{% end %}
+
+As we can see, Fourier series are not limited to sinusoids. Using the more general form of the Fourier series allows us to express nearly _any_ function as a series expansion in any functional basis of our choice, making them extremely powerful mathematical tools.
+
+## Laplace's equation and harmonic functions
+
+Laplace's equation $\nabla^2 f = 0$ is one of the most fundamental PDEs in mathematical physics. It describes everything from the gravitational attraction of masses in classical mechanics, to the electric potential in electromagnetic theory, to the shape of a thin film, to the distribution of heat for an object in equilibrium, to irrotational flows of gases for aircraft wing design. Naturally, solving the Laplace equation is extremely crucial to many, many different fields. We will therefore devote this entire section to studying the Laplace equation.
+
+### Properties of harmonic functions
+
+From naive inspection of Laplace's equation, one may _think_ that $\nabla^2 f = 0$ _implies_ $f = 0$. This is an **incorrect assumption**, because while in many cases, the trivial solution $f = 0$ is _a possible solution_, there exist **non-trivial solutions** that also satisfy Laplace's equation. Notably, all functions of the form $f(r) = \pm\dfrac{k}{r}$ for some constant $k$ satisfy Laplace's equation, which has very important consequences in physics, although solutions in this form are **definitely not the only type** of solutions. In mathematical terminology, all solutions to Laplace's equation are formally known as **harmonic functions**, and other than sharing a few general features (such as time independence and generally being expressible as an infinite series of some sort) they are quite different.
+
+But those shared general features are quite significant. For instance in complex analysis, the **Cauchy-Riemann theorem** says that for any analytic complex-valued function $f(z) = u + i v$ (analytic means that it can be expressed as a power series), the functions $u = u(x, y)$ and $v=v(x, y)$ satisfy:
+
+{% math() %}
+\begin{align*}
+\dfrac{\partial u}{\partial x} = \dfrac{\partial v}{\partial y} \\
+\dfrac{\partial u}{\partial y} = -\dfrac{\partial v}{\partial x}
+\end{align*}
+{% end %}
+
+And $u$ and $v$ respectively both satisfy Laplace's equation:
+
+{% math() %}
+\nabla^2 u = 0, \quad \nabla^2 v=0
+{% end %}
+
+Furthermore, harmonic functions are **unique** - for well-posed boundary-value problems, Laplace's equation yields **one and only one solution**. It is one of the rare cases where we can **prove** that a PDE's solutions are _guaranteed_ to be unique - finding [a similar proof for the Navier-Stokes PDEs](https://www.claymath.org/millennium/navier-stokes-equation/) will give you $1 million dollars!
+
+Finally, harmonic functions satisfy a **maximum principle** and a **minimum principle**. We won't prove either here; we will just state the results:
+
+> **The maximum principle for Laplace's equation:** A solution $u$ to Laplace's equation on a domain $D$ attains its maximum value (if one exists) on the **boundary** of $D$.
+
+> **The minimum principle for Laplace's equation:** A solution $u$ to Laplace's equation on a domain $D$ also attains its minimum value (if one exists) on the **boundary** of $D$.
+
+### The Laplace operator in Cartesian coordinates
+
+Like any linear partial differential equation, the Laplace equation can be written in terms of a _linear operator_ $\mathcal{L}$ such that $\mathcal{L} f = 0$. In our case, the linear operator for the Laplace equation is the **Laplacian**, also called the Laplace operator, written as $\nabla^2$ (it is also common to use the symbol $\Delta$). In two dimensions, it takes the form:
+
+{% math() %}
+\nabla^2_\text{(2D)} = \dfrac{\partial^2}{\partial x^2} + \dfrac{\partial^2}{\partial y^2}
+{% end %}
+
+Meanwhile, in three dimensions, it takes the form:
+
+{% math() %}
+\nabla^2_\text{(3D)} = \dfrac{\partial^2}{\partial x^2} + \dfrac{\partial^2}{\partial y^2} + \dfrac{\partial^2}{\partial z^2}
+{% end %}
+
+> **Note:** it is very important to note that the Laplace operator only contains spatial derivatives, meaning that Laplace equation is **time-independent**, unlike the wave equation and heat equation (which are time-dependent PDEs). This is why Laplace's equation is often used for describing **steady-state systems** where the system has settled to an equilibrium state and no longer changes with time.
+
+### 2D Laplace operator in polar coordinates
+
+We now derive the 2D Laplace operator (Laplacian) in two dimensions in polar coordinates. Recall that using $x = r\cos \theta, y = r\sin \theta$, where we have $r = \sqrt{x^2 + y^2}$ and $\theta = \tan^{-1}(y/x)$. Thus, we can rewrite the  
+
+{% math() %}
+\begin{align*}
+\dfrac{\partial}{\partial x} &= \dfrac{\partial r}{\partial x} \dfrac{\partial}{\partial r} + \dfrac{\partial \theta}{\partial x} \dfrac{\partial}{\partial \theta} \\
+&= \cos \theta \dfrac{\partial}{\partial r} - \dfrac{\sin \theta}{r} \dfrac{\partial}{\partial \theta} \\
+\dfrac{\partial}{\partial y} &= \dfrac{\partial r}{\partial y} \dfrac{\partial}{\partial r} + \dfrac{\partial \theta}{\partial y} \dfrac{\partial}{\partial \theta} \\
+&= \sin \theta \dfrac{\partial}{\partial r} + \dfrac{\cos \theta}{r} \dfrac{\partial}{\partial \theta}
+\end{align*}
+{% end %}
+
+Thus, substituting these formulas for the partial derivatives into the Laplacian operator, we have:
+
+{% math() %}
+\begin{align*}
+\nabla^2_\text{(2D)} &= \dfrac{\partial^2}{\partial x^2} + \dfrac{\partial^2}{\partial y^2} \\
+&= \dfrac{\partial}{\partial x} \left(\dfrac{\partial}{\partial x}\right) + \dfrac{\partial}{\partial y}\left(\dfrac{\partial}{\partial y}\right) \\
+\end{align*}
+{% end %}
+
+We'll calculate the two second partial derivatives one by one. For the 2nd partial derivative in $x$ we have: 
+
+{% math() %}
+\begin{align*}
+\dfrac{\partial}{\partial x} \left(\dfrac{\partial}{\partial x}\right) &= \cos^{2}\theta\frac{\partial^{2}}{\partial r^{2}}-2\left(\frac{\sin\theta\cos\theta}{r}\right)\frac{\partial^{2}}{\partial r\partial\theta} \\
+ & \qquad +\frac{\sin^{2}\theta}{r^{2}}\frac{\partial^{2}}{\partial\theta^{2}}+\frac{2\sin\theta\cos\theta}{r^{2}}\frac{\partial}{\partial\theta}+\frac{\sin^{2}\theta}{r}\frac{\partial}{\partial r}
+\end{align*}
+{% end %}
+
+Meanwhile, for the 2nd partial derivative in $y$ we have:
+
+{% math() %}
+\begin{align*}
+\dfrac{\partial}{\partial y} \left(\dfrac{\partial}{\partial y}\right) &= \sin^{2}\theta\frac{\partial^{2}}{\partial r^{2}}+2\left(\frac{\sin\theta\cos\theta}{r}\right)\frac{\partial^{2}}{\partial r\partial\theta} \\
+ & \qquad+\frac{\cos^2\theta}{r^2}\frac{\partial^2}{\partial\theta^2}-\frac{2\sin\theta\cos\theta}{r^2}\frac{\partial}{\partial\theta}+\frac{\cos^2\theta}{r}\frac{\partial}{\partial r}
+\end{align*}
+{% end %}
+
+Putting it all together, we have:
+
+{% math() %}
+\begin{align*}
+\nabla^2_\text{(2D)} &= \dfrac{\partial}{\partial x} \left(\dfrac{\partial}{\partial x}\right) + \dfrac{\partial}{\partial y}\left(\dfrac{\partial}{\partial y}\right) \\
+&= \cos^{2}\theta\frac{\partial^{2}}{\partial r^{2}}
+-\cancel{2\left(\frac{\sin\theta\cos\theta}{r}\right)\frac{\partial^{2}}{\partial r\partial\theta}} \\
+ & \qquad +\frac{\sin^{2}\theta}{r^{2}}\frac{\partial^{2}}{\partial\theta^{2}}
+ +\cancel{\frac{2\sin\theta\cos\theta}{r^{2}}\frac{\partial}{\partial\theta}}+\frac{\sin^{2}\theta}{r}\frac{\partial}{\partial r} \\
+ & \qquad + \sin^{2}\theta\frac{\partial^{2}}{\partial r^{2}}
+ +\cancel{2\left(\frac{\sin\theta\cos\theta}{r}\right)\frac{\partial^{2}}{\partial r\partial\theta}} \\
+ & \qquad+\frac{\cos^2\theta}{r^2}\frac{\partial^2}{\partial\theta^2}
+ -\cancel{\frac{2\sin\theta\cos\theta}{r^2}\frac{\partial}{\partial\theta}}
+ +\frac{\cos^2\theta}{r}\frac{\partial}{\partial r} \\
+ &= \cancel{(\sin^2 \theta + \cos^2 \theta)}^1 \dfrac{\partial^2}{\partial r^2}
+ + \dfrac{\cancel{(\sin^2 \theta + \cos^2 \theta)}^1}{r} \dfrac{\partial}{\partial r}
+ + \dfrac{\cancel{\sin^2 \theta + \cos^2 \theta}^1}{r^2} \dfrac{\partial^2}{\partial \theta^2} \\
+ &= \dfrac{\partial^2}{\partial r^2} + \dfrac{1}{r} \dfrac{\partial}{\partial r} + \dfrac{1}{r^2} \dfrac{\partial^2}{\partial \theta^2}
+\end{align*}
+{% end %}
+
+And thus we have derived the 2D Laplacian in polar coordinates:
+
+{% math() %}
+\nabla^2_\text{(2D)} = \dfrac{\partial^2}{\partial r^2} + \dfrac{1}{r} \dfrac{\partial}{\partial r} + \dfrac{1}{r^2} \dfrac{\partial^2}{\partial \theta^2}
+{% end %}
+
+Note that it is common to write the 2D polar Laplacian in a condensed form as:
+
+{% math() %}
+\nabla^2_\text{2D} = \dfrac{1}{r} \dfrac{\partial}{\partial r} \left(r \dfrac{\partial}{\partial r}\right) + \dfrac{1}{r^2} \dfrac{\partial^2}{\partial \theta^2}
+{% end %}
+
+### 3D Laplace operator in cylindrical coordinates
+
+Let us now move forward to three dimensions. In 3D, the two most common non-Cartesian coordinates are **cylindrical coordinates** and **spherical coordinates**. We will examine the Laplace operator for both, but we'll start with cylindrical coordinates.
+
+Thankfully, the expression of the Laplace operator in cylindrical coordinates is fairly straightforward to find. This is because cylindrical coordinates are essentially just polar coordinates extended to 3D; its coordinate conversions to Cartesian are simply $x = r \cos \theta, y = r \sin \theta, z = z$. Thus, we can express the Laplace operator in 3D as:
+
+{% math() %}
+\begin{align*}
+\nabla^2_\text{(3D)} &= \dfrac{\partial^2}{\partial x^2} + \dfrac{\partial^2}{\partial y^2} + \dfrac{\partial^2}{\partial z^2} \\
+&= \nabla^2_\text{2D} + \dfrac{\partial^2}{\partial z^2} \\
+&= \dfrac{\partial^2}{\partial r^2} + \dfrac{1}{r} \dfrac{\partial}{\partial r} + \dfrac{1}{r^2} \dfrac{\partial^2}{\partial \theta^2} + \dfrac{\partial^2}{\partial z^2} \\ \\
+&= \dfrac{1}{r} \dfrac{\partial}{\partial r} \left(r \dfrac{\partial}{\partial r}\right) + \dfrac{1}{r^2} \dfrac{\partial^2}{\partial \theta^2} + \dfrac{\partial^2}{\partial z^2}
+\end{align*}
+{% end %}
+
+### 3D Laplace operator in spherical coordinates
+
+As the last part in our _tour de force_, let us calculate the formidable Laplace operator in spherical coordinates. Or rather, let's not. Unfortunately, the mathematics are so long and complicated that we will just state the end result:
+
+{% math() %}
+\nabla^2_\text{(3D)} = {1 \over r^{2}}{\partial  \over \partial r}\!\left(r^{2}{\partial f \over \partial r}\right)\!+\!{1 \over r^{2}\!\sin \theta }{\partial  \over \partial \theta }\!\left(\sin \theta {\partial f \over \partial \theta }\right)\!+\!{1 \over r^{2}\!\sin ^{2}\theta }{\partial ^{2}f \over \partial \varphi ^{2}}
+{% end %}
+
+> **Note:** Here, we use $(r, \theta, \phi)$ as our coordinates, where $\theta \in [0, \pi]$ and $\phi \in [0, 2\pi]$, which is predominantly used in physics and engineering. However, take caution, because (especially in mathematics literature) it is common to switch $\theta, \phi \to \phi, \theta$, and for $r$ to be denoted $\rho$.
