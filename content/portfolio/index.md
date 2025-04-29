@@ -6,7 +6,7 @@ date = 2024-11-06
 nonarticle = true
 +++
 
-<p>This page contains my professional and academic information as well as <a href="Resume-Jacky-Song-Latest.pdf">my resume here</a>; refer to this page for professional inquiries.</p>
+<p>This page contains my professional and academic information as well as <a href="./portfolio/Resume-Jacky-Song-Latest.pdf">my resume here</a>; refer to this page for professional inquiries.</p>
 
 <!--more-->
 
