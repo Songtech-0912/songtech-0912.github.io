@@ -688,9 +688,9 @@ We use the curly braces around the derivatives to indicate that the $(\mathbf{r}
 
 {% math() %}
 D^2 = \begin{bmatrix}
-\dfrac{\partial^2 f}{\partial x_1^2} & \dfrac{\partial^2 f}{\partial x_1 \partial x_2} & \dots & \dfrac{\partial^2 f}{\partial x_1 \partial x_n} \\
-\dfrac{\partial^2 f}{\partial x_2 x_1} & \dfrac{\partial^2 f}{\partial x_2^2} & \dots & \dfrac{\partial^2 f}{\partial x_2 \partial x_n} \\
-\vdots & \vdots & \ddots & \vdots \\
+\dfrac{\partial^2 f}{\partial x_1^2} & \dfrac{\partial^2 f}{\partial x_1 \partial x_2} & \dots & \dfrac{\partial^2 f}{\partial x_1 \partial x_n} \\[10pt]
+\dfrac{\partial^2 f}{\partial x_2 x_1} & \dfrac{\partial^2 f}{\partial x_2^2} & \dots & \dfrac{\partial^2 f}{\partial x_2 \partial x_n} \\[10pt]
+\vdots & \vdots & \ddots & \vdots \\[10pt]
 \dfrac{\partial^2 f}{\partial x_n \partial x_1} & \dfrac{\partial^2 f}{\partial x_n \partial x_2} & \dots & \dfrac{\partial^2 f}{\partial x_n^2}
 \end{bmatrix}
 {% end %}
@@ -700,7 +700,7 @@ A useful reminder is that the $(i, j)$ entry of the Hessian matrix is given by $
 {% math() %}
 D^2_{(x, y)} =
 \begin{bmatrix}
-\dfrac{\partial^2 f}{\partial x^2} & \dfrac{\partial^2 f}{\partial x \partial y} \\
+\dfrac{\partial^2 f}{\partial x^2} & \dfrac{\partial^2 f}{\partial x \partial y} \\[10pt]
 \dfrac{\partial^2 f}{\partial y \partial x} & \dfrac{\partial^2 f}{\partial y^2}
 \end{bmatrix}
 {% end %}
@@ -861,33 +861,33 @@ Thankfully, there is a way to find the derivative of the inverse of a multivaria
 
 > **Inverse function theorem:** For given invertible function $f : \mathbb{R}^n \rightarrow \mathbb{R}^m$ given by $f = \langle f_1, f_2, f_3 \ldots f_i \ldots f_{m - 1}, f_m \rangle$ where $f_i = f_i (x_1, x_2, x_3 \ldots x_i \ldots x_{n - 1}, x_n)$ whose inverse  $f^{- 1} : \mathbb{R}^m \rightarrow \mathbb{R}^n$ is given by $f^{-1} = \langle x_1 (f_i), x_2  (f_i), x_3  (f_i) \ldots x_i  (f_i) \ldots x_{n - 1} (f_i), x_n  (f_i) \rangle$ then, given the Jacobian matrix $J [f]$ exists, then $(J [f^{- 1}]) = (J [f])^{- 1}$.
 
-To gain some greater insight, it may be helpful to express it in matrix form, for which we have the following:
+To gain some greater insight, we can express it in matrix form, for which we have the following:
 
 {% math() %}
 % Jacobian of f^(-1)
 \begin{bmatrix}
 % row 1
-\frac{\partial x_1}{\partial f_1} & \frac{\partial x_1}{\partial f_2}  & \frac{\partial x_1}{\partial f_3} & \dots \frac{\partial x_1}{\partial f_m} \\
+\frac{\partial x_1}{\partial f_1} & \frac{\partial x_1}{\partial f_2}  & \frac{\partial x_1}{\partial f_3} & \dots \frac{\partial x_1}{\partial f_m} \\[8pt]
 % row 2
-\frac{\partial x_2}{\partial f_1} & \frac{\partial x_2}{\partial f_2}  & \frac{\partial x_2}{\partial f_3} & \dots \frac{\partial x_2}{\partial f_m} \\
+\frac{\partial x_2}{\partial f_1} & \frac{\partial x_2}{\partial f_2}  & \frac{\partial x_2}{\partial f_3} & \dots \frac{\partial x_2}{\partial f_m} \\[8pt]
 % row 3
-\frac{\partial x_3}{\partial f_1} & \frac{\partial x_3}{\partial f_2}  & \frac{\partial x_3}{\partial f_3} & \dots \frac{\partial x_3}{\partial f_m} \\
+\frac{\partial x_3}{\partial f_1} & \frac{\partial x_3}{\partial f_2}  & \frac{\partial x_3}{\partial f_3} & \dots \frac{\partial x_3}{\partial f_m} \\[8pt]
 % row 4
-\vdots & \vdots  & \vdots & \ddots & \vdots \\
+\vdots & \vdots  & \vdots & \ddots & \vdots \\[8pt]
 % row 5 
-\frac{\partial x_n}{\partial f_1} & \frac{\partial x_n}{\partial f_2}  & \frac{\partial x_n}{\partial f_3} & \dots \frac{\partial x_n}{\partial f_m} \\
+\frac{\partial x_n}{\partial f_1} & \frac{\partial x_n}{\partial f_2}  & \frac{\partial x_n}{\partial f_3} & \dots \frac{\partial x_n}{\partial f_m} \\[8pt]
 \end{bmatrix} =
 % Inverse of the Jacobian of f
 \begin{bmatrix}
 % row 1
 \frac{\partial f_1}{\partial x_1} & \frac{\partial f_1}{\partial x_2} & \frac{\partial f_1}{\partial x_3} & \dots & \frac{\partial f_1}{\partial x_n}
- \\
+ \\[8pt]
  % row 2
- \frac{\partial f_2}{\partial x_1} & \frac{\partial f_2}{\partial x_2} & \frac{\partial f_2}{\partial x_3} & \dots & \frac{\partial f_2}{\partial x_n} \\
+ \frac{\partial f_2}{\partial x_1} & \frac{\partial f_2}{\partial x_2} & \frac{\partial f_2}{\partial x_3} & \dots & \frac{\partial f_2}{\partial x_n} \\[8pt]
  % row 3
- \frac{\partial f_3}{\partial x_1} & \frac{\partial f_3}{\partial x_2} & \frac{\partial f_3}{\partial x_3} & \dots & \frac{\partial f_3}{\partial x_n} \\
+ \frac{\partial f_3}{\partial x_1} & \frac{\partial f_3}{\partial x_2} & \frac{\partial f_3}{\partial x_3} & \dots & \frac{\partial f_3}{\partial x_n} \\[8pt]
  % row 4
- \vdots & \vdots  & \vdots & \ddots & \vdots \\
+ \vdots & \vdots  & \vdots & \ddots & \vdots \\[8pt]
  % row 5
  \frac{\partial f_m}{\partial x_1} & \frac{\partial f_m}{\partial x_2} & \frac{\partial f_m}{\partial x_3} & \dots & \frac{\partial f_m}{\partial x_n}
 \end{bmatrix}^{-1}
@@ -905,7 +905,7 @@ By the chain rule we have:
 
 {% math() %}
 \begin{align*}
-\dfrac{\partial z}{\partial x} = \dfrac{\partial z}{\partial u} \dfrac{\partial u}{\partial x} + \dfrac{\partial z}{\partial v} \dfrac{\partial v}{\partial x} \\
+\dfrac{\partial z}{\partial x} = \dfrac{\partial z}{\partial u} \dfrac{\partial u}{\partial x} + \dfrac{\partial z}{\partial v} \dfrac{\partial v}{\partial x} \\[10pt]
 \dfrac{\partial z}{\partial y} = \dfrac{\partial z}{\partial u} \dfrac{\partial u}{\partial y} + \dfrac{\partial z}{\partial v} \dfrac{\partial v}{\partial y} \\
 \end{align*}
 {% end %}
@@ -925,14 +925,14 @@ Expanding the Jacobians leads to the following transformation matrix equation:
 {% math() %}
 \underbrace{
 \begin{bmatrix}
-\dfrac{\partial u}{\partial x} & \dfrac{\partial u}{\partial y} \\
+\dfrac{\partial u}{\partial x} & \dfrac{\partial u}{\partial y} \\[10pt]
 \dfrac{\partial v}{\partial x} & \dfrac{\partial v}{\partial y}
 \end{bmatrix} 
 }_{\text{unknown derivatives of }g(u, v)}
 = 
 \underbrace{
 \begin{bmatrix}
-\dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v} \\
+\dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v} \\[10pt]
 \dfrac{\partial y}{\partial u} & \dfrac{\partial y}{\partial v} 
 \end{bmatrix}^{-1}
 }_{\text{known derivatives of }f(x, y)}
