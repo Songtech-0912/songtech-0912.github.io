@@ -262,7 +262,7 @@ F(x) = \dfrac{2}{\pi} \int_0^\pi F(x) \sin (nx)
 Which we have plotted below:
 
 {{ natural_img(
-src="./laplace-2d-solution.svg"
+src="../laplace-2d-solution.svg"
 desc="A surface plot of the solution to Laplace's equation for our boundary-value problem"
 ) }}
 

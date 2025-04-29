@@ -246,7 +246,7 @@ From first appearance, this PDE may _appear_ to be elliptic, as evidenced by the
 Which is a _parabolic_ differential equation. Finally, if we have $|x| < |y|$, the second term would then become _negative_, which is a _hyperbolic_ differential equation. This is why we classify this PDE as a mixed-type, as it is classified differently depending on region. Below is a graph of the regions in which the PDE takes each type (red represents $|x|>|y|$ and thus *elliptic*, blue represents $|x| < |y|$ and thus *hyperbolic*, and the dashed black line represents $|x| = |y|$ and thus parabolic):
 
 {{ natural_img(
-src="./mixed-type-pde.svg"
+src="../mixed-type-pde.svg"
 desc="A graph showing the PDE's different regions, with regions between the lines y = x and y = -x being elliptic, regions on either line being parabolic, and all other regions being hyperbolic."
 ) }}
 

@@ -252,7 +252,7 @@ In this problem, a pendulum is attached to a string of length $\ell$ which makes
 
 Let us set up the coordinates to make this problem as convenient as possible. First, let us set our $+y$ axis to be the *downward-pointing* direction. Let our $x$ axis be centered at the position at which the pendulum is attached (i.e. its origin is at the pendulum's attachment point).
 
-{{ diagram(src="simple-pendulum.excalidraw.svg") }}
+{{ diagram(src="../simple-pendulum.excalidraw.svg") }}
 
 With this information, then the position of the pendulum at time $t$ is given by:
 
@@ -335,7 +335,7 @@ When an object is placed within a rotating object, it is common to say that the 
 
 Consider a moving disk of radius $R$ and mass $M$ that rotates at angular velocity $\omega$ (ignore gravity). A small mass $m$ is placed at the edge of the disk (note: the figure below shows it _slightly_ less than the edge, but it is only for visual clarity). A diagram of our physical scenario is below:
 
-{{ diagram(src="centrifugal-force.excalidraw.svg") }}
+{{ diagram(src="../centrifugal-force.excalidraw.svg") }}
 
 If the disk was non-spinning, the position of the mass, relative to the center of the spinnning disk (which is the origin of our rotating coordinate system), would be given by:
 
@@ -417,7 +417,7 @@ The negative sign means that the angular acceleration vector is actually pointin
 
 Where $\vec r$ is the radial vector that points from the axis of rotation to the mass. Thus by the right-hand rule, since the angular acceleration is pointing downards, we find that the acceleration vector actually points _outwards_, as shown in the below diagram:
 
-{{ diagram(src="rotational-lagrangian-example.excalidraw.svg") }}
+{{ diagram(src="../rotational-lagrangian-example.excalidraw.svg") }}
 
 Thus we find that there _appears_ to be a "force" that pushes the particle outwards and produces the acceleration $\vec a$ observed. In reality, such a force _does not exist_. We can prove this as follows: from the expression $\vec \alpha = - \omega \dot \phi \sin(\phi - \omega t)$, if we take the limit as $\omega \to 0$ (that is, the disk is no longer spinning), then $\vec \alpha \to 0$ and we recover the equations of uniform circular motion (that is, $\ddot \phi = 0$). The "force" (often called the _centrifugal force_) is merely a consequence of our rotating reference frame (remember, we chose a coordinate system that co-rotated with the disk), and if we choose an alternate frame of reference that is _not rotating_, this force vanishes. Thus we have shown that the centrifugal "force" is a fictitious force.
 
@@ -854,7 +854,7 @@ Thus, by simply using the modified version of the Euler-Lagrange equations that 
 Consider a problem where this form of the Euler-Lagrange equation is very useful: the problem of a rolling disk of radius $R$ and mass $m$ moving along the $x$ axis that **rolls without slipping** down an inclined plane due to static friction between the disk and the plane. For this problem, we choose our $x$ axis to be parallel to the surface of the inclined plane. The inclined plane is angled at angle $\phi = \text{const.}$ with respect to the horizontal:
 
 {{ diagram(
-src="./rolling-without-slipping-lagrangian.excalidraw.svg"
+src="../rolling-without-slipping-lagrangian.excalidraw.svg"
 desc="A diagram showing a disk of radius R rolling down an inclined plane, where the x coordinate points down the plane and is parallel to it, and where theta is the angle of the disk's rotation"
 )}}
 
