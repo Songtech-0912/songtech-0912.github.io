@@ -16,7 +16,7 @@ From the scientific revolution until 1905, physics was dominated by **classical 
 
 As this guide is quite long, I have split it into several parts, which are shown below:
 
-> ### The advanced classical mechanics series
+> ### Chapter guide for classical mechanics
 >
 > - [Go to part 1 of the series](@/advanced-classical-mech/index.md) for Newtonian mechanics and special relativity (**this is the part you're reading right now**)
 > - [Go to part 2 of the series](@/advanced-classical-mech/part-2.md) for Lagrangian and Hamiltonian formulations of classical mechanics
@@ -872,3 +872,6 @@ G_{\mu \nu} + \Lambda g_{\mu \nu} = \dfrac{8\pi G}{c^4} T_{\mu \nu}
 
 Where $G_{\mu \nu}$ is a tensor that describes the _curvature_ of spacetime, $\Lambda$ is called the **cosmological constant**, and $T_{\mu \nu}$ is an extension of the four-momentum. A full explanation of general relativity is very complicated. But for those readers interested, see [this online astronomy textbook's chapter on GR](https://galaxiesbook.org/chapters/C.-General-Relativity.html), which contains a concise but still accurate summary of General Relativity.
 
+## Next steps
+
+We've reached the end of the first part of the guide to classical mechanics. Now is the time to continue to [part 2](@/advanced-classical-mech/part-2.md)!

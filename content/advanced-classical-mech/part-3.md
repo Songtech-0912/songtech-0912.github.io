@@ -10,7 +10,7 @@ In this third (and final) part of the classical mechanics series, we delve into 
 
 Again, remember that this is part of the **advanced classical mechanics series**, which I have split into several parts to not be overly long. A complete catalogue of the entire three-part guide is shown below:
 
-> ### The advanced classical mechanics series
+> ### Chapter guide for classical mechanics
 >
 > - [Go to part 1 of the series](@/advanced-classical-mech/index.md) for Newtonian mechanics and special relativity
 > - [Go to part 2 of the series](@/advanced-classical-mech/part-2.md) for Lagrangian and Hamiltonian formulations of classical mechanics

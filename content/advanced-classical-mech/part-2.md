@@ -10,7 +10,7 @@ In this second part of the advanced classical mechanics guide, we go over the La
 
 Again, remember that this is part of the **advanced classical mechanics series**, which I have split into several parts to not be overly long. A complete catalogue of the entire three-part guide is shown below:
 
-> ### The advanced classical mechanics series
+> ### Chapter guide for classical mechanics
 >
 > - [Go to part 1 of the series](@/advanced-classical-mech/index.md) for Newtonian mechanics and special relativity
 > - [Go to part 2 of the series](@/advanced-classical-mech/part-2.md) for Lagrangian and Hamiltonian formulations of classical mechanics (**this is the part you're reading right now**)
@@ -1756,3 +1756,7 @@ f = \dfrac{\omega}{2\pi} = \dfrac{1}{2\pi} \sqrt{\dfrac{U_\text{eff.}''(r_0)}{\m
 {% end %}
 
 From our Lagrangian examination of the central-force problem, we have therefore seen that we can write an _effective potential_ that can be used to reproduce Newton's second law. From here, the familiar forces of Newtonian mechanics naturally appear.
+
+## Next steps
+
+We've reached the end of the second part of the guide to classical mechanics. Now is the time to continue to [part 3](@/advanced-classical-mech/part-3.md)!
