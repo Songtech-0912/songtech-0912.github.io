@@ -214,27 +214,39 @@ The gradient of the surface is a **3D vector** (that has all three of $x, y, z$ 
 
 ## Optimization in multiple variables
 
-In single-variable calculus, we know that if a function $f(x)$ has a local **extrenum** (maximum or minimum) at $x = c$, then $f'(c) = 0$ or $f'(c) = \mathrm{DNE}$ (does not exist). We call $c$ a _critical point_ of $f(x)$. This is **Fermat's theorem**. Note that the converse is not true: $f'(c) = 0$ or $f'(c) = \mathrm{DNE}$ **does not necessarily mean** that there is a local extrenum.
+We would like to be able to optimize multivariable functions, just like we can optimize functions of a single variable. To do so, we can use the generalization of **Fermat's theorem**. But let's first review its simpler case, for functions of one variable; it is given as follows:
 
-In similar fashion to single-variable calculus, we define a _local minimum_ of a function of several variables $f(\mathbf{x})$ as the point $\mathbf{p} = (a, b) \in D$ such that $f(\mathbf{x}) > f(\mathbf{p})$ for all $\mathbf{x}$ in a region $|\mathbf{x}| \leq k$, where $D$ is the domain of the function, and $f(\mathbf{x}) = f(x_1, x_2, x_3, \dots x_n)$ is a shorthand notation.  We define a _local maximum_ of $f(\mathbf{x})$ as the point $\mathbf{p} \in D$ such that $f(\mathbf{x}) < f(\mathbf{p})$ for all $\mathbf{x}$ in a region $|\mathbf{x}| \leq k$. Global minima and maxima have almost exactly the same definition other than the fact that $k$ must extend to the bounds of the domain.
+> **Fermat's theorem in one variable**: If a function $f(x)$ has a local **extrenum** (maximum or minimum) at $x = c$, then $f'(c) = 0$ or $f'(c) = \mathrm{DNE}$ (does not exist). We call $c$ a **critical point** of $f(x)$.
 
-Iff a function of several variables $f(\mathbf{x})$ has a local extrenum at $\mathbf{p}$, then $\nabla f(\mathbf{p}) = 0$ or $\nabla f(\mathbf{p}) = \mathrm{DNE}$ and we say $\mathbf{p}$ is a **critical point**. But simply finding the critical point(s) is **insufficient** for determining local extrema. We must either test all points within a radial region (e.g. open disk for a function of two variables) around the point $\mathbf{p}$ (just like the first derivative test) _or_ we must apply the second derivative test.
+> **Be careful!** Note that the converse is not true: $f'(c) = 0$ or $f'(c) = \mathrm{DNE}$ **does not necessarily mean** that there is a local extrenum.
+
+In similar fashion to single-variable calculus, we can define what a _local minimum_ and _local maximum_ means for a function of several variables. The formal definitions are as follows, although they are not necessary for actually _finding_ the local maxima and minima:
+
+> **Definition:** A _local minimum_ of a function of several variables $f(\mathbf{x})$ as the point $\mathbf{p} = (a, b) \in D$ such that $f(\mathbf{x}) > f(\mathbf{p})$ for all $\mathbf{x}$ in a region $|\mathbf{x}| \leq k$, where $D$ is the domain of the function, and $f(\mathbf{x}) = f(x_1, x_2, x_3, \dots x_n)$ is a shorthand notation for the function.
+
+> **Definition:** A _local maximum_ of $f(\mathbf{x})$ as the point $\mathbf{p} \in D$ such that $f(\mathbf{x}) < f(\mathbf{p})$ for all $\mathbf{x}$ in a region $|\mathbf{x}| \leq k$. Global minima and maxima have almost exactly the same definition other than the fact that $k$ must extend to the bounds of the domain.
+
+Intuitively, if we draw out a multivariable function as a surface, then the minima look just like valleys, and the maxima look just like hilltops. To find the maxima and minima (and saddle points), we can use the _generalization_ of Fermat's theorem:
+
+> **Fermat's theorem in one variable**: If a function of several variables $f(\mathbf{x})$ has a local extrenum at $\mathbf{p}$, then $\nabla f(\mathbf{p}) = 0$ or $\nabla f(\mathbf{p}) = \mathrm{DNE}$. Thus we say $\mathbf{p}$ is a **critical point**.
+
+But simply finding the critical point(s) is **insufficient** for determining local extrema. We must either test all points within a radial region (e.g. open disk for a function of two variables) around the point $\mathbf{p}$ (just like the first derivative test) _or_ we must apply the second derivative test.
 
 The second derivative test determines whether a critical point $\mathbf{p} = (a, b)$ is a local minimum, local maximum, or saddle point. To state the second derivative test, we must first define a function $D^2$ that is given by the following:
 
 {% math() %}
 D^2(x, y) = 
 \begin{vmatrix}
-\dfrac{\partial^2 f}{\partial x^2} & \dfrac{\partial^2 f}{\partial x \partial y} \\
+\dfrac{\partial^2 f}{\partial x^2} & \dfrac{\partial^2 f}{\partial x \partial y} \\[10pt]
 \dfrac{\partial^2 f}{\partial y \partial x} & \dfrac{\partial^2 f}{\partial y^2}
 \end{vmatrix} = \det
 \begin{pmatrix}
-\dfrac{\partial^2 f}{\partial x^2} & \dfrac{\partial^2 f}{\partial x \partial y} \\
+\dfrac{\partial^2 f}{\partial x^2} & \dfrac{\partial^2 f}{\partial x \partial y} \\[10pt]
 \dfrac{\partial^2 f}{\partial y \partial x} & \dfrac{\partial^2 f}{\partial y^2}
 \end{pmatrix}
 {% end %}
 
-Here $D$ is called the **discriminant** and represents the a second-order polynomial centered at $(x, y, z)$, and is the determinant of the **Hessian**, a matrix made of all the second derivatives of a function. The conditions are as follows:
+Here $D^2$ is called the **discriminant** and represents the a second-order polynomial centered at $(x, y, z)$, and is the determinant of the **Hessian**, a matrix made of all the second derivatives of a function. The conditions are as follows:
 
 - If $D^2(a, b) > 0$ then $(a, b)$ is either a local maximum or minimum
 	- If in addition, $\partial_x^2 f(a, b) > 0$ (second partial derivative with respect to $x$ evaluated at $(a, b)$ is *greater* than zero), then the function is concave up at $(a, b)$ and thus $(a, b)$ is a **local minimum**
