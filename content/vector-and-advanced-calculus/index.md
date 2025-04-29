@@ -353,17 +353,19 @@ Therefore, the **length element** $d\mathbf{r}$, a tiny segment of the curve $\m
 
 The distance along the infinitesimal displacement vector $d\mathbf{r}$ is given by $\|d\mathbf{r}\|$, from which we can find the familiar expression for the arc length in Cartesian coordinates:
 
-{% math() %}
-S = \int \|d\mathbf{r}\| = \int_a^b \sqrt{\left(\dfrac{dx}{ds}\right)^2 + \left(\dfrac{dy}{ds}\right)^2 + \left(\dfrac{dz}{ds}\right)^2}\, dt
-{% end %}
+$$
+S = \int \|d\mathbf{r}\| = \int_a^b \sqrt{\left(\dfrac{dx}{ds}\right)^2 + \left(\dfrac{dy}{ds}\right)^2 + \left(\dfrac{dz}{ds}\right)^2}\, ds
+$$
 
-where $d\mathbf{r}$ is the length element - a tiny segment of the curve $\mathbf{r}(s)$, and $\|d\mathbf{r}\|$ is its magnitude (which, as we stated, represents the distance of a tiny segment of the curve in a physical setting).
+where $d\mathbf{r}$ is the length element - a tiny segment of the curve $\mathbf{r}(s)$, and $\|d\mathbf{r}\|$ is its magnitude (which, as we stated, represents the distance of a tiny segment of the curve in a physical setting). In physics, a common parameter to use is $t$, so $\mathbf{r} = \mathbf{r}(t)$ and $ds = dt$. However, mathematically-speaking, $s$ can be an arbitrary parameter that parametrizes a path $\mathbf{r}(s)$.
 
 To compute the arc length in cylindrical coordinates we must first write out the length element $d\mathbf{r}$ of a curve in cylindrical form. This is given by:
 
 {% math() %}
 d\mathbf{r} = \dfrac{dr}{ds}\hat e_r + r\dfrac{d\theta}{ds} \hat e_\theta + \dfrac{dz}{ds} \hat e_z
 {% end %}
+
+> **Note:** here we use the notation $(r, \theta, z)$ rather than $(\rho, \theta, z)$, but both are completely equivalent; it is just a different notational choice.
 
 The arc length is found by _integrating_ over the absolute value (magnitude) line element, the **arc length in cylindrical coordinates** is given by:
 
