@@ -573,3 +573,26 @@ u(r, \theta) = \dfrac{r^2 - a^2}{2\pi} \int_0^{2\pi} \dfrac{h(\phi) d\phi}{r^2 +
 {% end %}
 
 We _won't_ go over generalized solutions in cylindrical and spherical coordinates, as they are quite complicated. However, we may use similar methods to what we have already seen.
+
+## Appendix: reference table of common linear PDEs
+
+| Type of PDE                                             | General form                                                                                       | Solution method(s)                                                                                                        |
+| ------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Linear first-order PDE with single derivative           | $f(x, y) \dfrac{\partial u}{\partial x} + g(x, y) u = 0$                                           | Direct (partial) integration                                                                                              |
+| Linear first-order constant-coefficient PDE             | $\alpha \dfrac{\partial u}{\partial x} + \beta \dfrac{\partial u}{\partial y} = 0$                 | Method of chacteristics, coordinate transformation (change of variables)                                                  |
+| Linear first-order variable-coefficient PDE             | $\alpha(x, y) \dfrac{\partial u}{\partial x} + \beta(x, y) \dfrac{\partial u}{\partial y} = 0$     | Method of chacteristics, coordinate transformation (change of variables)                                                  |
+| Linear constant-coefficient second-order parabolic PDE  | $\alpha \dfrac{\partial^2 u}{\partial x^2} + \dots = 0$                                            | Coordinate transform to diffusion equation (heat equation), separation of variables, express solution as series expansion |
+| Linear constant-coefficient second-order hyperbolic PDE | $\alpha \dfrac{\partial^2 u}{\partial x^2} - \beta \dfrac{\partial^2 u}{\partial y^2} + \dots = 0$ | Coordinate transform to wave equation, separation of variables, express solution as series expansion                      |
+| Linear constant-coefficient second-order elliptic PDE   | $\alpha \dfrac{\partial^2 u}{\partial x^2} + \beta \dfrac{\partial^2 u}{\partial y^2} + \dots = 0$ | Coordinate transform to Laplace's equation, separation of variables, express solution as series expansion                 |
+
+
+## Concluding remarks
+
+Congratulations, you've made it through the PDEs guide! But this is just a start to learning about PDEs. Many people dedicate their whole lives to the study of partial differential equations - and for good reason, because our understanding of the world depends on them. Some areas that this guide did not cover, but are significant areas of the study of PDEs, are the following:
+
+- Numerical methods for PDEs, such as the finite difference and finite element method
+- Nonlinear PDEs, which are very important in fluid mechanics and aerodynamics
+- Further applications of partial differential equations in science and engineering
+- Software for solving PDEs
+
+If you're interested, please feel free to read more about those topics. And last but not least - I hope you enjoyed this guide, and that you gained something from it.

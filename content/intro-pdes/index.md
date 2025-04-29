@@ -41,7 +41,18 @@ A few of the most well-known partial differential equations are listed in the ta
 | 3D Laplace's equation            | $\dfrac{\partial^2 u}{\partial x^2} + \dfrac{\partial^2 u}{\partial y^2} + \dfrac{\partial^2 u}{\partial z^2} = 0$                             |
 | Incompressible Euler equations   | $\dfrac{\partial u}{\partial t} + (\mathbf{u} \cdot \nabla) \mathbf{u} + \dfrac{1}{\rho} \nabla p = \mathbf{g}$, $\nabla \cdot \mathbf{u} = 0$ |
 
-We want to solve PDEs because they provide _mathematical descriptions_ which allow us to understand the dynamics of a physical system. The processes of solving and analyzing PDEs are the focus of this guide.
+We want to solve PDEs because they provide _mathematical descriptions_ which allow us to understand the dynamics of a physical system. In fact, they describe almost *anything imaginable* - that is to say, one can write down a partial differential equation for nearly _any_ system (and it's not just physics!) As such, partial differential equations have a multitude of applications in nearly every scientific and engineering domain:
+
+- Weather prediction (this uses the [Euler](https://en.wikipedia.org/wiki/Euler_equations_(fluid_dynamics)) and [Navier-Stokes](https://en.wikipedia.org/wiki/Navier%E2%80%93Stokes_equations) equations)
+- Materials testing and simulations (including car crash simulations)
+- Predicting structural properties, which is extensively used when constructing buildings, aircraft, and ships (which use the [Cauchy balance equations](https://www.brown.edu/Departments/Engineering/Courses/En221/Notes/Conservation_Laws/Conservation_Laws.htm))
+- Predicting electric and magnetic interactions (using the [Maxwell equations](https://en.wikipedia.org/wiki/Maxwell%27s_equations)), which are essential to electronic engineering and developing wireless technologies such as Wi-Fi
+- Prediction of the orbits of spacecraft and the behavior of planets and stars (using the [Gravitational Poisson equation](https://galaxiesbook.org/chapters/I-01.-Potential-Theory-and-Spherical-Mass-Distributions.html), used for space exploration, astronomy, and astrophysics
+- Predicting earthquakes, allowing for early earthquake prediction and detection
+- Describing [ocean waves](https://en.wikipedia.org/wiki/Shallow_water_equations) and tides
+- Even predicting [traffic flow](https://wikiwaves.org/Traffic_Waves) and even [financial markets](https://www.aimsciences.org/article/doi/10.3934/dcdss.2018065)
+
+To summarize, the power of PDEs is that they allow us to **mathematically describe** and therefore **predict** the world around us to incredible accuracy, which is why it's important to learn about them. The processes of solving and analyzing PDEs are the focus of this guide.
 
 ### Linearity
 
