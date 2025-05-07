@@ -218,8 +218,8 @@ Which also means that if the Dirac delta were displaced by a certain amount $x'$
 
 {% math() %}
 \begin{align*}
-\int_a^b f(x)\delta(x- x') &= f(x') \\
-\int_a^b f(x')\delta(x-x') &= f(x)
+\int_a^b f(x)\delta(x- x')dx &= f(x') \\
+\int_a^b f(x')\delta(x-x')dx &= f(x)
 \end{align*}
 {% end %}
 
