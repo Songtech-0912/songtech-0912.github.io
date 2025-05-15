@@ -546,10 +546,10 @@ For all its predictive power, the simplest form of the Schrödinger equation doe
 To make this idea more concrete, consider an electron placed in a magnetic field $\mathbf{B}$. It would then experience a torque given by $\vec \tau = \vec \mu \times \mathbf{B}$, where $\vec \mu$ is the magnetic moment given by:
 
 {% math() %}
-\vec \mu = -\dfrac{g_s e}{2m} \mathbf{S}
+\vec \mu = -\dfrac{g_e e}{2m} \mathbf{S}
 {% end %}
 
-Where $e$ is the electron charge, $m$ is the electron mass, $g \approx 2.00232$, and $\|S\| = \hbar \sqrt{s(s + 1)}$ is the spin angular momentum vector. Here, $s = \pm \frac{1}{2}$ is called the _spin quantum number_, which we often shorten to _spin_. Spin explains how some materials are able to act as permanent magnets: the torque caused by their magnetic moments aligns them in the same direction. In this way, they behave just like little (classical) magnets, except their magnetic moments are a consequence of their spin. The alignment of spins amplifies the tiny magnetic fields of each electron strongly enough that we can observe their combined effect as a _macroscopic_ magnetic field.
+Where $e$ is the electron charge (also called the _elementary charge_), $m$ is the electron mass, $g_e \approx 2.00232$ is the **electron _g-factor_**, and $\|S\| = \hbar \sqrt{s(s + 1)}$ is the spin angular momentum vector. Here, $s = \pm \frac{1}{2}$ is called the _spin quantum number_, which we often shorten to _spin_. Spin explains how some materials are able to act as permanent magnets: the torque caused by their magnetic moments aligns them in the same direction. In this way, they behave just like little (classical) magnets, except their magnetic moments are a consequence of their spin. The alignment of spins amplifies the tiny magnetic fields of each electron strongly enough that we can observe their combined effect as a _macroscopic_ magnetic field.
 
 Spin modifies a quantum state because a quantum state must _additionally_ include information about a quantum particle's spin. For electrons, all spins must either be $+\frac{1}{2}$ (spin-up) or $-\frac{1}{2}$ (spin-down); these are the _only_ two possible spins.
 
@@ -888,7 +888,7 @@ A very famous quantum system is that of the hydrogen atom - the simplest atom, w
 Using the time-independent Schrödinger equation with the Coloumb potential, we have the partial differential equation:
 
  {% math() %}
- -\frac{\hbar}{2m} \nabla^2 \psi - \frac{e^2}{4\pi \epsilon_0 r} \psi = E \psi
+ -\frac{\hbar^2}{2m} \nabla^2 \psi - \frac{e^2}{4\pi \varepsilon_0 r} \psi = E \psi
  {% end %}
 
  This is typically solved in spherical coordinates, where the $\nabla^2$ (Laplacian) operator becomes a mess, resulting in the overwhelmingly long equation (copied from Wikipedia):
@@ -905,7 +905,7 @@ Using the time-independent Schrödinger equation with the Coloumb potential, we 
 
  Where:
 
-- $a_0 = \frac{4\pi \epsilon_0 \hbar^2}{me^2}$ is the Bohr radius, where the Bo
+- $a_0 = \frac{4\pi \epsilon_0 \hbar^2}{me^2}$ is the Bohr radius, where the electron is most likely to be found in the ground-state hydrogen atom
 - $\rho = \frac{2r}{na_0^*}$
 - $L_{n - \ell - 1}^{2 \ell + 1}(\rho)$ is a Laguerre polynomial
 - $Y_\ell^m (\theta, \varphi)$ is a spherical harmonic function
@@ -922,27 +922,33 @@ _Source: [Sebastian Mag, Medium](https://ssebastianmag.medium.com/computational-
 The energy levels of hydrogen are given by the energy eigenvalues of its wavefunction:
 
 {% math() %}
-E_n = -\dfrac{m_e c^2 \alpha^2}{2n^2} = -\dfrac{\hbar^2}{2 m a_0^2 n^2}
+E_n = -\dfrac{\mu e^4}{32\pi^2 \varepsilon_0^2 \hbar^2} \dfrac{1}{n^2} = -\dfrac{\mu c^2 \alpha^2}{2n^2}
 {% end %}
 
-Which can be written in even simpler form as $E_n = -\dfrac{R}{n^2}$ where $R = \dfrac{m_e c^2 \alpha^2}{2}$, known as the **Rydberg energy** which is approximately -13.6 eV.
+Which can be written in even simpler form as $E_n = -\dfrac{\mu R_E}{m_e n^2} \approx -\dfrac{R_E}{n^2}$ where $R_E = \dfrac{m_e c^2 \alpha^2}{2}$, known as the **Rydberg energy** which is approximately $\pu{-13.6 eV}$.
 In this expression:
 
+- $c$ is the speed of light
+- $n$ is the principal quantum number
 - $j$ is the total angular momentum quantum number
-- $\mu$ is the reduced mass of the hydrogen atom, which is very close to (but not exactly equal to) $m_e$, the mass of an electron
+- $\mu \equiv \dfrac{m_e m_p}{m_e + m_p}$ (where $m_e, m_p$ are the electron and proton mass) is the reduced mass of the hydrogen atom, which is very close to (but not exactly equal to) $m_e$, the mass of an electron
 - $\alpha$ is the fine-structure constant and approximately equal to $1/137$
 
 > **An important note:** Yes, these energy eigenvalues are negative, because the Coulomb potential is negative as well. In fact, we say that the negative energies reflect the fact that the associated eigenstates are _bound states_, and the magnitude of their energy is the energy necessary to overcome the Coulomb potential. As their energies are negative, they do not have enough energy to escape the potential, and thus stay in place - the more negative the energy, the more energy must be put in to "kick" electrons out of place, and the stabler the system.
 
-The historical discovery of the solution to the Schrödinger equation for the hydrogen atom and the calculation of its eigenvalues proved to be one of the first experimental results that confirmed the predictions of quantum mechanics. By using $E_n = \dfrac{hc}{\lambda_n}$ with the value of $E_n = -\dfrac{m_e c^2 \alpha^2}{2n^2}$ predicted by the Schrödinger equation, the calculated wavelengths of light almost exactly matched measurements of those emitted by hydrogen. To read more about this discovery, see the quantum chemistry portion of the [general chemistry series](@/general-chem/index.md). This result revolutionized physics and brought quantum mechanics to its forefront. To this day, quantum mechanics remains the building block of modern physics.
+The historical discovery of the solution to the Schrödinger equation for the hydrogen atom and the calculation of its eigenvalues proved to be one of the first experimental results that confirmed the predictions of quantum mechanics. By using $E_n = \dfrac{hc}{\lambda_n}$ with the value of $E_n = -\dfrac{\mu c^2 \alpha^2}{2n^2}$ predicted by the Schrödinger equation, the calculated wavelengths of light almost exactly matched measurements of those emitted by hydrogen. To read more about this discovery, see the quantum chemistry portion of the [general chemistry series](@/general-chem/index.md). This result revolutionized physics and brought quantum mechanics to its forefront. To this day, quantum mechanics remains the building block of modern physics.
 
 Later on, refinements to quantum theory found that the predicted energy levels, when also including relativistic corrections, are more accurately given by:
 
 {% math() %}
-E_{j, n} = -{\mu c^2}\left[{1 - \left(1 + \alpha^2 \left(n - j - \frac{1}{2} + \sqrt{\left(j + \frac{1}{2}\right)^2 - \alpha^2}\right)^{-2}\right)}\right]
+\begin{align*}
+E_{j, n} &= -{\mu c^2}\left[{1 - \left(1 + \left(\dfrac{\alpha}{n - j - \frac{1}{2} + \sqrt{\left(j + \frac{1}{2}\right)^2 - \alpha^2}}\right)^2
+\right)^{-1/2}}\right] \\
+&= -\dfrac{\mu c^2 \alpha^2}{2n^2} \left[1 + \dfrac{\alpha^2}{n^2} \left(\dfrac{n}{j + 1/2} - \dfrac{3}{4}\right) + \dots\right]
+\end{align*}
 {% end %}
 
-Where $\mu$ is the _reduced mass_, i.e. $\mu \equiv \dfrac{m_e m_p}{m_e + m_p}$ where $m_e, m_p$ are the electron and proton mass and $j_\pm = |\ell \pm \frac{1}{2}|$. We will touch on relativistic quantum mechanics briefly at the end of this guide.
+Where again, $\mu$ is the reduced mass, $\alpha \approx 1/137$ is the fine-structure constant, and $j_\pm = |\ell \pm \frac{1}{2}|$. Notice that this more accurate expression depends on _two integers_ $n$ and $j$, unlike the non-relativistic expression, which only depends on $n$. However, when we perform a series expansion (shown above), and take only the first-order term, we obtain (as the first term) the energy levels obtained from the Schrödinger equation. We will not derive this ourselves, but we will touch on relativistic quantum mechanics briefly again at the end of this guide.
 
 ### The quantum harmonic oscillator
 
@@ -1637,8 +1643,8 @@ Which looks very similar to the classical $\dot x = v = p/m$! The two above equa
 To go through a full treatment of the classical limit of quantum mechanics would take quite a lot of time and involve a lot of advanced mathematics. However, to get an intuitive idea of how quantum mechanics reproduces classical mechanics, there are a few key ideas:
 
 - The **expectation values** of quantum operators reproduce their respective classical expressions (for instance, $\langle \hat x \rangle \approx x(t)$, $\langle \hat p \rangle \approx p(t), \langle \hat H \rangle \approx E$ and so forth)
-- In the limits of large quantum numbers, **quantized values become continuous values**; for instance, in the limit as $m$ grows very large the quantized angular momentum $L_z = m\hbar$, the difference in angular momentum $\Delta L_z = (m + 1) \hbar - m \hbar$ between two angular momentum eigenstates becomes so small that $\Delta L_z \approx 0$, that is, the eigenstates are spaced so closely together that $L_z$ becomes approximately continuous
-- **Probability amplitudes for large objects** are such that the state that matches classical behavior is _overwhelmingly_ the most likely state, and such that the time-evolution of a system follows classical laws. (This is especially relevant in the [path integral formulation of quantum mechanics](https://www.quantamagazine.org/how-our-reality-may-be-a-sum-of-all-possible-realities-20230206/) but we won't go into that here)
+- In the limits of large quantum numbers, **quantized values become continuous values**. For instance, consider the $z$-angular momentum operator $\hat L_z$, which has eigenvalues $L_z = m \hbar$, where $m$ is an integer. Since $L_z$ can only come in integer multiples $m \hbar$, the angular momentum of a quantum particle is quantized. However, in the limit as $m$ grows very large (after all, macroscopic objects have huge amounts of angular momenta compared to tiny subatomic particles!), the difference between angular momenta of different integer $m$ become almost negligible. For a rolling marble, which might have $L_z = \pu{1 g m^2/s} \approx \pu{9.48E30}\hbar$, no one would notice the difference between the angular momentum for $L_z = m\hbar = 9.48 \times 10^{30} \hbar$ versus $\tilde L_z = (m + 1)\hbar = 9.480000\dots01 \times 10^{30}\hbar$. This is to say, any macroscopic object has such a huge amount of angular momentum (and thereby such a big value of $m$) that its angular momentum **_appears_ to be continuous**
+- **Probability amplitudes for large objects** are such that the state that matches classical behavior is _overwhelmingly_ the most likely state, and such that the time-evolution of a system follows classical laws. (This is especially evident in the [path integral formulation of quantum mechanics](https://www.quantamagazine.org/how-our-reality-may-be-a-sum-of-all-possible-realities-20230206/) but we won't go into that here)
 - The **de Broglie wavelength** grows _extremely small_ for large objects, meaning that the wavelike properties of quantum particle vanish, and objects become well-approximated by discrete point particles (or systems of infinitely many point particles for continuum objects)
 
 ## A brief peek at more advanced quantum mechanics
@@ -1669,7 +1675,7 @@ i\hbar \frac{\partial}{\partial t} \psi_4 + \frac{\partial}{\partial x} \psi_2 -
 
 > **Note:** in gauge field theory and specifically quantum electrodynamics, which is discussed at the end of the [electromagnetic theory article](@/electromagnetism/index.md), we find that the Dirac equation describing fermions coupled to an electromagnetic field (i.e. electrons) must be modified to $(i\hbar \gamma^\mu D_\mu - m c) \psi$, where $D_\mu = \partial_\mu + \dfrac{ie}{\hbar c} A_\mu$ is the **gauge covariant derivative**.
 
-The most precise theory of quantum mechanics is the **Standard Model**, which extends the Dirac equation into describing **quantum fields**. The Standard Model makes highly-accurate predictions that are even more precise than the Schrödinger equation, including tiny corrections to the energy levels of the hydrogen atom. However, it is a theory that is far too complex to cover here and best left to an in-depth textbook treatment.
+The most precise theory of quantum mechanics is the **Standard Model**, which extends the Dirac equation into describing **quantum fields**. The Standard Model makes highly-accurate predictions that are even more precise than the Schrödinger equation, including tiny corrections to the energy levels of the hydrogen atom. However, it is a theory that is far too complex to cover here and best left to an in-depth textbook treatment. For those interested, feel free to see my [quantum field theory book](https://www.learntheoreticalphysics.com/quantum-field-theory/) to learn more.
 
 ### An epistemological remark
 
