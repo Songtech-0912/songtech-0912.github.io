@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Classical Mechanics, Part III</title>
+  <meta name="description" content=" In this third (and final) part of the classical mechanics series, we delve into the physics of rotational motion and interacting systems of particles. We learn about the harmonic oscillator and its many generalizations. And we conclude our journey on classical mechanics by discussing oscillating systems, eventually taking us to continuous oscillations and waves.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://songtech-0912.github.io/favicon.svg">
+      <link rel="icon" type="image/png" href="https://songtech-0912.github.io/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://songtech-0912.github.io/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://songtech-0912.github.io/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://songtech-0912.github.io/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://songtech-0912.github.io/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Advanced Classical Mechanics, Part III</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+        <details class="toc" id="toc" open>
+        <summary>Table of contents</summary>
+        <p class="toc-info">Note: it is highly recommended to navigate by clicking links in the table of contents! It means you can use the back button in your browser to go back to any section you were reading, so you can jump back and forth between sections!</p>
+        <div>
+            <ul>
+            
+                <li>
+                    <a href="https://songtech-0912.github.io/advanced-classical-mech/part-3/#chapter-guide-for-classical-mechanics">Chapter guide for classical mechanics</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://songtech-0912.github.io/advanced-classical-mech/part-3/#dynamics-of-systems-of-particles">Dynamics of systems of particles</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://songtech-0912.github.io/advanced-classical-mech/part-3/#collisions-and-scattering">Collisions and scattering</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="https://songtech-0912.github.io/advanced-classical-mech/part-3/#analysis-of-elastic-and-inelastic-collisions">Analysis of elastic and inelastic collisions</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="https://songtech-0912.github.io/advanced-classical-mech/part-3/#scattering-problems">Scattering problems</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="https://songtech-0912.github.io/advanced-classical-mech/part-3/#scattering-over-a-hard-sphere">Scattering over a hard sphere</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="https://songtech-0912.github.io/advanced-classical-mech/part-3/#scattering-over-a-force-field">Scattering over a force field</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="https://songtech-0912.github.io/advanced-classical-mech/part-3/#non-inertial-reference-frames">Non-inertial reference frames</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://songtech-0912.github.io/advanced-classical-mech/part-3/#dynamics-of-rigid-bodies">Dynamics of rigid bodies</a>
+                    
+                </li>
+            
+            </ul>
+        </div>
+        </details>
+        
+
+        <!-- page content -->
+        <p>In this third (and final) part of the classical mechanics series, we delve into the physics of rotational motion and interacting systems of particles. We learn about the harmonic oscillator and its many generalizations. And we conclude our journey on classical mechanics by discussing oscillating systems, eventually taking us to continuous oscillations and waves.</p>
+<span id="continue-reading"></span>
+<p>Again, remember that this is part of the <strong>advanced classical mechanics series</strong>, which I have split into several parts to not be overly long. A complete catalogue of the entire three-part guide is shown below:</p>
+<blockquote>
+<h3 id="chapter-guide-for-classical-mechanics">Chapter guide for classical mechanics</h3>
+<ul>
+<li><a href="https://songtech-0912.github.io/advanced-classical-mech/">Go to part 1 of the series</a> for Newtonian mechanics and special relativity</li>
+<li><a href="https://songtech-0912.github.io/advanced-classical-mech/part-2/">Go to part 2 of the series</a> for Lagrangian and Hamiltonian formulations of classical mechanics</li>
+<li><a href="https://songtech-0912.github.io/advanced-classical-mech/part-3/">Go to part 3 of the series</a> for rigid-body dynamics, many-body systems, the harmonic oscillator, and systems of coupled oscillators (<strong>this is the part you're reading right now</strong>)</li>
+</ul>
+</blockquote>
+<h2 id="dynamics-of-systems-of-particles">Dynamics of systems of particles</h2>
+<p>In previous examples, we discussed the motion of a few-body system. But for systems of many bodies, it is helpful to split the problem into two parts: the motion of the <strong>center of mass</strong> of the system, and the motion of each body <em>with respect</em> to the center of mass.</p>
+<p>For a system of $N$ interacting particles with masses $m_1, m_2, \dots, m_N$, the position of the center of mass $\mathbf{R}_{CM}$ can be found through:</p>
+<p class="mathcell">
+$$
+\mathbf{R}_{CM} = \dfrac{1}{\sum_{i=1}^N m_i} \sum_{i=1}^N m_i \mathbf{r}_i
+$$
+</p>
+<p>This can be written more simply in terms of the <em>total mass</em> of the system, $M_\text{total}$, which we may find through: </p>
+<p class="mathcell">
+$$
+M_\text{total} = \sum_{i = 1}^N m_i
+$$
+</p>
+<p>Thus our expression for the position of the center of mass reduces to:</p>
+<p class="mathcell">
+$$
+\mathbf{R}_{CM} = \dfrac{1}{M_\text{total}}\sum_{i=1}^N m_i \mathbf{r}_i
+$$
+</p>
+<p>If we have a <em>continuous mass density</em> described by a mass density function $\rho(\mathbf{r})$, the equivalent formulas are:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+M_\text{total} = \int \rho dV \\
+\mathbf{R}_{CM} = \dfrac{1}{M_\text{total}}\int \rho\, \mathbf{r}\, dV
+\end{align*}
+$$
+</p>
+<p>The total <strong>linear momentum</strong> of the system of $N$ (discrete, not continous) masses is given by:</p>
+<p class="mathcell">
+$$
+\mathbf{P}_\text{total} = \sum_{i = 1}^N \mathbf{p}_i = \sum_{i = 1}^N m_i\mathbf{v}_i
+$$
+</p>
+<p>Where $\mathbf{p}_i$ is the momentum associated with each of the individual particles. A system of particles obeys the <strong>conservation of total momentum</strong> if no external force is applied on the entire system. That is, we have:</p>
+<p class="mathcell">
+$$
+\dfrac{d\mathbf{P}_\text{total}}{dt} = 0
+$$
+</p>
+<p>The <em>velocity</em> of the center of mass is given by:</p>
+<p class="mathcell">
+$$
+\mathbf{v}_{CM} =\dfrac{d\mathbf{R}_{CM}}{dt} = \dfrac{1}{M_\text{total}} \underbrace{\sum_{i = 1}^N m_i \mathbf{v}_i}_{ \mathbf{P}_\text{total}} =\dfrac{\mathbf{P}_\text{total}}{M_\text{total}}
+$$
+</p>
+<p>The system of particles can also possess <em>angular momentum</em> if the system is rotating (for instance, individual stars moving within a stellar cluster, which itself rotates about the galactic plane). The <strong>total angular momentum</strong> of the system can be written as:</p>
+<p class="mathcell">
+$$
+\mathbf{L}_\text{total} = \underbrace{\mathbf{R}_{CM} \times \mathbf{P}_\text{total}}_\text{angular momentum of CoM} + \underbrace{\sum_{i = 1}^N \mathbf{r}_i \times \mathbf{p}_i}_\text{angular momenta of particles}
+$$
+</p>
+<p>Note that here, $\text{CoM}$ is an abbreviation for &quot;center of mass&quot;. To simplify the problem, it is easier to choose a special coordinate system known as the <strong>center of mass frame</strong> with the coordinate transformations:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathbf{r}_i&#x27; &amp;= \mathbf{R}_{CM} + \mathbf{r}_i \\
+\dot{\mathbf{r}}_i&#x27; &amp;= \mathbf{v}_{CM} + \dot{\mathbf{r}}_i \\
+\mathbf{p}_i&#x27; &amp;= m_i \dot{\mathbf{r}}_i&#x27; = m_i(\mathbf{v}_{CM} + \dot{\mathbf{r}}_i)
+\end{align*}
+$$
+</p>
+<p>Which allows us to write the total angular momentum of the system in a much-simplified form:</p>
+<p class="mathcell">
+$$
+\mathbf{L}_\text{total} = \sum_{i = 1}^N \mathbf{r}_i&#x27; \times \mathbf{p}_i&#x27;
+$$
+</p>
+<p>This form is also useful because expressing the conservation of angular momentum, that is, $\dfrac{d \mathbf{L}_\text{total}}{dt} = 0$, becomes much easier. This is because while the inter-particle interactions may not conserve angular momentum, the <em>system</em> as a whole does indeed conserve angular momentum.</p>
+<p>Now, recall that we saw earlier that the total angular momentum of an $N$-body system can be found from:</p>
+<p class="mathcell">
+$$
+\mathbf{L}_\text{total} = \mathbf{R}_{CM} \times \mathbf{P}_\text{total} + \sum_{i = 1}^N \mathbf{r}_i \times \mathbf{p}_i
+$$
+</p>
+<p>If we differentiate this result, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{d\mathbf{L}_\text{total}}{dt} &amp;= \mathbf{R}_{CM} \times \dfrac{d\mathbf{P}_\text{total}}{dt} + \sum_{i = 1}^N \mathbf{r}_i \times \dfrac{d\mathbf{p}_i}{dt} \\
+&amp;= \underbrace{\mathbf{R}_{CM} \times \mathbf{F}_\text{ext.}}_\text{net torque} + \sum_{i = 1}^N \mathbf{r}_i \times \dfrac{d\mathbf{p}_i}{dt} \\
+&amp;= \tau_\text{net} + \sum_{i = 1}^N \left(\mathbf{r}_i \times \dfrac{d\mathbf{p}_i}{dt}\right) \\
+&amp;= \tau_\text{net} + \sum_{i = 1}^N \left(\mathbf{r}_i \times \mathbf{F}_i\right)
+\end{align*}
+$$
+</p>
+<p>This is because the rate of change of the system's total momentum is equal to the <em>external forces</em> on the system (we know this from Newton's second law $\mathbf{F} = \dfrac{d\mathbf{p}}{dt}$), and thus we have $\dfrac{d\mathbf{P}_\text{total}}{dt}$, and the cross product of position and force is the torque. Meanwhile, the rate of the change of each <em>particle</em>'s momentum $\dot{\mathbf{p}}_i$ is equal to the force $\mathbf{F}_i$ experienced by the particle, which comes from the inter-particle interactions <em>within</em> the system. But if the inter-particle forces in the system are <em>only</em> dependent on the separation vector $\mathbf{r}_{ij}$ between any two particles $i, j$, that is, $\mathbf{F}_{ij} = \mathbf{F}(\mathbf{r}_{ij})$, then $\mathbf{F}_{ij} = -\mathbf{F}_{ji}$, so the inter-particle forces cancel <em>as a whole</em>, meaning the second term vanishes in the expression of the total angular momentum of the system. Thus we have:</p>
+<p class="mathcell">
+$$
+\dfrac{d\mathbf{L}_\text{total}}{dt} = \tau_\text{net}
+$$
+</p>
+<p>We can also examine other characteristics of an $N$-body system. For instance, the total kinetic energy of the system is given by:</p>
+<p class="mathcell">
+$$
+K = \dfrac{1}{2} m_\text{total} \mathbf{v}_{CM}^2 + \dfrac{1}{2} \sum_{i = 1}^N m_i \mathbf{v}_i^2
+$$
+</p>
+<p>Where $\mathbf{v}_i$ is the velocity of a particle with respect to the center-of-mass frame and $\mathbf{v}_{CM}$ is the velocity of the center-of-mass frame. We may also define the total <em>potential energy</em> as:</p>
+<p class="mathcell">
+$$
+U = \underbrace{\sum_i U_{i,\ \text{ext.}}}_\text{external forces} + \underbrace{\sum_{i &lt; j} U_{ij}}_\text{inter-particle forces}
+$$
+</p>
+<p>The first term in the potential describes the potential arising from the <em>external forces</em> acting on the system. The second term, meanwhile, describes the potential arising from the <em>internal inter-particle forces</em> within the system. Thus, we may write the total force on the system as:</p>
+<p class="mathcell">
+$$
+\mathbf{F} = -\sum_i\nabla U_i - \sum_{i &lt; j}\nabla U_{ij}
+$$
+</p><h2 id="collisions-and-scattering">Collisions and scattering</h2>
+<p>From our discussion of many-body systems, it is natural to ask how particles interact when they collide with each other, as is bound to happen when we have a many-body system of particles held together by attractive forces (such as gravity). Thankfully, collisions satisfy the <strong>conservation of momentum</strong>. Let us see why. By Newton's third law, when two particles collide, the contact force of the first particle against the second must be equal and opposite to the contract force of the second particle against the first. That is, we have:</p>
+<p class="mathcell">
+$$
+\mathbf{F}_{12} = -\mathbf{F}_{21}
+$$
+</p>
+<p>Recalling that force is the time derivative of momentum, we thus have:</p>
+<p class="mathcell">
+$$
+\dfrac{d\mathbf{p}_2}{dt} = -\dfrac{d\mathbf{p}_1}{dt}
+$$
+</p>
+<p>We can integrate both sides to get:</p>
+<p class="mathcell">
+$$
+\mathbf{p}_2 = -\mathbf{p}_1
+$$
+</p>
+<p>But let us now consider a frame where we observe the collision between the two particles. The total momentum within the frame would then be the sum of the momenta of the two particles:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathbf{p}_\text{total} &amp;= \mathbf{p}_1 + \mathbf{p}_2 \\
+&amp;= \underbrace{\mathbf{p}_1 + (-\mathbf{p}_1)}_{\text{from }  \mathbf{p}_2 = -\mathbf{p}_1} \\
+&amp;= 0
+\end{align*}
+$$
+</p>
+<p>So indeed, we find that momentum is conserved for two colliding particles. The same is true for any number of colliding particles, but for simplicity, we will only consider the two-particle case here, rather than the more general $N$-body case.</p>
+<h3 id="analysis-of-elastic-and-inelastic-collisions">Analysis of elastic and inelastic collisions</h3>
+<p>In general, two-particle collisions can be classified as either <strong>elastic</strong> or <strong>inelastic</strong>. The names give a hint as to what they refer to: when we have an elastic collision, the two particles &quot;bounce off&quot; each other after colliding, while when we have a (perfectly) inelastic collision, the two particles &quot;stick together&quot; afterwards. Perfectly elastic collisions are very, very rare in nature, as they essentially require both colliding objects to be 100% imprenetrable or with zero volume; thus (roughly speaking) only collisions between subatomic particles are truly perfectly elastic. What about inelastic collisions? &quot;Inelastic&quot; means that the two colliding objects will be deformed in some way, radiating energy in the form of light, heat, and/or sound. Any collision between two macroscopic objects is bound to be inelastic, which is why kicking a soccer ball makes a (pretty obvious!) sound and why the collisions between tectonic plates in the Earth's crust causes earthquakes. But macroscopic collisions can fall into a wide range between <em>perfectly</em> elastic and <em>perfectly</em> inelastic - thus, it is possible to <em>model</em> some collisions as perfectly elastic (a good approximation when we have near-rigid objects) and model some other collisions as perfectly inelastic (a good approximation when we don't).</p>
+<p>Elastic collisions are characterized by the fact that they <em>leave no trace</em> of the collision. There is no sound, no heat, no light, no indication after the collision that the collision occured <em>at all</em>. This means they <strong>perfectly conserve energy</strong>. By contrast, inelastic collisions can leave plenty of traces of the collision, including things we typically associate with colliding objects - a loud &quot;bang&quot;, a burst of light, and so forth. All of these come from energy that cascades away when the collision occurs, so inelastic collisions <strong>do not conserve energy</strong>.</p>
+<p>Let us first consider an <em>elastic collision</em> between two objects of masses $m_1, m_2$, whose initial velocities are $\mathbf{v}_1, \mathbf{v}_2$, and whose post-collision velocities (which we want to solve for) are $\mathbf{v}_1', \mathbf{v}_2'$. By the conservation of energy, we have $K_1 + K_2 = K_1' + K_2'$, and therefore:</p>
+<p class="mathcell">
+$$
+\dfrac{1}{2} m_1 \mathbf{v}_1^2 + \dfrac{1}{2} m_2 \mathbf{v}_2^2 = \dfrac{1}{2} m_1 \mathbf{v}_1&#x27;^2 + \dfrac{1}{2} m_2 \mathbf{v}_2&#x27;^2
+$$
+</p>
+<p>This is rather long and unyieldy equation, so it is helpful to switch to the <em>center of momentum frame</em>. First, we write out the <em>total momentum</em> of the system (which is <em>always</em> conserved) as:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\mathbf{P}_\text{total} = m_1 \mathbf{v}_1 + m_2 \mathbf{v}_2 = M_\text{total} \mathbf{v}_{CM} \\
+\Rightarrow \mathbf{v}_{CM} = \dfrac{m_1 \mathbf{v}_1 + m_2 \mathbf{v}_2}{m_1 + m_2}
+\end{gather*}
+$$
+</p>
+<p>Where $\mathbf{v}_{CM}$ is the velocity of the center of momentum frame, and $M_\text{total} = m_1 + m_2$. This allows us to make a transformation to a set of new velocity coordinates $\mathbf{v}_1^*, \mathbf{v}_2^*$, which give the velocities of each of the two objects in the center of momentum frame, given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathbf{v}_1^* = \mathbf{v}_1 - \mathbf{v}_{CM} \\
+\mathbf{v}_2^* = \mathbf{v}_2 - \mathbf{v}_{CM} \\
+\end{align*}
+$$
+</p>
+<p>By substituting these definitions into our previous equation for the total momentum, we find that:</p>
+<p class="mathcell">
+$$
+\underbrace{m_1 \mathbf{v}_1^* + m_2 \mathbf{v}_2^*}_\text{initial} = \underbrace{m_1 \mathbf{v}_1&#x27;^* + m_2 \mathbf{v}_2&#x27;^*}_\text{post-collision} =0
+$$
+</p>
+<p>Which is a much simpler result, and allows us to also derive the relationships between the sets of velocities:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+\underbrace{\mathbf{v}_2^* = -\dfrac{m_1}{m_2} \mathbf{v}_1^*}_\text{initial velocities}, &amp;\underbrace{\mathbf{v}_2&#x27;^* = -\dfrac{m_1}{m_2} \mathbf{v}_1&#x27;^*}_\text{post-collision velocities}
+\end{matrix*}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> another special property is that the angles of deflection (the angle between $\mathbf{v}_1^*, \mathbf{v}_1&#x27;^*$, as well as the angle between $\mathbf{v}_2^*, \mathbf{v}_2&#x27;^*$) are the <em>same</em> when measured in the center of momentum frame, which is <em>not true</em> in general within the regular (untransformed) frame.</p>
+</blockquote>
+<p>Now, if we substitute the above relations for $\mathbf{v}_2^*$ and $\mathbf{v}_2&#x27;^*$, we can write out the conservation of energy equation as:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\dfrac{1}{2} m_1 {\mathbf{v}_1^*}^2 + \dfrac{1}{2} m_2 {\mathbf{v}_2^*}^2 = \dfrac{1}{2} m_1 {\mathbf{v}_1&#x27;^*}^2 + \dfrac{1}{2} {m_2 \mathbf{v}_2&#x27;^*}^2 \\
+\dfrac{1}{2} m_1 {\mathbf{v}_1^*}^2 + \dfrac{1}{2} m_2 \left(\dfrac{m_1}{m_2}\right)^2 {\mathbf{v}_1^*}^2 = \dfrac{1}{2} m_1 {\mathbf{v}_1&#x27;^*}^2 + \dfrac{1}{2} m_2\left(\dfrac{m_1}{m_2}\right)^2 {\mathbf{v}_1&#x27;^*}^2 \\
+\dfrac{1}{2} \left[m_1 + \left(\dfrac{m_1}{m_2}\right)^2\right] {\mathbf{v}_1^*}^2 = \dfrac{1}{2} \left[m_1 + \left(\dfrac{m_1}{m_2}\right)^2\right] {\mathbf{v}_1&#x27;^*}^2 \\
+\cancel{\dfrac{1}{2} \left[m_1 + \left(\dfrac{m_1}{m_2}\right)^2\right]} {\mathbf{v}_1^*}^2 = \cancel{\dfrac{1}{2} \left[m_1 + \left(\dfrac{m_1}{m_2}\right)^2\right]} {\mathbf{v}_1&#x27;^*}^2 \\
+\Rightarrow  {\mathbf{v}_1^*}^2 = {\mathbf{v}_1&#x27;^*}^2
+\end{gather*}
+$$
+</p>
+<p>So we find that $|\mathbf{v}_1^*| = |\mathbf{v}_1&#x27;^*|$, which also implies that $|\mathbf{v}_2^*| = |\mathbf{v}_2&#x27;^*|$. We would expect this: the conservation of energy would require that this be the case.</p>
+<p>We will now examine a classic problem to be able to showcase using the center-of-momentum frame to solve problems. Consider a mass $m_1$ moving at velocity $\mathbf{v}_1$ that collides with another mass $m_2$ that istationary, so $\mathbf{v}_2 = 0$ (this is a classic billiard-ball style situation). The masses are rigid, so we may assume that the collision is close to perfectly elastic. The collision sends the two massses flying in opposite directions; the first mass is deflected by an angle $\psi$, and the second mass is deflected by an angle $\xi$. We show this scenario in the below diagram:</p>
+<img class="natural-img" src=elastic-collision-demo.excalidraw.svg alt="My description" />
+<p>Writing out the conservation of momentum yields the following equation:</p>
+<p class="mathcell">
+$$
+m_1 \mathbf{v}_1 = m_1 \mathbf{v}_1&#x27; + m_2 \mathbf{v}_2&#x27; = M_\text{total} \dot{\mathbf{R}}
+$$
+</p>
+<p>Where $\dot{\mathbf{R}} = \mathbf{v}_{CM}$ is the center-of-mass velocity. If we define $v_1 = |\mathbf{v}_1$ as the <em>speed</em> of the first mass pre-collision, and $v_1' = |\mathbf{v}_1'|$ and $v_2' = |\mathbf{v}_2'|$ as the <em>speeds</em> of the objects, post-collision, then we can write the above in component form as:</p>
+<p class="mathcell">
+$$
+\begin{bmatrix} m_1 v_1 \\ 0 \end{bmatrix} =
+\begin{bmatrix} m_1 v_1&#x27; \cos \psi \\ m_1 v_1&#x27; \sin \psi \end{bmatrix} +
+\begin{bmatrix} m_2 v_2&#x27; \cos \xi \\ m_2 v_2&#x27; \sin \xi \end{bmatrix}
+$$
+</p>
+<p>Let us now switch over to the center of momentum frame. We use the transformations:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+\mathbf{v}_1^* = \mathbf{v}_1 - \dot{\mathbf{R}},
+&amp;\mathbf{v}_2^* = \mathbf{v}_2 - \dot{\mathbf{R}} \\
+\mathbf{v}_1&#x27;^* = \mathbf{v}_1&#x27; - \dot{\mathbf{R}}, &amp;\mathbf{v}_2&#x27;^* = \mathbf{v}_2&#x27; - \dot{\mathbf{R}} \\
+\end{matrix*}
+$$
+</p>
+<p>Where again, $\dot{\mathbf{R}}$ is the center-of-mass velocity, given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dot{\mathbf{R}} &amp;= \dfrac{m_1 \dot{\mathbf{r}}_1 + \cancel{m_2 \dot{\mathbf{r}}_2}}{m_1 + m_2} \\
+&amp;= \dfrac{m_1}{m_1 + m_2} \mathbf{v}_1 \\
+&amp;= \dfrac{m_1}{m_1 + m_2} \begin{bmatrix} v_1 \\ 0 \end{bmatrix}
+\end{align*}
+$$
+</p>
+<p>Now, if we perform our coordinate transformations to our center-of-momentum frame coordinates, where our angle of deflection for both masses would be the transformed angle $\theta$, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+v_1^* \cos \theta &amp;= v_1&#x27; \cos \psi - \dfrac{m_1}{m_1 + m_2} v_1 \\
+\Rightarrow v_1&#x27; &amp;\cos \psi = v_1&#x27;^* \cos \theta + \dfrac{m_1}{m_1 + m_2} v_1 \\
+v_1^* \sin \theta &amp;= v_1&#x27; \sin \psi - 0 \\
+&amp;= v_1&#x27; \sin \psi \\
+\dfrac{v_1&#x27; \sin \psi}{v_1&#x27; \cos \psi} &amp;= \tan \psi \\ &amp;= \dfrac{v_1&#x27;^* \sin \theta}{v_1&#x27;^* \cos \theta + \frac{m_1 v_1}{m_1 + m_2}}
+\end{align*}
+$$
+</p>
+<p>But recall that $v_1^* = v_1'^*$, as we derived before from the conservation of energy, and using the coordinate transformation equations and our definition of $\dot{\mathbf{R}}$, we find that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+v_1^* &amp;= v_1 - \dot R_x \\
+&amp;= v_1 - \dfrac{m_1}{m_1 + m_2} v_1 \\
+&amp;= \dfrac{m_1 + m_2}{m_1 + m_2}v_1 - \dfrac{m_1}{m_1 + m_2} v_1 \\
+&amp;= \dfrac{m_2}{m_1 + m_2} v_1
+\end{align*}
+$$
+</p>
+<p>And since $v_1^* = v_1'^*$, we can substitute this into our expression for $\tan \psi$ to get:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\tan \psi &amp;= \dfrac{v_1&#x27;^* \sin \theta}{v_1&#x27;^* \cos \theta + \frac{m_1 v_1}{m_1 + m_2}} \\
+&amp;= \dfrac{\sin \theta}{\cos \theta + \frac{m_1}{m_1 + m_2}\frac{m_1 + m_2}{m_2}} \\
+&amp;= \dfrac{\sin \theta}{\cos \theta + m_1&#x2F;m_2} \\
+\end{align*}
+$$
+</p>
+<p>We note that if $m_1 \ll m_2$, then $\tan \psi \approx \tan \theta$ and $\psi \approx \theta$. Meanwhile, if $m_1 = m_2$, then $\tan \psi = \dfrac{\sin \theta}{\cos \theta + 1} = \tan \left(\dfrac{\theta}{2}\right)$. We will not do the derivations but we note that in the case $m_1 = m_2$, we additionally have $\tan \xi = \tan \left(\dfrac{\pi}{2} - \dfrac{\theta}{2}\right)$ and therefore we have $\xi = \dfrac{\pi}{2} - \psi$. And we can now see the significance of center-of-momentum frames: while the math to solve this problem was intense, it would have been much, much harder had we not used a center-of momentum frame to solve the problem.</p>
+<h3 id="scattering-problems">Scattering problems</h3>
+<p>Using the conservation of momentum, we can solve for collisions between two (or perhaps three or four) particles - anything beyond that is intractable. But what if we have a large number of particles, all of them colliding at some surface? That is to say, if we were to shoot a number of particles on some surface, what would be the distribution of the particle impacts on the surface (if the collision is inelastic) or where would the particles be deflected (if the collision is elastic)? This is the problem known as <strong>scattering</strong>.</p>
+<img class="diagram" src=https:&#x2F;&#x2F;upload.wikimedia.org&#x2F;wikipedia&#x2F;commons&#x2F;d&#x2F;dc&#x2F;Differential_cross_section.svg alt="An illustration of scattering. A particle incident on some object at a height b above the collision axis incident on cross-sectional area sigma is deflected at solid angle d omega." />
+<p><em>Source: <a href="https://en.wikipedia.org/wiki/File:Differential_cross_section.svg">Wikipedia</a></em></p>
+<p>To describe scattering, we begin by defining the collision object (that the particle(s) hit and scatter off of), and draw an axis through its center - we refer to this axis as the <strong>centerline</strong> or <strong>collision axis</strong>. The particle(s)' distance <em>above</em> the centerline is known as the <strong>impact parameter</strong>, which we denote as $b$. If the particle does indeed deflect, then the angle at which it deflects is called the <strong>scattering angle</strong>, and is denoted by $\theta$.</p>
+<p>Now, to analyze scattering, we use something called the <em>scattering cross-section</em>. This describes the ratio of $d\sigma$, an infinitesimal cross-sectional area the particle(s) pass through, to $d\Omega$, an infinitesimal scattering angle (the $\Omega$ is due to the fact that the angle is called a <strong>solid angle</strong>). Using the notation in Griffiths, <em>Introduction to Elementary Particles</em>, the scattering cross-section $D(\theta)$ is therefore defined as:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+D(\theta) = \dfrac{d\sigma}{d\Omega}, &amp;d\sigma = |b\,db\, d\phi|, &amp; d\Omega = |\sin \theta\, d\theta\, d\phi|
+\end{matrix*}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> Funnily enough, while it <em>looks</em> like a derivative, the scattering cross-section $\dfrac{d\sigma}{d\Omega}$ is not a derivative at all! It is truly just a fraction (albeit between two infinitesimal quantities), so we manipulate it like a fraction, no calculus or limit trickery needed.</p>
+</blockquote>
+<p>Thus, by some rearrangement of $D(\theta)$ we find that we may also express the scattering cross-section as:</p>
+<p class="mathcell">
+$$
+\dfrac{d\sigma}{d\Omega} = \left|\dfrac{b}{\sin \theta} \left(\dfrac{db}{d\theta}\right)\right|
+$$
+</p>
+<p>To find the <em>total</em> cross-section from the differential cross-section, we integrate over the total solid angle:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\sigma_t &amp;= \int \dfrac{d\sigma}{d\Omega} d\Omega \\
+&amp;= \int_0^{2\pi} \int_0^\pi \dfrac{d\sigma}{d\Omega} \sin \theta d\theta d\phi \\
+&amp;= \int_0^{2\pi} \int_0^\pi D(\theta) \sin \theta d\theta d\phi
+\end{align*}
+$$
+</p>
+<p>The scattering cross-section has rather unusual units: it is expressed in terms of $\pu{m^2/sr}$, that is, <em>meters squared over steradians</em> (steradians are the standard unit for solid angle and are very similar to radians for regular angles). However, since steradians are dimensionless, the scattering cross-section can equivalently just be expressed in units of $\pu{m^2}$. In (quantum) particle physics, it is common to use the (funnily-named) unit of the <em>barn</em> ($\pu{b}$), where $\pu{1b} = \pu{100 fm^2} = \pu{10^{-28} m^2}$. But for classical physics, we can just use regular meters and centimeters.</p>
+<h3 id="scattering-over-a-hard-sphere">Scattering over a hard sphere</h3>
+<p>Let us consider a particle (or stream of particles) bouncing off a hard sphere of radius $R$ (this problem is also in Griffiths, <em>Introduction to Elementary Particles</em>, example 6.1). By &quot;hard&quot;, we mean a completely rigid, impenetrable sphere, which is of course impossible in reality, so this is an idealization. For this problem, it is always helpful to draw a diagram, so we show one below:</p>
+<img class="wide-img" src=.&#x2F;hard-sphere-scattering.excalidraw.svg alt="A diagram showing a particle of height b passing through cross-section d sigma that hits a solid impenetrable sphere and is deflected at angle theta (measured from the +x axis). The scattering solid angle is d Omega." />
+<p>Recall that $\dfrac{d\sigma}{d\Omega} = \left|\dfrac{b}{\sin \theta} \left(\dfrac{db}{d\theta}\right)\right|$ is the general result that we found before (one that generalizes to other problems, it is not just true for this particular problem). Unfortunately, to be able to compute the formula explicitly, we need to know $b(\theta)$. This is where our diagram comes in. By defining the angle $\phi$ for which $\theta = \pi - 2\phi$, we have:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\sin \phi = \dfrac{b}{R} \Rightarrow b = R \sin \phi \\
+\theta = \pi - 2\phi \Rightarrow \phi = \dfrac{\pi}{2} - \dfrac{\theta}{2} \\
+b = R \sin \phi = R \sin \left(\dfrac{\pi}{2} - \dfrac{\theta}{2}\right)
+\end{gather*}
+$$
+</p>
+<p>Using the result that $\cos \alpha = \sin \left(\dfrac{\pi}{2} - \alpha \right)$ we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+b &amp;= R \cos \left(\dfrac{\theta}{2}\right) \\
+b&#x27;(\theta) &amp;= -\dfrac{R}{2} \sin \left(\dfrac{\theta}{2}\right) \\
+|b&#x27;(\theta)| &amp;= \dfrac{R}{2} \sin \left(\dfrac{\theta}{2}\right)
+\end{align*}
+$$
+</p>
+<p>So our differential cross section would be:</p>
+<p class="mathcell">
+$$
+\dfrac{d\sigma}{d\Omega} = \left|\dfrac{b}{\sin \theta} \left(\dfrac{db}{d\theta}\right)\right| = \dfrac{1}{\sin \theta} R \cos \left(\dfrac{\theta}{2}\right) \dfrac{R}{2} \sin \left(\dfrac{\theta}{2}\right) = \dfrac{R^2}{2} \dfrac{\sin(2\theta&#x2F;2)}{2 \sin \theta} = \dfrac{R^2}{4}
+$$
+</p>
+<p>Where here we used the identity that $\sin \beta \cos \beta = \dfrac{1}{2} \sin(2\beta)$. Thus, we have solved the problem of scattering over a hard sphere, and we have found that the distribution of the scattered particle(s) in terms of cross-sectional area per solid angle is $\dfrac{d\sigma}{d\Omega} = \dfrac{R^2}{4}$.</p>
+<blockquote>
+<p><strong>Note:</strong> This scattering problem may seem like it is for a very specific case. However, hard-sphere scattering is in fact more general, because it also models any scattering off any spherically-symmetric potential barrier $V_0$ that a classical particle with energy $E &lt; V_0$ cannot pass through.</p>
+</blockquote>
+<h3 id="scattering-over-a-force-field">Scattering over a force field</h3>
+<p>Scattering does not necessarily have to involve two objects hitting each other. A particle (or set of particles) could just as easily scatter off a central force field, such as an electrostatic field, in which it doesn't &quot;hit&quot; anything, but its direction and speed still changes. For instance, in spacecraft navigation (especially NASA space probes heading into deep space), it is common for a spacecraft to receive a <em>gravity assist</em> from a planet (usually Jupiter). This means it essentially scatters off the gravitational field of the planet, which gives it a big velocity boost, necessary to overcome the strong gravitational pull of the Sun and travel into the furthest reaches of the Solar System (and beyond!).</p>
+<p>In the case of a particle of mass $m$ (such as a small spacecraft) scattering over the gravitational planet caused by a much larger mass $M$ (such as a planet), we use essentially the same approach, just with some more sophisticated mathematics. The derivation is a bit difficult, but the essentials are the same. We once again define an angle $\phi$ for which $\theta = \pi - 2\phi$, where $\phi$ is given by:</p>
+<p class="mathcell">
+$$
+\phi(r) = -\int_{r_0}^{r_\text{min}} \dfrac{\ell}{r^2} \dfrac{dr}{\sqrt{2\mu(E - U(r)- \ell^2&#x2F;2\mu r^2)}}
+$$
+</p>
+<p>Where $U(r) = -\dfrac{GMm}{r}$ is the gravitational potential energy of the particle, $\mu = \dfrac{mM}{m+M}$ is the reduced mass of the two-body system, where $r_0$ is the distance from the center of the solid sphere that the particle starts off at $t  = 0$, and $r_\text{min}$ is the <em>point of closest approach</em>. Remember that since the particle is scattering off a gravitational field, there is no solid object that the particle actually &quot;bounces off&quot; of; rather, the particle approaches from some distance $r_0$ until it reaches the closest point $r = r_\text{min}$, before it is deflected away and goes the opposite direction. We can often get away by setting $r_0 = \infty$, meaning that the particle approaches from sufficiently far away that it can be considered to initially infinitely distant. From here, we &quot;just&quot; need to compute the integral, and then use $\dfrac{d\sigma}{d\Omega} = \left|\dfrac{b}{\sin \theta} \left(\dfrac{db}{d\theta}\right)\right|$ to find the differential cross-section.</p>
+<blockquote>
+<p><strong>Note:</strong> This expression is more general than just for gravitational fields; in fact, it applies for <em>any</em> central force field with potential $U = U(r)$, so it equally applies for harmonic potentials and electrostatic force fields!</p>
+</blockquote>
+<h3 id="non-inertial-reference-frames">Non-inertial reference frames</h3>
+<p>We have seen in our study of moving reference frames that due to the constraints in a rotating coordinate system, fictitious &quot;forces&quot; arise when attempting to apply Newton's second law $\mathbf{F} = m \mathbf{a}$. While these are not real forces, they can be <em>mathematically treated</em> as parts of an <strong>effective force</strong> to allow us to treat the problem in the same way as we would treat a problem that used a stationary (inertial) reference frame. In a rotating frame, the effective force $\mathbf{F}_\text{eff.}$ experienced by an observer is given by:</p>
+<p class="mathcell">
+$$
+\mathbf{F}_\text{eff.} = \underbrace{\mathbf{F}_\text{fixed} - m \ddot{\mathbf{R}}_F}_\text{inertial terms} - \underbrace{m \vec{\dot \omega} \times \mathbf{r}  - m \vec \omega \times(\vec \omega \times \mathbf{r}) - 2m\vec \omega \times \mathbf{v}_r}_\text{non-inertial terms}
+$$
+</p>
+<p>Where $\mathbf{F}_\text{fixed}$ describes all physical (real) forces in the <em>fixed reference frame</em>, $m \ddot{\mathbf{R}}_F$ describes the acceleration due to translation of the rotating system, $m \vec{\dot \omega} \times \mathbf{r}$ describes the angular acceleration, $m \vec \omega \times(\vec \omega \times \mathbf{r})$ is the acceleration due to the centrifugal &quot;force&quot;, and $2m\vec \omega \times \mathbf{v}_r$ is due to the Coriolis force. Note that all terms after $\mathbf{F}_\text{fixed} - m\ddot{\mathbf{R}}_F$ are terms unique to the non-inertial frame; these <em>non-inertial terms</em> come as a result of the coordinate system. The only <em>real</em> forces (e.g. gravity, electric force, etc.) are contained within $\mathbf{F}_\text{fixed}$; all other &quot;force&quot; terms arise due to the motion (translational and rotational) of the rotating frame and should be considered as <strong>fictitious forces</strong>.</p>
+<p>To solve for the equations of motion, we must set $\mathbf{F}_\text{eff.} = m\mathbf{a}_r$, where we solve for $\mathbf{a}_r$, the effective force on some moving body inside the rotating reference frame. Consider, for instance, a fixed reference frame located at the center of the Earth. We are interested in what is happening within a reference frame at the Earth's surface. The surface reference frame rotates as the Earth rotates, so it is a <em>rotating reference frame</em>. We want to describe the motion of an object on the Earth's surface (which means that it is in our surface reference frame) by finding the equations of motion.</p>
+<p>To be able to solve for the equations of motion, we begin by isolating the forces in the fixed frame. The forces in the fixed frame are:</p>
+<p class="mathcell">
+$$
+\mathbf{F}_\text{fixed} = m\ddot{\mathbf{R}}_F = \mathbf{S} + m\mathbf{g}_0
+$$
+</p>
+<p>Where $\mathbf{g}_0 = -\dfrac{GM}{r^2} \hat r$ and $\mathbf{S}$ includes all other physical forces (e.g. geothermal pressure). These are forces that <em>do not arise</em> as a result of the rotating coordinate system, hence why we say that they are <em>physical</em> forces, rather than fictitious forces that are the result of a rotating reference frame.</p>
+<p>Let us now consider the terms that <em>are</em> dependent on the rotating coordinate system. First, the Earth's rotation has an approximately constant angular velocity, which we may denote $\omega_0$, such that:</p>
+<p class="mathcell">
+$$
+\vec \omega = \omega_0 \hat z
+$$
+</p>
+<p>We have:</p>
+<p class="mathcell">
+$$
+\ddot{\mathbf{R}}_F = \vec \omega \times (\vec \omega \times \mathbf{R}_F)
+$$
+</p>
+<p>Such that the effective force takes the form:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathbf{F}_\text{eff} &amp;= \mathbf{F}_\text{fixed} - m\ddot{\mathbf{R}}_F - m \vec \omega \times(\vec \omega \times \mathbf{r}) - 2m\vec \omega \times \mathbf{v}_r \\
+&amp;= \mathbf{S} + m\mathbf{g}_0 - m\vec \omega \times (\vec \omega \times (\mathbf{R} + \mathbf{r})) - 2m\vec \omega \times \mathbf{v}_r
+\end{align*}
+$$
+</p>
+<p>We note that the gravitational acceleration interestingly does not point <em>directly</em> towards the center of the Earth. This is because of the contribution of the centrifugal &quot;force&quot;, which <em>modifies</em> the direction of the gravitational acceleration away from the direction of the gravitational field $\mathbf{g}_0$. Thus, it is convenient to define the <em>effective</em> gravitational acceleration as measured on the Earth's surface, given by:</p>
+<p class="mathcell">
+$$
+\mathbf{g} = \mathbf{g}_0 - \vec \omega \times (\vec \omega \times (\mathbf{R} + \mathbf{r}))
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> In general, $\mathbf{g} - \mathbf{g}_0 \approx \pu{0.034 m/s}$ (while the precise value depends on your latitude, this is the approximate maximum value). This discrepancy is the contribution due to centrifugal effects (what we call the centrifugal &quot;force&quot;).</p>
+</blockquote>
+<p>Using the effective gravitational acceleration, we can rewrite our expression for the effective force as:</p>
+<p class="mathcell">
+$$
+\mathbf{F}_\text{eff.} = \mathbf{S} + m\mathbf{g} - \underbrace{2m \vec \omega \times \mathbf{v}_r}_\text{coriolis &quot;force&quot;}
+$$
+</p>
+<p>Let us now consider the case of a particle falling to Earth's surface from some height $h$. We will use $z$ as our radial coordinate, $x$ as the horizontal coordinate, and $\theta$ as the angle made with respect to the center of the Earth, as we show in the below diagram:</p>
+<img class="diagram" src=coriolis-earth.excalidraw.svg alt="A diagram of the problem&#x27;s coordinate system, showing z as the distance above earth&#x27;s surface, theta as the angle with respect to the center of the earth, and y as the direction tangent to the Earth&#x27;s surface" />
+<p>The angular velocity of the Earth about its rotational axis is given by:</p>
+<p class="mathcell">
+$$
+\vec \omega = -\omega_0 \cos \theta \hat x + \omega_0 \sin \theta \hat z
+$$
+</p>
+<p>From here, substituting our result for the effective force on the surface of the Earth, we find that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathbf{F}_\text{eff.} &amp;= m \mathbf{g} - 2m \vec \omega \times \vec{\mathbf{v}}_r \\
+m\mathbf{a}_r &amp;= m \mathbf{g} - 2m \vec \omega \times \vec{\mathbf{v}}_r \\
+\mathbf{a}_r &amp;= \mathbf{g} - 2\vec \omega \times \vec{\mathbf{v}}_r \\
+\end{align*}
+$$
+</p>
+<p>The velocity $\mathbf{v}_r$ is given, in this configuration by:</p>
+<p class="mathcell">
+$$
+\mathbf{v}_r = \begin{pmatrix} 0 \\ 0 \\ -gt \end{pmatrix}
+$$
+</p>
+<p>From which we can calculate the cross product of the angular velocity vector with:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\vec \omega \times \mathbf{v}_r &amp;= \begin{vmatrix}
+ \hat x &amp; \hat y &amp; \hat z \\
+ -\omega_0 \cos \theta &amp; 0 &amp; \omega_0 \sin \theta \\
+ 0 &amp; 0 &amp; -gt
+\end{vmatrix} \\
+&amp;= -g \omega_0 t \cos \theta \hat y
+\end{align*}
+$$
+</p>
+<p>Thus, expanding out $\mathbf{a}_r = \mathbf{g} - 2\vec \omega \times \vec{\mathbf{v}}_r$ in vector form, we have:</p>
+<p class="mathcell">
+$$
+\mathbf{a}_r =
+\begin{pmatrix}
+a_{rx} \\
+a_{ry} \\
+a_{rz}
+\end{pmatrix} =
+\begin{pmatrix}
+\ddot x_r \\
+\ddot y_r \\
+\ddot z_r
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\
+2g\omega t \cos \theta \\
+-g
+\end{pmatrix}
+$$
+</p>
+<p>These can be solved as a system of 2nd-order differential equations, with the initial conditions $\mathbf{r}(0) = \langle 0, 0, h\rangle$, $\mathbf{r}'(0) = 0$ to yield the solutions:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+x(t) &amp;= 0 \\
+y(t) &amp;= \dfrac{1}{3} \omega_0 g t^3 \cos \theta \\
+z(t) &amp;= h - \dfrac{1}{2} gt^2
+\end{align*}
+$$
+</p>
+<p>Thus, the amount of deflection from a straight-line path caused by the Coriolis &quot;force&quot; is given by:</p>
+<p class="mathcell">
+$$
+\Delta y = \dfrac{1}{3} \omega_0 g \left(\dfrac{2h}{g}\right)^{3&#x2F;2}\cos \theta
+$$
+</p><h2 id="dynamics-of-rigid-bodies">Dynamics of rigid bodies</h2>
+<p>It is common to consider purely point-like particles in physics, and up to this point, we have had considered objects to be located at a definite location. However, we know that <em>real</em> (macroscopic) objects have internal volume and size, so point particles are only an approximation to describe them. A better description uses the model of a <strong>rigid body</strong>, which more accurately accounts for the internal volume and nonzero size of real objects.</p>
+<p>Rigid bodies can be thought of as a system of $n$ particles of masses $m_1, m_2, m_3, \dots$ which allows them to be modelled as such a system. Each particle would then have velocity $\mathbf{v}_i$, given by:</p>
+<p class="mathcell">
+$$
+\mathbf{v}_i = \mathbf{v}_{CM} + \vec \omega \times \mathbf{r}_i
+$$
+</p>
+<p>where as with before, $\mathbf{v}_{CM}$ is the velocity of the center-of-mass of the system, and $\omega \times \mathbf{r}_i$ describe the particle's velocity about the center-of-mass (equivalently, the rate of rotation of the particle with respect to the rotating reference frame):</p>
+<p class="mathcell">
+$$
+\underbrace{\mathbf{r}_i = \begin{pmatrix} x_i \\ y_i \\ z_i \end{pmatrix},}_{\text{position of particle } i} \quad
+\underbrace{\vec \omega = \begin{pmatrix}
+\omega_x \\ \omega_y \\ \omega_z
+\end{pmatrix}}_\text{angular velocity of particle w.r.t CoM}
+$$
+</p>
+<p>For a rigid body, the distance of every point on its surface from the center of mass will remain constant in time as we assume the object cannot stretch or shrink. Rigid bodies can be analyzed by positioning our coordinate system such that the origin of our coordinate system is exactly positioned at the center of Earth's.</p>
+<p>Let us consider the total kinetic energy of a rigid body. Using our definition of $\mathbf{v}_i$, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+K_\text{total} &amp;= \sum \dfrac{1}{2} m_i \mathbf{v}_i^2 \\
+&amp;= \dfrac{1}{2} \sum_i m_i (\mathbf{v}_{CM} + \vec \omega \times \mathbf{r}_i)^2 \\
+&amp;= \dfrac{1}{2} \sum_i m_i (\mathbf{v}_{CM}^2 + 2 \mathbf{v}_{CM}\cdot (\vec \omega \times \mathbf{r}) + (\vec \omega + \mathbf{r}_i)^2) \\
+&amp;= \underbrace{\dfrac{1}{2} \sum_i m_i \mathbf{v}_{CM}^2}_\text{translational KE} + \underbrace{\dfrac{1}{2} \sum_i m_i (\vec \omega \times \mathbf{r}_i)^2}_\text{rotational KE}
+\end{align*}
+$$
+</p>
+<p>Where we note that the total kinetic energy $K_\text{total} = K_\text{transl.} + K_\text{rot.}$ which is the sum of the translational and rotational kinetic energies. Note that if we use the identity $(\mathbf{A} \times \mathbf{B})^2 = \mathbf{A}^2 \mathbf{B}^2 - (\mathbf{A} \cdot \mathbf{B})^2$, we can rewrite the above expression as:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+K_\text{rot.} &amp;= \dfrac{1}{2} \sum_i m_i (\vec \omega \times \mathbf{r}_i)^2 \\
+&amp;= \dfrac{1}{2} \sum_i m_i \left[\omega^2 \mathbf{r}_i^2 - (\vec \omega \cdot \mathbf{r}_i)^2\right]
+\end{align*}
+$$
+</p>
+<p>Where here, $\omega^2 = \vec \omega \cdot \vec \omega$ and $\mathbf{r}_i^2 = \mathbf{r}_i \cdot \mathbf{r}_i$. But the angular velocity is a <em>vector</em> (technically, pseudovector, but that distinction can be ignored here), which can be written in tensor form as $\omega_j = \sum_{k=1}^3 \omega_k \delta_{jk}$, where $\delta_{jk}$ is the identity matrix, given by:</p>
+<p class="mathcell">
+$$
+\delta_{ij} = \begin{pmatrix*}
+\delta_{11} &amp; \delta_{12} &amp; \delta_{13} \\
+\delta_{21} &amp; \delta_{22} &amp; \delta_{23} \\
+\delta_{31} &amp; \delta_{32} &amp; \delta_{33}
+\end{pmatrix*} =\begin{pmatrix*}
+1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1
+\end{pmatrix*}
+$$
+</p>
+<p>If this tensor notation is unfamiliar, the idea is that when we want to compute the $j$-th component of the angular velocity (for instance, $\omega_1$, the $x$-component of $\vec \omega$), we substitute in $j = x$ and plug that into the sum, which gives:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\omega_1 &amp;= \sum_{k=1}^3 \omega_k \delta_{1k} \\
+&amp;= \omega_1 \delta_{11} + \omega_2{\delta}_{12} + \omega_3 \delta_{13} \\
+&amp;= \omega_1 (1) + 0 + 0 \\
+&amp;= \omega_1
+\end{align*}
+$$
+</p>
+<p>Similarly, notice that the position of each particle, which we referred to as $\mathbf{r}_i$, may be written as $r_b = \sum_{a = 1}^3 r_a^{(i)}\delta_{ab}$, such that $\mathbf{r}_i \cdot \mathbf{r}_i$ becomes:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathbf{r}_i \cdot \mathbf{r}_i &amp;= r_b\, r_b \\
+&amp;= \sum_{a = 1}^3 r_a^{(i)}\delta_{ab} \sum_{a = 1}^3 r_a^{(i)}\delta_{ab} \\
+&amp;= \sum_{a = 1}^3 {r_a^{(i)}}^2
+\end{align*}
+$$
+</p>
+<p>Since $\delta_{ab} \delta_{ab} = \delta_{ab}$ (the matrix product of the identity matrix with an identity matrix is still an identity matrix) - note that this is true for the identity matrix regardless of which indices you use, so we find that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\omega^2 &amp;= \vec \omega \cdot \vec \omega \\
+&amp;= \omega_j \,\omega_j \\
+&amp;= \sum_{k=1}^3 \omega_k \delta_{jk} \sum_{k=1}^3 \omega_k \delta_{jk} \\
+&amp;= \sum_{k=1}^3 \omega_k^2 \cancel{\delta_{jk} \delta_{jk}}^1 \\
+&amp;= \sum_{k=1}^3 \omega_k^2
+\end{align*}
+$$
+</p>
+<p>On substituting our new definitions for $\omega^2$ and $\mathbf{r}_i^2$, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+K_\text{rot.} &amp;= \dfrac{1}{2} \sum_i m_i \left[\omega^2 \mathbf{r}_i^2 - (\vec \omega \cdot \mathbf{r}_i)^2\right] \\
+&amp;=\dfrac{1}{2} \sum_i m_i \left[\left(\sum_{k=1}^3 \omega_k^2\right)^2 \left(\sum_{a = 1}^3 {r_a^{(i)}}^2\right) - \left(\sum_{a = 1}^3 r_a^{(i)}\omega_a\right)\left(\sum_{k = 1}^3 r_k^{(i)}\omega_k\right)\right] \\
+&amp;= \dfrac{1}{2} \sum_i m_i \sum_{a= 1}^3 \sum_{k = 1}^3\left[\omega_a \omega_k \delta_{ak} \sum_{a=1}^3 {r_a^{(i)}}^2 - \omega_a \omega_k r_a^{(i)} r_k^{(i)}\right] \\
+&amp;= \dfrac{1}{2} \sum_{a= 1}^3 \sum_{k = 1}^3 \omega_a \omega_k\underbrace{\sum_i m_i \left[\left(\delta_{ak} \sum_{a=1}^3 {r_a^{(i)}}^2\right) - r_a^{(i)} r_k^{(i)}\right]}_{I_{ak}} \\
+&amp;= \sum_{a= 1}^3 \sum_{k = 1}^3 \dfrac{1}{2} I_{ak} \omega_a \omega_k
+\end{align*}
+$$
+</p>
+<p>Note how in the second-last line, we defined a special matrix $I_{ak}$, given by:</p>
+<p class="mathcell">
+$$
+I_{ak} = \sum_i m_i \left[\left(\delta_{ak} \sum_{a=1}^3 {r_a^{(i)}}^2\right) - r_a^{(i)} r_k^{(i)}\right]
+$$
+</p>
+<p>This is the <strong>moment of inertia</strong> in its <em>most general form</em>, called the <em>moment of inertia tensor</em>, or just <strong>inertia tensor</strong> for short. In 3D, it is written as a $(3 \times 3)$ matrix. Note that along the diagonals of the inertia tensor, since $\delta_{ak} = 1$ when $a = k$, we have:</p>
+<p class="mathcell">
+$$
+I_{aa} = \sum_i m_i \left[\left(x_a^{{(i)}^2} + y_a^{{(i)}^2} + z_a^{{(i)}^2}\right) - \left(r_a^{(i)}\right)^2\right]
+$$
+</p>
+<p>Where $r_a = (r_1, r_2, r_3) = (x, y, z)$ is the tensor expression for the $a$-th component of the position, and $r_a^{(i)} = (r_1^{(i)}, r_2^{(i)}, r_3^{(i)}) = (x^{(i)}, y^{(i)}, z^{(i)})$ is the position of the $i$-th particle. Meanwhile, for the non-diagonals (cross terms) of the inertia tensor, since $\delta_{ak} = 0$ when $a \neq k$, we have:</p>
+<p class="mathcell">
+$$
+I_{{ak},\, \text{cross}} = -\sum_i m_i r_a^{(i)} r_k^{(i)}
+$$
+</p>
+<p>We notice that in the limiting case, as the number of particles grows very large, this expression reduces to the familiar expression of the rotational kinetic energy:</p>
+<p class="mathcell">
+$$
+K = \dfrac{1}{2} I \omega^2
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> The inertia tensor $I_{ak}$ is the collective description of the moment of inertia of a <em>system</em> of $N$ particles, where $N$ can be arbitrarily-large. This means that in our definition of the inertia tensor $I_{ak} = \displaystyle \sum_i m_i \left[\left(\delta_{ak} \sum_{a=1}^3 {r_a^{(i)}}^2 \right) - r_a^{(i)} r_k^{(i)}\right]$, we must remember to sum over every particle; that is, the index $i$ sums from the first particle to the last ($N$-th) particle.</p>
+</blockquote>
+
+        
+        <a id="jump-toc-btn" href="#toc">Show table of contents</a>
+        <a href="/notes" class="return-link">Back to all notes</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://songtech-0912.github.io/katex/katex.min.js"></script>
+    <script defer src="https://songtech-0912.github.io/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://songtech-0912.github.io/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://songtech-0912.github.io/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        var toc = document.getElementById("toc");
+        var tocPos = toc.offsetTop + toc.offsetHeight;
+        var tocBtn = document.getElementById("jump-toc-btn");
+
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+        // for performance reasons, we **only** render a certain
+        // number of equations that the viewer is actually viewing
+        function VisibleMathRenderer(config) {
+            /*
+            Renders only a limited number of equations on page load
+            to avoid poor performance
+             Params:
+                lastRenderedEquation: the most recently rendered equation.
+                        when this goes out of view, equations under it are rendered. 
+            */
+            var startElement = config.startElement
+            var maxEquations = config.maxEquations ? config?.maxEquations : 30;
+            this.startElement = startElement
+            this.maxEquations = maxEquations
+            // we wait until the user scrolls past the starting/
+            // ending elements to start rendering the whole page
+            this.canRenderWholePage = false;
+            this.pageRendered = false;
+            this.lastRenderedTopEquation = null;
+            this.lastRenderedBottomEquation = null;
+
+            this.render = function() {
+                renderMath(this.startElement);
+                // render previous 25 and following 25 equations
+                var prev = this.startElement.previousElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left prior to the element
+                    if (prev == null) {
+                        break;
+                    }
+                    renderMath(prev);
+                    prev = prev.previousElementSibling;
+                }
+                // store our last rendered equations
+                // we'll track scroll position later to
+                // check when the rest of the page should be rendered
+                this.lastRenderedTopEquation = prev;
+                console.log(this.lastRenderedTopEquation)
+
+                var next = this.startElement.nextElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left following the element
+                    if (next.nextElementSibling == null) {
+                        break;
+                    }
+                    renderMath(next);
+                    next = next.nextElementSibling;
+                }
+                this.lastRenderedBottomEquation = next;
+                // now allow rendering the rest of the equations
+                this.canRenderWholePage = true;
+            }
+
+            // render all math on the whole page
+            this.renderMathOnPage = function() {
+                // don't run until preliminary tasks
+                // are done so that the whole page
+                // can/should be rendered
+                if (!this.canRenderWholePage) {
+                    return;
+                }
+                // if the whole page's worth of equations
+                // are already rendered, don't render more
+                if (this.pageRendered) {
+                    return;
+                }
+                var topBound = this.lastRenderedTopEquation.getBoundingClientRect.top;
+                var bottomBound = this.lastRenderedBottomEquation.getBoundingClientRect.bottom;
+                var scrollTop, scrollBottom = getViewport();
+                // if the user is about to scroll past the initially-rendered equations
+                // we will render the whole page
+                if (scrollTop - 50 + window.scrollY < topBound || scrollBottom + 50 + window.scrollY > bottomBound) {
+                    console.log("Scrolled beyond!")
+                    var article = document.querySelector(".post");
+                    if (article) {
+                        this.renderMath(article);
+                    }
+                    this.pageRendered = true;
+                }
+                
+            }
+            
+        }
+
+        function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        function findFirstRelevantElement() {
+            // finds the first <p> tage that's closest to
+            // the viewer's viewport
+            var regex = /#.*/;
+            var m = regex.exec(window.location.href);
+            if (m !== null) {
+                return document.querySelector(m[0]);
+            } else {
+                return document.querySelector(".post p");
+            }
+        }
+        
+        // initialize page JS components
+        /*
+        var mathRenderer = new VisibleMathRenderer({
+            // start rendering with first <p> tag on the
+            // post
+            startElement: findFirstRelevantElement()
+        });
+        */
+        document.addEventListener("DOMContentLoaded", function() {
+            showTocBtnOnScroll();
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+
+        window.onscroll = function(){
+            // if (!mathRenderer.pageRendered) {
+            //     mathRenderer.renderMathOnPage();
+            // }
+            showTocBtnOnScroll();
+        };
+
+
+    </script>
+    
+
+
+</body>
+
+</html>
