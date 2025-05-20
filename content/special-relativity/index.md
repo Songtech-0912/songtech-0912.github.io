@@ -372,7 +372,7 @@ However, since the dot product of any 4-momentum vector is invariant, this means
 \mathbf{P}_l \cdot \mathbf{P}_l = \frac{E_{cm}^2}{c^2}
 {% end %}
 
-From there, we can rearrange to solve for $E_{cm}$. Then, we can find $\mathbf{P}_{cm}$ from $E_{cm}$, use $\mathbf{P}_{cm} = \mathbf{P}_A + \mathbf{P}_b$, and then square both sides (only the squaring uses dot products, not regular multiplication). This then becomes:
+From there, we can rearrange to solve for $E_{cm}$. Then, we can find {% inlmath() %}\mathbf{P}_{cm}{% end %} from $E_{cm}$, use {% inlmath() %}\mathbf{P}_{cm} = \mathbf{P}_A + \mathbf{P}_b{% end %}, and then square both sides (only the squaring uses dot products, not regular multiplication). This then becomes:
 
 {% math() %}
 \mathbf{P}_{cm} \cdot \mathbf{P}_{cm} = (\mathbf{P}_A + \mathbf{P}_B) \cdot (\mathbf{P}_A + \mathbf{P}_B) = \mathbf{P}_A \cdot \mathbf{P}_A + 2(\mathbf{P}_A \cdot \mathbf{P}_B) + \mathbf{P}_B \cdot \mathbf{P}_B
