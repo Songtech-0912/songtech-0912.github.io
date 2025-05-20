@@ -919,7 +919,7 @@ We can visualize the hydrogen wavefunction (or more precisely, the hydrogen eige
 
 _Source: [Sebastian Mag, Medium](https://ssebastianmag.medium.com/computational-physics-with-python-hydrogen-wavefunctions-electron-density-plots-8fede44b7b12)_
 
-The energy levels of hydrogen are given by the energy eigenvalues of its wavefunction:
+The energy levels of hydrogen are given by the energy eigenvalues of its Hamiltonian:
 
 {% math() %}
 E_n = -\dfrac{\mu e^4}{32\pi^2 \varepsilon_0^2 \hbar^2} \dfrac{1}{n^2} = -\dfrac{\mu c^2 \alpha^2}{2n^2}
@@ -952,7 +952,7 @@ Where again, $\mu$ is the reduced mass, $\alpha \approx 1/137$ is the fine-struc
 
 ### The quantum harmonic oscillator
 
-We'll now take a look at the quantum harmonic oscillator, a quantum system describing a particle that oscillates within a harmonic (i.e. quadratic) potential. But first, why study it? The reason is because all potentials are _approximately_ harmonic potentials close to their local minimums. Let us see why this gives us powerful tools to solve non-trivial quantum systems
+We'll now take a look at the quantum harmonic oscillator, a quantum system describing a particle that oscillates within a harmonic (i.e. quadratic) potential. But first, why study it? The reason is because all potentials are _approximately_ harmonic potentials close to their local minimums. Let us see how this gives us powerful tools to solve non-trivial quantum systems.
 
 Consider solving the Schrödinger equation with a non-trivial potential $V(x)$ for some given quantum system. We may expand it as a Taylor series. When the system oscillates about a local minimum of the potential - which, in physical terms, corresponds to having a total energy $E$ slightly above the potential minimum $V_0$ - then the first derivative is approximately zero. The second derivative is a constant, and all higher-order terms vanish. Therefore, the potential can be written as:
 
@@ -986,7 +986,7 @@ Given that the solution is dependent only on position we may replace the partial
 -\dfrac{\hbar^2}{2m} \dfrac{d^2 \psi}{dx^2} + \dfrac{1}{2} m \omega^2 x^2 \psi = E\psi
 {% end %}
 
-This is not an easy differential equation to solve. However, we can make the problem tractable by assuming the ground state of the quantum harmonic oscillation has a very small energy, so that $E_0 \psi \approx 0$. This reduces the differential equation to: 
+This is not an easy differential equation to solve, and finding a solution that describes all the possible states of the quantum harmonic oscillator is highly non-trivial. However, we can make the problem tractable by just solving for the ground state of the quantum harmonic oscillator. By making the assumption that the ground state (being the lowest-energy state) has a very small energy, so $E_0 \psi \approx 0$, the differential equation reduces to: 
 
 {% math() %}
 -\dfrac{\hbar^2}{2m} \dfrac{d^2 \psi}{dx^2} + \dfrac{1}{2} m \omega^2 x^2 \psi = 0
@@ -1085,11 +1085,26 @@ Furthermore, we note that this solution for the ground state of the quantum harm
 E_n = \left(n + \dfrac{1}{2}\right)\hbar \omega
 {% end %}
 
-For which we can see that with $n = 0$ we have the familiar expression of $E = \dfrac{1}{2} \hbar \omega$.
+For which we can see that with $n = 0$ we have the familiar expression of $E = \dfrac{1}{2} \hbar \omega$. What about the general expression for the wavefunction, you might ask? Well, it is given by:
+
+{% math() %}
+\psi_n(x) = \left(\dfrac{m\omega}{\pi \hbar}\right) \dfrac{1}{\sqrt{2^n n!}} H_n\left(\sqrt{\dfrac{m\omega}{\hbar}}x \right) \exp\left(-\dfrac{m\omega x^2}{2\hbar}\right)
+{% end %}
+
+Where $n$ is the principal quantum number (as with the hydrogen atom), and $H_n(x)$ is an $n$-th order [Hermite polynomial](https://en.wikipedia.org/wiki/Hermite_polynomials), which are a set of special functions, much like the Laguerre polynomials used in the wavefunction of the hydrogen atom. We show some plots of the quantum harmonic oscillator wavefunction for different  below:
+
+{{ diagram(
+src="https://upload.wikimedia.org/wikipedia/commons/9/9e/HarmOsziFunktionen.png"
+alt="Plots of the wavefunction of the quantum harmonic oscillator for its first few energy levels"
+) }}
+
+_Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:HarmOsziFunktionen.png)_
+
+Understandably, considering the fact that the most general solution can only be expressed in terms of special functions, we started by solving only for the ground state, not the general case for all energy levels!
 
 ## The mathematics behind quantum mechanics
 
-The Schrödinger equation is certainly a very useful tool and all problems in non-relativistic quantum theory, with the exception of problems that involve spin, can be solved from the Schrödinger equation. However, simply taking the Schrödinger equation for granted is somewhat ignoring _why_ it works the way it does. So we will now take many steps back and build up quantum theory from its mathematical and physical fundamentals.
+The Schrödinger equation is certainly a very useful tool and all problems in non-relativistic quantum theory, with the exception of problems that involve spin, can be solved from the Schrödinger equation. However, simply taking the Schrödinger equation for granted is ignoring _why_ it works the way it does. So we will now take many steps back and build up quantum theory from its mathematical and physical fundamentals.
 
 ### Postulate 1: quantization
 
