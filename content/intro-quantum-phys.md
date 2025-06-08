@@ -474,6 +474,8 @@ We have seen that operators represent physical properties (such as position or m
 
 Recall that the actual properties of a quantum particle are unknown and random, and the best we can do is to predict probabilities. However, just as we can predict the probabilities of the particle being in a particular state through the probability coefficients of each eigenstate, we can predict the _average_ measured value. We call this the **expectation value**.
 
+> **Note:** We must exercise some caution in using the word "average" here. The expectation value is **not** the average value of measurements of a a quantum system taken immediately one after another. Rather, it is the average value of either (a) measuring **multiple copies** of the same quantum system at the same time or (b) **replicating the quantum system from scratch** and re-doing the measurement on each. This is why quantum physics experiments (such as the [Large Hadron Collider](https://en.wikipedia.org/wiki/Large_Hadron_Collider)) repeat collisions over and over billions or even [quadrillions of times](http://www.slashgear.com/first-lhc-proton-run-ends-in-success-new-milestone-18261452/), since an expectation value can only be compared to average measurements across **multiple repeats** (or copies) of the same quantum system, **not** the same system measured multiple times.
+
 In the discrete case, for a given operator $\hat A$ with eigenstates $\varphi_n(x)$, the expectation value is notated $\langle \hat A\rangle$ and is given by:
 
 {% math() %}
