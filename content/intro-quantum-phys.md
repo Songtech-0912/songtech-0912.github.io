@@ -1114,7 +1114,7 @@ When a quantitiy is said to be **quantized**, it _cannot take on continuous valu
 
 For example, consider electrical charge. The base value of electric charge is the elementary charge constant $e$ (not to be confused with Euler's number), associated with a single electron. It is _only_ possible for an object in the universe to have a charge of $1e, 2e, 3e, \dots ne$. It is not possible for an object to have a charge of $3.516e$.
 
-> Note to the advanced reader: yes, indeed, quarks have a different quantum of charge, but since quarks can never be found on their own, and are always grouped together into composite, not elementary particles, we consider $e$ the quantum of charge, associated with an electron.
+> **Note to the advanced reader:** yes, indeed, quarks have a different quantum of charge, but since quarks can never be found on their own, and are always grouped together into composite, not elementary particles, we consider $e$ the quantum of charge, associated with the constant charge of electrons.
 
 Similarly, consider electromagnetic radiation. The base value of electromagnetic energy is given by $hf = \dfrac{hc}{\lambda}$, the radiation of a single photon of frequency $f$ and wavelength $\lambda$, where $h = \pu{6.626e-34 J*Hz^{-1}}$ is the Planck constant. All electromagnetic energy of a given frequency $f$ and wavelength $\lambda$ must be composed of multiples of this value.
 
@@ -1150,7 +1150,7 @@ p_{z}(t)
 \end{pmatrix}
 {% end %}
 
-The idea of a state carries over to quantum mechanics, but with a few differences. In quantum mechanics, the state of a system is described with a **quantum state-vector**. This is typically written abstractly as a complex vector $|\Psi\rangle$ whose components are complex numbers, with the specialized notation (called bra-ket or Dirac notation) used to differentiate quantum states from classical states. 
+The idea of a state carries over to quantum mechanics, but with a few differences. In quantum mechanics, the state of a system is described with a **quantum state-vector**. This is typically written abstractly as a complex vector $|\psi\rangle$ whose components are complex numbers, with the specialized notation (called bra-ket or Dirac notation) used to differentiate quantum states from classical states. 
 
 > **Note on notation:** in bra-ket notation, all vectors are denoted with the right angle-bracket $| V \rangle$, and a scalar multiplication of a vector is written $a | V \rangle$.
 
@@ -1175,7 +1175,7 @@ We can also write the same using index notation. Let $i = 1, 2, 3$ equal the coo
 Thus we can write ordinary vectors as a **superposition** (sum of constant-multiple terms) of the Cartesian basis vectors and their components. Quantum state-vectors can also be written as a superposition of basis vectors and components, but unlike ordinary Cartesian vectors in Euclidean 3D space $\mathbb{R^3}$, they reside in a complex space (called a **Hilbert space**, and denoted $\mathcal{H}$) that can have any number of dimensions (including infinitely-many)! Expressed as a superposition, they take the form:
 
 {% math() %}
-| \Psi \rangle = 
+| \psi \rangle = 
 \begin{pmatrix}
 c_1 \\ 
 c_2 \\ 
@@ -1189,29 +1189,29 @@ c_1 | \phi_1 \rangle + c_2 | \phi_2 \rangle + c_3 | \phi_3 \rangle + \dots
 where $c_1, c_2, \dots c_n$ are the components, which are in general complex-valued, and $| \phi_1 \rangle, | \phi_2 \rangle, \dots | \phi_n \rangle$ are the basis vectors. (What these basis vectors and components represent, we'll see in just a moment.) Using the index notation introduced earlier, the superposition form of a quantum state-vector can be compactly written as:
 
 {% math() %}
-|\Psi\rangle = \sum_{i = 1}^n c_i | \phi_i \rangle
+|\psi\rangle = \sum_{i = 1}^n c_i | \phi_i \rangle
 {% end %}
 
-Consider, for instance, a quantum coin. A real coin, of course, is technically not truly random; if you could measure the exact position and velocity of the coin at the moment it was flipped, you could determine if it would land heads or tails. However, imagine a quantum coin that was fully probabilistic - not even full knowledge of its state $|\Psi \rangle$ could be enough to predict its future outcome. The only thing we _do_ know about this quantum coin is that, just like a regular coin, it has a 50% probability of landing heads, and a 50% probability of landing tails, and those are the _only two possible states_ it could be in. Then we could write its quantum state as:
+Consider, for instance, a quantum coin. A real coin, of course, is technically not truly random; if you could measure the exact position and velocity of the coin at the moment it was flipped, you could determine if it would land heads or tails. However, imagine a quantum coin that was fully probabilistic - not even full knowledge of its state $|\psi \rangle$ could be enough to predict its future outcome. The only thing we _do_ know about this quantum coin is that, just like a regular coin, it has a 50% probability of landing heads, and a 50% probability of landing tails, and those are the _only two possible states_ it could be in. Then we could write its quantum state as:
 
 {% math() %}
-|\Psi \rangle = \frac{1}{\sqrt{2}} | \Psi_H \rangle + \frac{1}{\sqrt{2}} | \Psi_T \rangle
+|\psi\rangle = \frac{1}{\sqrt{2}} | \psi_H \rangle + \frac{1}{\sqrt{2}} | \psi_T \rangle
 {% end %}
 
-Here, $| \Psi_H \rangle$ is the "heads" state, and $| \Psi_T \rangle$ is the "tails" state: these are the two **basis vectors** that we use to write out the state-vector. Meanwhile, the coefficients are both $\frac{1}{\sqrt{2}}$ because the square of $\frac{1}{\sqrt{2}} = \frac{1}{2} = 50\\%$ which was the probability we know the coin can be in either one of its states. So now we can give a _physical_ interpretation of the coefficients and basis vectors that make up the superposition of $| \Psi \rangle$:
+Here, $| \psi_H \rangle$ is the "heads" state, and $| \psi_T \rangle$ is the "tails" state: these are the two **basis vectors** that we use to write out the state-vector. Meanwhile, the coefficients are both $\frac{1}{\sqrt{2}}$ because the square of $\frac{1}{\sqrt{2}} = \frac{1}{2} = 50\\%$ which was the probability we know the coin can be in either one of its states. So now we can give a _physical_ interpretation of the coefficients and basis vectors that make up the superposition of $| \psi\rangle$:
 
-> For any given quantum state-vector $| \Psi \rangle = c_1 | \phi_1 \rangle + c_2 | \phi_2 \rangle + c_3 | \phi_3 \rangle + \dots$ the basis vectors $|\phi_i\rangle$ are to be interpreted as **physical states** where a quantum system takes on a particular **physical value** (such as possible positions, possible momenta, possible energies, etc.) Meanwhile, the squares of the coefficients $c_i$ are to be interpreted as **probability** of the system being in a particular physical state.
+> For any given quantum state-vector $| \psi\rangle = c_1 | \phi_1 \rangle + c_2 | \phi_2 \rangle + c_3 | \phi_3 \rangle + \dots$ the basis vectors $|\phi_i\rangle$ are to be interpreted as **physical states** where a quantum system takes on a particular **physical value** (such as possible positions, possible momenta, possible energies, etc.) Meanwhile, the squares of the coefficients $c_i$ are to be interpreted as **probability** of the system being in a particular physical state.
 
 To get out of over-abstractness it is helpful to explicitly write down these superpositions. For instance, consider a very strange particle (perhaps representing an extremely shy physicist) that can only appear in one of three possible positions along the $x$ axis, which we denote as $x_1$, $x_2$, and $x_3$. We may choose to write out its state-vector using basis vectors of position, where each basis vector, which we denote $| x_i \rangle$, represents the particle being at one of its possible positions. Thus, its state-vector takes the form:
 
 {% math() %}
-| \Psi \rangle = c_1 | x_1 \rangle + c_2 | x_2 \rangle + c_3 | x_3 \rangle
+| \psi\rangle = c_1 | x_1 \rangle + c_2 | x_2 \rangle + c_3 | x_3 \rangle
 {% end %}
 
 Let us say that $|x_1\rangle$ denotes the state where the particle is at position $x = \pu{1 cm}$, $|x_2\rangle$ denotes the state where the particle is at position $x = \pu{1.5 cm}$, and $|x_3\rangle$ denotes the state where the particle is at position $x = \pu{2 cm}$. We can write this out explicitly as:
 
 {% math() %}
-| \Psi \rangle = \frac{1}{2}~| \text{ at 1 cm } \rangle + \dfrac{1}{\sqrt{2}}~| \text{ at 1.5 cm } \rangle + \dfrac{1}{2}~| \text{ at 2 cm } \rangle + \dots
+| \psi\rangle = \frac{1}{2}~| \text{ at 1 cm } \rangle + \dfrac{1}{\sqrt{2}}~| \text{ at 1.5 cm } \rangle + \dfrac{1}{2}~| \text{ at 2 cm } \rangle + \dots
 {% end %}
 
 Here, each squared coefficient becomes the _probability_ of the particle being at point $x$. For instance, the square of the $c_1$ coefficient is the probability of the particle being at the point $x_1 = \pu{1cm}$. Since $c_1 = 1/2$, the probability is then {% inlmath() %}(c_1)^2 = (1/2)^2 = 25\%{% end %}.
@@ -1219,7 +1219,7 @@ Here, each squared coefficient becomes the _probability_ of the particle being a
 The same state-vector can be written using basis vectors of momentum, where each basis vector $| p \rangle$ represents the state of the particle having momentum $p$:
 
 {% math() %}
-| \Psi \rangle = c_1 | p_1 \rangle + c_2 | p_2 \rangle + c_3 | p_3 \rangle + \dots
+| \psi\rangle = c_1 | p_1 \rangle + c_2 | p_2 \rangle + c_3 | p_3 \rangle + \dots
 {% end %}
 
 Each squared coefficient now becomes the probability of the particle having that momentum $p$. For instance, the square of $c_1$ will be the probability of the particle of having momentum $p_1$.
@@ -1227,27 +1227,27 @@ Each squared coefficient now becomes the probability of the particle having that
 We can do the same with energy basis vectors, with each basis vector $|E \rangle$ representing the state where the particle has energy $E$, and each squared coefficient is the associated probability of finding a particle with that energy:
 
 {% math() %}
-| \Psi \rangle = c_1 | E_1 \rangle + c_2 | E_2 \rangle + c_3 | E_3 \rangle + \dots
+| \psi\rangle = c_1 | E_1 \rangle + c_2 | E_2 \rangle + c_3 | E_3 \rangle + \dots
 {% end %}
 
 But you may ask, isn't it absurd that a quantum particle's state-vector can be expressed equivalently in position, momentum, or energy basis vectors? This is a good question to ask, and the answer is found in **linear algebra**. Linear algebra says that we can decompose any vector, quantum state-vector included, into _any_ basis, so long as the basis is **complete** and **orthogonal**. What does that mean? The technical linear algebra definition is rather complicated, but here is a simplified answer:
 
 - **Completeness** means that there are enough basis vectors to express any vector as a linear superposition (that is, weighted sum) of those basis vectors
-- **Orthogonality** means that if you do an operation called the **inner product** between _any_ two basis vectors, you get zero (more on this later)
+- **Orthogonality** means that if you do an operation called the **inner product** between _any_ two different basis vectors, you get zero (more on this later)
 
-A quantum state-vector can similarly be written in **any** chosen set of basis vectors, although only a few, like the position, momentum, and energy basis vectors shown, are physically meaningful (among others). In some quantum systems, it is convenient to use the momentum basis, while in others, we find it more convenient to use the energy basis, and there are even quantum systems that are best-suited to using a completely different set of basis vectors. But this difference is a matter of _what makes sense_ to use for analyzing a quantum system. The mathematics of using different basis vectors is equivalent, because all vectors, quantum state-vectors included, **exist independently of their basis vectors**. For instance, a regular 3D vector can be equivalently written in Cartesian coordinates, polar coordinates, cylindrical coordinates, or any other coordinate system, each of which uses different basis vectors. In the same way, a quantum state-vector can be _equivalently_ written using position, momentum, or energy basis vectors.
+A quantum state-vector can be written in **any** chosen set of basis vectors, although only a few, like the position, momentum, and energy basis vectors shown, are physically meaningful (among others). In some quantum systems, it is convenient to use the momentum basis, while in others, we find it more convenient to use the energy basis, and there are even quantum systems that are best-suited to using a completely different set of basis vectors. But this difference is a matter of _what makes sense_ to use for analyzing a quantum system. The mathematics of using different basis vectors is equivalent, because all vectors, quantum state-vectors included, **exist independently of their basis vectors**. For instance, a regular 3D vector can be equivalently written in Cartesian coordinates, polar coordinates, cylindrical coordinates, or any other coordinate system, each of which uses different basis vectors. In the same way, a quantum state-vector can be _equivalently_ written using position, momentum, or energy basis vectors.
 
-> **Note:** We should note here that the introductory examples of systems one typically studies when learning quantum mechanics (for instance, the hydrogen atom, particle in an infinite square well, and the quantum harmonic oscillator) tend to use the **energy basis**. We'll find that the basis "vectors" are actually solutions of the **time-independent Schrödinger equation**, and are **infinite-dimensional** vectors (in other words, functions!). Have patience, we'll get to that soon!
+> **Note:** We should note here that the introductory examples of systems one typically studies when learning quantum mechanics (for instance, the hydrogen atom, particle in an infinite square well, and the quantum harmonic oscillator) tend to use the **energy basis**. We'll also find that the energy basis vectors are actually solutions of the **time-independent Schrödinger equation**, and are **infinite-dimensional** vectors (in other words, functions!). Have patience, we'll get to that soon!
 
 #### Interlude: concrete representations of state-vectors
 
 Up to this point we have been working with state-vectors abstractly as a linear superposition of basis vectors:
 
 {% math() %}
-| \Psi \rangle = c_1 | \phi_1 \rangle + c_2 | \phi_2 \rangle + c_3 | \phi_3 \rangle + \dots
+| \psi\rangle = c_1 | \phi_1 \rangle + c_2 | \phi_2 \rangle + c_3 | \phi_3 \rangle + \dots
 {% end %}
 
-This form works out nicely when a quantum system has just a few physical states. This means it can be expressed using just a few basis vectors - such as the quantum coin we saw earlier, which could be written with just two basis vectors, representing heads or tails. However, it is not as helpful when considering many (potentially infinite) possible states, where the superposition of basis vectors has so many terms that writing it all out becomes ridiculous. We want a more concrete, more familiar representation of state-vectors for actual calculations. And for this, we turn to the **inner product**.
+This form works out nicely when a quantum system has only a few physical states. This means it can be expressed using a small number of basis vectors - such as the quantum coin we saw earlier, which could be written with just two basis vectors, representing heads or tails. However, it is not as helpful when considering many (potentially infinite) possible states, where the superposition of basis vectors has so many terms that writing it all out becomes ridiculous. We want a more concrete, more familiar representation of state-vectors for actual calculations. And for this, we turn to the **inner product**.
 
 The inner product is a generalization of the dot product, familiar from physics formulas such as the definition of work $W = \mathbf{F} \cdot \Delta \mathbf{x}$. Recall that you can take the dot product by writing out a regular vector in column vector form, and their associated row vector, which is just the same vector but written out in row form. Then the respective elements are multiplied together, like this:
 
@@ -1261,16 +1261,16 @@ B_x \\ B_y \\ B_z
 \end{pmatrix} = A_x B_x + A_y B_y + A_z B_z
 {% end %}
 
-In quantum mechanics, the analogue of column and row vectors are **bra-vectors** and **ket-vectors**, or bras and kets for short. For a bra-vector, such as the quantum state-vector $| \Psi \rangle$, the associated ket-vector $\langle \Psi |$ is found by taking the complex conjugate of each of its components $z \to z^*$, and then transposing (converting all columns to rows, and vice-versa). The ket-vector version of a given bra-vector is also called the **adjoint**. We can write this in the specialized notation (Dirac notation) as:
+In quantum mechanics, the analogue of column and row vectors are **bra-vectors** and **ket-vectors**, or bras and kets for short. For a bra-vector, such as the quantum state-vector $| \psi \rangle$, the associated ket-vector $\langle \psi |$ is found by taking the complex conjugate of each of its components $z \to z^*$, and then transposing (converting all columns to rows, and vice-versa). The ket-vector version of a given bra-vector is also called the **adjoint**. We can write this in the specialized notation (Dirac notation) as:
 
 {% math() %}
-\langle \Psi | = (| \Psi \rangle^*)^T
+\langle \psi | = (| \psi\rangle^*)^T
 {% end %}
 
 Taking the inner product of a ket-vector and its adjoint (associated bra-vector) is then just a modified version of the regular dot product:
 
 {% math() %}
-\langle \Psi | \cdot | \Psi \rangle = \langle \Psi | \Psi \rangle = 
+\langle \psi | \cdot | \psi\rangle = \langle \psi | \psi\rangle = 
 \begin{pmatrix}
 c_1 \\ c_2 \\ c_3 \\ \vdots \\ c_n
 \end{pmatrix}
@@ -1284,7 +1284,7 @@ c_1^* \quad c_2^* \quad c_3^* ~ \dots ~ c_n^*
 Quantum state-vectors are also _normalized_, which means that their magnitude is equal to one. This means that the dot product of a quantum state-vector with its respective ket-vector is equal to one (from the dot product property $A \cdot A = \|A\|^2$):
 
 {% math() %}
-\langle \Psi | \Psi \rangle = 1
+\langle \psi | \psi\rangle = 1
 {% end %}
 
 Since we end up with a bra next to a ket, we now have a "bra-ket" - a _bracket_, a physics pun by Dirac. And yes, that is why we call them bra-vectors and ket-vectors!
@@ -1306,44 +1306,52 @@ In quantum mechanics, any set of basis vectors must also be mutually orthogonal 
 Now we are ready to proceed to find a useful representation of state-vectors for complicated systems. Let's say our system is a particle, only this time, the particle can be _anywhere_ in space (perhaps this particle represents a _very_ extroverted physicist). Uh-oh - this means that we'll need an _infinite_ set of position basis vectors to express the state-vector of the particle! We'd have to write something like this:
 
 {% math() %}
-|\Psi\rangle = \sum_{i = 1}^\infty c_i | x_i \rangle
+|\psi\rangle = \sum_{i = 1}^\infty c_i | x_i \rangle
+{% end %}
+
+(_Technically_, we'd need an integral over the infinitely-many possible positions, so the actual correct form is an _integral_, although we'll skip over this nuance for now):
+
+{% math() %}
+|\psi\rangle = \int c(x)|x\rangle dx
 {% end %}
 
 There is, however, a clever way around this, which actually was developed by [Joseph Fourier](https://en.wikipedia.org/wiki/Joseph_Fourier) more than a century before the times of Einstein and Dirac (although Dirac introduced its modern notation). We start by taking the dot product of a quantum state-vector with a position basis bra-vector $\langle x_j |$, which represents a physical state where the particle is at the precise position $x_j$. In Dirac notation, we write this as:
 
 {% math() %}
-\langle x_j | \Psi \rangle
+\langle x_j | \psi\rangle
 {% end %}
 
-It's not initially clear why you would want to do this - but bear with me. Now, we expand out $| \Psi \rangle$ using its superposition form, using the infinite number of position basis vectors:
+> **Note:** For the mathematically-included readers out there, this is the _vector projection_ of $|\psi\rangle$ onto $\langle x_j|$ from linear algebra.
+
+It's not initially clear why you would want to do this - but bear with me. Now, we expand out $| \psi\rangle$ using its superposition form, using the infinite number of position basis vectors:
 
 {% math() %}
-\langle x_j | \Psi \rangle = \langle x_j | \sum_{i = 1}^\infty c_i | x_i \rangle
+\langle x_j | \psi\rangle = \langle x_j | \sum_{i = 1}^\infty c_i | x_i \rangle
 {% end %}
 
-We can now move $\langle x_j|$ inside the sum, since {% inlmath() %}c\sum_n b_n = \sum_n c\,b_n{% end %}. This gives us:
+We can now move $\langle x_j|$ inside the sum, since it does not depend on $i$, and thus (by the properties of sums) can be treated as a constant that we can pull into (or out of) the sum at will. This gives us:
 
 {% math() %}
-\langle x_j | \Psi \rangle = \sum_{i = 1}^\infty \langle x_j | c_i | x_i \rangle
+\langle x_j | \psi\rangle = \sum_{i = 1}^\infty \langle x_j | c_i | x_i \rangle
 {% end %}
 
 Which, if we write component-by-component, becomes:
 
 {% math() %}
-\langle x_j | \Psi \rangle = \langle x_j | c_1 | x_1 \rangle + \langle x_j | c_2 | x_2 \rangle + \langle x_j | c_3 | x_3 \rangle + \dots + \langle x_j | c_i | x_i \rangle
+\langle x_j | \psi\rangle = \langle x_j | c_1 | x_1 \rangle + \langle x_j | c_2 | x_2 \rangle + \langle x_j | c_3 | x_3 \rangle + \dots + \langle x_j | c_i | x_i \rangle
 {% end %}
 
 Inner products, like dot products, are linear: you can factor any constant coefficients out, and it won't affect the calculation. Since the $c_i$'s are the constant coefficients in the superposition, this means we can factor them out of $\langle x_j |c_i |x_i\rangle$. That is to say, $\langle x_j |c_i |x_i\rangle = c_i\langle x_j | \cdot |x_i\rangle = c_i\langle x_j |x_i\rangle$. Our result is:
 
 {% math() %}
-\langle x | \Psi \rangle = \sum_{i = 1}^\infty c_i \langle x_j | \cdot | x_i \rangle = \sum_{i = 1}^\infty c_i \langle x_j | x_i \rangle
+\langle x | \psi\rangle = \sum_{i = 1}^\infty c_i \langle x_j | \cdot | x_i \rangle = \sum_{i = 1}^\infty c_i \langle x_j | x_i \rangle
 {% end %}
 
 Remember that basis vectors in quantum mechanics are **orthonormal**. This means that $\langle x_j | x_i \rangle = 0$, unless $i = j$, in which case $\langle x_j | x_i \rangle = \langle x_i | x_i\rangle = 1$. This is a very abstract mathematical argument, so let me rephrase this with plainer language: given any random position basis bra-vector, say $\langle x_j | = \langle x_3 |$, taking its inner product with itself $\langle x_3 | x_3 \rangle = 1$, while taking its inner product with **any other position basis ket-vector** will equal zero, whether this is $\langle x_3 | x_2\rangle$ or $\langle x_3 | x_{11}\rangle$ or anything else. This means we can satisfyingly cancel out nearly every term in the superposition, because there is only _one_ nonzero term, which is the term where $i = j$, and thus $\langle x_j | x_i \rangle = \langle x_i | x_i\rangle = 1$:
 
 {% math() %}
 \begin{align*}
-\langle x | \Psi \rangle &= \cancel{c_1 \langle x_j | x_1 \rangle} + \cancel{c_2 \langle x_j | x_2 \rangle} + \cancel{c_3 \langle x_j | x_3 \rangle + \dots} + c_i \underbrace{\langle x_i | x_i \rangle}_{i = j \text{ term}} \\
+\langle x | \psi\rangle &= \cancel{c_1 \langle x_j | x_1 \rangle} + \cancel{c_2 \langle x_j | x_2 \rangle} + \cancel{c_3 \langle x_j | x_3 \rangle + \dots} + c_i \underbrace{\langle x_i | x_i \rangle}_{i = j \text{ term}} \\
 &= c_i \underbrace{\langle x_i | x_i \rangle}_{1} \\
 &= c_i
 \end{align*}
@@ -1352,7 +1360,7 @@ Remember that basis vectors in quantum mechanics are **orthonormal**. This means
 So we have found a way to extract the components of the state-vector! The end result is a beautifully-short equation:
 
 {% math() %}
-\langle x | \Psi \rangle = c_i
+\langle x | \psi\rangle = c_i
 {% end %}
 
 The collection of components of the state-vector we've found here is in the position basis, because we used position basis vectors. Index notation is quite compact; $c_i$ is actually a collection of _infinitely_ many complex numbers (called *probability amplitudes*), since our sum was over infinite terms. That is:
@@ -1366,39 +1374,39 @@ c_1 \\ c_2 \\ c_3 \\ c_4 \\ \vdots \\ c_n
 What is a vector with an infinite number of components? A function! We can interpret $c_i$ as a complex-valued function of $x$, which we will call $\psi(x)$:
 
 {% math() %}
-c_i = \langle x | \Psi \rangle = \psi(x)
+c_i = \langle x | \psi\rangle = \psi(x)
 {% end %}
 
-We call $\psi(x)$ by a special name - a **wavefunction**. In general, the wavefunction also depends on time, so $\psi = \psi(x, t)$. As we mentioned earlier, the wavefunction is a collection of infinitely-many complex-valued **probability amplitudes**, and assigns a probability amplitude to every point $x$ and every time $t$. The reason we call it a _probability amplitude_ is that taking its squared norm gives the **probability density** $\rho$:
+We call $\psi(x)$ by a special name - a **wavefunction**. As we mentioned earlier, the wavefunction is a collection of infinitely-many complex-valued **probability amplitudes**, and assigns a probability amplitude to every point $x$. The reason we call it a _probability amplitude_ is that taking its squared norm gives the **probability density** $\rho$:
 
 {% math() %}
-\rho = \psi(x, t) \psi^*(x, t)
+\rho = \psi(x) \psi^*(x)
 {% end %}
 
-The probability density is the probability _per unit volume_ of finding a quantum particle at point $x$ (be careful: it is _not_ the probability itself). If you noticed that this is extremely similar to the relation $P = c_i c_i^*$ we found earlier, you're correct! Quantum mechanics tells us that we cannot predict the _precise_ position of particles, but the probability density tells us the _likely_ location of particles, and it is the closest we have to predicting a particle's position. Mathematically, this means that the probability density $\rho$ must obey the **normalization condition**:
+In quantum physics, the probability density is the probability _per unit volume_ of finding a quantum particle at point $x$ (be careful: it is _not_ the probability itself, it is probability _per unit volume_). If you noticed that this is extremely similar to the relation $P = c_i c_i^*$ we found earlier, you're correct! Quantum mechanics tells us that we cannot predict the _precise_ position of particles, but the probability density tells us the _likely_ location of particles, and it is the closest we have to predicting a particle's position. Mathematically, this means that the probability density $\rho$ must obey the **normalization condition**:
 
 {% math() %}
-P = \int_{-\infty}^\infty \rho(x)~dx = \int_{-\infty}^\infty \psi(x, t) \psi^*(x, t)~dx = 1
+P_\text{somewhere} = \int_{-\infty}^\infty \rho(x)~dx = \int_{-\infty}^\infty \psi(x) \psi^*(x)~dx = 1
 {% end %}
 
 Or, if we are analyzing a system in 3 dimensions rather than just 1, we would have:
 
 {% math() %}
-P = \int_{-\infty}^\infty \int_{-\infty}^\infty \int_{-\infty}^\infty \rho(x)dx,dy,dz = \int_{-\infty}^\infty \psi(x, t) \psi^*(x, t)~dx\,dy\,dz = 1
+P_\text{somewhere} = \int_{-\infty}^\infty \int_{-\infty}^\infty \int_{-\infty}^\infty \rho(x)dx\,dy\,dz = \int_{-\infty}^\infty \psi(x) \psi^*(x)~dx\,dy\,dz = 1
 {% end %}
 
 This ensures that the probability of a particle to be somewhere over all space is 100% (because the particle must exist and be _somewhere_).
 
 ### Postulate 3: observables
 
-We've discussed how quantum systems are represented by their state-vector $|\Psi\rangle$, and how this state-vector can be written as a _superposition_ of basis vectors. Some examples of these basis vectors are the position basis $|x\rangle$, momentum basis $|p\rangle$, and energy basis $|E\rangle$, and we have seen that so long as these basis vectors are **complete** and **orthogonal**, we can choose whichever set of basis vectors we want. The rules of linear algebra apply when working with quantum state-vectors, as they do for regular vectors, and regardless of whether vectors have finitely-many or infinitely-many components. 
+We've discussed how quantum systems are represented by their state-vector $|\psi\rangle$, and how this state-vector can be written as a _superposition_ of basis vectors. Some examples of these basis vectors are the position basis $|x\rangle$, momentum basis $|p\rangle$, and energy basis $|E\rangle$, and we have seen that so long as these basis vectors are **complete** and **orthogonal**, we can choose whichever set of basis vectors we want. The rules of linear algebra apply when working with quantum state-vectors, as they do for regular vectors, and regardless of whether vectors have finitely-many or infinitely-many components. 
 
-Extending this idea, recall how, in linear algebra, we encounter matrices, which encode _linear transformations_. This is a technical way of saying that a matrix is like a machine which acts on a vector to produce a new vector (via matrix multiplication). Similarly, we have **linear operators** in quantum mechanics, which act on state-vectors to create another (quantum) vector. Confused? Let's go through what this means.
+Extending this idea, recall how, in linear algebra, we encounter matrices, which encode _linear transformations_. This is a technical way of saying that a matrix is like a machine which acts on a vector to produce a new vector (that specific action being _matrix multiplication_). Similarly, we have **linear operators** in quantum mechanics, which act on state-vectors to create another vector. Confused? Let's go through what this means.
 
 First, what is a linear operator? Put simply, a linear operator does some sort of operation on a state-vector, be it multiplication, differentiation, or even exponentiation (more on that later). Linear operators are commonly either denoted with hats like $\hat M$, or with boldface like $\mathbf{M}$, of which the hat notation will be predominantly used. What makes linear operators _linear_ is the fact that they act on sums of vectors and scalar multiples of vectors in a nice way. A linear operator doesn't care if you add two state-vectors or multiply by a constant coefficient _before_ or _after_ you apply the linear operator; the result is the same. Mathematically speaking, we can represent this fact with:
 
 {% math() %}
-a \hat M | \Psi \rangle_A + b \hat M | \Psi \rangle_B = \hat M (a | \Psi \rangle_A + b | \Psi \rangle_B)
+a \hat M | \psi\rangle_A + b \hat M | \psi\rangle_B = \hat M (a | \psi\rangle_A + b | \psi\rangle_B)
 {% end %}
 
 This looks _very_ similar to the constant and sum rules for derivatives:
@@ -1426,13 +1434,13 @@ This leads us nicely into our next section, where we'll learn how we actually _a
 
  Up to this point, we have learned what quantum state-vectors are, how they can be represented in a particular basis as a wavefunction, and how operators act on state-vectors. Now is the time to finally begin to understand what happens when we take a measurement.
 
- First, recall that physical observables such as momentum and position take the form of operators that act on a quantum state-vector $| \Psi \rangle$. Usually, an operator applied to a state-vector results in a new state-vector completely different from the first. But sometimes, that operator outputs a new state-vector that is a constant multiple of the first. In this case we can write:
+ First, recall that physical observables such as momentum and position take the form of operators that act on a quantum state-vector $| \psi\rangle$. Usually, an operator applied to a state-vector results in a new state-vector completely different from the first. But sometimes, that operator outputs a new state-vector that is a constant multiple of the first. In this case we can write:
 
  {% math() %}
- \hat M | \Psi \rangle = a | \Psi \rangle
+ \hat M | \psi\rangle = a | \psi\rangle
  {% end %}
 
- This is called an **eigenvalue equation**, where $a$, the constant multiple, is called the **eigenvalue**, and the state-vector $| \Psi \rangle$ that satisfies the equation is called the **eigenvector**. Eigenvectors that are infinite and continuous are also called _eigenfunctions_, because (as we learned earlier) functions are essentially just vectors with an infinite number of components. 
+ This is called an **eigenvalue equation**, where $a$, the constant multiple, is called the **eigenvalue**, and the state-vector $| \psi\rangle$ that satisfies the equation is called the **eigenvector**. Eigenvectors that are infinite and continuous are also called _eigenfunctions_, because (as we learned earlier) functions are essentially just vectors with an infinite number of components. 
 
  As a more concrete example, consider the differentiation operator $\frac{d}{dx}$ applied to the function $f(x) = e^{kx}$. Then we end up with an eigenvalue equation where $k$ is the eigenvalue and $f(x)$ is the eigenfunction:
 
@@ -1440,12 +1448,12 @@ This leads us nicely into our next section, where we'll learn how we actually _a
  \frac{d}{dx} f(x) = \frac{d}{dx} (e^{kx}) = ke^{kx} = k \cdot f(x) \Rightarrow \frac{d}{dx} f(x) = k f(x)
  {% end %}
 
- Now, this is the key: in quantum mechanics, the eigenvectors of any operator **must** form a set of orthonormal basis vectors for the state-vector $| \Psi \rangle$. That's a lot to unpack, so let's take it bit by bit. Consider the $\hat p$ momentum operator. Its eigenvectors $|p_1 \rangle, |p_2 \rangle, |p_3 \rangle, \dots |p_i \rangle$ correspond to physical states of having momenta $p_1, p_2, p_3$, and so on, and thus are often called momentum _eigenstates_. So the momentum basis vectors aren't just any old vectors - they **must** be momentum eigenstates!
+ Now, this is the key: in quantum mechanics, the eigenvectors of any operator **must** form a set of orthonormal basis vectors for the state-vector $| \psi\rangle$. That's a lot to unpack, so let's take it bit by bit. Consider the $\hat p$ momentum operator. Its eigenvectors $|p_1 \rangle, |p_2 \rangle, |p_3 \rangle, \dots |p_i \rangle$ correspond to _physical states_ of having momenta $p_1, p_2, p_3$, and so on, and thus are often called momentum _eigenstates_. By the rules of quantum mechanics, the momentum basis vectors aren't just any old vectors - they **must** be momentum eigenstates, which are the eigenvectors of the $\hat p$ (momentum) operator!
 
- Thus, when we write out the state-vector $|\Psi \rangle$ using the momentum basis vectors, we're actually expanding the state-vector in terms of momentum eigenstates:
+ Thus, when we write out the state-vector $|\psi\rangle$ using the momentum basis vectors, we're actually expanding the state-vector in terms of momentum eigenstates:
 
  {% math() %}
- | \Psi \rangle = c_1 | p_1 \rangle + c_2 | p_2 \rangle + \dots + c_i | p_i \rangle
+ | \psi\rangle = c_1 | p_1 \rangle + c_2 | p_2 \rangle + \dots + c_i | p_i \rangle
  {% end %}
 
  The consequence of the fact that the momentum basis vectors are always momentum eigenstates is that the possible measured values of the momentum can _only_ be one of the momentum eigenvalues $p_1, p_2, p_3, \dots$ and cannot take on any other values. More generally, _any_ physically-meaningful basis (position, momentum, energy, etc.) is composed _only_ of eigenstates (eigenvectors) of its corresponding linear operator.
@@ -1454,65 +1462,71 @@ This leads us nicely into our next section, where we'll learn how we actually _a
 
  We're now armed with everything we need to derive the famous Schrödinger equation. But first, let's summarize everything we've learned so far:
 
- - Quantum systems (that is, everything from an atom to a shy physicist) are described by a state-vector $|\Psi\rangle$
+ - Quantum systems (that is, everything from an atom to a shy physicist) are described by a state-vector $|\psi\rangle$
  - The state-vector is expressed as a sum of **basis vectors**, such as the position basis vectors $|x\rangle$, momentum basis vectors $|p\rangle$, and energy basis vectors $|E\rangle$
- - Each basis represents some sort of physical **observable** (position, momentum, energy, etc.) that is represented by a **linear operator**, such as $\hat x$ for position and $\hat p$ for momentum
- - The possible values of the observable (possible positions, energies, momenta, etc.) are the **eigenvalues** of the associated operator, and the **eigenvectors** (also called the _eigenstates_) form a set of basis vectors for the observable
+ - Each basis represents some sort of physical **observable** (position, momentum, energy, etc.) that is represented by a **linear operator**, such as $\hat x$ for position, $\hat p$ for momentum, and so forth
+ - The possible values of the observable (possible positions, energies, momenta, etc.) are the **eigenvalues** of the associated operator, and the **eigenvectors** (also called the _eigenstates_) form the set of basis vectors for the observable
 
- We hinted at before that the _energy_ operator has an important role to play in quantum mechanics. Indeed, it does! It is called the **Hamiltonian** and represented by $\hat H$. Now, we know that any quantum operator follows an eigenvalue equation, and of course this is true for the Hamiltonian as well. Following the standard form of an eigenvalue equation, the eigenvalue equation for the Hamiltonian would be:
+ We hinted at before that the _energy_ operator has an important role to play in quantum mechanics. Indeed, it does! It is called the **Hamiltonian** and is  represented by $\hat H$. Now, we know that any quantum operator follows an eigenvalue equation, and of course this is true for the Hamiltonian as well. Following the standard form of an eigenvalue equation $\hat M|\psi\rangle = a|\psi\rangle$ (shown earlier), the eigenvalue equation for the Hamiltonian would be:
 
  {% math() %}
  \hat H |E\rangle = E|E\rangle
  {% end %}
 
- Where $\hat H$ is the Hamiltonian operator, $|E\rangle$ is an energy eigenvector (eigenstate), and $E$ is an energy eigenvalue (possible value of the energy). Note, however, that it is more common to use $|\psi\rangle$ to denote energy eigenstates as opposed to $|E\rangle$, so we will rewrite the above equation with this more standard notation:
+ Where $\hat H$ is the Hamiltonian operator, $|E\rangle$ is an energy eigenstate (eigenvector), and $E$ is an energy eigenvalue (possible value of the energy). Note, however, that it is more common to use $|\psi\rangle$ to denote energy eigenstates as opposed to $|E\rangle$, so we will rewrite the above equation with this more standard notation:
 
  {% math() %}
  \hat H |\psi\rangle = E|\psi\rangle
  {% end %}
 
- This is the operator form of the **time-independent Schrödinger equation**! We also know that the eigenstates of any quantum operator form the basis vectors for that operator, in which we can expand the state-vector $|\Psi\rangle$ as a superposition of basis functions. This means that we can now write $|\Psi\rangle$ as:
+ > **Note:** It is unfortunate that the notation $|\psi\rangle$ for energy eigenstates is the same symbol as the state-vector $|\psi\rangle$. Personally, it would make more sense to use $|\psi_i\rangle$ to represent energy eigenstates to avoid mixing things up, but this is just standard convention.
+
+ This is the operator form of the **time-independent Schrödinger equation**! We also know that the eigenstates of any quantum operator form the basis vectors for that operator, in which we can expand the state-vector $|\psi\rangle$ as a superposition of basis functions. This means that we can now write $|\psi\rangle$ as:
 
  {% math() %}
- |\Psi\rangle = \sum_i c_i |\psi_i\rangle
+ |\psi\rangle = \sum_i c_i |\psi_i\rangle
  {% end %}
 
- Since the Hamiltonian operator represents the energy of a quantum system, it would make sense for it to roughly-match the classical expression for the total energy, which is given by $H = p^2/2m + V(\mathbf{r})$. To turn this into its quantum equivalent, we simply swap $p$ with $\hat p$. Recalling that $\hat p = -i\hbar\nabla$, this gives us:
+ Since the Hamiltonian operator represents the energy of a quantum system, it would make sense for it to roughly match the classical expression for the total energy, which is given by $E_\text{total} = p^2/2m + V(\mathbf{r})$. To turn this into its quantum equivalent, we simply swap $p$ with $\hat p$. Recalling that $\hat p = -i\hbar\nabla$, this gives us:
 
  {% math() %}
  \hat H = \dfrac{\hat p^2}{2m} + V(\mathbf{r}) = \dfrac{-i\hbar \nabla(-i\hbar \nabla)}{2m} + V(\mathbf{r}) = -\dfrac{\hbar^2}{2m} \nabla^2 + V(\mathbf{r})
  {% end %}
 
- Switching to the wavefunction representation $\psi = \langle x |\Psi\rangle$, we have:
+ Switching to the wavefunction representation $\psi = \langle x |\psi\rangle$, we have:
 
  {% math() %}
- \left(-\dfrac{\hbar^2}{2m} \nabla^2 + V(\mathbf{r})\right)\psi_i = E_i \psi_i
+ \left(-\dfrac{\hbar^2}{2m} \nabla^2 + V(\mathbf{r})\right)\psi = E \psi
  {% end %}
 
- We have now found the **partial differential equation** form of the time-independent Schrödinger equation! The solutions $\psi_i$ are then the (infinite-dimensional) **energy basis eigenstates** that we can use to write out the state-vector in wavefunction form. And the accompanying eigenvalues $E_i$ are the possible energies of the quantum system. What's more, with our energy basis, we can write out the wavefunction representation of the state-vector $|\Psi\rangle$ as a superposition of the energy eigenstates:
+ We have now found the **partial differential equation** form of the time-independent Schrödinger equation! Bear in mind that while this form may _look_ different (as a PDE rather than an abstract operator equation), we are still working with the same underlying **eigenvalue equation** $\hat H |\psi\rangle = E|\psi\rangle$. This means that the solutions to the time-independent Schrödinger equation are still (eigen)vectors, albeit infinite-dimensional vectors, which are the **energy eigenstates** of the system. And the accompanying eigenvalues $E_i$ are the possible energies of the system. Indeed, _all_ we're doing when we solve the equation is finding the energy eigenvectors $|\psi_i\rangle$ of the system! The only difference is that we use the wavefunction _representation_ (component-form) of those energy eigenvectors, that is, $\psi_i = \langle x | \psi_i\rangle$. While it may not _seem_ like solving a partial differential equation and solving an eigenvalue problem for an operator have _anything_ in common, they actually represent the **exact same thing**. This was the key insight by Dirac that (in part) won him the Nobel Prize in 1933.
+
+ What's more, using the idea that the solutions $\psi_i$ are actually just infinite-dimensional eigenstates (eigenvectors) of the Hamiltonian operator, we can write out the wavefunction representation of the state-vector $|\psi\rangle$ as a _superposition_ of those energy eigenstates:
 
  {% math() %}
  \psi(\mathbf{r}) = \sum_i c_i \psi_i(\mathbf{r})
  {% end %}
 
+ This is because we learned that in quantum mechanics, _any set of basis vectors_ that we use are _eigenstates_ of some operator. This holds true whether we're using the functional representation or the abstract operator representation.
+
  We now have a systematic wave of solving quantum problems, starting from the basic postulates, and working our way up to a partial differential equation! But enough calculations - let's take a step back, and just look at the physics.
 
- The physical interpretation of the Schrödinger equation is that all quantum particles (such as electrons, quarks, etc.) have wave-like properties as well as particle-like properties, and their wave nature is associated with the wavefunction $\psi$. This allows them to exhibit effects such as wave interference and diffraction, as well as to have an associated wavelength and frequency. However, quantum particles are localized on measurement, like classical particles, and this is due to the fact that the wavefunction is associated with particle probability distributions. This is what brings us **wave-particle duality**, the fact that quantum particles resemble waves _and_ particles in some ways.
+ The physical interpretation of the Schrödinger equation is that all quantum particles (such as electrons, quarks, etc.) have wave-like properties as well as particle-like properties, and their wave nature is associated with the wavefunction $\psi$. This allows them to exhibit effects such as wave interference and diffraction, as well as to have an associated wavelength and frequency. However, quantum particles are localized on measurement, like classical particles, and this is due to the fact that the wavefunction is associated with particle probability distributions. This is what brings us **wave-particle duality**, the fact that quantum particles resemble waves _and_ particles in various ways.
 
- In addition to its physical relevance, the Schrödinger equation expressed in terms of wavefunctions is the pathway to nearly all the calculations we performed throughout the guide. Rather than working with Hilbert spaces and abstract vectors represented as superpositions, we simply need to solve a PDE for the wavefunction, or at worst, plug it into a computer to solve. From the wavefunction, we can calculate the probability density $\rho(x, t) = \psi(x, t) \psi^*(x, t)$ to find the probability distribution of the quantum system. In other words, the Schrödinger equation gives us _predictive power_: even though its end result, the wavefunction, is still probabilistic in nature, we _can_ test out those probabilities in experiments. Put simply, it represents our best window into the mysteries of the quantum world.
+ In addition to its physical relevance, the Schrödinger equation expressed in terms of wavefunctions is the pathway to nearly all the calculations we performed throughout the guide. Rather than working with Hilbert spaces and abstract vectors represented as superpositions, we simply need to solve a PDE for the wavefunction, or at worst, plug it into a computer to solve. From the wavefunction, we can calculate the probability density $\rho(x) = \psi(x) \psi^*(x)$ to find the probability distribution of the quantum system. In other words, the Schrödinger equation gives us _predictive power_: even though its end result, the wavefunction, is still probabilistic in nature, we _can_ test out those probabilities in experiments. Put simply, it represents our best window into the mysteries of the quantum world.
 
  #### Interlude on expectation values
 
  Let's go back to our example on the momentum operator $\hat p$. We learned that in quantum mechanics, the momentum basis _must_ be made of eigenstates (eigenvectors) of the $\hat p$ operator. In addition, any possible momentum can only be one of the _eigenvalues_ of the $\hat p$ operator. While the exact value of the momentum can be _any_ momentum that matches one of the momentum eigenvalues, the average value (denoted $\langle p \rangle$) found after many measurements follows the rule:
 
  {% math() %}
- \langle p \rangle = \langle \Psi | \hat p | \Psi \rangle
+ \langle p \rangle = \langle \psi | \hat p | \psi\rangle
  {% end %}
 
  Where this notation means that we _apply_ $\hat p$ to the state-vector ket, then take the result's inner product with the state-vector bra. Using the (position basis) wavefunction representation for clarity, we can rewrite this as:
 
  {% math() %}
- \langle p \rangle = \int_{-\infty}^\infty \psi^*(x, t) \hat p\, \psi(x, t)~dx
+ \langle p \rangle = \int_{-\infty}^\infty \psi^*(x) \hat p\, \psi(x)~dx
  {% end %}
 
  Where from the operator table earlier, we know that:
@@ -1524,30 +1538,36 @@ This leads us nicely into our next section, where we'll learn how we actually _a
  This is called the **expectation value of the momentum**, and is one case of the more general formula for the expectation values of an operator $\hat A$ in quantum mechanics:
 
  {% math() %}
- \langle A \rangle = \langle \Psi | \hat A | \Psi \rangle = \int_{-\infty}^\infty \psi^*(x, t) \hat A \psi(x, t)~dx
+ \langle A \rangle = \langle \psi | \hat A | \psi\rangle = \int_{-\infty}^\infty \psi^*(x) \hat A \psi(x)~dx
  {% end %}
 
  #### Adding time dependence
 
- Up to now, we haven't yet consider a state-vector that _evolves_ in time. Rather, we've been focused on a state-vector that stays _static_ in time. Adding time-dependence to the state-vector means that instead of $|\Psi\rangle$, we now write the state-vector as $|\Psi(t)\rangle$. How, exactly, you may ask, does the state-vector evolve in time? We will not attempt to derive this, but the answer is that the state-vector follows the differential equation:
+ Up to now, we haven't yet considered a state-vector that _evolves_ in time. Rather, we've been focused on a _time-independent_ state-vector, which is easier to analyze. Adding time-dependence to the state-vector means that instead of the time-independent state-vector $|\psi\rangle$, we now write the _more general_ state-vector as $|\Psi(t)\rangle$. How, exactly, you may ask, does the state-vector evolve in time? We will not attempt to derive this, but the answer is that the state-vector follows the differential equation:
 
  {% math() %}
  i\hbar \dfrac{\partial}{\partial t} |\Psi(t)\rangle = \hat H |\Psi(t)\rangle
  {% end %}
 
- If this looks familiar, you're right - this is the **time-dependent Schrödinger equation**! In addition, by writing the time-dependent Schrödinger equation in its most general state-vector form, one can more easily interpret what it means: it tells us that the change through time of the state-vector (left-hand side of the equation) is proportional to the energy operator acting on the state-vector (right-hand side of the equation). That is, *energy drives the evolution of a quantum system*. The proportionality constant $i \hbar$ is simply there for 1) dimensional consistency and 2) to ensure both sides of the equation are complex-valued. Proving and deriving all of this requires some sophisticated background (see [Noether's theorem](https://en.wikipedia.org/wiki/Noether%27s_theorem) on time-invariance and energy if you're interested), but here we will just (partially) solve it. Recall that $\hat H |\Psi\rangle = E|\Psi\rangle$, where $|\Psi\rangle = |\Psi(t = 0)\rangle$; therefore, it is possible to rewrite the above as:
+ If this looks familiar, you're right - this is the **time-dependent Schrödinger equation**! In addition, by writing the time-dependent Schrödinger equation in its most general state-vector form, one can more easily interpret what it means: it tells us that the change through time of the state-vector (left-hand side of the equation) is proportional to the energy operator acting on the state-vector (right-hand side of the equation). That is, *energy drives the evolution of a quantum system*. The proportionality constant $i \hbar$ is simply there for 1) dimensional consistency and 2) to ensure both sides of the equation are complex-valued to be mathematically sound. Proving and deriving all of this requires some sophisticated background (see [Noether's theorem](https://en.wikipedia.org/wiki/Noether%27s_theorem) on time-invariance and energy if you're interested), but here we will just (partially) solve it. Recall that $\hat H |\psi\rangle = E|\psi\rangle$, where $|\psi\rangle$ represents the time-dependent state-vector $|\Psi(t)\rangle$ "frozen" at a particular moment in time (say, $t = 0$); therefore, it is possible to rewrite the above as:
 
  {% math() %}
- i\hbar \dfrac{\partial}{\partial t} |\Psi\rangle = E |\Psi\rangle
+ i\hbar \dfrac{\partial}{\partial t} |\Psi_0\rangle = E |\Psi_0\rangle
  {% end %}
 
- This is simply a variation of the differential equation $\dot y = k y$, where in this case, $k = E/i\hbar = -iE/\hbar$ (since $1/i = -i$). The solution to $\dot y = ky$ is given by $y = e^{kt}$. Similarly, we have:
+ Where $|\Psi_0\rangle = |\Psi(t = 0)\rangle$. We chose $t = 0$ for simplicity, but in fact this form holds true for _any_ time $t$, so we have:
 
  {% math() %}
- |\Psi(t)\rangle = |\Psi\rangle e^{-iE t/\hbar}
+ i\hbar \dfrac{\partial}{\partial t} |\Psi(t)\rangle = E |\Psi(t)\rangle
  {% end %}
 
- But recall that $\Psi = \sum_n c_n |\psi_n\rangle$. This gives us the most general solution to the Schrödinger equation, and thus, to the time-evolution of a quantum system, written in terms of energy eigenstates and eigenvalues:
+ Stripping away the fact that we're using vectors and Dirac notation, this is simply a variation of the differential equation $\dot y = k y$, where in this case, $k = E/i\hbar = -iE/\hbar$ (since $1/i = -i$). The solution to $\dot y = ky$ is given by $y = e^{kt}$. Similarly, we have:
+
+ {% math() %}
+ |\Psi(t)\rangle = |\Psi(t = 0)\rangle e^{-iE t/\hbar} = |\psi\rangle e^{-iE t/\hbar}
+ {% end %}
+
+ Thus, we have managed to "solve" the _time-dependent_ Schrödinger equation in terms of the _time-independent_ state-vector $|\psi\rangle$. But recall that $|\psi\rangle = \sum_n c_n |\psi_n\rangle$, where $|\psi_n\rangle$ are the energy eigenstates of the Hamiltonian. So, to write down the most general solution to the Schrödinger equation, we can write the solution in terms of the energy eigenstates and eigenvalues of the Hamiltonian:
 
  {% math() %}
  |\Psi(t)\rangle = \sum_n c_n |\psi_n\rangle e^{-iE_n t/\hbar}
@@ -1557,29 +1577,56 @@ This leads us nicely into our next section, where we'll learn how we actually _a
 
  We have gone in-depth about quantum state-vectors and their representations as wavefunctions. But for all their fundamental relevance in quantum mechanics, state-vectors are complex-valued and can never be directly measured, because measurements are always real numbers. How do we get a real-valued measurement out of a complex-valued state-vector? This is where the **Born rule** applies.
 
- Consider a quantum particle with state-vector $|\Psi\rangle$. Recall that expressing its state-vector in the position basis gives the position wavefunction $\psi(x) = \langle x | \Psi \rangle$.
+ Consider a quantum particle with state-vector $|\psi\rangle$. Recall that expressing its state-vector in the position basis gives the position wavefunction $\psi(x) = \langle x | \psi\rangle$.
 
  Before we measure the particle, the wavefunction evolves naturally by the Schrödinger equation, which we can solve with the help of a math wizard or unwillingly-recruited professor. But now we want to measure the particle. This is a bit of a problem, because to measure a quantum particle involves causing it to interact with _something_, such as a photon that encounters it or the electron of an atom in our detector. So all quantum measurements are indirect; essentially, using one quantum system to learn information about another system. This also means that all quantum measurements are _disruptive_: on quantum scales, anything you use to measure with will disturb the system you measure.
 
-> How do particles know they are being observed? Because the act of observation involves detecting changes in another particle that interacts with (and disturbs) the particle being measured.
+> How do particles know they are being observed? Because the act of observation involves probing how another particle reacts when it interacts with (and disturbs) the particle being measured. Thus, to say that a particle "knows" they are being observed is actually a common misnomer, because particles are (obviously) not intelligent and don't "know" they're being observed.
 
- So it's not actually that unintuitive that we don't know where a particle is or what its properties are until we observe it. Taking a measurement, even in very careful conditions with very sensitive equipment, will alter the system in some way - a change that will make it impossible to reconstruct the previous state of the particle from its current state. Even light disturbs a system, "seeing" a quantum particle like an electron is only possible through bouncing a photon at that electron, and that interaction fundamentally changes the state of the electron. Naturally, we can't know everything with perfect detail when all the information we can find about any quantum particle will require doing something that also affects their properties.
+ So it's not actually that unintuitive that we don't know where a particle is or what its properties are until we observe it. Taking a measurement, even in very careful conditions with very sensitive equipment, will alter the system in some way - a change that will make it impossible to reconstruct the previous state of the particle from its current state. Even light disturbs a system: "seeing" a quantum particle like an electron is only possible through bouncing a photon at that electron, and that interaction fundamentally changes the state of the electron. Naturally, we can't know everything with perfect detail when all the information we can find about any quantum particle will require doing something that also affects their properties.
 
  But let's say that with some apparatus, we have managed to make a measurement of some physical quantity. What happens now? We know from the previous section on eigenvalues and measurement that the measurement must result in some value that is an eigenvalue of the operator associated with that physical quantity. For instance, if we take a measurement of the momentum $\hat p$, then the result is going to be an eigenvalue of the momentum operator $\hat p$. But which exact eigenvalue? **We can't know.** As far as we understand, quantum mechanics is probabilistic and no certain measurements can be made, only statistical likelihoods of a particular measurement. And the probability of measuring an eigenvalue $\alpha$ associated with the eigenstate $\langle \alpha |$ of an operator is given by the **Born rule**:
 
  {% math() %}
-P = |\langle \alpha | \Psi \rangle|^2
+P = |\langle \alpha | \psi\rangle|^2
  {% end %}
 
-> And yes, we are using an abuse of terminology, technically it is the inner product of the adjoint of the eigenvector (remember: complex conjugate transpose) and the state-vector.
+> And yes, we are using an abuse of terminology, technically it is the inner product of the adjoint of the eigenvector (remember: complex conjugate transpose) and the state-vector. But that's a distinction for the mathematicians, not the physicists.
 
- For any operator that has _continuous_ eigenstates, such as position and momentum, we can equivalently rewrite the Born rule in terms of the probability density $P$ and wavefunction $\psi(x)$:
+ For any operator that has _continuous_ eigenstates, such as position and momentum, we have another form of the Born rule, written in terms of the probability density $\rho$ and wavefunction $\psi(\alpha) = \langle \alpha|\psi\rangle$:
 
  {% math() %}
- P = |\psi(\alpha)|^2 = \psi(\alpha) \psi^*(\alpha)
+ \rho = |\langle \alpha |\psi\rangle|^2 = |\psi(\alpha)|^2 = \psi(\alpha) \psi^*(\alpha)
  {% end %}
 
- And this is the physical interpretation of what seemed like a math trick to represent the quantum state as a wavefunction - a wavefunction is actually a collection of infinitely-many eigenvalues of an operator with continuous eigenstates, such as the eigenvalues of the position and momentum operators. _This_ is why it makes sense that you can extract the probability of a certain measurement from the wavefunction. More accurately, you can extract the probability _density_ from the wavefunction, and then integrate to find the probability of a certain range of measurements:
+ When we pick the eigenstates to be the position eigenstates (that is, eigenstates describing a _specific position_ that a particle is located), we have $\alpha = x$ and thus we recover the special (and most well-known) case of the Born rule:
+
+ {% math() %}
+ \rho = |\psi(x)|^2 = \psi(x) \psi^*(x)
+ {% end %}
+
+ Here, $\rho$, the probability density, is probability per unit volume (in this case, of finding the particle at position $x$). (The reason it's a probability density and not just a plain old probability is that position is _continuous_ and has infinitely-many eigenstates corresponding to infinitely-many possible positions.)
+
+ The Born rule brings us to the physical interpretation of what seemed like a math trick to represent the quantum state as a wavefunction - a wavefunction is actually a collection of infinitely-many eigenvalues of an operator! Specifically, the operator must be one with continuous eigenstates, such as the eigenvalues of the position and momentum operators. Let's take the position operator $\hat x$ as an example. A quantum particle can be in any place in the Universe (generally-speaking), so there are a continuous spectrum of position eigenstates $|x\rangle$, each one representing the physical state where the particle is at a particular position. As usual, these eigenstates follow the eigenvalue equation for the position operator:
+
+ {% math() %}
+ \hat x |\psi\rangle = x |\psi\rangle
+ {% end %}
+
+ The eigenvalues $x = x_1, x_2, x_3, \dots, x_n$ of the position operator are thus the possible positions of a quantum particle, and there are infinitely-many of them, just like there are infinitely-many position eigenstates. The _probability amplitude_ of measuring a particular position eigenvalue $x_i$ is therefore given by a particular coefficient $c_i$, whose square $|c_i|^2$ is the probability (density) of finding the particle at $x_i$. Only, $c_i$ usually goes by a different name: the wavefunction $\psi(x)$, evaluated at $x = x_i$. Again, remember that this is because there are infinitely-many position eigenstates, so there are also infinitely-many $c-i$'s, for every position eigenvalue:
+
+ {% math() %}
+ \psi(x) = \begin{pmatrix} c_1 \\ c_2 \\ c_3 
+ \\ \vdots \\ c_{i-1} \\ c_i \end{pmatrix}
+ {% end %}
+
+ Doing this in the most general case for arbitrary position eigenvalue $x$ gives us that familiar-looking form of the Born rule:
+
+ {% math() %}
+ \rho = |\psi(x)|^2
+ {% end %}
+
+ _This_ is why it makes sense that you can extract the probability of a certain measurement from the wavefunction. More accurately, we should say that when your observable is a continuous quantity (such as position or momentum), you can extract the probability _density_ from the wavefunction, and then integrate to find the probability of a certain range of measurements:
 
  {% math() %}
  \text{Prob} = \int_{\alpha_1}^{\alpha_2} |\psi(\alpha)|^2 d\alpha = \int_{\alpha_1}^{\alpha_2} \psi(\alpha) \psi^*(\alpha) d\alpha 
@@ -1633,18 +1680,65 @@ P = |\langle \alpha | \Psi \rangle|^2
 
 ## The fundamental postulates of quantum mechanics
 
-To summarize what we've covered, we can distill the theory of quantum mechanics into these fundamental _mathematical_ postulates:
+To summarize what we've covered, we can distill the theory of quantum mechanics into fundamental _mathematical_ postulates that allow us to rigorously formulate the theory of quantum mechanics.
 
-1. A quantum system is completely described by a **quantum state** $|\Psi\rangle$, also represented by $\psi(x) \equiv \Psi(x, 0)$, which is a complex-valued vector in a Hilbert space.
-	- A state describes a quantum particle at a particular instant in terms of its probability distribution. 
-	- Further, a state also evolves through time by the Schrödinger equation $i\hbar \dfrac{\partial}{\partial t} |\Psi(t)\rangle = \hat H |\Psi(t)\rangle$, which we may represent by $|\Psi(t)\rangle$ or $\Psi(x, t)$.
-2. A quantum state is a superposition of all possible eigenstates of the system, that is, $|\Psi \rangle = \displaystyle \sum_i C_i |\varphi_i \rangle$.
-3. Physical quantities are known as **observables**, and are represented by linear operators acting on the quantum state. For instance, $\hat x = x, \hat p = -i\hbar \nabla, \hat H = -\frac{\hbar^2}{2m} \nabla^2 + V$.
-4. Applying an observable results in an eigenvalue equation to solve in the form $\hat A |\varphi_i\rangle = A |\varphi_i\rangle$, where $A$ is the eigenvalue and $|\varphi_i\rangle$ is the eigenstate. The *eigenvalues* of each observable correspond to *possible values* of the associated physical quantity (e.g. position, momentum, energy). The eigenvalues can be quantized or continuous. Each eigenvalue is associated with an eigenstate of the system.
-6. It is **not possible** to predict in advance the measured value a physical quantity may take. However, it is possible to predict the *probability* $P$ of a particular eigenstate $|\varphi_i\rangle$ through the Born rule $P= |\langle \varphi_i| \Psi\rangle |^2 = |C_i|^2$
-7. We may use the _wave formulation_ or _matrix formulation_ to obtain the same results, and the two are completely equivalnet:
-	- In the **wave formulation**, we have $\psi(x)$ as a quantum state, represented as a time-indepedent wavefunction, $\varphi_i(x)$ as a component eigenstate, and $\Psi(x, t) = \psi(x) e^{-iE t/\hbar}$ as the general wavefunction
-	- In the **matrix-vector formulation**, we have $|\Psi\rangle$ as a quantum state, $|\varphi_i\rangle$ as a component eigenstate, and $|\Psi(t)\rangle$ as the general time-evolving state
+First, a quantum system is completely described by a **quantum state-vector** $|\Psi(t)\rangle$, which is a complex-valued vector in a Hilbert space. The state-vector evolves by the **time-dependent Schrödinger equation**, given by:
+
+{% math() %}
+i\hbar \dfrac{\partial}{\partial t} |\Psi(t)\rangle = \hat H |\Psi(t)\rangle
+{% end %}
+
+If we consider a specific instant in time, the state-vector $|\Psi(t)\rangle$ reduces to its _time-independent form_ $|\psi\rangle$, which can be thought of as "snapshot" of $|\Psi(t)\rangle$, taken at precisely at time $t$. 
+
+We can extract physically-relevant information from the time-independent state-vector $|\psi\rangle$ with _linear operators_, such as the position operator $\hat x$, momentum operator $\hat p$, and so forth. Each operator's **eigenvalues** represent measurable physical quantities (called _observables_), while each operator's **eigenstates** are eigenvectors that represent a quantum system having a particular value of an observable (such as a specific position, momentum, or energy). These are related by **eigenvalue equations**, as shown:
+
+| Operator | Eigenstates | Eigenstate represents... | Eigenvalues | Eigenvalue equation |
+|-----|-----|-----|-----|------|
+| Position, $\hat x$ | {% inlmath() %} |x\rangle {% end %} | A state with a particle at position $x$ | $x$ | {% inlmath() %} \hat x|\psi\rangle = x|\psi\rangle {% end %} |
+| Momentum, $\hat p$ | {% inlmath() %} |p\rangle {% end %} | A state with a particle with momentum $p$ | $p$ | {% inlmath() %} \hat p|\psi\rangle = p|\psi\rangle {% end %} |
+| Energy, $\hat H$ (also called the _Hamiltonian_) | {% inlmath() %} |\psi\rangle {% end %}, $E\rangle$ (less commonly-used notation) | A state with a particle with total energy $E$ | $E$ | {% inlmath() %} \hat H |\psi\rangle = E|\psi\rangle {% end %} |
+
+> **Note:** It is unfortunate that energy eigenstates $|\psi\rangle$ have the same symbol as the state-vector $|\psi\rangle$. It would be more correct to notate energy eigenstates as $|\psi_i\rangle$ or $|E\rangle$, but I am just following standard notation convention.
+
+Solving the eigenvalue equation for an operator tells us the *possible values* of the associated observable (e.g. position, momentum, energy), whether the eigenvalues are quantized or continuous. Each eigenvalue is associated with an eigenstate of the operator, which form a _basis_ in which to expand out the state-vector $|\psi\rangle$ in superposition form. If the eigenvalues are discrete, such as for the energy (Hamiltonian) operator $\hat H$, then we say that the observable is **quantized**, and we may write this superposition as a sum:
+
+{% math() %}
+|\psi\rangle = \sum_i c_i |\psi_i\rangle
+{% end %}
+
+But if the eigenvalues are continuous, such as for the position operator $\hat x$ and the momentum operator $\hat p$, then we need to write this superposition as an integral:
+
+{% math() %}
+|\psi\rangle = \int c(x) |x\rangle dx
+{% end %}
+
+For a more general continuous operator with eigenstates $|\alpha\rangle$, this may be written as:
+
+{% math() %}
+|\psi\rangle = \int c(\alpha)|\alpha\rangle\, d\alpha
+{% end %}
+
+To find the components $c_i$ or $c(\alpha)$ in a particular basis, we take the inner product of the state-vector $|\psi\rangle$ with the _ket-vector_ of any eigenstate of the operator (e.g. $\langle x|\psi\rangle$ for position, $\langle p|\psi\rangle$ for momentum, and so forth). In cases where the operators represent continuous quantities, then $c(\alpha)$ is known as a **wavefunction** and is denoted by $\psi(\alpha)$. For instance, the position and momentum operators have wavefunctions given by:
+
+{% math() %}
+\begin{align*}
+\psi(x) &= \langle x|\psi\rangle \\
+\psi(p) &= \langle p|\psi\rangle
+\end{align*}
+{% end %}
+
+It is **not possible** to predict in advance the measured value a physical quantity may take. However, it is possible to predict the *probability* $P$ of a particular eigenstate through the **Born rule**, which says that the probability $P$ of measuring the $i$-th eigenstate is given by $P = |c_i|^2$. If the eigenstates are that of a continuous operator $|\alpha\rangle$ with eigenstates $|\alpha\rangle$, the Born rule takes the slightly different form $\rho = |c(\alpha)|^2 = |\psi(\alpha)|^2$, where $\rho$ is the _probability density_ (probability per unit volume). The Born rule thus tells us that for any continuous operator with eigenstates $|\alpha\rangle$ and eigenvalues $\alpha$, the wavefunction $\psi(\alpha)$ represents the _probability amplitude_ $c(\alpha)$ of measuring the corresponding observable's value to be $\alpha$.
+
+Finally, the two formulations of quantum mechanics - one using state-vectors $|\psi\rangle$ and abstract operators, the other using wavefunctions $\psi(x)$ and partial differential equations - are **completely equivalent**. Wavefunctions are simply infinite-dimensional vectors, and solving the time-independent Schrödinger equation is the same thing as solving the eigenvalue equation $\hat H|\psi\rangle = E|\psi\rangle$. This can be expressed by writing out the equivalent forms of the _general solution_ to the Schrödinger equation in both formulations:
+
+{% math() %}
+\begin{gather*}
+|\Psi(t)\rangle = \sum_n c_n |\psi_n\rangle e^{-iE_n t/\hbar}
+\quad \Leftrightarrow \quad
+\Psi(x, t) = \sum_n c_n \psi_n(x) e^{-iE_n t/\hbar}, \\
+\Psi(x, t) = \langle x | \Psi(t)\rangle
+\end{gather*}
+{% end %}
 
 ## The classical limit of quantum mechanics
 
