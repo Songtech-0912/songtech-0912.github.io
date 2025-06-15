@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional information</title>
+  <meta name="description" content="Website of Jacky Song">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Professional information</h2>
+        
+        
+        <!-- table of contents -->
+        
+
+        <!-- page content -->
+        <p>This page contains my professional and academic information as well as <a href="/portfolio/Resume-Jacky-Song-Latest.pdf">my resume</a>. Please refer to this page for professional inquiries.</p>
+<!--more-->
+<h2 id="portfolio">Portfolio</h2>
+<p>I am a current undergraduate student at <a href="https://www.rpi.edu/">Rensselaer Polytechnic Institute</a> majoring in Applied Physics. I engage in a multidisplinary range of organizations and activities, and am always glad to learn new skills and work on new things!</p>
+<h3 id="research">Research</h3>
+<p>My research is in the fields of computational electromagnetics for space-based energy applications. I am the director of <a href="https://elaraproject.github.io/">Project Elara</a>, the nonprofit I do this research through. In addition, I am a member of the Rensselaer-based <a href="https://materials-intelligence.com/">Materials Intelligence</a> group that uses machine learning for materials discovery.</p>
+<h3 id="technical-writing-and-science-outreach">Technical writing and science outreach</h3>
+<p>I believe firmly in the importance of scientific education and making it accessible to everyone. I have written <a href="https://jackysci.com/notes/">several hundred pages</a> of STEM notes aimed at providing a complete undergraduate-level education in the sciences (in particular physics) to anyone, as well as being a major contributor to the official Handbook of <a href="https://elaraproject.github.io/elara-handbook/">Project Elara</a>. Currently, I am also working on <a href="https://learntheoreticalphysics.com/">a series of theoretical physics books</a> designed for a general audience.</p>
+<h3 id="software-development">Software development</h3>
+<p>I am an active developer with experience in web development, scientific computing, and Python development, with over 80 open-source GitHub repositories. See my GitHub <a href="https://github.com/songtech-0912/">here</a>.</p>
+<h3 id="design-vfx-and-3d-graphics">Design, VFX, and 3D graphics</h3>
+<p>In addition to scientific work, I have experience in UI/UX design and have been a longtime web designer for the visual effects software <a href="https://github.com/NatronGitHub/Natron">Natron</a>. I am also a 3D/VFX artist, with a portfolio on <a href="https://www.artstation.com/songtech-0912">Artstation</a>.</p>
+<h3 id="musical-performance-and-composition">Musical performance and composition</h3>
+<p>I am an ABRSM grade 8-certified pianist with 14+ years of experience and can provide musical accompaniment or performance for an ensemble or solo recording. I can also teach piano and general music for all ages up to an intermediate level. In addition, I am a composer with pieces for both solo piano and orchestra <a href="https://lightofhope.site/">available for free listening online</a>.</p>
+<h2 id="get-in-touch">Get in touch</h2>
+<p>Please email me at <a href="mailto:jacky.song.elara@gmail.com">jacky.song.elara@gmail.com</a></p>
+<p><em>Please note that I am not accepting professional inquiries at this time, other than for scientific research.</em></p>
+
+        
+        <a href="/" class="return-link">Back to home</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function() {
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+    </script>
+    
+
+
+</body>
+
+</html>

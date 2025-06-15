@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feynmann&#x27;s technique for integration</title>
+  <meta name="description" content=" Feynmann&#x27;s technique is a technique for evaluating certain difficult definite integrals. Note definite integral here, it doesn&#x27;t do anything to help find antiderivatives. In fact, Feynmann&#x27;s technique is especially helpful with finding definite integrals that have no elementary antiderivative.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Feynmann&#x27;s technique for integration</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+
+        <!-- page content -->
+        <p>Feynmann's technique is a technique for evaluating certain difficult definite integrals. Note <strong>definite integral</strong> here, it doesn't do anything to help find antiderivatives. In fact, Feynmann's technique is <em>especially</em> helpful with finding definite integrals that have no elementary antiderivative.</p>
+<span id="continue-reading"></span>
+<p>The formula for Feynmann's technique is surprisingly simple:</p>
+<p class="mathcell">
+$$
+\frac{d}{dt} \int f(x, t) dx = \int \frac{\partial f}{\partial t} f(x, t) dx
+$$
+</p>
+<p>And the method is too - just 4 steps:</p>
+<ul>
+<li>Parametrize the integral with $t$ to form a new integral $I(t)$</li>
+<li>Differentiate $I(t)$ under the integral sign to find $I'(t)$</li>
+<li>Integrate the derivative: $I(t) = \int I'(t) dt$</li>
+<li>Solve for $I(1)$</li>
+</ul>
+<p>Consider:</p>
+<p class="mathcell">
+$$
+\int \limits_0^1 \ln(x) dx
+$$
+</p>
+<p>To use Feynmann's trick, we need to add a second variable $t$ to a convenient place inside our function, making a new function $I(t)$. Here there's really only one place to put it, so we define $I(t)$ as:</p>
+<p class="mathcell">
+$$
+I(t) = \int \limits_0^1 \ln(xt) dx
+$$
+</p>
+<p>Now notice $I(1)$ is equal to our original integral:</p>
+<p class="mathcell">
+$$
+I(1) = \int \limits_0^1 \ln(x \cdot 1)dx = \int \limits_0^1 \ln(x) dx
+$$
+</p>
+<p>So the key to evaluating our integral is to find out what $I(1)$ is. But surely this isn't easy, you say? Didn't we just make our original integral more complicated?</p>
+<p>At first glance, yes. But notice that we can take the derivative of $I$, to get:</p>
+<p class="mathcell">
+$$
+I&#x27;(t) = \frac{d}{dt} \int \limits_0^1 \ln(tx) dx = \int \limits_0^1 \frac{\partial}{\partial t}\ln (tx) dx
+$$
+</p><p class="mathcell">
+$$
+I&#x27;(t) = \int \limits_0^1 \frac{1}{t} dx = \frac{1}{t}
+$$
+</p>
+<p>Now, we can evaluate $I(t)$ by taking the integral of $I'(t)$:</p>
+<p class="mathcell">
+$$
+I(t) = \int I&#x27;(t) dt = \ln(t) + C
+$$
+</p>
+<p>We can find out $C$ by finding an appropriate value of $t$ that will yield a constant for $I(t)$. This is really the biggest limitation of Feynmann's integral trick - you have to have functions in a form where substituting in a value for $t$ cancels out an integral and leaves you with a number. In our case, we'll skip ahead and just note that $C = -1$. So:</p>
+<p class="mathcell">
+$$
+I(1) = \ln(1) + C = 0 + (-1) = -1
+$$
+</p>
+        
+        <a href="/" class="return-link">Back to home</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function() {
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+    </script>
+    
+
+
+</body>
+
+</html>

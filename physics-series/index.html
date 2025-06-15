@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics series</title>
+  <meta name="description" content=" These are extended guides, many of which come from personal physics notes taken at my time at RPI. They include Classical Mechanics, Special Relativity, Quantum Mechanics, and will in the future include General Relativity and possibly Quantum Field Theory.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Physics series</h2>
+        
+        
+        <!-- table of contents -->
+        
+
+        <!-- page content -->
+        <p>These are extended guides, many of which come from personal physics notes taken at my time at RPI. They include Classical Mechanics, Special Relativity, Quantum Mechanics, and will in the future include General Relativity and possibly Quantum Field Theory.</p>
+<span id="continue-reading"></span>
+<ul>
+<li><a href="https://jackysci.com/guide-to-modern-physics/">A guide to modern physics</a> - a beginner's introduction to the concepts of modern theoretical physics, including Special Relativity and General Relativity, the Standard Model of particle physics, as well as how theoretical physics is formulated and done. This is an informal guide with a minimal amount of mathematics.</li>
+<li><a href="https://jackysci.com/classical-dynamics/">Classical dynamics</a> - a broad overview of classical mechanics based on Newton's laws of motion, including kinematics, momentum and energy, rotational motion, harmonic oscillators, and conservation laws. The theory of laminar flow, mechanical and electromagnetic waves, and thermodynamics is also briefly covered.
+<ul>
+<li><a href="https://jackysci.com/waves-and-oscillations/">Waves and oscillations</a> - a sub-guide to light waves, interference, diffraction, and the beginnings of quantum physics</li>
+</ul>
+</li>
+<li><a href="https://jackysci.com/electromagnetism/">Introduction to electromagnetic theory</a> - a substantial beginner's course in electromagnetic theory, covering electric and magnetic force, fields, and building up to Maxwell's equations and the characteristics of electromagnetic waves.</li>
+<li><a href="https://jackysci.com/intro-quantum-phys/">Introduction to quantum mechanics</a> - a guide to the basics of quantum mechanics with emphasis on solving the Schrödinger equation for a variety of different problems, including the infinite potential well, quantum harmonic oscillator, and hydrogen atom. Intrinsic spin is also incorporated, and the formalism of quantum mechanics is slowly built up in a beginner-friendly way.</li>
+<li><a href="https://jackysci.com/special-relativity/">Introductory special relativity</a> - a beginner's guide to special relativity and relativistic mechanics</li>
+<li><a href="https://jackysci.com/advanced-classical-mech/">Advanced classical mechanics</a> - a guide to more advanced formulations of classical mechanics, including the Lagrangian and Hamiltonian methods. This also includes discussions of two-body and many-body systems, rotational and non-inertial systems, as well as some special relativity and coupled harmonic oscillators.</li>
+<li><a href="https://jackysci.com/classical-electromagnetism/">In-depth classical electromagnetism</a> - a more general guide to electromagnetic theory on a more advanced level, covering the potential formulations of electrostatics and magnetostatics with boundary-valued problems, dielectrics and magnetic materials, and electrodynamics with special relativity.</li>
+</ul>
+<blockquote>
+<p><strong>Want more advanced theoretical physics content?</strong> See the <a href="https://learntheoreticalphysics.com">full-length book series</a> on theoretical physics.</p>
+</blockquote>
+
+        
+        <a href="/" class="return-link">Back to home</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function() {
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+    </script>
+    
+
+
+</body>
+
+</html>

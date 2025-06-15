@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A proof of the area of a circle</title>
+  <meta name="description" content=" Circles are one of the most ubiquitous yet most mysterious objects found in math. This is because its area formula involves a seemingly unlikely object - an irrational number. And yet circles are some of the most common shapes in the universe, and finding the area of circles (or circle-derived objects) is a must for so many applications in math and physics. So we need a way to find the area of a circle.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>A proof of the area of a circle</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+
+        <!-- page content -->
+        <p>Circles are one of the most ubiquitous yet most mysterious objects found in math. This is because its area formula involves a seemingly unlikely object - an irrational number. And yet circles are some of the most common shapes in the universe, and finding the area of circles (or circle-derived objects) is a must for so many applications in math and physics. So we need a way to find the area of a circle.</p>
+<span id="continue-reading"></span>
+<p>To start with, we need to find a way to calculate the circumference of a circle from its radius. To do this, consider two arcs with arc lengths $a$ and $b$ that each have a central angle $d\theta$. As the arcs have such a small angle, we can consider them essentially triangles, and as each has the same angle and have proportional sides, the two are similar. Therefore, $\frac{a}{r_1} \propto \frac{b}{r_2}$ - the ratio between the arc length and the radius is constant. This means that a circle, which is essentially an arc whose arc length is its circumference $C$, also obeys this. Thus, if $C \propto r$, then $C \propto r \cdot k$, where $k$ is any constant, so $C \propto D$, the diameter. Now it's just the choice of whether we want the proportionality constant to be $\frac{C}{D}$ or $\frac{C}{r}$, the math works out either way - for historical reasons, $\frac{C}{D}$ is what we call the circle constant $\pi$, but mathematicians to this day still bicker about which one to use, see <a href="https://tauday.com/tau-manifesto">https://tauday.com/tau-manifesto</a>.</p>
+<p>Now that we've defined $\pi = \frac{C}{D}$, or $C = \pi D$, we know that $C = 2\pi r$ by definition. But that still leaves us with the area of a circle. To solve, suppose we cut a tiny sector of a circle. Since the sector is infinitesimal, then we can approximate its area as the area of a sector, where $\ell$ is the arc length:</p>
+<p class="mathcell">
+$$
+dA = \frac{1}{2} r d\ell
+$$
+</p>
+<p>Now we simply need to integrate $dA$ to be able to find $A$, the total area. Note that $\int d\ell = C$, because adding up every little arc length adds to the arc length of a circle, i.e. the circumference:</p>
+<p class="mathcell">
+$$
+A = \int \frac{1}{2} r d\ell = \frac{1}{2} rC
+$$
+</p>
+<p>Now we know that $C = \pi d = 2\pi r$. Therefore:</p>
+<p class="mathcell">
+$$
+A = \frac{1}{2} r(2\pi r) = \pi r^2
+$$
+</p>
+<p>That just leaves determining what that mysterious constant $\pi = C/D$ is. But that will be a topic for another time!</p>
+
+        
+        <a href="/" class="return-link">Back to home</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function() {
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+    </script>
+    
+
+
+</body>
+
+</html>
