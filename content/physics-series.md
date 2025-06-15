@@ -19,4 +19,4 @@ These are extended guides, many of which come from personal physics notes taken 
 - [Advanced classical mechanics](@/advanced-classical-mech/index.md) - a guide to more advanced formulations of classical mechanics, including the Lagrangian and Hamiltonian methods. This also includes discussions of two-body and many-body systems, rotational and non-inertial systems, as well as some special relativity and coupled harmonic oscillators.
 - [In-depth classical electromagnetism](@/classical-electromagnetism/index.md) - a more general guide to electromagnetic theory on a more advanced level, covering the potential formulations of electrostatics and magnetostatics with boundary-valued problems, dielectrics and magnetic materials, and electrodynamics with special relativity.
 
-> **Want more advanced theoretical physics content?** See the [full-length book series](https://songtech-0912.github.io/theoretical-physics/) on theoretical physics.
+> **Want more advanced theoretical physics content?** See the [full-length book series](https://learntheoreticalphysics.com) on theoretical physics.
