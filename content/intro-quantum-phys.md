@@ -259,11 +259,13 @@ In the quantum world, particles no longer follow the laws of classical physics. 
 i\hbar \frac{\partial}{\partial t} \Psi(x, t)  = \left(-\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x, t)\right) \Psi(x, t)
 {% end %}
 
-> This is the 1D Schrödinger equation, but we will look at the full 3D Schrödinger equation later.
+> **Note:** This is the 1D Schrödinger equation, but we will look at the full 3D Schrödinger equation later.
 
 Here, $\hbar$ is the **reduced Planck constant**, $m$ is the particle's mass, $V(x, t)$ is the particle's potential energy (which is often referred to simply as "the potential"), and the function to be solved for is $\Psi(x, t)$.
 
-The solutions to the Schrödinger equation $\Psi(x, t)$ for given initial and boundary conditions are called **wavefunctions**. The Schrödinger equation tells us that when undisturbed, quantum particles are waves spread out in space, instead of possessing definite positions. We call these waves **matter waves**. A quantum particle (or system) can be analyzed by finding the particular solution of the Schrödinger equation for that particle (or system), although the actual solving process is rather tedious and more of a mathematical exercise than physics. Using **separation of variables** is a common method to solve the Schrödinger equation, and we will work through several examples. However, lots of solutions are very well-known and just looking them up in a textbook, reference book, or online is far faster than actually solving the equation.
+The solutions to the Schrödinger equation $\Psi(x, t)$ for given initial and boundary conditions are called **wavefunctions**. The wavefunction tells us information about the **state** of a quantum system, from which we can extract the _probabilities_ of a quantum system (for instance, a quantum particle) having a specific position, a specific momentum, a specific energy, and so forth.
+
+The Schrödinger equation also tells us that when undisturbed, quantum particles are waves spread out in space, instead of possessing definite positions. We call these waves **matter waves**. A quantum particle (or system) can be analyzed by finding the particular solution of the Schrödinger equation for that particle (or system), although the actual solving process is rather tedious and more of a mathematical exercise than physics. Using **separation of variables** is a common method to solve the Schrödinger equation, and we will work through several examples. However, lots of solutions are very well-known and just looking them up in a textbook, reference book, or online is far faster than actually solving the equation.
 
 As is suggestive of the name, wavefunctions describe the matter wave associated with a particular quantum particle (or system of quantum particles). Just like classical waves, all quantum particles have a wavelength $\lambda$ which is related to the momentum by $\lambda = \dfrac{h}{p}$ and the energy by $\lambda = \dfrac{hc}{E}$. Here, $h = \pu{6.62607E-34 J\cdot s}$ is the **Planck constant**, a fundamental constant of nature, alongside the **reduced Planck constant** $\hbar \equiv \dfrac{h}{2\pi} = \pu{1.05457E-34 J\cdot s}$.
 
@@ -927,8 +929,7 @@ The energy levels of hydrogen are given by the energy eigenvalues of its Hamilto
 E_n = -\dfrac{\mu e^4}{32\pi^2 \varepsilon_0^2 \hbar^2} \dfrac{1}{n^2} = -\dfrac{\mu c^2 \alpha^2}{2n^2}
 {% end %}
 
-Which can be written in even simpler form as $E_n = -\dfrac{\mu R_E}{m_e n^2} \approx -\dfrac{R_E}{n^2}$ where $R_E = \dfrac{m_e c^2 \alpha^2}{2}$, known as the **Rydberg energy** which is approximately $\pu{-13.6 eV}$.
-In this expression:
+Which can be written in even simpler form as $E_n = -\dfrac{\mu R_E}{m_e n^2} \approx \dfrac{R_E}{n^2}$ where $R_E = -\dfrac{1}{2}m_e c^2 \alpha^2$, is the **ground-state energy** of the hydrogen atom. . It is also known as the *Rydberg energy* and its numerical value is approximately $\pu{-13.6 eV}$. In this expression:
 
 - $c$ is the speed of light
 - $n$ is the principal quantum number
@@ -1380,8 +1381,16 @@ c_i = \langle x | \psi\rangle = \psi(x)
 We call $\psi(x)$ by a special name - a **wavefunction**. As we mentioned earlier, the wavefunction is a collection of infinitely-many complex-valued **probability amplitudes**, and assigns a probability amplitude to every point $x$. The reason we call it a _probability amplitude_ is that taking its squared norm gives the **probability density** $\rho$:
 
 {% math() %}
+\rho = |\psi(x)|(x)
+{% end %}
+
+And we can use the complex identity $|z|^2 = z z^*$ to rewrite as:
+
+{% math() %}
 \rho = \psi(x) \psi^*(x)
 {% end %}
+
+> **Why the complex norm instead of just the square?** The reason is because the wavefunction is in general complex-valued, and the square of a complex number $z$ is not always a real number, but probabilities **must** always be real-valued. Taking the squared norm $|z|^2$ will ensure that the result is real-valued, which is why we must take the norm and not simply square the wavefunction.
 
 In quantum physics, the probability density is the probability _per unit volume_ of finding a quantum particle at point $x$ (be careful: it is _not_ the probability itself, it is probability _per unit volume_). If you noticed that this is extremely similar to the relation $P = c_i c_i^*$ we found earlier, you're correct! Quantum mechanics tells us that we cannot predict the _precise_ position of particles, but the probability density tells us the _likely_ location of particles, and it is the closest we have to predicting a particle's position. Mathematically, this means that the probability density $\rho$ must obey the **normalization condition**:
 
@@ -1607,7 +1616,7 @@ P = |\langle \alpha | \psi\rangle|^2
 
  Here, $\rho$, the probability density, is probability per unit volume (in this case, of finding the particle at position $x$). (The reason it's a probability density and not just a plain old probability is that position is _continuous_ and has infinitely-many eigenstates corresponding to infinitely-many possible positions.)
 
- The Born rule brings us to the physical interpretation of what seemed like a math trick to represent the quantum state as a wavefunction - a wavefunction is actually a collection of infinitely-many eigenvalues of an operator! Specifically, the operator must be one with continuous eigenstates, such as the eigenvalues of the position and momentum operators. Let's take the position operator $\hat x$ as an example. A quantum particle can be in any place in the Universe (generally-speaking), so there are a continuous spectrum of position eigenstates $|x\rangle$, each one representing the physical state where the particle is at a particular position. As usual, these eigenstates follow the eigenvalue equation for the position operator:
+ The Born rule brings us to the physical interpretation of what seemed like a math trick to represent the quantum state as a wavefunction - a wavefunction is actually a collection of infinitely-many probability amplitudes, one for each eigenvalue of an operator! Specifically, the operator must be one with continuous eigenstates, such as the eigenvalues of the position and momentum operators. Let's take the position operator $\hat x$ as an example. A quantum particle can be in any place in the Universe (generally-speaking), so there are a continuous spectrum of position eigenstates $|x\rangle$, each one representing the physical state where the particle is at a particular position. As usual, these eigenstates follow the eigenvalue equation for the position operator:
 
  {% math() %}
  \hat x |\psi\rangle = x |\psi\rangle
@@ -1618,9 +1627,11 @@ P = |\langle \alpha | \psi\rangle|^2
  {% math() %}
  \psi(x) = \begin{pmatrix} c_1 \\ c_2 \\ c_3 
  \\ \vdots \\ c_{i-1} \\ c_i \end{pmatrix}
+ = \begin{pmatrix} \psi(x_1) \\ \psi(x_2) \\ \psi(x_3) 
+ \\ \vdots \\ \psi(x_{i-1}) \\ \psi(x_i) \end{pmatrix}
  {% end %}
 
- Doing this in the most general case for arbitrary position eigenvalue $x$ gives us that familiar-looking form of the Born rule:
+ This gives us the most familiar-looking form of the Born rule:
 
  {% math() %}
  \rho = |\psi(x)|^2
@@ -1668,9 +1679,9 @@ P = |\langle \alpha | \psi\rangle|^2
 
  This is the famous **canonical commutation relation** $[\hat x, \hat p] = i\hbar$. There are other commutation relations but this is the most important one to encounter in studying quantum physics.
 
- What is the relevance of commutation? From the requirements of probability theory (read about the Cauchy-Schwarz inequality if interested), commuting operators must obey the general uncertainty principle:
+ What is the relevance of commutation? From the requirements of probability theory (read about the [Cauchy-Schwarz inequality](https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality) if interested), commuting operators must obey the **general uncertainty principle**:
 
-> Given two commutating operators $\hat A$ and $\hat B$, the values of their eigenvalues cannot both be precisely measured. The more precise you want to measure an eigenvalue of $\hat A$, the less precise you can measure an eigenvalue of $\hat B$.
+> **Generalized uncertainty principle:** Given two commutating operators $\hat A$ and $\hat B$, the values of their eigenvalues cannot both be precisely measured. The more precise you want to measure an eigenvalue of $\hat A$, the less precise you can measure an eigenvalue of $\hat B$.
 
  A famous example is the uncertainty relation between $\hat x$ and $\hat p$, one that we have already seen earlier - the Heisenberg uncertainty principle:
 
@@ -1696,7 +1707,7 @@ We can extract physically-relevant information from the time-independent state-v
 |-----|-----|-----|-----|------|
 | Position, $\hat x$ | {% inlmath() %} |x\rangle {% end %} | A state with a particle at position $x$ | $x$ | {% inlmath() %} \hat x|\psi\rangle = x|\psi\rangle {% end %} |
 | Momentum, $\hat p$ | {% inlmath() %} |p\rangle {% end %} | A state with a particle with momentum $p$ | $p$ | {% inlmath() %} \hat p|\psi\rangle = p|\psi\rangle {% end %} |
-| Energy, $\hat H$ (also called the _Hamiltonian_) | {% inlmath() %} |\psi\rangle {% end %}, $E\rangle$ (less commonly-used notation) | A state with a particle with total energy $E$ | $E$ | {% inlmath() %} \hat H |\psi\rangle = E|\psi\rangle {% end %} |
+| Energy, $\hat H$ (also called the _Hamiltonian_) | {% inlmath() %} |\psi\rangle {% end %}, {% inlmath() %}|E\rangle{% end %} (less commonly-used notation) | A state with a particle with total energy $E$ | $E$ | {% inlmath() %} \hat H |\psi\rangle = E|\psi\rangle {% end %} |
 
 > **Note:** It is unfortunate that energy eigenstates $|\psi\rangle$ have the same symbol as the state-vector $|\psi\rangle$. It would be more correct to notate energy eigenstates as $|\psi_i\rangle$ or $|E\rangle$, but I am just following standard notation convention.
 
@@ -1729,7 +1740,7 @@ To find the components $c_i$ or $c(\alpha)$ in a particular basis, we take the i
 
 It is **not possible** to predict in advance the measured value a physical quantity may take. However, it is possible to predict the *probability* $P$ of a particular eigenstate through the **Born rule**, which says that the probability $P$ of measuring the $i$-th eigenstate is given by $P = |c_i|^2$. If the eigenstates are that of a continuous operator $|\alpha\rangle$ with eigenstates $|\alpha\rangle$, the Born rule takes the slightly different form $\rho = |c(\alpha)|^2 = |\psi(\alpha)|^2$, where $\rho$ is the _probability density_ (probability per unit volume). The Born rule thus tells us that for any continuous operator with eigenstates $|\alpha\rangle$ and eigenvalues $\alpha$, the wavefunction $\psi(\alpha)$ represents the _probability amplitude_ $c(\alpha)$ of measuring the corresponding observable's value to be $\alpha$.
 
-Finally, the two formulations of quantum mechanics - one using state-vectors $|\psi\rangle$ and abstract operators, the other using wavefunctions $\psi(x)$ and partial differential equations - are **completely equivalent**. Wavefunctions are simply infinite-dimensional vectors, and solving the time-independent Schrödinger equation is the same thing as solving the eigenvalue equation $\hat H|\psi\rangle = E|\psi\rangle$. This can be expressed by writing out the equivalent forms of the _general solution_ to the Schrödinger equation in both formulations:
+Finally, the two formulations of quantum mechanics - one using state-vectors $|\psi\rangle$ and abstract operators, the other using wavefunctions $\psi(x)$ and partial differential equations - are **completely equivalent**. Wavefunctions are simply infinite-dimensional vectors, operators are simply infinite-dimensional matrices, and solving the time-independent Schrödinger equation is the same thing as solving the eigenvalue equation $\hat H|\psi\rangle = E|\psi\rangle$. This can be expressed by writing out the equivalent forms of the _general solution_ to the Schrödinger equation in both formulations:
 
 {% math() %}
 \begin{gather*}
