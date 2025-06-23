@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Gentle Guide to Partial Differential Equations, Part II</title>
+  <meta name="description" content=" In this section, we continue our exploration of PDEs from the first part of the guide and explore more complex PDEs and the ways to solve them.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>A Gentle Guide to Partial Differential Equations, Part II</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+        <details class="toc" id="toc" open>
+        <summary>Table of contents</summary>
+        <p class="toc-info">Note: it is highly recommended to navigate by clicking links in the table of contents! It means you can use the back button in your browser to go back to any section you were reading, so you can jump back and forth between sections!</p>
+        <div>
+            <ul>
+            
+                <li>
+                    <a href="https://jackysci.com/intro-pdes/chapter-2/#chapter-guide-for-pdes">Chapter guide for PDEs</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/intro-pdes/chapter-2/#initial-and-boundary-value-problems">Initial and boundary-value problems</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/intro-pdes/chapter-2/#solving-and-classifying-second-order-pdes">Solving and classifying second-order PDEs</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="https://jackysci.com/intro-pdes/chapter-2/#mixed-type-2nd-order-pdes">Mixed-type 2nd-order PDEs</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="https://jackysci.com/intro-pdes/chapter-2/#existence-uniqueness-and-stability">Existence, uniqueness, and stability</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="https://jackysci.com/intro-pdes/chapter-2/#solutions-of-the-wave-equation">Solutions of the wave equation</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="https://jackysci.com/intro-pdes/chapter-2/#solutions-of-the-diffusion-equation">Solutions of the diffusion equation</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="https://jackysci.com/intro-pdes/chapter-2/#concluding-remarks-to-the-diffusion-and-wave-equation">Concluding remarks to the diffusion and wave equation</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="https://jackysci.com/intro-pdes/chapter-2/#separation-of-variables-for-boundary-value-problems">Separation of variables for boundary-value problems</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="https://jackysci.com/intro-pdes/chapter-2/#the-heat-and-wave-equations-with-neumann-boundary-conditions">The heat and wave equations with Neumann boundary conditions</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/intro-pdes/chapter-2/#fourier-series">Fourier series</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="https://jackysci.com/intro-pdes/chapter-2/#the-general-theory-of-fourier-series">The general theory of Fourier series</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="https://jackysci.com/intro-pdes/chapter-2/#even-and-odd-functions">Even and odd functions</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="https://jackysci.com/intro-pdes/chapter-2/#complex-form-of-the-fourier-series">Complex form of the Fourier Series</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="https://jackysci.com/intro-pdes/chapter-2/#orthogonality-and-general-fourier-series">Orthogonality and general Fourier Series</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/intro-pdes/chapter-2/#next-steps">Next steps</a>
+                    
+                </li>
+            
+            </ul>
+        </div>
+        </details>
+        
+
+        <!-- page content -->
+        <p>In this section, we continue our exploration of PDEs from the <a href="https://jackysci.com/intro-pdes/">first part of the guide</a> and explore more complex PDEs and the ways to solve them.</p>
+<span id="continue-reading"></span>
+<blockquote>
+<h3 id="chapter-guide-for-pdes">Chapter guide for PDEs</h3>
+<ul>
+<li><a href="https://jackysci.com/intro-pdes/">Part 1</a> covers basics of PDEs, solving 1st-order PDEs, and the physical phenomena modelled by PDEs.</li>
+<li><a href="https://jackysci.com/intro-pdes/chapter-2/">Part 2</a> covers classification and finding solutions to 2nd-order PDEs, and in particular, the diffusion equation, wave equation, and Laplace's equation. <strong>You are reading this part right now.</strong></li>
+<li><a href="https://jackysci.com/intro-pdes/chapter-3/">Part 3</a> concludes this guide with a discussion on Laplace's equations and a few other topics in partial differential equations.</li>
+</ul>
+</blockquote>
+<h2 id="initial-and-boundary-value-problems">Initial and boundary-value problems</h2>
+<p>We have discussed previously that knowledge of only the PDE is <em>insufficient</em> to provide a unique solution to a given physical problem. Thus, while we may have derived (or at least know) a particular PDE, we can only write down a unique solution when we are provided with <strong>initial</strong> and <strong>boundary conditions</strong>.</p>
+<p>Let us take the example of the wave equation. Recall that the wave equation can be factored into two transport equations:</p>
+<p class="mathcell">
+$$
+\left(\dfrac{\partial^2}{\partial t^2} - c^2\dfrac{\partial^2}{\partial x^2}\right) u = \left(\dfrac{\partial}{\partial t} + c\dfrac{\partial}{\partial x}\right)\left(\dfrac{\partial}{\partial t} - c\dfrac{\partial}{\partial x}\right) u = 0
+$$
+</p>
+<p>This means that for a solution to be found, we must provide initial and boundary conditions by specifying the values of both the function $u(x, t)$ and its derivatives at specific points along our area of interest. The possible types of initial and boundary conditions for a generalized quantity $u(\mathbf{r}, t)$ described by a PDE are as follows:</p>
+<table><thead><tr><th>Initial/Boundary condition</th><th>Mathematical form</th><th>Physical description</th><th>Example</th></tr></thead><tbody>
+<tr><td>Initial condition</td><td>$u(\mathbf{r}, 0) = f(\mathbf{r})$</td><td>The quantity $u(\mathbf{r}, t)$ takes the value $f(\mathbf{r})$ at $t = 0$</td><td>Initial heat distribution before heat flow for heat equation</td></tr>
+<tr><td>Dirichlet boundary condition</td><td>$u(\mathbf{r}, t) \bigg|_{\partial \Omega} = f(\mathbf{r})$</td><td>The quantity $u(\mathbf{r}, t)$ takes a specified value at the boundaries of the area of interest</td><td>The initial height of a vibrating membrame for Laplace's equation of a vibrating membrane</td></tr>
+<tr><td>Neumann boundary condition</td><td>$\dfrac{\partial u}{\partial n}(\mathbf{r}, t) \bigg|_{\partial \Omega} = f(\mathbf{r})$</td><td>The derivative of the quantity $u(\mathbf{r}, t)$ takes a specified value at the boundaries of the area of interest (note: $\mathbf{n}$ is the normal vector of the boundary and $\dfrac{\partial u}{\partial n} = \mathbf{n} \cdot \nabla u$)</td><td>The rate of heat spreading away from the edges of a hot object. When $\dfrac{\partial u}{\partial x} \big|_{\partial \Omega} = 0$, the object is <em>perfectly insulative</em>, meaning no heat escapes from the object</td></tr>
+<tr><td>Robin boundary condition</td><td>$a\dfrac{\partial u}{\partial n} + b u(\mathbf{r}, t) \bigg|_{\partial \Omega} = f(\mathbf{r})$</td><td>A linear combination of the quantity $u(\mathbf{r}, t)$ and its derivative  takes a specified value at the boundaries of the area of interest</td><td>A linear relation between the spread gas across the boundary and the gas density at that boundary.</td></tr>
+<tr><td>Periodic boundary condition</td><td>$u(\mathbf{r}, t) = u(\mathbf{r} + \mathbf{b}, t)$</td><td>The quantity $u(\mathbf{r}, t)$ repeats such that its vaulue at two points is the same</td><td>The height of a sinusoidal wave at two locations (periodic boundary conditions are often used for oscillating or wave-like phenomena)</td></tr>
+<tr><td>Vanishing boundary condition</td><td>$\displaystyle \lim_{\mathbf{r} \to \infty} u(\mathbf{r}, t) = 0$</td><td>The quantity $u(\mathbf{r}, t)$ vanishes at infinity (often used for quantities where the total amount is finite)</td><td>Normalization condition of Schrödinger's equation (which demands that $u \to 0$ as $\mathbf{r} \to 0$)</td></tr>
+</tbody></table>
+<p>For instance, suppose our area of interest is a linear region between endpoints $x_1, x_2$, and we want to solve the wave equation. We would then want to specify the <strong>initial condition</strong> $u(x, 0)$, the boundary conditions $u(x_1, t)$ and $u(x_2, t)$, which are <strong>Dirichlet boundary conditions</strong>, as well as $\frac{\partial u(x, 0)}{\partial x} \big|_{x = x_1}$ and $\frac{\partial u(x, 0)}{\partial x} \big|_{x = x_2}$ which are <strong>Neumann boundary conditions</strong>. This combination is called an <strong>initial boundary-value problem</strong> (IBVP) and allows for finding a unique solution. For partial differential equations that are time-independent, we simply refer to a combination of boundary conditions and the PDE as a <strong>boundary-value problem</strong> (BVP).</p>
+<h2 id="solving-and-classifying-second-order-pdes">Solving and classifying second-order PDEs</h2>
+<p>A second-order PDE is a PDE describing a function $u(x_1, x_2)$ which has the standard form:</p>
+<p class="mathcell">
+$$
+a(x_1, x_2)\dfrac{\partial^2 u}{\partial x_1^2} + b (x_1, x_2) \dfrac{\partial u}{\partial x_1 \partial x_2} + c(x_1, x_2) \dfrac{\partial^2 u}{\partial x_2^2} + \underbrace{F\left(x_1, x_2, u, \dfrac{\partial u}{\partial x_1}, \dfrac{\partial u}{\partial x_2}\right)}_\text{lower-order terms}  = 0
+$$
+</p>
+<p>In general, any second-order PDE can be transformed via a coordinate transformation into this standard form. Furthermore, we can distinguish between three main categories of second-order PDEs, based on the coefficients $a(x, y)$, $b(x, y)$, and $c(x, y)$:</p>
+<ul>
+<li>If $b^2 - 4ac &gt; 0$, the equation is <strong>hyperbolic</strong></li>
+<li>If $b^2 - 4ac = 0$, the equation is <strong>parabolic</strong></li>
+<li>If $b^2 -4ac &lt; 0$, the equation is <strong>elliptic</strong></li>
+</ul>
+<blockquote>
+<p><strong>Why do we care about the coefficients?</strong> The reason is because the qualitative behavior of second-order PDEs is <em>almost entirely determined</em> by its second-order derivative terms. The lower order terms <strong>do not really matter</strong> as they do not contribute as broadly to the characteristics of the solution. Thus, we are very much interested in whether a second-order PDE is hyperbolic, parabolic, or elliptic.</p>
+</blockquote>
+<p>As a quick non-rigorous guide, we can visually tell whether a solution is <strong>hyperbolic, parabolic, or elliptic</strong> by the general form they take:</p>
+<p class="mathcell">
+$$
+\begin{cases}
+\text{Hyperbolic:} &amp; C_1\dfrac{\partial^2 u}{\partial x^2} - C_2\dfrac{\partial^2 u}{\partial y^2} + \text{lower order terms} = 0  \\[10pt]
+\text{Parabolic:} &amp; C_1\dfrac{\partial^2 u}{\partial x^2} + \text{lower order terms} = 0 \\[10pt]
+\text{Elliptic:} &amp; C_1\dfrac{\partial^2 u}{\partial x^2} + C_2\dfrac{\partial^2 u}{\partial y^2} + \text{lower order terms} = 0
+\end{cases}
+$$
+</p>
+<p><em>Source: <a href="https://web.stanford.edu/class/math220a/handouts/secondorder.pdf">Stanford MATH220A course</a></em></p>
+<p>However, it is worth it to familiarize ourselves with each specific type in detail. We will now look at the three standard second-order PDEs, the first one <em>hyperbolic</em>, the second one <em>parabolic</em>, and the third one <em>elliptic</em>.</p>
+<blockquote>
+<p><strong>Note:</strong> the names hyperbolic, parabolic, and elliptic originate from the geometric terms of the hyperbola, parabola, and ellipse that are the three standard <strong>conic sections</strong>. It may seem like PDEs have nothing in common with geometry; on the surface level this can be presumed to be the case (although there <em>is</em> a deeper mathematical connection that comes up in more advanced studies). One can (for now) take the main utility of the geometry-inspired classification system to be a a convenient way to distinguish between the three types of 2nd-order PDEs that is based on familiar terminology.</p>
+</blockquote>
+<p>The standard <strong>hyperbolic</strong> second-order PDE is the <strong>1D wave equation</strong>, which (physically) describes a propagating wave $u(x, t)$:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial^2 u}{\partial t^2} -c^2\dfrac{\partial^2 u}{\partial x^2} = 0
+$$
+</p>
+<p>While the standard 1D wave equation describes a function of the form $u(x, t)$, one may also write a perfectly valid wave equation that describes a function of the form $u(x, y)$ that takes the form:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial^2 u}{\partial x^2} -c^2\dfrac{\partial^2 u}{\partial y^2} = 0
+$$
+</p>
+<p>It may not be very apparent how the wave equation fits the standard form of a second-order PDE we looked at previously. To show explicitly that the wave equation <em>does</em> indeed fit the standard form, we may perform a coordinate transformation of the wave equation. Let our transformed coordinates $x_1, x_2$ be given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+x_1 &amp;= x - ct \\
+x_2 &amp;= x + ct
+\end{align*}
+$$
+</p>
+<p>We then find that in these transformed coordinates, the wave equation takes the form:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial^2 u}{\partial x_1 \partial x_2} = 0
+$$
+</p>
+<p>We can show this by manually computing the coordinate-transformed partial derivatives by the chain rule:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial}{\partial t} &amp;= \dfrac{\partial x_1}{\partial t} \dfrac{\partial}{\partial x_1} + \dfrac{\partial x_2}{\partial t} \dfrac{\partial}{\partial x_2}  \\
+&amp;= -c \dfrac{\partial}{\partial x_1} + c \dfrac{\partial}{\partial x_2}  \\
+&amp;= c \left(\dfrac{\partial}{\partial x_2}- \dfrac{\partial}{\partial x_1}\right)
+ \\
+\dfrac{\partial}{\partial x} &amp;= \dfrac{\partial x_1}{\partial x} \dfrac{\partial}{\partial x_1} + \dfrac{\partial x_2}{\partial x} \dfrac{\partial}{\partial x_2} \\
+&amp;= \dfrac{\partial}{\partial x_1} + \dfrac{\partial}{\partial x_2}
+\end{align*}
+$$
+</p>
+<p>From which we obtain:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+% time derivative
+\dfrac{\partial^2}{\partial t^2} &amp;= \dfrac{\partial}{\partial t}\left(\dfrac{\partial}{\partial t}\right) \\
+&amp;=c \left(\dfrac{\partial}{\partial x_2}- \dfrac{\partial}{\partial x_1}\right)c \left(\dfrac{\partial}{\partial x_2}- \dfrac{\partial}{\partial x_1}\right) \\
+&amp;= c^2 \left(\dfrac{\partial^2}{\partial x_2^2} - 2\dfrac{\partial^2}{\partial x_1 \partial x_2} + \dfrac{\partial^2}{\partial x_1^2}\right) \\
+% spatial derivative
+\dfrac{\partial^2}{\partial x^2} &amp;= \dfrac{\partial}{\partial x}\left(\dfrac{\partial}{\partial x}\right) \\
+&amp;= \left(\dfrac{\partial}{\partial x_1} + \dfrac{\partial}{\partial x_2}\right) \left(\dfrac{\partial}{\partial x_1} + \dfrac{\partial}{\partial x_2}\right) \\
+&amp;= \left(\dfrac{\partial^2}{\partial x_1^2} + 2\dfrac{\partial^2}{\partial x_1 \partial x_2} + \dfrac{\partial^2}{\partial x_2^2}\right)
+\end{align*}
+$$
+</p>
+<p>Therefore substituting into the wave equation we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+&amp;\dfrac{\partial^2 u}{\partial t^2} -c^2\dfrac{\partial^2 u}{\partial x^2} = 0\\
+&amp;c^2 \left(\dfrac{\partial^2}{\partial x_2^2} - 2\dfrac{\partial^2}{\partial x_1 \partial x_2} + \dfrac{\partial^2}{\partial x_1^2}\right)u - c^2 \left(\dfrac{\partial^2}{\partial x_1^2} + 2\dfrac{\partial^2}{\partial x_1 \partial x_2} + \dfrac{\partial^2}{\partial x_2^2}\right) = 0 \\
+&amp;c^2 \left(\dfrac{\partial^2}{\partial x_2^2} - 2\dfrac{\partial^2}{\partial x_1 \partial x_2} + \dfrac{\partial^2}{\partial x_1^2} -\dfrac{\partial^2}{\partial x_1^2} - 2\dfrac{\partial^2}{\partial x_1 \partial x_2} - \dfrac{\partial^2}{\partial x_2^2}\right) = 0 \\
+&amp;c^2 \left(\cancel{\dfrac{\partial^2}{\partial x_2^2}} - 2\dfrac{\partial^2}{\partial x_1 \partial x_2} + \cancel{\dfrac{\partial^2}{\partial x_1^2}} -\cancel{\dfrac{\partial^2}{\partial x_1^2}} - 2\dfrac{\partial^2}{\partial x_1 \partial x_2} - \cancel{\dfrac{\partial^2}{\partial x_2^2}}\right) = 0 \\
+&amp;-4c^2 \dfrac{\partial^2}{\partial x_1 \partial x_2} = 0\\
+&amp;\Rightarrow \dfrac{\partial^2}{\partial x_1 \partial x_2} = 0
+\end{align*}
+$$
+</p>
+<p>Thus we have $a(x, y) = c(x, y) = 0$ and $b(x, y) = 1$, making the wave equation <strong>hyperbolic</strong>. The hyperbolic nature of wave equation has some unique consequences for its solutions. First, in solutions to the wave equation, a disturbance (e.g. pulse) in one region propagates at a finite speed in space, where $c$ is the <strong>propagation speed</strong>. That is to say, information about one part of a solution can only be transmitted at a finite speed to other parts of the solution. Thus hyperbolic equations in physics typically describe <em>waves</em>, including waves of light (electromagnetic waves), vibrations of a string, and acoustic (sound) waves. Second, hyperbolic equations do not &quot;smooth out&quot; shocks that arise at one point in time. These shocks propagate throughout the solution, but once again, at a <em>finite speed</em>.</p>
+<blockquote>
+<p><strong>Note:</strong> the 2D and 3D wave equations can be written as a system of 1D wave equations via a coordinate transformation, which are hyperbolic. Therefore, the 2D and 3D wave equations are <em>also</em> hyperbolic.</p>
+</blockquote>
+<p>The standard <strong>parabolic</strong> second-order PDE, meanwhile, is the <strong>1D heat equation</strong>, which (physically) describes a temperature distribution $u(x, t)$ through time:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial u}{\partial t} = \alpha^2 \dfrac{\partial^2 u}{\partial x^2}
+$$
+</p>
+<p>Recall that the time derivative on the left-hand side is a lower-order term, and therefore it <strong>does not matter</strong>. It also does not matter if the left-hand side is a first-order derivative with respect to another variable; the following would still be a heat equation (although not <em>the</em> heat equation):</p>
+<p class="mathcell">
+$$
+\dfrac{\partial u}{\partial x} = \alpha^2 \dfrac{\partial^2 u}{\partial x^2}
+$$
+</p>
+<p>Since we ignore all lower-order terms when classifying PDEs, the first derivative can be effectively ignored. Therefore, we can place the heat equation in standard form as follows:</p>
+<p class="mathcell">
+$$
+\alpha^2 \dfrac{\partial^2 u}{\partial x^2} + \dots = 0
+$$
+</p>
+<p>Where we use the notation that $\dots$ represents the lower order $\dfrac{\partial u}{\partial t}$ term. In this form, we can tell that $a(x, y) = \alpha^2$ while $b(x, y) = c(x, y) = 0$, and thus $b^2 - 4 ac = 0$, which is the defining characteristic of a parabolic PDE (as we would expect).</p>
+<blockquote>
+<p><strong>Note:</strong> As with the wave equation, the 2D and 3D heat equations can also be put in parabolic form by rewriting them as a first-order system; each equation in the system would then take a parabolic form. Therefore, the 2D and 3D heat equations are <em>also</em> parabolic.</p>
+</blockquote>
+<p>Just as the wave equation possesses specific properties due to it being <em>hyperbolic</em>, the heat equation possesses specific properties due to it being <em>parabolic</em>. One property is that maxima and minima in the solution tend to be &quot;smoothed out&quot; as the solution $u(x, t)$ evolves in time, resulting in (mostly) <em>smooth</em> solutions. The behavior happens *globally (i.e. across the entire solution) at the same time. That is to say, unlike the wave equation, the heat equation assumes <em>infinite propagation speed</em> and thus describes phenomena where a bulk quantity <em>uniformly</em> stabilizes towards equilibrium (as opposed to the non-uniform delayed propagation of information in the wave equation). Thus the heat equation physically describes <strong>diffusion and diffusion-like phenomena</strong>, making it the natural choice to describe heat transfer.</p>
+<p>Lastly, the the standard <strong>elliptic</strong> second-order PDE is <strong>Laplace's equation</strong> (in 2D), which describes a wide variety of phenomena in physics. It takes the form:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial^2 u}{\partial x^2} + \dfrac{\partial^2 u}{\partial y^2} = 0
+$$
+</p>
+<p>Note that the positive sign <strong>matters</strong> here - if the plus sign were a negative sign, we would instead have a <em>hyperbolic</em> PDE. Laplace's equation can also be written in terms of the <strong>Laplacian operator</strong> $\nabla^2$ as:</p>
+<p class="mathcell">
+$$
+\nabla^2 u = 0
+$$
+</p>
+<p>Where the Laplacian in two dimensions takes the form $\nabla^2 = \dfrac{\partial^2}{\partial x^2} + \dfrac{\partial^2}{\partial y^2}$, and thus gives Laplace's equation:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial^2 u}{\partial x^2} + \dfrac{\partial^2 u}{\partial y^2} = 0
+$$
+</p>
+<p>The Laplace equation, in this form, is already in the standard form of a 2nd-order PDE (that we covered at the beginning of this section). As it has the coefficients $a(x, y) = c(x, y) = 1$ and $b(x, y) = 0$, we have $b^2 - 4ac &lt; 0$, which makes the PDE <strong>elliptic</strong>.</p>
+<blockquote>
+<p><strong>Note:</strong> Laplace's equation in 3D (which also takes the form $\nabla^2 u = 0$, just with the 3D Laplacian, so it reads $\dfrac{\partial^2 u}{\partial x^2} + \dfrac{\partial^2 u}{\partial y^2} + \dfrac{\partial^2 u}{\partial z^2} = 0$) is <em>also</em> elliptic, which can be shown (again) by rewriting it as a system of PDEs). However, Laplace's equation in 1D is <em>not</em> elliptic (rather, it is parabolic).</p>
+</blockquote>
+<p>As the <em>standard elliptic PDE</em>, Laplace's equation demonstrates several of the defining characteristics of elliptic PDEs. First, note that Laplace's equation is usually written in a time-independent form - therefore, it describes <strong>steady-state systems</strong> (i.e. systems at equilibrium) that are slowly-evolving or constant in time. For instance, in electrostatics, the <em>electric potential</em> $V(x, y)$ satisfies Laplace's equation. Second, the solutions to Laplace's equation are always <strong>smooth</strong>. This is because, just like parabolic PDEs, information about parts of a solution can be thought of as travelling instantly between different parts of the solution; the nuance being that physical scenarios modelled by Laplace's equation are ones that <em>already reached equilibrium</em>. This also means that for $t \to \infty$, the 2D heat equation <em>becomes</em> Laplace's equation as $\dfrac{\partial u}{\partial t} \to 0$.</p>
+<p>The three representative 2nd-order PDEs - the <strong>wave equation</strong>, <strong>heat equation</strong>, and <strong>Laplace's equation</strong> - are unique in that <em>any</em> second-order hyperbolic, parabolic, and elliptic PDE can be transformed into one of those equations (ignoring the lower-order terms, which are not significant). Thus the study of these three 2nd-order PDEs provides results that carry over to <em>all 2nd-order PDEs</em>. Therefore, we can summarize our general conclusions about 2nd-order PDEs as follows:</p>
+<table><thead><tr><th>Type of 2nd-order PDE</th><th>Representative equation</th><th>Representative form</th></tr></thead><tbody>
+<tr><td>Hyperbolic</td><td>Wave equation</td><td>$\dfrac{\partial^2 u}{\partial t^2} -c^2\nabla^2 u + F(x, y, z, t, \partial_x u, \partial_y u, \partial_z u, \partial_t u) = 0$</td></tr>
+<tr><td>Parabolic</td><td>Heat equation</td><td>$\dfrac{\partial u}{\partial t} -\alpha^2\nabla^2 u + F(x, y, z, t, \partial_x u, \partial_y u, \partial_z u, \partial_t u) = 0$</td></tr>
+<tr><td>Elliptic</td><td>Laplace's equation</td><td>$\nabla^2 u - F(x, y, z, \partial_x u, \partial_y u, \partial_z u) = 0$</td></tr>
+</tbody></table>
+<p>It is also possible to condense this information in a matrix, as follows:</p>
+<p class="mathcell">
+$$
+A = \begin{pmatrix}
+a &amp; b&#x2F;2 \\ b&#x2F;2 &amp; c
+\end{pmatrix}
+=
+\begin{pmatrix}
+a(x, y) &amp; b(x, y)&#x2F;2 \\
+b(x, y)&#x2F;2 &amp; c(x, y)
+\end{pmatrix}
+$$
+</p>
+<p>We may find the <strong>eigenvalues</strong> of the matrix by solving eigenvalue equation:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+&amp;\det(A - \lambda I) = 0 \\
+&amp;\Rightarrow \begin{vmatrix}
+a -\lambda &amp; b&#x2F;2 \\ b&#x2F;2 &amp; c-\lambda
+\end{vmatrix} = 0 \\
+&amp;\Rightarrow (a-\lambda)(c - \lambda) - \dfrac{b^2}{4} = 0
+\end{align*}
+$$
+</p>
+<p>The solutions $\lambda$ to the above equation are the eigenvalues of $A$. The eigenvalues of the matrix can then be used to determine the classification of the PDE:</p>
+<table><thead><tr><th>Type of 2nd-order PDE</th><th>Eigenvalues of $A$</th></tr></thead><tbody>
+<tr><td>Hyperbolic</td><td>Opposite signs</td></tr>
+<tr><td>Parabolic</td><td>At least one eigenvalue is zero</td></tr>
+<tr><td>Elliptic</td><td>Same signs</td></tr>
+</tbody></table>
+<h3 id="mixed-type-2nd-order-pdes">Mixed-type 2nd-order PDEs</h3>
+<p>We have seen that 2nd-order PDEs may be classified, based on their coefficients, as <em>hyperbolic</em>, <em>parabolic</em>, or <em>elliptic</em>. But these distinctions are not as clear-cut as they may first appear; in fact, a 2nd-order PDE may be of <em>mixed type</em>, which means it can be hyperbolic in one region, parabolic in another region, and elliptic in yet another region. Consider the following 2nd-order PDE:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial^2 u}{\partial x^2} + (x^2 - y^2) \dfrac{\partial^2 u}{\partial y^2} = 0
+$$
+</p>
+<p>From first appearance, this PDE may <em>appear</em> to be elliptic, as evidenced by the positive sign. But we must exercise caution, as this is not always so; in fact, it is <em>only true</em> for $|x| &gt; |y|$. Notice what happens at the origin, where $|x| = |y| = 0$: then second term becomes zero, and we are left with:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial^2 u}{\partial x^2} = 0
+$$
+</p>
+<p>Which is a <em>parabolic</em> differential equation. Finally, if we have $|x| &lt; |y|$, the second term would then become <em>negative</em>, which is a <em>hyperbolic</em> differential equation. This is why we classify this PDE as a mixed-type, as it is classified differently depending on region. Below is a graph of the regions in which the PDE takes each type (red represents $|x|&gt;|y|$ and thus <em>elliptic</em>, blue represents $|x| &lt; |y|$ and thus <em>hyperbolic</em>, and the dashed black line represents $|x| = |y|$ and thus parabolic):</p>
+<img class="natural-img" src=..&#x2F;mixed-type-pde.svg alt="A graph showing the PDE&#x27;s different regions, with regions between the lines y = x and y = -x being elliptic, regions on either line being parabolic, and all other regions being hyperbolic." />
+<h3 id="existence-uniqueness-and-stability">Existence, uniqueness, and stability</h3>
+<p>Up to this point, we have been solving PDEs with the assumption that <em>solutions always exist and are unique</em> and that solutions are <em>stable</em>. That is, a solution satisfies the following characteristics:</p>
+<ul>
+<li><strong>Existence:</strong> It is mathematically-possible to find the solution of a PDE for given initial (and/or boundary) conditions</li>
+<li><strong>Uniqueness:</strong> The solution of a PDE for given initial (and/or boundary) conditions is the <em>one and only</em> solution</li>
+<li><strong>Stability:</strong> A PDE has solutions without shocks, discontinuities, divergent behavior, or any other instabilities that result in unpredictable behavior</li>
+</ul>
+<p>It may be odd to think that solutions may not even <em>exist</em> for a given PDE and boundary conditions, but this is possible. Typically, the most straightforward to show that a solution does not exist is to (attempt to) solve a given problem with the provided boundary conditions, and show that the boundary conditions are impossible to be satisfied.</p>
+<p>Furthermore, even if a solution exists, there may be multiple solutions possible - a good check is to see if the trivial solution $u = 0$ is a solution to the BVP in addition to some other solution, or if a solution $u + C$ where $C$ is some constant is still a solution to the BVP. If multiple solutions are possible, then we say that the solution is <em>non-unique</em>. For example, consider the following BVP for the transport equation:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\dfrac{\partial u}{\partial x} = -\dfrac{\partial u}{\partial y} \\
+u(0, y) = 0 \\
+u(L, y)= 0
+\end{gather*}
+$$
+</p>
+<p>In this case through just guess-and-check we find that one particular solution to the BVP is the function $u(x, y) = \sin \left(\dfrac{\pi}{L}(x - y)\right)$. There is, however, another solution: $u(x, y) = 0$. Thus the solution is certainly <strong>not unique</strong>. </p>
+<p>In many cases, physical intuition can be enough to deduce whether the boundary conditions lead to nonexistent or non-unique solutions. If a PDE doesn't have <em>sufficiently many</em> boundary conditions, a solution often exists but is not unique. For instance.</p>
+<p>Finally, a PDE (and particularly hyperbolic PDEs) may have numerical instabilities that make a solution useless to compute even if found. If a problem satisfies all of the three criteria, for which we say that the problem is <strong>well-posed</strong>. This is particularly true for hyperbolic PDEs, which are in the form of the modified wave equation:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial^2 u}{\partial x^2} - \dfrac{\partial^2 u}{\partial y^2} + \dots = 0
+$$
+</p>
+<p>Such PDEs are highly sensitive to their initial conditions and thus stability depends on the smoothness (i.e. no abrupt jumps, discontinuities, and asymptotic behavior) of their initial conditions. The same is often true with <em>nonlinear</em> PDEs. Again, instability is hard to show without explicitly <em>solving</em> the BVP and examining the resulting solution.</p>
+<p>It is rarely possible to <em>prove</em> existence, uniqueness, and stability for a general class of boundary-value (or initial-value) problems. It is often much easier to give a <em>counterexample</em> (i.e. <em>disprove</em> existence, uniqueness, and stability). Even when the conditions of existence, uniqueness, and stability are satisfied, it may be impossible to <em>prove this</em> or a proof may only be possible on a case-by-case basis. In this introductory treatment of PDEs, we will not delve into the intricacies of proving existence, uniqueness, and stability, which involves very advanced mathematics.</p>
+<p>It is, however, useful to mention several theorems for <em>specific PDEs</em> that provide for existence and uniqueness (and in some cases, stability):</p>
+<blockquote>
+<p><strong>Theorem 1:</strong> The solution to Poisson's equation $\nabla^2 f = 0$ (as well as its limiting case, Laplace's equation, given by $\nabla^2 f = 0$) is a <strong>unique</strong> solution for the boundary condition $u(\mathbf{r})_\text{boundary} = f(\mathbf{r})$ <em>as well as</em> for the boundary condition $\dfrac{\partial u}{\partial n} = g(\mathbf{r})$. That is to say, <em>if</em> the values of $u$ are specified on the boundary, <em>or if</em> the values of the derivative of $u$ are specified on the boundary (but <strong>not specifying both</strong>), then a solution will always <strong>exist and is unique</strong>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Theorem 2:</strong> By the <strong>Cauchy–Kowalewskaya Theorem</strong>, any second-order PDE in the form of the wave equation or diffusion equation with the Cauchy (initial) conditions $u(\mathbf{r}, 0)_\text{boundary} = f(\mathbf{r})$, $\dfrac{\partial u}{\partial t}(\mathbf{r}, 0) = g(\mathbf{r})$ yields a <strong>unique solution</strong> <em>if</em> <strong>both conditions</strong> are provided and $f$ and $g$ are both functions with well-defined power series. </p>
+</blockquote>
+<blockquote>
+<p><strong>Theorem 3:</strong> Assuming theorem (2) holds, the solution to the diffusion equation $\dfrac{\partial^2 u}{\partial t^2} = k \nabla^2 u$ is <strong>always stable</strong> for $t \geq 0$ (although unstable for $t &lt; 0$).</p>
+</blockquote>
+<blockquote>
+<p><strong>Theorem 4:</strong> Assuming theorem (1) holds, the solution to Poisson's equation and Laplace's equation is <strong>always stable</strong>.</p>
+</blockquote>
+<h3 id="solutions-of-the-wave-equation">Solutions of the wave equation</h3>
+<p>We have previously seen that the wave equation is the <strong>prototypical hyperbolic PDE</strong>, and is given by: </p>
+<p class="mathcell">
+$$
+\dfrac{\partial^2 u}{\partial t^2} = c^2 \dfrac{\partial^2 u}{\partial x^2}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> The fact that the equation has $c^2$ instead of $c$ as a constant is significant. $c^2$ is <em>guaranteed</em> to be positive, while $c$ can be positive or negative, and this makes a massive difference in the behavior of the PDE (and therefore, its solutions).</p>
+</blockquote>
+<p>As the prototypical hyperbolic PDE, the wave equation has a special significance because <em>any</em> hyperbolic PDE can be transformed into the wave equation by a change of coordinates. In addition, it has the desirable characteristic that its general solution is actually rather simple:</p>
+<p class="mathcell">
+$$
+u(x, t) = f(x - ct) + g(x + ct)
+$$
+</p>
+<p>Which we can find by the method of characteristics or by the method of coordinate transforms and then direct integration (which we previously showed). Particular solutions for the wave equation can be found by giving <em>initial conditions</em>. Let us consider the specific initial-value problem given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(x, 0) = \varphi(x) \\
+\dfrac{\partial u}{\partial t}(x, 0) = \psi(x) 
+\end{align*}
+$$
+</p>
+<p>Where $\varphi(x), \psi(x)$ are arbitrary functions. This initial-value problem possesses a <em>particular solution</em>, given by:</p>
+<p class="mathcell">
+$$
+u(x, t) = \dfrac{1}{2} [\varphi(x - ct) + \varphi(x + ct)] + \dfrac{1}{2c} \int_{x - ct}^{x + ct}\psi(x&#x27;)dx&#x27;
+$$
+</p>
+<p>In the special case where we have $\dfrac{\partial u}{\partial t}(x, 0)  = \varphi(x) = 0$, then the particular solution reduces to:</p>
+<p class="mathcell">
+$$
+u(x, y) = \dfrac{1}{2} \varphi(x - ct) + \dfrac{1}{2}\varphi(x + ct)
+$$
+</p>
+<p>Meanwhile in the special case we have $u(x, 0) = \psi(x) = 0$, then the particular solution reduces to:</p>
+<p class="mathcell">
+$$
+u(x, t) = \dfrac{1}{2c} \int_{x - ct}^{x + ct}\psi(x&#x27;)dx&#x27;
+$$
+</p><h4 id="solutions-of-relevance-in-physics">Solutions of relevance in physics</h4>
+<p>One of the most useful particular solutions to the wave equation (particularly in Physics) is found by imposing the additional periodic boundary conditions that $u(x, t) = u(x + \lambda, t)$ and $u(x, t) = u(x, t + T)$. The solution then becomes:</p>
+<p class="mathcell">
+$$
+u(x, t) = A\cos \left(\dfrac{2\pi x}{\lambda} - \dfrac{2\pi}{T} t\right) + 
+B \sin \left(\dfrac{2\pi x}{\lambda} + \dfrac{2\pi}{T} t\right)
+$$
+</p>
+<p>Which can also be written in a more compact form if we define $\omega = \dfrac{2\pi}{T}$ and $k = \dfrac{2\pi}{\lambda}$, as follows:</p>
+<p class="mathcell">
+$$
+u(x, t) = A \cos (k x - \omega t) + B\sin (kx + \omega t)
+$$
+</p>
+<p>In physics, each of these quantities has a very specific <em>physical interpretation</em> - $\lambda$ is called the <em>wavelength</em>, $T$ is called the <em>period</em>, $\omega$ is the <em>angular frequency</em> and $k$ is called the wavenumber. Such solutions are known as <strong>plane-wave solutions</strong> (also called traveling waves) as they describe waves that propagate sinusoidally to infinity, with their wavefronts being uniform (thus, planar). See the guide on <a href="https://jackysci.com/waves-and-oscillations/">waves and oscillations in physics</a> for more details.</p>
+<blockquote>
+<p><strong>Note:</strong> we can construct a more general solution if we write this solution as $u(x, t) = C e^{ikx - i\omega t}$ by <em>Euler's formula</em> $e^{i\phi} = \cos \phi + i \sin \phi$. As the wave equation is linear, we can sum over an infinite number of plane waves spaced out in space (with different values of $k$) to have $u(x, t) = \dfrac{1}{\sqrt{2\pi}} \displaystyle \int C(k) e^{ikx - i\omega t} dk$. This is also a form often used in physics.</p>
+</blockquote>
+<p>Note that a particular case of this particular solution can <em>also</em> be found with the following boundary conditions:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(x, 0) &amp;= 0 \\
+\dfrac{\partial u}{\partial x}(x, 0) &amp;= \psi(x) \\ &amp;=\cos x
+\end{align*}
+$$
+</p>
+<p>Where we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(x, t) &amp;= \dfrac{1}{2c} \int_{x - ct}^{x + ct}\psi(x&#x27;)dx&#x27; \\
+&amp;= \dfrac{1}{2c} \int_{x - ct}^{x + ct} \cos x&#x27; dx&#x27; \\
+&amp;= \dfrac{1}{2c} (\sin x) \bigg|_{x - ct}^{x + ct} \\
+&amp;= \dfrac{1}{2c}[ \sin(x + ct) - \sin(x - ct)]
+\end{align*}
+$$
+</p>
+<p>We may verify that this solution does, indeed, satisfy the wave equation:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{\partial^2 u}{\partial x^2} &amp;= -\dfrac{1}{2c}[\sin(x + ct) - \sin(x - ct)] \\
+\frac{\partial^2 u}{\partial t^2} &amp;= -\dfrac{1}{2}c[\sin(x + ct) - \sin(x - ct)] \\
+\frac{\partial^2 u}{\partial t^2} - c^2\frac{\partial^2 u}{\partial x^2} &amp;=
+-\dfrac{1}{2}c[\sin(x + ct) - \sin(x - ct)]-c^2\sin(x + ct) \\ &amp;-c^2\left(-\dfrac{1}{2c}\right)[ \sin(x + ct) -\sin(x - ct)] \\
+&amp;=0\quad \checkmark
+\end{align*}
+$$
+</p>
+<p>As we saw previously, solutions to the wave equation (waves) have the universal feature that the wave travels to the right, that is, $f(x - ct)$, and travels to the left, that is, $f(x +ct)$, at a <em>speed of propagation</em> of $c$. Since $c$ is a constant, $c$ is also the <em>maximal speed</em> at which information at a particular point $x$ of a solution can affect another particular point $x' = x \pm ct$. This has important consequences in physics: light is described in physics as an <em>electromagnetic wave</em>, and thus the $c$ is the famous <em>speed of light</em>, which is invariant (the same everywhere) and directly led to the development of the <strong>theory of relativity</strong>.</p>
+<p>But remember that the wave equation describes <em>all types of waves</em>, one of which being the vibrations of a string, attached at its two ends. In this case, $u(x, t)$ represents the <em>displacement</em> of the string from its equilibrium point. If we let the string be of length $L$ and have density $\rho$ under tension force $T$, then the boundary-value problem for the string reads:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+&amp;\dfrac{\partial^2 u}{\partial t^2} =v^2 \dfrac{\partial^2 u}{\partial x^2}, \\
+&amp; v = \sqrt{\frac{T}{\rho}}, \\
+&amp;u(x, 0) = \begin{cases}
+0, &amp; x&lt; 0 \\
+f(x), &amp;0 \leq x \leq L \\
+0, &amp; x&gt; 0
+\end{cases}, \\
+&amp;\dfrac{\partial u}{\partial t}(0, t) =  \dfrac{\partial u}{\partial t}(L, t) = 0
+\end{align*}
+$$
+</p>
+<p>We note that the wave equation for a string can be <em>equivalently</em> written (by expanding out $v^2$ and distributing) as:</p>
+<p class="mathcell">
+$$
+\rho\dfrac{\partial^2 u}{\partial t^2} = T\dfrac{\partial^2 u}{\partial x^2}
+$$
+</p>
+<p>The expression for the kinetic energy of the string is given by:</p>
+<p class="mathcell">
+$$
+K = \dfrac{1}{2} mv^2 = \dfrac{1}{2} \int_0^L \rho \left(\dfrac{\partial u}{\partial t}\right)^2 dx
+$$
+</p>
+<p>Where we must integrate over $x$ as $\rho = \dfrac{dm}{dx}$ and thus to find the total mass we have to integrate the mass density across the string. If we assume constant density, we have:</p>
+<p class="mathcell">
+$$
+K = \dfrac{1}{2} \rho\int_0^L \left(\dfrac{\partial u}{\partial t}\right)^2 dx
+$$
+</p>
+<p>If we differentiate the kinetic energy we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{dK}{dt} &amp;= \dfrac{d}{dt}\left[ \dfrac{1}{2} \rho\int_0^L \left(\dfrac{\partial u}{\partial t}\right)^2 dx\right] \\
+&amp;= \dfrac{1}{2} \rho\int_0^L \underbrace{\dfrac{\partial}{\partial t}\left(\dfrac{\partial u}{\partial t}\right)^2}_\text{Leibnitz rule} dx \\
+&amp;= \rho \int_0^L \underbrace{\dfrac{\partial u}{\partial t} \dfrac{\partial}{\partial t}\left(\dfrac{\partial u}{\partial t}\right)}_\text{Chain rule}dt \\
+&amp;= \rho \int_0^L \dfrac{\partial u}{\partial t} \dfrac{\partial^2 u}{\partial t^2}dt
+\end{align*}
+$$
+</p>
+<p>But remember the wave equation for a string reads $\rho\dfrac{\partial^2 u}{\partial t^2} = T\dfrac{\partial^2 u}{\partial x^2}$. Therefore, substituting in, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{dK}{dt} &amp;=\rho \int_0^L \dfrac{\partial u}{\partial t} \dfrac{\partial^2 u}{\partial t^2}dt \\
+&amp;= T \int_0^L \dfrac{\partial u}{\partial t} \dfrac{\partial^2 u}{\partial x^2}dt \\
+&amp;= \underbrace{T \dfrac{\partial u}{\partial t}\dfrac{\partial u}{\partial x}\bigg|_0^L - T \int_0^L \dfrac{\partial}{\partial x}\left(\dfrac{\partial u}{\partial t}\right) \dfrac{\partial u}{\partial x} dx}_\text{integration by parts} \\
+&amp;= T \dfrac{\partial u}{\partial t}\dfrac{\partial u}{\partial x}\bigg|_0^L - T \int_0^L \dfrac{\partial^2 u}{\partial x \partial t} \dfrac{\partial u}{\partial x} dx \\
+&amp;= \underbrace{\cancel{T \dfrac{\partial u}{\partial t}\dfrac{\partial u}{\partial x}\bigg|_0^L}}_{\text{since } u(0, t) = u(0, t) = 0} - T \int_0^L \dfrac{\partial^2 u}{\partial x \partial t} \dfrac{\partial u}{\partial x} dx \\
+&amp;= - T \int_0^L \dfrac{\partial^2 u}{\partial x \partial t} \dfrac{\partial u}{\partial x} dx \\
+&amp;= \underbrace{-T\dfrac{d}{dt}\int_0^L \dfrac{1}{2}\left(\dfrac{\partial u}{\partial x}\right)^2 dx}_\text{total derivative - reverse chain rule}
+\end{align*}
+$$
+</p>
+<p>Meanwhile, the potential energy of a string (which we will not derive, but it comes from the work-energy theorem $K = -U$) is given by:</p>
+<p class="mathcell">
+$$
+U = -\dfrac{dK}{dt} =\dfrac{1}{2} T\int_0^L \left(\dfrac{\partial u}{\partial x}\right)^2 dx
+$$
+</p>
+<p>Thus we find that the <strong>total mechanical energy</strong>, given by the sum of the kinetic and potential energies, is given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+E &amp;= K + U \\
+&amp;= \dfrac{1}{2} \rho\int_0^L \left(\dfrac{\partial u}{\partial t}\right)^2 dx +
+\dfrac{1}{2} T\int_0^L \left(\dfrac{\partial u}{\partial x}\right)^2 dx \\
+&amp;= \dfrac{1}{2} \int_0^L \rho \left(\dfrac{\partial u}{\partial t}\right)^2 + T\left(\dfrac{\partial u}{\partial x}\right)^2\, dx
+\end{align*}
+$$
+</p>
+<p>But since $K = -U$, then $\dfrac{dK}{dt} = -\dfrac{dU}{dt}$, and therefore $\dfrac{dE}{dt} = \dfrac{dK}{dt} + \dfrac{dU}{dt} = 0$. Therefore, total mechanical energy is <em>always constant</em>, as required by the law of the <strong>conservation of energy</strong>, and this constant value of energy is equal to:</p>
+<p class="mathcell">
+$$
+E = \dfrac{1}{2} \int_0^L \rho \left(\dfrac{\partial u}{\partial t}\right)^2 + T\left(\dfrac{\partial u}{\partial x}\right)^2\, dx
+$$
+</p><h3 id="solutions-of-the-diffusion-equation">Solutions of the diffusion equation</h3>
+<p>As we recall, the diffusion equation is the <strong>prototypical parabolic equation</strong>. It is given by:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial u}{\partial t} = k \dfrac{\partial^2 u}{\partial x^2}
+$$
+</p>
+<p>As the prototypical parabolic PDE, the wave equation has a special significance because <em>any</em> hyperbolic PDE can be transformed into the diffusion equation by a change of coordinates. </p>
+<blockquote>
+<p><strong>Note:</strong> A special case of the diffusion equation is the well-studied <em>heat equation</em>, which many texts use in place of the diffusion equation. The diffusion equation, however, is more general.</p>
+</blockquote>
+<p>Let us consider the following intial-boundary-value problem (IVBP) for the diffusion equation:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\dfrac{\partial u}{\partial t} = k \dfrac{\partial^2 u}{\partial x^2} \\[10pt]
+u(x, 0) = \varphi(x) \\
+u(L_1, t) = g(t) \\
+u(L_2, t) = f(t) \\
+t \geq 0, L_1 \leq x \leq L_2
+\end{gather*}
+$$
+</p>
+<p>The first (initial) condition for $u(x, 0)$ describes the initial spatial distribution of the function $u(x, t)$ at $t = 0$, whereas the second and third (boundary) conditions describe the value of $u$ through time on the <em>boundaries</em> $x = L_1, x = L_2$. The two boundary conditions must satisfy the <em>consistency condition</em> $f(0) = \varphi(L_2), g(0) = \varphi(L_1)$. The heat equation satisfies four important conditions (which we will not prove and simply state, as the proofs are very lengthy):</p>
+<blockquote>
+<p><strong>Maximum principle:</strong> For any solution $u(x, t)$ for a well-posed initial-boundary-value problem, then $u(x, t) \leq u(x, 0)$ at all times $t \geq 0$. The maximum of $u(x, t)$ must lie on either $t = 0$ or at one of the boundaries $x \in [0, L]$</p>
+</blockquote>
+<blockquote>
+<p><strong>Minimum principle:</strong> For any solution $u(x, t)$ for a well-posed initial-boundary-value problem, then $\operatorname{min}u(x, t) \geq \operatorname{min} [\varphi(x), f(t), g(t)]$. The minimum must lie on either $t = 0$ or at one of the boundaries $x \in [0, L]$</p>
+</blockquote>
+<blockquote>
+<p><strong>Well-posedness theorem for the heat equation:</strong> For the aforementioned boundary-value problem, a solution always exists, is unique, and is stable: a small perturbation $u(x + \delta x, 0)$ does not strongly affect the solution $u(x, t)$. That is, for two given points $(x_1, 0), (x_2, 0)$ for which $|(x_1, 0) - (x_2, 0)| \leq \epsilon_1$ (where $\epsilon_1$ is a small number), then one may always find a <em>unique solution</em>, and $|u(x_1, t) - u(x_2, t)| \leq \epsilon_2$ for all times $t$ (i.e. two points initially close together stay together).</p>
+</blockquote>
+<blockquote>
+<p><strong>Linear property of solutions:</strong> For any solution $u(x, t)$, then $u(x - a, t)$ and $u(\sqrt{a}x, a t)$ is also a solution.</p>
+</blockquote>
+<blockquote>
+<p><strong>Differentiation and integration of solutions:</strong> For any solution $u(x, t)$ that possesses a derivative $v = \dfrac{\partial u}{\partial t}$, $v$ <em>also</em> satisfies a diffusion equation $\dfrac{\partial v}{\partial t} = k\dfrac{\partial^2 v}{\partial t^2}$. Likewise, for any solution $u(x, t)$ that possesses an integral $I = \displaystyle \int_a^b u(x, t) dx$, $I$ <em>also</em> satisfies a diffusion equation $\dfrac{\partial I}{\partial t} = k\dfrac{\partial^2 I}{\partial t^2}$. The same applies for $I = \displaystyle \int_a^b u(x - y, t)g(y)\,dy$ This directly results from the linearity of the diffusion equation (i.e. the sum $u_1 + u_2$ of two solutions $u_1, u_2$ is also a solution).</p>
+</blockquote>
+<p>Intuitively, these results makes the diffusion equation extremely easy (and powerful) to work with. In addition, they allow us to write the general solution of the diffusion equation either in terms of an infinite series:</p>
+<p class="mathcell">
+$$
+u(x, t) = \sum_{i = 1}^n a_n u_n(x, t) = a_1 u_1(x, t) + a_2 u_2(x, t) + \dots + a_n u_n(x, t)
+$$
+</p>
+<p>Or in terms of an integral:</p>
+<p class="mathcell">
+$$
+u(x, t) = \int_{-\infty}^\infty u(x&#x27;, t)\, dx&#x27;
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> Whether the general solution should be written as a sum or integral typically depends on the boundary conditions (though it can also depend on other factors).</p>
+</blockquote>
+<p>Let us now consider solving the initial-boundary-value problem for the diffusion equation, as shown:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\dfrac{\partial u}{\partial t} = \alpha \dfrac{\partial^2 u}{\partial x^2} \\
+u(x, 0) = \varphi(x) \\
+\lim_{x \to \pm \infty} \varphi(x) = 0
+\end{gather*}
+$$
+</p>
+<p>This initial-boundary-value problem is often called <em>diffusion on the real line</em>. We may solve this problem as follows. It should be noted that this is <em>not</em> the conventional way it is derived and is not a rigorous derivation at all. To start, let us assume a solution in the form $u(x, t) = \varphi(x) Q(t)$ (this is actually a valid assumption because the diffusion equation is separable). In this form, if we differentiate, we find that:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+\dfrac{\partial u}{\partial t} = Q&#x27;(t) \varphi(x), 
+&amp;\dfrac{\partial^2 u}{\partial x^2} = Q(t) \varphi&#x27;&#x27;(x)
+\end{matrix*}
+$$
+</p>
+<p>Where we can effectively treat $\varphi$ as a constant when differentiating with respect to $t$ since $Q$ doesn't depend on time, and likewise, we can treat $Q(t)$ as a constant when differentiating with respect to $x$ since $Q$ doesn't depend on position. If we substitute into the PDE then divide both sides by $Q \varphi$, we have:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\dfrac{\partial u}{\partial t} = \alpha \dfrac{\partial^2 u}{\partial x^2} \\
+Q&#x27; \varphi = \alpha Q \varphi&#x27;&#x27; \\
+\dfrac{1}{Q\varphi}Q&#x27; \varphi = \dfrac{1}{Q\varphi}\alpha Q \varphi&#x27;&#x27; \\
+\dfrac{Q&#x27;}{Q} = \dfrac{\varphi&#x27;&#x27;}{\alpha \varphi} = \text{const.}
+\end{gather*}
+$$
+</p>
+<p>The last line arises from the property that when two derivatives are equal, both must be equal to a constant. This means we now have two differential equations, $Q'/Q = \text{const.}$ and $\varphi'' / \alpha \varphi = \text{const.}$ Let us look at just the first equation. If we call the constant in the equation $-\kappa$ (the sign does not matter as the constant is arbitrary), then we have:</p>
+<p class="mathcell">
+$$
+Q&#x27; = -\kappa Q
+$$
+</p>
+<p>Which has the solution:</p>
+<p class="mathcell">
+$$
+Q(t) = e^{-\kappa t}
+$$
+</p>
+<p>Thus our solution becomes:</p>
+<p class="mathcell">
+$$
+u(x, t) = \varphi(x) e^{-\kappa t}
+$$
+</p>
+<p>But this is not a general solution (yet) because due to the property of linearity of the diffusion equation (which we showed previously), $u_1 + u_2$ is <em>also</em> a solution. Therefore, the more general solution is a linear sum of solutions:</p>
+<p class="mathcell">
+$$
+u(x, t) = \sum_n A_n \varphi(x) e^{-\kappa_n t}
+$$
+</p>
+<p>In the limiting case, this becomes the <strong>general solution</strong> (at least for the given initial and boundary conditions):</p>
+<p class="mathcell">
+$$
+u(x, t) = \int_{-\infty}^\infty A(x) \varphi(\tilde x) e^{-\kappa t} d \tilde x
+$$
+</p>
+<p>Where we must switch the bounds for the $\varphi$ term from $x \to y$ to distinguish the variables we are integrating over versus the variables that represent the coordinates of $u(x, t)$ - this is due to the fundamental theorem of calculus $\displaystyle \int_0^x f'(\tilde x) dy = f'(\tilde x)$. The above equation is true for <em>any</em> $A(x)$ that allows $u(x, t)$ to satisfy the given boundary conditions. An intuitive explanation is as follows: if we sum infinitely-many &quot;clones&quot; of the solution $\varphi(x)$ spaced-out at different positions $x$ and different times $t$ (as governed by $A(x)$), then the solutions can add up to form an arbitrary function (in some ways, similar to Taylor series or Fourier series if that is familiar).</p>
+<p>Now, recall the property (which we showed before) that for any solution $v(x, t)$, any shift of the solution $u(x, t) = v(x -a, t)$ is also a solution. If we let our previous solution be written $v(x, t)$, that is:</p>
+<p class="mathcell">
+$$
+v(x, t) = \int_{-\infty}^\infty A(x) \varphi(\tilde x) e^{-\kappa t} d \tilde x
+$$
+</p>
+<p>then we have:</p>
+<p class="mathcell">
+$$
+u(x, t) = \int_{-\infty}^\infty A(x-a) \varphi(\tilde x-a) e^{-\kappa t} d \tilde x
+$$
+</p>
+<p>We can write this in a simpler form if we use the change of variables $y = \tilde x- a$, for which the solution simplifies to:</p>
+<p class="mathcell">
+$$
+u(x, t) = \int_{-\infty}^\infty A(y(x)) \varphi(y) e^{-\kappa t} dy
+$$
+</p>
+<p>The final step is require that the solution does indeed satisfy the boundary conditions - that is, $\varphi \to 0$ for $x \to \pm \infty$ (the other boundary condition $u(x, 0) = \varphi(x)$ is automatically-satisfied from our separation of variables procedure). A specific $A(x, y, t)$ that does indeed satisfy the boundary conditions is the <strong>Gaussian</strong> (which in this case is a shifted Gaussian to accomodated our shifted solution):</p>
+<p class="mathcell">
+$$
+A(x) = \dfrac{1}{\sqrt{4\pi \kappa t}}e^{-(x-y)^2&#x2F;4\kappa t + \kappa t}
+$$
+</p>
+<p>Therefore substituting $A(k)$ we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(x, t) &amp;= \int_{-\infty}^\infty \left[\dfrac{1}{\sqrt{4\pi \kappa t}}e^{-(x-y)^2&#x2F;4\kappa t + \kappa t}\right] \varphi(y) e^{-\kappa t} d y \\
+&amp;= \int_{-\infty}^\infty \dfrac{1}{\sqrt{4\pi \kappa t}} e ^{-(x - y)^2&#x2F;4\kappa t + \cancel{\kappa t - \kappa t}} \varphi(y) dy \\
+&amp;= \int_{-\infty}^\infty \dfrac{1}{\sqrt{4\pi \kappa t}} e ^{-(x - y)^2&#x2F;4\kappa t} \varphi(y) dy
+\end{align*}
+$$
+</p>
+<p>Since $t$ is not integrated over, we can pull out the factor in $t$ outside the integral:</p>
+<p class="mathcell">
+$$
+u(x, t) = \dfrac{1}{\sqrt{4\pi \kappa t}}\int_{-\infty}^\infty e ^{-(x - y)^2&#x2F;4\kappa t} \varphi(y) dy
+$$
+</p>
+<p>Thus the particular solution to the diffusion equation for the given initial-boundary-value problem is then:</p>
+<p class="mathcell">
+$$
+u(x, t) = \dfrac{1}{\sqrt{4\pi \kappa t}} \int_{-\infty}^\infty e^{-(x - y)^2 &#x2F; (4 \kappa t)} \varphi(y) dy
+$$
+</p>
+<p>Where the integrand $\dfrac{1}{\sqrt{4\pi \kappa t}}  e^{-(x - y)^2 / (4 \kappa t)}$ is known as a <strong>Green's function</strong> (other names include <em>source function</em>, <em>propagator</em>, <em>kernel</em>, or <em>fundamental solution</em>). The Green's function may be thought of as something that &quot;pushes&quot; (evolves) the initial condition $u(x, 0) = \varphi(x)$ to bring it to $u(x, t)$ by time $t$ (for those familiar with the term, it can be thought of as an <em>operator</em>). This may be a bit easier to see if we write the solution as follows:</p>
+<p class="mathcell">
+$$
+u(x, t) = \int_{-\infty}^\infty \underbrace{\dfrac{1}{\sqrt{4\pi \kappa t}} e^{-(x - x&#x27;)^2 &#x2F; (4 \kappa t)}}_{\text{at } t = 0 \text{ this is equal to }\delta(x - x&#x27;)} u(x&#x27;, 0) dx&#x27;
+$$
+</p>
+<p>In this form, we can see that the Green's function serves as a multiplication factor that starts out at $e^{-(x - x')^2/(4\kappa (0))} = \infty$ at $t = 0$ (but luckily, since it also starts out as infinitely thin, the integral is finite). We call this initial state of the Green's function as the <strong>Dirac delta</strong> or <em>delta function</em>, written as $\delta(x - x')$. The delta function has the special property that:</p>
+<p class="mathcell">
+$$
+\int_{-\infty}^\infty \delta(x - x&#x27;) u(x&#x27;, 0) = u(x, 0)
+$$
+</p>
+<p>Which means that if we evaluate $u(x, t)$ at $t = 0$ we do indeed get back the initial condition. Now, as $t$ increases, the value of $e^{-(x - x')^2/(4\kappa t)}$ rapidly diminishes. Thus, we find that the <em>maximum principle</em> is also satisfied - that $u(x, t) \leq u(x, 0)$. Since our Green's function $e^{-(x - x')^2/(4\kappa t)}$ smoothly decays to infinity as $x \to \pm \infty$, multiplying $u(x, 0)$ by it and integrating results in the solution being &quot;spread out&quot; over time, exactly analogous to our intuitive understanding of diffusion. Our way of writing the general solution previously was just a renaming - $\varphi(x) = u(x, 0)$, and we changed integration variable we used from $x'$ to $y$, as well as pulling out the factor at the front outside the integral, but otherwise the mathematics are identical:</p>
+<p class="mathcell">
+$$
+u(x, t) = \dfrac{1}{\sqrt{4\pi \kappa t}} \int_{-\infty}^\infty e^{-(x - y)^2 &#x2F; (4 \kappa t)} \varphi(y) dy
+$$
+</p>
+<p>We may use this solution to solve the initial-boundary-value problem given by:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\dfrac{\partial u}{\partial t} = \kappa \dfrac{\partial^2 u}{\partial x^2}  \\
+u(x, 0) =\varphi(x) = \begin{cases} 1, &amp; |x| \leq 1 \\ 0, &amp; |x| &gt; 1\end{cases} \\
+\lim_{x \to \pm \infty} \varphi(x) = 0
+\end{gather*}
+$$
+</p>
+<p>This is simply a matter of substituting $\varphi(y) = 1$ in the integral (as long as we also remember the constraint that this is true for only $|x| \leq 1$, i.e. within $-1 \leq x \leq 1$). Since this is a piecewise initial condition, we need to use the integral rule for piecewise functions. For a piecewise function given by:</p>
+<p class="mathcell">
+$$
+H(x) =\begin{cases}
+f(x) &amp; |x| &lt; 1 \\
+g(x) &amp; |x| &gt; 1
+\end{cases}
+$$
+</p>
+<p>The integral of the function over $x \in (-\infty, \infty)$ is equal to:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\int_{-\infty}^\infty H(x) dx &amp;= \int_{-\infty}^{-1} H(x) dx + \int_{-1}^1 H(x) dx +\int_1^\infty H(x) dx \\
+&amp;=  \int_{-\infty}^{-1} g(x) dx + \int_{-1}^1 h(x) dx+ \int_1^\infty g(x) dx \\
+\end{align*}
+$$
+</p>
+<p>Using this identity, and substituting into the Green's function solution, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(x, t) &amp;= \dfrac{1}{\sqrt{4\pi \kappa t}} \int_{-\infty}^\infty e^{-(x - y)^2 &#x2F; (4 \kappa t)} \varphi(y) dy \\
+&amp;= \dfrac{1}{\sqrt{4\pi \kappa t}} \bigg[\cancel{\int_{-\infty}^{-1} e^{-(x - y)^2 &#x2F; (4 \kappa t)} (0) dy}^0 \\
+&amp;\qquad +\int_{-1}^{1} e^{-(x - y)^2 &#x2F; (4 \kappa t)} (1) dy \\
+&amp;\qquad + \cancel{\int_{1}^\infty e^{-(x - y)^2 &#x2F; (4 \kappa t)} (0) dy\bigg]}^0 \\
+&amp;= \int_{-1}^{1} e^{-(x - y)^2 &#x2F; (4 \kappa t)} dy
+\end{align*}
+$$
+</p>
+<p>Thus our solution is given by:</p>
+<p class="mathcell">
+$$
+u(x, t) = \int_{-1}^{1} e^{-(x - y)^2 &#x2F; (4 \kappa t)} dy
+$$
+</p>
+<p>There is, however, a slightly nicer-looking way to write out this solution, and that is using the <strong>error function</strong>. The error function, denoted $\operatorname{Erf}(x)$, is given by:</p>
+<p class="mathcell">
+$$
+\operatorname{Erf}(x) = \dfrac{2}{\sqrt{\pi}} \int_0^x e^{-p^2} dp
+$$
+</p>
+<p>To cast the solution into this &quot;nicer&quot; form, we start by dividing the integral into two parts, one between $[0, 1]$ and the other between $[-1, 0]$:</p>
+<p class="mathcell">
+$$
+u(x, t) = \int_{-1}^0 e^{-(x - y)^2 &#x2F; (4 \kappa t)} dy + \int_0^1 e^{-(x - y)^2 &#x2F; (4 \kappa t)} dy
+$$
+</p>
+<p>Now, let $p^2 = \dfrac{(x - y)^2}{4\kappa t}$, for which we have $p = \dfrac{x-y}{\sqrt{4\kappa t}}$ and $dp = -\dfrac{1}{\sqrt{4\kappa t}}dy$. Additionally, we must also change the integral's bounds on substitution, so we must adjust the bounds as follows:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+y_1 = 0 &amp;\to p_1 = \dfrac{x}{\sqrt{4\kappa t}} \\
+y_2 = 1 &amp;\to p_2 = \dfrac{x-1}{\sqrt{4\kappa t}} \\
+y_3 = -1 &amp;\to p_3 = \dfrac{x+1}{\sqrt{4\kappa t}}
+\end{align*}
+$$
+</p>
+<p>Thus, after substitution our integral becomes:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(x, t) &amp;= \left(-\sqrt{4\kappa t} \int_{(x + 1)&#x2F;\sqrt{4\kappa t}}^{x&#x2F;\sqrt{4\kappa t}}e^{-p^2}dp\right) + \left(-\sqrt{4\kappa t} \int_{x&#x2F;\sqrt{4\kappa t}}^{(x - 1)\sqrt{4\kappa t}} e^{-p^2} dp\right) \\
+&amp;= -\sqrt{4\kappa t} \int_{(x + 1)&#x2F;\sqrt{4\kappa t}}^0 e^{-p^2} dp - \sqrt{4\kappa t} \int_0^{x&#x2F;\sqrt{4\kappa t}} e^{-p^2}dp \\
+&amp;\qquad \quad -\sqrt{4\kappa t} \int_{x&#x2F;\sqrt{4\kappa t}}^0 e^{-p^2} dp - \sqrt{4\kappa t} \int_0^{(x - 1)\sqrt{4\kappa t}} e^{-p^2} dp \\
+&amp;= \sqrt{4\kappa t} \int_0^{(x + 1)&#x2F;\sqrt{4\kappa t}} e^{-p^2} dp - \sqrt{4\kappa t} \int_0^{x&#x2F;\sqrt{4\kappa t}} e^{-p^2}dp \\
+&amp;\qquad \quad +\sqrt{4\kappa t} \int_0^{x&#x2F;\sqrt{4\kappa t}} e^{-p^2} dp - \sqrt{4\kappa t} \int_0^{(x - 1)\sqrt{4\kappa t}} e^{-p^2} dp \\
+&amp;= \sqrt{4\kappa t} \int_0^{(x + 1)&#x2F;\sqrt{4\kappa t}} e^{-p^2} dp - \cancel{\sqrt{4\kappa t} \int_0^{x&#x2F;\sqrt{4\kappa t}} e^{-p^2}dp} \\
+&amp;\qquad \quad + \cancel{\sqrt{4\kappa t} \int_0^{x&#x2F;\sqrt{4\kappa t}} e^{-p^2} dp} - \sqrt{4\kappa t} \int_0^{(x - 1)\sqrt{4\kappa t}} e^{-p^2} dp \\
+&amp;= \sqrt{4\kappa t} \left[\int_0^{(x + 1)&#x2F;\sqrt{4\kappa t}} e^{-p^2} dp - \int_0^{(x - 1)\sqrt{4\kappa t}} e^{-p^2} dp\right] \\
+&amp;= \sqrt{4\kappa t}\operatorname{Erf} \left(\dfrac{x+1}{\sqrt{4\kappa t}}\right) - \sqrt{4\kappa t} \operatorname{Erf} \left(\dfrac{x-1}{\sqrt{4\kappa t}}\right) \\
+&amp;= \sqrt{4\kappa t}\left[\operatorname{Erf} \left(\dfrac{x+1}{\sqrt{4\kappa t}}\right) - \operatorname{Erf} \left(\dfrac{x-1}{\sqrt{4\kappa t}}\right)\right]
+\end{align*}
+$$
+</p>
+<p>Which is the solution to our boundary value problem for our chosen initial condition $u(x, 0) = \varphi(x) = \begin{cases} 1, &amp; |x| \leq 1 \ 0, &amp; |x| &gt; 1\end{cases}$. Note that this is one of the few cases in which an analytical solution can be written out; in most cases, the integral is simply impossible to evaluate by hand and can only be solved numerically.</p>
+<blockquote>
+<p><strong>Note for the interested reader:</strong> the solution of the diffusion equation on the <em>half-line</em> (where the domain is $0 \leq x \leq \infty$) is very similar to diffusion on the real line, <em>except</em> that it requires the additional boundary condition $u(0, t) = 0$, is given by $u(x, t) = \dfrac{1}{\sqrt{4\pi \kappa t}} \displaystyle \int_{-\infty}^\infty (e ^{-(x - y)^2/4\kappa t} + e^{-(x + y)^2/4\kappa t} )\varphi(y) dy$</p>
+</blockquote>
+<h3 id="concluding-remarks-to-the-diffusion-and-wave-equation">Concluding remarks to the diffusion and wave equation</h3>
+<p>We have studied the diffusion and wave equation in detail and constructed particular solutions to several initial-boundary value problems (IBVPs). As well as solving specific IBVPs, we have found that the wave equation and diffusion equation satisfy particular characteristics:</p>
+<table><thead><tr><th>PDE</th><th>Speed of propagation</th><th>Singularities (i.e. shocks/other &quot;not smooth&quot; disturbances)</th><th>Energy</th><th>Requirements for well-posedness</th></tr></thead><tbody>
+<tr><td>Diffusion equation (and all other parabolic PDEs)</td><td>Infinite</td><td>Smoothed out immediately</td><td>Not conserved</td><td>Only for $t \geq 0$; <em>not well-posed</em> for $t &lt; 0$</td></tr>
+<tr><td>Wave equation (and all other hyperbolic PDEs)</td><td>$c$</td><td>Lost (smoothed-out) immediately</td><td>Conserved</td><td>Well-posed for all time</td></tr>
+</tbody></table>
+<h3 id="separation-of-variables-for-boundary-value-problems">Separation of variables for boundary-value problems</h3>
+<p>At the beginning of the guide, we gave a brief overview of the <strong>separation of variables</strong> procedure. Separation of variables is a powerful technique for solving PDEs, so to develop our understanding of it further, let us now re-examine the same procedure in more detail.</p>
+<h4 id="separation-of-variables-for-the-wave-equation">Separation of variables for the wave equation</h4>
+<p>To start, let us consider the wave equation in one dimension on the domain $x \in [0, L], t \in [0, \infty)$, with the following boundary conditions:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\dfrac{\partial^2 u}{\partial t^2} = c^2 \dfrac{\partial^2 u}{\partial x^2} \\
+u(0, t) = 0, \quad u(L, t) = 0 \\
+u(x, 0) = \varphi(x), \quad \dfrac{\partial u}{\partial t}(x, 0) = \psi(x)
+\end{gather*}
+$$
+</p>
+<p>We assume a solution in the form $u(x, t) = X(x) T(t)$, for which we find that upon taking the derivatives, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial^2 u}{\partial t^2} &amp;= X(x)T&#x27;&#x27;(t) \\
+\dfrac{\partial^2 u}{\partial x^2} &amp;= X&#x27;&#x27;(x) T(t)
+\end{align*}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> You can verify this by direct calculation; the reason why the partial derivatives are so simple is that $X$ only depends on $x$, and $T$ only depends on $t$. This means that when taking the partial derivative with respect to $x$, $T$ can be treated as a constant; similarly, when taking the partial derivative with respect to $t$, $X$ can be treated as a constant.</p>
+</blockquote>
+<p>Therefore, substituting into the wave equation and dividing by $X(x)T(t)$ yields:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+XT&#x27;&#x27; = c^2 X&#x27;&#x27;T \\
+\dfrac{1}{c^2} XT&#x27;&#x27; = X&#x27;&#x27;T \\
+\dfrac{1}{X(x)T(t)}\dfrac{1}{c^2}XT&#x27;&#x27; = \dfrac{1}{X(x)T(t)} X&#x27;&#x27;T \\
+\dfrac{T&#x27;&#x27;}{c^2 T} = \dfrac{X&#x27;&#x27;}{X}
+\end{gather*}
+$$
+</p>
+<p>Note how that, in the last line, we have two combinations of derivatives <em>equal</em> to each other. This can only happen if both derivatives are a constant, so it must be the case that:</p>
+<p class="mathcell">
+$$
+\dfrac{T&#x27;&#x27;}{c^2 T} = \dfrac{X&#x27;&#x27;}{X} = \text{const.} \quad \Rightarrow \quad
+\begin{align*}
+T&#x27;&#x27; &amp;= c^2 T \times \text{const.} \\
+X&#x27;&#x27; &amp;= X \times \text{const.}
+\end{align*}
+$$
+</p>
+<p>This constant is what we call the <strong>separation constant</strong>; we now find that the wave equation, a <em>partial</em> differential equation, has reduced (relief!) to two <em>ordinary</em> differential equations that are much easier to solve. Let us name our <em>separation constant</em> $k^2$ (the square does <em>not</em> matter, since the square of a constant is still a constant, it just makes the mathematics easier). Since it is a constant, its value is arbitrary; $k^2$ can have a positive or negative sign, or be zero or complex. This is one of the cases where choosing the appropriate answer requires a fair bit of intuition about what the solution to the ODEs will be. In this particular case, the right choice is for $k^2$ to have a negative sign, as shown:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+T&#x27;&#x27; = -k^2 c^2 T, &amp; X&#x27;&#x27;=-k^2 X
+\end{matrix*}
+$$
+</p>
+<p>The reason for this is the boundary conditions. The solution to ODEs in the form $y'' = -a^2 y$ (where $a$ is a constant) is either a sine or cosine wave (or a sum of both). Such solutions can be zero at <em>finite</em> values. However, the solutions to ODEs in the form $y'' = a^2 y$ are exponential functions (or sum of exponential functions). Such solutions can only be zero at infinity. Additionally, the solutions to ODEs in the form $y'' = 0$ are linear functions, which can only be zero at one point. Since our boundary conditions are $u(0, t) = u(L, t) = 0$, that is, $u(x, t)$ is zero at $x = 0$ and $x = L$ (which are not at infinity and are zero at two locations), we must choose $-k^2$, not $k^2$ or zero. This means that our solutions are:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+X(x) &amp;= A \cos k x + B \sin k x \\
+T(t) &amp;= C \cos (kc t) + D \sin (kct)
+\end{align*}
+$$
+</p>
+<p>We may make the solutions look &quot;prettier&quot; by defining $\omega \equiv kc$, so we can rewrite the solutions as follows:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+X(x) &amp;= A \cos k x + B \sin k x \\
+T(t) &amp;= C \cos \omega t + D \sin \omega t
+\end{align*}
+$$
+</p>
+<p>Recall that we expressed our solution in the form $u(x, t) = X(x)T(t)$. Thus, substituting our found solutions for $X(x)$ and $T(t)$, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(x, t) &amp;= X(x)T(t) \\
+&amp;= (A \cos k x + B \sin k x)( C \cos \omega t + D \sin \omega t)
+\end{align*}
+$$
+</p>
+<p>To determine the values of our coefficients $A, B, C, D$, we must apply the boundary conditions. Applying our first boundary condition $u(0, t) = 0$, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(0, t) &amp;= (A \cancel{\cos(0)}^1 + \cancel{B \sin (0)}^0)(C \cos \omega t + D \sin \omega t) = 0 \\
+&amp;= A(C \cos \omega t + D \sin \omega t) = 0
+\end{align*}
+$$
+</p>
+<p>To satisfy this boundary condition, since $\cos \omega t, \sin \omega t \neq 0$, it must be the case that $A = 0$. Therefore our solution simplifies to:</p>
+<p class="mathcell">
+$$
+u(x, t) = B \sin k x( C \cos \omega t + D \sin \omega t)
+$$
+</p>
+<p>Applying our second boundary condition $u(L, t) = 0$, we have:</p>
+<p class="mathcell">
+$$
+u(L, t) = B \sin (k L)( C \cos \omega t + D \sin \omega t) = 0
+$$
+</p>
+<p>Again, since $\cos \omega t, \sin \omega \neq 0$, this can only be satisfied if $B \sin k L = 0$. We find that this condition can be satisfied if $kL = n\pi$, i.e. if $kL$ is equal to an integer multiple of $\pi$, since we know that $\sin(\pi) = \sin(2\pi) = \sin(3\pi) = \dots = \sin(n\pi) = 0$. Therefore, we have found that $k = n\pi/L$, and now our solution becomes:</p>
+<p class="mathcell">
+$$
+u(x, t) = B \sin \left(\dfrac{n\pi x}{L}\right)( C \cos \omega t + D \sin \omega t)
+$$
+</p>
+<p>We will now take the step of distributing the constant factor of $B$ into each of the two terms. Defining $J \equiv B\cdot C, K \equiv B \cdot D$, we can rewrite the above solution as:</p>
+<p class="mathcell">
+$$
+u(x, t) = \sin\left(\dfrac{n\pi x}{L}\right)(J \cos \omega t + K \sin \omega t)
+$$
+</p>
+<p>The remaining two initial-boundary conditions are both initial conditions: one for $u(x, 0)$, and one for $\dfrac{\partial u}{\partial t}(x, 0)$. One might wonder how these conditions can be satisfied when our solution is entirely written in terms of sines and cosines. The answer is that because the diffusion equation is <em>linear</em>, we can sum solutions together to form new solutions. In fact, we can sum as many solutions as we'd like! This results in a <em>more general solution</em> given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(x, t) &amp;= \sum_{n = 1}^\infty \sin\left(\dfrac{n\pi x}{L}\right)(J_n \cos \omega t + K_n \sin \omega t) \\
+&amp;=\sum_{n = 1}^\infty \sin\left(\dfrac{n\pi x}{L}\right)\left[J_n \cos \left(\dfrac{n\pi c t}{L}\right) + K_n \sin \left(\dfrac{n\pi c t}{L}\right)\right]
+\end{align*}
+$$
+</p>
+<p>Where we wrote the second form of the solution (in the previous line) via our definition from before, $\omega \equiv kc$. This is the <strong>solution</strong> to our boundary-value problem. From here, if we substitute $u(x, 0)$, we have:</p>
+<p class="mathcell">
+$$
+u(x, 0) = \sum_{n = 1}^\infty J_n \sin \left(\dfrac{n\pi x}{L}\right) = \varphi(x)
+$$
+</p>
+<p>This is called a <strong>Fourier sine series</strong>, and any &quot;well-behaved&quot; function can be written using this series expansion. For instance, if we had $\varphi(x) = x$, then the series expansion reads:</p>
+<p class="mathcell">
+$$
+\varphi(x) = \dfrac{2L}{\pi}\left[\sin \pi x - \dfrac{1}{2} \sin 2\pi x + \dfrac{1}{3} \sin 3\pi x - \dfrac{1}{4} \sin 4\pi x + \dots\right]
+$$
+</p>
+<p>Similarly, if we take the derivative with respect to time, we can write a Fourier series expansion for $\dfrac{\partial u}{\partial t}(x, 0) = \psi(x)$. Using these series, we can effectively write out a solution to <em>any</em> choice of $u(x, 0)$ and $\dfrac{\partial u}{\partial t}(x, 0)$. This is, indeed, one of the reasons why the separation of variables technique is so powerful.</p>
+<blockquote>
+<p><strong>Note:</strong> how do we <em>determine</em> what the correct coefficients $K_n, J_n$ should be? We will discover this later, but for now (for just $J_n$) we will provide a formula without proof: $J_n = \dfrac{2}{L} \displaystyle \int_0^L \varphi(x) \sin\left(\dfrac{n\pi x}{L}\right) dx$.</p>
+</blockquote>
+<h4 id="separation-of-variables-for-the-diffusion-equation">Separation of variables for the diffusion equation</h4>
+<p>Let us now consider the very similar boundary-value problem for the diffusion equation across the domain $x \in [0, L], t \in [0, \infty)$:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\dfrac{\partial u}{\partial t} = \kappa^2 \dfrac{\partial^2 u}{\partial x^2} \\
+u(0, t) = 0, \quad u(L, t) = 0 \\
+u(x, 0) = \varphi(x)
+\end{gather*}
+$$
+</p>
+<p>Here, we again assume a solution in the form $u(x, t) = X(x) T(t)$, for which we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial u}{\partial t} &amp;= X(x)T&#x27;(t) \\
+\dfrac{\partial^2 u}{\partial x^2} &amp;= X&#x27;&#x27;(x)T(t)
+\end{align*}
+$$
+</p>
+<p>Therefore, substituting into the diffusion equation, and dividing by $X(x)T(t)$, we have:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+XT&#x27; = \kappa^2 X&#x27;&#x27;T \\
+\dfrac{1}{\kappa^2}XT&#x27; = X&#x27;&#x27;T\\
+\dfrac{1}{XT} \dfrac{1}{\kappa^2}XT&#x27; = \dfrac{1}{XT}X&#x27;&#x27;T \\
+\dfrac{T&#x27;}{\kappa^2 T} = \dfrac{X&#x27;&#x27;}{X} = \text{const.}
+\end{gather*}
+$$
+</p>
+<p>We choose our separation constant to be $\beta^2$ with a negative sign (with the same reasoning as before, due to our pair of finite boundary conditions). We could've equivalently called it $k^2$, but since $k$ and $\kappa^2$ look too similar, we will use the letter $\beta$ instead. Thus we have reduced the diffusion equation into the set of two ordinary differential equations, given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+T&#x27; &amp;= -\beta^2\kappa^2 T \\
+X&#x27;&#x27; &amp;= -\beta^2 X
+\end{align*}
+$$
+</p>
+<p>The general solutions to the differential equations are:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+T(t) &amp;= Ae^{\beta \kappa t} + Be^{-\beta \kappa t} \\
+X(x) &amp;= C \cos \beta x + D \sin \beta x
+\end{align*}
+$$
+</p>
+<p>Our solution for $u(x, t)$ therefore becomes:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(x, t) &amp;= X(x)T(t) \\
+&amp;= (Ae^{\beta \kappa t} + Be^{-\beta \kappa t})(C \cos \beta x + D \sin \beta x)
+\end{align*}
+$$
+</p>
+<p>We can now individually substitute our boundary conditions. But first, there is a way that we can simplify the solution just by inspection (that is, by &quot;being clever&quot;). We solve on the domain $t \in [0, \infty)$, which means that we would want our solution to not blow up for large values of $t$. This automatically means that $A$ must be zero; otherwise the $Ae^{\beta x t}$ term grows exponentially as $t$ increases! So we have deduced that the solution must be in the following form if it is to be &quot;reasonable&quot;:</p>
+<p class="mathcell">
+$$
+u(x, t) = Be^{-\beta \kappa t}(C \cos \beta x + D \sin \beta x)
+$$
+</p>
+<p>Which we can write in a &quot;prettier&quot; way by defining $Q \equiv B \cdot C, P \equiv B \cdot D$, with which the solution becomes:</p>
+<p class="mathcell">
+$$
+u(x, t) = e^{-\beta \kappa t} (Q \cos \beta x + P \sin \beta x)
+$$
+</p>
+<p>Now, we substitute in our boundary conditions $u(0, t) = 0$ and $u(L, t) = 0$. For the first boundary condition, our solution reduces to:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(0, t) &amp;= e^{-\beta \kappa t} (Q \cancel{\cos (0)}^1 + \cancel{P \sin (0)}^0) \\
+&amp;= Q e^{-\beta \kappa t} \\
+&amp;= 0
+\end{align*}
+$$
+</p>
+<p>From which we deduce that $Q = 0$, and with which we are left with:</p>
+<p class="mathcell">
+$$
+u(x, t) = P \sin(\beta x)\,e^{-\beta \kappa t}
+$$
+</p>
+<p>For our other boundary condition $u(L, t) = 0$, we substitute to find:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(L, t) &amp;= P \sin(\beta L) e^{-\beta \kappa t} \\
+&amp;= 0 \\
+&amp;\Rightarrow \sin \beta L = 0,\quad \beta L = n\pi
+\end{align*}
+$$
+</p>
+<p>Thus we find that $\beta = n\pi/L$, just as we did for the wave equation. Our solution now becomes:</p>
+<p class="mathcell">
+$$
+u(x, t) = P \sin\left(\dfrac{n\pi x}{L}\right) \exp\left(-\kappa\dfrac{n\pi t}{L}\right)
+$$
+</p>
+<p>To satisfy the final boundary condition $u(x, 0) = \varphi(x)$, we again write our solution as a Fourier series:</p>
+<p class="mathcell">
+$$
+u(x, t) = \sum_{n = 1}^\infty P_n \sin\left(\dfrac{n\pi x}{L}\right) \exp\left(-\kappa\dfrac{n\pi t}{L}\right)
+$$
+</p>
+<p>Thus, we can also write $\varphi(x)$ in terms of a series:</p>
+<p class="mathcell">
+$$
+u(x, 0) = \sum_{n = 1}^\infty A_n \sin\left(\dfrac{n\pi x}{L}\right) = \varphi(x)
+$$
+</p>
+<p>And we find that, indeed, we have found the solution to the diffusion equation for the given boundary-value problem.</p>
+<h3 id="the-heat-and-wave-equations-with-neumann-boundary-conditions">The heat and wave equations with Neumann boundary conditions</h3>
+<p>We have seen how to solve the diffusion equation for zero Dirichlet boundary conditions, i.e. where $u(0, t) = u(L, t) = 0$. Let us now examine the more <em>general</em> constant boundary conditions given by $\frac{\partial u}{\partial x}(0, t) = \frac{\partial u}{\partial x}(L, t) = 0$. Then the complete initial-boundary value problem for the diffusion equation becomes:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\dfrac{\partial u}{\partial t} = \kappa^2 \dfrac{\partial^2 u}{\partial x^2} \\
+u(x, 0) = \psi(x) \\
+\frac{\partial u}{\partial x}(0, t) = \frac{\partial u}{\partial x}(L, t) = 0
+\end{gather*}
+$$
+</p>
+<p>To start, we begin with the same method of separation of variables, which result in the following ODEs:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+T&#x27; &amp;= -\beta^2\kappa^2 T \\
+X&#x27;&#x27; &amp;= -\beta^2 X
+\end{align*}
+$$
+</p>
+<p>Which have the general solutions:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+T(t) &amp;= Je^{\beta \kappa t} + Ke^{-\beta \kappa t} \\
+X(x) &amp;= C \cos \beta x + D \sin \beta x
+\end{align*}
+$$
+</p>
+<p>From which we can find $u(x, t) = X(x)T(t)$:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(x, t) &amp;= X(x)T(t) \\
+&amp;= (Je^{\beta \kappa t} + Ke^{-\beta \kappa t})(C \cos \beta x + D \sin \beta x)
+\end{align*}
+$$
+</p>
+<p>The time derivative of our solution is given by:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial u}{\partial x} = (Je^{\beta \kappa t} + Ke^{-\beta \kappa t})\beta(D \cos \beta x - C \sin \beta x)
+$$
+</p>
+<p>Let us start with the two (spatial) boundary conditions: $u(0, t) = A, u(L, t) = B$. For the first, setting $x = 0$, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial u}{\partial x}(0, t) = (Je^{\beta \kappa t} + Ke^{-\beta \kappa t})\beta D = 0 \\
+\Rightarrow D = 0
+\end{align*}
+$$
+</p>
+<p>Thus our solution simplifies to:</p>
+<p class="mathcell">
+$$
+u(x, t) = (Je^{\beta \kappa t} + Ke^{-\beta \kappa t})\cos \beta x
+$$
+</p>
+<p>Where we made the implicit transform $J = J \cdot C, K = K \cdot C$ to absorb in the constant $C$. This also means that the spatial derivative is now:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial u}{\partial x} = (Je^{\beta \kappa t} + Ke^{-\beta \kappa t})(-\beta \sin \beta x)
+$$
+</p>
+<p>So, setting $x = L$, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial u}{\partial x}(L, t) = (Je^{\beta \kappa t} + Ke^{-\beta \kappa t})(-\beta \sin \beta x) = 0 \\
+\Rightarrow \beta = n\pi&#x2F;L
+\end{align*}
+$$
+</p>
+<p>We therefore have:</p>
+<p class="mathcell">
+$$
+u(x, t) = (Je^{\beta \kappa t} + Ke^{-(n\pi&#x2F;L) \kappa t})\cos \left(\dfrac{n\pi x}{L}\right)
+$$
+</p>
+<p>Lastly, if we have $J \neq 0$, then the solution would grow exponentially large in time, which would be unphysical behavior. So we let $J = 0$, and thus our solution becomes:</p>
+<p class="mathcell">
+$$
+u(x, t) = Ke^{-(n\pi&#x2F;L) \kappa t}\cos \left(\dfrac{n\pi x}{L}\right)
+$$
+</p>
+<p>Which we can write in the most general form as a Fourier series, given by:</p>
+<p class="mathcell">
+$$
+u(x, t) = \sum_{n = 0}^\infty K_n e^{-(n\pi&#x2F;L) \kappa t}\cos \left(\dfrac{n\pi x}{L}\right)
+$$
+</p>
+<p>It is customary to &quot;shift&quot; the series to start from $n = 1$, like the solutions we previously found for Dirichlet boundary conditions. This does mean that we will need to include a constant-valued term at the front, giving the <strong>solution to the heat equation</strong> in its most general form for Neumann boundary conditions to be:</p>
+<p class="mathcell">
+$$
+u(x, t) = \dfrac{1}{2}K_0 + \sum_{n = 1}^\infty K_n e^{-(n\pi&#x2F;L) \kappa t}\cos \left(\dfrac{n\pi x}{L}\right)
+$$
+</p>
+<p>As a side note, we can perform the same to find the <strong>solution of the wave equation</strong> for Neumann boundary conditions, which comes out to be:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(x, t) &amp;= \dfrac{1}{2} A_0 + \dfrac{1}{2}B_0 t \\
+&amp;\quad + \sum_{n = 1}^\infty \left(A_n \cos \dfrac{n\pi ct}{L} + B_n \sin \dfrac{n\pi ct}{L}\right)\cos \dfrac{n\pi x}{L}
+\end{align*}
+$$
+</p><h2 id="fourier-series">Fourier series</h2>
+<p>Previously, we found that solutions to several boundary-value problems for the wave and diffusion equation could be written as a <strong>series solution</strong>. We also briefly mentioned that these series were called <strong>Fourier series</strong>. </p>
+<p>A Fourier series takes advantage of the fact that many sine and cosine waves can be added together to create a good approximation for a non-sinusoidal function. In theory, a Fourier series can be used to expand any periodic function in terms of sines and cosines. But - you may say - not all functions are periodic! While you are right, we can always expand a function across <em>one single period</em> and disregard all of the others. For finite (spatial) boundary conditions in one dimension in which the function vanishes outside of $[-L, L]$, we can regard $[-L, L]$ as our only region of interest for the Fourier series expansion. A Fourier series defined over $[-L, L]$ takes the general form:</p>
+<p class="mathcell">
+$$
+f(x) = \dfrac{A_0}{2} + \sum_{n = 1}^\infty A_n \cos \dfrac{n\pi x}{L} + B_n \sin \dfrac{n\pi x}{L}
+$$
+</p>
+<p>Where the coefficients $A_n, B_n$ and $A_0$ are respectively given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+A_0 &amp;= \dfrac{1}{L} \int_{-L}^L f(x)dx \\
+A_n &amp;= \dfrac{2}{L} \int_0^L f(x) \cos \dfrac{n\pi x}{L} dx \\
+B_n &amp;= \dfrac{2}{L} \int_0^L f(x) \sin \dfrac{n\pi x}{L} dx
+\end{align*}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> We must emphasize again that when using Fourier series for solving partial differential equations, we usually <strong>only care</strong> about the region $[0, L]$ and ignore the series for all other regions.</p>
+</blockquote>
+<p>Such functions $f(x)$, as mentioned, often arise from the <em>initial conditions</em> $u(x, 0) = f(x)$ and/or $\frac{\partial u}{\partial t}(x, 0) = g(x)$ defined over a finite boundary $[-L, L]$, and thus are very useful in expressing solutions to parabolic and hyperbolic PDEs, which commonly have these initial conditions. In addition, boundary-value problems that have <em>periodic</em> boundary conditions also often require solutions in terms of Fourier expansions.</p>
+<p>In some cases, it is possible to simplify the Fourier series into one of two simpler series. If $f(x)$ is an <strong>even function</strong> (symmetric about the $y$ axis), then the Fourier series reduces to the <strong>cosine series</strong>:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+f(x) = \dfrac{A_0}{2} + \sum_{n = 1}^\infty A_n \cos \dfrac{n\pi x}{L} \\
+A_n = \dfrac{2}{L} \int_0^L f(x)\cos \dfrac{n\pi x}{L} dx
+\end{align*}
+$$
+</p>
+<p>Whereas if $f(x)$ is an <strong>odd function</strong> (symmetric about the origin, but &quot;flipped&quot; about the $y$ axis), then the Fourier series reduces to the <strong>sine series</strong>:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+f(x) &amp;= \sum_{n = 1}^\infty B_n \sin \dfrac{n\pi x}{L} \\
+B_n &amp;= \dfrac{2}{L} \int_0^L f(x) \sin \dfrac{n\pi x}{L} dx
+\end{align*}
+$$
+</p>
+<p>We may also view this in another way: the complete Fourier series is a <em>combination</em> of the cosine and sine series that respectively describe even and odd parts of a function. Put together, the Fourier series is then able to describe the <em>complete</em> function, which includes both the odd and even parts.</p>
+<h3 id="the-general-theory-of-fourier-series">The general theory of Fourier series</h3>
+<p>The Fourier series relies on the key property that over a finite interval $[-L, L]$, (nearly) any integrable function can be represented by a finite sum of sines and cosines. That is to say, (nearly) any function may be represented as an infinite series of the form:</p>
+<p class="mathcell">
+$$
+f(x) = \dfrac{A_0}{2} + \sum_{n = 1}^\infty \left[A_n \cos \dfrac{n\pi x}{L} + B_n \sin \dfrac{n\pi x}{L}\right]
+$$
+</p>
+<p>What is important is that this is a <strong>convergent series</strong>, meaning that the equality is <strong>exact</strong>, not simply an approximation. And when we <em>are</em> indeed interested in truncating the (infinite) series to a finite number of terms to get an approximate answer, we can calculate as many terms as necessary to achieve our desired accuracy.</p>
+<p>To calculate the terms in the series it is necessary to have knowledge of $A_n, B_n$. Luckily, there is a straightforward means to do so. Let us integrate the function across the domain $[-L, L]$.</p>
+<p class="mathcell">
+$$
+\int_{-L}^L f(x)dx = \int_{-L}^L\dfrac{A_0}{2}dx + \int_{-L}^L\sum_{n = 1}^\infty \left[A_n \cos \dfrac{n\pi x}{L} + B_n \sin \dfrac{n\pi x}{L}\right] d x
+$$
+</p>
+<p>Since $A_n$ and $B_n$ are constants that don't depend on $x$, we can factor them out of the integral:</p>
+<p class="mathcell">
+$$
+\int_{-L}^L f(x)dx = \int_{-L}^L\dfrac{A_0}{2}dx + \sum_{n = 1}^\infty \left[A_n\int_{-L}^L \cos \dfrac{n\pi x}{L}dx + B_n\int_{-L}^L \sin \dfrac{n\pi x}{L}dx\right] d x
+$$
+</p>
+<p>We will now use the two very important properties of the sine and cosine functions, which comes from the even and odd identities of the sine and cosine. They are, respectively:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\int_{-L}^L \sin \dfrac{n\pi x}{L} dx = 0 \\
+\int_{-L}^L \cos \dfrac{n\pi x}{L} dx = 0
+\end{gather*}
+$$
+</p>
+<p>This means that entire second term goes to zero, giving us:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\int_{-L}^L f(x)dx &amp;= \int_{-L}^L\dfrac{A_0}{2}dx + \cancel{\sum_{n = 1}^\infty \left[A_n\int_{-L}^L \cos \dfrac{n\pi x}{L}dx + B_n\int_{-L}^L \sin \dfrac{n\pi x}{L}dx\right] dx}^0 \\
+&amp;= \int_{-L}^L\dfrac{A_0}{2}dx \\
+&amp;= \dfrac{A_0}{2} (L - (-L)) \\
+&amp;= \dfrac{A_0}{2} (2L)  \\
+&amp;= A_0 L
+\end{align*}
+$$
+</p>
+<p>Therefore, rearranging yields an exact expression for $A_0$:</p>
+<p class="mathcell">
+$$
+A_0 = \dfrac{1}{L} \int_{-L}^L f(x)dx
+$$
+</p>
+<p>To obtain $A_n$ and $B_n$, we use the integral identities:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\int_{-L}^L \cos \dfrac{n\pi x}{L} \cos \dfrac{m\pi x}{L} dx &amp;= \begin{cases}
+L, &amp; n = m, \text{ where } n, m \neq 0 \\
+0, &amp; n \neq m \\
+2L, &amp; n = m, n = m = 0 \\
+\end{cases}  \\
+\int_{-L}^L \cos \dfrac{n\pi x}{L} \sin \dfrac{m\pi x}{L} dx &amp;= 0 \\
+\int_{-L}^L \sin \dfrac{n\pi x}{L} \sin \dfrac{m\pi x}{L} dx &amp;= \begin{cases}
+1, &amp; n = m \text{ where } n, m \neq 0 \\
+0, &amp; n \neq m
+\end{cases}
+\end{align*}
+$$
+</p>
+<p>The $A_n$ coefficient can be found by multiplying $f(x)$ by $\cos \dfrac{m\pi x}{L}$ and integrating both sides. Upon then applying the integral identities, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+f(x) &amp;= \dfrac{A_0}{2} + \sum_{n = 1}^\infty \left[A_n \cos \dfrac{n\pi x}{L}  + B_n \sin \dfrac{n\pi x}{L}\right] \\
+f(x) \cos \dfrac{m\pi x}{L} &amp;= \dfrac{A_0}{2}\cos \dfrac{m\pi x}{L} + \sum_{n = 1}^\infty \bigg[A_n \cos \dfrac{n\pi x}{L}\cos \dfrac{m\pi x}{L} \\ &amp;\qquad+ B_n \sin \dfrac{n\pi x}{L}\cos \dfrac{m\pi x}{L}\bigg] \\
+\int_{-L}^L  f(x) \cos \dfrac{n\pi x}{L} dx &amp;= \int_{-L}^L\dfrac{A_0}{2}dx + \sum_{n = 1}^\infty \bigg[A_n\int_{-L}^L \cos \dfrac{n\pi x}{L} \cos \dfrac{m\pi x}{L}dx \\
+&amp;\qquad + B_n\int_{-L}^L \sin \dfrac{n\pi x}{L}\cos \dfrac{m\pi x}{L}dx\bigg] dx \\
+&amp;= \cancel{\int_{-L}^L\dfrac{A_0}{2}dx}^0 + \sum_{n = 1}^\infty \bigg[A_n\int_{-L}^L \cos \dfrac{n\pi x}{L} \cos \dfrac{m\pi x}{L}dx \\
+&amp;\qquad + B_n\cancel{\int_{-L}^L \sin \dfrac{n\pi x}{L}\cos \dfrac{m\pi x}{L}dx}^0\bigg] dx \\
+&amp;= \sum_{n = 1}^\infty A_n\int_{-L}^L \cos \dfrac{n\pi x}{L} \cos \dfrac{m\pi x}{L}dx
+\end{align*}
+$$
+</p>
+<p>Notice that with the above trigonometric identities, since the integral of $\cos(n\pi x/L) \cos (m\pi x/L)$ is zero <em>unless</em> $m = n$, all the terms in the infinite series collapse other than those for which $m = n$ (which evaluates to $L$ by our above integral identities). We ignore the case that $m = n = 0$ since our series sums from $n = 1$. In mathematical terms, since:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+A_n\int_{-L}^L \cos \dfrac{n\pi x}{L} \cos \dfrac{m\pi x}{L}dx &amp;=
+\begin{cases}
+A_nL, &amp; m = n \\
+0, &amp; m \neq n \\
+\end{cases}
+\end{align*}
+$$
+</p>
+<p>Then it follows that the <em>only</em> term in the series that is nonzero is the term for which $m = n$, and the series converges to:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\sum_{n = 1}^\infty A_n\int_{-L}^L \cos \dfrac{n\pi x}{L} \cos \dfrac{m\pi x}{L}dx &amp;= 0 + 0 + \dots + 0 + A_n L \\
+&amp;= A_n L
+\end{align*}
+$$
+</p>
+<p>But we know that above infinite series is <em>also</em> equal to $\displaystyle \int_{-L}^L  f(x) \cos \dfrac{n\pi x}{L} dx$. Thus, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\int_{-L}^L  f(x) \cos \dfrac{n\pi x}{L} dx = A_n L \\
+\Rightarrow A_n = \dfrac{1}{L} \int_{-L}^L f(x) \cos \dfrac{n\pi x}{L} dx
+\end{align*}
+$$
+</p>
+<p>Almost the exact same process can be used to find $B_n$: multiply $f(x)$ by $\sin \dfrac{n\pi x}{L}$, and then integrate both sides, leading to an infinite series that is all zero except for the term for which $n = m$, meaning it converges to zero. This process is what leads to the formulas:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+A_n = \dfrac{1}{L} \int_{-L}^L f(x) \cos \dfrac{n\pi x}{L} dx \\
+B_n = \dfrac{1}{L} \int_{-L}^L f(x) \sin \dfrac{n\pi x}{L} dx \\
+\end{gather*}
+$$
+</p><h3 id="even-and-odd-functions">Even and odd functions</h3>
+<p>Having discussed the importance of a function's <em>parity</em> (whether it is an even or odd function) for Fourier series, let us now take a more detailed look. Recall that even and odd functions are defined as follows:</p>
+<ul>
+<li><strong>Odd</strong> functions satisfy $f(-x) = -f(x)$</li>
+<li><strong>Even</strong> functions satisfy $g(x) = g(-x)$</li>
+</ul>
+<p>Additionally, for Fourier series in particular, we are also interested in another <em>class</em> of function:</p>
+<ul>
+<li><strong>Periodic</strong> functions satisfy $h(x) = H(x\, \text{mod}\, 2L)$ (or more simply, $h(x) = h(x + 2L)$) where $2L$ is the <strong>period</strong> of the function</li>
+</ul>
+<p>For Fourier series, we often want to <em>extend</em> a function to make it even or odd across a symmetric interval. For instance, if we wanted to describe a triangle-shaped function, it would be natural to <em>extend</em> the function $f(x) = x$ so that it is symmetric about the $y$-axis. The <strong>even extension</strong> of a function about $x = 0$ is given by:</p>
+<p class="mathcell">
+$$
+F_\text{even}(x) = \begin{cases}
+F(x),&amp; x &gt; 0 \\
+0, &amp; x = 0 \\
+F(-x),&amp; x &lt; 0
+\end{cases}
+$$
+</p>
+<p>Meanwhile, the <strong>odd extension</strong> of a function about $x = 0$ is given by:</p>
+<p class="mathcell">
+$$
+F_\text{odd}(x) = \begin{cases}
+F(x), &amp; x &gt; 0 \\
+0, &amp; x = 0 \\
+-F(-x), &amp; x &lt; 0
+\end{cases}
+$$
+</p>
+<p>In general, an <em>arbitrary</em> function can be decomposed into purely even and odd parts, as follows:</p>
+<p class="mathcell">
+$$
+\varphi(x) = \underbrace{\dfrac{1}{2}(\varphi(x) + \varphi(-x))}_\text{even part} + \underbrace{\dfrac{1}{2} (\varphi(x) - \varphi(-x))}_\text{odd part}
+$$
+</p><h3 id="complex-form-of-the-fourier-series">Complex form of the Fourier Series</h3>
+<p>We have extensively discussed the Fourier Series in its most conventional trigonometric form, as an infinite sum of sines and cosines. But there is also an <em>alternative</em> form of the Fourier series, expressed using complex-valued functions. To show why this is the case, recall <strong>Euler's formula</strong>, which relates sinusoids to complex exponential functions:</p>
+<p class="mathcell">
+$$
+e^{i\phi} = \cos \phi + i \sin \phi
+$$
+</p>
+<p>Euler's formula leads to following <em>complex-valued</em> definitions for the sine and cosine:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+\cos \phi = \dfrac{e^{i\phi} + e^{-i\phi}}{2}, &amp; \sin \phi = \dfrac{e^{i\phi} - e^{-i\phi}}{2i}
+\end{matrix*}
+$$
+</p>
+<p>Using these formulas allows us to find the <strong>complex form</strong> of the Fourier Series, given by:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+f(x) = \sum_{n = -\infty}^\infty C_n \exp \left(i\dfrac{n\pi x}{L}\right), \\
+C_n = \dfrac{1}{2L} \int_{-L}^L f(x) \exp \left(-i\dfrac{n\pi x}{L}\right)
+\end{gather*}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> If $f(x)$ is a <strong>real-valued</strong> function, then its Fourier series representation must have coefficients that satisfy $C_n = C_{-n}^*$, where the asterisk represents the complex conjugate.</p>
+</blockquote>
+<p>The complex form of the Fourier series has a number of advantages over the conventional trigonometric form. First, one needs to only compute one coefficient ($C_n$) rather than three ($A_0, A_n, B_n$). In addition, the unique properties of the exponential function, given that it follows the  properties of exponents and has a very simple derivative (and integral), make it much easier to work with. So, it is often preferred over the trigonometric form. For instance, let us compute the coefficients $C_n$ of the exponential function $f(x) = e^x$. We have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+C_n &amp;= \dfrac{1}{2L} \int_{-L}^L f(x) \exp \left(-i\dfrac{n\pi x}{L}\right) \\
+&amp;= \dfrac{1}{2} \int_{-1}^1 e^x e^{-i (n\pi x)} dx \\
+&amp;= \dfrac{1}{2} \int_{-1}^1 \exp(x(1 - i\pi n)) dx \\
+&amp;= \dfrac{1}{2}\left[\dfrac{\exp(x(1 - in\pi))}{1- in\pi}\right]_{-1}^1 \\
+&amp;= \dfrac{1}{2} \dfrac{\exp(1 - i n\pi) - \exp(in\pi - 1)}{1 - in\pi} \\
+&amp;= \dfrac{\sinh(1 - in\pi)}{1-in\pi}
+\end{align*}
+$$
+</p>
+<p>Note how the integrals are significantly easier, and in addition, we only needed to solve for one single coefficient $C_n$. But the complex form still carries the same information as the real-valued sinusoidal form; for all real-valued functions, the complex form of the Fourier series (which we will call from this point on as just the &quot;complex form&quot;) provides the same information as the sinusoidal form of the Fourier series we have seen so far. In fact, the coefficients $C_n$ in the complex form of the Fourier series can be <em>directly related</em> to the coefficients $A_0, A_n, B_n$ in the trigonometric form:</p>
+<p class="mathcell">
+$$
+C_n = \begin{cases}
+\dfrac{A_0}{2}, n = 0 \\
+\frac{1}{2}(A_n + B_n), &amp; n = 1, 2, 3, \dots \\
+\dfrac{1}{2}(A_n - B_n), &amp; n = -1, -2, -3, \dots
+\end{cases}
+$$
+</p><h3 id="orthogonality-and-general-fourier-series">Orthogonality and general Fourier Series</h3>
+<p>The Fourier series written in terms of sines and cosines is not the most general expression of the Fourier series. This is because while we picked sine and cosine to be our basis functions for our Fourier series (or complex exponentials for the generalization to complex-valued functions), <em>any</em> set of orthogonal bases can be expressed as a linear superposition of any other set. For instance, consider the basis of <em>Legendre polynomials</em>. These polynomials form a complete, orthogonal set of bases; the first few Legendre polynomials take the form:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+P_0(x) &amp;= 1 \\
+P_1(x) &amp;= x \\
+P_2(x) &amp;= \dfrac{3x^2 - 1}{2} \\
+P_3(x) &amp;= \dfrac{5x^3 - 3x}{2} \\
+P_4(x) &amp;= \dfrac{35 x^4 - 30x^2 +3}{8} \\
+P_5(x) &amp;= \dfrac{63x^5 - 70x^3 + 15x}{8}
+\end{align*}
+$$
+</p>
+<p>The crucial property of the Legendre polynomials, which allows them to form an orthogonal basis, is their <em>orthogonality relation</em>:</p>
+<p class="mathcell">
+$$
+\int_{-1}^1 P_\ell(x) P_{\ell&#x27;}(x) dx = \dfrac{2}{2\ell + 1} \delta_{\ell&#x27; \ell} =\begin{cases}
+0, &amp; \ell \neq \ell&#x27; \\
+\dfrac{2}{2\ell + 1}, &amp; \ell = \ell&#x27;
+\end{cases}
+$$
+</p>
+<p>In general, the bases of all Fourier series (including sine series, cosine series, full trigonometric series &amp; complex exponential form) are <em>all</em> orthogonal, and therefore we can interchange them freely by a change of basis. For this, we write one basis as a linear superposition of the basis functions of another basis. For instance, for the Legendre polynomials, we may write:</p>
+<p class="mathcell">
+$$
+\sin(n\pi x) = \sum_{\ell = 1}^\infty A_\ell P_\ell(x)
+$$
+</p>
+<p>More general Fourier series can be composed from <em>any</em> orthogonal functional basis, which include the Chebyshev polynomials, Laguerre polynomials, Legendre polynomials, spherical harmonics, and other special functions that possess the properties of <strong>orthogonality</strong> and <strong>completeness</strong>. For some arbitrary functional basis $Y_n(x)$, we may therefore express a given function $f(x)$ in series form as:</p>
+<p class="mathcell">
+$$
+f(x) = \sum_{n = 1}^\infty A_n Y_n(x)
+$$
+</p>
+<p>And because of orthogonality it must be the case that:</p>
+<p class="mathcell">
+$$
+\int_a^b f(x) Y_m^*(x)dx = \int_a^b \sum_{n = 1}^\infty A_n Y_n(x) Y_m^*(x) dx = A_m \int_a^b |Y_m(x)|^2 dx
+$$
+</p>
+<p>Therefore, we have a straightforward, if tedious, way to find any coefficient $A_m$. Indeed, <em>if</em> the functional basis is also <em>orthonormal</em>, meaning that on an interval $[a, b]$ it obeys $N = \displaystyle \int_a^b |Y_m(x)|^2 dx = 1$, then the expression for $A_m$ becomes simply:</p>
+<p class="mathcell">
+$$
+A_m = \int_a^b f(x) Y_m^*(x)dx
+$$
+</p>
+<p>Whereas if the functional basis is not orthonormal, we simply divide by $N$, to have:</p>
+<p class="mathcell">
+$$
+A_m = \dfrac{1}{N}\int_a^b f(x) Y_m^*(x)dx
+$$
+</p>
+<p>As we can see, Fourier series are not limited to sinusoids. Using the more general form of the Fourier series allows us to express nearly <em>any</em> function as a series expansion in any functional basis of our choice, making them extremely powerful mathematical tools.</p>
+<h2 id="next-steps">Next steps</h2>
+<p>We've reached the end of the second part of the PDEs guide. Now is the time to continue to <a href="https://jackysci.com/intro-pdes/chapter-3/">the final part</a>!</p>
+
+        
+        <a id="jump-toc-btn" href="#toc">Show table of contents</a>
+        <a href="/notes" class="return-link">Back to all notes</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        var toc = document.getElementById("toc");
+        var tocPos = toc.offsetTop + toc.offsetHeight;
+        var tocBtn = document.getElementById("jump-toc-btn");
+
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+        // for performance reasons, we **only** render a certain
+        // number of equations that the viewer is actually viewing
+        function VisibleMathRenderer(config) {
+            /*
+            Renders only a limited number of equations on page load
+            to avoid poor performance
+             Params:
+                lastRenderedEquation: the most recently rendered equation.
+                        when this goes out of view, equations under it are rendered. 
+            */
+            var startElement = config.startElement
+            var maxEquations = config.maxEquations ? config?.maxEquations : 30;
+            this.startElement = startElement
+            this.maxEquations = maxEquations
+            // we wait until the user scrolls past the starting/
+            // ending elements to start rendering the whole page
+            this.canRenderWholePage = false;
+            this.pageRendered = false;
+            this.lastRenderedTopEquation = null;
+            this.lastRenderedBottomEquation = null;
+
+            this.render = function() {
+                renderMath(this.startElement);
+                // render previous 25 and following 25 equations
+                var prev = this.startElement.previousElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left prior to the element
+                    if (prev == null) {
+                        break;
+                    }
+                    renderMath(prev);
+                    prev = prev.previousElementSibling;
+                }
+                // store our last rendered equations
+                // we'll track scroll position later to
+                // check when the rest of the page should be rendered
+                this.lastRenderedTopEquation = prev;
+                console.log(this.lastRenderedTopEquation)
+
+                var next = this.startElement.nextElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left following the element
+                    if (next.nextElementSibling == null) {
+                        break;
+                    }
+                    renderMath(next);
+                    next = next.nextElementSibling;
+                }
+                this.lastRenderedBottomEquation = next;
+                // now allow rendering the rest of the equations
+                this.canRenderWholePage = true;
+            }
+
+            // render all math on the whole page
+            this.renderMathOnPage = function() {
+                // don't run until preliminary tasks
+                // are done so that the whole page
+                // can/should be rendered
+                if (!this.canRenderWholePage) {
+                    return;
+                }
+                // if the whole page's worth of equations
+                // are already rendered, don't render more
+                if (this.pageRendered) {
+                    return;
+                }
+                var topBound = this.lastRenderedTopEquation.getBoundingClientRect.top;
+                var bottomBound = this.lastRenderedBottomEquation.getBoundingClientRect.bottom;
+                var scrollTop, scrollBottom = getViewport();
+                // if the user is about to scroll past the initially-rendered equations
+                // we will render the whole page
+                if (scrollTop - 50 + window.scrollY < topBound || scrollBottom + 50 + window.scrollY > bottomBound) {
+                    console.log("Scrolled beyond!")
+                    var article = document.querySelector(".post");
+                    if (article) {
+                        this.renderMath(article);
+                    }
+                    this.pageRendered = true;
+                }
+                
+            }
+            
+        }
+
+        function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        function findFirstRelevantElement() {
+            // finds the first <p> tage that's closest to
+            // the viewer's viewport
+            var regex = /#.*/;
+            var m = regex.exec(window.location.href);
+            if (m !== null) {
+                return document.querySelector(m[0]);
+            } else {
+                return document.querySelector(".post p");
+            }
+        }
+        
+        // initialize page JS components
+        /*
+        var mathRenderer = new VisibleMathRenderer({
+            // start rendering with first <p> tag on the
+            // post
+            startElement: findFirstRelevantElement()
+        });
+        */
+        document.addEventListener("DOMContentLoaded", function() {
+            showTocBtnOnScroll();
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+
+        window.onscroll = function(){
+            // if (!mathRenderer.pageRendered) {
+            //     mathRenderer.renderMathOnPage();
+            // }
+            showTocBtnOnScroll();
+        };
+
+
+    </script>
+    
+
+
+</body>
+
+</html>

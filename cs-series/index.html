@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computer Science series</title>
+  <meta name="description" content=" These are my personal notes on computer science, programming, and numerical computing.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Computer Science series</h2>
+        
+        
+        <!-- table of contents -->
+        
+
+        <!-- page content -->
+        <p>These are my personal notes on computer science, programming, and numerical computing.</p>
+<span id="continue-reading"></span>
+<ul>
+<li><a href="https://jackysci.com/intro-python-programming/">Introductory programming in Python</a></li>
+<li><a href="https://jackysci.com/solving-de-nn/">Solving differential equations with physics-based neural networks</a></li>
+</ul>
+
+        
+        <a href="/" class="return-link">Back to home</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function() {
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+    </script>
+    
+
+
+</body>
+
+</html>

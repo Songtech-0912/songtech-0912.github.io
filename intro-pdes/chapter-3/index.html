@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Gentle Guide to Partial Differential Equations, Part III</title>
+  <meta name="description" content=" In this section, we finish our exploration of PDEs, building on what we learned in the first part and second part of the guide to solve Laplace&#x27;s equation and extend our knowledge of PDEs.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>A Gentle Guide to Partial Differential Equations, Part III</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+        <details class="toc" id="toc" open>
+        <summary>Table of contents</summary>
+        <p class="toc-info">Note: it is highly recommended to navigate by clicking links in the table of contents! It means you can use the back button in your browser to go back to any section you were reading, so you can jump back and forth between sections!</p>
+        <div>
+            <ul>
+            
+                <li>
+                    <a href="https://jackysci.com/intro-pdes/chapter-3/#chapter-guide-for-pdes">Chapter guide for PDEs</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/intro-pdes/chapter-3/#laplace-s-equation-and-harmonic-functions">Laplace&#x27;s equation and harmonic functions</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="https://jackysci.com/intro-pdes/chapter-3/#properties-of-harmonic-functions">Properties of harmonic functions</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="https://jackysci.com/intro-pdes/chapter-3/#the-laplace-operator-in-cartesian-coordinates">The Laplace operator in Cartesian coordinates</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="https://jackysci.com/intro-pdes/chapter-3/#2d-laplace-operator-in-polar-coordinates">2D Laplace operator in polar coordinates</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="https://jackysci.com/intro-pdes/chapter-3/#3d-laplace-operator-in-cylindrical-coordinates">3D Laplace operator in cylindrical coordinates</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="https://jackysci.com/intro-pdes/chapter-3/#3d-laplace-operator-in-spherical-coordinates">3D Laplace operator in spherical coordinates</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/intro-pdes/chapter-3/#finding-solutions-to-laplace-s-equation">Finding solutions to Laplace&#x27;s equation</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="https://jackysci.com/intro-pdes/chapter-3/#solving-laplace-s-equation-in-2d-and-3d-cartesian-coordinates">Solving Laplace&#x27;s equation in 2D and 3D Cartesian coordinates</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="https://jackysci.com/intro-pdes/chapter-3/#solving-laplace-s-equation-in-polar-coordinates">Solving Laplace&#x27;s equation in polar coordinates</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="https://jackysci.com/intro-pdes/chapter-3/#solving-laplace-s-equation-in-cylindrical-coordinates">Solving Laplace&#x27;s equation in cylindrical coordinates</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/intro-pdes/chapter-3/#bonus-solving-linear-inhomogeneous-pdes">Bonus: solving linear inhomogeneous PDEs</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="https://jackysci.com/intro-pdes/chapter-3/#generalized-series-solutions-to-laplace-s-equation">Generalized series solutions to Laplace&#x27;s equation</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/intro-pdes/chapter-3/#appendix-reference-table-of-common-linear-pdes">Appendix: reference table of common linear PDEs</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/intro-pdes/chapter-3/#concluding-remarks">Concluding remarks</a>
+                    
+                </li>
+            
+            </ul>
+        </div>
+        </details>
+        
+
+        <!-- page content -->
+        <p>In this section, we finish our exploration of PDEs, building on what we learned in the <a href="https://jackysci.com/intro-pdes/">first part</a> and <a href="https://jackysci.com/intro-pdes/chapter-2/">second part</a> of the guide to solve Laplace's equation and extend our knowledge of PDEs.</p>
+<span id="continue-reading"></span>
+<blockquote>
+<h3 id="chapter-guide-for-pdes">Chapter guide for PDEs</h3>
+<ul>
+<li><a href="https://jackysci.com/intro-pdes/">Part 1</a> covers basics of PDEs, solving 1st-order PDEs, and the physical phenomena modelled by PDEs.</li>
+<li><a href="https://jackysci.com/intro-pdes/chapter-2/">Part 2</a> covers classification and finding solutions to 2nd-order PDEs, and in particular, the diffusion equation, wave equation, and Laplace's equation.</li>
+<li><a href="https://jackysci.com/intro-pdes/chapter-3/">Part 3</a> concludes this guide with a discussion on Laplace's equations and a few other topics in partial differential equations. <strong>You are reading this part right now.</strong></li>
+</ul>
+</blockquote>
+<h2 id="laplace-s-equation-and-harmonic-functions">Laplace's equation and harmonic functions</h2>
+<p>Laplace's equation $\nabla^2 f = 0$ is one of the most fundamental PDEs in mathematical physics. It describes everything from the gravitational attraction of masses in classical mechanics, to the electric potential in electromagnetic theory, to the shape of a thin film, to the distribution of heat for an object in equilibrium, to irrotational flows of gases for aircraft wing design. Naturally, solving the Laplace equation is extremely crucial to many, many different fields. We will therefore devote this entire section to studying the Laplace equation.</p>
+<h3 id="properties-of-harmonic-functions">Properties of harmonic functions</h3>
+<p>From naive inspection of Laplace's equation, one may <em>think</em> that $\nabla^2 f = 0$ <em>implies</em> $f = 0$. This is an <strong>incorrect assumption</strong>, because while in many cases, the trivial solution $f = 0$ is <em>a possible solution</em>, there exist <strong>non-trivial solutions</strong> that also satisfy Laplace's equation. Notably, all functions of the form $f(r) = \pm\dfrac{k}{r}$ for some constant $k$ satisfy Laplace's equation, which has very important consequences in physics, although solutions in this form are <strong>definitely not the only type</strong> of solutions. In mathematical terminology, all solutions to Laplace's equation are formally known as <strong>harmonic functions</strong>, and other than sharing a few general features (such as time independence and generally being expressible as an infinite series of some sort) they are quite different.</p>
+<p>But those shared general features are quite significant. For instance in complex analysis, the <strong>Cauchy-Riemann theorem</strong> says that for any analytic complex-valued function $f(z) = u + i v$ (analytic means that it can be expressed as a power series), the functions $u = u(x, y)$ and $v=v(x, y)$ satisfy:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial u}{\partial x} = \dfrac{\partial v}{\partial y} \\
+\dfrac{\partial u}{\partial y} = -\dfrac{\partial v}{\partial x}
+\end{align*}
+$$
+</p>
+<p>And $u$ and $v$ respectively both satisfy Laplace's equation:</p>
+<p class="mathcell">
+$$
+\nabla^2 u = 0, \quad \nabla^2 v=0
+$$
+</p>
+<p>Furthermore, harmonic functions are <strong>unique</strong> - for well-posed boundary-value problems, Laplace's equation yields <strong>one and only one solution</strong>. It is one of the rare cases where we can <strong>prove</strong> that a PDE's solutions are <em>guaranteed</em> to be unique - finding <a href="https://www.claymath.org/millennium/navier-stokes-equation/">a similar proof for the Navier-Stokes PDEs</a> will give you $1 million dollars!</p>
+<p>Finally, harmonic functions satisfy a <strong>maximum principle</strong> and a <strong>minimum principle</strong>. We won't prove either here; we will just state the results:</p>
+<blockquote>
+<p><strong>The maximum principle for Laplace's equation:</strong> A solution $u$ to Laplace's equation on a domain $D$ attains its maximum value (if one exists) on the <strong>boundary</strong> of $D$.</p>
+</blockquote>
+<blockquote>
+<p><strong>The minimum principle for Laplace's equation:</strong> A solution $u$ to Laplace's equation on a domain $D$ also attains its minimum value (if one exists) on the <strong>boundary</strong> of $D$.</p>
+</blockquote>
+<h3 id="the-laplace-operator-in-cartesian-coordinates">The Laplace operator in Cartesian coordinates</h3>
+<p>Like any linear partial differential equation, the Laplace equation can be written in terms of a <em>linear operator</em> $\mathcal{L}$ such that $\mathcal{L} f = 0$. In our case, the linear operator for the Laplace equation is the <strong>Laplacian</strong>, also called the Laplace operator, written as $\nabla^2$ (it is also common to use the symbol $\Delta$). In two dimensions, it takes the form:</p>
+<p class="mathcell">
+$$
+\nabla^2_\text{(2D)} = \dfrac{\partial^2}{\partial x^2} + \dfrac{\partial^2}{\partial y^2}
+$$
+</p>
+<p>Meanwhile, in three dimensions, it takes the form:</p>
+<p class="mathcell">
+$$
+\nabla^2_\text{(3D)} = \dfrac{\partial^2}{\partial x^2} + \dfrac{\partial^2}{\partial y^2} + \dfrac{\partial^2}{\partial z^2}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> it is very important to note that the Laplace operator only contains spatial derivatives, meaning that Laplace equation is <strong>time-independent</strong>, unlike the wave equation and heat equation (which are time-dependent PDEs). This is why Laplace's equation is often used for describing <strong>steady-state systems</strong> where the system has settled to an equilibrium state and no longer changes with time.</p>
+</blockquote>
+<h3 id="2d-laplace-operator-in-polar-coordinates">2D Laplace operator in polar coordinates</h3>
+<p>We now derive the 2D Laplace operator (Laplacian) in two dimensions in polar coordinates. Recall that using $x = r\cos \theta, y = r\sin \theta$, where we have $r = \sqrt{x^2 + y^2}$ and $\theta = \tan^{-1}(y/x)$. Thus, we can rewrite the</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial}{\partial x} &amp;= \dfrac{\partial r}{\partial x} \dfrac{\partial}{\partial r} + \dfrac{\partial \theta}{\partial x} \dfrac{\partial}{\partial \theta} \\
+&amp;= \cos \theta \dfrac{\partial}{\partial r} - \dfrac{\sin \theta}{r} \dfrac{\partial}{\partial \theta} \\
+\dfrac{\partial}{\partial y} &amp;= \dfrac{\partial r}{\partial y} \dfrac{\partial}{\partial r} + \dfrac{\partial \theta}{\partial y} \dfrac{\partial}{\partial \theta} \\
+&amp;= \sin \theta \dfrac{\partial}{\partial r} + \dfrac{\cos \theta}{r} \dfrac{\partial}{\partial \theta}
+\end{align*}
+$$
+</p>
+<p>Thus, substituting these formulas for the partial derivatives into the Laplacian operator, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\nabla^2_\text{(2D)} &amp;= \dfrac{\partial^2}{\partial x^2} + \dfrac{\partial^2}{\partial y^2} \\
+&amp;= \dfrac{\partial}{\partial x} \left(\dfrac{\partial}{\partial x}\right) + \dfrac{\partial}{\partial y}\left(\dfrac{\partial}{\partial y}\right) \\
+\end{align*}
+$$
+</p>
+<p>We'll calculate the two second partial derivatives one by one. For the 2nd partial derivative in $x$ we have: </p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial}{\partial x} \left(\dfrac{\partial}{\partial x}\right) &amp;= \cos^{2}\theta\frac{\partial^{2}}{\partial r^{2}}-2\left(\frac{\sin\theta\cos\theta}{r}\right)\frac{\partial^{2}}{\partial r\partial\theta} \\
+ &amp; \qquad +\frac{\sin^{2}\theta}{r^{2}}\frac{\partial^{2}}{\partial\theta^{2}}+\frac{2\sin\theta\cos\theta}{r^{2}}\frac{\partial}{\partial\theta}+\frac{\sin^{2}\theta}{r}\frac{\partial}{\partial r}
+\end{align*}
+$$
+</p>
+<p>Meanwhile, for the 2nd partial derivative in $y$ we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial}{\partial y} \left(\dfrac{\partial}{\partial y}\right) &amp;= \sin^{2}\theta\frac{\partial^{2}}{\partial r^{2}}+2\left(\frac{\sin\theta\cos\theta}{r}\right)\frac{\partial^{2}}{\partial r\partial\theta} \\
+ &amp; \qquad+\frac{\cos^2\theta}{r^2}\frac{\partial^2}{\partial\theta^2}-\frac{2\sin\theta\cos\theta}{r^2}\frac{\partial}{\partial\theta}+\frac{\cos^2\theta}{r}\frac{\partial}{\partial r}
+\end{align*}
+$$
+</p>
+<p>Putting it all together, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\nabla^2_\text{(2D)} &amp;= \dfrac{\partial}{\partial x} \left(\dfrac{\partial}{\partial x}\right) + \dfrac{\partial}{\partial y}\left(\dfrac{\partial}{\partial y}\right) \\
+&amp;= \cos^{2}\theta\frac{\partial^{2}}{\partial r^{2}}
+-\cancel{2\left(\frac{\sin\theta\cos\theta}{r}\right)\frac{\partial^{2}}{\partial r\partial\theta}} \\
+ &amp; \qquad +\frac{\sin^{2}\theta}{r^{2}}\frac{\partial^{2}}{\partial\theta^{2}}
+ +\cancel{\frac{2\sin\theta\cos\theta}{r^{2}}\frac{\partial}{\partial\theta}}+\frac{\sin^{2}\theta}{r}\frac{\partial}{\partial r} \\
+ &amp; \qquad + \sin^{2}\theta\frac{\partial^{2}}{\partial r^{2}}
+ +\cancel{2\left(\frac{\sin\theta\cos\theta}{r}\right)\frac{\partial^{2}}{\partial r\partial\theta}} \\
+ &amp; \qquad+\frac{\cos^2\theta}{r^2}\frac{\partial^2}{\partial\theta^2}
+ -\cancel{\frac{2\sin\theta\cos\theta}{r^2}\frac{\partial}{\partial\theta}}
+ +\frac{\cos^2\theta}{r}\frac{\partial}{\partial r} \\
+ &amp;= \cancel{(\sin^2 \theta + \cos^2 \theta)}^1 \dfrac{\partial^2}{\partial r^2}
+ + \dfrac{\cancel{(\sin^2 \theta + \cos^2 \theta)}^1}{r} \dfrac{\partial}{\partial r}
+ + \dfrac{\cancel{\sin^2 \theta + \cos^2 \theta}^1}{r^2} \dfrac{\partial^2}{\partial \theta^2} \\
+ &amp;= \dfrac{\partial^2}{\partial r^2} + \dfrac{1}{r} \dfrac{\partial}{\partial r} + \dfrac{1}{r^2} \dfrac{\partial^2}{\partial \theta^2}
+\end{align*}
+$$
+</p>
+<p>And thus we have derived the 2D Laplacian in polar coordinates:</p>
+<p class="mathcell">
+$$
+\nabla^2_\text{(2D)} = \dfrac{\partial^2}{\partial r^2} + \dfrac{1}{r} \dfrac{\partial}{\partial r} + \dfrac{1}{r^2} \dfrac{\partial^2}{\partial \theta^2}
+$$
+</p>
+<p>Note that it is common to write the 2D polar Laplacian in a condensed form as:</p>
+<p class="mathcell">
+$$
+\nabla^2_\text{2D} = \dfrac{1}{r} \dfrac{\partial}{\partial r} \left(r \dfrac{\partial}{\partial r}\right) + \dfrac{1}{r^2} \dfrac{\partial^2}{\partial \theta^2}
+$$
+</p><h3 id="3d-laplace-operator-in-cylindrical-coordinates">3D Laplace operator in cylindrical coordinates</h3>
+<p>Let us now move forward to three dimensions. In 3D, the two most common non-Cartesian coordinates are <strong>cylindrical coordinates</strong> and <strong>spherical coordinates</strong>. We will examine the Laplace operator for both, but we'll start with cylindrical coordinates.</p>
+<p>Thankfully, the expression of the Laplace operator in cylindrical coordinates is fairly straightforward to find. This is because cylindrical coordinates are essentially just polar coordinates extended to 3D; its coordinate conversions to Cartesian are simply $x = r \cos \theta, y = r \sin \theta, z = z$. Thus, we can express the Laplace operator in 3D as:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\nabla^2_\text{(3D)} &amp;= \dfrac{\partial^2}{\partial x^2} + \dfrac{\partial^2}{\partial y^2} + \dfrac{\partial^2}{\partial z^2} \\
+&amp;= \nabla^2_\text{2D} + \dfrac{\partial^2}{\partial z^2} \\
+&amp;= \dfrac{\partial^2}{\partial r^2} + \dfrac{1}{r} \dfrac{\partial}{\partial r} + \dfrac{1}{r^2} \dfrac{\partial^2}{\partial \theta^2} + \dfrac{\partial^2}{\partial z^2} \\ \\
+&amp;= \dfrac{1}{r} \dfrac{\partial}{\partial r} \left(r \dfrac{\partial}{\partial r}\right) + \dfrac{1}{r^2} \dfrac{\partial^2}{\partial \theta^2} + \dfrac{\partial^2}{\partial z^2}
+\end{align*}
+$$
+</p><h3 id="3d-laplace-operator-in-spherical-coordinates">3D Laplace operator in spherical coordinates</h3>
+<p>As the last part in our <em>tour de force</em>, let us calculate the formidable Laplace operator in spherical coordinates. Or rather, let's not. Unfortunately, the mathematics are so long and complicated that we will just state the end result:</p>
+<p class="mathcell">
+$$
+\nabla^2_\text{(3D)} = {1 \over r^{2}}{\partial  \over \partial r}\!\left(r^{2}{\partial f \over \partial r}\right)\!+\!{1 \over r^{2}\!\sin \theta }{\partial  \over \partial \theta }\!\left(\sin \theta {\partial f \over \partial \theta }\right)\!+\!{1 \over r^{2}\!\sin ^{2}\theta }{\partial ^{2}f \over \partial \varphi ^{2}}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> Here, we use $(r, \theta, \phi)$ as our coordinates, where $\theta \in [0, \pi]$ and $\phi \in [0, 2\pi]$, which is predominantly used in physics and engineering. However, take caution, because (especially in mathematics literature) it is common to switch $\theta, \phi \to \phi, \theta$, and for $r$ to be denoted $\rho$.</p>
+</blockquote>
+<h2 id="finding-solutions-to-laplace-s-equation">Finding solutions to Laplace's equation</h2>
+<p>The Laplace equation is very nice in the sense that it is <strong>separable</strong> in Cartesian, polar, cylindrical, and spherical coordinates - very unusual among PDEs! This gives us a lot of flexibility in which coordinate system to use in solving a problem, and assures us that an exact solution can (nearly) always be found for (simple) boundary conditions. Furthermore, solutions to Laplace's equation are <em>pure</em> boundary-value problems, since Laplace's equation is purely spatial, and thus no initial conditions are necessary. So let's dive in!</p>
+<h3 id="solving-laplace-s-equation-in-2d-and-3d-cartesian-coordinates">Solving Laplace's equation in 2D and 3D Cartesian coordinates</h3>
+<p>To start, let us solve the following boundary-value problem for the 2D Laplace equation in Cartesian coordinates:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\dfrac{\partial^2 u}{\partial x^2} + \dfrac{\partial^2 u}{\partial y^2} = 0, \\
+u(x, 0) = F(x), \, F(0) = F(\pi) = 0 \\
+u(0, y) = u(\pi, y) = 0, \\
+0 \leq x \leq \pi, 0 \leq y \leq \pi
+\end{gather*}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> $F(x)$ is a generic function that represents <strong>any</strong> function for which $F(x) = 0$ at $x = 0$ and $x = \pi$ (this condition is needed for the boundary conditions to be consistent). For instance, $F(x) = \sin x$ would be a valid choice, since sine is zero at $x = 0$ and $x = \pi$. In fact, so would $F(x) = \sin(2x), \sin(3), \dots, \sin (nx)$, and even $F(x) = -\left(x-\frac{\pi}{2}\right)^{2}+\frac{\pi^{2}}{4}$ would be possible choices for $F(x)$.</p>
+</blockquote>
+<p>We use the standard separation of variables procedure, in which we let $u(x, y) = X(x) Y(y)$. This allows us to find that $\dfrac{\partial^2 u}{\partial x^2} = X''Y$ and $\dfrac{\partial^2 u}{\partial y^2} = XY''$. By substitution we then have:</p>
+<p class="mathcell">
+$$
+X&#x27;&#x27;Y + XY&#x27;&#x27; = 0
+$$
+</p>
+<p>Dividing by $XY$ on both sides, we have:</p>
+<p class="mathcell">
+$$
+\dfrac{X&#x27;&#x27;}{X} + \dfrac{Y&#x27;&#x27;}{Y} = 0 \Rightarrow \dfrac{X&#x27;&#x27;}{X} =- \dfrac{Y&#x27;&#x27;}{Y}
+$$
+</p>
+<p>As with what we have seen before, since the derivatives are equal, they must be equal to a constant; we arbitrarily choose a separation constant $-\beta^2$. This leads to the system of ODEs:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+X&#x27;&#x27; = -\beta^2 X, \quad Y&#x27;&#x27; = \beta^2 Y
+\end{align*}
+$$
+</p>
+<p>Which have the general solutions:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+X(x) &amp;= A \sin \beta x + B \cos \beta x, \\
+Y(y) &amp;= C e^{\beta y} + D e^{-\beta y}
+\end{align*}
+$$
+</p>
+<p>From which we can write down the solution $u(x, y)$, as follows:</p>
+<p><p class="mathcell">
+$$
+\begin{align*}
+u(x, y) &amp;= X(x)Y(y) \\
+&amp;= (A \sin \beta x + B \cos \beta x)(C e^{\beta y} + D e^{-\beta y})
+\end{align*}
+$$
+</p>
+We can then substitute in our boundary conditions $u(0, y) = u(\pi, y) = 0$ to find the particular solution for the boundary-value problem. Substituting for $x = 0$, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(0, y) &amp;= B (Ce^{\beta y} + De^{-\beta y}) = 0 \\
+&amp;\Rightarrow B = 0 \\
+u(\pi, y) &amp;= A \sin(\pi \beta) (Ce^{\beta y} + De^{-\beta y}) = 0 \\
+&amp;\Rightarrow A \sin(\pi \beta) = 0 \\
+&amp;\Rightarrow \beta = n
+\end{align*}
+$$
+</p>
+<p>Substituting these results simplifies our solution to:</p>
+<p class="mathcell">
+$$
+u(x, y) = A \sin (nx) (C e^{n y} + D e^{-n y})
+$$
+</p>
+<p>Now we will substitute the second boundary condition, $u(x, 0) = F(x)$, where $F(0) = F(\pi) = 0$. This is a more challenging boundary condition, as we don't know the exact form of $F(x)$, which immediately hints that we would need to express the solution as a series expansion. But since we <em>do</em> know that $F(0) = F(\pi) = 0$, then we <em>at least</em> know that $u(0, 0) = u(0, \pi) = 0$. Substituting these results, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(0, 0) &amp;= A \sin (0) (C e^{n y} + D e^{-n y}) = 0 \\
+u(0, \pi) &amp;= A \sin (n\pi) (C e^{n y} + D e^{-n y}) = 0
+\end{align*}
+$$
+</p>
+<p>So our solution is consistent with the second boundary conditions at the boundaries $x = 0$ and $x = \pi$. Since we have two exponentials, however, we have two undetermined constants $C, D$. But given that they are arbitrary, we can absorb them into $A$. This is especially convenient to write the solution in terms of the hyperbolic sine function $\sinh(x) = (e^x - e^{-x})/2$, for which we have:</p>
+<p class="mathcell">
+$$
+u(x, y) = A \sin (nx) \sinh(ny)
+$$
+</p>
+<p>But we still need to satisfy $u(x, 0) = F(x)$. Thus the most general form of this solution would be a <strong>series solution</strong>, so we have:</p>
+<p class="mathcell">
+$$
+u(x, y) = \sum_{n = 1}^\infty A_n \sin (nx) \sinh(ny)
+$$
+</p>
+<p>Where the coefficients $A_n$ would be given by:</p>
+<p class="mathcell">
+$$
+F(x) = \dfrac{2}{\pi} \int_0^\pi F(x) \sin (nx)
+$$
+</p>
+<p>Which we have plotted below:</p>
+<img class="natural-img" src=..&#x2F;laplace-2d-solution.svg alt="A surface plot of the solution to Laplace&#x27;s equation for our boundary-value problem" />
+<p>We can also sketch out the solution procedure for a three-dimensional boundary-value problem. For instance, consider solving Laplace's equation on a 3D cube with each side having a length of $\pi$. Then Laplace's equation reads:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\dfrac{\partial^2 u}{\partial x^2} + \dfrac{\partial^2 u}{\partial y^2} + \dfrac{\partial^2 u}{\partial z^2} = 0, \\
+x \in [0, \pi], y \in [0, \pi], z \in [0, \pi]
+\end{gather*}
+$$
+</p>
+<p>We use the typical trick for solving Laplace's equation by assuming a solution in the form $u(x, y, z) = X(x)Y(y)Z(z)$. Thus, taking the partial derivatives with respect to $x, y, z$, we have:</p>
+<p class="mathcell">
+$$
+X&#x27;&#x27; YZ + XY&#x27;&#x27; Z + XYZ&#x27;&#x27; = 0
+$$
+</p>
+<p>Dividing all three terms by $XYZ$, we find our first separation constant, which we name $\alpha^2$:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{X&#x27;&#x27;}{X} + \dfrac{Y&#x27;&#x27;}{Y} + \dfrac{Z&#x27;&#x27;}{Z} = 0 \\
+\dfrac{X&#x27;&#x27;}{X} + \dfrac{Y&#x27;&#x27;}{Y} = - \dfrac{Z&#x27;&#x27;}{Z} = \pm\alpha^2 \\
+\end{align*}
+$$
+</p>
+<p>Where we choose the sign of $\alpha^2$ based on whichever sign allows us to satisfy the given problem's boundary conditions (hint: if you have $u = 0$ at the boundaries $z = [0, \pi]$, you'd almost always want $\alpha^2$). From here, we can further simplify, to get our second separation constant, which we name $\beta^2$:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{X&#x27;&#x27;}{X} + \dfrac{Y&#x27;&#x27;}{Y} = \pm\alpha^2 \\
+\dfrac{X&#x27;&#x27;}{X} =- \dfrac{Y&#x27;&#x27;}{Y} \pm \alpha^2 = \pm \beta^2
+\end{align*}
+$$
+</p>
+<p>This gives us a system of three ODEs, in total:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+X&#x27;&#x27; = \pm \beta^2 X \\
+Y&#x27;&#x27; \mp \alpha^2 Y = \mp \beta^2 Y \\
+Z&#x27;&#x27; = \mp \alpha^2 Z
+\end{align*}
+$$
+</p>
+<p>Which we can solve for given boundary conditions (we will not set specific boundary conditions to solve for here, to avoid making this section overly-long). The same techniques can be used to solve for more complex boundary conditions, including Neumann, Robin, and periodic boundary conditions.</p>
+<p>Note that while solving in Cartesian coordinates is appropriate for a wide range of problems, especially those that have boundary conditions along a straight line or flat plate, we do not always want to use Cartesian coordinates. For problems that involve other geometries, such as those problems that have radial, cylindrical, or spherical symmetry, it is more useful to solve Laplace's equation in different coordinate systems. This will be what we'll be going through next.</p>
+<h3 id="solving-laplace-s-equation-in-polar-coordinates">Solving Laplace's equation in polar coordinates</h3>
+<p>We will now proceed to solving in <strong>polar coordinates</strong> - a slightly more challenging task. The solutions to Laplace's equation in polar coordinates is useful in many areas of physics and engineering: for instance, to describe the electric potential on a charged disc, the shape of a thin film (e.g. soap bubble), or the vibrations of a circular drum. Consider the boundary-value problem for Laplace's equation in the domain $,{r \in [0, a], \theta \in [0, 2\pi],}$ given by:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\nabla^2_\text{(polar)} = 0, \\
+u(r, \theta) = u(r + 2\pi, \theta) \\
+u(a, \theta) = h(\theta), \\
+r \in [0, a], \theta \in [0, 2\pi]
+\end{gather*}
+$$
+</p>
+<p>Recall that the Laplacian (Laplace operator) in polar coordinates takes the form:</p>
+<p class="mathcell">
+$$
+\nabla^2 = \dfrac{1}{r} \dfrac{\partial}{\partial r} \left(r \dfrac{\partial}{\partial r}\right) + \dfrac{1}{r^2} \dfrac{\partial^2}{\partial \theta^2}
+$$
+</p>
+<p>Thus, Laplace's equation in polar coordinates becomes:</p>
+<p class="mathcell">
+$$
+\left[\dfrac{1}{r} \dfrac{\partial}{\partial r} \left(r \dfrac{\partial}{\partial r}\right) + \dfrac{1}{r^2} \dfrac{\partial^2}{\partial \theta^2}\right]u(r, \theta) = 0
+$$
+</p>
+<p>We can then do separation of variables by assuming a solution in the form $u(r, \theta) = F(r) G(\theta)$. If we then take the derivatives of $u$ and plug them into Laplace's equation (the steps aren't shown here, but it is fairly straightforward, just tedious math) we have:</p>
+<p class="mathcell">
+$$
+F&#x27;&#x27; G + \dfrac{1}{r} F&#x27;G + \dfrac{1}{r^2} FG&#x27;&#x27; = 0
+$$
+</p>
+<p>Now, if we multiply the whole expression by $\dfrac{r^2}{FG}$, we get:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{r^2 F&#x27;&#x27;}{F}  + \dfrac{rF&#x27;}{F} + \dfrac{G&#x27;&#x27;}{G} = 0 \\
+\Rightarrow \dfrac{r^2 F&#x27;&#x27;}{F}  + \dfrac{rF&#x27;}{F} = -\dfrac{G&#x27;&#x27;}{G} = n^2
+\end{align*}
+$$
+</p>
+<p>Where $n^2$ is our chosen separation constant (we will later see that a positive choice of separation constant is necessary for a solution consistent with our boundary conditions in polar coordinates). This leads us to the following set of ODEs:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+r^2 F&#x27;&#x27; + rF&#x27; = n^2 F \\
+G&#x27;&#x27; = -n^2 G 
+\end{align*}
+$$
+</p>
+<p>The ODE for $G(\theta)$ is fairly straightforward to solve. We already know how to solve ODEs of this sort - the general solution is:</p>
+<p class="mathcell">
+$$
+G(\theta) = A \sin n \theta + B \cos n \theta
+$$
+</p>
+<p>However, the ODE for $F(r)$ is more complicated, because while it is still a linear ODE, it has <em>non-constant</em> coefficients. This particular differential equation is actually called the <strong>Euler differential equation</strong>. If you don't know (or need a reminder) for how to solve it, see the relevant section on [the intro differential equations guide](@/differential equations/index.md#special-cases-of-linear-second-order-odes). Here, we will simply state the solution:</p>
+<p class="mathcell">
+$$
+F(r) = r^n + C + D \ln r
+$$
+</p>
+<p>Thus, our general solution becomes:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(r, \theta) &amp;= F(r) G(\theta) \\
+&amp;= (A \cos n \theta + B \sin n \theta)(r^n + C + D \ln r)
+\end{align*}
+$$
+</p>
+<p>Since our solution $u(r, \theta)$ is sinusoidal in $\theta$, it is automatically periodic and thus automatically satisfies $u(r, \theta) = r(\theta + 2\pi)$. We also want to make sure our solution is defined for all $r$, because otherwise $u(r, \theta)$ is defined at not differentiable over the whole domain, and thus would not satisfy Laplace's equation (we would say that the solution would be <em>unphysical</em> in physics). We notice in our solution that as $r \to 0$, $D \ln (r) \to -\infty$, so the solution diverges and becomes non-differentiable at $r = 0$. The only way we can avoid this if we set $D = 0$. We can then absorb the constant $C$ into the rest of the constants $A, B$, so our solution becomes:</p>
+<p class="mathcell">
+$$
+u(r, \theta) = r^n (A \cos n \theta + B \sin n \theta)
+$$
+</p>
+<p>We can write this as a <em>series solution</em> with a Fourier series as:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(r, \theta) &amp;= \sum_{n = 0}^\infty r^n(A_n \cos n \theta + B_n \sin n \theta) \\
+&amp;= \dfrac{A_0}{2} + \sum_{n = 1}^\infty r^n(A_n \cos n \theta + B_n \sin n \theta)
+\end{align*}
+$$
+</p>
+<p>(the $A_0/2$ term is because we switch to summing from $n = 1$ rather than $n = 0$). We can then find the coefficients $A_n, B_n$ by exploiting orthogonality, as before, and substituting our boundary condition $u(a, \theta)$. Thus we find that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+A_n &amp;= \dfrac{1}{\pi} a^{-n} \int_0^{2\pi} h(\theta) \cos n \theta\, d \theta \\
+B_n &amp;= \dfrac{1}{\pi} a^{-n} \int_0^{2\pi} h(\theta) \sin n \theta\, d\theta
+\end{align*}
+$$
+</p><h3 id="solving-laplace-s-equation-in-cylindrical-coordinates">Solving Laplace's equation in cylindrical coordinates</h3>
+<p>The method of solving Laplace's equation in <strong>cylindrical coordinates</strong> is a generalization of the solution in polar coordinates. This is because Laplace's equation in cylindrical coordinates is essentially the same as its form in polar coordinates, plus a second partial derivative in $z$:</p>
+<p class="mathcell">
+$$
+\nabla^2_\text{(cylindrical)}u(r, \theta, z) = \nabla^2_\text{(polar)}u(r, \theta, z=0) + \dfrac{\partial^2 u}{\partial z^2} = 0
+$$
+</p>
+<p>Using the separation of variables procedure, where $u(r, \theta, z) = F(r)G(\theta) Z(z)$, this gives us (after substituting the partial derivatives of $u$ back into Laplace's equation):</p>
+<p class="mathcell">
+$$
+F&#x27;&#x27; GZ + \dfrac{1}{r} F&#x27;GZ + \dfrac{1}{r^2} FG&#x27;&#x27;Z + FGZ&#x27;&#x27; = 0
+$$
+</p>
+<p>Now multiplying by $1/FGZ$ gives us:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{F&#x27;&#x27;}{F}  + \dfrac{1}{r} \dfrac{F&#x27;}{F} + \dfrac{1}{r^2}\dfrac{G&#x27;&#x27;}{G} + \dfrac{Z&#x27;&#x27;
+}{Z} = 0 \\
+\Rightarrow \left(\dfrac{F&#x27;&#x27;}{F}  + \dfrac{1}{r} \dfrac{F&#x27;}{F} + \dfrac{1}{r^2}\dfrac{G&#x27;&#x27;}{G}\right) = -\dfrac{Z&#x27;&#x27;
+}{Z} = -k^2 \\
+\Rightarrow \dfrac{F&#x27;&#x27;}{F}  + \dfrac{1}{r} \dfrac{F&#x27;}{F} + \dfrac{1}{r^2}\dfrac{G&#x27;&#x27;}{G} + k^2 = 0 \\
+\Rightarrow r^2 \left[\dfrac{F&#x27;&#x27;}{F}  + \dfrac{1}{r} \dfrac{F&#x27;}{F} + \dfrac{1}{r^2}\dfrac{G&#x27;&#x27;}{G} + k^2\right] = 0 \\
+r^2\dfrac{F&#x27;&#x27;}{F} +r\dfrac{F&#x27;}{F} + \dfrac{G&#x27;&#x27;}{G} + k^2 r^2 = 0 \\
+\Rightarrow r^2\dfrac{F&#x27;&#x27;}{F} +r\dfrac{F&#x27;}{F} - k^2 r^2 = -\dfrac{G&#x27;&#x27;}{G} = n^2
+\end{align*}
+$$
+</p>
+<p>Where $-k^2, n^2$ are our separation constants. Therefore, we now have a system of three ODEs:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+Z&#x27;&#x27; = k^2 Z \\
+G&#x27;&#x27; = -n^2 \\
+r^2F&#x27;&#x27; +rF&#x27; - (k^2 r^2 + n^2) = 0
+\end{gather*}
+$$
+</p>
+<p>The first two differential equations are fairly simply to solve:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+G(\theta) &amp;= A \cos n\theta + B \sin n\theta \\
+Z(z) &amp;= C e^{k z} + D e^{-kz}
+\end{align*}
+$$
+</p>
+<p>By contrast, the third ODE, which is for $F(r)$, is absolutely <strong>not easy</strong> to solve. The solution can only be expressed in terms of <a href="https://en.wikipedia.org/wiki/Bessel_functions">Bessel function</a>, which are special transcendental functions, typically denoted $J_n(r)$. The solution for $F(r)$ is given by:</p>
+<p class="mathcell">
+$$
+F_n(r) = K_1 r^n + K_2 r^{-n} + K_3\ln(r) + K_4 J_n(kr)
+$$
+</p>
+<p>Where we write $F(r)$ as $F_n(r)$ to capture the $n$ in the Bessel function, and $K_1, K_2, K_3, K_4$ are undetermined constant coefficients. The general solution is therefore:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(r, \theta, z) &amp;= F_n(r) G(\theta) Z(z) \\
+&amp;= \bigg[K_1 r^n + K_2 r^{-n} + K_3\ln(r) + K_4 J_n(kr)\bigg](A \cos n\theta + B \sin n\theta)(C e^{k z} + D e^{-kz})
+\end{align*}
+$$
+</p>
+<p>Again, we may write the most general solution in terms of a series (although in this case, it would be a <em>generalized Fourier series</em>, not a traditional sinusoidal Fourier series). It is also convenient to express the $\theta$ part of the solution using complex exponentials (the Bessel functions have real-valued forms and complex-valued forms), giving us:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(r, \theta, z) &amp;= \sum_{n = 1}^\infty F_n(r) G(\theta) Z(z) \\
+&amp;= \sum_{n = 1}^\infty \bigg[K_1 r^n + K_2 r^{-n} + K_3\ln(r) + K_4 J_n(kr)\bigg](A e^{i(n\theta)} + B e^{-i(n\theta)})(C e^{k z} + D e^{-kz})
+\end{align*}
+$$
+</p><h2 id="bonus-solving-linear-inhomogeneous-pdes">Bonus: solving linear inhomogeneous PDEs</h2>
+<p>In our previous analysis, we focused almost exclusively on <em>homogeneous</em> PDEs. We haven't examined <strong>inhomogeneous PDEs</strong>, such as <strong>Poisson's equation</strong>, the inhomogeneous version of Laplace's equation:</p>
+<p class="mathcell">
+$$
+\nabla^2 u = f(\mathbf{x})
+$$
+</p>
+<p>Where $f(\mathbf{x}) = f(x, y, z)$. The way to solve such inhomogeneous PDEs is to first find the solution to the corresponding <em>homogeneous</em> PDE. In the case of Poisson's equation, its corresponding homogeneous PDE is simply Laplace's equation $\nabla^2 u_h = 0$, where we denoted the solution as $u_h$ to remind us that it is the solution to the <em>homogeneous</em> PDE. </p>
+<p>Then, we add the <em>particular solution</em> to $\nabla^2 u_p = f(\mathbf{x})$, which is <em>a solution</em> that satisfies the inhomogeneous PDE as well as the given boundary conditions. In many cases we can just guess a solution and <em>as long as</em> it satisfies both the PDE (in this case, $\nabla^2 u_p = f(\mathbf{x})$) and the boundary conditions, it is a <em>valid</em> particular solution.</p>
+<p>Finally, combining the two together, the <em>general solution</em> for $u(\mathbf{x})$ given a specific boundary-value problem is given by:</p>
+<p class="mathcell">
+$$
+u(x, t) = u_h(x, t) + u_p(x, t)
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> This procedure <strong>only</strong> works for <strong>linear PDEs</strong>. It <strong>does not work</strong> if the PDE is nonlinear. In fact, this is one of the reasons why nonlinear PDEs are so particularly hard to solve!</p>
+</blockquote>
+<p>To recap, we use a 3-step process for finding a general solution to the boundary-value problem for an inhomogeneous PDE:</p>
+<ol>
+<li>Identify the <em>homogeneous</em> version of the inhomogeneous PDE. For instance, for Poisson's equation $\nabla^2 u = f(\mathbf{x})$, its inhomogeneous version is $\nabla^2 u = 0$.</li>
+<li>Find the general solution to the <em>homogeneous</em> PDE with the given boundary conditions of the problem. In our example, we would solve $\nabla^2 u_h = 0$, which gives the solution $u_h(\mathbf{x})$ for the <em>homogeneous</em> PDE.</li>
+<li>Find a particular solution to the <em>inhomogeneous</em> PDE (our original PDE) with the given boundary conditions of the problem. In our example, this means finding a particular solution $\nabla^2 u_p = f(\mathbf{x})$, which gives the solution $u_p(\mathbf{x})$ for the <em>inhomogeneous</em> PDE.
+<ol>
+<li>In many cases, we can just guess a solution, and as long we check that it satisfies the problem's boundary conditions, it is a perfectly suitable solution</li>
+</ol>
+</li>
+<li>Add the particular solution $u_p$ and the homogeneous general solution $u_h$ to get the <em>general solution</em> $u(\mathbf{x}) = u_p + u_h$ for the boundary-value problem.</li>
+</ol>
+<p>A similar process works for the case of inhomogeneous <em>boundary conditions</em>, where $u(\mathbf{x})$ (and/or its partial derivatives) <em>does not vanish</em> at the boundaries. For instance, consider the 1D wave equation solved over $x \in [0, L], t \in [0, t_\text{end}]$, where we may have inhomogeneous Dirichlet boundary conditions $u(0, 0) = A$ and $u(L, 0) = B$, where $A, B$ are constants as well as an initial condition $u(x, 0) = \psi(x)$. To solve, we add the general solution for the PDE for the <em>homogeneous</em> boundary conditions $u_h(0, 0) = u_h(L, 0) = 0$, and the particular solution for the <em>inhomogeneous</em> boundary conditions $u_p(0, 0) = A, u_p(L, 0) = B$. The sum gives us the <strong>general solution</strong> $u(x, t) = u_h(x, t) + u_p(x, t)$ for the inhomogeneous boundary-value problem.</p>
+<blockquote>
+<p><strong>Note:</strong> Be careful, because the <strong>initial condition</strong> for finding the <strong>homogeneous general solution</strong> may not be zero; rather, it is $u_p(x, 0) = \psi(x) - u_h(x, 0)$. So it is useful to <strong>find the particular solution first</strong>. Of course, this doesn't matter if our PDE is purely spatial (e.g. Poisson's equation), but for the heat equation with sources $\dfrac{\partial u}{\partial t} + \dfrac{\partial^2 u}{\partial x^2} + Q(x, t)$ we definitely want to find the particular solution first, and then solve the homogeneous general solution.</p>
+</blockquote>
+<h3 id="generalized-series-solutions-to-laplace-s-equation">Generalized series solutions to Laplace's equation</h3>
+<p>We saw previously that the particular solutions to Laplace's solution in Cartesian coordinates for a variety of boundary-value problems can be expressed in terms of Fourier series. We can generalize these particular solutions for a <em>more general</em> Fourier series that describes <em>generalized</em> boundary-value problems for the Laplace equation. We will find these generalized series solutions in both Cartesian and polar coordinates.</p>
+<h4 id="generalized-series-solutions-in-2d-and-3d-cartesian-coordinates">Generalized series solutions in 2D and 3D Cartesian coordinates</h4>
+<p>In 3D Cartesian coordinates, we may write out the generalized series solution, using a generalized set of basis functions $u_{mn}(\mathbf{r})$:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u_{mn} &amp;= A_{mn} \sinh(\sqrt{m^2 + n^2}x)\sin(my) \sin(nz) \\
+u(x, y, z) &amp;= \sum_{n = 1}^\infty \sum_{m = 1}^\infty u_{mn} \\
+&amp;= \sum_{n = 1}^\infty \sum_{m = 1}^\infty A_{mn} \sinh(\sqrt{m^2 + n^2}x)\sin(my) \sin(nz)
+\end{align*}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> for 2D Cartesian coordinates, simply reduce by one coordinate by removing the $\sin (nz)$ term, so that the solution only depends on $x$ and $y$.</p>
+</blockquote>
+<p>Where we may find the $A_{mn}$ coefficients, as usual, by exploiting orthogonality. For instance, if we wanted to find the $A_{mn}$ coordintes for the boundary conditionb $u(\pi, y, z) = f(y, z)$, we would have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+A_{mn} \int_0^\pi &amp;\int_0^\pi \, u_{mn}(\pi, y, z) u_{mn}^*(\pi, y, z)\, dz\,dy \\
+&amp;= \int_0^\pi \int_0^\pi f(y, z) u_{mn}(\pi, y, z)\, dz\, dy
+\end{align*}
+$$
+</p>
+<p>For which we may be able to solve for $A_{mn}$ by computing the integral, since the functions $u_{mn}$ form a <strong>complete basis</strong> and are <strong>orthogonal</strong>. This method is general and suitable for not just one specific boundary-value problem, but a variety of boundary-value problems.</p>
+<h4 id="generalized-series-solutions-in-polar-coordinates">Generalized series solutions in polar coordinates</h4>
+<p>We can now do the same thing we did in Cartesian coordinates in <em>polar coordinates</em> instead. In this case, the generalized solution is:</p>
+<p class="mathcell">
+$$
+u(r, \theta) = \dfrac{A_0}{2} + \sum_{n = 1}^\infty (A_n r^n + B_n r^{-n})(C_n \cos n \theta + D_n \sin n \theta)
+$$
+</p>
+<p>Where, as a reminder, the coefficients are given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+C_n &amp;= \dfrac{1}{\pi} a^{-n} \int_0^{2\pi} h(\theta) \cos n \theta\, d \theta \\
+D_n &amp;= \dfrac{1}{\pi} a^{-n} \int_0^{2\pi} h(\theta) \sin n \theta\, d\theta
+\end{align*}
+$$
+</p>
+<p>A special case for this solution is when we are solving Laplace's equation on the <strong>inside of a circle</strong> which has radius $a$, in which case the boundary conditions are defined by:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+u(a, \theta) = h(\theta) \\
+r \in [0, a],\ \theta \in [0, 2\pi]
+\end{gather*}
+$$
+</p>
+<p>Remarkably, in this case, the infinite series not only converges, but we can explicitly evaluate it - it becomes:</p>
+<p class="mathcell">
+$$
+u(r, \theta) = \dfrac{r^2 - a^2}{2\pi} \int_0^{2\pi} \dfrac{h(\phi) d\phi}{r^2 + a^2 - 2 a r \cos (\theta - \phi)}
+$$
+</p>
+<p>We <em>won't</em> go over generalized solutions in cylindrical and spherical coordinates, as they are quite complicated. However, we may use similar methods to what we have already seen.</p>
+<h2 id="appendix-reference-table-of-common-linear-pdes">Appendix: reference table of common linear PDEs</h2>
+<table><thead><tr><th>Type of PDE</th><th>General form</th><th>Solution method(s)</th></tr></thead><tbody>
+<tr><td>Linear first-order PDE with single derivative</td><td>$\small f(x, y) \frac{\partial u}{\partial x} + g(x, y) u = 0$</td><td>Direct (partial) integration</td></tr>
+<tr><td>Linear first-order constant-coefficient PDE</td><td>$\small \alpha \frac{\partial u}{\partial x} + \beta \frac{\partial u}{\partial y} = 0$</td><td>Method of chacteristics, coordinate transformation (change of variables)</td></tr>
+<tr><td>Linear first-order variable-coefficient PDE</td><td>$\small \alpha(x, y) \frac{\partial u}{\partial x} + \beta(x, y) \frac{\partial u}{\partial y} = 0$</td><td>Method of chacteristics, coordinate transformation (change of variables)</td></tr>
+<tr><td>Linear constant-coefficient second-order parabolic PDE</td><td>$\small \alpha \frac{\partial^2 u}{\partial x^2} + \dots = 0$</td><td>Coordinate transform to diffusion equation (heat equation), separation of variables, express solution as series expansion</td></tr>
+<tr><td>Linear constant-coefficient second-order hyperbolic PDE</td><td>$\small \alpha \frac{\partial^2 u}{\partial x^2} - \beta \frac{\partial^2 u}{\partial y^2} + \dots = 0$</td><td>Coordinate transform to wave equation, separation of variables, express solution as series expansion</td></tr>
+<tr><td>Linear constant-coefficient second-order elliptic PDE</td><td>$\small \alpha \frac{\partial^2 u}{\partial x^2} + \beta \frac{\partial^2 u}{\partial y^2} + \dots = 0$</td><td>Coordinate transform to Laplace's equation, separation of variables, express solution as series expansion</td></tr>
+</tbody></table>
+<h2 id="concluding-remarks">Concluding remarks</h2>
+<p>Congratulations, you've made it through the PDEs guide! But this is just a start to learning about PDEs. Many people dedicate their whole lives to the study of partial differential equations - and for good reason, because our understanding of the world depends on them. Some areas that this guide did not cover, but are significant areas of the study of PDEs, are the following:</p>
+<ul>
+<li>Numerical methods for PDEs, such as the finite difference and finite element method</li>
+<li>Nonlinear PDEs, which are very important in fluid mechanics and aerodynamics</li>
+<li>Further applications of partial differential equations in science and engineering</li>
+<li>Software for solving PDEs</li>
+</ul>
+<p>If you're interested, please feel free to read more about those topics. And last but not least - I hope you enjoyed this guide, and that you gained something from it.</p>
+
+        
+        <a id="jump-toc-btn" href="#toc">Show table of contents</a>
+        <a href="/notes" class="return-link">Back to all notes</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        var toc = document.getElementById("toc");
+        var tocPos = toc.offsetTop + toc.offsetHeight;
+        var tocBtn = document.getElementById("jump-toc-btn");
+
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+        // for performance reasons, we **only** render a certain
+        // number of equations that the viewer is actually viewing
+        function VisibleMathRenderer(config) {
+            /*
+            Renders only a limited number of equations on page load
+            to avoid poor performance
+             Params:
+                lastRenderedEquation: the most recently rendered equation.
+                        when this goes out of view, equations under it are rendered. 
+            */
+            var startElement = config.startElement
+            var maxEquations = config.maxEquations ? config?.maxEquations : 30;
+            this.startElement = startElement
+            this.maxEquations = maxEquations
+            // we wait until the user scrolls past the starting/
+            // ending elements to start rendering the whole page
+            this.canRenderWholePage = false;
+            this.pageRendered = false;
+            this.lastRenderedTopEquation = null;
+            this.lastRenderedBottomEquation = null;
+
+            this.render = function() {
+                renderMath(this.startElement);
+                // render previous 25 and following 25 equations
+                var prev = this.startElement.previousElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left prior to the element
+                    if (prev == null) {
+                        break;
+                    }
+                    renderMath(prev);
+                    prev = prev.previousElementSibling;
+                }
+                // store our last rendered equations
+                // we'll track scroll position later to
+                // check when the rest of the page should be rendered
+                this.lastRenderedTopEquation = prev;
+                console.log(this.lastRenderedTopEquation)
+
+                var next = this.startElement.nextElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left following the element
+                    if (next.nextElementSibling == null) {
+                        break;
+                    }
+                    renderMath(next);
+                    next = next.nextElementSibling;
+                }
+                this.lastRenderedBottomEquation = next;
+                // now allow rendering the rest of the equations
+                this.canRenderWholePage = true;
+            }
+
+            // render all math on the whole page
+            this.renderMathOnPage = function() {
+                // don't run until preliminary tasks
+                // are done so that the whole page
+                // can/should be rendered
+                if (!this.canRenderWholePage) {
+                    return;
+                }
+                // if the whole page's worth of equations
+                // are already rendered, don't render more
+                if (this.pageRendered) {
+                    return;
+                }
+                var topBound = this.lastRenderedTopEquation.getBoundingClientRect.top;
+                var bottomBound = this.lastRenderedBottomEquation.getBoundingClientRect.bottom;
+                var scrollTop, scrollBottom = getViewport();
+                // if the user is about to scroll past the initially-rendered equations
+                // we will render the whole page
+                if (scrollTop - 50 + window.scrollY < topBound || scrollBottom + 50 + window.scrollY > bottomBound) {
+                    console.log("Scrolled beyond!")
+                    var article = document.querySelector(".post");
+                    if (article) {
+                        this.renderMath(article);
+                    }
+                    this.pageRendered = true;
+                }
+                
+            }
+            
+        }
+
+        function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        function findFirstRelevantElement() {
+            // finds the first <p> tage that's closest to
+            // the viewer's viewport
+            var regex = /#.*/;
+            var m = regex.exec(window.location.href);
+            if (m !== null) {
+                return document.querySelector(m[0]);
+            } else {
+                return document.querySelector(".post p");
+            }
+        }
+        
+        // initialize page JS components
+        /*
+        var mathRenderer = new VisibleMathRenderer({
+            // start rendering with first <p> tag on the
+            // post
+            startElement: findFirstRelevantElement()
+        });
+        */
+        document.addEventListener("DOMContentLoaded", function() {
+            showTocBtnOnScroll();
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+
+        window.onscroll = function(){
+            // if (!mathRenderer.pageRendered) {
+            //     mathRenderer.renderMathOnPage();
+            // }
+            showTocBtnOnScroll();
+        };
+
+
+    </script>
+    
+
+
+</body>
+
+</html>

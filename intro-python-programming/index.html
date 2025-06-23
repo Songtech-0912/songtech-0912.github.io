@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introduction to Python programming</title>
+  <meta name="description" content=" There are notes taken in CS1100 at RPI, and cover introductory programming using the Python language.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Introduction to Python programming</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+        <details class="toc" id="toc" open>
+        <summary>Table of contents</summary>
+        <p class="toc-info">Note: it is highly recommended to navigate by clicking links in the table of contents! It means you can use the back button in your browser to go back to any section you were reading, so you can jump back and forth between sections!</p>
+        <div>
+            <ul>
+            
+                <li>
+                    <a href="https://jackysci.com/intro-python-programming/#what-is-python">What is Python?</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/intro-python-programming/#first-steps-with-python">First steps with Python</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/intro-python-programming/#python-as-a-calculator">Python as a calculator</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/intro-python-programming/#variables">Variables</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/intro-python-programming/#errors">Errors</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/intro-python-programming/#numerical-types">Numerical types</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/intro-python-programming/#strings">Strings</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="https://jackysci.com/intro-python-programming/#string-gotchas">String gotchas</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/intro-python-programming/#functions">Functions</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/intro-python-programming/#boolean-logic">Boolean logic</a>
+                    
+                </li>
+            
+            </ul>
+        </div>
+        </details>
+        
+
+        <!-- page content -->
+        <p>There are notes taken in CS1100 at RPI, and cover introductory programming using the Python language.</p>
+<span id="continue-reading"></span><h2 id="what-is-python">What is Python?</h2>
+<ul>
+<li>Programming is breaking down a big problem into smaller parts</li>
+<li>It is typically done with a programming language</li>
+<li>Python is an interpreted language - it uses a program to execute commands </li>
+<li>Compiled languages by contrast translate programming code to binary code that is executed by a computer</li>
+</ul>
+<h2 id="first-steps-with-python">First steps with Python</h2>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span style="font-style:italic;color:#abb0b6;"># this is a comment, it is not run
+</span><span style="color:#f07171;">print</span><span>(</span><span style="color:#86b300;">&quot;Hello World!&quot;</span><span>) </span><span style="font-style:italic;color:#abb0b6;"># this prints &quot;Hello World!&quot; to console
+</span></code></pre>
+<h2 id="python-as-a-calculator">Python as a calculator</h2>
+<p>Python supports all the standard operations of a calculator:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#ff8f40;">5 </span><span style="color:#ed9366;">+ </span><span style="color:#ff8f40;">7
+</span><span style="color:#ff8f40;">12 </span><span style="color:#ed9366;">- </span><span style="color:#ff8f40;">5
+</span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">* </span><span style="color:#ff8f40;">6
+</span><span style="color:#ff8f40;">25 </span><span style="color:#ed9366;">/ </span><span style="color:#ff8f40;">5
+</span><span style="font-style:italic;color:#abb0b6;"># for exponentiation
+</span><span style="color:#ff8f40;">6 </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2
+</span></code></pre>
+<p>Usually it's a good idea to use brackets to prevent ambiguities in the order of operations - for instance, does <code>3 / 5 * 2</code> mean <code>(3/5) * 2</code> or <code>3 / (5 * 2</code>? However, if brackets are not used, Python follows the BEDMAS order of operations as in math - that is, first brackets, then exponentiation, then multiplication/division, then addition/subtraction. The one special note is that exponentiation occurs right-to-left: that is <code>5 ** 2 ** 2</code> actually means <code>5 ** (2 ** 2)</code>.</p>
+<h2 id="variables">Variables</h2>
+<p>Variables are declared with a name on the left-hand side of the equal sign and a value on the right hand side. For instance:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span>a </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">5
+</span><span>b </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">9
+</span><span>pi </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">3</span><span style="color:#61676ccc;">.</span><span style="color:#ff8f40;">14159
+</span></code></pre>
+<p>Variables can only be used after they are declared. If you try to use a variable that doesn't exist and wasn't assigned a value, then Python will give an error.</p>
+<p>Python has certain requirements for what it allows as legal variable names. Generally speaking, if a variable name has unusual characters or numbers, or might be confused for a Python keyword, it is most likely invalid.</p>
+<h2 id="errors">Errors</h2>
+<p>There are 2 types of errors possible in programming (generally):</p>
+<ul>
+<li>Syntactical error: code that isn't valid Python syntax and cannot be run</li>
+<li>Semantic error: code that can be run and is syntactically correct, but doesn't perform as expected</li>
+</ul>
+<h2 id="numerical-types">Numerical types</h2>
+<p>Python has 2 numeric types:</p>
+<ul>
+<li>Floats, which represent decimal numbers like 2.35 or 5.0</li>
+<li>Ints, which are whole numbers</li>
+</ul>
+<p>Division always returns a float, and any float in a calculation returns a float.</p>
+<h2 id="strings">Strings</h2>
+<p>Strings are Python's type for representing text. Python strings can use single or double quotes. Anything between the quotes is part of the string. For example, this is valid:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span>msg </span><span style="color:#ed9366;">= </span><span style="color:#86b300;">&quot;Hi!&quot;
+</span></code></pre>
+<p>And this too is valid:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span>msg </span><span style="color:#ed9366;">= </span><span style="color:#86b300;">&#39;Hi!&#39;
+</span></code></pre>
+<p>In addition, you can include single quotes in double quotes, or double quotes in single quotes, as long as you don't mix them. For instance, this is valid:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span style="font-style:italic;color:#abb0b6;"># valid
+</span><span>greeting </span><span style="color:#ed9366;">= </span><span style="color:#86b300;">&quot;Hi there! I&#39;m saying hello!&quot;
+</span><span style="font-style:italic;color:#abb0b6;"># also valid
+</span><span>response </span><span style="color:#ed9366;">= </span><span style="color:#86b300;">&#39;Have you read the book &quot;The Great Gatsby&quot; yet?&#39;
+</span></code></pre>
+<p>But if you mix them it wouldn't work:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span style="font-style:italic;color:#abb0b6;"># invalid
+</span><span>msg </span><span style="color:#ed9366;">= </span><span style="color:#86b300;">&quot;Hi&#39;
+</span></code></pre>
+<p>Multi-line strings use three quotes; they can contain single or double quote characters within them, anything between the three starting quotes and three ending quotes is valid:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span>sonnet </span><span style="color:#ed9366;">= </span><span style="color:#86b300;">&quot;&quot;&quot;
+</span><span style="color:#86b300;">&quot;Love alters not with his brief hours and weeks,&quot;
+</span><span style="color:#86b300;">&#39;But bears it out even to the edge of doom.&#39;
+</span><span style="color:#86b300;">&quot;If this be error and upon me prov&#39;d,&quot;
+</span><span style="color:#86b300;">I never writ, nor no man ever lov&#39;d.
+</span><span style="color:#86b300;">&quot;&quot;&quot;
+</span></code></pre>
+<p>Python also has some special characters to control the print output of a string (what is displayed when you call <code>print()</code> on the string):</p>
+<table><thead><tr><th>Character</th><th>Output</th></tr></thead><tbody>
+<tr><td><code>\n</code></td><td>Creates a new line</td></tr>
+<tr><td><code>\t</code></td><td>Creates a tab</td></tr>
+<tr><td><code>\\</code></td><td>Creates a literal <code>\</code> character</td></tr>
+<tr><td><code>\&quot;</code></td><td>Creates a literal <code>&quot;</code> character</td></tr>
+<tr><td><code>\'</code></td><td>Creates a literal <code>'</code> character</td></tr>
+</tbody></table>
+<h3 id="string-gotchas">String gotchas</h3>
+<p>Python does automatic string concatenation on adjacent strings, so the following code would be valid but is not recommended:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span>msg </span><span style="color:#ed9366;">= </span><span style="color:#86b300;">&quot;Hi!&quot;&#39;my name is Jack&#39;
+</span></code></pre>
+<p>Whichever type of quote you use - single or double - can appear only once at the beginning of the string and once at the end. For instance, this would not be valid:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span>msg </span><span style="color:#ed9366;">= </span><span style="color:#86b300;">&quot;Hi&quot;&quot;
+</span></code></pre>
+<p>You can also repeat a string multiple times using <code>*</code> or concatenate strings with <code>+</code>, like so:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#86b300;">&quot;Hi&quot; </span><span style="color:#ed9366;">* </span><span style="color:#ff8f40;">3 </span><span style="font-style:italic;color:#abb0b6;"># &quot;HiHiHi&quot;
+</span><span style="color:#86b300;">&quot;Hi&quot; </span><span style="color:#ed9366;">+ </span><span style="color:#86b300;">&quot; Jack!&quot; </span><span style="font-style:italic;color:#abb0b6;"># &quot;Hi Jack!&quot;
+</span></code></pre>
+<p>However, this isn't recommended either, because if done improperly it can cause a multitude of errors - <strong>string formatting</strong> (discussed later) is the preferable way to create new strings out of existing strings.</p>
+<h2 id="functions">Functions</h2>
+<p>Functions in Python perform a certain operation. <code>print()</code>, <code>len()</code>, <code>max()</code> are all functions built-in to Python. <code>int()</code>, <code>float()</code>, and <code>str()</code> are built-in functions that convert between types. Functions contain blocks of code that implement functionalities - this could be performing a calculation, opening a window, or creating an image.</p>
+<p>Every function takes in <em>arguments</em> as input and returns a <em>value</em>. When a function is run, we say it is <em>called</em>. For instance, <code>len()</code> has a single argument, and returns a single value. A function to calculate the area of a circle in Python might look like this:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#fa6e32;">def </span><span style="color:#f29718;">area</span><span>(</span><span style="color:#ff8f40;">r</span><span>):
+</span><span>	pi </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">3</span><span style="color:#61676ccc;">.</span><span style="color:#ff8f40;">14159
+</span><span>	</span><span style="color:#fa6e32;">return </span><span>pi </span><span style="color:#ed9366;">* </span><span>r </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2
+</span></code></pre>
+<h2 id="boolean-logic">Boolean logic</h2>
+<p>There are two types to represent logical truths and falsehoods in Python - <code>True</code> and <code>False</code>. There are called booleans. Python uses the <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code> and <code>!=</code> (not equal) operators to compare between different things. For instance, <code>3 &lt; 5</code> would be equal to <code>True</code>. We can also use the <code>==</code> operator to check that two things are equal. For instance, <code>9 == 9</code> would return <code>True</code>, and <code>5 == 6</code> would return <code>False</code>. Python supports three-way comparisons, like <code>1 &lt; 2 &lt; 3</code>.</p>
+<p>On strings, Python boolean operators compare based on alphabetical order. For example <code>&quot;zen&quot; &gt; &quot;apple&quot;</code> is true, because the first letter of zen (z) is after the first letter of apple (a) in the alphabet, and letters later in the alphabet are greater (in terms of booleans). From the same logic, <code>&quot;david&quot; &lt; &quot;flamingo&quot;</code> would also evaluate to true, because d comes before f in the alphabet. In addition, uppercase comes before lowercase, so <code>&quot;Good&quot; &lt; &quot;good&quot;</code> would also be true.</p>
+
+        
+        <a id="jump-toc-btn" href="#toc">Show table of contents</a>
+        <a href="/notes" class="return-link">Back to all notes</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        var toc = document.getElementById("toc");
+        var tocPos = toc.offsetTop + toc.offsetHeight;
+        var tocBtn = document.getElementById("jump-toc-btn");
+
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+        // for performance reasons, we **only** render a certain
+        // number of equations that the viewer is actually viewing
+        function VisibleMathRenderer(config) {
+            /*
+            Renders only a limited number of equations on page load
+            to avoid poor performance
+             Params:
+                lastRenderedEquation: the most recently rendered equation.
+                        when this goes out of view, equations under it are rendered. 
+            */
+            var startElement = config.startElement
+            var maxEquations = config.maxEquations ? config?.maxEquations : 30;
+            this.startElement = startElement
+            this.maxEquations = maxEquations
+            // we wait until the user scrolls past the starting/
+            // ending elements to start rendering the whole page
+            this.canRenderWholePage = false;
+            this.pageRendered = false;
+            this.lastRenderedTopEquation = null;
+            this.lastRenderedBottomEquation = null;
+
+            this.render = function() {
+                renderMath(this.startElement);
+                // render previous 25 and following 25 equations
+                var prev = this.startElement.previousElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left prior to the element
+                    if (prev == null) {
+                        break;
+                    }
+                    renderMath(prev);
+                    prev = prev.previousElementSibling;
+                }
+                // store our last rendered equations
+                // we'll track scroll position later to
+                // check when the rest of the page should be rendered
+                this.lastRenderedTopEquation = prev;
+                console.log(this.lastRenderedTopEquation)
+
+                var next = this.startElement.nextElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left following the element
+                    if (next.nextElementSibling == null) {
+                        break;
+                    }
+                    renderMath(next);
+                    next = next.nextElementSibling;
+                }
+                this.lastRenderedBottomEquation = next;
+                // now allow rendering the rest of the equations
+                this.canRenderWholePage = true;
+            }
+
+            // render all math on the whole page
+            this.renderMathOnPage = function() {
+                // don't run until preliminary tasks
+                // are done so that the whole page
+                // can/should be rendered
+                if (!this.canRenderWholePage) {
+                    return;
+                }
+                // if the whole page's worth of equations
+                // are already rendered, don't render more
+                if (this.pageRendered) {
+                    return;
+                }
+                var topBound = this.lastRenderedTopEquation.getBoundingClientRect.top;
+                var bottomBound = this.lastRenderedBottomEquation.getBoundingClientRect.bottom;
+                var scrollTop, scrollBottom = getViewport();
+                // if the user is about to scroll past the initially-rendered equations
+                // we will render the whole page
+                if (scrollTop - 50 + window.scrollY < topBound || scrollBottom + 50 + window.scrollY > bottomBound) {
+                    console.log("Scrolled beyond!")
+                    var article = document.querySelector(".post");
+                    if (article) {
+                        this.renderMath(article);
+                    }
+                    this.pageRendered = true;
+                }
+                
+            }
+            
+        }
+
+        function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        function findFirstRelevantElement() {
+            // finds the first <p> tage that's closest to
+            // the viewer's viewport
+            var regex = /#.*/;
+            var m = regex.exec(window.location.href);
+            if (m !== null) {
+                return document.querySelector(m[0]);
+            } else {
+                return document.querySelector(".post p");
+            }
+        }
+        
+        // initialize page JS components
+        /*
+        var mathRenderer = new VisibleMathRenderer({
+            // start rendering with first <p> tag on the
+            // post
+            startElement: findFirstRelevantElement()
+        });
+        */
+        document.addEventListener("DOMContentLoaded", function() {
+            showTocBtnOnScroll();
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+
+        window.onscroll = function(){
+            // if (!mathRenderer.pageRendered) {
+            //     mathRenderer.renderMathOnPage();
+            // }
+            showTocBtnOnScroll();
+        };
+
+
+    </script>
+    
+
+
+</body>
+
+</html>

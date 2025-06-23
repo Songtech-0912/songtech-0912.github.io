@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="146.48224mm"
+   height="62.580254mm"
+   viewBox="0 0 146.48224 62.580254"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (b0a8486, 2022-12-01)"
+   sodipodi:docname="mass-driver-diagram.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="true"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="true"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.054001"
+     inkscape:cx="300.28435"
+     inkscape:cy="147.53307"
+     inkscape:window-width="1280"
+     inkscape:window-height="667"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1"
+     showborder="true"
+     borderlayer="true" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-9.7539401,-113.15449)">
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.79375"
+       id="rect840"
+       width="28.433384"
+       height="53.675724"
+       x="44.22216"
+       y="121.66214"
+       ry="1.5411309" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.79375"
+       id="rect950"
+       width="28.433384"
+       height="53.675724"
+       x="58.438854"
+       y="121.66214"
+       ry="1.5411309" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.79375"
+       id="rect954"
+       width="28.433384"
+       height="53.675724"
+       x="72.655548"
+       y="121.66214"
+       ry="1.5411309" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.79375"
+       id="rect956"
+       width="28.433384"
+       height="53.675724"
+       x="86.872238"
+       y="121.66214"
+       ry="1.5411309" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#000000;stroke:none;stroke-width:0.79375"
+       x="57.73037"
+       y="115.56674"
+       id="text1012"><tspan
+         sodipodi:role="line"
+         id="tspan1010"
+         style="fill:#000000;stroke:none;stroke-width:0.79375"
+         x="57.73037"
+         y="115.56674">Electromagnet coils of mass driver</tspan></text>
+    <circle
+       style="fill:#000000;stroke:none;stroke-width:0.79375"
+       id="path1064"
+       cx="128.79442"
+       cy="130.11292"
+       r="2.1130741" />
+    <circle
+       style="fill:#000000;stroke:none;stroke-width:0.79375"
+       id="circle1066"
+       cx="128.79442"
+       cy="161.22011"
+       r="2.1130741" />
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.794;stroke-dasharray:0.794, 0.794;stroke-dashoffset:0"
+       d="M 126.68134,130.11291 44.222159,148.5"
+       id="path1131" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.793999;stroke-dasharray:0.794001, 0.794001;stroke-dashoffset:0"
+       d="m 44.222159,148.5 82.459181,12.72011"
+       id="path1133" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#000000;stroke:none;stroke-width:0.79375"
+       x="130.91679"
+       y="122.41594"
+       id="text1137"><tspan
+         sodipodi:role="line"
+         id="tspan1135"
+         style="fill:#000000;stroke:none;stroke-width:0.79375"
+         x="130.91679"
+         y="122.41594">Twin fuel pellets</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.793999;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 135.48712,130.11291 5.21554,-6.43539"
+       id="path1139" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.793999;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 137.00267,161.22011 7.55951,-34.3249"
+       id="path1141" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.793999;stroke-dasharray:0.793999, 0.793999;stroke-dashoffset:0"
+       d="M 44.222159,148.5 9.7539401,148.88748"
+       id="path1143" />
+  </g>
+</svg>

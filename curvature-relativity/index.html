@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualizing curvature in General Relativity</title>
+  <meta name="description" content=" General Relativity is a theory of gravity that is formulated in a 4-dimensional spacetime. So how do we visualize spacetimes, if they&#x27;re 4D? This article will hopefully explain the mathematics of how one type of visualization, embedding diagrams, work.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Visualizing curvature in General Relativity</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+
+        <!-- page content -->
+        <p>General Relativity is a theory of gravity that is formulated in a 4-dimensional spacetime. So how do we visualize spacetimes, if they're 4D? This article will hopefully explain the mathematics of how one type of visualization, embedding diagrams, work.</p>
+<span id="continue-reading"></span>
+<p>Take the Schwarzschild metric:</p>
+<p class="mathcell">
+$$
+ds^2 = -\left(1 - \frac{R_s}{r}\right) c^2 dt^2 + \frac{1}{\left(1 - \frac{R_s}{r}\right)} dr^2 + r^2 (d\theta^2 + \sin^2 d\phi^2)
+$$
+</p>
+<p>Where:</p>
+<p class="mathcell">
+$$
+R_s = \frac{2GM}{c^2}
+$$
+</p>
+<p>Note that we have a problem: spacetime is 4D, but we can only visualize curvature of a function of two variables embedded in 3D space. So we need to reduce 4D spacetime down 2 dimensions to visualize it effectively. Typically, to do so, we take a 2D slice of 4D spacetime by setting $t = 0$ and $\phi = 0$ (the $\phi$ coordinate because the metric is spherically symmetric, so it'll look the same whichever $\phi$ we choose, which is why we can take any arbitrary slice of it). So the metric becomes:</p>
+<p class="mathcell">
+$$
+ds^2 = \frac{1}{\left(1 - \frac{R_s}{r}\right)} dr^2 + r^2 d\theta^2
+$$
+</p>
+<p>Now, we want to compare this to the metric of our embedding space, which in our case is 3D Euclidean metric in cylindrical coordinates (we chose cylindrical because it was the only coordinate system that contained a $z$ coordinate that we'll need in embedding but also $r$ and $\theta$ that the Schwarzschild metric uses):</p>
+<p class="mathcell">
+$$
+ds^2 = dr^2 + r^2 d\theta^2 + dz^2
+$$
+</p>
+<p>If we rearrange the terms of the Euclidean metric, we get:</p>
+<p class="mathcell">
+$$
+ds^2 = dz^2 + dr^2 + r^2 d\theta^2
+$$
+</p>
+<p>Comparing the similar terms in these two metrics, we can find that:</p>
+<p class="mathcell">
+$$
+dz^2 + dr^2 = \frac{1}{\left(1 - \frac{R_s}{r}\right)} dr^2
+$$
+</p>
+<p>This is a differential equation we can solve for $z$. First, note that:</p>
+<p class="mathcell">
+$$
+dz^2 = \frac{1}{\left(1 - \frac{R_s}{r}\right)} dr^2 - dr^2
+$$
+</p>
+<p>If we factor out $dr^2$, we get:</p>
+<p class="mathcell">
+$$
+dz^2 = dr^2 \left[\frac{1}{1 - \frac{R_s}{r}} -1\right]
+$$
+</p>
+<p>Which means that:</p>
+<p class="mathcell">
+$$
+\left(\frac{dz}{dr}\right)^2 = \left[\frac{1}{1 - \frac{R_s}{r}} -1\right]
+$$
+</p>
+<p>This simplifies to:</p>
+<p class="mathcell">
+$$
+\left(\frac{dz}{dr}\right)^2 = \frac{R_s}{r - R_s}
+$$
+</p>
+<p>So:</p>
+<p class="mathcell">
+$$
+z(r, \theta) = \sqrt{R_s} \int \frac{1}{\sqrt{r - R_s}} dr = 2\sqrt{R_s} \sqrt{r - R_s}
+$$
+</p>
+<p>An interactive 3D plot of this embedding diagram can be found at <a href="https://demonstrations.wolfram.com/SchwarzschildSpaceTimeEmbeddingDiagram/">https://demonstrations.wolfram.com/SchwarzschildSpaceTimeEmbeddingDiagram/</a>.</p>
+<p>Note that the $z$ coordinate in the final embedding diagram has no physical meaning! It is only used as a convenient way for us to grasp the curvature of the space by embedding the 2D curvature into a higher dimension (in our case, 3D). Only the $r$ coordinate (which corresponds to $\sqrt{x^2 + y^2}$) and $\theta$ coordinate have a physical meaning.</p>
+
+        
+        <a href="/" class="return-link">Back to home</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function() {
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+    </script>
+    
+
+
+</body>
+
+</html>

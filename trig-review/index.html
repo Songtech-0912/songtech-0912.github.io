@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes on a review of trigonometry</title>
+  <meta name="description" content=" These are notes taken during RPI&#x27;s MATH 1010 course, relating to a review of trigonometry for calculus.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Notes on a review of trigonometry</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+        <details class="toc" id="toc" open>
+        <summary>Table of contents</summary>
+        <p class="toc-info">Note: it is highly recommended to navigate by clicking links in the table of contents! It means you can use the back button in your browser to go back to any section you were reading, so you can jump back and forth between sections!</p>
+        <div>
+            <ul>
+            
+                <li>
+                    <a href="https://jackysci.com/trig-review/#trigonometric-functions">Trigonometric functions</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/trig-review/#trigonometric-relations">Trigonometric relations</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/trig-review/#the-trig-song-for-remembering-trig-functions">The trig song for remembering trig functions</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/trig-review/#signs-of-the-trig-functions">Signs of the trig functions</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/trig-review/#reference-angles">Reference angles</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/trig-review/#simplifying-angles">Simplifying angles</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/trig-review/#finding-the-trig-values-of-an-arbitrary-angle">Finding the trig values of an arbitrary angle</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/trig-review/#trig-identities">Trig identities</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/trig-review/#solving-trig-equations">Solving trig equations</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/trig-review/#inverse-functions">Inverse functions</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="https://jackysci.com/trig-review/#inverse-trigonometric-functions">Inverse trigonometric functions</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="https://jackysci.com/trig-review/#evaluating-inverse-trigonometric-functions">Evaluating inverse trigonometric functions</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
+        </details>
+        
+
+        <!-- page content -->
+        <p>These are notes taken during RPI's MATH 1010 course, relating to a review of trigonometry for calculus.</p>
+<span id="continue-reading"></span>
+<p>It is recommended to use <code>Ctrl F</code> or the equivalent search function to find the relevant section, as these notes are quite long.</p>
+<h2 id="trigonometric-functions">Trigonometric functions</h2>
+<p>Trigonometric functions are functions of <strong>angles</strong>. An angle is positive when measured counterclockwise from the initial ray, and negative when measured counterclockwise from the initial ray. Calculus typically uses <strong>radians</strong>, where $2\pi$ radians is equal to 360 degrees.</p>
+<table><thead><tr><th>Angle in degree</th><th>Angle in radian</th></tr></thead><tbody>
+<tr><td>0</td><td>0</td></tr>
+<tr><td>$30^\degree$</td><td>$\frac{\pi}{6}$</td></tr>
+<tr><td>$45^\degree$</td><td>$\frac{\pi}{4}$</td></tr>
+<tr><td>$60^\degree$</td><td>$\frac{\pi}{3}$</td></tr>
+<tr><td>$90^\degree$</td><td>$\frac{\pi}{2}$</td></tr>
+</tbody></table>
+<p>Angles in degrees can be converted to radians by multiplying by:</p>
+<p class="mathcell">
+$$
+\frac{\pi}{180}
+$$
+</p>
+<p>Similarly, angles in radians can be converted to degrees by multiplying by:</p>
+<p class="mathcell">
+$$
+\frac{180}{\pi}
+$$
+</p><h2 id="trigonometric-relations">Trigonometric relations</h2>
+<p class="mathcell">
+$$
+\tan \theta = \frac{\sin \theta}{\cos \theta}
+$$
+</p><p class="mathcell">
+$$
+\csc \theta = \frac{1}{\sin \theta}
+$$
+</p><p class="mathcell">
+$$
+\sec \theta = \frac{1}{\cos \theta}
+$$
+</p><p class="mathcell">
+$$
+\cot \theta = \frac{1}{\tan \theta}
+$$
+</p><h2 id="the-trig-song-for-remembering-trig-functions">The trig song for remembering trig functions</h2>
+<p><em>Mr. Darnbrook, wherever you are - countless students will thank you for this song you taught me 5 years ago...</em></p>
+<p>One, two three!</p>
+<p>Three, two, one!</p>
+<p>Two under the bar!</p>
+<p>Square root all that's not one!</p>
+<p>Square root of three over three!</p>
+<p>One, square root of three!</p>
+<p>Now that you know the song!</p>
+<p>You can sing it again, to me!</p>
+<p><em>And this is how you get to this:</em></p>
+<table><thead><tr><th></th><th>30 degrees  / $\frac{\pi}{6}$</th><th>45 degrees $\frac{\pi}{4}$</th><th>60 degrees/ $\frac{\pi}{3}$</th></tr></thead><tbody>
+<tr><td>$\sin$</td><td>$\frac{1}{2}$</td><td>$\frac{\sqrt{2}}{2}$</td><td>$\frac{\sqrt{3}}{2}$</td></tr>
+<tr><td>$\cos$</td><td>$\frac{\sqrt{3}}{2}$</td><td>$\frac{\sqrt{2}}{2}$</td><td>$\frac{1}{2}$</td></tr>
+<tr><td>$\tan$</td><td>$\frac{\sqrt{3}}{3}$</td><td>$1$</td><td>$\sqrt{3}$</td></tr>
+</tbody></table>
+<p><strong>Explanation:</strong></p>
+<p>&quot;One, Two, Three&quot; is the top of the first row of the table</p>
+<p>&quot;Three, Two, One&quot; is the top of the second row</p>
+<p>&quot;Two under the bar&quot; means to make 2 the denominator of every number (so 1 will become $\frac{1}{2}$, 2 will become $\frac{2}{2}$, you get the idea)</p>
+<p>&quot;Square root all that's not one&quot; means to add a square root to every numerator (in rows 1) and 2) that, as you might have guessed, is <strong>not 1</strong>)</p>
+<p>&quot;Square root of three over three&quot; is for the first column of the third row ($\tan 30^\circ$)</p>
+<p>&quot;One, square root of three&quot; is for the second and third columns of the third row ($\tan 45^\circ$ and $\tan 60^\circ$)</p>
+<p>And you've got that done!</p>
+<h2 id="signs-of-the-trig-functions">Signs of the trig functions</h2>
+<p>The trig functions obey:</p>
+<table><thead><tr><th>Quadrant</th><th>Sign</th></tr></thead><tbody>
+<tr><td>Quadrant I</td><td><strong>A</strong>ll are positive</td></tr>
+<tr><td>Quadrant II</td><td><strong>S</strong>ine is positive, rest are negative</td></tr>
+<tr><td>Quadrant III</td><td><strong>T</strong>angent is positive, rest are negative</td></tr>
+<tr><td>Quadrant IV</td><td><strong>C</strong>osine is positive, rest are negative</td></tr>
+</tbody></table>
+<p>You can remember this with the acronym <strong>A</strong>ll <strong>S</strong>tudents <strong>T</strong>ake <strong>C</strong>alculus. For (positive) trig angles greater than $2\pi$, we can find the quadrant of the angle by subtracting the greatest multiple of $2\pi$ - for negative, do the same but add the greatest multiple of $2\pi$.</p>
+<h2 id="reference-angles">Reference angles</h2>
+<p>For all angles in the form:</p>
+<p class="mathcell">
+$$
+\theta = \frac{k\pi}{n}
+$$
+</p>
+<p>The reference angle is:</p>
+<p class="mathcell">
+$$
+\frac{\pi}{n}
+$$
+</p>
+<p>For instance, the reference angle of $\frac{5\pi}{6}$ is $\frac{\pi}{6}$.</p>
+<h2 id="simplifying-angles">Simplifying angles</h2>
+<p>For any angle that is greater than $\pm 2\pi$:</p>
+<p><p class="mathcell">
+$$
+\sin \theta = \sin(\theta \pm 2n\pi)
+$$
+</p>
+<p class="mathcell">
+$$
+\cos \theta = \cos(\theta \pm 2n\pi)
+$$
+</p>
+<p class="mathcell">
+$$
+\tan \theta = \tan(\theta \pm 2n\pi)
+$$
+</p></p>
+<p>where $n$ is any positive integer. Therefore, $\sin\left(\frac{9\pi}{4}\right) = \sin\left(\frac{\pi}{4}\right)$, and $\cos \left(-\frac{11\pi}{3}\right) =  \cos \left(-\frac{5\pi}{3}\right)$. This can be used to simplify a very large angle into a much smaller one that can be more easy to work with.</p>
+<h2 id="finding-the-trig-values-of-an-arbitrary-angle">Finding the trig values of an arbitrary angle</h2>
+<p>Let's say we want to find the value of the trig functions at $\theta = -\frac{3\pi}{4}$.</p>
+<p>First, we know that $-\frac{3\pi}{4}$ is an integer multiple of $\frac{\pi}{4}$, so we know that the reference angle is $\frac{\pi}{4}$.</p>
+<p>We can then use the trig song to find the values of the trig functions at $\frac{\pi}{4}$:</p>
+<p class="mathcell">
+$$
+\sin \frac{\pi}{4} = \frac{\sqrt{2}}{2}
+$$
+</p><p class="mathcell">
+$$
+\cos \frac{\pi}{4} = \frac{\sqrt{2}}{2}
+$$
+</p><p class="mathcell">
+$$
+\tan \frac{\pi}{4} = 1
+$$
+</p>
+<p>But remember that $-\frac{3\pi}{4}$ is  in the 3rd quadrant, where (using &quot;all students take calculus&quot;) only tangent is positive. So we apply the correct signs (-sin, -cos, +tan):</p>
+<p class="mathcell">
+$$
+\sin \left(-\frac{3\pi}{4}\right) = -\frac{\sqrt{2}}{2}
+$$
+</p><p class="mathcell">
+$$
+\cos \left(-\frac{3\pi}{4}\right) = -\frac{\sqrt{2}}{2}
+$$
+</p><p class="mathcell">
+$$
+\cos \left(-\frac{3\pi}{4}\right) = +1 = 1
+$$
+</p><h2 id="trig-identities">Trig identities</h2>
+<p>The Pythagorean identities are easiest to remember. The first pythagorean identity is:</p>
+<p class="mathcell">
+$$
+\sin^2 \theta + \cos^2 \theta = 1
+$$
+</p>
+<p>If we divide both sides by $\cos^2 \theta$ we get the second pythagorean identity:</p>
+<p class="mathcell">
+$$
+1 + \tan^2 \theta = \sec^2 \theta
+$$
+</p>
+<p>Finally, if we add &quot;co&quot; to the second identity (tangent -&gt; &quot;co&quot; tangent, secant -&gt; &quot;co&quot; secant), we get the third:</p>
+<p class="mathcell">
+$$
+1 + \cot^2 \theta = \csc^2 \theta
+$$
+</p>
+<p>Finally, the half-angle and double-angle formulas are useful:</p>
+<p class="mathcell">
+$$
+\cos^2 \theta = \frac{1 + \cos (2\theta)}{2}
+$$
+</p><p class="mathcell">
+$$
+\sin^2 \theta = \frac{1 - \cos (2\theta)}{2}
+$$
+</p><p class="mathcell">
+$$
+\cos (2\theta) = \cos^2 \theta - \sin^2 \theta
+$$
+</p><p class="mathcell">
+$$
+\sin (2\theta) = 2\cos\theta\sin\theta
+$$
+</p><h2 id="solving-trig-equations">Solving trig equations</h2>
+<p>A solution $\theta$ of $\sin \theta = k$ satisfies the fact that if you know one solution $\theta_1$ of the equation, then:</p>
+<p class="mathcell">
+$$
+\theta = \theta_1 \pm 2\pi n
+$$
+</p>
+<p>Similarly, a solution of $\theta_1$ of $\cos \theta = k$ satisfies the fact that if you know one solution $\theta_1$ of the equation, then:</p>
+<p class="mathcell">
+$$
+\theta = \theta_1 \pm 2\pi n
+$$
+</p>
+<p>This is because sine and cosine have <strong>infinite</strong> solutions that are distanced $2\pi$ apart. The same is true for tangent - there are infinite solutions that are distanced $\pi$ apart:</p>
+<p class="mathcell">
+$$
+\theta = \theta_1 \pm \pi n
+$$
+</p>
+<p>For example, if we were to solve $\cos \theta = \frac{1}{2}$, we'd first use the trig song/table to find the values that satisfy that equation. In our case, from the trig song/table, it is clear that:</p>
+<p class="mathcell">
+$$
+\theta_1 = \frac{\pi}{3}
+$$
+</p>
+<p>satisfies the equation. However, it is not the <strong>only</strong> value that satisfies the equation. To find the other values that satisfy the equation in $[0, 2\pi]$, we consider all the integer multiples of our first solution $\theta$ that are within the interval. That is, we have:</p>
+<p class="mathcell">
+$$
+\theta = \theta, 2\theta, 3\theta, \dots n\theta
+$$
+</p>
+<p>In our case, the integer multiple angles of our solution $\theta_1$ within $[0, 2\pi]$ are:</p>
+<p class="mathcell">
+$$
+\frac{\pi}{3}, \frac{2\pi}{3}, \frac{3\pi}{3}, \frac{4\pi}{3}, \frac{5\pi}{3}, \frac{6\pi}{3}
+$$
+</p>
+<p>Now, from these angles, we choose the angles that lie in a quadrant that yield the <strong>same sign</strong> as $\theta_1$ for the given trig function in the problem. For example, if $\theta_1$ was positive, then we'd choose the angles that lie in quadrants 1 and 4, as those quadrants are where cosine (the trig function in the problem) is positive. Likewise, if $\theta_1$ was negative, then we'd choose the integer multiples that lie in quadrants 2 and 3, as those quadrants are where cosine is negative. Adjust this based on the type of trig function used (sine/cosine/tangent) and the sign of $\theta_1$ (+ or -). E.g. if $\theta_1$ is a solution of the tangent function and negative, then we'd choose solutions in quadrants 2 and 4.</p>
+<p>For our case, $\theta_1$ is positive and a solution to the cosine function, so we choose only the angles that lie in quadrants 1 and 4. Therefore, the solutions in $[0, 2\pi]$ are:</p>
+<p class="mathcell">
+$$
+\theta = \frac{\pi}{3}, \frac{5\pi}{3}
+$$
+</p>
+<p>Since there are infinitely many solutions in general, however, it would be more correct to say that:</p>
+<p class="mathcell">
+$$
+\theta = \frac{\pi}{3} \pm 2\pi n, \frac{5\pi}{3} \pm 2\pi n
+$$
+</p><h2 id="inverse-functions">Inverse functions</h2>
+<p>An <strong>inverse function</strong> is a function that undoes the effect of a function. Given a function $f$ and an inverse function $f^{-1}(x)$, then:</p>
+<p><p class="mathcell">
+$$
+f^{-1}(y) = x
+$$
+</p>
+<p class="mathcell">
+$$
+f(x) = y
+$$
+</p></p>
+<p>Note that the &quot;raised to -1&quot; does <strong>not</strong> mean $\frac{1}{f}$. It is a notation to denote the inverse operation.
+An inverse function can be found by swapping $x$ and $y$ in a function, and then solving for $y$. The value of $y$ is the inverse function.
+An inverse function can only be found if a function <em>is</em> a function (passes vertical line test) and is one-to-one (passes horizontal line test).
+Graphically $f^{-1}$ is a reflection of $f$ across $y = x$.</p>
+<h2 id="inverse-trigonometric-functions">Inverse trigonometric functions</h2>
+<p>To find the inverse functions of the trigonometric functions, we must restrict their domain so that on that interval, the trig function is one-to-one.
+For example, we restrict $\sin(\theta)$ to $\theta \in [-\frac{\pi}{2}, \frac{\pi}{2}]$, $\cos(\theta)$ to $\theta \in [0, \pi]$, and $\tan (\theta) = [-\frac{\pi}{2}, \frac{\pi}{2}]$.</p>
+<h3 id="evaluating-inverse-trigonometric-functions">Evaluating inverse trigonometric functions</h3>
+<p>Unlike typical trigonometric functions, inverse trigonometric functions only have <strong>one</strong> possible output for any given input as inverse trig functions are one-to-one.
+Say we were to evaluate $\theta = \cos^{-1}(\frac{1}{2})$. To solve this, we swap $\frac{1}{2}$ and $\theta$, then change the inverse cosine to regular cosine, to get:
+<p class="mathcell">
+$$
+\cos \theta = \frac{1}{2}, \theta \in [0, \pi]
+$$
+</p></p>
+<p>Evidently, the answer is that $\theta = \frac{\pi}{3}$.  You may wonder where we got the bounds from. The bounds for the output of each inverse trigonometric function are (you should memorize this):</p>
+<table><thead><tr><th>Function</th><th>Bounds of $\theta$ (your answer)</th></tr></thead><tbody>
+<tr><td>$\sin^{-1} (x)$</td><td>$[-\frac{\pi}{2}, \frac{\pi}{2}]$</td></tr>
+<tr><td>$\cos^{-1}(x)$</td><td>$[0, \pi]$</td></tr>
+<tr><td>$\tan^{-1} (x)$</td><td>$[-\frac{\pi}{2}, \frac{\pi}{2}]$</td></tr>
+</tbody></table>
+<p>So the format of evaluating inverse trig functions is to swap the $x$ and $\theta$, then set $\theta \in \text{[your bounds]}$, then solve.</p>
+<p>When taking the input of an inverse trig function of a trig function of a value, in the form:
+<p class="mathcell">
+$$
+x = \sin^{-1}(\sin(\theta))
+$$
+</p>
+<p class="mathcell">
+$$
+x = \cos^{-1}(\cos(\theta))
+$$
+</p>
+<p class="mathcell">
+$$
+x = \tan^{-1}(\tan(\theta))
+$$
+</p></p>
+<p>If $\theta$ is within the range of the inverse trig function, $x = \theta$; otherwise, it has to be manually computed.</p>
+
+        
+        <a id="jump-toc-btn" href="#toc">Show table of contents</a>
+        <a href="/notes" class="return-link">Back to all notes</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        var toc = document.getElementById("toc");
+        var tocPos = toc.offsetTop + toc.offsetHeight;
+        var tocBtn = document.getElementById("jump-toc-btn");
+
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+        // for performance reasons, we **only** render a certain
+        // number of equations that the viewer is actually viewing
+        function VisibleMathRenderer(config) {
+            /*
+            Renders only a limited number of equations on page load
+            to avoid poor performance
+             Params:
+                lastRenderedEquation: the most recently rendered equation.
+                        when this goes out of view, equations under it are rendered. 
+            */
+            var startElement = config.startElement
+            var maxEquations = config.maxEquations ? config?.maxEquations : 30;
+            this.startElement = startElement
+            this.maxEquations = maxEquations
+            // we wait until the user scrolls past the starting/
+            // ending elements to start rendering the whole page
+            this.canRenderWholePage = false;
+            this.pageRendered = false;
+            this.lastRenderedTopEquation = null;
+            this.lastRenderedBottomEquation = null;
+
+            this.render = function() {
+                renderMath(this.startElement);
+                // render previous 25 and following 25 equations
+                var prev = this.startElement.previousElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left prior to the element
+                    if (prev == null) {
+                        break;
+                    }
+                    renderMath(prev);
+                    prev = prev.previousElementSibling;
+                }
+                // store our last rendered equations
+                // we'll track scroll position later to
+                // check when the rest of the page should be rendered
+                this.lastRenderedTopEquation = prev;
+                console.log(this.lastRenderedTopEquation)
+
+                var next = this.startElement.nextElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left following the element
+                    if (next.nextElementSibling == null) {
+                        break;
+                    }
+                    renderMath(next);
+                    next = next.nextElementSibling;
+                }
+                this.lastRenderedBottomEquation = next;
+                // now allow rendering the rest of the equations
+                this.canRenderWholePage = true;
+            }
+
+            // render all math on the whole page
+            this.renderMathOnPage = function() {
+                // don't run until preliminary tasks
+                // are done so that the whole page
+                // can/should be rendered
+                if (!this.canRenderWholePage) {
+                    return;
+                }
+                // if the whole page's worth of equations
+                // are already rendered, don't render more
+                if (this.pageRendered) {
+                    return;
+                }
+                var topBound = this.lastRenderedTopEquation.getBoundingClientRect.top;
+                var bottomBound = this.lastRenderedBottomEquation.getBoundingClientRect.bottom;
+                var scrollTop, scrollBottom = getViewport();
+                // if the user is about to scroll past the initially-rendered equations
+                // we will render the whole page
+                if (scrollTop - 50 + window.scrollY < topBound || scrollBottom + 50 + window.scrollY > bottomBound) {
+                    console.log("Scrolled beyond!")
+                    var article = document.querySelector(".post");
+                    if (article) {
+                        this.renderMath(article);
+                    }
+                    this.pageRendered = true;
+                }
+                
+            }
+            
+        }
+
+        function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        function findFirstRelevantElement() {
+            // finds the first <p> tage that's closest to
+            // the viewer's viewport
+            var regex = /#.*/;
+            var m = regex.exec(window.location.href);
+            if (m !== null) {
+                return document.querySelector(m[0]);
+            } else {
+                return document.querySelector(".post p");
+            }
+        }
+        
+        // initialize page JS components
+        /*
+        var mathRenderer = new VisibleMathRenderer({
+            // start rendering with first <p> tag on the
+            // post
+            startElement: findFirstRelevantElement()
+        });
+        */
+        document.addEventListener("DOMContentLoaded", function() {
+            showTocBtnOnScroll();
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+
+        window.onscroll = function(){
+            // if (!mathRenderer.pageRendered) {
+            //     mathRenderer.renderMathOnPage();
+            // }
+            showTocBtnOnScroll();
+        };
+
+
+    </script>
+    
+
+
+</body>
+
+</html>

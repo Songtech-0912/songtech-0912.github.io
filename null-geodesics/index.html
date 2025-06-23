@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Null Geodesics</title>
+  <meta name="description" content=" It has always been an aim of mine to write a physically-based black hole path tracer. However, before doing that, I thought I would take on an easier challenge - plotting the orbits of photons around Kerr black holes, but with code generalizable to any black hole spacetime.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Null Geodesics</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+
+        <!-- page content -->
+        <p>It has always been an aim of mine to write a physically-based black hole path tracer. However, before doing that, I thought I would take on an easier challenge - plotting the orbits of photons around Kerr black holes, but with code generalizable to any black hole spacetime.</p>
+<span id="continue-reading"></span>
+<p>It should be noted that we are using units of $G = c = 1$ here.</p>
+<p>First, we need to write out the Kerr metric. The metric is given by:</p>
+<p class="mathcell">
+$$
+g_{\mu\nu} = \begin{pmatrix}
+	-(1 - \frac{2 M r}{\Sigma}) &amp; 0 &amp; 0 &amp; -\frac{2 M r a \sin^2 \theta}{\Sigma} \\
+	0 &amp; \frac{\Sigma}{\Delta} &amp; 0 &amp; 0 \\
+	0 &amp; 0 &amp; \Sigma &amp; 0 \\
+	-\frac{2 M r a \sin^2 \theta}{\Sigma} &amp; 0 &amp; 0 &amp; (r^2 + a^2 + \frac{2 M r a^2}{\Sigma} \sin^2 \theta) \sin^2 \theta
+\end{pmatrix}
+$$
+</p>
+<p>Where:</p>
+<p><p class="mathcell">
+$$
+a = \frac{J}{M}
+$$
+</p>
+<p class="mathcell">
+$$
+\Sigma = r^2 + a^2 \cos^2 \theta
+$$
+</p>
+<p class="mathcell">
+$$
+\Delta = r^2 - 2Mr + a^2
+$$
+</p></p>
+<p>And the inverse metric is given by:</p>
+<p class="mathcell">
+$$
+g^{\mu\nu} = \begin{pmatrix}
+	-\frac{1}{\Delta} (r^2 + a^2 + \frac{2 M r a^2}{\Sigma} \sin^2 \theta) &amp;
+		0 &amp;
+		0 &amp;
+		-\frac{2 M r a}{\Delta \Sigma} \\
+	0 &amp; \frac{\Delta}{\Sigma} &amp; 0 &amp; 0 \\
+	0 &amp; 0 &amp; \frac{1}{\Sigma} &amp; 0 \\
+	-\frac{2 M r a}{\Delta \Sigma} &amp;
+		0 &amp; 
+		0 &amp; 
+		\frac{1}{\Delta \sin^2 \theta} (1 - \frac{2 M r}{\Sigma})
+\end{pmatrix}
+$$
+</p>
+<p>So, in code, we have:</p>
+<pre data-lang="py" style="background-color:#fafafa;color:#61676c;" class="language-py "><code class="language-py" data-lang="py"><span style="color:#fa6e32;">def </span><span style="color:#f29718;">kerr_metric</span><span>(</span><span style="color:#ff8f40;">coords</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">M</span><span style="color:#ed9366;">=</span><span style="color:#ff8f40;">2e30</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">a</span><span style="color:#ed9366;">=</span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">.</span><span style="color:#ff8f40;">97</span><span>):
+</span><span>    t </span><span style="color:#ed9366;">= </span><span>coords[</span><span style="color:#ff8f40;">0</span><span>]
+</span><span>    r </span><span style="color:#ed9366;">= </span><span>coords[</span><span style="color:#ff8f40;">1</span><span>]
+</span><span>    theta </span><span style="color:#ed9366;">= </span><span>coords[</span><span style="color:#ff8f40;">2</span><span>]
+</span><span>    phi </span><span style="color:#ed9366;">= </span><span>coords[</span><span style="color:#ff8f40;">3</span><span>]
+</span><span>    sigma </span><span style="color:#ed9366;">= </span><span>r </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">+ </span><span>a </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">* </span><span>torch</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">cos</span><span>(theta) </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2
+</span><span>    delta </span><span style="color:#ed9366;">= </span><span>r </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">- </span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">* </span><span>M </span><span style="color:#ed9366;">* </span><span>r </span><span style="color:#ed9366;">+ </span><span>a </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2
+</span><span>    </span><span style="color:#fa6e32;">return </span><span>torch</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">tensor</span><span>([
+</span><span>        [</span><span style="color:#ed9366;">-</span><span>(</span><span style="color:#ff8f40;">1 </span><span style="color:#ed9366;">- </span><span>(</span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">* </span><span>M </span><span style="color:#ed9366;">* </span><span>r) </span><span style="color:#ed9366;">/</span><span>sigma)</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">., </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">., </span><span style="color:#ed9366;">-</span><span>((</span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">* </span><span>M </span><span style="color:#ed9366;">* </span><span>r </span><span style="color:#ed9366;">* </span><span>a </span><span style="color:#ed9366;">* </span><span>torch</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">sin</span><span>(theta) </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2</span><span>) </span><span style="color:#ed9366;">/ </span><span>sigma)]</span><span style="color:#61676ccc;">,
+</span><span>        [</span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">., </span><span>sigma </span><span style="color:#ed9366;">/ </span><span>delta</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">., </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">.</span><span>]</span><span style="color:#61676ccc;">,
+</span><span>        [</span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">., </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">., </span><span>sigma</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">.</span><span>]</span><span style="color:#61676ccc;">,
+</span><span>        [</span><span style="color:#ed9366;">-</span><span>((</span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">* </span><span>M </span><span style="color:#ed9366;">* </span><span>r </span><span style="color:#ed9366;">* </span><span>a </span><span style="color:#ed9366;">* </span><span>torch</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">sin</span><span>(theta) </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2</span><span>) </span><span style="color:#ed9366;">/ </span><span>sigma)</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">., </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">., </span><span>(r </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">+ </span><span>a </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">+ </span><span>(</span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">* </span><span>M </span><span style="color:#ed9366;">* </span><span>r </span><span style="color:#ed9366;">* </span><span>a </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2</span><span>)</span><span style="color:#ed9366;">/</span><span>sigma </span><span style="color:#ed9366;">* </span><span>torch</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">sin</span><span>(theta) </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2</span><span>) </span><span style="color:#ed9366;">* </span><span>torch</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">sin</span><span>(theta) </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2</span><span>]
+</span><span>    ])
+</span><span>
+</span><span style="color:#fa6e32;">def </span><span style="color:#f29718;">kerr_inverse_metric</span><span>(</span><span style="color:#ff8f40;">coords</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">M</span><span style="color:#ed9366;">=</span><span style="color:#ff8f40;">2e30</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">a</span><span style="color:#ed9366;">=</span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">.</span><span style="color:#ff8f40;">97</span><span>):
+</span><span>    </span><span style="font-style:italic;color:#abb0b6;"># Based off https://www.roma1.infn.it/teongrav/onde19_20/kerr.pdf
+</span><span>    t </span><span style="color:#ed9366;">= </span><span>coords[</span><span style="color:#ff8f40;">0</span><span>]
+</span><span>    r </span><span style="color:#ed9366;">= </span><span>coords[</span><span style="color:#ff8f40;">1</span><span>]
+</span><span>    theta </span><span style="color:#ed9366;">= </span><span>coords[</span><span style="color:#ff8f40;">2</span><span>]
+</span><span>    phi </span><span style="color:#ed9366;">= </span><span>coords[</span><span style="color:#ff8f40;">3</span><span>]
+</span><span>    sigma </span><span style="color:#ed9366;">= </span><span>r </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">+ </span><span>a </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">* </span><span>torch</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">cos</span><span>(theta) </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2
+</span><span>    delta </span><span style="color:#ed9366;">= </span><span>r </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">- </span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">* </span><span>M </span><span style="color:#ed9366;">* </span><span>r </span><span style="color:#ed9366;">+ </span><span>a </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2
+</span><span>    </span><span style="color:#fa6e32;">return </span><span>torch</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">tensor</span><span>([
+</span><span>        [</span><span style="color:#ed9366;">-</span><span style="color:#ff8f40;">1 </span><span style="color:#ed9366;">/ </span><span>delta </span><span style="color:#ed9366;">* </span><span>(r </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">+ </span><span>a </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">+ </span><span>(</span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">* </span><span>M </span><span style="color:#ed9366;">* </span><span>r </span><span style="color:#ed9366;">* </span><span>a </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2</span><span>) </span><span style="color:#ed9366;">/ </span><span>sigma </span><span style="color:#ed9366;">* </span><span>torch</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">sin</span><span>(theta) </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2</span><span>)</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">., </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">., </span><span style="color:#ed9366;">-</span><span>(</span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">* </span><span>M </span><span style="color:#ed9366;">* </span><span>r </span><span style="color:#ed9366;">* </span><span>a) </span><span style="color:#ed9366;">/ </span><span>(sigma </span><span style="color:#ed9366;">* </span><span>delta)]</span><span style="color:#61676ccc;">,
+</span><span>        [</span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">., </span><span>delta </span><span style="color:#ed9366;">/ </span><span>sigma</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">., </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">.</span><span>]</span><span style="color:#61676ccc;">,
+</span><span>        [</span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">., </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">., </span><span style="color:#ff8f40;">1 </span><span style="color:#ed9366;">/ </span><span>sigma</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">.</span><span>]</span><span style="color:#61676ccc;">,
+</span><span>        [</span><span style="color:#ed9366;">-</span><span>(</span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">* </span><span>M </span><span style="color:#ed9366;">* </span><span>r </span><span style="color:#ed9366;">* </span><span>a) </span><span style="color:#ed9366;">/ </span><span>(sigma </span><span style="color:#ed9366;">* </span><span>delta)</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">., </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">., </span><span>(delta </span><span style="color:#ed9366;">- </span><span>a </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">* </span><span>torch</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">sin</span><span>(theta) </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2</span><span>) </span><span style="color:#ed9366;">/ </span><span>(sigma </span><span style="color:#ed9366;">* </span><span>delta </span><span style="color:#ed9366;">* </span><span>torch</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">sin</span><span>(theta) </span><span style="color:#ed9366;">** </span><span style="color:#ff8f40;">2</span><span>)]
+</span><span>    ])
+</span></code></pre>
+<p>Next, we will calculate Christoffel symbols by automatic differentiation of the metric tensor. To do this, we compute the Jacobian matrix of the metric tensor. Recall that the Jacobian matrix of a vector valued function, in tensor index notation, is given by:</p>
+<p class="mathcell">
+$$
+J_{mn} = \frac{\partial F_m}{\partial x^n}
+$$
+</p>
+<p>The metric tensor, however, is a matrix-valued function, so we need to add an additional index to the Jacobian, giving:</p>
+<p class="mathcell">
+$$
+J_{\alpha \mu \nu} = \frac{\partial g_{\mu \nu}}{\partial x^\alpha}
+$$
+</p>
+<p>We can then write the Christoffel symbols in terms of the Jacobian:</p>
+<p class="mathcell">
+$$
+\Gamma^\mu_{\gamma \delta} = \frac{1}{2} g^{\mu \eta} \left(
+\frac{\partial g_{\gamma \eta}}{\partial x^\delta} + \frac{\partial g_{\eta \delta}}{\partial x^\gamma} - \frac{\partial g_{\gamma \delta}}{\partial x^\eta}\right) = \frac{1}{2} g^{\mu \eta} (J_{\gamma \eta \delta} + J_{\eta \delta \gamma} - J_{\gamma \delta \eta})
+$$
+</p>
+<p>Or with a change of indices:</p>
+<p class="mathcell">
+$$
+\Gamma^\beta_{\mu \nu} = \frac{1}{2} g^{\beta \alpha} (J_{\mu \alpha \nu} + J_{\eta \alpha \mu} - J_{\mu \nu \alpha})
+$$
+</p>
+<p>This is some code I took from <a href="https://github.com/AndreaAntoniali/Riemann-tensor-calculator/blob/main/Riemann_Calculations.ipynb">here</a> and modified that calculates the Christoffel symbols in the way outlined:</p>
+<pre data-lang="py" style="background-color:#fafafa;color:#61676c;" class="language-py "><code class="language-py" data-lang="py"><span style="color:#fa6e32;">def </span><span style="color:#f29718;">calculate_christoffel</span><span>(</span><span style="color:#ff8f40;">jacob</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">g_inv</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">dims</span><span>):
+</span><span>    </span><span style="font-style:italic;color:#abb0b6;"># based on https://github.com/AndreaAntoniali/Riemann-tensor-calculator/blob/main/Riemann_Calculations.ipynb
+</span><span>    gamma </span><span style="color:#ed9366;">= </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">zeros</span><span>((dims</span><span style="color:#61676ccc;">, </span><span>dims</span><span style="color:#61676ccc;">, </span><span>dims))
+</span><span>    </span><span style="color:#fa6e32;">for </span><span>beta </span><span style="color:#fa6e32;">in </span><span style="color:#f07171;">range</span><span>(dims):
+</span><span>        </span><span style="color:#fa6e32;">for </span><span>mu </span><span style="color:#fa6e32;">in </span><span style="color:#f07171;">range</span><span>(dims):
+</span><span>            </span><span style="color:#fa6e32;">for </span><span>nu </span><span style="color:#fa6e32;">in </span><span style="color:#f07171;">range</span><span>(dims):
+</span><span>                </span><span style="color:#fa6e32;">for </span><span>alpha </span><span style="color:#fa6e32;">in </span><span style="color:#f07171;">range</span><span>(dims):
+</span><span>                    gamma[beta,mu,nu] </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">1</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">* </span><span>g_inv[alpha][beta] </span><span style="color:#ed9366;">* </span><span>(jacob[alpha][mu][nu] </span><span style="color:#ed9366;">+ </span><span>jacob[alpha][nu][mu] </span><span style="color:#ed9366;">- </span><span>jacob[mu][nu][alpha])
+</span><span>    </span><span style="color:#fa6e32;">return </span><span>gamma
+</span><span>
+</span><span style="color:#fa6e32;">def </span><span style="color:#f29718;">christoffel_at_point_4d</span><span>(</span><span style="color:#ff8f40;">metric</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">inverse_metric</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">t</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">r</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">theta</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">phi</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">dims</span><span>):
+</span><span>    coord </span><span style="color:#ed9366;">= </span><span>torch</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">tensor</span><span>([t</span><span style="color:#61676ccc;">, </span><span>r</span><span style="color:#61676ccc;">, </span><span>theta</span><span style="color:#61676ccc;">, </span><span>phi]</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">requires_grad</span><span style="color:#ed9366;">=</span><span style="color:#ff8f40;">True</span><span>)
+</span><span>    g_inv </span><span style="color:#ed9366;">= </span><span style="color:#f29718;">inverse_metric</span><span>(coord)
+</span><span>    jacobian </span><span style="color:#ed9366;">= </span><span>torch</span><span style="color:#ed9366;">.</span><span>autograd</span><span style="color:#ed9366;">.</span><span>functional</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">jacobian</span><span>(metric</span><span style="color:#61676ccc;">, </span><span>coord</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">create_graph</span><span style="color:#ed9366;">=</span><span style="color:#ff8f40;">True</span><span>)
+</span><span>    </span><span style="color:#fa6e32;">return </span><span style="color:#f29718;">calculate_christoffel</span><span>(jacobian</span><span style="color:#61676ccc;">, </span><span>g_inv</span><span style="color:#61676ccc;">, </span><span>dims)
+</span></code></pre>
+<p>Now, we can finally solve the geodesic equations. However, firstly, we want to rewrite the typical geodesic equations in a slightly differing form:</p>
+<p class="mathcell">
+$$
+\frac{d^2 x^\mu}{ds^2} = -\Gamma^\mu_{\alpha \beta} \frac{dx^\alpha}{ds} \frac{dx^\beta}{ds}
+$$
+</p>
+<p>Here, note the use of the Einstein summation convention; $i$ and $j$ are summation (dummy) indices, so we have to fully expand out the summations in our code. The geodesic equation describes a system of equations, one equation each for $(t, r, \theta, \phi)$. Therefore, to simplify our code, we group the equations together as a vector. Additionally, because it is a <em>second</em>-order equation, we also need to keep track of the 4 components of velocity, one each for $(v_t, v_r, v_\theta, v_\phi)$. So we have a vector of 8 components that stores all the position and velocity information of our solution to the differential equation:</p>
+<pre data-lang="py" style="background-color:#fafafa;color:#61676c;" class="language-py "><code class="language-py" data-lang="py"><span style="color:#fa6e32;">def </span><span style="color:#f29718;">kerr_d_ds</span><span>(</span><span style="color:#ff8f40;">X</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">s</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">metric</span><span style="color:#ed9366;">=</span><span>kerr_metric</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">inverse_metric</span><span style="color:#ed9366;">=</span><span>kerr_inverse_metric):
+</span><span>        </span><span style="font-style:italic;color:#abb0b6;">&quot;&quot;&quot;
+</span><span style="font-style:italic;color:#abb0b6;">        The value of the first and second
+</span><span style="font-style:italic;color:#abb0b6;">        derivatives with respect to an affine
+</span><span style="font-style:italic;color:#abb0b6;">        parameter s
+</span><span style="font-style:italic;color:#abb0b6;">        &quot;&quot;&quot;
+</span><span>        </span><span style="font-style:italic;color:#abb0b6;"># Create a new vector to hold the positions and velocities
+</span><span>        u </span><span style="color:#ed9366;">= </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">zeros</span><span>(X</span><span style="color:#ed9366;">.</span><span>shape)
+</span><span>        </span><span style="font-style:italic;color:#abb0b6;"># X is a vector with 4 components of position
+</span><span>        </span><span style="font-style:italic;color:#abb0b6;"># and 4 components of velocity
+</span><span>        x </span><span style="color:#ed9366;">= </span><span>X[</span><span style="color:#61676ccc;">:</span><span style="color:#ff8f40;">4</span><span>]
+</span><span>        velocities </span><span style="color:#ed9366;">= </span><span>X[</span><span style="color:#ff8f40;">4</span><span style="color:#61676ccc;">:</span><span>]
+</span><span>        </span><span style="font-style:italic;color:#abb0b6;"># Find christoffel symbols given the position and the metric
+</span><span>        </span><span style="font-style:italic;color:#abb0b6;"># here t is coordinate time, not the affine parameter s, and
+</span><span>        </span><span style="font-style:italic;color:#abb0b6;"># also not the proper time
+</span><span>        x0, x1, x2, x3 </span><span style="color:#ed9366;">= </span><span>x
+</span><span>        Gamma </span><span style="color:#ed9366;">= </span><span style="color:#f29718;">christoffel_at_point_4d</span><span>(metric</span><span style="color:#61676ccc;">, </span><span>inverse_metric</span><span style="color:#61676ccc;">, </span><span>x0</span><span style="color:#61676ccc;">, </span><span>x1</span><span style="color:#61676ccc;">, </span><span>x2</span><span style="color:#61676ccc;">, </span><span>x3</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">4</span><span>)
+</span><span>        </span><span style="font-style:italic;color:#abb0b6;"># Given the christoffel symbols, calculate the next position
+</span><span>        </span><span style="color:#fa6e32;">for </span><span>mu </span><span style="color:#fa6e32;">in </span><span style="color:#f07171;">range</span><span>(</span><span style="color:#ff8f40;">4</span><span>):
+</span><span>            </span><span style="color:#fa6e32;">for </span><span>i </span><span style="color:#fa6e32;">in </span><span style="color:#f07171;">range</span><span>(</span><span style="color:#ff8f40;">4</span><span>):
+</span><span>                </span><span style="color:#fa6e32;">for </span><span>j </span><span style="color:#fa6e32;">in </span><span style="color:#f07171;">range</span><span>(</span><span style="color:#ff8f40;">4</span><span>):
+</span><span>                    </span><span style="font-style:italic;color:#abb0b6;"># Solve for x components
+</span><span>                    </span><span style="font-style:italic;color:#abb0b6;"># we sum due to the Einstein summation convention
+</span><span>                    u[mu] </span><span style="color:#ed9366;">+= -</span><span>Gamma[mu][i][j] </span><span style="color:#ed9366;">* </span><span>velocities[i] </span><span style="color:#ed9366;">* </span><span>velocities[j]
+</span><span>        </span><span style="font-style:italic;color:#abb0b6;"># Solve for v components
+</span><span>        u[</span><span style="color:#ff8f40;">4</span><span style="color:#61676ccc;">:</span><span>] </span><span style="color:#ed9366;">= </span><span>velocities
+</span><span>        </span><span style="color:#fa6e32;">return </span><span>u
+</span></code></pre>
+<p>We then write a basic RK4 solver to finally solve:</p>
+<pre data-lang="py" style="background-color:#fafafa;color:#61676c;" class="language-py "><code class="language-py" data-lang="py"><span style="color:#fa6e32;">def </span><span style="color:#f29718;">rk4</span><span>(</span><span style="color:#ff8f40;">f</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">u0</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">t0</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">tf</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">n</span><span>):
+</span><span>    t </span><span style="color:#ed9366;">= </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">linspace</span><span>(t0</span><span style="color:#61676ccc;">, </span><span>tf</span><span style="color:#61676ccc;">, </span><span>n</span><span style="color:#ed9366;">+</span><span style="color:#ff8f40;">1</span><span>)
+</span><span>    u </span><span style="color:#ed9366;">= </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">zeros</span><span>((n</span><span style="color:#ed9366;">+</span><span style="color:#ff8f40;">1</span><span style="color:#61676ccc;">, </span><span style="color:#f07171;">len</span><span>(u0)))
+</span><span>    u[</span><span style="color:#ff8f40;">0</span><span>] </span><span style="color:#ed9366;">= </span><span>u0
+</span><span>    h </span><span style="color:#ed9366;">= </span><span>t[</span><span style="color:#ff8f40;">1</span><span>]</span><span style="color:#ed9366;">-</span><span>t[</span><span style="color:#ff8f40;">0</span><span>]
+</span><span>    </span><span style="color:#fa6e32;">for </span><span>i </span><span style="color:#fa6e32;">in </span><span style="color:#f29718;">tqdm</span><span>(</span><span style="color:#f07171;">range</span><span>(n)):
+</span><span>        k1 </span><span style="color:#ed9366;">= </span><span>h </span><span style="color:#ed9366;">* </span><span style="color:#f29718;">f</span><span>(u[i]</span><span style="color:#61676ccc;">, </span><span>t[i])    
+</span><span>        k2 </span><span style="color:#ed9366;">= </span><span>h </span><span style="color:#ed9366;">* </span><span style="color:#f29718;">f</span><span>(u[i] </span><span style="color:#ed9366;">+ </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">.</span><span style="color:#ff8f40;">5 </span><span style="color:#ed9366;">* </span><span>k1</span><span style="color:#61676ccc;">, </span><span>t[i] </span><span style="color:#ed9366;">+ </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">.</span><span style="color:#ff8f40;">5</span><span style="color:#ed9366;">*</span><span>h)
+</span><span>        k3 </span><span style="color:#ed9366;">= </span><span>h </span><span style="color:#ed9366;">* </span><span style="color:#f29718;">f</span><span>(u[i] </span><span style="color:#ed9366;">+ </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">.</span><span style="color:#ff8f40;">5 </span><span style="color:#ed9366;">* </span><span>k2</span><span style="color:#61676ccc;">, </span><span>t[i] </span><span style="color:#ed9366;">+ </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">.</span><span style="color:#ff8f40;">5</span><span style="color:#ed9366;">*</span><span>h)
+</span><span>        k4 </span><span style="color:#ed9366;">= </span><span>h </span><span style="color:#ed9366;">* </span><span style="color:#f29718;">f</span><span>(u[i] </span><span style="color:#ed9366;">+ </span><span>k3</span><span style="color:#61676ccc;">, </span><span>t[i] </span><span style="color:#ed9366;">+ </span><span>h)
+</span><span>        u[i</span><span style="color:#ed9366;">+</span><span style="color:#ff8f40;">1</span><span>] </span><span style="color:#ed9366;">= </span><span>u[i] </span><span style="color:#ed9366;">+ </span><span>(k1 </span><span style="color:#ed9366;">+ </span><span style="color:#ff8f40;">2</span><span style="color:#ed9366;">*</span><span>(k2 </span><span style="color:#ed9366;">+ </span><span>k3 ) </span><span style="color:#ed9366;">+ </span><span>k4) </span><span style="color:#ed9366;">/ </span><span style="color:#ff8f40;">6
+</span><span>    </span><span style="color:#fa6e32;">return </span><span>u, t
+</span></code></pre>
+<p>Now it's time to set up the initial conditions. Our initial radius will be a radius of $6M$, with a polar angle $\theta_0 = \frac{\pi}{4}$ and an azimuthal angle $\phi_0 = 0$. These are arbitrary; so long as the photon doesn't start close to the event horizon, it doesn't matter where it starts. Then, we set our velocities $v_r = 1$ (by definition, as $c = 1$), and $v_\theta = v_\phi = 0$ (also by definition, as the speed of light must be $c$). We then integrate to find the geodesics.</p>
+
+        
+        <a href="/" class="return-link">Back to home</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function() {
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+    </script>
+    
+
+
+</body>
+
+</html>

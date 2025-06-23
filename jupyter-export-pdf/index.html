@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to export PDFs from Jupyter notebooks</title>
+  <meta name="description" content=" It can be a huge hassle trying to export a jupyter notebook to a PDF - there are some ways that involve needing to download hundreds of megabytes (or even gigabytes!) of packages! So I thought I would share the way I use, a very simple way that doesn&#x27;t involve needing to install anything and is incredibly fast and simple.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>How to export PDFs from Jupyter notebooks</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+
+        <!-- page content -->
+        <p>It can be a huge hassle trying to export a jupyter notebook to a PDF - there are some ways that involve needing to download hundreds of megabytes (or even gigabytes!) of packages! So I thought I would share the way I use, a very simple way that doesn't involve needing to install <em>anything</em> and is incredibly fast and simple.</p>
+<span id="continue-reading"></span>
+<p>In the past, Jupyter notebooks allowed printing the notebook directly from the browser. This was very convenient; exporting PDFs from the browser took just 2 clicks. But starting with Jupyter notebook version 7, this option no longer worked. So instead, I came up with another method based on <a href="https://stackoverflow.com/a/78390381">this StackOverflow answer</a>.</p>
+<p>The first step is to export your Jupyter notebook as an HTML file. To do so, go to the toolbar, and press <code>File &gt; Save and Export Notebook As &gt; HTML</code>. A picture of this is shown below:</p>
+<img class="natural-img" src=.&#x2F;export-html-demo.png alt="A picture of the toolbar in Jupyter notebook&#x27;s interface, where you click the File &gt; Save and Export Notebook As &gt; HTML" />
+<p>Jupyter should then automatically prepare an HTML file and download it for you. Locate the downloaded HTML file and move it to <strong>the same directory as your Jupyter notebook</strong>. This is important to make sure that you don't break any relative links (especially for images). Then, you can just use <code>Ctrl + P</code> (or <code>Command + P</code> on macs) to print the webpage as a PDF. I recommend setting the scale in the print dialog to be ~85% as the default setting makes for very large text on the PDF. Then save the PDF wherever you want - and you're done! A quick, easy method that is (relatively) hassle-free and doesn't require installing <em>anything</em> whatsoever.</p>
+
+        
+        <a href="/" class="return-link">Back to home</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function() {
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+    </script>
+    
+
+
+</body>
+
+</html>
