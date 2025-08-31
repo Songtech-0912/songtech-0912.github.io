@@ -848,7 +848,7 @@ Or more elegantly with tensors as well as the Einstein summation convention:
 E^2 = P_\mu P^\mu = \underbrace{P_t P^t}_{E_0^2} + P_xP^x + P_y P^y + P_z P^z
 {% end %}
 
-### General relativity
+## General relativity
 
 Up to this point, we have remained fully within the constraints of special relativity, which, as we recall, governs the behavior of _non-accelerating reference frames_. However, there are clearly accelerating reference frames in the Universe! For these, we must use the theory of **General Relativity** (GR). While we will not go into depth on General Relativity, we will take a brief tour and introduce some of its fundamental concepts.
 
@@ -870,7 +870,7 @@ The equations that govern spacetime (and correspondingly how all coordinates cha
 G_{\mu \nu} + \Lambda g_{\mu \nu} = \dfrac{8\pi G}{c^4} T_{\mu \nu}
 {% end %}
 
-Where $G_{\mu \nu}$ is a tensor that describes the _curvature_ of spacetime, $\Lambda$ is called the **cosmological constant**, and $T_{\mu \nu}$ is an extension of the four-momentum. A full explanation of general relativity is very complicated. But for those readers interested, see [this online astronomy textbook's chapter on GR](https://galaxiesbook.org/chapters/C.-General-Relativity.html), which contains a concise but still accurate summary of General Relativity.
+Where $G_{\mu \nu}$ is a tensor that describes the _curvature_ of spacetime, $\Lambda$ is called the **cosmological constant**, and $T_{\mu \nu}$ is an extension of the four-momentum. A full explanation of general relativity is very complicated. But for those readers interested, see [this online astronomy textbook's chapter on GR](https://galaxiesbook.org/chapters/C.-General-Relativity.html), which contains a concise but still accurate summary of General Relativity. You may also like my book [Special & General Relativity](https://learntheoreticalphysics.com/relativity/), which covers both special and general relativity in detail.
 
 ## Next steps
 

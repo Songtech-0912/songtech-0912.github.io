@@ -390,3 +390,7 @@ Using the invariance of the dot product of a 4-vector, that is, $\mathbf{P} \cdo
 	- Use conservation of momentum $p = p_1 + p_2$ and conservation of energy $E = E_1 + E_2$
 	- Use the fact that $\frac{v}{c} = \frac{pc}{E}$
 	- Square an energy conservation equation and expand using the energy-momentum relation to cancel out the momentum
+
+## More about special relativity
+
+We've come to the end of this (very) introductory treatment of special relativity. For more on special relativity, see the [advanced classical mechanics guide](@/advanced-classical-mech/index.md), and for more on both special and general relativity, you might like reading my (free) online book [Special & General Relativity](https://learntheoreticalphysics.com/relativity/).

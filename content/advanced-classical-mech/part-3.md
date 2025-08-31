@@ -1813,3 +1813,12 @@ Indeed, as the theoretical physicist Sidney Coleman put so aptly:
 > "The career of a young theoretical physicist consists of treating the harmonic oscillator in ever-increasing levels of abstraction."
 
 Learn to solve the harmonic oscillator in its many forms, and it will take you far.
+
+## Further reading
+
+We've now reached the end of our series on special relativity and classical mechanics. But there is much more to learn! An understanding of classical mechanics would be incomplete without also learning electromagnetic theory, for which you can see the [fundamentals of  electromagnetism](@/electromagnetism/index.md) and [in-depth electromagnetism](@/classical-electromagnetism/index.md) guides. For more resources to learn classical mechanics, the famous (and free!) [Feynman lectures on physics, vol. 1](https://www.feynmanlectures.caltech.edu/) are a wonderful learning resource, as our [Michael Fowler's lecture notes](https://galileoandeinstein.phys.virginia.edu/7010/home.html) on classical mechanics (though the latter is at a graduate level and may be more suited for advanced students).
+
+Last but not least, classical mechanics is not the end of physics! For more on relativity, you might like my (free) online book [Special & General Relativity](https://learntheoreticalphysics.com/relativity/). And once you're ready to tackle quantum mechanics, feel free to check out the [introductory quantum mechanics](@/intro-quantum-phys.md) and [in-depth quantum mechanics](@/quantum-mechanics/index.md) guides. I'd like to end with a quote by the great physicist [Richard Feynman](https://en.wikipedia.org/wiki/Richard_Feynman), which captures the spirit of learning physics (as well as anything else!) brilliantly:
+
+> "Nobody ever figures out what life is all about, and it doesn't matter. Explore the world. Nearly everything is really interesting if you go into it deeply enough."
+> **Richard Feynman**
