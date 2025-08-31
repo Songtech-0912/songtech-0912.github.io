@@ -9,7 +9,7 @@ This a mini-book on quantum mechanics at a beginner's level, with topics covered
 
 ## Why quantum theory?
 
-{{ natural_img(src="https://cdn10.picryl.com/photo/2014/12/31/niels-bohr-standing-at-blackboard-principal-investigatorproject-analog-conversion-85f94c-1024.jpg", desc="An image of physicist Niels Bohr, an early proponent of quantum mechanics, standing at a whiteboard") }}
+![An image of physicist Niels Bohr, an early proponent of quantum mechanics, standing at a whiteboard](https://cdn10.picryl.com/photo/2014/12/31/niels-bohr-standing-at-blackboard-principal-investigatorproject-analog-conversion-85f94c-1024.jpg)
 
 _Niels Bohr doing quantum mechanics - [source](https://nara.getarchive.net/media/niels-bohr-standing-at-blackboard-principal-investigatorproject-analog-conversion-85f94c)_
 
@@ -1882,4 +1882,4 @@ Introductory quantum mechanics covers only a tiny part of the much larger landsc
 - Quantum cosmology, quantum thermodynamics, and other advanced topics
 - Quantum gravity and a possible quantum theory of everything
 
-Some very useful resources are the free courses at MIT OpenCourseWare, the _Theoretical Minimum_ series (and associated YouTube lectures) of Leonard Susskind, the _In a Nutshell_ books by A. Zee, and of course, the standard texts by David Griffiths, namely _Introduction to Quantum Mechanics_ and _Introduction to Elementary Particles_. The quantum world is mysterious - but at the same time, endlessly fascinating, and richly rewarding to learn. 
+If you would like to learn more about quantum physics, you might enjoy reading my more advanced [in-depth quantum mechanics guide](@/quantum-mechanics/index.md), or if you would like to jump even more ahead, you might like my [free book on quantum field theory](https://learntheoreticalphysics.com/quantum-field-theory/). In addition, some very useful external resources are the free courses at MIT OpenCourseWare, the _Theoretical Minimum_ series (and associated YouTube lectures) of Leonard Susskind, the _In a Nutshell_ books by A. Zee, and of course, the standard texts by David Griffiths, namely _Introduction to Quantum Mechanics_ and _Introduction to Elementary Particles_. The quantum world is mysterious - but at the same time, endlessly fascinating, and richly rewarding to learn.
