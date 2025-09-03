@@ -12,6 +12,8 @@ LaTeX is a powerful language used for writing academic papers. In this article, 
 
 In this article, there will be one code block for the LaTeX code, as well as one equation block right after with the rendered results.
 
+> **UPDATE:** See my dedicated [8-page guide to LaTeX](https://codeberg.org/elaraproject/elara-labs/raw/branch/main/tutorial-for-latex.pdf) for a more in-depth guide.
+
 ## Basic equations
 
 Variables in LaTeX can be written much as you'd expect:
