@@ -1,7 +1,6 @@
 +++
 title = "In-Depth Quantum Mechanics"
 date = 2025-08-31
-draft = false
 +++
 
 This is a guide to quantum mechanics beyond the basics, and is a follow-up to [introductory quantum physics](@/intro-quantum-phys.md). Topics convered include state-vectors, Hilbert spaces, intrinsic spin and the Pauli matrices, the hydrogen atom in detail, the quantum harmonic oscillator, time-independent perturbation theory, and a basic overview of second quantization and relativistic quantum mechanics.
