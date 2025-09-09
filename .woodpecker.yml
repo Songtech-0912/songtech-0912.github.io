@@ -19,7 +19,7 @@ steps:
   build:
     image: alpine:edge
     commands:
-      - apk add zola
+      - apk add zola=0.19.2
       - zola build
     when:
       event: [push, pull_request, manual]
