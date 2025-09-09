@@ -1468,3 +1468,1381 @@ As we have seen, the free and bound charges give us a way to express the total e
 Gauss's law for free charges is one of the four **Maxwell equations in matter**, which we will soon see more of. Maxwell's equations in matter allow us to describe the fields inside dielectrics (and inside matter in general), something that would be very hard to do with the standard Maxwell equations.
 
 > **Note:** In any problem involving dielectrics, one can also find the _total_ charge by adding up the free charge and bound charge, and then use the conventional form of Gauss's law ($\nabla \cdot \mathbf{E} = \rho/\varepsilon_0$) to calculate the field. However, this presumes that you _know_ the bound charge, which is typically not the case.
+
+## Magnetostatics
+
+When charges are in motion, we observe that another field arises that influences surrounding charges. We call this field the **magnetic field**, denoted by the symbol $\mathbf{B}$. Since the magnetic field is a _vector field_, it is a function of position, that is, $\mathbf{B} = \mathbf{B}(x, y, z)$. Furthermore, when a great number of charges are moving together, such that we can effectively consider it a continuous flow of charge, we observe a **current**. We define a current $I$ as the charge passing through a chosen cross-sectional area (e.g. cross-section of a wire) per unit time, where $I = \dfrac{dQ}{dt}$.
+
+> **Note for the interested reader:** We will find later that the magnetic field is actually a side-effect of special relativity. In relativistic mechanics, the magnetic field is the result of a charge's electric field that is in a **moving reference frame** relative to the observer. This results in what appears to be _moving charge_ which looks like it creates a separate _magnetic_ field, but it is **not** a distinct field as it is the same field as the electric field. 
+
+A  static current (also called *steady-state current*) (which requies that $I = \text{const.}$) creates a **magnetostatic field**, a special kind of magnetic field that _does not depend_ on time. A magnetostatic field (which we will simply refer to as the "magnetic field" for the remainder of our discussion of magnetostatics) is given by:
+
+{% math() %}
+d\mathbf{B} = \dfrac{\mu_0}{4\pi} \dfrac{I \vec{d\ell} \times \hat r'}{|\mathbf{r}-\mathbf{r}'|^2} = \dfrac{\mu_0}{4\pi} \dfrac{I \vec{d\ell} \times (\mathbf{r} - \mathbf{r}')}{|\mathbf{r}-\mathbf{r}'|^3}
+{% end %}
+
+Where $\mathbf{r}$ is the position vector, $\mathbf{r}'$ is the location of an infinitesimal portion of current $I \vec{d\ell}$, and $\hat r' = \dfrac{\mathbf{r} - \mathbf{r}'}{|\mathbf{r} - \mathbf{r}'|}$ is the vector pointing from the location of the infinitesimal portion of current to the position vector. We show this below:
+
+{{ diagram(
+	src="biot-savart.excalidraw.svg"
+	desc="A diagram of the Biot-Savart law"
+)}}
+
+The magnetic field, in general, must be found by integration of $d\mathbf{B}$ across the *entirety* of the current-carrying region (which is usually a wire, although it can also be a conductor's surface or some volume of charge). *If* the current-carrying region is a wire, then the integration must occur across the entire length of the wire, so the integral is a _line integral_ across all infinitesimal length segments of the wire $d\vec \ell$, as shown below:
+
+{% math() %}
+\mathbf{B} = \int \limits_\text{wire} d\mathbf{B} = \int \limits_\text{wire} \dfrac{\mu_0}{4\pi} \dfrac{I \vec{d\ell} \times \hat r'}{|\mathbf{r}-\mathbf{r}'|^2} = \int \limits_\text{wire} \dfrac{\mu_0}{4\pi} \dfrac{I \vec{d\ell} \times (\mathbf{r} - \mathbf{r}')}{|\mathbf{r}-\mathbf{r}'|^3}
+{% end %}
+
+> **Note:** Let us again emphasize that the integral **must** be performed over $d\vec \ell$ - it is a _line integral_, and $d\vec \ell$ is the line element to integrate over.
+
+While computation of the magnetic field can be extremely tedious, we often find that there are symmetries that make at least one component of the magnetic field zero. This is because the magnetic field is **always perpendicular** to the _current direction_ and the _separation vector_, meaning that $\mathbf{B} \perp I d\vec \ell$ and $\mathbf{B} \perp (\mathbf{r} - \mathbf{r}')$. Thus, the magnetic field is **zero** in any direction that is parallel to the current direction, and also **zero** in any direction that is parallel to the separation vector.
+
+### Current density
+
+We find that in many physical situations, the distribution of charge is dependent on position. Thus, it is more helpful to define a **current density** $\mathbf{J}(x, y, z)$ as well as a **charge density** $\rho(x, y, z)$. The two quantities are related by:
+
+{% math() %}
+\mathbf{J} = \dfrac{\partial I}{\partial A} = \rho \mathbf{v}
+{% end %}
+
+Where $\mathbf{v}$ is the **current velocity** - the velocity of the steady-flow of the current, and $A$ is the surface area.
+
+> **Note:** in the special case that the current flows across the surface of a conductor, then the charge density $\rho$ becomes the *surface charge densit*y $\sigma$, which we have seen before in electrostatics. Likewise, if the current flows across a 1-dimensional curve (such as a wire), then the charge density $\rho$ becomes the *linear charge density* $\lambda$.
+
+Additionally, in some cases, we can also define a quantity known as the **surface current**, which is usually written as $\mathbf{K}$, which is the current per unit length:
+
+{% math() %}
+\mathbf{K} = \dfrac{dI}{dL}
+{% end %}
+
+We will also cover two advanced topics that we will come back to later (but are not strictly necessary for magnetostatics. It is important to note that the current density satisfies the **conservation of charge**. Within a given volume $V$ that is a closed region, then the conservation of charge may be expressed as:
+
+{% math() %}
+\iint \limits_\text{closed} \mathbf{J} \cdot d\mathbf{A} = \iiint_V (\nabla \cdot \mathbf{J})\, dV = \iiint_V \rho\, dV
+{% end %}
+
+Which can be written as the differential **continuity equation**:
+
+{% math() %}
+\dfrac{\partial \rho}{\partial t} + \nabla \cdot \mathbf{J} = 0
+{% end %}
+
+In addition, the *most general* form of the Biot-Savart law can also be written using the current density as:
+
+{% math() %}
+\mathbf{B} = \int\dfrac{\mu_0}{4\pi} \dfrac{\mathbf{J}(\mathbf{r}') \times (\mathbf{r} - \mathbf{r}')}{|\mathbf{r} - \mathbf{r}'|^3} dV'
+{% end %}
+
+### Magnetic force
+
+The magnetic field results in a **magnetic force** $\mathbf{F}_B$ exerted in all surrounding charges, which may be calculated in either of the following ways:
+
+{% math() %}
+\begin{align*}
+d\mathbf{F}_B &= I d\vec\ell \times \mathbf{B} \\
+&= \mathbf{J} \times \mathbf{B}\, dV
+\end{align*}
+{% end %}
+
+Both of the previous formulae require integration (over all $d\vec \ell$ in the first formula, and over all $dV$ in the second formula), _except_ in special situations. In the case of perfect line charges, that is, charges arranged along a straight line with length vector $\vec L$, then we have:
+
+{% math() %}
+\mathbf{F}_B = I \vec L \times \mathbf{B}
+{% end %}
+
+We will now do something unusual. We find that if we take the divergence of $\mathbf{B}$ from the Biot-Savart law, we find that it has zero divergence:
+
+{% math() %}
+\nabla \times \mathbf{B} = 0
+{% end %}
+
+This means that unlike electric charges, where we observe single point charges, **there are no magnetic charges** (sometimes also called "there are no magnetic _monopoles_"). The closest to a magnetic charge is a **magnetic dipole**, which is formed by a combination of two oppositely-charged charges. The perfect dipole is often used as a primitive model of a bar magnet as it exhibits two "poles", often called the magnetic _north pole_ and _south pole_ for mostly geographic and historical reasons. However, it is important to remember that poles are _just labels_ and a dipole, is (as far as we understand) an indivisible unit that cannot be "cut" into two poles.
+
+### Using the Biot-Savart law
+
+To use the Biot-Savart law, we may start from the most general form of the law, written in terms of the current density for a charge distribution:
+
+{% math() %}
+\mathbf{B} = \dfrac{\mu_0}{4\pi} \int \dfrac{\mathbf{J}(\mathbf{r}') \times (\mathbf{r} - \mathbf{r}')}{|\mathbf{r} - \mathbf{r}'|^3}\, dV'
+{% end %}
+
+For steady-state currents, as we saw, the Biot-Savart law reduces to:
+
+{% math() %}
+\mathbf{B} = \dfrac{\mu_0 I}{4\pi} \int \dfrac{\vec{d\ell} \times (\mathbf{r} - \mathbf{r}')}{|\mathbf{r} - \mathbf{r}'|^3}
+{% end %}
+
+Consider the case of finding the magnetic field at a distance $r$ from the axis of a wire of length $L$. The integration for Biot-Savart law would then be between $x = -L/2$ and $x = L/2$, and the end result after simplifying is:
+
+{% math() %}
+\mathbf{B} = \int_{-L/2}^{L/2} \dfrac{\mu_0 I}{4\pi} \dfrac{r dx'}{(x'^2 + r^2)^{3/2}}
+{% end %}
+
+Similarly, consider a circular wire loop of radius $R$ that "opens" to the $\hat x$ direction. The magnetic field along the center line of the loop is purely along $x$, and is given by:
+
+{% math() %}
+B_x = \dfrac{\mu_0 I}{2} \dfrac{R^2}{(R^2 + x^2)^{3/2}}
+{% end %}
+
+Such a circular wire loop is also called a **dipole loop**, as the field produced by an ideal, infinitely-small loop (as $R \to 0$) approaches a field proportional to that of an ideal **magnetic dipole**:
+
+{% math() %}
+B \sim \dfrac{\mu_0 I}{2 r^3}
+{% end %}
+
+> **Note:** This is significant as *any* static magnetic field viewed far from their source would also resemble such a dipole field. This means that the ideal magnetic dipole is a good approximation for a variety of different magnetic fields in the limit of long distances. In fact, we can model the Earth's magnetic field - as well as the magnetic field of a bar magnet - as a magnetic dipole, and this is a reasonable approximation as long as we are not "too close".
+
+## Ampère's law
+
+While the Biot-Savart law gives correct results, it is in many cases extremely tedious to use. We find that in many problems that have some sort of **symmetry**, we may alternatively use **Ampère's law** to find the magnetic field. Ampère's law is given by:
+
+{% math() %}
+\oint \limits_\text{loop} \mathbf{B} \cdot d\mathbf{r} = \mu_0 I_\text{enc.}
+{% end %}
+
+Where the integral is a _line integral_ around a closed loop we draw in space, also called an **Amperian loop**, which _encloses_ some amount of current $I_\text{enc.}$. Ampère's law comes in handy when the magnetic field have some sort of _symmetry_. When the magnetic field is rotationally-symmetric or translationally-symmetric, we can identify an Amperian loop that "wraps around" the field and gives a nice expression for the magnetic field.
+
+> **Note:** When the current-carrying loop is a wire of non-uniform current _density_, then the enclosed current must be integrated over the _cross-sectional area_ of the wire by $I_\text{enc} = \displaystyle \oint \mathbf{J} \cdot d\mathbf{A}$. This usually only matters if we *cannot* make the assumption that the current-carrying loop is a wire of negligible thickness.
+
+Ampère's law is very useful when we encounter a variety of different problems, because it leads to a nice analytical solution. To determine *when* it should be applied, watch out for the **keywords** _"symmetric"_, _"(infinitely) long/large"_ and _"(infinitely) thin"_ (does not have to be infinite). These keywords indicate that we can use Ampère's law, because it can be solved whenever we have  relatively long/large objects, relatively thin objects, or relatively uniform and symmetric objects.
+
+For instance, consider the case of a long wire. We want to find the magnetic field at a distance $r$ from the axis of a wire, just as we did for Biot-Savart's law. But in this particular case, we are able to make the assumption that the wire is *much* longer than $r$. This allows us to pick a _circular_ Amperian loop: a circular path of radius $r$ and circumference $2\pi r$ that wraps around the field. Since the magnetic field vectors and the path are _perfectly aligned_, then $\mathbf{B} \cdot d\mathbf{r}$ = $B\, dr$. And since the magnetic field is constant at all points along the loop, we have:
+
+{% math() %}
+\oint \limits_\text{loop} \mathbf{B} \cdot d\mathbf{r} = \int \limits _\text{circle} B\, dr =  2\pi r B = \mu_0 I
+{% end %}
+
+Thus the magnetic field of the perfect current-carrying wire becomes:
+
+{% math() %}
+\mathbf{B} = \dfrac{\mu_0 I}{2\pi r} \hat \theta
+{% end %}
+
+Where $\hat \theta$ is the unit vector pointing tangent to the loop. This leads to an important result: the magnetic field around a current-carrying wire *loops around* the wire. In fact, we can determine the direction of the magnetic field without needing to use any mathematics. Instead, we can use the **right-hand thumb rule**. Simply point your thumb in the direction of current flow; the direction your fingers curl is the direction of the magnetic field! We illustrate this below:
+
+![A demonstration of the right-hand thumb rule for currents](https://blogs.wizklub.com/wp-content/uploads/2023/09/right-thumb-rule-768x528.png)
+
+_Source: [Wizklub Future](https://blogs.wizklub.com/question-answers/what-is-the-right-hand-thumb-rule-for-determining-the-direction-of-the-magnetic-field/)_
+
+Another important configuration in magnetostatics is the ideal **solenoid**, a type of _electromagnet_. Consider a wire wrapped $N$ times in a circular fashion around a tube of length $L$, as shown in the drawing below:
+
+{{ diagram(
+	src="solenoid-field.excalidraw.svg"
+	desc="Magnetic field lines in a solenoid. The field lines are pointing along the x-axis, perpendicular to the current through the coils"
+) }}
+
+If we consider just one turn of wire and draw a rectangular Amperian loop within the field (shown above), the only portion of the loop parallel to the magnetic field is the bottom edge of the loop. Since there are $N$ turns in total, the length of the bottom of the loop must be $L/N$, so Ampère's law becomes:
+
+{% math() %}
+\oint \limits_\text{loop} \mathbf{B} \cdot d\mathbf{r} = \int \limits _\text{edge} B\, dx = \dfrac{BL}{N} = \mu_0 I
+{% end %}
+
+Rearranging yields:
+
+{% math() %}
+\mathbf{B} = \mu_0\dfrac{NI}{L}\hat x = \mu_0 nI \hat x
+{% end %}
+
+Where $n \equiv N/L$ is the number of turns _per unit length_. Note that the magnetic field of an ideal solenoid is very special because it is a **constant** field, which is very useful for many applications.
+
+### Common solutions for magnetic fields with Ampère's law
+
+Ampere's law unfortunately only has analytical solutions in specific cases: exclusively those that have some sort of symmetry in the problem that can be exploited to draw an Amperian loop that encloses the current. However, these solutions are useful approximations for the fields of more complicated objects, and we will list them below (along with a few other common formulas).
+
+#### The infinitely-long wire
+
+Let us first consider the magnetic field *outside* an infinitely-long wire carrying current $I$ of arbitrary thickness. Here, we use cylindrical coordinates $(r, \theta, x)$, where the wire is aligned along the $+x$ axis. We pick our Amperian loop to be a circle of radius $r$ around the wire. This gives:
+
+{% math() %}
+\oint \mathbf{B} \cdot d\mathbf{r} = 2\pi r B
+{% end %}
+
+Since the enclosed current in the loop is just $I$, Ampère's law gives:
+
+{% math() %}
+\mathbf{B} = \dfrac{\mu_0 I}{2\pi r} \hat \theta
+{% end %}
+
+> **Note:** Once again, when we say "infinitely long", we generally mean that it is an approximation for a relatively long object, as infinitely long objects of course do not exist.
+
+#### The cylindrical solenoid
+
+Let us now consider an infinitely-long cylindrical solenoid aligned along $+x$ axis of length $L$ carrying current $I$ with $N$ turns (which we have seen before). We want to find the magnetic field *inside* the solenoid. We again use cylindrical coordinates $(r, \theta, x)$, as in the infinitely-long wire case. We pick our Amperian loop to be a square loop with side lengths $L$ parallel to the $x$ axis, which is half-inside and half-outside the solenoid. This gives:
+
+{% math() %}
+\oint \mathbf{B} \cdot d\mathbf{r} = LB
+{% end %}
+
+Since the solenoid has $N$ loops which each carry current $I$, the total enclosed current is given by $I_\text{total} = NI$. Ampère's law thus tells us that the magnetic field is given by:
+
+{% math() %}
+\mathbf{B} = \mu_0 \dfrac{NI}{L} \hat x = \mu_0 nI \hat x, \quad n \equiv N/L
+{% end %}
+
+Note that in the case that the solenoid is aligned along an **arbitrary** axis $\mathbf{b}$, this solution can be generalized to:
+
+{% math() %}
+\mathbf{B} = \mu_0 \dfrac{NI}{L} \hat{\mathbf{b}} = \mu_0 nI \hat{\mathbf{b}}
+{% end %}
+
+> **Note for the interested reader:** the field **outside** an ideal solenoid is zero, since we assume that the solenoid is infinitely-long. The reason why is that if we draw an Amperian loop that is completely outside a solenoid, it doesn't inclose any current whatsoever, so by Ampere's law the magnetic field must also be zero! (For a real cylindrical solenoid, the exterior magnetic field is not exactly zero but is comparatively weak compared to its interior field.)
+
+#### The toroidal solenoid
+
+In addition to a cylindrical solenoid, we can also consider the magnetic field *inside* a toroidal solenoid. We consider a toroidal solenoid of inner radius $a$, outer radius $b$, carrying current $I$ with $N$ turns. Here, we can use **polar coordinates** $(r, \theta)$ since the toroidal solenoid is axially-symmetric (basically, it can be treated as effectively flat for our purposes, so we don't need a full 3D coordinate system).
+
+We pick an Amperian loop given by a circle of radius $r$ that passes around the solenoid, where $a  < r < b$. The result from the line integral is thus:
+
+{% math() %}
+\oint \mathbf{B} \cdot d\mathbf{r} = 2\pi rB
+{% end %}
+
+The total enclosed current is $I_\text{total} = NI$ (since we have $N$ loops each carrying current $I$), so the total magnetic field is given by:
+
+{% math() %}
+\mathbf{B} = \dfrac{\mu_0 NI}{2\pi r} \hat \theta
+{% end %}
+
+### Problems that cannot be analytically solved with Ampère's law
+
+While Ampère's law is powerful, and the examples we have shown might make it seem like it would work for any situation, it is in practice only analytically-solvable in a few special cases. The issue arises due to the line integral on the left-hand side of Ampère's law, $\displaystyle \oint \mathbf{B} \cdot d\mathbf{r}$. In all our previous cases, we could make the assumption that this line integral reduces to:
+
+{% math() %}
+\oint \mathbf{B} \cdot d\mathbf{r} = B \oint_C dr
+{% end %}
+
+Where $C$ is the Amperian loop we choose for the specific problem, $\displaystyle \oint_C dr$ is just a fancy way of finding the total length of the loop (for instance, for a circle this would just be its circumference $2\pi r$). But it turns out that **we cannot always make this assumption**. In fact, this assumption is *only valid* when we have a problem with Cartesian, polar, cylindrical, or spherical symmetry! Otherwise, the dot product $\mathbf{B} \cdot d\mathbf{r} = |B||dr| \cos \theta$ will need to include a $\cos \theta$ term (as per the standard dot product formula), and in general, the angle $\theta$ is a function of *position*, meaning that it *cannot* be factored out of the integral.
+
+It would indeed be possible to solve non-symmetrical problems with Ampère's law on a computer using numerical methods, but an analytical solution (at least, an *exact* solution) cannot be found. This is why we say that in most cases, Ampère's law cannot give us an analytical solution, and we have to fall back to using the longer and more cumbersome Biot-Savart law instead. As the computation of integrals with the Biot-Savart law is frequently quite laborious, we may refer to the below table of solutions to common field configurations:
+
+| Physical situation                                                                                            | Magnetic field                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Outside finite wire carrying current $I$ of length $L$ aligned along $+x$ axis                                | $\mathbf{B} = -\frac{\mu_0 I}{4\pi}\frac{\hat \theta}{r}\left(\frac{(x-L)}{\sqrt{r^2+(x-L)^2}}-\frac{(x+L)}{\sqrt{r^2+(x+L)^2}}\right)$ |
+| Circular loop of wire with radius $R$ with current $I$ and facing $+x$ axis                                   | $\mathbf{B} =\dfrac{\mu_0 IR^2}{2(x^2+R^2)^{3/2}}\hat{\mathbf{x}}$                                                                      |
+| Circular arc of radius $R$ on the $xy$ plane (where $z$ is the vertical axis and $\theta$ is the polar angle) | $\mathbf{B} = \dfrac{\mu_0 \theta I}{4\pi R} \hat z$                                                                                    |
+| Ideal magnetic dipole (i.e. perfect bar magnet) and $\mathbf{m}$ is the magnetic moment (more on this later)  | $\mathbf{B} = \nabla \times \dfrac{\mu_0}{4\pi}\left(\dfrac{\mathbf{m} \times \mathbf{r}}{r^3}\right)$                                  |
+
+## The magnetic vector potential
+
+We have previously seen that many problems in electrostatics can be solved by solving Poisson's equation $\nabla^2 V = -\rho / \varepsilon_0$ (which often reduces to the much simpler $\nabla^2 V = 0$) for suitable boundary conditions. This formulation is useful because there are many techniques to solve Poisson's/Laplace's equation that we can use, and because Poisson's/Laplace's equation describes the **scalar-valued** electric potential rather than the **vector-valued** electric field. Scalar-valued means that we don't have to worry about vectors, and once we're done finding the electric potential, we can easily obtain the field from $\mathbf{E} = -\nabla V$.
+
+We can apply the same idea to the magnetic field by defining a **magnetic vector potential**, denoted $\mathbf{A}$, which we'll also call the _magnetic potential_ for short. The magnetic potential is defined implicitly by:
+
+{% math() %}
+\mathbf{B} = \nabla \times \mathbf{A}
+{% end %}
+
+>**Note:** we should briefly mention here that in physical terms, the magnetic potential $\mathbf{A}(\mathbf{r})$ can be _thought of_ as the *momentum* of a particular charge $q$ placed at position $\mathbf{r}$ within the magnetic field. This is quite similar to how the electric potential is interpreted as the _potential energy_ of a charge placed at a particular location in the _electric_ field. I say "thought of" because this is an _interpretation_, not a formal definition. For more information, [the wikipedia magnetic potential article](https://en.wikipedia.org/wiki/Magnetic_vector_potential#Interpretation_as_Potential_Momentum) has more information.
+
+Although not a conventional potential, the magnetic potential does share one big similarity with potentials we are more familiar with (such as the electric potential): it _does not change_ upon addition or subtraction of a constant. In fact, it _also_ does not change upon adding the gradient of an arbitrary function! That is to say:
+
+{% math() %}
+\mathbf{B} = \nabla \times \mathbf{A} = \nabla \times \mathbf{A} + \underbrace{\nabla \phi}_\text{arbitrary}
+{% end %}
+
+This arbitrary-ness means that we have to impose certain conditions to define a _unique_ magnetic potential. This process is called **gauge-fixing**, for historical reasons related to railroads (long story). In non-relativistic magnetostatics, one choice of gauge-fixing condition is called the **Coulomb gauge**, which requires that the magnetic vector potential satisfies:
+
+{% math() %}
+\nabla \cdot \mathbf{A} = 0
+{% end %}
+
+This means that the magnetic vector potential (we'll call it the "magnetic potential" for short from now on) can be calculated in a way that looks very similar to Coulomb's law for the electric potential:
+
+{% math() %}
+\mathbf{A} = \dfrac{\mu_0}{4\pi} \int \dfrac{\mathbf{J}(\mathbf{r}')}{| \mathbf{r} - \mathbf{r}'|}dV'
+{% end %}
+
+Which can be written in component form as:
+
+{% math() %}
+\begin{align*}
+A_x &= \dfrac{\mu_0}{4\pi} \int \dfrac{J_x(\mathbf{r}')}{[(x -x ')^2 + (y - y')^2 + (z - z')^2]^{1/2}}dV' \\
+A_y &= \dfrac{\mu_0}{4\pi} \int \dfrac{J_y(\mathbf{r}')}{[(x -x ')^2 + (y - y')^2 + (z - z')^2]^{1/2}}dV' \\
+A_z &= \dfrac{\mu_0}{4\pi} \int \dfrac{J_z(\mathbf{r}')}{[(x -x ')^2 + (y - y')^2 + (z - z')^2]^{1/2}}dV'
+\end{align*}
+{% end %}
+
+It _also_ means that the line integral of the vector potential over a closed loop that we draw in space is equal to the _surface_ bounded by the loop:
+
+{% math() %}
+\underbrace{\oint_C \mathbf{A} \cdot d\mathbf{r}}_{\text{over closed loop } C} = \underbrace{\int_S \mathbf{B} \cdot d\mathbf{A}}_{\text{over surface } S}
+{% end %}
+
+So why does this all matter? Because it means that the vector potential _also_ satisfies **Poisson's equation**:
+
+{% math() %}
+\nabla^2 \mathbf{A} = -\mu_0 \mathbf{J}
+{% end %}
+
+Which, in free space, reduces to just $\nabla^2 \mathbf{A} = 0$, which is the familiar Laplace's equation! While the vector potential is not as easy to solve for, given that it is vector-valued, we can expand out Laplace's equation for the magnetic potential in component form, giving us three independent _scalar_ PDEs to solve:
+
+{% math() %}
+\begin{align*}
+\nabla^2 A_x = 0 \\
+\nabla^2 A_y = 0 \\
+\nabla^2 A_z = 0
+\end{align*}
+{% end %}
+
+> **Note:** remember that $\nabla^2 = \dfrac{\partial^2}{\partial x^2} + \dfrac{\partial^2}{\partial y^2} + \dfrac{\partial^2}{\partial z^2}$ and that each of the above is in general a function of all three coordinates (e.g. $A_x = A_x(x, y, z)$)
+
+While this does seem like a lot of work, since each PDE is _decoupled_ (independent of each other), we can solve each separately and don't have to worry about one component depending on another (which make things *very* messy). Furthermore, in many cases, the symmetries of the problem mean that we don't even need to solve all three. But it is often still much easier to solve with the *integral form*, which we saw earlier:
+
+{% math() %}
+\mathbf{A} = \dfrac{\mu_0}{4\pi} \int \dfrac{\mathbf{J}(\mathbf{r}')}{| \mathbf{r} - \mathbf{r}'|}dV'
+{% end %}
+
+From which we can solve for the magnetic field with:
+
+{% math() %}
+\mathbf{B} = \nabla \times \mathbf{A}
+{% end %}
+
+While the magnetic vector potential is not as simple as the electric potential to calculate, since it is vector-valued instead of scalar valued, it is generally _easier_ to find the magnetic field by *first* finding $\mathbf{A}$ (using its integral formula, shown above) and *then* taking its curl to find $\mathbf{B}$, than directly applying the Biot-Savart law. This is because there are no annoying cross products in the integral formula for $\mathbf{A}$, unlike the Biot-Savart law, making it easier to use. Furthermore, the magnetic potential is always **parallel to the (surface) current**, which means that for problems that have some sort of symmetry, the equations simplify further. This also tells us that the *magnetic field* is always **perpendicular** to the surface current, which aligns with our expectations (since remember, by the Lorentz force law, the magnetic field is always perpendicular to the direction that charged particles are moving). The below illustration shows the perpendicular nature of the magnetic potential vs. the magnetic field for a plate of steady current:
+
+
+![Illustration of the magnetic vector potential and magnetic field, which point perpendicularly to each other](https://phys.libretexts.org/@api/deki/files/23413/sheetb.png?revision=1)
+
+_Source: [LibreTexts, "Radically Modern Introductory Physics" II](https://phys.libretexts.org/Bookshelves/University_Physics/Radically_Modern_Introductory_Physics_Text_II_%28Raymond%29/16%3A_Generation_of_Electromagnetic_Fields/16.05%3A_Moving_Charge_and_Magnetic_Fields)_
+
+### The magnetic potential of a wire
+
+Let us consider the example of the vector potential of a wire segment oriented along the horizontal axis between $x = x_1$ and $x = x_2$ carrying constant current $I$. Since the vector potential is parallel to the current, we only need to calculate the $A_x$ component. If we really wanted to, we could solve Poisson's equation for the magnetic potential $\nabla^2 A_x = -\mu_0 J_x$, but the boundary conditions are non-trivial and it is much easier to use the integral expression instead. Note that $\mathbf{J} = \lambda \hat{\mathbf{x}}$ in this case, where $\lambda$ is the linear charge density of the wire and we integrate over all $dx$. The vector potential is zero for all components except for the $x$-component, since we know that the vector potential always flows parallel to the *surface current*. The calculation is thus as follows:
+
+{% math() %}
+\begin{align*}
+\mathbf{A} &= \dfrac{\mu_0}{4\pi} \int \dfrac{\mathbf{J}(\mathbf{r}')}{| \mathbf{r} - \mathbf{r}'|}dV' \\
+\Rightarrow \mathbf{A}_x &= \dfrac{\mu_0}{4\pi} \underbrace{\int_{x_1}^{x_2} \dfrac{\lambda dx'\hat{\mathbf{x}}}{\sqrt{r^2 + x^2}}}_\text{integrate along wire}
+\end{align*}
+{% end %}
+
+If we let the bounds of integration be $x_1 = -\infty$ and $x_2 = \infty$ this integral diverges, since the wire is, after all, infinitely long! However, if we choose to let the bounds be finite, then (after looking up an integral table or using Mathematica) we get a "sane" answer, which is given by:
+
+{% math() %}
+\mathbf{A}_x = \dfrac{\mu_0 I}{4\pi} \hat{\mathbf{x}} \left[\ln(x + \sqrt{r^2 + x^2})\right]_{x_1}^{x_2}
+{% end %}
+
+This may look ridiculously complicated and make you wonder why _anyone_ would want to use the vector potential, but let us assume that $x_1 = -L$ and $x_2 = L$, where the length of the wire is given by $2L$. This gives:
+
+{% math() %}
+\mathbf{A} = \mathbf{A}_x = \dfrac{\mu_0 I}{4\pi} \hat{\mathbf{x}} \ln\left[\dfrac{L + \sqrt{r^2+ L^2}}{-L + \sqrt{r^2 + L^2}}\right] \approx \dfrac{\mu_0 I}{4\pi} \hat{\mathbf{x}} \ln \left[\dfrac{4L^2}{r^2}\right], \quad L \gg r
+{% end %}
+
+Remember that this can also be written as $\mathbf{A} = \dfrac{\mu_0 I}{4\pi}\hat{\mathbf{x}}[\ln(4L^2) - \ln(r^2)]$ via the properties of logs. If we take the curl in cylindrical coordinates, we find that:
+
+{% math() %}
+\begin{align*}
+\mathbf{B} &= \nabla \times \mathbf{A} \\
+&=
+\cancel{\left({\frac {1}{r}}{\frac {\partial \mathbf{A}_{x}}{\partial \phi }}-{\frac {\partial \mathbf{A}_{\phi }}{\partial x}}\right){\hat {\mathbf {r }}}}
++\left(\cancel{{\frac {\partial \mathbf{A}_{r }}{\partial x}}}-{\frac {\partial \mathbf{A}_{x}}{\partial r }}\right){\hat {\boldsymbol {\phi }}}
++\cancel{{\frac {1}{r }}\left({\frac {\partial (r \mathbf{A}_\phi)}{\partial r }}-{\frac {\partial \mathbf{A}_r}{\partial \phi }}\right){\hat {\mathbf {x}}}} \\
+&= -\dfrac{\partial \mathbf{A}_x}{\partial r} \hat{\boldsymbol{\phi}} \\
+&= -\dfrac{\mu_0I}{4\pi} \hat{\boldsymbol{\phi}} \dfrac{\partial}{\partial r}(\underbrace{\ln(4L^2)}_\text{const.}-\ln(r^2)) \\
+&= \dfrac{\mu_0I}{2\pi r}\hat{\boldsymbol{\phi}}
+\end{align*}
+{% end %}
+
+This result is simply the magnetic field around a wire of constant current $I$! Thus, we have established that the magnetic potential does indeed produce the same results (and contain essentially the same information) as the magnetic field. It also tells us that the magnetic potential (which points along $\hat{\mathbf{x}}$) and the magnetic field (which points along $\hat{\boldsymbol{\phi}}$) are always pointing perpendicular to each other, as we expected.
+
+### The magnetic potential inside a solenoid
+
+We know from earlier that the magnetic field of a solenoid is a constant, and is given by $\mathbf{B} = \mu_0 n I \hat{\mathbf{x}}$. But what is its magnetic potential? Well, if we just use the integral formula for $\mathbf{A}$ we can get the result from brute-force integration. However, there is a more elegant way. note that by Stoke's theorem from vector calculus, we have:
+
+{% math() %}
+\int \limits_\text{loop} \mathbf{A} \cdot d\mathbf{r} = \int \limits_\text{surface} (\nabla \times \mathbf{A}) \cdot d\mathbf{A}
+{% end %}
+
+But we know that $\nabla \times \mathbf{A} = \mathbf{B}$, so we have:
+
+{% math() %}
+\int \limits_\text{surface} (\nabla \times \mathbf{A}) \cdot d\mathbf{A} = \int \limits_\text{surface} \mathbf{B} \cdot d\mathbf{A} = \Phi_B
+{% end %}
+
+Where $\Phi_B$ is the flux of the magnetic field through the solenoid. Since the magnetic field is given by $\mathbf{B} = \mu_0 n I \hat{\mathbf{x}}$ and flows along $\mathbf{x}$, its flux about a circle of radius $r$ is just:
+
+{% math() %}
+\Phi_B = \mu_0 n I A = \mu_0 n I \pi r^2
+{% end %}
+
+Thus we have:
+
+{% math() %}
+\int \limits_\text{loop} \mathbf{A} \cdot d\mathbf{r} = \Phi_B = \mu_0 n I \pi r^2
+{% end %}
+
+Here we can make two simplifications. First, we know that the magnetic potential always flows in the same direction as the current (well, *technically* "current" is the surface current, but here there's only one type of current anyways since we assume infinitely-thin wires in the solenoid). This means that the only nonzero component of $\mathbf{A}$ is {% inlmath() %}\mathbf{A}_\phi{% end %}, since the current is flowing along $\phi$ (circularly). Additionally, the line integral of $\mathbf{A}$ around our chosen circle is just multiplying {% inlmath() %}\mathbf{A}_\phi{% end %} by its circumference, i.e. $2\pi r |\mathbf{A}_\phi|$. Thus, we have:
+
+{% math() %}
+\int \limits_\text{loop} \mathbf{A} \cdot d\mathbf{r} = 2\pi r |\mathbf{A}_\phi| = \mu_0 nI \pi r^2
+{% end %}
+
+Our result is thus:
+
+{% math() %}
+\mathbf{A}_\phi = \dfrac{\mu_0n I\pi r^2}{2\pi r} = \dfrac{\mu_0n I}{2}r \hat{\boldsymbol{\phi}}
+{% end %}
+
+This result is linear in $r$, which makes sense, because the derivative of a linear function is simply a constant, and we know that the magnetic field $\mathbf{B} = \mu_0 n I \hat{\mathbf{x}}$ is constant.
+
+### The magnetic potential inside a toroid
+
+We now consider a *toroidal solenoid* (also called a _toroid_), a variation of the standard solenoid, which is shown in the figure below:
+
+![Image of a toroid, a donut-shaped solenoid](https://cheenta.com/wp-content/uploads/2017/12/toroid.png)
+
+Toroids find numerous applications, particularly in nuclear fusion reactors and particle accelerators, so this is indeed an important case to analyze. The magnetic field inside a toroidal solenoid is $\mathbf{B}_\text{toroid} = \dfrac{\mu_0 NI}{2\pi r}\hat{\boldsymbol{\phi}}$, which we can get from Ampere's law. We know that the magnetic vector potential must be *perpendicular* to the magnetic field and along the direction of the current (which loops up and down in square loops), so we know that it must be along the $z$ axis and thus $\mathbf{A} = \mathbf{A}_z(r)$. Since a toroid is symmetric along $z$ and $\phi$, we know that $\mathbf{A}_z$ is solely dependent on $r$.
+
+Unfortunately, in this case, we cannot use the method we used for the simple (linear) solenoid, since the line integral of $\mathbf{A}$ along the boundary of any surface would depend on $r$. Instead, we can use the definition of $\mathbf{A}$:
+
+{% math() %}
+\begin{align*}
+\mathbf{B} &= \nabla \times \mathbf{A} \\
+&=
+\cancel{\left({\frac {1}{r}}{\frac {\partial \mathbf{A}_{z}}{\partial \phi }}-{\frac {\partial \mathbf{A}_{\phi }}{\partial z}}\right){\hat {\mathbf {r }}}}
++\left(\cancel{{\frac {\partial \mathbf{A}_{r }}{\partial z}}}-{\frac {\partial \mathbf{A}_{z}}{\partial r }}\right){\hat {\boldsymbol {\phi }}}+\cancel{{\frac {1}{r }}\left({\frac {\partial (r \mathbf{A}_\phi)}{\partial r }}-{\frac {\partial \mathbf{A}_r}{\partial \phi }}\right){\hat {\mathbf {z}}}} \\
+&= -\dfrac{\partial \mathbf{A}_z}{\partial r} \hat{\boldsymbol{\phi}}
+\end{align*}
+{% end %}
+
+Now equating with our known expression for the field, we have:
+
+{% math() %}
+-\dfrac{\partial \mathbf{A}_z}{\partial r}\hat{\boldsymbol{\phi}} = \dfrac{\mu_0 NI}{2\pi r}\hat{\boldsymbol{\phi}}
+{% end %}
+
+We can simply integrate both sides to give us:
+
+{% math() %}
+\mathbf{A}_z = -\dfrac{\mu_0 NI\hat{\mathbf{z}}}{2\pi} \ln(r) + \text{constants}
+{% end %}
+
+This result is only valid *inside* the toroid itself, however. The full solution that is valid both inside and outside the toroid is plotted below:
+
+![Visualization of the magnetic potential of a toroidal solenoid. The field lines circulate around the toroid.](https://upload.wikimedia.org/wikipedia/commons/e/e7/Magnetic_Vector_Potential_Circular_Toroid.svg)
+
+_Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Magnetic_Vector_Potential_Circular_Toroid.svg)_
+
+#### The magnetic potential of a perfect magnetic dipole
+
+Let us now consider one of the most (if not _the most_) important magnetic potentials out there: the magnetic potential for a circular loop of radius $R$ placed on the $xy$ plane. The _exact_ expression for the magnetic potential is very, very complicated. In fact, it is so complicated we will not even write it here. But _if_ we shrink the loop, we find that we get the magnetic field of a **perfect magnetic dipole** in the limiting case as the loop grows infinitely small:
+
+{% math() %}
+\begin{matrix*}
+\mathbf{A} = \dfrac{\mu_0}{4\pi} \dfrac{\mathbf{m} \times \hat r}{r^2} = \dfrac{\mu_0}{4\pi} \dfrac{\mathbf{m} \times \mathbf{r}}{r^3}, &\mathbf{m} = I \cdot A  \hat{\mathbf{k}}
+\end{matrix*}
+{% end %}
+
+Notice how the magnetic moment $\mathbf{m} = I \cdot A\hat{\mathbf{k}}$ is that of a _tiny circular loop of current_ of radius $R$ that has area $A = \pi R^2$. And we can of course find the magnetic field produced by such a dipole with the familiar formula:
+
+{% math() %}
+\mathbf{B} = \nabla \times \mathbf{A} = \nabla \times \dfrac{\mu_0}{4\pi}\left(\dfrac{\mathbf{m} \times \mathbf{r}}{r^3}\right)
+{% end %}
+
+This is one of the few (classical) cases in which the magnetic potential is _more fundamental_ than the magnetic field, and where it is easier to derive the magnetic potential than the magnetic field. Indeed, the dipole is a fundamental model for everything from planetary magnetic fields to the tiny magnetic fields of subatomic particles! A few common formulas for the magnetic moment are shown as follows:
+
+| Physical situation                                                               | Expression for $\mathbf{m}$                                                          |
+| -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Loop of current with cross-sectional area $A$                                    | $\mathbf{m} = (\boldsymbol{I} \cdot A)\hat{\mathbf{k}}$                              |
+| Charged particle undergoing rotational motion with angular momentum $\mathbf{L}$ | $\mathbf{m} = \gamma \mathbf{L}$ where $\gamma$ is called the **gyromagnetic ratio** |
+| Solenoid along $x$ axis with cross-section $S$                                   | $\mathbf{m} = NIS \hat{\mathbf{x}}$                                                  |
+
+> **Additional information:** Magnetic dipoles can be divided between two primary types. The first type are **physical** magnetic dipoles (magnets with two poles and nonzero size, like bar magnets). The second type are ideal **magnetic** dipoles (which is the limiting case of both an infinitesimally-tiny loop of current and of a physical dipole shrunk infinitely small). While both can be modelled with the same magnetic potential as a perfect dipole, only physical dipoles can exist in real life.
+
+### The multipole expansion of the vector potential
+
+Just like the multipole expansion for the electric potential, a similar multipole expansion can be written for the magnetic vector potential (as long as we only consider magnetostatics). The multipole expansion for $\mathbf{A}$ is given by:
+
+{% math() %}
+\begin{align*}
+\mathbf{A}(\mathbf{r}) &= \dfrac{\mu_0 I}{4\pi} \sum_{l = 0}^\infty \dfrac{1}{r^{l + 1}} \oint {r'}^l P_l(\cos \theta) dl' \\
+&= \dfrac{\mu_0 I}{4\pi} \left[0 + \dfrac{\mathbf{m} \times \mathbf{r}}{r^3}+ \dots\right]
+\end{align*}
+{% end %}
+
+Where $P_\ell(x)$ are the Legendre polynomials that we mentioned earlier, and the integration is performed along a closed path with line element $dl'$. Notice how the first term in the multipole expansion for $\mathbf{A}$ is actually **zero**. This is equivalent to the statement that there are **no magnetic monopoles**, or essentially, there can be no isolated north or south magnetic pole! Meanwhile, if we take our loop to be a circular loop, the second term is the same result as a perfect magnetic dipole!
+
+### A proof of Gauss's law for magnetism from the magnetic potential
+
+We will end with a short and incredibly beautiful proof of Gauss's law for the magnetic field. Recall that the magnetic potential is defined by $\mathbf{B} = \nabla \times \mathbf{A}$. We know that Gauss's law for the electric field is given by $\nabla \cdot \mathbf{E} = \rho/\varepsilon_0$. But if we try to write a similar equation with $\mathbf{B}$, we find that:
+
+{% math() %}
+\nabla \cdot \mathbf{B} = \nabla \cdot (\nabla \times \mathbf{A}) = 0
+{% end %}
+
+Which comes from the vector calculus identity that the divergence of the curl is always zero, that is, $\nabla \cdot (\nabla \times \mathbf{F}) = 0$ for any function $\mathbf{F}$. Thus we have just derived Gauss's law for magnetic fields, $\nabla \cdot \mathbf{B} = 0$! And of course, we can use the divergence theorem to be able to put the differential form of Gauss's law for magnetic fields into integral form:
+
+{% math() %}
+\int \nabla \cdot \mathbf{B} \, dV = 0 \Rightarrow \oint \mathbf{B} \cdot d\mathbf{A} = 0
+{% end %}
+
+Which is exactly the integral form of Gauss's law for magnetic fields that we know! Thus, the magnetic potential _automatically guarantees_ that $\nabla \cdot \mathbf{B} = 0$. This is a hint of what we'll see in detail later: the magnetic potential gives us a way of simplifying the four Maxwell equations into just *one* equation, making it incredibly useful.
+
+## Magnetic fields inside matter
+
+Magnetism has a crucial difference as compared to electrostatics: point charges exist in electrostatics, but "point magnets" (also called _magnetic monopoles_) **do not** exist. The closest analogue to a point charge in magnetism is the _magnetic dipole_. Magnetic dipoles are an arrangement of two charges of opposite charge; the two ends are called _magnetic poles_ (or just _poles_) and generate a characteristic magnetic field. This field has field lines that begin at one pole and end at another pole, as shown in the drawing below:
+
+![An example of a magnetic dipole, which displays circulating field lines flowing from one pole of the dipole to another pole](https://upload.wikimedia.org/wikipedia/commons/5/56/VFPt_dipole_magnetic3.svg)
+
+_Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:VFPt_dipole_magnetic3.svg)_
+
+The magnetic field of a bar magnet, as well as Earth's planetary magnetic field, are examples of (non-ideal) dipoles. Using the Biot-Savart law, the magnetic field of a magnetic dipole can be found to be:
+
+{% math() %}
+\mathbf{B}_\text{dipole} = \dfrac{\mu_0}{4\pi} \nabla \times \left(\mathbf{m} \times \dfrac{\hat r}{r^2}\right) = \dfrac{\mu_0}{4\pi} \left(\dfrac{3\hat{\mathbf{r}}(\hat{\mathbf{r}} \cdot \mathbf{m}) - \mathbf{m}}{|\mathbf{r}|^3}\right)
+{% end %}
+
+Which comes from the magnetic vector potential of a magnetic dipole, given by:
+
+{% math() %}
+\mathbf{A}_\text{dipole} = \dfrac{\mu_0}{4\pi}\left(\mathbf{m} \times \dfrac{\hat r}{r^2}\right)
+{% end %}
+
+Where $\mathbf{m}$ is called the **magnetic moment**, which is similar in some ways (but not identical) to the electric dipole moment. We can show (but we don't derive here) that a _perfect dipole_ has the same magentic field as a tiny loop of current shrunk infinitesimally-tiny, whose magnetic moment is given by the integral over the cross-sectional area of the loop:
+
+{% math() %}
+\mathbf{m} = I\int  d\mathbf{A} 
+{% end %}
+
+The magnetization of a material is given by $\mathbf{M}$, where $N$ is dipole density (dipoles per unit volume, which is generally equivalent to the number of atoms per unit volume):
+
+{% math() %}
+\mathbf{M} = N(\mathbf{m} \cdot \mathbf{r})_\text{average}
+{% end %}
+
+### Atomic magnetism and magnetic materials
+
+Before we begin this section, we should warn that we discuss quite a bit of quantum mechanics in this section (albeit with relatively little mathematics). Please consult the [quantum physics guide](@/intro-quantum-phys.md) if you are not familiar with quantum physics.
+
+When a magnetic dipole is placed in a magnetic field, it experiences a _torque_ that causes the dipole to orient _parallel_ to the field lines, increasing the total strength of the magnetic field. The precise expression for the torque is given by:
+
+{% math() %}
+\vec \tau = \mathbf{m} \times \mathbf{B}
+{% end %}
+
+This effect is known as **paramagnetism**, and while it can be described in classical terms, the full explanation for _why_ it exists comes from quantum mechanics. In quantum mechanics, we find that the origin of magnetic moments comes from the orbital angular momentum of atoms, and spin angular momentum of their electrons. The sum total of these effects leads to a magnetic moment that is given by:
+
+{% math() %}
+\mathbf{m} = -g \mu_B \mathbf{J}
+{% end %}
+
+Where $\mathbf{J} = \langle J_x, J_y, J_z \rangle$ are the values of the angular momentum (which, for those familiar with quantum mechanics, are the _eigenvalues_ of the spin-included total angular momentum operator $\hat J$), $g$ is a constant known as the **gyromagnetic ratio**, and $\mu_B \approx \pu{9.274E-24 J*T^{-1}}$ is a universal constant known as the **Bohr magneton**. Paramagnetism is usually an extremely weak effect that is barely observable, except at very small scales or in strong magnetic fields.
+
+Another type of weak magnetism, distinct from paramagnetism, is known as **diamagnetism**. Diamagmentism comes from an effect called _electromagnetic induction_, which we will cover more on later. Electromagnetic induction comes from the fact that a dipole placed in an external magnetic field _induces_ a magnetic field pointing in the opposite direction. This _induced_ field repels the applied external field, leading to the dipole orienting _anti-parallel_ (parallel but in the opposite direction) to the field lines. Like paramagnetism, it is a very weak effect that is extremely hard to observe.
+
+**Ferromagnetism** is an extremely rare effect and gives rise to _permanent magnets_. Only a few materials exhibit ferromagnetism, most notably **iron**, which is the origin of the name _ferromagnetism_ (the elemental symbol for iron is $\ce{Fe}$). Ferromagnetism arises from quantum-mechanical effects; for those familiar, it comes from a peculiar property of electrons called **spin**, which can be imagined as a vector that can _only_ point up or down. Electrons can have one of two spins, typically called spin-up and spin-down. When all the electrons have paired spins, their magnetic moments fully align in the same direction, creating **very strong** magnetic fields (relative to the size of atoms), strong enough to be easily observable macroscopically. Crucially, _no external field_ is required for a material to exhibit ferromagnetism; it is a property of the _material_ itself.
+
+> **Note for the advanced reader:** there are also two related types of magnetism, which are known as _ferrimagnetism_ and _anti-ferromagnetism_. They also arise without needing an external field, although they come from opposite (instead of paired) spins.
+
+Ferromagnetism alone does not explain permanent magnets - after all, if we naively assume that all ferromagnetic materials have fully-aligned magnetic moments, then every piece of iron should attract each other, including the iron atoms in your blood! This obviously does not happen, and the reason is that while ferromagnetic materials have electrons with paired spins (and thus aligned magnetic moments), _regions_ of ferromagnetic materials may be aligned differently. These regions are called **domains**, which we show in the image below:
+
+![An illustration of magnetic domains. Non-aligned magnetic domains cancel out, but aligned magnetic domains do not, leading to a net magnetic moment.](https://mriquestions.com/uploads/3/4/5/7/34572113/screen-shot-2020-11-10-at-12-05-30-pm_orig.png)
+
+_Source: [MRI Questions](https://mriquestions.com/what-is-ferromagnetism.html) by Elster LLC. Displayed under fair use._
+
+When the domains are randomly-aligned, their magnetic moments cancel out, and no net magnetic field arises. But when an external magnetic field (such as that of a solenoid) is applied, each domain experiences a torque that aligns the domains along the same direction. When the field is removed, the domains are now aligned, and ferromagnetic material is now a **permanent magnet**.
+
+> **Note:** For a funny, educational video about the origins of magnetism that summarizes atomic magnetism very well, see the [Magnets video by MinutePhysics on YouTube](https://youtu.be/hFAOXdXZ5TM).
+
+### Magnetization
+
+Just like materials can be electrically polarized, they can also be magnetically polarized, or as it is more commonly called, **magnetized**. The **magnetization field** (or more simply, just referred to as the _magnetization_) of a material, $\mathbf{M}$, is given by the _total contribution_ of the individual magnetic dipole moments in the material, per unit volume:
+
+{% math() %}
+\mathbf{M} = \dfrac{1}{V} \sum_i \mathbf{m}_i
+{% end %}
+
+Alternatively, in continuous materials, we have:
+
+{% math() %}
+\mathbf{M} = \dfrac{d\mathbf{m}}{d V}, \quad \mathbf{m} = \iiint \mathbf{M} ~dV
+{% end %}
+
+The magnetization is very similar to _polarization field_ ($\mathbf{D}$ field) from electrostatics. In fact, we can  characterize the magnetization in terms of a _bound current_ and _free current_, just like the bound and free charge in electrostatics. Again, just as in electrostatics, the magnetic dipole moments typically cancel out within the material, with two exceptions: the dipoles at the material's surface, and the dipoles within non-uniform regions within the interior of the material. This is just like the surface bound charge and volume (interior) bound charge! Since we can speak of perfect magnetic dipoles as equivalent to tiny current loops, the magnetized material essentially has a current circulating within the interior of the material as well as a current circulating around its surface. We may then define the **bound surface current** $\mathbf{K}_b$ and the **bound volume current** $\mathbf{J}_b$ as follows:
+
+{% math() %}
+\begin{matrix*}
+\mathbf{K}_b = \mathbf{M} \times \hat{\mathbf{n}}, &\mathbf{J}_b = \nabla \times \mathbf{M}
+\end{matrix*}
+{% end %}
+
+Notice how this is in many ways very similar to the equivalents ($\mathbf{D}$ and $\mathbf{P}$) for *electric fields* in matter! Indeed, we can also separated the magnetic field into a "free" field ($\mathbf{H}$) and a magnetization field ($\mathbf{M}$), and the magnetic field in matter also satisfies a constitutive relation:
+
+{% math() %}
+\mathbf{B} = \mu_0(\mathbf{H} + \mathbf{M})
+{% end %}
+
+> **Note:** For complicated reasons, $\mathbf{H}$ is commonly called the **demagnetizing field**. However, to avoid confusion, we will continue calling it the $\mathbf{H}$ field.
+
+In addition, the $\mathbf{H}$ field satisfies **Ampere's law in matter**, which is given by:
+
+{% math() %}
+\nabla \times \mathbf{H} = \mathbf{J}_f
+{% end %}
+
+Where $\mathbf{J}_f$ is the **free current** inside the material, and the total current density $\mathbf{J}$ is given by:
+
+{% math() %}
+\mathbf{J} = \mathbf{J}_f + \mathbf{J}_b
+{% end %}
+
+Most everyday materials are **magnetically-linear materials** and respond very weakly when placed inside magnetic fields. The exception, of course, is with *ferromagnetic materials*, which (certainly!) do not respond linearly to applied magnetic fields, leading to their spectacular magnetic properties. However, if we simply consider **linear** materials, we have:
+
+{% math() %}
+\mathbf{M} = \chi_m \mathbf{H}, \quad \mathbf{B} = \mu_0 (1 + \chi_m) \mathbf{H} = \mu \mathbf{H}
+{% end %}
+ 
+ where $\chi_m$ is the **magnetic susceptibility** and $\mu = \mu_0(1 + \chi_m)$ is the **material permeability**.
+
+> **Note:** For more resources on magnetic materials and magnetization, see [this study guide](https://www.srsvidyamahapitha.org/study_mat/Sem-II_1586071862_33662) and [these lecture guides by the University of Texas](https://web2.ph.utexas.edu/~vadim/Classes/2024s-u/Hfield.pdf).
+
+## Electromagnetic induction
+
+Up to this point, we have discussed _static_ electric fields and magnetic fields, which come from slow-moving charges (for electrostatic fields) and constant currents (for magnetic fields). But now is the time for us to examine when the static assumptions no longer hold. This is the domain of **electrodynamics**.
+
+### The Lorentz force and motional EMF
+
+Consider a conductor immersed in some uniform magnetic field $\mathbf{B}$ that moves at velocity $\mathbf{v}$. For instance, this could be a metal rod sliding on a railing. Let us consider an unusual question: what is the *potential difference* caused by the Lorentz force acting on the rod? Well, we know that potential difference is formally defined as:
+
+{% math() %}
+V = -\int_a^b \mathbf{E} \cdot d\mathbf{r} = -\dfrac{1}{q} \int_a^b \mathbf{F}_E \cdot d\mathbf{r}
+{% end %}
+
+Where $\mathbf{F}_E = q\mathbf{E}$ is the electric force. This definition tells us that the potential difference between two locations is equivalent to the energy put in to move a charge $q$ between the two locations, *against* the electric field. But what if we generalize this to the **Lorentz force** {% inlmath()%}\mathbf{F}_{EM} = q\mathbf{E} + q\mathbf{v} \times \mathbf{B}{% end %}? The answer is now not as simple as it seems. The Lorentz force is _non-conservative_, so its line integral around a closed loop is **nonzero**. Thus, we have:
+
+{% math() %}
+\begin{align*}
+V &= \dfrac{1}{q}\oint_C \mathbf{F}_{EM} \cdot d\mathbf{r} \\
+&= \dfrac{1}{q} \oint_C q(\mathbf{E} + \mathbf{v} \times \mathbf{B}) \cdot d\mathbf{r} \\
+&= \oint_C (\mathbf{E} + \mathbf{v} \times \mathbf{B}) \cdot d\mathbf{r}
+\end{align*}
+{% end %}
+
+We see that the potential difference is now a very strange sort of potential difference, which comes from *both* the electric and magnetic fields acting on the conductor. While there was no electric field to begin with, the movement of the conductor through the magnetic field ends up generating a Lorentz force that pushes charges through a potential difference, causing them to *create* an electric field!
+
+In fact, we usually represent this "pseudo-potential-difference" with the symbol $\mathcal{E}$ rather than $V$, since it is not the result of any pre-existing electric field, but rather a result of the motion of a conductor through an *ambient magnetic field*. The symbol $\mathcal{E}$ comes from the (misleading) historical name of this potential difference of "electromotive force" (EMF for short). More formally, we call it the **motional EMF**, since we observe it only when $\mathbf{v} > 0$, when the conductor is moving through the magnetic field!
+
+### Faraday's law and electromagnetic induction
+
+Similar to the electric flux, we define the magnetic flux $\Phi_B$ as the _surface integral_ of the magnetic field across some given surface:
+
+{% math() %}
+\Phi_B = \iint \mathbf{B} \cdot d\mathbf{A}
+{% end %}
+
+> **Note:** Be careful that the surface in question is _not_ a Gaussian surface, since it is **not closed**. By Gauss's law for the magnetic field, the magnetic flux through a Gaussian surface is always zero!
+
+Let us now consider a wire loop that is immersed in some magnetic field $\mathbf{B}$ whose total magnetic flux through the loop _varies with time_. Unlike motional EMF, which we have previously discussed, our wire loop is **not necessarily moving**; it is only the _flux_ through the loop is changing. In fact, there are three cases which can cause changing flux through the loop:
+
+- The wire loop is _moving_ in a _non-uniform_ magnetic field, that is, $\mathbf{B} = \mathbf{B}(\mathbf{r})$ has spatial  dependence
+- The wire loop is not moving, but _rotates_ in place through a uniform magnetic field $\mathbf{B} = \mathbf{B}_0$
+- The wire loop is _stationary_, but the magnetic field is _time-dependent_, that is, $\mathbf{B} = \mathbf{B}(t)$
+
+We show each of these cases below. In case (1), we have a magnetic field that depends on position - it is equal to $\mathbf{B} = \mathbf{B}_0$ for $x \leq a$ and $\mathbf{B} = 0$ for $x > a$. In case (2), we have a loop that is _rotating_ within a magnetic field; since the flux $\Phi = \mathbf{B}\cdot \mathbf{A} = |B||A|\cos \theta$ depends on the angle between the loop and the magnetic field vectors, there is a change in flux as the loop rotates, and therefore an EMF. Lastly, in case (3), we have a time-dependent magnetic field, so the flux through the loop is also changes with time.
+
+{{ diagram(
+	src="emf-different-types.excalidraw.svg"
+	desc="A diagram of the 3 cases of nonzero magnetic flux, as described above."
+) }}
+
+_Reference: [MITx electromagnetic theory](https://learn.mit.edu/c/unit/mitx?resource=4785)_
+
+We can go through even more examples. For instance, consider a bar magnet that moves through a loop. The loop itself is not moving, but since the magnet _is_ moving, the magnetic flux through the loop changes. Or conside a loop that slowly moves away from a wire. Remember, the magnetic field around a long wire is given by $\mathbf{B}(\mathbf{r}) = \dfrac{\mu_0 I}{2\pi r} \hat r$ - so, if we have a loop moving in the $r$ direction away from the wire, the flux changes (decreases) over time.
+
+{{ diagram(
+	src="emf-more-types.excalidraw.svg"
+	desc="A diagram of the 2 more cases of nonzero magnetic flux described above"
+) }}
+
+Faraday found _experimentally_ that in all three cases, the *changing* magnetic flux through the loop (not the flux itself, the _rate of change_ of the flux) actually produces an EMF. We call this type of EMF as the **induced EMF** (though we can get sloppy and call it just "the EMF" sometimes). The induced EMF is given by:
+
+{% math() %}
+\mathcal{E} = \oint \mathbf{E} \cdot d\mathbf{r} = -\dfrac{d}{dt} \iint \mathbf{B} \cdot d\mathbf{A}
+{% end %}
+
+> **Note:** be careful that by "flux" in Faraday's law, we always mean _total flux_ (which is also called the _flux linkage_). This is especially relevant for the flux of a magnetic field through a solenoid, which is composed of a large number of loops. The individual flux through one loop might be small, but the **total flux** through all of the loops can be very large!
+
+We can use Stoke's theorem from vector calculus ($\displaystyle \oint \mathbf{E} \cdot d\mathbf{r} = \displaystyle \iint \nabla \times \mathbf{E}\cdot d\mathbf{A}$) to rewrite Faraday's law in its differential form:
+
+{% math() %}
+\nabla \times \mathbf{E} = -\dfrac{\partial \mathbf{B}}{\partial t}
+{% end %}
+
+From which we can more clearly see that a magnetic field changing over time is bound to produce an _induced_ circulating electric field. This induced electric field has some very special characteristics:
+
+- It is a **non-conservative field**
+- It has _closed_ field lines, just like a magnetic field, and
+- It can exist in free space, even far away from any charges!
+
+> Interestingly, Faraday's law is the _exact same equation_ whether you derive it through motional EMF due to the Lorentz force _or_ the induced EMF coming from an induced electric field due to a time-varying magnetic field. This is a very deep insight that led Einstein to develop his special theory of relativity!
+
+### Addenum: the potential formulation from Faraday's law
+
+Remember that we said that the induced electric field $\mathbf{E}$ is _non-conservative_, so it would appear that the electrostatic potential $V$ (which is conservative) is of no use to describe induced electric fields. But there _is_ a way to describe an induced field in terms of potentials. Remember that we have defined the _magnetic vector potential_ as $\mathbf{B} = \nabla \times \mathbf{A}$. Since the magnetic field is non-conservative anyways, this relation still holds true in the case of electromagnetic induction. If we substitute this into the differential form of Faraday's law, we have:
+
+{% math() %}
+\nabla \times \mathbf{E} = -\dfrac{\partial \mathbf{B}}{\partial t} = -\dfrac{\partial}{\partial t} (\nabla \times \mathbf{A}) = \nabla \times \left(-\dfrac{\partial \mathbf{A}}{\partial t}\right)
+{% end %}
+
+(Here we can switch around the time derivative and the curl by a vector calculus identity). But this equation is not _precisely_ correct, because if we add the gradient of an arbitrary function, since the curl of a gradient is **zero**, the equation would still hold true:
+
+{% math() %}
+\begin{align*}
+-\dfrac{\partial}{\partial t} (\nabla \times \mathbf{A} + \nabla f) &= \nabla \times \left(-\dfrac{\partial \mathbf{A}}{\partial t} + \nabla f\right) \\
+&=\nabla \times \left(-\dfrac{\partial \mathbf{A}}{\partial t}\right) + \cancel{\nabla \times \nabla f} \\
+&= \nabla \times \left(-\dfrac{\partial \mathbf{A}}{\partial t}\right)
+\end{align*}
+{% end %}
+
+This suggests that _if_ we let $\nabla f = -\nabla V$, the electric potential, then we can rewrite Faraday's law as:
+
+{% math() %}
+\nabla \times \mathbf{E} =
+\nabla \times \left(-\dfrac{\partial \mathbf{A}}{\partial t} - \nabla V\right)
+{% end %}
+
+From which we may define the electric field _purely_ in terms of potentials as:
+
+{% math() %}
+\mathbf{E} = -\nabla V - \dfrac{\partial \mathbf{A}}{\partial t}
+{% end %}
+
+This is the preferred formulation in relativistic quantum mechanics, particle physics, and advanced theoretical physics in general, although we will not go too in-depth within this guide.
+
+### Inductance and inductors
+
+In Faraday's law, we find that interestingly, there is a _negative sign_ on the right-hand side. That is, a _faster change in flux_ results in a _smaller_ EMF, while a _slower change in flux_ results in a _larger_ EMF. It is almost as if there is some "invisible" force that is _opposing_ the change in flux!
+
+Indeed, this is a real effect, called **Lenz's law**. And it does not come from an invisible force - we find that an induced electric field produced by a changing magnetic flux itself creates a _magnetic field_ that _opposes_ the change in flux. This means that as the magnetic flux changes, which induces an EMF that (in a conducting loop) drives a current through a loop, that current itself induces an _opposing_ magnetic field which tries to _push against_ that current by inducing a magnetic field in the opposite direction. This opposing magnetic field tries to "drive down" the current from the EMF, which produces a change in current $\dfrac{dI}{dt}$. We illustrate this situation below:
+
+{{ diagram(
+	src="emf-lenz-s-law.excalidraw.svg"
+	desc="An illustration of Lenz's law: an induced magnetic field pushing back against a  magnetic field with changing flux"
+) }}
+
+The rate of change of the this current is _proportional_ to the change in flux, and we call this proportionality constant the **inductance**, symbol $L$. Thus, Lenz's law is given by:
+
+{% math() %}
+\mathcal{E} = -\dfrac{d\Phi_B}{dt} = -|L| \dfrac{dI}{dt}
+{% end %}
+
+Since the EMF generates an _opposing_ magnetic field, it can be thought of as "pushing back" against the original magnetic field and opposing the change in current. Thus, we say that $\mathcal{E}$ is a special type of EMF, called **back EMF**, and the equation for finding the back EMF is Lenz's law.  If we integrate both sides, we can find an explicit expression for $L$, as shown:
+
+{% math() %}
+\begin{align*}
+\int-\dfrac{d\Phi_B}{dt} &= \int-|L| \dfrac{dI}{dt} \\
+\Phi_B &= L I \\
+\Rightarrow L = \dfrac{\Phi_B}{I}
+\end{align*}
+{% end %}
+
+But if this effect occurs, how is it possible that the change in current doesn't exactly cancel out the induced EMF? The answer is that in most cases, $L$ is _very small_, so the induced EMF dominates. There are, however, ways to greatly increase where $L$ can be made quite large, which is very important for devices called **inductors** - which we'll look at next!
+
+#### Self-inductance
+
+When inductance occurs in the same loop (or coil) as the loop (or coil) where the magnetic field produces an EMF, we call this type of inductance **self-inductance**. Usually, this type of inductance is unwanted, because it decreases the induced current through the coil/loop; in most applications, we want the induced current to be as high as possible, so we say that the self-inductance is _parasitic_. However, there are some applications where self-inductance _is_ desired: for instance, electrical devices are often shielded with _inductors_, devices that have a high inductance, to prevent rapid changes in current (such as power surges) from destroying the device. In this part, we will calculate the inductance of a few simple inductors.
+
+To start things off, we will consider a relatively straightforward example. Consider a solenoid formed by $N$ circular loops of radius $R$, with a total length of $L$ and $n = N/L$ turns per unit length. We show this in the diagram below:
+
+{{ diagram(
+	src="solenoid-inductance.excalidraw.svg"
+	desc="An illustration of the induced magnetic field of a solenoid with changing current"
+) }}
+
+The solenoid has a current $I(t)$ that passes through it, which produces a time-varying magnetic field $\mathbf{B}(t) = \mu_0 n I(t) \hat x$, causing a changing flux. We can calculate the magnetic flux across a single pool as follows:
+
+{% math() %}
+\Phi_B = \iint \mathbf{B} \cdot d\mathbf{A} = \mathbf{B} \cdot \mathbf{A} = \mu_0 n I(t) \pi R^2
+{% end %}
+
+But given that there are $N$ turns in the solenoid, the _total flux_ would be:
+
+{% math() %}
+\Phi_T = N \Phi_B =\mu_0 nN I(t) \pi R^2 = \dfrac{\mu_0 \pi R^2N^2}{L}I(t) 
+{% end %}
+
+The self-inductance would simply be the total flux divided by the current, so we would have:
+
+{% math() %}
+L = \dfrac{\Phi_T}{I} = \dfrac{\mu_0 \pi R^2N^2}{L}
+{% end %}
+
+Notice that the self-inductance is a _constant_ that **doesn't depend on the current or time**, and only depends on the geometric qualities of the solenoid. This is very similar to capacitance, which also depends only on the geometric qualities of a capacitor. We will see this parallel come up again later.
+
+Let us consider a more challenging example: calculating the self-inductance of a **toroidal solenoid** (toroid) of radius inner radius $a$, outer radius $b$, and height $h$ with $N$ turns. A toroid looks very similar to a standard solenoid, but with the ends joined together, as is shown in the diagram below:
+
+![Image of a toroid, a donut-shaped solenoid](https://cheenta.com/wp-content/uploads/2017/12/toroid.png)
+
+By Ampere's law we find the field of a toroid to be:
+
+{% math() %}
+\mathbf{B} = \dfrac{\mu_0 NI}{2\pi r} \hat \theta
+{% end %}
+
+This means that the flux in one turn of the toroid would be given by:
+
+{% math() %}
+\Phi_B = \iint \mathbf{B} \cdot d\mathbf{A} = \int_0^h \int_a^b \dfrac{\mu_0 NI}{2\pi r} dr dz = \dfrac{\mu_0 h}{2\pi} N I \ln\left(\dfrac{b}{a}\right)
+{% end %}
+
+This is just one turn, but we know the toroid has $N$ turns, so the total flux would be:
+
+{% math() %}
+\Phi_T = N \Phi_B =  \dfrac{\mu_0 h}{2\pi} N^2 I \ln\left(\dfrac{b}{a}\right)
+{% end %}
+
+And thus the self-inductance becomes:
+
+{% math() %}
+L = \dfrac{\Phi_T}{I} = \dfrac{\mu_0 h}{2\pi} N^2 \ln\left(\dfrac{b}{a}\right)
+{% end %}
+
+#### Mutual inductance
+
+So far, we have seen the case of electromagnetic induction around _one_ loop (or at least, one coil) of wire. But there is no reason why we can't generalize this to _two loops_ (or coils)! If we choose to put _another coil_ after the first coil (we will say "loop" and "coil" interchangeably here), we may readily calculate the **total** flux from the first coil $\Phi_\text{from 1}$ passing through the second coil as follows:
+
+{% math() %}
+\Phi_\text{from 1} = \iint \limits_\text{coil 2} \mathbf{B}_1 \cdot d\mathbf{A}
+{% end %}
+
+The total flux $\Phi_\text{from 1}$ caused by the magnetic field from the first coil passing through the second coil creates an EMF (and therefore drives a current) in the second coil, which is opposed by the induced magnetic field due to the current (by Lenz's law). We show this in the drawing below:
+
+{{ diagram(
+	src="mutual-inductance.excalidraw.svg"
+	desc="An illustration of mutual inductance: the EMF through one coil causing an opposing magnetic field in another coil"
+) }}
+
+
+We call this effect _mutual inductance_, denoted $M$, and is given by:
+
+{% math() %}
+M = \dfrac{\Phi_\text{from 1}}{I_2}
+{% end %}
+
+That is, the mutual inductance is the _ratio_ between $\Phi_\text{from 1}$, the magnetic field from the first loop/coil, to $I_2$, the current in the second loop/coil. We may _arbitrarily_ choose which loop/coil we call "coil 1" and which coil we call "coil 2", because of the _mutual inductance theorem_. This says that mutual inductance between two loops/coils (or really any two EMF sources) is _symmetric_, meaning it is independent of your choice of numbering the coils/loops:
+
+{% math() %}
+M_{ij} = M_{ji}
+{% end %}
+
+This is very convenient, because in cases where the flux of the magnetic field coming from one coil/loop passing through the other is hard to calculate, it is often much easier to calculate the flux of the magnetic field coming from the _other loop_.
+
+Mutual inductance is not simply a physical effect; it has important applications, too. For instance, it is the working principle of _transformers_, which are devices that increase (or reduce) the voltage without dissipating it like a resistor (which wastes energy). Transformers work by using two sets of coils. Time-varying current (usually sinusoidal current in the form $I(t) = I_0 \cos \omega t$) is passed through the first coil, producing a time-dependent magnetic field $\mathbf{B}_1(t)$. The flux of this magnetic field changes with time, which produces an EMF by Faraday's law; the EMF drives a current which is opposed by the _induced magnetic field_ that comes from that current. This decreases the EMF, and therefore the current passing through the second coil, which can be connected to another wire to send current elsewhere. This process can also be used to boost the EMF by using different numbers of windings on the first and second coils. It allows, for instance, current from power stations to be sent to faraway locations by increasing the voltage, where the voltage is then dropped for household use.
+
+## Maxwell's equations and electrodynamics
+
+Up to this point, we have collectively seen the four Maxwell's equations in their *static* form:
+
+{% math() %}
+\begin{align*}
+\oint \mathbf{E} \cdot d\mathbf{A} &= Q_\text{enc.}/\varepsilon_0 \\
+\oint \mathbf{B} \cdot d\mathbf{A} &= 0 \\
+\oint \mathbf{E} \cdot d\mathbf{r} &= -\dfrac{d\Phi_B}{dt} \\
+\oint \mathbf{B} \cdot d\mathbf{r} &= \mu_0 I_\text{enc.}
+\end{align*}
+{% end %}
+
+In the four equations above, the top three equations are all correct: Gauss's law for electricity, Gauss's law for magnetism, and Faraday's law. But the fourth equation - Ampere's law - is not correct, or at least, not _completely correct_. It holds true for statics (that is, when electrostatics or magnetostatics applies), but _not_ electrodynamics.
+
+To see why, consider a capacitor on the $+x$ axis, made of two conducting plates some distance $d$ apart, separated by empty space - if you a review of capacitors, see the [introductory electromagnetism guide](@/electromagnetism/index.md). A current $I$ flows via a wire into one side of the capacitor, charging up one plate. Here is a sketch below:
+
+{{ diagram(
+	src="displacement-current-demo.png"
+	desc="A diagram showing a magnetic field caused by the electric field changing within a capacitor as it is charged or discharged"
+) }}
+
+We have already calculated the electric field of a capacitor (between its two plates) in the [introductory electromagnetism guide](@/electromagnetism/index.md) - it is given by $\mathbf{E} = \dfrac{\sigma}{\varepsilon_0} \hat{\mathbf{x}}$. But what about the magnetic field of a capacitor? You may be inclined to say that there is no magnetic field in the middle of the capacitor; after all, there is no wire there, just the empty space separating the two plates. 
+
+But recall that the _capacitance_ of a capacitor is related to its charge by $Q = CV$, so if we take the time derivative of both sides (remember $I = dQ/dt$) and rearrange, we get $I_\text{cap.} = C \dfrac{dV}{dt}$. As the capacitor is charged (or discharged), the potential difference between the plates certainly does change, so there is absolutely current within the capacitor!
+
+So we face a dilemna: there are no actual charges flowing between the capacitor's two plates, but there _is_ current. Ampere's law, at least in the form we have seen it as, does not explain this. But we can _modify_ Ampere's law to account for this "invisible current". Taking inspiration from Faraday's law $\displaystyle \oint \mathbf{B} \cdot d\mathbf{r} = \mathcal{E} = -\dfrac{d\Phi_B}{dt}$, we can include a term that is proportional to the time derivative of the _electric field_:
+
+{% math() %}
+\begin{gather*}
+\oint \mathbf{B} \cdot d\mathbf{r} = \mu_0 \bigg(I_\text{enc.} + \underbrace{\varepsilon_0 \dfrac{d\Phi_E}{dt}}_\text{"current"}\bigg) \\
+\Rightarrow \oint \mathbf{B} \cdot d\mathbf{r}  = \mu_0 (I_\text{enc.} + I_D), \quad I_D \equiv \varepsilon_0 \dfrac{d\Phi_E}{dt}
+\end{gather*}
+{% end %}
+
+This current is called **displacement current**, denoted $I_D$, is very unusual, because (as we saw) _it is not formed by actual moving charge_. So we now have two current terms on the right-hand side of Ampere's law: $I_\text{enc.}$ (also called the **conduction current**) which is the *real current* formed by moving charges, and $I_D = \varepsilon_0 \dfrac{d\Phi_E}{dt}$ (also called the **displacement current**), which is the _effective current_ that isn't formed by any actual charge. But just as a changing magnetic flux leads to an induced EMF, Maxwell hypothesized that a changing electric flux leads to an _induced displacement current_. So if we switch to the differential form of Maxwell's equations and add the displacement current (density) term, we have:
+
+{% math() %}
+\begin{gather*}
+\nabla \times \mathbf{B} = \mu_0 (\mathbf{J}_\text{enc.} + \mathbf{J}_D), \quad
+\mathbf{J}_D = \varepsilon_0 \dfrac{\partial \mathbf{E}}{\partial t} = \dfrac{\partial \mathbf{D}}{\partial t} \\
+\Rightarrow \nabla \times \mathbf{B}= \mu_0 \mathbf{J}_\text{enc.} + \mu_0 \varepsilon_0 \dfrac{\partial \mathbf{E}}{\partial t}\quad \text{(Maxwell-Ampere law)}
+\end{gather*}
+{% end %}
+
+Ampere's law, modified by Maxwell, is often called the Maxwell-Ampere law. It completes Maxwell's equations, and gives us the modern form of Maxwell that is correct is all situations. Notice that if the electric field _does not change_, then $\dfrac{d\Phi_E}{dt} = 0$ and thus we recover the "old version" of Ampere's law, $\displaystyle \oint \mathbf{B} \cdot d\mathbf{r} = \mu_0 I_\text{enc.}$.
+
+> **Note:** The term "displacement current" is a terrible name, because it is not really a current in the sense that it does _not_ necessarily consist of any actual moving charges, just like "electromotive force" (also terribly-named) is not a force. Also note that the word "displacement" in "displacement current" refers to the fact that it has units of the $\mathbf{D}$ field over time. Don't take the names too seriously - the mathematics are the better way to gain a physical intuition.
+
+### Maxwell's equations in matter with displacement current
+
+In matter, Maxwell's equations must also be modified to take the displacement current into account. The correct form of Maxwell's equations are then given by:
+
+{% math() %}
+\begin{align*}
+\nabla \cdot \mathbf{D} &= \rho_f \\
+\nabla \cdot \mathbf{B} &= 0 \\
+\nabla \times \mathbf{E} &= -\dfrac{\partial \mathbf{B}}{\partial t} \\
+\nabla \times \mathbf{H} &= \mathbf{J}_f + \dfrac{\partial \mathbf{D}}{\partial t} \\
+\mathbf{D} =& \, \varepsilon_0 \mathbf{E} + \mathbf{P}, \\
+\mathbf{H} =& \, \dfrac{1}{\mu_0} \mathbf{B} - \mathbf{M}
+\end{align*}
+{% end %}
+
+Where, to incorporate Maxwell's correction to Ampere's law, we must modify our definition of the bound current (density) from $\mathbf{J}_b = \nabla \times \mathbf{M}$ to $\mathbf{J}_b  = \nabla \times \mathbf{M} + \dfrac{\partial \mathbf{P}}{\partial t}$, and add a displacement current term $\mathbf{J}_D = \varepsilon_0 \dfrac{\partial \mathbf{E}}{\partial t}$ to Ampere's law. In general, it is not possible to find the (total) electric field $\mathbf{E}$ and magnetic field $\mathbf{B}$ without knowing the exact expressions for $\mathbf{P}$ and $\mathbf{M}$, _unless_ the material is linear, where:
+
+- If we have an electrically-linear material, then $\mathbf{P} = \varepsilon_0 \chi_e \mathbf{B}$, and $\mathbf{D} = \varepsilon \mathbf{E}$ (where $\varepsilon = \varepsilon_0(1 + \chi_e)$), so it is possible to directly solve for the **electric field** just by finding $\mathbf{D}$. 
+- Similarly, if we have a magnetically-linear material, then $\mathbf{M} = \chi_m \mathbf{H}$, and so $\mathbf{H} = \mathbf{B}/\mu$ (where $\mu = \mu_0(1 + \chi_m)$), so it is also possible to directly solve for the **magnetic field** just by finding $\mathbf{H}$.
+
+> **Note:** We have been sloppy with calling materials "linear" without distinguishing between electrically-linear and magnetically-linear materials. A material being electrically-linear does _not_ necessarily mean that the same material is magnetically-linear. Thankfully, most materials are **both electrically-linear and magnetically-linear**, so we don't have to worry about the distinction. There are, however, some exceptions, such as materials placed under extreme electric fields (where they become electrically non-linear) and (in more everyday conditions) ferromagnetic and antiferromagnetic materials (which are naturally magnetically non-linear).
+
+### The theoretical discovery of electromagnetic waves
+
+Let us now consider Maxwell's equations in a very special case: where the charge density and current density are both _zero_. Then, Maxwell's equations reduce to the much simpler form:
+
+{% math() %}
+\begin{align*}
+\nabla \cdot \mathbf{E} &= 0 \\
+\nabla \cdot \mathbf{B} &= 0 \\
+\nabla \times \mathbf{E} &= -\dfrac{\partial \mathbf{B}}{\partial t} \\
+\nabla \times \mathbf{B} &= \mu_0 \varepsilon_0\dfrac{\partial \mathbf{E}}{\partial t}
+\end{align*}
+{% end %}
+
+Now, consider the (admittedly-unorthrodox) procedure of taking the curl of Faraday's law. We then have:
+
+{% math() %}
+\begin{align*}
+\nabla \times \left(\nabla \times \mathbf{E}\right) &= \nabla \times \left(-\dfrac{\partial \mathbf{B}}{\partial t}\right) \\
+&= -\dfrac{\partial}{\partial t} \underbrace{\left(\nabla \times \mathbf{B}\right)}_\text{Ampere's law} \\
+&= -\dfrac{\partial}{\partial t}\left(\mu_0 \varepsilon_0\dfrac{\partial \mathbf{E}}{\partial t}\right) \\
+&= -\mu_0 \varepsilon_0 \dfrac{\partial^2 \mathbf{E}}{\partial t^2}
+\end{align*}
+{% end %}
+
+But note that by the vector calculus identity $\nabla \times (\nabla \times \mathbf{F}) = \nabla(\nabla \cdot \mathbf{F}) - \nabla^2 \mathbf{F}$, we have:
+
+{% math() %}
+\begin{align*}
+\nabla \times (\nabla \times \mathbf{F}) &= \nabla(\nabla \cdot \mathbf{F}) - \nabla^2 \mathbf{F} \\
+&= \nabla \underbrace{(\nabla \cdot \mathbf{E})}_{\nabla\ \cdot\ \mathbf{E}\ =\ 0} - \nabla^2 \mathbf{E} \\
+&= - \nabla^2 \mathbf{E}
+\end{align*}
+{% end %}
+
+So putting our two results together, we have:
+
+{% math() %}
+\begin{gather*}
+- \nabla^2 \mathbf{E} = -\mu_0 \varepsilon_0 \dfrac{\partial^2 \mathbf{E}}{\partial t^2} \\
+\Rightarrow \dfrac{\partial^2 \mathbf{E}}{\partial t^2} = \dfrac{1}{\mu_0 \varepsilon_0} \nabla^2 \mathbf{E}
+\end{gather*}
+{% end %}
+
+This is the **electromagnetic wave equation** (EM wave equation for short), because if we compare it against the standard form of the wave equation $\frac{\partial^2 f}{\partial t^2} = v^2 \nabla^2 f$ (which describes a wave $f(x, t)$ propagating at velocity $v$), we have an exact match if we make the identification $v^2 = 1/\mu_0 \varepsilon_0$. Furthermore, if we solve for $v$, we have:
+
+{% math() %}
+v = \dfrac{1}{\sqrt{\mu_0 \varepsilon_0}} = \text{299,792,458 m/s}
+{% end %}
+
+This is exactly the speed of light, $c$! Therefore, by purely invoking the equations of electromagnetic theory, Maxwell was able to predict the existence of _electromagnetic waves_, and furthermore, show that _light is an electromagnetic wave_. Thus the EM wave equation is more commonly written as:
+
+{% math() %}
+\dfrac{\partial^2 \mathbf{E}}{\partial t^2} = c^2 \nabla^2 \mathbf{E}
+{% end %}
+
+Note that by performing the same mathematical analysis, only starting by taking the curl of Ampere's law ($\nabla \times \nabla \times \mathbf{B}$), we can also arrive at an EM wave equation for the magnetic field:
+
+{% math() %}
+\dfrac{\partial^2 \mathbf{B}}{\partial t^2} = c^2 \nabla^2 \mathbf{B}
+{% end %}
+
+The combined vector-valued EM wave equations can be expanded in component form as:
+
+{% math() %}
+\begin{align*}
+\dfrac{\partial^2 E_x}{\partial t^2} = c^2 \nabla^2 E_x,& 
+&\dfrac{\partial^2 B_x}{\partial t^2} = c^2 \nabla^2 B_x \\
+\dfrac{\partial^2 E_y}{\partial t^2} = c^2 \nabla^2 E_y,&
+&\dfrac{\partial^2 B_y}{\partial t^2} = c^2 \nabla^2 B_y \\
+\dfrac{\partial^2 E_z}{\partial t^2} = c^2 \nabla^2 E_z,&
+&\dfrac{\partial^2 B_z}{\partial t^2} = c^2 \nabla^2 B_z
+\end{align*}
+{% end %}
+
+Maxwell predicted that even far away from sources, electric and magnetic fields in free space can self-propagate, carrying energy and signals over long distances. It is by this principle that the Sun's light is able to heat the Earth and keeps it warm, making life on Earth possible, and by which wireless transmitters producing electromagnetic waves allowed for the invention of modern internet.
+
+> **Note:** It is important to recognize that pure electromagnetic waves are technically only possible in free space, far from sources and charges. We will later discuss the case of what happens when electromagnetic waves interact with matter.
+
+Solutions to the EM wave equation are extremely important, and for good reason. Thankfully, the EM wave equation is separable, so we can use similar methods as we used for solving Laplace's equation to obtain solutions to this partial differential equation. Solutions can be found in Cartesian coordinates, known as **plane waves**, or in **spherical coordinates**, yielding **spherical waves**. More exotic solutions can also be found, such as [Gaussian beams](https://en.wikipedia.org/wiki/Gaussian_beam),  [transverse-mode standing waves ](https://en.wikipedia.org/wiki/Waveguide_(radio_frequency)#Mathematical_analysis), and [dipole radiation](https://en.wikipedia.org/wiki/Dipole_antenna#Detailed_calculation_of_dipole_feedpoint_impedance), among others, with specialist applications. These solutions are privotal to radio astronomy, modern telecommunications technology, GPS, the internet, and so, so much more.
+
+### Traveling plane-wave solutions to the EM wave equation
+
+We will first consider the simplest solution to the EM wave equation for the electric field. For this, we need to solve the three PDEs for each component of the electric field:
+
+{% math() %}
+\begin{align*}
+\dfrac{\partial^2 E_x}{\partial t^2} = c^2 \nabla^2 E_x \\
+\dfrac{\partial^2 E_y}{\partial t^2} = c^2 \nabla^2 E_y \\
+\dfrac{\partial^2 E_z}{\partial t^2} = c^2 \nabla^2 E_z
+\end{align*}
+{% end %}
+
+By guess-and-check or separation of variables, we find that the following three solutions (called **plane-wave solutions**) do indeed solve the electromagnetic wave equation in each of its components:
+
+{% math() %}
+\begin{align*}
+E_x(\mathbf{r}, t) = E_{0x} e^{i(k_x x - \omega t)} \\
+E_y(\mathbf{r}, t) = E_{0y} e^{i(k_y y - \omega t)} \\
+E_z(\mathbf{r}, t) = E_{0z} e^{i(k_z y - \omega t)}
+\end{align*}
+{% end %}
+
+Where $\mathbf{r} = (x, y, z)$, $E_{0x}, E_{0y}, E_{0z}$ are the **amplitudes** (max. field strength) of the electric field in each component, $k_x, k_y, k_z$ are the components of the _wavevector_ $\mathbf{k} = (k_x, k_y, k_z)$ (which are the seperation constants that come from the separation of variables) and $\omega = |\mathbf{k}| c$. It is customary to write combine the three component solutions as one vector-valued solution for $\mathbf{E}$ with:
+
+{% math() %}
+\mathbf{E}(\mathbf{r}, t) = \begin{pmatrix} E_x \\ E_y \\ E_z \end{pmatrix} = \mathbf{E}_0 e^{i(\mathbf{k} \cdot \mathbf{r} - \omega t)}, \quad \mathbf{E}_0 = \begin{pmatrix}
+E_{0x} \\ E_{0y} \\ E_{0z}
+\end{pmatrix}
+{% end %}
+
+Note that by the same methods, we may find an analogous solution for the magnetic field, given by:
+
+{% math() %}
+\mathbf{B}(\mathbf{r}, t) = \begin{pmatrix} B_x \\ B_y \\ B_z \end{pmatrix} = \mathbf{B}_0 e^{i(\mathbf{k} \cdot \mathbf{r} - \omega t)}, \quad \mathbf{B}_0 = \begin{pmatrix}
+B_{0x} \\ B_{0y} \\ B_{0z}
+\end{pmatrix}
+{% end %}
+
+> **Note:** For some it is more illustrative to write $\mathbf{E}(\mathbf{r}, t) = E_0 \hat{\mathbf{n}}_1\, e^{i(\mathbf{k} \cdot \mathbf{r} - \omega t)}$ and $\mathbf{B}(\mathbf{r}, t) = B_0 \hat{\mathbf{n}}_2\, e^{i(\mathbf{k} \cdot \mathbf{r} - \omega t)}$, where $\hat{\mathbf{n}}_1, \hat{\mathbf{n}}_2$ are the directions of the electric field and magnetic field vectors (respectively). This is because electromagnetic waves **don't** propagate along the electric or magnetic field lines, but rather, **perpendicular to both the electric and magnetic field lines**. So, it is useful to explicitly write out the directions ($\hat{\mathbf{n}}$) that the fields are oscillating in, to not forget that **these aren't the same as the direction the wave travels**.
+
+In the special case that {% inlmath() %}\mathbf{E}_0 = E_{0y} \hat{\mathbf{y}}{% end %} and {% inlmath() %}\mathbf{B}_0 = B_{0z} \hat{\mathbf{z}}{% end %}, that is, for an electromagnetic plane wave where only the $y$ component of the electric field and $z$ component of the magnetic field is nonzero, our solutions take the form {% inlmath() %}\mathbf{E}(\mathbf{r}, t) = E_{0y} \hat{\mathbf{y}} e^{i(\mathbf{k} \cdot \mathbf{r} - \omega t)}{% end %} and {% inlmath() %}\mathbf{B}(\mathbf{r}, t) = B_{0z} \hat{\mathbf{z}} e^{i(\mathbf{k} \cdot \mathbf{r} - \omega t)}{% end %}. A visualization of such an electric field is shown below:
+
+{{ diagram(
+	src="transverse-em-wave-stackexchange.png"
+	desc="A plot of an electric field along the y-direction and a magnetic field around the z-direction"
+) }}
+
+_Source: [Physics StackExchange](https://physics.stackexchange.com/questions/451751/is-the-direction-of-the-electric-field-relative-to-the-magnetic-field-in-an-elec)_
+
+> **Note:** It is interesting to note that $\mathbf{E}, \mathbf{B}$ are **perpendicular** to the direction that the wave travels, rather than aligned along the travel direction. Thus we say the wave is **transverse**. We will soon see the mathematical reason for why that is.
+
+Our solution, unfortunately, has several problems; one issue is that the solutions are complex numbers, but we know that electric fields are real-valued. So rather, we usually take the _real component_ of the complex-valued solution, that is, $\text{Re}(\mathbf{E})$, to be able to get a real-valued solution. That is:
+
+{% math() %}
+\mathbf{E}(\mathbf{r}, t) = \mathbf{E}_0 \cos(\mathbf{k} \cdot \mathbf{r} - \omega t)
+{% end %}
+
+And doing the same for the magnetic field, we have:
+
+{% math() %}
+\mathbf{B}(\mathbf{r}, t) = \mathbf{B}_0 \cos(\mathbf{k} \cdot \mathbf{r} - \omega t)
+{% end %}
+
+Note how the solution is in the form $u(x, t) = f(x - vt)$, which is the standard form of a **travelling wave**. Thus we call such solutions **traveling plane waves**. And this allows us to give a very important physical interpretation of the wavevector $\mathbf{k} = (k_x, k_y, k_z)$: its direction is **propagation direction** of the wave, or in other terms, the direction that a traveling plane-wave moves.
+
+> **Note:** A special property of traveling plane-wave solutions is that the electric field is **perpendicular** to $\mathbf{k}$, and is **also perpendicular** to $\mathbf{B}$. In addition, for traveling plane-wave solutions in vacuum, $\mathbf{E}$ and $\mathbf{B}$ are always **in-phase**, where the so-called phase $\phi = \mathbf{k} \cdot \mathbf{r} - \omega t$ has units of radians. In addition, it means that (in free space) $\mathbf{B}_0 = \dfrac{1}{c} \hat{\mathbf{k}}  \times \mathbf{E}_0$, or in scalar form, $B_0 = E_0 / c$.
+
+### Energy carried by electromagnetic waves
+
+Electromagnetic waves do much more than just move from place to place; they also carry **energy**. As we discussed previously, this allows sunlight to carry heat that heats up the Earth, and it is by the same principle that lasers can melt metal. The energy carried by traveling waves can be described by the **Poynting vector**, which is given by:
+
+{% math() %}
+\mathbf{S} = \mathbf{E} \times \mathbf{H}
+{% end %}
+
+Where in free space, $\mathbf{B} = \mu_0 \mathbf{H}$, so we have, equivalently:
+
+{% math() %}
+\mathbf{S} = \dfrac{1}{\mu_0}\mathbf{E} \times \mathbf{B}
+{% end %}
+
+> **Note:** Be very careful when doing the cross product with complex-valued solutions. It is best to take the real part first, and then perform the cross-product; if you would like to do it with the complex form, you must take the **complex conjugate** of the magnetic field so that $\mathbf{S}$ ends up real-valued.
+
+The Poynting vector $\mathbf{S}$ points in the same direction as $\mathbf{k}$, meaning that it points along the direction that the wave travels. This gives us a _physical interpretation_ of the Poynting vector: it represents the _propragation of energy_. In fact, one can say that it "points" along the direction where electromagnetic energy flows (pun intended)!
+
+> **Note:** In general, magnetic fields interact much more weakly than electric fields, which is why the electric field is usually the dominant contribution to the Poynting vector of an electromagnetic wave.
+
+The **intensity** (also called the _irradiance_ in some contexts) is the time-averaged magnitude of the Poynting vector. We can calculate the intensity of a traveling plane wave by using the identity that the average of $\cos^2 \theta$ over $[0, 2\pi]$ is equal to $1/2$ - the result is given by:
+
+{% math() %}
+I = |\langle \mathbf{S}\rangle| = \dfrac{1}{2} c \varepsilon_0 E_0^2
+{% end %}
+
+Again, remember that the physical interpretation of the Poynting vector is that it represents **transfer of energy** by electromagnetic waves - which is why it has units of power over squared area, since to satisfy conservation of energy, intensity must drop by the inverse square (see [the wikipedia article](https://en.wikipedia.org/wiki/Intensity_(physics)) for a more in-depth explanation of why). As the electromagnetic wave spreads, it carries energy with it from location to location, such as from the Sun to Earth. This does not happen instantly - instead, it happens at the speed of light - which is required to obey special relativity. We can indeed calculate the _total_ energy of the electric and magnetic fields across all space (or in a finite volume), but since electric and magnetic fields are continuous, it is often more instructive to calculate the **electromagnetic energy density**, which is given by:
+
+{% math() %}
+\begin{align*}
+u &= \underbrace{\dfrac{1}{2} \varepsilon_0 \mathbf{E}_0^2}_\text{electric energy} + \underbrace{\dfrac{1}{2\mu_0} \mathbf{B}_0^2}_\text{magnetic energy} \\
+&= \dfrac{1}{2} \big(\mathbf{E} \cdot \mathbf{D} + \mathbf{B} \cdot \mathbf{H}\big)
+\end{align*}
+{% end %}
+
+Where the first and second terms (unsurprisingly) represent the electric and magnetic contributions to the energy density. The total energy $U_T$ present in the electric and magnetic fields within some volume $V$ is then simply the volume integral of $u$:
+
+{% math() %}
+U_T = \int_V u\, dV
+{% end %}
+
+But the transfer of energy by electromagnetic waves doesn't just carry energy: it carries momentum, too! The Einstein energy-momentum relation, a result in special relativity, allows us to find the _momentum density_ from the energy density. It says that for light, $E = pc$ where $p$ is the momentum. Therefore, the momentum density $\mathscr{p}$ is also related to the energy density $u$ by $u = \mathscr{p}c$, and thus we have:
+
+{% math() %}
+\mathscr{p} = \dfrac{u}{c} = \dfrac{1}{2c} \varepsilon_0 \mathbf{E}_0^2 + \dfrac{1}{2\mu_0 c} \mathbf{B}_0^2
+{% end %}
+
+Since electromagnetic waves carry momentum, and force is the rate of change of momentum, incident light on a surface actually produces a miniscule force on the surface, known as the **radiation force**. The radiation force per unit area is called **radiation pressure**, and is given by $P = I/c$, where $P$ is the pressure, $I$ is the intensity, and $c$ is the speed of light. This force is very tiny - for instance, sunlight, which has an average intensity of $\pu{1361 W/m^2}$, only exerts a pressure of $\pu{4.54 \mu N/m^2}$.
+
+### Polarization of EM waves
+
+We will now take a close look at the amplitude and direction of the electric and magnetic fields, given by the vectors $\mathbf{E}_0$ and $\mathbf{B}_0$. The _direction_ of these vectors, that is, $\hat{\mathbf{E}}_0, \hat{\mathbf{B}}_0$, is called the **polarization** of the electromagnetic wave (not to be confused with polarization in dielectrics, that is different). Previously, we discussed only the simplest form of polarization: one for which we had $\mathbf{E}$ perpendicular to $\mathbf{B}$, where $\mathbf{k}$ is along $+x$, and for which we had the respective amplitudes:
+
+{% math() %}
+\mathbf{E}_0 = \begin{pmatrix}
+0 \\ E_{0y} \\ 0
+\end{pmatrix}, \quad
+\mathbf{B}_0 = \begin{pmatrix}
+0 \\ 0 \\ B_{0z}
+\end{pmatrix}
+{% end %}
+
+In principle, however, there is no reason that the components of $\mathbf{E}_0$ and $\mathbf{B}_0$ must be aligned along only one axis. Indeed, we can pick _arbitrary_ components of $\mathbf{E}_0, \mathbf{B}_0$ so long as the electric and magnetic fields are both perpendicular to the wavevector, that is:
+
+{% math() %}
+\mathbf{k} \cdot \mathbf{E}_0 = 0, \quad \mathbf{k} \cdot \mathbf{B}_0 = 0
+{% end %}
+
+In the more general case, for an arbitrary electromagnetic wave traveling along $+x$,  $\mathbf{E}_0, \mathbf{B}_0$ can be any variation of the following amplitudes:
+
+{% math() %}
+\mathbf{E}_0 = E_0\begin{pmatrix}
+0 \\ \cos \theta \\ \sin \theta
+\end{pmatrix}, \quad
+\mathbf{B}_0 = B_0\begin{pmatrix}
+0 \\ \cos \theta \\ \sin \theta
+\end{pmatrix}
+{% end %}
+
+These vectors are known as the **Jones vectors**, and they describe propagating electric and magnetic fields that are not aligned purely along a specific axis. We say that these waves are **linearly polarized**, meaning that the electric and magnetic fields oscillate only along a specific direction (hence _linear_), although this direction may not be $\pm x$, $\pm y$, or $\pm z$.
+
+In fact, this is not even the most general case. This is because $\mathbf{E}_0$ and $\mathbf{B}_0$ are in general *complex-valued* amplitudes, meaning that their real parts may not match (be careful: the electric and magnetic fields are **still in phase**, the difference is in the magnitudes, because they have different real parts). Up to this point, we have assumed that $\mathbf{E}_0$ and $\mathbf{B}_0$ are _real-valued_, but this does not have to be true. That is to say, the _most general_ amplitudes for the electric and magnetic fields for an EM wave traveling along $+x$ are given by:
+
+{% math() %}
+\mathbf{E}_0 = E_0\begin{pmatrix}
+0 \\ \cos \theta\, e^{i\phi_y} \\ \sin \theta \, e^{i\phi_z}
+\end{pmatrix}, \quad
+\mathbf{B}_0  = B_0\begin{pmatrix}
+0 \\ \cos \theta\, e^{i\delta_y} \\ \sin \theta\, e^{i\delta_z}
+\end{pmatrix}
+{% end %}
+
+The fact that the electric and magnetic field may have _different amplitudes_ due to their complex amplitudes (but still the same phase) gives rise to some very unusual behavior. For instance, it means that light can be **elliptically-polarized** or **circularly-polarized**, where the fields display a very special pattern as they evolve through time. We show an example of circularly-polarized light below (electric field only):
+
+![A picture of circularly-polarized light, where the wave vectors rotate around the x axis due to its nonzero phase](https://upload.wikimedia.org/wikipedia/commons/8/82/Circular.Polarization.Circularly.Polarized.Light_Without.Components_Right.Handed.svg)
+
+_Illustration of a circularly-polarized EM wave (only the electric field is shown). Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Circular.Polarization.Circularly.Polarized.Light_Without.Components_Right.Handed.svg)_
+
+Polarization is significant because it greatly affects how electromagnetic waves interact with matter. In fact, we will study the interaction with electromagnetic waves with matter next.
+
+> **Note:** What we have discussed about is a limiting case for electromagnetic waves in general conditions. In plasma physics or at high energies, some or all our assumptions (like that electric and magnetic fields are in-phase) can certainly break down. But that is a topic for a more advanced treatment of the subject.
+
+## Relativistic electrodynamics
+
+Whe learning electromagnetic theory, it is natural to start with electrostatics and magnetostatics, and indeed, this is what we did also. But electromagnetic theory is in general _not static_, and the assumption of static fields is but a limiting case. It might be a surprise, in fact, to find that electromagnetic theory is actually **fully relativistic**, so not only do fields change, but they change fully in accordance to the laws of special relativity! We emphasize: electrodynamics is a **dynamical** and **relativistic theory** by nature, and we will now show why.
+
+Recall how previously, in electrostatics/magnetostatics, we spoke of the nature of a **gauge transformation** when defining the magnetic vector potential $\mathbf{A}$, for which $\mathbf{B} = \nabla \times \mathbf{A}$. The nature of a gauge transformation is that we can add the gradient of any arbitrary function to a potential without changing the _fields_ that result from the potential. This is significant because it gives us a lot of freedom to choose a _convenient form of the potential_, just like we could choose an arbitrary reference point in mechanics to define the potential energy in a simpler form, without changing any of the forces. We call this **gauge invariance** and it is fundamental to advanced electrodynamics; make sure to review that section if you need a refresher.
+
+In that section, we spoke of the **Coulomb gauge**, where we _define_ the electric and magnetic potentials with the definitions:
+
+{% math() %}
+\begin{align*}
+\mathbf{E} &= -\nabla V \\
+\mathbf{B} &= \nabla \times \mathbf{A}, \quad \nabla \cdot \mathbf{A} = 0
+\end{align*}
+{% end %}
+
+The Coulomb gauge was useful because it allowed us to write out the equation for the magnetic potential, $\nabla^2 \mathbf{A} = -\mu_0 \mathbf{J}$, in a form that was analogous to Laplace's equation for the electric potential, $\nabla^2 V = -\rho/\varepsilon_0$. This also meant that particular solutions for $V$ and $\mathbf{A}$ can be expressed in explicit integral form as:
+
+{% math() %}
+\begin{align*}
+V &= \dfrac{1}{4\pi \varepsilon_0} \int \dfrac{\rho(\mathbf{r}')}{|\mathbf{r} - \mathbf{r}'|} dV'\\
+\mathbf{A} &= \dfrac{\mu_0}{4\pi} \int \dfrac{\mathbf{J}(\mathbf{r}')}{| \mathbf{r} - \mathbf{r}'|}dV'
+\end{align*}
+{% end %}
+
+However, the Coulomb gauge comes from **magnetostatics**, which we have since left for more general **electrodynamics**, where electric and magnetic fields change with time and oscillate with each other. This means that we have to abandon the Coulomb gauge, and modify $\mathbf{E} = -\nabla V$ to the _new_ definitions:
+
+{% math() %}
+\begin{align*}
+\mathbf{E} &= -\nabla V - \dfrac{\partial \mathbf{A}}{\partial t} \\
+\mathbf{B} &= \nabla \times \mathbf{A}
+\end{align*}
+{% end %}
+
+Unfortunately, if we substitute these new definitions into the **general version** of Maxwell's equations (which includes changing fields), then the PDEs for $V$ and $\mathbf{A}$ become much more complicated:
+
+{% math() %}
+\begin{gather*}
+\nabla^2 V + \dfrac{\partial}{\partial t}(\nabla \cdot \mathbf{A}) = -\rho/\varepsilon_0 \\
+\nabla^2 \mathbf{A} - \dfrac{1}{c^2} \dfrac{\partial^2 \mathbf{A}}{\partial t^2} - \nabla \left(\nabla \cdot \mathbf{A} + \dfrac{1}{c^2} \dfrac{\partial V}{\partial t}\right) = -\mu_0 \mathbf{J}
+\end{gather*}
+{% end %}
+
+In fact, these are _coupled differential equations_, meaning that we have to solve both at once, which is quite the chore! Once again, however, we can use the trick of gauge invariance, but instead of choosing $\nabla \cdot \mathbf{A} = 0$ as we did in magnetostatics, we now choose of the **Lorenz gauge condition**, which requires that:
+
+{% math() %}
+\nabla \cdot \mathbf{A} + \dfrac{1}{c^2} \dfrac{\partial V}{\partial t} = 0
+{% end %}
+
+> **Note:** It is important to remember that while it may _seem_ like we are making arbitrary mathematical manipulations and making wild assumptions, the nature of **gauge invariance** allows us to make these manipulations knowing that they are all _physically valid_. It is a fact of nature that we can choose _any gauge condition_ we want without changing the electric and magnetic fields. We are just utilizing this fact to choose a specific gauge condition that makes our equations simpler.
+
+Substituting the previous result, we obtain the equations:
+
+{% math() %}
+\begin{gather*}
+\nabla^2 V - \dfrac{1}{c^2} \dfrac{\partial^2 V}{\partial t^2} = -\rho/\varepsilon_0 \\
+\nabla^2 \mathbf{A} - \dfrac{1}{c^2} \dfrac{\partial^2 \mathbf{A}}{\partial t^2} = -\mu_0 \mathbf{J}
+\end{gather*}
+{% end %}
+
+We have now **fully separated** the two PDEs by our use of the Lorenz gauge condition, and in fact, our resulting equations are **separable linear PDEs**, for which we may write out a general solution (we'll show what these general solutions are later). If we expand out the vector calculus notation, we have four _scalar_ (but independent) PDEs in the electric potential and magnetic potential components, which we would usually solve separately (and in some cases one or more components will be zero). It is possible to write these PDEs fully in component form as follows:
+
+{% math() %}
+\begin{align*}
+-\dfrac{1}{c^2} \dfrac{\partial^2 V}{\partial t^2} + \nabla^2 V &= 0 \\
+-\dfrac{1}{c^2} \dfrac{\partial^2 A_x}{\partial t^2} + \nabla^2 A_x &= 0 \\
+-\dfrac{1}{c^2} \dfrac{\partial^2 A_y}{\partial t^2} + \nabla^2 A_y &= 0 \\
+-\dfrac{1}{c^2} \dfrac{\partial^2 A_z}{\partial t^2} + \nabla^2 A_z &= 0
+\end{align*}
+{% end %}
+
+However, this notation is rather clumsy. It is understandably preferred in physics to use **tensor notation** (also called **Einstein index notation** for the rather intelligent physicist who helped popularize it). In this notation, we define the **d'Alembertian operator** with a little square with a superscript, as follows:
+
+{% math() %}
+\square = -\dfrac{1}{c^2} \dfrac{\partial^2}{\partial t^2} + \nabla^2
+{% end %}
+
+Meanwhile, we define a **four-vector** (remember special relativity) with $A^\mu = (A^0, A^1, A^2, A^3) = (\frac{1}{c} V, A_x, A_y, A_z)$. This is a nice and compact way to combine the components of the electric potential and magnetic potentials together into a single **4-potential**. When _combined with the gauge condition_, the 4-potential gives all the information needed to determine the electric and magnetic fields. Thus we have arrived at the **relativistic form of Maxwell's equations**:
+
+{% math() %}
+\square A^\mu = -\mu_0 J^\mu
+{% end %}
+
+Where here, again, we have $A^\mu = \langle A^0, A^1, A^2, A^3\rangle$ being the electric and magnetic potential components of the 4-potential, and $J^\mu = \langle J^0, J^1, J^2, J^3\rangle = \langle c\rho, J_x, J_y, J_z\rangle$ is the **4-current**, which combines the charge density $\rho$ with the current density $\mathbf{J} = \langle J_x, J_y, J_z\rangle$. If we're interested in the *fields*, rather than 4-potential, we can define another tensor known as the **Faraday field tensor** or **field tensor**. The field tensor is given by:
+
+{% math() %}
+F^{\mu \nu }=\partial ^{\mu }A^{\nu }-\partial ^{\nu }A^{\mu }={\begin{bmatrix}0&-E_{x}/c&-E_{y}/c&-E_{z}/c\\E_{x}/c&0&-B_{z}&B_{y}\\E_{y}/c&B_{z}&0&-B_{x}\\E_{z}/c&-B_{y}&B_{x}&0\end{bmatrix}}
+{% end %}
+
+Which gives us _another form_ of the full Maxwell equations, this time expressed in terms of the field tensor:
+
+{% math() %}
+\partial_\mu F^{\mu \nu} = -\mu_0 J^\nu
+{% end %}
+
+The continuity equation $\dfrac{\partial \rho}{\partial t} + \nabla \cdot \mathbf{J} = 0$, which describes the conservation of charge, becomes $\partial_\mu \partial^\mu J = 0$ when written using the 4-current. The Lorenz force law $\mathbf{F} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})$ becomes $f_\nu = qF_{\mu \nu} U^\mu$, where $f_\nu$ is the **four-force** and $U^\mu = \langle U^0, U^1, U^2, U^3\rangle = (\gamma c, \dot x, \dot y, \dot z)$ is the **four-velocity** (remember $\gamma$ is the [Lorenz factor](https://en.wikipedia.org/wiki/Lorenz_factor) of special relativity). We should stress that the four-velocity is slightly more complicated because $\dot x, \dot y, \dot z$ are taken with respect to **proper time** (the local time of an observer); you can read about the distinction in the [special relativity portion](@/advanced-classical-mech/index.md#special-relativity) of the advanced classical mechanics guide.
+
+### The Liénard–Wiechert potentials and Jefimenko's equations
+
+Recall we previously found that using the Lorenz gauge "trick", we obtained the PDEs for the electric and magnetic components of the 4-potential:
+
+{% math() %}
+\begin{gather*}
+\nabla^2 V - \dfrac{1}{c^2} \dfrac{\partial^2 V}{\partial t^2} = -\rho/\varepsilon_0 \\
+\nabla^2 \mathbf{A} - \dfrac{1}{c^2} \dfrac{\partial^2 \mathbf{A}}{\partial t^2} = -\mu_0 \mathbf{J}
+\end{gather*}
+{% end %}
+
+Which could be combined into a single tensor PDE, given by:
+
+{% math() %}
+\square A^\mu = -\mu_0 J^\mu
+{% end %}
+
+The solutions for these PDEs are called the **Liénard–Wiechert potentials**, and they are respectively given by:
+
+{% math() %}
+\begin{align*}
+V (\mathbf {r} ,t) &= {\frac{1}{4\pi \varepsilon _{0}}}\int {\frac {\rho (\mathbf {r} ',t_{r}')}{|\mathbf {r} -\mathbf {r} '|}}d^{3}\mathbf {r} '+ V_{0}(\mathbf {r} ,t) \\
+\mathbf {A} (\mathbf{r} ,t)&={\frac {\mu _{0}}{4\pi }}\int {\frac {\mathbf {J} (\mathbf {r} ',t_{r}')}{|\mathbf {r} -\mathbf {r} '|}}d^{3}\mathbf {r} '+\mathbf {A} _{0}(\mathbf {r} ,t), \\
+&t_r' \equiv  t - \dfrac{|\mathbf{r} - \mathbf{r}'|}{c}
+\end{align*}
+{% end %}
+
+Here, $V_0$ and $\mathbf{A}_0$ are any solutions to the **homogeneous version** of the PDEs, as given below:
+
+{% math() %}
+\begin{gather*}
+\nabla^2 V_0 - \dfrac{1}{c^2} \dfrac{\partial^2 V_0}{\partial t^2} = 0\\
+\nabla^2 \mathbf{A}_0 - \dfrac{1}{c^2} \dfrac{\partial^2 \mathbf{A}_0}{\partial t^2} = 0
+\end{gather*}
+{% end %}
+
+Meanwhile, $t_r'$ is known as the **retarded time** (yes, it is a horrible name). It captures the fact that to obey special relativity, electric and magnetic fields (and also their respective potentials) can only propagate as fast as the speed of light. That is to say, an electromagnetic wave originating in star system $A$ will *not* be detected in star system $A'$ located a light-year away until a year later. Furthermore, using the definitions of the electric and magnetic potentials, we may obtain the corresponding electric and magnetic fields arising from the Liénard–Wiechert potentials. These are called **Jefimenko's equations**, and they are respectively given by:
+
+{% math() %}
+\begin{align*}
+\mathbf{E}(\mathbf{r}, t) &= -\nabla V - \dfrac{\partial \mathbf{A}}{\partial t} \\
+&=\frac {1}{4\pi \varepsilon0} \int \left[{\frac {\mathbf{r} -\mathbf{r} '}{|\mathbf{r} -\mathbf{r} '|^{3}}}\rho (\mathbf{r} ',t_{r})+{\frac {\mathbf{r} -\mathbf{r} '}{|\mathbf{r} -\mathbf{r} '|^{2}}}{\frac {1}{c}}{\frac {\partial \rho (\mathbf{r} ',t_{r})}{\partial t}}-{\frac {1}{|\mathbf{r} -\mathbf{r} '|}}{\frac {1}{c^{2}}}{\frac {\partial \mathbf {J} (\mathbf{r} ',t_{r})}{\partial t}}\right]dV'\\
+\mathbf{B}(\mathbf{r}, t) &= \nabla \times \mathbf{A} \\
+&= -{\frac {\mu _{0}}{4\pi }}\int \left[{\frac {\mathbf{r} -\mathbf{r} '}{|\mathbf{r} -\mathbf{r} '|^{3}}}\times \mathbf {J} (\mathbf{r} ',t_{r})+{\frac {\mathbf{r} -\mathbf{r} '}{|\mathbf{r} -\mathbf{r} '|^{2}}}\times {\frac {1}{c}}{\frac {\partial \mathbf {J} (\mathbf{r} ',t_{r})}{\partial t}}\right]dV'
+\end{align*}
+{% end %}
+
+It's important to emphasize that we are **introducing no new physics here** - remember, electrodynamics is _by definition_ a relativistic theory (except in the electrostatic/magnetostatic case, but those are _approximations_), we are simply writing the Maxwell equations in a form that makes their relativistic nature (more) obvious. We could have obtained all of these results by solving the full Maxwell's equations _if we so wanted_, but we "see" relativity much easier by using the 4-potential formulation.
+
+> **Note:** in theoretical physics, it is common to use tensors for calculations in advanced electrodynamics. We haven't yet used a lot of tensors, but be aware that they are often used, and we will be using them a lot from this point forward.
+
+### The Maxwell Lagrangian
+
+By this point, we have ventured into the territory of very advanced theoretical physics, which is usually intended for graduate study. Read on if you dare; if not, please feel free to jump straight to the [conclusion of the guide](#concluding-thoughts).
+
+We've discussed the Maxwell equations at length throughout this guide: what they mean, how to calculate with them, and how they naturally incorporate relativity. But, one may ask, where do Maxwell's equations "come from"? Historically, the answer is that they came from experimental data, conducted by the work of many brilliant scientists - Ampere, Faraday, Lenz, among many others. But in modern-day theoretical physics, we would say that it comes from the **electromagnetic field Lagrangian**, also called the **Maxwell Lagrangian**:
+
+{% math() %}
+\mathscr{L}_\text{EM} = -\dfrac{1}{4\mu_0} F^{\mu \nu}F_{\mu \nu} - A_\mu J^\mu
+{% end %}
+
+Note that we can also choose to write the electromagnetic Lagrangian in its equivalent vector form, although the expression is more clunky:
+
+{% math() %}
+\mathscr{L}_\text{EM} = \dfrac{1}{2} \varepsilon_0 |\mathbf{E}|^2 - \dfrac{1}{2\mu_0} \mathbf{B}^2 - \rho V + \mathbf{A} \cdot \mathbf{J}
+{% end %}
+
+Notice how the above is just the combination of the expression for the electromagnetic energy density as well as two terms for the potential energy per charge per unit volume (and also one for the potential energy per unit volume of the current density). Then the electromagnetic field can be found through the **Euler-Lagrange equations**:
+
+{% math() %}
+\dfrac{\partial \mathscr{L}_\text{EM}}{\partial A_\nu} - \partial_\mu\left(\dfrac{\partial \mathscr{L}_\text{EM}}{\partial(\partial_\mu A_\nu)}\right) = 0
+{% end %}
+
+> **Note for the advanced reader:** You may ask, why _this_ particular Lagrangian in particular? Other than the fact that "it works", there are indeed some heuristic arguments (heuristic means "educated guess") that we can use to guess the form of the Maxwell Lagrangian. For more information, see a [Physics Stack Exchange answer on this topic](https://physics.stackexchange.com/questions/34241/deriving-lagrangian-density-for-electromagnetic-field).
+
+#### A short interlude: Gaussian units and natural units
+
+In advanced theoretical physics, and particularly particle physics, it is frequent to use non-SI units because (due to how they are defined) they allow us to "get rid of" the constants $\mu_0$ and $\varepsilon_0$ which make equations look rather ugly and make calculations cumbersome (because we have to carry those constants along). These units are called [Gaussian units](https://en.wikipedia.org/wiki/Gaussian_units). 
+
+Among other things, since they are defined *differently* from SI units, equations must be modified: Gauss's law for the electric field becomes $\nabla \cdot \mathbf{E} = 4\pi\rho$ and Faraday's law becomes $\nabla \times \mathbf{E} + \dfrac{1}{c} \dfrac{\partial \mathbf{B}}{\partial t} = 0$. There are some advantages to using Gaussian units - in particular, electric and magnetic fields (in vacuum _and_ in matter) have the same units, which simplifies calculations. There are also some notable disadvantages - Gaussian and SI units are not directly convertable, and most scientific disciplines uses SI units exclusively, so physicists using SI units and Gaussian units are effectively speaking two mutually-unintelligible languages. This means that once you choose to use Gaussian units, you're unfortunately stuck with it. As a partial way to rectify this issue, one may consult a [table of the equations of electromagnetism](https://en.wikipedia.org/wiki/Gaussian_units#List_of_equations) to find the correct equations to use in each.
+
+Finally, we will briefly touch on **natural units**. [Natural units](https://en.wikipedia.org/wiki/Natural_units) are a system of units that are extreme in minimalism. There are different natural unit systems: most natural unit systems _define_ $c = 1$ (so, for instance, Einstein's $E = mc^2$ would just be $E = m$), many also define $\hbar = 1$ (here $\hbar$ is the reduced Planck constant) and $G = 1$ (here $G$ is the universal gravitational constant). In natural unit systems, $c = 1$ means that energy and mass are _defined_ to have the same units, $G = 1$ means that distance and mass are also defined to have the same units, and finally $\hbar = 1$ means that energy and frequency also are defined to have the same units. This means that many equations look simpler, without the need to have $c, G, \hbar$ as part of them. However, after completing calculations, it is again necessary to convert back to the more familiar SI units.
+
+### Quantum electrodynamics
+
+At the beginning of the guide, we did indeed say that this guide was about _classical electromagnetism_, **not** its quantum generalization. But out of curiosity, we will take a short look at it anyways.
+
+The quantum theory of electrodynamics is the _more general theory_ of electrodynamics that is valid to subatomic scales, where classical electrodynamics fails to make correct predictions. It replaces the continuous electromagnetic field with a _quantum field_ that can only come in certain **states**. These states are usually written as $|0\rangle, |1\rangle, |2\rangle, \dots, |n\rangle$ for the 0th, 1st, 2nd state, and so on (this is a notation that comes from quantum mechanics). 
+
+When the electromagnetic field changes from one state to a higher-energy state, particles are created - we call those _photons_. But when it changes from one state to a lower-energy state, photons are annihilated. Quantum electrodynamics also introduces an **electron field**, which can create or annihilate electrons. All electromagnetic interactions are explained to be a result of photons interacting with electrons, which can be graphically-illustrated through [Feynman diagrams](https://en.wikipedia.org/wiki/Feynman_diagram).
+
+Quantum electrodynamics makes some very bizarre but very accurate predictions that have been well-tested experimentally. For instance, "virtual particles" are created and annihilated in certain interaction processes, but also _in the absence_ of any particles! This comes as a result of the $|0\rangle$ state, also called the **vacuum state**, having a **nonzero energy**, and we can actually observe and measure a manifestation of this phenomenon, called the [Casimir effect](https://en.wikipedia.org/wiki/Casimir_effect). Again, for those interested, definitely read more - there are resources on this website in the [physics series](https://songtech-0912.github.io/physics-series/) of guides, as well as [recommended books](https://physics.stackexchange.com/questions/226418/self-teaching-qft).
+
+## Concluding thoughts
+
+Electromagnetism is one of the broadest and most complex theories of physics, and one of the most successful. It turned electricity and magnetism, previously mysterious, into well-understood phenomena, and unified them under one of the first classical field theories. Far ahead of its time, it predicted the existence of electromagnetic waves and a finite speed of light, paving the way to special relativity. Classical electromagnetism is still a field of active research to this day.
+
+Over the years, electromagnetic theory has been continually updated to reflect our latest discoveries and understanding of science. For instance, the quantum extension of classical electromagnetism, known as **quantum electrodynamics**, merges quantum mechanics and classical electromagnetic theory. The subfields of **optics** and **antenna theory** are dedicated to the study of electromagnetic waves, and **circuits** extends the theory of electrical components into analyzing complicated electrical systems.
+
+For those curious and interested in reading more on electromagnetic theory, the [Feynman lectures](https://www.feynmanlectures.caltech.edu/) (particularly the second volume) are an excellent free resource, as are the courses on [MIT OpenCourseWare](https://ocw.mit.edu/courses/8-07-electromagnetism-ii-fall-2012/)and the [Theoretical Minimum series](https://theoreticalminimum.com/courses). We conclude our guide to classical electromagnetism here, and we highly encourage you to explore more on your own.
