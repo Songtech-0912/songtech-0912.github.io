@@ -7,3 +7,9 @@ To develop, once you've cloned this repo, do `mkdir bin` in the root folder of t
 ## Development notes
 
 See the rendered version of the [notes making guide](content/notes-process.md) in the browser for detailed information about how to develop the website.
+
+Note that the githook for development can be set up with:
+
+```
+cp githook/pre-commit .git/hooks/pre-commit
+```

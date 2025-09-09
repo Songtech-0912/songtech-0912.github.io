@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Patch all excalidraw svgs to fix
+# distorted LaTeX
+# Replace preserveAspectRatio="none"
+# into preserveAspectRatio="true"
+
+original='preserveAspectRatio="none"'
+replacement='preserveAspectRatio="true"'
+replace_command="s/$original/$replacement/g"
+
+find . -name "*.excalidraw.svg" -exec sed -i $replace_command {} +
