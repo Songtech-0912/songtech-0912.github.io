@@ -17,9 +17,9 @@ clone:
 steps:
   # Build Zola static files
   build:
-    image: alpine:edge
+    image: alpine:3.21
     commands:
-      - apk add zola=0.19.2
+      - apk add zola
       - zola build
     when:
       event: [push, pull_request, manual]
