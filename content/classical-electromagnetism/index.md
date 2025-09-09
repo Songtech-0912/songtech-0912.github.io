@@ -1892,6 +1892,8 @@ We now consider a *toroidal solenoid* (also called a _toroid_), a variation of t
 
 ![Image of a toroid, a donut-shaped solenoid](https://cheenta.com/wp-content/uploads/2017/12/toroid.png)
 
+_Source: [HyperPhysics](https://hyperphysics.phy-astr.gsu.edu/hbase/magnetic/toroid.html)_
+
 Toroids find numerous applications, particularly in nuclear fusion reactors and particle accelerators, so this is indeed an important case to analyze. The magnetic field inside a toroidal solenoid is $\mathbf{B}_\text{toroid} = \dfrac{\mu_0 NI}{2\pi r}\hat{\boldsymbol{\phi}}$, which we can get from Ampere's law. We know that the magnetic vector potential must be *perpendicular* to the magnetic field and along the direction of the current (which loops up and down in square loops), so we know that it must be along the $z$ axis and thus $\mathbf{A} = \mathbf{A}_z(r)$. Since a toroid is symmetric along $z$ and $\phi$, we know that $\mathbf{A}_z$ is solely dependent on $r$.
 
 Unfortunately, in this case, we cannot use the method we used for the simple (linear) solenoid, since the line integral of $\mathbf{A}$ along the boundary of any surface would depend on $r$. Instead, we can use the definition of $\mathbf{A}$:
@@ -2274,6 +2276,8 @@ Let us consider a more challenging example: calculating the self-inductance of a
 
 ![Image of a toroid, a donut-shaped solenoid](https://cheenta.com/wp-content/uploads/2017/12/toroid.png)
 
+_Source: [HyperPhysics](https://hyperphysics.phy-astr.gsu.edu/hbase/magnetic/toroid.html)_
+
 By Ampere's law we find the field of a toroid to be:
 
 {% math() %}
@@ -2351,6 +2355,8 @@ To see why, consider a capacitor on the $+x$ axis, made of two conducting plates
 	src="displacement-current-demo.png"
 	desc="A diagram showing a magnetic field caused by the electric field changing within a capacitor as it is charged or discharged"
 ) }}
+
+_Source: [Physics StackExchange](https://physics.stackexchange.com/questions/421158/magnetic-field-from-displacement-currents-in-a-capacitor-and-an-applied-exterio)_
 
 We have already calculated the electric field of a capacitor (between its two plates) in the [introductory electromagnetism guide](@/electromagnetism/index.md) - it is given by $\mathbf{E} = \dfrac{\sigma}{\varepsilon_0} \hat{\mathbf{x}}$. But what about the magnetic field of a capacitor? You may be inclined to say that there is no magnetic field in the middle of the capacitor; after all, there is no wire there, just the empty space separating the two plates. 
 
