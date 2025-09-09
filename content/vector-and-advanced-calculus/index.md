@@ -1,5 +1,5 @@
 +++
-title = "Vector Calculus and Beyond"
+title = "Vector Calculus and Beyond (Incomplete)"
 date = 2025-01-14
 +++
 
@@ -282,9 +282,7 @@ Until this point, we have only discussed lines, curves, and surfaces in Cartesia
 
 In cylindral coordinates, we describe a point 3D space using three coordinates - $\rho$ (radial distance), the distance from the z-axis, $\phi$ (polar angle), the angle between the point and the x-axis, and $z$ (elevation), the height of the point above the origin. Thus, the full set of coordinates describing a point takes the form $(\rho, \phi, z)$, as shown:
 
-{{ natural_img(src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Coord_system_CY_1.svg",
-desc="An illustration of the cylindrical coordinate system, with three components, the radial (r) component pointing from the z-axis, the polar (theta) coordinate pointing from the x-axis, and the z coordinate pointing up from the origin"
-) }}
+![An illustration of the cylindrical coordinate system, with three components, the radial (r) component pointing from the z-axis, the polar (theta) coordinate pointing from the x-axis, and the z coordinate pointing up from the origin](https://upload.wikimedia.org/wikipedia/commons/0/0e/Coord_system_CY_1.svg)
 
 _Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Coord_system_CY_1.svg)_
 
@@ -294,10 +292,7 @@ Cylindrical coordinates are useful in for situations when the mathematics of a p
 
 Meanwhile, in spherical coordinates, we describe a point in 3D space also using three coordinates, but with slightly different coordinates. The first coordinate changes from $\rho$ to $r$ (still called radial), the distance from the origin (as opposed to the distance from the z-axis), the second coordinate becomes $\theta$ (azimuthal angle), the angle _above_ the plane of the origin, and the third coordinate is the same $\phi$ as before (polar angle). Therefore, the full set of coordinates describing a point becomes $(r, \theta, \phi)$, as shown in the diagram below:
 
-{{ natural_img(
-  src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Kugelkoord-lokb-e.svg",
-  desc="A diagram showing spherical coordinates, with a radial (r) coordinate pointing from the origin to the point, a polar angle (theta) pointing up from the plane of the origin, and an azimuthal angle (phi) pointing from the x-axis) pointing up from the plane, and a phi"
-) }}
+![A diagram showing spherical coordinates, with a radial (r) coordinate pointing from the origin to the point, a polar angle (theta) pointing up from the plane of the origin, and an azimuthal angle (phi) pointing from the x-axis) pointing up from the plane](https://upload.wikimedia.org/wikipedia/commons/f/f9/Kugelkoord-lokb-e.svg)
 
 > **Note on notation:** Again, just as with cylindrical coordinates, the notation conventions for spherical coordinates are myriad, and all conventions are equivalent, but it is important to specify which one is used and the meaning of each symbol.
 
