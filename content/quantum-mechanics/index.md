@@ -106,7 +106,7 @@ What we have been calling $\Psi(x, t)$ can now be properly termed the **wavefunc
 We already know one basic solution to the Schrodinger equation (in the case $V = 0$): the case of plane waves $e^{i(kx - \omega t)}$. Because the Schrodinger equation is a linear PDE, it is possible to sum several different solutions together to form a new solution; indeed, the _integral_ of a solution is also a solution! Thus, we have arrived at the solution to the Schrodinger equation for a free particle (in one dimension):
 
 {% math() %}
-\Psi(x, t) = \dfrac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty dk\, g(k) e^{i(k x - \omega(k) t)}
+\Psi(x, t) = \dfrac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty dk~ g(k) e^{i(k x - \omega(k) t)}
 {% end %}
 
 This is known as a **wave packet**, since it is a superposition of multiple waves and in fact it  looks like a bundle of waves (as shown by the animation below)!
@@ -120,7 +120,7 @@ _Source: [Wikipedia](https://en.m.wikipedia.org/wiki/File:Wave_packet_propagatio
 Note that $g(k)$ is an arbitrary function that is determined by the initial conditions of the problem. In particular, using Fourier analysis we can show that it is given by:
 
 {% math() %}
-g(k) = \dfrac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty dx \,\Psi(x, 0) e^{-ikx}
+g(k) = \dfrac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty dx ~\Psi(x, 0) e^{-ikx}
 {% end %}
 
 In the wave packet solution, $\omega(k)$ is called the **dispersion relation** and is a fundamental object of study in many areas of condensed-matter physics and diffraction theory. It relates the angular frequency (which governs the _time oscillation_ of the free particle's wavefunction) to the wavenumber (which governs the _spatial oscillation_ of the free particle's wavefunction). The reason we use the angular frequency rather than the "pure" frequency $\nu$ is because $\omega$ is technically the frequency at which the _phase_ of the wavefunction evolves, and complex-exponentials in quantum field theory almost always take the phase as their argument. But what is $\omega(k)$? To answer this, we note that the speed of a wave is given by $v = \omega/k$. For massive particles (e.g. electrons, "massive" here means "with mass" _not_ "very heavy") we can use the formula for the kinetic energy of a free particle, the de Broglie relation $p = \hbar k$ (in one dimension), and the Planck-Einstein relation $E = \hbar \omega$:
@@ -138,15 +138,15 @@ Rearranging gives us:
 And thus the wave packet solution becomes:
 
 {% math() %}
-\Psi_\text{massive}(x, t) = \dfrac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty dk\, g(k) e^{i(k x -\frac{\hbar k^2}{2m} t)}
+\Psi_\text{massive}(x, t) = \dfrac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty dk~ g(k) e^{i(k x -\frac{\hbar k^2}{2m} t)}
 {% end %}
 
 By contrast, for massless particles, the result is much simpler: we _always_ have $\omega(k) = kc$ for massless particles in vacuum (the situation is more complicated for particles inside a material, but we won't consider that case for now). Thus the wave packet solution becomes:
 
 {% math() %}
 \begin{align*}
-\Psi_\text{massless}(x, t) &= \dfrac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty dk\, g(k) e^{i(k x -kc t)} \\
-&= \dfrac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty dk\, g(k) e^{ik(x-ct)}
+\Psi_\text{massless}(x, t) &= \dfrac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty dk~ g(k) e^{i(k x -kc t)} \\
+&= \dfrac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty dk~ g(k) e^{ik(x-ct)}
 \end{align*}
 {% end %}
 
@@ -156,7 +156,7 @@ Now, let's consider the case where $g(k) = \delta(k - k_0)$, where $k_0$ is a co
 
 {% math() %}
 \begin{align*}
-\Psi(x, t) &\approx \dfrac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty dk\, \delta(k - k_0) e^{i(k x - \omega t)} \\
+\Psi(x, t) &\approx \dfrac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty dk~ \delta(k - k_0) e^{i(k x - \omega t)} \\
 &= \dfrac{1}{\sqrt{2\pi}} e^{i(k_0 x - \omega _0 t)}, \quad \omega_0 = \omega(k_0)
 \end{align*}
 {% end %}
@@ -177,7 +177,7 @@ This may _look_ complicated, but the constant factors are there to simplify calc
 \Psi(x, t) = \dfrac{1}{\sqrt{2 \pi \sigma}} e^{-x^2/\sigma^2}e^{i(k_0 x - \omega_0 t)}
 {% end %}
 
-This is _also_ a Gaussian function! Notice, however, that our solution now depends on a constant $\sigma$, which controls the "width" of the wave-packet. Keep this in mind - it will be very important later.
+This is _also_ a Gaussian function! Notice, however, that our solution now depends on a constant $\sigma$, which controls the "width" of the wave-packet. We will soon learn that it physically corresponds to the _uncertainty in position_ of the quantum particle. Keep this in mind - it will be very important later.
 
 #### The classical limit of the free particle
 
@@ -203,11 +203,11 @@ Heisenberg uncertainty principle means that momentum and position cannot be meas
 
 There is another interesting characteristic of the free particle - its wavefunction is an eigenstate of the momentum operator. To see why, simply solve the eigenvalue equation for the momentum operator:
 
-$$
+{% math() %}
 \hat p \psi = i\hbar \dfrac{\partial \psi}{\partial x} = p \psi
-$$
+{% end %}
 
-This has the straightforward solution $\psi(x) = e^{\pm ipx}$.
+This has the straightforward solution $\psi(x) = e^{\pm ipx/\hbar}$.
 
 Momentum eigenstates are physically cannot exist, because real particles, of course, have to be _somewhere_, and by the Heisenberg uncertainty relation a pure momentum eigenstate means a particle can be _anywhere_! However, they are a good approximation in many cases to particles with a very small range of momenta.
 
@@ -223,42 +223,39 @@ Momentum eigenstates are physically cannot exist, because real particles, of cou
 
 ### Bound and scattering states
 
-Bound states are normalizable states, meaning that they satisfy:
+To understand the difference between bound and scattering states, we need to examine the concept of **normalizability**. Bound states are normalizable states, meaning that they satisfy the **normalization condition**:
 
-$$
+{% math() %}
 \int_{-\infty}^\infty |\psi(x)|^2 dx = 1
-$$
+{% end %}
 
-This allows their squared modulus $\rho = |\psi(x)|^2$ to be interpreted as a **probability density** according to the Born rule. An essential part of a bound state is that it admits solutions to $\hat H \psi = E \psi$ where $E < 0$. This is required for the formation of bound states.
+This allows their squared modulus $\rho = |\psi(x)|^2$ to be interpreted as a **probability density** according to the Born rule. An essential part of a bound state is that it admits solutions to $\hat H \psi = E \psi$ where $E < 0$. This is required for the formation of bound states: the bound-state energy must be *negative* so that the system is stable.
 
-Since scattering states are not normalizable, $|\psi|^2$ _cannot_ be interpreted as a probability distribution. Instead, they are purely used for _mathematical convenience_ with the understanding that they *approximately* describe the behavior of particles that have low uncertainty in momentum and thus high uncertainty in position. Of course, real particles are described by wave packets, which are normalizable, but using plane wave solutions $\psi \sim e^{\pm ipx}$ gives a good mathematical approximation to a particle whose momentum is close to perfectly-known.
+However, scattering states are not necessarily normalizable. In theory, particles undergoing scattering should be described by wave packets. In practice, this leads to unnecessary mathematical complexity. Instead, it is common to use the **non-normalizable** states, typically in the form of plane waves:
 
-We can in fact show this as follows. Consider a free particle, described by the wave packet at $t=0$:
+{% math() %}
+\psi(x) = A e^{\pm ipx/\hbar}
+{% end %}
 
-$$
-\psi(x) = \dfrac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty dp\, \phi(p)e^{ipx}
-$$
+Since these scattering states are not normalizable, $|\psi|^2$ _cannot_ be interpreted as a probability distribution. Instead, they are purely used for _mathematical convenience_ with the understanding that they *approximately* describe the behavior of particles that have low uncertainty in momentum and thus high uncertainty in position. Of course, real particles are described by wave packets, which are normalizable, but using plane waves gives a good mathematical approximation to a particle whose momentum is close to perfectly-known.
 
-Now, let us assume a Gaussian profile, such that:
+We can in fact show this as follows. Consider a free particle at time $t = 0$, described by the wave packet solution, which we've seen at the beginning of this guide:
 
-$$
-\phi(p) = \dfrac{1}{\sqrt{2\pi \sigma}} e^{-p^2/\sigma}, \quad \lim_{\sigma \to 0} \phi(p) = \delta(p)
-$$
+{% math() %}
+\psi(x) = \Psi(x, 0) = \dfrac{1}{\sqrt{2\pi \hbar}} \int dp'~\overline \Psi(p') e^{ip'x/\hbar}
+{% end %}
 
-Where $\sigma$ is a constant that constrains the range of momenta possible: a higher value of $\sigma$ means a greater variability of the momentum. Substituting, we have:
+> **Note:** We changed the integration variable for the wavepacket from $p$ to $p'$ to avoid confusion later on. The integral expressions, however, are equivalent.
 
-$$
-\psi(x) = \dfrac{1}{2\pi\sqrt{\sigma}} \int_{-\infty}^\infty dp\, e^{ipx- p^2/\sigma}
-$$
+Now, assume that the particle's momentum is confined to a **small** range of values, or equivalently, has a **low uncertainty in momentum**. We can thus make the approximation that $\overline \Psi(p') \approx \delta(p - p')$, where $p$ is the particle's momentum. Thus, performing the integration, we have:
 
-Now, assume that the particle's momentum is confined to a **small** range of values, meaning that $\sigma$ is very small. Thus, the wavefunction would _approximately_ take the form:
+{% math() %}
+\psi(x) \approx \dfrac{1}{\sqrt{2\pi \hbar}} \int dp'~ \delta(p - p') e^{ip'x/\hbar} \sim \dfrac{1}{\sqrt{2\pi}} e^{ipx/\hbar} 
+{% end %}
 
-$$
-\psi(x) \approx \lim_{\sigma \to 0} \dfrac{1}{2\pi\sqrt{\sigma}} \int_{-\infty}^\infty dp\, e^{ipx- p^2/\sigma} = \int_{-\infty}^\infty dp\,\delta(p) e^{ipx} = e^{ipx}
-$$
+This is exactly a plane wave in the form $\psi(x) = Ae^{ipx/\hbar}$, and a momentum eigenstate! Thus we come to the conclusion that while momentum eigenstates $\psi \sim e^{\pm ipx/\hbar}$ are non-renormalizable and thus unphysical, they are a good approximation for describing particles with low uncertainty in momentum.
 
-> **Note:** Likewise, wavefunctions of the type $\psi(x) \sim \delta(x)$ are also nonphysical, and are just mathematical approximations to highly-localized wavepackets.
-
+Likewise, wavefunctions of the type $\psi(x) \sim \delta(x-x_0)$ are also unphysical, and are just mathematical approximations to highly-localized wavepackets, where the particles' uncertainty in position is very small. Thus, we conclude that eigenstates of the position operator (which are delta functions) are also non-renormalizable, which makes sense, since there is no such thing as a particle with exactly-known position (or momentum!).
 
 
 ## The abstract state-vector formalism
@@ -280,7 +277,7 @@ Now consider the state-vector at a particular moment in time, for instance, $t =
 Or as an integral:
 
 {% math() %}
-|\Psi\rangle = \int c(\alpha)|\alpha\rangle\, d\alpha
+|\Psi\rangle = \int c(\alpha)|\alpha\rangle~ d\alpha
 {% end %}
 
 Such basis vectors must be the **eigenstates** of quantum-mechanical operators that represent **physical quantities** like position, momentum, energy, and spin. Discrete operators (such as spin $\hat S$) have eigenstates that are (finite-dimensional) vectors; continuous operators (such as position $\hat x$ and momentum $\hat p$) have eigenstates that are continuous functions (alternatively, infinite-dimensional vectors). The **eigenvalues** of such operators are the possible measurable values of the operator (such as possible energies or momenta of a particle); meanwhile, the coefficients $c_i$ (in the discrete case) and $c(\alpha)$ in the continuous case are interpreted as **probability amplitudes**. One can then find the **probability** of measuring the $i$-th eigenvalue of a discrete operator with:
@@ -442,7 +439,7 @@ Note how both $\omega$ and $k$ describe oscillations - in fact, in natural units
 The total energy of a quantum field is given by summing over all the energy fluctuations of the field, which becomes an integral:
 
 {% math() %}
-E_\text{total} = \int d^3 \omega\, E_\omega = \sum_k E_k
+E_\text{total} = \int d^3 \omega~ E_\omega = \sum_k E_k
 {% end %}
 
 ### Second quantization
