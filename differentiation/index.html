@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introduction to Differential Calculus</title>
+  <meta name="description" content=" These are notes taken during RPI&#x27;s MATH 1010 course, on the topic of derivatives and their applications in calculus.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Introduction to Differential Calculus</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+        <details class="toc" id="toc" open>
+        <summary>Table of contents</summary>
+        <p class="toc-info">Note: it is highly recommended to navigate by clicking links in the table of contents! It means you can use the back button in your browser to go back to any section you were reading, so you can jump back and forth between sections!</p>
+        <div>
+            <ul>
+            
+                <li>
+                    <a href="#the-derivative">The derivative</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#shorthands-for-the-derivative">Shorthands for the derivative</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#differentiability">Differentiability</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#product-rule-and-quotient-rule">Product rule and quotient rule</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#higher-order-derivative">Higher-order derivative</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#trigonometric-derivatives">Trigonometric derivatives</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#chain-rule">Chain rule</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#implicit-differentiation">Implicit differentiation</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#derivatives-of-inverse-trigonometric-functions">Derivatives of inverse trigonometric functions</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#derivatives-of-exponential-functions">Derivatives of exponential functions</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#derivatives-of-logarithmic-functions">Derivatives of logarithmic functions</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#derivatives-of-inverse-functions">Derivatives of inverse functions</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#logarithmic-differentiation">Logarithmic differentiation</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#related-rates">Related rates</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#extreme-values">Extreme values</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#critical-points">Critical points</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#extreme-value-theorem-evt">Extreme Value Theorem (EVT)</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#rolle-s-theorem">Rolle&#x27;s Theorem</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#mean-value-theorem-mvt">Mean Value Theorem (MVT)</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#intermediate-value-theorem-ivt">Intermediate Value Theorem (IVT)</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#monotonicity">Monotonicity</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#first-derivative-test">First derivative test</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#concavity-2nd-derivative-test">Concavity &amp; 2nd derivative test</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#curve-sketching">Curve sketching</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#l-hopital-s-rule">L&#x27;Hôpital&#x27;s Rule</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#optimization">Optimization</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#linear-approximations">Linear approximations</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#inverse-function-derivatives">Inverse function derivatives</a>
+                    
+                </li>
+            
+            </ul>
+        </div>
+        </details>
+        
+
+        <!-- page content -->
+        <p>These are notes taken during RPI's MATH 1010 course, on the topic of derivatives and their applications in calculus.</p>
+<span id="continue-reading"></span>
+<p>Note: some problems are taken Rogawski 4e Calculus Early Transcendentals, the questions are not original work.</p>
+<h2 id="the-derivative">The derivative</h2>
+<p>The approximate slope of a line is defined by:</p>
+<p class="mathcell">
+$$
+\frac{\Delta f}{\Delta x}
+$$
+</p>
+<p>We can express $\Delta f$ as $f(x) - f(a)$, and $\Delta x$ as $x - a$, so we have the slope of a line expressed as:</p>
+<p class="mathcell">
+$$
+\frac{\Delta f}{\Delta x} = \frac{f(x) - f(a)}{x - a}
+$$
+</p>
+<p>Using a substitution of variables of $h = x - a$, we can rewrite this definition as:</p>
+<p class="mathcell">
+$$
+\frac{\Delta f}{\Delta x} = \frac{f(a + h) - f(a)}{h}
+$$
+</p>
+<p>Now, if we perform another substitution, $x = a$, we get:</p>
+<p class="mathcell">
+$$
+\frac{\Delta f}{\Delta x} = \frac{f(x + h) - f(x)}{h}
+$$
+</p>
+<p>This is called the <strong>difference quotient</strong>. By taking the limit of the difference quotient, we find the slope as $\Delta f \rightarrow 0$ and $\Delta x \rightarrow 0$, and we get the true (no longer approximate!) slope of a line:</p>
+<p class="mathcell">
+$$
+\frac{dy}{dx} = \lim_{h \to 0} \frac{f(x + h) - f(x)}{h}
+$$
+</p>
+<p>Here, $\frac{dy}{dx}$ is one of the notations for the <strong>derivative</strong> - a function that gives the true slope of the line at any point. We can also notate the derivative with $\frac{df}{dx}$, $\frac{d}{dx} f(x)$, $f'(x)$, or (rarely) $\dot f$.</p>
+<p>For instance, suppose we were to compute the derivative of $f(x) = x^2$ at $x = 2$. We have:</p>
+<p class="mathcell">
+$$
+\frac{dy}{dx} = \lim_{h \to 0} \frac{(x + h)^2 - x^2}{h}
+$$
+</p>
+<p>Which becomes:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\lim_{h \to 0} \frac{(x^2 + 2hx + h^2) - x^2}{h} &amp;=
+\lim_{h \to 0} \frac{2hx + h^2}{h} \\
+&amp;=\lim_{h \to 0} 2x + h \\ 
+&amp;= 2x
+\end{align*}
+$$
+</p>
+<p>So the derivative $f'(x) = 2x$. Therefore, $f'(2) = 2(2) = 4$. Taking the derivative is a process called <strong>differentiation</strong>.</p>
+<p>The <strong>tangent line</strong> to a curve at $x = a$ is expressed by:</p>
+<p class="mathcell">
+$$
+y-y_1 = f&#x27;(a) (x- x_1)
+$$
+</p>
+<p>And can be computed using the derivative.</p>
+<h2 id="shorthands-for-the-derivative">Shorthands for the derivative</h2>
+<p>Given just the definition of the derivative, the derivative of a constant function $f(x) = C$ is $f'(x) = 0$, and the derivative of a linear function $f(x) = ax + b$ is $f'(x) = a$. The derivative of a power function $f(x) = x^n$ is $f'(x) = nx^{n - 1}$. Derivatives are also <em>linear</em>: $\frac{d}{dx} (a f(x) \pm b(g(x)) = a \frac{df}{dx} \pm b \frac{dg}{dx}$.</p>
+<p>If the right-hand derivative and left-hand derivative exist but are not <strong>equal</strong> at $x = a$, then $f(x)$ has a <strong>corner</strong> at $x = a$ and is not differentiable at $a$. Differentiability implies continuity, but not the other way around.</p>
+<h2 id="differentiability">Differentiability</h2>
+<p>If a function is <strong>differentiable</strong> at a point, that implies that:</p>
+<ul>
+<li>It has a <strong>defined</strong> left-hand derivative at the point</li>
+<li>It has a <strong>defined</strong> right-hand derivative at the point</li>
+<li>The left-hand and right-hand derivatives <strong>match</strong></li>
+</ul>
+<p>If a function is differentiable at $x = a$, it is also continuous, and if it is not continuous, then it is <strong>not</strong> differentiable.</p>
+<h2 id="product-rule-and-quotient-rule">Product rule and quotient rule</h2>
+<p>The product rule states that:
+<p class="mathcell">
+$$
+(f + g)&#x27; = f&#x27;g + g&#x27;f
+$$
+</p></p>
+<p>The quotient rule states that:</p>
+<p class="mathcell">
+$$
+\left(\frac{f}{g}\right)&#x27; = \frac{f&#x27;g - g&#x27;f}{g^2}
+$$
+</p><h2 id="higher-order-derivative">Higher-order derivative</h2>
+<p>The nth-order derivative means you are taking the derivative nth times, and is notated with:</p>
+<p class="mathcell">
+$$
+\frac{d^n f}{dx^n}
+$$
+</p>
+<p>or (less commonly) as:</p>
+<p class="mathcell">
+$$
+f^{(n)}(x)
+$$
+</p>
+<p>In general, if a polynomial is of nth degree, every higher-order derivative after the $(n + 1)$ derivative is zero. For example, if our polynomial is $x^8$, then all derivatives above the 9th derivative is zero, so $\frac{d^{100}}{dx^{100}} x^8 = 0$. Additionally, all the higher-order derivatives of $e^x$ are $e^x$.</p>
+<h2 id="trigonometric-derivatives">Trigonometric derivatives</h2>
+<p>The fundamental trigonometriconometric derivatives can be derived from the limit definition, and are given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{d}{dx} \sin x &amp;= \cos x \\
+\frac{d}{dx} \cos x &amp;= -\sin x
+\end{align*}
+$$
+</p>
+<p>The rest of the trigonometric derivatives can be calculated using trigonometriconometric identities. They are given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{d}{dx} \tan x &amp;= \sec^2 x \\
+\frac{d}{dx} \sec x &amp;= \sec x \tan x \\
+\frac{d}{dx} \csc x &amp;= -\csc x \cot x \\
+\frac{d}{dx} \cot x &amp;= -\csc^2 x
+\end{align*}
+$$
+</p><h2 id="chain-rule">Chain rule</h2>
+<p>When we have a function $y = f(u)$ where $u = g(x)$, then:</p>
+<p class="mathcell">
+$$
+\frac{dy}{dx} = \frac{df}{du}\frac{du}{dx}
+$$
+</p>
+<p>For instance, suppose we want to compute:</p>
+<p class="mathcell">
+$$
+y = \sin(x^3 + 4x^2)
+$$
+</p>
+<p>Then $y = \sin(u)$ and $u = x^3 + 4x^2$. Therefore:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{df}{du} &amp;= \cos u = \cos (x^3 + 4x^2) \\
+\frac{du}{dx} &amp;= 3x^2 + 8x \\
+&amp;\Rightarrow \frac{dy}{dx} = \frac{df}{du} \frac{du}{dx} \\ 
+&amp;\qquad \quad = \cos (x^3 + 4x^2)(3x^2 + 8x)
+\end{align*}
+$$
+</p><h2 id="implicit-differentiation">Implicit differentiation</h2>
+<p>Consider the equation:</p>
+<p class="mathcell">
+$$
+x^2 + y^2 = 1
+$$
+</p>
+<p>Here, $y$ is an implicit function of $x$, that is, $y = y(x)$. But we don't know what $y(x)$ is. We just know that $y$ is a function of $x$, even if we don't know what exactly that function's form is - which is why we call it <strong>implicit</strong>.</p>
+<p>If we were to differentiate the entire expression, we have:</p>
+<p class="mathcell">
+$$
+\frac{d}{dx} (x^2 + y^2) = \frac{d}{dx} (1)
+$$
+</p>
+<p>The derivative of $x^2$ is easily computed. Meanwhile, we can use the chain rule to differentiate $y^2$:</p>
+<p class="mathcell">
+$$
+\frac{d}{dx} (y^2) = \frac{d}{dx} (y(x)^2) = 2y \frac{dy}{dx}
+$$
+</p>
+<p>Because by the chain rule:</p>
+<p class="mathcell">
+$$
+\frac{df}{dx} = \frac{df}{dy}\frac{dy}{dx}
+$$
+</p>
+<p>So:</p>
+<p class="mathcell">
+$$
+\frac{d}{dx} (y^2) = \frac{d}{dy} (y^2) \frac{dy}{dx}
+$$
+</p>
+<p>Therefore:</p>
+<p class="mathcell">
+$$
+2x + 2y y&#x27; = 0
+$$
+</p>
+<p>If we solve this in terms of $y'$, we have:</p>
+<p class="mathcell">
+$$
+y&#x27;= -\frac{x}{y}
+$$
+</p>
+<p>So using implicit differentiation, we are able to find the derivative of $y$, even though we didn't know what exactly the function $y$ was. We can then use that derivative to e.g. find the tangent line to the implicit function, which in this case would be the tangent line to the circle.</p>
+<blockquote>
+<p><strong>Note:</strong> there is technically one more step: derivatives of implicit functions must be checked for domain restrictions (such as division over zero and square root of -1), meaning that they <em>may not exist for all $x$</em>.</p>
+</blockquote>
+<h2 id="derivatives-of-inverse-trigonometric-functions">Derivatives of inverse trigonometric functions</h2>
+<p>We can use implicit differentiation to solve for derivatives of the inverse trigonometric functions. Let us first solve for the derivative of inverse sign (that is, $\sin^{-1}(x)$). If we implicitly differentiate the equation $y = \sin^{-1}(x)$ we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+y &amp; = \sin^{-1}(x) \\
+\sin(y) &amp; = x \\
+\cos(y) y&#x27; &amp; = 1 \\
+y&#x27; &amp; = \frac{1}{\cos y}
+\end{align*}
+$$
+</p>
+<p>But we know that $\cos^2(y) + \sin^2(y) = 1$. Since $\sin(y) = x$, we can say that:</p>
+<p class="mathcell">
+$$
+\cos(y) = \sqrt{1 - x^2}
+$$
+</p>
+<p>Therefore, we have:</p>
+<p class="mathcell">
+$$
+y&#x27; = \frac{1}{\sqrt{1 - x^2}}
+$$
+</p>
+<p>We can perform the same procedure to find the derivative of inverse tangent (that is, $\tan^{-1}(x)$. If we let $y = \tan^{-1}(x)$, then conversely it must be true that:</p>
+<p class="mathcell">
+$$
+\tan y = x
+$$
+</p>
+<p>Which we can implicitly differentiate to have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\sec^2 y \frac{dy}{dx} &amp;= 1
+\frac{dy}{dx} &amp;= \frac{1}{\sec^2 y}
+\end{align*}
+$$
+</p>
+<p>To solve for $\sec^2 y$, we can make use of the identity:</p>
+<p class="mathcell">
+$$
+\sec^2 y = 1 + \tan^2 y = 1+ x^2
+$$
+</p>
+<p>Therefore:</p>
+<p class="mathcell">
+$$
+y&#x27; = \frac{1}{1 + x^2}
+$$
+</p>
+<p>Repeating the process yields the generalized derivative formulas for inverse trigonometric functions of an arbitrary variable $u = u(x)$:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{d}{dx} \operatorname{arcsin} u &amp;= \frac{u&#x27;}{\sqrt{1 - u^2}} \\
+\frac{d}{dx} \operatorname{arccos} u &amp;= -\frac{u&#x27;}{\sqrt{1 - u^2}} \\
+\frac{d}{dx} \operatorname{arctan} u &amp;= \frac{u&#x27;}{1+ u^2} \\
+\frac{d}{dx} \operatorname{arccsc} u &amp;= -\frac{u&#x27;}{|u| \sqrt{u^2 - 1}} \\
+\frac{d}{dx} \operatorname{arcsec} u &amp;= \frac{u&#x27;}{|u| \sqrt{u^2 - 1}} \\
+\frac{d}{dx} \operatorname{arccot} u &amp;= -\frac{u&#x27;}{1+ u^2}
+\end{align*}
+$$
+</p><h2 id="derivatives-of-exponential-functions">Derivatives of exponential functions</h2>
+<p>We will now take a look at taking derivatives of <em>exponential functions</em>. Exponential functions describe <em>exponential growth</em> (or decay); therefore, intuition suggests that such functions have derivatives proportional to themselves (i.e. proportional to $a^x$ or $e^x$). Indeed, this is true. The derivatives of $e^x$ and $a^x$ (where $a$ is a constant) are given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{d}{dx} (a^x) &amp;= a^x \ln (a) \\
+\frac{d}{dx} (e^x) &amp;= e^x
+\end{align*}
+$$
+</p>
+<p>We may adapt these formulas to more <em>general</em> exponential functions in the form $e^{u(x)}$ or $a^{u(x)}$. The general derivative of the exponential function $e^u$ is given by:</p>
+<p class="mathcell">
+$$
+\frac{d}{dx} e^u = e^u \frac{du}{dx}
+$$
+</p>
+<p>The derivative of the general exponential function $a^u$ is given by:</p>
+<p class="mathcell">
+$$
+\frac{d}{dx} a^u = a^u \ln(a) \frac{du}{dx}
+$$
+</p><h2 id="derivatives-of-logarithmic-functions">Derivatives of logarithmic functions</h2>
+<p>We want to find the derivative of $\ln(x)$. We can use implicit differentiation to find its derivative:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+y = \ln(x) \\
+e^y = x \\
+e^y y&#x27; = 1 \\
+y&#x27; = \frac{1}{e^y}
+\end{gather*}
+$$
+</p>
+<p>But we know that $e^y = x$, therefore:</p>
+<p class="mathcell">
+$$
+y&#x27; = \frac{1}{x}
+$$
+</p>
+<p>And the general derivative of the natural log function is:</p>
+<p class="mathcell">
+$$
+\frac{d}{dx} \ln(u) = \frac{u&#x27;}{u}
+$$
+</p>
+<p>The derivative of the general logarithmic function can be found through the change of base formula, and is given by:</p>
+<p class="mathcell">
+$$
+\frac{d}{dx} \log_b (u) = \frac{1}{\ln(b)} \frac{u&#x27;}{u}
+$$
+</p>
+<p>When doing derivatives of logarithms, using log rules often help simplify a complex logarithm into much simpler logarithms that are easier to evaluate.</p>
+<h2 id="derivatives-of-inverse-functions">Derivatives of inverse functions</h2>
+<p>Given a function $f(x)$, the derivative of its inverse is given by:</p>
+<p class="mathcell">
+$$
+\mathrm{inv}&#x27;(x) = \frac{1}{f&#x27;(\mathrm{inv}(x))}
+$$
+</p>
+<p>For instance, consider the function:</p>
+<p class="mathcell">
+$$
+f(x) = \sqrt{x - 4}
+$$
+</p>
+<p>First, we want to find the inverse function. To do so, we swap $x$ and $y$:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+x &amp;= \sqrt{y - 4} \\
+x^2 &amp;= y - 4 \\
+y &amp;= x^2 + 4 \\
+f^{-1} (x) &amp;= x^2 + 4
+\end{align*}
+$$
+</p>
+<p>Now, we can find the derivative of our inverse function:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathrm{inv}&#x27;(x) &amp;= \frac{1}{f&#x27;(x^2 + 4)} \\
+f&#x27;(x) &amp;= \frac{1}{2\sqrt{x-4}} \\
+\mathrm{inv}&#x27;(x) &amp;= \frac{1}{f&#x27;(x^2 + 4)} \\
+\mathrm{inv}&#x27;(x) &amp;= 2\sqrt{(x^2 + 4) - 4}
+\end{align*}
+$$
+</p>
+<p>We finally obtain:</p>
+<p class="mathcell">
+$$
+\mathrm{inv}&#x27;(x) = 2x
+$$
+</p>
+<p>As another example, let us consider the problem of finding $f^{-1'}(1/2)$ for $f(x) = \sin x$ given $x \in [-\pi/2, \pi / 2]$. Following the method we mentioned, we first find $f^{-1}(1/2)$:</p>
+<p class="mathcell">
+$$
+\sin y = \frac{1}{2}\, \Rightarrow \, y = \frac{\pi}{6}
+$$
+</p>
+<p>Then, we find $f'(x)$</p>
+<p class="mathcell">
+$$
+f&#x27;(x) = \cos x
+$$
+</p>
+<p>Then, we can use the formula:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathrm{inv}&#x27;(1&#x2F;2) &amp;= \frac{1}{f&#x27;(\pi&#x2F;6)} \\
+\mathrm{inv}&#x27;(1&#x2F;2) &amp;= \frac{1}{\cos(\pi&#x2F;6)}
+\end{align*}
+$$
+</p>
+<p>Giving the final answer of:</p>
+<p class="mathcell">
+$$
+f^{-1&#x27;}(1&#x2F;2) = \frac{2}{\sqrt{3}}
+$$
+</p><h2 id="logarithmic-differentiation">Logarithmic differentiation</h2>
+<p>Consider the function:</p>
+<p class="mathcell">
+$$
+y = \frac{x(x + 1)^4}{(3x - 1)^{3&#x2F;2}}
+$$
+</p>
+<p>Using log rules, this becomes:</p>
+<p class="mathcell">
+$$
+\ln(y) = \ln(x(x+1)^4) - \ln((3x - 1)^{3&#x2F;2})
+$$
+</p>
+<p>Which we can then simplify to:</p>
+<p class="mathcell">
+$$
+\ln(y) = \ln(x) + 4\ln(x + 1) - \frac{3}{2} \ln(3x -1)
+$$
+</p>
+<p>Therefore, differentiating both sides gives us:</p>
+<p class="mathcell">
+$$
+\frac{y&#x27;}{y} = \frac{1}{x} + \frac{4}{x + 1} - \frac{9}{2(3x - 1)}
+$$
+</p>
+<p>Which we can rewrite as:</p>
+<p class="mathcell">
+$$
+y&#x27; = y \left(\frac{1}{x} + \frac{4}{x + 1} - \frac{9}{2(3x - 1)}\right)
+$$
+</p>
+<p>If we wanted to, we could replace the $y$ here with our original expression, giving:</p>
+<p class="mathcell">
+$$
+y&#x27; = \frac{x(x + 1)^4}{(3x - 1)^{3&#x2F;2}} \left(\frac{1}{x} + \frac{4}{x + 1} - \frac{9}{2(3x - 1)}\right)
+$$
+</p><h2 id="related-rates">Related rates</h2>
+<p><strong>Related rates</strong> allows us to know how a related variable changes with respect to another variable.</p>
+<p>For example, consider $x = y^3 - y$. If we know $\frac{dy}{dt}$, what is $\frac{dx}{dt}$? Well, we can implicitly differentiate to get:</p>
+<p><p class="mathcell">
+$$
+\frac{d}{dt} x = \frac{d}{dt} (y^3 - y)
+$$
+</p>
+<p class="mathcell">
+$$
+\frac{dx}{dt} = 3y^2 \frac{dy}{dt} - \frac{dy}{dt}
+$$
+</p></p>
+<p>This is our answer! However, typically, we are not presented with the equation that relates two related variables directly, and we must infer it from the question itself.</p>
+<p>For example, consider a rectangular box. We want to find $\frac{dx}{dt}$ in terms of other related rates. We can deduce that the volume of a box is given by:</p>
+<p class="mathcell">
+$$
+V = xyz
+$$
+</p>
+<p>Thus, if we differentiate both sides:</p>
+<p class="mathcell">
+$$
+\frac{d}{dt} V = \frac{d}{dt} (x y z)
+$$
+</p>
+<p>We get:</p>
+<p class="mathcell">
+$$
+\frac{dV}{dt} = yz \frac{dx}{dt} + xz \frac{dy}{dt} + xy \frac{dz}{dt}
+$$
+</p>
+<p>Allowing us to find:</p>
+<p class="mathcell">
+$$
+\frac{dx}{dt} = \frac{1}{yz}\left(\frac{dV}{dt} - xz \frac{dy}{dt} + xy \frac{dz}{dt}\right)
+$$
+</p><h2 id="extreme-values">Extreme values</h2>
+<p>An <strong>absolute</strong> minimum or maximum is when $f(x)$ is at its lowest or highest value respectively for its entire domain. There is only one absolute maximum and one maximum minimum at one function. A <strong>local</strong> minimum or maximum is when $f(x)$ is at its lowest or highest value respectively in an open interval around a specified point.</p>
+<h2 id="critical-points">Critical points</h2>
+<p>A <strong>critical point</strong> of $f(x)$ is a point in which $f'(x) = 0$ or undefined within the domain of $f$. Critical points can be saddle points, minima, or maxima.</p>
+<h2 id="extreme-value-theorem-evt">Extreme Value Theorem (EVT)</h2>
+<p>The <strong>EVT</strong> states that if $f(x)$ is continuous on a closed interval $[a, b]$, then both an absolute maximum and absolute minimum exist on the interval. To use the EVT, find all critical points and compare them to the endpoints, and then find the largest and smallest value.</p>
+<h2 id="rolle-s-theorem">Rolle's Theorem</h2>
+<p><strong>Rolle's Theorem</strong> states that if a function $f(x)$ is continuous on a closed interval $[a, b]$ and differentiable on $(a, b)$, and if $f(a) = f(b)$, then there exists at least point point $x = c$ at which $f'(c) = 0$. It is a special case of the MVT (mean value theorem).</p>
+<h2 id="mean-value-theorem-mvt">Mean Value Theorem (MVT)</h2>
+<p>The <strong>Mean Value Theorem</strong> states that if $f$ is differentiable on $(a, b)$ and continuous on $[a, b]$, then there exists a value $c$ where:</p>
+<p class="mathcell">
+$$
+f&#x27;(c) = \frac{f(b) - f(a)}{b - a}
+$$
+</p>
+<p>Here, when using the MVT, ensure that the $c$ that is solved for is within the interval! If it is not within the interval, then the MVT does not apply.</p>
+<h2 id="intermediate-value-theorem-ivt">Intermediate Value Theorem (IVT)</h2>
+<p>The <strong>intermediate value theorem</strong> (IVT) states that if a function is continuous in a <em>closed</em> interval from $a$ to $b$, then it takes on every value from $f(a)$ to $f(b)$. To use the IVT, you must show that:</p>
+<ul>
+<li>The interval is <strong>closed</strong></li>
+<li>The function is <strong>continuous</strong> on the interval</li>
+<li>Given a value $a \leq C \leq b$, then $f(a) \leq f(C) \leq f(b)$</li>
+</ul>
+<h2 id="monotonicity">Monotonicity</h2>
+<p>A <strong>monotonic function</strong> is a function that moves in only one direction, i.e. only increasing or only decreasing. Monotonicity can be determined by the following rules:</p>
+<ul>
+<li>If $f'(x) &gt; 0$ then $f(x)$ is monotonic increasing on $(a, b)$</li>
+<li>If $f'(x) &lt; 0$ then $f(x)$ is monotonic decreasing on $(a, b)$</li>
+<li>Critical points are where functions <em>may</em> (though are not guaranteed to) change monotonicity</li>
+</ul>
+<h2 id="first-derivative-test">First derivative test</h2>
+<p>The <strong>first derivative test for local extrema</strong> states that:</p>
+<ul>
+<li>If $f'(x)$ changes sign from $+ \to -$ around $x = c$, $f'(c)$ is a local maximum</li>
+<li>If $f'(x)$ changes sign for $- \to +$ around $x = c$, $f'(c)$ is a local minimum</li>
+<li>If there is no change in sign, $f'(c)$ is neither a maximum nor minimum</li>
+</ul>
+<p>Make sure to not just plug in whichever numbers you can compute from the critical points and think you're done! Do not consider critical points that are not in the domain of the original function - for example, if $f(x) = \ln(x)$ and $f'(x) = 1/x$, the point $x = 0$ isn't in the domain of $\ln(x)$ so it is not a valid critical point. Also do not consider functions increasing or increasing on intervals in which they are not defined. For example, the function $f(x) = \frac{e^x}{x}$ cannot be said to be increasing on the interval $(-\infty, e)$ because it has an asymptote at $x = 0$; rather, it can only be said to be increasing on the interval $(-\infty, 0) \cup (0, e)$.</p>
+<h2 id="concavity-2nd-derivative-test">Concavity &amp; 2nd derivative test</h2>
+<p>A function is <strong>concave up</strong> if it opens upwards ("smiling"), and <strong>concave down</strong> if it opens downwards ("frowning"). Concavity can be determined through the second derivative: when $f''(x) &gt; 0$, the graph is concave up, and when $f''(x) &lt; 0$, the graph is concave zero.</p>
+<p>An <strong>inflection point</strong> is a point a curve changes concavity. That is, at an inflection point, $f''(c) = 0$, and $f''(x)$ switches sign around $x = c$.</p>
+<p>The second derivative can also be used to determine local extrema:</p>
+<ul>
+<li>If $f'(c) = 0$ and $f''(c) &gt; 0$ then there is a local max</li>
+<li>If $f'(c) = 0$ and $f''(c) &lt; 0$ then there is a local min</li>
+<li>If $f'(c) = 0$ and $f''(c) = 0$ then the test is inconclusive</li>
+</ul>
+<h2 id="curve-sketching">Curve sketching</h2>
+<p>Using information from the first derivative, second derivative, domain of a function, zeroes, increasing/decreasing intervals, concavity, absolute extrema, local extrema, and asymptotic behavior, the graph of a function can be sketched without needing to explicitly evaluate the function.</p>
+<h2 id="l-hopital-s-rule">L'Hôpital's Rule</h2>
+<p>L'Hôpital's Rule states that if a limit is in the form $\frac{f(x)}{g(x)}$ and results in the indeterminate form $\frac{0}{0}$ or $\frac{\infty}{\infty}$, then:</p>
+<p class="mathcell">
+$$
+\lim_{x \to a} \frac{f(x)}{g(x)} = \frac{f&#x27;(x)}{g&#x27;(x)}
+$$
+</p>
+<p>Note that the rule can be applied multiple times until a limit is found.</p>
+<p>For the $\frac{0}{\infty}$ form, then the product must be rewritten as a product or quotient. For $0^0, \infty^0, 1^\infty$ then the function $f(x)^{g(x)} = e^{g(x)\ln f(x)}$. For instance, consider the limit:</p>
+<p class="mathcell">
+$$
+\lim_{x \to \infty} x^{1&#x2F;x^2}
+$$
+</p>
+<p>This becomes:</p>
+<p class="mathcell">
+$$
+e^{\lim_{x \to \infty} {\ln(x)&#x2F;x^2}}
+$$
+</p>
+<p>We use L'Hôpital's rule to evaluate the top to get:</p>
+<p class="mathcell">
+$$
+\lim_{x \to \infty} \frac{\ln(x)}{x^2} = 0
+$$
+</p>
+<p>So:</p>
+<p class="mathcell">
+$$
+\lim_{x \to \infty} x^{1&#x2F;x^2} = e^0 = 1
+$$
+</p>
+<p>We can also use the rule by turning a limit that is a product functions into a fraction of functions. That is:</p>
+<p class="mathcell">
+$$
+\lim_{x \to a} f(x) g(x) = \lim_{x \to a} \frac{f(x)}{1 &#x2F; g(x)} = \lim_{x \to a} \frac{g(x)}{1 &#x2F; f(x)} = \lim_{x \to a} \frac{g&#x27;(x)}{\left(1 &#x2F; f(x)\right)&#x27;}
+$$
+</p><h2 id="optimization">Optimization</h2>
+<p>Suppose we want to find two numbers $x$ and $y$ such that their sum is 120 and a shape with area $x^2 y$ is as large as possible. That is:</p>
+<p><p class="mathcell">
+$$
+x + y = 120
+$$
+</p>
+<p class="mathcell">
+$$
+A = x^2 y
+$$
+</p></p>
+<p>To do this, we can solve the first equation for $y$:</p>
+<p class="mathcell">
+$$
+y = 120 - x
+$$
+</p>
+<p>Then we can plug it in to the area function:</p>
+<p class="mathcell">
+$$
+A = x^2 (120 - x) = 120x^2 - x^3
+$$
+</p>
+<p>We can take the derivative of $A$ to find its maximum:</p>
+<p class="mathcell">
+$$
+\frac{dA}{dx} = 240x - 3x^2
+$$
+</p>
+<p>We will consider the domain of the area function - since areas are never negative, $x &gt; 0$ and $y &lt; 0$. So, our critical points must be in that domain.</p>
+<p>Here, we set the derivative to zero to get the critical points:</p>
+<p class="mathcell">
+$$
+200x - 3x^2 = 0
+$$
+</p>
+<p>Where we have a critical point at $x = \frac{200}{3}$. We can plug that in to solve for $y$:</p>
+<p class="mathcell">
+$$
+y = 120 - x = \frac{160}{3}
+$$
+</p>
+<p>So the two numbers are $x = \frac{200}{3}, y = \frac{160}{3}$.</p>
+<h2 id="linear-approximations">Linear approximations</h2>
+<p>From the definition of the derivative we have:</p>
+<p class="mathcell">
+$$
+df = f&#x27;(x) dx
+$$
+</p>
+<p>Thus:</p>
+<p class="mathcell">
+$$
+\Delta f \approx f&#x27;(x) \Delta x
+$$
+</p>
+<p>From this, we can find the <strong>linear approximation</strong> of a function at a point $x = a$:</p>
+<p class="mathcell">
+$$
+L(x) = f&#x27;(a)(x - a) + f(a)
+$$
+</p><h2 id="inverse-function-derivatives">Inverse function derivatives</h2>
+<p>Given a function $f(x)$, the derivative of its inverse is given by:</p>
+<p class="mathcell">
+$$
+\mathrm{inv}&#x27;(x) = \frac{1}{f&#x27;(\mathrm{inv}(x))}
+$$
+</p>
+<p>For instance, consider the function:</p>
+<p class="mathcell">
+$$
+f(x) = \sqrt{x - 4}
+$$
+</p>
+<p>First, we want to find the inverse function. To do so, we swap $x$ and $y$:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+x &amp;= \sqrt{y - 4} \\
+x^2 &amp;= y - 4 \\
+y &amp;= x^2 + 4 \\
+f^{-1} (x) &amp;= x^2 + 4
+\end{align*}
+$$
+</p>
+<p>Now, we can find the derivative of our inverse function:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathrm{inv}&#x27;(x) &amp;= \frac{1}{f&#x27;(x^2 + 4)} \\
+f&#x27;(x) &amp;= \frac{1}{2\sqrt{x-4}} \\
+\mathrm{inv}&#x27;(x) &amp;= \frac{1}{f&#x27;(x^2 + 4)} \\
+\mathrm{inv}&#x27;(x) &amp;= 2\sqrt{(x^2 + 4) - 4}
+\end{align*}
+$$
+</p>
+<p>We finally obtain:</p>
+<p class="mathcell">
+$$
+\mathrm{inv}&#x27;(x) = 2x
+$$
+</p>
+        
+        <a id="jump-toc-btn" href="#toc">Show table of contents</a>
+        <a href="/notes" class="return-link">Back to all notes</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        var toc = document.getElementById("toc");
+        var tocPos = toc.offsetTop + toc.offsetHeight;
+        var tocBtn = document.getElementById("jump-toc-btn");
+
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+        // for performance reasons, we **only** render a certain
+        // number of equations that the viewer is actually viewing
+        function VisibleMathRenderer(config) {
+            /*
+            Renders only a limited number of equations on page load
+            to avoid poor performance
+             Params:
+                lastRenderedEquation: the most recently rendered equation.
+                        when this goes out of view, equations under it are rendered. 
+            */
+            var startElement = config.startElement
+            var maxEquations = config.maxEquations ? config?.maxEquations : 30;
+            this.startElement = startElement
+            this.maxEquations = maxEquations
+            // we wait until the user scrolls past the starting/
+            // ending elements to start rendering the whole page
+            this.canRenderWholePage = false;
+            this.pageRendered = false;
+            this.lastRenderedTopEquation = null;
+            this.lastRenderedBottomEquation = null;
+
+            this.render = function() {
+                renderMath(this.startElement);
+                // render previous 25 and following 25 equations
+                var prev = this.startElement.previousElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left prior to the element
+                    if (prev == null) {
+                        break;
+                    }
+                    renderMath(prev);
+                    prev = prev.previousElementSibling;
+                }
+                // store our last rendered equations
+                // we'll track scroll position later to
+                // check when the rest of the page should be rendered
+                this.lastRenderedTopEquation = prev;
+                console.log(this.lastRenderedTopEquation)
+
+                var next = this.startElement.nextElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left following the element
+                    if (next.nextElementSibling == null) {
+                        break;
+                    }
+                    renderMath(next);
+                    next = next.nextElementSibling;
+                }
+                this.lastRenderedBottomEquation = next;
+                // now allow rendering the rest of the equations
+                this.canRenderWholePage = true;
+            }
+
+            // render all math on the whole page
+            this.renderMathOnPage = function() {
+                // don't run until preliminary tasks
+                // are done so that the whole page
+                // can/should be rendered
+                if (!this.canRenderWholePage) {
+                    return;
+                }
+                // if the whole page's worth of equations
+                // are already rendered, don't render more
+                if (this.pageRendered) {
+                    return;
+                }
+                var topBound = this.lastRenderedTopEquation.getBoundingClientRect.top;
+                var bottomBound = this.lastRenderedBottomEquation.getBoundingClientRect.bottom;
+                var scrollTop, scrollBottom = getViewport();
+                // if the user is about to scroll past the initially-rendered equations
+                // we will render the whole page
+                if (scrollTop - 50 + window.scrollY < topBound || scrollBottom + 50 + window.scrollY > bottomBound) {
+                    console.log("Scrolled beyond!")
+                    var article = document.querySelector(".post");
+                    if (article) {
+                        this.renderMath(article);
+                    }
+                    this.pageRendered = true;
+                }
+                
+            }
+            
+        }
+
+        function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        function findFirstRelevantElement() {
+            // finds the first <p> tage that's closest to
+            // the viewer's viewport
+            var regex = /#.*/;
+            var m = regex.exec(window.location.href);
+            if (m !== null) {
+                return document.querySelector(m[0]);
+            } else {
+                return document.querySelector(".post p");
+            }
+        }
+        
+        // initialize page JS components
+        /*
+        var mathRenderer = new VisibleMathRenderer({
+            // start rendering with first <p> tag on the
+            // post
+            startElement: findFirstRelevantElement()
+        });
+        */
+        document.addEventListener("DOMContentLoaded", function() {
+            showTocBtnOnScroll();
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+
+        window.onscroll = function(){
+            // if (!mathRenderer.pageRendered) {
+            //     mathRenderer.renderMathOnPage();
+            // }
+            showTocBtnOnScroll();
+        };
+
+
+    </script>
+    
+
+
+</body>
+
+</html>

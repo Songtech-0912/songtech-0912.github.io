@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Series and sequences</title>
+  <meta name="description" content=" These are notes taken in MATH 1020 (Calculus II) at RPI, covering sequences, series, Taylor expansions, convergence and divergence tests, and examples of each.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Series and sequences</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+        <details class="toc" id="toc" open>
+        <summary>Table of contents</summary>
+        <p class="toc-info">Note: it is highly recommended to navigate by clicking links in the table of contents! It means you can use the back button in your browser to go back to any section you were reading, so you can jump back and forth between sections!</p>
+        <div>
+            <ul>
+            
+                <li>
+                    <a href="#sequences">Sequences</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#infinite-series">Infinite series</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#why-does-convergence-or-divergence-matter">Why does convergence (or divergence) matter?</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#interlude-on-shifts">Interlude on shifts</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#geometric-series">Geometric series</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#nth-partial-sums-test">Nth-partial sums test</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#integral-test">Integral test</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#p-series-test">P-series test</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#direct-comparison-test">Direct comparison test</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#limit-comparison-test">Limit comparison test</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#alternating-series-test">Alternating series test</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#approximating-alternating-series">Approximating alternating series</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#ratio-test">Ratio test</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#root-test">Root test</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#taylor-series">Taylor series</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#power-series">Power series</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#radius-of-convergence">Radius of convergence</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#derivatives-and-integrals-of-power-series">Derivatives and integrals of power series</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#power-series-representations-of-functions">Power series representations of functions</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#applications-of-series">Applications of series</a>
+                    
+                </li>
+            
+            </ul>
+        </div>
+        </details>
+        
+
+        <!-- page content -->
+        <p>These are notes taken in MATH 1020 (Calculus II) at RPI, covering sequences, series, Taylor expansions, convergence and divergence tests, and examples of each.</p>
+<span id="continue-reading"></span><h2 id="sequences">Sequences</h2>
+<p>A <strong>sequence</strong> can be thought of as a list of numbers written in a definite order. They are notated ${ a_n }$ where $a_n$ is the formula for the <em>nth</em> term, which expands to ${a_1, a_2, a_3, \dots, a_n}$. Unlike a function, which can have continuous inputs, sequences must always use integer values of $n$ as input. For instance:</p>
+<p class="mathcell">
+$$
+\\{ 2n + 1\\}_{n = 0}^\infty = \\{1, 3, 5, 7, 9, 11, \dots\\}
+$$
+</p>
+<p>A sequence $\{ a_n \}$ is said to <em>converge</em> if it approaches a number $L$:
+<p class="mathcell">
+$$
+\lim_{n \to \infty} a_n = L
+$$
+</p></p>
+<p>and is said to <em>divergence</em> otherwise. Several important theorems hold for sequences:</p>
+<ul>
+<li>If $\displaystyle \lim_{n \to \infty} |a_n| = 0$, then $\displaystyle \lim_{n \to \infty} a_n = 0$.</li>
+<li>If $\displaystyle \lim_{n \to \infty} a_n = L$ and the function $f(x)$ is continuous at $L$, then $\displaystyle \lim_{n \to \infty} f(a_n) = f(L)$.</li>
+<li>The geometric sequence $\{cr^n\}$ converges if $-1 &lt; r &lt; 1$; if it converges, $\displaystyle \lim_{n \to \infty} cr^n = c$ if $c = 1$ and $\displaystyle \lim_{n \to \infty} cr^n = 0$ for all other values of $c$. Note that $\frac{a^n}{b^n}$ can be written as $\left(\frac{a}{b}\right)^n$ and can then be treated as a geometric sequence.</li>
+<li>Every bounded (never exceeding one number or going below one number) and monotonic (only increasing or only decreasing) sequence is <strong>convergent</strong>.</li>
+</ul>
+<h2 id="infinite-series">Infinite series</h2>
+<p>An <strong>infinite series</strong>, often just referred to as a series, is a sum of a sequence. The general form of a series is given by:</p>
+<p class="mathcell">
+$$
+\sum_{n = 1}^\infty a_n
+$$
+</p>
+<p>A series, just like a sequence, can be convergent or divergent. The <strong>nth-term divergence test</strong> states that a series is <em>guaranteed</em> to be divergent if:</p>
+<p class="mathcell">
+$$
+\lim_{n \to \infty} a_n \neq 0
+$$
+</p>
+<p>Note that the nth-term test does <strong>not</strong> guarantee convergence. It can only guarantee divergence.</p>
+<h3 id="why-does-convergence-or-divergence-matter">Why does convergence (or divergence) matter?</h3>
+<p>It might seem strange that one feature of an infinite series - that is, its convergence or divergence - would be so important. Why care?</p>
+<p>There are two reasons - a theoretical and a practical reason. The theoretical reason is that if a series does not converge, then it is essentially meaningless. That is, divergent series are pretty much the same category of expressions as $\frac{1}{0}$ or $\frac{\infty}{\infty}$ or $0^0$; they hold no value.</p>
+<p>The practical reason is that in many applications of series, an infinite series is truncated by only computing a finite number of terms. If a series does not converge, then a finite number of terms could not be used to approximate the series. For instance, one of the definitions of $\pi$:</p>
+<p class="mathcell">
+$$
+\sum_{n = 1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}
+$$
+</p>
+<p>only holds true because the series is convergent; otherwise the series would be mathematically meaningless and numerically impossible to compute.</p>
+<p>For more on this topic, <a href="https://math.stackexchange.com/questions/1692062/what-is-the-importance-of-knowing-if-a-series-converges-or-diverges">this question post</a> would be good reading.</p>
+<h3 id="interlude-on-shifts">Interlude on shifts</h3>
+<p>An infinite series can be shifted up or down by changing the starting index. The two most common starting indices are 0 and 1. To convert between them, recall that:</p>
+<p class="mathcell">
+$$
+\sum_{i = 1}^\infty a_n = \sum_{i = 0}^\infty a_{n + 1}
+$$
+</p>
+<p>And:</p>
+<p class="mathcell">
+$$
+\sum_{i = 0}^\infty a_n = \sum_{i = 1}^\infty a_{n - 1}
+$$
+</p><h2 id="geometric-series">Geometric series</h2>
+<p>The geometric series is given by:</p>
+<p class="mathcell">
+$$
+\sum_{n = 0}^\infty cr^n = c + cr + cr^2 + cr^3 + cr^4 + \dots + cr^n
+$$
+</p>
+<p>So long as $|r|&lt;1$, then the geometric series converges to a value given by:</p>
+<p class="mathcell">
+$$
+\sum_{n = 0}^\infty cr^n = \frac{c}{1 - r}
+$$
+</p>
+<p>In all other cases, the geometric series diverges.</p>
+<h2 id="nth-partial-sums-test">Nth-partial sums test</h2>
+<p>The nth partial sum of an infinite series is given by:</p>
+<p class="mathcell">
+$$
+S_n = \sum_{i = 1}^n a_i = a_1 + a_2 + \dots + a_n
+$$
+</p>
+<p>The <strong>nth partial sum test</strong> states that if the nth partial sum converges, the series converges as well, and if the nth partial sum diverges, the series diverges as well. This is however often not an easy test to use, because finding a formula for the nth partial sum is itself often a difficult task.</p>
+<p><strong>Example:</strong> find whether the following series converges, and if it converges, find its sum:</p>
+<p class="mathcell">
+$$
+\sum_{n = 2}^\infty \frac{1}{n^2 -1}
+$$
+</p>
+<p><strong>Answer:</strong></p>
+<p>First, to test for possible convergence, we can use the nth term test. Given that:</p>
+<p class="mathcell">
+$$
+\lim_{n \to \infty} \frac{1}{n^2 - 1} = 0
+$$
+</p>
+<p>we can tell that the series <strong>may</strong> converge.</p>
+<p>Then, we can use the nth partial sum test. To do so, recall that:</p>
+<p class="mathcell">
+$$
+S_n = \sum_{i = 2}^n \frac{1}{i^2 - 1}
+$$
+</p>
+<p>We can use partial fraction decomposition to have:</p>
+<p class="mathcell">
+$$
+S_n = \sum_{i = 2}^n \left(\frac{1&#x2F;2}{i - 1} + \frac{1&#x2F;2}{i + 1}\right)
+$$
+</p>
+<p>Then factor out the $\frac{1}{2}$ to have:</p>
+<p class="mathcell">
+$$
+S_n = \frac{1}{2} \sum_{i = 2}^n \left(\frac{1}{i - 1} + \frac{1}{i + 1}\right)
+$$
+</p>
+<p>We can expand out the terms to find the pattern:</p>
+<p class="mathcell">
+$$
+S_n = \left[\left(1 + \frac{1}{3}\right) + \left(\frac{1}{2} + \frac{1}{4}\right) + \left(\frac{1}{3} + \frac{1}{5}\right) + \dots \right]
+$$
+</p>
+<p>From which we can see that the fractions cancel to find:</p>
+<p class="mathcell">
+$$
+S_n = \frac{1}{2} \left[1 + \frac{1}{2} + \frac{1}{n + 1}\right]
+$$
+</p>
+<p>Taking the limit of the nth partial sum yields:</p>
+<p class="mathcell">
+$$
+\lim_{n \to \infty} S_n = \frac{1}{2} \left[1 + \frac{1}{2} + 0\right] = \frac{3}{4}
+$$
+</p>
+<p>So, the series converges, and its value is:</p>
+<p class="mathcell">
+$$
+\sum_{n = 2}^\infty \frac{1}{n^2 -1} = \frac{3}{4}
+$$
+</p><h2 id="integral-test">Integral test</h2>
+<p>The <strong>integral test</strong> for convergence states that if $f$ is positive, continuous, and decreasing and $a_n = f(n)$, then $\displaystyle \sum_{n = 1}^\infty a_n$ and $\displaystyle \int \limits_1^\infty f(x) dx$ either both converge or both diverge.</p>
+<p><strong>Example:</strong></p>
+<p>Determine the convergence of the following series:</p>
+<p class="mathcell">
+$$
+\sum_{n = 1}^\infty \frac{2}{3n + 5}
+$$
+</p>
+<p><strong>Answer:</strong></p>
+<p>To test for convergence, we can use the integral test. To do this, as $f(n) = \frac{2}{3n + 5}$, we need to compute:</p>
+<p class="mathcell">
+$$
+\int \limits_1^\infty \frac{2}{3x + 5} dx
+$$
+</p>
+<p>The integral can be computed as follows:</p>
+<p class="mathcell">
+$$
+\int \limits_1^\infty = \lim_{k \to \infty} \int \limits_1^k \frac{2}{3x + 5} dx
+$$
+</p><p class="mathcell">
+$$
+= \frac{2}{3} \lim_{k \to \infty} \int \limits_1^k \frac{1}{3x + 5} dx
+$$
+</p><p class="mathcell">
+$$
+= \frac{2}{3} \lim_{k \to \infty} \int \limits_8^{3k+5} \frac{1}{u} du
+$$
+</p><p class="mathcell">
+$$
+= \frac{2}{3} \lim_{k \to \infty} \ln(u) \bigg|_8^{3k + 5}
+$$
+</p><p class="mathcell">
+$$
+= \frac{2}{3} \lim_{k \to \infty} \ln(3k+5) - \ln(8)
+$$
+</p><p class="mathcell">
+$$
+= \infty
+$$
+</p>
+<p>Therefore, as the integral is unbounded and does not converge, the series also diverges.</p>
+<h2 id="p-series-test"><em>P</em>-series test</h2>
+<p>The <strong>p-series test</strong> states that the series:</p>
+<p class="mathcell">
+$$
+\sum_{n = 1}^\infty \frac{1}{n^p} = 1 + \frac{1}{2^p} + \frac{1}{3^p} + \frac{1}{4^p} + \frac{1}{5^p} + \dots
+$$
+</p>
+<p>converges if $p &gt; 1$ and diverges if $0 &lt; p \leq 1$. Note that if $p = 1$, the series is called the harmonic series.</p>
+<h2 id="direct-comparison-test">Direct comparison test</h2>
+<p>A series can be compared to another series (typically a known series such as a geometric series) to establish convergence or divergence. Any series that is term-by-term <strong>smaller</strong> than a convergent series is <strong>also convergent</strong>, and any series that is term-by-term <strong>larger</strong> than a divergence series is <strong>also divergent</strong>.</p>
+<p>The <strong>direct comparison test</strong> for series is a rigorous formulation of this principle - it states that given two series $\displaystyle \sum_{n = i}^\infty a_n$ and $\displaystyle \sum_{n = i}^\infty b_n$, given that $a_n \leq b_n$ for all $n$:</p>
+<ul>
+<li>If $\displaystyle \sum_{n = i}^\infty b_n$ converges, $\displaystyle \sum_{n = i}^\infty a_n$ converges</li>
+<li>If $\displaystyle \sum_{n = i}^\infty b_n$ diverges, $\displaystyle \sum_{n = i}^\infty a_n$ diverges</li>
+</ul>
+<p><strong>Example question:</strong></p>
+<p>Determine the convergence of:</p>
+<p class="mathcell">
+$$
+a = \sum_{n = 1}^\infty \frac{1}{3n^2 +2}
+$$
+</p>
+<p><strong>Answer:</strong></p>
+<p>We can compare the series to another series $b$:</p>
+<p class="mathcell">
+$$
+\sum_{n = 1}^\infty \frac{1}{3n^2}
+$$
+</p>
+<p>Notice that $b$ is a p-series with $p = 2$, thus it converges. Given that $a_n &lt; b_n$, both series converge. Therefore, the series $a$ converges.</p>
+<h2 id="limit-comparison-test">Limit comparison test</h2>
+<p>The <strong>limit comparison test</strong> for series states that given two series $\displaystyle \sum_{n = 1}^\infty a_n$ and $\displaystyle \sum_{n = 1}^\infty b_n$, if $\displaystyle \lim_{n \to \infty} \frac{a_n}{b_n} = L$ where $L$ is finite and positive, then the two series either both converge or both diverge.</p>
+<p>Note that for the limit comparison test, a suitable comparison series $\displaystyle \sum_{n = 1}^\infty b_n$ might be chosen from either a known series (geometric, p-series, etc.) or just a series that is easy to check for convergence (or divergence). For instance, consider the series:</p>
+<p class="mathcell">
+$$
+\sum_{n = 1}^\infty \frac{n^{1&#x2F;6}}{n + 8}
+$$
+</p>
+<p>A convenient series to compare against (that can be easily checked to show it is divergent) could be:</p>
+<p class="mathcell">
+$$
+\sum_{n = 1}^\infty n
+$$
+</p>
+<p>Using the limit comparison test with these two series shows that the first series, like the second (comparison) series, is divergent.</p>
+<p><strong>Example question:</strong></p>
+<p>Determine the convergence of:</p>
+<p class="mathcell">
+$$
+a = \sum_{n = 0}^\infty \frac{5n - 3}{n^2 - 2n + 5}
+$$
+</p>
+<p><strong>Answer:</strong></p>
+<p>We can compare the series to another series $b$:</p>
+<p class="mathcell">
+$$
+b = \sum_{n = 0}^\infty \frac{5n}{n^2} = \frac{5}{n}
+$$
+</p>
+<p>Given that $b$ is a p-series with $p = 1$, $b$ is divergent. Then, we take the limits of the quotients:</p>
+<p class="mathcell">
+$$
+\lim_{n \to \infty} \frac{a_n}{b_n} = \frac{\frac{5n - 3}{n^2 - 2n + 5}}{\frac{5}{n}} = 1
+$$
+</p>
+<p>Given that $L$ is finite and positive, the two series both diverge. Therefore, $a$ diverges.</p>
+<h2 id="alternating-series-test">Alternating series test</h2>
+<p>An alternating series is a series in the form:</p>
+<p class="mathcell">
+$$
+\sum_{n = 1}^\infty (-1)^n a_n
+$$
+</p>
+<p>or in the form:</p>
+<p class="mathcell">
+$$
+\sum_{n = 1}^\infty (-1)^{n + 1} a_n
+$$
+</p>
+<p>The <strong>alternating series test</strong> states that an alternating series converges only if $\displaystyle \lim_{n \to \infty} a_n = 0$ and $a_{n + 1} \leq a_n$ for all $n$. To check that $a_{n + 1} \leq a_n$ for all $n$, let $f(n) = a_n$, and ensure that $f'(n) \leq 0$ for all $n$.</p>
+<p><strong>Example question:</strong></p>
+<p>Determine the convergence of:</p>
+<p class="mathcell">
+$$
+\sum_{n = 1}^\infty \frac{(-1)^{n + 1}n}{2n-1}
+$$
+</p>
+<p><strong>Answer:</strong></p>
+<p>Given that $a_n = \frac{n}{2n - 1}$, we can find the limit:</p>
+<p class="mathcell">
+$$
+\lim_{n \to \infty} \frac{n}{2n-1} = \frac{1}{2} \neq 0
+$$
+</p>
+<p>Thus the series diverges.</p>
+<h3 id="approximating-alternating-series">Approximating alternating series</h3>
+<p>For a convergent alternating series, the partial sum $S_n$ can be used to approximate the sum $S$ of the series. The error (or remainder) in estimating $S$ with the partial sum $S_n$, $R_n$, obeys:</p>
+<p class="mathcell">
+$$
+|R_n| \leq a_{n + 1}
+$$
+</p>
+<p><strong>Example question:</strong></p>
+<p>Find the error of the 6-term approximation to:</p>
+<p class="mathcell">
+$$
+\sum_{n = 1}^\infty (-1)^{n + 1} \left(\frac{1}{n!}\right)
+$$
+</p>
+<p><strong>Answer:</strong></p>
+<p>Given the remainder $|R_n| \leq a_n + 1$, then $|R_6| \leq a_7$ and $a_7 \approx 0.0002$, thus $|R_6| \approx 0.0002$.</p>
+<p>If a series has both negative and positive terms but they don't alternate, then:</p>
+<ul>
+<li>If $\displaystyle \sum_{n = 1}^\infty |a_n|$ converges, then $\displaystyle \sum_{n = 1}^\infty a_n$ is <strong>absolutely convergent</strong></li>
+<li>If $\displaystyle \sum_{n = 1}^\infty a_n$ converges but $\displaystyle \sum_{n = 1}^\infty |a_n|$ diverges, then $\displaystyle \sum_{n = 1}^\infty a_n$ is <strong>conditionally convergent</strong></li>
+</ul>
+<h2 id="ratio-test">Ratio test</h2>
+<p>The <strong>ratio test</strong> states that for a series $a$, let the ratio $r = \displaystyle \lim_{n \to \infty} \left|\frac{a_{n + 1}}{a_n}\right|$. Then:</p>
+<ul>
+<li>If $|r| &lt; 1$, the series converges</li>
+<li>If $|r| &gt; 1$, the series diverges</li>
+<li>If $|r| = 1$, the test is inconclusive</li>
+</ul>
+<p><strong>Example question:</strong></p>
+<p>Determine the convergence of:</p>
+<p class="mathcell">
+$$
+\sum_{n=0}^{\infty}\frac{3^{n}}{n!}
+$$
+</p>
+<p><strong>Answer:</strong></p>
+<p>The ratio $r$ can be found through:</p>
+<p class="mathcell">
+$$
+\lim_{n \to \infty} \left|\frac{a_{n + 1}}{a_n}\right| = \frac{3^{n + 1}}{(n + 1)!} \frac{n!}{3^n}
+$$
+</p>
+<p>First, we know that:</p>
+<p class="mathcell">
+$$
+\frac{3^{n + 1}}{3^n} = 3
+$$
+</p>
+<p>We also know that:</p>
+<p class="mathcell">
+$$
+\frac{n!}{(n + 1)!} = \frac{1}{n + 1}
+$$
+</p>
+<p>Therefore, combined:</p>
+<p class="mathcell">
+$$
+r = \lim_{n \to \infty} \left|\frac{a_{n + 1}}{a_n}\right| = \lim_{n \to \infty} \frac{3}{n + 1} = 0
+$$
+</p>
+<p>Given that $r &lt; 1$, the series converges.</p>
+<h2 id="root-test">Root test</h2>
+<p>The <strong>root test</strong> states that for a series $\displaystyle \sum_{n = 1}^\infty a_n$, let the root be given by $p = \displaystyle \lim_{n \to \infty} \sqrt[n]{|a_n|}$. Then:</p>
+<ul>
+<li>If $p &lt; 1$, the series converges</li>
+<li>If $p &gt; 1$, the series diverges</li>
+<li>If $p = 1$, the test is inconclusive</li>
+</ul>
+<p><strong>Example question:</strong></p>
+<p>Determine the convergence or divergence of:</p>
+<p class="mathcell">
+$$
+\sum_{n = 0}^\infty e^{-n}
+$$
+</p>
+<p><strong>Answer:</strong></p>
+<p>We can find $p$ from:</p>
+<p class="mathcell">
+$$
+p = \lim_{n \to \infty} \sqrt[n]{|a_n|} = \lim_{n \to \infty} \sqrt[n]{e^{-n}} = \lim_{n \to \infty} e^\frac{-n}{n}
+= \lim_{n \to \infty} e^{-1} = \frac{1}{e}
+$$
+</p>
+<p>Since $p = \frac{1}{e} &lt; 1$, the series converges.</p>
+<h2 id="taylor-series">Taylor series</h2>
+<p>The Taylor series for a function is given by:</p>
+<p class="mathcell">
+$$
+\sum_{n = 0}^\infty \frac{f^{(n)}(a)}{n!} (x-a)^n
+$$
+</p>
+<p>The nth-degree Taylor polynomial for a function is given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+P_n(x) = f(a) &amp;+ f′(a)(x−a) +\dfrac{f&#x27;&#x27;(a)}{2!}(x−a)^2 \\
+&amp;+ \dfrac{f&#x27;&#x27;&#x27;(a)}{3!}(x−a)^3 \dots+\dfrac{f^{(n)}(a)}{n!}(x−a)^n
+\end{align*}
+$$
+</p>
+<p>If the Taylor series is centered at $a = 0$, then the series is called a <strong>Maclaurin series</strong>.</p>
+<p><strong>Example question:</strong> Find the approximating Maclaurin polynomial of degree 5 for $f(x) = e^{-3x}$</p>
+<p><strong>Answer:</strong></p>
+<p>First, we compute all the derivatives:</p>
+<p class="mathcell">
+$$
+f&#x27;(0) = -3
+$$
+</p><p class="mathcell">
+$$
+f&#x27;&#x27;(0) = 9
+$$
+</p><p class="mathcell">
+$$
+f&#x27;&#x27;&#x27;(0) = -27
+$$
+</p><p class="mathcell">
+$$
+f^{(4)}(0) = 81
+$$
+</p><p class="mathcell">
+$$
+f^{(5)}(0) = -243
+$$
+</p>
+<p>Then, we plug in the values of the derivatives to the Taylor series formula:</p>
+<p class="mathcell">
+$$
+P_5(x) = f(0) -3 (x - 0) + \frac{9(x - 0)^2}{2!} - \frac{27(x - 0)^3}{3!} + \frac{81(x - 0)^4}{4!} - \frac{243(x - 0)^5}{5!}
+$$
+</p>
+<p>Simplifying, we get:</p>
+<p class="mathcell">
+$$
+P_5(x) = 1 - 3x + \frac{9x^2}{2} - \frac{9x^3}{2} + \frac{81x^4}{12} - \frac{243x^5}{120}
+$$
+</p>
+<p>There are several important Taylor series that it would be useful to memorize:</p>
+<p class="mathcell">
+$$
+e^x = \sum_{n = 0}^\infty \frac{x^n}{n!}
+$$
+</p><p class="mathcell">
+$$
+\cos x = \sum_{n = 0}^\infty \frac{(-1)^n x^{2n}}{(2n)!}
+$$
+</p><p class="mathcell">
+$$
+\sin x = \sum_{n = 0}^\infty \frac{(-1)^n x^{2n+1}}{(2n+1)!}
+$$
+</p>
+<p>The <strong>remainder theorem</strong> for Taylor polynomials states that there exists a value $z$ between $x$ and $c$ such that the error bound for a Taylor polynomial of order $n$ is given by:</p>
+<p class="mathcell">
+$$
+R_n(x) \leq \text{max}|f^{n + 1}(z)|\frac{(x - c)^{n + 1}}{(n + 1)!}
+$$
+</p>
+<p>Thus, to compute the Lagrange error bound, we compute the $(n + 1)$th derivative of $f(x)$, find the maximum value of $f^{(n + 1)}(z)$, and then compute the error bound using the formula.</p>
+<p><strong>Example question:</strong> Determine the upper bound in approximating $\sin(0.1)$ with the 3rd-degree Maclaurin polynomial</p>
+<p class="mathcell">
+$$
+P_3(x) = x - \frac{x^3}{3!}
+$$
+</p>
+<p><strong>Answer:</strong></p>
+<p>First, we compute the $(n + 1)$the derivative of $f(x)$. Given that $n = 3$ as it is a 3rd-degree polynomial,we compute the 4th-derivative of $f(x)$:</p>
+<p class="mathcell">
+$$
+f^{(4)}(x) = \sin(x)
+$$
+</p>
+<p>The maximum value of the 4th-derivative of $f(x)$ is 1, as $\sin(x)$ oscillates between -1 and 1. Now, we can plug into the formula to get:</p>
+<p class="mathcell">
+$$
+R_n(0.1) \leq (1) \frac{(0.1 - 0)^4}{4!}
+$$
+</p>
+<p>Which simplifies to:</p>
+<p class="mathcell">
+$$
+R_n(0.1) \leq 0.000004
+$$
+</p>
+<p>Thus, the value of $P_3(0.1)$ must be equal to $\sin(0.1) \pm 0.000004$.</p>
+<p><strong>Example question:</strong> Find the degree of the Maclaurin polynomial $P_n(x)$ such that the error of the approximation of the function $f(x) = e^x$ at $x = 0.6$ is less than 0.001.</p>
+<p><strong>Answer:</strong></p>
+<p>We set $R_n(x) &lt; 0.001$. Therefore:</p>
+<p class="mathcell">
+$$
+\text{max}|f^{n + 1}(z)| \frac{(0.6 - 0)^{n + 1}}{(n + 1)!} &lt; 0.001
+$$
+</p>
+<p>The derivatives of $e^x$ are all $e^x$, so the maximum value of $f^{n + 1}(z)$ in $z \in [0, 0.6]$ is $e^{0.6} = 1.8221$. Therefore:</p>
+<p class="mathcell">
+$$
+\frac{1.8221 \cdot (0.6 - 0)^{n + 1}}{(n + 1)!} &lt; 0.001
+$$
+</p>
+<p>Plugging in values of $n$ allows us to find that $n = 5$ is the first polynomial with the desired accuracy.</p>
+<h2 id="power-series">Power series</h2>
+<p>A series of the form $\displaystyle \sum_{n = 0}^\infty a_n x^n$ is called a <strong>power series</strong>. When centered at constant $c$, the power series becomes the form $\displaystyle \sum_{n = 0}^\infty a_n (x - c)^n$.</p>
+<p>We can write a power series as a function of $x$:</p>
+<p class="mathcell">
+$$
+f(x) = \sum_{n=0}^\infty a_n (x-c)^n
+$$
+</p>
+<p>Power series are widely used to approximate known functions and solve for unknown functions, as a convergent infinite power series is equivalent to the function it approximates. Taylor series are a special type of power series, but power series can generalize to approximate almost any type of function imaginable.</p>
+<h2 id="radius-of-convergence">Radius of convergence</h2>
+<p>If given a power series $\displaystyle \sum_{n = 0}^\infty a_n (x-c)^n$, then the <em>common ratio</em> $r$ is given by the ratio test:</p>
+<p class="mathcell">
+$$
+r = \lim_{n \to \infty} \left| \frac{a_{n + 1} (x - c)^{n + 1}}{a_n (x - c)^n} \right | = \lim_{n \to \infty} \left| \frac{a_{n + 1}}{a_n} \right| \cdot |x - c|
+$$
+</p>
+<p>By the ratio test, a series can only converge if $r &lt; 1$. Therefore, if we substitute in the obtained value of $r$:</p>
+<p class="mathcell">
+$$
+r &lt; 1 \Rightarrow \lim_{n \to \infty} \left| \frac{a_{n + 1}}{a_n} \right| \cdot |x - c| &lt; 1
+$$
+</p>
+<p>If we rearrange the terms so that the left-hand side is $|x - c|$ (by dividing by the limit), we have:</p>
+<p class="mathcell">
+$$
+|x - c| &lt; \lim_{n \to \infty} \left| \frac{a_n}{a_{n + 1}} \right|
+$$
+</p>
+<p>We may rewrite this as $|x - c| &lt; R$, where $R$ is called the <strong>radius of convergence</strong>, and is simply the right-hand side of the above equation:</p>
+<p class="mathcell">
+$$
+R = \lim_{n \to \infty} \left| \frac{a_n}{a_{n + 1}} \right|
+$$
+</p>
+<p>Note that this is only true if the limit exists (the limit can be finite or infinite, but must exist). The interpretation of the radius of convergence is that the power series in the general form $\displaystyle \sum_{n = 0}^\infty a_n (x-c)^n$ <em>must</em> converge for all values $x \in (c - R, c + R)$ and <em>may</em> converge at $x = c - R$ and $x = c + R$. The two cases where the series may converge are called the <em>endpoints</em> and their convergence must be checked separately.</p>
+<blockquote>
+<p>Note: here $r$ and $R$ are different things. $r$ is the common ratio, which is the result of the ratio test; $R$ is the radius of convergence, which is the distance from the center $c$ for which the series converges.</p>
+</blockquote>
+<p>In general, given a power series with radius of convergence $R$:</p>
+<ul>
+<li>If $R = 0$, the series only converges at $x = c$</li>
+<li>If $R &gt; 0$, the series converges for $|x - c| &lt; R$</li>
+<li>If $R = \infty$, the series converges for all real numbers</li>
+</ul>
+<p><strong>Example question:</strong> Determine the radius of convergence for the following power series, <em>without</em> using the radius of convergence formula:</p>
+<p class="mathcell">
+$$
+\sum_{n = 0}^\infty \frac{(-1)^n x^n}{2^n}
+$$
+</p>
+<p><strong>Answer:</strong></p>
+<p>To find the radius of convergence, we can use the ratio test. Recall that $r$ is the ratio such that:</p>
+<p class="mathcell">
+$$
+r = \lim_{n \to \infty} \left|\frac{a_{n + 1}}{a_n}\right|
+$$
+</p>
+<p>In this case, the ratio $r$ is given by:</p>
+<p class="mathcell">
+$$
+r = \lim_{n \to \infty} \left|\frac{\frac{x^{n + 1}}{2^{n + 1}}}{\frac{x^n}{2^n}}\right| = \lim_{n \to \infty} \left| \frac{x^{n + 1}}{2^{n + 1}} \frac{2^n}{x^n}\right| = \lim_{n \to \infty} \left|\frac{x}{2}\right|
+$$
+</p>
+<p>Now, recall that the series only converges if $r &lt; 1$, thus $|x| &lt; 2$. This means that the <strong>radius of convergence</strong> of the power series is 2.</p>
+<p><strong>Example question:</strong> Determine the radius of convergence for the power series given below, with use of the radius of convergence formula:</p>
+<p class="mathcell">
+$$
+\sum_{n = 0}^\infty \frac{(-1)^n (x - 4)^n}{n^2}
+$$
+</p>
+<p><strong>Answer:</strong></p>
+<p>Since the general power series is given by $\displaystyle \sum_{n = 0}^\infty a_n (x - c)^n$, then here:</p>
+<p class="mathcell">
+$$
+a_n = \frac{(-1)^n}{n^2}
+$$
+</p>
+<p>The radius of convergence formula is given by:</p>
+<p class="mathcell">
+$$
+R = \lim_{n \to \infty} \left| \frac{a_n}{a_{n + 1}} \right|
+$$
+</p>
+<p>If we substitute, noting that $|(-1)^n| = 1$, we have:</p>
+<p class="mathcell">
+$$
+R = \lim_{n \to \infty} \frac{1}{n^2} \frac{(n + 1)^2}{1} = 1
+$$
+</p>
+<p>Therefore the power series has the radius of convergence $R = 1$.</p>
+<p><strong>Example question:</strong> Determine the interval of convergence for the power series:</p>
+<p class="mathcell">
+$$
+\sum_{n = 0}^\infty \left(\frac{x}{k}\right)^n
+$$
+</p>
+<p><strong>Answer:</strong></p>
+<p>The given power series is a geometric series, which converges if its common ratio is less than one. Thus, to converge:</p>
+<p class="mathcell">
+$$
+\left|\frac{x}{k}\right| &lt; 1
+$$
+</p>
+<p>Which we can rearrange to find:</p>
+<p class="mathcell">
+$$
+|x| &lt; k
+$$
+</p>
+<p>Thus:</p>
+<p class="mathcell">
+$$
+-k &lt; x &lt; k
+$$
+</p>
+<p>We then check the endpoints with $x = k$ and $x = -k$ to find the actual interval of convergence. We first check $x = k$:</p>
+<p class="mathcell">
+$$
+\sum_{n = 0}^\infty \left(\frac{k}{k}\right)^n = \sum_{n = 0}^\infty 1^n = \sum_{n = 0}^\infty 1 = \infty
+$$
+</p>
+<p>Clearly this diverges. Then we check $x = -k$:</p>
+<p class="mathcell">
+$$
+\sum_{n = 0}^\infty \left(\frac{-k}{k}\right)^n = \sum_{n = 0}^\infty (-1)^n = \infty
+$$
+</p>
+<p>As both endpoints diverge, the interval of convergence is $(-k, k)$.</p>
+<h3 id="derivatives-and-integrals-of-power-series">Derivatives and integrals of power series</h3>
+<p>The derivative of a power series is given by:</p>
+<p class="mathcell">
+$$
+\frac{df}{dx} = \sum_{n = 1}^\infty n a_n(x - c)^{n - 1}
+$$
+</p>
+<p>And the integral of a power series is given by:</p>
+<p class="mathcell">
+$$
+\int f(x) dx = C + \sum_{n = 0}^\infty \frac{a_n}{n + 1} (x - c)^{n + 1}
+$$
+</p>
+<p>The power series, its derivative, and its integral all have the <strong>same</strong> radius of convergence (though not necessary same <em>interval</em> of convergence - the value of $c$ about which they converge can be different).</p>
+<blockquote>
+<p>Note that in both integration and differentiation, any $(-1)^n$ term stays constant and is not differentiated or integrated over. Also note that differentiation causes a shift of one index to the right.</p>
+</blockquote>
+<h3 id="power-series-representations-of-functions">Power series representations of functions</h3>
+<p>The power series representation of $f(x) = \frac{1}{1 - x}$ is:</p>
+<p class="mathcell">
+$$
+f(x) = \sum_{n = 0}^\infty x^n
+$$
+</p>
+<p>We can turn a function into a similar form to write it as a power series.</p>
+<p><strong>Example question:</strong></p>
+<p>Write the following function as a power series:</p>
+<p class="mathcell">
+$$
+f(x) = \frac{1}{1 + x^3}
+$$
+</p>
+<p><strong>Answer:</strong></p>
+<p>Note that we can rewrite the function as:</p>
+<p class="mathcell">
+$$
+f(x) = \frac{1}{1 - (-x^3)}
+$$
+</p>
+<p>We can then substitute everywhere we have $x$ with $(-x^3)$. So, the power series becomes:</p>
+<p class="mathcell">
+$$
+f(x) = \sum_{n = 0}^\infty (-x^3)^n
+$$
+</p>
+<p>Which can be rewritten as:</p>
+<p class="mathcell">
+$$
+f(x) = \sum_{n = 0}^\infty (-1)^n x^{3n}
+$$
+</p>
+<p><strong>Example question:</strong></p>
+<p>Write the following function as a power series:</p>
+<p class="mathcell">
+$$
+f(x) = \frac{1}{x + 2}
+$$
+</p>
+<p><strong>Answer:</strong></p>
+<p>We can rewrite the function as:</p>
+<p class="mathcell">
+$$
+f(x) = \frac{1}{2 + x} = \frac{1}{2} \left(\frac{1}{1 - -\frac{x}{2}}\right)
+$$
+</p>
+<p>If we sub $x$ as $-\frac{x}{2}$ and multiply by $1/2$, we have:</p>
+<p class="mathcell">
+$$
+f(x) = \frac{1}{2} \sum_{n = 0}^\infty \left(-\frac{x}{2}\right)^n
+$$
+</p>
+<p>which can be rewritten as:</p>
+<p class="mathcell">
+$$
+f(x) =\sum_{n = 0}^\infty \frac{(-1)^n x^n}{2^{n + 1}}
+$$
+</p>
+<p><strong>Example question:</strong></p>
+<p>Write the following function as a power series:</p>
+<p class="mathcell">
+$$
+f(x) = \frac{1}{(1 - x)^2}
+$$
+</p>
+<p><strong>Answer:</strong></p>
+<p>Note that $f(x)$ is the derivative of $\frac{1}{1 - x}$. Therefore, we just need to take the derivative of the original power series to have:</p>
+<p class="mathcell">
+$$
+\frac{d}{dx} \sum_{n = 0}^\infty x^n = \sum_{n = 1}^\infty nx^{n - 1}
+$$
+</p>
+<p><strong>Example question:</strong></p>
+<p>Write the following function as a power series:</p>
+<p class="mathcell">
+$$
+f(x) = \ln(1 - x)
+$$
+</p>
+<p><strong>Answer:</strong></p>
+<p>Note that $f(x)$ is the integral of $\frac{-1}{1 - x}$. Thus:</p>
+<p class="mathcell">
+$$
+\ln(1 - x) = -\int \frac{1}{1 - x} = -\int \sum_{n = 0}^\infty x^n dx = C - \sum_{n = 0}^\infty \frac{x^{n + 1}}{n + 1}
+$$
+</p><h2 id="applications-of-series">Applications of series</h2>
+<p>Series have many, many uses in both pure and applied math. Most obviously, they can be used to solve problems that are defined by infinite sums - including the famous problem of Achilles and the tortoise from classical antiquity. However, they can also be used to approximate functions so that they can be calculated on a computer - see <a href="https://zachartrand.github.io/SoME-3/">this excellent article</a> for details on how this works. They can also be able to express exact solutions to differential equations and do integrals that are very difficult to solve in any other ways, and these series solutions can then be programmed into a computer to do calculations. Pure math heavily uses series as well - one of the <em>definitions</em> of Euler's number $e$ is $e = \displaystyle \sum_{n = 0}^\infty \frac{1^n}{n!}$, and there are numerous other examples available <a href="https://en.wikipedia.org/wiki/List_of_mathematical_series">here</a> for the curious.</p>
+
+        
+        <a id="jump-toc-btn" href="#toc">Show table of contents</a>
+        <a href="/notes" class="return-link">Back to all notes</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        var toc = document.getElementById("toc");
+        var tocPos = toc.offsetTop + toc.offsetHeight;
+        var tocBtn = document.getElementById("jump-toc-btn");
+
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+        // for performance reasons, we **only** render a certain
+        // number of equations that the viewer is actually viewing
+        function VisibleMathRenderer(config) {
+            /*
+            Renders only a limited number of equations on page load
+            to avoid poor performance
+             Params:
+                lastRenderedEquation: the most recently rendered equation.
+                        when this goes out of view, equations under it are rendered. 
+            */
+            var startElement = config.startElement
+            var maxEquations = config.maxEquations ? config?.maxEquations : 30;
+            this.startElement = startElement
+            this.maxEquations = maxEquations
+            // we wait until the user scrolls past the starting/
+            // ending elements to start rendering the whole page
+            this.canRenderWholePage = false;
+            this.pageRendered = false;
+            this.lastRenderedTopEquation = null;
+            this.lastRenderedBottomEquation = null;
+
+            this.render = function() {
+                renderMath(this.startElement);
+                // render previous 25 and following 25 equations
+                var prev = this.startElement.previousElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left prior to the element
+                    if (prev == null) {
+                        break;
+                    }
+                    renderMath(prev);
+                    prev = prev.previousElementSibling;
+                }
+                // store our last rendered equations
+                // we'll track scroll position later to
+                // check when the rest of the page should be rendered
+                this.lastRenderedTopEquation = prev;
+                console.log(this.lastRenderedTopEquation)
+
+                var next = this.startElement.nextElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left following the element
+                    if (next.nextElementSibling == null) {
+                        break;
+                    }
+                    renderMath(next);
+                    next = next.nextElementSibling;
+                }
+                this.lastRenderedBottomEquation = next;
+                // now allow rendering the rest of the equations
+                this.canRenderWholePage = true;
+            }
+
+            // render all math on the whole page
+            this.renderMathOnPage = function() {
+                // don't run until preliminary tasks
+                // are done so that the whole page
+                // can/should be rendered
+                if (!this.canRenderWholePage) {
+                    return;
+                }
+                // if the whole page's worth of equations
+                // are already rendered, don't render more
+                if (this.pageRendered) {
+                    return;
+                }
+                var topBound = this.lastRenderedTopEquation.getBoundingClientRect.top;
+                var bottomBound = this.lastRenderedBottomEquation.getBoundingClientRect.bottom;
+                var scrollTop, scrollBottom = getViewport();
+                // if the user is about to scroll past the initially-rendered equations
+                // we will render the whole page
+                if (scrollTop - 50 + window.scrollY < topBound || scrollBottom + 50 + window.scrollY > bottomBound) {
+                    console.log("Scrolled beyond!")
+                    var article = document.querySelector(".post");
+                    if (article) {
+                        this.renderMath(article);
+                    }
+                    this.pageRendered = true;
+                }
+                
+            }
+            
+        }
+
+        function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        function findFirstRelevantElement() {
+            // finds the first <p> tage that's closest to
+            // the viewer's viewport
+            var regex = /#.*/;
+            var m = regex.exec(window.location.href);
+            if (m !== null) {
+                return document.querySelector(m[0]);
+            } else {
+                return document.querySelector(".post p");
+            }
+        }
+        
+        // initialize page JS components
+        /*
+        var mathRenderer = new VisibleMathRenderer({
+            // start rendering with first <p> tag on the
+            // post
+            startElement: findFirstRelevantElement()
+        });
+        */
+        document.addEventListener("DOMContentLoaded", function() {
+            showTocBtnOnScroll();
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+
+        window.onscroll = function(){
+            // if (!mathRenderer.pageRendered) {
+            //     mathRenderer.renderMathOnPage();
+            // }
+            showTocBtnOnScroll();
+        };
+
+
+    </script>
+    
+
+
+</body>
+
+</html>

@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introduction to Integral Calculus</title>
+  <meta name="description" content=" These are notes taken during RPI&#x27;s MATH 1010 course, on the topic of integrals and their applications in calculus.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Introduction to Integral Calculus</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+        <details class="toc" id="toc" open>
+        <summary>Table of contents</summary>
+        <p class="toc-info">Note: it is highly recommended to navigate by clicking links in the table of contents! It means you can use the back button in your browser to go back to any section you were reading, so you can jump back and forth between sections!</p>
+        <div>
+            <ul>
+            
+                <li>
+                    <a href="#antiderivatives">Antiderivatives</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#rules-for-antiderivatives-elementary-integral-formulas">Rules for antiderivatives (elementary integral formulas)</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#initial-value-problems">Initial value problems</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#sums">Sums</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#rules-of-sums">Rules of sums</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#finding-and-estimating-areas">Finding and estimating areas</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#riemann-sums-and-the-definite-integral">Riemann sums and the definite integral</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#applications-of-integration">Applications of integration</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#the-fundamental-theorem-of-calculus">The Fundamental Theorem of Calculus</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#integration-by-substitution">Integration by substitution</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#integration-of-functions-using-the-natural-log-trick">Integration of functions using the natural log trick</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#average-value-of-a-function">Average value of a function</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#area-between-curves">Area between curves</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#solids-of-revolution">Solids of revolution</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#disk-method">Disk method</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#washer-method">Washer method</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#shells-method">Shells method</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#integration-by-parts">Integration by Parts</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#trigonometric-integrals">Trigonometric integrals</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#trigonometric-substitutions">Trigonometric substitutions</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#integration-by-long-division-and-partial-fractions">Integration by long division and partial fractions</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#improper-integrals">Improper integrals</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#the-p-integral-test">The p-integral test</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#arc-length">Arc length</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#finding-the-surface-area-of-a-surface-of-revolution-from-arc-length">Finding the surface area of a surface of revolution from arc length</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
+        </details>
+        
+
+        <!-- page content -->
+        <p>These are notes taken during RPI's MATH 1010 course, on the topic of integrals and their applications in calculus.</p>
+<span id="continue-reading"></span><h2 id="antiderivatives">Antiderivatives</h2>
+<p>To introduce the topic of integral calculus, we must begin with understanding the notion of an <em>antiderivative</em>. An antiderivative (also called an <em>indefinite integral</em>, and we'll see why later) is the opposite of a derivative. The antiderivative of a particular function $f(x)$ is the function whose <em>derivative</em> is $f(x)$. For example, $x^2$ is the antiderivative of $2x$, because $2x$ is the <em>derivative</em> of $x^2$.</p>
+<p>Antiderivatives are represented by the "curly S" integral sign (again for reasons that will make sense later), with a $dx$ representing the variable to take the antiderivative with respect to - in this case $x$:</p>
+<p class="mathcell">
+$$
+\int f(x) dx = F(x) + C
+$$
+</p>
+<p>Since the derivative of a constant is zero, the antiderivative of $f(x) + 1$, $f(x) + 3$, or $f(x) + 100$ is the same. Thus we add the $C$ known as the constant of integration to remind us that multiple antiderivatives differing by a constant have the same derivative.</p>
+<h3 id="rules-for-antiderivatives-elementary-integral-formulas">Rules for antiderivatives (elementary integral formulas)</h3>
+<p>The rules of antiderivatives (indefinite integrals) are the inverse of the rules for derivatives:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\int k~dx &amp;= kx + C \\
+\int x^n~dx &amp;= \frac{x^{n + 1}}{n + 1} + C \\
+\int \frac{1}{x}~dx &amp;= \ln |x| + C \\
+\int e^x~dx &amp;= e^x + C \\
+\int b^x &amp;= \frac{b^x}{\ln b} + C \\
+\int \cos(x)~dx &amp;= \sin(x) + C \\
+\int \sin(x)~dx &amp;= -\cos(x) + C \\
+\int \frac{dx}{\sqrt{1 - x^2}} &amp;= \operatorname{arcsin}(x) + C \\
+\int \frac{dx}{1 + x^2} &amp;= \operatorname{arctan}(x) + C \\
+\int \frac{dx}{|x|\sqrt{x^2 - 1}} &amp;= \operatorname{arcsec}(x) + C
+\end{align*}
+$$
+</p>
+<blockquote>
+<p><strong>For the advanced reader:</strong> We say they are <em>elementary</em> integrals because they are standard integrals that have relatively simple algebraic expressions, unlike some more complex integrals that do not.</p>
+</blockquote>
+<p>Note that the last few formulas for inverse trigonometric functions can be generalized to the following:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\int \frac{du}{\sqrt{a^2 - u^2}} &amp;= \operatorname{arcsin} \left(\frac{u}{a}\right) + C \\
+\int \frac{du}{a^2 + u^2} &amp;= \frac{1}{a} \operatorname{arctan} \left(\frac{u}{a}\right) + C \\
+\int \frac{du}{|u|\sqrt{u^2 - a^2}} &amp;= \frac{1}{a} \operatorname{arcsec} \left(\frac{u}{a}\right) + C
+\end{align*}
+$$
+</p>
+<p>Where $u = u(x)$ is some function of $x$, and $du = u'(x) dx$. For more formulas of integrals, a good resource to reference is <a href="https://www.integral-table.com/">https://www.integral-table.com/</a>.</p>
+<h3 id="initial-value-problems">Initial value problems</h3>
+<p>To find the value of the $C$ when doing derivatives, we can use an initial value problem. For instance, say:</p>
+<p class="mathcell">
+$$
+f(0) = 1,~f(x) = \int 2x~dx
+$$
+</p>
+<p>Thus, $f(x) = x^2 + C$. Then, plugging in the initial value, $f(0) = 1$, so $(0^2) + C = 1$, so $C = 1$. Therefore:</p>
+<p class="mathcell">
+$$
+f(x) = x^2 + 1
+$$
+</p><h2 id="sums">Sums</h2>
+<p>We will now jump to a topic that might <em>initially</em> appear to be completely unrelated - sums and areas. A sum is just what it means - adding a group of numbers (or variables) together. Sums are denoted by the summation sign $\displaystyle \sum$. For instance, one sum could be:</p>
+<p class="mathcell">
+$$
+\sum_{i = 0}^n a_i
+$$
+</p>
+<p>This means to sum from $a_0$ to $a_n$ - that is:</p>
+<p class="mathcell">
+$$
+\sum_{i = 0}^n a_i = a_0 + a_1 + a_2 + a_3 + \dots + a_{n - 1} + a_n
+$$
+</p><h3 id="rules-of-sums">Rules of sums</h3>
+<p>If we are given a sum, we might be interested in what the sum evaluates to (or we might not, but pretend that we are for the time being). Evaluating sums is actually <em>not possible</em> in many cases. However, in cases where a sum <em>can</em> be evaluated, it often helps to use the below identities:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\sum_{i = 1}^n c a_i &amp;= c \sum_{i = 1}^n a_i \\
+\sum_{i = 1}^n c &amp;= cn \\
+\sum_{i = 1}^n a_i \pm b_i &amp;= \sum_{i = 1}^n a_i \pm \sum_{i = 1}^n b_i
+\end{align*}
+$$
+</p>
+<p>There also exist special sums that have well-known solutions - these are extremely helpful for evaluating more complicated sums, and they are given below:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\sum_{i = 1}^n i &amp;= \frac{n(n + 1)}{2} \\
+\sum_{i = 1}^n i^2 &amp;= \frac{n(n + 1)(2n + 1)}{6} \\
+\sum_{i = 1}^n i^3 &amp;= \left(\frac{n(n + 1)}{2}\right)^2
+\end{align*}
+$$
+</p><h3 id="finding-and-estimating-areas">Finding and estimating areas</h3>
+<p>We will now turn to a very useful application of sums - finding <em>areas</em>. The idea is this: if we had some shape modelled by a function $f(x)$, then we can approximate the area under the curve by "slicing" the area under the curve into small rectanges, each of width $\Delta x$ (which is some small number) and of height $f(x_i)$. This is called the <strong>left-hand approximation</strong> of an area under the curve, and is given by:</p>
+<p class="mathcell">
+$$
+A_L = \sum_{i = 1}^{n} f(x_i) \Delta x
+$$
+</p>
+<p>Given that:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+\Delta x = \dfrac{b - a}{n},
+&amp;x_i = a + (i - 1)\Delta x.
+&amp;x_{i + 1} = a + i \Delta x
+\end{matrix*}
+$$
+</p>
+<p>The right-hand approximation of an area under the curve is given by:</p>
+<p class="mathcell">
+$$
+A_R = \sum_{i = 1}^n f(x_{i + 1}) \Delta x
+$$
+</p>
+<p>The midpoint approximation to the area is given by:</p>
+<p class="mathcell">
+$$
+A_M = \sum_{i = 1}^{n} f\left(\frac{x_i + x_{i + 1}}{n}\right) \Delta x
+$$
+</p>
+<p>Now, these are approximations for finite sums, but in the limit as we sum over increasingly many and increasingly tiny rectangles, we obtain a formula for the <em>exact</em> area under a curve:</p>
+<p class="mathcell">
+$$
+A = \lim_{n \to \infty} \sum_{i = 1}^n f(x_i) \Delta x
+$$
+</p>
+<p>For example, consider the area under the curve $f(x) = 4 - x^2$ from -2 to 2. We would then have:</p>
+<p class="mathcell">
+$$
+A = \lim_{n \to \infty} \sum_{i = 1}^n (4 - (-2 + i \Delta x)^2) \Delta x
+$$
+</p>
+<p>Since $\Delta x = \frac{b - a}{n}$, where $b = 2$ and $a = -2$, we would have:</p>
+<p class="mathcell">
+$$
+A = \lim_{n \to \infty} \sum_{i = 1}^n \left(4 - \left(-2 +  \frac{4i}{n}\right)^2\right) \frac{4}{n}
+$$
+</p>
+<p>This simplifies to:</p>
+<p class="mathcell">
+$$
+A = \lim_{n \to \infty} \sum_{i = 1}^n \frac{64i}{n^2} - \frac{64i^2}{n^3}
+$$
+</p>
+<p>Using the sum rules, we get:</p>
+<p class="mathcell">
+$$
+A = \lim_{n \to \infty} \sum_{i = 1}^n \frac{64}{n^2} \frac{n(n + 1)}{2} - \frac{64}{n^3} \frac{n(n + 1)(2n + 1)}{6}
+$$
+</p>
+<p>Which simplifies to:</p>
+<p class="mathcell">
+$$
+A = \lim_{n \to \infty} \sum_{i = 1}^n \frac{64(n + 1)}{2n} - \frac{64 (n + 1)(2n + 1)}{6n^2}
+$$
+</p>
+<p>Expanding this and simplifying, we get:</p>
+<p class="mathcell">
+$$
+A = \lim_{n \to \infty} \sum_{i = 1}^n \frac{32}{3} - \frac{32}{3n^2}
+$$
+</p>
+<p>Now, taking the limit as $n \to \infty$, we get:</p>
+<p class="mathcell">
+$$
+A = \frac{32}{3}
+$$
+</p><h3 id="riemann-sums-and-the-definite-integral">Riemann sums and the definite integral</h3>
+<p>From our previous discussion of the limit of sums, we can now formalize the idea of computing the area under a curve. A Riemann sum is given by:</p>
+<p class="mathcell">
+$$
+\sum_{k = 1}^N f(x_k) \Delta x_k
+$$
+</p>
+<p>The <strong>definite integral</strong> is given by the limit of the Riemann sum, and represents the area under a curve, where $A$ is the area and $y = f(x)$ is the equation of the curve:</p>
+<p class="mathcell">
+$$
+A = \int_a^b f(x)dx = \lim_{N \to \infty} \sum_{k = 1}^N f(x_k) \Delta x_k
+$$
+</p>
+<p>The definite integral also has some convenient properties that will come in handy later:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\int_a^b f(x) dx = -\int_b^a f(x) dx \\
+\int_a^a f(x) dx = 0 \\
+\int_a^b c f(x) dx = c\int_a^b f(x) dx \\
+\int_a^c f(x) dx = \int_a^b f(x) dx + \int_b^c f(x) dx
+\end{gather*}
+$$
+</p>
+<p>Evaluating the definite integral is called <strong>integration</strong>. The definite integral can be evaluated in simple cases from just geometry, especially when the curve forms a semicircle, triangle, rectangle, or trapezoid with the x-axis. However, in most cases, integration is not an easy task - some definite integrals are almost impossible to solve!</p>
+<h2 id="applications-of-integration">Applications of integration</h2>
+<p>We described integration from the point of view of finding the area under a curve, but integration is far more general than an area-finding method. Indeed, integration is ubiquitous in the mathematical sciences, with myriad applications:</p>
+<ul>
+<li>Finding areas/surface areas/volumes/distances</li>
+<li>Kinematics - such as finding total displacement, or finding velocity/position from acceleration</li>
+<li>Solving differential equations</li>
+<li>Computing work/potential energy/total energy/</li>
+<li>Finding total charge/total current/total mass/center of mass/moment of inertia</li>
+<li>Finding force from potential energy</li>
+<li>Computing probability and finding average values</li>
+<li>Calculating electric fields and magnetic fields</li>
+<li>And many, many more places...</li>
+</ul>
+<h2 id="the-fundamental-theorem-of-calculus">The Fundamental Theorem of Calculus</h2>
+<p>There are two parts to the Fundamental Theorem of Calculus (FTC). Part 1 of the FTC states that:</p>
+<p class="mathcell">
+$$
+F(x) = \int f(x) dx \Rightarrow \int_a^b f(x) dx = F(b) - F(a)
+$$
+</p>
+<p>That is, if $F(x)$ is the indefinite integral of $f(x)$, then the definite integral of $f(x)$ can be found by evaluating $F(x)$ at 2 points.</p>
+<p>Part 2 of the FTC states that:</p>
+<p class="mathcell">
+$$
+\frac{d}{dx} \int_a^x f(t) dt = f(x)
+$$
+</p>
+<p>That is, the derivative of the indefinite integral of a function from any number to $x$ is equal to the same function evaluated at $x$. Or more simply, integrals are the inverse of derivatives.</p>
+<h2 id="integration-by-substitution">Integration by substitution</h2>
+<p>Consider a composite function of the form $f(g(x)) g'(x)$. If we make the substitution $u = g(x)$, then we can rewrite this as $f(u) u'$. Then the chain rule applies in reverse:</p>
+<p class="mathcell">
+$$
+\int f(u(x)) u&#x27;(x) dx = \int f(u) du =  F(u) + C
+$$
+</p>
+<p>This is called integration by <strong>u-substitution</strong>. The trick is to find an "inner function" $u$ in a composite function whose derivative also appears in that same composite function.</p>
+<p>As an example, we want to evaluate:</p>
+<p class="mathcell">
+$$
+\int \frac{2}{t- 4} dt
+$$
+</p>
+<p>We want to find an inner function $u$ whose derivative also appears. That is, we want to rewrite the function in the form:</p>
+<p class="mathcell">
+$$
+\int f(u) u&#x27; dt
+$$
+</p>
+<p>Here, we can choose $u = t - 4$, which means $f(u) = \frac{2}{u}$. So this means we have:</p>
+<p class="mathcell">
+$$
+\int f(u) u&#x27; dt = \int \frac{2}{u} u&#x27; dt
+$$
+</p>
+<p>But we still need to find $u'$. Taking the derivative of $u$, we have:</p>
+<p class="mathcell">
+$$
+\frac{du}{dt} = 1
+$$
+</p>
+<p>Then we can apply the substitution rule:</p>
+<p class="mathcell">
+$$
+\int \frac{2}{u} u&#x27; dt = \int \frac{2}{u} (1) du = 2\ln |u| + C = 2\ln | t- 4| + C
+$$
+</p>
+<p>For a more complicated example, we may perhaps want to integrate:</p>
+<p class="mathcell">
+$$
+\int \frac{\cos (\ln x)}{x} dx
+$$
+</p>
+<p>Here, we let $u = \ln x$. We can employ a notational shorthand for expediting the substitution rule that does not require rewriting the function in a form $f(u) u'$. Instead, we can say that:</p>
+<p><p class="mathcell">
+$$
+u = \ln x \Rightarrow \frac{du}{dx} = \frac{1}{x}
+$$
+</p>
+<p class="mathcell">
+$$
+x\, du = dx
+$$
+</p></p>
+<p>Then, we can substitute in $x, du$ for $dx$:</p>
+<p class="mathcell">
+$$
+\int \frac{\cos (\ln x)}{x} dx = \int \frac{\cos u}{x} x\, du = \int \cos u~du = \sin(u) + C = \sin(\ln x) + C
+$$
+</p>
+<p>To evaluate definite integrals with substitution, we have:</p>
+<p class="mathcell">
+$$
+\int_a^b f(u) u&#x27; dx = \int_{u(a)}^{u(b)} f(u) du
+$$
+</p><h3 id="integration-of-functions-using-the-natural-log-trick">Integration of functions using the natural log trick</h3>
+<p>A direct consequence of the substitution method for integrals is the "natural log trick":</p>
+<p class="mathcell">
+$$
+\int \frac{u&#x27;}{u} = \ln | u | + C
+$$
+</p>
+<p>As an example to illustrate why this formula is the case, let us take the example of evaluating the following integral:</p>
+<p class="mathcell">
+$$
+\int \tan(5x) dx
+$$
+</p>
+<p>We first rewrite tangent in terms of sine and cosine:</p>
+<p class="mathcell">
+$$
+\int \frac{\sin x}{\cos x} dx
+$$
+</p>
+<p>If we use the substitution $u = \cos x$, we have::</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\frac{du}{dx} = -\sin x
+dx = \frac{du}{-\sin x}
+\end{gather*}
+$$
+</p>
+<p>This means that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\int \frac{\sin x}{\cos x} dx &amp;= \int \frac{\sin x}{-\sin x} \frac{1}{u} du \\
+&amp;= -\int \frac{1}{u} du \\
+&amp;= -\ln | \cos(u) | + C
+\end{align*}
+$$
+</p><h4 id="differential-equations-with-the-natural-log-trick">Differential equations with the natural log trick</h4>
+<p>We may use the natural log trick to solve not only integrals, but also <em>differential equations</em>. Differential equations specify a derivative of an unknown function as a function of $x$, $y$, or some other variables; the goal is to find the exact form of the unknown function. Consider, for instance, the differential equation:</p>
+<p class="mathcell">
+$$
+\frac{dy}{dx} = \frac{2x}{x^2 - 9}
+$$
+</p>
+<p>To solve this differential equation, we can multiply by $dx$ on both sides. However, this must be done in secret because this operation is technically "illegal" in mathematical terms (derivatives <em>are not fractions</em>; it just happens that sometimes they can be treated as such). One must then leave the scene of the mathematical crime and erase all the evidence used to find the answer. So we shall now commit the crime in question, and multiply by $dx$ on both sides, which results in:</p>
+<p class="mathcell">
+$$
+dy = \frac{2x}{x^2 - 9} dx
+$$
+</p>
+<p>If we integrate both sides, we then have:</p>
+<p class="mathcell">
+$$
+\int dy = y = \int \frac{2x}{x^2 - 9} dx
+$$
+</p>
+<p>This is where we can use the natural log trick. Let $u = x^2 - 9$. Then:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{du}{dx} &amp;= 2x \\
+\frac{du}{2x} &amp;= dx \\
+y &amp;= \int \frac{2x}{2x} \frac{1}{u} du \\
+&amp;= \int \frac{1}{u} du \\
+&amp;= \ln|x^2 - 9| + C
+\end{align*}
+$$
+</p>
+<p>Which is the <em>general solution</em> to our differential equation.</p>
+<h2 id="average-value-of-a-function">Average value of a function</h2>
+<p>We may also use integration to find the <em>average</em> value of a function, which is very useful for continuously-varying data (like velocity or position). The average value of a function is given by:</p>
+<p class="mathcell">
+$$
+\frac{1}{b-a} \int f(x) dx
+$$
+</p>
+<p>The mean value theorem for integrals states that if $f$ is continuous on $[a, b]$, there is at least one $c$ value that satisfies:</p>
+<p class="mathcell">
+$$
+f(c) = \frac{1}{b - a} \int f(x) dx
+$$
+</p>
+<p>Remember, as with the MVT for derivatives, to ignore any values not in the interval!</p>
+<h2 id="area-between-curves">Area between curves</h2>
+<p>A region is vertically simple if it is bounded on the left and right by vertical lines, and bounded on the top and bottom by functions of $x$. A region is horizontally simple if it is bounded on the top and bottom by horizontal lines, and bounded on the left and right by functions of $y$.</p>
+<p>The area between curves $f(x)$ and $g(x)$, assuming $f(x) \geq g(x)$ for all $x \in [a, b]$, is given by:</p>
+<p class="mathcell">
+$$
+\int_a^b f(x) - g(x) dx
+$$
+</p>
+<blockquote>
+<p><strong>Other specific cases:</strong> For curves $f(y)$ and $g(y)$, just replace every $x$ with $y$. If $f(x) \ngeq g(x)$ for all $x \in [a, b]$, the area must be split into regions that are separately evaluated to make the condition true.</p>
+</blockquote>
+<h2 id="solids-of-revolution">Solids of revolution</h2>
+<p>Another application of integrals generalizes the area-finding process to finding the surface area and volume of a particular shape. Such shapes must have a specific requirement: they have to be <strong>rotationally-symmetric</strong>, and thus we call them <strong>solids of revolution</strong>. By nature of their rotational symmetry, they are obtained by the rotation of a region in the xy-plane about an axis.</p>
+<blockquote>
+<p><strong>Note:</strong> Unlike many other uses of integration, this particular application of integrals is not very widely used in physics or applied math areas, but they are a good teaching/learning tool to practice integration.</p>
+</blockquote>
+<h3 id="disk-method">Disk method</h3>
+<p>Using the disk method of finding the volume of a solid of revolution, the solid of revolution created from the region underneath the curve $f(x)$ has the volume:</p>
+<p class="mathcell">
+$$
+V = \int_a^b \pi [f(x)]^2 dx
+$$
+</p>
+<p>And for a function $f(y)$, the volume is given by:</p>
+<p class="mathcell">
+$$
+V = \int_a^b \pi [f(y)]^2 dy
+$$
+</p>
+<p>For example, say we wanted to find the volume of a sphere. A sphere is simply the solid of revolution created by rotating the curve $f(x) = \sqrt{r^2 - x^2}$ about the x-axis. So, we would have:</p>
+<p class="mathcell">
+$$
+V = \pi \int_{-r}^r (\sqrt{r^2 - x^2})^2~dx
+$$
+</p>
+<p>Which becomes:</p>
+<p class="mathcell">
+$$
+V = \pi \int_{-r}^r r^2 - x^2 dx
+$$
+</p>
+<p>Since $r$ is a constant, the integral becomes:</p>
+<p class="mathcell">
+$$
+V = \frac{4}{3} \pi r^3
+$$
+</p>
+<p>Which is the volume of a sphere!</p>
+<h3 id="washer-method">Washer method</h3>
+<p>Using the washer method of finding the volume of a solid of revolution, the solid of revolution created by the region between two curves $f(x)$ and $g(x)$ is given by:</p>
+<p class="mathcell">
+$$
+V = \int_a^b \pi [f(x)]^2 - \pi [g(x)]^2 dx
+$$
+</p>
+<p>And similarly for $y$:</p>
+<p class="mathcell">
+$$
+V = \int_a^b \pi [f(y)]^2 - \pi [g(y)]^2 dy
+$$
+</p><h3 id="shells-method">Shells method</h3>
+<p>Using the shells method of finding the volume of a solid of revolution, the solid of revolution created by the region underneath the curve $f(x)$ is given by:</p>
+<p class="mathcell">
+$$
+V = \int_a^b 2\pi rf(x) dx
+$$
+</p>
+<p>And similarly for $y$:</p>
+<p class="mathcell">
+$$
+V = \int_a^b 2\pi rf(y) dy
+$$
+</p>
+<p>If the region is instead between two curves $f(x)$ and $g(x)$, then the volume is instead given by:</p>
+<p class="mathcell">
+$$
+V = \int_a^b 2\pi r[f(x) - g(x)] dx
+$$
+</p>
+<p>Or for $y$:</p>
+<p class="mathcell">
+$$
+V = \int_a^b 2\pi r[f(y) - g(y)] dy
+$$
+</p>
+<p>For instance, suppose we were to find the volume of the solid of revolution created by revolving the region bound by $f(x) = x^3, x \in [0, 2]$ and the x-axis about the line $x = 3$. A visualization of this region can be found at <a href="https://www.desmos.com/calculator/ymuwqk1xk7">https://www.desmos.com/calculator/ymuwqk1xk7</a>.</p>
+<p>To compute the area, we'll first find the radii of the shells, and set that. In this case, the radius would be $3 - x$, as that is the distance from the rotational axis to the edge of the shell. The bounds of integration would be from 0 to 2, as we want to create shells that fill up the space of the region, and the region is bounded by $x = 0$ and $x = 2$. Therefore, the integral is:</p>
+<p class="mathcell">
+$$
+2\pi \int_0^2  (3 - x) x^3 dx = \frac{56\pi}{5}
+$$
+</p><h2 id="integration-by-parts">Integration by Parts</h2>
+<p><strong>Integration by parts</strong> is analagous to the product rule for derivatives. It is given by:</p>
+<p class="mathcell">
+$$
+\int udv = uv - \int vdu
+$$
+</p>
+<p>where:</p>
+<p class="mathcell">
+$$
+v = \int dv
+$$
+</p>
+<p>Typically, we want $u$ to be a function that has a simple derivative (such as a polynomial or $\ln x$), and $v$ to be a function that has a simple integral (such as $\cos x$ or $\sec^2 x$ or $e^x$). It's typically much harder to integrate than differentiate, so pick $dv$ first, and $u$ second.</p>
+<p>In addition, integration by parts can be done multiple times over and over to repeatedly expand out an integral until it can be solved.</p>
+<p>As an example of integration by parts, consider:</p>
+<p class="mathcell">
+$$
+\int x \cos (2x) dx
+$$
+</p>
+<p>Here, we want our $u$ to be $x$ (because that's easy to differentiate), and $dv = \cos 2x$. This means that $du = dx$. To find $v$, we simply do:</p>
+<p class="mathcell">
+$$
+v = \int dv = \int \cos (2x) = \frac{1}{2} \sin(2x)
+$$
+</p>
+<p>After substitution, we obtain:</p>
+<p class="mathcell">
+$$
+\int udv = \frac{1}{2}x \sin(2x) - \int \frac{1}{2} \sin(2x) dx
+$$
+</p>
+<p>Which evaluates to:</p>
+<p class="mathcell">
+$$
+\frac{1}{2} x \sin(2x) + \frac{1}{4} \cos(2x) + C
+$$
+</p>
+<p>For a faster method of integration by parts, we can use the tabular method, which works so long as $u$ is a polynomial. For instance, consider:</p>
+<p class="mathcell">
+$$
+\int x^3 e^x dx
+$$
+</p>
+<p>We construct a table of $u$ and all its derivatives (D) on the left, and $dv$ and all its integrals (I) on the right, and alternating signs in front, until the derivative is zero:</p>
+<table><thead><tr><th>Sign</th><th>D</th><th>I</th></tr></thead><tbody>
+<tr><td>+</td><td>$x^3$</td><td>$e^x $</td></tr>
+<tr><td>-</td><td>$3x^2$</td><td>$e^x$</td></tr>
+<tr><td>+</td><td>$6x$</td><td>$e^x$</td></tr>
+<tr><td>-</td><td>$6$</td><td>$e^x$</td></tr>
+<tr><td>+</td><td>$0$</td><td>$e^x$</td></tr>
+</tbody></table>
+<p>Now, we start from the first "D" term, and match terms crosswise down diagonally like this:</p>
+<table><thead><tr><th>Sign</th><th>D</th><th>I</th></tr></thead><tbody>
+<tr><td>+</td><td>1</td><td></td></tr>
+<tr><td>-</td><td>2</td><td>1</td></tr>
+<tr><td>+</td><td>3</td><td>2</td></tr>
+<tr><td>-</td><td>4</td><td>3</td></tr>
+<tr><td>+</td><td>5</td><td>4</td></tr>
+<tr><td>...</td><td>...</td><td>...</td></tr>
+</tbody></table>
+<p>In front of each derivative term we put the sign associated with it. Therefore, our result is:</p>
+<p class="mathcell">
+$$
+(+) x^3 e^x (-) 3x^2 e^x (+)6x e^x (-) 6e^x + C
+$$
+</p>
+<p>Or simplified:</p>
+<p class="mathcell">
+$$
+x^3 e^x - 3x^2 e^x + 6xe^x - 6e^x + C
+$$
+</p>
+<p>A third type of integration-by-parts integrals utilize a specialized technique. Consider:</p>
+<p class="mathcell">
+$$
+\int e^x \cos x dx
+$$
+</p>
+<p>Doing a first integration by parts with $u = e^x$ and $dv = \cos x$, we get:</p>
+<p class="mathcell">
+$$
+\int e^x \cos x dx = e^x \sin x - \int e^x \sin x dx
+$$
+</p>
+<p>Now repeating the integration by parts on the second integral with $u = e^x$ and $dv = \sin x$, we get:</p>
+<p class="mathcell">
+$$
+\int e^x \cos x dx = e^x \sin x - \left(-e^x \cos x - \int(-e^x\cos x dx)\right)
+$$
+</p>
+<p>Or simplifying:</p>
+<p class="mathcell">
+$$
+\int e^x \cos x dx = e^x \sin x + e^x \cos x - \int e^x \cos x dx
+$$
+</p>
+<p>Notice how the integral appears twice in the expression. If we say that:</p>
+<p class="mathcell">
+$$
+I = \int e^x \cos x dx
+$$
+</p>
+<p>We can rewrite the integral as:</p>
+<p class="mathcell">
+$$
+I = e^x \sin x + e^x \cos x- I
+$$
+</p>
+<p>Solving for $I$, we get:</p>
+<p class="mathcell">
+$$
+I = \frac{e^x \sin x + e^x \cos x}{2} + C
+$$
+</p>
+<p>which is the solution to the integral.</p>
+<h2 id="trigonometric-integrals">Trigonometric integrals</h2>
+<p>Trigonometric integrals are integrals that involve combination of trigonometric functions.</p>
+<p>The first general category of trigonometric integrals are in the form:</p>
+<p class="mathcell">
+$$
+\int \sin^m x \cos^n x dx
+$$
+</p>
+<p>There are several common approaches for such integrals:</p>
+<ul>
+<li>If $m$ is odd ($n = 2k + 1$), rewrite $\sin^m x = (\sin^2 x)^k \sin x = (1 - \cos^2 x)^k \sin x$, then use u-substitution</li>
+<li>If $n$ is odd ($n = 2k + 1$), rewrite $\cos^n x = (\cos^2 x)^k \cos x = (1 - \sin^2 x)^k \cos x$, then use u-substitution</li>
+<li>If both $m$ and $n$ are even, use the half-angle identities:</li>
+</ul>
+<p class="mathcell">
+$$
+\begin{align*}
+\sin^2x &amp;= \frac{1 - \cos 2x}{2} \\
+\cos^2 x &amp;= \frac{1 + \cos 2x}{2} \\
+\sin x \cos x &amp;= \frac{\sin 2x}{2}
+\end{align*}
+$$
+</p>
+<p>Meanwhile, for trigonometric integrals in the general form:</p>
+<p class="mathcell">
+$$
+\int \tan^m x \sec^n x dx
+$$
+</p>
+<ul>
+<li>If $n$ is even ($n = 2k, k \geq 2$), rewrite $\sec^n x = (\sec^2 x)^{k - 1} \sec^2 x = (\tan^2 x + 1)^{k - 1} \sec^2 x$, then use u-substitution with $u = \tan x$</li>
+<li>If $m$ is odd ($m = 2k + 1$), rewrite $\tan^m x = (\tan^2 x)^k \tan x = (\sec^2 x - 1)^k \tan x$, then use u-substitution with $u = \sec x$</li>
+</ul>
+<p>For instance, consider:</p>
+<p class="mathcell">
+$$
+\int \sin^5 x \cos^4 x dx
+$$
+</p>
+<p>We can break this into:</p>
+<p class="mathcell">
+$$
+\int \sin^4 x \sin x \cos^4 xdx
+$$
+</p>
+<p>Which we can simplify into:</p>
+<p class="mathcell">
+$$
+\int (\sin^2 x)^2 \sin x \cos^4 x dx
+$$
+</p>
+<p>And again, into:</p>
+<p class="mathcell">
+$$
+\int (1 - \cos^2 x)^2 \sin x \cos^4 x dx
+$$
+</p>
+<p>Now, we can use $u = \cos x$, thus the integral becomes:</p>
+<p class="mathcell">
+$$
+-\int (1 - u^2)^2 u^4 du
+$$
+</p>
+<p>Or expanded and with the negative sign distributed:</p>
+<p class="mathcell">
+$$
+\int 2u^6 - u^4 - u^8 du
+$$
+</p>
+<p>This becomes:</p>
+<p class="mathcell">
+$$
+\frac{2u^7}{7} - \frac{u^5}{5} - \frac{u^9}{9} + C
+$$
+</p>
+<p>And substituting back, we have:</p>
+<p class="mathcell">
+$$
+\frac{2 \cos^7 x}{7} - \frac{\cos^5 x}{5} - \frac{\cos^9 x}{9} + C
+$$
+</p><h2 id="trigonometric-substitutions">Trigonometric substitutions</h2>
+<p>For integrals in the form:</p>
+<p class="mathcell">
+$$
+\int (a^2 \pm x^{2n})^m dx
+$$
+</p>
+<p>or generally, any integrals that have $\sqrt{a^2 - u^2}$, $\sqrt{a^2 + u^2}$, or $a^2 + u^2$, a trigonometric substitution is often helpful.</p>
+<p>The substitutions make use of the 3 Pythagorean identities:</p>
+<p class="mathcell">
+$$
+\begin{cases}
+\sin^2 \theta + \cos^2 \theta = 1 \\
+1 + \tan^2 \theta = \sec^2 \theta \\
+1 + \cot^2 \theta = \csc^2 \theta
+\end{cases}
+$$
+</p>
+<p>Performing a trigonometric substitution involves fitting an integrand into one of these forms. For instance, consider the integral:</p>
+<p class="mathcell">
+$$
+\int \frac{\sqrt{4 - x^2}}{x^2} dx
+$$
+</p>
+<p>Here, we see the square root, which suggests the use of a trigonometric substitution. We first simplify the integral with:</p>
+<p class="mathcell">
+$$
+\int \frac{\sqrt{4(1 - \frac{x^2}{4})}}{x^2} dx
+$$
+</p>
+<p>We now have an expression in the form $1 - u^2$. It makes sense to use the first Pythagorean identity. We say that:</p>
+<p class="mathcell">
+$$
+\frac{x^2}{4} = \sin^2 \theta
+$$
+</p>
+<p>Which means:</p>
+<p class="mathcell">
+$$
+1 - \frac{x^2}{4} = 1 - \sin^2 \theta = \cos^2 \theta
+$$
+</p>
+<p>If we solve for $x$, we get:</p>
+<p class="mathcell">
+$$
+x = 2\sin \theta
+$$
+</p>
+<p>So:</p>
+<p class="mathcell">
+$$
+dx = 2\cos \theta d\theta
+$$
+</p>
+<p>Plugging in $1 - \frac{x^2}{4} = \cos^2 \theta$ and $dx = 2\cos \theta d\theta$ into the integral, we get:</p>
+<p class="mathcell">
+$$
+\int \frac{\sqrt{4\cos^2 \theta}}{4\sin^2 \theta} 2 \cos \theta d\theta
+$$
+</p>
+<p>Which simplifies to:</p>
+<p class="mathcell">
+$$
+\int \cot^2 \theta d\theta
+$$
+</p>
+<p>We use the identity $\cot^2 \theta + 1 = \csc^2 \theta$ to get:</p>
+<p class="mathcell">
+$$
+\int \csc^2\theta - 1 d\theta
+$$
+</p>
+<p>Whose solution is:</p>
+<p class="mathcell">
+$$
+-\cot \theta - \theta + C
+$$
+</p>
+<p>We now need to convert the answer in terms of $\theta$ back into an answer in terms of $x$. To do so, remember that:</p>
+<p class="mathcell">
+$$
+x = 2 \sin \theta
+$$
+</p>
+<p>Therefore:</p>
+<p class="mathcell">
+$$
+\sin \theta = \frac{x}{2} = \frac{\text{Opposite}}{\text{Hypotenuse}}
+$$
+</p>
+<p>We also know that:</p>
+<p class="mathcell">
+$$
+\cot \theta = \frac{1}{\tan \theta} = \frac{\text{Adjacent}}{\text{Opposite}}
+$$
+</p>
+<p>And by Pythagoras's theorem, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\text{Adjacent}^2 &amp;= \text{Hypotenuse}^2 - \text{Opposite}^2 \\
+&amp;= 2^2 - x^2 \\ &amp;= 4 - x^2
+\end{align*}
+$$
+</p>
+<p>So:</p>
+<p class="mathcell">
+$$
+\text{Adjacent} = \sqrt{4 - x^2}
+$$
+</p>
+<p>And:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\cot \theta &amp;= \frac{\sqrt{4 - x^2}}{x} \\
+\theta &amp;= \operatorname{arcsin} \left(\frac{x}{2}\right)
+\end{align*}
+$$
+</p>
+<p>We can now rewrite the solution in terms of $x$:</p>
+<p class="mathcell">
+$$
+-\frac{\sqrt{4 - x^2}}{x} - \operatorname{arcsin} \left(\frac{x}{2}\right) + C
+$$
+</p>
+<p>Similarly, we can solve the following integral by trigonometric substitution:</p>
+<p class="mathcell">
+$$
+\int \frac{dt}{(9t^2 + 4)^2}
+$$
+</p>
+<p>We first factor:</p>
+<p class="mathcell">
+$$
+\int \frac{dt}{(4(\frac{9}{4}t^2 + 1))^2}
+$$
+</p>
+<p>We set:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+1 + \frac{9}{4} t^2 &amp;= \sec^2 \theta \\
+\frac{9}{4} t^2 &amp;= \tan^2 \theta
+\end{align*}
+$$
+</p>
+<p>Therefore:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+t &amp;= \frac{2}{3} \tan \theta \\
+dt &amp;= \frac{2}{3} \sec^2 \theta d \theta
+\end{align*}
+$$
+</p>
+<p>Subtituting, we get:</p>
+<p class="mathcell">
+$$
+\frac{2}{3} \int \frac{dt}{(4\sec^2 \theta)^2)} \sec^2 \theta d \theta
+$$
+</p>
+<p>Which becomes:</p>
+<p class="mathcell">
+$$
+\frac{1}{48} \int \cos^2 \theta d \theta
+$$
+</p>
+<p>In general, we can use the <strong>following rules</strong> to set up a trigonometric substitution:</p>
+<ul>
+<li>If we have $x^2 + a^2$ in the integrand, we use the substitution $x = a \tan \theta$</li>
+<li>If we have $a^2 - x^2$ in the integrand, we use the substitution $x = a \sin \theta$</li>
+<li>If we have $x^2 - a^2$ in the integrand, we use the substitution$x = a \sec \theta$</li>
+</ul>
+<p>Trigonometric substitutions are incredibly easy to mess up, so be careful with them, and make sure to avoid these errors:</p>
+<ul>
+<li>Not cancelling out the powers correctly</li>
+<li>Using the incorrect trigonometric identity</li>
+<li>Calculating the incorrect differential (expression for $d\theta$)</li>
+<li>Forgetting to carry over constants</li>
+<li>Simplification errors in the trigonometric integrand</li>
+<li>Errors in converting the solution in $\theta$ back to a solution in $x$, often due to forgetting a square root or a square when using Pythagoras</li>
+</ul>
+<h2 id="integration-by-long-division-and-partial-fractions">Integration by long division and partial fractions</h2>
+<p>Consider an integral in the form:</p>
+<p class="mathcell">
+$$
+\int \frac{P(x)}{Q(x)} dx
+$$
+</p>
+<p>If the degree of $P(x)$ is higher than the degree of $Q(x)$, then the integrand can be simplified by dividing $P(x)$ by $Q(x)$ using polynomial long division. The process is analogous to arithmetic long division.</p>
+<p>When doing long division, be very careful of signs while subtracting. It is easy to get the wrong result just by forgetting a negative sign when doing a subtraction. Also, don't forget to carry over the remainder. Whenever possible, split up the resulting fraction when you integrate, so for instance, something like:</p>
+<p class="mathcell">
+$$
+\int 2x dx + \frac{5x + 3}{x - 1} dx
+$$
+</p>
+<p>becomes:</p>
+<p class="mathcell">
+$$
+\int 2x dx + \int \frac{5x}{x - 1} dx + \frac{3}{x - 1} dx
+$$
+</p>
+<p>In cases where long division cannot be done, a partial fraction decomposition can be performed instead. The goal of partial fraction decomposition is to write the integrand as a sum of simpler fractions. That is:</p>
+<p class="mathcell">
+$$
+\frac{P(x)}{Q(x)} = \frac{A}{F_1(x)} + \frac{B}{F_2(x)} + \frac{C}{F_3(x)} + \dots + \frac{Z}{F_n(x)}
+$$
+</p>
+<p>The first step of a partial fraction decomposition is to factor $Q(x)$ as completely as possible. That is, the integrand should take the following form:</p>
+<p class="mathcell">
+$$
+\frac{P(x)}{Q(x)} = \frac{P(x)}{F_1(x)F_2(x)F_3(x)\dots F_n(x)}
+$$
+</p>
+<p>Where $F_1, F_2, F_3, \dots, F_n$ are the factors of $Q(x)$. If a factor of $Q(x)$ is in the form $(x - a)^n$, where $a$ is not a complex number or radical, it is called a <strong>linear factor</strong>. Such a factor contributes a partial fraction decomposition of the form:</p>
+<p class="mathcell">
+$$
+\frac{1}{(x - a)^n} = \frac{A}{x - a} + \frac{B}{(x - a)^2} + \frac{C}{(x - a)^3} + \dots + \frac{Z}{(x - a)^n}
+$$
+</p>
+<p>Note that a factor in the form $x^n$ (such as $x^2$ or $x$) can technically be written in the form $(x - 0)^n$, and so also qualifies as a linear factor.</p>
+<p>Meanwhile, if the factor is in the form $(x^2 + ax + b)^n$, and cannot be simplified further without using radicals or complex numbers, it is called an <strong>irreducible quadratic factor</strong>. Such a factor contributes a partial fraction decomposition of the form:</p>
+<p class="mathcell">
+$$
+\frac{1}{(x^2 + ax + b)^n} = \frac{Ax + C_1}{x^2 + ax + b} + \frac{Bx + C_2}{(x^2 + ax + b)^2} + \dots + \frac{Zx + C_n}{(x^2 + ax + b)^n}
+$$
+</p>
+<p>As an example, consider the integral:</p>
+<p class="mathcell">
+$$
+\int \frac{x + 5}{x^2 + x - 2} dx
+$$
+</p>
+<p>We first factor:</p>
+<p class="mathcell">
+$$
+\int \frac{x + 5}{(x - 1)(x + 2)} dx
+$$
+</p>
+<p>Now we perform a partial fraction composition of the integrand. Since we see that the factors are linear, we propose that the integrand take the form:</p>
+<p class="mathcell">
+$$
+\frac{x + 5}{(x - 1)(x + 2)} = \frac{A}{x - 1} + \frac{B}{x + 2}
+$$
+</p>
+<p>If we distribute by multiplying every term by $(x - 1)(x + 2)$, we get:</p>
+<p class="mathcell">
+$$
+x + 5 = A(x + 2) + B(x - 1)
+$$
+</p>
+<p>We can now substitute in convenient values to find $A$ and $B$. For instance, if we evaluate with $x = 1$, then:</p>
+<p class="mathcell">
+$$
+(1 + 5) = A(1 + 2) + B(1 - 1)
+$$
+</p>
+<p>which simplifies to:</p>
+<p class="mathcell">
+$$
+6 = 3A
+$$
+</p>
+<p>Therefore $A = 2$. Similarly, if we evaluate with $x = -2$, then:</p>
+<p class="mathcell">
+$$
+(-2 + 5) = A(-2 + 2) + B(-2 - 1)
+$$
+</p>
+<p>which simplifies to:</p>
+<p class="mathcell">
+$$
+3 = -3B
+$$
+</p>
+<p>Therefore $A = 2, B = -1$. Placing the partial fraction decomposition back into the integrand, we have:</p>
+<p class="mathcell">
+$$
+\int \frac{2}{x - 1} - \frac{1}{x + 2}~dx
+$$
+</p>
+<p>which becomes:</p>
+<p class="mathcell">
+$$
+2 \ln | x - 1 | - \ln | x + 2 | + C
+$$
+</p>
+<p>When doing partial fraction decompositions, make sure that if the fraction is improper, that you first do long division, and then (if the result isn't simple enough to directly integrate) decompose using partial fractions. In addition, be careful about identifying factors - sometimes factors that might look linear factorable might be irreducible quadratics, and factors that look like quadratics are linear factorable.</p>
+<p>Finally, when convenient cancelling isn't possible, use variations of x-values (e.g. evaluate when $x = 0$, then $x = 1$, then $x = 2$) for getting partial fraction decompositions when there are multiple repeated factors. This allows you to setup a system of equations that you can solve to find the coefficients of the partial fraction decomposition.</p>
+<p>After finding the partial fraction decomposition of a rational function, it is always best to plug in a value of $x$ (such as $x = 0$ or $x = 1$) and check that the partial fraction outputs the same value as the original integrand. This means the partial fraction decomposition is correct.</p>
+<h2 id="improper-integrals">Improper integrals</h2>
+<p>A improper integral is an integral defined either on an unbounded domain, or a domain that is not integratable, then:</p>
+<p class="mathcell">
+$$
+\int_a^k f(x) dx = \lim_{b \to k} \int_a^b f(x) dx
+$$
+</p>
+<p>An improper integral satisfies the identities:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\int_0^\infty f(x)dx &amp;= \lim_{b \to \infty} \int_0^b f(x) dx \\
+\int_{-\infty}^0 f(x)dx &amp;= \lim_{b \to -\infty} \int_b^0 f(x) dx \\
+\int_{-\infty}^\infty f(x) dx &amp;= \lim_{a \to -\infty} \int_a^0 f(x) dx + \lim_{b \to \infty} \int_0^b f(x) dx
+\end{align*}
+$$
+</p>
+<p>If the limit exists (evaluates to a finite number), then the integral is said to <strong>converge</strong>; otherwise, the integral is said to <strong>diverge</strong>.</p>
+<p>For instance, consider the integral:</p>
+<p class="mathcell">
+$$
+\int_1^\infty \frac{1}{x^2} dx
+$$
+</p>
+<p>Using the approach outlined previously, we rewrite as a limit:</p>
+<p class="mathcell">
+$$
+\lim_{b \to \infty} \int_1^b \frac{1}{x^2} dx = \lim_{b \to \infty} -\frac{1}{x} \bigg |_1^b = \lim_{b \to \infty} 1 - \frac{1}{b} = 1
+$$
+</p><h3 id="the-p-integral-test">The p-integral test</h3>
+<p>For an improper integral of the function $x^{-p}$, there are three possible cases.</p>
+<table><thead><tr><th>Value of $p$</th><th>Convergent integral</th><th>Divergent integral</th></tr></thead><tbody>
+<tr><td>$p &gt; 1$</td><td>$\displaystyle \int_a^\infty \frac{dx}{x^p}$</td><td>$\displaystyle \int_0^a \frac{dx}{x^p}$</td></tr>
+<tr><td>$p &lt; 1$</td><td>$\displaystyle \int_0^a \frac{dx}{x^p}$</td><td>$\displaystyle \int_a^\infty \frac{dx}{x^p}$</td></tr>
+<tr><td>$p = 1$</td><td>None</td><td>All integrals diverge</td></tr>
+</tbody></table>
+<h2 id="arc-length">Arc length</h2>
+<p>We will cover one last application of integration: finding the total length (called the <em>arc length</em>) of a curve. For a curve $y = f(x)$, an infinitesimal segment can be found by the Pythagorean theorem:</p>
+<p class="mathcell">
+$$
+ds^2 = dx^2 + dy^2
+$$
+</p>
+<p>The right-hand side can be expressed purely in terms of $dx$ by factoring (here note that $dy^2 = (dy)(dy)$ and similarly for $dx$):</p>
+<p class="mathcell">
+$$
+ds^2 = dx^2 \left(1 + \frac{dy^2}{dx^2}\right)
+$$
+</p>
+<p>Square rooting both sides, we have:</p>
+<p class="mathcell">
+$$
+ds = \sqrt{1 + \left(\frac{dy}{dx}\right)^2} dx
+$$
+</p>
+<p>Now taking the integral of this infinitesimal arc length, we find the length $S$ of the complete curve:</p>
+<p class="mathcell">
+$$
+S = \int ds = \int_a^b \sqrt{1 + \left(\frac{dy}{dx}\right)^2} dx
+$$
+</p><h3 id="finding-the-surface-area-of-a-surface-of-revolution-from-arc-length">Finding the surface area of a surface of revolution from arc length</h3>
+<p>We may combine our technique for finding the arc length and the methods we used for finding volumes of solids of revolution to find their <em>surface areas</em> instead. To start, we can write out the area of an infinitesimal portion of a rotationally-symmetric surface by:</p>
+<p class="mathcell">
+$$
+dA = 2\pi r ds
+$$
+</p>
+<p>where $ds$ is the infinitesimal arc length, and $r = f(x)$. The complete surface area is given by:</p>
+<p class="mathcell">
+$$
+A = \int dA
+$$
+</p>
+<p>Therefore, the surface area of a surface of revolution is given by:</p>
+<p class="mathcell">
+$$
+A = \int_a^b 2\pi r ds = \int_a^b 2\pi f(x) \sqrt{1 + \left(\frac{dy}{dx}\right)^2} dx
+$$
+</p>
+        
+        <a id="jump-toc-btn" href="#toc">Show table of contents</a>
+        <a href="/notes" class="return-link">Back to all notes</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        var toc = document.getElementById("toc");
+        var tocPos = toc.offsetTop + toc.offsetHeight;
+        var tocBtn = document.getElementById("jump-toc-btn");
+
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+        // for performance reasons, we **only** render a certain
+        // number of equations that the viewer is actually viewing
+        function VisibleMathRenderer(config) {
+            /*
+            Renders only a limited number of equations on page load
+            to avoid poor performance
+             Params:
+                lastRenderedEquation: the most recently rendered equation.
+                        when this goes out of view, equations under it are rendered. 
+            */
+            var startElement = config.startElement
+            var maxEquations = config.maxEquations ? config?.maxEquations : 30;
+            this.startElement = startElement
+            this.maxEquations = maxEquations
+            // we wait until the user scrolls past the starting/
+            // ending elements to start rendering the whole page
+            this.canRenderWholePage = false;
+            this.pageRendered = false;
+            this.lastRenderedTopEquation = null;
+            this.lastRenderedBottomEquation = null;
+
+            this.render = function() {
+                renderMath(this.startElement);
+                // render previous 25 and following 25 equations
+                var prev = this.startElement.previousElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left prior to the element
+                    if (prev == null) {
+                        break;
+                    }
+                    renderMath(prev);
+                    prev = prev.previousElementSibling;
+                }
+                // store our last rendered equations
+                // we'll track scroll position later to
+                // check when the rest of the page should be rendered
+                this.lastRenderedTopEquation = prev;
+                console.log(this.lastRenderedTopEquation)
+
+                var next = this.startElement.nextElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left following the element
+                    if (next.nextElementSibling == null) {
+                        break;
+                    }
+                    renderMath(next);
+                    next = next.nextElementSibling;
+                }
+                this.lastRenderedBottomEquation = next;
+                // now allow rendering the rest of the equations
+                this.canRenderWholePage = true;
+            }
+
+            // render all math on the whole page
+            this.renderMathOnPage = function() {
+                // don't run until preliminary tasks
+                // are done so that the whole page
+                // can/should be rendered
+                if (!this.canRenderWholePage) {
+                    return;
+                }
+                // if the whole page's worth of equations
+                // are already rendered, don't render more
+                if (this.pageRendered) {
+                    return;
+                }
+                var topBound = this.lastRenderedTopEquation.getBoundingClientRect.top;
+                var bottomBound = this.lastRenderedBottomEquation.getBoundingClientRect.bottom;
+                var scrollTop, scrollBottom = getViewport();
+                // if the user is about to scroll past the initially-rendered equations
+                // we will render the whole page
+                if (scrollTop - 50 + window.scrollY < topBound || scrollBottom + 50 + window.scrollY > bottomBound) {
+                    console.log("Scrolled beyond!")
+                    var article = document.querySelector(".post");
+                    if (article) {
+                        this.renderMath(article);
+                    }
+                    this.pageRendered = true;
+                }
+                
+            }
+            
+        }
+
+        function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        function findFirstRelevantElement() {
+            // finds the first <p> tage that's closest to
+            // the viewer's viewport
+            var regex = /#.*/;
+            var m = regex.exec(window.location.href);
+            if (m !== null) {
+                return document.querySelector(m[0]);
+            } else {
+                return document.querySelector(".post p");
+            }
+        }
+        
+        // initialize page JS components
+        /*
+        var mathRenderer = new VisibleMathRenderer({
+            // start rendering with first <p> tag on the
+            // post
+            startElement: findFirstRelevantElement()
+        });
+        */
+        document.addEventListener("DOMContentLoaded", function() {
+            showTocBtnOnScroll();
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+
+        window.onscroll = function(){
+            // if (!mathRenderer.pageRendered) {
+            //     mathRenderer.renderMathOnPage();
+            // }
+            showTocBtnOnScroll();
+        };
+
+
+    </script>
+    
+
+
+</body>
+
+</html>

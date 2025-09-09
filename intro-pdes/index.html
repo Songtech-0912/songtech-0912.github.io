@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Gentle Guide to Partial Differential Equations, Part I</title>
+  <meta name="description" content=" This is a short guide&#x2F;mini-book on introducing various topics in partial differential equations, including analytical methods of finding solutions, boundary-value problems, and discussions of widely-known PDEs.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>A Gentle Guide to Partial Differential Equations, Part I</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+        <details class="toc" id="toc" open>
+        <summary>Table of contents</summary>
+        <p class="toc-info">Note: it is highly recommended to navigate by clicking links in the table of contents! It means you can use the back button in your browser to go back to any section you were reading, so you can jump back and forth between sections!</p>
+        <div>
+            <ul>
+            
+                <li>
+                    <a href="#chapter-guide-for-pdes">Chapter guide for PDEs</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#introduction-to-partial-differential-equations">Introduction to partial differential equations</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#linearity">Linearity</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#homogeneity">Homogeneity</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#solving-by-direct-integration">Solving by direct integration</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#boundary-conditions">Boundary conditions</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#separation-of-variables">Separation of variables</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#useful-calculus-identities-for-pdes">Useful calculus identities for PDEs</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#solutions-to-1st-order-linear-pdes">Solutions to 1st-order linear PDEs</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#solving-for-homogenous-vs-inhomogenous-pdes">Solving for homogenous vs. inhomogenous PDEs</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-method-of-characteristics">The method of characteristics</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#coordinate-transformation-method">Coordinate transformation method</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#generalized-method-of-characteristics">Generalized method of characteristics</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#pdes-from-physical-phenomena">PDEs from physical phenomena</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#the-transport-equation">The transport equation</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-wave-equation">The wave equation</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-diffusion-equation">The diffusion equation</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#next-steps">Next steps</a>
+                    
+                </li>
+            
+            </ul>
+        </div>
+        </details>
+        
+
+        <!-- page content -->
+        <p>This is a short guide/mini-book on introducing various topics in partial differential equations, including analytical methods of finding solutions, boundary-value problems, and discussions of widely-known PDEs.</p>
+<span id="continue-reading"></span>
+<p>This guide is dedicated to <a href="https://faculty.rpi.edu/yuri-lvov">Professor Yuri Lvov</a> of Rensselaer Polytechnic Institute, who teaches the course on which this guide is based, and to whom I am greatly thankful. They are freely-sharable and released to the public domain. This guide also closely follows the book <em>Partial Differential Equations, 2nd. Ed.</em> by Walter A. Strauss, which is highly recommended for following on while reading the guide.</p>
+<blockquote>
+<p><strong>Note:</strong> Another resource I highly recommend is <a href="https://visualpde.com">VisualPDE</a>, which provides interactive PDE solvers to create beautiful visualizations and animations of PDEs.</p>
+</blockquote>
+<p>Familiarity with vector calculus and ordinary differential equations is assumed. Full length guides for both are available if a refresher is needed; they can be found on the <a href="https://jackysci.com/vector-and-advanced-calculus/">vector calculus guide</a> and the <a href="https://jackysci.com/differential-equations/">introduction to differential equations</a>.</p>
+<p>As this is a long guide, I have split it up into several parts for convenience:</p>
+<blockquote>
+<h3 id="chapter-guide-for-pdes">Chapter guide for PDEs</h3>
+<ul>
+<li><a href="https://jackysci.com/intro-pdes/">Part 1</a> covers basics of PDEs, solving 1st-order PDEs, and the physical phenomena modelled by PDEs. <strong>You are reading this part right now.</strong></li>
+<li><a href="https://jackysci.com/intro-pdes/chapter-2/">Part 2</a> covers classification and finding solutions to 2nd-order PDEs, and in particular, the diffusion equation, wave equation, and Laplace's equation.</li>
+<li><a href="https://jackysci.com/intro-pdes/chapter-3/">Part 3</a> concludes this guide with a discussion on Laplace's equations and a few other topics in partial differential equations.</li>
+</ul>
+</blockquote>
+<h2 id="introduction-to-partial-differential-equations">Introduction to partial differential equations</h2>
+<p>A partial differential equation (PDE) is an equation that describes a function of <em>several variables</em> in terms of its <em>partial derivatives</em>. For instance, let $u(x, y, z, \dots)$ be an arbitrary function of several variables; a PDE takes the form:</p>
+<p class="mathcell">
+$$
+F\left(u, \nabla u, \nabla^2u, \dfrac{\partial u}{\partial x_i \partial x_j}\right) = g(\mathbf{r})
+$$
+</p>
+<p>A few of the most well-known partial differential equations are listed in the table below:</p>
+<table><thead><tr><th>PDE name</th><th>Mathematical form</th></tr></thead><tbody>
+<tr><td>1D heat equation</td><td>$\dfrac{\partial u}{\partial t} = \alpha^2 \dfrac{\partial^2 u}{\partial x^2}$</td></tr>
+<tr><td>1D transport equation</td><td>$\dfrac{\partial u}{\partial t} + c\dfrac{\partial u}{\partial x} = 0$</td></tr>
+<tr><td>1D inviscid Burger's equation</td><td>$\dfrac{\partial u}{\partial t} + u \dfrac{\partial u}{\partial x} = 0$</td></tr>
+<tr><td>1D viscous Burger's equation</td><td>$\dfrac{\partial u}{\partial t} + u\dfrac{\partial u}{\partial x} = \nu \dfrac{\partial^2 u}{\partial x^2}$</td></tr>
+<tr><td>1D Wave equation</td><td>$\dfrac{\partial^2 u}{\partial t^2} = c^2 \dfrac{\partial^2 u}{\partial x^2}$</td></tr>
+<tr><td>Korteweg–De Vries (KdV) equation</td><td>$\dfrac{\partial u}{\partial t} + \dfrac{\partial^3 u}{\partial x^3} - 6 u \dfrac{\partial u}{\partial x} = 0$</td></tr>
+<tr><td>2D Laplace's equation</td><td>$\dfrac{\partial^2 u}{\partial x^2} + \dfrac{\partial^2 u}{\partial y^2} = 0$</td></tr>
+<tr><td>3D Laplace's equation</td><td>$\dfrac{\partial^2 u}{\partial x^2} + \dfrac{\partial^2 u}{\partial y^2} + \dfrac{\partial^2 u}{\partial z^2} = 0$</td></tr>
+<tr><td>Incompressible Euler equations</td><td>$\dfrac{\partial u}{\partial t} + (\mathbf{u} \cdot \nabla) \mathbf{u} + \dfrac{1}{\rho} \nabla p = \mathbf{g}$, $\nabla \cdot \mathbf{u} = 0$</td></tr>
+</tbody></table>
+<p>We want to solve PDEs because they provide <em>mathematical descriptions</em> which allow us to understand the dynamics of a physical system. In fact, they describe almost <em>anything imaginable</em> - that is to say, one can write down a partial differential equation for nearly <em>any</em> system (and it's not just physics!) As such, partial differential equations have a multitude of applications in nearly every scientific and engineering domain:</p>
+<ul>
+<li>Weather prediction (this uses the <a href="https://en.wikipedia.org/wiki/Euler_equations_(fluid_dynamics)">Euler</a> and <a href="https://en.wikipedia.org/wiki/Navier%E2%80%93Stokes_equations">Navier-Stokes</a> equations)</li>
+<li>Materials testing and simulations (including car crash simulations)</li>
+<li>Predicting structural properties, which is extensively used when constructing buildings, aircraft, and ships (which use the <a href="https://www.brown.edu/Departments/Engineering/Courses/En221/Notes/Conservation_Laws/Conservation_Laws.htm">Cauchy balance equations</a>)</li>
+<li>Predicting electric and magnetic interactions (using the <a href="https://en.wikipedia.org/wiki/Maxwell%27s_equations">Maxwell equations</a>), which are essential to electronic engineering and developing wireless technologies such as Wi-Fi</li>
+<li>Prediction of the orbits of spacecraft and the behavior of planets and stars (using the <a href="https://galaxiesbook.org/chapters/I-01.-Potential-Theory-and-Spherical-Mass-Distributions.html">Gravitational Poisson equation</a>, used for space exploration, astronomy, and astrophysics</li>
+<li>Predicting earthquakes, allowing for early earthquake prediction and detection</li>
+<li>Describing <a href="https://en.wikipedia.org/wiki/Shallow_water_equations">ocean waves</a> and tides</li>
+<li>Even predicting <a href="https://wikiwaves.org/Traffic_Waves">traffic flow</a> and even <a href="https://www.aimsciences.org/article/doi/10.3934/dcdss.2018065">financial markets</a></li>
+</ul>
+<p>To summarize, the power of PDEs is that they allow us to <strong>mathematically describe</strong> and therefore <strong>predict</strong> the world around us to incredible accuracy, which is why it's important to learn about them. The processes of solving and analyzing PDEs are the focus of this guide.</p>
+<h3 id="linearity">Linearity</h3>
+<p>A crucial distinction that must be made before attempting any solution of a PDE is whether it is <em>linear</em> or <em>nonlinear</em>. A linear PDE has <em>no terms involving its unknown function</em> multiplied to partial derivatives, and only <em>linear terms involving its unknown function</em> anywhere else. For instance, consider the PDE shown:</p>
+<p><p class="mathcell">
+$$
+x \dfrac{\partial u}{\partial x} = y \dfrac{\partial u}{\partial y} + 3u
+$$
+</p>
+It may be illuminating to write it in expanded form:</p>
+<p class="mathcell">
+$$
+x\dfrac{\partial u(x, y)}{\partial x} = y\dfrac{\partial u(x, y)}{\partial y}+ 3u(x, y)
+$$
+</p>
+<p>Notice that the PDE consists of an unknown function $u(x, y)$. On each of the derivatives, there is <em>no term</em> involving $u$. The <em>only</em> time $u(x, y)$ appears is the term $3u(x, y)$ (which is not multiplied to a derivative, and is linear in form). We therefore say that the PDE is <strong>linear.</strong> All of the following cases are similarly linear:</p>
+<table><thead><tr><th>Linear modification</th><th>Reason for linearity</th></tr></thead><tbody>
+<tr><td>$x^2 \dfrac{\partial u}{\partial x} = xy \dfrac{\partial u}{\partial y} + 3 u$</td><td>Only terms involving $u$ (the unknown function) matter when analyzing linearity; any terms in $x, y$, etc. don't matter</td></tr>
+<tr><td>$x \dfrac{\partial u}{\partial x} = y \dfrac{\partial u}{\partial y} + (1 - x^2)u$</td><td>Same; only terms involving $u$ matter when analyzing linearity, so the $1 - x^2$ factor does not change the linearity of the differential equation</td></tr>
+<tr><td>$x \dfrac{\partial^2 u}{\partial x^2} = y \dfrac{\partial u}{\partial y} + 3u$</td><td>It doesn't matter whether the partial derivatives are first derivatives, second-derivatives, nth-derivatives, etc.</td></tr>
+</tbody></table>
+<p>By contrast, <em>any</em> of the following cases are nonlinear:</p>
+<table><thead><tr><th>Nonlinear modification</th><th>Reason for nonlinearity</th></tr></thead><tbody>
+<tr><td>$u \dfrac{\partial u}{\partial x} = y \dfrac{\partial u}{\partial y} + 3u$</td><td>There is a term in $u$ multiplied to the first derivative $\dfrac{\partial u}{\partial x}$</td></tr>
+<tr><td>$x \dfrac{\partial u}{\partial x} = y \dfrac{\partial u}{\partial y} + 3u^2$</td><td>There is a squared term in $u$ (the $u^2$ term) which is not a linear term</td></tr>
+<tr><td>$u x \dfrac{\partial u}{\partial x} = y \dfrac{\partial u}{\partial y} + 3\cos(u)$</td><td>Both a term in $u$ on one of the derivatives and a nonlinear term in $u$</td></tr>
+<tr><td>$\left(x \dfrac{\partial u}{\partial x}\right)^3 = y \dfrac{\partial u}{\partial y} + 3u^2$</td><td>Taking powers of derivatives makes a PDE nonlinear</td></tr>
+</tbody></table>
+<p>Linear differential equations allow us to write a PDE in terms of a <strong>linear differential operator</strong>, denoted $\mathcal{L}$. For instance, consider the heat equation:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial u}{\partial t} = \alpha^2 \dfrac{\partial^2 u}{\partial x^2}
+$$
+</p>
+<p>We note that we can rewrite the heat equation as follows:</p>
+<p class="mathcell">
+$$
+\left(\dfrac{\partial}{\partial t} - \alpha^2 \dfrac{\partial^2}{\partial x^2}\right) u(x, t) = 0
+$$
+</p>
+<p>The quantity in the brackets on the left-hand side of the equation is the <em>linear operator</em>. If we let:</p>
+<p class="mathcell">
+$$
+\mathcal{L} = \left(\dfrac{\partial}{\partial t} - \alpha^2 \dfrac{\partial^2}{\partial x^2}\right)
+$$
+</p>
+<p>Then we may write the heat equation as $\mathcal{L} u = 0$. As $\mathcal{L}$ is a linear operator, it has the properties that for two solutions $u$ and $v$ and a constant $c$, $\mathcal{L}(c u) = c\mathcal{L}u$ and $\mathcal{L}(u + v) = \mathcal{L}(u) + \mathcal{L}(v)$. Linearity means that any <em>sum of two solutions is a solution</em> to a PDE, so it is possible to write a <em>general solution</em> as:</p>
+<p class="mathcell">
+$$
+u(x, t) = \sum_n c_n u_n(x, t)
+$$
+</p><h3 id="homogeneity">Homogeneity</h3>
+<p>Linear PDEs can further be divided into two main types: <em>homogenous</em> linear PDEs, which take the form $\mathcal{L} u = 0$, or <em>inhomogenous</em> (also called <em>nonhomogenous</em>) linear PDEs, which take the form $\mathcal{L} u = f(\mathbf{x})$. That is to say, roughly speaking, if one rearranges a linear PDE such that every term involving derivatives is moved to the left-hand side, then the right-hand side will be zero for homogenous PDEs and some function $f(\mathbf{x})$ for inhomogenous PDEs.</p>
+<p>For instance, the following PDE is a <em>homogenous</em> linear PDE:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial^2 u}{\partial x^2} + \dfrac{\partial^2 u}{\partial y^2} = 0
+$$
+</p>
+<p>Whereas the following PDE is an <em>inhomogenous</em> linear PDE:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial^2 u}{\partial x^2} + \dfrac{\partial^2 u}{\partial y^2} = k^2 u
+$$
+</p>
+<p>Note how in both cases, all the terms involving derivatives have been moved over to the left-hand side of the equation, and the value of the right-hand side of the equation determines the <em>homogeneity</em> (whether the equation is homogeneous or inhomogeneous).</p>
+<h3 id="solving-by-direct-integration">Solving by direct integration</h3>
+<p>Without any additional knowledge, we may begin our study of PDEs by examining the <em>direct integration</em> approach, which is applicable to a few very simple PDEs. Consider, for instance, the following PDE:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial^2 u}{\partial x^2} = 0
+$$
+</p>
+<p>If we take the partial integral once with respect to $x$ twice, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(x, y) &amp;=\iint\left( \dfrac{\partial^2 u}{\partial x^2} + u \right) dx \\
+&amp;= \iint 0 \, dx \\
+&amp;= \int 0 + A(y) \, dy \\
+&amp;= x A(y) + B(y)
+\end{align*}
+$$
+</p>
+<p>Thus our general solution is:</p>
+<p class="mathcell">
+$$
+u(x, y)= x A(y) + B(y)
+$$
+</p>
+<p>The reason for why the general solution contains two functions of $y$, namely $A(y)$ and $B(y)$, is because we are performing <em>partial integration</em> since this is a <em>partial</em> differential equation. Thus, the constants of integration are actually <em>functions</em> $A(y)$ and $B(y)$, these can be <em>arbitrary</em> functions of $y$. For instance, the following are <strong>all</strong> valid solutions to our PDE:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+u(x, y) = 3xy + 5y^2 \\
+u(x, y) = x \cos y + e^y \sin y \\
+u(x, y) = x \ln y + y^2(5 + 3y)^{3&#x2F;2} \\
+u(x, y) = 0
+\end{gather*}
+$$
+</p>
+<p>Similarly, consider the PDE:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial^2 u}{\partial x^2} + k^2 u = 0
+$$
+</p>
+<p>The general solution is given by $u(x, y) = A(y) \sin k x + B(y) \cos k x$, which means that all of the following are <em>also</em> solutions:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+u(x, y) = 3y^2 \sin kx + \sqrt{y-4} \cos k x \\
+u(x, y) = \dfrac{5}{y} \sin kx + 574y^3 \cos k x \\
+u(x, y) = y^{1&#x2F;4} \cos k x \\
+u(x, y) = \sin k x
+\end{gather*}
+$$
+</p>
+<p>The sheer diversity of solutions - and yes, <strong>all</strong> of these are valid solutions - means that finding general solutions is not very useful when solving PDEs, since there are always degrees of freedom from the arbitrary functions that could make the particular solution <em>very, very different</em>. Therefore, we usually need to specify <strong>boundary conditions</strong>, specific mathematical requirements that PDEs must satisfy on a particular domain, to find a unique (and useful) solution.</p>
+<h3 id="boundary-conditions">Boundary conditions</h3>
+<p>As we have seen, when solving PDEs, one must be careful to recognize that a general solution to a PDE does not uniquely specify the solution to a given physical scenario. A particular solution (which is usually synonymous with <em>unique solution</em>) can only be found if one additionally requires that the solution take a certain value at the boundaries of the PDE's domain.</p>
+<p>Let us consider an example. Consider solving Laplace's equation $\dfrac{\partial^2 u}{\partial x^2} = \dfrac{\partial^2 u}{\partial y^2} = 0$ on a <strong>unit square</strong>, i.e. the domain defined by $0 \leq x \leq 1, 0\leq y \leq 1$. We will call this domain $\Omega$. The <em>boundary</em> of the domain would be the perimeter of the unit square. We will call this boundary $\partial \Omega$ for "boundary of $\Omega$".</p>
+<p>A boundary condition for finding a unique equation to Laplace's equation could be specifiying that:</p>
+<p class="mathcell">
+$$
+u(x, y) \big |_{\partial \Omega} = C
+$$
+</p>
+<p>This means that $u(x, y) = C$ at all points along the boundary (which is the perimeter of the unit square). Using this information, the PDE can be solved for exactly, and a (much more useful) <em>unique</em> solution can be found.</p>
+<h2 id="separation-of-variables">Separation of variables</h2>
+<p>For any PDE more complex than the most basic examples, direct integration no longer suffices. Another technique is necessary to tackle these more complicated PDEs, and this is the method of <strong>separation of variables</strong>.</p>
+<p>To demonstrate this method, let us consider the <strong>wave equation</strong>:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial^2 u}{\partial t^2} = c^2 \dfrac{\partial^2 u}{\partial x^2}
+$$
+</p>
+<p>When performing the separation of variables, we first assume that the solution $u(x, t)$ may be written as a product of two functions <em>of a single variable</em>, which we will call $v(t)$ and $w(x)$. That is:</p>
+<p class="mathcell">
+$$
+u(x, t) = w(x) v(t)
+$$
+</p>
+<p>In this form, we are able to take the partial derivatives explicitly:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial^2 u}{\partial t^2} = \dfrac{\partial^2}{\partial t^2} w(x) v(t) = w(x)\dfrac{d^2v}{dt^2} \\
+\dfrac{\partial^2 u}{\partial x^2} = \dfrac{\partial^2}{\partial x^2} w(x) v(t) = v(t) \dfrac{d^2w}{dx^2}
+\end{align*}
+$$
+</p>
+<p>By substitution of these partial derivatives into the wave equation we have:</p>
+<p class="mathcell">
+$$
+w(x)\dfrac{d^2v}{dt^2} = c^2 v(t) \dfrac{d^2w}{dx^2}
+$$
+</p>
+<p>If we divide by $c^2 w(x) v(t)$ from both sides, we have:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\dfrac{1}{c^2 w(x)v(t)}w(x)\dfrac{d^2v}{dt^2} = \dfrac{1}{c^2 w(x)v(t)}c^2 v(t) \dfrac{d^2w}{dx^2} \\
+\dfrac{1}{c^2 v(t)}\dfrac{d^2v}{dt^2} = \dfrac{1}{w(x)}\dfrac{d^2w}{dx^2}
+\end{gather*}
+$$
+</p>
+<p>We now have an expression with only $t$ and derivatives of $t$ on the left-hand side and only $x$ and derivatives of $x$ on the right-hand side. This is only possible if both expressions are equal to an <strong>arbitrary constant</strong> $k^2$, called the <em>separation constant</em> (we could just as well choose $k$ or $s$ or $a$ but this form simplifies the mathematical analysis later on). So now we have <em>separated</em> the variables and are left with two <em>ordinary</em> differential equations:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{1}{c^2 v(t)}\dfrac{d^2v}{dt^2} &amp;= k^2 \\
+\dfrac{1}{w(x)}\dfrac{d^2w}{dx^2} &amp;= k^2
+\end{align*}
+$$
+</p>
+<p>These can be written in more traditional form as:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{d^2 v}{dt^2} &amp;= k^2 c^2 v \\
+\dfrac{d^2 w}{dx^2} &amp;= k^2 w
+\end{align*}
+$$
+</p>
+<p>Which have the general solutions:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+v(t) = A_1\cos(k c t) + B_1 \sin (k c t) \\
+w(x) = A_2 \cos(kx ) + B_2 \sin (kx)
+\end{align*}
+$$
+</p>
+<p>Where $A_1, A_2, B_1, B_2$ are undetermined constants that can be solved for by applying the boundary conditions. It is common to write $\omega \equiv kc$ (the greek letter omega, not to be confused with $w$) to simplify the equations:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+v(t) = A_1\cos(\omega t) + B_1 \sin (\omega t) \\
+w(x) = A_2 \cos(kx ) + B_2 \sin (kx)
+\end{align*}
+$$
+</p>
+<p>So the general solution to the wave equation is:</p>
+<p class="mathcell">
+$$
+u(x, t) = w(x) v(t) = (A_2 \cos(kx ) + B_2 \sin (kx))(A_1\cos(\omega t) + B_1 \sin (\omega t))
+$$
+</p>
+<p>This can be simplified further using trigonometric identities, and is the end result of our successful separation of variables.</p>
+<blockquote>
+<p><strong>Note:</strong> In many cases, a PDE may be separable in one coordinate system and <em>not</em> separable in another. This is famously the case for the Schrödinger equation, which is an inhomogeneous linear PDE; when its inhomogeneous term is a term that is proportional to $\dfrac{1}{r}$, as is the case for many atomic solutions, then the Schrödinger equation is no longer separable in Cartesian coordinates, but <em>remains separable</em> in <em>spherical</em> coordinates.</p>
+</blockquote>
+<h2 id="useful-calculus-identities-for-pdes">Useful calculus identities for PDEs</h2>
+<p>By nature of partial differentiation, there are several results that are incredibly crucial for the study of PDEs. First, the <em>order of differentiation</em> does not matter. That is to say:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial^2 f}{\partial x \partial y} = \dfrac{\partial^2 f}{\partial y \partial x}
+$$
+</p>
+<p>Second, integration and partial differentiation can (in some cases) be order-swapped:</p>
+<p class="mathcell">
+$$
+\dfrac{d}{dt} \int_{x=a}^{x=b} f(x, t) dx = \int_{x=a}^{x=b} \dfrac{\partial}{\partial t} f(x, t) dx
+$$
+</p>
+<p>This is known as the <strong>Leibnitz rule</strong>. Note that when applying the Leibnitz rule, it is important to recognize that the above rule applies <em>only</em> in the case of <strong>definite integrals</strong> where $f(x, t)$ is integrated over $x$. Notice that integrating $f(x, t)$ over bounds in $x$ results in a new function we may call $G(t)$ that is purely in terms of $t$, by the Fundmental Theorem of Calculus:</p>
+<p class="mathcell">
+$$
+\int_{x=a}^{x=b} f(x, t) dx = F(b, t) - F(a, t) = G(t)
+$$
+</p>
+<p>Therefore, we write $\dfrac{d}{dt}$ for the left-hand-side integral, as $G(t)$ is only in terms of $t$, whereas we write $\dfrac{\partial}{\partial t}$ for the right-hand-side integral, as $f(x, t)$ is in terms of both $x$ and $t$. In the more general form, where $a = a(t)$ and $b = b(t)$ rather than constants, we have:</p>
+<p class="mathcell">
+$$
+\dfrac{d}{dt} \int_{x=a(t)}^{x=b(t)} f(x, t) dx = f(b, t) \dfrac{db}{dt} - f(a, t) \dfrac{da}{dt}  + \int_{x=a(t)}^{x=b(t)} \dfrac{\partial}{\partial t} f(x, t) dx
+$$
+</p>
+<p>Another very useful relationship used extensively in studying PDEs is the divergence theorem, which relates the volume integral of the <em>divergence</em> of a vector-valued function over a volume $\Omega$ to its surface integral across the <em>boundary surface</em> of $\Omega$, written $\partial \Omega$:</p>
+<p class="mathcell">
+$$
+\oiint \limits_{\partial \Omega} \mathbf{F} \cdot d\mathbf{A} = \iiint \limits_\Omega (\nabla \cdot \mathbf{F})\, dV
+$$
+</p>
+<p>Note that this can also be written with slightly different but mathematically-equivalent notation as:</p>
+<p class="mathcell">
+$$
+\oint \limits_{\partial \Omega} \mathbf{F} \cdot d\mathbf{A} = \int \limits_\Omega (\nabla \cdot \mathbf{F})\, dV
+$$
+</p>
+<p>That is to say, the number of integral signs does not matter, that is a notational choice; only the integration variables ($d\mathbf{A}$ and $dV$) matter. However, the multiple-integral notation often used since it is sometimes more illustrative to write a volume integral with triple integral signs to signify it is computed over a three-dimensional volume, and a surface integral with double integral signs to signify it is computed over a two-dimensional surface.</p>
+<p>From the divergence theorem, it is possible to derive the <strong>vanishing theorem</strong>:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+\displaystyle \iiint \limits_\Omega F(\mathbf{r})\, dV = 0&amp; \Leftrightarrow &amp;F(\mathbf{r}) = 0
+\end{matrix*}
+$$
+</p><h2 id="solutions-to-1st-order-linear-pdes">Solutions to 1st-order linear PDEs</h2>
+<p>Up to this point, we have discussed two methods of solving PDEs: direct integration and separation of variables. We will now examine a few more ways to solve PDEs of a specific form: first-order linear PDEs.</p>
+<h3 id="solving-for-homogenous-vs-inhomogenous-pdes">Solving for homogenous vs. inhomogenous PDEs</h3>
+<p>Before we actually solve a PDE, it is important to first identify whther it is <em>homogenous</em>, <em>inhomogenous</em>, or <em>neither</em>. Consider a linear differential operator $\mathcal{L}$, similar to the ones we have already studied. A <strong>solution</strong> to a homogenous linear PDE is a function $u(x, y, z)$ that satisfies:</p>
+<p class="mathcell">
+$$
+\mathcal{L}u = 0
+$$
+</p>
+<p>For an <em>inhomogenous</em> linear PDE in the form $\mathcal{L}u = f(\mathbf{x})$, the general solution $u(x, y, z)$ to the PDE is a combination of the <em>general solution</em> $u_0$ to the corresponding <em>homogenous</em> PDE $\mathcal{L}u_0 = 0$ and the <em>particular solution</em> $u_1$ to the <em>inhomogenous</em> PDE $\mathcal{L} u_1 = f(\mathbf{x})$. That is:</p>
+<p class="mathcell">
+$$
+u = u_0 + u_1
+$$
+</p>
+<p>In simpler terms, to solve for the <strong>general solution</strong> to a inhomogenous linear PDE $\mathcal{L} u = f(\mathbf{x})$ (e.g., $\left(\dfrac{\partial}{\partial x} + \dfrac{\partial}{\partial y}\right)u = f(x, y)$ where $\mathcal{L} = \left(\dfrac{\partial}{\partial x} + \dfrac{\partial}{\partial y}\right)$:</p>
+<ul>
+<li>First, you solve for the <em>general</em> solution to its homogenous version $\mathcal{L} u = 0$, which we'll call $u_0$. In our case, it would be equivalent to finding the general solution to $\left(\dfrac{\partial}{\partial x} + \dfrac{\partial}{\partial y}\right)u = 0$</li>
+<li>Then, you find <em>any</em> solution to its inhomogenous version, which we'll call $u_1$. In our case, it would be equivalent to finding the <em>particular</em> solution to $\left(\dfrac{\partial}{\partial x} + \dfrac{\partial}{\partial y}\right) u = f(x, y)$</li>
+<li>Finally, you add $u_0$ and $u_1$ together. This gives you the <em>general</em> solution to the inhomogeneous PDE $u(x, y) = u_0(x, y) + u_1(x, y)$</li>
+</ul>
+<h3 id="the-method-of-characteristics">The method of characteristics</h3>
+<p>The method of characteristics is a technique to solve first-order linear PDEs. We will first overview the simplest case, where we additionally require that the PDE is <em>homogenous</em> and has <em>constant coefficients</em> That is, we consider PDEs similar to the <em>transport equation</em>:</p>
+<p class="mathcell">
+$$
+a \dfrac{\partial u}{\partial x} + b \dfrac{\partial u}{\partial y}  = 0
+$$
+</p>
+<p>Note that this may be cast in an <em>alternative form</em> (this will be important later) given by:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial u}{\partial x} + \dfrac{b}{a} \dfrac{\partial u}{\partial y} = 0
+$$
+</p>
+<p>To solve this PDE, we use a geometric argument from vector calculus. Recall that the directional derivative $\nabla_\mathbf{v} u$ is given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\nabla_\mathbf{v} u &amp;= \nabla u \cdot \mathbf{v} \\
+&amp;= v_x \dfrac{\partial u}{\partial x} + v_y \dfrac{\partial u}{\partial y}
+\end{align*}
+$$
+</p>
+<p>We can therefore <em>reinterpret</em> the transport PDE $a \dfrac{\partial u}{\partial x} + b \dfrac{\partial u}{\partial y}  = 0$ as the equation of a directional derivative $v_x \dfrac{\partial u}{\partial x} + v_y \dfrac{\partial u}{\partial y}$, such that $a, b$ are the components of a vector $\mathbf{v}$, and $v_x = a, v_y = b$. Therefore, the transport equation reduces to:</p>
+<p class="mathcell">
+$$
+\nabla_\mathbf{v} u = \nabla u \cdot \langle a, b\rangle = 0
+$$
+</p>
+<p>Notice how this equation is equivalent to saying that <em>the directional derivative of $u$ along the vector $\mathbf{v} = \langle a, b\rangle$ is zero</em>. This means that $u(x, y)$ <em>does not change</em> along $\mathbf{v}$, and thus for all points $(x, y)$ along the direction $\mathbf{v}$, $u(x, y)$ must be equal to a constant $C$, or more generally, some function of a constant $f(C)$ (because if $C$ is a constant, then $f(C)$ is <em>also</em> a constant).</p>
+<p>The curves traced by the collection of these points $(x, y)$ are known as <strong>characteristic curves</strong> (sometimes also called <em>integral curves</em>). Each curve would mathematically take the form $(x, y(x))$, where $y$ is some function of $x$, so the solution $u(x, y)$ can be found by just substituting in $y(x)$ to have $u(x, y(x))$. Therefore, once we can determine the expression for the characteristic curve $y(x)$, we know the solution $u(x, y)$. Thus the method of characteristics <em>reduces</em> the problem of solving a PDE into a problem of finding the <em>characteristic curves</em> $y(x)$ along which $u(x, y) = \text{const.}$</p>
+<p>But how do we go about finding $y(x)$? Let us consider moving along $u(x, y)$ following a characteristic curve $y(x)$. Since $u(x, y) = \text{const.}$ along the characteristic curve, we know that $\dfrac{du}{dx} = 0$. But we also know that we may expand $\dfrac{du}{dx}$ using the chain rule to have:</p>
+<p class="mathcell">
+$$
+\dfrac{du}{dx} = \frac{\partial u}{\partial x} + \dfrac{\partial u}{\partial y}\dfrac{dy}{dx} = 0
+$$
+</p>
+<p>If we compare this with the alternate form (given previously) of our PDE:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial u}{\partial x} + \dfrac{b}{a} \dfrac{\partial u}{\partial y} = 0
+$$
+</p>
+<p>We immediately notice that $\dfrac{b}{a} = \dfrac{dy}{dx}$, then:</p>
+<p class="mathcell">
+$$
+\dfrac{du}{dx} = \dfrac{\partial u}{\partial x} + \dfrac{b}{a} \dfrac{\partial u}{\partial y}
+$$
+</p>
+<p>Which perfectly matches our PDE! Thus we have reduced the PDE to a problem of finding the characteristic curves $y(x)$. To be able to solve for the characteristic curves, we need only solve the system of <em>ordinary</em> differential equations we have derived:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{du}{dx} = 0 \\
+\dfrac{dy}{dx} = \dfrac{b}{a}
+\end{align*}
+$$
+</p>
+<p>The second differential equation has the straightforward solution, by inspection, of $y(x) = \dfrac{b}{a}x + c$, where $c$ is some arbitrary constant of integration. For the first differential equation, however, we must be more careful, because $\dfrac{du}{dx} = \dfrac{du(x, y)}{dx}$ is a <em>total derivative</em> of the multivariable function $u(x, y)$. Therefore, we must perform <em>partial integration</em>:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{du}{dx} &amp;= 0 \\
+\dfrac{du(x, y)}{dx} &amp;= 0 \\
+\int \dfrac{du(x, y)}{dx}\, dx &amp;= \int 0\, dx \\
+u(x, y) &amp;= F(y)
+\end{align*}
+$$
+</p>
+<blockquote>
+<p>Notice here that instead of a <em>constant</em> of integration, we have an arbitrary <em>function</em> of integration $F(y)$, since we are taking the <strong>partial integral</strong>.</p>
+</blockquote>
+<p>Now, let us recall that since $u(x, y) = \text{const.}$ for <em>all points along the characteristic curve</em>, then this must be true for the point $(0, y(0))$ as well, meaning that $u(x, y) = u(0, y(0)) = \text{const.}$ Therefore:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+&amp;x = 0&amp; \Rightarrow &amp; y = \cancel{\dfrac{b}{a} x} + c &amp; \Rightarrow &amp; y=c
+\end{matrix*}
+$$
+</p>
+<p>By substitution into $u(x, y) = F(y)$, we have:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+u(0, y(0))= F(y) = F(c) \\
+u(x, y) = u(0, y(0)) = F(c) \\
+\end{gather*}
+$$
+</p>
+<p>But we know that $y(x) = \dfrac{b}{a}x + c$, which we can rearrange to $y - \dfrac{b}{a} x = c$. Therefore:</p>
+<p class="mathcell">
+$$
+u(x, y) = F(c) = F\left(y - \dfrac{b}{a}x\right)
+$$
+</p>
+<p>Since $F$ is a completely arbitrary function, we can define a new (and also arbitrary) function $f(s) = F(-s/a)$, where $s = y - \dfrac{b}{a}x$ (here $s$ is a substitution variable). Thus we have:</p>
+<p class="mathcell">
+$$
+f(bx - ay) = F\left(-\dfrac{1}{a}(bx - ay)\right) =  F\left(y - \dfrac{b}{a}x\right)
+$$
+</p>
+<p>So that we may write our <em>generalized</em> solution as:</p>
+<p class="mathcell">
+$$
+u(x, y) = f(bx - ay)
+$$
+</p>
+<p>This is a <em>general solution</em>, meaning that $f$ is a yet-to-be determined function and substituting in provided boundary conditions is necessary to determine the exact expression for $f$.</p>
+<blockquote>
+<p><strong>Note:</strong> An important theme when studying general solutions of PDEs is to remember that arbitrary compositions of arbitrary functions <em>make no difference in writing the general solution to a PDE</em>, just like the addition of a different constant of integration makes no difference to the general solution to an ODE. The choice of arbitrary function is purely stylistic, since the solution to a PDE <strong>cannot</strong> be determined without provided boundary and initial conditions.</p>
+</blockquote>
+<p>We may verify that our general solution is indeed a solution to our PDE $a \dfrac{\partial u}{\partial x} + b \dfrac{\partial u}{\partial y}  = 0$ by taking the derivatives of $u$ and substituting them back into our PDE:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial u}{\partial x} &amp;= bf&#x27;(bx - ay) \\
+\dfrac{\partial u}{\partial y} &amp;= -af&#x27;(bx - ay) \\
+a \dfrac{\partial u}{\partial x} + b \dfrac{\partial u}{\partial y} &amp;=
+a [bf&#x27;(bx - ay)] + b[-af&#x27;(bx - ay)] \\
+&amp;= ab f&#x27;(bx - ay) - ab f&#x27;(bx - ay) \\
+&amp;= 0 \quad \checkmark
+\end{align*}
+$$
+</p>
+<p>Again, note that the solution $u(x, y) = f(bx - ay)$ is a <em>general solution</em> for arbitrary $f$. To find a unique solution, we must be provided with a condition that constrains $f$. For instance, such a condition may be:</p>
+<p class="mathcell">
+$$
+u(0, y) = \tan(-ky)
+$$
+</p>
+<p>If we substitute $u(0, y)$ into our general solution, we find that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(0, y) &amp;= f\left(\cancel{bx}^0 - ay\right) \\
+&amp;= f(-a y) \\
+\end{align*}
+$$
+</p>
+<p>Therefore we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+f(-ay) &amp;= \tan(-ky) \\
+f(\xi) &amp;= \tan (k \xi &#x2F; a)
+\end{align*}
+$$
+</p>
+<p>where we used the substitution $\xi = -ay$ to solve. Therefore, the <em>particular solution</em> given the condition that $u(0, y) = \tan(-ky)$ becomes:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(x, y) &amp;= \tan\left(\dfrac{k}{a}(bx - a y)\right) \\
+&amp;= \tan \left(k \left(\dfrac{b}{a} x -  y\right)\right)
+\end{align*}
+$$
+</p><h3 id="coordinate-transformation-method">Coordinate transformation method</h3>
+<p>We may alternately solve the transport equation by another means: a <strong>coordinate transformation</strong>. If we define the following transformed coordinates:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\tilde x = a x + by \\
+\tilde y = bx - ay
+\end{align*}
+$$
+</p>
+<p>Then by the chain rule, we may translate the derivatives with respect to $x$ and $y$ to derivatives with respect to $\tilde x$ and $\tilde y$:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial}{\partial x} &amp;= \dfrac{\partial \tilde x}{\partial x} \dfrac{\partial}{\partial \tilde x} + \dfrac{\partial \tilde y}{\partial x} \dfrac{\partial}{\partial \tilde y} \\
+&amp;= a \dfrac{\partial}{\partial \tilde x} + b \dfrac{\partial}{\partial \tilde y} \\
+\dfrac{\partial}{\partial y} &amp;= \dfrac{\partial \tilde x}{\partial y} \dfrac{\partial}{\partial \tilde x} + \dfrac{\partial \tilde y}{\partial y} \dfrac{\partial}{\partial \tilde y} \\
+&amp;= b \dfrac{\partial}{\partial \tilde x} - a\dfrac{\partial}{\partial \tilde y}
+\end{align*}
+$$
+</p>
+<p>Now if we <em>substitute</em> these expressions back into the equation, we find that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+a\dfrac{\partial u}{\partial x} + b \dfrac{\partial u}{\partial y} = 0 \\
+\left(a\dfrac{\partial}{\partial x} + b \dfrac{\partial}{\partial y}\right)u(x, y) = 0 \\
+\left[a\left( a \dfrac{\partial}{\partial \tilde x} + b \dfrac{\partial}{\partial \tilde y}\right) + b\left(b \dfrac{\partial}{\partial \tilde x} - a\dfrac{\partial}{\partial \tilde y}\right)\right]u(x, y) = 0 \\
+\left[a^2 \dfrac{\partial}{\partial \tilde x} + a b \dfrac{\partial}{\partial \tilde y} + b^2 \dfrac{\partial}{\partial \tilde x} - a b \dfrac{\partial}{\partial \tilde y}\right]u(x, y) = 0 \\
+\left[a^2 \dfrac{\partial}{\partial \tilde x} + \cancel{a b \dfrac{\partial}{\partial \tilde y}} + b^2 \dfrac{\partial}{\partial \tilde x} - \cancel{a b \dfrac{\partial}{\partial \tilde y}}\right]u(x, y) = 0 \\
+\left[a^2 \dfrac{\partial}{\partial \tilde x} + b^2 \dfrac{\partial}{\partial \tilde x} \right]u(x, y) = 0 \\
+(a^2 + b^2) \dfrac{\partial}{\partial \tilde x} u(x, y) = 0
+\end{align*}
+$$
+</p>
+<p>Where we notice how this transformation of coordinates means that the equation <em>greatly</em> simplifies. Since $a, b \neq 0$, then the only way for $(a^2 + b^2) \dfrac{\partial}{\partial \tilde x} u(x, y) = 0$ to be true is if $\dfrac{\partial}{\partial \tilde x} u(x, y) = 0$. Now, if we take the partial integral, we find that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial}{\partial \tilde x} u(x, y) = 0 \\
+\int \dfrac{\partial}{\partial \tilde x} u(x, y)\, d\tilde x = \int 0\, d\tilde x \\
+u(x, y) = f(\tilde y)
+\end{align*}
+$$
+</p>
+<p>Where we remember that we <em>always</em> have to add a constant of integration (technically, <em>function of integration</em>, which we represent with $f$ here) when taking the partial integral. Recall now that we defined our transformed coordinates such that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\tilde x = a x + by \\
+\tilde y = bx - ay
+\end{align*}
+$$
+</p>
+<p>Therefore, by substitution of the bottom equation for $\tilde y$, we have:</p>
+<p class="mathcell">
+$$
+u(x, y) = f(\tilde y) = f(bx - ay)
+$$
+</p>
+<p>Where the function $f$ must be determined by the <em>boundary conditions</em> supplied to the problem. Note that this is the <strong>same solution</strong> as we arrived by the method of characteristics, showing that the two methods yield <em>identical results</em> (it would be mathematically inconsistent if they didn't!)</p>
+<h3 id="generalized-method-of-characteristics">Generalized method of characteristics</h3>
+<p>We may generalize the method of characteristics for first-order linear PDEs with variable coefficients (rather than constant ones). These PDEs are in the form:</p>
+<p class="mathcell">
+$$
+f(x, y) \dfrac{\partial u}{\partial x} + g(x, y) \dfrac{\partial u}{\partial y} = 0
+$$
+</p>
+<p>As with before, we can interpret the left-hand side of the PDE as the directional derivative $\nabla_\mathrm{v} u$ along the direction of $\mathbf{v} = \langle f(x, y), g(x, y)\rangle$. Since the directional derivative is equal to zero, there exist <strong>characteristic curves</strong> along which $u(x, y)$ <em>does not change</em>, instead taking a <strong>constant value</strong>, just as we saw previously.</p>
+<p>To be able to solve for the characteristic curves, we again rewrite the equation into the form:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial u}{\partial x} + \dfrac{g(x, y)}{f(x, y)} \dfrac{\partial u}{\partial y} = 0
+$$
+</p>
+<p>And we still use the multivariable chain rule to find that:</p>
+<p class="mathcell">
+$$
+\dfrac{du}{dx} = \dfrac{\partial u}{\partial x} + \dfrac{\partial u}{\partial y} \dfrac{dy}{dx}
+$$
+</p>
+<p>From which we make the identification that if we set $\dfrac{dy}{dx} = \dfrac{g}{f}$, then $\dfrac{du}{dx}$ becomes identical to the left-hand side of the PDE. Thus, we need only solve for the differential equation:</p>
+<p class="mathcell">
+$$
+\dfrac{dy}{dx} = \dfrac{g(x, y)}{f(x, y)}
+$$
+</p>
+<p>This results in some solution in the form $y(x) = G(x) + c$ where $c$ is a constant. Afterwards, the steps match near-identically from prior discussion of the simpler case.</p>
+<h2 id="pdes-from-physical-phenomena">PDEs from physical phenomena</h2>
+<p>One of the motiving reasons for the study of partial differential equations is in their close relationship with <strong>physics</strong>. PDEs model many physical phenomena, such as flows, vibrations, oscillations, diffusion, advection, and heat conduction, just to name a few. In many cases, PDEs can be derived from physical principles, and we will show that this is the case with several examples.</p>
+<h3 id="the-transport-equation">The transport equation</h3>
+<p>We will first derive the <strong>transport equation</strong>, with a derivation partially based on <a href="https://www.ndsu.edu/pubweb/~novozhil/Teaching/483%20Data/02.pdf">the following guide</a>. The transport equation is given by:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial u}{\partial t} + c\dfrac{\partial u}{\partial x} = 0
+$$
+</p>
+<p>To begin our analysis, consider a moving distribution of mass (for instance, spreading cement or some syrup slowly flowing down a spoon), modelled by a <em>mass density function</em> $u(\mathbf{r}, t)$, which varies with time as the distribution moves. For simplicity, we can consider a <em>linear</em> distribution of mass, such that the distribution is confined to move along one axis. Thus, the mass density function depends only on one spatial and one time coordinate, and simplifies to $u(x, t)$. Let us call the <em>velocity</em> at which $u(x, t)$ moves as $c$ (which we will call the <em>speed of propagation</em>).</p>
+<p>Let the mass density at time $t$ be distributed between two endpoints $x = a$ and $x = b$. The total mass at $t$ is found by integrating the mass density between the endpoints $x = a$ and $x = b$. That is:</p>
+<p class="mathcell">
+$$
+M = \int_a^b u(x, t) dx
+$$
+</p>
+<p>We may find the rate of change of the mass within the region of $x = a$ to $x = b$ as follows:</p>
+<p class="mathcell">
+$$
+\dfrac{dM}{dt} = \dfrac{d}{dt}\int_a^b u(x, t)\, dx =\int_a^b \dfrac{\partial u}{\partial t}\, dx
+$$
+</p>
+<p>But by the law of the <strong>conservation of mass</strong>:</p>
+<p class="mathcell">
+$$
+\dfrac{dM}{dt} = -\Phi_M
+$$
+</p>
+<p>The quantity on the right-hand side is the <strong>mass flux</strong>, meaning the net amount of mass flow from the amount of mass leaving the region $x = [a, b]$ and the amount of mass entering the region at the same time. The flux is thus given by:</p>
+<p class="mathcell">
+$$
+\Phi_M = c\underbrace{\dfrac{dM}{dx}\bigg|_{x = b}}_\text{mass flow out} - c\underbrace{\dfrac{dM}{dx} \bigg|_{x = a}}_\text{mass flow in}
+$$
+</p>
+<p>Where $c$ is a factor to ensure the units are dimensionally consistent. But $\dfrac{dM}{dx}$, that is, the mass per unit length, is simply the mass density! Thus we may equivalenly write:</p>
+<p class="mathcell">
+$$
+\Phi_M = c[u(b, t) - u(a, t)]
+$$
+</p>
+<p>Where $u(b, t)$ is the mass density at $x = b$ at time $t$, and $u(a, t)$ is the mass density at $x = a$ at the same time. We note that by the fundamental theorem of calculus, we have:</p>
+<p class="mathcell">
+$$
+c[u(b, t) - u(a, t)] = \int_a^b c\dfrac{\partial u}{\partial x} dx
+$$
+</p>
+<p>So we have:</p>
+<p class="mathcell">
+$$
+\Phi_M = \int_a^b c\dfrac{\partial u}{\partial x} dx
+$$
+</p>
+<p>Recall from earlier that $\dfrac{dM}{dt} = -\Phi_M$. If we now substitute our derived expressions for $\dfrac{dM}{dt}$ and $\Phi_M$, we have</p>
+<p class="mathcell">
+$$
+\dfrac{dM}{dt} = \int_a^b \dfrac{\partial u}{\partial t}\, dx = -\int_a^b c\dfrac{\partial u}{\partial x} dx
+$$
+</p>
+<p>And therefore we have:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\int_a^b \dfrac{\partial u}{\partial t}\, dx = -\int_a^b c\dfrac{\partial u}{\partial x} dx \\
+\int_a^b \left(\dfrac{\partial u}{\partial t} + c\dfrac{\partial u}{\partial x}\right) d x = 0 \\
+\dfrac{\partial u}{\partial t} + c\dfrac{\partial u}{\partial x} = 0
+\end{gather*}
+$$
+</p>
+<p>We have arrived at the <strong>transport equation</strong>. More advanced readers may note that the transport equation is actually the 1D case of the more general <strong>continuity equation</strong>:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \rho}{\partial t} &amp;= -\left(\dfrac{\partial J_x}{\partial x} + \dfrac{\partial J_y}{\partial y} + \dfrac{\partial J_z}{\partial z}\right) \\
+&amp;= \nabla \cdot \mathbf{J}
+\end{align*}
+$$
+</p>
+<p>Various forms of the continuity equation appear in nearly all fields in physics, from fluid dynamics to electromagnetic theory to special and general relativity to even quantum mechanics. Thus, studying the transport equation is crucial to understanding its more complex derivatives.</p>
+<h3 id="the-wave-equation">The wave equation</h3>
+<p>The next PDE we will derive is the <strong>wave equation</strong>. In its most common form, the one-dimensional wave equation is given by:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial^2 u}{\partial t^2} - c^2 \dfrac{\partial^2 u}{\partial x^2} = 0
+$$
+</p>
+<p>The standard derivation of the wave equation comes from the study of a vibrating string, in which the tensile force of a string, together with a fair bit of mathematical wizardry, is used to arrive at the PDE. We will take an alternative route and offer a simpler - although less mathematically-rigorous - derivation.</p>
+<p>Recall that Newton's second law, in one dimension, is given by:</p>
+<p class="mathcell">
+$$
+m\dfrac{d^2 x}{dt^2} = F_x(x, t)
+$$
+</p>
+<p>where $F_x$ is a force in the $x$ direction. Now once again, consider a <em>distribution of mass</em> that can be modelled as a mass density function $u(x, t)$. Since we are considering a mass density (i.e. mass <em>over</em> length) rather than a singular mass, the left-hand side of Newton's second law becomes:</p>
+<p class="mathcell">
+$$
+m \dfrac{d^2 x}{dt^2} \Rightarrow \dfrac{\partial^2 u}{\partial t^2}
+$$
+</p>
+<p>Now suppose that at time $t = 0$, an external force is applied that causes a disturbance in the mass distribution. In the traditional derivation of the wave equation, this is stretching a string under tension; but our mass distribution doesn't <em>have to be</em> a string. The mass distribution would <em>respond</em> to the disturbance with a <strong>restoring force</strong> that "smooths out" the disturbance throughout the mass distribution to try to restore itself to equilibrium. Thus we would expect this force to be proportional to the <em>curvature</em> of the function $u(x, t)$ in space. But recall that the second derivative encodes information about curvature - this is why we use it to determine concavity (concave-up or concave-down) in optimization problems. So we could expect the restoring force to take the form:</p>
+<p class="mathcell">
+$$
+F \Rightarrow  c^2 \dfrac{\partial^2 u}{\partial x^2}
+$$
+</p>
+<p>Where $c^2$ is some constant to get the units right (we will discuss its physical significance later). Now, susbtituting everything into Newton's second law, we have:</p>
+<p class="mathcell">
+$$
+m\dfrac{d^2 x}{dt^2} = \dfrac{\partial^2 u}{\partial t^2} = c^2 \dfrac{\partial^2 u}{\partial x^2}
+$$
+</p>
+<p>Thus, with just a bit of rearrangement, we have arrived at the <strong>wave equation</strong>:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial^2 u}{\partial t^2} - c^2 \dfrac{\partial^2 u}{\partial x^2} = 0
+$$
+</p>
+<p>Note that interestingly, the wave equation can be factored into <em>two</em> transport equations, one that gives leftward-traveling (i.e. $-x$ direction) solutions and one that gives rightward-traveling (i.e. $x$ direction) solutions:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\dfrac{\partial^2 u}{\partial t^2} - c^2 \dfrac{\partial^2 u}{\partial x^2} =
+\left(\dfrac{\partial u}{\partial t} + c\dfrac{\partial u}{\partial x}\right)\left(\dfrac{\partial u}{\partial t} - c\dfrac{\partial u}{\partial x}\right) \\
+\left(\dfrac{\partial u}{\partial t} + c\dfrac{\partial u}{\partial x}\right)\left(\dfrac{\partial u}{\partial t} - c\dfrac{\partial u}{\partial x}\right) = 0 \\
+\Rightarrow
+\dfrac{\partial u}{\partial t} + c\dfrac{\partial u}{\partial x} = 0, \\
+\dfrac{\partial u}{\partial t} - c\dfrac{\partial u}{\partial x} = 0
+\end{gather*}
+$$
+</p>
+<p>This is a tremendously-helpful fact, as it means that solving the transport equation already brings us halfway to solving the wave equation.</p>
+<h3 id="the-diffusion-equation">The diffusion equation</h3>
+<p>Consider some distribution of mass given by mass density $u(\mathbf{r}, t)$ confined in a volume $\Omega$. For instance, this may be a gas, which has regions of varying density. The total mass of the gas within the volume would be given by the volume integral of $u$ over the region:</p>
+<p class="mathcell">
+$$
+M = \int_\Omega u(\mathbf{r}, t)\, dV
+$$
+</p>
+<p>By the conservation of mass, any gas that flows out of the volume must flow across the boundary of the volume. For instance, some gas flowing out of an (imaginary) spherical region must flow across the surface of the (imaginary) sphere. The rate at which gas flows, or <em>diffuses</em>, per unit area, is given by <strong>Fick's law</strong>:</p>
+<p class="mathcell">
+$$
+j = -\mathbf{n} \cdot k \nabla u
+$$
+</p>
+<p>To find the total rate of diffusion across the entire boundary of the volume (this is called the <strong>flux</strong>, denoted $\Phi$), we need to take the surface integral across the entire surface area of the volume's boundary:</p>
+<p class="mathcell">
+$$
+\Phi = \oint_{\partial \Omega} j \, dA = -\oint_{\partial \Omega} \mathbf{n} \cdot k\nabla u\, dA
+$$
+</p>
+<p>To ensure the conservation of mass, the reduction in mass of the gas within the volume must be equal to the flux (amount of diffusion out of the volume). Therefore, we have:</p>
+<p class="mathcell">
+$$
+\Phi = -\dfrac{dM}{dt}
+$$
+</p>
+<p>Therefore, by substitution of the expression for $M$ and $\Phi$:</p>
+<p class="mathcell">
+$$
+-\oint_{\partial \Omega} \mathbf{n} \cdot k\nabla u\, dA = -\dfrac{d}{dt}\int_\Omega u(\mathbf{r}, t)\, dV
+$$
+</p>
+<p>Now, recalling the divergence theorem, we can rewrite the surface integral on the left-hand side as a <em>volume integral</em>, as follows:</p>
+<p class="mathcell">
+$$
+-\oint_{\partial \Omega} \mathbf{n} \cdot k\nabla u\, dA \Rightarrow -\int_\Omega \nabla \cdot (k \nabla u)\, dV
+$$
+</p>
+<p>Therefore we have:</p>
+<p class="mathcell">
+$$
+-\int_\Omega \nabla \cdot (k \nabla u)\, dV = -\dfrac{d}{dt}\int_\Omega u(\mathbf{r}, t)\, dV
+$$
+</p>
+<p>We may combine this into one integral by using the Leibnitz rule (for differentiation under the integral sign):</p>
+<p class="mathcell">
+$$
+\dfrac{d}{dt}\int_\Omega u(\mathbf{r}, t)\, dV = \int_\Omega \dfrac{\partial}{\partial t} u(\mathbf{r}, t)\, dV
+$$
+</p>
+<p>So that we have:</p>
+<p class="mathcell">
+$$
+\int_\Omega \left(\dfrac{\partial}{\partial t} u(\mathbf{r}, t) - \nabla \cdot (k \nabla u)\right)\, dV = 0
+$$
+</p>
+<p>By the vanishing theorem, the quantity inside the brackets must also be zero. Therefore, we have:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial u}{\partial t} - \nabla \cdot (k \nabla u) = 0
+$$
+</p>
+<p>Written slightly differently, we have the <strong>diffusion equation</strong>:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial u}{\partial t} = \nabla \cdot (k \nabla u)
+$$
+</p>
+<p>Note that this is the <em>homogeneous case</em>. In the case where there is a source $f(\mathbf{r}, t)$ and $k = k(\mathbf{r})$, the linear inhomogeneous case becomes:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial u}{\partial t} = \nabla \cdot (k(\mathbf{r}) \nabla u) + f(\mathbf{r}, t)
+$$
+</p>
+<p>In the other case, if there is no source $f(\mathbf{r}) = 0$, and $k = \text{const.}$, then we have $\nabla \cdot (k \nabla u) = k\nabla^2 u$ and thus we have:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial u}{\partial t} = k \nabla^2 u
+$$
+</p>
+<p>If $u$ does not change with time, then $\dfrac{\partial u}{\partial t} = 0$ and thus we have <em>Laplace's equation</em>:</p>
+<p class="mathcell">
+$$
+\nabla^2 u = 0
+$$
+</p>
+<p>Another particular case of the diffusion equation is the <strong>heat equation</strong>, where the diffusing substance is heat. The distribution of heat is given by the temperature $T(\mathbf{r}, t)$ and the heat equation takes the form:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial T}{\partial t} = \alpha^2 \nabla^2 T
+$$
+</p>
+<blockquote>
+<p>The heat equation's physical basis is <strong>Fourier's law</strong>: for two regions of temperatures $T_1, T_2$, the rate of heat flow between the regions is proportional to the gradient of the temperature $T$. This is very similar to Fick's law for diffusion, and thus the heat equation is classified as a type of diffusion equation.</p>
+</blockquote>
+<p>Finally, a famous case of the diffusion equation (albeit where $u = \Psi(\mathbf{r}, t)$ is a complex-valued function) is the <strong>Schrödinger equation</strong>, which takes the form:</p>
+<p class="mathcell">
+$$
+i\hbar \dfrac{\partial \Psi}{\partial t} = -\dfrac{\hbar^2}{2m} \nabla^2 \Psi + V(\mathbf{r}) \Psi
+$$
+</p>
+<p>Due to the conservation of probability, the Schrödinger equation requires that the <em>normalization condition</em> to be satisfied:</p>
+<p class="mathcell">
+$$
+\int_\Omega |\Psi (\mathbf{r})|^2 dV = 1
+$$
+</p><h2 id="next-steps">Next steps</h2>
+<p>We've reached the end of the first part of the PDEs guide. Now is the time to continue to <a href="https://jackysci.com/intro-pdes/chapter-2/">part 2</a>!</p>
+
+        
+        <a id="jump-toc-btn" href="#toc">Show table of contents</a>
+        <a href="/notes" class="return-link">Back to all notes</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        var toc = document.getElementById("toc");
+        var tocPos = toc.offsetTop + toc.offsetHeight;
+        var tocBtn = document.getElementById("jump-toc-btn");
+
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+        // for performance reasons, we **only** render a certain
+        // number of equations that the viewer is actually viewing
+        function VisibleMathRenderer(config) {
+            /*
+            Renders only a limited number of equations on page load
+            to avoid poor performance
+             Params:
+                lastRenderedEquation: the most recently rendered equation.
+                        when this goes out of view, equations under it are rendered. 
+            */
+            var startElement = config.startElement
+            var maxEquations = config.maxEquations ? config?.maxEquations : 30;
+            this.startElement = startElement
+            this.maxEquations = maxEquations
+            // we wait until the user scrolls past the starting/
+            // ending elements to start rendering the whole page
+            this.canRenderWholePage = false;
+            this.pageRendered = false;
+            this.lastRenderedTopEquation = null;
+            this.lastRenderedBottomEquation = null;
+
+            this.render = function() {
+                renderMath(this.startElement);
+                // render previous 25 and following 25 equations
+                var prev = this.startElement.previousElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left prior to the element
+                    if (prev == null) {
+                        break;
+                    }
+                    renderMath(prev);
+                    prev = prev.previousElementSibling;
+                }
+                // store our last rendered equations
+                // we'll track scroll position later to
+                // check when the rest of the page should be rendered
+                this.lastRenderedTopEquation = prev;
+                console.log(this.lastRenderedTopEquation)
+
+                var next = this.startElement.nextElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left following the element
+                    if (next.nextElementSibling == null) {
+                        break;
+                    }
+                    renderMath(next);
+                    next = next.nextElementSibling;
+                }
+                this.lastRenderedBottomEquation = next;
+                // now allow rendering the rest of the equations
+                this.canRenderWholePage = true;
+            }
+
+            // render all math on the whole page
+            this.renderMathOnPage = function() {
+                // don't run until preliminary tasks
+                // are done so that the whole page
+                // can/should be rendered
+                if (!this.canRenderWholePage) {
+                    return;
+                }
+                // if the whole page's worth of equations
+                // are already rendered, don't render more
+                if (this.pageRendered) {
+                    return;
+                }
+                var topBound = this.lastRenderedTopEquation.getBoundingClientRect.top;
+                var bottomBound = this.lastRenderedBottomEquation.getBoundingClientRect.bottom;
+                var scrollTop, scrollBottom = getViewport();
+                // if the user is about to scroll past the initially-rendered equations
+                // we will render the whole page
+                if (scrollTop - 50 + window.scrollY < topBound || scrollBottom + 50 + window.scrollY > bottomBound) {
+                    console.log("Scrolled beyond!")
+                    var article = document.querySelector(".post");
+                    if (article) {
+                        this.renderMath(article);
+                    }
+                    this.pageRendered = true;
+                }
+                
+            }
+            
+        }
+
+        function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        function findFirstRelevantElement() {
+            // finds the first <p> tage that's closest to
+            // the viewer's viewport
+            var regex = /#.*/;
+            var m = regex.exec(window.location.href);
+            if (m !== null) {
+                return document.querySelector(m[0]);
+            } else {
+                return document.querySelector(".post p");
+            }
+        }
+        
+        // initialize page JS components
+        /*
+        var mathRenderer = new VisibleMathRenderer({
+            // start rendering with first <p> tag on the
+            // post
+            startElement: findFirstRelevantElement()
+        });
+        */
+        document.addEventListener("DOMContentLoaded", function() {
+            showTocBtnOnScroll();
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+
+        window.onscroll = function(){
+            // if (!mathRenderer.pageRendered) {
+            //     mathRenderer.renderMathOnPage();
+            // }
+            showTocBtnOnScroll();
+        };
+
+
+    </script>
+    
+
+
+</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A &quot;new&quot; way to define functions</title>
+  <meta name="description" content=" When we start to learn about differential equations, one of the first things we&#x27;re taught about them is that they&#x27;re often unsolvable - a fact that most students just learn to accept. What we&#x27;re not often taught is why so many differential equations are considered unsolvable. It turns out, it has everything to do with how we define &quot;solving&quot; a differential equation.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>A &quot;new&quot; way to define functions</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+
+        <!-- page content -->
+        <p>When we start to learn about differential equations, one of the first things we're taught about them is that they're often unsolvable - a fact that most students just learn to accept. What we're not often taught is <em>why</em> so many differential equations are considered unsolvable. It turns out, it has everything to do with how we define "solving" a differential equation.</p>
+<span id="continue-reading"></span>
+<p>Usually, when we talk about solving a differential equations, we refer to a solution that is expressed in terms of elementary functions. For example, consider the differential equation:</p>
+<p class="mathcell">
+$$
+\frac{df}{dx} = 2k
+$$
+</p>
+<p>The general solution of this differential equation is $f(x) = 2kx + C$. Notice that this solution is <em>elementary</em>. That means it is expressed in terms of a finite number of polynomials, power functions, trigonometric functions, exponential functions, and their inverses. These functions lend themselves well to mathematical instruction, given their ubiquity and relative simplicity to understand. But it becomes natural to think: are these functions all the functions that can ever exist?</p>
+<p>No! These are a very small subset of all the functions that can exist, and many functions that are smooth, infinitely differentiable, and continuous - in short, functions that lend themselves well to analysis - <em>aren't</em> able to be expressed in terms of elementary functions. It's as if a chef were told to cook with just 2 or 3 ingredients. The chef might know a lot of recipes, but with such few ingredients, the chef can only cook a few of those recipes!</p>
+<p>But we don't have to be limited by elementary functions. We can define a much, much larger body of functions in terms of differential equations. Consider, for example, the following differential equation:</p>
+<p class="mathcell">
+$$
+\frac{1}{2} k \left(\frac{du}{dx}\right)^2 - Ax^2 = \frac{d^2u}{dx^2}, \quad u(0) = 0, \quad u&#x27;(0) = -1
+$$
+</p>
+<p>We can use this differential equation to define a new, non-elementary function, which we might name $\text{kin}(x)$ given the differential equation has a kinetic term on the left-hand side. Our function $\text{kin}(x)$ is defined by this differential equation because it is the solution to this differential equation. We can now make any number of functions based on $\text{kin}(x)$, such as:</p>
+<p class="mathcell">
+$$
+f(x) = \text{kin}(x) e^{-3x} + \frac{5x^2}{\text{kin}(x)+ 8}
+$$
+</p>
+<p>Defining functions with differential equations creates a much, much larger set of functions than the elementary functions.  If we used this much larger set of functions, then <strong>any</strong> differential equation becomes solvable in terms of these functions, their compositions, and their inverses. Isn't that remarkable?</p>
+<p>But it makes sense to be a little doubtful of this line of reasoning. Aren't we just creating functions out of thin air this way? To prove that this concept isn't just mathematical sleight of hand, the same idea can be applied towards more familiar functions - such as the transcendental functions. Consider the question of how we would <em>define</em> the exponential function. What about the sine function? Or the cosine function? How to do so isn't immediately obvious, given that these functions, by definition, "transcend" algebra.</p>
+<p>However, using differential equations makes this a lot easier. We can define the exponential function with the differential equation:</p>
+<p class="mathcell">
+$$
+y&#x27; = y, \quad y(0) = 1
+$$
+</p>
+<p>Similarly, we can define the sine function with the differential equation:</p>
+<p class="mathcell">
+$$
+y&#x27;&#x27; = -y, \quad y(0) = 0, \quad y&#x27;(0) = 1
+$$
+</p>
+<p>And we can define the cosine function with the differential equation:</p>
+<p class="mathcell">
+$$
+y&#x27;&#x27; = -y, \quad y(0) = 1, \quad y&#x27;(0) = -1
+$$
+</p>
+<p>Using compositions of these functions (e.g. defining tangent in terms of sine and cosine), inverses of these functions (e.g. defining $\ln(x)$ as the inverse of $e^x$), or both (e.g. defining $a^x$ with $e^{x \ln a}$), we're able to define all of the common transcendental functions. And crucially, these are solid definitions, because (with a differential equations solver like Runge-Kutta) we can actually compute values for these functions. There is no more need for mere descriptions of a function that fall short of a definition, like "the sine function is a function that oscillates back and forth and repeats every $2\pi$ radians". We can actually rigorously define functions this way.</p>
+<p>They often say that math is a collection of tools invented by mathematicians that we use to reason about our world. Defining functions using differential equations gives us another tool to reveal a fuller picture of the universe - which is quite magical.</p>
+
+        
+        <a href="/" class="return-link">Back to home</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function() {
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+    </script>
+    
+
+
+</body>
+
+</html>

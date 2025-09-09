@@ -1,0 +1,2547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introductory classical dynamics</title>
+  <meta name="description" content=" This is a guide to the essentials of calculus-based physics and Newtonian mechanics, covering a variety of topics, including kinematics, dynamics, translational and rotational motion, gravity, and short introductions to fluid mechanics, special relativity, and thermodynamics.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Introductory classical dynamics</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+        <details class="toc" id="toc" open>
+        <summary>Table of contents</summary>
+        <p class="toc-info">Note: it is highly recommended to navigate by clicking links in the table of contents! It means you can use the back button in your browser to go back to any section you were reading, so you can jump back and forth between sections!</p>
+        <div>
+            <ul>
+            
+                <li>
+                    <a href="#dimensional-analysis">Dimensional analysis</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#kinematics-with-calculus">Kinematics with calculus</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#introduction-to-newtonian-mechanics">Introduction to Newtonian mechanics</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#special-cases-of-newton-s-2nd-law">Special cases of Newton&#x27;s 2nd Law</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#constant-acceleration-and-the-kinematic-equations">Constant acceleration and the kinematic equations</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#drag-force-application">Drag force application</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#vectors-and-their-representations">Vectors and their representations</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#vector-kinematics">Vector kinematics</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#energy">Energy</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#work-and-conservation-of-energy">Work and conservation of energy</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#potential-energy-landscapes">Potential energy landscapes</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#multivariable-functions-and-partial-derivatives">Multivariable functions and partial derivatives</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#vector-calculus">Vector calculus</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#work-in-higher-dimensions">Work in higher dimensions</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#conservation-of-energy-in-higher-dimensions">Conservation of energy in higher dimensions</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#addendum-non-conservative-forces">Addendum: non-conservative forces</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#uniform-circular-motion">Uniform circular motion</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#a-case-study-of-uniform-circular-motion">A case study of uniform circular motion</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#newton-s-theory-of-gravity">Newton&#x27;s theory of gravity</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#perfectly-circular-orbits">Perfectly circular orbits</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#newton-s-shell-theorem">Newton&#x27;s shell theorem</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#gravitational-potential-energy">Gravitational potential energy</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#gravitational-total-energy-and-escape-velocity">Gravitational total energy and escape velocity</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#angular-momentum">Angular momentum</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#kepler-s-laws">Kepler&#x27;s laws</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#mathematical-interlude-a-taylor-series">Mathematical interlude A: Taylor series</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#mathematical-interlude-b-complex-numbers">Mathematical interlude B: Complex numbers</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#oscillators">Oscillators</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#the-simple-harmonic-oscillator-and-small-oscillations">The simple harmonic oscillator and small oscillations</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-damped-oscillator">The damped oscillator</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#driven-damped-harmonic-oscillators">Driven damped harmonic oscillators</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#applications-of-the-harmonic-oscillator">Applications of the harmonic oscillator</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#momentum-and-impulse">Momentum and impulse</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#introduction-to-collisions">Introduction to collisions</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#elastic-collisions">Elastic collisions</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#perfectly-inelastic-collisions">Perfectly inelastic collisions</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-ballistic-pendulum">The ballistic pendulum</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#many-body-systems">Many-body systems</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#center-of-mass-for-many-body-systems">Center of mass for many-body systems</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#rigid-body-and-rotational-motion">Rigid body and rotational motion</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#vector-representations-of-rotations">Vector representations of rotations</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#torque">Torque</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#moment-of-inertia-in-rotational-motion">Moment of inertia in rotational motion</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#rotational-dynamics">Rotational dynamics</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#rolling-with-and-without-slipping">Rolling with and without slipping</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#fluid-mechanics">Fluid mechanics</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#fluid-pressure">Fluid pressure</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#pascal-s-law">Pascal&#x27;s law</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#archimedes-principle">Archimedes&#x27; principle</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#fluid-flow">Fluid flow</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#bernoulli-s-equation">Bernoulli&#x27;s equation</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#fields">Fields</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#addenum-integral-notations">Addenum: integral notations</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#flux">Flux</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#gauss-s-theorem-divergence-theorem">Gauss&#x27;s theorem (divergence theorem)</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-continuity-equation">The continuity equation</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#flux-for-other-fields">Flux for other fields</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#waves">Waves</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#principle-of-superposition">Principle of Superposition</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#interference">Interference</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#waves-in-fluids">Waves in fluids</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#electromagnetic-waves">Electromagnetic waves</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#a-very-short-introduction-to-special-relativity">A very short introduction to Special Relativity</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#thermodynamics">Thermodynamics</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#thermodynamic-work">Thermodynamic work</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#thermodynamic-processes">Thermodynamic processes</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#entropy">Entropy</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#conclusion">Conclusion</a>
+                    
+                </li>
+            
+            </ul>
+        </div>
+        </details>
+        
+
+        <!-- page content -->
+        <p>This is a guide to the essentials of calculus-based physics and Newtonian mechanics, covering a variety of topics, including kinematics, dynamics, translational and rotational motion, gravity, and short introductions to fluid mechanics, special relativity, and thermodynamics.</p>
+<span id="continue-reading"></span>
+<p>This guide is adapted from notes taken in RPI's Physics 1150 course, taught by Professor <a href="https://faculty.rpi.edu/gyorgy-korniss">Gyorgy Korniss</a>, to whom I give my thanks. I should also mention that it is recommended to have the <a href="https://jackysci.com/calculus-series/">calculus series</a> notes open at the same time while reading, as these notes are calculus-heavy.</p>
+<h2 id="dimensional-analysis">Dimensional analysis</h2>
+<p>Before we even start doing any physics, it is important to mention a key tool in the physicist's toolbox: <strong>dimensional analysis</strong>. Dimensional analysis is a method of doing a "sanity check" for <em>numerical computations</em> with units. That is, an equation only makes sense if the units checks out.</p>
+<p>For instance, consider the following equation, which gives an object's position $x$ as a function of its acceleration $a$ at time $t$:</p>
+<p class="mathcell">
+$$
+x(t) = \frac{1}{2} at^2
+$$
+</p>
+<p>Does this make sense with dimensional analysis? Well, acceleration is in units of $\pu{ms^{-2}}$ and time is in units of $\pu{s^2}$, so multiplying them together and by 1/2 (a dimensionless value) gives units of $m$ (meters). And meters are a reasonable unit for the position of an object. The units do look correct! And indeed, this equation is the correct equation for an object undergoing constant acceleration from rest.</p>
+<p>To keep track of dimensions, it is often more useful to use general dimensions for each term - $M$ for the mass dimension, $L$ for the length dimension, $T$ for the time dimension. So, plugging in this:</p>
+<p class="mathcell">
+$$
+L = \frac{1}{2} \times LT^{-2} \times T^2 = L
+$$
+</p>
+<p>we have the correct units, so we have verified it is correct!</p>
+<h2 id="kinematics-with-calculus">Kinematics with calculus</h2>
+<p>Position, velocity, and acceleration are fundamental quantities in physics whose collective study is known as <strong>kinematics</strong>. The quantities are related through differential and integral calculus. For instance, they can be written as derivatives of each other:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+v(t) &amp;= \frac{dx}{dt} \\
+a(t) &amp;= \frac{dv}{dt} = \frac{d^2 x}{dt^2}
+\end{align*}
+$$
+</p>
+<p>And accumulated changes in position and velocity are given by integrals of velocity and acceleration, respectively:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\Delta x = \int_{t_0}^{t_1} v(t) dt \\
+\Delta v = \int_{t_0}^{t_1} a(t) dt
+\end{align*}
+$$
+</p><h2 id="introduction-to-newtonian-mechanics">Introduction to Newtonian mechanics</h2>
+<p>Newtonian mechanics are a formulation of physics developed primarily by Isaac Newton and his contemporaries. In Newtonian mechanics, <em>forces</em> are the cause of motion. When there are no forces acting on an object, or when all the forces are balanced, the object stays in constant motion. When the forces are not balanced, then the object experiences a change in its motion. Both of these observations, and more, are described by <strong>Newton's second law</strong>:</p>
+<p class="mathcell">
+$$
+F_\mathrm{net}(x(t), \dot x(t), t) = m \frac{d^2 x}{dt^2}
+$$
+</p>
+<p>where the net force $F_\mathrm{net}$ is given by the sum of all forces:</p>
+<p class="mathcell">
+$$
+F_\mathrm{net} = \sum_i F_i(x, \dot x, t) = F_1 (x, \dot x, t) + F_2 (x, \dot x, t) + \dots + F_n (x, \dot x, t)
+$$
+</p>
+<p>This is a <strong>2nd-order ordinary differential equation</strong> that describes how an object moves, which is also why it's called an <em>equation of motion</em>. In fact, it's one of the most important equations of motion in physics. It describes the physics of many different systems, from planetary orbits to springs to projectiles to charged particles moving through electromagnetic fields.</p>
+<p>However, to actually apply Newton's 2nd Law can be quite difficult. Other than a few special cases with known general solutions, the differential equation often cannot be solved exactly, and even when exact solutions exist, there is no general formula for them. Luckily, the special cases of Newton's 2nd law are still sufficient to describe the physics of many systems, and a brief overview of these special cases is given in the following section.</p>
+<h3 id="special-cases-of-newton-s-2nd-law">Special cases of Newton's 2nd Law</h3>
+<p>The following special cases of Newton's 2nd law are cases in which the differential equation can be solved with the method of <strong>separation of variables</strong>. This is a technique used widely throughout physics to solve differential equations.</p>
+<p>In a <strong>constant-force problems</strong>, we assume $F$ is a constant. Therefore:</p>
+<p class="mathcell">
+$$
+F = m \frac{d^2 x}{dt^2}
+$$
+</p>
+<p>Which we can rewrite as:</p>
+<p class="mathcell">
+$$
+F = m \frac{dv}{dt}
+$$
+</p>
+<p>Using integration, we can solve:</p>
+<p class="mathcell">
+$$
+v(t) = \int \frac{F}{m} dt = v_0 + \frac{F}{m}t
+$$
+</p>
+<p>Then, we solve for:</p>
+<p class="mathcell">
+$$
+v = \frac{dx}{dt}
+$$
+</p>
+<p>We integrate again to find:</p>
+<p class="mathcell">
+$$
+x(t) = \int v(t) dt = x_0 + v_0 t + \frac{1}{2} \frac{F}{m} t^2
+$$
+</p>
+<p>In a <strong>time-dependent force problem</strong>, then:</p>
+<p><p class="mathcell">
+$$
+v(t) = \int \frac{F(t)}{m} dt
+$$
+</p>
+<p class="mathcell">
+$$
+x(t) = \int v(t) dt
+$$
+</p></p>
+<p>which can be rewritten as one integral:</p>
+<p class="mathcell">
+$$
+x(t) = \frac{1}{m} \int_0^t \int_0^t F(s) ~ds~ds
+$$
+</p>
+<blockquote>
+<p>Note here we are replacing $F(t)$ with $F(s)$ to avoid mixing the integration bounds with integration variable.</p>
+</blockquote>
+<p>Finally, in a <strong>position-dependent force problem</strong>, then the general solution is an implicit solution given by:</p>
+<p class="mathcell">
+$$
+\int \left(\frac{2}{m} \int F(x)~dx + C \right)^{-{1 \over 2}} dx - t = 0
+$$
+</p><h3 id="constant-acceleration-and-the-kinematic-equations">Constant acceleration and the kinematic equations</h3>
+<p>A very important case of Newton's 2nd law follows from a force that provides a constant acceleration $a$ along the $x$ axis. This is also known as <strong>constant-acceleration motion</strong>, and it possesses an analytical solution by direct integration. The solution can be rearranged in terms of the variables $x(t), v(t), a, v_0, t$ to form the 4 <strong>kinematic equations</strong>:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+x(t) &amp;= \dfrac{v_0 + v}{2}t \\
+x(t) &amp;= x_0 + v_0 t + \dfrac{1}{2} at^2 \\
+v(t) &amp;= v_0 + a t \\
+v^2 &amp;= v_0^2 + 2a (x - x_0)
+\end{align*}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> the format the kinematic equations are presented in varies from source to source. For instance, some sources define $\Delta x \equiv x - x_0$, and some sources use $s(t)$ rather than $x(t)$, but the overall content is the same.</p>
+</blockquote>
+<h3 id="drag-force-application">Drag force application</h3>
+<p>An example of the time-dependent case of Newton's 2nd law is an object experiencing drag. The drag force is a general class of forces that includes (dyamic, i.e motional) friction, air resistance, water drag, and so forth, <strong>all of which point <em>opposite</em> to the direction of motion</strong>.</p>
+<p>We first choose our coordinate system to solve the problem. For optimal convenience, since the object is falling downwards, it is convenient to choose the $-z$ axis as our positive direction. Then, for an object falling through the atmosphere, the drag force is given by $F_D = -bv$, and is velocity-dependent; the gravitational force is given by $F_G = mg$, and is constant.</p>
+<p>Using the principle of superposition of forces, we can add all the individual forces acting on a falling object to obtain:</p>
+<p class="mathcell">
+$$
+m \frac{dv}{dt} = mg - bv, \quad v(0) = 0
+$$
+</p>
+<p>This is a <strong>separable</strong> first-order ordinary differential equation, which we can solve by the method of separation of variables.</p>
+<p>Therefore, we have:</p>
+<p><p class="mathcell">
+$$
+\frac{dv}{dt} = g - \frac{b}{m} v
+$$
+</p>
+<p class="mathcell">
+$$
+\frac{dv}{g - (b&#x2F;m) v} = dt
+$$
+</p></p>
+<p>Now, we can integrate both sides to solve (the left-hand side uses a u-substitution):</p>
+<p class="mathcell">
+$$
+\int \frac{dv}{g - (b&#x2F;m) v} = \int dt
+$$
+</p><p class="mathcell">
+$$
+-\frac{b}{m} \ln \left( g - \frac{b}{m} v \right) = t + C
+$$
+</p>
+<p>Solving for the initial condition $v(0) = 0$, we have:</p>
+<p class="mathcell">
+$$
+-\frac{m}{b} \ln |g| = C
+$$
+</p>
+<p>Using algebraic manipulation, we can solve for $v$ in terms of $t$:</p>
+<p class="mathcell">
+$$
+v(t) = \frac{mg}{b} \left(1 - e^{-\frac{b}{m}t} \right)
+$$
+</p>
+<p>Note that if we take the limit of $v(t)$ as $t \to \infty$, then we reach a terminal (constant) velocity:</p>
+<p class="mathcell">
+$$
+\lim_{t \to \infty} v(t) = \frac{mg}{b}
+$$
+</p><h2 id="vectors-and-their-representations">Vectors and their representations</h2>
+<p>A vector is a mathematical object with special properties that is often used to model physical phenomena.</p>
+<p>A <strong>coordinate system</strong> is a measurement grid centered at a particular origin. Vectors can be written in any coordinate system. To do so, they are written in terms of unit (basis) vectors, which are the vectors of length 1 that align with each of the axes of the given coordinate system.</p>
+<p>For instance, vectors in Cartesian space can be written in terms of the $\hat i, \hat j, \hat k$ vectors that correspond to the x, y, z Cartesian axes. They are notationally written as follows:
+<p class="mathcell">
+$$
+\vec a = a_x \hat i + a_y \hat j = \langle a_x, a_y\rangle
+$$
+</p></p>
+<p>There are other coordinate systems that can be used, including polar, spherical, and cylindrical. For example, polar vectors are written with:</p>
+<p class="mathcell">
+$$
+\hat a = a_r \hat r + a_\phi \hat \phi = \langle a_r, a_\phi \rangle
+$$
+</p>
+<p>Coordinate systems can be converted - for example, these are conversions of polar to cartesian:</p>
+<p class="mathcell">
+$$
+x = r \cos \phi, \quad
+y = r \sin \phi
+$$
+</p>
+<p>And these are the conversions from cartesian to polar:</p>
+<p class="mathcell">
+$$
+r = \sqrt{x^2 + y^2}, \quad \phi = \tan^{-1} \left(\frac{y}{x}\right)
+$$
+</p>
+<p>The length of a vector, also called the magnitude or norm, is found by taking the square root of the sum of the squares of each component:</p>
+<p class="mathcell">
+$$
+\| \vec s \| = \sqrt{s_x^2 + s_y^2}
+$$
+</p>
+<p>Vectors sum and subtract elementwise. To do so, just add/subtract each of the vector's components:</p>
+<p class="mathcell">
+$$
+\vec s = \vec a + \vec b = \langle a_x + b_x, a_y + b_y \rangle
+$$
+</p>
+<p>Vectors can also be multiplied by scalars, which are simply numbers. Scalar multiplication is performed by multiplying the scalar by each of their components:</p>
+<p class="mathcell">
+$$
+\vec s = c \vec a = \langle c \cdot a_x, c \cdot a_y \rangle
+$$
+</p>
+<p>The dot product of two vectors results in a scalar, and is given by:</p>
+<p class="mathcell">
+$$
+\vec a \cdot \vec b = \|a \| \|b \| \cos \phi = a_x b_x + a_y b_y
+$$
+</p>
+<p>The cross product of two vectors results in a new vector, and is given by:</p>
+<p class="mathcell">
+$$
+\vec a \times \vec b = \| a \| \| b \|  \sin \phi = \langle a_y b_z - a_z b_y, a_z b_x - a_x b_z, a_x b_y - a_y b_x \rangle
+$$
+</p>
+<p>To remember this formula:</p>
+<ul>
+<li>Remember that the components' subscripts are in the order $yz$, $zx$, $yx$ (e.g. $yz$ expands into $a_y b_z - a_z b_y$)</li>
+<li>Follow the cycle $yzx$, the first component is the $y \to z$, the second is $z \to x$, the third is $y \to x$</li>
+</ul>
+<p>(to remember this, just remember the $yz, zx, yx$ pattern)</p>
+<p>The cross product is defined only for 3D space, and is anticommutative: $\vec a \times \vec b = - (\vec b \times \vec a)$. Taking the cross product of 2D vectors requires making them 3D vectors with a z-component of zero.</p>
+<p>The area of a parallelogram is given by the <em>magnitude</em> of the cross product of the two vectors:</p>
+<p class="mathcell">
+$$
+A = ab \sin \theta = \| \vec a \times \vec b \|
+$$
+</p><h2 id="vector-kinematics">Vector kinematics</h2>
+<p>The position vector is given by $\vec s = \langle x(t), y(t), z(t) \rangle$ in Cartesian coordinates. The velocity vector is given by the derivative of position vector with respect to time. That is:</p>
+<p class="mathcell">
+$$
+\vec v = \frac{d \vec s}{dt} = \left\langle \frac{dx}{dt}, \frac{dy}{dt}, \frac{dz}{dt} \right\rangle
+$$
+</p>
+<p>And similarly, the acceleration vector is defined by the time derivative of the velocity vector:</p>
+<p class="mathcell">
+$$
+\vec a = \frac{d \vec v}{dt} = \frac{d^2 \vec s}{dt^2} = \left \langle \frac{d^2 x}{dt^2}, \frac{d^2 y}{dt^2}, \frac{d^2 z}{dt^2} \right \rangle
+$$
+</p>
+<p>Note that Newton's second law in vector form (for 2D or 3D) is given by a vector differential equation that expand to 4 (in 2D) or 6 (in 3D) coupled ordinary differential equations:</p>
+<p class="mathcell">
+$$
+m \frac{d^2 \vec s}{dt^2} = m\frac{d \vec v}{dt} = \vec F \left(\vec s, \frac{d\vec s}{dt}, t\right)
+$$
+</p>
+<p>Luckily, a shift of coordinates is typically sufficient to be able to treat most 2D and 3D problems as 2D or 1D problems, reducing the need to solve such a complex vector differential equation.</p>
+<p><strong>Projectile motion</strong> (motion under constant downward acceleration) in 2D is a special case of this vector differential equation that is able to be solved analytically:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+&amp;m \frac{dv_x}{dt} = 0, &amp;m \frac{dv_y}{dt} = -mg \\
+&amp;v_x (0) = v_0 \cos \theta, &amp;v_y(0) = v_0 \sin (\theta)
+\end{align*}
+$$
+</p>
+<p>The analytical solution is given by:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\vec s(t) = \langle x(t), y(t) \rangle \\
+x(t) = x_0 + v_0 \cos (\theta) t, \quad y(t) = y_0 + v_0 \sin (\theta) t - \frac{1}{2} gt^2
+\end{gather*}
+$$
+</p>
+<p>We can find the range of a projectile (how far it travels horizontally) by solving for the value of $t$ where $y(t) = 0$ and then substituting that value of $t$ into $x(t)$. That is:</p>
+<p class="mathcell">
+$$
+y(t) = 0 \Rightarrow t = 0, t=\frac{2v_0 \sin \theta}{g}
+$$
+</p>
+<p>The first solution is trivial (not useful) but the second is nontrivial. Substituting into $x(t)$, we have:</p>
+<p class="mathcell">
+$$
+R = x_0 + v_0 \cos \theta \left(\frac{2 v_0 \sin \theta}{g}\right) = x_0 + \frac{v_0^2 \sin (2 \theta)}{g}
+$$
+</p>
+<p>To maximize the range $R$ given the angle $\theta$, we simply set $\frac{dR}{d\theta} = 0$ as with typical methods of optimization in calculus. From there, it can be found that the optimal angle is at $\theta = \frac{\pi}{4}$.</p>
+<p>Lastly, it can be shown that this traces out the trajectory of a parabola. To do so, we take the two parametric equations $x(t)$ and $y(t)$ and eliminate the parameter. From this we get:</p>
+<p class="mathcell">
+$$
+y = -\frac{g}{2v_{0x}^2 } x^2 + \frac{v_{0y}}{v_{0x}}x
+$$
+</p>
+<p>Which can be written as:</p>
+<p class="mathcell">
+$$
+y = -\frac{g}{2 v_0^2 \cos^2 \theta} x^2 + v_0 \tan (\theta) x
+$$
+</p><h2 id="energy">Energy</h2>
+<p>Energy can be understood as a measure of the ability to make things happen - causing a ball to move, a plane to fly, or a star to shine. Without energy, the universe would be boring and nothing interesting would happen.</p>
+<p>Energy (at least in non-quantum physics) comes in two main types: <strong>kinetic energy</strong>, which is energy that causes things to move, and <strong>potential energy</strong>, which is stored energy that <em>can</em> be released to cause things to move. The total energy in a closed system is always constant.</p>
+<h3 id="work-and-conservation-of-energy">Work and conservation of energy</h3>
+<p>Energy can never be created nor destroyed, only transferred. Work is the transfer of energy by a force applied along a path between two points. It is a scalar quantity, and in one dimension it is defined by:</p>
+<p class="mathcell">
+$$
+W = \int_{x_0}^{x_1} F(x) dx
+$$
+</p>
+<p>A force can release potential energy - that is, the stored energy - and transfer the released energy to objects in the form of kinetic energy. The kinetic energy gained by an object acted on by a force is equal to the work done by the force and equal to the negative of the potential energy released:</p>
+<p class="mathcell">
+$$
+W = \Delta K = -\Delta U
+$$
+</p>
+<p>To prove this, note that force can be defined by:</p>
+<p class="mathcell">
+$$
+F = m \frac{dv}{dt}
+$$
+</p>
+<p>We can use this alternate definition of force to obtain the work-energy theorem:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+W &amp;= \int_{x_0}^{x_1} m\frac{dv}{dt} dx \\
+&amp;= \int_{x_0}^{x_1} m\frac{dv}{dt} \frac{dx}{dt} dt \\
+&amp;= \int_{x_0}^{x_1} m \frac{dv}{dt} v dt \\
+&amp;= \int_{v_0}^{v_1} mvdv \\
+&amp;= \frac{1}{2} m(v_2^2 - v_1^2) \\
+&amp;= \frac{1}{2} m \Delta v^2 \\
+&amp;= \Delta K
+\end{align*}
+$$
+</p>
+<p>If a force depends only on position, it is called a <strong>conservative force</strong>. Conservative forces can be written in terms of a potential energy function $U(x)$ in 1D via:</p>
+<p class="mathcell">
+$$
+F(x) = -\frac{dU}{dx}
+$$
+</p>
+<p>Using the same method as prior to obtain the work-energy theorem, we find that:</p>
+<p class="mathcell">
+$$
+W = \int_{x_0}^{x_1} -\frac{dU}{dx} dx = -\int_{x_0}^{x_1} dU = -U(x) \bigg |_{x_0}^{x_1} = -\Delta U
+$$
+</p>
+<p>Therefore:</p>
+<p class="mathcell">
+$$
+W = -\Delta U = \Delta K
+$$
+</p>
+<p>Or written differently:</p>
+<p class="mathcell">
+$$
+K_1 + U_1 = K_2 + U_2
+$$
+</p>
+<p>The total mechanical energy $E$ is conserved for conservative forces (this means it's a constant):</p>
+<p class="mathcell">
+$$
+E = K + U, \quad \frac{dE}{dt} = 0
+$$
+</p>
+<blockquote>
+<p>Note: for non-conservative forces such as friction, the total energy is conserved, but the total energy is not equal to the total mechanical energy.</p>
+</blockquote>
+<p>Recall that while a conservative force can be perfectly defined by the associated potential energy, the potential energy cannot be perfectly defined by the force. This is because:</p>
+<p class="mathcell">
+$$
+U(x) = -\int F(x) dx + C
+$$
+</p>
+<p>And therefore any $C$ could possibly be chosen. So, one often choses the constant such that the potential energy is zero at a conveniently specified location $x_0$, which we can call the "ground level" or "reference point" of the potential energy:</p>
+<p class="mathcell">
+$$
+U(x) = -\int_{x_0}^x F(x&#x27;) dx&#x27;
+$$
+</p>
+<p>For instance, consider the example of 1D constant gravity, where $F(x) = -mg$ and $U(0) = 0$, we have:</p>
+<p class="mathcell">
+$$
+U(x) = -\int_0^h F(x) dx = mgh
+$$
+</p>
+<p>Given that $x(0) = h, v(0) = 0$, and using conservation of energy, we have:</p>
+<p><p class="mathcell">
+$$
+E_1 = E_2
+$$
+</p>
+<p class="mathcell">
+$$
+mgh = \frac{1}{2} mv^2 \Rightarrow v = \sqrt{2gh}
+$$
+</p></p>
+<p>For the more general 1D case, we can write the conservation of energy as a differential equation, where $E$ is constant:</p>
+<p class="mathcell">
+$$
+\frac{1}{2} m \left(\frac{dx}{dt}\right)^2 + U(x) = E
+$$
+</p>
+<p>Rearranging, we get the <strong>separable 1st-order ODE</strong>:</p>
+<p class="mathcell">
+$$
+\frac{dx}{dt} = \pm \sqrt{\frac{2}{m}(E - U(x))}
+$$
+</p><h3 id="potential-energy-landscapes">Potential energy landscapes</h3>
+<p>Why is it beneficial to work with the potential energy, rather than, say, the force? One important reason is that the <em>shape</em> of the potential energy function $U(x)$ characterizes the motion of an object. In general, all objects in physics want to lower their potential energy to as low as possible. In fact, it is a common (though not universal) convention in physics to define the potential energy with respect to a <em>specific</em> reference point such that if the object's potential energy $U(x) &gt; 0$, then it is veering towards an <strong>unstable position</strong>, whereas if $U(x) &lt; 0$, then it is approaching a <strong>stable position</strong>. The object is at a <strong>permanently stable position</strong> (which we call a <em>stable equilibrium</em>) when it is at a minimum of $U(x)$.</p>
+<blockquote>
+<p><strong>Note:</strong> There is nothing particularly special about negative potential energy values - it is just a matter of this convention that is commonly used throughout physics.</p>
+</blockquote>
+<p>The important takeaway is this: by plotting the graph of $U(x)$, the potential energy function, we can therefore determine the characteristics of the motion of an object without even needing to solve the (often unsolvable) equations of motion! The following features of $U(x)$ are especially important:</p>
+<ul>
+<li>Local minimum of $U(x)$ - <strong>stable</strong> equilibrium position</li>
+<li>Local maximum $U(x)$ - <strong>unstable</strong> equilibrium position</li>
+<li>Lower potential energy regions - the object has <strong>more</strong> kinetic energy and so moves <strong>faster</strong></li>
+<li>Higher potential energy regions - the object has <strong>less</strong> kinetic energy and so moves <strong>slower</strong></li>
+</ul>
+<h2 id="multivariable-functions-and-partial-derivatives">Multivariable functions and partial derivatives</h2>
+<p>Consider a multivariable function $f(x, y, z)$. How would the derivative of this function be defined? Since the function depends on multiple variables, you can differentiate with respect to each individual variable. Each derivative is known as a <em>partial derivative</em>, and is denoted as follows:</p>
+<p class="mathcell">
+$$
+\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z}
+$$
+</p>
+<p>When differentiating with respect to one variable, all the other variables are kept constant. That is, if $f(x, y) = x^2 y^3$, then when taking the partial derivative with respect to $x$, we factor out all terms in $y$ and consider them a constant:</p>
+<p class="mathcell">
+$$
+\frac{\partial f}{\partial x} = \frac{\partial}{\partial x} x^2 y^3 = y^3 \frac{\partial}{\partial x} x^2 = 2xy^3
+$$
+</p>
+<p>Similarly, if taking the partial derivative with respect to $y$, we factor out all terms in $x$ and consider them a constant:</p>
+<p class="mathcell">
+$$
+\frac{\partial f}{\partial y} = \frac{\partial}{\partial y} x^2 y^3 = x^2 \frac{\partial}{\partial y} y^3 = 3x^2 y^2
+$$
+</p>
+<p>The total differential of a multivariable function is given by:</p>
+<p class="mathcell">
+$$
+df = \frac{\partial f}{\partial x} dx + \frac{\partial f}{\partial y} dy + \frac{\partial f}{\partial z} dz
+$$
+</p><h2 id="vector-calculus">Vector calculus</h2>
+<p>We say that the gradient of a multivariable function $f(x, y, z)$ is given by:</p>
+<p class="mathcell">
+$$
+\left(\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z}\right)
+$$
+</p>
+<p>This is often notated $\nabla f$ for "gradient of $f$", where $\nabla$ is a vector operator defined by:</p>
+<p class="mathcell">
+$$
+\nabla = \left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right)
+$$
+</p>
+<p>Similarly an infinitesimal displacement can be written as:
+<p class="mathcell">
+$$
+d \vec s = (dx, dy, dz)
+$$
+</p></p>
+<p>Using this notation:</p>
+<p class="mathcell">
+$$
+df = \nabla f \cdot d\vec s
+$$
+</p>
+<p>There are two other vector operatior of relevance in vector calculus. These operate on vector-valued multivariable functions, which are typically in the form:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\vec F(x, y, z) &amp;= \begin{bmatrix}
+F_x(x, y, z) \\
+F_y(x, y, z) \\
+F_z(x, y, z)
+\end{bmatrix} \\ &amp;=
+F_x(x, y, z) \hat i + F_y(x, y, z) \hat j + F_z (x, y, z) \hat k
+\end{align*}
+$$
+</p>
+<p>First, the <strong>divergence</strong> operator measures flow rate, and is given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\nabla \cdot \vec F &amp;= \left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right) \cdot (F_x, F_y, F_z) \\ &amp;=\frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}
+\end{align*}
+$$
+</p>
+<p>Second, the <strong>curl</strong> operator measures rotation, and is given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\nabla \times \vec F &amp;= \left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right) \times (F_x, F_y. F_z) \\ &amp;= \left(
+\frac{\partial F_z}{\partial y} - \frac{\partial F_y}{\partial z},
+\frac{\partial F_x}{\partial z} - \frac{\partial F_z}{\partial x},
+\frac{\partial F_{y}}{\partial x}- \frac {\partial F_x}{\partial y}
+\right)
+\end{align*}
+$$
+</p><h2 id="work-in-higher-dimensions">Work in higher dimensions</h2>
+<p>In higher dimensions, force is a vector-valued function of the position $\vec r(t)$, given as follows:</p>
+<p class="mathcell">
+$$
+\vec r(t) = x(t) \hat i + y(t) \hat j + z(t) \hat k
+$$
+</p>
+<p>Therefore the force can generally be written in component form as:</p>
+<p class="mathcell">
+$$
+\vec F = F_x \hat i + F_y \hat j + F_z \hat k
+$$
+</p>
+<p>Do remember that $F_x, F_y, F_z$ are each functions of $x, y, z$. Extending the definition of 1D work, the differential of the work in higher dimensions would be given by:</p>
+<p class="mathcell">
+$$
+dW = \vec F \cdot d\vec s
+$$
+</p>
+<p>The force is applied along a path from $a = (x_0, y_0, z_0)$ to $b = (x_1, y_1, z_1)$ in 3D space, which we denote with $C$ (for "curve"). The total work is given by the integral of this quantity along the path, which we call a <strong>line integral</strong>:</p>
+<p class="mathcell">
+$$
+W = \int_{C[a \to b]} \vec F \cdot d\vec s = \int_C F_x~dx + F_y~dy + F_z~dz
+$$
+</p>
+<blockquote>
+<p>Note that the subscript $C[a \to b]$ under the integral is for illustrative purposes; it is optional and not required.</p>
+</blockquote>
+<p>Line integrals can be evaluated by expanding them component-by-component:</p>
+<p class="mathcell">
+$$
+\int_C \vec F \cdot d\vec s = \int_{C(a)}^{C(b)} \vec F(x(t), y(t), z(t)) \cdot (dx, dy, dz)
+$$
+</p>
+<p>Using the fact that:</p>
+<p class="mathcell">
+$$
+d\vec s = \frac{d\vec s}{dt} dt = (x&#x27;(t) dt, y&#x27;(t) dt, z&#x27;(t) dt) = \vec r&#x27;(t) dt
+$$
+</p>
+<p>where $r'(t) = (x', y', z')$, line integrals can be rewritten as:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+&amp; \int_C \vec F(\vec r) \cdot d\vec s \\ &amp;= \int_{C(a)}^{C(b)} (F_x(t) x&#x27;(t)+ F_y(t) y&#x27;(t) + F_z(t) z&#x27;(t) )dt \\ &amp;= \int_{C(a)}^{C(b)} \vec F(t) \cdot \vec r&#x27;(t) dt
+\end{align*}
+$$
+</p>
+<p>The line integral of a force (or component of a force) that is <em>perpendicular</em> to the path along which the force is applied is zero. For instance, given a force dependent on $y$, applied on a path along the $x$ axis, the line integral - and therefore the work done - is zero.</p>
+<p>In higher dimensions, Newton's 2nd Law can be written as:</p>
+<p class="mathcell">
+$$
+m \frac{d^2 \vec r}{dt^2} = m \frac{d \vec v}{dt} = \vec F
+$$
+</p>
+<p>The work-energy theorem can also be expressed in higher dimensions. Using the fact that:</p>
+<p class="mathcell">
+$$
+d\vec s = \frac{d\vec s}{dt} dt = \vec v dt
+$$
+</p>
+<p>We obtain:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+W &amp;= \int_C \vec F \cdot d\vec s \\ &amp; = \int_C m\frac{d\vec v}{dt} \cdot \frac{d\vec s}{dt} dt \\ &amp;= \int_C m \vec v \cdot d\vec v \\ &amp;= \frac{1}{2} m(\vec v \cdot \vec v) \bigg |_a^b \\ &amp;= \frac{1}{2} m \Delta v^2 = \Delta K
+\end{align*}
+$$
+</p><h2 id="conservation-of-energy-in-higher-dimensions">Conservation of energy in higher dimensions</h2>
+<p>In higher dimensions, kinetic energy is still a scalar function, but involves derivatives in more than one dimension:</p>
+<p class="mathcell">
+$$
+K = \frac{1}{2} mv^2 = \frac{1}{2} m \left[\left( \frac{dx}{dt} \right)^2 + \left( \frac{dy}{dt} \right)^2 + \left( \frac{dz}{dt} \right)^2 \right]
+$$
+</p>
+<p>Potential energy is also still a scalar function, but becomes multivariable:</p>
+<p class="mathcell">
+$$
+U = U(x, y, z)
+$$
+</p>
+<p>A force $\vec F$ is called <strong>conservative</strong> if there is a potential energy function $U(x, y, z)$ such that:</p>
+<p class="mathcell">
+$$
+\vec F = -\nabla U = -\left(\frac{\partial U}{\partial x}, \frac{\partial U}{\partial y}, \frac{\partial U}{\partial z}\right)
+$$
+</p>
+<p>This means that particles naturally flow from a region of higher potential energy to a region of lower potential energy. We can also write this in (line) integral form; in this form, the potential energy at $r = (x, y, z)$ defined with respect to a reference point $r_0 = (x_0, y_0, z_0)$ is given by:</p>
+<p class="mathcell">
+$$
+U(x, y, z) = -\int_{C[r_0 \to r]} \vec F \cdot d\vec s
+$$
+</p>
+<p>For conservative forces, there are several important properties:</p>
+<ul>
+<li>The line integral of the force is independent of path</li>
+<li>The line integral of the force vanishes for any closed path</li>
+<li>$\nabla \times \vec F = 0$</li>
+<li>The force is uniquely determined through $\vec F = -\nabla U$</li>
+</ul>
+<p>Therefore the work (in the case of conservative forces only!) can be rewritten as:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+W &amp;= \int_{C[a \to b]} \vec F \cdot d\vec s \\ &amp;= -\int_{C[a \to b]} \nabla U \cdot d\vec s \\ &amp;= -\int_a^b dU = U(a) - U(b) = -\Delta  U
+\end{align*}
+$$
+</p>
+<p>Here we use the expression of the total differential to arrive at the prior result:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\nabla U \cdot d\vec s &amp;= \left(\frac{\partial U}{\partial x}, \frac{\partial U}{\partial y}, \frac{\partial U}{\partial z}\right) \cdot (dx, dy, dz)
+\\ &amp;= \frac{\partial U}{\partial x} dx + \frac{\partial U}{\partial y} dy + \frac{\partial U}{\partial z} dx \\ &amp;= dU
+\end{align*}
+$$
+</p>
+<p>Equating the two equivalent definitions of work (for kinetic and potential energy respectively), we find that the work-energy theorem still holds true:</p>
+<p class="mathcell">
+$$
+\Delta K = -\Delta U
+$$
+</p>
+<p>Or:</p>
+<p class="mathcell">
+$$
+K(b) - K(a) = U(a) - U(b)
+$$
+</p>
+<p>Rearranging, we find that:</p>
+<p class="mathcell">
+$$
+K(a) + U(a) = K(b) + U(b)
+$$
+</p>
+<p>Or, to generalize to the $n$-body case:</p>
+<p class="mathcell">
+$$
+\sum_i K_i(a) + \sum_i U_i (a) = \sum_i K_i(b) + \sum_i U_i (b)
+$$
+</p>
+<p>Therefore, total energy is conserved in the case of conservative forces, even in higher dimensions:</p>
+<p class="mathcell">
+$$
+\frac{d}{dt} (K + U) = 0
+$$
+</p><h3 id="addendum-non-conservative-forces">Addendum: non-conservative forces</h3>
+<p>In nature, essentially all forces can be considered conservative if analyzed on the microscopic level. That is, the total energy of an object is actually an approximation for the sum of the kinetic energies and potential energies of all of its individual atoms interacting with each other (we won't go into subatomic particles because the effects of quantum mechanics make notions of energy blurry). However, it is impractical to analyze systems on the microscopic level and perform detailed calculations of millions of atoms. Therefore, we consider certain forces, such as friction, non-conservative, meaning that while total energy is conserved, total <em>mechanical</em> energy is not.</p>
+<blockquote>
+<p><strong>Note for the advanced reader:</strong> Through Helmholtz's theorem, a non-conservative force $\vec F$ can still be associated with a potential energy $U$, but also must include a vector potential $\vec A$, such that $\vec F = -\nabla U + \nabla \times \vec A$. This is mostly relevant in <a href="https://jackysci.com/electromagnetism/">electromagnetic theory</a> and not really used when describing friction and other drag forces.</p>
+</blockquote>
+<h2 id="uniform-circular-motion">Uniform circular motion</h2>
+<p>Uniform circular motion describes motion in which an object moves with constant velocity in a circular path of fixed radius. In this situation, the object does not have any tangential acceleration (acceleration along its velocity vector) but it does have <strong>centripetal acceleration</strong> towards the center, with a magnitude given by:</p>
+<p class="mathcell">
+$$
+a = \frac{v^2}{R}
+$$
+</p>
+<p>Or in vector form, where <em>we define $\hat r$ to point <strong>inwards</strong> towards the center of the circular path</em>:</p>
+<p class="mathcell">
+$$
+\vec a = \frac{v^2}{R} \hat r
+$$
+</p>
+<p>The object moving along the circular path would trace out a distance $ds = Rd\theta$ when it advances along an angle $d\theta$. Therefore</p>
+<p class="mathcell">
+$$
+\frac{ds}{dt} = R \frac{d\theta}{dt} \Rightarrow v =R \omega
+$$
+</p>
+<p>The angular velocity $\omega$ can be found from differentiation of $\theta(t)$, but in the special case of uniform circular motion it can be more easily found from the period (the time it takes for the object to complete a full revolution):
+<p class="mathcell">
+$$
+\omega = \frac{2\pi}{T}
+$$
+</p></p>
+<p>Note that:
+<p class="mathcell">
+$$
+f = \frac{1}{T}
+$$
+</p></p>
+<p>In the case of non-uniform circular motion, there is both tangential and centripetal acceleration present. The tangential acceleration in this case is given by:</p>
+<p class="mathcell">
+$$
+\vec a_t = \frac{d\vec v}{dt}
+$$
+</p>
+<p>The centripetal acceleration, however, remains the same:
+<p class="mathcell">
+$$
+a_c = \frac{v^2}{R}
+$$
+</p></p>
+<p>The overall acceleration $\vec a$ is given by:
+<p class="mathcell">
+$$
+\vec a = \vec a_t + \vec a_c
+$$
+</p></p>
+<p>When considering problems of circular motion, instead of using $\sum F_i = ma$, instead use $\sum F_i = \frac{mv^2}{R}$. The centripetal force is not an isolated force, but is rather the net force in the radial direction, and the forces that provide it are other forces, such as gravitational force and normal force.</p>
+<h3 id="a-case-study-of-uniform-circular-motion">A case study of uniform circular motion</h3>
+<p>Consider a bead of mass $m$ attached to a string and is revolving in a circular fashion. We can decompose the forces into vertical and horizontal components. Using Newton's second law, the horizontal net force is given only by the radial tension force $\vec T$. Therefore, considering the magnitudes of the forces only:</p>
+<p class="mathcell">
+$$
+m a_c = m\frac{v^2}{R}=  T
+$$
+</p>
+<p>Meanwhile, the vertical net force depends on the location of the bead. At the very top of the circle, then:</p>
+<p class="mathcell">
+$$
+m a_c = m\frac{v^2}{R} = T + mg
+$$
+</p>
+<p>At the very bottom of the circle, then:</p>
+<p class="mathcell">
+$$
+m a_c = m\frac{v^2}{R} = T - mg
+$$
+</p>
+<p>At the leftmost and rightmost edges of the circle, then:</p>
+<p class="mathcell">
+$$
+m a_c = m\frac{v^2}{R} = T
+$$
+</p><h2 id="newton-s-theory-of-gravity">Newton's theory of gravity</h2>
+<p>In Newtonian mechanics, the gravitational force between two masses $M$ and $m$ is given by:</p>
+<p class="mathcell">
+$$
+\vec F_g = -\frac{GMm}{r^2} \hat r
+$$
+</p>
+<p>The magnitude of the gravitational force is given by:</p>
+<p class="mathcell">
+$$
+F_g = \|F_g\| = \frac{GMm}{r^2}
+$$
+</p><h3 id="perfectly-circular-orbits">Perfectly circular orbits</h3>
+<p>The simplest case of planetary motion can be modeled with uniform circular motion. This is not true to reality - the orbits of planets <em>aren't</em> perfect circles - but is a useful first approximation. The result comes by equating the centripetal force and the gravitational force, that is:</p>
+<p class="mathcell">
+$$
+m\frac{v^2}{R} = G \frac{Mm}{r^2}
+$$
+</p>
+<p>Solving for $v$, we thus have:</p>
+<p class="mathcell">
+$$
+v = \sqrt{\frac{GM}{r}}
+$$
+</p>
+<p>And the orbital period $T$ is given by:</p>
+<p class="mathcell">
+$$
+T = 2\pi \sqrt{\frac{r^3}{GM}}
+$$
+</p>
+<p>This is often rewritten as:</p>
+<p class="mathcell">
+$$
+T^2 = \frac{4\pi^2 r^3}{GM}
+$$
+</p>
+<p>From which, for instance, we can calculate the orbital period of a planet in terms of its <em>mean radius</em> from its star. Using the solar mass $M_\odot = \pu{2E30 kg}$, mean Earth-Sun distance $r = \pu{1.49E8 km}$, and the universal gravitational constant $G = \pu{6.674E−11 m^3*kg^{−1}*s^{−2}}$, the value of $T$ calculated for Earth's orbit would be around 364.2 days, just shy of the accepted value of Earth's orbital period of 365.242 days, so this is indeed a very good approximation.</p>
+<h3 id="newton-s-shell-theorem">Newton's shell theorem</h3>
+<p>Newton found that a uniformly dense thin spherical shell attracts an external particle identically to a point mass. In addition, a particle <em>inside</em> such a shell would feel no gravitational force. This is often called <strong>Newton's shell theorem</strong>.</p>
+<p>Using the shell theorem, we can divide a solid sphere of radius $R$ and mass $M$ into infinitely many infinitesimally-thin shells, and apply the shell theorem additively for each. Therefore we find again that the sphere attracts an external particle identically to a point mass. A particle inside such a sphere at a radius $r$ would feel a gravitational force that comes only from the amount of mass underneath the particle (that is, within $r$).</p>
+<p>To compute the value of this force, we want to first find the amount of mass inside a radius $r$. Given $dm = \rho dV$, and $dV = 4\pi r^2 dr$, we can say that:</p>
+<p class="mathcell">
+$$
+M(r) = \int_0^r dm = \int_0^r 4\pi (r&#x27;)^2\rho(r&#x27;) dr
+$$
+</p>
+<p>where we relabel from $r \to r'$ in the integrand to avoid confusing integration bounds and variables. This results in a linear force inside the spherical mass given by:
+<p class="mathcell">
+$$
+F = \frac{GMm}{R^3} r
+$$
+</p></p>
+<p>Therefore given the spherical mass $M$ of radius $R$, the magnitude of the gravitational force $F$ is a piecewise function:</p>
+<p class="mathcell">
+$$
+F = 
+\begin{cases}
+\frac{GMm}{r^2}, &amp; r &gt; R \\
+\frac{GMm}{R^3}r, &amp; r &lt; R \\
+\end{cases}
+$$
+</p><h3 id="gravitational-potential-energy">Gravitational potential energy</h3>
+<p>The gravitational potential energy, like any potential energy for a conservative force, is given by the negative work (work done against the force of gravity) to bring a mass to its position $r$:</p>
+<p class="mathcell">
+$$
+U = -\int_{C[r_0 \to r]} \vec F \cdot d\vec s
+$$
+</p>
+<p>More precisely, this negative work is done along a path from a reference point $r_0$ to the object's current position $r$, where we choose the reference point such that $U(r_0) = 0$. Previously, this reference point was often assumed to be the ground - that is, $U = 0$ when $y = 0$. In the case of generalized gravitation, we choose a point infinitely far away as the reference point for the gravitational potential energy (that is, $U = 0$ at $r = \infty$). Therefore, the line integral simplifies to:</p>
+<p class="mathcell">
+$$
+U(r) = -\int_\infty^r -\frac{GMm}{{r&#x27;}^2} dr&#x27; = -\frac{GMm}{r}
+$$
+</p>
+<p>This can be approximated for objects near the Earth as:</p>
+<p class="mathcell">
+$$
+U(y) \approx mgy
+$$
+</p>
+<p>Where $g = \pu{9.81 m/s}$, also called <strong>standard gravity</strong> or the <strong>acceleration of freefall</strong>. The approximation $U(y) = mgy$ is one that we commonly use throughout physics, and is a reasonably accurate approximation assuming we are relatively close to the Earth (which is typically the case).</p>
+<h3 id="gravitational-total-energy-and-escape-velocity">Gravitational total energy and escape velocity</h3>
+<p>The total energy in gravitation is given by:</p>
+<p class="mathcell">
+$$
+E = K + U = \frac{1}{2} mv^2 -\frac{GMm}{r}
+$$
+</p>
+<p>Remember how we discussed that when we have an object with $U(r) &gt; 0$, the object is heading towards an unstable position? The same applies to the gravitational potential energy: $E$ must be less than zero for an object to remain in orbit. Solving for $v$ in the case $E \geq 0$, we find that the <strong>escape velocity</strong> of an object in orbit is given by:</p>
+<p class="mathcell">
+$$
+v_{\mathrm{esc}} = \sqrt{\frac{2GM}{r}}
+$$
+</p><h3 id="angular-momentum">Angular momentum</h3>
+<p>For gravitational problems, due to the <em>radial</em> nature of the gravitational force, it is often helpful to formulate Newton's second law in terms of <em>angular momentum</em> $\vec L$, defined:
+<p class="mathcell">
+$$
+\vec L = \vec r \times \vec p
+$$
+</p></p>
+<p>This is directly analogous to Newton's second law formulated in terms of the regular (linear) momentum $\vec p$:</p>
+<p class="mathcell">
+$$
+F = \frac{d\vec p}{dt}
+$$
+</p>
+<p>By switching from the linear momentum to the angular momentum, Newton's second law becomes the equation for <strong>torque</strong> $\vec \tau$, the radial equivalent of force:</p>
+<p class="mathcell">
+$$
+\vec \tau = \frac{d\vec L}{dt} = \vec r \times \vec F
+$$
+</p>
+<blockquote>
+<p>Note that torque is covered more in-depth in the <a href="https://jackysci.com/classical-dynamics/#rigid-body-and-rotational-motion">section on rotational motion</a> later on in the guide.</p>
+</blockquote>
+<p>Why is this significant? Because gravity obeys the <strong>conservation of angular momentum</strong>, meaning that the angular momentum of any orbiting body bound gravitationally is always <strong>constant</strong>. This seemingly-obscure result famously explained one of the three <strong>Kepler's laws</strong>, which we will see next.</p>
+<h3 id="kepler-s-laws">Kepler's laws</h3>
+<p>Kepler's laws are a set of three laws devised by the astronomer <a href="https://en.wikipedia.org/wiki/Johannes_Kepler">Johannes Kepler</a>. Kepler worked in an era when the motion of celestial bodies, which we now know is a consequence of gravity, was poorly understood. Kepler, who arrived at his laws by data-fitting the observational data collected by his superior <a href="https://en.wikipedia.org/wiki/Tycho_Brahe">Tycho Brahe</a>, likely had no idea <em>why</em> his laws worked: the full explanation would have to wait until Newton devised his three laws of motion and his theory of universal gravitation. Kepler's laws were as follows:</p>
+<ol>
+<li>Each planet moves in an elliptical orbit described by the parameters $a$ and $b$</li>
+<li>A line from the Sun to a given planet sweeps out equal areas in equal times</li>
+<li>The square of the period of the orbit is proportional to the cube of $a$</li>
+</ol>
+<p><strong>Kepler's first law</strong> means that the orbits of planets follow the equation of an ellipse:</p>
+<p class="mathcell">
+$$
+\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1
+$$
+</p>
+<p>Here, $a$ is the semi-major axis, which is half the distance across the longer diameter of the ellipse. $b$ is the semi-minor axis, which is half the distance across the shorter diameter of the ellipse.</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Ellipse-def0.svg" alt="Image of an ellipse, showing the semi-major and semi-minor axes" /></p>
+<p>(Credit: <a href="https://commons.wikimedia.org/wiki/File:Ellipse-def0.svg">Wikimedia Commons</a>)</p>
+<p>For gravitational orbits, the values of $a$ and $b$ are given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+a &amp;= \frac{GMm}{2|E|}
+b &amp;= \frac{L}{\sqrt{2m|E|}}
+\end{align*}
+$$
+</p>
+<p><strong>Kepler's second law</strong> is due to the fact that as the gravitational force and angular momentum are parallel vectors, their cross product is zero, and thus angular momentum is conserved. This leads to constant areas being traced out over constant times, despite the orbits being non-circular.</p>
+<p>We already (without saying so) proved <strong>Kepler's third law</strong> earlier in the case of perfectly circular orbits, using the physics of uniform circular motion. For an improved generalization that extends to elliptical orbits, the relationship is given by:</p>
+<p class="mathcell">
+$$
+T^2 = \sqrt{\frac{4\pi^2 a^3}{GM}}
+$$
+</p><h2 id="mathematical-interlude-a-taylor-series">Mathematical interlude A: Taylor series</h2>
+<p>A function can be approximated near a point $x_0$ via:</p>
+<p class="mathcell">
+$$
+f(x) \approx f(x_0) + f&#x27;(x_0)(x - x_0) + \frac{1}{2} (x - x_0)^2 + \dots
+$$
+</p>
+<p>If infinite terms are used, then the function can be <em>exactly</em> represented by its approximation:
+<p class="mathcell">
+$$
+f(x) = \sum_{n = 0}^\infty \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n
+$$
+</p></p>
+<p>In practice, however, only a few terms (typically up to 2nd-order or 3rd-order) are necessary, and we usually set $x_0 = 0$. For instance:</p>
+<table><thead><tr><th>Function</th><th>Approximation about $x = 0$ (up to 2nd or 3rd order)</th></tr></thead><tbody>
+<tr><td>$(1 + x)^\alpha$</td><td>$1 + \alpha x + \frac{1}{2}\alpha (\alpha - 1)x^2$</td></tr>
+<tr><td>$e^x$</td><td>$1 + x + \frac{x^2}{2}$</td></tr>
+<tr><td>$\sin x$</td><td>$x - \frac{x^3}{6}$</td></tr>
+<tr><td>$\cos x$</td><td>$1 - \frac{x^2}{2}$</td></tr>
+<tr><td>$\ln (1 + x)$</td><td>$x - \frac{x^2}{2}$</td></tr>
+<tr><td>$\tan x$</td><td>$x + \frac{x^3}{3}$</td></tr>
+<tr><td>$1/(x + \alpha)^n$</td><td>$\frac{1}{\alpha^{n}}-\frac{nx}{\alpha^{n+1}}+\frac{n(n+1)x^{2}}{2\alpha^{n+2}}$</td></tr>
+</tbody></table>
+<p>This means, for instance, that for an object a small distance $\alpha$ above the surface of the Earth, where the radius of the Earth is given by $r_E$, then the magnitude of the gravitational force can be reasonably approximated by a Taylor expansion about $r = r_E$:</p>
+<p class="mathcell">
+$$
+F_g = \dfrac{GMm}{(r_E + \alpha)^2} \approx \frac{GMm}{r_E^2} -\frac{GMm}{r_E^3} (r - r_E) + \frac{GMm}{2r_E^4} (r-r_E)^2 + \dots
+$$
+</p>
+<p>If we define $g = \frac{GM}{r_E^2}$, then to the first term of the Taylor expansion, we recover the familiar expression:</p>
+<p class="mathcell">
+$$
+F_g = mg
+$$
+</p>
+<p>Similarly, if we truncate the Taylor series to first-order, then for any point $x$ close to $x_0$, the derivative is approximately a finite difference:</p>
+<p class="mathcell">
+$$
+\frac{df}{dx} \bigg|_{x = x_0} \approx \frac{\Delta f}{\Delta x}
+$$
+</p>
+<p>So a linear approximation to that function around the point $x=x_0$ is:</p>
+<p class="mathcell">
+$$
+f(x) \approx f(x_0) + f&#x27;(x_0)(x - x_0)
+$$
+</p>
+<p>This is very useful for finding the linear approximations of many common functions about $x = 0$. Two of the most frequently-used are the approximations $e^x \approx 1 + x$, and $\sin(x) \approx x$, and (especially the second) we will use them very frequently in the rest of this guide.</p>
+<h2 id="mathematical-interlude-b-complex-numbers">Mathematical interlude B: Complex numbers</h2>
+<p>The <strong>imaginary unit</strong> is defined by $i = \sqrt{-1}$. Complex numbers are made of a real part and an imaginary part, and are written with $z = a + bi$. Complex numbers can also be represented in polar coordinates, where the magnitude $|z| = \sqrt{a^2 + b^2}$ and they can be written as $z = |z| \cos \phi + |z| i \sin \phi$. The complex conjugation is given by $z^*$ where if $z = a + bi$, then $z^* = a - bi$, and there is the special property $z \cdot z^* = a^2 + b^2$.</p>
+<p>Using Euler's formula, we can extend the exponential function to the complex plane:
+<p class="mathcell">
+$$
+e^z = e^a(\cos b + i \sin b)
+$$
+</p></p>
+<p>If we let $a = 0$ and $b = i\phi$, then it simplifies to:</p>
+<p class="mathcell">
+$$
+e^{i\phi} = \cos \phi + i \sin \phi
+$$
+</p>
+<p>Therefore, any complex number can be written in the form:</p>
+<p class="mathcell">
+$$
+z = \|z\| e^{i\phi}
+$$
+</p>
+<p>And the trigonometric functions can be written in terms of exponentials:</p>
+<p class="mathcell">
+$$
+\cos \phi = \frac{e^{i\phi} + e^{-i\phi}}{2}, \quad \sin \phi = \frac{e^{i\phi} - e^{-i\phi}}{2i}
+$$
+</p><h2 id="oscillators">Oscillators</h2>
+<p>Oscillators are a very important system in physics because, as mentioned previously, many systems from classical and even quantum mechanics can be approximated as a (oftentimes coupled) system of oscillators. In regions close to a potential well, a particle typically oscillates back and forth about the potential well, allowing it to be well-approximated as a harmonic (oscillatory) potential. We will develop the theory of oscillators throughout this section.</p>
+<h3 id="the-simple-harmonic-oscillator-and-small-oscillations">The simple harmonic oscillator and small oscillations</h3>
+<p>Newton's second law can be written in the form:
+<p class="mathcell">
+$$
+m\frac{d^2 x}{dt^2} =-\frac{dU}{dx}
+$$
+</p></p>
+<p>Around a certain point $x_0$, the Taylor expansion of the potential energy around that point is given by:</p>
+<p class="mathcell">
+$$
+U(x) = U_0 + U&#x27;(x_0)(x - x_0) + \frac{1}{2} U&#x27;&#x27;(x_0)(x - x_0)^2 + \frac{1}{6} U&#x27;&#x27;&#x27;(x_0) (x - x_0)^3 + \dots
+$$
+</p>
+<p>When a system only slightly deviates from equilibrium (that is, it is at a point close to a local minimum of the potential energy), the Taylor expansion to first-order is given by:</p>
+<p class="mathcell">
+$$
+U(x) \approx U_0 + U&#x27;(x_0) (x - x_0) + \frac{1}{2} U&#x27;&#x27;(x_0)(x - x_0)^2
+$$
+</p>
+<p>Therefore:</p>
+<p class="mathcell">
+$$
+\frac{dU}{dx} = U&#x27;(x_0) + U&#x27;&#x27;(x_0) (x-x_0)
+$$
+</p>
+<p>Given that the system is very close to its local minimum, the first derivative $U'$ at $x_0$ vanishes as well, so:</p>
+<p class="mathcell">
+$$
+\frac{dU}{dx} = U&#x27;&#x27;(x_0) (x - x_0)
+$$
+</p>
+<p>If we set $k = U''(x_0)$ and perform the change of variables $y = x - x_0$ then Newton's second law is approximately:</p>
+<p class="mathcell">
+$$
+m\frac{d^2 y}{dt^2} = -ky
+$$
+</p>
+<p>Which can be written as:</p>
+<p class="mathcell">
+$$
+\frac{d^2 y}{dt^2} + \frac{k}{m}y = 0
+$$
+</p>
+<p>Or, with $\omega = \sqrt{\frac{k}{m}}$, we have:</p>
+<p class="mathcell">
+$$
+\frac{d^2 y}{dt^2} + \omega^2 y = 0
+$$
+</p>
+<p>Which has the exact general solution:</p>
+<p class="mathcell">
+$$
+y = A e^{i \omega t} + Be^{-i\omega t}
+$$
+</p>
+<p>Using Euler's formula we can rewrite as:</p>
+<p class="mathcell">
+$$
+y = C_1 \cos \omega t + C_2 \sin \omega t
+$$
+</p>
+<p>Examples of systems described in this form include the simple pendulum equation:
+<p class="mathcell">
+$$
+\frac{d^2 \theta}{dt^2} + \frac{g}{L} \theta = 0
+$$
+</p></p>
+<h3 id="the-damped-oscillator">The damped oscillator</h3>
+<p>A dampening force (such as drag) can be added to more realistically model an oscillator. A good approximation for the dampening force is a force proportional to velocity, such as $F_d = -bv$. Then Newton's second law becomes:</p>
+<p class="mathcell">
+$$
+m\frac{d^2 x}{dt^2} = -kx - bv
+$$
+</p>
+<p>Since $v = dx/dt$, we can rewrite this equation as:</p>
+<p class="mathcell">
+$$
+\frac{d^2 x}{dt^2} + \frac{b}{m} \frac{dx}{dt} + \frac{k}{m} x = 0
+$$
+</p>
+<p>If we let $\omega_0^2 = k / m$ and $\beta = b / 2m$, then the differential equation becomes:</p>
+<p class="mathcell">
+$$
+\frac{d^2 x}{dt^2} + 2\beta \frac{dx}{dt} + \omega_0^2 x = 0
+$$
+</p>
+<p>This equation is a 2nd-order homogeneous differential equation. The solution of this differential equation is given by three cases:</p>
+<ul>
+<li>$\beta &gt; \omega_0$ is the case of over-dampening, which tends to an exponential decay with a general solution of $x(t) = Ae^{-\beta t + \sqrt{\beta^2 - \omega_0^2} t} + Be^{-\beta t - \sqrt{\beta^2 - \omega_0^2}t}$</li>
+<li>$\beta = \omega_0$ is the case of critical-dampening, which also tends to an exponential decay with a general solution $x(t) = (At + B)e^{-\beta t}$</li>
+<li>$\beta &lt; \omega_0$ is the case of under-dampening (or weak dampening), which leads to a slow decay with the general solution of $x(t) = Ae^{-\beta t} \cos (\sqrt{\omega_0^2 - \beta^2} t + \phi)$</li>
+</ul>
+<h3 id="driven-damped-harmonic-oscillators">Driven damped harmonic oscillators</h3>
+<p>A driven harmonic oscillator adds a a driving force in addition to a dampening force to the model of an oscillator. Such a driving force could be in the form $F = F_0 \cos \omega t$ (here note that $\omega$ is not the same as $\omega_0$). Therefore, the differential equation becomes:</p>
+<p class="mathcell">
+$$
+m\frac{d^2 x}{dt^2} = -kx - bv + F_0 \cos (\omega t)
+$$
+</p>
+<p>Which we can rearrange to obtain:</p>
+<p class="mathcell">
+$$
+\frac{d^2 x}{dt^2} + 2\beta \frac{dx}{dt} + \omega_0^2 x = \frac{F_0}{m} \cos (\omega t)
+$$
+</p>
+<p>This equation is still a 2nd-order differential equation, but it is now <em>inhomogeneous</em>. The solution to this equation is given by:</p>
+<p class="mathcell">
+$$
+x(t) = x_H(t) + D(\omega) \cos(\omega t - \delta(\omega))
+$$
+</p>
+<p>Where:
+<p class="mathcell">
+$$
+D(\omega) = \frac{F_0}{m} \frac{1}{\sqrt{(\omega_0^2 - \omega^2)^2 + 4\beta^2 \omega^2}}
+$$
+</p>
+<p class="mathcell">
+$$
+\delta(\omega) = \tan^{-1} \left(\frac{2\beta \omega}{\omega_0^2 - \omega^2}\right)
+$$
+</p></p>
+<p>And $x_H(t)$ is the general solution of the dampened harmonic oscillator for the given $\beta$ and $\omega_0$. For instance, for a weak-dampening driven harmonic oscillator, then the general solution is:</p>
+<p class="mathcell">
+$$
+x(t) = Ae^{-\beta t} \cos (\sqrt{\omega_0^2 - \beta^2} t + \phi) + D(\omega) \cos(\omega t - \delta(\omega))
+$$
+</p>
+<p>Typically, as $t \to \infty$, $x_H(t)$ decays exponentially, so $x_H(t) \approx 0$ and only the driving force (also called "transient") part of the solution remains.</p>
+<p>Unlike purely dampened or simple harmonic oscillators, driven damped oscillators have the phenomena of <strong>resonance</strong>. This is the idea that $D(\omega)$ can be <em>tuned</em> to maximize its value and thereby maximize the amplitude. As a paraphrased example from <em>Waves: An Interactive Tutorial</em> by Forinash and Christian, an example is a sound wave tuned with a value of $\omega$ that maximizes its amplitude sufficiently to break a wine glass.</p>
+<h3 id="applications-of-the-harmonic-oscillator">Applications of the harmonic oscillator</h3>
+<p>A LRC circuit is an oscillating system which is described by a very similar differential equation:</p>
+<p class="mathcell">
+$$
+L \frac{d^2 Q}{dt^2} + R \frac{dQ}{dt} + \frac{Q(t)}{C} = \mathcal{E}_0 \cos \omega t
+$$
+</p>
+<p>Here, we can cast the differential equation into the general form of a harmonic oscillator by using $\beta = R / 2L$ and $\omega_0^2 = \frac{1}{LC}$. This can be readily solved using the same method as the driven, damped harmonic oscillator. Indeed, it is just one example of numerous examples in physics where a system can be well-described (or at least approximated) as a harmonic oscillator. Other examples include the vibrations of molecules, a mass on a spring, a pendulum swinging back and forth, and even waves propagating through space, among many, many others.</p>
+<h2 id="momentum-and-impulse">Momentum and impulse</h2>
+<p><strong>Momentum</strong> is a measure of how much an object is moving. More massive and faster objects have a greater momentum, whereas less massive and slower objects have a lesser momentum. We define an object's momentum along the object's trajectory by $\vec p = m\vec v$. Newton's 2nd law can be formulated (and indeed, was originally formulated) in terms of momentum:</p>
+<p class="mathcell">
+$$
+\vec F_\mathrm{net} = \frac{d\vec p}{dt}
+$$
+</p>
+<p><strong>Impulse</strong> is the change in an object's motion produced by a net force acting over a time interval. In mathematical terms, it is the time integral of force. Given that $dp = \vec F dt$, we can integrate over time to get the <strong>impulse</strong>:</p>
+<p class="mathcell">
+$$
+J = \int_{t_0}^{t_1} \vec F~dt = \Delta p
+$$
+</p>
+<p>Newton's 3rd law states that:</p>
+<p class="mathcell">
+$$
+\vec F_{12} = -\vec F_{21}
+$$
+</p>
+<p>If we combine the definitions of impulse and Newton's 3rd law:</p>
+<p class="mathcell">
+$$
+\Delta \vec p_1 = \int_{t_0}^{t_1} \vec F_{12}~dt = \int_{t_0}^{t_1} (-\vec F_{21})~dt = -\int_{t_0}^{t_1} \vec F_{21}~dt = -\Delta \vec p_2
+$$
+</p>
+<p>We arrive at the <strong>conservation of momentum</strong>, which states that momentum is conserved in a closed system (with no external forces):</p>
+<p class="mathcell">
+$$
+\Delta \vec p_1 = -\Delta \vec p_2
+$$
+</p>
+<p>If there are external forces present in a system, then the total momentum evolves as:</p>
+<p class="mathcell">
+$$
+\frac{d \vec P}{dt} = \sum_i \vec F_\mathrm{ext}
+$$
+</p>
+<p>Where the total momentum can be determined by:</p>
+<p class="mathcell">
+$$
+\vec P = \sum_i m_i \vec v_i = m_1 \vec v_1 + m_2 \vec v_2 + \dots + m_n \vec v_n
+$$
+</p><h3 id="introduction-to-collisions">Introduction to collisions</h3>
+<p>The conservation of momentum is readily applied to <em>collision</em> problems in physics, whether that be a billiard ball shot toward another, a neutron colliding into an atomic nucleus, or even a close gravitational encounter. Collisions typically take one of the following forms:</p>
+<ul>
+<li>Elastic collisions are collisions where momentum and energy are conserved, or informally where the two colliding objects are deflected from each other and move apart from each other with different velocities after the collision</li>
+<li>Inelastic collisions are collisions where only momentum is conserved, or informally, where there is loss in total mechanical energy to heat, light, or sound</li>
+<li>Perfectly inealstic collisions are collisions where the total mechanical energy is entirely dissipated after the collision, or informally when the two colliding objects stick together and move together with the same velocity after the collision</li>
+</ul>
+<blockquote>
+<p>Note: when two objects are said to have different <em>velocities</em>, that doesn't mean they have the same speed, as two different velocities with the same magnitude can have opposite directions.</p>
+</blockquote>
+<p>Most collisions, at least on a non-atomic level, are inelastic, dissipating some but not all of their initial total mechanical energy during the collision. However, when the loss is small enough to be considered negligible, collisions can be modelled as elastic, and when the loss is sufficiently large as to be considered total, collisions can be modelled as perfectly inelastic.</p>
+<h3 id="elastic-collisions">Elastic collisions</h3>
+<p>In an elastic collision, the final velocities of the colliding objects are <strong>completely determined</strong> by the initial velocities and masses of the two colliding objects. That is, given initial velocities $v_1(a)$ and $v_2(a)$ and initial masses $m_1$ and $m_2$, we can find the final velocities $v_1(b)$ and $v_2(b)$.</p>
+<p>Both energy and momentum are conserved in elastic collisions. Conservation of energy and momentum together give:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\sum_i K_i(a) + \sum_i U_i(a) = \sum_i K_i(b) + \sum_i U_i(b) \\
+\sum_i p_i(a) = \sum_i p_i(b)
+\end{gather*}
+$$
+</p>
+<blockquote>
+<p><strong>A note about conservation of total mechanical energy:</strong> elastic collisions are idealizations, because most collisions do end up generating heat, light, sound, or radiate away some of their total mechanical energy in some other way. Thus, while total <em>energy</em> is conserved in all collisions, total <em>mechanical energy</em> - that is, the sum of the kinetic and potential energies of all objects in a system - typically is not.</p>
+</blockquote>
+<p>The higher dimensional generalization can be written in vector form:</p>
+<p class="mathcell">
+$$
+\sum_i \mathbf{P}_i(a) = \sum_i \mathbf{P}_i(b)
+$$
+</p>
+<p>Which yields three separate equations for each component:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\sum_i P_{i, x}(a) = \sum_i P_{i, x}(b) \\
+\sum_i P_{i, y}(a) = \sum_i P_{i, y}(b) \\
+\sum_i P_{i, z}(a) = \sum_i P_{i, z}(b)
+\end{align*}
+$$
+</p>
+<p>A general form can be found in the case of a two-body system of two masses $m_1$ and $m_2$. When the collision between the two bodies results in a negligible change in their respective potential energies, or where any increase in potential energy during the collision is immediately released back as kinetic energy afterwards, we can ignore the potential energy terms in the conservation of energy equation. Therefore, the resulting system of conservation equations becomes:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{1}{2} m_1 v_1(a)^2 + \frac{1}{2} m_2 v_2(a)^2 &amp;= \frac{1}{2} m_1 v_1(b)^2 + \frac{1}{2} m_2 v_2(b)^2 \\
+m_1 v_1(a) + m_2 v_2(a) &amp;= m_1 v_1(b) + m_2 v_2(b)
+\end{align*}
+$$
+</p>
+<p>The solution to this system of equations is given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+v_1(b) &amp;= \frac{2m_2 v_2(a)}{m_1 + m_2} + v_1(a) \frac{m_1 - m_2}{m_1 + m_2}
+v_2(b) &amp;= \frac{2m_1 v_1(a)}{m_1 + m_2} + v_2(a) \frac{m_2 - m_1}{m_1 + m_2}
+\end{align*}
+$$
+</p>
+<p>A full derivation is given <a href="https://jackysci.com/collision-derivations/">on a separate page with the calculations</a>.</p>
+<h3 id="perfectly-inelastic-collisions">Perfectly inelastic collisions</h3>
+<p>In a perfectly inelastic collision, the final velocities of the two colliding objects are the same, and is also <strong>completely determined</strong> by the initial velocities and masses. For two bodies of masses $m_1$ and $m_2$, conservation of momentum takes the form of the following equation, where $v_\mathrm{after}$ is the final velocity of both bodies after the collision:</p>
+<p class="mathcell">
+$$
+m_1 v_1(a) + m_2 v_2(a) = (m_1 + m_2)v_\mathrm{after}
+$$
+</p><h3 id="the-ballistic-pendulum">The ballistic pendulum</h3>
+<p>A ballistic pendulum is a device consisting of a wooden block of mass $M$ hanging from two sets of strings. When a projectile (for instance, a bullet) of mass $m$ and velocity $v_1$ is shot into the wooden block, the collision between the projectile and the block is a <em>perfectly inelastic</em> collision where only conservation of momentum applies:</p>
+<p class="mathcell">
+$$
+mv_1 + M(0) = (m + M)v
+$$
+</p>
+<p>Afterwards, the project and block move upwards together, causing the pendulum swings up by distance $h$. As this is separate from the prior collision, energy conservation can be applied in this case:</p>
+<p class="mathcell">
+$$
+\frac{1}{2} (m + M)v^2 = (m + M)gh
+$$
+</p>
+<p>Solving the system of equations, we can obtain the speed $v_1$ of the projectile from only knowing the masses $M$ and $m$ (of the block and bullet respectively) and the height $h$ by which the pendulum swung upwards:</p>
+<p class="mathcell">
+$$
+v_1 = \frac{m + M}{m} \sqrt{2gh}
+$$
+</p><h2 id="many-body-systems">Many-body systems</h2>
+<p>We have already seen some examples where we analyze the motion of more than one object: for instance, two colliding particles in our discussion on collisions, and the gravitational system of the Earth and the Sun. But we can go further, and describe a system with an <em>arbitrary</em> number of particles. We call such systems <strong>many-body systems</strong>; more specifically, for a system that has $N$ interacting particles, we call it an $N$-body system.</p>
+<h3 id="center-of-mass-for-many-body-systems">Center of mass for many-body systems</h3>
+<p>A system of many bodies can often be analyzed more simply as an equivalent single body whose mass $M$ is equal to the sum of the masses of the constituent bodies $m_1, m_2, \dots, m_n$, and whose position is at the center of mass of the body $\vec r_{CM}$. The expressions for the total mass $M$ and the center of mass $\vec r_{CM}$ are given by:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+M = \sum_i m_i \\
+\vec r_{CM} = \frac{\displaystyle \sum \nolimits_i m_i \vec r_i}{\displaystyle \sum \nolimits_i m_i} = \frac{1}{M} \sum_i m_i \vec r_i
+\end{gather*}
+$$
+</p>
+<p>An extended body can be considered a system of all its individual atoms, and therefore a many-body system as well. For the case of extended bodies, however, we compute the total mass and center of mass over a continuum of values, and therefore the expression for the center of mass becomes an integral. The general expressions of a single extended body's mass $M$ and center of mass $r_{CM}$ are:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+M &amp;= \int dm \\
+r_{CM} &amp;= \frac{1}{M} \int rdm
+\end{align*}
+$$
+</p>
+<p>As $dm$ can be written in terms of density functions, the general expressions expand to specific integrals in different dimensions:</p>
+<table><thead><tr><th>Dimension</th><th>Expression for density function</th><th>Expression for total mass $M$</th><th>Expression for center of mass $\vec r_{CM}$</th></tr></thead><tbody>
+<tr><td>1D</td><td>Linear density $\lambda(x)$</td><td>$\displaystyle \int_{L_1}^{L_2} \lambda(x)~dx$</td><td>$\displaystyle \frac{1}{M} \int_{L_1}^{L_2} x\lambda(x)~dx$</td></tr>
+<tr><td>2D</td><td>Surface density $\sigma(\vec r)$</td><td>$\displaystyle \iint_\Sigma \sigma(\vec r)~dA$</td><td>$\displaystyle \frac{1}{M} \iint_\Sigma \vec r \sigma(\vec r)~dA$</td></tr>
+<tr><td>3D</td><td>Volume density $\rho(\vec r)$</td><td>$\displaystyle \iiint_\Omega \rho(\vec r)~dV$</td><td>$\displaystyle \frac{1}{M} \iiint_\Omega \vec r \rho(\vec r)~dV$</td></tr>
+</tbody></table>
+<blockquote>
+<p><strong>Note:</strong> symmetries can often be used to rewrite higher-dimensional integrals in terms of one-dimension integrals. For instance, if a system possesses spherical symmetry, we have $dV = 4\pi r^2~dr$, so the multivariable integral becomes just a single-variable integral.</p>
+</blockquote>
+<h2 id="rigid-body-and-rotational-motion">Rigid body and rotational motion</h2>
+<p>Up to this point, we have described objects following trajectories through space (following Newton's laws), but we haven't yet discussed objects that both move <em>and</em> rotate in space. A <strong>rigid body</strong> is an object that does not deform under motion; while rigid bodies are an idealization, many objects that do not deform much under motion can be approximately modelled by rigid bodies. When we speak of <strong>rigid-body motion</strong>, we describe both the rotation and forwards motion of a rigid body through space, and therefore include both rotational as well as translational (straight-line) motion.</p>
+<p>Let us begin by consider a rotating rigid body a distance $r$ from its axis of rotation. Then its tangential velocity is given by:</p>
+<p class="mathcell">
+$$
+ds = rd\phi \Rightarrow v = \frac{ds}{dt} = r\frac{d\phi}{dt} = r \omega
+$$
+</p>
+<p>Therefore, rotational motion can be entirely characterized by the object's angle as a function of time $\phi(t)$. The angle can be used to derive both angular velocity $\omega$ and angular acceleration $\alpha$:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\omega(t) = \frac{d\phi}{dt} \\
+\alpha(t) = \frac{d\omega}{dt} = \frac{d^2 \phi}{dt^2}
+\end{gather*}
+$$
+</p>
+<p>Note that $\alpha(t)$ can also be written as:</p>
+<p class="mathcell">
+$$
+\alpha(t) = \omega v = \omega^2 r = \frac{v^2}{r}
+$$
+</p>
+<p>In cases of constant angular acceleration, then the following kinematic equations result from straightforward integration. We call them the <strong>rotational kinematic equations</strong>, and they are very similar to the standard kinematic equations we saw earlier:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\phi(t) &amp;= \left(\dfrac{\omega_0 + \omega}{2}\right) t \\
+\omega(t) &amp;= \omega_0 + \alpha t \\
+\phi(t) &amp;= \phi_0 + \omega_0 t + \frac{1}{2} \alpha t^2 \\
+\omega^2 &amp;= {\omega_0}^2 + 2\alpha (\phi - \phi_0)
+\end{align*}
+$$
+</p><h3 id="vector-representations-of-rotations">Vector representations of rotations</h3>
+<p>Rotations in higher dimensions can be represented with vectors. That is, a rotation about the $x$, $y$, and $z$ axes respectively can be represented as:</p>
+<p class="mathcell">
+$$
+\vec \phi = (\phi_x, \phi_y, \phi_z)
+$$
+</p>
+<p>Therefore, the angular velocity $\vec \omega$ and angular acceleration $\alpha$ are also both vector quantities in higher dimensions. The expression for the tangential velocity $\vec v$ also becomes a cross product:</p>
+<p class="mathcell">
+$$
+\vec v = \omega \times \vec r
+$$
+</p>
+<p>The direction of the angular velocity can be found through the right-hand rule. Aligning the fingers to point along the direction of the object's rotation (clockwise or counterclockwise), the thumb would point in the direction of $\vec \omega$.</p>
+<p>The tangential acceleration in vector form is given by:</p>
+<p class="mathcell">
+$$
+\vec a_\mathrm{tan} = \frac{d\vec v}{dt} = \vec \alpha \times \vec r
+$$
+</p>
+<p>And the radial acceleration in vector form is given by:</p>
+<p class="mathcell">
+$$
+\vec \alpha_\mathrm{rad} = \frac{d\vec \omega}{dt} = \vec \omega \times \vec v = \vec \omega \times (\omega \times \vec r)
+$$
+</p>
+<p>The total acceleration of a rigid body is the combination of its tangential and radial acceleration:</p>
+<p class="mathcell">
+$$
+\vec a = \vec a_\mathrm{tan} + \vec \alpha_\mathrm{rad} = \vec a \times \vec r + \vec \omega \times \vec r
+$$
+</p><h3 id="torque">Torque</h3>
+<p>The <strong>torque</strong> is the rotational equivalent of linear force, akin to a measure of twisting of a rotating body, and is given by:</p>
+<p class="mathcell">
+$$
+\tau = \vec r \times \vec F
+$$
+</p>
+<p>The magnitude of the torque is given by:</p>
+<p class="mathcell">
+$$
+\| \tau \| = rF\sin \theta
+$$
+</p>
+<p>Here, $\theta$ is measured counter-clockwise. An angle measured clockwise between $\vec r$ and $\vec F$ would be equivalent to an angle of $-\theta$.</p>
+<p>For a rigid body of total mass $m$, the total external gravitational torque for uniform $\vec g$ is given by:</p>
+<p class="mathcell">
+$$
+\vec \tau = \vec r_{CM} \times m \vec g
+$$
+</p>
+<p>where $\vec r_{CM}$ is its center of mass.</p>
+<h3 id="moment-of-inertia-in-rotational-motion">Moment of inertia in rotational motion</h3>
+<p>We will now introduce a new concept unique to rotational motion, known as the <strong>moment of inertia</strong>. Consider a particle undergoing a net force $\vec F_\perp$ perpendicular to its radial vector $\vec r$. Then, we can use Newton's 2nd law to find that:</p>
+<p class="mathcell">
+$$
+m \vec a_\mathrm{tan} = \vec F_\perp
+$$
+</p>
+<p>This result seems fairly ordinary. But note that with a bit of mathematical rearrangement, it can <em>also</em> be rewritten as:</p>
+<p class="mathcell">
+$$
+\tau_\mathrm{net} = \sum_i \tau_i = I\alpha
+$$
+</p>
+<p>Where $I$ is the moment of inertia, the rotational equivalent of mass, given by:</p>
+<p class="mathcell">
+$$
+I = \sum_i m_i r_i^2
+$$
+</p>
+<p>Often, the axis of rotation (which runs through the center of mass) is not always The moment of inertia of the body can be found through any arbitrary coordinate system with its origin $\vec h$ from the center of mass of the body by the <strong>parallel-axis theorem</strong>:</p>
+<p class="mathcell">
+$$
+I = I_{CM} + mh^2
+$$
+</p>
+<p>For a continuous rigid body of non-uniform density, then the moment of inertia is given by:</p>
+<p class="mathcell">
+$$
+I = \int r^2~dm = \iiint r^2 \rho~dV
+$$
+</p>
+<p>As an example, for a rod of length $L$, mass $M$, and linear mass density $\lambda = \frac{M}{L}$, then $dm = \lambda dx$ and the moment of inertia about an axis that runs through its left end (that is, where $x = 0$) is given by:</p>
+<p class="mathcell">
+$$
+I = \int r^2 dm = \int_0^L x^2 \lambda dx = \int_0^L x^2 \frac{M}{L} dx = \frac{1}{3} ML^2
+$$
+</p>
+<p>The parallel-axis theorem can be used to derive its moment of inertia at its center of mass (where $x = L/2$):</p>
+<p class="mathcell">
+$$
+I_{CM} = I - Mh^2 = I - M\left(\frac{L}{2}\right)^2 = \frac{1}{12} ML^2
+$$
+</p>
+<blockquote>
+<p>Note that in general, the moment of inertia at a rigid body's center of mass is always going to be lower than the moment of inertia at any other point on a rigid body.</p>
+</blockquote>
+<p>The moments of inertia of some common geometries (each of mass $m$) are shown in the table below:</p>
+<table><thead><tr><th>Geometry</th><th>Momentum of inertia</th></tr></thead><tbody>
+<tr><td>Thin rod of length $L$, rotating about its center of mass</td><td>$I = \dfrac{1}{12} mL^2$</td></tr>
+<tr><td>Thin rod of length $L$, rotating about one of its ends</td><td>$I = \dfrac{1}{3} mL^2$</td></tr>
+<tr><td>Thin circular loop of radius $R$, rotating about its center, placed on the XY-plane</td><td>$I_z = mR^2, I_x = I_y = \dfrac{1}{2}mR^2$</td></tr>
+<tr><td>Hollow sphere of radius $R$</td><td>$I = \dfrac{2}{3} mR^2$</td></tr>
+<tr><td>Solid sphere of radius $R$</td><td>$I = \dfrac{2}{5} mR^2$</td></tr>
+<tr><td>Cube of side length $s$, rotating about the vertical axis passing through its center of mass</td><td>$I = \dfrac{1}{6} ms^2$</td></tr>
+</tbody></table>
+<p><em>For more formulas, see <a href="https://en.wikipedia.org/wiki/List_of_moments_of_inertia">this Wikipedia page</a>, which was the basis for these formulas.</em></p>
+<h3 id="rotational-dynamics">Rotational dynamics</h3>
+<p>Analogous to translational motion, rotational motion also possesses dynamical quantities. For instance, the rotational kinetic energy is given by:</p>
+<p class="mathcell">
+$$
+K = \frac{1}{2} I \omega^2
+$$
+</p>
+<p>We have also already seen the rotational equivalent of Newton's second law, defined in terms of the rotational acceleration and torque:</p>
+<p class="mathcell">
+$$
+I \alpha = I \dfrac{d^2 \phi}{dt^2} = I \dfrac{d\omega}{dt} = \sum_i \tau_i
+$$
+</p>
+<p>And in addition, we have angular momentum, which is the analogue of (linear) momentum in rotational motion:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+\vec L = \vec r \times \vec p, &amp; \tau = \dfrac{d\vec L}{dt}
+\end{matrix*}
+$$
+</p>
+<p>So, when we want to analyze rigid-body motion, we decompose the motion into the translational motion of its center of mass and its rotational motion about its center of mass:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+M\vec a_{CM} = M \frac{d \vec v_{CM}}{dt} = \sum_i \vec F_i \\
+I \vec \alpha_{CM} = I_{CM} \frac{d \vec \omega}{dt} = \sum_i \tau_i
+\end{gather*}
+$$
+</p>
+<p>By solving both differential equations, we can then find the rotational motion <em>and</em> the translational motion, allowing us to see both how the object moves and spins.</p>
+<h3 id="rolling-with-and-without-slipping">Rolling with and without slipping</h3>
+<p>When a rigid body (e.g. a solid sphere) rotates while traveling across a frictionless surface, it exhibits a phenomenon known as <em>slipping</em>. This is because the spinning motion and the forwards motion of the object are <em>not</em> equal, so as the object spins, when its forward motion is faster than its spin can catch up, the object skids. This occurs on frictionless surfaces because there is nothing to counter the forwards motion of the object. However, when a rigid body rotates while traveling along a surface <em>with friction</em>, it can roll without slipping. In such a situation, the object's spinning (angular) velocity $\omega$ and forwards velocity $v_{CM}$ are precisely correlated such that:</p>
+<p class="mathcell">
+$$
+v_{CM} - R\omega = 0
+$$
+</p>
+<p>Physically speaking, the counteracting effect of friction on the surface means that the object no longer skids, so it is able to exhibit <strong>rolling without slipping</strong>.</p>
+<h2 id="fluid-mechanics">Fluid mechanics</h2>
+<p>Fluids are any substances that can flow and change shape. They include both liquids and gases (but also include other substances, such as plasmas). Fluids are not characterized by their mass, but rather by their <strong>density</strong>. A fluid's density $\rho$ is defined by:
+<p class="mathcell">
+$$
+\rho(x, y, z) = \frac{dm}{dV}
+$$
+</p></p>
+<p>The density of many fluids can vary. However, liquids in particular are typically <em>incompressible</em>, that is, $\rho = \text{const.}$, while gases have highly-dependent densities that may vary with their temperature or volume, among other factors. We will see soon that this is in fact very significant to understanding how fluids behave.</p>
+<h3 id="fluid-pressure">Fluid pressure</h3>
+<p>Like solids, fluids can be acted on by forces. However, unlike solids, fluids distribute force across a continuum, and thus the fluid equivalent of force is <strong>pressure</strong>. The pressure $P$ of a fluid is defined as:</p>
+<p class="mathcell">
+$$
+P = \frac{dF}{dA}
+$$
+</p>
+<blockquote>
+<p>Note that one <strong>pascal</strong> (denoted $\pu{Pa}$) is equal to $\pu{1 N/m^2}$ and is the standard unit for pressure.</p>
+</blockquote>
+<p>Fluid pressure in a single dimension is described by the differential equation:
+<p class="mathcell">
+$$
+\frac{dP}{dy} = -\rho(y) g
+$$
+</p></p>
+<p>For incompressible fluids, $\rho = C$ and thus:</p>
+<p class="mathcell">
+$$
+P(y) = P_0 + \rho g(y_0 - y)
+$$
+</p>
+<p>For other fluids, such as air in the atmosphere, a good approximation is $\rho(y) = cP(y)$. That is:</p>
+<p class="mathcell">
+$$
+\frac{dp}{dy} = -kPg
+$$
+</p>
+<p>The solution to this differential equation is:</p>
+<p class="mathcell">
+$$
+P(y) = P_0 e^{-kgy} = P_e e^{-y&#x2F;a}
+$$
+</p>
+<p>Where $a = \dfrac{P_0}{\rho_0 g}$. This pressure function is used in the barometric formula for atmospheric pressure, where in this case $a \approx \pu{8,500 m}$ and $P_0 = \pu{1.01e5 Pa}$.</p>
+<h3 id="pascal-s-law">Pascal's law</h3>
+<p>Fluids aren't only able to be acted on by forces, they can also transmit forces. In fact, their incompressible nature makes them highly desirable for this purpose, as used in applications such as hydraulic lifts. <strong>Pascal's Law</strong> states that at constant height, fluid pressure is identical at all points in the fluid:</p>
+<p class="mathcell">
+$$
+P_1 = P_2 \Rightarrow \frac{F_1}{A_1} = \frac{F_2}{A_2}
+$$
+</p>
+<p>That is, with $h = \text{const}$, if a force $F_1$ is applied to a fluid along a surface of area $A_1$, then the fluid exerts a force of $F_2$ on any surface of $A_2$ it touches.</p>
+<h3 id="archimedes-principle">Archimedes' principle</h3>
+<p>When an object is immersed in a fluid, the fluid exerts an upward <strong>buoyant force</strong> on the object given by:
+<p class="mathcell">
+$$
+F_B = \rho V_\mathrm{disp}g = \rho V_\mathrm{im}g
+$$
+</p></p>
+<p>Where $\rho$ is the fluid's density, $V_\mathrm{disp}$ is the displaced volume of fluid, and $V_\mathrm{im}$ is the submerged volume of the immersed object. Notice that the buoyant force does <strong>not</strong> depend on the immersed object's mass at all!</p>
+<h3 id="fluid-flow">Fluid flow</h3>
+<p>Previously, all examples applied only to fluid statics; fluids that are unchanging in time. For fluids that do change in time - that is, fluids that flow - fluid dynamics is necessary.</p>
+<p>For an ideal fluid that is steady, non-viscous, and irrotational, then the <em>equation of continuity</em> applies:</p>
+<p class="mathcell">
+$$
+\rho_1 A_1 v_1 = \rho_2 A_2 v_2
+$$
+</p>
+<p>If the fluid is also incompressible, then the equation of continuity simplifies to:</p>
+<p class="mathcell">
+$$
+A_1 v_1 = A_2 v_2
+$$
+</p>
+<p>By these definitions, the mass flow rate is a constant given by:</p>
+<p class="mathcell">
+$$
+\frac{dm}{dt} = \rho Av
+$$
+</p>
+<p>And the volume flow rate is a constant given by:</p>
+<p class="mathcell">
+$$
+\frac{dV}{dt} = Av
+$$
+</p><h3 id="bernoulli-s-equation">Bernoulli's equation</h3>
+<p>For incompressible ideal fluid (i.e. no turbulence, constant density), then <strong>Bernoulli's equation</strong> applies:</p>
+<p class="mathcell">
+$$
+\Delta P + \frac{1}{2} \rho (v_2^2 - v_1^2) + \rho g\Delta y = 0
+$$
+</p>
+<p>Where $\Delta P$ is the difference in pressure between the fluid measured at two points, $\Delta y$ is the difference in height between those points, and $v_1, v_2$ are the fluid's respective velocities at those points.</p>
+<blockquote>
+<p>Note: for fluids that are exposed to the atmosphere, such as a glass of water left on a table, all points where the fluid is in contact with the air have the <em>same</em> pressure of $\pu{1 atm}$. For a fluid whose surface is level and unchanging, then at that point $v = 0$.</p>
+</blockquote>
+<h2 id="fields">Fields</h2>
+<p>A field is a model for a quantity spread out over space with a measurable value at each point. Fields can be scalar fields - e.g. a temperature field, like $T(r, t)$ - or vector fields - e.g. a velocity field, like $\mathbf{v}(r, t)$. They are used to model phenomena ranging from electromagnetism to gravity to fluid flow to plasma confinement.</p>
+<h3 id="addenum-integral-notations">Addenum: integral notations</h3>
+<p>We encountered line integrals previously, as well as integrals over areas and volumes. We notated scalar and vector line integrals respectively with:</p>
+<p class="mathcell">
+$$
+\int_C f(x, y, z)~d\ell \quad \text{and} \quad \int_C \mathbf{F} \cdot \mathbf{d\ell}
+$$
+</p>
+<p>We will now properly define names for integrals over areas and volumes. An <em>area integral</em> is notated:</p>
+<p class="mathcell">
+$$
+\iint f(x, y)~dA
+$$
+</p>
+<p>Meanwhile, a <em>volume integral</em> is notated:</p>
+<p class="mathcell">
+$$
+\iiint f(x, y, z)~dV
+$$
+</p>
+<p>In some cases, symmetries allow area and volume integrals to be evaluated without needing to integrate. However, in nontrivial cases, area integrals can be evaluated using double integrals, and volume integrals can be evaluated using triple integrals, though that will not be covered here.</p>
+<h3 id="flux">Flux</h3>
+<p>Flux is a measure of the flow of a field. Typically, this flow is measured with respect to an imaginary surface $\Sigma$ that encloses some part of the field.</p>
+<p class="mathcell">
+$$
+\phi = \iint_\Sigma \mathbf{v} \cdot d\mathbf{S}
+$$
+</p>
+<p>For relatively constant fields, the flux simplifies to:</p>
+<p class="mathcell">
+$$
+\phi = S \mathbf{v} \cos \theta
+$$
+</p>
+<p>Where $S$ is the surface area of the surface.</p>
+<p>In addition, if the flux is over a <em>closed</em> surface, then the flux is notated:</p>
+<p class="mathcell">
+$$
+\phi = \oiint_\Sigma \mathbf{v} \cdot d\mathbf{A}
+$$
+</p><h3 id="gauss-s-theorem-divergence-theorem">Gauss's theorem (divergence theorem)</h3>
+<p>Gauss's theorem states that the flux of a vector field over a surface is equal to the volume integral of its divergence:</p>
+<p class="mathcell">
+$$
+\oiint_\Sigma \mathbf{v} \cdot d\mathbf{A} = \iiint \nabla \cdot \mathbf{v}~dV
+$$
+</p>
+<p>The general idea is that integrating over the divergence of a vector field results in the divergence on all the interior points of a surface to cancel out. Therefore, the remaining divergence is located only at the surface, resulting in the flux.</p>
+<h3 id="the-continuity-equation">The continuity equation</h3>
+<p>The mass flow rate of a fluid with velocity field $\mathbf{v}$ and density $\rho(r, t)$ into a region is given by:</p>
+<p class="mathcell">
+$$
+\frac{dm}{dt}_\mathrm{in} = \frac{d}{dt} \iiint \rho(r, t)~dV
+$$
+</p>
+<p>The mass flow rate of a fluid out of a region is given by:</p>
+<p class="mathcell">
+$$
+\frac{dm}{dt}_\mathrm{out} = -\oiint \rho \mathbf{v} \cdot d\mathbf{S}
+$$
+</p>
+<p>If we define a new vector field $\mathbf{J}$ from the velocity field:</p>
+<p class="mathcell">
+$$
+\mathbf{J} = \rho \mathbf{v}
+$$
+</p>
+<p>Then:</p>
+<p class="mathcell">
+$$
+\frac{dm}{dt}_\mathrm{out} = -\oiint \mathbf{J} \cdot d\mathbf{S}
+$$
+</p>
+<p>By conservation of mass, the mass flow rate into and out of a region must be exactly equal. Therefore:</p>
+<p class="mathcell">
+$$
+\frac{dm}{dt}_\mathrm{in} = \frac{dm}{dt}_\mathrm{out}
+$$
+</p>
+<p>Or, after substitution with the previous definitions:</p>
+<p class="mathcell">
+$$
+\frac{d}{dt} \iiint \rho(r, t)~dV = -\oiint \mathbf{J} \cdot d\mathbf{S}
+$$
+</p>
+<p>By Gauss's theorem, this integral equation can be written as a partial differential equation:</p>
+<p class="mathcell">
+$$
+\frac{\partial \rho}{\partial t} = -\nabla \cdot \mathbf{J}
+$$
+</p>
+<p>Or written in another way:</p>
+<p class="mathcell">
+$$
+\frac{\partial \rho}{\partial t} + \nabla \cdot \mathbf{J} = 0
+$$
+</p>
+<p>This is the <strong>continuity equation</strong>, a generalized description of the conservation of a physical quantity. It describes a quantity that cannot be created nor destroyed, and can only change due to flow into or out of a region.</p>
+<p>Note that for an incompressible fluid the continuity equation simplifies to:</p>
+<p class="mathcell">
+$$
+\nabla \cdot \mathbf{J} = 0
+$$
+</p><h3 id="flux-for-other-fields">Flux for other fields</h3>
+<p>The gravitational field is represented by a vector field $\mathbf{g}$. The flux of $\mathbf{g}$ is given by:</p>
+<p class="mathcell">
+$$
+\oiint \mathbf{g} \cdot d\mathbf{S} = -4\pi GM
+$$
+</p>
+<p>This is called <strong>Gauss's law for gravity</strong>, and is useful because it can be used to solve for $\mathbf{g}$ in the case of an arbitrary mass distribution. Recall also that the total mass can be written in terms of the mass density $\rho$:</p>
+<p class="mathcell">
+$$
+M = \iiint \rho~dV
+$$
+</p>
+<p>Therefore:</p>
+<p class="mathcell">
+$$
+\oiint \mathbf{g} \cdot d\mathbf{S} = -4\pi G \iiint \rho~dV
+$$
+</p>
+<p>If we define a scalar field called the <em>gravitational potential</em> $\varphi$, where $\mathbf{g} = -\nabla \mathbf{g}$, then we can write:</p>
+<p class="mathcell">
+$$
+\nabla \cdot (\nabla \mathbf{g}) = \nabla^2 \phi = 4\pi G\rho
+$$
+</p>
+<blockquote>
+<p>Note that calling this a scalar potential is not an arbitrary name. The fact that $\mathbf{g} = -\nabla \varphi$ is <em>directly</em> analogous to the relationship between force and potential energy, $\mathbf{F} = -\nabla U$.</p>
+</blockquote>
+<p>Using Gauss's theorem (the divergence theorem) we can equivalently rewrite this integral equation as a partial differential equation:</p>
+<p class="mathcell">
+$$
+\nabla \cdot g = -4\pi G\rho
+$$
+</p>
+<p>The same methodology applies to the analysis of the electric field as well. The flux of the electric field is given by:</p>
+<p class="mathcell">
+$$
+\oiint \mathbf{E} \cdot d\mathbf{S} = 4\pi kQ
+$$
+</p>
+<p>Which is <strong>Maxwell's 1st equation</strong> in integral form. The equivalent equation for the magnetic field is <strong>Maxwell's 2nd equation</strong> in integral form:</p>
+<p class="mathcell">
+$$
+\oiint \mathbf{B} \cdot d\mathbf{S} = 0
+$$
+</p><h2 id="waves">Waves</h2>
+<p>Waves are vibrations that propagate through space or along a material. There are two typical forms of waves:</p>
+<ul>
+<li>Transverse waves, such as waves on a vibrating string and electromagnetic waves</li>
+<li>Longitudinal waves, such as fluid waves (such as surface waves on water or sound waves in air) and seismic waves</li>
+</ul>
+<p>A travelling wave in 1D is given by:</p>
+<p class="mathcell">
+$$
+y(x, t) = A \cos(kx - \omega t + \varphi)
+$$
+</p>
+<p>Where $k = \frac{2\pi}{\lambda}$ is the <em>wavenumber</em>, $\varphi$ is the <em>phase shift</em>, $\omega = \frac{2\pi v}{\lambda} = \frac{2\pi}{T} = 2\pi f$ is the <em>angular frequency</em>, and $\omega = kv$.</p>
+<blockquote>
+<p>Note that while $y(x, t)$ models a 1D wave, it is a <strong>multivariable function</strong> so its derivatives are partial derivatives.</p>
+</blockquote>
+<p>All waves are described by the <strong>wave equation</strong>, which is a partial differential equation. The wave equation in 1D is given by:</p>
+<p class="mathcell">
+$$
+\frac{\partial^2 y}{\partial t^2} - c^2 \frac{\partial^2 y}{\partial x^2} = 0
+$$
+</p>
+<p>Where $v$ is the speed of propagation of the wave. Specific cases of the wave equations have different $v$:</p>
+<table><thead><tr><th>Case</th><th>Value of $v$</th></tr></thead><tbody>
+<tr><td>Mechanical waves</td><td>$v = \sqrt{F_T / \mu}$ where $F_T$ is the tension force and $\mu$ is the linear mass density</td></tr>
+<tr><td>Electromagnetic waves (such as visible light)</td><td>$v = c$</td></tr>
+<tr><td>General waves</td><td>$v = v(x)$</td></tr>
+</tbody></table>
+<p>Waves propagate (their wavefront moves forward) at a fixed speed, but this is not necessarily true of the particles they act upon. So we distinguish between the <em>wavefront speed</em> $v$, which is the speed at which the wave itself moves, and the <em>transverse velocity</em> (or <em>longitudinal velocity</em>) $v_y$, which is the velocity at which particles that the wave is moving through move. The expressions for transverse (longitudinal) velocity and transverse (longitudinal) acceleration are as follows:</p>
+<p class="mathcell">
+$$
+v_y(x, t) = \frac{\partial y}{\partial t} = -A\omega \sin(kx - \omega t)
+$$
+</p><p class="mathcell">
+$$
+a_y(x, t) = \frac{\partial^2 y}{\partial t^2} = -A\omega^2 \cos(kx - \omega t)
+$$
+</p>
+<p>Waves transfer energy. The energy carried (and thus transferred) by a travelling wave is given by:</p>
+<p class="mathcell">
+$$
+P(x, t) = \mu v A^2 \omega^2 \cos^2 (kx - \omega t)
+$$
+</p>
+<p>The <em>average</em> power is given by:</p>
+<p class="mathcell">
+$$
+P_\mathrm{avg} = \frac{1}{T} \int_0^T P(t)~dt = \frac{1}{2} \sqrt{\mu F_0} \omega^2 A^2 = \frac{1}{2} \mu v^3 k^2 A^2
+$$
+</p>
+<p>For a more in-depth discussion of waves, see the <a href="https://jackysci.com/waves-and-oscillations/">waves and oscillations notes</a>.</p>
+<h3 id="principle-of-superposition">Principle of Superposition</h3>
+<p>The wave equation is a second-order <em>linear</em> partial differential equation. Therefore, if one function $f(x \pm ct)$ satisfies the wave equation, and another function $g(x \pm ct)$ also does, then any linear combination $af(x \pm ct) + bg(x \pm ct)$. Physically speaking, waves can pass through each other and add up with each other.</p>
+<h3 id="interference">Interference</h3>
+<p>Two waves that have different phases, that is $y_1 = f(x + ct + \phi_1)$ and $y_2 = f(x + ct + \phi_2)$. In the sinusoidal case, where $y(x, t) = A\sin(kx - \omega t + \phi_i)$, the resultant wave is:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+y(x, t) &amp;= 2A \cos \left(\frac{\phi_2 - \phi_1}{2}\right) \left(kx - \omega t - \frac{\phi_1 + \phi_2}{2}\right) \\ &amp;= 2A \phi_\mathrm{rel} \left(kx - \omega t - \frac{\phi_1 + \phi_2}{2}\right)
+\end{align*}
+$$
+</p>
+<p>Where $\phi_\mathrm{rel}$ is the relative phase shift:</p>
+<p class="mathcell">
+$$
+\phi_\mathrm{rel} = \cos \left(\frac{\Delta \phi}{2}\right)
+$$
+</p>
+<p>Therefore when $\Delta \phi = 0$ (when the waves are in phase) then $\phi_\mathrm{rel} = 1$ which is known as <strong>constructive</strong> interference, and when $\Delta \phi = \pi$ (when the waves are completely out of phase) then $\phi_\mathrm{rel} = 0$ which is known as <strong>destructive</strong> interference.</p>
+<blockquote>
+<p>Note: this is the case only when the waves have the same amplitude. Otherwise, it is often more helpful to describe waves with complex exponentials i.e. $y(x, t) = Ae^{i(kx - \omega t)}$</p>
+</blockquote>
+<h3 id="waves-in-fluids">Waves in fluids</h3>
+<p>In a fluid, density is given by:</p>
+<p class="mathcell">
+$$
+\rho(x, t) = -\rho_0 \frac{\partial y}{\partial x}
+$$
+</p>
+<p>Pressure is given by:</p>
+<p class="mathcell">
+$$
+P(x, t) = -B \frac{\partial y}{\partial x}
+$$
+</p>
+<p>This leads to the following two partial differential equations:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{\partial y}{\partial x} = -\frac{P(x, t)}{B} \\
+\frac{\partial y}{\partial x} = -\frac{\rho(x, t)}{\rho_0} 
+\end{align*}
+$$
+</p>
+<p>And the following connection between density and pressure:</p>
+<p class="mathcell">
+$$
+\rho(x, t) = \frac{\rho_0}{B} P(x, t)
+$$
+</p>
+<p>If oscilations in a particular fluid result in sinusoidal longitudinal plane waves, then:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+P(x, t) &amp;= BkA \sin(kx - \omega t) \\
+\rho(x, t) &amp;= \rho_0 k A\sin(kx - \omega t)
+\end{align*}
+$$
+</p>
+<p>And $P_\mathrm{max} = BkA$, $\rho_\mathrm{max} = \rho_0 kA$, where $A = y_\mathrm{max}$, $k = \frac{\omega}{v}$ as is typical. The speed $v$ is given by:</p>
+<p class="mathcell">
+$$
+v = \sqrt{\frac{B}{\rho_0}}
+$$
+</p>
+<p>Finally, the power $\frac{dE}{dt}$ of the fluid wave is given by:</p>
+<p class="mathcell">
+$$
+\frac{dE}{dt} = PAv = BkA^3 \omega \sin^2(kx - \omega t)
+$$
+</p>
+<p>And the intensity $I$ is given by:</p>
+<p class="mathcell">
+$$
+I = Pv = BkA^2 \omega \sin^2(kx - \omega t)
+$$
+</p>
+<p>The average intensity is given by:</p>
+<p class="mathcell">
+$$
+I_\mathrm{avg} = \frac{1}{T} \int_0^T I(x, t)~dt = \frac{A^2 \omega}{2 v} = \frac{1}{2} \sqrt{B \rho_0} A^2 \omega^2
+$$
+</p>
+<p>Note that in the specific case where the waves are longitudinal but radiating outwards spherically, then by conservation of energy, the intensity follows an inverse square law:</p>
+<p class="mathcell">
+$$
+I \propto \frac{1}{r^2}
+$$
+</p><h3 id="electromagnetic-waves">Electromagnetic waves</h3>
+<p>Electromagnetism is completely described by the four Maxwell's equations:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\nabla \cdot \mathbf{E} = \frac{\rho(\mathrm{x}, t)}{\epsilon_0} \\
+\nabla \cdot \mathbf{B} = 0 \\
+\nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t} \\
+\nabla \times \mathbf{B} = \mu_0 \mathbf{J} + \epsilon_0 \mu_0 \frac{\partial \mathbf{E}}{\partial t}
+\end{align*}
+$$
+</p>
+<p>In free space, $\rho = 0$ and $\mathbf{J} = 0$. Therefore, Maxwell's equations transform to two <strong>wave equations</strong>:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{\partial^2 \mathbf{E}}{\partial t^2} = \left(\frac{1}{\sqrt{\epsilon_0 \mu_0}}\right)^2 \nabla^2 \mathbf{E} \\
+\frac{\partial^2 \mathbf{B}}{\partial t^2} = \left(\frac{1}{\sqrt{\epsilon_0 \mu_0}}\right)^2 \nabla^2 \mathbf{B}
+\end{align*}
+$$
+</p>
+<p>This leads to the result that electromagnetic fields propogate through space as waves, and even more surprisingly, $\frac{1}{\sqrt{\epsilon_0 \mu_0}}$ matches the known speed of light $c$, suggesting that light <em>is</em> an electromagnetic wave.</p>
+<h2 id="a-very-short-introduction-to-special-relativity">A very short introduction to Special Relativity</h2>
+<p>In special relativity, all space and all time is considered relative, and combined into a single continuum of <strong>spacetime</strong>. The spacetime interval is an invariant measure of distances both of space and of time in special relativity:</p>
+<p class="mathcell">
+$$
+ds^2 = -c^2 dt^2 + dx^2 + dy^2 + dz^2
+$$
+</p>
+<p>This means that traditional classical concepts of time and distance are no longer the same when measured from frames that are moving with respect to another. Observers experience times and distances that can be different from other observers. Thus, the equations of Newtonian mechanics must be modified to account for the effects of relativity. For instance, the relativistic corrected version of Newton's second law is given by:</p>
+<p class="mathcell">
+$$
+\frac{d}{dt} \left[\frac{mv}{\sqrt{1 - \frac{v^2}{c^2}}}\right] = F(x, t)
+$$
+</p>
+<p>Which can be written in terms of a quantity known as <strong>4-momentum</strong> $\mathbf{p}$, which is conserved in all frames:</p>
+<p class="mathcell">
+$$
+\frac{d\mathbf{p}}{dt} = F(x, t)
+$$
+</p>
+<p>What we have covered is a very, very brief look at special relativity. For more on special relativity, see the dedicated <a href="https://jackysci.com/special-relativity/">special relativity series</a>.</p>
+<h2 id="thermodynamics">Thermodynamics</h2>
+<p>Thermodynamics is concerned with the flow of energy between and within systems. For instance, consider two bodies in thermal contact with each other. Thermodynamics predicts that the final equilibrium temperature of the two bodies, assuming they are of masses $m_1$ and $m_2$ and had initial temperatures $T_1$ and $T_2$, is given by:</p>
+<p class="mathcell">
+$$
+T_\mathrm{end} = \frac{m_1 T_1 + m_2 T_2}{m_1 + m_2}
+$$
+</p>
+<p>The methods of thermodynamics are used for calculating the <strong>state variables</strong> $P, V, T$ (pressure, volume, and temperature) of a thermal body. A specific case commonly studied in thermodynamics would be that of an ideal gas - that is, a gas that obeys the <strong>equation of state</strong> $PV = nRT$, where $n$ is the moles of particles in a gas, and $R$ is the ideal gas constant. An ideal gas expands under a changing temperature according to:</p>
+<p class="mathcell">
+$$
+\Delta V = \beta V \Delta T
+$$
+</p>
+<p>where $\beta$ is defined as follows when thermodynamic variable $X$ (e.g. pressure, temperature, etc.) is kept constant:</p>
+<p class="mathcell">
+$$
+\beta = \frac{1}{V} \left(\frac{\partial V}{\partial T}\right)_X
+$$
+</p>
+<p>For instance, the thermal expansion at <strong>constant pressure</strong> is given by:</p>
+<p class="mathcell">
+$$
+\beta = \frac{1}{T}
+$$
+</p>
+<p>Meanwhile, an ideal gas expands under a changing pressure according to:</p>
+<p class="mathcell">
+$$
+\Delta V = -\kappa V \Delta P
+$$
+</p>
+<p>where analogously $\kappa$ is defined as:</p>
+<p class="mathcell">
+$$
+\kappa = -\frac{1}{V} \left(\frac{\partial V}{\partial P}\right)_X
+$$
+</p>
+<p>For instance, the compressibility at <strong>constant temperature</strong> is given by:</p>
+<p class="mathcell">
+$$
+\kappa = \frac{1}{P}
+$$
+</p><h3 id="thermodynamic-work">Thermodynamic work</h3>
+<p>Analogous to mechanical work, thermodynamic work is given by the line integral:</p>
+<p class="mathcell">
+$$
+W = \int_C P(V)~dV
+$$
+</p>
+<p>In many cases, this line integral reduces down to a regular integral. For instance, in an ideal gas whose equation of state is given by $PV = Nk_B T$, then:</p>
+<p class="mathcell">
+$$
+P(V) = \frac{Nk_B T}{V}
+$$
+</p>
+<p>Therefore the work done as the gas expands from $V_1$ to $V_2$ is given by:</p>
+<p class="mathcell">
+$$
+W = \int_{V_1}^{V_2} \frac{NkT}{V}~dV = Nk_B T \ln \left(\frac{V_2}{V_1}\right)
+$$
+</p>
+<p>The <strong>first law of thermodynamics</strong> states that the total change in the internal energy $U$ of a system is related to the line integral of the infinitesimal change in heat $\delta Q$ and the work done by the system by:</p>
+<p class="mathcell">
+$$
+\Delta U = \int_\gamma dQ - \int_\gamma dW
+$$
+</p>
+<p>Or in turns of discrete changes:</p>
+<p class="mathcell">
+$$
+\Delta U = \Delta Q - \Delta W
+$$
+</p>
+<blockquote>
+<p>Note: there are two expressions for the first law of thermodynamics, the Clausius convention (the one used here) and the IUPAC convention, which differ in the sign used.</p>
+</blockquote>
+<h3 id="thermodynamic-processes">Thermodynamic processes</h3>
+<p>In general, any thermodynamic process can be broken down into a combination of the following distinct types of processes:</p>
+<ul>
+<li><strong>Isobaric</strong> (constant pressure)</li>
+<li><strong>Isochoric</strong> (constant volume)</li>
+<li><strong>Isothermic</strong> (constant temperature)</li>
+<li><strong>Adiabatic</strong> (constant heat)</li>
+</ul>
+<p>The thermodynamic variables of state can be calculated via the following table of relations:</p>
+<table><thead><tr><th>Isobaric ($P = \text{const.}$)</th><th>Isochoric ($V = \text{const.}$)</th><th>Isothermic ($T = \text{const.}$)</th><th>Adiabatic</th></tr></thead><tbody>
+<tr><td>$\Delta U = Q - W$</td><td>$\Delta U = Q$</td><td>$\Delta U = 0$</td><td>$\Delta U = -W$</td></tr>
+<tr><td>$Q = nC_P \Delta T$</td><td>$Q = nC_V \Delta T$</td><td>$Q = W$</td><td>$Q = 0$</td></tr>
+<tr><td>$W = P\Delta V$</td><td>$W = 0$</td><td>$W = nRT \ln \left(\frac{V_2}{V_1}\right)$</td><td>$\frac{C_V}{R} (P_1 V_1 - P_2 V_2)$</td></tr>
+<tr><td>$\frac{T_1}{T_2} = \frac{V_1}{V_2}$</td><td>$\frac{P_1}{T_1} = \frac{P_2}{T_2}$</td><td>$\frac{P_1}{V_1} = \frac{P_2}{V_2}$</td><td>$PV^\gamma = \text{const.}$, $TV^{\gamma - 1} = \text{const.}$</td></tr>
+</tbody></table>
+<h3 id="entropy">Entropy</h3>
+<p><strong>Entropy</strong> is a statistical measure of the disorder of a system. The entropy of a thermodynamic system $S$ can be roughly understood as how far a system has progressed towards a state of thermodynamic equilibrium. In terms of the state variables, entropy can be calculated via:</p>
+<p class="mathcell">
+$$
+\Delta S = mc\int_{T_1}^{T_2} \frac{dQ}{T}
+$$
+</p>
+<p>The <strong>second law of thermodynamics</strong> expresses the change in heat as a line integral:</p>
+<p class="mathcell">
+$$
+\Delta Q = \int_\Lambda T~dS
+$$
+</p>
+<p>As temperature is a statistical measure of itself, the second law predicts that <strong>it is probabilistically most likely that entropy will increase in a closed system</strong>. This prevents processes from being reversible; a cup falling off a table is unlikely to return back to the top of the table. In fact, the likelihood of a falling cup returning to the table is so, so low that in any non-astronomical timespan, it will essentially never occur.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this guide, we have gone through a tour of the essentials of classical physics, but this is far from all physics has to offer! For more on classical mechanics and special relativity, see the <a href="https://jackysci.com/advanced-classical-mech/">advanced classical mechanics</a> guide; to learn about the classical theory of electricity and magnetism, see the <a href="https://jackysci.com/electromagnetism/">electromagnetic theory</a> guide; and for physics beyond the classical realm, see the <a href="https://jackysci.com/intro-quantum-phys/">introductory quantum mechanics</a> guide. The world of physics awaits you!</p>
+
+        
+        <a id="jump-toc-btn" href="#toc">Show table of contents</a>
+        <a href="/notes" class="return-link">Back to all notes</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        var toc = document.getElementById("toc");
+        var tocPos = toc.offsetTop + toc.offsetHeight;
+        var tocBtn = document.getElementById("jump-toc-btn");
+
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+        // for performance reasons, we **only** render a certain
+        // number of equations that the viewer is actually viewing
+        function VisibleMathRenderer(config) {
+            /*
+            Renders only a limited number of equations on page load
+            to avoid poor performance
+             Params:
+                lastRenderedEquation: the most recently rendered equation.
+                        when this goes out of view, equations under it are rendered. 
+            */
+            var startElement = config.startElement
+            var maxEquations = config.maxEquations ? config?.maxEquations : 30;
+            this.startElement = startElement
+            this.maxEquations = maxEquations
+            // we wait until the user scrolls past the starting/
+            // ending elements to start rendering the whole page
+            this.canRenderWholePage = false;
+            this.pageRendered = false;
+            this.lastRenderedTopEquation = null;
+            this.lastRenderedBottomEquation = null;
+
+            this.render = function() {
+                renderMath(this.startElement);
+                // render previous 25 and following 25 equations
+                var prev = this.startElement.previousElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left prior to the element
+                    if (prev == null) {
+                        break;
+                    }
+                    renderMath(prev);
+                    prev = prev.previousElementSibling;
+                }
+                // store our last rendered equations
+                // we'll track scroll position later to
+                // check when the rest of the page should be rendered
+                this.lastRenderedTopEquation = prev;
+                console.log(this.lastRenderedTopEquation)
+
+                var next = this.startElement.nextElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left following the element
+                    if (next.nextElementSibling == null) {
+                        break;
+                    }
+                    renderMath(next);
+                    next = next.nextElementSibling;
+                }
+                this.lastRenderedBottomEquation = next;
+                // now allow rendering the rest of the equations
+                this.canRenderWholePage = true;
+            }
+
+            // render all math on the whole page
+            this.renderMathOnPage = function() {
+                // don't run until preliminary tasks
+                // are done so that the whole page
+                // can/should be rendered
+                if (!this.canRenderWholePage) {
+                    return;
+                }
+                // if the whole page's worth of equations
+                // are already rendered, don't render more
+                if (this.pageRendered) {
+                    return;
+                }
+                var topBound = this.lastRenderedTopEquation.getBoundingClientRect.top;
+                var bottomBound = this.lastRenderedBottomEquation.getBoundingClientRect.bottom;
+                var scrollTop, scrollBottom = getViewport();
+                // if the user is about to scroll past the initially-rendered equations
+                // we will render the whole page
+                if (scrollTop - 50 + window.scrollY < topBound || scrollBottom + 50 + window.scrollY > bottomBound) {
+                    console.log("Scrolled beyond!")
+                    var article = document.querySelector(".post");
+                    if (article) {
+                        this.renderMath(article);
+                    }
+                    this.pageRendered = true;
+                }
+                
+            }
+            
+        }
+
+        function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        function findFirstRelevantElement() {
+            // finds the first <p> tage that's closest to
+            // the viewer's viewport
+            var regex = /#.*/;
+            var m = regex.exec(window.location.href);
+            if (m !== null) {
+                return document.querySelector(m[0]);
+            } else {
+                return document.querySelector(".post p");
+            }
+        }
+        
+        // initialize page JS components
+        /*
+        var mathRenderer = new VisibleMathRenderer({
+            // start rendering with first <p> tag on the
+            // post
+            startElement: findFirstRelevantElement()
+        });
+        */
+        document.addEventListener("DOMContentLoaded", function() {
+            showTocBtnOnScroll();
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+
+        window.onscroll = function(){
+            // if (!mathRenderer.pageRendered) {
+            //     mathRenderer.renderMathOnPage();
+            // }
+            showTocBtnOnScroll();
+        };
+
+
+    </script>
+    
+
+
+</body>
+
+</html>

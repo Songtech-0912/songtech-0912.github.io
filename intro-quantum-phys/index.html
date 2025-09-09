@@ -1,0 +1,2144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introduction to Quantum Mechanics</title>
+  <meta name="description" content=" This a mini-book on quantum mechanics at a beginner&#x27;s level, with topics covered including wavefunctions, various solutions of the time-dependent and independent Schrödinger equation, the uncertainty principle, and expectation values.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Introduction to Quantum Mechanics</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+        <details class="toc" id="toc" open>
+        <summary>Table of contents</summary>
+        <p class="toc-info">Note: it is highly recommended to navigate by clicking links in the table of contents! It means you can use the back button in your browser to go back to any section you were reading, so you can jump back and forth between sections!</p>
+        <div>
+            <ul>
+            
+                <li>
+                    <a href="#why-quantum-theory">Why quantum theory?</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#getting-started-with-quantum-mechanics">Getting started with quantum mechanics</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#mathematical-foundations">Mathematical foundations</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#eigenvalues-and-eigenfunctions">Eigenvalues and eigenfunctions</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#complex-numbers">Complex numbers</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-wave-equation">The wave equation</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-schrodinger-equation">The Schrödinger equation</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#addenum-the-time-independent-schrodinger-equation">Addenum: the time-independent Schrödinger equation</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#solutions-as-eigenstates">Solutions as eigenstates</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#quantum-operators">Quantum operators</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#continuous-and-discrete-eigenvalues">Continuous and discrete eigenvalues</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#expectation-values">Expectation values</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#a-recap">A recap</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#a-brief-interlude-on-spin">A brief interlude on spin</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#solving-quantum-systems">Solving quantum systems</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#the-free-particle">The free particle</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-infinite-square-well">The infinite square well</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-hydrogen-atom">The hydrogen atom</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-quantum-harmonic-oscillator">The quantum harmonic oscillator</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#the-mathematics-behind-quantum-mechanics">The mathematics behind quantum mechanics</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#postulate-1-quantization">Postulate 1: quantization</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#postulate-2-quantum-states">Postulate 2: quantum states</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#postulate-3-observables">Postulate 3: observables</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#postulate-4-measurements-and-eigenvalues">Postulate 4: measurements and eigenvalues</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#postulate-5-the-born-rule-and-probabilities">Postulate 5: the Born rule and probabilities</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#the-fundamental-postulates-of-quantum-mechanics">The fundamental postulates of quantum mechanics</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#the-classical-limit-of-quantum-mechanics">The classical limit of quantum mechanics</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#ehrenfest-s-theorem">Ehrenfest&#x27;s theorem</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-general-ideas-of-the-classical-limit">The general ideas of the classical limit</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#a-brief-peek-at-more-advanced-quantum-mechanics">A brief peek at more advanced quantum mechanics</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#an-epistemological-remark">An epistemological remark</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#further-reading">Further reading</a>
+                    
+                </li>
+            
+            </ul>
+        </div>
+        </details>
+        
+
+        <!-- page content -->
+        <p>This a mini-book on quantum mechanics at a beginner's level, with topics covered including wavefunctions, various solutions of the time-dependent and independent Schrödinger equation, the uncertainty principle, and expectation values.</p>
+<span id="continue-reading"></span><h2 id="why-quantum-theory">Why quantum theory?</h2>
+<p><img src="https://cdn10.picryl.com/photo/2014/12/31/niels-bohr-standing-at-blackboard-principal-investigatorproject-analog-conversion-85f94c-1024.jpg" alt="An image of physicist Niels Bohr, an early proponent of quantum mechanics, standing at a whiteboard" /></p>
+<p><em>Niels Bohr doing quantum mechanics - <a href="https://nara.getarchive.net/media/niels-bohr-standing-at-blackboard-principal-investigatorproject-analog-conversion-85f94c">source</a></em></p>
+<p>Quantum theory is our best understanding of how the universe works at its most fundamental level. It is fundamentally paradoxical to human experience, but it is the bedrock of almost all of modern physics and its predictive power has made technological innovations possible. In addition, it is also a very scientifically and philosophically interesting theory to learn. This article forms the basis of an introduction to quantum mechanics.</p>
+<h2 id="getting-started-with-quantum-mechanics">Getting started with quantum mechanics</h2>
+<p>Our understanding of classical physics has served us well for centuries and still makes very accurate predictions about the world. But since the 20th century, we have found that the classical mechanics is actually only part of a much broader theory - quantum mechanics - that applies in many areas that classical theory fails. Quantum theory can explain the same phenomena that classical physics can, but it explains so much more that classical physics can't. It is truly a pillar - and wonder - of modern physics. In fact, it is the most accurate theory of physics ever created, especially with its subdiscipline of quantum field theory - and specifically, quantum electodynamics - that predicts quantities so precisely that they have been confirmed to <a href="https://en.wikipedia.org/wiki/Precision_tests_of_QED">ten parts in a billion</a>.</p>
+<p>But quantum theory can be difficult to comprehend, in part because it is founded on very different principles as compared to classical physics:</p>
+<ul>
+<li>The Universe is fundamentally described by probability distributions, as opposed to objects with exact positions and trajectories</li>
+<li>Physical quantities can only take on particular values and exact knowledge about them is often impossible</li>
+<li>Properties of quantum particles include many that don't exist for classical particles, such as the ability to pass through a solid barrier and having a nonzero energy even when stationary in a region of zero potential energy</li>
+</ul>
+<p>We <strong>don't</strong> know why we observe the world to behave in this way, and the interpretation of quantum mechanics is a separate philosophical question. Rather, we will simply consider the theory as a model that makes accurate predictions about the world without delving into <em>why</em>.</p>
+<p>In the first few sections, we'll introduce quantum mechanics without explaining why it works. Consider this as simply a preview of the essential features of quantum mechanics. In the sections after, we'll actually explain why quantum theory works, and derive many of the relations we take for granted in applying quantum mechanics.</p>
+<h2 id="mathematical-foundations">Mathematical foundations</h2>
+<p>What follows is a relatively brief mathematical overview of only the fundamentals required for starting quantum physics. However, it would certainly be helpful to have a background in multivariable calculus, differential equations, and some linear algebra (vectors, matrices, and eigenvalues). Don't worry if these are alien topics! There are expanded guides to each in the <a href="https://jackysci.com/calculus-series/">calculus series</a>. In addition, while not required, the <a href="https://jackysci.com/classical-dynamics/">introductory classical dynamics series</a> can be very helpful as well.</p>
+<h3 id="eigenvalues-and-eigenfunctions">Eigenvalues and eigenfunctions</h3>
+<p>To start with understanding quantum theory, we must first start with a concept that may be familiar to those who have studied linear algebra, although knowledge of linear algebra is not required. Consider the function $y(x) = e^{kx}$. If we take its derivative, we find that:</p>
+<p class="mathcell">
+$$
+\dfrac{dy}{dx} = ke^{kx}
+$$
+</p>
+<p>Which we notice, can also be written as:</p>
+<p class="mathcell">
+$$
+\frac{dy}{dx} = ky
+$$
+</p>
+<p>Notice that the derivative of $y(x)$ is just $y(x)$ multiplied by $k$. We call $y(x)$ an <strong>eigenfunction</strong>, because when we apply the derivative, it just becomes multiplied by a constant, and we call the constant here, $k$, an <strong>eigenvalue</strong>. The exponential function is not the only function that can be an eigenfunction, however. Consider the cosine function $y(x) = \cos kx$. Taking its <em>second derivative</em> results in:</p>
+<p class="mathcell">
+$$
+\frac{d^2 y}{dx^2} = -k^2 \cos kx = -k^2 y
+$$
+</p>
+<p>So cosine is <em>also</em> an eigenfunction, except its eigenvalue is $-k^2$ rather than $k$. We can show something very similar with sine - which makes sense because a sine curve is just a shifted cosine curve.</p>
+<h3 id="complex-numbers">Complex numbers</h3>
+<p>In quantum mechanics, we find that real numbers are not enough to fully describe the physics we observe. Rather, we need to use an <em>expanded number system</em>, that being the complex numbers.</p>
+<p>A complex number can be thought of as a pair of two real numbers. First, we define the <em>imaginary unit</em> $i = \sqrt{-1}$. To start, this seems absurd. We know that no real number can have this property. But the fact that <em>complex</em> numbers do have this properties gives rise to many useful mathematical properties. For instance, it allows for a class of solutions to polynomial equations that can't be expressed in terms of real numbers.</p>
+<p>We often write a complex number in the form $z = \alpha + \beta i$, where $\alpha$ is called the <em>real</em> part and $\beta$ is called the <em>imaginary</em> part. For a complex number $z$, we can also define a <em>conjugate</em> given by $\bar z = \alpha - \beta i$ (some texts use $z^*$ as an alternative notation). Uniquely, $z \bar z = (\alpha + \beta i)(\alpha - \beta i) = \alpha^2 + \beta^2$.</p>
+<p>Complex numbers also have another essential property. If we define the exponential function $f(x) = e^x$ in a way that allows for complex arguments, i.e. $f(z) = e^{z} = e^{\alpha + \beta i}$, we find that $e^{i\phi} = \cos \phi + i \sin \phi$. This is called <strong>Euler's formula</strong> and means we can use complex exponentials to write complex numbers in the form $z = re^{i\phi}$ where $r = \sqrt{\alpha^2 + \beta^2}$ and $\phi = \tan^{-1} \beta/\alpha$, converting to trigonometric functions whenever more convenient and vice-versa.</p>
+<p>But why do we use - or care - about complex exponentials? Mathematically speaking, complex exponentials satisfy all the properties of exponential functions, such as $e^{iA} e^{iB} = e^{i(A + B)}$ and $e^{iA} e^{-iB} = e^{A-B}$. This greatly simplifies calculations.</p>
+<blockquote>
+<p>For a more in-depth review, it may be helpful to see the refresher on <a href="https://jackysci.com/exponential-logs/">logarithmic and exponential functions here</a>.</p>
+</blockquote>
+<p>In addition, Euler's formula results in several identities that are also very helpful in calculations. From $e^{i\phi} = \cos \phi + i\sin \phi$ we can in turn find that $e^{i\phi} + e^{-i\phi} = 2\cos \phi$ and $e^{i\phi} - e^{-i\phi} = 2i \sin \phi$. We will use these extensively later on.</p>
+<p>The study of calculus that applies to complex numbers is called <em>complex analysis</em>. For most of quantum mechanics, we won't need to do full complex analysis, and can treat $i$ as simply a constant. There are, however, some advanced branches of quantum mechanics that <em>do</em> need complex analysis.</p>
+<h3 id="the-wave-equation">The wave equation</h3>
+<p>In classical physics, the laws of physics are described using <em>differential equations</em>. Differential equations are a very, very broad topic, and if unfamiliar, feel free to read <a href="https://jackysci.com/differential-equations/">the dedicated article on differential equations</a>. Their usefulness comes from the fact that differential equations permit descriptions of large classes of different physical scenarios. Consider, for instance, the wave equation:</p>
+<p class="mathcell">
+$$
+\frac{\partial^2 y}{\partial t^2} = v^2 \frac{\partial^2 y}{\partial x^2}
+$$
+</p>
+<p>This partial differential equation models everything from water ripples in a pond to the vibrations of a drum and even to light - which is an <em>electromagnetic wave</em>. The last one, however, is particularly important for quantum mechanics, because light is fundamentally quantum in nature, and the study of light is a crucial part of quantum mechanics.</p>
+<p>To solve the wave equation, we may use the <em>separation of variables</em>. That is to say, we assume that the solution $y(x, t)$ is a product of two functions $f(x)$ and $g(t)$, such that:</p>
+<p class="mathcell">
+$$
+y(x, t) = f(x) g(t)
+$$
+</p>
+<p>This means that we can take the second partial derivatives of $y(x, t)$ as follows.</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial^2 y}{\partial x^2} &amp;= \dfrac{\partial^2}{\partial x^2} \left(f(x) g(t)\right) = g(t) \dfrac{\partial^2}{\partial x^2} f(x) \\ &amp;= g(t) \dfrac{\partial^2 f}{\partial x^2} \\
+\dfrac{\partial^2 y}{\partial t^2} &amp;= \dfrac{\partial^2}{\partial t^2} \left(f(x) g(t)\right) = f(x) \dfrac{\partial^2}{\partial t^2} g(t) \\ &amp;= f(x) \dfrac{\partial^2 g}{\partial t^2} \\
+\end{align*}
+$$
+</p>
+<blockquote>
+<p>Note that we are able to factor out $g(t)$ when taking the second derivative of $y(x, t)$ with respect to $x$ because $g(t)$ <em>doesn't</em> depend on $x$, and therefore we can treat it as a <strong>constant</strong>. The same principle applies when taking the second derivative of $y(x, t)$ with respect to $t$; as $f(x)$ doesn't depend on $t$, we can also treat it as a constant and factor it out of the second derivative.</p>
+</blockquote>
+<p>If we substitute these expressions for the second derivatives back into the wave equation $\partial_{t}{}^2 y = v^2 \partial_{x}{}^2 y$ we have:</p>
+<p class="mathcell">
+$$
+f(x) \dfrac{\partial^2 g}{\partial t^2} = v^2 g(t) \dfrac{\partial^2 f}{\partial x^2}
+$$
+</p>
+<blockquote>
+<p><strong>Note on notation:</strong> Here $\partial_{t}{}^2 y$ is a shorthand for $\dfrac{\partial^2 y}{\partial t^2}$ and $\partial_{x}{}^2 y$ is a shorthand for $\dfrac{\partial^2 y}{\partial x^2}$.</p>
+</blockquote>
+<p>From our substituted wave equation, we can now perform some algebraic manipulations by dividing both sides by $f(x) g(t)$ and then multiplying both sides by $\dfrac{1}{v^2}$, as shown:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{1}{f(x) g(t)} f(x) \dfrac{\partial^2 g}{\partial t^2} &amp;= \dfrac{1}{f(x) g(t)}v^2 g(t) \dfrac{\partial^2 f}{\partial x^2} \Rightarrow \\
+\dfrac{1}{g(t)} \dfrac{\partial^2 g}{\partial t^2} &amp;= v^2 \dfrac{1}{f(x)}\dfrac{\partial^2 f}{\partial x^2} \\
+\dfrac{1}{v^2 g(t)} \dfrac{\partial^2 g}{\partial t^2} &amp;= \dfrac{1}{f(x)}\dfrac{\partial^2 f}{\partial x^2}
+\end{align*}
+$$
+</p>
+<p>However, if two expressions involving different partial derivatives are equal each other, then they must both be equal to a constant. This is called the <strong>separation constant</strong>, which we can set to a generic constant that can be positive or negative in sign (as the sign doesn't change the fact that it is constant), multiplied by any other constant, or raised to any power, as none of these operations change the fact that the end result is a constant. If we let that constant be $-k^2$ (we can choose any other constant or sign but this particular choice makes calculations easier later), we have:</p>
+<p class="mathcell">
+$$
+\dfrac{1}{v^2 g(t)} \dfrac{\partial^2 g}{\partial t^2} = \dfrac{1}{f(x)}\dfrac{\partial^2 f}{\partial x^2} = -k^2
+$$
+</p>
+<p>Which means we have <em>separated</em> the wave equation into two differential equations, one only involving $f(x)$, and one only involving $g(t)$:</p>
+<p class="mathcell">
+$$
+\dfrac{1}{v^2 g(t)} \dfrac{\partial^2 g}{\partial t^2} = -k^2 \\
+\dfrac{1}{f(x)}\dfrac{\partial^2 f}{\partial x^2} = -k^2
+$$
+</p>
+<p>This is the method of <strong>separation of variables</strong>, which is covered in the <a href="https://jackysci.com/differential-equations/">differential equations guide</a> as well as the <a href="https://jackysci.com/solving-pdes/">solving separable PDEs guide</a>. The idea is to reduce a partial differential equation into several ordinary differential equations that are easier to solve.</p>
+<p>At this point we should note that since $g(t)$ is purely a function of $t$ and $f(x)$ is purely a function of $x$, neither are multivariable functions and thus the partial derivatives reduce to ordinary derivatives:</p>
+<p class="mathcell">
+$$
+\dfrac{1}{v^2 g(t)} \dfrac{d^2 g}{d t^2} = -k^2 \\
+\dfrac{1}{f(x)}\dfrac{d^2 f}{d x^2} = -k^2
+$$
+</p>
+<p>We can algebraically rearrange terms in both equations to get them into a slightly nicer and cleaner form:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{d^2 g}{d t^2} &amp;= -k^2 v^2 g(t) \\
+\dfrac{d^2 f}{d x^2} &amp;= -k^2 f(x) 
+\end{align*}
+$$
+</p>
+<p>If we define another constant named $\omega$ which is defined as $\omega \equiv kv$ ($\equiv$ is the symbol for "defined as") we can rewrite even more nicely as:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{d^2 g}{d t^2} &amp;= -\omega^2 g \\
+\dfrac{d^2 f}{d x^2} &amp;= -k^2 f
+\end{align*}
+$$
+</p>
+<p>Solving these ordinary differential equations involves finding functions $g(t)$ and $f(x)$ whose second derivatives are equal to themselves, multiplied by a constant. We can use the <em>ansatz</em>'s (<em>ansatz</em> is a fancy German-derived word for "educated guess") of complex exponential functions as the solutions, and then check that this does indeed work:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+g(t) &amp;= e^{-i\omega t} \rightarrow \dfrac{d^2 g}{dt^2} = -\omega^2 e^{-i\omega t} = -\omega^2 g(t) \\
+f(x) &amp;= e^{-ik t} \rightarrow \dfrac{d^2 f}{dt^2} = -k^2 e^{-ik t} = -k^2 f(x) \\
+\end{align*}
+$$
+</p>
+<p>However, we find that $g(t) = e^{i\omega t}$ and $f(x) = e^{ikx}$ <em>also</em> works:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+g(t) &amp;= e^{i\omega t} \rightarrow \dfrac{d^2 g}{dt^2} = -\omega^2 e^{i\omega t} = -\omega^2 g(t) \\
+f(x) &amp;= e^{ik t} \rightarrow \dfrac{d^2 f}{dt^2} = -k^2 e^{ik t} = -k^2 f(x) \\
+\end{align*}
+$$
+</p>
+<p>So we write the general solution as a <em>linear combination</em> (i.e. sum with constant coefficients) of the two respective solutions for each:</p>
+<p class="mathcell">
+$$
+g(t) = C_1 e^{i\omega t} + C_2 e^{-i\omega t} \\
+f(x) = C_3 e^{ik x} + C_4 e^{-ik x} \\
+$$
+</p>
+<p>Now recalling that we set $y(x, t) = f(x) g(t)$ we can substitute our solutions to get the <strong>general solution</strong> for the 1D wave equation:</p>
+<p class="mathcell">
+$$
+y(x, t) = \left(C_1 e^{i\omega t} + C_2 e^{-i\omega t}\right)\left(C_3 e^{ik x} + C_4 e^{-ik x}\right)
+$$
+</p>
+<blockquote>
+<p><strong>Note for the mathematical reader:</strong> Technically speaking, this is not the <em>most</em> general solution, as any linear combination of this solution is a solution, given that the wave equation is a linear partial differential equation (PDE). Furthermore, given that one may always add a function to a solution to a PDE that gets differentiated away (as taking a partial derivative of a function with respect to a variable that the function doesn't depend on gives zero), the most general solution is actually $y(x, t) = u(x - vt) + w(x + vt)$ for <em>any</em> two twice-differentiable functions $u, w$.</p>
+</blockquote>
+<p>Expanding the solution we obtained out, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+y(x, t) &amp;= C_1 C_3 e^{i\omega t} e^{ikx} + C_1 C_4 e^{i\omega t} e^{-ikx} + C_2 C_3 e^{-i\omega t} e^{ikx} + C_2 C_4 e^{-i\omega t} e^{-ikx} \\
+&amp;= (C_2 C_3 e^{ikx - i\omega t} + C_1 C_4 e^{-ikx + i\omega t}) + (C_1 C_3 e^{ikx + i\omega t} + C_2 C_4 e^{-ikx -i\omega t}) \\
+&amp; = (C_2 C_3 e^{i(kx - \omega t)} + C_1 C_4 e^{-i(kx - \omega t)}) + (C_1 C_3 e^{i(kx + \omega t)} + C_2 C_4 e^{-i(kx + \omega t)})
+\end{align*}
+$$
+</p>
+<p>We note that this general solution is actually a sum of <strong>two</strong> wave solutions, one that travels along the $+x$ axis as time progresses, and one that travels along the $-x$ axis as time progresses. Thus we may write $y(x, t)$ as a sum of the rightward-traveling solution $y_1(x, t)$ and the leftward-traveling solution $y_2(x, t)$:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+y(x, t) &amp;= y_1(x, t) + y_2(x, t) \\
+y_1(x, t) &amp;= C_2 C_3 e^{i(kx - \omega t)} + C_1 C_4 e^{-i(kx - \omega t)} \\
+y_2(x, t) &amp;= C_1 C_3 e^{i(kx + \omega t)} + C_2 C_4 e^{-i(kx + \omega t)}
+\end{align*}
+$$
+</p>
+<p>We can write this in a neater form by defining $A \equiv C_2 C_3, B \equiv C_1C_4, C \equiv C_1 C_3, D \equiv C_2 C_4$ and therefore we may write:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+y(x, t) &amp;= y_1(x, t) + y_2(x, t) \\
+y_1(x, t) &amp;= Ae^{i(kx - \omega t)} + B e^{-i(kx - \omega t)} \\
+y_2(x, t) &amp;= C e^{i(kx + \omega t)} + D e^{-i(kx + \omega t)}
+\end{align*}
+$$
+</p>
+<p>We call these solutions <em>wave solutions</em> (unsurprisingly) and all wave solutions have an associated <strong>wavelength</strong> $\lambda$ and <strong>frequency</strong> $f$ as well as amplitude(s) $A, B, C, D$. From these we can derived more quantities that explicitly appear in the solution: $k = 2\pi/\lambda$ is known as the <strong>wavevector</strong> and $\omega = 2\pi f$ is the <strong>angular frequency</strong> related through $\omega = k v$ (as we saw earlier in the solving process). Here, $v$ is the speed the wave propagates forward.</p>
+<p>A pecular feature is that $y(x, t)$ is actually a <em>standing wave</em>, meaning that it does actually move, because $y_1, y_2$ move in opposite directions to each other, and thus their effects cancel out when they are added together.</p>
+<p>Now, let us turn our attention to a wave equation that can be considered the classical entryway into quantum theory. The <strong>electromagnetic (EM) wave equation</strong> is a special case of the wave equation given by:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial^2 E}{\partial t^2} = c^2 \dfrac{\partial^2 E}{\partial x^2}
+$$
+</p>
+<p>where $c$ is the speed of light in vacuum and $E(x, t)$ is the magnitude of the <strong>electric field</strong>, whose oscillations produce electromagnetic waves, that is, light. The solutions to the EM wave equation are also a special case of the general solution we have just derived for the wave equation:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+E(x, t) &amp;= E_1(x, t) + E_2(x, t) \\
+E_1(x, t) &amp;= Ae^{i(kx - \omega t)} + B e^{-i(kx - \omega t)} \\
+E_2(x, t) &amp;= C e^{i(kx + \omega t)} + D e^{-i(kx + \omega t)}
+\end{align*}
+$$
+</p>
+<p>Where $A, B, C, D$ are amplitudes derived from the boundary conditions of a specific problem. The solution characterizes all forms of light and radiation propagations, including all the light we see. The solution is uniquely characterized by two fundamental quantities, the speed of light $c$ and the wavelength of light $\lambda$, as well as its amplitudes (the electric field strength, in physical terms). All other quantities appearing in the solution can be derived from these two:</p>
+<table><thead><tr><th>Quantity</th><th>Expression in terms of $\lambda$ and $c$</th></tr></thead><tbody>
+<tr><td>$k$</td><td>$\dfrac{2\pi}{\lambda}$</td></tr>
+<tr><td>$f$</td><td>$\dfrac{c}{\lambda}$</td></tr>
+<tr><td>$\omega$</td><td>$k c = 2\pi f = \dfrac{2\pi c}{\lambda}$</td></tr>
+</tbody></table>
+<p>Wave solutions have some particular characteristics: they oscillate in time in predictable ways (which is why we can ascribe a frequency to them), and complete each spatial oscillation over a predictable distance (which is why we can ascribe a wavelength). Despite not being waves, quantum particles behave in ways strikingly similar to solutions of the wave equation, and <em>also</em> have a frequency and wavelength as well as derived quantities such as $k$ and $\omega$. In addition, characterics of waves and how they interact with objects have a big part to play in quantum phenomena, as we will soon see.</p>
+<h3 id="the-schrodinger-equation">The Schrödinger equation</h3>
+<p>In the quantum world, particles no longer follow the laws of classical physics. Instead, they follow the <strong>Schrödinger wave equation</strong>, a famous partial differential equation given by:</p>
+<p class="mathcell">
+$$
+i\hbar \frac{\partial}{\partial t} \Psi(x, t)  = \left(-\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x, t)\right) \Psi(x, t)
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> This is the 1D Schrödinger equation, but we will look at the full 3D Schrödinger equation later.</p>
+</blockquote>
+<p>Here, $\hbar$ is the <strong>reduced Planck constant</strong>, $m$ is the particle's mass, $V(x, t)$ is the particle's potential energy (which is often referred to simply as "the potential"), and the function to be solved for is $\Psi(x, t)$.</p>
+<p>The solutions to the Schrödinger equation $\Psi(x, t)$ for given initial and boundary conditions are called <strong>wavefunctions</strong>. The wavefunction tells us information about the <strong>state</strong> of a quantum system, from which we can extract the <em>probabilities</em> of a quantum system (for instance, a quantum particle) having a specific position, a specific momentum, a specific energy, and so forth.</p>
+<p>The Schrödinger equation also tells us that when undisturbed, quantum particles are waves spread out in space, instead of possessing definite positions. We call these waves <strong>matter waves</strong>. A quantum particle (or system) can be analyzed by finding the particular solution of the Schrödinger equation for that particle (or system), although the actual solving process is rather tedious and more of a mathematical exercise than physics. Using <strong>separation of variables</strong> is a common method to solve the Schrödinger equation, and we will work through several examples. However, lots of solutions are very well-known and just looking them up in a textbook, reference book, or online is far faster than actually solving the equation.</p>
+<p>As is suggestive of the name, wavefunctions describe the matter wave associated with a particular quantum particle (or system of quantum particles). Just like classical waves, all quantum particles have a wavelength $\lambda$ which is related to the momentum by $\lambda = \dfrac{h}{p}$ and the energy by $\lambda = \dfrac{hc}{E}$. Here, $h = \pu{6.62607E-34 J\cdot s}$ is the <strong>Planck constant</strong>, a fundamental constant of nature, alongside the <strong>reduced Planck constant</strong> $\hbar \equiv \dfrac{h}{2\pi} = \pu{1.05457E-34 J\cdot s}$.</p>
+<blockquote>
+<p>The equations $\lambda = \dfrac{h}{p}$ and the energy $\lambda = \dfrac{hc}{E}$ can be rewritten as $p = \hbar k$ (the <strong>de Broglie relation</strong>) and $E = \hbar \omega$ (the <strong>Planck-Einstein relation</strong>).</p>
+</blockquote>
+<p>As a bizarre consequence of the Schrödinger equation, wavefunctions - that is, the matter waves - are <strong>complex-valued</strong>. That is to say, matter waves are not physical quantities that are observable in the real world. Furthermore, matter waves are not simply <em>one wave</em>, but actually contain all possible <em>states</em> that a quantum particle can be in, where each state is a unique wave solution to the Schrödinger equation. At a given moment, a quantum particle's actual state can be <em>any</em> of the states contained in the wavefunction, but <em>which one</em> is impossible to predict in advance.</p>
+<p>Thus, rather than physical individual waves in space, wavefunctions are more of a mathematical description of <em>many</em> possible quantum waves of a particle that is non-localized and cannot be predicted exactly. For instance, an electron can be in its <em>ground state</em> (lowest-energy state). But it can also be in a number of other <em>excited</em> states (energetic states). Within each state, the particle has specific energies and momenta and has different probabilities to be located at a particular point in space. In fact, squaring the wavefunction and taking its absolute value, which we write as $\rho(x) = |\Psi|^2$, gives the <strong>probability density</strong>, indicating how likely it is to find a quantum particle at a specific point $x$ in space - although theoretically the particle can be almost anywhere. For instance, the following plot showcases the probability density for three wavefunctions:</p>
+<p><img src="https://cdn.kastatic.org/ka-perseus-images/a5e18b829f12622a749e2f131bd029f8783eaf92.jpg" alt="A graph of several wavefunctions, which describe how likely a particle is to be at a particular location" /></p>
+<p><em>Source: <a href="https://www.khanacademy.org/science/chemistry/atomic-structure-and-properties/orbitals-and-electrons/a/the-quantum-mechanical-model-of-the-atom">Khan Academy</a></em></p>
+<p>When we consider quantum problems in 3 dimensions, the associated probability density takes the form $\rho(x, y, z) = |\Psi(x, y, z)|^2$. 3D slices of the probability density for several solutions of the Schrödinger equation are shown below:</p>
+<p><img src="https://chem.libretexts.org/@api/deki/files/41592/e74241a7f09f0952511cff1994da750c.jpg?revision=1&amp;size=bestfit&amp;width=749&amp;height=522" alt="Plots of wavefunctions of the hydrogen atom" /></p>
+<p><em>Source: <a href="https://chem.libretexts.org/Bookshelves/General_Chemistry/Map%3A_Chemistry_-_The_Central_Science_%28Brown_et_al.%29/06%3A_Electronic_Structure_of_Atoms/6.06%3A_3D_Representation_of_Orbitals">LibreTexts</a></em></p>
+<p>To re-emphasize, since quantum particles are described as complex-valued matter waves, they aren't truly point particles, but spread throughout space - hence <em>wave</em> equation, because these solutions carry a wavelike nature. Since these solutions display cyclical (symmetric in space) and oscillatory (repeating in time) behavior, meaning that just like classical waves, we describe them in terms of wave quantities like the wavelength $\lambda$, angular frequency $\omega$, wave propagation speed $v$, and wavevector $k$. However, when we measure a quantum particle, we find that it then behaves particle-like and <em>occupies</em> a particular position. The likelihood of a particle being at a particular position can be calculated from the probability density $\rho = |\Psi|^2$, and we can find which positions the particle is more (or less) likely to be located. But the <em>precise</em> position cannot be predicted in advance.</p>
+<blockquote>
+<p><strong>Definition:</strong> A <strong>quantum state</strong> $\psi(x)$ is a solution to the Schrödinger equation for a given time $t$ whose physical interpretation is the matter wave of a quantum particle (or system). Taking the squared amplitude $|\psi(x)|^2$ of the quantum state gives a <strong>unique probability distribution function</strong> describing a quantum particle (or system).</p>
+</blockquote>
+<h3 id="addenum-the-time-independent-schrodinger-equation">Addenum: the time-independent Schrödinger equation</h3>
+<p>It is often convenient to write out a wavefunction in terms of separate time-dependent and time-independent components. We denote the full wavefunction as $\Psi(x, t)$, and the time-independent part as $\psi(x)$, where $\Psi(x, t) = \psi(x) e^{-i E/\hbar}$ for some value of the energy $E$.</p>
+<p>This is not simply a matter of convention. The underlying reason is that by the separation of variables technique, the Schrödinger equation can be rewritten as <em>two</em> differential equations in the form:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+i\hbar \dfrac{d}{d t} \phi(t) &amp;= E \phi(t) \\
+-\dfrac{\hbar^2}{2m} \dfrac{\partial^2 \psi}{\partial x^2} + V(x) \psi &amp;= E \psi(x)
+\end{align*}
+$$
+</p>
+<p>Where we refer to the bottom differential equation as the <em>time-independent</em> Schrödinger equation, and $\Psi(x, t) = \psi(x) \phi(t)$. Thus we say that $\psi(x)$ is a solution of the <em>time-independent</em> Schrödinger equation and represents the time-independent component of the wavefunction.</p>
+<blockquote>
+<p>When applying the Schrödinger equation, it is convention (though not a rule) that a lowercase $\psi$ for $\psi(x)$ is used for the spatial component of the wavefunction that is the solution to the time-independent Schrödinger equation, and an uppercase $\Psi$ for $\Psi(x, t) = \psi(x) \phi(t)$ is used for the complete wavefunction in both time and space. This also means that $\psi(x) = \Psi(x, 0)$.</p>
+</blockquote>
+<h2 id="solutions-as-eigenstates">Solutions as eigenstates</h2>
+<p>The solutions to the Schrödinger equation have an important characteristic: they are <em>linear</em> in nature. This means that we can write the general solution in terms of a <strong>superposition</strong> of solutions, each of which is a possible state for a quantum particle (or particles) - see the <a href="https://jackysci.com/differential-equations/">differential equation series</a> for why this works. Taking $\varphi_1, \varphi_2, \varphi_3, \dots$ to be the individual solutions with energies $E_1, E_2, E_3, \dots$, the general time-independent solution would be given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\psi(x) &amp;= \sum_n C_n \varphi_n(x)  \\ &amp;= C_1 \varphi_1(x) + C_2 \varphi_2(x) + \dots + C_n \varphi_n(x) 
+\end{align*}
+$$
+</p>
+<p>And therefore the general (time-dependent) wavefunction $\Psi(x, t)$ would be given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\Psi(x, t) &amp;= \sum_n C_n \varphi_n(x) e^{-iE_n t&#x2F;\hbar} \\ &amp;= C_1 \varphi_1(x)e^{-iE_1t&#x2F;\hbar} + C_2 \varphi_2(x)e^{-iE_2t&#x2F;\hbar} + \dots + C_n \varphi_n(x) e^{-iE_nt&#x2F;\hbar}
+\end{align*}
+$$
+</p>
+<p>Each individual solution $\varphi_n(x)$ is called an <strong>eigenstate</strong>, a possible state that a quantum particle can take. Eigenstate is just another word for <em>eigenfunction</em>, which we've already seen. This is because we note that each eigenstate individually satisfies the Schrödinger equation, which can be recast into the form of an eigenvalue equation:</p>
+<p class="mathcell">
+$$
+\left(-\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x, t)\right) \varphi_n(x) = E_n \varphi_n(x)
+$$
+</p>
+<blockquote>
+<p><strong>Note for the advanced reader:</strong> This is because mathematically speaking, the separation of variables results in a separation constant $E_n$ which results in an eigenvalue problem. We'll later see that $E_n$ acquires a physical interpretation as the energy.</p>
+</blockquote>
+<p>As a demonstration of this principle, the solution to the Schrödinger equation for a particle confined in a region $0 &lt; x &lt; L$ is a series of eigenstates given by:</p>
+<p class="mathcell">
+$$
+\varphi_n(x) = \sqrt{\dfrac{2}{L}} \sin \dfrac{n \pi x}{L},\quad E_n = \dfrac{n^2 \hbar^2 \pi^2}{2mL^2}
+$$
+</p>
+<blockquote>
+<p>$n$ is often called the <strong>principal quantum number</strong>, it is a good idea to keep this in mind.</p>
+</blockquote>
+<p>Below is a plot of several of these eigenstates:</p>
+<p><img src="https://www.researchgate.net/profile/Susana-Valdez-3/publication/260767966/figure/fig2/AS:669067904036876@1536529627958/Exact-solution-for-the-particle-in-a-one-dimensional-box-Left-Real-part-of-the-wave.ppm" alt="A plot of several overlapped eigenstates of the quantum particle confined to a small region of space" /></p>
+<p><em>Source: <a href="https://www.researchgate.net/figure/Exact-solution-for-the-particle-in-a-one-dimensional-box-Left-Real-part-of-the-wave_fig2_260767966">ResearchGate</a></em></p>
+<p>The general wavefunction of the particle would be given by the superposition:</p>
+<p class="mathcell">
+$$
+\Psi(x, t) = \varphi_1 + \varphi_2 + \dots = \small \sqrt{\dfrac{2}{L}} \normalsize \sum_n C_n \sin \dfrac{n \pi x}{L} e^{-iE_nt &#x2F; \hbar}
+$$
+</p>
+<p>Since the general wavefunction $\Psi(x, t)$ is a superposition of eigenstates, <em>each eigenstate</em> represents one state - and thus <strong>probability distribution</strong> - that a quantum particle can be in. A particle may be more or less likely to take a particular state. Typically, eigenstates are associated with energy, so a particle could have a number of different possible states, from a lowest-energy state to a highest-energy state and everything in between.</p>
+<p>However, the actual state the particle takes <strong>cannot be predicted</strong> (as with many things in quantum mechanics). Only the probabilities of a quantum particle being in a particular state are predictable. As an oversimplified example, while an electron could theoretically be in an eigenstate where it has the same amount of energy as a star, the probability of that state is very, very low. Instead, we typically observe electrons with more "normal" energies, as electrons have a much higher probability of being in lower-energy eigenstates.</p>
+<p>To quantify this statement in mathematical terms, the <em>coefficients</em> $C_n$ for each eigenstate are directly related to the probability of each eigenstate. In fact, the probability of each eigenstate is given by $P_n = |C_n|^2$. And we may calculate $C_n$ for a particular eigenstate $\varphi_n$ given the initial condition $\Psi(x, 0)$ with:</p>
+<p class="mathcell">
+$$
+C_n = \int_{-\infty}^\infty \bar \varphi_n(x) \Psi(x, 0)\, dx
+$$
+</p>
+<blockquote>
+<p>The coefficients $C_n$ are referred to by different names; we may call them <em>probability coefficients</em>, <em>probability amplitudes</em>, or simply <em>coefficients</em>. Whichever name is used, it represents the same thing, where $P_n = |C_n|^2$ is the probability of measuring a given eigenstate.</p>
+</blockquote>
+<h2 id="quantum-operators">Quantum operators</h2>
+<p>We have seen that we can solve for wavefunctions, which are the probability distributions of a quantum particle in space, by solving the Schrödinger equation. But we also want to calculate other physically-relevant quantities. How do we do so? Quantum theory uses the concept of <strong>operators</strong> to describe physical quantities. An operator is something that is <em>applied</em> to a function to get another function. A table of the most important operators is shown below:</p>
+<table><thead><tr><th>Name</th><th>Mathematical form</th></tr></thead><tbody>
+<tr><td>Position operator</td><td>$\hat X = x$ (multiplication by x)</td></tr>
+<tr><td>Momentum operator</td><td>$\hat p = -i\hbar \dfrac{\partial}{\partial x}$ (1D), $\hat p = -i\hbar \nabla$ (general)</td></tr>
+<tr><td>Angular momentum operator</td><td>General $\hat L = \mathbf{r} \times \hat p = \mathbf{r} \times -i\hbar\nabla$, z-component $\hat L_z = -i\hbar \dfrac{\partial}{\partial \phi}$ where $\phi$ is the azimuthal angle $\phi$ in spherical coordinates</td></tr>
+<tr><td>Kinetic energy operator</td><td>$K = -\dfrac{\hbar^2}{2m} \nabla^2$</td></tr>
+<tr><td>Potential (energy) operator</td><td>$\hat V = V$ (multiplication by the potential $V(x)$)</td></tr>
+<tr><td>Total energy operator (time-independent)</td><td>$\hat H$ often called the <strong>Hamiltonian</strong>, the precise formulation may vary but the most common non-relativistic one is $\hat H = -\dfrac{\hbar^2}{2m} \nabla^2 + \hat V$</td></tr>
+<tr><td>Total energy operator (time-dependent)</td><td>$\hat E = -i\hbar \dfrac{\partial}{\partial t}$</td></tr>
+</tbody></table>
+<blockquote>
+<p>Note that $\hat H$, the energy operator, is named so due to its correspondence with the <a href="https://en.wikipedia.org/wiki/Hamiltonian_mechanics">Hamiltonian</a> in classical mechanics</p>
+</blockquote>
+<p>There is a very important <em>physical</em> interpretation of a quantum operator: the <strong>eigenvalues</strong> of each eigenstate of a given quantum operator acting on a state gives the specific <em>values</em> of measurable values. For instance, the energy of one particular state is the eigenvalue of the Hamiltonian operator, and the momentum of one particular state is the eigenvalue of the momentum operator, and so forth.</p>
+<p>To find the eigenstates and eigenvalues of physical properties of a quantum particle, we apply each operator to the wavefunction, which results in an eigenvalue equation that we can solve for the eigenvalues. For example, for finding the momentum eigenstates, we can apply $\hat p$ the momentum operator:</p>
+<p class="mathcell">
+$$
+\hat p \varphi = -i\hbar \dfrac{\partial}{\partial x} \varphi(x)
+$$
+</p>
+<p>Now, writing $p$ as the eigenvalues of momentum in terms of an eigenvalue equation, we have:</p>
+<p class="mathcell">
+$$
+-i\hbar \dfrac{\partial}{\partial x} \varphi(x) = p\varphi(x)
+$$
+</p>
+<p>This is a differential equation that we can in fact solve for $\varphi(x)$ to obtain the solution:</p>
+<p class="mathcell">
+$$
+\varphi(x) = e^{ip x &#x2F; \hbar}
+$$
+</p>
+<p>We have now found a <em>momentum eigenstate</em> which has a momentum $p$. More generally, by the principle of superposition we saw earlier, this would correspond to a wavefunction given by:</p>
+<p class="mathcell">
+$$
+\psi(x) = C_1 e^{ip_1 x &#x2F; \hbar} + C_2 e^{ip_2 x &#x2F; \hbar} + \dots + C_n e^{ip_n x &#x2F; \hbar}
+$$
+</p>
+<blockquote>
+<p>Remember that $\psi$ is just the time-independent part of the full wavefunction $\Psi$, which is given by $\Psi(x, t) = \psi(x, t) e^{-iE t/ \hbar}$</p>
+</blockquote>
+<p>The fact that operators represent physical properties is very powerful. For instance, by identification of $\hat H = -\dfrac{\hbar^2}{2m} \dfrac{\partial^2}{\partial x^2} + V$ as the left-hand side of the time-independent Schrödinger equation, we have:</p>
+<p class="mathcell">
+$$
+\hat H \psi = E\psi
+$$
+</p>
+<p>And we can similarly write the full (time-dependent) Schrödinger equation as:</p>
+<p class="mathcell">
+$$
+i\hbar \dfrac{\partial}{\partial t} = \hat H \psi
+$$
+</p>
+<p>That is to say, the Schrödinger equation is the <strong>eigenvalue equation for the energy operator</strong>. This is an incredibly significant statement that we will use extensively going forwards.</p>
+<h3 id="continuous-and-discrete-eigenvalues">Continuous and discrete eigenvalues</h3>
+<p>So far, we have restricted a lot of our analysis to purely discrete eigenvalues. Let us explore a bit more in this direction, then change course to continuous eigenvalues.</p>
+<p>When a system possesses discrete eigenstates (and this is more easily seen with the fact that eigenstates are notated $\varphi_n(x)$) the system is also <strong>bounded</strong>, meaning that there are (infinite or finite) barriers that confine a particle. The specific feature is that these eigenstates are parametrized by an integer value, so they can be denoted $\varphi_1, \varphi_2, \dots, \varphi_n$. Then the general form of the time-independent wavefunction is given by:</p>
+<p class="mathcell">
+$$
+\psi(x) = \sum_n C_n \varphi_n(x)
+$$
+</p>
+<p>One perhaps unexpected result is that since an infinitely many number of eigenstates is in theory possible, a particle's <em>wavefunction</em> at a specific instant $t$ may not itself be an eigenstate - however, it can always be decomposed into a linear superposition of eigenstates. If having knowledge of Fourier series or reading the <a href="https://jackysci.com/differential-equations/">differential equation series</a>, this may sound familiar.</p>
+<p>For instance, consider the wavefunction $\psi(x) = \Psi(x, 0) = A\left(x^{3}-x\right)$ for $-1 \leq x \leq 1$. This is not an eigenstate, but we may write it in series form, whose individual terms <em>are</em> eigenstates, and from which we can find the ground state and the other eigenstates:</p>
+<p class="mathcell">
+$$
+\psi(x) = -\dfrac{16A}{\pi^4} (\pi^2 - 12) e^{i(\pi x&#x2F; 2 + \pi&#x2F;2)} - \dfrac{16A}{81\pi^4}(9\pi^2-12) e^{3i(\pi x&#x2F; 2 + \pi&#x2F;2)} + \dots
+$$
+</p>
+<p>In the continuous case, which is the case for position and momentum eigenstates, we have an eigenstate for every possible value of the physical quantity, instead of just integers. The position and momentum are examples where we observe continuous eigenstates; they can take a continuous spectrum of values <em>including</em> non-integer values. In addition, instead of discrete probability coefficients $C_n$ whose squares give the probability, we now have a continuous <strong>probability coefficient function</strong> $C(\lambda)$, where $\lambda$ is a continuous eigenvalue, such as $C(x)$ or $C(p)$ for position and momentum respectively. Therefore, we now have an integral for writing down the general wavefunction in terms of the continuous eigenstates; for momentum eigenstates, we have:</p>
+<p class="mathcell">
+$$
+\psi(x) = \int_{-\infty}^\infty C(k) e^{i k x} dk = \int_{-\infty}^\infty C(p) e^{i p x&#x2F;\hbar} dp
+$$
+</p><h4 id="addenum-position-eigenstates">Addenum: position eigenstates</h4>
+<p>Position eigenstates are similar in nature to momentum eigenstates, but they are not discussed as often because position eigenstates run into some complicated technicalities. First, by solving for $\hat x \psi = x \psi$, we can find that the eigenstates are given by $\varphi(x) = \delta(x - x')$ where $\delta$ is the Dirac delta function, which is zero everywhere except for a point $x'$ where the function has a spike. Then the general wavefunction is given by:</p>
+<p class="mathcell">
+$$
+\psi(x) = \int_{-\infty}^\infty C(x)\delta(x - x&#x27;)\, dx
+$$
+</p>
+<p>But the Dirac delta function obeys the identity:</p>
+<p class="mathcell">
+$$
+\int_{-\infty}^\infty f(x)\delta(x - x&#x27;) dx = f(x)
+$$
+</p>
+<p>Which means that:</p>
+<p class="mathcell">
+$$
+\psi(x) = \int_{-\infty}^\infty C(x)\delta(x - x&#x27;)\, dx = C(x)
+$$
+</p>
+<p>We now see that $\psi(x) = C(x)$ - that is to say, the spectrum of probability coefficients for continuous position eigenstates <em>are</em> the wavefunction. This somewhat perplexing result means that there are <em>infinitely-many position eigenstates</em> $\varphi(x) = \delta(x - x')$, one at every point in space, and the wavefunction is just the collection of probability coefficients of all of those eigenstates.</p>
+<p>If this is all too abstract, that is completely understandable. We will re-examine the idea of the wavefunction being a probability coefficient function of eigenstates later, when we discuss the Dirac formulation of quantum mechanics.</p>
+<h3 id="expectation-values">Expectation values</h3>
+<p>We have seen that operators represent physical properties (such as position or momentum), that eigenstates are solutions to eigenvalue equations, and that eigenvalues are the possible measurable values of the physical property. We have also seen that a superposition of eigenstates of an operator can be used to write out the wavefunction, and that the probability coefficients $C_n$ in the superposition are related to the probability $|P_n|$ associated with each state.</p>
+<p>Recall that the actual properties of a quantum particle are unknown and random, and the best we can do is to predict probabilities. However, just as we can predict the probabilities of the particle being in a particular state through the probability coefficients of each eigenstate, we can predict the <em>average</em> measured value. We call this the <strong>expectation value</strong>.</p>
+<blockquote>
+<p><strong>Note:</strong> We must exercise some caution in using the word "average" here. The expectation value is <strong>not</strong> the average value of measurements of a a quantum system taken immediately one after another. Rather, it is the average value of either (a) measuring <strong>multiple copies</strong> of the same quantum system at the same time or (b) <strong>replicating the quantum system from scratch</strong> and re-doing the measurement on each. This is why quantum physics experiments (such as the <a href="https://en.wikipedia.org/wiki/Large_Hadron_Collider">Large Hadron Collider</a>) repeat collisions over and over billions or even <a href="http://www.slashgear.com/first-lhc-proton-run-ends-in-success-new-milestone-18261452/">quadrillions of times</a>, since an expectation value can only be compared to average measurements across <strong>multiple repeats</strong> (or copies) of the same quantum system, <strong>not</strong> the same system measured multiple times.</p>
+</blockquote>
+<p>In the discrete case, for a given operator $\hat A$ with eigenstates $\varphi_n(x)$, the expectation value is notated $\langle \hat A\rangle$ and is given by:</p>
+<p class="mathcell">
+$$
+\langle \hat A\rangle = \sum_n |C_n|^2 A_n
+$$
+</p>
+<p>Meanwhile, in the continuous case, for a given operator $\hat A$, the expectation value is given by:</p>
+<p class="mathcell">
+$$
+\langle \hat A\rangle = \int_{-\infty}^\infty \bar \Psi(x, t) \hat A \Psi(x, t)\, dx
+$$
+</p>
+<p>In the cases of the position and momentum operators $\hat x = x$ and $\hat p = -i\hbar \dfrac{\partial}{\partial x}$, by substituting into the above formula, the expectation values are given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\langle x \rangle &amp;= \int_{-\infty}^\infty \bar \Psi(x, t) x\, \Psi(x, t) dx \\
+\langle p \rangle &amp;= \int_{-\infty}^\infty \bar \Psi(x, t) \left(-i\hbar \dfrac{\partial}{\partial x} \Psi(x, t)\right) dx
+\end{align*}
+$$
+</p>
+<p>It may seem strange at first glance that expectation values are not time-dependent (i.e. that we don't also have to integrate with respect to time). The reason, however, is that when a wavefunction and its conjugate are multiplied, the time-components of the wavefunction combine to form $e^{i E t / \hbar}e^{-i E t / \hbar} = 1$.</p>
+<p>We may also take the expectation value of a given operator applied twice, which we denote $\langle \hat A^2\rangle$, where $\hat A^2 \varphi = \hat A(\hat A \varphi)$. This notation means that in the discrete case, we have:</p>
+<p class="mathcell">
+$$
+\langle \hat A^2\rangle = \sum_n |C_n|^2 A_n {}^2
+$$
+</p>
+<p>And in the continuous case we have:</p>
+<p class="mathcell">
+$$
+\langle \hat A^2\rangle = \int_{-\infty}^\infty \bar \Psi(x, t) \hat A^2 \Psi(x, t)\, dx
+$$
+</p>
+<p>Calculating the expectation values further leads to an incredibly important result. From statistical theory, the <strong>uncertainty</strong> (standard deviation) $\Delta X$ of a given variable $X$ is given by $\Delta X = \sqrt{\langle X^2 \rangle - \langle X \rangle^2}$. This means that in quantum mechanics, for a given physical quantity $A$ which has a corresponding operator $\hat A$, then the uncertainty in measuring $A$ is given by:</p>
+<p class="mathcell">
+$$
+\Delta A = \sqrt{\langle \hat A^2 \rangle - \langle \hat A \rangle^2}
+$$
+</p>
+<p>In the case of the momentum $p$ and position $x$, we obtain the famous result of the <strong>Heisenberg uncertainty principle</strong>:</p>
+<p class="mathcell">
+$$
+\Delta x \Delta p \geq \dfrac{\hbar}{2}
+$$
+</p>
+<p>The standard deviations $\Delta x$ and $\Delta p$ can be thought of the "spread of measurements", so the Heisenberg uncertainty principle says that the momentum and position eigenvalues cannot both be predicted with certainty. What does this mean in practice? Suppose we had an detector that was purpose-built to measure the momentum and position of a quantum particle. Like any scientific instrument, it has a certain measurement uncertainty, which we will call $\epsilon$. We turn it on, make a position measurement, and then we get a number - perhaps it measures a position of 1.4 nanometers from the measurement device. However, it probably is not <em>exactly</em> at 1.4 nm; since the detector itself has a certain measurement uncertainty, the actual measurement is $\pu{1.4 nm} \pm \epsilon$. We also simultaneously measure the momentum of the particle, and we get another number - perhaps $\pu{5.5e-31 kg*ms^{-1}}$. Conventional wisdom would suggest that the momentum measurement should be $\pu{5.5e-31 kg*ms^{-1}} \pm \epsilon$, just like the position measurement. But the Heisenberg uncertainty principle says that $\Delta x \Delta p \geq \frac{\hbar}{2}$. This means that:</p>
+<p class="mathcell">
+$$
+\Delta p \geq \frac{\hbar}{2 \Delta x} \Rightarrow \Delta p \geq \frac{\hbar}{2 \epsilon}
+$$
+</p>
+<p>So even if the detector's measurement uncertainty $\epsilon$ is made arbitrarily small, the <em>most accurate</em> measurement you can get of the momentum while simultaneously measuring the position is $\pu{5.5 kg*ms^{-1}} \pm \hbar&#x2F;2\epsilon$. This means that in practice, only one property of a quantum particle can usually be measured to full precision at a time.</p>
+<h3 id="a-recap">A recap</h3>
+<p>So, to sum up, the fundamental procedure in introductory quantum mechanics is as follows:</p>
+<ul>
+<li>Solve the Schrödinger equation with the appropriate initial and boundary conditions to determine the solutions, which are eigenstates</li>
+<li>For each of the eigenstates, find the probability density function with $\rho(x, t) = |\Psi(x, t)|^2 = \Psi(x, t) \bar \Psi(x, t)$, which yields the probability distribution of the particle in space</li>
+<li>Apply all the operators (Hamiltonian, momentum, angular momentum, etc.) to analyze the different properties of the quantum system being studied. The eigenvalues of each operator are the measurable values of the physical quantity (e.g. energy, momentum, etc.)</li>
+<li>Compute the expectation (average) values of each operator, as well as the uncertainties through $\Delta A = \sqrt{\langle \hat A^2\rangle - \langle \hat A\rangle^2}$</li>
+<li>You may also calculate the probabilities of each eigenstate (and of their associated energy, momentum, and other properties) through $P_n = |C_n|^2$ where $C_n$ is the <em>probability coefficient</em> of the eigenstate in the superposition. This becomes a <em>probability coefficient function</em> $C(\lambda)$ for the continuous spectrum case, which includes $C(x)$ for position and $C(p)$ for momentum.</li>
+</ul>
+<h3 id="a-brief-interlude-on-spin">A brief interlude on spin</h3>
+<p>For all its predictive power, the simplest form of the Schrödinger equation does not explain one quantum phenomenon: <strong>spin</strong>. Spin is the property that allows quantum particles like electrons to act as tiny magnets and generate magnetic fields. The name is technically a misnomer: in classical mechanics, a spinning charge would create a magnetic field, but subatomic particles don't actually spin, they just behave <em>as if they did</em>.</p>
+<p>To make this idea more concrete, consider an electron placed in a magnetic field $\mathbf{B}$. It would then experience a torque given by $\vec \tau = \vec \mu \times \mathbf{B}$, where $\vec \mu$ is the magnetic moment given by:</p>
+<p class="mathcell">
+$$
+\vec \mu = -\dfrac{g_e e}{2m} \mathbf{S}
+$$
+</p>
+<p>Where $e$ is the electron charge (also called the <em>elementary charge</em>), $m$ is the electron mass, $g_e \approx 2.00232$ is the <strong>electron <em>g-factor</em></strong>, and $|S| = \hbar \sqrt{s(s + 1)}$ is the spin angular momentum vector. Here, $s = \pm \frac{1}{2}$ is called the <em>spin quantum number</em>, which we often shorten to <em>spin</em>. Spin explains how some materials are able to act as permanent magnets: the torque caused by their magnetic moments aligns them in the same direction. In this way, they behave just like little (classical) magnets, except their magnetic moments are a consequence of their spin. The alignment of spins amplifies the tiny magnetic fields of each electron strongly enough that we can observe their combined effect as a <em>macroscopic</em> magnetic field.</p>
+<p>Spin modifies a quantum state because a quantum state must <em>additionally</em> include information about a quantum particle's spin. For electrons, all spins must either be $+\frac{1}{2}$ (spin-up) or $-\frac{1}{2}$ (spin-down); these are the <em>only</em> two possible spins.</p>
+<p>We formulate spin mathematically as an operator, just like energy and momentum. However, unlike the differential operators we've seen, the spin operators $\hat S_x, \hat S_y, \hat S_z$ (there is one for each direction $x, y, z$) are matrices. In the case of elementary fermions (quarks, electrons, and neutrinos) which have spin-1/2 these are specifically expressed as:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat \sigma _{x} &amp;=\dfrac{\hbar}{2}{\begin{pmatrix}0 &amp; 1\\1 &amp; 0\end{pmatrix}}\\
+\hat \sigma_{y} &amp; =\dfrac{\hbar}{2}{\begin{pmatrix}0 &amp; -i\\i &amp; 0\end{pmatrix}}\\
+\hat \sigma_{z} &amp; =\dfrac{\hbar}{2}{\begin{pmatrix}1 &amp; 0\\0 &amp; -1\end{pmatrix}}\\
+\end{align*}
+$$
+</p>
+<p>The inclusion of spin means that even electrons with otherwise identical eigenstates are not the same; their wavefunctions must also include whether they are spin-up or spin-down. While the Schrödinger equation does not include spin, more advanced formulations of the Schrödinger equation <strong>do include</strong> the effects of spin, and are essential for very accurate calculations. We will return to spin later at the end.</p>
+<h2 id="solving-quantum-systems">Solving quantum systems</h2>
+<p>We will now apply quantum mechanics to solve a variety of quantum systems, to get a feel for how exactly you <em>do</em> quantum mechanics. Note that there are only a few exact solutions to quantum problems, and approximate methods are required for the vast majority of quantum systems, so these should be (with some exceptions) considered <em>idealized</em> systems.</p>
+<h3 id="the-free-particle">The free particle</h3>
+<p>The free particle is among the simplest quantum systems that have an exact solution to the Schrödinger equation. It describes a quantum particle in free space is unconstrained by any potential, and thus has zero potential energy. We start from the one-dimensional Schrödinger equation for $V(x) = 0$, for which we may solve for the wavefunction:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+-\dfrac{\hbar^2}{2m} \dfrac{\partial^2 \Psi(x, t)}{\partial x^2} + \cancel{V(x)} &amp;= i \hbar \dfrac{\partial \Psi(x, t)}{\partial t} \Rightarrow \\
+-\dfrac{\hbar^2}{2m} \dfrac{\partial^2 \Psi(x, t)}{\partial x^2} &amp;= i \hbar \dfrac{\partial \Psi(x, t)}{\partial t}
+\end{align*}
+$$
+</p>
+<p>If we assume a solution in the form $\Psi(x) = \psi(x) f(t)$, we may substitute to find that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial^2 \Psi(x, t)}{\partial x^2} &amp;= f(t)\dfrac{d^2 \psi}{dx^2} \\
+\dfrac{\partial \Psi(x, t)}{\partial t} &amp;= \psi(x) \dfrac{df}{dt}
+\end{align*}
+$$
+</p>
+<blockquote>
+<p>These are ordinary derivatives because $\psi(x)$ and $f(t)$ are functions of only one variable.</p>
+</blockquote>
+<p>Thus if we substitute these derivatives back into the Schrödinger equation we get:</p>
+<p class="mathcell">
+$$
+-\dfrac{\hbar^2}{2m} f(t)\dfrac{d^2 \psi}{dx^2} = i \hbar \psi(x) \dfrac{df}{dt}
+$$
+</p>
+<p>Now dividing both sides by $\psi(x)f(t)$ we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+-\dfrac{1}{\psi(x) f(t)}\dfrac{\hbar^2}{2m} f(t)\dfrac{d^2 \psi}{dx^2} = \dfrac{1}{\psi(x) f(t)} i \hbar \psi(x) \dfrac{df}{dt} \\
+-\dfrac{\hbar^2}{2m} \dfrac{1}{\psi(x)}\dfrac{d^2 \psi}{dx^2} = i \hbar\dfrac{1}{f(t)} \dfrac{df}{dt} = \text{const.}
+\end{align*}
+$$
+</p>
+<p>If we call the separation constant $E$, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+-\dfrac{\hbar^2}{2m} \dfrac{1}{\psi(x)}\dfrac{d^2 \psi}{dx^2} = i \hbar\dfrac{1}{f(t)} \dfrac{df}{dt} = E \Rightarrow \\
+-\dfrac{\hbar^2}{2m} \dfrac{1}{\psi(x)}\dfrac{d^2 \psi}{dx^2} = E \\
+i \hbar\dfrac{1}{f(t)} \dfrac{df}{dt} = E
+\end{align*}
+$$
+</p>
+<p>The two ODEs can be rewritten in a more easily-read form as:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+-\dfrac{\hbar^2}{2m} \dfrac{d^2 \psi}{dx^2} = E\psi(x) \\
+i \hbar\dfrac{df}{dt} = Ef(t)
+\end{align*}
+$$
+</p>
+<blockquote>
+<p>The top differential equation is the <strong>time-independent Schrödinger equation</strong> we saw before, just with $V(x) = 0$.</p>
+</blockquote>
+<p>We can use the traditional methods of solving first- and second-order differential equations (or just make an educated guess, that's called an <em>ansatz</em>) to find the solutions are:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\psi(x) &amp;= e^{i k x}, \quad k \equiv \dfrac{\sqrt{2mE}}{\hbar} \\
+f(t) &amp;= e^{-i \omega t}, \quad \omega \equiv \dfrac{E}{\hbar} \\
+\Psi(x, t) &amp;= \psi(x) f(t) = e^{ikx} e^{-i\omega t} \\ &amp;= e^{ik x - i\omega t}
+\end{align*}
+$$
+</p>
+<blockquote>
+<p>We call this solution a <strong>plane-wave</strong> solution.</p>
+</blockquote>
+<p>We now encounter an issue: the plane-wave solution $\Psi(x, t) = e^{i(kx -\omega t)}$ is non-normalizable; if we try to perform the normalization integral, we'll find that its total probability is infinite and thus is unphysical. However, if we create a superposition of plane waves by adding them together (which, again, are still solutions to the Schrödinger equation because it is a linear combination), we <em>do</em> get a physical solution, which we call a <strong>wave packet</strong>:</p>
+<p><img src="https://phys.libretexts.org/@api/deki/files/38619/Screen_Shot_2022-01-27_at_2.45.04_PM.png?revision=1&amp;size=bestfit&amp;width=670&amp;height=240" alt="A wave packet, created by summing many plane waves" /></p>
+<p><em>Source: <a href="https://phys.libretexts.org/Bookshelves/Classical_Mechanics/Essential_Graduate_Physics_-_Classical_Mechanics_(Likharev)/06%3A_From_Oscillations_to_Waves/6.03%3A_1D_Waves">LibreTexts</a></em></p>
+<p>We can create this superposition by adding plane waves of different wavevectors $k$ and frequencies $\omega$, which are related by $\omega = k v_g$ where $v_g$ is the <em>group velocity</em>, meaning the velocity at which the wave packet moves over time. This becomes an integral as the number of summed waves approaches infinity:</p>
+<p class="mathcell">
+$$
+\Psi(x, t) = \dfrac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty A(k) e^{i(kx - \omega t)}\, dk
+$$
+</p>
+<p>Where $A(k)$ is a function that gives the wavevector $k$ for each summed wave. A common choice of $A(k)$ is the Gaussian, given by:</p>
+<p class="mathcell">
+$$
+A(k) = \sqrt{\sigma}\left(\dfrac{2}{\pi}\right)^{1&#x2F;4} e^{-\sigma^2 (k - k_0)^2}
+$$
+</p>
+<p>And therefore the wavefunction $\Psi(x, t)$ is given by:</p>
+<p class="mathcell">
+$$
+\Psi(x, t) =\left( \dfrac{1}{2 \pi} \right)^{1 &#x2F; 4} \dfrac{1}{\sqrt{\sigma}} e^{i k_0 x -
+\frac{x^2}{4 \sigma^2}} e^{-i \omega t}
+$$
+</p>
+<p>We may calculate the expectation values - that is, the average values - of the free particle's position and momentum. Let us begin with that of position. We have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\langle x \rangle &amp;= \int_{-\infty}^\infty \Psi^*(x, t) \hat x \Psi(x, t)\,dx \\
+&amp;= \int_{-\infty}^\infty \Psi^*(x, t) x \Psi(x, t)\,dx \\
+&amp;= \left[\left( \dfrac{1}{2 \pi} \right)^{1 &#x2F; 4} \dfrac{1}{\sqrt{\sigma}}\right]^2 \int_{-\infty}^\infty (e^{-ik_0 x}e^{-\frac{x^2}{4\sigma^2}} e^{i\omega t}) x (e^{ik_0 x}e^{-\frac{x^2}{4\sigma^2}} e^{-i\omega t})\, dx \\
+&amp;= \dfrac{1}{\sqrt{2\pi}} \dfrac{1}{\sigma} \int_{-\infty}^\infty e^{-\frac{x^2}{4\sigma^2}} x e^{-\frac{x^2}{4\sigma^2}}\, dx \\
+&amp;= \dfrac{1}{\sigma \sqrt{2\pi}} \int_{-\infty}^\infty xe^{-\frac{x^2}{2\sigma^2}}\, dx
+\end{align*}
+$$
+</p>
+<blockquote>
+<p>The squared quantity in brackets $\left( \dfrac{1}{2 \pi} \right)^{1 / 4} \dfrac{1}{\sqrt{\sigma}}$ that is factored out of the integral is the amplitude from the wavefunction. It is squared because $\psi$ and $\psi^*$ both have this amplitude, and therefore multiplying them together gives a squared amplitude.</p>
+</blockquote>
+<p>However, $xe^{-\frac{x^2}{2\sigma^2}}$ is an <em>odd</em> function. An odd function has $f(-x) = -f(x)$, that is, it flips as you go from $-x$ to $x$, and odd functions satisfy the identity:</p>
+<p class="mathcell">
+$$
+\int_{-\infty}^\infty f(x)\, dx = 0
+$$
+</p>
+<blockquote>
+<p>This is because odd functions have a positive area for $x &gt; 0$ and a negative area for $x &lt; 0$ that, once added together, cancel each other out.</p>
+</blockquote>
+<p>Therefore we have:</p>
+<p class="mathcell">
+$$
+\langle x \rangle = \dfrac{1}{\sigma \sqrt{2\pi}} \int_{-\infty}^\infty xe^{-\frac{x^2}{2\sigma^2}}\, dx = 0
+$$
+</p>
+<p>This means that the particle is most likely to be found at $x = 0$ - which makes sense given that the peak of its wavefunction is located at $x = 0$.</p>
+<p>We may also find the expectation value of the momentum. For this, we recall that the momentum expectation value is found by the following equation:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\langle p\rangle &amp;= \int_{-\infty}^\infty \psi^*(x) \hat p \psi(x)\, dx \\
+&amp;= \int_{-\infty}^\infty \psi^*(x) \dfrac{\hbar}{i} \dfrac{\partial}{\partial x} \psi(x)\, dx \\
+\end{align*}
+$$
+</p>
+<blockquote>
+<p>Note the identity $-i\hbar = \dfrac{\hbar}{i}$. This is why the momentum operator $\hat p$ is sometimes written $\dfrac{\hbar}{i} \dfrac{\partial}{\partial x}$ and sometimes written $-i\hbar \dfrac{\partial}{\partial x}$. They are <strong>completely equivalent</strong>.</p>
+</blockquote>
+<p>We may find $\hat p \psi$ as follows:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat p \psi &amp;= \dfrac{\hbar}{i} \dfrac{\partial}{\partial x} \\
+&amp;= \dfrac{\hbar}{i}\dfrac{\partial}{\partial x}\left[\left( \dfrac{1}{2 \pi} \right)^{1 &#x2F; 4} \dfrac{1}{\sqrt{\sigma}} e^{i k_0 x -
+\frac{x^2}{4 \sigma^2}} e^{-i \omega t}\right] \\
+&amp;= \dfrac{\hbar}{i} \left( \dfrac{1}{2 \pi} \right)^{1 &#x2F; 4} \dfrac{1}{\sqrt{\sigma}} e^{-i\omega t} \left[\dfrac{\partial}{\partial x} 
+\left(e^{i k_0 x - \frac{x^2}{4 \sigma^2}}\right)\right] \\
+&amp;= \dfrac{\hbar}{i} \left( \dfrac{1}{2 \pi} \right)^{1 &#x2F; 4} \dfrac{1}{\sqrt{\sigma}} e^{-i\omega t} \left[ 
+\left(ik_0 - \dfrac{x}{2\sigma^2}\right)e^{i k_0 x - \frac{x^2}{4 \sigma^2}}\right] \\
+\end{align*}
+$$
+</p>
+<p>Substituting this expression into the equation for $\langle p\rangle$ we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\langle p\rangle &amp;= \int_{-\infty}^\infty \psi^*(x) \dfrac{\hbar}{i} \dfrac{\partial}{\partial x} \psi(x)\, dx \\
+&amp;= \left[\frac{\hbar}{i} \left[\left( \frac{1}{2 \pi} \right)^{1 &#x2F; 4} \frac{1}{\sqrt{\sigma}}\right]^2 \cancel{e^{i\omega t}e^{-i\omega t}}^{{}^1} \right]\int_{-\infty}^\infty e^{-i k_0 x - \frac{x^2}{4 \sigma^2}}
+\left(ik_0 - \frac{x}{2\sigma^2}\right)e^{i k_0 x - \frac{x^2}{4 \sigma^2}}\,dx \\
+&amp;= \frac{\hbar}{i} \left[\left( \frac{1}{2 \pi} \right)^{1 &#x2F; 4} \frac{1}{\sqrt{\sigma}}\right]^2
+\int_{-\infty}^\infty \cancel{e^{i k_0 x} e^{-ik_0x}}^{{}^1} \left(ik_0 - \frac{x}{2\sigma^2}\right) e^{-\frac{x^2}{4 \sigma^2}}e^{-\frac{x^2}{4 \sigma^2}}\,dx \\
+&amp;= \frac{\hbar}{i} \left[\left( \frac{1}{2 \pi} \right)^{1 &#x2F; 4} \frac{1}{\sqrt{\sigma}}\right]^2
+\int_{-\infty}^\infty \left(ik_0 - \frac{x}{2\sigma^2}\right) e^{-\frac{2x^2}{4 \sigma^2}} \,dx \\
+&amp;= \frac{\hbar}{i} \left[\left( \frac{1}{2 \pi} \right)^{1 &#x2F; 4} \frac{1}{\sqrt{\sigma}}\right]^2
+\int_{-\infty}^\infty \left(ik_0 - \frac{x}{2\sigma^2}\right) e^{-\frac{x^2}{2 \sigma^2}} \,dx \\
+&amp;= \frac{\hbar}{i} \left[\left( \frac{1}{2 \pi} \right)^{1 &#x2F; 4} \frac{1}{\sqrt{\sigma}}\right]^2
+\left(\int_{-\infty}^\infty ik_0 e^{-\frac{x^2}{2 \sigma^2}} \,dx - \int_{-\infty}^\infty \frac{x}{2\sigma^2} e^{-\frac{x^2}{2 \sigma^2}} \,dx \right)
+\end{align*}
+$$
+</p>
+<blockquote>
+<p>It is helpful to remember that the conjugate of anything real-valued is itself (e.g. the conjugate of $e^{-\frac{x^2}{2\sigma^2}}$ is itself. Meanwhile, anything complex-valued in the form $e^{\pm i \phi}$ has $e^{\mp i\phi}$ as its conjugate. For instance, $e^{-i\omega t}$ has the conjugate $e^{i\omega t}$, and $e^{-i\omega t} e^{i\omega t} = 1$.</p>
+</blockquote>
+<p>Note, however, that the second integral in the last line of our expression is an odd function, so the integral goes to zero. Therefore, we have the simplified integral (relief!) as follows:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\langle p \rangle &amp;= \frac{\hbar}{i} \left[\left( \frac{1}{2 \pi} \right)^{1 &#x2F; 4} \frac{1}{\sqrt{\sigma}}\right]^2
+\int_{-\infty}^\infty ik_0 e^{-\frac{x^2}{2 \sigma^2}} \,dx \\
+&amp;= \dfrac{\hbar k_0}{\sigma \sqrt{2\pi}} \int_{-\infty}^\infty e^{-\frac{x^2}{2 \sigma^2}} \,dx
+\end{align*}
+$$
+</p>
+<p>This is a <em>Gaussian integral</em> that we can solve with the following identity:</p>
+<p class="mathcell">
+$$
+\displaystyle \int_{- \infty}^{\infty} e^{- \alpha y^2} d y = \sqrt{\dfrac{\pi}{a}}
+$$
+</p>
+<p>If we use the substitution that $a = \dfrac{1}{2\sigma^2}$ then we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\langle p \rangle &amp;= \dfrac{\hbar k_0}{\sigma \sqrt{2\pi}} \int_{-\infty}^\infty e^{-\frac{x^2}{2 \sigma^2}} \,dx \\
+&amp;= \dfrac{\hbar k_0}{\sigma \sqrt{2\pi}} \sqrt{2\pi \sigma^2} \\
+&amp;= \dfrac{\hbar k_0}{\sigma \sqrt{2\pi}} \sigma \sqrt{2\pi} \\
+&amp;= \hbar k_0
+\end{align*}
+$$
+</p>
+<p>This is indeed the momentum we expect of a single particle of wavevector $k_0$. While a free particle's momentum can be any eigenvalue of the momentum operator, and cannot be predicted in advance, the <em>average</em> momentum over several measurements $p = \hbar k_0$ is <strong>equal</strong> to the de Broglie expression for the momentum. Thus, <em>on average</em>, quantum mechanics reduces to deterministic laws.</p>
+<h3 id="the-infinite-square-well">The infinite square well</h3>
+<p>Consider a particle that is trapped at a bottom of a well with length $L$ and walls that are infinitely high. We may model this with a potential given by:</p>
+<p class="mathcell">
+$$
+V(x) = \begin{cases}
+\infty, &amp; x &lt; 0 \\
+0, &amp; 0 \leq x \leq L \\
+\infty, &amp; x &gt; L
+\end{cases}
+$$
+</p>
+<p>The general solution of the time-independent Schrödinger equation is given by:</p>
+<p class="mathcell">
+$$
+\psi(x, t) = A e^{i k x} + B e^{-ik x}
+$$
+</p>
+<p>For some yet-to-be determined constants $A$ and $B$. As the particle is confined within the region $0 \leq x \leq L$, the wavefunction must satisfy the boundary conditions that $\psi(0) = \psi(L) = 0$. By substituting $\psi(0) = 0$ into the equation we have:</p>
+<p class="mathcell">
+$$
+\psi(0) = A + B = 0 \Rightarrow B = -A
+$$
+</p>
+<p>Thus our solution becomes:</p>
+<p class="mathcell">
+$$
+\psi(x, t) = A e^{i k x} + (-A) e^{-ik x} = A(e^{i k x} - e^{-ikx})
+$$
+</p>
+<p>The, we substitute $\psi(L) = 0$. Therefore we have:</p>
+<p class="mathcell">
+$$
+A(e^{i k L} - e^{-ikL}) = 0
+$$
+</p>
+<p>We may convert this using Euler's formula to be expressed in terms of trigonometric functions, recalling that $e^{i\theta} - e^{-i\theta} = 2 i\sin \theta$:</p>
+<p class="mathcell">
+$$
+A(e^{i k L} - e^{-ikL}) = 2Ai \sin (kL) = 0
+$$
+</p>
+<p>Sine is equal to zero at $\theta = 0, \pi, 2\pi, 3\pi, \dots = n\pi$ so we have:</p>
+<p class="mathcell">
+$$
+kL = n\pi
+$$
+</p>
+<p>Which we can rearrange to:</p>
+<p class="mathcell">
+$$
+k = \dfrac{n\pi}{L}
+$$
+</p>
+<p>Thus our solution can now be written as:</p>
+<p class="mathcell">
+$$
+\psi(x) = 2A i \sin \left(\dfrac{n\pi x}{L}\right)
+$$
+</p>
+<p>With associated probability density:</p>
+<p class="mathcell">
+$$
+\rho(x) = |\psi(x)|^2 = -4A^2 \sin^2 \left(\dfrac{n\pi x}{L}\right)
+$$
+</p>
+<p>We may solve for $A$, the normalization factor, by demanding that the integral of the probability density over all space be equal to one:</p>
+<p class="mathcell">
+$$
+\int_{-\infty}^\infty \rho(x)\, dx = 1
+$$
+</p>
+<p>From here, we can find that $2Ai = \sqrt{\dfrac{2}{L}}$ and therefore the spatial wavefunction is:</p>
+<p class="mathcell">
+$$
+\psi(x) = \sqrt{\dfrac{2}{L}} \sin \left(\dfrac{n\pi x}{L}\right)
+$$
+</p>
+<p>To find the wavefunction in time, we simply apply the Hamiltonian to $\psi$, recalling the $\hat H \psi = E\psi$, where we find that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat H \psi &amp;= -\frac{\hbar^2}{2m} \dfrac{\partial^2}{\partial x^2} \sqrt{\dfrac{2}{L}} \sin \left(\dfrac{n\pi x}{L}\right) \\
+&amp; = \dfrac{n^2 \pi^2 \hbar^2}{2 m L^2} \sqrt{\dfrac{2}{L}} \sin \left(\dfrac{n\pi x}{L}\right) \\
+&amp;= E \psi
+\end{align*}
+$$
+</p>
+<p>Thus we identify the energies as given by:</p>
+<p class="mathcell">
+$$
+E_n = \dfrac{n^2 \pi^2 \hbar^2}{2 m L^2}, \quad n = 1, 2, 3, \dots
+$$
+</p>
+<p>Note that instead of one energy or a continuous energy spectrum, we have <em>discrete</em> energies $E_1, E_2, E_3, \dots$, one for each integer value of $n$. The $E_1$ state, which is the lowest energy state, is called the <strong>ground state</strong>. Interestingly, this is nonzero; its energy is given by:</p>
+<p class="mathcell">
+$$
+E_1 = \dfrac{\pi^2 \hbar^2}{2 m L^2}
+$$
+</p>
+<p>This is due to the fact that the energy and momentum operators commute, so that if $E = 0$, then we know the precise energy of the quantum particle (zero) and the precise momentum (also zero). But if the momentum were known precisely (and thus have zero uncertainty), then the Heisenberg uncertainty principle would be violated:</p>
+<p class="mathcell">
+$$
+\Delta x \Delta p = \Delta x (0) = 0 \ngeq \dfrac{\hbar}{2}
+$$
+</p>
+<p>Thus the energy in the ground state cannot be zero; rather, it is a nonzero value we often call the <strong>zero-point energy</strong>. In addition, since energy can only come in steps of integer $n$, we say that the energy is <strong>quantized</strong> - hence <em>quantum</em> mechanics.</p>
+<blockquote>
+<p>The zero-point energy is the origin of many physical processes, and is explored in-depth in quantum field theory. It is also of interest in cosmology, where the expansion of the Universe is, according to our best understanding at present, driven by zero-point energy.</p>
+</blockquote>
+<h3 id="the-hydrogen-atom">The hydrogen atom</h3>
+<p>A very famous quantum system is that of the hydrogen atom - the simplest atom, with one electron and one proton. We can simplify the system even further by modelling the contribution of the proton with the <em>classical</em> Coloumb charge potential, since the proton is "large enough" compared to the electron (almost a thousand times more massive) that its behavior deviates only slightly from the classical description. Thus, we only need to consider the quantum behavior of the electron for the wavefunction of the entire hydrogen atom system.</p>
+<blockquote>
+<p><strong>Note:</strong> In fact, the solution for the hydrogen atom can be generalized to be an exact solution for all <em>hydrogen-like</em> atoms. For instance, it can also be used to solve for the $\ce{He^+}$ atom (helium ion), as well as all the group 1 elements in the periodic table (lithium, sodium, potassium, rubidium, and cesium), ions that have one valence electron (such as $\ce{Ca^+}$ and $\ce{Sr^+}$), and all isotopes of these atoms.</p>
+</blockquote>
+<p>Using the time-independent Schrödinger equation with the Coloumb potential, we have the partial differential equation:</p>
+<p class="mathcell">
+$$
+-\frac{\hbar^2}{2m} \nabla^2 \psi - \frac{e^2}{4\pi \varepsilon_0 r} \psi = E \psi
+$$
+</p>
+<p>This is typically solved in spherical coordinates, where the $\nabla^2$ (Laplacian) operator becomes a mess, resulting in the overwhelmingly long equation (copied from Wikipedia):</p>
+<p class="mathcell">
+$$
+-{\frac {\hbar ^{2}}{2m}}\left[{\frac {1}{r^{2}}}{\frac {\partial }{\partial r}}\left(r^{2}{\frac {\partial \psi }{\partial r}}\right)+{\frac {1}{r^{2}\sin \theta }}{\frac {\partial }{\partial \theta }}\left(\sin \theta {\frac {\partial \psi }{\partial \theta }}\right)+{\frac {1}{r^{2}\sin ^{2}\theta }}{\frac {\partial ^{2}\psi }{\partial \varphi ^{2}}}\right]-{\frac {e^{2}}{4\pi \varepsilon _{0}r}}\psi =E\psi
+$$
+</p>
+<p>The one saving grace is that this PDE happens to be a <em>separable</em> differential equation, and can be solved using separation of variables. But solving this is a matter of mathematics, not physics, and so we will omit the solving steps and just give the general solution:</p>
+<p class="mathcell">
+$$
+\psi _{n\ell m}(r,\theta ,\varphi )={\sqrt {{\left({\frac {2}{na_{0}}}\right)}^{3}{\frac {(n-\ell -1)!}{2n(n+\ell )!}}}}e^{-r &#x2F;2}r^{\ell }L_{n-\ell -1}^{2\ell +1}(r )Y_{\ell }^{m}(\theta ,\varphi )
+$$
+</p>
+<p>Where:</p>
+<ul>
+<li>$a_0 = \frac{4\pi \epsilon_0 \hbar^2}{me^2}$ is the Bohr radius, where the electron is most likely to be found in the ground-state hydrogen atom</li>
+<li>$\rho = \frac{2r}{na_0^*}$</li>
+<li>$L_{n - \ell - 1}^{2 \ell + 1}(\rho)$ is a Laguerre polynomial</li>
+<li>$Y_\ell^m (\theta, \varphi)$ is a spherical harmonic function</li>
+<li>$n = 1, 2, 3, \dots$ is the principal quantum number that determines the energy level and parametrizes each eigenstate</li>
+<li>$\ell = 0, 1, 2, \dots, n-1$ is the azimuthal quantum number</li>
+<li>$m = -\ell, \dots, \ell$ is the magnetic quantum number</li>
+</ul>
+<p>We can visualize the hydrogen wavefunction (or more precisely, the hydrogen eigenstates) by ploting the probability density:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/1*kqtDZDdum_mLQLezPlemsA.png" alt="" /></p>
+<p><em>Source: <a href="https://ssebastianmag.medium.com/computational-physics-with-python-hydrogen-wavefunctions-electron-density-plots-8fede44b7b12">Sebastian Mag, Medium</a></em></p>
+<p>The energy levels of hydrogen are given by the energy eigenvalues of its Hamiltonian:</p>
+<p class="mathcell">
+$$
+E_n = -\dfrac{\mu e^4}{32\pi^2 \varepsilon_0^2 \hbar^2} \dfrac{1}{n^2} = -\dfrac{\mu c^2 \alpha^2}{2n^2}
+$$
+</p>
+<p>Which can be written in even simpler form as $E_n = -\dfrac{\mu R_E}{m_e n^2} \approx \dfrac{R_E}{n^2}$ where $R_E = -\dfrac{1}{2}m_e c^2 \alpha^2$, is the <strong>ground-state energy</strong> of the hydrogen atom. . It is also known as the <em>Rydberg energy</em> and its numerical value is approximately $\pu{-13.6 eV}$. In this expression:</p>
+<ul>
+<li>$c$ is the speed of light</li>
+<li>$n$ is the principal quantum number</li>
+<li>$j$ is the total angular momentum quantum number</li>
+<li>$\mu \equiv \dfrac{m_e m_p}{m_e + m_p}$ (where $m_e, m_p$ are the electron and proton mass) is the reduced mass of the hydrogen atom, which is very close to (but not exactly equal to) $m_e$, the mass of an electron</li>
+<li>$\alpha$ is the fine-structure constant and approximately equal to $1/137$</li>
+</ul>
+<blockquote>
+<p><strong>An important note:</strong> Yes, these energy eigenvalues are negative, because the Coulomb potential is negative as well. In fact, we say that the negative energies reflect the fact that the associated eigenstates are <em>bound states</em>, and the magnitude of their energy is the energy necessary to overcome the Coulomb potential. As their energies are negative, they do not have enough energy to escape the potential, and thus stay in place - the more negative the energy, the more energy must be put in to "kick" electrons out of place, and the stabler the system.</p>
+</blockquote>
+<p>The historical discovery of the solution to the Schrödinger equation for the hydrogen atom and the calculation of its eigenvalues proved to be one of the first experimental results that confirmed the predictions of quantum mechanics. By using $E_n = \dfrac{hc}{\lambda_n}$ with the value of $E_n = -\dfrac{\mu c^2 \alpha^2}{2n^2}$ predicted by the Schrödinger equation, the calculated wavelengths of light almost exactly matched measurements of those emitted by hydrogen. To read more about this discovery, see the quantum chemistry portion of the <a href="https://jackysci.com/general-chem/">general chemistry series</a>. This result revolutionized physics and brought quantum mechanics to its forefront. To this day, quantum mechanics remains the building block of modern physics.</p>
+<p>Later on, refinements to quantum theory found that the predicted energy levels, when also including relativistic corrections, are more accurately given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+E_{j, n} &amp;= -{\mu c^2}\left[{1 - \left(1 + \left(\dfrac{\alpha}{n - j - \frac{1}{2} + \sqrt{\left(j + \frac{1}{2}\right)^2 - \alpha^2}}\right)^2
+\right)^{-1&#x2F;2}}\right] \\
+&amp;= -\dfrac{\mu c^2 \alpha^2}{2n^2} \left[1 + \dfrac{\alpha^2}{n^2} \left(\dfrac{n}{j + 1&#x2F;2} - \dfrac{3}{4}\right) + \dots\right]
+\end{align*}
+$$
+</p>
+<p>Where again, $\mu$ is the reduced mass, $\alpha \approx 1/137$ is the fine-structure constant, and $j_\pm = |\ell \pm \frac{1}{2}|$. Notice that this more accurate expression depends on <em>two integers</em> $n$ and $j$, unlike the non-relativistic expression, which only depends on $n$. However, when we perform a series expansion (shown above), and take only the first-order term, we obtain (as the first term) the energy levels obtained from the Schrödinger equation. We will not derive this ourselves, but we will touch on relativistic quantum mechanics briefly again at the end of this guide.</p>
+<h3 id="the-quantum-harmonic-oscillator">The quantum harmonic oscillator</h3>
+<p>We'll now take a look at the quantum harmonic oscillator, a quantum system describing a particle that oscillates within a harmonic (i.e. quadratic) potential. But first, why study it? The reason is because all potentials are <em>approximately</em> harmonic potentials close to their local minimums. Let us see how this gives us powerful tools to solve non-trivial quantum systems.</p>
+<p>Consider solving the Schrödinger equation with a non-trivial potential $V(x)$ for some given quantum system. We may expand it as a Taylor series. When the system oscillates about a local minimum of the potential - which, in physical terms, corresponds to having a total energy $E$ slightly above the potential minimum $V_0$ - then the first derivative is approximately zero. The second derivative is a constant, and all higher-order terms vanish. Therefore, the potential can be written as:</p>
+<p class="mathcell">
+$$
+V(x) = V(x_0) + \cancel{V&#x27;(x_0) x} + \frac{1}{2} V&#x27;&#x27;(x_0) x^2 + \cancel{\frac{1}{6} V&#x27;&#x27;&#x27;(x_0) x^3} + \cancel \dots = V_0 + \dfrac{1}{2}kx^2
+$$
+</p>
+<p>As the potential energy can be defined against an arbitrarily-chosen reference point, we may add or subtract any constant from the potential without affecting the physics. Thus, we can just as well write the potential as:</p>
+<p class="mathcell">
+$$
+V(x) = \dfrac{1}{2} kx^2
+$$
+</p>
+<p>If we set $\omega = \sqrt{\frac{k}{m}}$ to be the <em>angular frequency</em> of the oscillations about the potential, then we may rewrite this as:</p>
+<p class="mathcell">
+$$
+V(x) = \dfrac{1}{2} m \omega^2 x^2
+$$
+</p>
+<p>Ultimately, the point of studying the quantum harmonic oscillator is that for <em>any</em> quantum system constrained to evolve under a potential $V(x)$, their behavior close to a local minimum of the potential will be approximately that of the quantum harmonic oscillator, no matter how complicated the potential is. This greatly increases the number of systems we can find (at least) approximate analytical solutions of.</p>
+<p>With all that said, we may now begin solving the Schrödinger equation for the quantum harmonic oscillator. Inserting the harmonic potential into the time-independent Schrödinger equation results in the following PDE:</p>
+<p class="mathcell">
+$$
+-\dfrac{\hbar^2}{2m} \dfrac{\partial^2 \psi}{\partial x^2} + \dfrac{1}{2} m \omega^2 x^2 \psi = E\psi
+$$
+</p>
+<p>Given that the solution is dependent only on position we may replace the partial derivatives with ordinary derivatives:</p>
+<p class="mathcell">
+$$
+-\dfrac{\hbar^2}{2m} \dfrac{d^2 \psi}{dx^2} + \dfrac{1}{2} m \omega^2 x^2 \psi = E\psi
+$$
+</p>
+<p>This is not an easy differential equation to solve, and finding a solution that describes all the possible states of the quantum harmonic oscillator is highly non-trivial. However, we can make the problem tractable by just solving for the ground state of the quantum harmonic oscillator. By making the assumption that the ground state (being the lowest-energy state) has a very small energy, so $E_0 \psi \approx 0$, the differential equation reduces to:</p>
+<p class="mathcell">
+$$
+-\dfrac{\hbar^2}{2m} \dfrac{d^2 \psi}{dx^2} + \dfrac{1}{2} m \omega^2 x^2 \psi = 0
+$$
+</p>
+<p>We may now algebraically rearrange the differential equation into the form:</p>
+<p class="mathcell">
+$$
+\dfrac{d^2 \psi}{dx^2} = \dfrac{m^2 \omega^2}{\hbar^2} x^2 \psi
+$$
+</p>
+<p>Now note that this can be rewritten as:</p>
+<p class="mathcell">
+$$
+\dfrac{d^2 \psi}{dx^2} = \left(\dfrac{m \omega}{\hbar}\right)^2 x^2 \psi
+$$
+</p>
+<p>If we define a constant $k_s \equiv \dfrac{m \omega}{2\hbar}$ - the physical meaning of this constant will be discussed later - then we can write this as:</p>
+<p class="mathcell">
+$$
+\dfrac{d^2 \psi}{dx^2} = k_s^2 x^2 \psi
+$$
+</p>
+<p>To understand why we do this, we can do some dimensional analysis. The units of $\dfrac{m\omega}{\hbar}$ on the right-hand side of the differential equation are those of inverse squared meters, that is, $\pu{m^{-2}}$. We know of a quantity that has units of inverse meters - the wavevector $k$ - so therefore $\dfrac{m\omega}{\hbar}$ must be proportional to the square of the wavevector. Thus we write $k_s \propto k^2$, with some undetermined proportionality constant.</p>
+<p>Recalling that $p = \hbar k$ and therefore $p^2 = \hbar^2 k^2$, we may rearrange to $k^2 = \dfrac{p^2}{\hbar^2}$. But also recalling that $E = \dfrac{p^2}{2m}$ we can rearrange this to find that $p^2 = 2mE$ and thus $k^2 = \dfrac{2mE}{\hbar^2}$. However, we also know <em>another</em> expression for the energy - $E = \hbar \omega$, so if we substitute this in, we have</p>
+<p class="mathcell">
+$$
+k^2 = \dfrac{2m\hbar \omega}{\hbar^2} = \dfrac{2m \omega}{\hbar}
+$$
+</p>
+<p>This is <em>almost</em> there, but not quite - there is the additional factor of two. This is why we include the factor of $1/2$.</p>
+<p>Proceeding from the prior steps, we may consider a solution <em>ansatz</em> in the form:</p>
+<p class="mathcell">
+$$
+\psi = A e^{-k_s x^2} = Ae^{-\left(\frac{m\omega}{2\hbar}\right) x^2}
+$$
+</p>
+<p>where $A$ is some undetermined normalization factor. All of what we have done so far is just an (educated) guess - that is the essence of the <em>ansatz</em> technique - but it is the right guess, because if we proceed from this assumption, it can be shown that we get the correct results, and had we guessed wrong we could've just chosen another guess.</p>
+<p>If we substitute this <em>ansatz</em> into the Hamiltonian, we find that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat H \psi &amp;=
+-\dfrac{\hbar^2}{2m} \dfrac{d^2 \psi}{dx^2} + \dfrac{1}{2} m \omega^2 x^2 \psi \\
+&amp;= -\dfrac{\hbar^2}{2m}\dfrac{d^2}{dx^2} \left(Ae^{-k_s x^2}\right) + \dfrac{1}{2} m \omega^2 x^2 \left(Ae^{-k_s x^2}\right) \\
+&amp;= -\dfrac{\hbar^2}{2m} (4 k_s^2 x^2 - 2k_s)Ae^{-k_s x^2}  + \dfrac{1}{2} m \omega^2 x^2 \left(Ae^{-k_s x^2}\right) \\
+&amp;= \left(-\dfrac{\hbar^2}{2m} (4 k_s^2 x^2 - 2k_s) + \dfrac{1}{2} m \omega^2 x^2\right)Ae^{-k_s x^2} \\
+&amp;= \left(-\dfrac{4\hbar^2}{2m}\frac{m^2\omega^2}{4\hbar^2} x^2 + \dfrac{2\hbar^2}{2m} \frac{m\omega}{2\hbar} + \dfrac{1}{2}m\omega^2 x^2\right)Ae^{-k_s x^2} \\
+&amp;= \left(-\dfrac{1}{2}m\omega^2 x^2 + \dfrac{2\hbar^2}{2m} \frac{m\omega}{2\hbar} + \dfrac{1}{2}m\omega^2 x^2\right)Ae^{-k_s x^2} \\
+&amp;= \dfrac{1}{2} \hbar \omega Ae^{-k_s x^2} \\
+&amp;= \dfrac{1}{2}\hbar \omega \psi \\
+&amp;= E \psi
+\end{align*}
+$$
+</p>
+<p>Thus our <em>ansatz</em> does satisfy the Schrödinger equation $\hat H \psi = E\psi$, showing that our solution is indeed valid (even if we had to take some very wild guesses to get there!) We do still need to normalize it, however, to ensure the solution is physical (which also automatically satisfies the boundary conditions of the problem $\psi(-\infty) = \psi(\infty) = 0$). Applying the normalization condition we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\int_{-\infty}^\infty \psi^*(x)\psi(x)\, dx
+&amp;= \int_{-\infty}^\infty Ae^{-k_s x^2} Ae^{-k_s x^2} dx \\
+&amp;= A^2 \int_{-\infty}^\infty e^{-2k_s x^2} dx \\
+&amp;= A^2\sqrt{\dfrac{\pi}{2k_s}}
+\end{align*}
+$$
+</p>
+<p>Where we solved the integral using the Gaussian integral identity:</p>
+<p class="mathcell">
+$$
+\int_{-\infty}^\infty e^{-a x^2} = \sqrt{\dfrac{\pi}{a}}
+$$
+</p>
+<p>For probability to be conserved, we must have the $A^2\sqrt{\dfrac{\pi}{2k_s}} = 1$, using which we can solve for $A$:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+A^2\sqrt{\dfrac{\pi}{2k_s}} = 1 \\
+A^2 = \sqrt{\dfrac{2k_s}{\pi}} \\
+A = \left(\dfrac{2k_s}{\pi}\right)^{1&#x2F;4}
+\end{gather*} \\
+A = \left(\dfrac{m\omega}{\pi \hbar}\right)^{1&#x2F;4}
+$$
+</p>
+<p>So the ground state of the quantum harmonic oscillator is given by:</p>
+<p class="mathcell">
+$$
+\psi_0 = \left(\dfrac{m\omega}{\pi \hbar}\right)^{1&#x2F;4} e^{-\left(\frac{m\omega}{2\hbar}\right) x^2}
+$$
+</p>
+<p>Furthermore, we note that this solution for the ground state of the quantum harmonic oscillator has energy eigenvalue $E_0 = \dfrac{1}{2}\hbar\omega$. The <em>general expression</em> for the energy eigenvalues of the quantum harmonic oscillator are given by:</p>
+<p class="mathcell">
+$$
+E_n = \left(n + \dfrac{1}{2}\right)\hbar \omega
+$$
+</p>
+<p>For which we can see that with $n = 0$ we have the familiar expression of $E = \dfrac{1}{2} \hbar \omega$. What about the general expression for the wavefunction, you might ask? Well, it is given by:</p>
+<p class="mathcell">
+$$
+\psi_n(x) = \left(\dfrac{m\omega}{\pi \hbar}\right) \dfrac{1}{\sqrt{2^n n!}} H_n\left(\sqrt{\dfrac{m\omega}{\hbar}}x \right) \exp\left(-\dfrac{m\omega x^2}{2\hbar}\right)
+$$
+</p>
+<p>Where $n$ is the principal quantum number (as with the hydrogen atom), and $H_n(x)$ is an $n$-th order <a href="https://en.wikipedia.org/wiki/Hermite_polynomials">Hermite polynomial</a>, which are a set of special functions, much like the Laguerre polynomials used in the wavefunction of the hydrogen atom. We show some plots of the quantum harmonic oscillator wavefunction for different  below:</p>
+<img class="diagram" src="/intro-quantum-phys/https://upload.wikimedia.org/wikipedia/commons/9/9e/HarmOsziFunktionen.png"  />
+<p><em>Source: <a href="https://commons.wikimedia.org/wiki/File:HarmOsziFunktionen.png">Wikipedia</a></em></p>
+<p>Understandably, considering the fact that the most general solution can only be expressed in terms of special functions, we started by solving only for the ground state, not the general case for all energy levels!</p>
+<h2 id="the-mathematics-behind-quantum-mechanics">The mathematics behind quantum mechanics</h2>
+<p>The Schrödinger equation is certainly a very useful tool and all problems in non-relativistic quantum theory, with the exception of problems that involve spin, can be solved from the Schrödinger equation. However, simply taking the Schrödinger equation for granted is ignoring <em>why</em> it works the way it does. So we will now take many steps back and build up quantum theory from its mathematical and physical fundamentals.</p>
+<h3 id="postulate-1-quantization">Postulate 1: quantization</h3>
+<p>When a quantitiy is said to be <strong>quantized</strong>, it <em>cannot take on continuous values</em>; it can only come in discrete steps. In addition, all possible values of that quantity must be an integer multiple of some base indivisible value.</p>
+<p>For example, consider electrical charge. The base value of electric charge is the elementary charge constant $e$ (not to be confused with Euler's number), associated with a single electron. It is <em>only</em> possible for an object in the universe to have a charge of $1e, 2e, 3e, \dots ne$. It is not possible for an object to have a charge of $3.516e$.</p>
+<blockquote>
+<p><strong>Note to the advanced reader:</strong> yes, indeed, quarks have a different quantum of charge, but since quarks can never be found on their own, and are always grouped together into composite, not elementary particles, we consider $e$ the quantum of charge, associated with the constant charge of electrons.</p>
+</blockquote>
+<p>Similarly, consider electromagnetic radiation. The base value of electromagnetic energy is given by $hf = \dfrac{hc}{\lambda}$, the radiation of a single photon of frequency $f$ and wavelength $\lambda$, where $h = \pu{6.626e-34 J*Hz^{-1}}$ is the Planck constant. All electromagnetic energy of a given frequency $f$ and wavelength $\lambda$ must be composed of multiples of this value.</p>
+<h3 id="postulate-2-quantum-states">Postulate 2: quantum states</h3>
+<p>In classical mechanics, the future state of any system of particles can be known by knowing its current state and its equations of motion. The equations of motion are Newton's 2nd law:</p>
+<p class="mathcell">
+$$
+m \frac{d^2 \mathbf{r}}{dt^2} = \mathbf{F}(\mathbf{r}, t)
+$$
+</p>
+<p>Which can be rewritten as system of 2 coupled first-order ODEs:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\frac{d\mathbf{p}}{dt} = \mathbf{F}(\mathbf{r}, t) \\
+m \frac{d\mathbf{r}}{dt} = \mathbf{p}
+\end{gather*}
+$$
+</p>
+<p>Finding the solution to the system of ODEs gives the <strong>classical state</strong> of the particle at any time $t$. The solution has six components, consisting of three components of position and three components of momentum:</p>
+<p class="mathcell">
+$$
+\mathbf{X}(t) = 
+\begin{pmatrix} \mathbf{r}(t) \\ \mathbf{p}(t) \end{pmatrix} =
+\begin{pmatrix}
+x(t) \\
+y(t) \\
+z(t) \\
+p_{x}(t) \\
+p_{y}(t) \\
+p_{z}(t)
+\end{pmatrix}
+$$
+</p>
+<p>The idea of a state carries over to quantum mechanics, but with a few differences. In quantum mechanics, the state of a system is described with a <strong>quantum state-vector</strong>. This is typically written abstractly as a complex vector $|\psi\rangle$ whose components are complex numbers, with the specialized notation (called bra-ket or Dirac notation) used to differentiate quantum states from classical states.</p>
+<blockquote>
+<p><strong>Note on notation:</strong> in bra-ket notation, all vectors are denoted with the right angle-bracket $| V \rangle$, and a scalar multiplication of a vector is written $a | V \rangle$.</p>
+</blockquote>
+<p>Quantum state-vectors can be hard to understand, so it is worth taking some time to get to know them. Recall that ordinary Cartesian vectors in the form $\langle x, y, z \rangle$ can be written in terms of the Cartesian basis vectors $\hat i, \hat j, \hat k$:</p>
+<p class="mathcell">
+$$
+\mathbf{V} = V_x \hat i + V_y \hat j + V_z \hat k
+$$
+</p>
+<p>We can alternatively denote the Cartesian basis vectors with $\hat e_x, \hat e_y, \hat e_z$, in which notation the same vector can be written as:</p>
+<p class="mathcell">
+$$
+\mathbf{V} = V_x \hat e_x + V_y \hat e_y + V_z \hat e_z
+$$
+</p>
+<p>We can also write the same using index notation. Let $i = 1, 2, 3$ equal the coordinates $x, y, z$, and let $\hat e_1, \hat e_2, \hat e_3 = \hat e_x, \hat e_y, \hat e_z$. Then we may write:</p>
+<p class="mathcell">
+$$
+\mathbf{V} = V_1 \hat e_1 + V_2 \hat e_2 + V_3 \hat e_3 = \sum_{i = 1}^3 V_i e_i
+$$
+</p>
+<p>Thus we can write ordinary vectors as a <strong>superposition</strong> (sum of constant-multiple terms) of the Cartesian basis vectors and their components. Quantum state-vectors can also be written as a superposition of basis vectors and components, but unlike ordinary Cartesian vectors in Euclidean 3D space $\mathbb{R^3}$, they reside in a complex space (called a <strong>Hilbert space</strong>, and denoted $\mathcal{H}$) that can have any number of dimensions (including infinitely-many)! Expressed as a superposition, they take the form:</p>
+<p class="mathcell">
+$$
+| \psi \rangle = 
+\begin{pmatrix}
+c_1 \\ 
+c_2 \\ 
+c_3 \\ 
+\vdots \\ 
+c_n
+\end{pmatrix} =
+c_1 | \phi_1 \rangle + c_2 | \phi_2 \rangle + c_3 | \phi_3 \rangle + \dots
+$$
+</p>
+<p>where $c_1, c_2, \dots c_n$ are the components, which are in general complex-valued, and $| \phi_1 \rangle, | \phi_2 \rangle, \dots | \phi_n \rangle$ are the basis vectors. (What these basis vectors and components represent, we'll see in just a moment.) Using the index notation introduced earlier, the superposition form of a quantum state-vector can be compactly written as:</p>
+<p class="mathcell">
+$$
+|\psi\rangle = \sum_{i = 1}^n c_i | \phi_i \rangle
+$$
+</p>
+<p>Consider, for instance, a quantum coin. A real coin, of course, is technically not truly random; if you could measure the exact position and velocity of the coin at the moment it was flipped, you could determine if it would land heads or tails. However, imagine a quantum coin that was fully probabilistic - not even full knowledge of its state $|\psi \rangle$ could be enough to predict its future outcome. The only thing we <em>do</em> know about this quantum coin is that, just like a regular coin, it has a 50% probability of landing heads, and a 50% probability of landing tails, and those are the <em>only two possible states</em> it could be in. Then we could write its quantum state as:</p>
+<p class="mathcell">
+$$
+|\psi\rangle = \frac{1}{\sqrt{2}} | \psi_H \rangle + \frac{1}{\sqrt{2}} | \psi_T \rangle
+$$
+</p>
+<p>Here, $| \psi_H \rangle$ is the "heads" state, and $| \psi_T \rangle$ is the "tails" state: these are the two <strong>basis vectors</strong> that we use to write out the state-vector. Meanwhile, the coefficients are both $\frac{1}{\sqrt{2}}$ because the square of $\frac{1}{\sqrt{2}} = \frac{1}{2} = 50\%$ which was the probability we know the coin can be in either one of its states. So now we can give a <em>physical</em> interpretation of the coefficients and basis vectors that make up the superposition of $| \psi\rangle$:</p>
+<blockquote>
+<p>For any given quantum state-vector $| \psi\rangle = c_1 | \phi_1 \rangle + c_2 | \phi_2 \rangle + c_3 | \phi_3 \rangle + \dots$ the basis vectors $|\phi_i\rangle$ are to be interpreted as <strong>physical states</strong> where a quantum system takes on a particular <strong>physical value</strong> (such as possible positions, possible momenta, possible energies, etc.) Meanwhile, the squares of the coefficients $c_i$ are to be interpreted as <strong>probability</strong> of the system being in a particular physical state.</p>
+</blockquote>
+<p>To get out of over-abstractness it is helpful to explicitly write down these superpositions. For instance, consider a very strange particle (perhaps representing an extremely shy physicist) that can only appear in one of three possible positions along the $x$ axis, which we denote as $x_1$, $x_2$, and $x_3$. We may choose to write out its state-vector using basis vectors of position, where each basis vector, which we denote $| x_i \rangle$, represents the particle being at one of its possible positions. Thus, its state-vector takes the form:</p>
+<p class="mathcell">
+$$
+| \psi\rangle = c_1 | x_1 \rangle + c_2 | x_2 \rangle + c_3 | x_3 \rangle
+$$
+</p>
+<p>Let us say that $|x_1\rangle$ denotes the state where the particle is at position $x = \pu{1 cm}$, $|x_2\rangle$ denotes the state where the particle is at position $x = \pu{1.5 cm}$, and $|x_3\rangle$ denotes the state where the particle is at position $x = \pu{2 cm}$. We can write this out explicitly as:</p>
+<p class="mathcell">
+$$
+| \psi\rangle = \frac{1}{2}~| \text{ at 1 cm } \rangle + \dfrac{1}{\sqrt{2}}~| \text{ at 1.5 cm } \rangle + \dfrac{1}{2}~| \text{ at 2 cm } \rangle + \dots
+$$
+</p>
+<p>Here, each squared coefficient becomes the <em>probability</em> of the particle being at point $x$. For instance, the square of the $c_1$ coefficient is the probability of the particle being at the point $x_1 = \pu{1cm}$. Since $c_1 = 1/2$, the probability is then $(c_1)^2 = (1&#x2F;2)^2 = 25\%$.</p>
+<p>The same state-vector can be written using basis vectors of momentum, where each basis vector $| p \rangle$ represents the state of the particle having momentum $p$:</p>
+<p class="mathcell">
+$$
+| \psi\rangle = c_1 | p_1 \rangle + c_2 | p_2 \rangle + c_3 | p_3 \rangle + \dots
+$$
+</p>
+<p>Each squared coefficient now becomes the probability of the particle having that momentum $p$. For instance, the square of $c_1$ will be the probability of the particle of having momentum $p_1$.</p>
+<p>We can do the same with energy basis vectors, with each basis vector $|E \rangle$ representing the state where the particle has energy $E$, and each squared coefficient is the associated probability of finding a particle with that energy:</p>
+<p class="mathcell">
+$$
+| \psi\rangle = c_1 | E_1 \rangle + c_2 | E_2 \rangle + c_3 | E_3 \rangle + \dots
+$$
+</p>
+<p>But you may ask, isn't it absurd that a quantum particle's state-vector can be expressed equivalently in position, momentum, or energy basis vectors? This is a good question to ask, and the answer is found in <strong>linear algebra</strong>. Linear algebra says that we can decompose any vector, quantum state-vector included, into <em>any</em> basis, so long as the basis is <strong>complete</strong> and <strong>orthogonal</strong>. What does that mean? The technical linear algebra definition is rather complicated, but here is a simplified answer:</p>
+<ul>
+<li><strong>Completeness</strong> means that there are enough basis vectors to express any vector as a linear superposition (that is, weighted sum) of those basis vectors</li>
+<li><strong>Orthogonality</strong> means that if you do an operation called the <strong>inner product</strong> between <em>any</em> two different basis vectors, you get zero (more on this later)</li>
+</ul>
+<p>A quantum state-vector can be written in <strong>any</strong> chosen set of basis vectors, although only a few, like the position, momentum, and energy basis vectors shown, are physically meaningful (among others). In some quantum systems, it is convenient to use the momentum basis, while in others, we find it more convenient to use the energy basis, and there are even quantum systems that are best-suited to using a completely different set of basis vectors. But this difference is a matter of <em>what makes sense</em> to use for analyzing a quantum system. The mathematics of using different basis vectors is equivalent, because all vectors, quantum state-vectors included, <strong>exist independently of their basis vectors</strong>. For instance, a regular 3D vector can be equivalently written in Cartesian coordinates, polar coordinates, cylindrical coordinates, or any other coordinate system, each of which uses different basis vectors. In the same way, a quantum state-vector can be <em>equivalently</em> written using position, momentum, or energy basis vectors.</p>
+<blockquote>
+<p><strong>Note:</strong> We should note here that the introductory examples of systems one typically studies when learning quantum mechanics (for instance, the hydrogen atom, particle in an infinite square well, and the quantum harmonic oscillator) tend to use the <strong>energy basis</strong>. We'll also find that the energy basis vectors are actually solutions of the <strong>time-independent Schrödinger equation</strong>, and are <strong>infinite-dimensional</strong> vectors (in other words, functions!). Have patience, we'll get to that soon!</p>
+</blockquote>
+<h4 id="interlude-concrete-representations-of-state-vectors">Interlude: concrete representations of state-vectors</h4>
+<p>Up to this point we have been working with state-vectors abstractly as a linear superposition of basis vectors:</p>
+<p class="mathcell">
+$$
+| \psi\rangle = c_1 | \phi_1 \rangle + c_2 | \phi_2 \rangle + c_3 | \phi_3 \rangle + \dots
+$$
+</p>
+<p>This form works out nicely when a quantum system has only a few physical states. This means it can be expressed using a small number of basis vectors - such as the quantum coin we saw earlier, which could be written with just two basis vectors, representing heads or tails. However, it is not as helpful when considering many (potentially infinite) possible states, where the superposition of basis vectors has so many terms that writing it all out becomes ridiculous. We want a more concrete, more familiar representation of state-vectors for actual calculations. And for this, we turn to the <strong>inner product</strong>.</p>
+<p>The inner product is a generalization of the dot product, familiar from physics formulas such as the definition of work $W = \mathbf{F} \cdot \Delta \mathbf{x}$. Recall that you can take the dot product by writing out a regular vector in column vector form, and their associated row vector, which is just the same vector but written out in row form. Then the respective elements are multiplied together, like this:</p>
+<p class="mathcell">
+$$
+\mathbf{A} \cdot \mathbf{B} =
+\begin{pmatrix}
+A_x &amp; A_y &amp; A_z
+\end{pmatrix}
+\begin{pmatrix}
+B_x \\ B_y \\ B_z
+\end{pmatrix} = A_x B_x + A_y B_y + A_z B_z
+$$
+</p>
+<p>In quantum mechanics, the analogue of column and row vectors are <strong>bra-vectors</strong> and <strong>ket-vectors</strong>, or bras and kets for short. For a bra-vector, such as the quantum state-vector $| \psi \rangle$, the associated ket-vector $\langle \psi |$ is found by taking the complex conjugate of each of its components $z \to z^*$, and then transposing (converting all columns to rows, and vice-versa). The ket-vector version of a given bra-vector is also called the <strong>adjoint</strong>. We can write this in the specialized notation (Dirac notation) as:</p>
+<p class="mathcell">
+$$
+\langle \psi | = (| \psi\rangle^*)^T
+$$
+</p>
+<p>Taking the inner product of a ket-vector and its adjoint (associated bra-vector) is then just a modified version of the regular dot product:</p>
+<p class="mathcell">
+$$
+\langle \psi | \cdot | \psi\rangle = \langle \psi | \psi\rangle = 
+\begin{pmatrix}
+c_1 \\ c_2 \\ c_3 \\ \vdots \\ c_n
+\end{pmatrix}
+\begin{pmatrix}
+c_1^* \quad c_2^* \quad c_3^* ~ \dots ~ c_n^*
+\end{pmatrix}
+$$
+</p>
+<blockquote>
+<p>Just like regular dot products, inner products in quantum mechanics are associative, so $\langle A | B \rangle = \langle B | A \rangle$</p>
+</blockquote>
+<p>Quantum state-vectors are also <em>normalized</em>, which means that their magnitude is equal to one. This means that the dot product of a quantum state-vector with its respective ket-vector is equal to one (from the dot product property $A \cdot A = |A|^2$):</p>
+<p class="mathcell">
+$$
+\langle \psi | \psi\rangle = 1
+$$
+</p>
+<p>Since we end up with a bra next to a ket, we now have a "bra-ket" - a <em>bracket</em>, a physics pun by Dirac. And yes, that is why we call them bra-vectors and ket-vectors!</p>
+<p>There is one other important property of inner products to mention, which carries over from dot products in classical mechanics. Recall how the Cartesian basis vectors $\hat i, \hat j, \hat k$ used in normal 3D space are <em>mutually orthogonal</em> (perpendicular to each other). That means taking the dot product of any basis vector with another basis vector returns zero:</p>
+<p class="mathcell">
+$$
+\hat i \cdot \hat j = \hat j \cdot \hat k = \hat i \cdot \hat k = 0
+$$
+</p>
+<p>In addition, the Cartesian basis vectors are <em>normalized</em>, which means that they each have unit magnitude, so:</p>
+<p class="mathcell">
+$$
+\hat i \cdot \hat i = \hat j \cdot \hat j = \hat k \cdot \hat k = 1
+$$
+</p>
+<p>In quantum mechanics, any set of basis vectors must also be mutually orthogonal and normalized. The combination of basis vectors that have unit magnitude and orthogonality has a technical name: an <strong>orthonormal basis</strong>.</p>
+<p>Now we are ready to proceed to find a useful representation of state-vectors for complicated systems. Let's say our system is a particle, only this time, the particle can be <em>anywhere</em> in space (perhaps this particle represents a <em>very</em> extroverted physicist). Uh-oh - this means that we'll need an <em>infinite</em> set of position basis vectors to express the state-vector of the particle! We'd have to write something like this:</p>
+<p class="mathcell">
+$$
+|\psi\rangle = \sum_{i = 1}^\infty c_i | x_i \rangle
+$$
+</p>
+<p>(<em>Technically</em>, we'd need an integral over the infinitely-many possible positions, so the actual correct form is an <em>integral</em>, although we'll skip over this nuance for now):</p>
+<p class="mathcell">
+$$
+|\psi\rangle = \int c(x)|x\rangle dx
+$$
+</p>
+<p>There is, however, a clever way around this, which actually was developed by <a href="https://en.wikipedia.org/wiki/Joseph_Fourier">Joseph Fourier</a> more than a century before the times of Einstein and Dirac (although Dirac introduced its modern notation). We start by taking the dot product of a quantum state-vector with a position basis bra-vector $\langle x_j |$, which represents a physical state where the particle is at the precise position $x_j$. In Dirac notation, we write this as:</p>
+<p class="mathcell">
+$$
+\langle x_j | \psi\rangle
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> For the mathematically-included readers out there, this is the <em>vector projection</em> of $|\psi\rangle$ onto $\langle x_j|$ from linear algebra.</p>
+</blockquote>
+<p>It's not initially clear why you would want to do this - but bear with me. Now, we expand out $| \psi\rangle$ using its superposition form, using the infinite number of position basis vectors:</p>
+<p class="mathcell">
+$$
+\langle x_j | \psi\rangle = \langle x_j | \sum_{i = 1}^\infty c_i | x_i \rangle
+$$
+</p>
+<p>We can now move $\langle x_j|$ inside the sum, since it does not depend on $i$, and thus (by the properties of sums) can be treated as a constant that we can pull into (or out of) the sum at will. This gives us:</p>
+<p class="mathcell">
+$$
+\langle x_j | \psi\rangle = \sum_{i = 1}^\infty \langle x_j | c_i | x_i \rangle
+$$
+</p>
+<p>Which, if we write component-by-component, becomes:</p>
+<p class="mathcell">
+$$
+\langle x_j | \psi\rangle = \langle x_j | c_1 | x_1 \rangle + \langle x_j | c_2 | x_2 \rangle + \langle x_j | c_3 | x_3 \rangle + \dots + \langle x_j | c_i | x_i \rangle
+$$
+</p>
+<p>Inner products, like dot products, are linear: you can factor any constant coefficients out, and it won't affect the calculation. Since the $c_i$'s are the constant coefficients in the superposition, this means we can factor them out of $\langle x_j |c_i |x_i\rangle$. That is to say, $\langle x_j |c_i |x_i\rangle = c_i\langle x_j | \cdot |x_i\rangle = c_i\langle x_j |x_i\rangle$. Our result is:</p>
+<p class="mathcell">
+$$
+\langle x | \psi\rangle = \sum_{i = 1}^\infty c_i \langle x_j | \cdot | x_i \rangle = \sum_{i = 1}^\infty c_i \langle x_j | x_i \rangle
+$$
+</p>
+<p>Remember that basis vectors in quantum mechanics are <strong>orthonormal</strong>. This means that $\langle x_j | x_i \rangle = 0$, unless $i = j$, in which case $\langle x_j | x_i \rangle = \langle x_i | x_i\rangle = 1$. This is a very abstract mathematical argument, so let me rephrase this with plainer language: given any random position basis bra-vector, say $\langle x_j | = \langle x_3 |$, taking its inner product with itself $\langle x_3 | x_3 \rangle = 1$, while taking its inner product with <strong>any other position basis ket-vector</strong> will equal zero, whether this is $\langle x_3 | x_2\rangle$ or $\langle x_3 | x_{11}\rangle$ or anything else. This means we can satisfyingly cancel out nearly every term in the superposition, because there is only <em>one</em> nonzero term, which is the term where $i = j$, and thus $\langle x_j | x_i \rangle = \langle x_i | x_i\rangle = 1$:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\langle x | \psi\rangle &amp;= \cancel{c_1 \langle x_j | x_1 \rangle} + \cancel{c_2 \langle x_j | x_2 \rangle} + \cancel{c_3 \langle x_j | x_3 \rangle + \dots} + c_i \underbrace{\langle x_i | x_i \rangle}_{i = j \text{ term}} \\
+&amp;= c_i \underbrace{\langle x_i | x_i \rangle}_{1} \\
+&amp;= c_i
+\end{align*}
+$$
+</p>
+<p>So we have found a way to extract the components of the state-vector! The end result is a beautifully-short equation:</p>
+<p class="mathcell">
+$$
+\langle x | \psi\rangle = c_i
+$$
+</p>
+<p>The collection of components of the state-vector we've found here is in the position basis, because we used position basis vectors. Index notation is quite compact; $c_i$ is actually a collection of <em>infinitely</em> many complex numbers (called <em>probability amplitudes</em>), since our sum was over infinite terms. That is:</p>
+<p class="mathcell">
+$$
+c_i = \begin{pmatrix}
+c_1 \\ c_2 \\ c_3 \\ c_4 \\ \vdots \\ c_n
+\end{pmatrix}
+$$
+</p>
+<p>What is a vector with an infinite number of components? A function! We can interpret $c_i$ as a complex-valued function of $x$, which we will call $\psi(x)$:</p>
+<p class="mathcell">
+$$
+c_i = \langle x | \psi\rangle = \psi(x)
+$$
+</p>
+<p>We call $\psi(x)$ by a special name - a <strong>wavefunction</strong>. As we mentioned earlier, the wavefunction is a collection of infinitely-many complex-valued <strong>probability amplitudes</strong>, and assigns a probability amplitude to every point $x$. The reason we call it a <em>probability amplitude</em> is that taking its squared norm gives the <strong>probability density</strong> $\rho$:</p>
+<p class="mathcell">
+$$
+\rho = |\psi(x)|(x)
+$$
+</p>
+<p>And we can use the complex identity $|z|^2 = z z^*$ to rewrite as:</p>
+<p class="mathcell">
+$$
+\rho = \psi(x) \psi^*(x)
+$$
+</p>
+<blockquote>
+<p><strong>Why the complex norm instead of just the square?</strong> The reason is because the wavefunction is in general complex-valued, and the square of a complex number $z$ is not always a real number, but probabilities <strong>must</strong> always be real-valued. Taking the squared norm $|z|^2$ will ensure that the result is real-valued, which is why we must take the norm and not simply square the wavefunction.</p>
+</blockquote>
+<p>In quantum physics, the probability density is the probability <em>per unit volume</em> of finding a quantum particle at point $x$ (be careful: it is <em>not</em> the probability itself, it is probability <em>per unit volume</em>). If you noticed that this is extremely similar to the relation $P = c_i c_i^*$ we found earlier, you're correct! Quantum mechanics tells us that we cannot predict the <em>precise</em> position of particles, but the probability density tells us the <em>likely</em> location of particles, and it is the closest we have to predicting a particle's position. Mathematically, this means that the probability density $\rho$ must obey the <strong>normalization condition</strong>:</p>
+<p class="mathcell">
+$$
+P_\text{somewhere} = \int_{-\infty}^\infty \rho(x)~dx = \int_{-\infty}^\infty \psi(x) \psi^*(x)~dx = 1
+$$
+</p>
+<p>Or, if we are analyzing a system in 3 dimensions rather than just 1, we would have:</p>
+<p class="mathcell">
+$$
+P_\text{somewhere} = \int_{-\infty}^\infty \int_{-\infty}^\infty \int_{-\infty}^\infty \rho(x)dx\,dy\,dz = \int_{-\infty}^\infty \psi(x) \psi^*(x)~dx\,dy\,dz = 1
+$$
+</p>
+<p>This ensures that the probability of a particle to be somewhere over all space is 100% (because the particle must exist and be <em>somewhere</em>).</p>
+<h3 id="postulate-3-observables">Postulate 3: observables</h3>
+<p>We've discussed how quantum systems are represented by their state-vector $|\psi\rangle$, and how this state-vector can be written as a <em>superposition</em> of basis vectors. Some examples of these basis vectors are the position basis $|x\rangle$, momentum basis $|p\rangle$, and energy basis $|E\rangle$, and we have seen that so long as these basis vectors are <strong>complete</strong> and <strong>orthogonal</strong>, we can choose whichever set of basis vectors we want. The rules of linear algebra apply when working with quantum state-vectors, as they do for regular vectors, and regardless of whether vectors have finitely-many or infinitely-many components.</p>
+<p>Extending this idea, recall how, in linear algebra, we encounter matrices, which encode <em>linear transformations</em>. This is a technical way of saying that a matrix is like a machine which acts on a vector to produce a new vector (that specific action being <em>matrix multiplication</em>). Similarly, we have <strong>linear operators</strong> in quantum mechanics, which act on state-vectors to create another vector. Confused? Let's go through what this means.</p>
+<p>First, what is a linear operator? Put simply, a linear operator does some sort of operation on a state-vector, be it multiplication, differentiation, or even exponentiation (more on that later). Linear operators are commonly either denoted with hats like $\hat M$, or with boldface like $\mathbf{M}$, of which the hat notation will be predominantly used. What makes linear operators <em>linear</em> is the fact that they act on sums of vectors and scalar multiples of vectors in a nice way. A linear operator doesn't care if you add two state-vectors or multiply by a constant coefficient <em>before</em> or <em>after</em> you apply the linear operator; the result is the same. Mathematically speaking, we can represent this fact with:</p>
+<p class="mathcell">
+$$
+a \hat M | \psi\rangle_A + b \hat M | \psi\rangle_B = \hat M (a | \psi\rangle_A + b | \psi\rangle_B)
+$$
+</p>
+<p>This looks <em>very</em> similar to the constant and sum rules for derivatives:</p>
+<p class="mathcell">
+$$
+a \frac{d}{dx} f(x) + b \frac{d}{dx} g(x) = \frac{d}{dx} (a f(x) + b g(x))
+$$
+</p>
+<p>In fact, the differentiation operator $\frac{d}{dx}$ <strong>is</strong> a linear operator. So is the integration operator, the partial differentiation operator, and the gradient operator from vector calculus. In addition, so is any operator that does multiplication by a scalar value, or of a function; one could define an operator $\hat C$ that simply multiplies the state-vector by a certain constant, or a certain function. You can check by substitution that such an operator is linear.</p>
+<p>But that is mathematics, we want to do physics, and so we will only use the operators that are physically meaningful, of which there are just a few, with some examples being the position, momentum, and energy (Hamiltonian) operators. These can be "derived" with heuristic arguments (<em>read: physicists guessing and ending up right</em>), but we won't do any proofs here. Instead, we'll just list them:</p>
+<table><thead><tr><th>Operator symbol</th><th>Corresponding observable</th><th>Explicit form</th></tr></thead><tbody>
+<tr><td>$\hat x$</td><td>Position</td><td>$x$ (multiplication by $x$)</td></tr>
+<tr><td>$\hat p$</td><td>Momentum</td><td>$-i\hbar \nabla$</td></tr>
+<tr><td>$\hat L$</td><td>Angular momentum</td><td>$-i\hbar\mathbf{r} \times \nabla$</td></tr>
+<tr><td>$\hat H$</td><td>Energy (also called the <em>Hamiltonian</em>)</td><td>We'll derive this later :)</td></tr>
+</tbody></table>
+<blockquote>
+<p><strong>Note:</strong> For those curious, you can "derive" the operators from quantizing the canonically-conjugate variables from Hamiltonian mechanics. To do this, you replace the <a href="https://en.wikipedia.org/wiki/Poisson_bracket">Poisson bracket</a> with <a href="https://en.wikipedia.org/wiki/Commutator">quantum commutators</a>. You can then verify by taking the classical limit and checking that the operators reproduce classical mechanics. This is known as <a href="https://en.wikipedia.org/wiki/Canonical_quantization">canonical (first) quantization</a> and is a rather broad topic, but fun to read about! See <a href="https://youtu.be/Nd4b0_vJZUk">this animated video</a> for a beginner-friendly intro.</p>
+</blockquote>
+<p>This leads us nicely into our next section, where we'll learn how we actually <em>apply</em> quantum operators on abstract state-vectors as well as their wavefunction representations.</p>
+<h3 id="postulate-4-measurements-and-eigenvalues">Postulate 4: measurements and eigenvalues</h3>
+<p>Up to this point, we have learned what quantum state-vectors are, how they can be represented in a particular basis as a wavefunction, and how operators act on state-vectors. Now is the time to finally begin to understand what happens when we take a measurement.</p>
+<p>First, recall that physical observables such as momentum and position take the form of operators that act on a quantum state-vector $| \psi\rangle$. Usually, an operator applied to a state-vector results in a new state-vector completely different from the first. But sometimes, that operator outputs a new state-vector that is a constant multiple of the first. In this case we can write:</p>
+<p class="mathcell">
+$$
+\hat M | \psi\rangle = a | \psi\rangle
+$$
+</p>
+<p>This is called an <strong>eigenvalue equation</strong>, where $a$, the constant multiple, is called the <strong>eigenvalue</strong>, and the state-vector $| \psi\rangle$ that satisfies the equation is called the <strong>eigenvector</strong>. Eigenvectors that are infinite and continuous are also called <em>eigenfunctions</em>, because (as we learned earlier) functions are essentially just vectors with an infinite number of components.</p>
+<p>As a more concrete example, consider the differentiation operator $\frac{d}{dx}$ applied to the function $f(x) = e^{kx}$. Then we end up with an eigenvalue equation where $k$ is the eigenvalue and $f(x)$ is the eigenfunction:</p>
+<p class="mathcell">
+$$
+\frac{d}{dx} f(x) = \frac{d}{dx} (e^{kx}) = ke^{kx} = k \cdot f(x) \Rightarrow \frac{d}{dx} f(x) = k f(x)
+$$
+</p>
+<p>Now, this is the key: in quantum mechanics, the eigenvectors of any operator <strong>must</strong> form a set of orthonormal basis vectors for the state-vector $| \psi\rangle$. That's a lot to unpack, so let's take it bit by bit. Consider the $\hat p$ momentum operator. Its eigenvectors $|p_1 \rangle, |p_2 \rangle, |p_3 \rangle, \dots |p_i \rangle$ correspond to <em>physical states</em> of having momenta $p_1, p_2, p_3$, and so on, and thus are often called momentum <em>eigenstates</em>. By the rules of quantum mechanics, the momentum basis vectors aren't just any old vectors - they <strong>must</strong> be momentum eigenstates, which are the eigenvectors of the $\hat p$ (momentum) operator!</p>
+<p>Thus, when we write out the state-vector $|\psi\rangle$ using the momentum basis vectors, we're actually expanding the state-vector in terms of momentum eigenstates:</p>
+<p class="mathcell">
+$$
+| \psi\rangle = c_1 | p_1 \rangle + c_2 | p_2 \rangle + \dots + c_i | p_i \rangle
+$$
+</p>
+<p>The consequence of the fact that the momentum basis vectors are always momentum eigenstates is that the possible measured values of the momentum can <em>only</em> be one of the momentum eigenvalues $p_1, p_2, p_3, \dots$ and cannot take on any other values. More generally, <em>any</em> physically-meaningful basis (position, momentum, energy, etc.) is composed <em>only</em> of eigenstates (eigenvectors) of its corresponding linear operator.</p>
+<h4 id="deriving-the-schrodinger-equation">Deriving the Schrödinger equation</h4>
+<p>We're now armed with everything we need to derive the famous Schrödinger equation. But first, let's summarize everything we've learned so far:</p>
+<ul>
+<li>Quantum systems (that is, everything from an atom to a shy physicist) are described by a state-vector $|\psi\rangle$</li>
+<li>The state-vector is expressed as a sum of <strong>basis vectors</strong>, such as the position basis vectors $|x\rangle$, momentum basis vectors $|p\rangle$, and energy basis vectors $|E\rangle$</li>
+<li>Each basis represents some sort of physical <strong>observable</strong> (position, momentum, energy, etc.) that is represented by a <strong>linear operator</strong>, such as $\hat x$ for position, $\hat p$ for momentum, and so forth</li>
+<li>The possible values of the observable (possible positions, energies, momenta, etc.) are the <strong>eigenvalues</strong> of the associated operator, and the <strong>eigenvectors</strong> (also called the <em>eigenstates</em>) form the set of basis vectors for the observable</li>
+</ul>
+<p>We hinted at before that the <em>energy</em> operator has an important role to play in quantum mechanics. Indeed, it does! It is called the <strong>Hamiltonian</strong> and is  represented by $\hat H$. Now, we know that any quantum operator follows an eigenvalue equation, and of course this is true for the Hamiltonian as well. Following the standard form of an eigenvalue equation $\hat M|\psi\rangle = a|\psi\rangle$ (shown earlier), the eigenvalue equation for the Hamiltonian would be:</p>
+<p class="mathcell">
+$$
+\hat H |E\rangle = E|E\rangle
+$$
+</p>
+<p>Where $\hat H$ is the Hamiltonian operator, $|E\rangle$ is an energy eigenstate (eigenvector), and $E$ is an energy eigenvalue (possible value of the energy). Note, however, that it is more common to use $|\psi\rangle$ to denote energy eigenstates as opposed to $|E\rangle$, so we will rewrite the above equation with this more standard notation:</p>
+<p class="mathcell">
+$$
+\hat H |\psi\rangle = E|\psi\rangle
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> It is unfortunate that the notation $|\psi\rangle$ for energy eigenstates is the same symbol as the state-vector $|\psi\rangle$. Personally, it would make more sense to use $|\psi_i\rangle$ to represent energy eigenstates to avoid mixing things up, but this is just standard convention.</p>
+</blockquote>
+<p>This is the operator form of the <strong>time-independent Schrödinger equation</strong>! We also know that the eigenstates of any quantum operator form the basis vectors for that operator, in which we can expand the state-vector $|\psi\rangle$ as a superposition of basis functions. This means that we can now write $|\psi\rangle$ as:</p>
+<p class="mathcell">
+$$
+|\psi\rangle = \sum_i c_i |\psi_i\rangle
+$$
+</p>
+<p>Since the Hamiltonian operator represents the energy of a quantum system, it would make sense for it to roughly match the classical expression for the total energy, which is given by $E_\text{total} = p^2/2m + V(\mathbf{r})$. To turn this into its quantum equivalent, we simply swap $p$ with $\hat p$. Recalling that $\hat p = -i\hbar\nabla$, this gives us:</p>
+<p class="mathcell">
+$$
+\hat H = \dfrac{\hat p^2}{2m} + V(\mathbf{r}) = \dfrac{-i\hbar \nabla(-i\hbar \nabla)}{2m} + V(\mathbf{r}) = -\dfrac{\hbar^2}{2m} \nabla^2 + V(\mathbf{r})
+$$
+</p>
+<p>Switching to the wavefunction representation $\psi = \langle x |\psi\rangle$, we have:</p>
+<p class="mathcell">
+$$
+\left(-\dfrac{\hbar^2}{2m} \nabla^2 + V(\mathbf{r})\right)\psi = E \psi
+$$
+</p>
+<p>We have now found the <strong>partial differential equation</strong> form of the time-independent Schrödinger equation! Bear in mind that while this form may <em>look</em> different (as a PDE rather than an abstract operator equation), we are still working with the same underlying <strong>eigenvalue equation</strong> $\hat H |\psi\rangle = E|\psi\rangle$. This means that the solutions to the time-independent Schrödinger equation are still (eigen)vectors, albeit infinite-dimensional vectors, which are the <strong>energy eigenstates</strong> of the system. And the accompanying eigenvalues $E_i$ are the possible energies of the system. Indeed, <em>all</em> we're doing when we solve the equation is finding the energy eigenvectors $|\psi_i\rangle$ of the system! The only difference is that we use the wavefunction <em>representation</em> (component-form) of those energy eigenvectors, that is, $\psi_i = \langle x | \psi_i\rangle$. While it may not <em>seem</em> like solving a partial differential equation and solving an eigenvalue problem for an operator have <em>anything</em> in common, they actually represent the <strong>exact same thing</strong>. This was the key insight by Dirac that (in part) won him the Nobel Prize in 1933.</p>
+<p>What's more, using the idea that the solutions $\psi_i$ are actually just infinite-dimensional eigenstates (eigenvectors) of the Hamiltonian operator, we can write out the wavefunction representation of the state-vector $|\psi\rangle$ as a <em>superposition</em> of those energy eigenstates:</p>
+<p class="mathcell">
+$$
+\psi(\mathbf{r}) = \sum_i c_i \psi_i(\mathbf{r})
+$$
+</p>
+<p>This is because we learned that in quantum mechanics, <em>any set of basis vectors</em> that we use are <em>eigenstates</em> of some operator. This holds true whether we're using the functional representation or the abstract operator representation.</p>
+<p>We now have a systematic wave of solving quantum problems, starting from the basic postulates, and working our way up to a partial differential equation! But enough calculations - let's take a step back, and just look at the physics.</p>
+<p>The physical interpretation of the Schrödinger equation is that all quantum particles (such as electrons, quarks, etc.) have wave-like properties as well as particle-like properties, and their wave nature is associated with the wavefunction $\psi$. This allows them to exhibit effects such as wave interference and diffraction, as well as to have an associated wavelength and frequency. However, quantum particles are localized on measurement, like classical particles, and this is due to the fact that the wavefunction is associated with particle probability distributions. This is what brings us <strong>wave-particle duality</strong>, the fact that quantum particles resemble waves <em>and</em> particles in various ways.</p>
+<p>In addition to its physical relevance, the Schrödinger equation expressed in terms of wavefunctions is the pathway to nearly all the calculations we performed throughout the guide. Rather than working with Hilbert spaces and abstract vectors represented as superpositions, we simply need to solve a PDE for the wavefunction, or at worst, plug it into a computer to solve. From the wavefunction, we can calculate the probability density $\rho(x) = \psi(x) \psi^*(x)$ to find the probability distribution of the quantum system. In other words, the Schrödinger equation gives us <em>predictive power</em>: even though its end result, the wavefunction, is still probabilistic in nature, we <em>can</em> test out those probabilities in experiments. Put simply, it represents our best window into the mysteries of the quantum world.</p>
+<h4 id="interlude-on-expectation-values">Interlude on expectation values</h4>
+<p>Let's go back to our example on the momentum operator $\hat p$. We learned that in quantum mechanics, the momentum basis <em>must</em> be made of eigenstates (eigenvectors) of the $\hat p$ operator. In addition, any possible momentum can only be one of the <em>eigenvalues</em> of the $\hat p$ operator. While the exact value of the momentum can be <em>any</em> momentum that matches one of the momentum eigenvalues, the average value (denoted $\langle p \rangle$) found after many measurements follows the rule:</p>
+<p class="mathcell">
+$$
+\langle p \rangle = \langle \psi | \hat p | \psi\rangle
+$$
+</p>
+<p>Where this notation means that we <em>apply</em> $\hat p$ to the state-vector ket, then take the result's inner product with the state-vector bra. Using the (position basis) wavefunction representation for clarity, we can rewrite this as:</p>
+<p class="mathcell">
+$$
+\langle p \rangle = \int_{-\infty}^\infty \psi^*(x) \hat p\, \psi(x)~dx
+$$
+</p>
+<p>Where from the operator table earlier, we know that:</p>
+<p class="mathcell">
+$$
+\hat p = -i\hbar \frac{\partial}{\partial x}
+$$
+</p>
+<p>This is called the <strong>expectation value of the momentum</strong>, and is one case of the more general formula for the expectation values of an operator $\hat A$ in quantum mechanics:</p>
+<p class="mathcell">
+$$
+\langle A \rangle = \langle \psi | \hat A | \psi\rangle = \int_{-\infty}^\infty \psi^*(x) \hat A \psi(x)~dx
+$$
+</p><h4 id="adding-time-dependence">Adding time dependence</h4>
+<p>Up to now, we haven't yet considered a state-vector that <em>evolves</em> in time. Rather, we've been focused on a <em>time-independent</em> state-vector, which is easier to analyze. Adding time-dependence to the state-vector means that instead of the time-independent state-vector $|\psi\rangle$, we now write the <em>more general</em> state-vector as $|\Psi(t)\rangle$. How, exactly, you may ask, does the state-vector evolve in time? We will not attempt to derive this, but the answer is that the state-vector follows the differential equation:</p>
+<p class="mathcell">
+$$
+i\hbar \dfrac{\partial}{\partial t} |\Psi(t)\rangle = \hat H |\Psi(t)\rangle
+$$
+</p>
+<p>If this looks familiar, you're right - this is the <strong>time-dependent Schrödinger equation</strong>! In addition, by writing the time-dependent Schrödinger equation in its most general state-vector form, one can more easily interpret what it means: it tells us that the change through time of the state-vector (left-hand side of the equation) is proportional to the energy operator acting on the state-vector (right-hand side of the equation). That is, <em>energy drives the evolution of a quantum system</em>. The proportionality constant $i \hbar$ is simply there for 1) dimensional consistency and 2) to ensure both sides of the equation are complex-valued to be mathematically sound. Proving and deriving all of this requires some sophisticated background (see <a href="https://en.wikipedia.org/wiki/Noether%27s_theorem">Noether's theorem</a> on time-invariance and energy if you're interested), but here we will just (partially) solve it. Recall that $\hat H |\psi\rangle = E|\psi\rangle$, where $|\psi\rangle$ represents the time-dependent state-vector $|\Psi(t)\rangle$ "frozen" at a particular moment in time (say, $t = 0$); therefore, it is possible to rewrite the above as:</p>
+<p class="mathcell">
+$$
+i\hbar \dfrac{\partial}{\partial t} |\Psi_0\rangle = E |\Psi_0\rangle
+$$
+</p>
+<p>Where $|\Psi_0\rangle = |\Psi(t = 0)\rangle$. We chose $t = 0$ for simplicity, but in fact this form holds true for <em>any</em> time $t$, so we have:</p>
+<p class="mathcell">
+$$
+i\hbar \dfrac{\partial}{\partial t} |\Psi(t)\rangle = E |\Psi(t)\rangle
+$$
+</p>
+<p>Stripping away the fact that we're using vectors and Dirac notation, this is simply a variation of the differential equation $\dot y = k y$, where in this case, $k = E/i\hbar = -iE/\hbar$ (since $1/i = -i$). The solution to $\dot y = ky$ is given by $y = e^{kt}$. Similarly, we have:</p>
+<p class="mathcell">
+$$
+|\Psi(t)\rangle = |\Psi(t = 0)\rangle e^{-iE t&#x2F;\hbar} = |\psi\rangle e^{-iE t&#x2F;\hbar}
+$$
+</p>
+<p>Thus, we have managed to "solve" the <em>time-dependent</em> Schrödinger equation in terms of the <em>time-independent</em> state-vector $|\psi\rangle$. But recall that $|\psi\rangle = \sum_n c_n |\psi_n\rangle$, where $|\psi_n\rangle$ are the energy eigenstates of the Hamiltonian. So, to write down the most general solution to the Schrödinger equation, we can write the solution in terms of the energy eigenstates and eigenvalues of the Hamiltonian:</p>
+<p class="mathcell">
+$$
+|\Psi(t)\rangle = \sum_n c_n |\psi_n\rangle e^{-iE_n t&#x2F;\hbar}
+$$
+</p><h3 id="postulate-5-the-born-rule-and-probabilities">Postulate 5: the Born rule and probabilities</h3>
+<p>We have gone in-depth about quantum state-vectors and their representations as wavefunctions. But for all their fundamental relevance in quantum mechanics, state-vectors are complex-valued and can never be directly measured, because measurements are always real numbers. How do we get a real-valued measurement out of a complex-valued state-vector? This is where the <strong>Born rule</strong> applies.</p>
+<p>Consider a quantum particle with state-vector $|\psi\rangle$. Recall that expressing its state-vector in the position basis gives the position wavefunction $\psi(x) = \langle x | \psi\rangle$.</p>
+<p>Before we measure the particle, the wavefunction evolves naturally by the Schrödinger equation, which we can solve with the help of a math wizard or unwillingly-recruited professor. But now we want to measure the particle. This is a bit of a problem, because to measure a quantum particle involves causing it to interact with <em>something</em>, such as a photon that encounters it or the electron of an atom in our detector. So all quantum measurements are indirect; essentially, using one quantum system to learn information about another system. This also means that all quantum measurements are <em>disruptive</em>: on quantum scales, anything you use to measure with will disturb the system you measure.</p>
+<blockquote>
+<p>How do particles know they are being observed? Because the act of observation involves probing how another particle reacts when it interacts with (and disturbs) the particle being measured. Thus, to say that a particle "knows" they are being observed is actually a common misnomer, because particles are (obviously) not intelligent and don't "know" they're being observed.</p>
+</blockquote>
+<p>So it's not actually that unintuitive that we don't know where a particle is or what its properties are until we observe it. Taking a measurement, even in very careful conditions with very sensitive equipment, will alter the system in some way - a change that will make it impossible to reconstruct the previous state of the particle from its current state. Even light disturbs a system: "seeing" a quantum particle like an electron is only possible through bouncing a photon at that electron, and that interaction fundamentally changes the state of the electron. Naturally, we can't know everything with perfect detail when all the information we can find about any quantum particle will require doing something that also affects their properties.</p>
+<p>But let's say that with some apparatus, we have managed to make a measurement of some physical quantity. What happens now? We know from the previous section on eigenvalues and measurement that the measurement must result in some value that is an eigenvalue of the operator associated with that physical quantity. For instance, if we take a measurement of the momentum $\hat p$, then the result is going to be an eigenvalue of the momentum operator $\hat p$. But which exact eigenvalue? <strong>We can't know.</strong> As far as we understand, quantum mechanics is probabilistic and no certain measurements can be made, only statistical likelihoods of a particular measurement. And the probability of measuring an eigenvalue $\alpha$ associated with the eigenstate $\langle \alpha |$ of an operator is given by the <strong>Born rule</strong>:</p>
+<p class="mathcell">
+$$
+P = |\langle \alpha | \psi\rangle|^2
+$$
+</p>
+<blockquote>
+<p>And yes, we are using an abuse of terminology, technically it is the inner product of the adjoint of the eigenvector (remember: complex conjugate transpose) and the state-vector. But that's a distinction for the mathematicians, not the physicists.</p>
+</blockquote>
+<p>For any operator that has <em>continuous</em> eigenstates, such as position and momentum, we have another form of the Born rule, written in terms of the probability density $\rho$ and wavefunction $\psi(\alpha) = \langle \alpha|\psi\rangle$:</p>
+<p class="mathcell">
+$$
+\rho = |\langle \alpha |\psi\rangle|^2 = |\psi(\alpha)|^2 = \psi(\alpha) \psi^*(\alpha)
+$$
+</p>
+<p>When we pick the eigenstates to be the position eigenstates (that is, eigenstates describing a <em>specific position</em> that a particle is located), we have $\alpha = x$ and thus we recover the special (and most well-known) case of the Born rule:</p>
+<p class="mathcell">
+$$
+\rho = |\psi(x)|^2 = \psi(x) \psi^*(x)
+$$
+</p>
+<p>Here, $\rho$, the probability density, is probability per unit volume (in this case, of finding the particle at position $x$). (The reason it's a probability density and not just a plain old probability is that position is <em>continuous</em> and has infinitely-many eigenstates corresponding to infinitely-many possible positions.)</p>
+<p>The Born rule brings us to the physical interpretation of what seemed like a math trick to represent the quantum state as a wavefunction - a wavefunction is actually a collection of infinitely-many probability amplitudes, one for each eigenvalue of an operator! Specifically, the operator must be one with continuous eigenstates, such as the eigenvalues of the position and momentum operators. Let's take the position operator $\hat x$ as an example. A quantum particle can be in any place in the Universe (generally-speaking), so there are a continuous spectrum of position eigenstates $|x\rangle$, each one representing the physical state where the particle is at a particular position. As usual, these eigenstates follow the eigenvalue equation for the position operator:</p>
+<p class="mathcell">
+$$
+\hat x |\psi\rangle = x |\psi\rangle
+$$
+</p>
+<p>The eigenvalues $x = x_1, x_2, x_3, \dots, x_n$ of the position operator are thus the possible positions of a quantum particle, and there are infinitely-many of them, just like there are infinitely-many position eigenstates. The <em>probability amplitude</em> of measuring a particular position eigenvalue $x_i$ is therefore given by a particular coefficient $c_i$, whose square $|c_i|^2$ is the probability (density) of finding the particle at $x_i$. Only, $c_i$ usually goes by a different name: the wavefunction $\psi(x)$, evaluated at $x = x_i$. Again, remember that this is because there are infinitely-many position eigenstates, so there are also infinitely-many $c-i$'s, for every position eigenvalue:</p>
+<p class="mathcell">
+$$
+\psi(x) = \begin{pmatrix} c_1 \\ c_2 \\ c_3 
+ \\ \vdots \\ c_{i-1} \\ c_i \end{pmatrix}
+ = \begin{pmatrix} \psi(x_1) \\ \psi(x_2) \\ \psi(x_3) 
+ \\ \vdots \\ \psi(x_{i-1}) \\ \psi(x_i) \end{pmatrix}
+$$
+</p>
+<p>This gives us the most familiar-looking form of the Born rule:</p>
+<p class="mathcell">
+$$
+\rho = |\psi(x)|^2
+$$
+</p>
+<p><em>This</em> is why it makes sense that you can extract the probability of a certain measurement from the wavefunction. More accurately, we should say that when your observable is a continuous quantity (such as position or momentum), you can extract the probability <em>density</em> from the wavefunction, and then integrate to find the probability of a certain range of measurements:</p>
+<p class="mathcell">
+$$
+\text{Prob} = \int_{\alpha_1}^{\alpha_2} |\psi(\alpha)|^2 d\alpha = \int_{\alpha_1}^{\alpha_2} \psi(\alpha) \psi^*(\alpha) d\alpha
+$$
+</p>
+<p>At the moment where that measurement is performed, the wavefunction jumps to a single spike at one of its eigenvalues, which gives us the measured value; after the measurement is done, the wavefunction continues to evolve by the Schrödinger equation. However, if we take measurements in quick succession, the wavefunction does not have much time to evolve before another measurement is taken, so the result of the measurement will be the same. If we give more time to let the wavefunction evolve, then the measurements no longer yield the same results and return to being random, although they will always follow the Born rule of probabilities. Together with the rule of expectation values, the Born rule requires that quantum mechanics reproduce the results of classical mechanics at the classical limit, in which probabilities of measurements become certain measurements.</p>
+<p>In other words, the Born rule allows a physicist making theoretical predictions about a quantum particle to say "the particle is <em>most likely</em> at $x$" or "the particle is relatively likely (or unlikely) to be somewhere between $x_1$ or $x_2$" or "the particle has a 60% likelihood of having energy $E$", but <em>not</em> "the particle is definitely at $x$". Only after measurement can a definite value be found for an observable.</p>
+<p>However - if only it were so simple! There is an additional issue when considering certain operators that places a restriction on how accurately we can even make probability predictions. To understand it, consider the example of the position and momentum operators. From the table of operators (or Wikipedia) we know that they are respectively:</p>
+<p class="mathcell">
+$$
+\hat x = x, \quad \hat p = -i\hbar \frac{\partial}{\partial x}
+$$
+</p>
+<p>Something interesting happens when we apply the operators in different orders to a wavefunction. Applying the momentum operator first, and then the position operator, gives:</p>
+<p class="mathcell">
+$$
+\hat x \hat p \psi(x) = -i\hbar x \frac{\partial \psi}{\partial x}
+$$
+</p>
+<p>But if we apply the operators in the opposite order, such that we apply the position operator first, and then the momentum operator, we have:</p>
+<p class="mathcell">
+$$
+\hat p \hat x \psi(x) = -i\hbar \frac{\partial}{\partial x} (x \psi(x)) = -i\hbar \left(\psi(x) + x\frac{\partial \psi}{\partial x}\right)
+$$
+</p>
+<p>These are not the same, and the difference between them is given by:</p>
+<p class="mathcell">
+$$
+\hat x \hat p \psi(x) - \hat p \hat x \psi(x) = i\hbar \psi(x)
+$$
+</p>
+<p>We can express that difference as a new operator, the <strong>commutator</strong>, applied to the wavefunction, which we denote with square brackets $[\hat x, \hat p]$:</p>
+<p class="mathcell">
+$$
+[\hat x, \hat p] = \hat x \hat p - \hat p \hat x = i\hbar \Rightarrow [\hat x, \hat p] \psi(x) = i\hbar \psi(x)
+$$
+</p>
+<p>This is the famous <strong>canonical commutation relation</strong> $[\hat x, \hat p] = i\hbar$. There are other commutation relations but this is the most important one to encounter in studying quantum physics.</p>
+<p>What is the relevance of commutation? From the requirements of probability theory (read about the <a href="https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality">Cauchy-Schwarz inequality</a> if interested), commuting operators must obey the <strong>general uncertainty principle</strong>:</p>
+<blockquote>
+<p><strong>Generalized uncertainty principle:</strong> Given two commutating operators $\hat A$ and $\hat B$, the values of their eigenvalues cannot both be precisely measured. The more precise you want to measure an eigenvalue of $\hat A$, the less precise you can measure an eigenvalue of $\hat B$.</p>
+</blockquote>
+<p>A famous example is the uncertainty relation between $\hat x$ and $\hat p$, one that we have already seen earlier - the Heisenberg uncertainty principle:</p>
+<p class="mathcell">
+$$
+\Delta x \Delta p \geq \frac{\hbar}{2}
+$$
+</p><h2 id="the-fundamental-postulates-of-quantum-mechanics">The fundamental postulates of quantum mechanics</h2>
+<p>To summarize what we've covered, we can distill the theory of quantum mechanics into fundamental <em>mathematical</em> postulates that allow us to rigorously formulate the theory of quantum mechanics.</p>
+<p>First, a quantum system is completely described by a <strong>quantum state-vector</strong> $|\Psi(t)\rangle$, which is a complex-valued vector in a Hilbert space. The state-vector evolves by the <strong>time-dependent Schrödinger equation</strong>, given by:</p>
+<p class="mathcell">
+$$
+i\hbar \dfrac{\partial}{\partial t} |\Psi(t)\rangle = \hat H |\Psi(t)\rangle
+$$
+</p>
+<p>If we consider a specific instant in time, the state-vector $|\Psi(t)\rangle$ reduces to its <em>time-independent form</em> $|\psi\rangle$, which can be thought of as "snapshot" of $|\Psi(t)\rangle$, taken at precisely at time $t$.</p>
+<p>We can extract physically-relevant information from the time-independent state-vector $|\psi\rangle$ with <em>linear operators</em>, such as the position operator $\hat x$, momentum operator $\hat p$, and so forth. Each operator's <strong>eigenvalues</strong> represent measurable physical quantities (called <em>observables</em>), while each operator's <strong>eigenstates</strong> are eigenvectors that represent a quantum system having a particular value of an observable (such as a specific position, momentum, or energy). These are related by <strong>eigenvalue equations</strong>, as shown:</p>
+<table><thead><tr><th>Operator</th><th>Eigenstates</th><th>Eigenstate represents...</th><th>Eigenvalues</th><th>Eigenvalue equation</th></tr></thead><tbody>
+<tr><td>Position, $\hat x$</td><td>$|x\rangle$</td><td>A state with a particle at position $x$</td><td>$x$</td><td>$\hat x|\psi\rangle = x|\psi\rangle$</td></tr>
+<tr><td>Momentum, $\hat p$</td><td>$|p\rangle$</td><td>A state with a particle with momentum $p$</td><td>$p$</td><td>$\hat p|\psi\rangle = p|\psi\rangle$</td></tr>
+<tr><td>Energy, $\hat H$ (also called the <em>Hamiltonian</em>)</td><td>$|\psi\rangle$, $|E\rangle$ (less commonly-used notation)</td><td>A state with a particle with total energy $E$</td><td>$E$</td><td>$\hat H |\psi\rangle = E|\psi\rangle$</td></tr>
+</tbody></table>
+<blockquote>
+<p><strong>Note:</strong> It is unfortunate that energy eigenstates $|\psi\rangle$ have the same symbol as the state-vector $|\psi\rangle$. It would be more correct to notate energy eigenstates as $|\psi_i\rangle$ or $|E\rangle$, but I am just following standard notation convention.</p>
+</blockquote>
+<p>Solving the eigenvalue equation for an operator tells us the <em>possible values</em> of the associated observable (e.g. position, momentum, energy), whether the eigenvalues are quantized or continuous. Each eigenvalue is associated with an eigenstate of the operator, which form a <em>basis</em> in which to expand out the state-vector $|\psi\rangle$ in superposition form. If the eigenvalues are discrete, such as for the energy (Hamiltonian) operator $\hat H$, then we say that the observable is <strong>quantized</strong>, and we may write this superposition as a sum:</p>
+<p class="mathcell">
+$$
+|\psi\rangle = \sum_i c_i |\psi_i\rangle
+$$
+</p>
+<p>But if the eigenvalues are continuous, such as for the position operator $\hat x$ and the momentum operator $\hat p$, then we need to write this superposition as an integral:</p>
+<p class="mathcell">
+$$
+|\psi\rangle = \int c(x) |x\rangle dx
+$$
+</p>
+<p>For a more general continuous operator with eigenstates $|\alpha\rangle$, this may be written as:</p>
+<p class="mathcell">
+$$
+|\psi\rangle = \int c(\alpha)|\alpha\rangle\, d\alpha
+$$
+</p>
+<p>To find the components $c_i$ or $c(\alpha)$ in a particular basis, we take the inner product of the state-vector $|\psi\rangle$ with the <em>ket-vector</em> of any eigenstate of the operator (e.g. $\langle x|\psi\rangle$ for position, $\langle p|\psi\rangle$ for momentum, and so forth). In cases where the operators represent continuous quantities, then $c(\alpha)$ is known as a <strong>wavefunction</strong> and is denoted by $\psi(\alpha)$. For instance, the position and momentum operators have wavefunctions given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\psi(x) &amp;= \langle x|\psi\rangle \\
+\psi(p) &amp;= \langle p|\psi\rangle
+\end{align*}
+$$
+</p>
+<p>It is <strong>not possible</strong> to predict in advance the measured value a physical quantity may take. However, it is possible to predict the <em>probability</em> $P$ of a particular eigenstate through the <strong>Born rule</strong>, which says that the probability $P$ of measuring the $i$-th eigenstate is given by $P = |c_i|^2$. If the eigenstates are that of a continuous operator $|\alpha\rangle$ with eigenstates $|\alpha\rangle$, the Born rule takes the slightly different form $\rho = |c(\alpha)|^2 = |\psi(\alpha)|^2$, where $\rho$ is the <em>probability density</em> (probability per unit volume). The Born rule thus tells us that for any continuous operator with eigenstates $|\alpha\rangle$ and eigenvalues $\alpha$, the wavefunction $\psi(\alpha)$ represents the <em>probability amplitude</em> $c(\alpha)$ of measuring the corresponding observable's value to be $\alpha$.</p>
+<p>Finally, the two formulations of quantum mechanics - one using state-vectors $|\psi\rangle$ and abstract operators, the other using wavefunctions $\psi(x)$ and partial differential equations - are <strong>completely equivalent</strong>. Wavefunctions are simply infinite-dimensional vectors, operators are simply infinite-dimensional matrices, and solving the time-independent Schrödinger equation is the same thing as solving the eigenvalue equation $\hat H|\psi\rangle = E|\psi\rangle$. This can be expressed by writing out the equivalent forms of the <em>general solution</em> to the Schrödinger equation in both formulations:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+|\Psi(t)\rangle = \sum_n c_n |\psi_n\rangle e^{-iE_n t&#x2F;\hbar}
+\quad \Leftrightarrow \quad
+\Psi(x, t) = \sum_n c_n \psi_n(x) e^{-iE_n t&#x2F;\hbar}, \\
+\Psi(x, t) = \langle x | \Psi(t)\rangle
+\end{gather*}
+$$
+</p><h2 id="the-classical-limit-of-quantum-mechanics">The classical limit of quantum mechanics</h2>
+<p>Quantum mechanics is the most comprehensive theory of physics ever devised, because it governs the mechanics of everything in the universe. In practice, however, quantum calculations are often so involved that we only apply quantum mechanics to systems where quantum effects deviate significantly from classical behavior. In fact, any calculations with macroscopic objects that treat them as larger versions of idealized quantum systems quickly become intractable. This is because they are composed of many billions of subatomic particles, and a combination of advanced methods in quantum mechanics and statistical physics is often necessary to sufficiently describe them. See <a href="https://physics.stackexchange.com/questions/567596/is-quantum-mechanics-applicable-to-only-small-things">this Physics SE post</a> for more details.</p>
+<p>To understand where quantum mechanics can be sufficiently well-approximated by quantum mechanics, we turn to the <em>correspondence principle</em>. This says that quantum mechanics reproduces the results of classical mechanics <em>on average</em>.</p>
+<p>So as a takeaway, quantum mechanics is conventionally only <em>required</em> for analyzing systems smaller than an atom, but below that limit, many things simply cannot be explained classically. We can (and should) use the classical theory for all scales above the atomic scale; we must use quantum for anything below.</p>
+<h3 id="ehrenfest-s-theorem">Ehrenfest's theorem</h3>
+<p>How quantum mechanics reduces to classical mechanics is given by <strong>Ehrenfest's theorem</strong>. To understand the theorem, let us start with the standard quantum Hamiltonian:</p>
+<p class="mathcell">
+$$
+\hat H = \dfrac{\hat p^2}{2m} + V(x)
+$$
+</p>
+<p>Ehrenfest's theorem relies on the fact that physical time-independent operators obey what's known as the <strong>Heisenberg equation of motion</strong> (which comes from their mathematical properties), given by:</p>
+<p class="mathcell">
+$$
+\dfrac{d\hat A}{dt} = \dfrac{i}{\hbar} [\hat H, \hat A]
+$$
+</p>
+<p>This also means that the <em>expectation values</em> of the Heisenberg equations of motion satisfy:</p>
+<p class="mathcell">
+$$
+\dfrac{d\langle A\rangle}{dt} = \dfrac{i}{\hbar} \langle[\hat H, \hat A]\rangle
+$$
+</p>
+<p>One particularly interesting case is when $\hat A = \hat p$, the momentum operator. Then, its commutator with the Hamiltonian becomes:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+[\hat H, \hat p]\psi &amp;= (\hat H \hat p - \hat p \hat H)\psi \\
+&amp;= \left[-\dfrac{\hbar^2}{2m} \hat p^2 + V(x)\hat p - \hat p\left(-\dfrac{\hbar^2}{2m} \hat p^2 + V(x)\right)\right]\psi \\
+&amp;= -\dfrac{\hbar^2}{2m}\hat p^2 \hat p \psi + V (x)\hat p \psi +\dfrac{\hbar^2}{2m}\hat p \hat p^2 \psi - \hat p (V(x) \psi) \\
+&amp;= -\dfrac{\hbar^2}{2m}\hat p^2 \hat p \psi + V (x)\hat p \psi +\dfrac{\hbar^2}{2m}\hat p \hat p^2 \psi - \hat p (V(x) \psi) \\
+&amp;= -\dfrac{\hbar^2}{2m}\hat p^3 \psi + V (x)\hat p \psi +\dfrac{\hbar^2}{2m}\hat p^3 \psi - \underbrace{(\hat p V(x) \psi + V(x)\hat p \psi)}_\text{product rule}) \\
+&amp;= \cancel{-\dfrac{\hbar^2}{2m}\hat p^3 \psi} + \cancel{V (x)\hat p \psi} + \cancel{\dfrac{\hbar^2}{2m}\hat p^3 \psi} - (\hat p V(x) \psi - \cancel{V(x)\hat p \psi)}) \\
+&amp;= -\hat p V(x) \psi \\
+&amp;= i\hbar \dfrac{\partial V}{\partial x} \psi
+\end{align*}
+$$
+</p>
+<p>Thus we see that:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+[\hat H, \hat p]\psi = i\hbar \dfrac{\partial V}{\partial x} \psi \\
+\Rightarrow [\hat H, \hat p] = i\hbar \dfrac{\partial V}{\partial x}
+\end{gather*}
+$$
+</p>
+<p>Now, if we substitute this result into the Heisenberg equation of motion, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{d\langle p\rangle}{dt} &amp;= \dfrac{i}{\hbar} \langle[\hat H, \hat p]\rangle \\
+&amp;= \dfrac{i}{\hbar} \left\langle i\hbar \dfrac{\partial V}{\partial x} \right\rangle \\
+&amp;= -\left\langle \dfrac{\partial V}{\partial x} \right\rangle
+\end{align*}
+$$
+</p>
+<p>But remember, in classical mechanics, $\dfrac{dp}{dt}$ is the force, and Newton's second law is simply $F = \dfrac{dp}{dt} = -V'(x)$! So we have reproduced something that looks very <em>similar</em> (though not identical) to Newton's second law:</p>
+<p class="mathcell">
+$$
+\dfrac{d\langle p\rangle}{dt} = -\left\langle \dfrac{\partial V}{\partial x} \right\rangle
+$$
+</p>
+<p>We can follow the same process with the position operator $\hat x$ to see that its Heisenberg equation of motion is given by:</p>
+<p class="mathcell">
+$$
+\dfrac{d\langle x\rangle}{dt} = \dfrac{\langle p\rangle}{m}
+$$
+</p>
+<p>Which looks very similar to the classical $\dot x = v = p/m$! The two above equations comprise <strong>Ehrenfest's theorem</strong> goes to show that quantum mechanics ultimately reproduces classical mechanics, although its predictions are much more significant at small scales, where classical mechanics fails.</p>
+<h3 id="the-general-ideas-of-the-classical-limit">The general ideas of the classical limit</h3>
+<p>To go through a full treatment of the classical limit of quantum mechanics would take quite a lot of time and involve a lot of advanced mathematics. However, to get an intuitive idea of how quantum mechanics reproduces classical mechanics, there are a few key ideas:</p>
+<ul>
+<li>The <strong>expectation values</strong> of quantum operators reproduce their respective classical expressions (for instance, $\langle \hat x \rangle \approx x(t)$, $\langle \hat p \rangle \approx p(t), \langle \hat H \rangle \approx E$ and so forth)</li>
+<li>In the limits of large quantum numbers, <strong>quantized values become continuous values</strong>. For instance, consider the $z$-angular momentum operator $\hat L_z$, which has eigenvalues $L_z = m \hbar$, where $m$ is an integer. Since $L_z$ can only come in integer multiples $m \hbar$, the angular momentum of a quantum particle is quantized. However, in the limit as $m$ grows very large (after all, macroscopic objects have huge amounts of angular momenta compared to tiny subatomic particles!), the difference between angular momenta of different integer $m$ become almost negligible. For a rolling marble, which might have $L_z = \pu{1 g m^2/s} \approx \pu{9.48E30}\hbar$, no one would notice the difference between the angular momentum for $L_z = m\hbar = 9.48 \times 10^{30} \hbar$ versus $\tilde L_z = (m + 1)\hbar = 9.480000\dots01 \times 10^{30}\hbar$. This is to say, any macroscopic object has such a huge amount of angular momentum (and thereby such a big value of $m$) that its angular momentum <strong><em>appears</em> to be continuous</strong></li>
+<li><strong>Probability amplitudes for large objects</strong> are such that the state that matches classical behavior is <em>overwhelmingly</em> the most likely state, and such that the time-evolution of a system follows classical laws. (This is especially evident in the <a href="https://www.quantamagazine.org/how-our-reality-may-be-a-sum-of-all-possible-realities-20230206/">path integral formulation of quantum mechanics</a> but we won't go into that here)</li>
+<li>The <strong>de Broglie wavelength</strong> grows <em>extremely small</em> for large objects, meaning that the wavelike properties of quantum particle vanish, and objects become well-approximated by discrete point particles (or systems of infinitely many point particles for continuum objects)</li>
+</ul>
+<h2 id="a-brief-peek-at-more-advanced-quantum-mechanics">A brief peek at more advanced quantum mechanics</h2>
+<p>Up to this point, we have considered quantum mechanics primarily using the Schrödinger equation as well as working with pure quantum states. There are more advanced derivatives of the Schrödinger equation that incorporate the effects of relativity and spin in their description of quantum particles. First, we have the Klein-Gordon equation:</p>
+<p class="mathcell">
+$$
+\left(\partial_\mu \partial^\mu \psi + \dfrac{m^2 c^2}{\hbar^2}\right) \psi = 0
+$$
+</p>
+<p>The Klein-Gordon equation describes spinless elementary particles, like the Higgs boson, and certain spinless composite particles, such as mesons and pions. But for fermions - including quarks, electrons, and muons - we use the <strong>Dirac equation</strong>, which is a four-component PDE often written in condensed form as:</p>
+<p class="mathcell">
+$$
+(i\hbar \gamma^\mu \partial_\mu - m c) \psi = 0
+$$
+</p>
+<p>We can expand it to show it as a system of equations for a four-component wavefunction $\psi$, where:</p>
+<p class="mathcell">
+$$
+\psi = \begin{pmatrix} \psi_1 \\ \psi_2 \\ \psi_3 \\ \psi_4 \end{pmatrix}, \quad
+\begin{align*}
+i\hbar \frac{\partial}{\partial t} \psi_1 - \frac{\partial}{\partial x} \psi_3 + \frac{\partial}{\partial y} \psi_4 - \frac{\partial}{\partial z} \psi_3 - mc \psi_1 &amp;= 0, \\
+i\hbar \frac{\partial}{\partial t} \psi_2 - \frac{\partial}{\partial x} \psi_4 - \frac{\partial}{\partial y} \psi_3 + \frac{\partial}{\partial z} \psi_4 - mc \psi_2 &amp;= 0, \\
+i\hbar \frac{\partial}{\partial t} \psi_3 + \frac{\partial}{\partial x} \psi_1 + \frac{\partial}{\partial y} \psi_2 + \frac{\partial}{\partial z} \psi_1 - mc \psi_3 &amp;= 0, \\
+i\hbar \frac{\partial}{\partial t} \psi_4 + \frac{\partial}{\partial x} \psi_2 - \frac{\partial}{\partial y} \psi_1 + \frac{\partial}{\partial z} \psi_2 - mc \psi_4 &amp;= 0.
+\end{align*}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> in gauge field theory and specifically quantum electrodynamics, which is discussed at the end of the <a href="https://jackysci.com/electromagnetism/">electromagnetic theory article</a>, we find that the Dirac equation describing fermions coupled to an electromagnetic field (i.e. electrons) must be modified to $(i\hbar \gamma^\mu D_\mu - m c) \psi$, where $D_\mu = \partial_\mu + \dfrac{ie}{\hbar c} A_\mu$ is the <strong>gauge covariant derivative</strong>.</p>
+</blockquote>
+<p>The most precise theory of quantum mechanics is the <strong>Standard Model</strong>, which extends the Dirac equation into describing <strong>quantum fields</strong>. The Standard Model makes highly-accurate predictions that are even more precise than the Schrödinger equation, including tiny corrections to the energy levels of the hydrogen atom. However, it is a theory that is far too complex to cover here and best left to an in-depth textbook treatment. For those interested, feel free to see my <a href="https://www.learntheoreticalphysics.com/quantum-field-theory/">quantum field theory book</a> to learn more.</p>
+<h3 id="an-epistemological-remark">An epistemological remark</h3>
+<p>Quantum mechanics is perhaps one of the most profoundly impactful and <em>useful</em> theories of physics ever devised. Its uses are numerous and essentially anything to do with microscopic processes - for instance, semiconductors, diodes, superconductors, atomic spectroscopy, nuclear technologies, quantum optics, lasers, scanning electron microscopy, quantum chemistry, and advanced materials research - all involve quantum mechanics in some way. That is to say, quantum mechanics has many <em>practical applications</em>.</p>
+<p>However, these are essentially all applications of non-relativistic quantum mechanics. Going beyond and into relativistic quantum mechanics becomes more and more the realm of purely precision science (except for some applications in condensed matter physics). Elementary particle physics, in particular, does not (yet) have many day-to-day applications, other than simply advancing our understanding of physics and science. It is motivated purely by human curiosity and the pursuit of pushing the frontiers of science ever further. One day, our civilization may reach the levels of technological development that require relativistic quantum field theory on a regular basis, but this has not come yet. Bearing that in mind, it is nonetheless a fascinating intellectual pursuit, providing us with valuable scientific knowledge to advance our current understanding of science, and worth doing simply by virtue of itself.</p>
+<h2 id="further-reading">Further reading</h2>
+<p>Introductory quantum mechanics covers only a tiny part of the much larger landscape of quantum theory. There are <em>so</em> many more things to learn, enough to study for an entire career:</p>
+<ul>
+<li>Applied quantum mechanics to more systems, including many-body systems</li>
+<li>Relativistic quantum mechanics such as the Dirac equation</li>
+<li>Quantum field theory and the standard model</li>
+<li>Quantum cosmology, quantum thermodynamics, and other advanced topics</li>
+<li>Quantum gravity and a possible quantum theory of everything</li>
+</ul>
+<p>If you would like to learn more about quantum physics, you might enjoy reading my more advanced <a href="https://jackysci.com/quantum-mechanics/">in-depth quantum mechanics guide</a>, or if you would like to jump even more ahead, you might like my <a href="https://learntheoreticalphysics.com/quantum-field-theory/">free book on quantum field theory</a>. In addition, some very useful external resources are the free courses at MIT OpenCourseWare, the <em>Theoretical Minimum</em> series (and associated YouTube lectures) of Leonard Susskind, the <em>In a Nutshell</em> books by A. Zee, and of course, the standard texts by David Griffiths, namely <em>Introduction to Quantum Mechanics</em> and <em>Introduction to Elementary Particles</em>. The quantum world is mysterious - but at the same time, endlessly fascinating, and richly rewarding to learn.</p>
+
+        
+        <a id="jump-toc-btn" href="#toc">Show table of contents</a>
+        <a href="/notes" class="return-link">Back to all notes</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        var toc = document.getElementById("toc");
+        var tocPos = toc.offsetTop + toc.offsetHeight;
+        var tocBtn = document.getElementById("jump-toc-btn");
+
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+        // for performance reasons, we **only** render a certain
+        // number of equations that the viewer is actually viewing
+        function VisibleMathRenderer(config) {
+            /*
+            Renders only a limited number of equations on page load
+            to avoid poor performance
+             Params:
+                lastRenderedEquation: the most recently rendered equation.
+                        when this goes out of view, equations under it are rendered. 
+            */
+            var startElement = config.startElement
+            var maxEquations = config.maxEquations ? config?.maxEquations : 30;
+            this.startElement = startElement
+            this.maxEquations = maxEquations
+            // we wait until the user scrolls past the starting/
+            // ending elements to start rendering the whole page
+            this.canRenderWholePage = false;
+            this.pageRendered = false;
+            this.lastRenderedTopEquation = null;
+            this.lastRenderedBottomEquation = null;
+
+            this.render = function() {
+                renderMath(this.startElement);
+                // render previous 25 and following 25 equations
+                var prev = this.startElement.previousElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left prior to the element
+                    if (prev == null) {
+                        break;
+                    }
+                    renderMath(prev);
+                    prev = prev.previousElementSibling;
+                }
+                // store our last rendered equations
+                // we'll track scroll position later to
+                // check when the rest of the page should be rendered
+                this.lastRenderedTopEquation = prev;
+                console.log(this.lastRenderedTopEquation)
+
+                var next = this.startElement.nextElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left following the element
+                    if (next.nextElementSibling == null) {
+                        break;
+                    }
+                    renderMath(next);
+                    next = next.nextElementSibling;
+                }
+                this.lastRenderedBottomEquation = next;
+                // now allow rendering the rest of the equations
+                this.canRenderWholePage = true;
+            }
+
+            // render all math on the whole page
+            this.renderMathOnPage = function() {
+                // don't run until preliminary tasks
+                // are done so that the whole page
+                // can/should be rendered
+                if (!this.canRenderWholePage) {
+                    return;
+                }
+                // if the whole page's worth of equations
+                // are already rendered, don't render more
+                if (this.pageRendered) {
+                    return;
+                }
+                var topBound = this.lastRenderedTopEquation.getBoundingClientRect.top;
+                var bottomBound = this.lastRenderedBottomEquation.getBoundingClientRect.bottom;
+                var scrollTop, scrollBottom = getViewport();
+                // if the user is about to scroll past the initially-rendered equations
+                // we will render the whole page
+                if (scrollTop - 50 + window.scrollY < topBound || scrollBottom + 50 + window.scrollY > bottomBound) {
+                    console.log("Scrolled beyond!")
+                    var article = document.querySelector(".post");
+                    if (article) {
+                        this.renderMath(article);
+                    }
+                    this.pageRendered = true;
+                }
+                
+            }
+            
+        }
+
+        function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        function findFirstRelevantElement() {
+            // finds the first <p> tage that's closest to
+            // the viewer's viewport
+            var regex = /#.*/;
+            var m = regex.exec(window.location.href);
+            if (m !== null) {
+                return document.querySelector(m[0]);
+            } else {
+                return document.querySelector(".post p");
+            }
+        }
+        
+        // initialize page JS components
+        /*
+        var mathRenderer = new VisibleMathRenderer({
+            // start rendering with first <p> tag on the
+            // post
+            startElement: findFirstRelevantElement()
+        });
+        */
+        document.addEventListener("DOMContentLoaded", function() {
+            showTocBtnOnScroll();
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+
+        window.onscroll = function(){
+            // if (!mathRenderer.pageRendered) {
+            //     mathRenderer.renderMathOnPage();
+            // }
+            showTocBtnOnScroll();
+        };
+
+
+    </script>
+    
+
+
+</body>
+
+</html>

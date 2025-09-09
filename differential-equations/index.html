@@ -1,0 +1,2460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introduction to Differential Equations</title>
+  <meta name="description" content=" These are my notes taken in RPI&#x27;s MATH 2400 course. A special thanks to Dr. Kam of Rensselaer Polytechnic Institute for her excellent instruction and permission to share these notes.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Introduction to Differential Equations</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+        <details class="toc" id="toc" open>
+        <summary>Table of contents</summary>
+        <p class="toc-info">Note: it is highly recommended to navigate by clicking links in the table of contents! It means you can use the back button in your browser to go back to any section you were reading, so you can jump back and forth between sections!</p>
+        <div>
+            <ul>
+            
+                <li>
+                    <a href="#introduction">Introduction</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#a-note-on-solutions">A note on solutions</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#separation-of-variables">Separation of variables</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#the-exponential-change-equation">The exponential change equation</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-equation-of-freefall-with-air-resistance">The equation of freefall with air resistance</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#other-common-separable-differential-equations">Other common separable differential equations</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#the-method-of-substitution">The method of substitution</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#the-method-of-integrating-factors">The method of integrating factors</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#interlude-the-desmos-checking-approach">Interlude: the desmos checking approach</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#2nd-order-ode-general-forms">2nd-order ODE general forms</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#abel-s-formula">Abel&#x27;s formula</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#the-method-of-the-characteristic-equation">The method of the characteristic equation</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#primer-simultaneous-equations">Primer: simultaneous equations</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#the-method-of-undetermined-coefficients">The method of undetermined coefficients</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#variation-of-parameters">Variation of parameters</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#special-cases-of-linear-second-order-odes">Special cases of linear second-order ODEs</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#reduction-of-order-for-2nd-order-odes">Reduction of order for 2nd-order ODEs</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#systems-of-linear-odes">Systems of linear ODEs</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#eigenvalue-problems">Eigenvalue problems</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#finding-eigenvalues-and-eigenvectors">Finding eigenvalues and eigenvectors</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#linear-systems-of-odes">Linear systems of ODEs</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#steady-states">Steady states</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#phase-portraits">Phase portraits</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#nonlinear-systems">Nonlinear systems</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#nonlinear-systems-in-population-growth">Nonlinear systems in population growth</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#laplace-transforms">Laplace transforms</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#introduction-to-laplace-transform">Introduction to Laplace transform</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#table-of-laplace-transforms">Table of Laplace transforms</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#laplace-transform-for-piecewise-functions">Laplace transform for piecewise functions</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#heaviside-step-function">Heaviside step function</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#inverse-laplace-transform">Inverse Laplace transform</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#laplace-transform-for-derivatives">Laplace transform for derivatives</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-dirac-delta-function">The Dirac Delta Function</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#euler-s-method-for-odes">Euler&#x27;s method for ODEs</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#fourier-series">Fourier Series</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#sine-and-cosine-series">Sine and cosine series</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#partial-differential-equations">Partial differential equations</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#the-heat-equation">The heat equation</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-wave-equation">The wave equation</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-fundamental-nature-of-differential-equations">The fundamental nature of differential equations</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
+        </details>
+        
+
+        <!-- page content -->
+        <p>These are my notes taken in RPI's <a href="https://catalog.rpi.edu/preview_course_nopop.php?catoid=11&amp;coid=18946">MATH 2400 course</a>. A special thanks to Dr. Kam of Rensselaer Polytechnic Institute for her excellent instruction and permission to share these notes.</p>
+<span id="continue-reading"></span>
+<p>Note that the general <a href="https://jackysci.com/calculus-series/">Calculus series</a> and specifically the <a href="https://jackysci.com/integration/">Integration notes</a> might be good to read alongside.</p>
+<h2 id="introduction">Introduction</h2>
+<p>A <em>differential equation</em> is an equation that contains derivatives of an unknown function. They are a powerful tool to describe a variety of physical processes.</p>
+<p>We write differential equations because many relationships in physics, engineering, and other sciences relate one changing quantity to another. For instance, the radioactive decay rate $r$ is proportional to the amount of a radioactive substance $N$, so $r = kN$. But $r = \frac{dN}{dt}$, so we rewrite $r = kN$ as $\frac{dN}{dt} = kN$. We've now derived a differential equation.</p>
+<p>Differential equations are classified via three main characteristics.</p>
+<ul>
+<li>Ordinary vs partial</li>
+<li>Order</li>
+<li>Linear vs nonlinear</li>
+</ul>
+<p>These characteristics determine how they should be solved.</p>
+<p>First, we can classify differential equations as either ordinary (ODE) or partial (PDE). ODEs contain an unknown function, typically $y$, of only one independent variable, typically $x$ or $t$. Meanwhile PDEs contain an unknown function, typically $u$, or more than one independent variable, such as $x, y, z$. How to distinguish? Just look for the derivative sign - if it contains $\partial$ (the partial derivative symbol), then it's a PDE, otherwise it's most likely an ODE.</p>
+<p>For instance, an ODE could be:</p>
+<p class="mathcell">
+$$
+\frac{d^2 y}{dx^2} + x \frac{dy}{dx} = 2y
+$$
+</p>
+<p>Note that an ODE could contain several unknown functions (especially in systems of differential equations) so long as each function has only one independent variable:</p>
+<p class="mathcell">
+$$
+\frac{d^2 x}{dt^2} + 3 \frac{dy}{dt} = 3x + 5y
+$$
+</p>
+<p>And a PDE could be:</p>
+<p class="mathcell">
+$$
+\frac{\partial^2 z}{\partial x^2} + \frac{\partial^2 z}{\partial y^2} = 1
+$$
+</p>
+<p>Note that partial derivatives can also be denoted by subscripts (i.e. $\frac{\partial^2 z}{\partial x^2} = z_{xx}$) and ordinary derivatives can also be denoted by primes (i.e. $\frac{dy}{dx} = y'$).</p>
+<p>Second, we can classify differential equations by order. The order is the order of the highest derivative. For instance, if the differential equation contains at most a 1st derivative, then it is of first-order. If it contains at most a 2nd derivative, then it is of second-order. Note: if you have something like $(\frac{dy}{dx})^2$, this is still a first-order derivative, despite the square!</p>
+<p>Third, we can classify differential equations as either linear or nonlinear. In general, linear differential equations are easier to solve and analyze. A linear equation is <strong>only</strong> composed of derivative terms multiplied by functions of $x$ (or whatever the independent variable is). This is the most important distinguishing factor of a linear differential equation: there are <strong>no functions of $y$ or functions of the derivatives of $y$ present</strong>.</p>
+<p>The general form of a linear ordinary differential equation is:</p>
+<p class="mathcell">
+$$
+f(x) \frac{d^n y}{dx^n} + \dots + g(x) \frac{d^2 y}{dx^2} + h(x) \frac{dy}{dx} + k(x) y = a(x)
+$$
+</p>
+<p>If the equation can be rewritten such that $a(x) = 0$, then the differential equation is called <em>homogeneous</em>; otherwise, it is called <em>non-homogeneous</em>. The more informal definition is that a homogeneous differential equation must have either $y$ or a derivative of $y$ in every term when written in the form (left-hand-side) = 0. Homogeneity only applies for linear ODEs; any nonlinear ODE cannot be classified in this way.</p>
+<p>An intuitive idea of homogeneity is to compare the general forms of a 1st-order homogeneous ODE with a 1st-order non-homogeneous ODE:</p>
+<p class="mathcell">
+$$
+\begin{matrix}
+\text{Homogeneous:} &amp; y&#x27; + a(x) y = 0 \\
+\text{Non-homogeneous:} &amp; y&#x27; + a(x) y + b(x) + c = 0
+\end{matrix}
+$$
+</p>
+<p>Notice how the non-homogeneous equation has an extra $b(x) + c$ term but the homogeneous equation does not. This is a good way to tell the difference: if the differential equation has any isolated terms involving only $x$ or only a constant when written in the form (LHS) = 0, then it is non-homogeneous.</p>
+<p>If a differential equation doesn't follow the general form of a linear differential equation, it is called <em>nonlinear</em>. For instance, the following is a nonlinear differential equation, because there is a function of the derivative $y'$ present:</p>
+<p class="mathcell">
+$$
+\left(\frac{dy}{dx}\right)^3 + xy = 0
+$$
+</p>
+<p>Similarly, the following is a nonlinear differential equation, because there is a function of $y$ present:</p>
+<p class="mathcell">
+$$
+3y&#x27; + \sin(y) x^3 = 5x
+$$
+</p>
+<p>Meanwhile, the following differential equation is linear and non-homogenous, because it has a term involving only $x$, but doesn't have any functions of $y$ or functions of derivatives of $y$:</p>
+<p class="mathcell">
+$$
+x\frac{dy}{dx} + 3xy = 5x
+$$
+</p>
+<p>Modifying it makes it homogeneous:</p>
+<p class="mathcell">
+$$
+x \frac{dy}{dx} + 3xy = 0
+$$
+</p>
+<p>Partial differential equations can also be linear so long as they don't have functions that depend on the dependent variable. For example, if the dependent variable is $u$, then the following is linear, because there is no function $f(u)$ in the equation:</p>
+<p class="mathcell">
+$$
+\frac{\partial u}{\partial x} + 2 \frac{\partial u}{\partial y} + xy = 0
+$$
+</p>
+<p>To solve a differential equation, there are 3 general steps:</p>
+<ul>
+<li>Is there a solution at all? (existence)</li>
+<li>How many solutions are there? (uniqueness)</li>
+<li>Can we determine the solutions? If so, how?</li>
+</ul>
+<p>Generally, existence and uniqueness are topics handled by pure mathematicians, and one only usually needs to determine the solution via the appropriate method. The general idea typically involves matching the differential equation with a known case (i.e. a type of differential equation that has already been solved before). To check that the solution is correct, it is possible to verify by putting the solution back into the equation.</p>
+<p>Solutions can be of two main types - explicit and implicit. An explicit solution is in the form of $y = y(x)$, such as $y = 3e^x$. An implicit solution is in the form $f(y) = g(x)$, such as $\sin(y) = 5x^3$. Explicit solutions are usually preferred, but sometimes only implicit solutions can be found.</p>
+<p>Finally, differential equations are by no means a finished field. New methods of solving them and analyzing them are constantly being developed, but even so, there are many differential equations that simply have not yet been solved.</p>
+<h2 id="a-note-on-solutions">A note on solutions</h2>
+<p>This is something that wasn't really mentioned much in MATH 2400, but is definitely crucial for solving differential equations outside the classroom. When we say that we "solve" a differential equation, we can mean a lot of different things.</p>
+<p>The first idea of a solution is an <strong>explicit solution</strong> expressed in terms of <strong>elementary functions</strong>. For instance, the equation $y = \sin x$ is an explicit and elementary solution to the differential equation $y'' + y = 0$. It is explicit because it is in the form $y = y(x)$, with only $x$ terms on the right-hand side, and it is elementary because it involves combinations of only rational, trigonometric, exponential, logarithmic, and power functions. Or, more informally, it is elementary because it is written in terms of "familiar" functions.</p>
+<p>Note that it is <em>a</em> solution and not <em>the</em> solution. This is because $y = 3\sin x$ is <em>also</em> an explicit, elementary solution to $y'' + y' = 0$. In fact, so is $y = 6\sin x$ or $y = 11\sin x + 9 \cos x$ or $y = 2 \cos x$. So we typically want <strong>general solutions</strong> that describe all the possibilities that satisfy the differential equation. In this case, we can say that the explicit, elementary general solution to $y'' + y = 0$ is $y = A\sin x + B \cos x$, where $A$ and $B$ can be any constants. If we know the value of $y$ at one point, we can determine a <em>particular</em> solution. For instance, if we know that $y(0) = 1$, then it must be true that $A = 0$ and $B = 1$, so the particular solution is $y = \cos x$, whereas if we know that $y(0) = 0$, then it must be true that $A = 1$ and $B = 0$, and so the particular solution is $y = \sin x$.</p>
+<p>General explicit solutions that are expressed in terms of elementary functions are the "nicest" type of solution, but these solutions are very rare. The next best thing is typically a general <strong>implicit solution</strong> expressed in terms of elementary functions. These are solutions that are in the form $F(x, y) = 0$, but still using the familiar set of functions (rational, trig, exponential, power, etc.). For example, the equation of a unit circle, that is, $x^2 + y^2 = 1$, is an implicit equation. These are more difficult to work with by hand, but modern graphing software like Desmos can plot implicit solutions just as well as explicit solutions, and so an implicit solution is "good enough" when it is the only thing available. In addition, a general solution, whether implicit or explicit, is almost always preferred, but in cases where a general solution cannot be found (which is often true for PDEs), a solution that isn't general is sufficient.</p>
+<p>Finally, sometimes a solution cannot even be expressed in terms of elementary functions. However, they can be expressed using integrals. For instance, the solution to the differential equation $y'' + 2xy' = 0$ cannot be expressed using elementary functions, but can be written in terms of an integral:</p>
+<p class="mathcell">
+$$
+y(x) = \int_0^x e^{-t^2}dt
+$$
+</p>
+<p>These types of solutions are often called <strong>reduction to quadrature</strong> (quadrature is an antiquated term for what we would now call integration). They can be implicit or explicit, and modern computer software can plot both to good precision, albeit with more difficulty than solutions that don't involve integrals.</p>
+<p>What if a differential equation can't be expressed in terms of elementary functions, and can't be expressed either implicitly or explicitly in terms of quadratures? There is then a third option - a <strong>series solution</strong>, which is a solution expressed in terms of infinite series. For example, the solution to the exponential growth equation is given by:</p>
+<p class="mathcell">
+$$
+y = \sum_{n = 0}^\infty \frac{x^n}{n!}
+$$
+</p>
+<p>Series solutions can be plotted readily using a computer, but are much less useful, because they often converge extremely slowly. A famous example is the three-body problem in astrophysics; a series solution exists, but for all intents and purposes it is useless because it takes millions of terms to converge.</p>
+<p>Finally, there are differential equations that cannot be solved by <em>any</em> of these methods. So instead, we aim for a <strong>numerical solution</strong> - an approximation to the differential equation using numerical algorithms, usually using a computer (though in the past there were analog machines that were constructed for this purpose, see <a href="https://en.wikipedia.org/wiki/Differential_analyser">differential analyzer</a>). The vast majority of differential equations are solved this way.</p>
+<h2 id="separation-of-variables">Separation of variables</h2>
+<p>Consider a first-order ODE in the form:</p>
+<p class="mathcell">
+$$
+\frac{dy}{dx} = g(x) f(y)
+$$
+</p>
+<p>Such an ODE can be rewritten in the form:</p>
+<p class="mathcell">
+$$
+a(y) dy = b(x) dx
+$$
+</p>
+<p>And with integration, it can be solved:</p>
+<p class="mathcell">
+$$
+\int a(y) dy = \int b(x) dx
+$$
+</p>
+<p>The idea is to move all the terms in $x$ to one side, move all the terms in $y$ to the other side, and integrate both sides. This gives a <strong>general solution</strong> to the differential equation, which is a family of functions. A particular solution (a single exact function) can be found if initial conditions are provided.</p>
+<h3 id="the-exponential-change-equation">The exponential change equation</h3>
+<p>A good example of applying the separation of variables is the process of solving the <strong>exponential change</strong> differential equation, where $k$ is a constant:</p>
+<p class="mathcell">
+$$
+\frac{dy}{dt} = ky
+$$
+</p>
+<p>This differential equation essentially says that an unknown function $y(t)$ changes through time proportionally to its value. It's natural that this would lead to exponential behavior: as the value of $y$ it changes more and more rapidly. The precise type of change depends on sign - if $k$ is positive, then the change is growth, if $k$ is negative, the change is decay. Thus equation is sometimes also known as the <em>exponential growth</em> or <em>exponential decay</em> equation (depending on context).</p>
+<p>Exponential change equations occur in many areas of math and science. A specific example is the half-life of a radioactive isotope. Radioactive isotopes (such as Uranium-238 or Carbon-14) are unstable atoms that spontaneously decay into other atoms. In this case, $y$ represents the number of atoms of the particular isotope that have not yet decayed, while $k$ is a negative number that controls the <em>rate of decay</em>. Another example is the light intensity under the ocean. In this case, $L$ represents the light intensity as a function of distance under the ocean's surface.</p>
+<p>But let us put aside the physical details and just examine the mathematics used to solve the differential equation. We will use separation of variables, which involves treating the derivative almost like a fraction. We first multiply both sides by $dt$:</p>
+<p class="mathcell">
+$$
+\frac{dy}{dt} dt = ky dt
+$$
+</p>
+<p>The two $dt$'s cancel out so the result is:</p>
+<p class="mathcell">
+$$
+dy = ky dt
+$$
+</p>
+<p>Now we divide both sides by $y$ so that on the left of the equation, we only have variables in terms of $y$, and on the right, we only have variables in terms of $t$. So:</p>
+<p class="mathcell">
+$$
+\frac{dy}{y} = kdt
+$$
+</p>
+<p>We now integrate both sides:</p>
+<p class="mathcell">
+$$
+\int \frac{dy}{y} = \int kdt
+$$
+</p>
+<p>The result is:</p>
+<p class="mathcell">
+$$
+\ln |y| + C_1 = kt + C_2
+$$
+</p>
+<p>Here, we can define $C_3 = C_2 - C_1$. Remember, these are arbitrary constants of integration, so we can add them and subtract them and multiply and divide them at will, as long as they remain constants, the solution will still be satisfied. So the result is:</p>
+<p class="mathcell">
+$$
+\ln |y| = kt + C_3
+$$
+</p>
+<p>We take the exponential of both sides:</p>
+<p class="mathcell">
+$$
+e^{\ln |y |} = e^{kt + C_3}
+$$
+</p>
+<p>The left side cancels out so we just have:</p>
+<p class="mathcell">
+$$
+y = e^{kt + C_3}
+$$
+</p>
+<p>We can write this in a slightly more elegant way though. To do so, we first note that:</p>
+<p class="mathcell">
+$$
+e^{kt + C_3} = e^{kt} e^{C_3}
+$$
+</p>
+<p>Now we can define a fourth constant $C_4 = e^{C_3}$ - remember we can perform arbitrary manipulation on integration constants so long as they remain <em>constants</em>. We are left with:</p>
+<p class="mathcell">
+$$
+e^{kt + C_3} = C_4 e^{kt}
+$$
+</p>
+<p>So plugging that back in for $y$, we have:</p>
+<p class="mathcell">
+$$
+y = C_4 e^{kt}
+$$
+</p>
+<p>This is called the <em>general solution</em>, because it represents a family of solutions, each with a different constant for $C_4$. To find a <em>particular solution</em>, we need to know an initial value, which is typically provided. For instance, we may be told that $y(0) = 1$. That means:</p>
+<p class="mathcell">
+$$
+1 = C_4 e^{k \cdot 0} \Rightarrow 1= C_4
+$$
+</p>
+<p>We can now substitute $C_4 = 1$. Therefore, for the initial value $y(0) = 1$, the <em>particular solution</em> is:</p>
+<p class="mathcell">
+$$
+y(t) = e^{kt}
+$$
+</p><h3 id="the-equation-of-freefall-with-air-resistance">The equation of freefall with air resistance</h3>
+<p>As another example, consider the differential equation of a falling object undergoing drag (such as air resistance), where $m$ and $k$ are constants:</p>
+<p class="mathcell">
+$$
+m \frac{dv}{dt} = mg - kv
+$$
+</p>
+<p>We want to use separation of variables to solve. To do this, we first divide by $m$ to get:</p>
+<p class="mathcell">
+$$
+\frac{dv}{dt} = g - \frac{k}{m} v
+$$
+</p>
+<p>Now, we can multiply $dt$ to both sides to get:</p>
+<p class="mathcell">
+$$
+dv = \left(g - \frac{k}{m} v\right) dt
+$$
+</p>
+<p>And then dividing by the term on the RHS in brackets, we get:</p>
+<p class="mathcell">
+$$
+\frac{dv}{g - \frac{k}{m} v} = dt
+$$
+</p>
+<p>We can now integrate both sides (and this is why integration techniques are useful):</p>
+<p class="mathcell">
+$$
+\int \frac{dv}{g - \frac{k}{m} v} = \int dt
+$$
+</p>
+<p>The integration requires just a u-substitution on the LHS, and results in:</p>
+<p class="mathcell">
+$$
+-\frac{m}{k} \ln \left | g - \frac{kv}{m} \right | + C_1 = t + C_2
+$$
+</p>
+<p>Here, $C_1$ and $C_2$ are respectively the constants of integration from each integral - note that they are <strong>not</strong> the same. To clean up the equation, we can set a new constant of integration $C_3$, where $C_3 = C_2 - C_1$. Therefore, we have:</p>
+<p class="mathcell">
+$$
+-\frac{m}{k} \ln \left | g - \frac{kv}{m} \right | = t + C_3
+$$
+</p>
+<p>Now, we can multiply both sides by $-\frac{k}{m}$ to remove the constant from the LHS:</p>
+<p class="mathcell">
+$$
+\ln \left | g - \frac{kv}{m} \right | = -\frac{k}{m} t - \frac{k}{m} C_3
+$$
+</p>
+<p>We can define a new constant $C_4$, where $C_4 = -\frac{k}{m} C_3$:</p>
+<p class="mathcell">
+$$
+\ln \left | g - \frac{kv}{m} \right | = -\frac{k}{m} t + C_4
+$$
+</p>
+<p>Finally, we can raise both sides to the exponential to cancel out the natural log (here using the notation that $\exp(x) = e^x$):</p>
+<p class="mathcell">
+$$
+\exp \left(\ln \left | g - \frac{kv}{m} \right |\right) = \exp \left(-\frac{k}{m} t + C_4 \right)
+$$
+</p>
+<p>We know that the exponential of a natural log is just the argument to the natural log, so the LHS simplifies readily:</p>
+<p class="mathcell">
+$$
+g - \frac{kv}{m} = e^{-\frac{k}{m} t + C_4}
+$$
+</p>
+<p>Using properties of exponentials, we know that $e^{a + b} = e^a e^b$:</p>
+<p class="mathcell">
+$$
+g - \frac{kv}{m} = e^{-\frac{k}{m} t} e^{C_4}
+$$
+</p>
+<p>We'll now define a final constant $C$ where $C = e^{C_4}$, so:</p>
+<p class="mathcell">
+$$
+g - \frac{kv}{m} = C e^{-\frac{k}{m} t}
+$$
+</p>
+<p>Finally, solving for $v$, we get:</p>
+<p class="mathcell">
+$$
+v(t) = \frac{m}{k} \left(g - C e^{-\frac{k}{m}t} \right)
+$$
+</p>
+<p>First - is our solution <em>correct</em>? To verify it is correct, we can take its derivative and plug that derivative back into the original differential equation. Recall that the original equation was:</p>
+<p class="mathcell">
+$$
+m\frac{dv}{dt} = mg - kv
+$$
+</p>
+<p>If we take our solution $v(t)$, and differentiate it, we get:</p>
+<p class="mathcell">
+$$
+\frac{dv}{dt} = Ce^{-\frac{k}{m} t}
+$$
+</p>
+<p>Now, we can plug it back into the original differential equation:</p>
+<p class="mathcell">
+$$
+mCe^{-\frac{k}{m} t} = mg - k \cdot \frac{m}{k} \left(g - C e^{-\frac{k}{m}t} \right)
+$$
+</p>
+<p>If we simplify, we get:</p>
+<p class="mathcell">
+$$
+m Ce^{-\frac{k}{m} t} = m Ce^{-\frac{k}{m} t}
+$$
+</p>
+<p>The two sides match, so we can now declare that we have found a <strong>general explicit solution</strong> to this differential equation - general because $C$ is an arbitrary constant, so the solution really represents a <em>family</em> of solutions:</p>
+<p class="mathcell">
+$$
+v(t) = \frac{m}{k} \left(g - C e^{-\frac{k}{m}t} \right)
+$$
+</p>
+<p>Suppose we are given the <strong>initial condition</strong> that $v(0) = 0$. If we substitute this into the equation, we have:</p>
+<p class="mathcell">
+$$
+0 = \frac{m}{k} \left(g - C e^{-\frac{k}{m} \cdot 0} \right)
+$$
+</p>
+<p>This simplifies to:</p>
+<p class="mathcell">
+$$
+0 = \frac{mg}{k} - C
+$$
+</p>
+<p>Therefore, given our specified initial condition, it must be true that:</p>
+<p class="mathcell">
+$$
+C = \frac{mg}{k}
+$$
+</p>
+<p>If we substitute this value of $C$ back into the equation, we get the <em>particular</em> (or unique) solution of the differential equation, given the initial values:</p>
+<p class="mathcell">
+$$
+v(t) = \frac{m}{k} \left(g - \frac{mg}{k} e^{-\frac{k}{m}t} \right)
+$$
+</p><h3 id="other-common-separable-differential-equations">Other common separable differential equations</h3>
+<p>Separable differential equations are relatively rare. But this also means that those that are separable are often well-studied. We will show a few more separable differential equations in the following sections and state their solutions (but we will not solve them ourselves).</p>
+<h4 id="limited-growth-differential-equation">Limited growth differential equation</h4>
+<p>The differential equation for limited growth is:</p>
+<p class="mathcell">
+$$
+\frac{dy}{dt} = k(n - y)
+$$
+</p>
+<p>With the general solution:</p>
+<p class="mathcell">
+$$
+y = n - Ae^{-kt}
+$$
+</p><h4 id="logistic-growth-differential-equation">Logistic growth differential equation</h4>
+<p>The differential equation for logistic growth is:</p>
+<p class="mathcell">
+$$
+\frac{dy}{dt} = ky(n - y)
+$$
+</p>
+<p>With the general solution:</p>
+<p class="mathcell">
+$$
+y = \frac{n}{1 + Ae^{-nkt}}
+$$
+</p><h2 id="the-method-of-substitution">The method of substitution</h2>
+<p>Substitutions are often useful for turning inseparable differential equations into separable ones that are much easier to solve. However, they are not frequently taught, and were not a topic covered in RPI's MATH 2400. Thus, this is a supplemental section.</p>
+<p>There is <em>no</em> general rule for a substitution - the only real guideline is that they simplify the differential equation, but knowing <em>what</em> exactly to substitute is typically a matter of inspired guesswork. As an example, consider the following equation:</p>
+<p><p class="mathcell">
+$$
+\frac{dy}{dx} = 6x + 2y
+$$
+</p>
+In this case, a substitution that seems reasonable might be $u = 6x + 2y$. Therefore, the differential equation can be rewritten as:</p>
+<p class="mathcell">
+$$
+\frac{dy}{dx} = u
+$$
+</p>
+<p>If we take the derivative of $u$ with respect to $x$, we can use implicit differentiation to find:</p>
+<p class="mathcell">
+$$
+\frac{du}{dx} = 6 + 2 \frac{dy}{dx}
+$$
+</p>
+<p>Since $\frac{dy}{dx} = u$, we can substitute that in:</p>
+<p class="mathcell">
+$$
+\frac{du}{dx} = 6 + 2 u
+$$
+</p>
+<p>This is a separable equation, which can be straightforwardly solved - the steps are essentially identical to any other separable 1st-order ODE:</p>
+<p class="mathcell">
+$$
+\int \frac{du}{6 + 2u} = \int dx \Rightarrow u = \frac{1}{2} Ce^{2x} - 3
+$$
+</p>
+<p>We now simply need to substitute $6x + 20y$ back in for $u$, to obtain:</p>
+<p class="mathcell">
+$$
+6x + 2 y = \frac{1}{2} Ce^{2x} - 3
+$$
+</p>
+<p>Solving for $y$, we have:</p>
+<p class="mathcell">
+$$
+y = \frac{1}{4} Ce^{2x} - 3x - \frac{3}{2}
+$$
+</p>
+<p>Or written in a cleaned-up form:</p>
+<p class="mathcell">
+$$
+y = \frac{1}{4} Ce^{2x} - 3\left(x + \frac{1}{2}\right)
+$$
+</p>
+<p>There are many more substitutions, such as $u = \ln x$, $u = \frac{1}{x}$, $u = \frac{y}{x}$ that are useful for ODEs, and even more that extend to PDEs. They are a powerful tool in solving some differential equations that seem untackable.</p>
+<h2 id="the-method-of-integrating-factors">The method of integrating factors</h2>
+<p>Consider the first-order linear ODE:</p>
+<p class="mathcell">
+$$
+\frac{dy}{dx} + p(x)y = q(x)
+$$
+</p>
+<p>The method of integrating factors works only for 1st-order linear ODEs. To do so, we multiply the ODE by an <strong>integrating factor</strong> $\mu(x)$:</p>
+<p class="mathcell">
+$$
+\mu(x) \frac{dy}{dx} + \mu(x)p(x)y = \mu(x) q(x)
+$$
+</p>
+<p>Or in simplified notation:</p>
+<p class="mathcell">
+$$
+\mu y&#x27; + \mu p y = \mu q
+$$
+</p>
+<p>Now we're going to impose the restriction that $\mu(x)$ can't just be any function - it has to satisfy $\mu'(x) = \mu(x) p(x)$. Therefore we can say that $\mu p y = \mu' y$, so if we substitute that in, we have:</p>
+<p class="mathcell">
+$$
+\mu y&#x27; + \mu&#x27;y = \mu q
+$$
+</p>
+<p>Notice now that the LHS looks a lot like the expanded version of the product rule! Indeed it is, so we can rewrite it as:</p>
+<p class="mathcell">
+$$
+(\mu y)&#x27; = \mu q
+$$
+</p>
+<p>We can integrate both sides to get:</p>
+<p class="mathcell">
+$$
+\mu y = \int \mu(x) q(x) dx
+$$
+</p>
+<p>However, we still haven't figured out $\mu$, other than knowing it satisfies the differential equation $\mu' = \mu p$. Luckily this is a separable differential equation, which we can solve straightforwardly (here we call the integration constant $A$):</p>
+<p class="mathcell">
+$$
+\frac{d\mu}{dx} = \mu p
+$$
+</p><p class="mathcell">
+$$
+\int \frac{d\mu}{\mu} = \int pdx
+$$
+</p><p class="mathcell">
+$$
+\ln|\mu| = \int pdx
+$$
+</p><p class="mathcell">
+$$
+\mu = Ae^{\int p(x) dx)}
+$$
+</p>
+<p>If we substitute this back in, we have:</p>
+<p class="mathcell">
+$$
+\mu y = \int \mu(x) q(x) dx \Rightarrow Ae^{\int p(x) dx} y = \int q(x) Ae^{\int p(x)dx} dx
+$$
+</p>
+<p>The two integration constants $A$ on the LHS and RHS cancel out to have:</p>
+<p class="mathcell">
+$$
+e^{\int p(x) dx} y = \int q(x) e^{\int p(x) dx} dx
+$$
+</p>
+<p>Which we can solve for $y$ by multiplying by the inverse of $\displaystyle e^{\int p(x) dx}$ on the left:</p>
+<p class="mathcell">
+$$
+y = Ce^{-\int p(x) dx} + e^{-\int p(x) dx} \int q(x) e^{\int p(x) dx} dx
+$$
+</p>
+<p>This can seem very complicated, but at its core, it is just two important results that provide all we need to solve any differential equation in the form $y' + py = q$:</p>
+<p class="mathcell">
+$$
+\mu y = \int \mu q(x) dx, \quad \mu&#x27; = \mu p(x)
+$$
+</p>
+<p>As an example, consider the differential equation of an electrical circuit with an inductor and a resistor:</p>
+<p class="mathcell">
+$$
+L \frac{dI}{dt} + R(t) I = \mathcal{E}
+$$
+</p>
+<p>where $R(t) = \frac{L}{t}$ (this is a made-up resistance function, but the differential equation itself is real). We can use the method of integrating factors to solve. To do so, we first write out $R(t)$ explictly and divide by $L$ so that the equation takes the standard form of $y' + p(x) y = q(x)$. This results in:</p>
+<p class="mathcell">
+$$
+\frac{dI}{dt} + \frac{1}{t} I = \frac{\mathcal{E}}{L}
+$$
+</p>
+<p>Now, we can multiply an integrating factor $\mu(t)$ to every term:</p>
+<p class="mathcell">
+$$
+\mu \frac{dI}{dt} + \mu \frac{1}{t} I = \mu \frac{\mathcal{E}}{L}
+$$
+</p>
+<p>We find $\mu$ through integration:</p>
+<p class="mathcell">
+$$
+\mu = \exp \left(\int p(x) dx \right) = \exp \left(\int \frac{1}{t} dt \right) = t
+$$
+</p>
+<p>And now, we can finally use the integrating factor to solve for $I$:</p>
+<p class="mathcell">
+$$
+\mu I = \int \mu q(t) dt \Rightarrow t I = \int t \frac{\mathcal{E}}{L} dt
+$$
+</p>
+<p>Solving the integral, the result is:</p>
+<p class="mathcell">
+$$
+t I = \frac{\mathcal{E}}{L} \frac{t^2}{2} + C
+$$
+</p>
+<p>We isolate $I$ by dividing by $\frac{t}{L}$ to find the explicit general solution:</p>
+<p class="mathcell">
+$$
+I(t) = \frac{1}{t} \left(\frac{E}{L} \frac{t^2}{2} + C\right)
+$$
+</p>
+<p>So the final result is:</p>
+<p class="mathcell">
+$$
+I(t) = \frac{E}{2L} t + \frac{C}{t}
+$$
+</p>
+<p>As another more nontrivial example, consider the logistic differential equation, whose solution is the famous sigmoid function. This differential equation is given by:</p>
+<p class="mathcell">
+$$
+y&#x27; - y = -y^2
+$$
+</p>
+<p>We can simplify this differential equation by dividing by $y^2$ from all sides:</p>
+<p class="mathcell">
+$$
+y^{-2} y&#x27; - y^{-1} = -1
+$$
+</p>
+<p>And then moving every term other than $y'$ to the RHS:</p>
+<p class="mathcell">
+$$
+y^{-2} y&#x27; = y^{-1} -1
+$$
+</p>
+<p>The logistic differential equation (which we saw previously) is a special case of the Bernoulli differential equation with $n = 2$; the general form of a Bernoulli differential equation is:</p>
+<p class="mathcell">
+$$
+y&#x27; + p(x) y = q(x) y^n
+$$
+</p>
+<p>The Bernoulli differential equations can all be solved using the substitution $u = y^{1 - n}$. In this case, since $n = 2$, we use $u = y^{-1}$. Then, using implicit differentiation:</p>
+<p class="mathcell">
+$$
+u&#x27; = \frac{du}{dx} = \frac{du}{dy}\frac{dy}{dx} = -y^{-2} y&#x27;
+$$
+</p>
+<p>So, plugging in $u'$ and $u$, for $-y^{-2} y'$ and $y^{-1}$, we have:</p>
+<p class="mathcell">
+$$
+-u&#x27; = u - 1
+$$
+</p>
+<p>Or simplified:</p>
+<p class="mathcell">
+$$
+u&#x27; + u = 1
+$$
+</p>
+<p>This can be solved using the method of integrating factors. However, since we already used $u$, we would desire to use a different symbol for the integrating factor to avoid confusion - for instance, our integrating factor can be $\beta$. Then:</p>
+<p class="mathcell">
+$$
+\beta u&#x27; - \beta u = \beta
+$$
+</p>
+<p>We can compare this to the general form $\beta u' + p(x) \beta u = q(x)$ and use the definition of the integrating factor - that is, $\beta' = p(x) \beta$, where $p(x) = 1$ - in order to obtain:</p>
+<p class="mathcell">
+$$
+\beta = \exp \left(\int 1dx\right) = e^x
+$$
+</p>
+<p>If we substitute in $\beta'$, we have:</p>
+<p class="mathcell">
+$$
+\beta u&#x27; + \beta&#x27; p(x) u = \beta
+$$
+</p>
+<p>The LHS is just a product rule, so we can rewrite as:</p>
+<p class="mathcell">
+$$
+(\beta u)&#x27; = \beta
+$$
+</p>
+<p>We integrate both sides to get:</p>
+<p class="mathcell">
+$$
+\beta u = \int \beta~dx
+$$
+</p>
+<p>If we substitute in $\beta = e^{-x}$ we have:</p>
+<p class="mathcell">
+$$
+e^x u = \int e^x~dx
+$$
+</p>
+<p>Which becomes:</p>
+<p class="mathcell">
+$$
+e^x u = e^x + C
+$$
+</p>
+<p>We divide both sides by $e^{-x}$ to get:</p>
+<p class="mathcell">
+$$
+u = \frac{e^x + C}{e^x}
+$$
+</p>
+<p>We can now substitute $u = y^{-1}$ back to get:</p>
+<p class="mathcell">
+$$
+y^{-1} = \frac{e^x + C}{e^x}
+$$
+</p>
+<p>From which we can find $y$, the general solution:</p>
+<p class="mathcell">
+$$
+y = \frac{e^x}{e^x + C}
+$$
+</p>
+<p>If we solve for the condition $y(0) = 0.5$, then we have:</p>
+<p class="mathcell">
+$$
+0.5 = \frac{e^0}{e^0 + C} \Rightarrow C = 1
+$$
+</p>
+<p>Which means the <em>particular</em> solution to the logistic differential equation given $y(0) = 0.5$ is given by:</p>
+<p class="mathcell">
+$$
+y = \frac{e^x}{e^x + 1} = \frac{1}{1 + e^{-x}}
+$$
+</p>
+<p>This is the easily recognizable sigmoid function extensively used in machine learning.</p>
+<h2 id="interlude-the-desmos-checking-approach">Interlude: the desmos checking approach</h2>
+<p>Even after painstakingly finding a solution to a differential equation, it can be very, very tedious to manually verify that the solution to a differential equation is correct. Desmos can help tremendously. To do so, enter the proposed solution into desmos as a function of $x$. Then, enter in the differential equation cast in the form (LHS = 0). For example, the LR circuit differential equation shown previously might look something like this in desmos:</p>
+<p><img src="https://jackysci.com/differential-equations/desmos-method-demo.png" alt="A demonstration of using desmos to verify the solution of a differential equation" /></p>
+<p>If the solution is correct, the plot of (ODE LHS = 0) should look like the line $y = 0$. If not, then it might be helpful to check if the solution is indeed correct.</p>
+<h2 id="2nd-order-ode-general-forms">2nd-order ODE general forms</h2>
+<p>The general form of a 2nd-order linear ODE is given by:</p>
+<p class="mathcell">
+$$
+a_2(x) \frac{d^2 y}{dx^2} + a_1 (x) \frac{dy}{dx} + a_0(x)y = g(x)
+$$
+</p>
+<p>Or in Lagrange notation:</p>
+<p class="mathcell">
+$$
+a_2(x) y&#x27;&#x27; + a_1(x) y&#x27; + a_0(x) y = g(x)
+$$
+</p>
+<p>Note that this means that any 2nd-order linear ODE can be written as a system of 2 first-order differential equations. If we let $v = y'$, then we can say:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+a_2(x) v&#x27; + a_1(x) v + a_0(x)y &amp;= g(x) \\
+y&#x27; &amp;= v
+\end{align*}
+$$
+</p>
+<p>Each of these two first-order differential equations has a unique solution given an initial condition - $v(0)$ (which is equal to $y'(0)$) for the first and $y(0)$ for the second. This means that the original 2nd-order linear ODE must have two solutions and two initial conditions. The two solutions, denoted $y_1(x)$ and $y_2(x)$, must also be <em>linearly independent</em>. Linearly independent means that $y_1(x) \neq c y_2(x)$ and $y_2(x) \neq c y_1(x)$ - one cannot be expressed as a constant multiple of the other. The reason for this is that we want two unique solutions, and if one can be expressed in terms of the other we essentially just have one solution, but we know that would be inconsistent with the fact two solutions must exist. Thus, the two solutions must be linearly independent.</p>
+<p>The general solution of such a 2nd-order differential equation is obtained by a linear combination of both solutions:</p>
+<p class="mathcell">
+$$
+y(x) = c_1 y_1(x) + c_2 y_2(x)
+$$
+</p>
+<p>To find whether two solutions $y_1(x)$ and $y_2(x)$ are linearly independent, we check the <strong>Wronskian</strong>. Suppose the IVP has two solutions $y_1$ and $y_2$:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+c_1 y_1 (x) + c_2 y_2 (x) &amp;= 0 \\
+c_2 y_1&#x27;(x) + c_2 y_2&#x27;(x) &amp;= 0
+\end{align*}
+$$
+</p>
+<p>We can write this as a matrix $A \mathbf{x} = \mathbf{b}$:</p>
+<p class="mathcell">
+$$
+\begin{pmatrix}
+y_1 &amp; y_2 \\
+y_1&#x27; &amp; y_2&#x27;
+\end{pmatrix}
+\begin{pmatrix}
+c_1 \\
+c_2
+\end{pmatrix} =
+\begin{pmatrix}
+0 \\
+0
+\end{pmatrix}
+$$
+</p>
+<p>The Wronskian is the determinant of $A$:</p>
+<p class="mathcell">
+$$
+W = \det(A) = \begin{vmatrix}
+y_1 &amp; y_2 \\
+y_1&#x27; &amp; y_2&#x27;
+\end{vmatrix} = y_1 y_2&#x27; - y_1&#x27; y_2
+$$
+</p>
+<p>If $W \neq 0$, then the solutions are linearly independent. The derivation is straightforward but long and won't be presented here.</p>
+<h3 id="abel-s-formula">Abel's formula</h3>
+<p>Abel's formulas says that if $y_1(x)$ and $y_2(x)$ are solutions of $y'' + p(x) y' + q(x) y = 0$, then:</p>
+<p class="mathcell">
+$$
+W = C \exp \left(-\int p(x) dx\right)
+$$
+</p>
+<p>Note that the general form of a linear 2nd-order ODE can be cast into this form by dividing by $a_2(x)$:</p>
+<p class="mathcell">
+$$
+y&#x27;&#x27; + \frac{a_1(x)}{a_2(x)} y&#x27;&#x27; + \frac{a_0(x)}{a_2(x)}y = 0 \Rightarrow p(x) = \frac{a_1(x)}{a_2(x)}, q(x) = \frac{a_0(x)}{a_2(x)}
+$$
+</p>
+<p>To prove this, we first know that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+y_1&#x27;&#x27; + py_1&#x27; + qy_1 &amp;= 0 \\
+y_2&#x27;&#x27; + py_2&#x27; + qy_2 &amp;= 0
+\end{align*}
+$$
+</p>
+<p>If we eliminate $q$ by multiplying the top equation by $y_2$ and the bottom equation by $y_1$, we get:</p>
+<p class="mathcell">
+$$
+y_2 y_1 &#x27;&#x27; + py_2 y_1&#x27; - y_1 y_2&#x27;&#x27; - py_1 y_2&#x27; = 0
+$$
+</p>
+<p>We recognize the Wronskian $W = y_1 y_2' - y_2 y_1'$ if we factor out the second term:</p>
+<p><p class="mathcell">
+$$
+(y_2 y_1&#x27;&#x27; - y_1 y_2&#x27;&#x27;) - p(y_2 y_1&#x27; + y_1 y_2&#x27;)
+$$
+</p>
+<p class="mathcell">
+$$
+(y_2 y_1&#x27;&#x27; - y_1 y_2&#x27;&#x27;) + p(-W) = 0
+$$
+</p></p>
+<p>In addition, given the definition of the Wronskian, we can find that $W' = y_1 y_2'' - y_2 y_1''$. Therefore, the entire equation reduces down to:</p>
+<p class="mathcell">
+$$
+-W&#x27; -pW = 0
+$$
+</p>
+<p>Or:</p>
+<p class="mathcell">
+$$
+W&#x27; + pW = 0
+$$
+</p>
+<p>Solving this results in:</p>
+<p class="mathcell">
+$$
+W = C \exp \left(-\int p(x) dx \right)
+$$
+</p><h2 id="the-method-of-the-characteristic-equation">The method of the characteristic equation</h2>
+<p>A typical 2nd-order constant-coefficient homogenous ODE is an ODE that can be written in the form:</p>
+<p class="mathcell">
+$$
+a_2 y&#x27;&#x27; + a_1 y&#x27; + a_0 y = 0
+$$
+</p>
+<p>Again, note that:</p>
+<ul>
+<li>It's <em>2nd-order</em> because the highest order of derivatives is 2nd-order</li>
+<li>It's <em>constant-coefficient</em> because $a_2$, $a_1$, and $a_0$ are all constants</li>
+<li>It's homogeneous because it doesn't contain any constant terms or a standalone $a(x)$ term on the LHS when written in the standard form (LHS = 0)</li>
+</ul>
+<p>To solve this type of ODE, we first <em>propose</em> a solution in the form $y = e^{rx}$. When we substitute this solution into the ODE, we have:</p>
+<p class="mathcell">
+$$
+a_2 r^2 e^{rx} + a_1 re^{rx} + a_0e^{rx} = 0
+$$
+</p>
+<p>Factoring, we have:</p>
+<p class="mathcell">
+$$
+e^{rx} (a_2 r^2 + a_1 r + a_0) = 0
+$$
+</p>
+<p>Given that $e^{rx}$ is always positive (a property of exponential functions), this can only be true if:</p>
+<p class="mathcell">
+$$
+a_2 r^2 + a_1 r + a_0 = 0
+$$
+</p>
+<p>We call this quadratic equation the <em>characteristic equation</em>. Therefore, solving for the roots of the characteristic equation $a_2 r^2 + a_1 r + a_0 = 0$ will yield the solution to the differential equation. There are several possible cases:</p>
+<ol>
+<li>2 real but distinct roots $r_1, r_2$</li>
+<li>2 real but repeated root $r_1, r_2$</li>
+<li>2 imaginary roots $r_1, r_2$</li>
+</ol>
+<p>In the first case, the general solution is given by:</p>
+<p class="mathcell">
+$$
+y = C_1 e^{r_1 x} + C_2 e^{r_2 x}
+$$
+</p>
+<p>In the second case where $r_1 = r_2 = a$, the quadratic becomes $(x - a)^2 = 0$, and so the first general solution is no longer applicable because the two solutions $C_1 e^{ax}$ and $C_2 e^{ax}$ would be linearly dependent (i.e. just constant multiples of each other). Instead, the proposed solution can be modified to $y = ue^{ax}$, where $u$ is an unknown function. After computing $y''$ and $y'$ from this proposed solution, the general form of the ODE reduces to:</p>
+<p class="mathcell">
+$$
+u&#x27;&#x27; e^{ax} = 0
+$$
+</p>
+<p>Since $e^{ax} \neq 0$ (the exponential is always positive), the above differential equation simplifies to $u'' = 0$, which has the general solution $u = C_1 x + C_2$. Therefore, the general solution of the second case is:</p>
+<p class="mathcell">
+$$
+y = (C_1 x + C_2) e^{r_1 x}
+$$
+</p>
+<p>In the third case, we know that the roots $r_1, r_2$ are a conjugate pair, which means that if $r_1 = \alpha + \beta i$ then $r_2 = \alpha - \beta i$. Then the general form is given by:</p>
+<p class="mathcell">
+$$
+y = c_1 e^{(\alpha + i\beta)} + c_1 e^{(\alpha - i\beta)}
+$$
+</p>
+<p>Using the identity $e^{ix} = \cos x + i\sin x$, we can rewrite as:</p>
+<p class="mathcell">
+$$
+y = e^{ax} (c_3 \cos \beta x + c_4 \sin \beta x)
+$$
+</p>
+<p>As an example, <strong>Hooke's law</strong> describes the motion of an oscillating spring. It states that the force to extend or compress the spring by a certain distance $x$ is given by:</p>
+<p class="mathcell">
+$$
+F = -kx
+$$
+</p>
+<p>Since $F = ma$, and acceleration can be written as the second derivative of position, Hooke's law therefore naturally generalizes to the differential equation:</p>
+<p class="mathcell">
+$$
+m\frac{d^2 x}{dt^2} = -kx
+$$
+</p>
+<p>After some rearranging, the equation can be cast into the form:</p>
+<p class="mathcell">
+$$
+\frac{d^2 x}{dt^2} + \frac{k}{m} x = 0
+$$
+</p>
+<p>This is a homogeneous, linear second-order ODE, and can be solved by the method of the characteristic equation. First, we note that the characteristic equation is given by:</p>
+<p class="mathcell">
+$$
+r^2 + \frac{k}{m} = 0
+$$
+</p>
+<p>Solving for $r$, we find that:</p>
+<p class="mathcell">
+$$
+r = \sqrt{\frac{k}{m}}i
+$$
+</p>
+<p>And if we say that $r = \alpha + \beta i$, then:</p>
+<p class="mathcell">
+$$
+\beta = \sqrt{\frac{k}{m}}
+$$
+</p>
+<p>Recalling that when imaginary roots exist, the solution is given by $y = e^{\alpha t} (C_1 \cos \beta t + C_2 \sin \beta t)$, we can substitute $\alpha = 0$ and $\beta = \sqrt{\frac{k}{m}}$ to find:</p>
+<p class="mathcell">
+$$
+y = e^{0t} \left(C_1 \cos \sqrt{\frac{k}{m}}t + C_2 \sin \sqrt{\frac{k}{m}} t \right)
+$$
+</p>
+<p>We can now simplify by noting that $e^{0t} = 1$ and by defining $\omega = \sqrt{\frac{k}{m}}$, allowing the general solution to become:</p>
+<p class="mathcell">
+$$
+y = C_1 \cos \omega t + C_2 \sin \omega t
+$$
+</p><h2 id="primer-simultaneous-equations">Primer: simultaneous equations</h2>
+<p>In the study of differential equations it is sadly often necessary to solve systems of two (or occasionally more) simultaneous equations. That is, simultaneous equations in the form:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+a_1 x + b_1 y = c_1 \\
+a_2 x + b_2 y = c_2
+\end{align*}
+$$
+</p>
+<p>To be able to solve these equations quickly and efficiently, we can take advantage of <strong>Cramer's rule</strong>. First, we define a quantity $D$ via the determinant of a special matrix:</p>
+<p class="mathcell">
+$$
+D = \begin{vmatrix}
+a_1 &amp; b_1 \\
+a_2 &amp; b_2
+\end{vmatrix}
+$$
+</p>
+<p>We also define two quantities $D_1$ and $D_2$, where we count columns cycling from the right to the left:</p>
+<p class="mathcell">
+$$
+D_1 = \begin{vmatrix}
+c_1 &amp; b_1 \\
+c_2 &amp; b_2
+\end{vmatrix}
+$$
+</p><p class="mathcell">
+$$
+D_2 = \begin{vmatrix}
+a_1 &amp; c_1 \\
+a_2 &amp; c_2
+\end{vmatrix}
+$$
+</p>
+<p>Then the solution of the system of simultaneous equations is:</p>
+<p class="mathcell">
+$$
+x = \frac{D_1}{D}, \quad y = \frac{D_2}{D}
+$$
+</p><h2 id="the-method-of-undetermined-coefficients">The method of undetermined coefficients</h2>
+<p>A 2nd-order constant-coefficient <em>inhomogeneous</em> ODE is in the form:</p>
+<p class="mathcell">
+$$
+a_2 y&#x27;&#x27; + a_1 y&#x27; + a_0 y = g(x)
+$$
+</p>
+<p>The general solution of this type of ODE is given by:</p>
+<p class="mathcell">
+$$
+y(x) = y_h(x) + y_f(x)
+$$
+</p>
+<p>Here, $y_h(x)$ is the homogenous solution, which is the solution if it was true that $g(x) = 0$ (that is, if the ODE was homogeneous). Meanwhile, $y_f(x)$ is a fitting solution that "fits" the homogeneous solution $y_h(x)$ to work with the inhomogeneous term in the ODE.</p>
+<blockquote>
+<p>Note: for historical reasons, the fitting solution $y_f$ is often confusingly referred to as the <em>particular</em> solution. This has nothing to do with the other definition of particular solution (the unique solution for a given initial-value problem).</p>
+</blockquote>
+<p>The method of undetermined coefficients works with cases in which $g(x)$ has a finite number of linearly independent derivatives. For instance, $g(x)$ can take the form of these following functions:</p>
+<ul>
+<li>$x^k$</li>
+<li>$e^{\alpha x}$</li>
+<li>$\sin \alpha x$</li>
+<li>$\cos \alpha x$</li>
+<li>Any linear combination of the above functions in the form $a f_1(x) + b f_2(x) + c f_3(x) + \dots + z f_n(x)$, where $a, b, c$ are constant coefficients</li>
+</ul>
+<p>The idea is to first solve for the homogenous version of the ODE - this solution we call $y_h(x)$. Then we solve for a "fitting solution" $y_f(x)$. This fitting solution unfortunately has to be guessed, there is no direct procedure for doing so. However, there are a few general strategies for finding a good guess. First, each term in the guess should have an adjacent <em>undetermined coefficient</em>. Second, each term in the guess should ideally match a similar term in $g(x)$, like so:</p>
+<table><thead><tr><th>Term present in $g(x)$</th><th>Term to add to fitting solution guess</th></tr></thead><tbody>
+<tr><td>$x^k$</td><td>$Ax^k + Bx^{k - 1} + \dots + Nx + M$</td></tr>
+<tr><td>$e^{kx}$</td><td>$Ae^{kx}$</td></tr>
+<tr><td>$\sin kx$ or $\cos kx$</td><td>$A \sin kx + B \cos kx$</td></tr>
+</tbody></table>
+<p>For instance, if $g(x) = 3x^2 + 5e^{-2t}$, a possible guess could be:</p>
+<p class="mathcell">
+$$
+y_f(x) = Ax^2 + Bx + C + De^{-2t}
+$$
+</p>
+<p>And third, the fitting solution shouldn't contain any terms that are linearly dependent, or repeat terms in the homogeneous solution. For instance, it would be incorrect to write $Ax + Bx$ because those two terms are linearly dependent. Similarly, if the homogeneous solution (when fully distributed-out) contained a term $5 \sin 2x$, then the guess cannot contain a term $A \sin 2x$, because those two terms would be linearly dependent. Instead, a term $A x \sin (2x)$ could be added instead, which would not be linearly dependent with $5 \sin 2x$. This can be extended to a general technique - add powers of $x$ in front of a term every time a term could potentially be linearly dependent. Essentially, if $A\sin(2x)$ is linearly dependent, try $Ax \sin(2x)$, and if that still is linearly dependent, try $Ax^2 \sin(2x)$, and if that still doesn't work try $Ax^3 \sin(2x)$, and so on and so forth.</p>
+<p>As an example of using this method, consider a rocket that is escaping a gravitational field, like that of the Earth. Without going too much into the physics, the basic idea is that the effect of gravity can be approximated, at least when the rocket is not too far from earth, by the differential equation:</p>
+<p class="mathcell">
+$$
+\frac{d^2 r}{dt^2} + \sigma^2 r = \frac{F_0}{m}
+$$
+</p>
+<p>where $\sigma$ is a constant, $m$ is the rocket's mass, and $F_0$ is the rocket engine's thrust force, and the solution is given by $r(t)$. For precise reasons about why this works, see the classical dynamics notes on the Taylor expansion of potential energy. In any case, the precise derivation of this differential equation isn't important; we only need to solve it, and we can use the <strong>method of undetermined coefficients</strong>.</p>
+<p>To do so, we first need to find a homogeneous solution $r_h$ for the homogeneous version of this differential equation, and then a fitting solution $r_f$ (note: $r$ instead of $y$ because $r$ is the dependent variable here). Recall that the homogeneous version is just this differential equation with the RHS = 0, that is:</p>
+<p class="mathcell">
+$$
+r&#x27;&#x27; + \sigma^2 r = 0
+$$
+</p>
+<p>We solve this using the method of the characteristic equation. Since we are already using the variable $r$, we will switch to $q$ for the characteristic equation. As a reminder, a differential equation in the form $ay'' + by' + cy = 0$ has the characteristic equation $aq^2 + bq + c = 0$. In this case, we have $q^2 + \sigma^2 = 0$. The solutions to this characteristic equation are $q = \pm \sigma i$. So the general homogeneous solution is given by the imaginary roots case (mentioned previously), resulting in:</p>
+<p class="mathcell">
+$$
+r_h = e^{0t} (C_1 \cos \sigma t + C_2 \sin \sigma t) = C_1 \cos \sigma t + C_2 \sin \sigma t
+$$
+</p>
+<p>Now, we need to solve for a fitting solution. Since the RHS of the equation is a constant, which is essentially a term in the form $k \cdot t^0$, we use the terms table (mentioned above) to guess a fitting solution in the form:</p>
+<p class="mathcell">
+$$
+r_f = At^2 + Bt + C
+$$
+</p>
+<p>How do we find $A$, $B$, and $C$? We just plug $y_f$ into the LHS of the differential equation and see what those constants have to be to satisfy the RHS. To do this, we take derivatives of $r_f$:</p>
+<table><thead><tr><th>$r_f$</th><th>$r_f'$ (first derivative)</th><th>$r_f''$ (second derivative)</th></tr></thead><tbody>
+<tr><td>$At^2 + Bt + C$</td><td>$2At + B$</td><td>$2A$</td></tr>
+</tbody></table>
+<p>If we plug these back into the original differential equation $r'' + \sigma^2 r = \frac{F_0}{m}$ we get:</p>
+<p class="mathcell">
+$$
+(2A) + \sigma^2 (At^2 + Bt + C) = \frac{F_0}{m}
+$$
+</p>
+<p>We can just distribute and solve this equation for $A$, $B$, and $C$, but that is a lot of tedious algebra and it would be easy to make mistakes. Instead, we can use an equivalent tabular approach. To do this, we split the terms on the LHS of the differential equation to get:</p>
+<table><thead><tr><th>$r''$</th><th>$\sigma^2 r$</th></tr></thead><tbody>
+<tr><td>(to be filled...)</td><td>(to be filled...)</td></tr>
+</tbody></table>
+<p>Now we can fill in these columns with our calculated values of $r_f$, $r_f'$, and $r_f''$ from our earlier derivatives table. Here we can omit $r_f'$ here since there isn't a $r'$ term in the differential equation, and put the rest in:</p>
+<table><thead><tr><th>$r''$</th><th>$\sigma^2 r$</th></tr></thead><tbody>
+<tr><td>$2A$</td><td>$A \sigma^2 t^2 + B \sigma^2 t + C \sigma^2$</td></tr>
+</tbody></table>
+<p>Then, since we had a $t^2$ term, a $t$ term, and a constant ($t^0$) term in our guess for $r_f$, we count the number of $t^2$ terms, $t$ terms, and constant terms on both the LHS (our previous table) and RHS of the differential equation:</p>
+<table><thead><tr><th>Term</th><th>Coefficients in $r''$ term</th><th>Coefficients in $\sigma^2 r$ term</th><th>Coefficients on RHS</th></tr></thead><tbody>
+<tr><td>$t^2$</td><td>0</td><td>$A \sigma^2$</td><td>0</td></tr>
+<tr><td>$t$</td><td>0</td><td>$B \sigma^2$</td><td>0</td></tr>
+<tr><td>$t^0$ (i.e. constant)</td><td>$2A$</td><td>$C \sigma^2$</td><td>$\frac{F_0}{m}$</td></tr>
+</tbody></table>
+<p>From here, we get three simultaneous equations:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+0 + A\sigma^2 &amp;= 0 \\
+0 + B \sigma^2 &amp;= 0 \\
+2A + C \sigma^2 &amp;= \frac{F_0}{m}
+\end{align*}
+$$
+</p>
+<p>The first two equations tell us that $A = B = 0$, and substituting $A = 0$ for the third equation tells us that $C = \frac{F_0}{\sigma^2 m}$. Substituting these values back into our fitting solution $r_f = At^2 + Bt + C$ gives us:</p>
+<p class="mathcell">
+$$
+r_f = 0x^2 + 0x + \frac{F_0}{\sigma^2 m} \Rightarrow r_f = \frac{F_0}{\sigma^2 m}
+$$
+</p>
+<p>Recalling that the solution to an inhomogeneous differential equation is the sum of the homogeneous solution $r_h$ and the fitting solution $r_f$, we have:</p>
+<p class="mathcell">
+$$
+r(t) = r_h + r_f = C_1 \cos \sigma t + C_2 \sin \sigma t + \frac{F_0}{\sigma^2 m}
+$$
+</p>
+<p>So the general solution is given by:</p>
+<p class="mathcell">
+$$
+r(t) =  C_1 \cos \sigma t + C_2 \sin \sigma t + \frac{F_0}{\sigma^2 m}
+$$
+</p>
+<p>For model rockets launched close to the surface of the Earth, this should be a reasonably good approximation. However, please do not launch a human-carrying rocket bound for space using this equation, unless you want to see a rocket blow up!</p>
+<h2 id="variation-of-parameters">Variation of parameters</h2>
+<p>The method of the <strong>variation of parameters</strong> is an alternative method to solve non-homogeneous linear 2nd-order ODEs. The method is extremely similar to the method of undetermined coefficients, in that first, a homogeneous solution $y_h$ is found, and then a fitting solution $y_f$ is found. The method does impose the additional requirement that the differential equation must be written in the form:
+<p class="mathcell">
+$$
+y&#x27;&#x27; + p(x) y&#x27; + q(x) y = g(x)
+$$
+</p></p>
+<p>which means that to cast a differential equation in this form, any coefficients in front of $y''$ have to be divided out. As with previously, the general solution of such a differential equation is given by:
+<p class="mathcell">
+$$
+y(x) = y_h + y_f
+$$
+</p></p>
+<p>The process starts by extracting the two solutions $y_1$ and $y_2$ from the homogeneous solution $y_h (x)$.  We are now going to <em>guess</em> that the fitting solution $y_f(x)$ is given by:</p>
+<p class="mathcell">
+$$
+y_f(x) = u_1(x) y_1 + u_2(x) y_2
+$$
+</p>
+<p>What constraints can we use to obtain $u_1(x)$ and $u_2(x)$? First, we know that $y_f$ must satisfy the differential equation. Second, we're going to impose (guess) the additional constraint that $u_1' y_1 + u_2' y_2 = 0$. These facts allow us to write $u_1$ and $u_2$ as a system of two linear equations in the form $A \mathbf{x} = \mathbf{b}$:</p>
+<p class="mathcell">
+$$
+\begin{bmatrix}
+y_1 &amp; y_2 \\
+y_1&#x27; &amp; y_2&#x27;
+\end{bmatrix}
+\begin{bmatrix}
+u_1&#x27; \\
+u_2&#x27;
+\end{bmatrix} =
+\begin{bmatrix}
+0 \\
+g(x)
+\end{bmatrix}
+$$
+</p>
+<p>The Wronskian is given by $W = \det(A)$, and if $W \neq 0$, then the system has a unique solution given by Cramer's rule:</p>
+<p class="mathcell">
+$$
+u_1(x) = \int \frac{W_1}{W}, u_2(x) = \int \frac{W_2}{W}
+$$
+</p>
+<p>where:</p>
+<p class="mathcell">
+$$
+W_1 = \begin{vmatrix}
+0 &amp; y_2 \\
+g(x) &amp; y_2&#x27;
+\end{vmatrix},
+\quad
+W_2 = \begin{vmatrix}
+y_1 &amp; 0 \\
+y_1&#x27; &amp; g(x)
+\end{vmatrix}
+$$
+</p>
+<p>Note that the order of the determinants can be remembered by looking at the system of equations from right-to-left column order and cycling in the "right-middle-left-right" order. $W_1$ has the right and middle columns, and $W_2$ has the left and right columns.</p>
+<h2 id="special-cases-of-linear-second-order-odes">Special cases of linear second-order ODEs</h2>
+<p>We consider the Euler differential equation:</p>
+<p class="mathcell">
+$$
+a_2 x^2 y&#x27;&#x27; + a_1 x y&#x27; + a_0 y = 0
+$$
+</p>
+<p>To solve, we propose the solution $y = x^k$. If we substitute into the equation, we have:</p>
+<p class="mathcell">
+$$
+a_2 x^2 k(k - 1) x^{k - 2} + a_1 x kx^{k - 1} + a_0 x^k = 0
+$$
+</p>
+<p>If we now factor out $x^k$, we have:</p>
+<p class="mathcell">
+$$
+x^k (a_2 k(k - 1)  + a_1 k + a_0) = 0
+$$
+</p>
+<p>Therefore, the characteristic equation becomes:</p>
+<p class="mathcell">
+$$
+a_2 k^2 + (a_1 - a_2) k + a_0 = 0
+$$
+</p>
+<p>For the case where $a_2 = 1$, which we can get by dividing all the terms of the differential equation by the leading coefficient of the $y''$, we have:</p>
+<p class="mathcell">
+$$
+k^2 + (a_1 - 1) k + a_0 = 0
+$$
+</p>
+<p>As with before, there are several cases:</p>
+<ul>
+<li>Two distinct real roots $k_1, k_2$</li>
+<li>One repeated real root $k_1$</li>
+<li>Two distinct complex root $k_1, k_2$</li>
+</ul>
+<p>For the first case, the general solution is given by the linear combination of $y = x^k$ for each root:</p>
+<p class="mathcell">
+$$
+y = C_1 x^{k_1} + C_2 x^{k_2}
+$$
+</p>
+<p>For the second case, the previous general solution fails as it would be linearly dependent. Instead, we propose an alternate solution $y_2 = u(t)x^k$ and if we solve and use the substitution $x = e^t$, we get the general solution:</p>
+<p class="mathcell">
+$$
+y = (C_1 \ln x + C_2) x^{k_1}
+$$
+</p>
+<p>And for the third case, the general solution given the root $k = \alpha + \beta i$ is given by:</p>
+<p class="mathcell">
+$$
+y = x^{\alpha k} (C_1 \cos (\beta \ln x) + C_2 \sin(\beta \ln x))
+$$
+</p>
+<p>For the non-homogeneous case, the method is similar as that of non-homogeneous constant-coefficient 2nd-order ODEs. In particular, both variation of parameters and the method of undetermined coefficients would work.</p>
+<h2 id="reduction-of-order-for-2nd-order-odes">Reduction of order for 2nd-order ODEs</h2>
+<p>Consider the general 2nd-order homogeneous linear ODE:</p>
+<p class="mathcell">
+$$
+f_2(x) y&#x27;&#x27; + f_1(x) y&#x27; + f_0(x) y = 0
+$$
+</p>
+<p>If a known solution $y_1$ is known, the general solution is in the form:</p>
+<p class="mathcell">
+$$
+y(x) = y_1 (x) v(x)
+$$
+</p>
+<p>To find $v(x)$, we first substitute this general solution into the general form of the differential equation.</p>
+<p class="mathcell">
+$$
+f_2(y_1&#x27;&#x27; v + 2y_1&#x27;v&#x27; + y_1 v&#x27;&#x27;) + f_1(y_1&#x27; v + y_1 v&#x27;) + f_0 y_1 v= 0
+$$
+</p>
+<p>The terms cancel out and we can factor to get:</p>
+<p class="mathcell">
+$$
+f_2 y_1 v&#x27;&#x27; + (2 f_2 y_1&#x27; + f_1 y_1)v&#x27; = 0
+$$
+</p>
+<p>If we let $u = v'(x)$, then we get the first-order <em>separable</em> differential equation:</p>
+<p class="mathcell">
+$$
+f_2 y_1 \frac{du}{dx} + (2 f_2 y_1&#x27; + f_1 y_1)u = 0
+$$
+</p>
+<p>We can also consider the inhomogeneous case:</p>
+<p class="mathcell">
+$$
+f_2(x) y&#x27;&#x27; + f_1(x) y&#x27; + f_0(x) y = g(x)
+$$
+</p>
+<p>Which results in:</p>
+<p class="mathcell">
+$$
+f_2 y_1 v&#x27;&#x27; + (2 f_2 y_1&#x27; + f_1 y_1)v&#x27; = g(x)
+$$
+</p>
+<p>Again with the substitution $u = v'$, we end up with:</p>
+<p class="mathcell">
+$$
+f_2 y_1 u&#x27; + (2 f_2 y_1&#x27; + f_1 y_1)u = g(x)
+$$
+</p>
+<p>This a linear 1st-order differential equation that can be solved using the method of integrating factors.</p>
+<p>Reduction of order isn't just useful for solving differential equations analytically. For the general 2nd-order differential equation $y'' = f_1 y' + f_2 y + g(x)$, then we can use $u_1 = y$, $u_2 = y'$. Then the equation can be written as two first-order differential equations:</p>
+<p class="mathcell">
+$$
+u_1&#x27; = u_2 \\
+u_2&#x27; = f_1 u_2 + f_2 u_1
+$$
+</p>
+<p>Or:</p>
+<p class="mathcell">
+$$
+\begin{pmatrix}
+u_1&#x27; \\ u_2&#x27;
+\end{pmatrix} =
+\begin{pmatrix}
+0 &amp; 1 \\
+f_2 &amp; f_1
+\end{pmatrix}
+\begin{pmatrix}
+u_1 \\ u_2
+\end{pmatrix} +
+\begin{pmatrix}
+0 \\ g(x)
+\end{pmatrix}
+$$
+</p>
+<p>Which can be solved by computer algorithms.</p>
+<h2 id="systems-of-linear-odes">Systems of linear ODEs</h2>
+<p>We will now proceed to discussing <em>systems</em> of linear ODEs. The methods of solving systems of linear ODEs come from linear algebra, which studies systems of <strong>linear equations</strong>. As a review of solving linear systems, consider the following system of two linear equations:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+ax + by = k_1 \\
+cx + dy = k_2
+\end{align*}
+$$
+</p>
+<p>This system of equations can be written in the form $A\mathbf{x} = \mathbf{B}$ in the following manner:</p>
+<p class="mathcell">
+$$
+\begin{bmatrix}
+a &amp; b \\
+c &amp; d \\
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+y
+\end{bmatrix} = 
+\begin{bmatrix}
+k_1 \\
+k_2
+\end{bmatrix}
+$$
+</p>
+<p>Where $A$ is a $2 \times 2$ matrix in the general form:</p>
+<p class="mathcell">
+$$
+A = 
+\begin{pmatrix}
+a &amp; b \\
+c &amp; d \\
+\end{pmatrix}
+$$
+</p>
+<p>The determinant of $A$, denoted $\det(A)$, is given by $ad - bc$. If $\det(A) \neq 0$, then it is said to have an <strong>inverse</strong> $A^{-1}$:</p>
+<p class="mathcell">
+$$
+\frac{1}{\det(A)} 
+\begin{bmatrix}
+d &amp; -b \\
+-c &amp; a
+\end{bmatrix}
+$$
+</p>
+<p>The significance of finding the inverse is that if the inverse $A^{-1}$, is known, then:</p>
+<p class="mathcell">
+$$
+\mathbf{x} = A^{-1} b
+$$
+</p>
+<p>A special case is that of a homogeneous system $A \mathbf{x} = 0$. In this case, if $A$ is <strong>non-singular</strong>, then there exists one unique solution; if $A$ is <strong>singular</strong>, there exists infinitely many solutions.</p>
+<table><thead><tr><th>Matrix Type</th><th>Invertibility</th><th>Homogeneous System $ A\mathbf{x} = \mathbf{0} $</th><th>Inhomogeneous System $ A\mathbf{x} = \mathbf{b} $</th></tr></thead><tbody>
+<tr><td><strong>Non-Singular</strong></td><td>Invertible</td><td>Unique solution: $ \mathbf{x} = \mathbf{0} $ (trivial solution)</td><td>Unique solution: $ \mathbf{x} = A^{-1} \mathbf{b} $ (non-trivial solution)</td></tr>
+<tr><td><strong>Singular</strong></td><td>Non-Invertible</td><td>Infinitely many non-trivial solutions</td><td>No solution or infinitely many non-trivial solutions</td></tr>
+</tbody></table>
+<p>Finally, two solution vectors $\mathbf{x}_1$ and $\mathbf{x}_2$ are linearly independent if one cannot be written in terms of the other multiplied by a constant. For instance $(1, 2)$ and $(2, 4)$ aren't linearly independent, but $(1, 2)$ and $(1, 3)$ are. Linear independence can be rigorously proven by checking that the equation $c_1 \mathbf{x}_1 + c_2 \mathbf{x}_2 = 0$ is satisfied only if $c_1 = c_2 = 0$.</p>
+<h3 id="eigenvalue-problems">Eigenvalue problems</h3>
+<p>We can solve special cases of linear systems of equations by rewriting them as eigenvalue problems. First, it is helpful to define what eigenvalues are. Typically, a matrix applied to a nonzero vector $\mathbf{x}$ outputs a vector that isn't a scalar multiple of the original vector. However, in some cases, a matrix applied to a vector outputs a vector that <em>is</em> a scalar multiple of the original vector. That is, we can write that:</p>
+<p class="mathcell">
+$$
+A \mathbf{x} = \lambda \mathbf{x}
+$$
+</p>
+<p>Any vector $\mathbf{x}$ that satisfies this property is called an <strong>eigenvector</strong> of $A$, and $\lambda$ is called the <strong>eigenvalue</strong>. This is important because the eigenvalue equation above can be rewritten as:</p>
+<p class="mathcell">
+$$
+\det (A-I\lambda) \mathbf{x} = 0
+$$
+</p>
+<p>Therefore:</p>
+<p class="mathcell">
+$$
+\det (A-I\lambda) = 0
+$$
+</p>
+<p>And <em>any</em> linear system of equations in the form $A\mathbf{x} = \lambda \mathbf{x}$ can be solved using techniques of eigenvalue problems.</p>
+<p>For a general $2 \times 2$ matrix $A$ as given before in the form:</p>
+<p class="mathcell">
+$$
+A = 
+\begin{pmatrix}
+a &amp; b \\
+c &amp; d \\
+\end{pmatrix}
+$$
+</p>
+<p>Then the eigenvalue equation becomes:</p>
+<p class="mathcell">
+$$
+(a - \lambda)(d - \lambda) - bc = 0
+$$
+</p>
+<p>and can be solved for $\lambda$ using typical quadratic methods. In the special case that one value of $\lambda$ is imaginary, the other value of $\lambda$ is its conjugate pair.</p>
+<p>Then, from substitution of each eigenvalue into the eigenvector equation $(A - \lambda I) \mathbf{x} = 0$, the eigenvectors $\mathbf{x}$ can be found. Note that a $N \times N$ matrix has at most $N$ eigenvectors. In the case that the matrix is a $2 \times 2$ matrix, it has at most 2 (but possibly fewer) eigenvectors.</p>
+<h3 id="finding-eigenvalues-and-eigenvectors">Finding eigenvalues and eigenvectors</h3>
+<p>As an example, consider the matrix:</p>
+<p class="mathcell">
+$$
+A = \begin{pmatrix}
+6 &amp; -1 \\
+2 &amp; 3
+\end{pmatrix}
+$$
+</p>
+<p>We want to find its eigenvalues and its eigenvectors. To do so, we recall that $\det (A - \lambda I) = 0$. Therefore:</p>
+<p class="mathcell">
+$$
+\det
+\begin{pmatrix}
+\begin{bmatrix}
+6 &amp; -1 \\
+2 &amp; 3
+\end{bmatrix} - \lambda \begin{bmatrix}
+1 &amp; 0 \\
+0 &amp; 1
+\end{bmatrix}
+\end{pmatrix} = 0
+$$
+</p>
+<p>Which simplifies to:</p>
+<p class="mathcell">
+$$
+\det \begin{pmatrix}
+6 - \lambda &amp; -1 \\
+2  &amp; 3 - \lambda
+\end{pmatrix} = 0
+$$
+</p>
+<p>If we compute the determinant, we have:</p>
+<p class="mathcell">
+$$
+(6 - \lambda) (3 - \lambda) - (-1)(2) = 0 \Rightarrow \lambda^2 -9\lambda + 20 = 0
+$$
+</p>
+<p>The solution is:</p>
+<p class="mathcell">
+$$
+(\lambda - 4)(\lambda - 5) \Rightarrow \lambda_1 = 4, \lambda_2 = 5
+$$
+</p>
+<p>Now we must find the actual eigenvectors $\mathbf{x}_{e, i}$ (there may be one eigenvector or two eigenvectors for a 2D matrix). To do so, we substitute each eigenvalue into $(A - \lambda_i I) \mathbf{x}_{e, i} = 0$. We first compute $A - \lambda_i I$ for $i = 1$:</p>
+<p class="mathcell">
+$$
+A - \lambda_1 I=
+\begin{pmatrix}
+6 &amp; -1 \\
+2 &amp; 3
+\end{pmatrix} - 4 \begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}
+ = \begin{pmatrix}
+2 &amp; -1 \\
+2 &amp; -1
+\end{pmatrix}
+$$
+</p>
+<p>So the eigenvector equation $(A - \lambda_1 I) \mathbf{x}_{e, 1} = 0$ becomes:</p>
+<p class="mathcell">
+$$
+(A - \lambda_1 I) \mathbf{x}_{e, 1} =
+\begin{pmatrix}
+2 &amp; -1 \\
+2 &amp; -1
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix} =
+\begin{pmatrix} 0 \\ 0 \end{pmatrix}
+$$
+</p>
+<blockquote>
+<p>The mathematical reader may note that here $C = A - \lambda I$ must be a <em>singular</em> matrix with infinitely many solutions for nonzero $\mathbf{x}$.</p>
+</blockquote>
+<p>We want to solve for the eigenvectors of this matrix. To do so, we first assume the eigenvector is in the form:</p>
+<p class="mathcell">
+$$
+\mathbf{x}_{e, 1} = \begin{pmatrix} a \\ x_2 \end{pmatrix}
+$$
+</p>
+<p>Where $a$ is an arbitrary constant. If we do the matrix-vector multiplication on the first row, we get:</p>
+<p class="mathcell">
+$$
+\begin{pmatrix} 2 &amp; -1 \end{pmatrix}
+\begin{pmatrix} a \\ x_2 \end{pmatrix} = 0 \Rightarrow 2a - x_2 = 0
+$$
+</p>
+<p>From here, we can solve $x_2 = 2a$. Therefore, the <strong>first eigenvector</strong> is $\mathbf{x}_{e, 1} = (a, 2a)$, which we can rewrite as:</p>
+<p class="mathcell">
+$$
+\mathbf{x}_{e, 1} = \begin{pmatrix} a \\ 2a \end{pmatrix} = a \begin{pmatrix} 1 \\ 2 \end{pmatrix}
+$$
+</p>
+<p>Any scalar multiple of an eigenvector is also an eigenvector, since $a$ is an arbitrary constant, and we typically prefer to write eigenvectors in their simplest integer form, so there are no denominators in the eigenvector. Therefore, we can set $a = 1$ to get the eigenvector in simplest integer form:</p>
+<p class="mathcell">
+$$
+\mathbf{x}_{e, 1} = \begin{pmatrix} 1 \\ 2 \end{pmatrix}
+$$
+</p>
+<p>Since the first row and second row in the matrix $A - \lambda_1 I$ are identical, we do not need to repeat the process for the second row. Therefore, we have our first set of associated eigenvalues and eigenvectors:</p>
+<p class="mathcell">
+$$
+\lambda_1 = 4, \quad \mathbf{x}_{e, 1} = \begin{pmatrix} 1 \\ 2 \end{pmatrix}
+$$
+</p>
+<p>We do the same with $\lambda_2 = 5$. Then the matrix $A - \lambda_2 I$ expands to:</p>
+<p class="mathcell">
+$$
+A - \lambda_2 I = 
+\begin{pmatrix}
+6 &amp; -1 \\
+2 &amp; 3
+\end{pmatrix} - 5 \begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}
+ = \begin{pmatrix}
+1 &amp; -1 \\
+2 &amp; -2
+\end{pmatrix}
+$$
+</p>
+<p>Therefore, the eigenvector equation becomes:</p>
+<p class="mathcell">
+$$
+(A - \lambda_2 I) \mathbf{x}_{e, 2} = 
+\begin{pmatrix}
+1 &amp; -1 \\
+2 &amp; -2
+\end{pmatrix} 
+\begin{pmatrix} a \\ x_2 \end{pmatrix} = 
+\begin{pmatrix} 0 \\ 0 \end{pmatrix}
+$$
+</p>
+<p>We again assume an eigenvector in the form:</p>
+<p class="mathcell">
+$$
+\mathbf{x}_{e, 2} = \begin{pmatrix} a \\ x_2 \end{pmatrix}
+$$
+</p>
+<p>By doing matrix-vector multiplication we get $1 a - 1 x_2 = a - x_2 = 0 \Rightarrow x_2 = a$. Therefore:</p>
+<p class="mathcell">
+$$
+\mathbf{x}_{e, 2} = \begin{pmatrix} a \\ a \end{pmatrix} = a\begin{pmatrix} 1 \\ 1 \end{pmatrix}
+$$
+</p>
+<p>Again we want the simplest integer form of $\mathbf{x}_{e, 2}$, so we can set $a = 1$ to obtain:</p>
+<p class="mathcell">
+$$
+\mathbf{x}_{e, 2} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
+$$
+</p>
+<p>Therefore our second set of associated eigenvalues and eigenvectors:</p>
+<p class="mathcell">
+$$
+\lambda_2 = 5, \quad \mathbf{x}_{e, 2} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
+$$
+</p>
+<p>So our two eigenvectors for $\lambda_1 = 4, \lambda_2 = 5$ are:</p>
+<p class="mathcell">
+$$
+\mathbf{x}_{e, 1} = \begin{pmatrix} 1 \\ 2 \end{pmatrix}, \quad
+\mathbf{x}_{e, 2} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
+$$
+</p>
+<p>The same process can be repeated for any other matrix. The process is simpler with complex eigenvalues: once one eigenvector is computed, the other eigenvector is the complex conjugate of the first. A helpful identity for simplifying complex eigenvectors is $\frac{1}{a + bi} = \frac{a-bi}{a^2 - b^2}$ - for instance $\frac{1}{i} = -1$.</p>
+<blockquote>
+<p>Note: sometimes, it is desirable to multiply complex-valued eigenvectors by $i$ in order to allow the components to be entirely positive, or to make one of the components real instead of complex. This has no effect on the eigenvector, since a scalar multiple of an eigenvector is still an eigenvector.</p>
+</blockquote>
+<h2 id="linear-systems-of-odes">Linear systems of ODEs</h2>
+<p>Any nth-order linear system of ODEs can be written as a first-order ODE system in the form $\mathbf{y'} = A\mathbf{y}$. The general solution of such an ODE can then be found by taking the eigenvalues and eigenvectors of $A$.</p>
+<p>In the case that there are two distinct real eigenvalues $\lambda_1, \lambda_2$, and two associated eigenvectors $\mathbf{x}_{e, 1}$ and $\mathbf{x}_{e, 2}$, then the general solution is given by:</p>
+<p class="mathcell">
+$$
+\mathbf{y} = C_1 \mathbf{x}_{e, 1} e^{\lambda_1 t} + C_2 \mathbf{x}_{e, 2} e^{\lambda_2 t}
+$$
+</p>
+<p>Meanwhile, in the case there is one repeated real eigenvalue $\lambda$, and therefore one associated eigenvector $\mathbf{x}_e$:</p>
+<p class="mathcell">
+$$
+\mathbf{y} = C_1 \mathbf{x}_e e^{\lambda t} + C_2 (t\mathbf{x}_e + \vec \varphi)e^{\lambda t}
+$$
+</p>
+<p>where $(A - \lambda I) \vec \varphi = \mathbf{x}_e$.</p>
+<p>Finally, in the case that there are two complex eigenvalues $\lambda_1 = \alpha + \beta i$ and $\lambda_2 = \alpha - \beta i$, then the eigenvectors are a conjugate pair. If the associated eigenvector of $\lambda_1$ is denoted $\mathbf{x}_e$, then:</p>
+<p class="mathcell">
+$$
+\mathbf{u}_1 = e^{\alpha t} [\mathbf{x}_e (\cos \beta t + i\sin \beta t)]
+$$
+</p>
+<p>And the general solution is:</p>
+<p class="mathcell">
+$$
+\mathbf{y} = C_1 \operatorname{Re}(\mathbf{u}_1) + C_2 \operatorname{Im}(\mathbf{u}_2)
+$$
+</p><h2 id="steady-states">Steady states</h2>
+<p>Most solutions to differential equations, even within the small category that can be written in exact form, are dynamic - they take on different values at different times. However, some solutions to differential equations stay constant through time. These solutions are known as <strong>steady-state solutions</strong> or steady states.</p>
+<p>The steady states can be found for a system $\mathbf{y}' = A \mathbf{y}$ by solving for $A\mathbf{y} = 0$. The corresponding value of $\mathbf{y}$ is called a steady state solution. For nonlinear systems $\mathbf{y'} = F(\mathbf{y})$, then solve for $F(\mathbf{y}) = 0$, and the corresponding value(s) of $\mathbf{y}$ are all steady-state solutions. There are three cases:</p>
+<ul>
+<li>If there are <em>any</em> eigenvalues that have a <em>positive</em> real part, then the steady state is unstable</li>
+<li>If <em>all</em> eigenvalues have a <em>negative</em> real part, then the steady state is asymptotically stable</li>
+<li>If <em>all</em> eigenvalues are purely imaginary, then the steady state is stable (also called <em>neutrally stable</em>)</li>
+</ul>
+<blockquote>
+<p>Note that steady states of higher-order linear ODEs can be found by rewriting them as a first-order system.</p>
+</blockquote>
+<h2 id="phase-portraits">Phase portraits</h2>
+<p>Differential equations can be visualized with phase portraits. Phase portraits are a plot of $(x, y)$ for a first-order ODE system, or $(x, v) = (x, \dot x)$ for a second-order ODE recast as a first-order system. In both cases it shows trajectories of differential equations.</p>
+<p>Phase portraits are difficult to draw exactly by hand. However, the geometrical characteristics of phase portraits can be determined by the eigenvalues of the linear system:</p>
+<ul>
+<li>Real distinct and opposite signs - saddle</li>
+<li>Real (can be distinct or repeated) and same sign - source/sink node</li>
+<li>Complex - spiral (or circle or ellipse)</li>
+<li>Imaginary - rays shooting towards or away from a center</li>
+</ul>
+<p>Plotting a few points of the phase portrait on a plot is often helpful in determining how exactly the phase portrait will look. Phase portraits can also be drawn by computer automatically to save time and effort. For instance, the first-order ODE system given by:</p>
+<p class="mathcell">
+$$
+\frac{d}{dt} \begin{pmatrix} x \\ y \end{pmatrix} = 
+\begin{pmatrix} y \\ -x - y \end{pmatrix} = \begin{pmatrix} 0 &amp; 1 \\ -1 &amp; -1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}
+$$
+</p>
+<p>Has the phase portrait given below:</p>
+<p><img src="https://jackysci.com/differential-equations/phase_portrait.png" alt="Phase portrait for linear first-order system, shaped like a spiral" /></p>
+<h2 id="nonlinear-systems">Nonlinear systems</h2>
+<p>Nonlinear first-order systems of ODEs can also be written in vector form $\mathbf{y'} = F(\mathbf{y})$. Exact solutions typically cannot be found for nonlinear systems. Therefore, we find local linearizations about a nonlinear system's steady-states $\mathbf{y_s} = (x_s, y_s)$ to solve approximately. These local linearizations require the use of a special matrix known as the <strong>Jacobian</strong>.</p>
+<p>For nonlinear systems given by:</p>
+<p class="mathcell">
+$$
+\frac{d}{dt} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} F_1 \\ F_2 \end{pmatrix}
+$$
+</p>
+<p>Then the Jacobian matrix of the system is given by:</p>
+<p class="mathcell">
+$$
+J = 
+\begin{pmatrix}
+\nabla F_1 \\
+\nabla F_2
+\end{pmatrix} =
+\begin{pmatrix}
+\partial_x F_1 &amp; \partial_y F_1 \\
+\partial_x F_2 &amp; \partial_y F_2
+\end{pmatrix}
+$$
+</p>
+<p>And the linear version of the system is given by evaluating the Jacobian at the steady states:</p>
+<p class="mathcell">
+$$
+\mathbf{y&#x27;} = J(x_s, y_s) \mathbf{y}
+$$
+</p>
+<p>We can then solve the system approximately about each steady state as a linear system. As an example of finding the steady states, consider the nonlinear system (taken from a textbook):</p>
+<p class="mathcell">
+$$
+\begin{align*}
+x&#x27; &amp;= x - x^2 - xy \\
+y&#x27; &amp;= \frac{3}{2} y - y^2 - xy
+\end{align*}
+$$
+</p>
+<p>Note that keeping $x$ constant, in the first equation, $x'$ decreases as $y$ increases. Meanwhile, keeping $y$ constant, in the second equation, $y'$ decreases as $x$ increases. Therefore an initial constant value of $x$ would decrease following an increase in $y$, and an initial constant value of $y$ would decrease following an increase in $x$. So the system is in competition.</p>
+<p>Critical points are found by setting $x' = 0$ and $y' = 0$ and solving for the values in which this is true. For the first:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+x(1 - x - y) = 0 \\
+y \left(\frac{3}{2} - y - x\right) = 0
+\end{align*}
+$$
+</p>
+<p>We can consider this a system of the following:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+AB = 0 \\
+CD = 0 \\
+\end{align*}
+$$
+</p>
+<p>Therefore, there are 4 pairs of resulting simultaneous equations to solve each for a $(x, y)$ solution pair:</p>
+<p class="mathcell">
+$$
+\begin{matrix}
+\begin{cases}
+A = 0 \\ C = 0
+\end{cases} &amp;
+\begin{cases}
+A = 0 \\ D = 0
+\end{cases} \\\\
+\begin{cases}
+B = 0 \\ C = 0
+\end{cases} &amp;
+\begin{cases}
+B = 0 \\ D = 0
+\end{cases}
+\end{matrix}
+$$
+</p>
+<p>Or in this case:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+&amp;\begin{cases}
+x = 0 \\ y = 0
+\end{cases} 
+&amp;\begin{cases}
+x = 0 \\ \frac{3}{2} - y - x = 0
+\end{cases} \\\\
+&amp;\begin{cases}
+1-x-y = 0 \\ y = 0
+\end{cases} &amp;
+\begin{cases}
+1-x-y \\ \frac{3}{2} - y - x = 0
+\end{cases}
+\end{align*}
+$$
+</p>
+<p>So the critical points are $(0, 0), (0, \frac{3}{2}), (1, 0)$.</p>
+<h3 id="nonlinear-systems-in-population-growth">Nonlinear systems in population growth</h3>
+<p>Consider a closed environment where two species $x$ and $y$ are competing. Let $x(t)$ and $y(t)$ be the population of each respective species. Then the Lotka-Volterra equations model the two populations' evolution through time:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{dx}{dt} &amp;= x(a_1 - b_1 x - c_1 y) \\
+\frac{dy}{dt} &amp;= y(a_2 - b_2 y - c_2 x)
+\end{align*}
+$$
+</p>
+<p>Where:</p>
+<ul>
+<li>$a_1, a_2$ are the growth rates of each population</li>
+<li>$a_1 / b_1, a_2 / b_2$ are the saturation levels</li>
+<li>$c_1, c_2$ are the degree of interference by the opposite species</li>
+</ul>
+<p>As this is a nonlinear system, it must be linearized about its steady-states to be solved approximately using analytical methods.</p>
+<p>In the specific case that $x(t)$ is the prey and $y(t)$ is the predator, then the Lotka-Volterra equations become:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{dx}{dt} &amp;= a_1 x - a_1 xy \\
+\frac{dy}{dt} &amp;= \beta xy - cy
+\end{align*}
+$$
+</p><h2 id="laplace-transforms">Laplace transforms</h2>
+<p>The Laplace transform is a tool for solving differential equations by converting differential equations to algebraic equations. The Laplace transform of a function $f(t)$ gives a new function $f(x)$, and is notated:</p>
+<p class="mathcell">
+$$
+\mathscr{L} \{f\} (s) = \int_0^\infty f(t) e^{-st}dt
+$$
+</p>
+<blockquote>
+<p>Note: The Laplace transform is <em>only</em> defined when the improper integral converges.</p>
+</blockquote>
+<h3 id="introduction-to-laplace-transform">Introduction to Laplace transform</h3>
+<p>Consider the function $f(t) = 1$. Then, its Laplace transform would be given by:</p>
+<p class="mathcell">
+$$
+f(s) = \int_0^\infty 1 e^{-st} dt = \lim_{b \to \infty} -\frac{1}{s}e^{-st} \bigg|_0^b = \frac{1}{s},\quad s &gt; 0
+$$
+</p><h3 id="table-of-laplace-transforms">Table of Laplace transforms</h3>
+<p>Manually computing Laplace transforms is very tedious and time-consuming. Therefore, it is useful to consult a table of Laplace transforms. A full table is available <a href="https://web.stanford.edu/~boyd/ee102/laplace-table.pdf">here</a>, but the essentials are as follows:</p>
+<table><thead><tr><th>Function $f(t)$</th><th>Laplace transform $F(s) = \mathscr{L}(f(t))$</th></tr></thead><tbody>
+<tr><td>1</td><td>$\dfrac{1}{s}$</td></tr>
+<tr><td>$e^{\alpha t}$</td><td>$\dfrac{1}{s-\alpha}$</td></tr>
+<tr><td>$t^n, n = 1, 2, \dots$</td><td>$\dfrac{n!}{s^{n + 1}}$</td></tr>
+<tr><td>$\sin \alpha t$</td><td>$\dfrac{\alpha}{s^2 + \alpha^2}$</td></tr>
+<tr><td>$\cos \alpha t$</td><td>$\dfrac{s}{s^2 + \alpha^2}$</td></tr>
+<tr><td>$e^{\alpha t} \sin \beta t$</td><td>$\dfrac{b}{(s-\alpha)^2 + \beta^2}$</td></tr>
+<tr><td>$e^{\alpha t} \cos \beta t$</td><td>$\dfrac{s-\alpha}{(s-\alpha)^2 + \beta^2}$</td></tr>
+<tr><td>$H_c(t) \equiv H(t - c)$ (Heaviside function)</td><td>$\dfrac{1}{s}e^{-cs}$</td></tr>
+<tr><td>$\delta(t - c)$ (Dirac delta)</td><td>$e^{-cs}$</td></tr>
+<tr><td>$e^{\kappa t} f(t)$</td><td>$F(s - c)$</td></tr>
+<tr><td>$t^n f(t), n = 1, 2, \dots$</td><td>$(-1)^n \dfrac{d^n F(s)}{ds^n}$</td></tr>
+<tr><td>$\dfrac{df}{dt}$</td><td>$sF(s) - f(0)$</td></tr>
+<tr><td>$\dfrac{d^2 f}{dt^2}$</td><td>$s^2 F(s) - sf(0) - f'(0)$</td></tr>
+</tbody></table>
+<p><em>Thanks to <a href="https://tutorial.math.lamar.edu/classes/de/laplace_table.aspx">Lamar's online notes</a>, which served as the basis for this table.</em></p>
+<h3 id="laplace-transform-for-piecewise-functions">Laplace transform for piecewise functions</h3>
+<p>A piecewise function given by:</p>
+<p class="mathcell">
+$$
+f(t) = \begin{cases}
+a(t), x &lt; k \\
+b(t), x \geq k \\
+\end{cases}
+$$
+</p>
+<p>has a Laplace transform given by:</p>
+<p class="mathcell">
+$$
+\mathscr{L}\{f(t)\} = \int_0^k a(t) e^{-st}dt + \int_k^\infty b(t) e^{-st}dt
+$$
+</p><h3 id="heaviside-step-function">Heaviside step function</h3>
+<p>The <strong>Heaviside step function</strong> is a special function defined as:</p>
+<p class="mathcell">
+$$
+H(t - c) = H_c(t) = \begin{cases}
+0, t &lt; c \\
+1&#x2F;2, t = c \\
+1, t &gt; c
+\end{cases}
+$$
+</p>
+<p>One very useful property of the Heaviside step function is that it has a very elegant Laplace transform:</p>
+<p class="mathcell">
+$$
+\mathscr{L} \{H_c (t) f(t - c)\} = \mathscr{L} \{f(t)\} e^{-cs} = F(s) e^{-cs}
+$$
+</p><h3 id="inverse-laplace-transform">Inverse Laplace transform</h3>
+<p>It is often desirable to find the original function from its Laplace transform, a problem solved by an <em>inverse</em> Laplace transform. This involves a process of reverse pattern-matching using Laplace transform tables. That is to say, we identify the Laplace transformed function (on the right column of the table), and we match it to the original function (on the left column of the table) - that original function is the <em>inverse Laplace transform</em>.</p>
+<p>However, in many cases, it is difficult to find an inverse Laplace transform that perfectly matches the Laplace transform table. Techniques we may then use to fit a function's Laplace transform to their original function include:</p>
+<ul>
+<li>Using the linearity of the Laplace transform - constants can just be factored out</li>
+<li>Partial fraction decomposition</li>
+<li>Completing the square</li>
+</ul>
+<h3 id="laplace-transform-for-derivatives">Laplace transform for derivatives</h3>
+<p>The Laplace transforms for the first and second derivatives are given by:</p>
+<p class="mathcell">
+$$
+\mathscr{L} \{y&#x27;\} = s \mathscr{L}\{y\} - y(0)
+$$
+</p><p class="mathcell">
+$$
+\mathscr{L} \{y&#x27;&#x27;\} = s^2 \mathscr{L}\{y\} - y&#x27;(0) - sy(0)
+$$
+</p>
+<p>Taking the Laplace transform of a differential equation gives an algebraic solution that can then be solved.</p>
+<h3 id="the-dirac-delta-function">The Dirac Delta Function</h3>
+<p>The <strong>Dirac Delta function</strong> is a "spike" function defined with:</p>
+<p class="mathcell">
+$$
+\delta(t - c) = \begin{cases}
+0, t \neq c \\
+1, t = c
+\end{cases}
+$$
+</p>
+<p>It has the special properties that:</p>
+<p class="mathcell">
+$$
+\int_{-\infty}^\infty \delta(t - c)~dt = 1
+$$
+</p><p class="mathcell">
+$$
+\int_{c - \epsilon}^{c + \epsilon} f(t) \delta(t - c)~dt = f(c)
+$$
+</p>
+<p>The Laplace transform of the Dirac Delta function is therefore:</p>
+<p class="mathcell">
+$$
+\mathscr{L}\{\delta(t - c)\} = e^{-sc}
+$$
+</p><h2 id="euler-s-method-for-odes">Euler's method for ODEs</h2>
+<p>We have explored ways to solve ODEs analytically (i.e. find exact solutions) in detail. But as we discussed previously, an analytical solution cannot <em>always</em> be found. This doesn't mean the solution doesn't exist; it just means that the solution cannot be written in terms of "familiar" functions such as polynomials, trigonometric functions, exponential functions, and so forth (although in some cases they can be written as <em>infinite sums</em> of "familiar" functions, which we will see shortly with Fourier series). Euler's method is a <strong>numerical</strong> method for solving differential equations. It is given by:</p>
+<p>$$
+dy = f'(x) dx
+$$</p>
+<p>$$
+y_n = y_{n - 1} + dy
+$$</p>
+<p>For instance, take the differential equation:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+\dfrac{dy}{dx} = y, &amp; y(0) = 1
+\end{matrix*}
+$$
+</p>
+<p>We already know the solution - $y = e^x$, since the only function for which the derivative of the function equals itself is $e^x$. But suppose we <em>didn't</em> know the solution. We can use Euler's method instead. While Euler's method is typically run on computer, we can also do it manually, just like mathematicians centuries ago. We arrive at the following table:</p>
+<table><thead><tr><th>$x$</th><th>$y$</th><th>$f'(x)$</th><th>$dy$</th></tr></thead><tbody>
+<tr><td>$x_0$</td><td>$y_0$</td><td>$f'(x_0, y_0)$</td><td>$f'(x_0, y_0) \cdot dx$</td></tr>
+<tr><td>$x_1 = x_0 + dx$</td><td>$y_1 = y_0 + dy$</td><td>$f'(x_1, y_1)$</td><td>$f'(x_1, y_1) \cdot dx$</td></tr>
+<tr><td>$x_2 = x_1 + dx$</td><td>$y_2 = y_1 + dy$</td><td>$f'(x_2, y_2)$</td><td>$f'(x_2, y_2) \cdot dx$</td></tr>
+<tr><td>$\dots$</td><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>Using $dx = 0.2$, our table becomes:</p>
+<table><thead><tr><th>$x$</th><th>$y$</th><th>$f'(x)$</th><th>$dy$</th></tr></thead><tbody>
+<tr><td>0</td><td>1</td><td>1</td><td>$1 \cdot 0.2 = 0.2$</td></tr>
+<tr><td>0.2</td><td>$1 + 0.2$</td><td>1.4</td><td>$1.4 \cdot 0.2 = 0.28$</td></tr>
+<tr><td>$\dots$</td><td></td><td></td><td></td></tr>
+</tbody></table>
+<h2 id="fourier-series">Fourier Series</h2>
+<p>A periodic function is a function that satisfies $f(x + T) = f(x)$ where $T$ is the period and the frequency is given by $f \equiv \frac{1}{T}$. A <strong>Fourier series</strong> represents such types of functions as the the sum of an infinite number of sinusoidal waves. The Fourier series of a periodic function $f(x)$ is given by:</p>
+<p class="mathcell">
+$$
+f(x) = \frac{a_0}{2} + \sum_{n = 1}^\infty \left(a_n \cos \frac{n\pi x}{L} + b_n \sin \frac{n\pi x}{L}\right)
+$$
+</p>
+<p>where $T = 2L$ and:</p>
+<p class="mathcell">
+$$
+a_0 = \frac{1}{L}\int_{-L}^L f(x)~dx
+$$
+</p><p class="mathcell">
+$$
+a_n = \frac{1}{L} \int_{-L}^L f(x) \cos \frac{n\pi x}{L} dx
+$$
+</p><p class="mathcell">
+$$
+b_n = \frac{1}{L} \int_{-L}^L f(x) \sin \frac{n\pi x}{L} dx
+$$
+</p><h2 id="sine-and-cosine-series">Sine and cosine series</h2>
+<p>The full Fourier series is sometimes not necessary to represent a function when the function can be represented by a sine or cosine series. This is possible when a function exhibits <em>parity</em>.</p>
+<p>It is helpful to first review the two forms of parity for functions: even functions and odd functions. An <strong>even function</strong> is symmetric about the $y$ axis - that is, $f(x) = f(-x)$. Intuitively, it looks exactly the same to the left and to the right. For example, $f(x) = x^2$ is even. An <strong>odd function</strong>, meanwhile, is symmetric about the origin - that is $f(x) = -f(-x)$. Intuitively, the left is the flipped version of the right. Importantly, $\cos x$ is even, and $\sin x$ is odd.</p>
+<p>The cosine series of an <strong>even function</strong> $f(x)$ is a variation of the Fourier series, given by:</p>
+<p class="mathcell">
+$$
+f(x) = \frac{a_0}{2} + \sum_{n = 1}^\infty a_n \cos \left(\frac{n\pi x}{L}\right)~dx
+$$
+</p><p class="mathcell">
+$$
+a_0 = \frac{2}{L} \int_0^L f(x)~dx
+$$
+</p><p class="mathcell">
+$$
+a_n  = \frac{2}{L} \int_0^L f(x) \cos \left(\frac{n\pi x}{L} \right)~dx
+$$
+</p>
+<p>The sine series of an <strong>odd function</strong> $f(x)$ is also a variation of the Fourier series, and is given by:</p>
+<p class="mathcell">
+$$
+f(x) = \sum_{n = 1}^\infty b_n \sin \frac{n \pi x}{L}
+$$
+</p><p class="mathcell">
+$$
+b_n = \frac{2}{L} \int_0^L f(x) \sin \left(\frac{n \pi x}{L} \right)~dx
+$$
+</p><h2 id="partial-differential-equations">Partial differential equations</h2>
+<p><strong>Partial differential equations</strong> form the majority of the differential equations that describe natural and mechanical phenomena. They describe an unknown <em>multivariable</em> function in terms of its partial derivatives.</p>
+<h3 id="the-heat-equation">The heat equation</h3>
+<p>The heat equation describes the conduction of heat within a material. In one dimension, such as in the case of a thin rod of length $L$, it takes the form:</p>
+<p class="mathcell">
+$$
+\frac{\partial u}{\partial t} = \alpha^2 \frac{\partial^2 u}{\partial x^2}
+$$
+</p>
+<p>Where $u = u(x, t)$ describes the heat distribution within the rod and $\alpha$ is the constant of thermal diffusivity.</p>
+<p>The general solution to the heat equation can be found through the method of <em>separation of variables</em>. To do so, we assume that the solution is in the form $u(x, t) = X(x) T(t)$. Therefore, taking the partial derivatives in space and time of $u(x, t)$ results in:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{\partial u}{\partial x} &amp;= \frac{dX}{dx} T + \cancel{X \frac{dT}{dx}} = X&#x27;T \\
+\frac{\partial^2 u}{\partial x^2} &amp;= \frac{d}{dt}(X&#x27;T) = X&#x27;&#x27;T \\
+\frac{\partial u}{\partial t} &amp;= XT&#x27;
+\end{align*}
+$$
+</p>
+<p>Notice how the partial derivatives result in zeros . Therefore the heat equation results in:</p>
+<p class="mathcell">
+$$
+\alpha^2 X&#x27;&#x27;T = XT&#x27;
+$$
+</p>
+<p>which we can rearrange to:</p>
+<p class="mathcell">
+$$
+\frac{X&#x27;&#x27;}{X} = \frac{1}{\alpha^2} \frac{T&#x27;}{T}
+$$
+</p>
+<p>Or written more explicitly:</p>
+<p class="mathcell">
+$$
+\frac{1}{X} \frac{d^2 X}{dx^2} = \frac{1}{\alpha^2 T} \frac{dT}{dt}
+$$
+</p>
+<p>However, if value is equal to two derivatives in different variables, then the value must be equal to a constant. We name this constant $-\lambda^2$ (the square and negative make it more convenient to solve for later), but we could just as well use $C$, any constant or product of constants will work. Therefore:</p>
+<p class="mathcell">
+$$
+\frac{1}{X} \frac{d^2 X}{dx^2} = \frac{1}{\alpha^2 T} \frac{dT}{dt} = -\lambda^2
+$$
+</p>
+<p>This results in two ODEs:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{X&#x27;&#x27;}{X} &amp;= -\lambda^2 \Rightarrow X&#x27;&#x27; + \lambda^2 X = 0 \\
+\frac{T&#x27;}{\alpha^2 T} &amp;= -\lambda^2 T \Rightarrow T&#x27; = -\lambda^2 \alpha^2 T
+\end{align*}
+$$
+</p>
+<p>The first ODE may be solved using the method of the characteristic equation, which results in:</p>
+<p class="mathcell">
+$$
+X(x) = k_1 \cos \lambda x + k_2 \sin \lambda x
+$$
+</p>
+<p>The second ODE can simply be solved by separation of variables for ODEs, which results in:</p>
+<p class="mathcell">
+$$
+T(t) = k_3 e^{-\lambda^2 \alpha^2 t}
+$$
+</p>
+<p>Therefore, the general solution is given by substituting $X(t)$ and $T(t)$ back into the guessed solution $u(x, t) = X(x) T(t)$, resulting in:</p>
+<p class="mathcell">
+$$
+u(x, t) = XT = k_3 e^{-\lambda^2 \alpha^2 t} (k_1 \cos \lambda x + k_2 \sin \lambda x)
+$$
+</p>
+<p>which has 4 unknown constants $\lambda, k_1, k_2, k_3$, allowing it to describe the full set of solutions to the heat equation.</p>
+<p>However, a unique solution of the heat equation can only be obtained when <em>boundary conditions</em> are specified, resulting in <strong>boundary value problems</strong> or BVPs. These are analogous to IVPs for ODEs, with the primary difference that the boundary conditions are <em>functions</em> rather than constants. A boundary condition in time (that is, when $u(x, t=0)$ is provided) is often called an <em>initial condition</em>. Several common boundary conditions for the heat equation include:</p>
+<table><thead><tr><th>Type</th><th>Physical description</th><th>Spatial part</th><th>Temporal part</th></tr></thead><tbody>
+<tr><td>Dirichlet</td><td>Constant temperature at edges</td><td>$u(x=0, t) = 0$ and $u(x=L, t) = 0$</td><td>$u(x, t=0) = f(x)$ in time</td></tr>
+<tr><td>Neumann</td><td>Insulated boundary (no heat loss through edges)</td><td>$\frac{\partial u}{\partial x} \big|_{(x = 0, t)}$ and $\frac{\partial u}{\partial x} \big|_{(x = L, t)} = 0$</td><td>$u(x, t=0) = f(x)$ in time</td></tr>
+</tbody></table>
+<p>To solve with the Dirichlet boundary condition, we substitute in the respective boundary conditions into $u(x, t)$ to find the value of the 4 unknown constants. This results in:</p>
+<p class="mathcell">
+$$
+u(x, t) = k_2 k_3 e^{-\frac{n^2 \pi^2 \alpha^2}{L^2}t} \sin \left(\frac{n \pi x}{L}\right)
+$$
+</p>
+<p>We can relabel with $C_1 = k_2 k_3$:</p>
+<p class="mathcell">
+$$
+u(x, t) = C_1 e^{-\frac{n^2 \pi^2 \alpha^2}{L^2}t} \sin \left(\frac{n \pi x}{L}\right)
+$$
+</p>
+<p>For all values of $n$, that is, $n = 1, 2, \dots n_i$. By the <strong>principle of superposition</strong>, which is due to the fact that the heat equation is a linear differential equation, $u(x, t)$ can be written as a linear combination of</p>
+<p class="mathcell">
+$$
+u(x, t) = \cancel{u_0 (x, t)} + \sum_{n = 1}^\infty C_n e^{-\frac{n^2 \pi^2 \alpha^2}{L^2}t} \sin \left(\frac{n \pi x}{L}\right)
+$$
+</p>
+<p>where $u_0(x, t) = u(x=0, t=0)$, which due to $\sin(0) = 0$, reduces to zero. The initial condition $u(x, t=0) = f(x)$ can finally be applied to find $C_n$. By using the Fourier series representation of $f(x)$, we can find that $C_n$ is given by:</p>
+<p class="mathcell">
+$$
+C_n = \frac{2}{L} \int_0^L f(x) \sin \left(\frac{n \pi x}{L} \right)dx
+$$
+</p><h3 id="the-wave-equation">The wave equation</h3>
+<p>The wave equation is given by:</p>
+<p class="mathcell">
+$$
+\frac{\partial^2 u}{\partial t^2} = v^2 \frac{\partial^2 u}{\partial x^2}
+$$
+</p>
+<p>We may use the same method of the separation of variables to find the general solution of the wave equation, given by:</p>
+<p class="mathcell">
+$$
+u(x, t) = (k_1 \cos \lambda x + k_2 \sin \lambda x)(k_3 \cos \lambda v t + k_4 \sin \lambda v t)
+$$
+</p>
+<p>We may also take a superposition of waves, which still solves the wave equation by the superposition principle. For instance, in Fourier series form, the particular solution for waves on a string with applied boundary conditions are given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(x, t) &amp;= \sum_{n = 1}^\infty a_n \sin \left(\frac{n\pi x}{L}\right) \cos \left(\frac{n\pi ct}{L}\right) \\ &amp;+ \sum_{n = 1}^\infty b_n \sin \left(\frac{n\pi x}{L}\right) \sin \left(\frac{n \pi ct}{L}\right)
+\end{align*}
+$$
+</p><h3 id="the-fundamental-nature-of-differential-equations">The fundamental nature of differential equations</h3>
+<p>We have now come to the end of this introductory series, where we will take a brief section to explain the motivation behind why we learn about differential equations. Differential equations are not just mathematically elegant - they are powerful mathematical tools that describe the Universe. The most fundamental phenomena in the Universe are modelled by differential equations, or are derived from phenomena that result from various large-scale or limiting cases of these PDEs. Being able to solve these PDEs, essentially, <strong>allows you to know everything (classically) knowable about the universe</strong>. <em>This</em> is why learning differential equations matters.</p>
+
+        
+        <a id="jump-toc-btn" href="#toc">Show table of contents</a>
+        <a href="/notes" class="return-link">Back to all notes</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        var toc = document.getElementById("toc");
+        var tocPos = toc.offsetTop + toc.offsetHeight;
+        var tocBtn = document.getElementById("jump-toc-btn");
+
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+        // for performance reasons, we **only** render a certain
+        // number of equations that the viewer is actually viewing
+        function VisibleMathRenderer(config) {
+            /*
+            Renders only a limited number of equations on page load
+            to avoid poor performance
+             Params:
+                lastRenderedEquation: the most recently rendered equation.
+                        when this goes out of view, equations under it are rendered. 
+            */
+            var startElement = config.startElement
+            var maxEquations = config.maxEquations ? config?.maxEquations : 30;
+            this.startElement = startElement
+            this.maxEquations = maxEquations
+            // we wait until the user scrolls past the starting/
+            // ending elements to start rendering the whole page
+            this.canRenderWholePage = false;
+            this.pageRendered = false;
+            this.lastRenderedTopEquation = null;
+            this.lastRenderedBottomEquation = null;
+
+            this.render = function() {
+                renderMath(this.startElement);
+                // render previous 25 and following 25 equations
+                var prev = this.startElement.previousElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left prior to the element
+                    if (prev == null) {
+                        break;
+                    }
+                    renderMath(prev);
+                    prev = prev.previousElementSibling;
+                }
+                // store our last rendered equations
+                // we'll track scroll position later to
+                // check when the rest of the page should be rendered
+                this.lastRenderedTopEquation = prev;
+                console.log(this.lastRenderedTopEquation)
+
+                var next = this.startElement.nextElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left following the element
+                    if (next.nextElementSibling == null) {
+                        break;
+                    }
+                    renderMath(next);
+                    next = next.nextElementSibling;
+                }
+                this.lastRenderedBottomEquation = next;
+                // now allow rendering the rest of the equations
+                this.canRenderWholePage = true;
+            }
+
+            // render all math on the whole page
+            this.renderMathOnPage = function() {
+                // don't run until preliminary tasks
+                // are done so that the whole page
+                // can/should be rendered
+                if (!this.canRenderWholePage) {
+                    return;
+                }
+                // if the whole page's worth of equations
+                // are already rendered, don't render more
+                if (this.pageRendered) {
+                    return;
+                }
+                var topBound = this.lastRenderedTopEquation.getBoundingClientRect.top;
+                var bottomBound = this.lastRenderedBottomEquation.getBoundingClientRect.bottom;
+                var scrollTop, scrollBottom = getViewport();
+                // if the user is about to scroll past the initially-rendered equations
+                // we will render the whole page
+                if (scrollTop - 50 + window.scrollY < topBound || scrollBottom + 50 + window.scrollY > bottomBound) {
+                    console.log("Scrolled beyond!")
+                    var article = document.querySelector(".post");
+                    if (article) {
+                        this.renderMath(article);
+                    }
+                    this.pageRendered = true;
+                }
+                
+            }
+            
+        }
+
+        function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        function findFirstRelevantElement() {
+            // finds the first <p> tage that's closest to
+            // the viewer's viewport
+            var regex = /#.*/;
+            var m = regex.exec(window.location.href);
+            if (m !== null) {
+                return document.querySelector(m[0]);
+            } else {
+                return document.querySelector(".post p");
+            }
+        }
+        
+        // initialize page JS components
+        /*
+        var mathRenderer = new VisibleMathRenderer({
+            // start rendering with first <p> tag on the
+            // post
+            startElement: findFirstRelevantElement()
+        });
+        */
+        document.addEventListener("DOMContentLoaded", function() {
+            showTocBtnOnScroll();
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+
+        window.onscroll = function(){
+            // if (!mathRenderer.pageRendered) {
+            //     mathRenderer.renderMathOnPage();
+            // }
+            showTocBtnOnScroll();
+        };
+
+
+    </script>
+    
+
+
+</body>
+
+</html>

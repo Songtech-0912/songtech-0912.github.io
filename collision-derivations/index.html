@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Derivations of formulas for elastic collisions</title>
+  <meta name="description" content=" This is an in-depth step-by-step derivation for elastic collisions in 1D, a companion guide to the Classical Dynamics Notes.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Derivations of formulas for elastic collisions</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+
+        <!-- page content -->
+        <p>This is an in-depth step-by-step derivation for elastic collisions in 1D, a companion guide to the <a href="https://jackysci.com/classical-dynamics/">Classical Dynamics Notes</a>.</p>
+<span id="continue-reading"></span>
+<p>Elastic collisions are collisions in which there is no loss of total mechanical energy - no emission of heat, light, or sound. While elastic collisions are idealizations, any collision that results in deflection (a "bounce" informally speaking) can approximately modelled as an elastic collision, and so formulas for elastic collisions are still of practical value.</p>
+<p>We start with the conservation of energy and the conservation of momentum:</p>
+<p><p class="mathcell">
+$$
+\frac{1}{2} m_1 v_1(a)^2 + \frac{1}{2} m_2 v_2(a)^2 = \frac{1}{2} m_1 v_1(b)^2 + \frac{1}{2} m_2 v_2(b)^2
+$$
+</p>
+<p class="mathcell">
+$$
+m_1 v_1(a) + m_2 v_2(a) = m_1 v_1(b) + m_2 v_2(b)
+$$
+</p></p>
+<p>From the first (conservation of energy) equation we can factor out the 1/2 factor to get:</p>
+<p class="mathcell">
+$$
+m_1 v_1(a)^2 + m_2 v_2(a)^2 = m_1 v_1(b)^2 + m_2 v_2(b)^2
+$$
+</p>
+<p>We collect the common masses:</p>
+<p class="mathcell">
+$$
+m_1(v_1(a)^2 - v_1(b)^2) = m_2(v_2(b)^2 - v_2(a)^2)
+$$
+</p>
+<p>We now factor using the property $a^2 - b^2 = (a + b)(a - b)$:</p>
+<p class="mathcell">
+$$
+m_1(v_1(a) + v_1(b))(v_1(a) - v_1(b)) = m_2(v_2(b) + v_2(a))(v_2(b) - v_2(a))
+$$
+</p>
+<p>Now we can take the second (conservation of momentum) equation and collect the common masses as well:</p>
+<p class="mathcell">
+$$
+m_1 (v_1(a) - v_1(b)) = m_2 (v_2(b) - m_2 v_2(a))
+$$
+</p>
+<p>Now we take the conservation of energy equation and divide it by the conservation of momentum equation, to get:
+<p class="mathcell">
+$$
+v_1(a) + v_1(b) = v_2(b) + v_2(a)
+$$
+</p></p>
+<p>Rearranging to make the initial and final velocities return to the LHS of the equation, we get:</p>
+<p class="mathcell">
+$$
+v_1(a) - v_2(a) = v_2(b) - v_1(b)
+$$
+</p>
+<p>Or:</p>
+<p class="mathcell">
+$$
+v_1(a) - v_2(a) = -(v_1(b) - v_2(b))
+$$
+</p>
+<p>That is, the difference of the initial velocities is equal in magnitude and opposite in direction to the difference final velocities, regardless of the masses of the objects.</p>
+<p>To actually solve for $v_1(b)$ and $v_2(b)$ though, we need to perform a substitution. We can do this by taking the previous equation and rewriting it as:</p>
+<p class="mathcell">
+$$
+v_1(b) = v_2(b) - (v_1(a) - v_2(a))
+$$
+</p>
+<p>Or equivalently:</p>
+<p class="mathcell">
+$$
+v_1(b) = v_2(b) - v_1(a) + v_2(a)
+$$
+</p>
+<p>Now if we return to the conservation of momentum equation:
+<p class="mathcell">
+$$
+m_1 v_1(a) + m_2 v_2(a) = m_1 v_1(b) + m_2 v_2(b)
+$$
+</p></p>
+<p>And plug in that value we got for $v_1(b)$:</p>
+<p class="mathcell">
+$$
+m_1 v_1(a) + m_2 v_2(a) = m_1 (v_2(b) - v_1(a) + v_2(a)) + m_2 v_2(b)
+$$
+</p>
+<p>We can distribute to get:</p>
+<p class="mathcell">
+$$
+m_1 v_1(a) + m_2 v_2(a) = m_1 v_2(b) - m_1 v_1(a) + m_1 v_2(a) + m_2 v_2(b)
+$$
+</p>
+<p>Or rearranged and cleaned-up:</p>
+<p class="mathcell">
+$$
+2m_1 v_1(a) + v_2(a) (m_2  - m_1) = v_2(b) (m_1 + m_2)
+$$
+</p>
+<p>So:
+<p class="mathcell">
+$$
+v_2(b) = \frac{2m_1 v_1(a)}{m_1 + m_2} + v_2(a) \frac{m_2 - m_1}{m_1 + m_2}
+$$
+</p></p>
+<p>We can use a similar approach to solve for $v_2(a)$. Since:</p>
+<p class="mathcell">
+$$
+v_1(a) - v_2(a) = v_2(b) - v_1(b)
+$$
+</p>
+<p>We can rearrange to get:</p>
+<p class="mathcell">
+$$
+v_1(b) = v_2(b)-v_1(a)+v_2(a)
+$$
+</p>
+<p>But we already found what $v_2(b)$ was. So:</p>
+<p class="mathcell">
+$$
+v_1(b) = \left(\frac{2m_1 v_1(a)}{m_1 + m_2} + v_2(a) \frac{m_2 - m_1}{m_1 + m_2}\right) - v_1(a) + v_2(a)
+$$
+</p>
+<p>Which after tedious algebra simplifies to:
+<p class="mathcell">
+$$
+v_1(b) = \frac{2m_2 v_2(a)}{m_1 + m_2} + v_1(a) \frac{m_1 - m_2}{m_1 + m_2}
+$$
+</p></p>
+
+        
+        <a href="/" class="return-link">Back to home</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function() {
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+    </script>
+    
+
+
+</body>
+
+</html>

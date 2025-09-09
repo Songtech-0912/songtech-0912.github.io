@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solving the elastic pendulum with Python</title>
+  <meta name="description" content=" One of the most surprising aspects of physics is how complex even everyday systems happen to be. One apparently-simple system that has a very complex physical description is the elastic pendulum, and we will solve it here, with the help of Lagrangian mechanics and Python.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Solving the elastic pendulum with Python</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+
+        <!-- page content -->
+        <p>One of the most surprising aspects of physics is how complex even everyday systems happen to be. One apparently-simple system that has a very complex physical description is the <strong>elastic pendulum</strong>, and we will solve it here, with the help of Lagrangian mechanics and Python.</p>
+<span id="continue-reading"></span>
+<blockquote>
+<p><strong>Note:</strong> If you're unfamiliar with Lagrangian mechanics, or need a refresher, see the <a href="https://jackysci.com/advanced-classical-mech/part-2/#lagrangian-mechanics">relevant section</a> on the (advanced) classical mechanics guide.</p>
+</blockquote>
+<p>We consider a block of mass $m$ attached to an ideal string of length $L$, which is itself attached to a spring of variable length $l(t)$ and spring constant $k$ that hangs from the ceiling. We assume that the string is sufficiently short to be approximated as perfectly straight, such that the spring and the string form a straight line. Using a coordinate system centered at the attachment point of the spring, with $+x$ being the downward direction and $+y$ being the rightward direction, the position of the spring would be given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+x(t) &amp;= l(t) \cos (\theta(t)) + L \cos \theta(t) \\
+y(t) &amp;= l(t) \sin (\theta(t)) + L \sin \theta(t) \\
+\end{align*}
+$$
+</p>
+<p>The kinetic and potential energies would therefore be respectively given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+K &amp;= \dfrac{1}{2} m(\dot x^2 + \dot y^2) \\
+U &amp;= \dfrac{1}{2} k(l(t) + L)^2 -mgy
+\end{align*}
+$$
+</p>
+<p>Thus the system's Lagrangian $\mathcal{L} = K - U$ would then be given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{L} &amp;= \dfrac{1}{2} m\big[L^2 \dot \theta^2 + 2 L l \dot \theta^2 + l^2 \dot \theta^2 + \dot l^2\big]^2 \\
+&amp;\qquad - \frac{1}{2}k(L + \ell)^2 + m g(L + l) \cos \theta
+\end{align*}
+$$
+</p>
+<p>We aim to solve for $\theta(t)$ and $l(t)$ via the Euler-Lagrange equations, to be able to numerically-integrate the system and find the trajectories of the mass. There are two Euler-Lagrange equations, one for $\theta(t)$ and one for $l(t)$. They are, respectively:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \mathcal{L}}{\partial \theta} - \dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot \theta}\right) = 0 \\
+\dfrac{\partial \mathcal{L}}{\partial l} - \dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot l}\right) = 0 \\
+\end{align*}
+$$
+</p>
+<p>The partial derivatives, are, respectively:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \mathcal{L}}{\partial \theta}
+&amp;= -mg(L + l) \sin \theta \\
+\dfrac{\partial \mathcal{L}}{\partial \dot \theta}
+&amp;= \dot \theta m (L + l)^2 \\
+\dfrac{\partial \mathcal{L}}{\partial l}
+&amp;= \dot \theta^2 m(L + l) + m g \cos \theta - k(L + l) \\
+\dfrac{\partial \mathcal{L}}{\partial \dot l} 
+&amp;= m \dot l
+\end{align*}
+$$
+</p>
+<p>Thus we have the ODEs given by:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\ddot \theta m(L + l)^2 = -mg(L + l) \sin \theta \\
+\ddot l m = \dot \theta^2 m(L + l) + mg \cos \theta - k(L + l)
+\end{gather*}
+$$
+</p>
+<p>With a bit of simplification and defining $\omega_0 = \sqrt{k/m}$, we have:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\ddot \theta = -\dfrac{g\sin \theta}{L + l} \\
+\ddot l = \dot \theta^2 (L + l) + g \cos \theta - \omega_0^2(L + l)
+\end{gather*}
+$$
+</p>
+<p>Note that in the limit as $l \to 0$, this reproduces the equation of a (springless) simple pendulum, $\ddot \theta = -\frac{g}{L} \sin \theta$. But if we don't use any simplifications, this is a system of coupled highly-nonlinear ODEs that cannot be solved analytically. So instead, we will turn to numerical integration. For this, we will need to reduce the system to a first-order system of four ODEs, one each for $l, \theta, v, \omega$, where $v = \dot l$ and $\omega = \dot \theta$, as shown below:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dot \theta &amp;= \omega \\
+\dot \omega &amp;= -\dfrac{g\sin \theta}{L + l} \\
+\dot l &amp;= v \\
+\dot v &amp;= \omega^2 (L + l) + g \cos \theta - \omega_0^2(L + l)
+\end{align*}
+$$
+</p>
+<p>This is the time to reach for the power of numerical methods and Python. We'll be using the <code>solve_ivp</code> numerical integrator from the <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html">SciPy library</a> for numerically solving the system of differential equations. We first import the necessary packages:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#fa6e32;">import </span><span>matplotlib</span><span style="color:#ed9366;">.</span><span>pyplot </span><span style="color:#fa6e32;">as </span><span>plt
+</span><span style="color:#fa6e32;">from </span><span>scipy</span><span style="color:#ed9366;">.</span><span>integrate </span><span style="color:#fa6e32;">import </span><span>solve_ivp
+</span><span>
+</span><span style="font-style:italic;color:#abb0b6;"># some optional customizations
+</span><span style="color:#ed9366;">%</span><span>matplotlib inline </span><span style="font-style:italic;color:#abb0b6;"># for Jupyter notebook only
+</span><span style="color:#ed9366;">%</span><span>config InlineBackend</span><span style="color:#ed9366;">.</span><span>figure_format </span><span style="color:#ed9366;">= </span><span style="color:#86b300;">&#39;svg&#39;
+</span><span>plt</span><span style="color:#ed9366;">.</span><span>rcParams[</span><span style="color:#86b300;">&quot;font.family&quot;</span><span>] </span><span style="color:#ed9366;">= </span><span style="color:#86b300;">&quot;serif&quot;
+</span><span>plt</span><span style="color:#ed9366;">.</span><span>rcParams[</span><span style="color:#86b300;">&#39;mathtext.fontset&#39;</span><span>] </span><span style="color:#ed9366;">= </span><span style="color:#86b300;">&#39;stix&#39;
+</span><span>plt</span><span style="color:#ed9366;">.</span><span>rcParams[</span><span style="color:#86b300;">&#39;figure.autolayout&#39;</span><span>] </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">True
+</span><span>plt</span><span style="color:#ed9366;">.</span><span>rcParams[</span><span style="color:#86b300;">&quot;axes.grid&quot;</span><span>] </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">True
+</span></code></pre>
+<p>Then, we set our constants $\omega_0, L, g$:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span>freq </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">.</span><span style="color:#ff8f40;">5 </span><span style="font-style:italic;color:#abb0b6;"># in Hz i.e. cycles/second
+</span><span>w0 </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">* </span><span>pi </span><span style="color:#ed9366;">* </span><span>freq
+</span><span>
+</span><span>oscillator_params </span><span style="color:#ed9366;">= </span><span>{
+</span><span>    </span><span style="color:#86b300;">&quot;L&quot;</span><span style="color:#61676ccc;">: </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">.</span><span style="color:#ff8f40;">5</span><span style="color:#61676ccc;">, </span><span style="font-style:italic;color:#abb0b6;"># setting L = 0 is equivalent to no string, just spring
+</span><span>    </span><span style="color:#86b300;">&quot;g&quot;</span><span style="color:#61676ccc;">: </span><span style="color:#ff8f40;">9</span><span style="color:#61676ccc;">.</span><span style="color:#ff8f40;">81</span><span style="color:#61676ccc;">,
+</span><span>    </span><span style="color:#86b300;">&quot;w0&quot;</span><span style="color:#61676ccc;">: </span><span>w0
+</span><span>}
+</span></code></pre>
+<p>We define our ODE system in the form $\dot{\mathbf{y}} = \mathbf{F}(t, \mathbf{y})$, where $\mathbf{y} = \langle\theta, l, \omega, v\rangle$ and $\dot{\mathbf{y}} = \langle \dot \theta, \dot l, \dot \omega, \dot v \rangle$. The function <code>oscillator_system()</code> is $\mathbf{F}(t, \mathbf{y})$ but written in Python:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#fa6e32;">def </span><span style="color:#f29718;">oscillator_system</span><span>(</span><span style="color:#ff8f40;">t</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">state</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">constants</span><span style="color:#ed9366;">=</span><span>oscillator_params</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">values</span><span>()):
+</span><span>    theta, l, omega, v </span><span style="color:#ed9366;">= </span><span>state
+</span><span>    L, g, w0 </span><span style="color:#ed9366;">= </span><span>constants
+</span><span>    </span><span style="font-style:italic;color:#abb0b6;"># calculate derivatives for next time-step
+</span><span>    theta_dot </span><span style="color:#ed9366;">= </span><span>omega
+</span><span>    omega_dot </span><span style="color:#ed9366;">= -</span><span>(g </span><span style="color:#ed9366;">* </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">sin</span><span>(theta)) </span><span style="color:#ed9366;">/ </span><span>(L </span><span style="color:#ed9366;">+ </span><span>l)
+</span><span>    l_dot </span><span style="color:#ed9366;">= </span><span>v
+</span><span>    v_dot </span><span style="color:#ed9366;">= </span><span>omega</span><span style="color:#ed9366;">**</span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">* </span><span>(L </span><span style="color:#ed9366;">+ </span><span>l) </span><span style="color:#ed9366;">+ </span><span>g </span><span style="color:#ed9366;">* </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">cos</span><span>(theta) </span><span style="color:#ed9366;">- </span><span>w0</span><span style="color:#ed9366;">**</span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">* </span><span>(L </span><span style="color:#ed9366;">+ </span><span>l)
+</span><span>    </span><span style="color:#fa6e32;">return </span><span>theta_dot, l_dot, omega_dot, v_dot
+</span></code></pre>
+<p>Now we solve the ODE, as follows:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#fa6e32;">def </span><span style="color:#f29718;">solve_oscillator</span><span>(</span><span style="color:#ff8f40;">first_step</span><span style="color:#ed9366;">=</span><span style="color:#ff8f40;">1E-2</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">max_step</span><span style="color:#ed9366;">=</span><span style="color:#ff8f40;">1</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">t_end</span><span style="color:#ed9366;">=</span><span style="color:#ff8f40;">60</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">method</span><span style="color:#ed9366;">=</span><span style="color:#86b300;">&quot;BDF&quot;</span><span>):
+</span><span>    </span><span style="font-style:italic;color:#abb0b6;"># t_end is the time when numerical integration should be stopped, in seconds
+</span><span>    </span><span style="color:#fa6e32;">if </span><span style="color:#ed9366;">not </span><span>first_step:
+</span><span>        first_step </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">1E-5 </span><span style="font-style:italic;color:#abb0b6;"># conservative first step
+</span><span>    </span><span style="color:#fa6e32;">if </span><span style="color:#ed9366;">not </span><span>max_step:
+</span><span>        max_step </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">1E-3
+</span><span>    t_span </span><span style="color:#ed9366;">= </span><span>(</span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">, </span><span>t_end) </span><span style="font-style:italic;color:#abb0b6;"># seconds to integrate through
+</span><span>    initial_conditions </span><span style="color:#ed9366;">= </span><span>{
+</span><span>        </span><span style="color:#86b300;">&quot;theta_0&quot;</span><span style="color:#61676ccc;">: </span><span>np</span><span style="color:#ed9366;">.</span><span>pi</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">5</span><span style="color:#61676ccc;">, </span><span style="font-style:italic;color:#abb0b6;"># initial angle (don&#39;t exceed pi/2!!!)
+</span><span>        </span><span style="color:#86b300;">&quot;l_0&quot;</span><span style="color:#61676ccc;">: </span><span style="color:#ff8f40;">1</span><span style="color:#61676ccc;">.</span><span style="color:#ff8f40;">5</span><span style="color:#61676ccc;">, </span><span style="font-style:italic;color:#abb0b6;"># equilibrium spring length
+</span><span>        </span><span style="color:#86b300;">&quot;omega_0&quot;</span><span style="color:#61676ccc;">: </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">.</span><span style="color:#ff8f40;">05</span><span style="color:#61676ccc;">, </span><span style="font-style:italic;color:#abb0b6;"># initial angular velocity (not omega0)
+</span><span>        </span><span style="color:#86b300;">&quot;v_0&quot;</span><span style="color:#61676ccc;">: </span><span style="color:#ff8f40;">1 </span><span style="font-style:italic;color:#abb0b6;"># initial spring extension rate
+</span><span>    }
+</span><span>    initial_state </span><span style="color:#ed9366;">= </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">array</span><span>(</span><span style="font-style:italic;color:#55b4d4;">list</span><span>(initial_conditions</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">values</span><span>()))
+</span><span>    </span><span style="font-style:italic;color:#abb0b6;"># sol = solve_ivp(oscillator_system, t_span, initial_state, first_step=first_step, max_step=max_step, method=method)
+</span><span>    sol </span><span style="color:#ed9366;">= </span><span style="color:#f29718;">solve_ivp</span><span>(oscillator_system</span><span style="color:#61676ccc;">, </span><span>t_span</span><span style="color:#61676ccc;">, </span><span>initial_state</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">method</span><span style="color:#ed9366;">=</span><span>method)
+</span><span>    </span><span style="color:#fa6e32;">return </span><span>initial_state, sol
+</span></code></pre>
+<p>Now that we have everything set up, we can run the solver:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span>osc_initial, osc_sols </span><span style="color:#ed9366;">= </span><span style="color:#f29718;">solve_oscillator</span><span>(</span><span style="color:#ff8f40;">t_end</span><span style="color:#ed9366;">=</span><span style="color:#ff8f40;">20</span><span>)
+</span><span>sol_t </span><span style="color:#ed9366;">= </span><span>osc_sols</span><span style="color:#ed9366;">.</span><span>t
+</span><span>sol_theta, sol_l, sol_omega, sol_v </span><span style="color:#ed9366;">= </span><span>osc_sols</span><span style="color:#ed9366;">.</span><span>y
+</span></code></pre>
+<p>And finally, plot the solution:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#fa6e32;">def </span><span style="color:#f29718;">show_numerical_sol</span><span>(</span><span style="color:#ff8f40;">initial</span><span style="color:#ed9366;">=</span><span>osc_initial</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">constants</span><span style="color:#ed9366;">=</span><span>oscillator_params</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">values</span><span>()):
+</span><span>    L, g, w0 </span><span style="color:#ed9366;">= </span><span>constants
+</span><span>    theta_0, l_0, omega_0, v_0 </span><span style="color:#ed9366;">= </span><span>initial
+</span><span>    </span><span style="font-style:italic;color:#abb0b6;"># parametric equations for x(t) and y(t) from l(t) and theta(t)
+</span><span>    x </span><span style="color:#ed9366;">= </span><span style="color:#fa6e32;">lambda </span><span style="color:#ff8f40;">l</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">theta</span><span>: l </span><span style="color:#ed9366;">* </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">cos</span><span>(theta) </span><span style="color:#ed9366;">+ </span><span>L </span><span style="color:#ed9366;">* </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">cos</span><span>(theta)
+</span><span>    y </span><span style="color:#ed9366;">= </span><span style="color:#fa6e32;">lambda </span><span style="color:#ff8f40;">l</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">theta</span><span>: l </span><span style="color:#ed9366;">* </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">sin</span><span>(theta) </span><span style="color:#ed9366;">+ </span><span>L </span><span style="color:#ed9366;">* </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">sin</span><span>(theta)
+</span><span>    </span><span style="font-style:italic;color:#abb0b6;"># but convert it back to standard coordinates
+</span><span>    </span><span style="font-style:italic;color:#abb0b6;"># where +x is rightwards and +y is upwards
+</span><span>    </span><span style="font-style:italic;color:#abb0b6;"># horizontal_pos = lambda l, theta: y(l, theta)
+</span><span>    </span><span style="font-style:italic;color:#abb0b6;"># vertical_pos = lambda l, theta: -x(l, theta)
+</span><span>    horizontal_pos </span><span style="color:#ed9366;">= </span><span style="color:#fa6e32;">lambda </span><span style="color:#ff8f40;">l</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">theta</span><span>: l </span><span style="color:#ed9366;">* </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">sin</span><span>(theta) </span><span style="color:#ed9366;">+ </span><span>L </span><span style="color:#ed9366;">* </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">sin</span><span>(theta)
+</span><span>    vertical_pos </span><span style="color:#ed9366;">= </span><span style="color:#fa6e32;">lambda </span><span style="color:#ff8f40;">l</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">theta</span><span>: </span><span style="color:#ed9366;">-</span><span>(l </span><span style="color:#ed9366;">* </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">cos</span><span>(theta) </span><span style="color:#ed9366;">+ </span><span>L </span><span style="color:#ed9366;">* </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">cos</span><span>(theta))
+</span><span>    x0 </span><span style="color:#ed9366;">= </span><span style="color:#f29718;">horizontal_pos</span><span>(l_0</span><span style="color:#61676ccc;">, </span><span>theta_0)
+</span><span>    y0 </span><span style="color:#ed9366;">= </span><span style="color:#f29718;">vertical_pos</span><span>(l_0</span><span style="color:#61676ccc;">, </span><span>theta_0)
+</span><span>    plt</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">title</span><span>(</span><span style="color:#86b300;">&quot;Trajectory of elastic pendulum with rigid string&quot;</span><span>)
+</span><span>    </span><span style="font-style:italic;color:#abb0b6;"># plot top of frame
+</span><span>    samples </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">50
+</span><span>    plt</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">plot</span><span>(np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">linspace</span><span>(</span><span style="color:#ed9366;">-</span><span style="color:#ff8f40;">5</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">5</span><span style="color:#61676ccc;">, </span><span>samples)</span><span style="color:#61676ccc;">, </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">zeros</span><span>(samples)</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">label</span><span style="color:#ed9366;">=</span><span style="color:#86b300;">&quot;Top of frame&quot;</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">c</span><span style="color:#ed9366;">=</span><span style="color:#86b300;">&quot;black&quot;</span><span>)
+</span><span>    </span><span style="font-style:italic;color:#abb0b6;"># plot initial length of pendulum
+</span><span>    </span><span style="font-style:italic;color:#abb0b6;"># with parametric equation
+</span><span>    s </span><span style="color:#ed9366;">= </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">linspace</span><span>(</span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">1</span><span>)
+</span><span>    plt</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">plot</span><span>(x0</span><span style="color:#ed9366;">*</span><span>s</span><span style="color:#61676ccc;">, </span><span>y0</span><span style="color:#ed9366;">*</span><span>s)
+</span><span>    </span><span style="font-style:italic;color:#abb0b6;"># plot location of pendulum bob
+</span><span>    plt</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">scatter</span><span>(x0</span><span style="color:#61676ccc;">, </span><span>y0</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">label</span><span style="color:#ed9366;">=</span><span style="color:#86b300;">&quot;Initial point&quot;</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">c</span><span style="color:#ed9366;">=</span><span style="color:#86b300;">&quot;red&quot;</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">marker</span><span style="color:#ed9366;">=</span><span style="color:#86b300;">&quot;o&quot;</span><span>)
+</span><span>    </span><span style="font-style:italic;color:#abb0b6;"># now plot the actual solution
+</span><span>    plt</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">plot</span><span>(</span><span style="color:#f29718;">horizontal_pos</span><span>(sol_l</span><span style="color:#61676ccc;">, </span><span>sol_theta)</span><span style="color:#61676ccc;">, </span><span style="color:#f29718;">vertical_pos</span><span>(sol_l</span><span style="color:#61676ccc;">, </span><span>sol_theta)</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">label</span><span style="color:#ed9366;">=</span><span style="color:#86b300;">&quot;Solution&quot;</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">c</span><span style="color:#ed9366;">=</span><span style="color:#86b300;">&quot;blue&quot;</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">linestyle</span><span style="color:#ed9366;">=</span><span style="color:#86b300;">&quot;dashed&quot;</span><span>)
+</span><span>    plt</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">legend</span><span>()
+</span><span>    plt</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">show</span><span>()
+</span><span>
+</span><span style="font-style:italic;color:#abb0b6;"># make plot!
+</span><span style="color:#f29718;">show_numerical_sol</span><span>()
+</span></code></pre>
+<p>And here is the result of the trajectory traced out by the elastic pendulum over time:</p>
+<img class="natural-img" src="/elastic-pendulum/numerical-solution.png" alt="A plot of the numerical solution to the elastic pendulum" />
+<p>We see that the system is certainly nonlinear, and pretty chaotic in nature! Pretty cool, huh?</p>
+
+        
+        <a href="/" class="return-link">Back to home</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function() {
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+    </script>
+    
+
+
+</body>
+
+</html>

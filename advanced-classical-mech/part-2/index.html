@@ -1,0 +1,2077 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Classical Mechanics, Part II</title>
+  <meta name="description" content=" In this second part of the advanced classical mechanics guide, we go over the Lagrangian and Hamiltonian formulations of classical mechanics. These formulations introduced powerful mathematical and physical tools that helped revolutionize our understanding of physics. We will then see how we can apply Lagrangian and Hamiltonian methods to describe all sorts of systems, from springs all the way to planets.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Advanced Classical Mechanics, Part II</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+        <details class="toc" id="toc" open>
+        <summary>Table of contents</summary>
+        <p class="toc-info">Note: it is highly recommended to navigate by clicking links in the table of contents! It means you can use the back button in your browser to go back to any section you were reading, so you can jump back and forth between sections!</p>
+        <div>
+            <ul>
+            
+                <li>
+                    <a href="#chapter-guide-for-classical-mechanics">Chapter guide for classical mechanics</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#lagrangian-mechanics">Lagrangian mechanics</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#a-basic-example">A basic example</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#2d-and-3d-lagrangians">2D and 3D Lagrangians</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-harmonic-oscillator">The harmonic oscillator</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-equivalence-of-newtonian-and-lagrangian-mechanics">The equivalence of Newtonian and Lagrangian mechanics</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#more-problems-in-lagrangian-mechanics">More problems in Lagrangian mechanics</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#the-simple-pendulum">The simple pendulum</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-centrifugal-force">The centrifugal &quot;force&quot;</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#getting-off-a-bus">Getting off a bus</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-general-procedure">The general procedure</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#the-brachistochrone-problem-and-the-stationary-action-principle">The brachistochrone problem and the stationary-action principle</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#the-euler-lagrange-equations-under-coordinate-transformation">The Euler-Lagrange equations under coordinate transformation</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#constraints-and-generalized-coordinates">Constraints and generalized coordinates</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#rolling-without-slipping-with-constraints">Rolling without slipping with constraints</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#noether-s-theorem-conservation-laws-from-lagrangian-mechanics">Noether&#x27;s theorem: conservation laws from Lagrangian mechanics</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#energy-conservation">Energy conservation</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#momentum-conservation">Momentum conservation</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#angular-momentum-conservation">Angular momentum conservation</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#a-summary-of-noether-s-theorem">A summary of Noether&#x27;s theorem</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#hamiltonian-mechanics">Hamiltonian mechanics</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#deriving-hamilton-s-equations">Deriving Hamilton&#x27;s equations</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-free-particle-in-hamiltonian-mechanics">The free particle in Hamiltonian mechanics</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#conservation-laws-and-the-poisson-bracket">Conservation laws and the Poisson bracket</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#introduction-to-gravitation">Introduction to gravitation</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#the-gravitational-force-and-field">The gravitational force and field</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-gravitational-potential">The gravitational potential</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#gravitation-in-lagrangian-mechanics">Gravitation in Lagrangian mechanics</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#effective-potential-and-centripetal-force">Effective potential and centripetal force</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#next-steps">Next steps</a>
+                    
+                </li>
+            
+            </ul>
+        </div>
+        </details>
+        
+
+        <!-- page content -->
+        <p>In this second part of the advanced classical mechanics guide, we go over the Lagrangian and Hamiltonian formulations of classical mechanics. These formulations introduced powerful mathematical and physical tools that helped revolutionize our understanding of physics. We will then see how we can apply Lagrangian and Hamiltonian methods to describe all sorts of systems, from springs all the way to planets.</p>
+<span id="continue-reading"></span>
+<p>Again, remember that this is part of the <strong>advanced classical mechanics series</strong>, which I have split into several parts to not be overly long. A complete catalogue of the entire three-part guide is shown below:</p>
+<blockquote>
+<h3 id="chapter-guide-for-classical-mechanics">Chapter guide for classical mechanics</h3>
+<ul>
+<li><a href="https://jackysci.com/advanced-classical-mech/">Go to part 1 of the series</a> for Newtonian mechanics and special relativity</li>
+<li><a href="https://jackysci.com/advanced-classical-mech/part-2/">Go to part 2 of the series</a> for Lagrangian and Hamiltonian formulations of classical mechanics (<strong>this is the part you're reading right now</strong>)</li>
+<li><a href="https://jackysci.com/advanced-classical-mech/part-3/">Go to part 3 of the series</a> for rigid-body dynamics, many-body systems, the harmonic oscillator, and systems of coupled oscillators</li>
+</ul>
+</blockquote>
+<h2 id="lagrangian-mechanics">Lagrangian mechanics</h2>
+<p>Newtonian mechanics remained a highly successful theory in classical physics for a long time after Newton, but it always had a few fundamental issues, even before the development of relativity and quantum mechanics. These issues are related to the fact that Newtonian mechanics relies on being able to write out a <strong>net force</strong> using vector analysis - an often nontrivial task when there are a large number of forces, or when working with a non-Cartesian coordinate system.</p>
+<p>Lagrangian mechanics, developed in the 18th-century, provides an alternative and <em>complementary</em> approach to solve for the equations of motion of the system. In Lagrangian mechanics, we define a quantity known as the <strong>Lagrangian</strong> that is the difference between the kinetic energy and the potential energy of an object:</p>
+<p class="mathcell">
+$$
+\mathcal{L}(x, \dot x, t) = K - U
+$$
+</p>
+<p>Once a Lagrangian is found, the <strong>Euler-Lagrange equation</strong> is used to find the equations of motion:</p>
+<p class="mathcell">
+$$
+\dfrac{d}{dt} \dfrac{\partial \mathcal{L}}{\partial \dot x} - \dfrac{\partial \mathcal{L}}{\partial x} = 0
+$$
+</p>
+<p>The Lagrangian formalism (also called <em>Lagrangian mechanics</em>) has a number of advantages compared to the Newtonian formalism. Being formulated in terms of energy, the Lagrangian is composed of <em>scalar quantities</em>, so it is less easy to mess up the sign, which happens frequently when needing to use vectors. Additionally the Lagrangian has the characteristic that <em>any constant added or subtracted from the Lagrangian</em>, as well as any function of a constant, <strong>does not affect the Lagrangian</strong>. That is to say, $\mathcal{L}_2 = K - U + f(C)$ is <strong>physically equivalent</strong> to $\mathcal{L}_1 = K - U$, where $C = \text{const.}$ This means that Lagrangians can be greatly simplified as any constant terms can simply be dropped.</p>
+<p>Furthermore, using the Lagrangian approach means that once the potential energy and kinetic energy is defined with respect to a particular coordinate system (e.g. Cartesian, etc.), no vector analysis is necessary. For many systems, this is a prerequisite to making the system tracatable, and further simplifies the analysis. For systems where a rotating or moving coordinate system is the preferred choice of coordinates (such as a double pendulum or a child on a merry-go-round), Lagrangian mechanics truly comes into its own and allows solving problems that would be extremely difficult otherwise.</p>
+<h3 id="a-basic-example">A basic example</h3>
+<p>Consider a free particle (a particle moving under the influences of no forces) moving along the $x$ axis. For a free particle, Newton's differential equation reads:</p>
+<p class="mathcell">
+$$
+m \dfrac{d^2x}{dt^2} = \mathbf{F}_\mathrm{net} = 0
+$$
+</p>
+<p>We can solve this differential equation using relatively straightforward means:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{d^2x}{dt^2} &amp;= 0 \\
+\int \dfrac{d^2x}{dt^2} dt &amp;= \int 0\, dt \\
+\dfrac{dv}{dt} &amp;= v_0 \\
+\int \dfrac{dv}{dt} dt &amp;= \int v_0\, dt \\
+x(t) &amp;= x_0 + v_0\, t
+\end{align*}
+$$
+</p>
+<p>Thus the solution to the differential equation is $x(t) = x_0 + v_0, t$. Again, this is nothing surprising - we already knew this from when we first examined Newton's differential equation.</p>
+<p>Now, let us try to solve the same problem using the <em>Lagrangian approach</em>. To do so, we first write down the Lagrangian of a free particle (noting that the potential energy is zero, or a constant, but again a constant potential energy has no effect on the Lagrangian):</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{L} &amp;= K - U \\
+&amp;= \dfrac{1}{2} mv^2 - \cancel{U(x)}^0 \\
+&amp;= \dfrac{1}{2} m \dot x^2
+\end{align*}
+$$
+</p>
+<p>We can now take the partial derivatives of the Lagrangian:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \mathcal{L}}{\partial x} &amp;= \dfrac{\partial}{\partial x} \underbrace{\left(\dfrac{1}{2} m \dot x^2\right)}_{\mathcal{L}\ \text{does not depend on}\ x} \\ &amp;= 0 \\
+\dfrac{\partial \mathcal{L}}{\partial x} &amp;= \dfrac{\partial}{\partial \dot x}\left(\dfrac{1}{2} m \dot x^2\right) = m \dot x \\
+\dfrac{d}{dt} \dfrac{\partial \mathcal{L}}{\partial x} &amp;= \dfrac{d}{dt}(m \dot x) = m \ddot x
+\end{align*}
+$$
+</p>
+<p>Therefore, by substitution into the Euler-Lagrange equation, we have $m \ddot x = 0$, which also has the same solution $x(t) = x_0 + v_0, t$. We have demonstrated that the Lagrangian and Newtonian approaches are <strong>completely equivalent</strong> and yield the same results. In this case, the Lagrangian approach may seem like a bit of overkill. There are some situations, however, where the Lagrangian approach is much superior to the Newtonian approach and greatly speeds up the process of solving a problem.</p>
+<h3 id="2d-and-3d-lagrangians">2D and 3D Lagrangians</h3>
+<p>In the case of Lagrangians in 2D or 3D, we must include the velocity components of every dimension in the Lagrangian - for instance, we might have $K = \dfrac{1}{2} m(v_x^2 + v_y^2 + v_z^2)$. While there is <strong>one Lagrangian</strong> (that may, however, involve multiple coordinates), there is a <em>separate</em> Euler-Lagrange equation for each coordinate $x_i$, that is:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{d}{dt} \dfrac{\partial \mathcal{L}}{\partial \dot x_1} &amp;- \dfrac{\partial{L}}{\partial x_1} = &amp;0 \\
+\dfrac{d}{dt} \dfrac{\partial \mathcal{L}}{\partial \dot x_2} &amp;- \dfrac{\partial{L}}{\partial x_2} = &amp;0 \\
+&amp; \vdots &amp; \vdots \\
+\dfrac{d}{dt} \dfrac{\partial \mathcal{L}}{\partial \dot x_i} &amp;- \dfrac{\partial{L}}{\partial x_i} = &amp;0
+\end{align*}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> $x_i$ does <strong>not</strong> have to be in Cartesian coordinates. It is just as possible to use spherical coordinates $(r, \theta, \phi)$ or cylindrial coordinates $(\rho, \phi, z)$ as the coordinates $x_1, x_2, \dots x_i$. In fact, this is one of the advantages of Lagrangian mechanics - it generalizes to <em>all coordinates</em> and thus we only need to perform a coordinate transformation of $K$ and $U$ to switch the coordinates to whichever are most convenient for the problem.</p>
+</blockquote>
+<p>Let us, for instance, consider the case of a particle of mass $m$ slowly falling close to the Earth's surface, assuming no air resistance. Given that the gravitational potential energy close to the Earth's surface is $U = mgy$, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{L} &amp;= \dfrac{1}{2} m(v_x^2 + v_y^2) - m g y \\
+&amp;= \dfrac{1}{2} m(\dot x^2 + \dot y^2) - mg y
+\end{align*}
+$$
+</p>
+<p>The Euler-Lagrange equations for the $x$ and $y$ coordinates are given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{d}{dt} \dfrac{\partial \mathcal{L}}{\partial \dot x} &amp;- \dfrac{\partial{L}}{\partial x} = 0 \\
+\dfrac{d}{dt} \dfrac{\partial \mathcal{L}}{\partial \dot y} &amp;- \dfrac{\partial{L}}{\partial y} = 0 \\
+\end{align*}
+$$
+</p>
+<p>We will first analyze the $y$ (vertical) component. In $y$, the partial derivatives of the Lagrangian are given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+ \\
+\dfrac{\partial \mathcal{L}}{\partial y} = -mg \\
+\dfrac{\partial \mathcal{L}}{\partial \dot y} = m \dot y\\
+\dfrac{d}{dt} \dfrac{\partial \mathcal{L}}{\partial \dot y} = m \ddot y
+\end{align*}
+$$
+</p>
+<p>Therefore, upon substitution into the the Euler-Lagrange equation in the $y$ component, we have $m \ddot x = -mg$, which we may rearrange to $\ddot x = -g$, the equation of free-fall. This has the solution:</p>
+<p class="mathcell">
+$$
+y(t) = y_0 + v_{0y} t - \dfrac{1}{2} gt^2
+$$
+</p>
+<p>We can now turn our attention to the $x$ (horizontal) component. In $x$, the partial derivatives of the Lagrangian are given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \mathcal{L}}{\partial x} &amp;= \dfrac{\partial}{\partial x} \left(\dfrac{1}{2} m \dot x^2\right) \\ &amp;= 0 \\
+\dfrac{\partial \mathcal{L}}{\partial x} &amp;= \dfrac{\partial}{\partial \dot x}\left(\dfrac{1}{2} m \dot x^2\right) = m \dot x \\
+\dfrac{d}{dt} \dfrac{\partial \mathcal{L}}{\partial x} &amp;= \dfrac{d}{dt}(m \dot x) = m \ddot x
+\end{align*}
+$$
+</p>
+<p>Thus, upon substitution into the Euler-Lagrange equation in the $x$ component, we have $m \ddot x = 0$, which has the solution $x(t) = x_0 + v_{0x} , t$. Thus the complete solutions to the equations of motion for the falling particle becomes:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+x(t) &amp;= x_0 + v_{0x} \, t \\
+y(t) &amp;= y_0 + v_{0y} t - \dfrac{1}{2} gt^2
+\end{align*}
+$$
+</p>
+<p>Which is indeed the expected result that we would also find by application of Newton's laws.</p>
+<h3 id="the-harmonic-oscillator">The harmonic oscillator</h3>
+<p>Let us now examine problem in which the usefulness of the Lagrangian formalism becomes more evident: the <strong>harmonic oscillator</strong>. For a harmonic oscillator, such as a mass $m$ on a spring of spring constant $k$, we have $K = \dfrac{1}{2} m v^2 = \dfrac{1}{2} m \dot x^2$ and $U = \dfrac{1}{2} k(x - x_0)^2$. Therefore, our Lagrangian becomes:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{L} &amp;= K - U \\
+&amp;= \dfrac{1}{2} m\dot x^2 - \dfrac{1}{2} k(x - x_0)^2
+\end{align*}
+$$
+</p>
+<p>Taking the partial derivatives of $\mathcal{L}$ we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \mathcal{L}}{\partial x} &amp;= -k(x - x_0) \\
+\dfrac{\partial \mathcal{L}}{\partial \dot x} &amp;= m \dot x \\
+\dfrac{d}{dt} \dfrac{\partial \mathcal{L}}{\partial \dot x} &amp;= m \ddot x
+\end{align*}
+$$
+</p>
+<p>Therefore, upon substitution into the Euler-Lagrange equations we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+m \ddot x - (-k(x - x_0)) = 0 \\
+m \ddot x + k (x - x_0) = 0 \\
+\ddot x +\dfrac{k}{m} (x - x_0) = 0 \\
+\dfrac{d^2 x}{dt^2} = -\dfrac{k}{m} (x - x_0)
+\end{align*}
+$$
+</p>
+<p>Indeed, this is the expected result for the differential equation of the simple harmonic oscillator. But what if we include <em>gravity</em>? Let us now consider a harmonic oscillator under the influence of gravity, such as a mass hanging on a spring from a ceiling. Our kinetic energy becomes $K = \dfrac{1}{2} m\dot y^2$, and our potential energy must now be modified to $U = \dfrac{1}{2} k(y - y_0)^2 - mg y$. Thus our Lagrangian becomes:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{L} &amp;= K - U \\
+&amp;= \dfrac{1}{2} m \dot y^2 - \left(\dfrac{1}{2} k(y - y_0)^2 - mg y\right) \\
+&amp;= \dfrac{1}{2} m \dot y^2 -\dfrac{1}{2} k(y - y_0)^2+ mg y
+\end{align*}
+$$
+</p>
+<p>We may now calculate the partial derivatives of the Lagrangian in $y$, as previous:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \mathcal{L}}{\partial y} &amp;= -k(y - y_0) + mg \\
+\dfrac{\partial \mathcal{L}}{\partial \dot y} &amp;= m\dot y \\
+\dfrac{d}{dt} \dfrac{\partial \mathcal{L}}{\partial \dot y} &amp;= m\ddot y \\
+\end{align*}
+$$
+</p>
+<p>Thus the differential equation of motion becomes:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+m \ddot y = mg - k(y - y_0) \\
+\ddot y = g - \dfrac{k}{m} (y - y_0) \\
+\dfrac{d^2 y}{dt^2} = g - \dfrac{k}{m} (y - y_0)
+\end{align*}
+$$
+</p><h3 id="the-equivalence-of-newtonian-and-lagrangian-mechanics">The equivalence of Newtonian and Lagrangian mechanics</h3>
+<p>We have already seen that Lagrangian mechanics yields the same equations of motion as Newtonian mechanics in several examples, but what about the general case? Does Lagrangian mechanics <em>always</em> make the same predictions as Newtonian mechanics? The answer is yes, and we will show why.</p>
+<p>Consider a particle under the influence of some conservative force, whose potential energy is given by $U(x)$ (we work in one dimension but the same argument can be made for any number of dimensions). Then, the particle's Lagrangian would be given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{L} &amp;= K - U \\
+&amp;= \dfrac{1}{2} m \ddot x^2 - U(x)
+\end{align*}
+$$
+</p>
+<p>Thus, the derivatives of the Lagrangian are given by:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+\dfrac{\partial \mathcal{L}}{\partial x} = -U&#x27;(x), &amp; \dfrac{\partial \mathcal{L}}{\partial \dot x} = m\dot x, &amp; \dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot x}\right) = m \ddot x
+\end{matrix*}
+$$
+</p>
+<p>So the Euler-Lagrange equation for our only coordinate $x$ would be given by:</p>
+<p class="mathcell">
+$$
+m \ddot x = -U&#x27;(x)
+$$
+</p>
+<p>But this is exactly Newton's second law, $m\dfrac{d^2 x}{dt^2} = -\dfrac{dU}{dx}$! Thus, in <em>all cases</em>, Lagrangian mechanics <em>always</em> gives the same results as Newtonian mechanics. So Lagrangian mechanics doesn't actually introduce any new physics; it is better to think of it as simply an alternative way to solve problems that sometimes works better or makes finding a solution easier than using the Newtonian method.</p>
+<h2 id="more-problems-in-lagrangian-mechanics">More problems in Lagrangian mechanics</h2>
+<p>Because of how <em>different</em> Lagrangian mechanics is from the traditional Newtonian approach to solving physical systems, it may be quite difficult to get adjusted to it. For this reason, here are a few additional fully-solved problems for Lagrangian mechanics that might be helpful to practice on.</p>
+<h3 id="the-simple-pendulum">The simple pendulum</h3>
+<p>In this problem, a pendulum is attached to a string of length $\ell$ which makes an angle of $\theta$ with the vertical axis. The pendulum swings up and down under the action of gravity. We want to find the equations of motion for the pendulum.</p>
+<p>Let us set up the coordinates to make this problem as convenient as possible. First, let us set our $+y$ axis to be the <em>downward-pointing</em> direction. Let our $x$ axis be centered at the position at which the pendulum is attached (i.e. its origin is at the pendulum's attachment point).</p>
+<img class="diagram" src="/advanced-classical-mech/part-2/../simple-pendulum.excalidraw.svg"  />
+<p>With this information, then the position of the pendulum at time $t$ is given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+x &amp;= \ell \sin \theta(t) \\
+y &amp;= \ell \cos \theta(t)
+\end{align*}
+$$
+</p>
+<p>Where again, the $y$ coordinate is actually the <em>downward-pointing</em> coordinate due to the way we defined our coordinate system. Taking differentiation, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dot x &amp;= (\ell \cos \theta)\dot \theta \\
+\dot y &amp;= (-\ell \sin \theta) \dot \theta
+\end{align*}
+$$
+</p>
+<p>So, the kinetic energy becomes:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+K &amp;= \dfrac{1}{2} m(\dot x^2 + \dot y^2) \\
+&amp;= \dfrac{1}{2} m[(\ell \cos \theta\, \dot \theta)^2 + (-\ell \sin \theta\, \dot \theta)^2] \\
+&amp;= \dfrac{1}{2} m\ell^2 \dot \theta^2 \cancel{(\cos^2 \theta + \sin^2 \theta)}^1 \\
+&amp;= \dfrac{1}{2} m \ell^2 \dot \theta^2
+\end{align*}
+$$
+</p>
+<p>The (purely-gravitational) potential energy, due to how we have defined our coordinate system, is given by $U = -mgy = -mg(\ell \cos \theta)$. Thus our Lagrangian becomes:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{L} &amp;= K - U \\ &amp;= \dfrac{1}{2} m \ell^2 \dot \theta^2 + mg \ell \cos \theta
+\end{align*}
+$$
+</p>
+<p>Since our Lagrangian only involves one generalized coordinate (in this case, $\theta$) there is only one Euler-Lagrange equation corresponding to that coordinate:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial \mathcal{L}}{\partial \theta} - \dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot \theta}\right) = 0
+$$
+</p>
+<p>The derivatives are given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \mathcal{L}}{\partial \theta} &amp;= -mg \ell \sin \theta \\
+\dfrac{\partial \mathcal{L}}{\partial \dot \theta} &amp;= m \ell^2 \dot \theta\\
+\dfrac{d}{dt}\left(\dfrac{\partial \mathcal{L}}{\partial \dot \theta}\right) &amp;= m \ell^2 \ddot \theta
+\end{align*}
+$$
+</p>
+<p>Thus, substituting into the Euler-Lagrange equation we wrote down previously, we have:</p>
+<p class="mathcell">
+$$
+-mg\ell \sin \theta - m \ell^2 \ddot \theta = 0
+$$
+</p>
+<p>Which, after simplification and rearranging, becomes:</p>
+<p class="mathcell">
+$$
+\ddot \theta = -\dfrac{g}{\ell} \sin \theta
+$$
+</p>
+<p>Or, rewritten:</p>
+<p class="mathcell">
+$$
+\dfrac{d^2 \theta}{dt^2} = -\dfrac{g}{\ell} \sin \theta
+$$
+</p>
+<p>This is the differential equation of a <strong>simple pendulum</strong>. Despite looking rather simple, it is surprisingly hard to solve, but it is still useful, because it completely describes the simple pendulum, and it possesses approximate solutions that still yield important quantitative insights.</p>
+<blockquote>
+<p><strong>Note:</strong> Interested in a more complicated pendulum problem? See the <a href="https://jackysci.com/elastic-pendulum/">worked-out solution to the elastic pendulum</a>.</p>
+</blockquote>
+<h3 id="the-centrifugal-force">The centrifugal "force"</h3>
+<p>When an object is placed within a rotating object, it is common to say that the object experiences a <em>fictitious</em> centrifugal force. We will show that what appears to be a "centrifugal force" is nothing but a radial acceleration caused by a moving coordinate system, and is <em>not</em> a real force.</p>
+<p>Consider a moving disk of radius $R$ and mass $M$ that rotates at angular velocity $\omega$ (ignore gravity). A small mass $m$ is placed at the edge of the disk (note: the figure below shows it <em>slightly</em> less than the edge, but it is only for visual clarity). A diagram of our physical scenario is below:</p>
+<img class="diagram" src="/advanced-classical-mech/part-2/../centrifugal-force.excalidraw.svg"  />
+<p>If the disk was non-spinning, the position of the mass, relative to the center of the spinnning disk (which is the origin of our rotating coordinate system), would be given by:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+x = R \cos \phi, &amp; y = R \sin \phi \\
+\dot x = -R \sin \phi\, \dot \phi, &amp; \dot y = R \cos \phi\, \dot \phi \\
+\end{matrix*}
+$$
+</p>
+<p>But the disk <em>is</em> spinning, and thus, since we are using a rotating coordinate system that co-rotates with the disk, we must also include the "nudge" caused by the spinning disk on which the mass rests (which contributes an additional angular component $\theta = \omega t$ to the angular displacement of the mass). We therefore have:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+x = R \cos \phi  + R \cos \omega t, &amp; y = R \sin \phi + R \sin \omega t \\
+\dot x = -R \sin \phi\, \dot \phi- R \omega \sin \omega t, 
+&amp; \dot y = R \cos \phi\, \dot \phi + R \omega \cos \omega t \\
+\end{matrix*}
+$$
+</p>
+<p>Thus the total kinetic energy is given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+K &amp;= \dfrac{1}{2} m(\dot x^2 + \dot y^2) \\ &amp;= \dfrac{1}{2} m[(-R \sin \phi\, \dot \phi- R \omega \sin \omega t)^2 + (R \cos \phi\, \dot \phi + R \omega \cos \omega t)^2] \\
+&amp;= \dfrac{1}{2} m \bigg[R^2 \dot \phi^2 \sin^2 \phi + 2 R^2 \omega \sin \phi\, \dot \phi  \sin \omega t + R^2 \omega^2 \sin^2 \omega t \\
+&amp;\qquad \qquad + R^2 \dot \phi^2 \cos^2 \phi + 2 R^2\omega \cos \phi\, \dot \phi \cos \omega t + R^2 \omega^2 \cos^2 \omega t] \\
+&amp;= \dfrac{1}{2} m(R^2 \dot \phi^2(\cancel{\sin^2 \phi + \cos^2 \phi}^1) + 2R^2 \omega \dot \phi\,(\sin \phi \sin \omega t + \cos \phi \cos \omega t) \\
+&amp;\qquad \qquad + R^2 \omega^2 (\cancel{\sin^2 \omega t + \cos^2 \omega t)}^1) \\
+&amp;= \dfrac{1}{2} m(R^2 \dot \phi^2 + 2 R^2 \omega \dot \phi \cos(\phi - \omega t) + R^2 \omega^2)
+\end{align*}
+$$
+</p>
+<p>Where at the end we used the trigonometric identity $\sin A \sin B + \cos A \cos B = \cos(A - B)$. Since we are not considering gravity (imagine this spinning disk was in deep space) then the Lagrangian is:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{L} &amp;= K - \cancel{U} \\
+&amp;= \dfrac{1}{2} m(R^2 \dot \phi^2 + 2 R^2 \omega \dot \phi \cos(\phi - \omega t) + \cancel{R^2 \omega^2})
+\end{align*}
+$$
+</p>
+<p>Where we can effectively ignore the $R^2 \omega^2$ term since it is a constant and constants do not change the Lagrangian. The Euler-Lagrange equation for the only generalized coordinate $\phi$ becomes:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial \mathcal{L}}{\partial \phi} = \dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot \phi}\right)
+$$
+</p>
+<p>Taking the partial derivatives of our Lagrangian, we find that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \mathcal{L}}{\partial \phi} &amp;= -mR^2 \omega \dot \phi \sin(\phi - \omega t) \\
+\dfrac{\partial \mathcal{L}}{\partial \dot \phi} &amp;= m R^2 \dot \phi \\
+\dfrac{d}{dt}\left(\dfrac{\partial \mathcal{L}}{\partial \dot \phi}\right) &amp;= m R^2 \ddot \phi
+\end{align*}
+$$
+</p>
+<p>If we substitute into the Euler-Lagrange equation we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+m R^2 \ddot \phi &amp;= -mR^2 \omega \dot \phi \sin (\phi - \omega t) \\
+\ddot \phi &amp;= - \omega \dot \phi \sin(\phi - \omega t)
+\end{align*}
+$$
+</p>
+<p>We can write this in terms of an angular acceleration $\vec \alpha$:</p>
+<p class="mathcell">
+$$
+\vec \alpha = - \omega \dot \phi \sin(\phi - \omega t)
+$$
+</p>
+<p>The negative sign means that the angular acceleration vector is actually pointing vertically <em>downwards</em>. Now, the acceleration vector $\vec a$ is related to the angular acceleration by:</p>
+<p class="mathcell">
+$$
+\vec \alpha = \dfrac{1}{r^2} \vec r \times \vec a
+$$
+</p>
+<p>Where $\vec r$ is the radial vector that points from the axis of rotation to the mass. Thus by the right-hand rule, since the angular acceleration is pointing downards, we find that the acceleration vector actually points <em>outwards</em>, as shown in the below diagram:</p>
+<img class="diagram" src="/advanced-classical-mech/part-2/../rotational-lagrangian-example.excalidraw.svg"  />
+<p>Thus we find that there <em>appears</em> to be a "force" that pushes the particle outwards and produces the acceleration $\vec a$ observed. In reality, such a force <em>does not exist</em>. We can prove this as follows: from the expression $\vec \alpha = - \omega \dot \phi \sin(\phi - \omega t)$, if we take the limit as $\omega \to 0$ (that is, the disk is no longer spinning), then $\vec \alpha \to 0$ and we recover the equations of uniform circular motion (that is, $\ddot \phi = 0$). The "force" (often called the <em>centrifugal force</em>) is merely a consequence of our rotating reference frame (remember, we chose a coordinate system that co-rotated with the disk), and if we choose an alternate frame of reference that is <em>not rotating</em>, this force vanishes. Thus we have shown that the centrifugal "force" is a fictitious force.</p>
+<h3 id="getting-off-a-bus">Getting off a bus</h3>
+<p>Consider a situation that may be familiar: you were riding a bus (or train) moving at speed $v_0$ that suddenly undergoes a constant deceleration of magnitude $a$ until it comes to a stop. This catches you by surprise, and you end up dropping the precious physics textbook you borrowed from your physics professor. To appease your professor after this unfortunate incident, you intend to demonstrate your understanding of Lagrangian mechanics to calculate your equations of motion and thus explain that the deceleration was substantial enough to make you fall.</p>
+<p>In this case, it is again easiest to use a <em>co-moving</em> coordinate system - in this case, we can consider a coordinate system that moves along with the bus. Let $x$ denote your position with respect to a coordinate system centered at the front of the bus. Since the bus (presumably) does not fly into the air, we need only consider the $x$ coordinate. In theory, if the bus was absolutely stationary, then your kinetic energy would be given by:</p>
+<p class="mathcell">
+$$
+K = \dfrac{1}{2} m\dot x^2
+$$
+</p>
+<p>But because the bus is <em>also</em> moving (in fact, it is decelerating!), we must add an additional contribution from the moving bus. The bus has $\dot v = -a$ and thus $\dot x_\text{bus} = v_0 - a t$.</p>
+<p class="mathcell">
+$$
+K = \dfrac{1}{2}m(\dot x + v_0 - at)^2
+$$
+</p>
+<p>The Lagrangian in this case contains only the kinetic energy (since the bus is at a constant height above the ground, its gravitational potential energy is a constant, and therefore makes no difference in the Lagrangian). Therefore:</p>
+<p class="mathcell">
+$$
+\mathcal{L} = \dfrac{1}{2}m(\dot x + v_0 - at)^2
+$$
+</p>
+<p>The derivatives of the Lagrangian become:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \mathcal{L}}{\partial x} &amp;= 0 \\
+\dfrac{\partial \mathcal{L}}{\partial \dot x} &amp;= m (\dot x + v_0 - at) \\
+\dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot x}\right)
+&amp;=m (\ddot x - a)
+\end{align*}
+$$
+</p>
+<p>Therefore the singular Euler-Lagrange equation in this case, given by $\dfrac{\partial \mathcal{L}}{\partial x} = \dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot x}\right)$, then simply becomes:</p>
+<p class="mathcell">
+$$
+m(\ddot x - a) = 0 \quad \Rightarrow \quad \dfrac{d^2 x}{dt^2} = a
+$$
+</p>
+<p>This is interesting - you experience a positive acceleration $a$ that <em>appears</em> to come from a force that pushes you and makes you fall. But there is no force! The "force" actually arises from our choice of a moving coordinate system. Just as with the centrifugal "force", this "force" is also a <em>fictitious force</em>.</p>
+<p>This is a powerful aspect of Lagrangian mechanics: once you choose your coordinates and write down your Lagrangian in terms of your chosen coordinates, the equations of motion that follow are <em>guaranteed to hold</em> in your coordinate system, without needing to consider any fictitious forces.</p>
+<h3 id="the-general-procedure">The general procedure</h3>
+<p>Now that we have worked through several problems, let us distill our insights to determine how to do Lagrangian mechanics in the <em>general case</em>. To be able to solve an <em>arbitrary</em> problem using Lagrangian mechanics, we follow these steps:</p>
+<ol>
+<li>Define a coordinate system using whichever reference frame is <em>most convenient</em> for the problem. For instance, in problems with radial symmetry, polar coordinates may be better (i.e. $x = r \cos \theta, y = r \sin \theta$), and in problems where the reference frame is itself moving (e.g. child jumping on a rotating carousel) it may be helpful to choose a <em>co-moving coordinate system</em> (i.e. a coordinate system that moves with the object)
+<ol>
+<li>For systems of multiple objects (many-body systems), you would have a set of coordinates for every object, e.g. a two-body system would have coordinates $(x_1, y_1, z_1), (x_2, y_2, z_2)$. It is important to explicitly define the <em>origin</em> and the <em>orientation</em> of the axes of each of the coordinates for multi-body systems (in many cases, the origins of the coordinate systems for different objects will <em>not</em> be the same, or the coordinate systems will be oriented differently)</li>
+</ol>
+</li>
+<li>Write down the total kinetic energy of the object(s) you are analyzing
+<ol>
+<li>The kinetic energy of a (single) object is (classically) always $\dfrac{1}{2} mv^2 = \dfrac{1}{2} m (\dot x^2 + \dot y^2 + \dot z^2)$, but if you are using different coordinates, you would want to express $\dot x, \dot y, \dot z$ in terms of those coordinates (especially if there is a constraint on the system e.g. uniform circular motion in which case $\dot x^2 + \dot y^2 = r^2 \dot \theta^2$). In addition, $x(t)$ may include more than one terms if you define your coordinates with respect to a (co-)moving coordinate system.</li>
+<li>The kinetic energy of a system of objects is the sum of the kinetic energies of each individual object, so you would have $K = K_1 + K_2 + \dots + K_n$, or more explicitly-written (in 1D), $K = \dfrac{1}{2} m\dot x_1^2 + \dfrac{1}{2} m \dot x_2^2 + \dots + \dfrac{1}{2}m \dot x_n^2$.</li>
+</ol>
+</li>
+<li>Write down the total potential energy of the object(s) you are analyzing. Note that this highly depends on what type of potential energy you have (e.g. harmonic oscillator, gravitational, electrostatic, etc.) and be careful to express the potential energy <em>in terms of your chosen coordinates</em> if they are not $x, y, z$ coordinates or not oriented in standard (Cartesian 3D) position</li>
+<li>Substitute into the Lagrangian with $\mathcal{L} = K - U$. Note that every system, whether single-body or many-body, should have just <em>one</em> Lagrangian</li>
+<li>Take the partial derivatives of the Lagrangian and substitute into the Euler-Lagrange equations $\dfrac{d}{dt} \dfrac{\partial \mathcal{L}}{\partial \dot x_i} - \dfrac{\partial{L}}{\partial x_i} = 0$. There is one Euler-Lagrange equation for <em>every coordinate</em>, so if you chose to use coordinates $(x, y, z)$, then you'd have three Euler-Lagrange equations, one for $x$, one for $y$, one for $z$. Thankfully, this process is pretty much just math, not physics; as long as you get the math right, your solution should be sound.</li>
+<li>From there, find the equations of motion you get from each of the Euler-Lagrange equations. Then you're done!</li>
+</ol>
+<h2 id="the-brachistochrone-problem-and-the-stationary-action-principle">The brachistochrone problem and the stationary-action principle</h2>
+<p>We have spent quite some time developing the theory of Lagrangian mechanics, but it is also important to discuss its origins in a branch of mathematical physics known as the <strong>calculus of variations</strong>. The calculus of variations sprang from a classic optimization problem, known as the problem of the <strong>branchistochrone</strong>.</p>
+<p>The problem statement is this: assume that a particle of mass $m$, falling only under the influence of gravity, is constrained to move along a curved path. The questions asks to find <em>which path</em> would lead the particle to travel between two points $A =(x_1, y_1)$ and $B = (x_2, y_2)$ in the shortest time.</p>
+<p>To solve this problem, we use a classic argument from the calculus of variations. We first choose our coordinate system such that it has its origin at point $A$, with the $+y$ axis aligned along the direction of gravity (i.e. positive $y$ is pointing down towards the ground). Now recall that the speed of a particle is given by:</p>
+<p class="mathcell">
+$$
+v = \left|\dfrac{d\mathbf{r}}{dt}\right| = \dfrac{ds}{dt}
+$$
+</p>
+<p>And therefore we can rearrange this such that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+dt = \dfrac{ds}{v}\\
+\int_0^\tau dt = \int_A^B \dfrac{ds}{v} \\
+\tau = \int_A^B \dfrac{ds}{v}
+\end{align*}
+$$
+</p>
+<p>Where $\tau$ is the total travel time of the particle. We also know that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+ds^2 &amp;= dx^2 + dy^2 \\
+ds &amp;= \sqrt{dx^2 + dy^2} \\
+&amp;= \sqrt{1 + \left(\dfrac{dy}{dx}\right)^2} dx \\
+&amp;= \sqrt{1 + y&#x27;(x)}dx
+\end{align*}
+$$
+</p>
+<p>Therefore, we have:</p>
+<p class="mathcell">
+$$
+\tau = \int_A^B \dfrac{\sqrt{1 + y&#x27;(x)}dx}{v}
+$$
+</p>
+<p>The speed $v$, meanwhile, can be found through the conservation of energy. Since $K = \dfrac{1}{2} mv^2$ and $U = -mgy$ (negative sign is due to our coordinate system), and given that at $t = 0$ the particle is at rest at $x_0 = 0, y_0 = 0$, we have a total energy of:</p>
+<p class="mathcell">
+$$
+E_0 = \cancel{K_0}^0 + U_0 = \cancel{mgy_0}^0 = 0
+$$
+</p>
+<p>But this is true for <em>all times $t$</em> due the conservation of energy. Therefore, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+K + U &amp;= 0 \\
+\dfrac{1}{2} mv^2 - mgy &amp;= 0 \\
+\dfrac{1}{2} mv^2 = mgy \\
+v^2 = 2gy \\
+v = \sqrt{2gy}
+\end{align*}
+$$
+</p>
+<p>Which, if we substitute into our integral expression, becomes:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\tau &amp;= \int_A^B \dfrac{\sqrt{1 + y&#x27;(x)}dx}{\sqrt{2gy}} \\
+&amp;= \int_A^B \sqrt{\dfrac{1 + y&#x27;(x)}{2gy}}dx \\
+&amp;= \int_A^B f (y, y&#x27;, x) dx, \quad f(y, y&#x27;, x) = \sqrt{\dfrac{1 + y&#x27;(x)}{2gy}}
+\end{align*}
+$$
+</p>
+<p>We recognize that $\tau[y, y', x]$ is a <strong>functional</strong> (we write it in square brackets accordingly), since it takes a function $y(x)$ and returns its integral, making it a "function of functions". We may now use the familiar Euler-Lagrange equations to minimize the functional by finding the solution to:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial f}{\partial y} - \dfrac{d}{dx} \left(\dfrac{\partial f}{\partial y&#x27;}\right) = 0
+$$
+</p>
+<p>The derivatives are rather complicated, so we will not compute them here, but we will simply state the result: the functional is minimized by the path $y(x)$ given by:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+y = a(\theta - \sin \theta), \\
+\theta = \cos^{-1} \left(1 - \dfrac{x}{a}\right), \\
+\end{gather*}
+$$
+</p>
+<p>This path is called a <strong>cycloid</strong> of radius $a$, and interestingly, it <em>isn't</em> a straight line. The <em>point</em> of this exercise is not to do a lot of complicated math, but rather, to understand that the Euler-Lagrange equations are much more general than their use in Lagrangian mechanics, and that Lagrangian mechanics is simply an application of the Euler-Lagrange equations towards finding the trajectories that minimize a specific functional. This functional is called the <strong>action</strong> $S$, and is given by the integral of the Lagrangian over time:</p>
+<p class="mathcell">
+$$
+S[x, \dot x, t] = \int_{t_1}^{t_2} \mathcal{L}(x, \dot x, t)\, dt = \int_{t_1}^{t_2}K - U\, dt
+$$
+</p>
+<blockquote>
+<p><strong>Note on notation:</strong> Here we consider the one-dimensional action; in general the action requires all spatial coordinates so we would have $S = S[\mathbf{r}, \dot{\mathbf{r}}, t]$ instead.</p>
+</blockquote>
+<p>Further, the <em>reason</em> why Lagrangian mechanics works in the first place is that the action functional obeys the <strong>principle of stationary action</strong> (or sometimes called "stationary action"). This is a fundamental physical law, as fundamental as energy conservation and momentum conservation, and it says that the allowed (classical) trajectories of a particle travelling between two points $x(t_1)$ and $x(t_2)$ must be the one that makes the action <strong>stationary</strong> (that is, the rate of change of the action must be zero - this can occur at a minimum, maximum, or saddle point, but usually is the minimum). Classical physics offers no explanation for why the principle of stationary action exists - a full explanation requires quantum mechanics - but the principle is the physical basis for Lagrangian mechanics and explains why it makes the correct predictions about the motion of physical objects.</p>
+<blockquote>
+<p><strong>Note for the advanced reader:</strong> For more information on the quantum explanation of the principle of stationary action, read about the <a href="https://en.wikipedia.org/wiki/Path_integral_formulation">Feynmann path integral</a> and in general the <a href="https://www.quantamagazine.org/how-our-reality-may-be-a-sum-of-all-possible-realities-20230206/">sum-over-paths formulation</a> of quantum mechanics.</p>
+</blockquote>
+<h2 id="the-euler-lagrange-equations-under-coordinate-transformation">The Euler-Lagrange equations under coordinate transformation</h2>
+<p>Continuing on the theme of the Euler-Lagrange equations, recall that we have observed that they have several special properties. For instance, we noted that a Lagrangian is independent of any additive constant, so any constant terms can be dropped from a Lagrangian. We will now show that these characteristics are not simply quirks of math; they arise from <strong>symmetries</strong> in the Lagrangian.</p>
+<p>Consider two coordinate systems, $q_i'$ and $q_i$. These represent generic coordinates - $q_i, q_i'$ can be $x, y, z$ or $r, \theta, \phi$, the index just represents some arbitrary coordinate. What is important is that we can write <strong>coordinate transformations</strong> to express $q_i'$ in terms of $q_i$, that is:</p>
+<p class="mathcell">
+$$
+q_i&#x27; = q_i&#x27;(q_i(t), t)
+$$
+</p>
+<blockquote>
+<p><strong>Note on notation:</strong> for the remainder of this section, all the primes (e.g. $q_i', \dot q_i'$) represent the <em>transformed coordinates</em>, not derivatives. That is to say, $q_i' \neq \dfrac{dq_i}{dt}$.</p>
+</blockquote>
+<p>This may represent, for instance, the coordinate transformations from Cartesian to spherical coordinates, but again, it represents an <em>arbitrary coordinate transform</em> $q_i \to q_i'$ from one coordinate system $q_i$ to another coordinate system $q_i'$. But how would the velocities transform? Using the chain rule, we can write $\dot q_i$ in terms of $\dot q_i'$:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dot q_i&#x27; &amp;=\dfrac{dq_i&#x27;}{dt} \\&amp;= \dfrac{d}{dt} q_i&#x27;(q_i(t), t) \\
+&amp;= \dfrac{\partial q_i&#x27;}{\partial t} + \dfrac{\partial q_i&#x27;}{\partial q_i} \dfrac{dq_i}{dt} \\
+&amp;= \dfrac{\partial q_i&#x27;}{\partial t} + \dfrac{\partial q_i&#x27;}{\partial q_i} \dot q_i
+\end{align*}
+$$
+</p>
+<p>Why is this significant? Because it means that:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial \dot q_i&#x27;}{\partial \dot q_i} = \dfrac{\partial q_i&#x27;}{\partial q_i}
+$$
+</p>
+<p>We are interested in how the <em>Euler-Lagrange equations</em> transform under this coordinate transformation. To do so, let us take the Lagrangian expressed in our original coordinates $\mathcal{L}(q_i, \dot q_i, t)$ and express it in terms of new coordinates. We have:</p>
+<p class="mathcell">
+$$
+\mathcal{L}(q_i, \dot q_i, t) = \mathcal{L}(q_i(q_i&#x27;, t), \dot q_i(\dot q_i&#x27;, t), t) = \tilde{\mathcal{L}}(q_i&#x27;, \dot q_i&#x27;, t)
+$$
+</p>
+<p>Let us show that this transformed Lagrangian $\tilde{\mathcal{L}}$ gives the completely equivalent equations of motion to the original Lagrangian $\mathcal{L}$. First, we will take the partial derivatives of our new Lagrangian $\tilde{\mathcal{L}}$ with respect to the <em>original</em> coordinates $q_i$. This we can do by the multivariablef chain rule. Since the transformed Lagrangian is a function of the position and velocity coordinates $(q_i', \dot q_i')$, the multivariable chain rule yields:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \tilde{\mathcal{L}}}{\partial q_i} &amp;= \dfrac{\partial \mathcal{L}}{\partial q_i&#x27;} \dfrac{\partial  q_i&#x27;}{\partial q_i} + \dfrac{\partial \mathcal{L}}{\partial \dot q_i&#x27;} \dfrac{\partial \dot q_i&#x27;}{\partial q_i} \\
+\dfrac{\partial \tilde{\mathcal{L}}}{\partial \dot q_i} &amp;= \dfrac{\partial \mathcal{L}}{\partial \dot q_i&#x27;} \dfrac{\partial \dot q_i&#x27;}{\partial \dot q_i} = \underbrace{\dfrac{\partial \mathcal{L}}{\partial \dot q_i&#x27;} \dfrac{\partial q_i&#x27;}{\partial q_i}}_\text{we derived earlier} \\
+\end{align*}
+$$
+</p>
+<p>Where we used the result we derived earlier, $\dfrac{\partial \dot q_i'}{\partial \dot q_i} = \dfrac{\partial q_i'}{\partial q_i}$. We can now substitute these partial derivatives into the Euler-Lagrange equations:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \tilde{\mathcal{L}}}{\partial q_i}- \dfrac{d}{dt} \left(\dfrac{\partial \tilde{\mathcal{L}}}{\partial \dot q_i}\right)
+&amp;= \left(\dfrac{\partial \mathcal{L}}{\partial q_i&#x27;} \dfrac{\partial  q_i&#x27;}{\partial q_i} + \dfrac{\partial \mathcal{L}}{\partial \dot q_i&#x27;} \dfrac{\partial \dot q_i&#x27;}{\partial q_i} \right) 
+- \dfrac{d}{dt}\left(\dfrac{\partial \mathcal{L}}{\partial \dot q_i&#x27;} \dfrac{\partial q_i&#x27;}{\partial q_i}\right) \\
+&amp;= \left(\dfrac{\partial \mathcal{L}}{\partial q_i&#x27;} \dfrac{\partial  q_i&#x27;}{\partial q_i} + \dfrac{\partial \mathcal{L}}{\partial \dot q_i&#x27;} \dfrac{\partial \dot q_i&#x27;}{\partial q_i} \right) 
+- \dfrac{d}{dt}\dfrac{\partial \mathcal{L}}{\partial \dot q_i&#x27;}\bigg[\dfrac{\partial^2 q_i&#x27;}{\partial t \partial q_i} + \dfrac{\partial^2 q_i&#x27;}{\partial q_i^2}\underbrace{\dfrac{dq_i}{dt}}_{\dot q_i}\bigg] \\
+&amp;= \left(\dfrac{\partial \mathcal{L}}{\partial q_i&#x27;} \dfrac{\partial  q_i&#x27;}{\partial q_i} + \dfrac{\partial \mathcal{L}}{\partial \dot q_i&#x27;} \dfrac{\partial \dot q_i&#x27;}{\partial q_i} \right) 
+- \dfrac{d}{dt}\dfrac{\partial \mathcal{L}}{\partial \dot q_i&#x27;} \bigg[\dfrac{\partial}{\partial q_i}\underbrace{\left(\dfrac{\partial q_i&#x27;}{\partial t} + \dfrac{\partial q_i&#x27;}{\partial q_i} \dot q_i\right)}_{q_i&#x27;}\bigg] \\
+&amp;= \left(\dfrac{\partial \mathcal{L}}{\partial q_i&#x27;} \dfrac{\partial  q_i&#x27;}{\partial q_i} + \dfrac{\partial \mathcal{L}}{\partial \dot q_i&#x27;} \dfrac{\partial \dot q_i&#x27;}{\partial q_i} \right) - \dfrac{d}{dt}\left(\dfrac{\partial \mathcal{L}}{\partial \dot q_i&#x27;} \dfrac{\partial q_i&#x27;}{\partial q_i}\right)
+\end{align*}
+$$
+</p>
+<p>This becomes:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\left(\dfrac{\partial \mathcal{L}}{\partial q_i&#x27;} \dfrac{\partial  q_i&#x27;}{\partial q_i} + \cancel{\dfrac{\partial \mathcal{L}}{\partial \dot q_i&#x27;} \dfrac{\partial \dot q_i&#x27;}{\partial q_i}} \right) 
+- \underbrace{\dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot q_i&#x27;}\right) \dfrac{\partial q_i&#x27;}{\partial q_i} - \cancel{\dfrac{\partial \mathcal{L}}{\partial \dot q_i&#x27;} \dfrac{\partial \dot q_i&#x27;}{\partial q_i}}}_\text{product rule} \\
+=\dfrac{\partial \mathcal{L}}{\partial q_i&#x27;} \dfrac{\partial q_i&#x27;}{\partial q_i} - \left(\dfrac{d}{dt} \dfrac{\partial \mathcal{L}}{\partial \dot q_i&#x27;}\right)\dfrac{\partial q_i&#x27;}{\partial q_i} \\
+= \left[\dfrac{\partial \mathcal{L}}{\partial q_i&#x27;} - \dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot q_i&#x27;}\right)\right]\dfrac{\partial q_i&#x27;}{\partial q_i}
+\end{gather*}
+$$
+</p>
+<p>We have therefore shown that:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial \tilde{\mathcal{L}}}{\partial q_i} - \left(\dfrac{d}{dt} \dfrac{\partial \tilde{\mathcal{L}}}{\partial \dot q_i}\right) =
+\left[\dfrac{\partial \mathcal{L}}{\partial q_i&#x27;} - \dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot q_i&#x27;}\right)\right]\dfrac{\partial q_i&#x27;}{\partial q_i} = 0
+$$
+</p>
+<p>Which means that <em>either</em> one of the two following statements must be true:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial \mathcal{L}}{\partial q_i&#x27;} - \dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot q_i&#x27;}\right) = 0 \quad \text{or} \quad \dfrac{\partial q_i&#x27;}{\partial q_i} = 0
+$$
+</p>
+<p>But if the second is true, that means $q_i'$ is <em>independent</em> of $q_i$, which would be a logical contradiction, because it would imply that $q_i'$ <em>can't be expressed</em> as a coordinate transform of $q_i$. Thus, the only possibility is the first, meaning that under a <em>valid</em> coordinate transformation, the Lagrangian expressed in transformed coordinates still follows the same Euler-Lagrange equations:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial \mathcal{L}}{\partial q_i&#x27;} - \dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot q_i&#x27;}\right) = 0
+$$
+</p>
+<p>It may have taken a long way, but we have now <em>proved</em> the result that the Euler-Lagrange equations of motion are <strong>invariant under coordinate transformations</strong>. Why is this meaningful? Aside from the fact that it permits us to shift our coordinates by an additive constant (which is very helpful, for instance, if we want to define our potential energy relative to a specific reference point), it also means that <strong>we can choose arbitrary coordinates</strong> to express the Lagrangian; the choice of coordinates has <strong>no effect</strong> on the equations of motion. Thus, we can freely choose whichever coordinates are most suitable for the problem - polar coordinates for rotational symmetry, spherical coordinates for spherical symmetry, and so forth. By contrast, we <em>don't</em> have the freedom to choose our coordinates for Newton's differential equation (second law) $m \ddot{\mathbf{r}} = \mathbf{F}(\mathbf{r}, t)$, which changes form under coordinate transformations, meaning that there are all sorts of fictitious "forces" that we have to account for. The ability to generalize to all sorts of coordinate systems is a strength of Lagrangian mechanics that is absent from Newtonian mechanics, and makes it especially powerful in solving difficult problems.</p>
+<h3 id="constraints-and-generalized-coordinates">Constraints and generalized coordinates</h3>
+<p>We have seen that due to the invariance of the Euler-Lagrange equations under coordinate of transformations, we may always choose the most suitable coordinates for a problem. Now, let's ask ourselves a curious question: how many coordinates, exactly, do we need? It would appear that for a 3D problem that involves $n$ particles, we would need $3n$ coordinates (and therefore $3n$ Euler-Lagrange equations) to completely describe the motion of all the particles. However, the answer is not so simple, because the coordinates may not be independent from each other. Indeed, in many problems, we find that our coordinates are <em>related</em> by some form of constraint. We will consider a few problems before analyzing the general case to illustrate what this means.</p>
+<p>Consider the problem of a mass $m$ traveling around the origin in uniform circular motion at constant radius $R$. That is to say, the particle is <strong>constrained</strong> to move in a circle of radius $R$, which we can write as:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+x = R\cos \theta \\
+y = R\sin \theta
+\end{align*}
+$$
+</p>
+<p>where:</p>
+<p class="mathcell">
+$$
+r^2 = x^2 + y^2 = R^2
+$$
+</p>
+<p>We can choose to use conventional $(x, y)$ coordinates to solve the problem, but due to the symmetries of the problem arising from the <em>constraint on the system</em>, that is, $r = \text{const.}$ it is easier to use the angular coordinate $\theta$, since we know that (a) the problem is 2D, so there are are two nominal degrees of freedom but (b) the constraint reduces the two degrees of freedom to just <em>one</em> coordinate $\theta$ that is sufficient for the complete description of the system. Recall that the Lagrangian in 2D for a free particle is conventionally given by:</p>
+<p class="mathcell">
+$$
+\mathcal{L} = \dfrac{1}{2} m (\dot x^2 + \dot y^2)
+$$
+</p>
+<p>Since we have our constraints $x = R \cos \theta(t)$ and $y = R \sin \theta(t)$, where $\theta = \theta(t)$ (as it is a <em>coordinate</em> which is a variable, not a constant), by differentiating we have $\dot x = -R \sin \theta \dot \theta$ and $\dot y =  R \cos \theta \dot \theta$, and $\dot x^2 + \dot y^2 = (-R\sin \theta \dot \theta)^2 + (R \cos \theta \dot \theta)^2 = R^2 \dot \theta^2$. Thus:</p>
+<p class="mathcell">
+$$
+\mathcal{L} = \dfrac{1}{2} m R^2 \dot \theta^2
+$$
+</p>
+<p>Our Euler-Lagrange equation for our only coordinate $\theta$ reads:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \mathcal{L}}{\partial \theta} - \dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot \theta}\right) = 0
+\end{align*}
+$$
+</p>
+<p>Which, after taking the partial derivatives (we have $\dfrac{\partial \mathcal{L}}{\partial \theta} = 0$ and $\dfrac{\partial \mathcal{L}}{\partial \dot \theta} = m R^2 \dot \theta$) and substituting, we get:</p>
+<p class="mathcell">
+$$
+m R^2 \ddot \theta = 0 \quad \Rightarrow \quad \ddot \theta = 0
+$$
+</p>
+<p>Which has the solution:</p>
+<p class="mathcell">
+$$
+\theta(t) = \theta_0 + \omega_0 t
+$$
+</p>
+<p>Similarly, consider a ball of mass $m$ that is confined to move along a bar that rotates around the $xy$ plane with constant angular velocity $\omega$. Thus we have the constraint that the ball is confined to travel along the bar:</p>
+<p class="mathcell">
+$$
+x(t)^2 + y(t)^2 = r(t)^2
+$$
+</p>
+<p>Where $r(t) \neq \text{const.}$ but is subject to the above constraint. Meanwhile, we also note that due to the constraint, we have $\theta(t) = \omega t$.</p>
+<p class="mathcell">
+$$
+\begin{align*}
+x &amp;= r(t) \cos \theta(t) \\
+&amp;= r(t) \cos \omega t \\
+y &amp;= r(t) \sin \theta(t) \\
+&amp;= r(t) \sin \omega t
+\end{align*}
+$$
+</p>
+<p>Thus we have, for $\dot x$ and $\dot y$:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dot x = \dot r \cos \omega t - r\omega \sin \omega t \\
+\dot y = \dot r \sin \omega t + r\omega \cos \omega t
+\end{align*}
+$$
+</p>
+<p>Where here we must use the product rule when differentiating since $r$ is a <em>function</em> of $t$, not a constant. Substituting into the Lagrangian, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{L} &amp;= \dfrac{1}{2} m(\dot x^2 + \dot y^2) \\
+&amp;= \dfrac{1}{2} m [(\dot r \cos \omega t - r\omega \sin \omega t)^2 + (\dot r \sin \omega t + r\omega \cos \omega t)^2] \\
+&amp;= \dfrac{1}{2} m[\dot r^2 \cos^2 \omega t - 2 \dot r r \omega \sin \omega t \cos \omega t + r^2 \omega^2 \sin^2 \omega t \\
+&amp;\quad \quad + \dot r \sin^2 \omega t + 2\dot r r \omega\sin \omega t \cos \omega t + r^2 \omega^2 \cos^2 \omega t] \\
+&amp;=\dfrac{1}{2} m[\dot r\cos^2 \omega t \cancel{- 2 \dot r r \sin \omega t \cos \omega t + 2\dot r \sin \omega t \cos \omega t} + 2 r^2 \omega^2 \sin^2 \omega t] \\
+&amp;= \dfrac{1}{2} m(\dot r^2 \cos^2 \omega t + \dot r \sin^2 \omega t + r^2 \omega^2 \sin^2 \omega t) \\
+&amp;= \dfrac{1}{2} m(\dot r^2 \cancel{(\cos^2 \omega t + \sin^2 \omega t)}^1 + r^2 \omega^2 \cancel{(\sin^2 \omega t)}^1 \\
+&amp;= \dfrac{1}{2} m (\dot r^2 + r^2 \omega^2)
+\end{align*}
+$$
+</p>
+<p>Let us now take a careful look at our Lagrangian and write it in a form that reveals more information about the physics of the problem:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{L} &amp;= \dfrac{1}{2} m(\dot r^2 + r^2 \omega^2) \\
+&amp;= \underbrace{\dfrac{1}{2} m\dot r^2}_\text{standard kinetic energy} + \underbrace{\dfrac{1}{2} m r^2 \omega^2}_\text{angular kinetic energy}
+\end{align*}
+$$
+</p>
+<p>Thus we find that our Lagrangian consists of a kinetic energy and angular kinetic energy term; this second angular kinetic energy term is what we would consider the "centripetal force" in Newtonian mechanics. Since we only have one coordinate, that is, $r(t)$, we only have one Euler-Lagrange equation:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial \mathcal{L}}{\partial r} - \dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot r}\right) = 0
+$$
+</p>
+<p>Which, after the taking the derivatives and substitution, results in:</p>
+<p class="mathcell">
+$$
+\ddot r^2 + \omega^2 r = 0
+$$
+</p>
+<p>This is simply the differential equation of simple harmonic motion and therefore has a general solution in the form:</p>
+<p class="mathcell">
+$$
+r(t) = A \cos \omega t + B \sin \omega t
+$$
+</p>
+<p>From both problems, we have found a shared (and universal) principle: a constrained system arises when there are two or more coordinates that are dependent on each other, as they are related by some type of constraint. When this occurs, we may eliminate the inter-dependent coordinates until only independent coordinates remain. The coordinates left are called the <strong>generalized coordinates</strong>, and they are the most suitable set of coordinates to completely describe the motion of each object in the system.</p>
+<p>So, to answer our question at the start, an <em>unconstrained</em> 3-dimensional system of $n$ bodies would indeed require $3n$ generalized coordinates to completely describe the motion of each object in the system, but a <em>constrained</em> 3-dimensional system of $n$ bodies with $m$ constraints would only require $3n-m$ generalized coordinates. This is a specific case (in 3 dimensions) of a more general principle:</p>
+<blockquote>
+<p><strong>A constrained $n$-body system in $k$ dimensions with $m$ constraints needs $kn-m$ generalized coordinates to describe the motion of all bodies in the system. The number of generalized coordinates is equal to the <em>degrees of freedom</em> of the system.</strong></p>
+</blockquote>
+<p>This is why, in the case of uniform circular motion, which was a one-body system in two dimensions (so $n=1, k = 2$), our single constraint $x^2 + y^2 = R^2$ reduced the number of coordinates from our two original coordinates $x, y$ to $kn -m = (2)(1) - (1) = 1$ coordinate $\theta$. The number of Euler-Lagrange equations is always equal to the number of coordinates, and since we only had one generalized coordinate, we only needed one Euler-Lagrange equation and thus ended up with one equation of motion ($\ddot \theta = 0$).</p>
+<p>We will now prove <em>why</em> that is the case. To start, there are <em>two general kinds</em> of constraints: constraints that are holomonic and non-holomonic constraint. A <em>non-holonomic constraint</em> is a function that relates position, velocity and time (here we use generalized coordinates $x_i, \dot x_i$):</p>
+<p class="mathcell">
+$$
+F(x_i, \dot x_i, t)  = 0
+$$
+</p>
+<p>A holomonic constraint has a stricter requirement that we will now examine. A general constraint can also be written in the form:</p>
+<p class="mathcell">
+$$
+\sum_i A_i \dot x_i + B = 0
+$$
+</p>
+<p>This is in general <em>non-integrable</em> with the <em>exception</em> if:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+A_i = \dfrac{\partial}{\partial x_i} f(x_i, t),
+&amp; B = \dfrac{\partial}{\partial t}f(x_i, t)
+\end{matrix*}
+$$
+</p>
+<p>Therefore, substituting, we have:</p>
+<p class="mathcell">
+$$
+\sum_i A_i \dot x_i + B = \sum_i \dfrac{\partial f}{\partial x_i}\dot x_i + \dfrac{\partial f}{\partial t} = 0 \Rightarrow \dfrac{d f(x_i, t)}{dt} = 0
+$$
+</p>
+<p>Where $\dfrac{d f(x_i, t)}{dt} = 0$ is a <em>total derivative</em>. Therefore, a holomonic constraint <em>with this specific restriction</em> must then satisfy $f = f(x_i, t) = 0$ and naturally leads to integrability.</p>
+<p>But what if the constraint is non-holomonic? We may then use the method of <em>Lagrange multipliers</em>, which are a natural way to express constraints in a mathematical form. Consider a Lagrangian written in an equivalent form:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\tilde{\mathcal{L}} &amp;= \mathcal{L} + \sum_i \lambda_i F_i \\ 
+&amp;=\mathcal{L}(x_i, \dot x_i, t) + \sum_i \lambda_i F_i(x_i, \dot x_i, t)
+\end{align*}
+$$
+</p>
+<p>where $F_i$ is a generalized constraint (i.e. we can have several constraints $F_1, F_2, \dots F_n$ that we represent with the generalized $F_i$) and $\lambda_i$ is a <em>Lagrange multiplier</em>. (And yes, this is the same thing as the Lagrange multiplier that we encounter in <a href="https://jackysci.com/multivariable-calculus/">introductory multivariable calculus</a>). It may not be obvious <em>why</em> this is equivalent to the standard Lagrangian $\mathcal{L}(x_i, \dot x_i, t)$. But remember that we saw that a non-holonomic constraint obeys:</p>
+<p class="mathcell">
+$$
+F_i (x_i, \dot x_i, t) = 0
+$$
+</p>
+<p>Therefore if we substitute the Lagrangian $\tilde{\mathcal{L}}$ into the Euler-Lagrange equations, we have</p>
+<p class="mathcell">
+$$
+\dfrac{\partial \mathcal{L}}{\partial \dot x_i} + \dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot x_i}\right)
+- \sum_i \left(\lambda_i(t) \dfrac{\partial F_i}{\partial x_i}
+- \dfrac{d}{dt}\left[\lambda_i(t) \dfrac{\partial F_i}{\partial \dot x_i}\right]\right) = 0
+$$
+</p>
+<p>This is the <em>generalized Euler-Lagrange equation</em> that incorporates the non-holomonic constraints $F_i(x, \dot x_i, t)  = 0$. But the <em>much easier</em> and completely equivalent form (remember, because of how we showed that the Euler-Lagrange equation is symmetric under transformations) is given by:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial \tilde{\mathcal{L}}}{\partial q_i} - \dfrac{d}{dt} \left(\dfrac{\partial \tilde{\mathcal{L}}}{\partial \dot q_i}\right) = 0
+$$
+</p>
+<p>Thus, by simply using the modified version of the Euler-Lagrange equations that contains a transformed Lagrangian $\mathcal{L} \to \mathcal{L} + \sum_i \lambda_i F_i$, we are able to solve for constrained systems (relatively) straightforwardly!</p>
+<h3 id="rolling-without-slipping-with-constraints">Rolling without slipping with constraints</h3>
+<p>Consider a problem where this form of the Euler-Lagrange equation is very useful: the problem of a rolling disk of radius $R$ and mass $m$ moving along the $x$ axis that <strong>rolls without slipping</strong> down an inclined plane due to static friction between the disk and the plane. For this problem, we choose our $x$ axis to be parallel to the surface of the inclined plane. The inclined plane is angled at angle $\phi = \text{const.}$ with respect to the horizontal:</p>
+<img class="diagram" src="/advanced-classical-mech/part-2/../rolling-without-slipping-lagrangian.excalidraw.svg" alt="A diagram showing a disk of radius R rolling down an inclined plane, where the x coordinate points down the plane and is parallel to it, and where theta is the angle of the disk&#x27;s rotation" />
+<p>The consequence of rolling without slipping is that the translational velocity $v_t$ is equal to the rotational velocity about the center of mass $v_{CM}$ (see the <a href="https://jackysci.com/classical-dynamics/">classical dynamics guide</a> for more in-depth explanations on why this is the case). We therefore have:</p>
+<p class="mathcell">
+$$
+v_t = v_{CM}
+$$
+</p>
+<p>But we also know that $v_t = \dot x$ (since it is translational i.e. along the $x$ axis) and $v_{CM} = R\dot \theta$. Thus we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dot v &amp;= R \dot \theta \\ &amp;\Rightarrow \int \dot x \, dt 
+= \int R\, \dot \theta\, dt \\
+&amp; \Rightarrow x =  R \theta
+\end{align*}
+$$
+</p>
+<p>Thus our constraint $f$ can be written as $f(x, \theta) = x - R \theta = 0$, and thus with a rearrangement and differentiating both sides, we have $\dot x = R \dot \theta$. We may now write down the kinetic and potential energies:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+K &amp;= \dfrac{1}{2} m \dot x^2 + \dfrac{1}{2} I \underbrace{\omega^2}_{\dot \theta^2} \\
+U &amp;= mg(L - x) \sin \phi
+\end{align*}
+$$
+</p>
+<p>Where $I$ is the moment of inertia, and for our disk it is $I = \dfrac{1}{2} mR^2$ about its axis of rotation. Thus we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{L} &amp;= K - U \\
+&amp;= 
+\dfrac{1}{2} m \dot x^2 + \dfrac{1}{2} I \dot \theta^2 -mg(L - x) \sin \phi
+\end{align*}
+$$
+</p>
+<p>This is, however, not the most optimal set of coordinates, because it involves two coordinates $(x, \theta)$, but $x$ and $\theta$ are <em>not</em> independent coordinates, since (as we found before) we had $\dot x = R \dot \theta$. Therefore, the <em>generalized coordinates</em> of the problem - the set of the most optimal <em>independent</em> coordinates - would be given by just one coordinate $\theta$. If we substitute in our constraint $\dot x = R \dot \theta$ (and the associated non-differential form $x = R \theta$), then we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{L} &amp;= \dfrac{1}{2} m R^2 \dot \theta^2 + \dfrac{1}{2} I \dot \theta^2 -mg(L - R \theta) \sin \phi \\
+&amp;= \dfrac{1}{2} m R^2 \dot \theta^2 + \dfrac{1}{2} I \dot \theta^2 -mgL \sin \phi + mg R \theta \sin \phi 
+\end{align*}
+$$
+</p>
+<p>Remember that any constant-valued terms can always be dropped from the Lagrangian, so the $mgL \sin \phi$ term is not <em>technically</em> necessary, so we can drop it to get:</p>
+<p class="mathcell">
+$$
+\mathcal{L} = \dfrac{1}{2} m R^2 \dot \theta^2 + \dfrac{1}{2} I \dot \theta^2 + (mg R \sin \phi)\theta
+$$
+</p>
+<p>We can then take the derivatives, find the Euler-Lagrange equations, and thereby get the equations of motion. This is indeed <em>one way</em> to solve the problem, and it does give all the correct results: to use our constraints to reduce the number of coordinates into the least number necessary to describe the system. In this case, our remaining set of coordinates automatically <em>incorporates</em> our constraints.</p>
+<p>But the more powerful way to solve is using the Lagrange multipliers. This is possible because our constraint is <em>holonomic</em> in nature. To use the method of Lagrange multipliers, we write a transformed Lagrangian in the form $\tilde{\mathcal{L}} = \mathcal{L} + \sum_n \lambda_n F_n$, where $F_n = F_1, F_2, \dots$ are equations in the form $F(q, \dot q, t) = 0$ that express each of the constraints in terms of the coordinates. From this transformed Lagrangian, the Euler-Lagrange equations become:</p>
+<p class="mathcell">
+$$
+\dfrac{d}{dt} \left(\dfrac{\partial \tilde{\mathcal{L}}}{\partial \dot q_i}\right) - \dfrac{\partial \tilde{\mathcal{L}}}{\partial q_i} = 0
+$$
+</p>
+<p>We can alternatively write the modified Euler-Lagrange equations for Lagrange multipliers in terms of the original Lagrangian:</p>
+<p class="mathcell">
+$$
+\dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot q_i}\right) - \dfrac{\partial \mathcal{L}}{\partial q_i} - \sum_n \lambda_n \dfrac{\partial F}{\partial q_i} = 0
+$$
+</p>
+<p>Where our original Lagrangian, remember, was:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{L} &amp;= \dfrac{1}{2} m \dot x^2 + \dfrac{1}{2} I \dot \theta^2 -mg(L - x) \sin \phi \\
+&amp;=\dfrac{1}{2} m \dot x^2 + \dfrac{1}{2} I \dot \theta^2 + mg\,x \sin \phi
+\end{align*}
+$$
+</p>
+<p>(We dropped the constant-valued term as we did before). Since we only have one constraint, we have only one Lagrange multiplier, so we have:</p>
+<p class="mathcell">
+$$
+\dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot q_i}\right) - \dfrac{\partial \mathcal{L}}{\partial q_i} - \lambda \dfrac{\partial F}{\partial q_i} = 0
+$$
+</p>
+<p>Remember that $F(q, \dot q, t) = 0$ is the standard form of a constraint here, so in our case that would be $F(x, \theta) = x - R \theta = 0$. If we find the derivatives of our (untransformed) Lagrangian using the modified Euler-Lagrange equations we showed above and substitute them in (not shown here), the equations of motion we find are given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+m \ddot x - mg \sin \phi - \lambda = 0 \\
+I \ddot \theta + R \lambda = 0
+\end{align*}
+$$
+</p>
+<p>Let us now solve for $\lambda$. By rearranging the second equation we have $\lambda = -\dfrac{I\ddot x}{R^2}$. Combining this with the first equation, we have:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\ddot x \left(m + \dfrac{I}{R^2}\right) = mg \sin \phi \\
+\ddot x = \dfrac{mg \sin \phi}{m + I&#x2F;R^2} = \text{const.} \\
+\lambda = -\dfrac{I\ddot x}{R^2} = -\dfrac{I}{R^2}\dfrac{mg \sin \phi}{m + I&#x2F;R^2}
+\end{gather*}
+$$
+</p>
+<p>As our object is a rolling disk, which has $I = \dfrac{1}{2} mR^2$, the Lagrange multiplier $\lambda$ and our expression for $\ddot x$ become respectively:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\ddot x &amp;= \dfrac{mg\sin \phi}{m + \frac{1}{2} mR^2&#x2F;R^2} = \dfrac{2}{3} g \sin \phi \\
+\lambda &amp;= -\dfrac{I \ddot x}{R^2} = -\dfrac{1}{3} mg \sin \phi
+\end{align*}
+$$
+</p>
+<p>But notice that the units of $\lambda$ are in fact that of <em>force</em>. So this suggests a physical interpretation for $\lambda$ - it gives the <em>force of friction</em> that is maintaining the disk's motion to roll without slipping! Indeed, this is why we denoted our constraint as $F(q_i, \dot q_i, t)$ earlier, because the constraint often represents a <em>constraint force</em>. The constraint force here - friction - <em>modifies</em> the disk's trajectory such that its original equation of motion $\ddot x = g\sin \phi$ becomes $\ddot x = g \sin \phi + \lambda/m = \dfrac{2}{3} g \sin \phi$. Note that we would not be able to find this critical aspect of the system if we just solved in the standard Lagrangian method (that we showed before doing Lagrange multipliers) where we only substitute in the constraint! This gives a major advantage to solving constrained systems with Lagrangian mechanics: by incorporating the constraints as <em>Lagrange multipliers</em>, we can give physical interpretations as to what is <em>causing</em> the constraint rather than second-guessing ourselves.</p>
+<h2 id="noether-s-theorem-conservation-laws-from-lagrangian-mechanics">Noether's theorem: conservation laws from Lagrangian mechanics</h2>
+<p>We know from Newtonian mechanics that there exist certain <strong>conserved quantities</strong>, most particularly energy, momentum, and angular momentum. We will now show how these follow naturally in Lagrangian mechanics if we take the Lagrangian to satisfy some specific conditions, and thus resultingly have a Lagrangian in a particular form.</p>
+<blockquote>
+<p><strong>Note:</strong> This is also known as <strong>Noether's theorem</strong>, by the mathematician <a href="https://en.wikipedia.org/wiki/Emmy_Noether">Emmy Noether</a>. If you have time, I highly recommend reading more about Noether; she is certainly one of greatest mathematicians in history and her story as a female and Jewish mathematician in the 19th century makes it all the more impressive.</p>
+</blockquote>
+<h3 id="energy-conservation">Energy conservation</h3>
+<p>For energy conservation, <strong>four conditions</strong> are required, and they are all interrelated:</p>
+<table><thead><tr><th>Conserved quantity</th><th>Required condition #</th><th>Necessary condition (s)</th><th>Textual description</th></tr></thead><tbody>
+<tr><td>Energy</td><td>1</td><td>$\dfrac{\partial \mathcal{L}}{\partial t} = 0$</td><td>Lagrangian is <em>invariant</em> under a transformation in time. <strong>Note:</strong> this does <strong>not</strong> mean $\mathcal{L}$ is time-independent, but it does mean that the Lagrangian is <em>constant</em> in time. That is to say, changes in kinetic energy must be countered by changes in potential energy such that $\mathcal{L}$ does not change in time)_.</td></tr>
+<tr><td>Energy</td><td>2</td><td>$K = f(\dot q_i)$</td><td>The kinetic energy is a function of the time-derivatives of generalized coordinates $\dot q_i$ <em>only</em>, and does not depend on time or $q_i$.</td></tr>
+<tr><td>Energy</td><td>3</td><td>$U = f(q_i)$</td><td>The potential energy is only dependent on the generalized coordinates $q_i$, <em>not</em> on time or $\dot q_i$. That is, the potential energy is velocity- and time-independent</td></tr>
+<tr><td>Energy</td><td>4</td><td>$F_i(\dot q, \dot q_i) = 0$</td><td>There are no time-dependent constraints on the system.</td></tr>
+</tbody></table>
+<p>We may thus write the generalized Lagrangian for a time-invariant Lagrangian that conserves energy as:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{L} &amp;= \mathcal{L}(q_i, \dot q_i) \\
+&amp;= \sum_j \sum_i a_{ij} \dot q_i \dot q_j - U(q_i) \\
+&amp;= \sum_j \sum_i\underbrace{a_{ij} \dot q_i \dot q_j}_\text{kinetic} - \underbrace{U(q_i)}_\text{potential}
+\end{align*}
+$$
+</p>
+<p>Where $a_{ij}$ is a coefficient matrix that ensures the units for kinetic energy are consistent - in the special case of Cartesian coordinates, we have $a_{ij} = \dfrac{1}{2} m \delta_{ij}$ which reproduces the familiar expression $K = \dfrac{1}{2} m (\dot x^2 + \dot y^2 + \dot z^2)$.</p>
+<blockquote>
+<p><strong>Note:</strong> we can write our time-invariant Lagrangian more compactly using the Einstein summation convention as $\mathcal{L}(q_i, \dot q_i)=a_{ij} \dot q^i \dot q^j - U(q_i)$. Note that we work in Euclidean space so $\dot q^i = \dot q_i$. We will however put the sums back in during the remaining portions of this section for clarity. The expression for the Lagrangian is <em>not necessarily</em> $K - U$ in other coordinate systems.</p>
+</blockquote>
+<p>We may show that this is indeed invariant of time as follows. If we take $\dfrac{\partial {\mathcal{L}}}{\partial t}$, and <em>if</em> we assume that the Lagrangian is the form above, we find that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \mathcal{L}}{\partial t} &amp;= \dfrac{\partial}{\partial t}\mathcal{L}(q_i, \dot q_i) \\
+&amp;= \sum_i \dfrac{\partial \mathcal{L}}{\partial q_i} \dot q_i + \dfrac{\partial \mathcal{L}}{\partial \dot q_i} \ddot q_i \\
+&amp;= \sum_i \left[\dfrac{d}{dt}\left(\dfrac{\partial \mathcal{L}}{\partial \dot q_i}\right)\right]q_i + \dfrac{\partial \mathcal{L}}{\partial \dot q_i} \ddot q_i
+\end{align*}
+$$
+</p>
+<p>Note that the last step follows from the Euler-Lagrange equations $\dfrac{\partial \mathcal{L}}{\partial q_i} = \dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial q_i}\right)$. Now, if we apply the product rule backwards, we can find that the previous expression arises from taking the (total) derivative of:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial \mathcal{L}}{\partial t} =\sum_i \underbrace{\left[\dfrac{d}{dt}\left(\dfrac{\partial \mathcal{L}}{\partial \dot q_i}\right)\right]q_i + \dfrac{\partial \mathcal{L}}{\partial \dot q_i} \ddot q_i}_\text{expanded product rule} = \underbrace{\dfrac{d}{dt} \left[\dot q_i \dfrac{\partial \mathcal{L}}{\partial \dot q_i}\right]}_\text{total derivative}
+$$
+</p>
+<p>Therefore we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \mathcal{L}}{\partial t} = \dfrac{d}{dt} \left[\dot q_i \dfrac{\partial \mathcal{L}}{\partial \dot q_i}\right] \\
+\dfrac{d}{dt} \left[\dot q_i \dfrac{\partial \mathcal{L}}{\partial \dot q_i}\right] - \dfrac{d\mathcal{L}}{dt} = 0 \\
+\dfrac{d}{dt} \left[\dot q_i \dfrac{\partial \mathcal{L}}{\partial \dot q_i} - \mathcal{L}(q_i, \dot q_i)\right] = 0
+\end{align*}
+$$
+</p>
+<p>But if the derivative is zero, then the quantity in the brackets must be a constant! We call this constant the <strong>Hamiltonian</strong>, and it has units of energy:</p>
+<p class="mathcell">
+$$
+H(q_i, \dot q_i) = \dot q_i \dfrac{\partial \mathcal{L}}{\partial \dot q_i} - \mathcal{L}(q_i, \dot q_i)
+$$
+</p>
+<p>It is tempting to call this constant the <strong>total energy</strong>, and in the case of a Lagrangian that is invariant in transformations of time this is indeed true (although not true in the general case when the Lagrangian does change in time. But let us rigorously show that the Hamiltonian is the total energy when we have a time-invariant Lagrangian. To do so, recall that our time-invariant Lagrangian is given by:</p>
+<p class="mathcell">
+$$
+\mathcal{L}(q_i, \dot q_i)= \sum_j \sum_i a_{ij} \dot q_i \dot q_j - U(q_i)
+$$
+</p>
+<p>Thus, if we explicitly compute the first term of the Hamiltonian $\dot q_i \dfrac{\partial \mathcal{L}}{\partial \dot q_i}$, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dot q_i \dfrac{\partial \mathcal{L}}{\partial \dot q_i} &amp;= \dot q_i \dfrac{\partial}{\partial \dot q_i}\bigg[\underbrace{\sum_j \sum_i}_\text{dummy indices} a_{ij} \dot q_i \dot q_j - U(q_i)\bigg] \\
+&amp;= \dot q_i \dfrac{\partial}{\partial \dot q_i}\bigg[\underbrace{\sum_i a_{ii} \dot q_i \dot q_i}_\text{change indices} - U(q_i)\bigg] \\
+&amp;= 2\dot q_i \underbrace{a_{ii}}_\text{const.}\sum_i \dot q_i  \\
+&amp;= 2 \sum_i \sum_j a_{ij} \dot q_i  \dot q_j \\
+&amp;= 2K
+\end{align*}
+$$
+</p>
+<p>Thus we have obtained the important result $\dot q_i \dfrac{\partial \mathcal{L}}{\partial \dot q_i} = 2K$, that is, <em>twice the kinetic energy</em>. Note that in the previous steps, since $i, j$ are dummy indices (summation indices), we can freely swap/rename them, compute the derivative, and then swap them back - it does not change the mathematics at all. In addition, we were able to factor out $a_{ii}$ due to the fact that it is a <em>constant-coefficient matrix</em> that ensures the kinetic energy has the correct units. Substituting our results into the Hamiltonian, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+H(q_i, \dot q_i) &amp;= \dot q_i \dfrac{\partial \mathcal{L}}{\partial \dot q_i} - \mathcal{L}(q_i, \dot q_i) \\
+&amp;= 2K - (K - U) \\
+&amp;= K + U \\
+&amp; = E
+\end{align*}
+$$
+</p>
+<p>Thus we have shown that <em>when the Lagrangian is constant in time</em>, the Hamiltonian reduces to the <strong>total energy</strong> of the system.</p>
+<h3 id="momentum-conservation">Momentum conservation</h3>
+<p>For momentum conservation, unlike energy conservation, we have only one requirement for the Lagrangian:</p>
+<table><thead><tr><th>Conserved quantity</th><th>Required condition #</th><th>Necessary condition (s)</th><th>Textual description</th></tr></thead><tbody>
+<tr><td>Momentum</td><td>1</td><td>$\dfrac{\partial \mathcal{L}}{\partial q_i} = 0$</td><td>The Lagrangian is invariant under translations in space (again, it <em>can</em> have spatial dependence, but the Lagrangian must be <em>constant</em> in time)</td></tr>
+</tbody></table>
+<p>Let us show why this is the case. If we substitute the momentum conservation relation into the Euler-Lagrange equations, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot q_i}\right) &amp;= \dfrac{\partial \mathcal{L}}{\partial q_i} \\
+\dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot q_i}\right) &amp;= \cancel{\dfrac{\partial \mathcal{L}}{\partial q_i}}^0 \\
+\dfrac{d}{dt} \underbrace{\left(\dfrac{\partial \mathcal{L}}{\partial \dot q_i}\right)}_\text{constant} &amp;= 0
+\end{align*}
+$$
+</p>
+<p>Again, since the derivative of a constant is zero, then the quantity inside the brackets $\dfrac{\partial \mathcal{L}}{\partial \dot q_i}$ must be a <strong>constant</strong>. We call this quantity the <strong>generalized momentum</strong>, and we express it as:</p>
+<p class="mathcell">
+$$
+p_i = \dfrac{\partial \mathcal{L}}{\partial \dot q_i}
+$$
+</p>
+<p>Note that if we substitute $p_i = \dfrac{\partial \mathcal{L}}{\partial \dot q_i}$ into $\dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot q_i}\right)$ we have:</p>
+<p class="mathcell">
+$$
+\dfrac{dp_i}{dt} = 0
+$$
+</p>
+<p>We can write it in a more suggestive form as:</p>
+<p class="mathcell">
+$$
+\dfrac{\vec dp}{dt} = \vec F = 0
+$$
+</p>
+<p>Therefore, we come to the conclusion that when the <em>total (net) force on a system is zero</em>, we have the <strong>conservation of momentum</strong>, just as we'd expect from Newton's laws.</p>
+<h3 id="angular-momentum-conservation">Angular momentum conservation</h3>
+<p>From the generalized momentum and examining a special case, we can show that <em>angular momentum</em> is also a conserved quantity. Consider a (simple) pendulum of mass $m$ hanging on a string of length $\ell$, where $y$ is the horizontal (left-right) and $x$ is the vertical (up-down) axis where $+x$ points in the <em>downwards</em> direction. We therefore have $x = \ell \sin \theta, y = -\ell \cos \theta$ and $U = mgy = -mg \ell \cos \theta$ and thus we find that the Lagrangian becomes:</p>
+<p class="mathcell">
+$$
+\mathcal{L} = \dfrac{1}{2} m \ell^2 \dot \theta^2 + mgl \cos \theta
+$$
+</p>
+<p>In this case we have $\dfrac{\partial \mathcal{L}}{\partial \theta} = -mg\ell \sin \theta \neq 0$, so momentum is definitely not conserved. But note that if we compute the generalized momentum, we find that:</p>
+<p class="mathcell">
+$$
+p_i = \dfrac{\partial \mathcal{L}}{\partial \dot \theta} = m \ell^2 \dot \theta
+$$
+</p>
+<p>Thus, even though momentum is <em>not</em> conserved, we still have a generalized momentum that is <em>independent of time</em> (and thus $\dfrac{dp_i}{dt} = 0$).  Notice that in this case the generalized momentum depends on the $\dot \theta$ coordinate, and therefore the generalized momentum "points" in the $\theta$ direction. Thus, we call $p_i$ a special name - the <strong>angular momentum</strong>, and this is indeed <em>conserved</em>.</p>
+<blockquote>
+<p><strong>Note:</strong> the simple (free) pendulum also obeys <em>energy</em> conservation. However, a <em>driven pendulum</em> (where the pendulum is driven by an external force that produces acceleration $a$) <em>does not</em> obey energy conservation.</p>
+</blockquote>
+<p>We may derive the conservation of angular momentum in the more general case by requiring that the Lagrangian exhibit <strong>invariance under rotations</strong>. For this, consider transforming the Lagrangian $\mathcal{L}$ such that:</p>
+<p class="mathcell">
+$$
+\mathcal{L}(\mathbf{r}) \to \mathcal{L}(\mathbf{r} + d\vec \theta \times \dot{\mathbf{r}})
+$$
+</p>
+<p>It may not be obvious at first as to how this describes a rotation. But remember that when an object undergoes rotation, the infinitesimal <em>arc length</em> it traverses is $d\mathbf{r} = d\vec \theta \times \mathbf{r}$ (this comes from the arc length formula $s = r \theta$). Thus, if we shift the Lagrangian with our infinitesimal rotation, the difference between the transformed Lagrangian and the original Lagrangian is given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+d\mathcal{L} &amp;= \mathcal{L}(\mathbf{r} + d\mathbf{r}) - \mathcal{L}(\mathbf{r}) \\
+&amp;=\mathcal{L}(\mathbf{r} + d\vec \theta \times \mathbf{r}) - \mathcal{L}(\mathbf{r})
+\end{align*}
+$$
+</p>
+<p>Which we can write in terms of coordinates $x_i$ as:</p>
+<p class="mathcell">
+$$
+d\mathcal{L} = \mathcal{L}(x_i + d\vec \theta \times x_i) - \mathcal{L}(x_i)
+$$
+</p>
+<p>Now, we also know (from the total differential formula in multivariable calculus) that:</p>
+<p class="mathcell">
+$$
+d\mathcal{L} = \sum_i \dfrac{\partial \mathcal{L}}{\partial x_i} dx_i + \dfrac{\partial \mathcal{L}}{\partial \dot x_i} d\dot x_i
+$$
+</p>
+<p>This may not look all that enlightening yet. But remember that in our definitions of the generalized momentum, we said that:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+p_i = \dfrac{\partial \mathcal{L}}{\partial \dot x_i}, &amp; \dot p_i = \underbrace{\dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot x_i}\right) =\dfrac{\partial \mathcal{L}}{\partial x_i}}_\text{from Euler-Lagrange eqs.}
+\end{matrix*}
+$$
+</p>
+<p>The second identity may be slightly confusing, but the reason why the time derivative of the generalized momentum is equal to the spatial derivative of the Lagrangian is due to the Euler-Lagrange equations:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial \mathcal{L}}{\partial x_i} = \dfrac{d}{dt} \left(\dfrac{\partial \mathcal{L}}{\partial \dot x_i}\right)
+$$
+</p>
+<p>Thus, substituting our definitions, we can rewrite our expression for the total differential of the Lagrangian as:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+d\mathcal{L} &amp;= \sum_i \dfrac{\partial \mathcal{L}}{\partial x_i} dx_i + \dfrac{\partial \mathcal{L}}{\partial \dot x_i} d\dot x_i \\
+&amp;= \sum_i \dot p_i\, dx_i + p_i\, d\dot x_i \\
+&amp;= \sum_i \underbrace{\dfrac{d}{dt} (p_i \, dx_i)}_\text{reverse product rule}
+\end{align*}
+$$
+</p>
+<p>Where in the last line, we applied the product rule in reverse to collapse the two terms into one term. To make this result more illustrative, note that in more conventional vector notation it can also be written as:</p>
+<p class="mathcell">
+$$
+d\mathcal{L} = \dfrac{d}{dt}(\mathbf{p} \cdot d\mathbf{r}) = \dfrac{d}{dt}(\mathbf{p} \cdot (d\vec \theta \times \mathbf{r})) = d\vec \theta \cdot \dfrac{d}{dt} (\mathbf{r} \times \mathbf{p})
+$$
+</p>
+<p>Where the last simplification comes from the vector triple product identity $\mathbf{A} \cdot (\mathbf{B} \times \mathbf{C}) = \mathbf{B} \cdot (\mathbf{C} \times \mathbf{A})$. Now, since we required that our Lagrangian stays <em>invariant</em> under rotational transformations, then $d\mathcal{L}$ <em>must</em> be zero. Thus:</p>
+<p class="mathcell">
+$$
+d\mathcal{L} = d\vec \theta \cdot \dfrac{d}{dt} (\mathbf{r} \times \mathbf{p}) = 0
+$$
+</p>
+<p>This can either be true if $d\vec \theta = 0$ (but that would be nonsensical since that means there wasn't any rotation!) <em>or</em> if $\dfrac{d}{dt}(\mathbf{r} \times \mathbf{p}) = 0$. It is the latter case which is important to us, because whenever a derivative is zero, that can only mean that we have a constant:</p>
+<p class="mathcell">
+$$
+\dfrac{d}{dt}(\mathbf{r} \times \mathbf{p}) = 0 \Rightarrow \mathbf{r} \times \mathbf{p} = \text{const.}
+$$
+</p>
+<p>This constant is a vector since the cross product always gives a vector, and it has a familiar name: $\mathbf{L}$, the <strong>angular momentum</strong>. Thus, any system that possesses some form of symmetry about an axis of rotation (.e. uniform circular motion in the $xy$ plane) obeys the <strong>conservation of angular momentum</strong>.</p>
+<h3 id="a-summary-of-noether-s-theorem">A summary of Noether's theorem</h3>
+<p>Based on our derivations, we have seen that the Lagrangian's symmetries under various types of transformations lead to conservation laws. Specifically:</p>
+<ul>
+<li>If the Lagrangian is invariant (constant) in <em>time</em>, then the system it describes satisfies the <strong>conservation of energy</strong></li>
+<li>If the Lagrangian is invariant (constant) in <em>space</em>, then the system it describes satisfies the <strong>conservation of momentum</strong></li>
+<li>If the Lagrangian is invariant (constant) on <em>rotations</em>, then the system it describes satisfies the <strong>conservation of angular momentum</strong></li>
+</ul>
+<p>This was the genius realization of Noether: If we demand the <strong>invariance</strong> of the Lagrangian under a particular transformation, a <strong>conserved quantity</strong> always arises. In more general terms, given an arbitrary (smooth) transformation operator $\hat Q$ acting on the Lagrangian, such that $d\mathcal{L} = \hat Q \mathcal{L} - \mathcal{L}$, then if the Lagrangian is <em>invariant</em> under this transformation, that is, if it satisfies $d\mathcal{L} = 0$, then there <em>must</em> be a conserved quantity $q$ for which $\dfrac{dq}{dt} = 0$, which we can find by explicitly computing the form of $d\mathcal{L}$ and solving for it being equal to zero. So, rather than just <em>assuming</em> conservation of energy (or momentum or angular momentum), Lagrangian mechanics <em>shows</em> that it comes naturally from the form of the Lagrangian (and therefore of the physical system) itself!</p>
+<h2 id="hamiltonian-mechanics">Hamiltonian mechanics</h2>
+<p>Previously, we saw the symmetries of the Lagrangian allow defining a <strong>Hamiltonian</strong> that encodes the <em>energy</em> of the system (and in the case of time-invariant systems, <em>is</em> the total mechanical energy of the system). We have previously seen that we were able to transform the Lagrangian $\mathcal{L}(q, \dot q, t)$ into the Hamiltonian $H(q, p_i, t)$ with the following transformation (called a <em>Legendre transformation</em>):</p>
+<p class="mathcell">
+$$
+H = \sum_i \dot q_i \underbrace{\dfrac{\partial \mathcal{L}}{\partial \dot q_i}}_{p_i} - \mathcal{L}
+$$
+</p>
+<p>Where $p_j = \dfrac{\partial \mathcal{L}}{\partial \dot q_i}$ is the <em>generalized momentum</em>. Unlike the Lagrangian, which is a function of position and velocity through time, the Hamiltonian is a function of position and <em>momentum</em>, and this is a crucial difference. These two coordinates uniquely determine the state of a system at a given time, and at all future times. In fact, they are so essential that they have a special name: the combined set of the position and momentum coordinates $(q_i, p_i)$ are known as the <strong>canonical coordinates</strong> of the system, and the set of all positions and all momenta ${q_i(t),, p_i(t)}$ for all $t$ is known as the <em>phase space</em>. A single particle moving through Cartesian 3D space, for instance, would have 3 position coordinates $x, y, z$ and 3 momentum coordinates $p_x, p_y, p_z$, meaning that it has a total of 6 canonical coordinates and moves through a 6-dimensional phase space.</p>
+<blockquote>
+<p><strong>Note:</strong> Be careful to not confuse <strong>generalized coordinates</strong> and <strong>canonical coordinates</strong>. General coordinates come from Lagrangian mechanics, and they are the most optimal number of coordinates that can fully describe the motion of all objects in a system. <strong>Canonical coordinates</strong>, on the other hand, come from Hamiltonian mechanics, and they are the combination of position and momentum coordinates that describes the state of the system as a path in a 6-dimensional (phase) space.</p>
+</blockquote>
+<h3 id="deriving-hamilton-s-equations">Deriving Hamilton's equations</h3>
+<p>We may now show that we can derive equations of motion from the Hamiltonian and our knowledge of Lagrangian mechanics. To do this, we express the velocity in terms of position and momentum, that is $\dot q_i = \dot q_i(q_k, p_k, t)$. Remember we are working in index notation, so $q_k = \mathbf{r}, p_k = \mathbf{p}$, and $\dot q_i$ ranges over each component of the velocity. For instance, in Cartesian coordinate where $i = x, y, z$, then $\dot q_i = \dot q_i(q_k, p_k, t)$ expands to the following:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dot x = \dot x(\mathbf{r}, \mathbf{p}, t) \\
+\dot y = \dot y(\mathbf{r}, \mathbf{p}, t) \\
+\dot z = \dot z(\mathbf{r}, \mathbf{p}, t)
+\end{align*}
+$$
+</p>
+<p>Let us first take the total derivative of the Hamiltonian with respect to time - after all, knowing how the Hamiltonian evolves in time would allow us to determine how the system's energy changes, and perhaps could provide bring us closer to the equations of motion. By the chain rule, we find that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+d H &amp;= \sum_k \left[\dfrac{\partial H}{\partial q_k} dq_k + \dfrac{\partial H}{\partial p_k} dp_k \right] + \dfrac{\partial H}{\partial t} dt \\
+\dfrac{dH}{dt} &amp;= \sum_k \left[\dfrac{\partial H}{\partial q_k} \dfrac{dq_k}{dt} + \dfrac{\partial H}{\partial p_k} \dfrac{dp_k}{dt} \right] + \dfrac{\partial H}{\partial t}  \\
+&amp;= \sum_k \left[\dfrac{\partial H}{\partial q_k} \dot q_k + \dfrac{\partial H}{\partial p_k} \dot p_k \right] + \dfrac{\partial H}{\partial t}  \\
+\end{align*}
+$$
+</p>
+<p>Let us now evaluate $\dfrac{\partial H}{\partial q_k}$ and $\dfrac{\partial H}{\partial p_k}$. Remember that the Hamiltonian takes the form $H(q_k, p_k, t) = \dot q_k \dfrac{\partial \mathcal{L}}{\partial \dot q_k} - \mathcal{L}$. Taking the partial derivative with respect to $q_k$, we find that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial H}{\partial q_k} &amp;= p_k \dfrac{\partial \dot q_k}{\partial q_k} - \dfrac{\partial \mathcal{L}}{\partial q_k}
+-\underbrace{\dfrac{\partial \mathcal{L}}{\partial \dot q_k}}_{p_k} \dfrac{\partial \dot q_k}{\partial q_k} \\
+&amp;= p_k \dfrac{\partial \dot q_k}{\partial q_k} - \dfrac{\partial \mathcal{L}}{\partial q_k}
+-p_k \dfrac{\partial \dot q_k}{\partial q_k} \\
+&amp;= \cancel{p_k \dfrac{\partial \dot q_k}{\partial q_k}} - \dfrac{\partial \mathcal{L}}{\partial q_k}
+-\cancel{p_k \dfrac{\partial \dot q_k}{\partial q_k}} \\
+&amp;= -\dfrac{\partial \mathcal{L}}{\partial q_k} \\
+&amp;= -\dot p_k
+\end{align*}
+$$
+</p>
+<p>Where we used $p_k = \dfrac{\partial \mathcal{L}}{\partial \dot q_k}$ to simplify the expression, allowing everything to cancel out. In the last step, we used the Euler-Lagrange equations to find that $\dfrac{\partial \mathcal{L}}{\partial q_k} = \dfrac{d}{dt} \bigg(\underbrace{\dfrac{\partial \mathcal{L}}{\partial \dot q_k}}_{p_k}\bigg) = \dfrac{dp_k}{dt} = \dot p_k$.
+Let us now find $\dfrac{\partial H}{\partial p_k}$. Note that we can rewrite the Hamiltonian $H = \dot q_k \dfrac{\partial \mathcal{L}}{\partial \dot q_k} - \mathcal{L}$ into the more useful form $H = \dot q_k p_k - \mathcal{L}$. By applying the chain rule to $H(q_k, p_k, t)$ and differentiating (we need to use the product rule for the first term), we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial H}{\partial p_k} &amp;= \dot q_k + p_k \dfrac{\partial \dot q_k}{\partial p_k} - \underbrace{\dfrac{\partial \mathcal{L}}{\partial \dot q_k}}_{p_k} \dfrac{\partial \dot q_k}{\partial q_k} = \dot q_k \\
+&amp;= \dot q_k + p_k \dfrac{\partial \dot q_k}{\partial p_k} - p_k \dfrac{\partial \dot q_k}{\partial q_k} = \dot q_k \\
+&amp;= \dot q_k + \cancel{p_k \dfrac{\partial \dot q_k}{\partial p_k}} - \cancel{p_k \dfrac{\partial \dot q_k}{\partial q_k}} \\ &amp;= \dot q_k
+\end{align*}
+$$
+</p>
+<p>Thus, we have derived <strong>Hamilton's equations of motion</strong>:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+\dfrac{\partial H}{\partial q_k} = -\dot p_k, &amp;\dfrac{\partial H}{\partial p_k} = \dot q_k
+\end{matrix*}
+$$
+</p>
+<p>Hamilton's equations of motion are useful because they are first-order differential equations which are often easier to solve than the second-order differential equations obtained from the Lagrangian. In addition, they possess <a href="https://en.wikipedia.org/wiki/Symplectic_geometry">special numerical properties</a> that guarantee properties such as energy conservation in a numerical solution. This is why, even two centuries after Hamilton introduced his equations of motion, they are still used extensively for numerical methods for solving ODEs (and PDEs).</p>
+<blockquote>
+<p><strong>Note</strong> Be very careful in the physical interpretation of the <em>generalized momentum</em>. The generalized momentum $p_k$ in Hamiltonian mechanics does <strong>not</strong> always correspond to the Newtonian momentum $p = mv$. It is instead defined through $p_k = \dfrac{\partial \mathcal{L}}{\partial \dot q_k}$ and that is the foolproof way to find the generalized momentum. Do <strong>not</strong> assume you can just plug in $p_k = m \dot q_k$ or some other variation of $p = mv$!</p>
+</blockquote>
+<h3 id="the-free-particle-in-hamiltonian-mechanics">The free particle in Hamiltonian mechanics</h3>
+<p>Let us demonstrate our use of Hamiltonian mechanics with an introductory example: the <strong>free particle</strong> in one dimension moving along coordinate $q$. The Lagrangian for this particle is given by:</p>
+<p class="mathcell">
+$$
+\mathcal{L} = K - \cancel{U} = \dfrac{1}{2} m \dot q^2
+$$
+</p>
+<p>The Hamiltonian (for this one coordinate) is then given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+H &amp;= \dot q \dfrac{\partial \mathcal{L}}{\partial \dot q} - \mathcal{L} \\ &amp;= \dot q(m \dot q) - \dfrac{1}{2} m \dot q^2 \\ &amp;= m \dot q^2 - \dfrac{1}{2} m \dot q^2 \\
+&amp;= \dfrac{1}{2} m \dot q^2
+\end{align*}
+$$
+</p>
+<p>But this is not <em>exactly</em> our Hamiltonian - because the Hamiltonian is a function of position and <em>momentum</em>, <strong>not velocity</strong>. We must therefore find the momentum as follows:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+p = \dfrac{\partial \mathcal{L}}{\partial \dot q} = m \dot q &amp; \Rightarrow &amp; \dot q = p&#x2F;m
+\end{matrix*}
+$$
+</p>
+<p>Which, if we substitute into the Hamiltonian, becomes:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+H &amp;= \dfrac{1}{2} m \dot q^2 \\
+&amp;= \dfrac{1}{2} m \left(\dfrac{p}{m}\right)^2 \\
+&amp;=\dfrac{p^2}{2m}
+\end{align*}
+$$
+</p>
+<p>Which is equal to the kinetic energy, as we would expect. Taking the partial derivatives of the Hamiltonian yields:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial H}{\partial p} &amp;= \frac{p}{m} \\
+\dfrac{\partial H}{\partial q} &amp;=0
+\end{align*}
+$$
+</p>
+<p>And thus substituting into Hamilton's equations, the equations of motion are (as expected):</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+\dfrac{dp}{dt} = 0, &amp;\dfrac{dq}{dt} = p&#x2F;m
+\end{matrix*}
+$$
+</p>
+<p>We note that if we let $q = x$ (that is, if we choose Cartesian coordinates) and thus $p = m\dfrac{dq}{dt} = mv = m \dot x$, this reduces simply to $\dot x = p/m = v, \dot p = 0$, which is simply a rewritten version of Newton's second law ($m\ddot x = 0, \dot x = v$) for a free particle.</p>
+<h3 id="conservation-laws-and-the-poisson-bracket">Conservation laws and the Poisson bracket</h3>
+<p>Just as we found with the Lagrangian, we can show that the Hamiltonian <em>guarantees</em> conseration of particular quantities. Let us consider some quantity $A$ (perhaps this is energy) that may be dependent on any one (or all) of $q_i, p_i, t$. If we take the <em>total derivative</em> of $A$ with respect to $t$, by the chain rule, we have:</p>
+<p class="mathcell">
+$$
+\dfrac{dA}{dt} = \dfrac{\partial A}{\partial t} + \sum_i\bigg[\underbrace{\dfrac{\partial A}{\partial \dot q_i} \dfrac{\partial H}{\partial p_i} - \dfrac{\partial A}{\partial p_i}\dfrac{\partial H}{\partial q_i}}_{\text{often written }\{H, A\}}\bigg]
+$$
+</p>
+<p>If $\dfrac{dA}{dt} = 0$, then $A$ must be constant in time, and is thus <em>conserved</em>. This can <em>only</em> be the case if the quantity within the square brackets (which we write as ${H, A}$, this is called a <strong>Poisson bracket</strong>) is <strong>zero</strong>. Indeed, this has great resemblance to the <em>quantum mechanical</em> equation of motion (in the Heisenberg picture):</p>
+<p class="mathcell">
+$$
+\dfrac{d\hat A}{dt} = \dfrac{\partial \hat A}{\partial t} + \dfrac{i}{\hbar} [\hat H, \hat A]
+$$
+</p>
+<p>The only replacement we need to make is that the classical quantity $A$ becomes a quantum mechanical <em>operator</em> $\hat A$, i.e. $A \to \hat A$, and the Poisson bracket becomes the <em>commutator</em> $[\hat H, \hat A] = \hat H \hat A - \hat A \hat H$. Thus, we often say that Hamiltonian mechanics is the starting point of quantum mechanics, as it allows us to take classical concepts and turn them into their quantum equivalents in a straightforward way.</p>
+<h2 id="introduction-to-gravitation">Introduction to gravitation</h2>
+<p>Among the biggest achievements of classical mechanics was a complete explanation of the motion of celestial bodies, including (most notably) the motion of planets around the Sun. In fact, the classical predictions of the motion of celestial bodies are so accurate that even though classical mechanics has since been superceded by the theories of Special and General Relativity, the classical theory of orbits is still used today for spacecraft orbit planning and astronomy! Thus, we will take a detailed look at how the problem of gravity was solved.</p>
+<h3 id="the-gravitational-force-and-field">The gravitational force and field</h3>
+<p>In the classical description of gravity, all massive objects (that is, any object with mass, it doesn't mean they are "heavy"!) are bound to each other by an attractive force, known as the <strong>gravitational force</strong>. The gravitational force between two bodies of masses $m_1, m_2$ is described by <strong>Newton's law of universal gravitation</strong>, given by:</p>
+<p class="mathcell">
+$$
+\mathbf{F}_g = -\dfrac{Gm_1 m_2}{|\mathbf{r}_2 - \mathbf{r}_1|^2} \hat r_{21} = -\dfrac{Gm_1 m_2}{|\mathbf{r}_2 - \mathbf{r}_1|^3} (\mathbf{r}_2 - \mathbf{r}_1)
+$$
+</p>
+<p>Where $\mathbf{F}_g$ is the <strong>gravitational force</strong> and $G$ is the <strong>universal gravitational constant</strong>, which is approximately $\pu{6.674E−11 m^3*kg^{−1}*s^{−2}}$. The gravitational force, being a force, is a vector quantity, but it is also common to express Newton's law of universal gravitation in terms of the <em>magnitude</em> of the gravitational force:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+F_g = |\mathbf{F}_g| = \dfrac{Gm_1 m_2}{r^2}, &amp; r \equiv |\mathbf{r}_2 - \mathbf{r}_1|
+\end{matrix*}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> You may also see this in yet <em>another</em> form, where instead of $m_1, m_2$ the two masses are instead denoted by $M$ and $m$, such that the magnitude of the gravitational force becomes $F_g = \dfrac{GMm}{r^2}$.</p>
+</blockquote>
+<p>The gravitational force is significant for several important reasons. The first is that it is a <strong>long-distance force</strong>, one of only two in nature (the other being the electromagnetic force). The second is that it is a <strong>conservative force</strong>, meaning that it satisfies the conservation of energy. And the third is that gravitational effects do not propagate instantly, but instead, at the speed of light; that means, for instance, if the Sun were to suddenly vanish, the Earth would actually orbit as if everything was normal for another few minutes, until the last light from the Sun reached us! (of course, afterwards, everything would be chaos). These features can be explained by associating the gravitational force with a <strong>gravitational field</strong>. We have already discussed fields a bit previously, but remember that a field is characterized by the following property:</p>
+<blockquote>
+<p><strong>Definition of physical fields:</strong> A field is a physical quantity that fills space and mediates (carries) interactions between different particles in space.</p>
+</blockquote>
+<p>In the case of gravity, the gravitational field can be mathematically-described by a vector-valued function $\mathbf{g}(\mathbf{r}) = \mathbf{g}(x, y, z)$. The gravitational field fills all space, which is why it has infinite range (and therefore gravity is a long-distance forces). It carries interactions between masses, meaning that the gravitational force between two objects is transmitted by the gravitational field - however, this interaction is not instant, but rather carried at the speed of light $c$. Thus, the gravitational force may be written as $\mathbf{F}_g = m \ddot{\mathbf{r}} = m\mathbf{g}$, where $m$ is a particle with mass within a gravitational field, and $\ddot{\mathbf{r}}$ is the acceleration of the particle. In addition, the gravitational field is <em>generated</em> by the presence of masses, and changes as the distribution of masses changes. Thus, it is natural to describe the gravitational field in terms of a differential equation. Indeed, there is one: it is known as <strong>Gauss's law for gravity</strong>:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\nabla \cdot \mathbf{g} &amp;= -4\pi G \rho &amp; \text{(differential form)} \\
+\oint \mathbf{g} \cdot d\mathbf{A} &amp;= -4\pi G M_\text{total} &amp; \text{(integral form)}
+\end{align*}
+$$
+</p>
+<p>Where $\rho = \rho(x, y, z)$ is the mass density throughout space. The fundamental solution to Gauss's law for gravity, describing the gravitational field in vacuum of a single spherically-symmetric object (or point particle) with mass $M$ located far away from all other masses, is the following expression for the gravitational field:</p>
+<p class="mathcell">
+$$
+\mathbf{g} = -\dfrac{GM}{r^2} \hat r
+$$
+</p>
+<p>Where here, $\mathbf{r} = |\mathbf{r} - \mathbf{r}<em>\text{mass}|$ where $\mathbf{r}</em>\text{mass}$ is the position of the mass, which we also call the <strong>central mass</strong>. If this describes the gravitational field generated by a single object far away from all other masses, you may ask, how is this a useful solution? The answer is that if we have a central mass ($M$) that is far greater than some other mass $m$, that is, $m \ll M$, then the smaller mass has almost no gravitational effect on the larger mass. Thus, the larger mass can effectively considered to be stationary and the solution is a good approximation to the gravitational field of the whole system of two masses. From there, we may calculate the <em>orbit</em> $\mathbf{r}(t)$ of the smaller mass around the larger mass (in fact, we will find the exact solution to this problem soon!).</p>
+<blockquote>
+<p><strong>Note:</strong> For spherically-symmetric problems we usually express orbits using in polar coordinates, so the orbit would be described by $r(\theta)$. This can be converted back to $\mathbf{r}(t)$ with $\mathbf{r}(t) = \langle r(t) \cos \theta, r(t) \sin \theta\rangle$.</p>
+</blockquote>
+<p>Let us formalize this idea mathematically. The <em>true</em> gravitational field of this system of two masses (called a <em>two-body</em> system) would actually be given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathbf{g} &amp;= -\dfrac{GM}{r^2} \hat r_{12} + \left(-\dfrac{Gm}{r^2}\right) \hat r_{12} \\
+&amp;= -\dfrac{G(M + m)}{r^2} \hat r_{12}
+\end{align*}
+$$
+</p>
+<p>Where $\mathbf{r}_M$ is the larger mass's position, $\mathbf{r}_m$ is the smaller mass's position, $r = |\mathbf{r}_M - \mathbf{r}_m|$ is the separation between the two masses, and $\hat r_{12} = \dfrac{\mathbf{r}_M - \mathbf{r}_m}{|\mathbf{r}_M - \mathbf{r}_m|}$ is the unit vector pointing between the masses. Thus, the equations of motion are given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\ddot{\mathbf{r}}_M = M \mathbf{g} = -\dfrac{GM(M + m)}{r^2} \hat r_{12} \\
+\ddot{\mathbf{r}}_m = m \mathbf{g} = -\dfrac{Gm(M + m)}{r^2} \hat r_{12} \\
+\end{align*}
+$$
+</p>
+<p>Thus, the differential equations of motion indicate that the big mass $M$ and smaller mass $m$ actually orbit around their collective <em>center of mass</em>. However, in the case that the big mass is <em>much greater</em> than the smaller mass (for example, the Sun has a mass over 300,000 times that of Earth's) then the gravitational effect of the smaller mass may be considered negligible, and the gravitational field reduces to:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathbf{g} &amp;= -\dfrac{GM}{r^2} \hat r_{12} + \underbrace{\left(-\dfrac{Gm}{r^2}\right) \hat r_{12}}_\text{very small contribution} \\
+&amp;\approx -\dfrac{GM}{r^2} \hat r_{12} \qquad (\text{when } m \ll M)
+\end{align*}
+$$
+</p>
+<p>In this limit, the larger mass may be considered effectively stationary, that is, $\mathbf{r}_M = \mathbf{r}_0 = \text{const.}$, and the differential equations of motion of the smaller mass becomes:</p>
+<p class="mathcell">
+$$
+\ddot{\mathbf{r}}_m = m\mathbf{g} = -\dfrac{GMm}{r^2} \hat r_{12}
+$$
+</p>
+<p>This can be simplified further if we define the <em>reduced mass</em> (effective mass) of the two-body system to be $\mu = \dfrac{Mm}{m_t} = \dfrac{Mm}{m + M}$, where $m_t \equiv m + M$ is the <strong>total mass</strong> of the system. Thus the equations of motion of the smaller mass reduce to simply:</p>
+<p class="mathcell">
+$$
+\ddot{\mathbf{r}}_m = -\dfrac{G\mu m_t}{r^2} \hat r_{12}
+$$
+</p>
+<p>This is the essential differential equation that we will soon derive from Lagrangian mechanics, and solve to find the classical solution to a two-body gravitational system.</p>
+<blockquote>
+<p><strong>Note for the advanced reader:</strong> Uniquely, we observe that gravity is actually the <em>predominant</em> force acting on celestial bodies. This is a by-product of an interesting quirk of nature: while the electromagnetic force acts on <em>charges</em>, most large objects (asteroids, planets, stars, etc.) in the Universe are neutrally-charged, so they have little to zero effective charge; meanwhile the gravitational force acts on <em>masses</em>, and large masses have a <em>lot</em> of mass, so gravity wins out over the electromagnetic force over astronomical distances and in the case of large (typically celestial!) bodies. But the force of gravity between everyday objects (such as a coffee cup or a car) is very weak!</p>
+</blockquote>
+<h3 id="the-gravitational-potential">The gravitational potential</h3>
+<p>Aside from all the characteristics of gravity we mentioned earlier, we should also mention one more <em>very important</em> characteristic: the gravitational field is a <strong>conservative field</strong>, meaning that objects in gravitational fields conserve energy. Mathematically speaking, the gravitational field obeys:</p>
+<p class="mathcell">
+$$
+\oint_C \mathbf{g}\cdot d\mathbf{r} = 0 \Leftrightarrow \nabla \times \mathbf{g} = 0
+$$
+</p>
+<p>Thus, by the <strong>gradient theorem</strong> of vector calculus, we may write the gravitational field in terms of a scalar-valued <em>potential</em> $\varphi$, where $\mathbf{g} = -\nabla \varphi$. This potential is mathematically easier to work with, since it is a scalar, and also, it obeys the differential equation $\nabla^2 \varphi = 4\pi G\rho$, a well-studied differential equation in mathematical physics (especially in the special case of $\rho = 0$, where it reduces to Laplace's equation $\nabla^2 \varphi = 0$, which you may have seen before if you have studied electromagnetic theory).</p>
+<p>This potential $\varphi(\mathbf{r})$ is more commonly called the <strong>gravitational potential</strong>, and it is more than just a mathematical trick to make the equations easier. The <em>physical interpretation</em> of the gravitational potential is that a mass $m$ placed in a gravitational field would have a <strong>gravitational potential energy</strong> given by $U_g = m\varphi$. Since all particles naturally want to attain a minimum potential energy reach a stable equilibrium, we can equivalently say that they "descend" down the potential $\varphi(\mathbf{r})$ until they reach a "valley" (local minimum) of the potential, where they can maintain stable orbits. This provides another, more elegant way to write out the <em>exact</em> equations of motion for the trajectory $\mathbf{r}(t)$ of a mass in a gravitational field, one that is generally preferred in physics today:</p>
+<p class="mathcell">
+$$
+\ddot{\mathbf{r}} = -m \nabla \varphi
+$$
+</p><h2 id="gravitation-in-lagrangian-mechanics">Gravitation in Lagrangian mechanics</h2>
+<p>Of all the problems that can be analyzed with Lagrangian mechanics, one of the most significant is the problem of two masses (which we denote as $M$ and $m$, where $M \gg m$) bound to each other gravitationally. The gravitational potential energy of the system (relative to a point infinitely-far away) is given by:</p>
+<p class="mathcell">
+$$
+U(r) = -\dfrac{GMm}{r}
+$$
+</p>
+<p>The problem of gravitation is the classical example of a <strong>radial potential problem</strong>. It is helpful, therefore, to examine the nature of a <em>general radial potential problem</em>, for which we know that the potential $U$ is purely a function of the radial distance $r$, but the potential $U(r)$ can be arbitrary. We wish to find the equations of motion for mass $m$ that orbits around the larger mass $M$. It is useful to effectively consider the two masses to form a single <strong>effective mass</strong>, which we call the <em>reduced mass</em>, and denote by $\mu$, as shown below:</p>
+<p class="mathcell">
+$$
+\mu = \dfrac{mM}{m + M}
+$$
+</p>
+<p>While the radial potential problem was already solved, even before the development of Lagrangian mechanics, solving it with Lagrangian mechanics provides unique insights that are difficult to see when solving using the Newtonian approach. This allows us to write the Lagrangian in polar coordinates for the radial potential:</p>
+<p class="mathcell">
+$$
+\mathcal{L} = \dfrac{1}{2} \mu (\dot r^2 + r^2 \dot \theta^2) - U(r)
+$$
+</p>
+<p>Where once again, $\mu$ is the reduced mass. We have two Euler-Lagrange equations for our two generalized coordinates, one for $r$ and one for $\theta$. The Euler-Lagrange equation in $r$ yields:</p>
+<p class="mathcell">
+$$
+\mu \ddot r - \mu r \dot \theta^2 + \dfrac{dU}{dr} = 0
+$$
+</p>
+<p>Meanwhile, the Euler-Lagrange equation in $\theta$ yields:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{d}{dt}(\underbrace{\mu r^2 \dot \theta}_\text{const.}) &amp;= 0 \\
+\text{const.} &amp;= \ell \\
+\Rightarrow \dot \theta &amp;= \dfrac{\ell}{\mu r^2}
+\end{align*}
+$$
+</p>
+<p>We find that there is a <em>conserved quantity</em> (which we call $\ell$) that is intrinsic to the radial system (it is conserved, since it is <strong>constant</strong>). This quantity, $\ell$, has units, which we may determine by dimensional analysis, to be $\pu{kg \cdot m^2 \cdot s^{-1}}$ - <em>exactly</em> those of the classical <strong>angular momentum</strong>. Thus, if we now use our expression we obtained for $\dot \theta$ into our Euler-Lagrange equation for $r$, then we have:</p>
+<p class="mathcell">
+$$
+\mu \ddot r - \mu r \left(\dfrac{\ell}{\mu r^2}\right)^2 + \dfrac{dU}{dr} = 0
+$$
+</p>
+<p>By slight rearrangement and expansion, we have:</p>
+<p class="mathcell">
+$$
+\mu \dfrac{d^2 r}{dt^2} - \dfrac{\ell^2}{\mu r^3} = -\dfrac{dU}{dr}
+$$
+</p>
+<p>If we define $F(r) \equiv -\dfrac{dU}{dr}$ as the <em><strong>central force</strong></em> defined by the radial potential, then we can write this in a simpler form as:</p>
+<p class="mathcell">
+$$
+\mu \dfrac{d^2 r}{dt^2} - \dfrac{\ell^2}{\mu r^3} = F(r)
+$$
+</p>
+<p>Now, this equation of motion, while still <em>useful</em>, has a problem: it is defined with derivatives with respect to $t$. Thus, we can use it to find the radial distance of the orbiting body over time, but it is no good for finding the actual <em>shape</em> of the orbit, for which we need to find $r(\theta)$, the radial distance of the orbiting body as a function of $\theta$.</p>
+<p>So, we must find some way to convert this differential equation to one expressed in terms of derivatives with respect to $\theta$ instead of derivatives with respect to $t$. The first step in doing so is utilizing our equation $\dot \theta = \dfrac{\ell}{\mu r^2}$. We may write this equivalently, using the chain rule, as:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{d}{dt} &amp;= \dfrac{d\theta}{dt} \dfrac{d}{d\theta}\\
+&amp;= \dot \theta \dfrac{d}{d\theta} \\
+&amp;= \dfrac{\ell}{\mu r^2} \dfrac{d}{d\theta}
+\end{align*}
+$$
+</p>
+<p>Therefore:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{d}{dt} &amp;= \dfrac{\ell}{\mu r^2} \dfrac{d}{d\theta} \\
+\dfrac{d^2}{dt^2} &amp;= \dfrac{d}{dt} \left(\dfrac{d}{dt}\right) = \dfrac{\ell}{\mu r^2} \dfrac{d}{d\theta}\left(\dfrac{\ell}{\mu r^2} \dfrac{d}{d\theta}\right)
+\end{align*}
+$$
+</p>
+<p>Thus, we have:</p>
+<p class="mathcell">
+$$
+\dfrac{d^2 r}{dt^2} = \dfrac{d^2}{dt^2} r(t) = \dfrac{\ell}{\mu r^2} \dfrac{d}{d\theta}\left(\dfrac{\ell}{\mu r^2} \dfrac{dr}{d\theta}\right)
+$$
+</p>
+<p>And substituting our found expression for $\ddot r$ back into the central-force equation of motion we derived before, we have:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\mu \dfrac{d^2 r}{dt^2} - \dfrac{\ell^2}{\mu r^3} = F(r) \\
+\Rightarrow \mu \left[\dfrac{\ell}{\mu r^2} \dfrac{d}{d\theta}\left(\dfrac{\ell}{\mu r^2} \dfrac{dr}{d\theta}\right)\right] - \dfrac{\ell^2}{\mu r^3} = F(r) \\
+\Rightarrow \left[\dfrac{\ell}{r^2} \dfrac{d}{d\theta}\left(\dfrac{\ell}{\mu r^2} \dfrac{dr}{d\theta}\right)\right] - \dfrac{\ell^2}{\mu r^3} = F(r) \\
+\Rightarrow \left[\dfrac{\ell^2}{\mu r^2} \dfrac{d}{d\theta}\left(\dfrac{1}{r^2} \dfrac{dr}{d\theta}\right)\right] - \dfrac{\ell^2}{\mu r^3} = F(r) \\
+\end{gather*}
+$$
+</p>
+<p>We can choose to write this in expanded form, if we so wish. The first term requires the product rule to expand:</p>
+<p class="mathcell">
+$$
+\dfrac{d}{d\theta} \left(\dfrac{1}{r^2}\dfrac{dr}{d\theta}\right) = \dfrac{1}{r^2}\dfrac{d^2 r}{d\theta^2} - \dfrac{2}{r^3} \left(\dfrac{dr}{d\theta}\right)^2
+$$
+</p>
+<p>From which we have:</p>
+<p class="mathcell">
+$$
+\dfrac{\ell^2}{\mu r^2}\left[\dfrac{1}{r^2}\dfrac{d^2 r}{d\theta^2} - \dfrac{2}{r^3} \left(\dfrac{dr}{d\theta}\right)^2\right] - \dfrac{\ell^2}{\mu r^3} = F(r)
+$$
+</p>
+<p>But it is often much more helpful to <em>not</em> expand the derivatives, and instead multiply all sides through by $\dfrac{\mu r^2}{\ell^2}$, which gives us:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\left[\dfrac{\ell^2}{\mu r^2} \dfrac{d}{d\theta}\left(\dfrac{1}{r^2} \dfrac{dr}{d\theta}\right)\right] - \dfrac{\ell^2}{\mu r^3} = F(r) \\
+\dfrac{d}{d\theta}\left(\dfrac{1}{r^2} \dfrac{dr}{d\theta}\right)- \dfrac{1}{r} = \dfrac{\mu r^2}{\ell^2}F(r) = -\dfrac{\mu r^2}{\ell^2}\dfrac{dU}{dr}
+\end{gather*}
+$$
+</p>
+<p>We have simplified the problem as much as we can without specifying what exactly $U(r)$ is. But to solve the problem for gravitation, or in general for <em>any</em> central force, we must explicitly specify $U(r)$, or alternatively the central force $F(r) = -\dfrac{dU}{dr}$. A few examples of such potentials are listed in the table below:</p>
+<table><thead><tr><th>Potential</th><th>Mathematical form of $U(r)$</th><th>Physical scenario</th></tr></thead><tbody>
+<tr><td>Gravitational</td><td>$-\dfrac{GMm}{r}$</td><td>Two bodies $M, m$ orbiting under gravitational attraction</td></tr>
+<tr><td>Coulomb (electrostatic)</td><td>$\dfrac{1}{4\pi \varepsilon_0} \dfrac{Qq}{r}$</td><td>Two charges $Q, q$ interacting through the electrostatic force</td></tr>
+<tr><td>Harmonic</td><td>$\dfrac{1}{2} kr^2$ or equivalently $\dfrac{1}{2} m \omega^2 r^2$</td><td>Two masses attached by a spring, where the smaller mass $m$ exhibits sinusoidal motion around the larger mass. This is also a good model for diatomic (two-atom) molecules that vibrate in a form that can be described by the spring force.</td></tr>
+</tbody></table>
+<blockquote>
+<p><strong>Note:</strong> The gravitational potential, as well as the Coulomb potential for $Q, q$ having opposite signs, are both <strong>negative</strong>. This means that these systems are <strong>stable</strong> as the system has a lower potential energy than a reference point infinitely-far away; the system must be perturbed (for instance, by applying an external acceleration to $m$) to be able to increase its potential energy enough to "break apart" the system to send the two masses (or charges in the latter case) to fly apart from each other.</p>
+</blockquote>
+<p>Using the definition of the gravitational potential $U(r) = -\dfrac{GMm}{r}$, we find that:</p>
+<p class="mathcell">
+$$
+F_\text{gravity} = -\dfrac{dU}{dr} = -\dfrac{GMm}{r^2}
+$$
+</p>
+<p>So our <em>specific</em> equation of motion, assuming $\mu \approx m$ (since we imposed the restriction at the start that $M \gg m$) becomes:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{d}{d\theta}\left(\dfrac{1}{r^2} \dfrac{dr}{d\theta}\right)- \dfrac{1}{r} &amp;= \dfrac{\mu r^2}{\ell^2}F(r) \\
+&amp;\approx \dfrac{mr^2}{\ell^2} \left(-\dfrac{GMm}{r^2}\right) \\
+&amp;= \underbrace{\dfrac{GMm^2}{\ell^2}}_\text{const.}
+\end{align*}
+$$
+</p>
+<p>We notice that in this problem, the right-hand side evaluates to a <em>constant</em> given by $b \equiv \dfrac{GMm^2}{\ell^2}$. Thus, we have:</p>
+<p class="mathcell">
+$$
+\dfrac{d}{d\theta}\left(\dfrac{1}{r^2} \dfrac{dr}{d\theta}\right)- \dfrac{1}{r} = b
+$$
+</p>
+<p>The trick typically used to actually <em>solve</em> this differential equation is to use the coordinate transform $u = 1/r$. Then this highly-nonlinear differential equation can be reduced to a much simpler differential equation, which possesses an analytical solution.</p>
+<p>For this, however, we need to transform $\dfrac{dr}{d\theta}$, which is in terms of $r(\theta)$, into its equivalent form written in terms of $u(\theta)$. By the chain rule, we know that $\dfrac{dr}{d\theta} = \dfrac{dr}{du} \dfrac{du}{d\theta}$. Using $r = 1/u$, which follows from $u = 1/r$, we can differentiate to find that $\dfrac{dr}{du} = -\dfrac{1}{u^2} = -r^2$. Thus, we have:</p>
+<p class="mathcell">
+$$
+\dfrac{dr}{d\theta} = -\dfrac{1}{u^2} \dfrac{du}{d\theta} = -r^2 \dfrac{du}{d\theta}
+$$
+</p>
+<p>Which, after substitution into our differential equation, becomes:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\dfrac{d}{d\theta}\left(\dfrac{1}{r^2} \dfrac{dr}{d\theta}\right)- \dfrac{1}{r} = b \\
+\Rightarrow \dfrac{d}{d\theta}\left(\dfrac{1}{r^2}\left(-r^2 \dfrac{du}{d\theta}\right)\right)- u = b \\
+\Rightarrow -\dfrac{d^2 u}{d\theta^2} - u = b \\
+\Rightarrow \dfrac{d^2 u}{d\theta^2}+ u = -b
+\end{gather*}
+$$
+</p>
+<p>We can now solve using the conventional techniques of ODEs. Since this is an <em>inhomogenous</em> 2nd-order ODE, its solution is a sum of the general solution to the homogeneous differential equation $u'' + u = 0$ and the particular solution to $u'' + u = -b$. But $u'' + u = 0$, we know, is the equation of a simple harmonic oscillator, which has the solution:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u_\text{homogenous} &amp;= A \cos \theta + B \sin \theta \\
+&amp;= C \cos (\theta - \theta_0)
+\end{align*}
+$$
+</p>
+<p>Where $C \equiv \sqrt{A^2 + B^2}, \theta_0 \equiv \tan^{-1}\dfrac{B}{A}$, which comes from applying trigonometric identities - refer to <a href="https://www.mathcentre.ac.uk/resources/uploaded/mc-ty-rcostheta-alpha-2009-1.pdf">the following trigonometric proof</a> for more details. Meanwhile, a particular solution to $u'' + u = -b$ is simply $u = -b = \text{const}$ (really, this is a solution! You can check for yourself). Thus the <em>general</em> solution to $u'' + u = -b$ is given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+u(\theta) &amp;= - b + C \cos (\theta - \theta_0) \\
+&amp;= - b[1 + e \cos (\theta - \theta_0)], \quad e \equiv C&#x2F;b
+\end{align*}
+$$
+</p>
+<p>Where $e$ is a constant known as the <strong>eccentricity</strong>, a constant that can be determined observationally, or calculated theoretically from energy of the orbit with $e = \sqrt{1 + \dfrac{2E\ell^2}{G^2 M^2 m^3}}$ (we will not prove this). Since $r = 1/u$, we have the solution:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+r(\theta) &amp;= -\dfrac{b}{1 + e \cos (\theta - \theta_0)} \\
+&amp;=-\dfrac{GMm^2}{\ell^2}\dfrac{1}{1 + e \cos (\theta - \theta_0)}
+\end{align*}
+$$
+</p>
+<p>This solution (typically referred to as an <em>orbit</em>) takes the form of a <strong>conic section</strong> (which may be a hyperbola, parabola, circle, or ellipse, depending on the eccentricity) and conserves energy and angular momentum, characteristics that govern the motion of all celestial bodies.</p>
+<h3 id="effective-potential-and-centripetal-force">Effective potential and centripetal force</h3>
+<p>Returning to the central force problem we have been examining in our study of gravitation, we recalled that the central-force problem with associated radial potential $U(r)$ could be written in the following form:</p>
+<p class="mathcell">
+$$
+\dfrac{\ell^2}{\mu r^2} \left[\dfrac{d^2}{d\theta^2}\left(\dfrac{1}{r}\right) + \dfrac{1}{r}\right] = \dfrac{dU}{dr}
+$$
+</p>
+<p>Notice that if we expand, we may rearrange this equation as follows:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\dfrac{\ell^2}{\mu r^2} \dfrac{d^2}{d\theta^2} \left(\dfrac{1}{r}\right) + \dfrac{\ell^2}{\mu r^3} = \dfrac{dU}{dr} \\
+\dfrac{\ell^2}{\mu r^2} \dfrac{d^2}{d\theta^2} \left(\dfrac{1}{r}\right) - \underbrace{\dfrac{d}{dr}\left(\dfrac{\ell^2}{2\mu r^2}\right)}_{\text{same as}\ \ell^2&#x2F;\mu r^3} = \dfrac{dU}{dr} \\
+\dfrac{\ell^2}{\mu r^2} \dfrac{d^2}{d\theta^2} \left(\dfrac{1}{r}\right) = \dfrac{dU}{dr} + \dfrac{d}{dr}\left(\dfrac{\ell^2}{2\mu r^2}\right) \\
+\dfrac{\ell^2}{\mu r^2} \dfrac{d^2}{d\theta^2} \left(\dfrac{1}{r}\right) = \dfrac{d}{dr}\left(U + \dfrac{\ell^2}{2\mu r^2}\right) 
+\end{gather*}
+$$
+</p>
+<p>Where in the above, $\dfrac{\ell^2}{\mu r^3} = -\dfrac{d}{dr}\left(\dfrac{\ell^2}{2\mu r^2}\right)$. This rewriting may appear to be unmotivated, but there is a reason for this. If we define an <strong>effective potential</strong> given by:</p>
+<p class="mathcell">
+$$
+U_\text{eff.}(r) = U(r) + \dfrac{\ell^2}{2\mu r^2}
+$$
+</p>
+<p>Then the above equation can be rewritten as:</p>
+<p class="mathcell">
+$$
+\dfrac{\ell^2}{\mu r^2} \dfrac{d^2}{d\theta^2} \left(\dfrac{1}{r}\right) = \dfrac{dU_\text{eff.}}{dr}
+$$
+</p>
+<p>Expanding the second derivative on the left yields:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\dfrac{\ell^2}{\mu r^2} \left[\dfrac{2}{r^3} \left(\dfrac{dr}{d\theta}\right)^2 - \dfrac{1}{r^2} \dfrac{d^2 r}{d\theta^2}\right] = \dfrac{dU_\text{eff.}}{dr} \\
+\underbrace{\dfrac{\ell^2}{\mu r^2} \left[\dfrac{1}{r^2} \dfrac{d^2 r}{d\theta^2}-\dfrac{2}{r^3} \left(\dfrac{dr}{d\theta}\right)^2\right]}_{F_\text{eff.}} = -\dfrac{dU_\text{eff.}}{dr}
+\end{gather*}
+$$
+</p>
+<p>The left-hand side has units of force, so we can call it (times a negative sign) the <em>effective force</em>, $F_\text{eff.}$ where the above equation becomes:</p>
+<p class="mathcell">
+$$
+F_\text{eff.} = -\dfrac{dU_\text{eff.}}{dr}
+$$
+</p>
+<p>Or even more simply:</p>
+<p class="mathcell">
+$$
+\mu \ddot r = -\dfrac{dU_\text{eff.}}{dr}
+$$
+</p>
+<p>Which reproduces the form of Newton's second law $F = m \ddot r = -\dfrac{dU}{dr}$ (just with effective potential and reduced mass)! And this is not all. Let us take another look at the effective potential:</p>
+<p class="mathcell">
+$$
+U_\text{eff.}(r) = U(r) + \dfrac{\ell^2}{2\mu r^2}
+$$
+</p>
+<p>Let's focus on the second term. For reasons that will soon become apparent, let us take its derivative and multiply by a negative sign, and call this quantity $F_c$:</p>
+<p class="mathcell">
+$$
+F_c = \dfrac{d}{dr}\left(\dfrac{\ell^2}{2\mu r^2}\right) = \dfrac{\ell^2}{\mu r^3}
+$$
+</p>
+<p>But recall that we previously derived that $\dot \theta = \dfrac{\ell}{\mu r^2}$. Thus, we can rewrite $F_c$ in terms of $\dot \theta$ with:</p>
+<p class="mathcell">
+$$
+F_c = \dfrac{\ell^2}{\mu r^3} = \mu r \dot \theta^2
+$$
+</p>
+<p>Writing this in a slightly-different form by defining $\omega = \dot \theta$ where $\omega$ is the angular velocity, we have:</p>
+<p class="mathcell">
+$$
+F_c = \mu r \omega^2
+$$
+</p>
+<p>If we take $\mu \approx m$, where $m$ is the mass of the orbiting, and use the relationship $v = r \omega \Leftrightarrow \omega = \dfrac{v}{r}$, then we can rewrite this as:</p>
+<p class="mathcell">
+$$
+F_c = m \dfrac{v^2}{r}
+$$
+</p>
+<p>Which is just the Newtonian centripetal force! Additionally, if we expand our effective potential as a Taylor series around some point $r_0$ for $U_\text{eff.}(r)$ up to second order, we have:</p>
+<p class="mathcell">
+$$
+U_\text{eff.}(r) \approx U_\text{eff.}(r_0) + U_\text{eff.}&#x27;(r_0)(r - r_0) + \dfrac{1}{2} U_\text{eff.}&#x27;&#x27;(r_0)(r - r_0)^2
+$$
+</p>
+<p>Recall that the stationary points (minima/maxima/saddle points) of a potential are <strong>equilibrium points of a system</strong> (review the section in <a href="https://jackysci.com/advanced-classical-mech/#potential-energy-and-conservation-of-energy">part 1 of the guide</a> about potential landscapes if this is unfamiliar). In the case of central force problems, that means that particles at some stationary point $r_0$ will <em>orbit</em> at a fixed radius $r = r_0$. Depending on the specific form of the central force, these orbits may be stable or unstable (there is <a href="https://en.wikipedia.org/wiki/Bertrand%27s_theorem">a theorem</a> that states that only central forces with associated potentials in the form $U(r) \sim r^2$ or $U(r) \sim r^{-1}$ are stable). But if $r_0$ also happens to be a <em>local minimum</em>, then it is a <strong>stable equilibrium</strong> and thus a <strong>stable orbit</strong>. If an orbiting particle strays slightly from that stable equilibrium, then it will "wiggle" around the stable orbit $r = r_0$, just like a simple harmonic oscillator.</p>
+<p>In fact, we can prove this. If we expand $U_\text{eff.}(r)$ about a point $r_0$, which is <em>also</em> a local minimum, then (since we're at a local minimum) $U_\text{eff.}'(r_0) \approx 0$. Thus our expansion for the effective potential becomes:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+U_\text{eff.}(r) &amp;\approx U_\text{eff.}(r_0) + U_\text{eff.}&#x27;(r_0)(r - r_0) \\
+&amp;= U_\text{eff.}(r_0) + \cancel{U_\text{eff.}&#x27;(r_0)(r - r_0)} + \dfrac{1}{2} U_\text{eff.}&#x27;&#x27;(r_0)(r - r_0)^2 \\
+&amp;= U_\text{eff.}(r_0) + \dfrac{1}{2} U_\text{eff.}&#x27;&#x27;(r_0)(r - r_0)^2 \\
+&amp;\approx U_\text{eff.}(r_0) + \dfrac{1}{2} U_\text{eff.}&#x27;&#x27;r^2
+\end{align*}
+$$
+</p>
+<p>Where our last simplification comes from the fact that since our orbiting particle strays only a short distance from the stable equilibrium $r = r_0$, then $(r - r_0)^2 \approx r^2$ (you can show this with the binomial expansion if you're not satisfied with this argument). If we substitute our expansion into our equation of motion $\mu \ddot r = -\dfrac{dU_\text{eff.}}{dr}$, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mu \ddot r &amp;= -\dfrac{d}{dr} \left[U_\text{eff.}(r_0) + \dfrac{1}{2} U_\text{eff.}&#x27;&#x27;r^2\right] \\
+&amp;= -U_\text{eff.}&#x27;&#x27;(r_0)r \\
+\Rightarrow \ddot r &amp;= -U_\text{eff.}&#x27;&#x27;(r_0)r \\
+\Rightarrow \ddot r &amp;= -\underbrace{\dfrac{U_\text{eff.}&#x27;&#x27;(r_0)}{\mu}}_\text{const.} r
+\end{align*}
+$$
+</p>
+<p>This looks like the differential equation of a simple harmonic oscillator, $\ddot r = -\omega^2 r$! And indeed, it is! In fact, by comparing terms, we find that $\omega^2$ corresponds to $U_\text{eff.}''(r_0)/\mu$, and thus the <em>frequency</em> of oscillations is given by:</p>
+<p class="mathcell">
+$$
+f = \dfrac{\omega}{2\pi} = \dfrac{1}{2\pi} \sqrt{\dfrac{U_\text{eff.}&#x27;&#x27;(r_0)}{\mu}}
+$$
+</p>
+<p>From our Lagrangian examination of the central-force problem, we have therefore seen that we can write an <em>effective potential</em> that can be used to reproduce Newton's second law. From here, the familiar forces of Newtonian mechanics naturally appear.</p>
+<h2 id="next-steps">Next steps</h2>
+<p>We've reached the end of the second part of the guide to classical mechanics. Now is the time to continue to <a href="https://jackysci.com/advanced-classical-mech/part-3/">part 3</a>!</p>
+
+        
+        <a id="jump-toc-btn" href="#toc">Show table of contents</a>
+        <a href="/notes" class="return-link">Back to all notes</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        var toc = document.getElementById("toc");
+        var tocPos = toc.offsetTop + toc.offsetHeight;
+        var tocBtn = document.getElementById("jump-toc-btn");
+
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+        // for performance reasons, we **only** render a certain
+        // number of equations that the viewer is actually viewing
+        function VisibleMathRenderer(config) {
+            /*
+            Renders only a limited number of equations on page load
+            to avoid poor performance
+             Params:
+                lastRenderedEquation: the most recently rendered equation.
+                        when this goes out of view, equations under it are rendered. 
+            */
+            var startElement = config.startElement
+            var maxEquations = config.maxEquations ? config?.maxEquations : 30;
+            this.startElement = startElement
+            this.maxEquations = maxEquations
+            // we wait until the user scrolls past the starting/
+            // ending elements to start rendering the whole page
+            this.canRenderWholePage = false;
+            this.pageRendered = false;
+            this.lastRenderedTopEquation = null;
+            this.lastRenderedBottomEquation = null;
+
+            this.render = function() {
+                renderMath(this.startElement);
+                // render previous 25 and following 25 equations
+                var prev = this.startElement.previousElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left prior to the element
+                    if (prev == null) {
+                        break;
+                    }
+                    renderMath(prev);
+                    prev = prev.previousElementSibling;
+                }
+                // store our last rendered equations
+                // we'll track scroll position later to
+                // check when the rest of the page should be rendered
+                this.lastRenderedTopEquation = prev;
+                console.log(this.lastRenderedTopEquation)
+
+                var next = this.startElement.nextElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left following the element
+                    if (next.nextElementSibling == null) {
+                        break;
+                    }
+                    renderMath(next);
+                    next = next.nextElementSibling;
+                }
+                this.lastRenderedBottomEquation = next;
+                // now allow rendering the rest of the equations
+                this.canRenderWholePage = true;
+            }
+
+            // render all math on the whole page
+            this.renderMathOnPage = function() {
+                // don't run until preliminary tasks
+                // are done so that the whole page
+                // can/should be rendered
+                if (!this.canRenderWholePage) {
+                    return;
+                }
+                // if the whole page's worth of equations
+                // are already rendered, don't render more
+                if (this.pageRendered) {
+                    return;
+                }
+                var topBound = this.lastRenderedTopEquation.getBoundingClientRect.top;
+                var bottomBound = this.lastRenderedBottomEquation.getBoundingClientRect.bottom;
+                var scrollTop, scrollBottom = getViewport();
+                // if the user is about to scroll past the initially-rendered equations
+                // we will render the whole page
+                if (scrollTop - 50 + window.scrollY < topBound || scrollBottom + 50 + window.scrollY > bottomBound) {
+                    console.log("Scrolled beyond!")
+                    var article = document.querySelector(".post");
+                    if (article) {
+                        this.renderMath(article);
+                    }
+                    this.pageRendered = true;
+                }
+                
+            }
+            
+        }
+
+        function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        function findFirstRelevantElement() {
+            // finds the first <p> tage that's closest to
+            // the viewer's viewport
+            var regex = /#.*/;
+            var m = regex.exec(window.location.href);
+            if (m !== null) {
+                return document.querySelector(m[0]);
+            } else {
+                return document.querySelector(".post p");
+            }
+        }
+        
+        // initialize page JS components
+        /*
+        var mathRenderer = new VisibleMathRenderer({
+            // start rendering with first <p> tag on the
+            // post
+            startElement: findFirstRelevantElement()
+        });
+        */
+        document.addEventListener("DOMContentLoaded", function() {
+            showTocBtnOnScroll();
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+
+        window.onscroll = function(){
+            // if (!mathRenderer.pageRendered) {
+            //     mathRenderer.renderMathOnPage();
+            // }
+            showTocBtnOnScroll();
+        };
+
+
+    </script>
+    
+
+
+</body>
+
+</html>

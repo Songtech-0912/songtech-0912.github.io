@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How I make my online notes</title>
+  <meta name="description" content=" In the spirit of sharing and open-source, I thought it might be helpful to share I make these free online notes.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>How I make my online notes</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+
+        <!-- page content -->
+        <p>In the spirit of sharing and open-source, I thought it might be helpful to share I make these free online notes.</p>
+<span id="continue-reading"></span><h2 id="my-tech-stack">My tech stack</h2>
+<p>This website is self-contained, with its only dependency being <a href="https://www.getzola.org/">Zola</a>, a high-performance static site generator written in Rust. Zola takes a folder of mostly text files written in <a href="https://www.markdownguide.org/getting-started/">markdown</a>, and outputs a beautiful website. This makes for excellent developer peace of mind: I just need to focus on writing the notes, not on coding or debugging.</p>
+<p>The website uses very few other dependencies. It embeds the <a href="https://rsms.me/inter/">Inter</a> font and the <a href="https://rsms.me/inter/">KaTeX</a> library for rendering math equations. It also uses a few custom markup tags for specialized content. For instance, math equations are typeset via this markup:</p>
+<pre data-lang="jinja" style="background-color:#fafafa;color:#61676c;" class="language-jinja "><code class="language-jinja" data-lang="jinja"><span># Block math
+</span><span>{% </span><span style="color:#fa6e32;">math</span><span>() %}
+</span><span>x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+</span><span>{% </span><span style="color:#fa6e32;">end </span><span>%}
+</span><span>
+</span><span># Inline math (more robust than the other $...$ syntax)
+</span><span>{% </span><span style="color:#fa6e32;">inlmath</span><span>() %} E = mc^2 {% </span><span style="color:#fa6e32;">end </span><span>%}
+</span></code></pre>
+<h2 id="my-general-workflow">My general workflow</h2>
+<p>I divide creating these notes into three main steps:</p>
+<ul>
+<li>Write: get the text content of the notes down</li>
+<li>Transfer: do the formatting required to get the notes to properly display on the website</li>
+<li>Polish: look over the notes and revise them, adding and removing content as necessary</li>
+</ul>
+<p>In the first step, I write these notes: sometimes in my spare time, sometimes in class, I simply like sharing what I learn. My preferred tool for this is <a href="https://obsidian.md/">Obsidian</a>, although if you'd prefer an open-source tool instead, see <a href="https://stackedit.io/">StackEdit</a>. Both use the Markdown format for typesetting, which for most intents and purposes is just typing normal text with some additional formatting text. Obsidian and Stackedit also allow entering equations via <a href="https://jackysci.com/latex-math-tutorial/">LaTeX</a> format: if you're not familar with that, it's the same format that you can copy from <a href="https://www.desmos.com/calculator">Desmos</a> equations, and a visual editor is available <a href="https://cortexjs.io/mathlive/demo/">here</a>. Sometimes, I directly edit in a code editor like <a href="https://code.visualstudio.com/">VS Code</a> and use the live-preview feature of Zola to preview what I am editing.</p>
+<p>In the second step, I have to actually transfer my notes to my website, which is more complicated than it seems. Due to discrepancies between the markdown format used by Zola and that used by most markdown editors, I use a regular expression to do a few replacements. For this, I simply go to <a href="https://regex101.com">https://regex101.com</a>, go to substitution mode, input the regex (regular expression) <code>\$\$(.+?)\$\$</code> with options <code>/msg</code>, set the replacement string to <code>{% math() %}$1{% end %}</code>, and paste in my draft copied from Obsidian. Then, in the substitution box, I can see my result, and verify that it is correct. Afterwards, I can just paste in my sections one by one, and Regex101 will automatically give me the correctly-formatted output.</p>
+<p>But text and equations only are boring! So I use the <a href="https://github.com/zsviczian/obsidian-excalidraw-plugin">Obsidian excalidraw plugin</a> to draw diagrams. I then convert my excalidraw drawings over by using the <a href="https://forum.obsidian.md/t/has-anyone-succeeded-in-publishing-excalidraw-drawings/55587/9">auto SVG export feature</a> of Obsidian's excalidraw plugin, and using the regex of <code>\!\[\[(.+?)\.excalidraw\]\]</code> with options still set as <code>/msg</code>, with the replacement string <code>![]($1.excalidraw.svg)</code>. Once I am satisfied, I can simply create another article in the <code>content/</code> folder. I can also do the same in VS Code, just with the slightly modified search regex <code>\$\$([\s\S\n]+?)\$\$</code> (thanks to <a href="https://www.waldo.be/2022/01/31/multi-line-text-search-in-vscode-with-regex/">this article</a> for its tip) and enabling the regex search option, then choosing "replace all". This is convenient for batch-converting a folder of notes written in Obsidian to my website's format. Finally, it is sometimes helpful to make sure that the math blocks are delimited by a newline before any other content; this is important for ensuring consistent formatting. In VS Code, this can be automatically done with the search regex <code>\{% end %\}(\n\w)</code> and the replace regex <code>{% end %}\n$1</code> applied to all files in the <code>content/</code> folder.</p>
+
+        
+        <a href="/" class="return-link">Back to home</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function() {
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+    </script>
+    
+
+
+</body>
+
+</html>

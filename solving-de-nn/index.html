@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solving ODEs and PDEs with neural networks</title>
+  <meta name="description" content=" Typical numerical methods to solve ordinary differential equations and especially partial differential equations require very fine grids to be able to attain accurate results, and suffer from the curse of dimensionality. This is an alternate method to solve ODEs and PDEs with neural networks, which solves both these issues.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Solving ODEs and PDEs with neural networks</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+
+        <!-- page content -->
+        <p>Typical numerical methods to solve ordinary differential equations and especially partial differential equations require very fine grids to be able to attain accurate results, and suffer from the curse of dimensionality. This is an alternate method to solve ODEs and PDEs with neural networks, which solves both these issues.</p>
+<span id="continue-reading"></span>
+<p>We will first explore the ODE case, and then move onto the PDE case.</p>
+<h2 id="ode-case">ODE case</h2>
+<p>Given a general ODE in the form:</p>
+<p class="mathcell">
+$$
+\frac{dy}{dx} = f(x, y)
+$$
+</p><p class="mathcell">
+$$
+y(0) = k
+$$
+</p>
+<p>A custom loss function can be written as follows:</p>
+<p class="mathcell">
+$$
+L = \frac{1}{n} \sum_{i = 0}^n (y&#x27; - f(x, y))^2 + (y(0) - k)^2
+$$
+</p>
+<p>If we take the neural network's output prediction to be $N(x, a)$, where $a$ denotes the parameters storing the weights and biases of the model, then we can rewrite the above loss function as:</p>
+<p class="mathcell">
+$$
+L(a, x) = \frac{1}{n} \sum_{i = 0}^n (N&#x27;(a, x) - f(x, N(a, x)))^2 + (N(a, 0) - k)^2
+$$
+</p>
+<p>Where $N'(a, x)$ can be calculated through automatic differentiation of the model. Then we can optimize with gradient descent given learning rate $\gamma$ to yield:</p>
+<p class="mathcell">
+$$
+a_{n + 1} = a_n - \gamma \nabla L(a, x)
+$$
+</p><h2 id="pde-case">PDE case</h2>
+<p>Suppose we want to solve the 1D wave equation:</p>
+<p class="mathcell">
+$$
+\frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}
+$$
+</p>
+<p>The wave equation, as with any PDE, can be written in the form $F(x, t) = 0$, where:</p>
+<p class="mathcell">
+$$
+F(x, t) = \frac{\partial^2 u}{\partial t^2} - c^2 \frac{\partial^2 u}{\partial x^2}
+$$
+</p>
+<p>We also need to specify the initial condition:</p>
+<p class="mathcell">
+$$
+u(x, 0) = u_0(x)
+$$
+</p>
+<p>The initial condition describes how the PDE behaves at $t = 0$, and for the wave equation, a common initial condition is that $u_0(x) = \sin(x)$. But the initial condition is not enough to make a solution unique - and we need unique solutions to model real-life phenomena. In addition to the initial condition, we need boundary conditions, which describe how the PDE behaves as you move far away from the center of the PDE:</p>
+<p class="mathcell">
+$$
+\text{BC} = \lim_{x \to \pm \infty} u(x, t)
+$$
+</p>
+<p>Note that the previous equation is true for the 1D case, but for 2D, 3D, and higher dimensional cases, the more general interpretation is that:</p>
+<p class="mathcell">
+$$
+\text{BC} = \lim_{r \to \pm \infty} u(x, t)
+$$
+</p>
+<p>where $r$ is the radial distance from the origin. For the wave equation, since we're solving on a finite, not infinite, domain, we can replace $\pm \infty$ with the edges of the domain. For instance, if we were solving on $x \in [0, L]$, then the spatial boundary conditions could be that the wave vanishes as $x$ approaches the edges of its domain:</p>
+<p class="mathcell">
+$$
+u(0, t) = 0
+$$
+</p><p class="mathcell">
+$$
+u(L, t) = 0
+$$
+</p>
+<p>We want the neural network to learn the solution $u(x, t)$, so we make a general model $\hat u(x, t)$ that should converge to $u(x, t)$ after training:</p>
+<pre data-lang="py" style="background-color:#fafafa;color:#61676c;" class="language-py "><code class="language-py" data-lang="py"><span style="font-style:italic;color:#abb0b6;"># Basic model to represent u(x, t)
+</span><span style="color:#fa6e32;">def </span><span style="color:#f29718;">model</span><span>(</span><span style="color:#ff8f40;">params</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">x</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">t</span><span>):
+</span><span>    w, b </span><span style="color:#ed9366;">= </span><span>params
+</span><span>    output </span><span style="color:#ed9366;">= </span><span>(x </span><span style="color:#ed9366;">* </span><span>w[</span><span style="color:#ff8f40;">0</span><span>] </span><span style="color:#ed9366;">+ </span><span>t </span><span style="color:#ed9366;">* </span><span>w[</span><span style="color:#ff8f40;">1</span><span>]) </span><span style="color:#ed9366;">+ </span><span>b
+</span><span>    </span><span style="color:#fa6e32;">return </span><span style="color:#f29718;">sigmoid</span><span>(output)
+</span></code></pre>
+<p>Thus, given our wave equation, we can define a custom loss function $L(a, x, t)$, where $\hat u$ denotes the model being trained:</p>
+<p class="mathcell">
+$$
+L(x, t) = \frac{1}{n} \sum_{i=0}^n (F(x_i, t_i))^2 + \frac{1}{n} \sum_{i = 0}^n (\hat u(x_i, 0) - u_0(x_i))^2 + \frac{1}{n} \sum_{i = 0}^n (\hat u(0, t) - \mathrm{BC_1})^2 + \frac{1}{n} \sum_{i = 0}^n (\hat u(L, t) - \mathrm{BC_2})^2
+$$
+</p>
+<p>Where $u_0(x)$ denotes the initial conditions of the PDE we set. Note here that the $\frac{1}{n} \sum$ term is just taking the mean of $F(x, t)$ as it is an array, not a scalar, when trained. Thus, through the same method of gradient descent, the neural network learns the function $u(x, t)$:</p>
+<p class="mathcell">
+$$
+a_{n + 1} = a_n - \gamma \nabla L(a, x, t)
+$$
+</p>
+<p>For a full implementation of both the ODE and PDE examples, see <a href="https://github.com/Songtech-0912/NN-DE-solvers">https://github.com/Songtech-0912/NN-DE-solvers</a>.</p>
+
+        
+        <a href="/" class="return-link">Back to home</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function() {
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+    </script>
+    
+
+
+</body>
+
+</html>

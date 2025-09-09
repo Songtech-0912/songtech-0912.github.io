@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building a neural network library in Rust, part 1</title>
+  <meta name="description" content=" This is the first article in a multi-part series detailing the process of building a neural network library in pure Rust, based off my experience making the elara-math library.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Building a neural network library in Rust, part 1</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+
+        <!-- page content -->
+        <p>This is the first article in a multi-part series detailing the process of building a neural network library in pure Rust, based off my experience making the <a href="https://github.com/elaraproject/elara-math"><code>elara-math</code></a> library.</p>
+<span id="continue-reading"></span><h2 id="what-is-a-neural-network">What is a neural network?</h2>
+<p>Put simply, a neural network is just a mathematical model for predicting a value given existing values. The simplest neural networks, one-layer feedforward neural networks, are basically just a linear function:</p>
+<p class="mathcell">
+$$
+y = \sigma(mx + b)
+$$
+</p>
+<p>Here, $x$ is the inputs given to the neural network, and $y$ is the outputs it predicts. $m$ and $b$ are often called the <em>weights</em> and <em>biases</em> of the neural network, and act as parameters to adjust to make the neural network predict different things. $\sigma(x)$ is called an <em>activation function</em>, and often is the sigmoid function:</p>
+<p class="mathcell">
+$$
+f(x) = \frac{1}{1 + e^{-x}}
+$$
+</p>
+<p>The activation function is used to "squish" any value the neural network predicts, from $-\infty$ to $\infty$, to a value between 0 and 1.</p>
+<p>The trick to making a neural network "learn" is to measure a <em>loss</em> - that is, a measure of how much the prediction of a neural network deviates from the expected value. The loss function is typically the <strong>mean squared error</strong>, which looks like this:</p>
+<p class="mathcell">
+$$
+\mathcal{L} = \frac{1}{n} \sum_{i = 0}^n (\hat y - y)^2
+$$
+</p>
+<p>Then, we take the gradient of the loss to find out how much a small change in the weights and biases will affect the loss. We then adjust the weights and biases so that the new weights and biases will have a lower loss:</p>
+<p class="mathcell">
+$$
+w = w - \nabla \mathcal{L} \cdot \mu \\
+b = b - \nabla \mathcal{L} \cdot \mu
+$$
+</p>
+<p>Note that here, $\mu$ is the learning rate, which is how much we want to adjust the neural network given the gradient.</p>
+<p>We repeat this process until the loss is as low as desired. The neural network, by this point, should be very accurate in making its predictions.</p>
+<h2 id="how-to-autodiff">How to autodiff</h2>
+<p>Automatic differentiation is the heart of machine learning, and it involves a technique to automatically calculate the gradient of a function - often, the loss function. To demonstrate this, suppose we had a value $z$, defined as:</p>
+<p class="mathcell">
+$$
+z = 2x + 3y
+$$
+</p>
+<p>We want to find the values of $\frac{\partial z}{\partial x}$ and $\frac{\partial z}{\partial y}$. One way to do this is to break down $z$ by rewriting it in terms of two <em>intermediary variables</em> $a$ and $b$:</p>
+<p class="mathcell">
+$$
+a = 2x \\
+b = 3y \\
+z = a + b
+$$
+</p>
+<p>Then:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{\partial z}{\partial x} &amp;= \frac{\partial z}{\partial a}
+\frac{\partial a}{\partial x} \\
+\frac{\partial z}{\partial y} &amp;= \frac{\partial z}{\partial a}
+\frac{\partial a}{\partial y}
+\end{align*}
+$$
+</p>
+<p>This is really just the multivariable chain rule, and it is the basic technique by which automatic differentiation works. In Rust, this is implemented through a <code>Value</code> struct:</p>
+<pre data-lang="rust" style="background-color:#fafafa;color:#61676c;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#fa6e32;">pub struct </span><span style="color:#399ee6;">ValueData </span><span>{
+</span><span>    </span><span style="color:#fa6e32;">pub </span><span>data</span><span style="color:#61676ccc;">: </span><span style="color:#fa6e32;">f64</span><span>,
+</span><span>    </span><span style="color:#fa6e32;">pub </span><span>grad</span><span style="color:#61676ccc;">: </span><span style="color:#fa6e32;">f64</span><span>,
+</span><span>    </span><span style="color:#fa6e32;">pub </span><span>uuid</span><span style="color:#61676ccc;">:</span><span> Uuid,
+</span><span>    </span><span style="color:#fa6e32;">pub </span><span>_backward</span><span style="color:#61676ccc;">: </span><span style="font-style:italic;color:#55b4d4;">Option</span><span>&lt;</span><span style="color:#fa6e32;">fn</span><span>(value: </span><span style="color:#ed9366;">&amp;</span><span>ValueData)&gt;,
+</span><span>    </span><span style="color:#fa6e32;">pub </span><span>_prev</span><span style="color:#61676ccc;">: </span><span style="font-style:italic;color:#55b4d4;">Vec</span><span>&lt;Value&gt;,
+</span><span>    </span><span style="color:#fa6e32;">pub </span><span>_op</span><span style="color:#61676ccc;">: </span><span style="font-style:italic;color:#55b4d4;">Option</span><span>&lt;</span><span style="font-style:italic;color:#55b4d4;">String</span><span>&gt;,
+</span><span>}
+</span><span>
+</span><span style="color:#61676ccc;">#</span><span>[</span><span style="color:#f29718;">derive</span><span>(Clone)]
+</span><span style="color:#fa6e32;">pub struct </span><span style="color:#399ee6;">Value</span><span>(Rc&lt;RefCell&lt;ValueData&gt;&gt;)</span><span style="color:#61676ccc;">;
+</span></code></pre>
+<p>And operations are implemented on <code>Value</code> in such a way that it transforms the gradient according to the derivative properties every time <code>Value</code> is changed. Then, if we set initial values of 1 for $\frac{\partial a}{\partial x}$ and $\frac{\partial a}{\partial y}$, we can find all the partial derivatives of $z$.</p>
+<p>Finally, it would be helpful to talk about the difference between forward-mode automatic differentiation, which was shown earlier, and <em>reverse-mode</em> automatic differentiation. Reverse-mode automatic differentiation is simply turning forward-mode upside down, so:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{\partial z}{\partial x} &amp;= \frac{\partial a}{\partial x}
+\frac{\partial z}{\partial a} \\
+\frac{\partial z}{\partial y} &amp;= \frac{\partial a}{\partial y}
+\frac{\partial z}{\partial a}
+\end{align*}
+$$
+</p>
+<p>This means that while forward-mode yields every output derivative given a single input, reverse-mode yields every input derivative given a single output - drastically speeding up automatic differentiation for training neural networks.</p>
+<h2 id="how-to-make-a-neural-network-in-rust">How to make a neural network in Rust</h2>
+<p>The key building blocks of a neural network are three components:</p>
+<ul>
+<li>A (preferably fast!) n-dimensional array</li>
+<li>An automatic differentiation library</li>
+<li>A tensor class (in Rust, it would be a struct)</li>
+</ul>
+<p>While building my personal neural network library <a href="https://github.com/elaraproject/elara-math"><code>elara-math</code></a>, I aimed to build all three components from scratch in pure Rust, using as few dependencies as possible.</p>
+<p>To start with, I built <code>NdArray</code>, my n-dimensional array, by heavily referencing <a href="https://crates.io/crates/nd_array">nd_array</a>. The trick both <code>elara-math</code> and <code>nd_array</code> used for fast n-dimensional arrays is to define <code>NdArray</code> like so:</p>
+<pre data-lang="rust" style="background-color:#fafafa;color:#61676c;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#61676ccc;">#</span><span>[</span><span style="color:#f29718;">derive</span><span>(Debug</span><span style="color:#61676ccc;">,</span><span> Clone)]
+</span><span style="color:#fa6e32;">pub struct </span><span style="color:#399ee6;">NdArray</span><span>&lt;T</span><span style="color:#61676ccc;">: </span><span style="font-style:italic;color:#55b4d4;">Clone</span><span>, </span><span style="color:#fa6e32;">const</span><span> N</span><span style="color:#61676ccc;">: </span><span style="color:#fa6e32;">usize</span><span>&gt; {
+</span><span>    </span><span style="color:#fa6e32;">pub </span><span>shape</span><span style="color:#61676ccc;">:</span><span> [</span><span style="color:#fa6e32;">usize</span><span>; N],
+</span><span>    </span><span style="color:#fa6e32;">pub </span><span>data</span><span style="color:#61676ccc;">: </span><span style="font-style:italic;color:#55b4d4;">Vec</span><span>&lt;T&gt;,
+</span><span>}
+</span></code></pre>
+<p>Essentially, the <code>NdArray</code> holds a vector containing the elements of the array, and the shape of the array. This means that indexing operations on the <code>NdArray</code> are computed as indexing a single flat vector, rather than nested vectors, making <code>NdArrays</code> in theory very performant.</p>
+<p>However, I intended to get to a working implementation of a <code>Tensor</code> as quick as possible. To do this, I used Ramil Aleskerov's excellent <a href="https://github.com/Mathemmagician/rustygrad">Rustygrad</a> library, which provided a differentiable <code>Value</code>datatype. I then implemented tensors with:</p>
+<pre data-lang="rust" style="background-color:#fafafa;color:#61676c;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#fa6e32;">pub struct </span><span style="color:#399ee6;">Tensor</span><span>&lt;</span><span style="color:#fa6e32;">const</span><span> N</span><span style="color:#61676ccc;">: </span><span style="color:#fa6e32;">usize</span><span>&gt;(NdArray&lt;Value, N&gt;)</span><span style="color:#61676ccc;">;
+</span></code></pre>
+<p>To backpropagate the gradients, I simply implemented a map operation on the underlying <code>NdArray</code> of <code>Values</code>:</p>
+<pre data-lang="rust" style="background-color:#fafafa;color:#61676c;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#fa6e32;">pub fn </span><span style="color:#f29718;">backward</span><span>(</span><span style="color:#ed9366;">&amp;</span><span style="color:#fa6e32;">mut </span><span style="color:#ff8f40;">self</span><span>) {
+</span><span>    </span><span style="font-style:italic;color:#55b4d4;">self</span><span style="color:#ed9366;">.</span><span style="color:#ff8f40;">0.</span><span style="color:#f07171;">mapv</span><span>(|</span><span style="color:#ff8f40;">val</span><span style="color:#61676ccc;">:</span><span> Value| val</span><span style="color:#ed9366;">.</span><span style="color:#f07171;">backward</span><span>())</span><span style="color:#61676ccc;">;
+</span><span>}
+</span></code></pre>
+<p>And to get the gradient, I also used a map to get the gradient of each component <code>Value</code> in the <code>Tensor</code>:</p>
+<pre data-lang="rust" style="background-color:#fafafa;color:#61676c;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#fa6e32;">pub fn </span><span style="color:#f29718;">grad</span><span>(</span><span style="color:#ed9366;">&amp;</span><span style="color:#fa6e32;">mut </span><span style="color:#ff8f40;">self</span><span>) </span><span style="color:#61676ccc;">-&gt; </span><span>NdArray&lt;</span><span style="color:#fa6e32;">f64</span><span>, N&gt; {
+</span><span>    </span><span style="color:#fa6e32;">let</span><span> data </span><span style="color:#ed9366;">= </span><span style="font-style:italic;color:#55b4d4;">self</span><span style="color:#ed9366;">.</span><span style="color:#ff8f40;">0.</span><span>data</span><span style="color:#ed9366;">.</span><span style="color:#f07171;">clone</span><span>()</span><span style="color:#61676ccc;">;
+</span><span>    </span><span style="color:#fa6e32;">let</span><span> gradients </span><span style="color:#ed9366;">=</span><span> data</span><span style="color:#ed9366;">.</span><span style="color:#f07171;">into_iter</span><span>()</span><span style="color:#ed9366;">.</span><span style="color:#f07171;">map</span><span>(</span><span style="color:#fa6e32;">move </span><span style="color:#ed9366;">|</span><span>val</span><span style="color:#ed9366;">|</span><span> val</span><span style="color:#ed9366;">.</span><span style="color:#f07171;">borrow</span><span>()</span><span style="color:#ed9366;">.</span><span>grad)</span><span style="color:#ed9366;">.</span><span style="color:#f07171;">collect</span><span>()</span><span style="color:#61676ccc;">;
+</span><span>    NdArray {
+</span><span>        data</span><span style="color:#61676ccc;">:</span><span> gradients</span><span style="color:#61676ccc;">,
+</span><span>        shape</span><span style="color:#61676ccc;">: </span><span style="font-style:italic;color:#55b4d4;">self</span><span style="color:#ed9366;">.</span><span style="color:#ff8f40;">0.</span><span>shape
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>Since <code>Values</code> already have arithmetic operations implemented, it was comparatively easy to implement the same operations for tensors. For example, implementing elementwise addition was simply:</p>
+<pre data-lang="rust" style="background-color:#fafafa;color:#61676c;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#fa6e32;">impl</span><span>&lt;</span><span style="color:#fa6e32;">const</span><span> N</span><span style="color:#61676ccc;">: </span><span style="color:#fa6e32;">usize</span><span>&gt; Add&lt;</span><span style="color:#ed9366;">&amp;</span><span>Tensor&lt;N&gt;&gt; </span><span style="color:#fa6e32;">for </span><span style="color:#ed9366;">&amp;</span><span style="color:#399ee6;">Tensor</span><span>&lt;N&gt; {
+</span><span>    </span><span style="color:#fa6e32;">type </span><span style="color:#399ee6;">Output </span><span style="color:#ed9366;">= </span><span>Tensor&lt;N&gt;</span><span style="color:#61676ccc;">;
+</span><span>    </span><span style="color:#fa6e32;">fn </span><span style="color:#f29718;">add</span><span>(</span><span style="color:#ff8f40;">self</span><span>, </span><span style="color:#ff8f40;">rhs</span><span style="color:#61676ccc;">: </span><span style="color:#ed9366;">&amp;</span><span>Tensor&lt;N&gt;) </span><span style="color:#61676ccc;">-&gt; </span><span style="color:#fa6e32;">Self</span><span style="color:#ed9366;">::</span><span>Output {
+</span><span>        Tensor</span><span style="color:#ed9366;">::</span><span>new(</span><span style="color:#ed9366;">&amp;</span><span style="font-style:italic;color:#55b4d4;">self</span><span style="color:#ed9366;">.</span><span style="color:#ff8f40;">0 </span><span style="color:#ed9366;">+ &amp;</span><span>rhs</span><span style="color:#ed9366;">.</span><span style="color:#ff8f40;">0</span><span>)
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<h2 id="future-work">Future work</h2>
+<p>The slight issue with <code>elara-math</code> is that at present, it is <em>very</em> slow - much, much slower than PyTorch. This is mainly due to the fact that <code>Tensor</code> is essentially an <code>NdArray</code> of owned<code>Values</code>, and so operations with Tensors are cumbersome and slow, because <code>Values</code> have to be allocated and reallocated. A future better implementation would "bake in" the automatic differentation into the tensors, so this is not an issue.</p>
+
+        
+        <a href="/" class="return-link">Back to home</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function() {
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+    </script>
+    
+
+
+</body>
+
+</html>

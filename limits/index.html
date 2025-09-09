@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes on limits for calculus</title>
+  <meta name="description" content=" These are notes taken during RPI&#x27;s MATH 1010 course, on the topic of limits in calculus.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Notes on limits for calculus</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+        <details class="toc" id="toc" open>
+        <summary>Table of contents</summary>
+        <p class="toc-info">Note: it is highly recommended to navigate by clicking links in the table of contents! It means you can use the back button in your browser to go back to any section you were reading, so you can jump back and forth between sections!</p>
+        <div>
+            <ul>
+            
+                <li>
+                    <a href="#investigating-limits">Investigating limits</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#one-sided-limits">One-sided limits</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#direct-evaluation-of-limits">Direct evaluation of limits</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#algebraic-limits">Algebraic limits</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#continuity">Continuity</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#indeterminate-forms">Indeterminate forms</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#factor-and-eliminate">Factor and eliminate</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#conjugate">Conjugate</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#rewrite-as-fraction">Rewrite as fraction</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#infinite-limits">Infinite limits</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#squeeze-theorem">Squeeze Theorem</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#using-special-limits-and-limit-properties">Using special limits and limit properties</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#limits-at-infinity">Limits at infinity</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#l-hopital-s-rule">L&#x27;Hôpital&#x27;s Rule</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#the-epsilon-delta-definition-of-a-limit">The Epsilon-Delta definition of a limit</a>
+                    
+                </li>
+            
+            </ul>
+        </div>
+        </details>
+        
+
+        <!-- page content -->
+        <p>These are notes taken during RPI's MATH 1010 course, on the topic of limits in calculus.</p>
+<span id="continue-reading"></span>
+<p>Note: some problems are taken Rogawski 4e Calculus Early Transcendentals, the questions are not original work.</p>
+<p>It is recommended to use <code>Ctrl F</code> or the equivalent search function to find the relevant section, as these notes are quite long.</p>
+<h2 id="investigating-limits">Investigating limits</h2>
+<p>The <strong>limit</strong> $L$ of a function as it approaches $c$ is the value the function tends towards as it approaches $x = c$:</p>
+<p class="mathcell">
+$$
+\lim_{x \to c} f(x) = L
+$$
+</p>
+<p>Note that $f(c)$ doesn't <em>have</em> to equal $L$, only that the function tends to approach $L$ as $x$ approaches $c$.</p>
+<p>For instance:</p>
+<p class="mathcell">
+$$
+g(x) = \begin{cases}
+x^2 + 1, &amp; x \neq 1 \\
+0, &amp; x = 1
+\end{cases}
+$$
+</p>
+<p>Here, we see that $g(1) = 0$. However, as $x$ approaches 1, $g(x)$ approaches 2, so the limit is 2. So the value of the limit doesn't depend on the actual value of the function at a point (in fact many functions are undefined at certain points), only the value the function <em>approaches</em> as it reaches a certain point.</p>
+<h2 id="one-sided-limits">One-sided limits</h2>
+<p>One-sided limits are when a function only approaches $c$ from a certain direction.</p>
+<p>The left-hand limit is defined as:</p>
+<p class="mathcell">
+$$
+\lim_{x \to c^-} f(x) = L_1
+$$
+</p>
+<p>The right-hand limit is defined as:</p>
+<p class="mathcell">
+$$
+\lim_{x \to c^+} f(x) = L_2
+$$
+</p>
+<p>A limit only exists if the left-hand and right-hand limits are <strong>equal</strong>.</p>
+<h2 id="direct-evaluation-of-limits">Direct evaluation of limits</h2>
+<p>If a function is defined and continuous, then:</p>
+<p class="mathcell">
+$$
+\lim_{x \to c} f(x) = f(c)
+$$
+</p><h2 id="algebraic-limits">Algebraic limits</h2>
+<p>Limits can oftentimes be solved algebraically. Limits are linear, which means that:</p>
+<p class="mathcell">
+$$
+\lim_{x \to c} (a f(x) \pm b g(x)) = a \lim_{x \to c} f(x) \pm b \lim_{x \to c} g(x)
+$$
+</p>
+<p>They also can be multiplied and divided (as long as the denominator $\neq 0$), and taken to the  power of:</p>
+<p class="mathcell">
+$$
+\lim_{x \to c} [f(x)]^{p&#x2F;q} = (\lim_{x \to c} f(x))^{p&#x2F;q}
+$$
+</p>
+<p>(here note that $q \neq 0$)
+Algebraic limits work for <strong>algebraic limits</strong> only - that is, if a function is composed of polynomials, roots, rationals (fractions), and powers.</p>
+<h2 id="continuity">Continuity</h2>
+<p>A function is continuous if you can draw its graph without lifting your pencil and without retracing any part of the curve throughout an interval. Otherwise, it is said to have a <strong>discontinuity</strong>, which can be one of several types:</p>
+<ul>
+<li>Jump</li>
+<li>Hole (also called a "removable discontinuity")</li>
+<li>Infinite discontinuity (asymptote)</li>
+<li>Oscillating discontinuity</li>
+</ul>
+<p>The formal test of continuity is that $f(x)$ is continuous on $[a, b]$ if:</p>
+<p class="mathcell">
+$$
+\lim_{x \to c} f(x), x \in [a, b]
+$$
+</p>
+<p>Suppose we have a piecewise function:</p>
+<p class="mathcell">
+$$
+\begin{cases}
+x^2 - c, x &lt; 7 \\
+3x + 4c, x &gt; 7
+\end{cases}
+$$
+</p>
+<p>To find the value of $c$ that makes the function continuous, we first set the two pieces of the piecewise equal, and solve for $c$:</p>
+<p class="mathcell">
+$$
+x^2 - c = 3x + 4c \Rightarrow c = \frac{x^2 - 3x}{5}
+$$
+</p>
+<p>Then we plug in $x = 7$ to get:</p>
+<p class="mathcell">
+$$
+c = \frac{7^2 - 3(7)}{5} = \frac{28}{5}
+$$
+</p><h2 id="indeterminate-forms">Indeterminate forms</h2>
+<p>If the formula for $f(c)$ at a point yields $\frac{0}{0}$, $\frac{\infty}{\infty}$, $\infty \cdot 0$ or $\infty - \infty$ then it is called an indeterminate form. There are several ways to evaluate such limits.</p>
+<h3 id="factor-and-eliminate">Factor and eliminate</h3>
+<p>We can factor the numerator and simplify:</p>
+<p class="mathcell">
+$$
+\lim_{x \to 2} \frac{x^2 - 7x + 10}{x - 2} = \lim_{x \to 2} \frac{(x-2)(x - 5)}{x-2} = \lim_{x \to 2} x-5 = -3
+$$
+</p>
+<p>Note that factors are not always so evident. For example, $e^{2x} - 1 = (e^x - 1)(e^x + 1)$. Use u-substitution for factoring if convenient.</p>
+<h3 id="conjugate">Conjugate</h3>
+<p>We can multiply by the conjugate $(a - b)$ and simplify:</p>
+<p class="mathcell">
+$$
+\lim_{h \to 0} \frac{\sqrt{h + 1} - 1}{h} \frac{\sqrt{h + 1} + 1}{\sqrt{h + 1} + 1} = \lim_{h \to 0} \frac{(h + 1) - 1}{h (\sqrt{h + 1} + 1)} = \lim_{h \to 0} \frac{1}{\sqrt{h + 1} + 1} = \frac{1}{2}
+$$
+</p><h3 id="rewrite-as-fraction">Rewrite as fraction</h3>
+<p>We can rewrite as a fraction and/or find a common denominator, and then use one of the three above methods:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\lim_{t \to 0^+} \sin(t) \cot(t) &amp;= \lim_{t \to 0^+} \frac{\sin(t)}{\tan(t)} \\
+&amp;= \lim_{t \to 0^+} \sin(t) \frac{\cos(t)}{\sin (t)} \\ 
+&amp;= \lim_{t \to 0^+} \cos(t) \\
+&amp;= 1
+\end{align*}
+$$
+</p><p class="mathcell">
+$$
+\begin{align*}
+\lim_{\theta \to \frac{\pi}{4}} \frac{1}{\tan \theta - 1} - \frac{2}{\tan^2 \theta - 1} &amp;= \lim_{\theta \to \frac{\pi}{4}} \frac{\tan \theta + 1 - 2}{(\tan \theta + 1) (\tan \theta - 1)} \\ 
+&amp;= \lim_{\theta \to \frac{\pi}{4}} \frac{\tan \theta - 1}{(\tan \theta + 1) (\tan \theta - 1)} \\
+&amp;= \frac{1}{2}
+\end{align*}
+$$
+</p><h2 id="infinite-limits">Infinite limits</h2>
+<p>If a limit is in the form $\frac{n}{0}$, then check if the left-hand and right-hand limits match by using a number line and substituting a number to the left and right of the limit to check the sign. If the one-sided limits match, then the limit is either $\infty$ or $-\infty$, meaning the function has an <strong>asymptote</strong> at that point. Otherwise, the limit does not exist.</p>
+<h2 id="squeeze-theorem">Squeeze Theorem</h2>
+<p>The <strong>squeeze theorem</strong> states that if $g(x) \leq f(x) \leq h(x)$, and $\lim_{x \to c} g(x) = h(x) = L$, then $\lim_{x \to c} f(x) = L$. For instance:</p>
+<p class="mathcell">
+$$
+\lim_{x \to 0} x^2 \cos \left(\frac{1}{x}\right)
+$$
+</p>
+<p>We know that $-1 \leq \cos(\frac{1}{x}) \leq 1$ (to prove this you can use the substitution $u = \frac{1}{x}$, then $-1 \leq \cos(u) \leq 1$, and then substituting gives this result). Therefore, it follows that $-x^2 \leq x^2 \cos (\frac{1}{x}) \leq x^2$. We also know that $\lim_{x \to 0} -x^2 = \lim_{x \to 0} x^2 = 0$. Thus:</p>
+<p class="mathcell">
+$$
+\lim_{x \to 0} x^2 \cos \left(\frac{1}{x}\right) = 0
+$$
+</p>
+<p>Using the squeeze theorem, we can know that:</p>
+<p class="mathcell">
+$$
+\lim_{x \to 0} \frac{\sin x}{x} = 1
+$$
+</p><p class="mathcell">
+$$
+\lim_{x \to 0} \frac{1 - \cos x}{x} = 0
+$$
+</p><h2 id="using-special-limits-and-limit-properties">Using special limits and limit properties</h2>
+<p>First, we break up the limit using our special limit and limit properties:
+<p class="mathcell">
+$$
+\lim_{x \to 0} \frac{\sin^2(2x)}{x^2} = \lim_{x \to 0} \left(\frac{\sin 2x}{x}\right)^2 = \lim_{x \to 0} \left(\frac{2\sin 2x}{2x}\right)^2
+$$
+</p></p>
+<p>Then, we do the substitution $u = 2x$:</p>
+<p class="mathcell">
+$$
+\lim_{x \to 0} \left(\frac{2\sin 2x}{2x}\right)^2 = \lim_{u \to 0} \left(\frac{2\sin u}{u}\right)^2 = 2^2 = 4
+$$
+</p>
+<p>Similarly, we can do the same in this example:</p>
+<p class="mathcell">
+$$
+\lim_{t \to 0} \frac{\tan (4t)}{9t} = \lim_{t \to 0} \frac{\sin(4t)}{9t} \frac{1}{\cos(4t)} = \lim_{t \to 0} \frac{4\sin(4t)}{4 \cdot 9t} \frac{1}{\cos(4t)}
+$$
+</p>
+<p>We switch $4 \cdot 9t$ into $9 \cdot 4t$ in the denominator, then do that substitution $u = 4t$:</p>
+<p class="mathcell">
+$$
+\lim_{t \to 0} \frac{4\sin(4t)}{9 \cdot 4t} \frac{1}{\cos(4t)} = \lim_{u \to 0} \frac{1}{9} \frac{4\sin(u)}{u} \frac{1}{\cos u} = \frac{4}{9}
+$$
+</p><h2 id="limits-at-infinity">Limits at infinity</h2>
+<p>Limits at infinity are used to define <strong>horizontal asymptotes</strong>. Polynomials always either tend to $+\infty$ or $-\infty$ as $x \to \pm \infty$. The highest degree term of a polynomial dominates when $x \to \infty$ or $x \to -\infty$, so we can just focus on the highest degree term and discard all other terms.</p>
+<p>For example:</p>
+<p class="mathcell">
+$$
+\lim_{x \to \infty} -x^5 + 5x^2 + 6
+$$
+</p>
+<p>We can take away all the lower-degree terms:</p>
+<p class="mathcell">
+$$
+\lim_{x \to \infty} -x^5
+$$
+</p>
+<p>Here, we use the rule that $\lim_{x \to \infty} x^n = \infty$, so:</p>
+<p class="mathcell">
+$$
+\lim_{x \to \infty} -(\infty) = -\infty
+$$
+</p>
+<p>Now, let's work on the limit at $-\infty$:</p>
+<p class="mathcell">
+$$
+\lim_{x \to -\infty} -x^5 + 5x^2 + 6
+$$
+</p>
+<p>Once again, we can take away all the lower degree terms:</p>
+<p class="mathcell">
+$$
+\lim_{x \to -\infty} -x^5
+$$
+</p>
+<p>When approaching $-\infty$, then we can use the degree test. If the degree is even, then $\lim_{x \to -\infty} x^n = \infty$, and if the degree is odd, $\lim_{x \to -\infty} x^n = -\infty$. Thus, we have:</p>
+<p class="mathcell">
+$$
+\lim_{x \to -\infty} -(-\infty) = \infty
+$$
+</p>
+<p>For trig functions, as they are periodic, the limit as you approach infinity does not exist.</p>
+<p>For exponential functions, one side tends to infinity, and the other side tends to zero. Typically the left-hand side tends to infinity for a base $b &gt; 1$, and the left hand side tends to zero for a base $b &lt; 1$.</p>
+<p>For rational functions, we divide by the highest degree term in denominator of the rational function, and use the relation $\lim_{x \to \pm \infty} \frac{1}{x^n} = 0$. For instance:</p>
+<p class="mathcell">
+$$
+\lim_{x \to \pm \infty} \frac{20 x - 3x^2}{4x^2 + 9}
+$$
+</p>
+<p>Here, the highest degree term is $x^2$, so we divide every term by $x^2$ to get:</p>
+<p class="mathcell">
+$$
+\lim_{x \to \pm \infty} \frac{\frac{20}{x} - 3}{4 + \frac{9}{x^2}}
+$$
+</p>
+<p>The parts with $\frac{1}{x^n}$ cancel out to zero, which gives:</p>
+<p class="mathcell">
+$$
+\lim_{x \to \pm \infty} \frac{0 - 3}{4 + 0} = -\frac{3}{4}
+$$
+</p>
+<p>With exponential functions, we want to take apart the fraction until we can find the limit. Take, for instance:</p>
+<p class="mathcell">
+$$
+\lim_{t \to \infty} \frac{5e^t}{3-e^{-t}}
+$$
+</p>
+<p>If we rewrite $e^{-t}$ as $\frac{1}{e^t}$, then the limit becomes:</p>
+<p class="mathcell">
+$$
+\lim_{t \to \infty} \frac{5e^t}{3 - \frac{1}{e^t}}
+$$
+</p>
+<p>As $\lim_{t \to \infty} e^t = \infty$, $\lim_{t \to \infty} \frac{1}{e^t} = 0$, so we have:</p>
+<p class="mathcell">
+$$
+\lim_{t \to \infty} \frac{5e^t}{3} = \infty
+$$
+</p>
+<p>We can do the same with negative infinity:</p>
+<p class="mathcell">
+$$
+\lim_{t \to -\infty} \frac{5e^t}{3 - \frac{1}{e^t}} = \frac{5e^{-\infty}}{3} = 0
+$$
+</p>
+<p>However, note that as the limit $\lim_{t \to \infty}$ is infinite, we <em>don't</em> have a horizontal asymptote there (as a horizontal asymptote must approach a finite number), so the only horizontal asymptote is $y = 0$.</p>
+<p>Sometimes, we have a messier limit, such as:</p>
+<p class="mathcell">
+$$
+\lim_{x \to \infty} \frac{\sqrt{x^3 + 3x}}{5x^4+4}
+$$
+</p>
+<p>Remember that we need to divide by the greatest power of $x$ on the denominator. However, because we have a square root, we need to factor out the <em>square</em> of the greatest power of $x$ from the square root, which will reduce to the power once we finish the square root. Here, the greatest power is $x^4$, so its square is $x^8$. We can then factor:</p>
+<p class="mathcell">
+$$
+\lim_{x \to \infty} \frac{\sqrt{x^8 \left(\frac{1}{x^5} + \frac{3}{x^7}\right)}}{x^4 \left(5 + \frac{4}{x^4}\right)}
+$$
+</p>
+<p>Using the rules of square roots, we can then simplify to:</p>
+<p class="mathcell">
+$$
+\lim_{x \to \infty} \frac{x^4\sqrt{\frac{1}{x^5} + \frac{3}{x^7}}}{x^4 \left(5 + \frac{4}{x^4}\right)}
+$$
+</p>
+<p>Remember that if you have a square that is $x^2$ (we don't here, but just if you do), then $\sqrt{x^2} = |x| \neq x$.</p>
+<p>Now, if we continue simplifying, we have:</p>
+<p class="mathcell">
+$$
+\lim_{x \to \infty} \frac{\sqrt{\frac{1}{x^5} + \frac{3}{x^7}}}{\left(5 + \frac{4}{x^4}\right)} = \frac{\sqrt{0}}{\sqrt{5}} = 0
+$$
+</p>
+<p>As a final example, sometimes we can have limits in the form:</p>
+<p class="mathcell">
+$$
+\lim_{x \to \infty} \sqrt{x^4+2x} - 2x
+$$
+</p>
+<p>We'd be tempted to say this is just equal to $\infty$, but if we plug it in, we get $\infty - \infty$, which is an indeterminate form. So instead, we need to rewrite it as a fraction of itself over one, and multiply by the conjugate:</p>
+<p class="mathcell">
+$$
+\lim_{x \to \infty} \frac{x^4-4x^2 - 2x}{\sqrt{x^4 + 2x} -2x}
+$$
+</p>
+<p>Now, we can use the greatest power cancelling method as with earlier - we cancel out the greatest power from the denominator:</p>
+<p class="mathcell">
+$$
+\lim_{x \to \infty} \frac{x^4-4x^2 - 2x}{\sqrt{x^4 (1 + \frac{2}{x^3})} - 2x}
+$$
+</p><p class="mathcell">
+$$
+\lim_{x \to \infty} \frac{x^4(1 - \frac{1}{x^2} - \frac{2}{x^3})}{x^2\left(\sqrt{ 1 + \frac{2}{x^3}} - \frac{2}{x}\right)}
+$$
+</p>
+<p>We end up with (after canceling the zeroes):</p>
+<p class="mathcell">
+$$
+\lim_{x \to \infty} \frac{x^4}{x^2} = \lim_{x \to \infty} x^2 = \infty
+$$
+</p><h2 id="l-hopital-s-rule">L'Hôpital's Rule</h2>
+<p>See <a href="https://jackysci.com/differentiation/">derivative notes</a> for discussion of this limit evaluation technique.</p>
+<h2 id="the-epsilon-delta-definition-of-a-limit">The Epsilon-Delta definition of a limit</h2>
+<p>Up to this point, our discussion of limits has largely left out <em>what defines a limit</em>. The idea of a value that a function "approaches" but never reaches - while intuitive - is logically unsatisfactory and non-rigorous. To rigorously define what a limit is, we must turn to the <em>formal</em> definition of a limit: the <strong>epsilon-delta definition</strong>:</p>
+<blockquote>
+<p><strong>Epsilon-Delta ($\varepsilon-\delta$) definition of a limit:</strong> for $\varepsilon &gt; 0$, there exists $\delta &gt; 0$ such that $0 &lt; |x - c| &lt; \delta$ implies $0 &lt; |f(x) - L| &lt; \varepsilon$. Then, $L = \displaystyle \lim_{x \to c} f(x)$.</p>
+</blockquote>
+<p>What this means is that as we approach (but don't actually reach) some value $x=c$, such that we are a tiny (but nonzero!) <em>distance</em> $\delta$ away from $x = c$, then we find that $f(x)$ is a <em>tiny difference</em> from $L$, the limiting value of $f(x)$ at $x = c$. We can make the distance $\delta$ as small as we want and approach as close to $x = c$ as we want, such that the difference $\varepsilon$ between $f(x)$ and its limit $L$ becomes as small as we want. Thus we say that the limit $L = \displaystyle \lim_{x \to c} f(x)$.</p>
+<p>We may use the epsilon-delta definition to <em>prove</em> that $\displaystyle \lim_{x \to 4} (5x - 3) = 17$. To do so, let us first define $L = 17$ as the limiting value of $5x - 3$ as $x \to 4$. With the epsilon-delta definition, we can follow these steps:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+|5x - 3 - L| &lt; \varepsilon \\
+|5x - 3 - 17 | &lt; \varepsilon \\
+|5x - 20| &lt; \varepsilon \\
+|5(x - 4) | &lt; \varepsilon \\
+|x - 4 | &lt; \frac{\varepsilon}{5} \\
+\delta = \frac{\varepsilon}{5}
+\end{gather*}
+$$
+</p>
+<p>And thus we have found a value of $\delta$ which we can make as small as we want such that $f(x)$ is an arbitrarily small difference $\varepsilon$ from the value $L$. For instance, given $\varepsilon = 0.1$, then $\delta = \frac{\varepsilon}{5} = 0.02$. We can show that this works. Since we require the condition that $0 &lt; |x - 4 | &lt; 0.02$, we can pick the value $x = 4.01$ which satisfies this condition. We then indeed find that:</p>
+<p class="mathcell">
+$$
+|f(4.01) - 17| = 0.05 \Rightarrow 0.05 &lt; \varepsilon
+$$
+</p>
+        
+        <a id="jump-toc-btn" href="#toc">Show table of contents</a>
+        <a href="/notes" class="return-link">Back to all notes</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        var toc = document.getElementById("toc");
+        var tocPos = toc.offsetTop + toc.offsetHeight;
+        var tocBtn = document.getElementById("jump-toc-btn");
+
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+        // for performance reasons, we **only** render a certain
+        // number of equations that the viewer is actually viewing
+        function VisibleMathRenderer(config) {
+            /*
+            Renders only a limited number of equations on page load
+            to avoid poor performance
+             Params:
+                lastRenderedEquation: the most recently rendered equation.
+                        when this goes out of view, equations under it are rendered. 
+            */
+            var startElement = config.startElement
+            var maxEquations = config.maxEquations ? config?.maxEquations : 30;
+            this.startElement = startElement
+            this.maxEquations = maxEquations
+            // we wait until the user scrolls past the starting/
+            // ending elements to start rendering the whole page
+            this.canRenderWholePage = false;
+            this.pageRendered = false;
+            this.lastRenderedTopEquation = null;
+            this.lastRenderedBottomEquation = null;
+
+            this.render = function() {
+                renderMath(this.startElement);
+                // render previous 25 and following 25 equations
+                var prev = this.startElement.previousElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left prior to the element
+                    if (prev == null) {
+                        break;
+                    }
+                    renderMath(prev);
+                    prev = prev.previousElementSibling;
+                }
+                // store our last rendered equations
+                // we'll track scroll position later to
+                // check when the rest of the page should be rendered
+                this.lastRenderedTopEquation = prev;
+                console.log(this.lastRenderedTopEquation)
+
+                var next = this.startElement.nextElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left following the element
+                    if (next.nextElementSibling == null) {
+                        break;
+                    }
+                    renderMath(next);
+                    next = next.nextElementSibling;
+                }
+                this.lastRenderedBottomEquation = next;
+                // now allow rendering the rest of the equations
+                this.canRenderWholePage = true;
+            }
+
+            // render all math on the whole page
+            this.renderMathOnPage = function() {
+                // don't run until preliminary tasks
+                // are done so that the whole page
+                // can/should be rendered
+                if (!this.canRenderWholePage) {
+                    return;
+                }
+                // if the whole page's worth of equations
+                // are already rendered, don't render more
+                if (this.pageRendered) {
+                    return;
+                }
+                var topBound = this.lastRenderedTopEquation.getBoundingClientRect.top;
+                var bottomBound = this.lastRenderedBottomEquation.getBoundingClientRect.bottom;
+                var scrollTop, scrollBottom = getViewport();
+                // if the user is about to scroll past the initially-rendered equations
+                // we will render the whole page
+                if (scrollTop - 50 + window.scrollY < topBound || scrollBottom + 50 + window.scrollY > bottomBound) {
+                    console.log("Scrolled beyond!")
+                    var article = document.querySelector(".post");
+                    if (article) {
+                        this.renderMath(article);
+                    }
+                    this.pageRendered = true;
+                }
+                
+            }
+            
+        }
+
+        function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        function findFirstRelevantElement() {
+            // finds the first <p> tage that's closest to
+            // the viewer's viewport
+            var regex = /#.*/;
+            var m = regex.exec(window.location.href);
+            if (m !== null) {
+                return document.querySelector(m[0]);
+            } else {
+                return document.querySelector(".post p");
+            }
+        }
+        
+        // initialize page JS components
+        /*
+        var mathRenderer = new VisibleMathRenderer({
+            // start rendering with first <p> tag on the
+            // post
+            startElement: findFirstRelevantElement()
+        });
+        */
+        document.addEventListener("DOMContentLoaded", function() {
+            showTocBtnOnScroll();
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+
+        window.onscroll = function(){
+            // if (!mathRenderer.pageRendered) {
+            //     mathRenderer.renderMathOnPage();
+            // }
+            showTocBtnOnScroll();
+        };
+
+
+    </script>
+    
+
+
+</body>
+
+</html>

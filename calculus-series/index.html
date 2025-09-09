@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculus series</title>
+  <meta name="description" content=" This is a series of calculus guides based off my calculus notes at RPI. Starting at a high school algebra&#x2F;precalculus level, they build up to encompass most of the contents of a multi-year set of courses in calculus, including (ordinary) calculus, multivariable calculus, vector calculus, differential equations, and more.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Calculus series</h2>
+        
+        
+        <!-- table of contents -->
+        
+
+        <!-- page content -->
+        <p>This is a series of calculus guides based off my calculus notes at RPI. Starting at a high school algebra/precalculus level, they build up to encompass most of the contents of a multi-year set of courses in calculus, including (ordinary) calculus, multivariable calculus, vector calculus, differential equations, and more.</p>
+<span id="continue-reading"></span>
+<p>The guides in the series are listed below:</p>
+<ul>
+<li><strong>Precalculus guide</strong> - a review of the essentials of high school-level algebra before starting calculus.
+<ul>
+<li><a href="https://jackysci.com/trig-review/">Review of trigonometry</a></li>
+<li><a href="https://jackysci.com/exponential-logs/">Review of exponentials and logarithms</a></li>
+</ul>
+</li>
+<li><strong>Calculus in one variable</strong> - the basics of calculus, including the concept of a limit, derivative, and integral in one dimension, how to compute derivatives and integrals, as well as infinite series. These topics are typically covered in a college-level Calculus I and Calculus II course.
+<ul>
+<li><a href="https://jackysci.com/limits/">Limits</a></li>
+<li><a href="https://jackysci.com/differentiation/">Differential calculus</a></li>
+<li><a href="https://jackysci.com/integration/">Integral calculus</a>
+<ul>
+<li>Bonus: <a href="https://jackysci.com/feynmann-technique/">Feynmann's integration trick</a></li>
+</ul>
+</li>
+<li><a href="https://jackysci.com/series-sequences/">Series &amp; Sequences</a></li>
+</ul>
+</li>
+<li><a href="https://jackysci.com/multivariable-calculus/">Multivariable calculus</a> - extensions of single-variable calculus to multiple dimensions, including multiple integrals, partial derivatives, optimization of multivariate functions, line integration, and vector derivatives.</li>
+<li><a href="https://jackysci.com/vector-and-advanced-calculus/">Vector calculus and beyond</a> - a more advanced treatment of the topics in multivariable calculus, as well as Green's theorem, Stoke's theorem, and the Divergence Theorem. This also covers topics beyond a standard vector calculus class, including the calculus of variations and tensor calculus.</li>
+<li><a href="https://jackysci.com/differential-equations/">Introduction to differential equations</a> - an introductory guide to the theory of differential equations, covering mostly ODEs (ordinary differential equations). The topics covered including classifying ODEs, applying the basic solution techniques to various types of ODEs, and solving eigenvalue problems.</li>
+<li><a href="https://jackysci.com/intro-pdes/">Partial differential equations</a> - a more advanced guide that specifically covers partial differential equations (PDEs). This includes a deep dive into the standard PDEs of mathematical physics (wave equation, diffusion equation, and Laplace's equation), as well as solving a variety of boundary-value problems.
+<ul>
+<li>For a crash course in PDEs, see the mini-guides <a href="https://jackysci.com/solving-pdes/">solving separable PDEs</a> and <a href="https://jackysci.com/wave-equation/">solving the wave equation</a></li>
+</ul>
+</li>
+</ul>
+
+        
+        <a href="/" class="return-link">Back to home</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function() {
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+    </script>
+    
+
+
+</body>
+
+</html>

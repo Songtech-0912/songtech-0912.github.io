@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes on special relativity</title>
+  <meta name="description" content=" These are notes taken in RPI&#x27;s Physics 1140 class, relating to special relativity.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Notes on special relativity</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+        <details class="toc" id="toc" open>
+        <summary>Table of contents</summary>
+        <p class="toc-info">Note: it is highly recommended to navigate by clicking links in the table of contents! It means you can use the back button in your browser to go back to any section you were reading, so you can jump back and forth between sections!</p>
+        <div>
+            <ul>
+            
+                <li>
+                    <a href="#the-standard-model">The standard model</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#units-in-physics">Units in physics</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#overview-of-special-relativity">Overview of Special Relativity</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#time-dilation-and-length-contraction">Time dilation and length contraction</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#practicing-time-dilation-problems">Practicing time dilation problems</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#lorentz-transformations">Lorentz Transformations</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#practicing-the-lorentz-transformations">Practicing the Lorentz transformations</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#minkowski-spacetime-diagrams">Minkowski spacetime diagrams</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#velocity-addition">Velocity addition</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#velocity-addition-exercises">Velocity addition exercises</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#using-spacetime-diagrams">Using spacetime diagrams</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#doppler-shift">Doppler shift</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#ordering-of-events">Ordering of events</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#the-invariant-interval">The invariant interval</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#relativistic-dynamics">Relativistic dynamics</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#units-of-relativistic-dynamics">Units of relativistic dynamics</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#four-vectors">Four-vectors</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#using-center-of-momentum-frames">Using center of momentum frames</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#sr-problem-solving-strategies">SR problem-solving strategies</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#more-about-special-relativity">More about special relativity</a>
+                    
+                </li>
+            
+            </ul>
+        </div>
+        </details>
+        
+
+        <!-- page content -->
+        <p>These are notes taken in RPI's Physics 1140 class, relating to special relativity.</p>
+<span id="continue-reading"></span><h2 id="the-standard-model">The standard model</h2>
+<p>The standard model is one of the most successful theories in physics. Within the standard model, there are several categories of particles. The standard model describes a number of elementary particles - point particles that have no volume and are indivisible. The elementary particles include:</p>
+<ul>
+<li>Fermions (spin-1/2 particles, which include 6 quarks, 6 leptons, and their antiparticles)</li>
+<li>Gauge bosons (these are force carriers with integer spin, which are the photon, gluon, W, and Z)</li>
+<li>Scalar bosons (the Higgs boson)</li>
+</ul>
+<p>Quarks are the building blocks of hadrons, such as protons and neutrons. They are never found in isolation, and always found within hadrons. They have half-integer spin, but unlike leptons, they interact with the strong force as well as the weak force.</p>
+<p>Leptons are composed of electrons, muons, and tauons, as well as their respective neutrinos. They also have half-integer spin, but do not interact with the strong force.</p>
+<p>Gauge bosons are massless with exception of the W and Z bosons. Each carries a fundamental interaction - the photon is the force carrier of electromagnetism, the gluon carries the strong force, and the W &amp; Z bosons carry the weak force.</p>
+<p>Composite particles are composed of elementary particles, and include hadrons (mesons and baryons), and everything made of them (such as atoms and molecules). Elementary particles are thought to be point particles that have mass but no volume, whereas composite particles do have a volume.</p>
+<h2 id="units-in-physics">Units in physics</h2>
+<p>Velocity is often measured relative to the speed of light, such as $0.8c$. Charge is often measured with respect to the elementary charge, such as $5e$. Energy is often measured in terms of electron volts (eV), where $1 \text{ eV} = 1.6 \times 10^{-19} \text{ J}$.</p>
+<h2 id="overview-of-special-relativity">Overview of Special Relativity</h2>
+<p>A <strong>reference frame</strong> is a specific place you designate as an origin. By constructing a coordinate system from that origin, measurements can be made. An inertial reference frame is a reference frame that isn't accelerating. The laws of special relativity <strong>only</strong> apply to inertial reference frames.</p>
+<p>Every observer considers themselves to be at rest with respect to their own reference frame, and everyone else to be moving. For example, an astronaut would consider themselves to not be moving, and the Earth to be moving away from them. Similarly, an observer on Earth would consider themselves to not be moving, and the astronaut in the rocket as moving away from them.</p>
+<p>The two postulates of special relativity are that 1) the laws of physics are the same for observers in all inertial reference frames, and that 2) the speed of light is <strong>constant</strong> in all reference frames.</p>
+<p>A <strong>proper frame</strong> is a reference frame that is attached to an object, in which an object is measured to be stationary. For instance, the proper frame of a spaceship would be an observer travelling within the spaceship. As the observer travelling within the spaceship is attached to the spaceship (here "attached" is not literal, it can mean "within" or "following along"), it is a proper frame. Everything in a proper frame is considered stationary by the observer.</p>
+<p>A <strong>non-proper frame</strong> is any reference frame that is not attached to an object. For instance, an observer on Earth would be in a non-proper frame of a rocket moving relative to Earth, as that observer is not attached to the rocket.</p>
+<p><strong>Proper time</strong> is the time measured by an observer in a proper frame. <strong>Coordinate time</strong> is the time measured by an observer in a non-proper frame. Coordinate time $\Delta t$ is related to proper time $\Delta \tau$ by:</p>
+<p class="mathcell">
+$$
+\Delta t = \gamma \Delta \tau
+$$
+</p>
+<p>where:</p>
+<p class="mathcell">
+$$
+\gamma = \frac{1}{\sqrt{1 - \left(\frac{v}{c}\right)^2}}
+$$
+</p>
+<p>Using a Taylor series expansion, $\gamma \approx 1$ at very low speeds, and $\gamma \approx 1 + \frac{v^2}{2c^2}$ at low speeds.</p>
+<p><strong>Proper length</strong> is the length of an object as measured by an observer in a proper frame. <strong>Coordinate length</strong> is the length of an object measured by an observer in a non-proper frame. Proper length $\Delta \ell$ is related to coordinate length $\Delta L$ by:</p>
+<p class="mathcell">
+$$
+\Delta L = \frac{\Delta \ell}{\gamma}
+$$
+</p><h2 id="time-dilation-and-length-contraction">Time dilation and length contraction</h2>
+<p>Consider an observer to be in the proper frame of a moving spaceship. The observer observes the ship's length as the proper length $\Delta \ell$ and the ship's time as proper time $\Delta \tau$. That observer considers the ship (and everything on it) to be stationary with respect to themselves. Meanwhile, consider a distant observer in a non-proper frame, perhaps situated away on Earth. That distant observer observes the ship's length as the coordinate length $\Delta L$, and the ship's time as the coordinate time $\Delta t$.  We use the familiar equation:</p>
+<p class="mathcell">
+$$
+\Delta t = \gamma \Delta \tau
+$$
+</p>
+<p>Recall that $\gamma &gt; 1$ for all moving objects. That means for the distant observer who measured a time interval of $\Delta t = 1$ second, the proper time of the observer in the spaceship must be $\Delta \tau &lt; 1$ second. Therefore, the observer in the spaceship's clock ticks slow.</p>
+<p>This is the principle of <em>time dilation</em> - <strong>time ticks slow for moving objects</strong>. Recall that any observer would measure every other observer as moving with respect to their own reference frame, however. This means an observer on a rocket would measure a person on Earth as having a slower clock, whereas a person on Earth would <em>also</em> measure the person on the spaceship as having a slower clock!</p>
+<p>One area where this has been demonstrated is with muon decay, where muons are measured to be able to travel longer distances than they possibly could given their short lifetimes, as the "internal decay clock" of a muon ticks slow and allows it to travel longer.</p>
+<h2 id="practicing-time-dilation-problems">Practicing time dilation problems</h2>
+<p>Consider an astronaut on a spaceship moving at $0.927c$ who says that the trip between two stationary stars took 7.49 years. How long does this journey take as measured by an observer at rest relative to the two stars? (Credit: Peter Persans, RPI)</p>
+<p>To answer this question, we first identify the two observers in the question - the astronaut, who is aboard the spaceship, and the observer who is at rest relative to the two stars. We then identify the object that is considered moving within the problem - in our case, it is the spaceship. Therefore, the proper frame is the frame that is attached to the object, or in other words, the frame of the astronaut. This means the proper time would be the astronaut's measured time, or 7.49 years. After calculating the Lorentz factor for $0.927c$, where $\gamma \approx 2.66$, we can then use:</p>
+<p class="mathcell">
+$$
+\Delta t = \gamma \Delta \tau = (2.66)(7.49) = 20.01 \text{\ yrs}
+$$
+</p>
+<p>Now, consider an unstable particle moving at a speed of $0.87c$ relative to a laboratory. Its lifetime is measured by a stationary observer in the laboratory to be $4.7 \times 10^{-6}$ seconds. What is the lifetime of the particle, measured by an observer in the frame of the particle? (Credit: Peter Persans, RPI)</p>
+<p>Here, we note that the object considered to be moving is the particle. Therefore, the proper time is the time measured by an observer attached to the particle. We, however, do not have measurements from the proper frame. We do have the measurements from the non-proper frame, which is the stationary observer's frame. Measurements of time from the non-proper frame are the coordinate time. Therefore, we can write:</p>
+<p class="mathcell">
+$$
+\Delta \tau = \frac{\Delta t}{\gamma} = \frac{4.7 \times 10^{-6}}{2.028} \approx 2.3 \mathrm{\ \mu s}
+$$
+</p><h2 id="lorentz-transformations">Lorentz Transformations</h2>
+<p>The Lorentz transformations give the relativistically correct transformations between an observer's reference frame (the unprimed coordinates) and another reference frame (the primed coordinates). They are given by:</p>
+<p><p class="mathcell">
+$$
+\Delta t&#x27; = \gamma \left(\Delta t - \frac{v\Delta x}{c^2}\right)
+$$
+</p>
+<p class="mathcell">
+$$
+\Delta x&#x27; = \gamma( \Delta x- v\Delta t)
+$$
+</p>
+<p class="mathcell">
+$$
+\Delta y&#x27; = \Delta y
+$$
+</p>
+<p class="mathcell">
+$$
+\Delta z&#x27; = \Delta z
+$$
+</p></p>
+<h2 id="practicing-the-lorentz-transformations">Practicing the Lorentz transformations</h2>
+<p>Suppose we have light emitted in the direction of the $y$ axis in one observer's frame. Suppose we have another observer that moves with velocity $\vec v$ along the $x$ axis. We can then use the Lorentz transformations to find the speed of light measured in the other observer's frame.</p>
+<p>To start with, let's write the Lorentz transformations:</p>
+<p><p class="mathcell">
+$$
+\Delta x&#x27; = \gamma(\Delta x - v \Delta t)
+$$
+</p>
+<p class="mathcell">
+$$
+\Delta t&#x27; = \gamma \left(\Delta t - \frac{v \Delta x}{c^2}\right)
+$$
+</p>
+<p class="mathcell">
+$$
+\Delta y&#x27; = \Delta y
+$$
+</p></p>
+<p>Now note that the speed of light measured in the first observer's frame is $c = \sqrt{v_x^2 + v_y^2}$, where:
+<p class="mathcell">
+$$
+v_x = \frac{\Delta x}{\Delta t}
+$$
+</p>
+<p class="mathcell">
+$$
+v_y = \frac{\Delta y}{\Delta t}
+$$
+</p></p>
+<p>Since the light is moving along the $y$ axis, $\Delta x = 0$, and thus $v_x = 0$, and since $c = \sqrt{0^2 + v_y^2}$, this also means that $v_y = c$. Rearranging the $v_y$ equation, we get $\Delta y = c \Delta t$. So, to summarize:</p>
+<p><p class="mathcell">
+$$
+\Delta x = 0
+$$
+</p>
+<p class="mathcell">
+$$
+\Delta y = c \Delta t
+$$
+</p></p>
+<p>Now, we can plug in these values to the Lorentz transformations, which yields:</p>
+<p><p class="mathcell">
+$$
+\Delta x&#x27; = -\gamma v \Delta t
+$$
+</p>
+<p class="mathcell">
+$$
+\Delta t&#x27; = \gamma \Delta t
+$$
+</p>
+<p class="mathcell">
+$$
+\Delta y&#x27; = c \Delta t
+$$
+</p></p>
+<p>We can then find $v_x'$ and $v_y'$:</p>
+<p><p class="mathcell">
+$$
+v_x&#x27; = \frac{\Delta x&#x27;}{\Delta t&#x27;} = \frac{-\gamma v\Delta t}{\gamma \Delta t} = - v
+$$
+</p>
+<p class="mathcell">
+$$
+v_y&#x27; = \frac{\Delta y&#x27;}{\Delta t&#x27;}= \frac{c\Delta t}{\gamma \Delta t} = \frac{c}{\gamma}
+$$
+</p></p>
+<p>Then, the speed is given by $\sqrt{(-v)^2 + \frac{c^2}{\gamma^2}} = c$. Thus we verify that the speed of light is constant in different reference frames.</p>
+<h2 id="minkowski-spacetime-diagrams">Minkowski spacetime diagrams</h2>
+<p>In a Minkowski spacetime diagram, we have $ct$ on the vertical axis and $x$ on the horizontal axis. A photon would make a 45 degree angle on a Minkowski diagram.</p>
+<h2 id="velocity-addition">Velocity addition</h2>
+<p>In classical mechanics, velocity addition is simple: $u' = u + v$. That is, if we have a train moving at speed $v$ measured by an observer, and a person running within the train at speed $u$ in the train frame, then the speed of the person with respect to the observer is $u + v$. So, it is perfectly reasonable to say "she's running at 185 km/h" because the runner might be running at 5 km/h with respect to the train frame and the train frame might be moving at 180 km/h with respect to the observer.</p>
+<p>In relativity, two velocities $u$ and $v$ add by:</p>
+<p class="mathcell">
+$$
+u&#x27; = \frac{u + v}{1 + \frac{uv}{c^2}}
+$$
+</p>
+<p>Here, note that:</p>
+<ul>
+<li>$u'$ is the object's speed to the observer</li>
+<li>$v$ is the enclosing frame's speed</li>
+<li>$u$ is the object's speed within the enclosing frame</li>
+</ul>
+<h2 id="velocity-addition-exercises">Velocity addition exercises</h2>
+<p>Consider three spaceships A, B, and C that are in motion. The commander on ship B observes ship C approaching with a relative velocity of $-0.78c$. The commander also observes ship A, advancing in the rear, with a relative velocity of $+0.31c$. What is the velocity of ship C, relative to an observer on ship A? (credit: Peter Persans, RPI)</p>
+<p>To solve this problem, we must switch frames from spaceship B to spaceship A, as all our velocities are measured with respect to spaceship B. Therefore, spaceship A measures any velocity $u$ measured in B's frame as:</p>
+<p class="mathcell">
+$$
+v = \frac{v_B + u}{1 + \frac{u v_B}{c^2}}
+$$
+</p>
+<p>where $v_B$ is the velocity of spaceship B with respect to spaceship A. We can sketch this problem as follows:</p>
+<p><img src="https://jackysci.com/special-relativity/velocity-addition-problem.png" alt="A sketchy of the velocity-addition problem" /></p>
+<p>(here, in the sketch, frames that are moving with respect to another frame are placed inside that other frame)</p>
+<p>Now, we know that if spaceship B measures spaceship A as travelling at $0.31c$, then spaceship A must also measure spaceship B as travelling at $-0.31c$. This leads to an important result in terms of the velocities of frames:</p>
+<p class="mathcell">
+$$
+v&#x27; = -v
+$$
+</p>
+<p>Thus, if we set $v_B = -0.31c$ and $u = -0.78c$, we get our desired result - $v = -0.877c$.</p>
+<h2 id="using-spacetime-diagrams">Using spacetime diagrams</h2>
+<p>To showcase coordinate transforms, we can use a spacetime diagram. To do so, we label the $x$ axis (that is, the line $t = 0$) and the $ct$ axis (that is, the line $x = 0$). The new transformed frames are given by $x' = 0$ (the $t'$ axis) and $t' = 0$ (the $x'$ axis). That is, for the $t'$ axis, we have $x' = 0$, or:</p>
+<p class="mathcell">
+$$
+x&#x27; = \gamma(x - vt) = 0 \Rightarrow x = vt
+$$
+</p>
+<p>Meanwhile, for the $x'$ axis, we have $t' = 0$, or:</p>
+<p class="mathcell">
+$$
+t&#x27; = \gamma \left(t - \frac{vx}{c^2}\right) = 0 \Rightarrow t = \frac{vx}{c^2}
+$$
+</p>
+<p>These new axes are shown below:</p>
+<p><img src="https://tikz.net/wp-content/uploads/2023/10/relativity_minkowski_diagram-016.png" alt="Minkowski diagram" /></p>
+<p>(Credit: TikZ)</p>
+<p>To figure out the scaling of axes in the Lorentz transformations, we start with the point $(x, ct) = (1, 0)$ and calculate the resulting $(x', ct')$. We find that $(x', ct') = (\gamma, \gamma \beta)$ where $\beta = \frac{v}{c}$. Thus, the scaling factor of axes for the Lorentz transformations is given by:</p>
+<p class="mathcell">
+$$
+\sqrt{\frac{1 + \beta^2}{1 - \beta^2}}
+$$
+</p><h2 id="doppler-shift">Doppler shift</h2>
+<p>There are two cases of the Doppler effect - longitudinal, where the emitter and observer are moving towards/away from each other, and transverse, where the emitter and observer are at 90 degrees to each other. The transverse Doppler effect formula is given by:</p>
+<p class="mathcell">
+$$
+\frac{1}{f&#x27;} = \gamma \frac{1}{f}
+$$
+</p>
+<p>Meanwhile, the longitudinal Doppler effect formula is given by:</p>
+<p class="mathcell">
+$$
+f&#x27; = f \sqrt{\frac{1 - \beta}{1 + \beta}}
+$$
+</p><h2 id="ordering-of-events">Ordering of events</h2>
+<p>On a Minkowski spacetime diagram, all events that fall within $\pm 45^\circ$ of the $\pm ct$ axis are known as timelike intervals. This means that if two events are within this region, it is possible for one event to have caused the other event.</p>
+<p>Meanwhile, all events that are outside $\pm 45^\circ$ of the $\pm ct$ axis are known as spacelike intervals. This means that if two events are within this region, it is <strong>not</strong> possible for one event to have caused the other event.</p>
+<p>Events exactly along the $\pm 45^\circ$ line are known as <strong>lightlike</strong>. This means that only photons can travel between those events.</p>
+<h2 id="the-invariant-interval">The invariant interval</h2>
+<p>Distances in space and distances in time are dependent on the frame chosen. But a distance in spacetime - a combination of a distance in space and a distance in time - are <strong>invariant</strong>. The invariant interval, also known as the spacetime interval, is given by:</p>
+<p class="mathcell">
+$$
+\Delta s^2 = c^2 \Delta t^2 - \Delta x^2
+$$
+</p>
+<p>This is the same in every reference frame, just as the speed of light is invariant in every reference frame, so it is called a Lorentz invariant quantity.</p>
+<p>The invariant interval gives another way to define the ordering of events:</p>
+<ul>
+<li>When $\Delta s^2$ is positive, then it is timelike</li>
+<li>When $\Delta s^2$ is negative, then it is spacelike</li>
+<li>When $\Delta s^2$ is zero, then it is lightlike</li>
+</ul>
+<h2 id="relativistic-dynamics">Relativistic dynamics</h2>
+<p>Relativistic momentum is given by:</p>
+<p class="mathcell">
+$$
+p = \gamma mv
+$$
+</p>
+<p>Relativistic total energy (in the absence of potential energy) is given by:</p>
+<p class="mathcell">
+$$
+E = K + mc^2 = \gamma mc^2
+$$
+</p>
+<p>where:</p>
+<p class="mathcell">
+$$
+K = (\gamma - 1) mc^2
+$$
+</p>
+<p>The energy-momentum relationship is given by:</p>
+<p class="mathcell">
+$$
+E^2 = (pc)^2 + (mc^2)^2
+$$
+</p>
+<p>Relativistic momentum, just like classical momentum, and relativistic total energy, just like classical total energy, are <strong>conserved quantities</strong>.</p>
+<h2 id="units-of-relativistic-dynamics">Units of relativistic dynamics</h2>
+<p>Speeds of relativistic particles are often defined in terms of the speed of light $c$ - for example, a speed of $0.5c$ or $0.9c$. Energy is often defined in terms of electron-volts - $1 \text{ eV} = 1.6 \times 10^{-19} \text{ J}$ - or mega-electron-volts (MeV) which are a million electron-volts. Momentum is frequently given in units of $\mathrm{MeV} / c$. Mass is given in units of $\mathrm{MeV/c^2}$, or atomic mass units (AMU), where 1 AMU = 931.5 $\mathrm{MeV/c^2}$.</p>
+<h2 id="four-vectors">Four-vectors</h2>
+<p>Four-vectors are used in special relativity to denote relativistic quantities. The four-vector of position is:</p>
+<p class="mathcell">
+$$
+\vec r = \begin{bmatrix}
+ct \\
+x \\
+y \\
+z
+\end{bmatrix}
+$$
+</p>
+<p>Meanwhile, the four-vector of momentum is given by:</p>
+<p class="mathcell">
+$$
+\vec p = \begin{bmatrix}
+E&#x2F;c \\
+p_x \\
+p_y \\
+p_z
+\end{bmatrix}
+$$
+</p>
+<p>Inner products of 4-vectors are invariant quantities. For example:</p>
+<p class="mathcell">
+$$
+\vec r \cdot \vec r = s^2
+$$
+</p><p class="mathcell">
+$$
+\vec p \cdot \vec p =\frac{E^2}{c^2} - p^2 = m^2 c^2
+$$
+</p><h2 id="using-center-of-momentum-frames">Using center of momentum frames</h2>
+<p>A center of momentum frame is a frame where the total 3-momentum $p$ of a system is equal to zero. Using center of momentum frames is very useful for solving collision problems in special relativity. This is because the center of momentum frame (CM frame) is the frame where <strong>all collision product particles are at rest</strong>. For example, if a collision produces particles A and B, then both A and B are at rest with respect to the CM frame. In addition, the total energy of particles A and B is equal to the total energy of the CM frame $E_{cm}$:</p>
+<p class="mathcell">
+$$
+E_A + E_B = E_{cm}
+$$
+</p>
+<p>We will derive this below.</p>
+<p>First, within the CM frame, the total 4-momentum is:</p>
+<p class="mathcell">
+$$
+\mathbf{P}_{cm} = 
+\begin{bmatrix}
+E_{cm} &#x2F; c \\
+0 \\
+0 \\
+0
+\end{bmatrix}
+$$
+</p>
+<p>where $E_{cm}$ is the total energy in the CM frame, and all the momentum components are zero since the 3-momentum of a system is zero in the CM frame. Why is this useful? Because if we compute the dot product of the CM frame 4-momentum, we find:</p>
+<p class="mathcell">
+$$
+\mathbf{P}_{cm} \cdot \mathbf{P}_{cm} = \frac{E_{cm}^2}{c^2}
+$$
+</p>
+<p>However, since the dot product of any 4-momentum vector is invariant, this means we can substitute $\mathbf{P}_{cm}$ with any 4-vector, and this equation will be true! For instance, suppose we already found the total 4-momentum in a lab frame, which we denote $\mathbf{P}_l$. Then, the following equation would be true as well:</p>
+<p class="mathcell">
+$$
+\mathbf{P}_l \cdot \mathbf{P}_l = \frac{E_{cm}^2}{c^2}
+$$
+</p>
+<p>From there, we can rearrange to solve for $E_{cm}$. Then, we can find $\mathbf{P}_{cm}$ from $E_{cm}$, use $\mathbf{P}_{cm} = \mathbf{P}_A + \mathbf{P}_b$, and then square both sides (only the squaring uses dot products, not regular multiplication). This then becomes:</p>
+<p class="mathcell">
+$$
+\mathbf{P}_{cm} \cdot \mathbf{P}_{cm} = (\mathbf{P}_A + \mathbf{P}_B) \cdot (\mathbf{P}_A + \mathbf{P}_B) = \mathbf{P}_A \cdot \mathbf{P}_A + 2(\mathbf{P}_A \cdot \mathbf{P}_B) + \mathbf{P}_B \cdot \mathbf{P}_B
+$$
+</p>
+<p>Using the invariance of the dot product of a 4-vector, that is, $\mathbf{P} \cdot \mathbf{P} = m^2 c^2$, this can then be used to solve for the energies of each of the particles.</p>
+<h2 id="sr-problem-solving-strategies">SR problem-solving strategies</h2>
+<ul>
+<li>When doing calculations in different frames:
+<ul>
+<li>Use the energy-momentum relation $E^2 = (pc)^2 + (mc^2)^2$</li>
+<li>Use the fact that the dot product of any 4-momentum with itself is given by $\mathbf{P} \cdot \mathbf{P} = m^2 c^2$</li>
+<li>Use a center of momentum frame, compute the invariant dot product of the system's 4-momentum, and then find the dot product of the 4-momentum of the system in the lab frame, and set them equal - that is, $\mathbf{P}_{cm} \cdot \mathbf{P}_{cm} = \mathbf{P}_l \cdot \mathbf{P}_l$</li>
+</ul>
+</li>
+<li>When doing calculations in one chosen frame (such as the lab frame):
+<ul>
+<li>Use conservation of momentum $p = p_1 + p_2$ and conservation of energy $E = E_1 + E_2$</li>
+<li>Use the fact that $\frac{v}{c} = \frac{pc}{E}$</li>
+<li>Square an energy conservation equation and expand using the energy-momentum relation to cancel out the momentum</li>
+</ul>
+</li>
+</ul>
+<h2 id="more-about-special-relativity">More about special relativity</h2>
+<p>We've come to the end of this (very) introductory treatment of special relativity. For more on special relativity, see the <a href="https://jackysci.com/advanced-classical-mech/">advanced classical mechanics guide</a>, and for more on both special and general relativity, you might like reading my (free) online book <a href="https://learntheoreticalphysics.com/relativity/">Special &amp; General Relativity</a>.</p>
+
+        
+        <a id="jump-toc-btn" href="#toc">Show table of contents</a>
+        <a href="/notes" class="return-link">Back to all notes</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        var toc = document.getElementById("toc");
+        var tocPos = toc.offsetTop + toc.offsetHeight;
+        var tocBtn = document.getElementById("jump-toc-btn");
+
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+        // for performance reasons, we **only** render a certain
+        // number of equations that the viewer is actually viewing
+        function VisibleMathRenderer(config) {
+            /*
+            Renders only a limited number of equations on page load
+            to avoid poor performance
+             Params:
+                lastRenderedEquation: the most recently rendered equation.
+                        when this goes out of view, equations under it are rendered. 
+            */
+            var startElement = config.startElement
+            var maxEquations = config.maxEquations ? config?.maxEquations : 30;
+            this.startElement = startElement
+            this.maxEquations = maxEquations
+            // we wait until the user scrolls past the starting/
+            // ending elements to start rendering the whole page
+            this.canRenderWholePage = false;
+            this.pageRendered = false;
+            this.lastRenderedTopEquation = null;
+            this.lastRenderedBottomEquation = null;
+
+            this.render = function() {
+                renderMath(this.startElement);
+                // render previous 25 and following 25 equations
+                var prev = this.startElement.previousElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left prior to the element
+                    if (prev == null) {
+                        break;
+                    }
+                    renderMath(prev);
+                    prev = prev.previousElementSibling;
+                }
+                // store our last rendered equations
+                // we'll track scroll position later to
+                // check when the rest of the page should be rendered
+                this.lastRenderedTopEquation = prev;
+                console.log(this.lastRenderedTopEquation)
+
+                var next = this.startElement.nextElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left following the element
+                    if (next.nextElementSibling == null) {
+                        break;
+                    }
+                    renderMath(next);
+                    next = next.nextElementSibling;
+                }
+                this.lastRenderedBottomEquation = next;
+                // now allow rendering the rest of the equations
+                this.canRenderWholePage = true;
+            }
+
+            // render all math on the whole page
+            this.renderMathOnPage = function() {
+                // don't run until preliminary tasks
+                // are done so that the whole page
+                // can/should be rendered
+                if (!this.canRenderWholePage) {
+                    return;
+                }
+                // if the whole page's worth of equations
+                // are already rendered, don't render more
+                if (this.pageRendered) {
+                    return;
+                }
+                var topBound = this.lastRenderedTopEquation.getBoundingClientRect.top;
+                var bottomBound = this.lastRenderedBottomEquation.getBoundingClientRect.bottom;
+                var scrollTop, scrollBottom = getViewport();
+                // if the user is about to scroll past the initially-rendered equations
+                // we will render the whole page
+                if (scrollTop - 50 + window.scrollY < topBound || scrollBottom + 50 + window.scrollY > bottomBound) {
+                    console.log("Scrolled beyond!")
+                    var article = document.querySelector(".post");
+                    if (article) {
+                        this.renderMath(article);
+                    }
+                    this.pageRendered = true;
+                }
+                
+            }
+            
+        }
+
+        function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        function findFirstRelevantElement() {
+            // finds the first <p> tage that's closest to
+            // the viewer's viewport
+            var regex = /#.*/;
+            var m = regex.exec(window.location.href);
+            if (m !== null) {
+                return document.querySelector(m[0]);
+            } else {
+                return document.querySelector(".post p");
+            }
+        }
+        
+        // initialize page JS components
+        /*
+        var mathRenderer = new VisibleMathRenderer({
+            // start rendering with first <p> tag on the
+            // post
+            startElement: findFirstRelevantElement()
+        });
+        */
+        document.addEventListener("DOMContentLoaded", function() {
+            showTocBtnOnScroll();
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+
+        window.onscroll = function(){
+            // if (!mathRenderer.pageRendered) {
+            //     mathRenderer.renderMathOnPage();
+            // }
+            showTocBtnOnScroll();
+        };
+
+
+    </script>
+    
+
+
+</body>
+
+</html>

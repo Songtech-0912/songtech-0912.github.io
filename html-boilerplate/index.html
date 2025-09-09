@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My HTML boilerplate</title>
+  <meta name="description" content=" Starting an HTML file for a website or webapp can be a very frustrating process; it requires a lot of boilerplate. So this is one that I generally use, that I&#x27;m sharing here for hope that others might find it useful.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>My HTML boilerplate</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+
+        <!-- page content -->
+        <p>Starting an HTML file for a website or webapp can be a very frustrating process; it requires a lot of boilerplate. So this is one that I generally use, that I'm sharing here for hope that others might find it useful.</p>
+<span id="continue-reading"></span>
+<p>Here it is:</p>
+<pre data-lang="html" style="background-color:#fafafa;color:#61676c;" class="language-html "><code class="language-html" data-lang="html"><span style="color:#55b4d490;">&lt;!</span><span style="color:#fa6e32;">DOCTYPE </span><span style="color:#ff8f40;">html</span><span style="color:#55b4d490;">&gt;
+</span><span style="color:#55b4d490;">&lt;</span><span style="color:#399ee6;">html </span><span style="color:#f29718;">lang</span><span style="color:#61676ccc;">=</span><span style="color:#86b300;">&quot;en&quot;</span><span style="color:#55b4d490;">&gt;
+</span><span style="color:#55b4d490;">&lt;</span><span style="color:#399ee6;">head</span><span style="color:#55b4d490;">&gt;
+</span><span>  </span><span style="color:#55b4d490;">&lt;</span><span style="color:#399ee6;">meta </span><span style="color:#f29718;">charset</span><span style="color:#61676ccc;">=</span><span style="color:#86b300;">&quot;UTF-8&quot;</span><span style="color:#55b4d490;">&gt;
+</span><span>  </span><span style="color:#55b4d490;">&lt;</span><span style="color:#399ee6;">meta </span><span style="color:#f29718;">name</span><span style="color:#61676ccc;">=</span><span style="color:#86b300;">&quot;viewport&quot; </span><span style="color:#f29718;">content</span><span style="color:#61676ccc;">=</span><span style="color:#86b300;">&quot;width=device-width, initial-scale=1.0&quot;</span><span style="color:#55b4d490;">&gt;
+</span><span>  </span><span style="font-style:italic;color:#abb0b6;">&lt;!-- Set your page title here --&gt;
+</span><span>  </span><span style="color:#55b4d490;">&lt;</span><span style="color:#399ee6;">title</span><span style="color:#55b4d490;">&gt;</span><span>Your title</span><span style="color:#55b4d490;">&lt;/</span><span style="color:#399ee6;">title</span><span style="color:#55b4d490;">&gt;
+</span><span>  </span><span style="font-style:italic;color:#abb0b6;">&lt;!-- Add in your css stylesheets here --&gt;
+</span><span>  </span><span style="color:#55b4d490;">&lt;</span><span style="color:#399ee6;">link </span><span style="color:#f29718;">rel</span><span style="color:#61676ccc;">=</span><span style="color:#86b300;">&quot;stylesheet&quot; </span><span style="color:#f29718;">href</span><span style="color:#61676ccc;">=</span><span style="color:#86b300;">&quot;yourstyle.css&quot;</span><span style="color:#55b4d490;">&gt;
+</span><span>  </span><span style="font-style:italic;color:#abb0b6;">&lt;!-- Add in your favicon here or generate 
+</span><span style="font-style:italic;color:#abb0b6;">  	   from https://favycon.vercel.app/--&gt;
+</span><span>  </span><span style="color:#55b4d490;">&lt;</span><span style="color:#399ee6;">link </span><span style="color:#f29718;">rel</span><span style="color:#61676ccc;">=</span><span style="color:#86b300;">&quot;icon&quot; </span><span style="color:#f29718;">href</span><span style="color:#61676ccc;">=</span><span style="color:#86b300;">&quot;yourfavicon.ico&quot;</span><span style="color:#55b4d490;">&gt;
+</span><span>  </span><span style="font-style:italic;color:#abb0b6;">&lt;!-- Meta tags - these are for webpage info, 
+</span><span style="font-style:italic;color:#abb0b6;">  	   edit to your liking --&gt;
+</span><span>  </span><span style="color:#55b4d490;">&lt;</span><span style="color:#399ee6;">meta </span><span style="color:#f29718;">name</span><span style="color:#61676ccc;">=</span><span style="color:#86b300;">&quot;title&quot; </span><span style="color:#f29718;">content</span><span style="color:#61676ccc;">=</span><span style="color:#86b300;">&quot;Your website title&quot;</span><span style="color:#55b4d490;">&gt;
+</span><span>  </span><span style="color:#55b4d490;">&lt;</span><span style="color:#399ee6;">meta </span><span style="color:#f29718;">name</span><span style="color:#61676ccc;">=</span><span style="color:#86b300;">&quot;description&quot; </span><span style="color:#f29718;">content</span><span style="color:#61676ccc;">=</span><span style="color:#86b300;">&quot;A website description&quot;</span><span style="color:#55b4d490;">&gt;
+</span><span>  </span><span style="font-style:italic;color:#abb0b6;">&lt;!-- You can auto-generate meta tags 
+</span><span style="font-style:italic;color:#abb0b6;">  	   with a tool like https://metatags.io --&gt;
+</span><span style="color:#55b4d490;">&lt;/</span><span style="color:#399ee6;">head</span><span style="color:#55b4d490;">&gt;
+</span><span style="color:#55b4d490;">&lt;</span><span style="color:#399ee6;">body</span><span style="color:#55b4d490;">&gt;
+</span><span>  </span><span style="color:#55b4d490;">&lt;</span><span style="color:#399ee6;">div</span><span style="color:#55b4d490;">&gt;</span><span>Write your markup...</span><span style="color:#55b4d490;">&lt;/</span><span style="color:#399ee6;">div</span><span style="color:#55b4d490;">&gt;
+</span><span>  </span><span style="font-style:italic;color:#abb0b6;">&lt;!-- Add in your scripts here --&gt;
+</span><span>  </span><span style="color:#55b4d490;">&lt;</span><span style="color:#399ee6;">script </span><span style="color:#f29718;">src</span><span style="color:#61676ccc;">=</span><span style="color:#86b300;">&quot;myscript.js&quot;</span><span style="color:#55b4d490;">&gt;&lt;/</span><span style="color:#399ee6;">script</span><span style="color:#55b4d490;">&gt;
+</span><span style="color:#55b4d490;">&lt;/</span><span style="color:#399ee6;">body</span><span style="color:#55b4d490;">&gt;
+</span><span style="color:#55b4d490;">&lt;/</span><span style="color:#399ee6;">html</span><span style="color:#55b4d490;">&gt;
+</span></code></pre>
+
+        
+        <a href="/" class="return-link">Back to home</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function() {
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+    </script>
+    
+
+
+</body>
+
+</html>

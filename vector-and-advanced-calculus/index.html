@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vector Calculus and Beyond</title>
+  <meta name="description" content=" This guide covers the methods of calculus that go beyond multivariable calculus, including vector calculus, tensor calculus, the calculus of variations, and applications for each. In addition, derivations and more advanced treatments of topics in single- and multivariable calculus are also included.
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://github.com/Songtech-0912">GitHub</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Vector Calculus and Beyond</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        
+        <!-- table of contents -->
+        
+        <details class="toc" id="toc" open>
+        <summary>Table of contents</summary>
+        <p class="toc-info">Note: it is highly recommended to navigate by clicking links in the table of contents! It means you can use the back button in your browser to go back to any section you were reading, so you can jump back and forth between sections!</p>
+        <div>
+            <ul>
+            
+                <li>
+                    <a href="#overview-of-multivariable-calculus">Overview of multivariable calculus</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#vectors">Vectors</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#multivariable-functions">Multivariable functions</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#parametric-equations">Parametric equations</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#planes-and-surfaces">Planes and surfaces</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#curvilinear-coordinate-systems">Curvilinear coordinate systems</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#coordinate-conversions-and-arc-length-in-curvilinear-coordinate-systems">Coordinate conversions and arc length in curvilinear coordinate systems</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#review-of-differentiation-in-several-variables">Review of differentiation in several variables</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#tangent-planes">Tangent planes</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#directional-rate-of-change">Directional rate of change</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#level-sets">Level sets</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#taylor-expansions-in-several-variables">Taylor expansions in several variables</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#optimization-in-several-variables">Optimization in several variables</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#optimization-with-constraints">Optimization with constraints</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#implicit-function-theorem">Implicit function theorem</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#inverse-function-theorem">Inverse function theorem</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#motion-along-a-path">Motion along a path</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
+        </details>
+        
+
+        <!-- page content -->
+        <p>This guide covers the methods of calculus that go beyond multivariable calculus, including vector calculus, tensor calculus, the calculus of variations, and applications for each. In addition, derivations and more advanced treatments of topics in single- and multivariable calculus are also included.</p>
+<span id="continue-reading"></span>
+<p>I thank <a href="https://faculty.rpi.edu/jeffrey-banks">Professor Jeffrey Banks</a> of RPI for giving his permission to share these notes.</p>
+<h2 id="overview-of-multivariable-calculus">Overview of multivariable calculus</h2>
+<p>Vector calculus is based off analytic geometry (a fancy name for the mathematics of points, lines, surfaces, and vectors) and multivariable calculus - the calculus of functions of several variables. Such functions can be scalar-valued, meaning that they output a quantity that is a number (scalar), or vector-valued, meaning that they output a quantity that is a vector. We will start by going over the fundamentals of multivariable calculus. Note that a more beginner-friendly introductory treatment of multivariable calculus can be found in the dedicated <a href="https://jackysci.com/multivariable-calculus/">intro to multivariable calculus guide</a>.</p>
+<h3 id="vectors">Vectors</h3>
+<p>A vector describes a directional quantity in space. For instance, the position vector $\mathbf{r} = \langle x, y, z\rangle$ describes, unsurprisingly, the position of a point from a chosen reference point, known as the origin. Vectors can be written in several forms. For instance, the position vector can be written with the bracket notation shown previously:</p>
+<p class="mathcell">
+$$
+\mathbf{r} = \langle x, y, z\rangle
+$$
+</p>
+<p>It can also be written in row (horizontal) or column vector (vertical) form:</p>
+<p class="mathcell">
+$$
+\mathbf{r} = \begin{bmatrix}x &amp; y &amp; z\end{bmatrix}^T = \begin{bmatrix} x \\ y \\ z \end{bmatrix}
+$$
+</p>
+<blockquote>
+<p>$T$ here means "transpose", that is, flipping the row vector around to form a column vector.</p>
+</blockquote>
+<p>Finally, vectors can be written in <em>linear combination form</em>, in which they are written in terms of a sum of special <em>basis vectors</em>:</p>
+<p class="mathcell">
+$$
+\mathbf{r} = x\begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} + y\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} + z\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
+$$
+</p>
+<p>In this expression, $\langle 1, 0, 0\rangle, \langle 0, 1, 0\rangle, \langle 0, 0, 1\rangle$ are the <em>basis vectors</em>, often alternatively written as $\mathbf{i}, \mathbf{j}, \mathbf{k}$. They allow us to <em>decompose</em> the vector into a sum of its components, multiplied by each one of the basis vectors:</p>
+<p class="mathcell">
+$$
+\mathbf{r} = x \mathbf{i} + y \mathbf{j} + z \mathbf{k}
+$$
+</p>
+<p>Here $x, y, z$ are called the <em>components</em> of the position vector, and each represents a component of the position vector along each direction in 3D space. As another example, for the velocity vector $\mathbf{v} = \langle v_x, v_y, v_z\rangle$, we can write it as $\mathbf{v} = v_x \mathbf{i} + v_y \mathbf{j} + v_z \mathbf{k}$, and $v_x, v_y, v_z$ are the components of the velocity vector in each direction (for instance, $v_x$ is the x-component of the velocity vector).</p>
+<blockquote>
+<p>The Cartesian basis vectors $\mathbf{i}, \mathbf{j}, \mathbf{k}$ are often also written as $\hat x, \hat y, \hat z$ or $\hat e_x, \hat e_y, \hat e_z$. We will use these notations interchangeably.</p>
+</blockquote>
+<p>The "length" of a vector is called its <em>magnitude</em>, written $| \mathbf{v} |$ or $|\mathbf{v}|$, and is found using the Pythagorean formula:</p>
+<p class="mathcell">
+$$
+\| \mathbf{v}\| = \sqrt{v_x^2 + v_y ^2 + v_z^2}
+$$
+</p>
+<p>For a more general vector $\langle a, b, c \rangle$, the magnitude is found by summing the squared components of the vector:</p>
+<p class="mathcell">
+$$
+\|\langle a, b, c\rangle\| = \sqrt{a^2 + b^2 + c^2}
+$$
+</p><h4 id="vector-arithmetic">Vector arithmetic</h4>
+<p>Vectors are added and subtracted <em>component-wise</em>, which means you add or subtract each of their components:</p>
+<p class="mathcell">
+$$
+\begin{bmatrix} a_1\\ b_1\\ c_1 \end{bmatrix} + 
+\begin{bmatrix} a_2\\ b_2\\ c_2 \end{bmatrix} =
+\begin{bmatrix} a_1 + a_2\\ b_1 + b_2\\ c_1+c_2 \end{bmatrix}
+$$
+</p>
+<p>Vector multiplication is more complex. There are three different types of "vector multiplication" to speak of. The first type is <strong>scalar multiplication</strong>, when a vector is multiplied by a scalar. The resulting vector is formed by multiplying each of the vector's components:</p>
+<p class="mathcell">
+$$
+k \begin{bmatrix} a\\ b\\ c \end{bmatrix} =
+\begin{bmatrix} k \cdot a\\ k \cdot b\\ k \cdot c \end{bmatrix}
+$$
+</p><h4 id="dot-product-of-vectors">Dot product of vectors</h4>
+<p>The <strong>dot product</strong>, or scalar product, is a product of two vectors (rather than a scalar and a vector). To take the dot product, we multiply the corresponding components of each of the two vectors, then add them together:</p>
+<p class="mathcell">
+$$
+\begin{bmatrix} a_1\\ b_1\\ c_1 \end{bmatrix} \cdot 
+\begin{bmatrix} a_2\\ b_2\\ c_2 \end{bmatrix} =
+a_1 a_2 + b_1b_2 + c_1 c_2
+$$
+</p>
+<p>As the result is a scalar, we often call the dot product the <em>scalar product</em>. The dot product can also be expressed <em>geometrically</em> in terms of the <em>angle</em> between two vectors: for two vectors $\mathbf{u}$ and $\mathbf{v}$ that make an angle $\theta$, the dot product is given by:</p>
+<p class="mathcell">
+$$
+\mathbf{u} \cdot \mathbf{v} = |\mathbf{u}| |\mathbf{v}| \cos \theta
+$$
+</p>
+<p>As a consequence, $\mathbf{u} \cdot \mathbf{v} = |\mathbf{u}| |\mathbf{v}|$ when $\theta = 0$, and $\mathbf{u} \cdot \mathbf{v} = 0$ when $\theta = 90 \degree$. In the latter case, we say that $\mathbf{u}$ and $\mathbf{v}$ are <em>orthogonal</em> (perpendicular, i.e. 90 degrees apart).</p>
+<p>The dot product also has some useful mathematical properties. First, it is <em>commutative</em> - $\mathbf{u} \cdot \mathbf{v} = \mathbf{v} \cdot \mathbf{u}$. Second, it is <em>linear</em> under scalar multiplication: $k (\mathbf{u} \cdot \mathbf{v}) = (k\mathbf{u}) \cdot \mathbf{v} = \mathbf{u} \cdot (k\mathbf{v})$. Third, the component of $\mathbf{u}$ in the direction of $\mathbf{v}$ can be expressed as $\mathbf{u} \cdot \mathbf{e}_v$, where $\mathbf{e}_v$ is the unit vector in the direction of $\mathbf{v}$. Using this fact, we can define an operation known as the <strong>vector projection</strong> of $\mathbf{u}$ in the direction of $\mathbf{v}$, written $\operatorname{proj} \limits_{\mathbf{v}} \mathbf{u}$, which can be expressed as $\operatorname{proj} \limits_{\mathbf{v}} \mathbf{u} = (\mathbf{u} \cdot \mathbf{e}_v)\mathbf{e}_v$. The vector projection produces a vector parallel to $\mathbf{v}$ whose length is the component of $\mathbf{u}$ along $\mathbf{v}$.</p>
+<h4 id="cross-product-of-vectors">Cross product of vectors</h4>
+<p>Similar to the dot product, we can define another type of vector-vector multiplication called the <em>cross product</em>. The cross product, written $\mathbf{u} \times \mathbf{v}$, results in a vector that is <em>perpendicular</em> to both $\mathbf{u}$ and $\mathbf{v}$. In Cartesian coordinates ($xyz$ components) it can be computed using the formula:</p>
+<p class="mathcell">
+$$
+\mathbf{u}\times \mathbf{v} = (u_y v_z - u_z v_y) \mathbf{i} + (u_z v_x - u_x v_z)\mathbf{j} + (u_x v_y - u_y v_x) \mathbf{j}
+$$
+</p>
+<p>The magnitude of the cross product between two vectors can be computed based on the angle between the two vectors, using the formula:</p>
+<p class="mathcell">
+$$
+| \mathbf{u} \times \mathbf{v} | = |\mathbf{u}||\mathbf{v}| \sin \theta
+$$
+</p>
+<p>The cross product obeys the <em>anticommutative property</em>: $\mathbf{v} \times \mathbf{u} = -\mathbf{u} \times \mathbf{v}$. In addition, due to the angular formula, when $\theta = 0$, the cross product $|\mathbf{u} \times \mathbf{v}| = 0$, and when $\theta = 90 \degree$, the cross product $|\mathbf{u} \times \mathbf{v}| = |\mathbf{u}||\mathbf{v}|$.</p>
+<h3 id="multivariable-functions">Multivariable functions</h3>
+<p>A <strong>multivariable function</strong> is a function that depends on several (i.e. more than one) variables. For instance, we may have a function that depends on the $(x, y)$ position in space, which we write $f(x, y)$. We may also have a function that depends on position and time, which we write $f(x, t)$. Notice how each of these functions depends on <em>more than one variable</em>. We may also have vector-valued multivariable functions in the form $\mathbf{F}(x, y, z)$. Such functions are the objects of study of multivariable calculus.</p>
+<blockquote>
+<p>Note: in the rest of this guide, for avoiding overly difficult-to-read equations, we will use the shorthand $f(\mathbf{r}) = f(x, y, z)$ and $\mathbf{F}(\mathbf{r}) = F_x(x, y, z) \mathbf{i} + F_y(x, y, z) \mathbf{j} + F_z(x, y, z) \mathbf{k}$. Note the boldface $\mathbf{r}$ represents $x, y, z$, and it is a shorthand, so please do not get this confused with $f(r)$ or $\mathbf{F}(r)$ which are single-variable functions.</p>
+</blockquote>
+<h3 id="parametric-equations">Parametric equations</h3>
+<p>We describe a wide variety of geometric objects in space with a <em>parametric equation</em>. There are many examples of parametric equations. The simplest types of parametric equations describe a curve in space, such as the trajectory of a particle. These are called <strong>parametric curves</strong> and follow the basic form:</p>
+<p class="mathcell">
+$$
+\begin{matrix}
+x = x(t),&amp; y= y(t),&amp; z=z(t)
+\end{matrix}
+$$
+</p>
+<blockquote>
+<p>We note that these equations are functions of $t$, called the <em>parameter</em>. $t$ does not have to be time - it can stand for any real number.</p>
+</blockquote>
+<p>We may write parametric equations in this form in a more compact way as $\mathbf{r} = \mathbf{r}(t)$, which expands to the form shown above. The simplest example of a parametric curve is a <strong>line</strong>. A line takes the parametric form:</p>
+<p class="mathcell">
+$$
+\mathbf{r} = \mathbf{r}_0 + \mathbf{v} t
+$$
+</p>
+<p>Where $\mathbf{r}_0$ is the starting point of the line, and $\mathbf{v}$ is the vector specifying the direction of the line. A line through two points $\mathbf{r}_0, \mathbf{r}_1$ takes the form:</p>
+<p class="mathcell">
+$$
+\mathbf{r} = \mathbf{r}_0 + (\mathbf{r}_1 - \mathbf{r}_0)t
+$$
+</p>
+<p>More complex parametric curves can be arbitrary functions of $t$. The <em>length</em> $S$ of a parametric curve defined by $\mathbf{r}(t) = \langle x(t), y(t), z(t)\rangle$ is found by the integral for the <strong>arc length</strong>:</p>
+<p class="mathcell">
+$$
+S = \int_a^b \sqrt{\left(\dfrac{dx}{dt}\right)^2 + \left(\dfrac{dy}{dt}\right)^2 + \left(\dfrac{dz}{dt}\right)^2} dt
+$$
+</p>
+<p>Which can also be written as:</p>
+<p class="mathcell">
+$$
+S = \int_a^b \| \mathbf{r}&#x27;(t)\| dt
+$$
+</p>
+<p>Where $\mathbf{r}'(t) = \left \langle \dfrac{dx}{dt}, \dfrac{dy}{dt}, \dfrac{dz}{dt}\right \rangle$ is the derivative along the path, and is always <em>tangent</em> to the path. As a physical example, when we let $t$ be time, then $\mathbf{r}'(t)$ is the velocity vector. The velocity vector always points in the direction of motion, as it is tangent to the position vector.</p>
+<h3 id="planes-and-surfaces">Planes and surfaces</h3>
+<p>In addition to lines and (parametric) curves, we may also define <em>planes</em> in 3D space. A plane takes the form of an <em>implicit</em> equation of $x$, $y$, and $z$:</p>
+<p class="mathcell">
+$$
+a(x - x_0) + b(y - y_0) + c(z - z_0) = 0
+$$
+</p>
+<p>We may also write this in more compact form $\mathbf{n} \cdot (\mathbf{r} - \mathbf{r}_0) = 0$, where $\mathbf{r}_0$ is the point at the center of the plane, and $\mathbf{n} = \langle a, b, c\rangle$ is the normal vector - the vector that points out of the surface of the plane. Alternatively, we can write a plane in <em>parametric form</em> with $\mathbf{r} = \mathbf{r}_0 + s \mathbf{v} + t\mathbf{w}$, where $\mathbf{v}, \mathbf{w}$ are two vectors spanning the surface of the plane and $s, t$ are two parameters, which are required to define the plane.</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Plane_equation_qtl3.svg" alt="A diagram showing the mathematical description of a plane, defined by a point where the plane is centered and a normal vector that points out of the surface of the plane" /></p>
+<p><em>Source: <a href="https://commons.wikimedia.org/wiki/File:Plane_equation_qtl3.svg#/media/File:Plane_equation_qtl3.svg">Wikipedia</a></em></p>
+<p>We can also define other common geometric shapes. For instance, a sphere in 3D space of radius $R$ is defined by the implicit equation:</p>
+<p class="mathcell">
+$$
+x^2 + y^2 + z^2 = R^2
+$$
+</p>
+<p>We can analyze more complex shapes in 3D space with <em>surfaces</em>. A <em>surface</em> in 3D space is described by a function of $x$ and $y$ with the general form $z = f(x, y)$, which can also be written implicitly as $F(x, y, z) = 0$, where $F(x, y, z) = f(x, y) - z$. For instance, the equation of a paraboloid is:</p>
+<p class="mathcell">
+$$
+z = x^2 + y^2
+$$
+</p>
+<blockquote>
+<p>Note that implicit surfaces, which are in the form $F(x, y, z) = 0$, can also take more complex forms, where $F(x, y, z) = f(x, y) - g(z)$.</p>
+</blockquote>
+<h4 id="intersections-of-surfaces">Intersections of surfaces</h4>
+<p>Just as we have <em>points</em> of intersection in 2D space, we have <em>curves</em> of intersection in 3D space. The <strong>intersection of two surfaces</strong> given by $F(x, y, z) = 0$ and $G(x, y, z) = 0$ is a parametric curve $\mathbf{r}(t)$. The precise form of this parametric curve may vary. But we will look at a simple case.</p>
+<p>Consider the intersection between the unit sphere, given by $x^2 + y^2 + z^2 = 1$, and the plane $z = 2x$ (see <a href="https://www.math3d.org/K51UuVpjP4">an interactive visualization here</a>). How would we solve this?</p>
+<p>One way we can do so is by converting the plane to <em>parametric form</em>. To do so, we need to find two vectors that are parallel to the plane.</p>
+<img class="wide-img" src="/vector-and-advanced-calculus/intersection-of-surfaces.png" alt="An illustration of the plane z = 2x as well as two vectors parallel to the plane and lying on the plane" />
+<p>Luckily, this is relatively easy to find (see the above picture for a visualization):</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+\mathbf{u} = \begin{bmatrix} 1 \\ 0 \\ 2 \end{bmatrix}, 
+&amp; \mathbf{v} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}
+\end{matrix*}
+$$
+</p>
+<p>From which can define the plane in parametric form as $\mathbf{r} = s\mathbf{u} + t\mathbf{v}$, which expands to:</p>
+<p class="mathcell">
+$$
+\begin{bmatrix} x \\ y \\ z\end{bmatrix} =
+s\begin{bmatrix} 1 \\ 0 \\ 2 \end{bmatrix} + 
+t\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}
+$$
+</p>
+<p>Thus we have $x = s, y = t, z = 2s$. Now note that if we substitute these into the equation for the sphere, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+x^2 + y^2 + z^2 &amp;= s^2 + t^2 + (2s)^2 \\
+&amp;= s^2 + t^2 + 4s^2 \\
+&amp;= 5s^2 + t^2 \\
+&amp;= 1
+\end{align*}
+$$
+</p>
+<p>Thus, we may rearrange to find that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+5s^2 + t^2 &amp;= 1 \\
+5s^2 &amp;= 1 - t^2 \\
+\end{align*}
+$$
+</p>
+<p>It may seem that we have gotten nowhere. However, the appearance of an expression in the form $a^2 = 1 - b^2$ suggests a Pythagorean trigonometric substitution. For instance, if we were to try to define a new parameter $\lambda$ such that:</p>
+<p class="mathcell">
+$$
+s = \frac{1}{\sqrt{5}} \cos \lambda \\
+t = \sin \lambda
+$$
+</p>
+<p>Then indeed we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+5s^2 &amp;= 5 \left(\frac{1}{\sqrt{5}} \cos \lambda\right)^2 \\
+&amp;= \cos^2 \lambda \\
+&amp;= 1 - \sin^2 \lambda \\
+&amp;= 1 - t^2
+\end{align*}
+$$
+</p>
+<p>Since we have $x = s, y = t, z = 2s$, we can now rewrite each in terms of $\lambda$:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+x=s &amp; \Rightarrow &amp; x = \dfrac{1}{\sqrt{5}} \cos \lambda \\
+y=t &amp; \Rightarrow &amp; y = \sin \lambda \\
+z=2s &amp; \Rightarrow &amp; z = \dfrac{2}{\sqrt{5}} \cos \lambda
+\end{matrix*}
+$$
+</p>
+<p>Thus the intersection between the unit sphere and the plane $z = 2x$ is given by the following parametric curve:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+\begin{align*}
+x(t) &amp;= \dfrac{1}{\sqrt{5}} \cos \lambda \\
+y(t) &amp;= \sin \lambda \\
+z(t) &amp;= \dfrac{2}{\sqrt{5}} \cos \lambda
+\end{align*}
+&amp; \lambda \in [0, 2\pi]
+\end{matrix*}
+$$
+</p>
+<p>Which is a specific type of curve known as an <strong>ellipse</strong> that will frequently appear in multivariable and vector calculus.</p>
+<h3 id="curvilinear-coordinate-systems">Curvilinear coordinate systems</h3>
+<p>Until this point, we have only discussed lines, curves, and surfaces in Cartesian 3D coordinates. Such coordinates are relatively simple to use and are well-suited for introducing the topics of multivariable calculus. However, we often want to use other coordinate systems, which are more suited to a particular mathematical problem. The two most common are <strong>spherical coordinates</strong> and <strong>cylindrical coordinates</strong>.</p>
+<p>In cylindral coordinates, we describe a point 3D space using three coordinates - $\rho$ (radial distance), the distance from the z-axis, $\phi$ (polar angle), the angle between the point and the x-axis, and $z$ (elevation), the height of the point above the origin. Thus, the full set of coordinates describing a point takes the form $(\rho, \phi, z)$, as shown:</p>
+<img class="natural-img" src="/vector-and-advanced-calculus/https://upload.wikimedia.org/wikipedia/commons/0/0e/Coord_system_CY_1.svg" alt="An illustration of the cylindrical coordinate system, with three components, the radial (r) component pointing from the z-axis, the polar (theta) coordinate pointing from the x-axis, and the z coordinate pointing up from the origin" />
+<p><em>Source: <a href="https://commons.wikimedia.org/wiki/File:Coord_system_CY_1.svg">Wikipedia</a></em></p>
+<blockquote>
+<p><strong>Note on notation:</strong> It is common to use different letters for cylindrical coordinates. We use $(\rho, \phi, z)$ but some authors use $(\rho, \theta, z)$ or $(r, \theta, z)$. In addition, it is also common to write $\phi$ as $\varphi$ (these are the same letter written differently). All of these symbol conventions are all equivalent, but it is important to specify <em>which</em> notation convention is used and what direction each symbol is associated with to avoid confusion.</p>
+</blockquote>
+<p>Cylindrical coordinates are useful in for situations when the mathematics of a problem have <em>cylindrical symmetry</em>, such as a tube or a circular loop.</p>
+<p>Meanwhile, in spherical coordinates, we describe a point in 3D space also using three coordinates, but with slightly different coordinates. The first coordinate changes from $\rho$ to $r$ (still called radial), the distance from the origin (as opposed to the distance from the z-axis), the second coordinate becomes $\theta$ (azimuthal angle), the angle <em>above</em> the plane of the origin, and the third coordinate is the same $\phi$ as before (polar angle). Therefore, the full set of coordinates describing a point becomes $(r, \theta, \phi)$, as shown in the diagram below:</p>
+<img class="natural-img" src="/vector-and-advanced-calculus/https://upload.wikimedia.org/wikipedia/commons/f/f9/Kugelkoord-lokb-e.svg" alt="A diagram showing spherical coordinates, with a radial (r) coordinate pointing from the origin to the point, a polar angle (theta) pointing up from the plane of the origin, and an azimuthal angle (phi) pointing from the x-axis) pointing up from the plane, and a phi" />
+<blockquote>
+<p><strong>Note on notation:</strong> Again, just as with cylindrical coordinates, the notation conventions for spherical coordinates are myriad, and all conventions are equivalent, but it is important to specify which one is used and the meaning of each symbol.</p>
+</blockquote>
+<p>The XY plane in spherical coordinates is often called the <strong>equatorial plane</strong>, and the circle around the equatorial plane is called (unsurprisingly) the <em>equator</em>. Spherical coordinates are commonly-used for situations where the mathematics of a problem have <em>spherical symmetry</em>, such as a rotating ball or a planet.</p>
+<h3 id="coordinate-conversions-and-arc-length-in-curvilinear-coordinate-systems">Coordinate conversions and arc length in curvilinear coordinate systems</h3>
+<p>Recall that previously, we discussed two curvilinear coordinate systems: cylindrical $(\rho, \phi, z)$ coordinates and spherical $(r, \theta, \phi)$ coordinates. We will now explore how we may express points and geometric objects we are familiar with in Cartesian coordinates in these curvilinear coordinate systems.</p>
+<p>First, we will go over <strong>cylindrical coordinates</strong>. We may convert $(\rho, \phi, z)$ coordinates to Cartesian $(x, y, z)$ coordinates as follows:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+x &amp;= \rho \cos \phi \\
+y &amp;= \rho \sin \phi \\
+z &amp;= z
+\end{align*}
+$$
+</p>
+<p>By using this information, we may write out the basis vectors of cylindrical coordinates in terms of Cartesian coordinates:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat e_\rho &amp;= \cos \phi\, \mathbf{i} - \sin \phi\, \mathbf{j} \\
+\hat e_\phi &amp;= -\sin \phi\, \mathbf{i} + \cos \phi\, \mathbf{j} \\
+\hat e_z &amp;= \mathbf{k}
+\end{align*}
+$$
+</p>
+<p>A parametric curve in cylindrical coordinates can be represented as follows:</p>
+<p class="mathcell">
+$$
+\mathbf{r}(t) = \rho(t) \hat e_\rho + z(t) \hat e_z
+$$
+</p>
+<p>There is only one problem here - the unit vectors in cylindrical coordinates (and in general, basically all non-Cartesian coordinate systems) are <strong>non-constant</strong>. Here, $\hat e_\rho = \hat e_\rho(\phi(t))$, that is, the cylindrical radial unit vector depends on the angle $\phi$.</p>
+<p>You may be interested in <em>how</em> these formulas are derived. The mathematical justification of these formulas is rather complex and time-consuming and is the domain of a field known as <em>differential geometry</em>; see <a href="https://en.wikipedia.org/wiki/Metric_tensor#Coordinate_transformations">this wikipedia article</a> for those interested. For now, we will accept these formulas as fact to be able to continue our analysis.</p>
+<p>Let us take the example of using coordinate-transformed basis vectors to to convert vector-valued equations in Cartesian coordinates to cylindrical and spherical coordinates. An example is the question of how to measure <em>distances</em> and <em>positions</em> in space. Let us consider a parametric curve $\mathbf{r}(s)$ (we use $s$ as a general parameter, it doesn't have to be time). In Cartesian coordinates, we would write out the curve as a vector, in the form:</p>
+<p class="mathcell">
+$$
+\mathbf{r}(s) = x(s) \,\mathbf{i} + y(s)\, \mathbf{j} + z(s)\,\mathbf{k}
+$$
+</p>
+<p>Therefore, the <strong>length element</strong> $d\mathbf{r}$, a tiny segment of the curve $\mathbf{r}(s)$ which represents an infinitesimal displacement in space, is given by:</p>
+<p class="mathcell">
+$$
+\mathbf{r}(s) = dx \,\mathbf{i} + dy\, \mathbf{j} + dz\,\mathbf{k}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> It is important to remember that $dx = x'(s) ds, dy = y'(s) dy$, and $dz = z'(s) dz$. We have just not written them in fully-expanded form for brevity.</p>
+</blockquote>
+<p>The distance along the infinitesimal displacement vector $d\mathbf{r}$ is given by $|d\mathbf{r}|$, from which we can find the familiar expression for the arc length in Cartesian coordinates:</p>
+<p>$$
+S = \int |d\mathbf{r}| = \int_a^b \sqrt{\left(\dfrac{dx}{ds}\right)^2 + \left(\dfrac{dy}{ds}\right)^2 + \left(\dfrac{dz}{ds}\right)^2}, ds
+$$</p>
+<p>where $d\mathbf{r}$ is the length element - a tiny segment of the curve $\mathbf{r}(s)$, and $|d\mathbf{r}|$ is its magnitude (which, as we stated, represents the distance of a tiny segment of the curve in a physical setting). In physics, a common parameter to use is $t$, so $\mathbf{r} = \mathbf{r}(t)$ and $ds = dt$. However, mathematically-speaking, $s$ can be an arbitrary parameter that parametrizes a path $\mathbf{r}(s)$.</p>
+<p>To compute the arc length in cylindrical coordinates we must first write out the length element $d\mathbf{r}$ of a curve in cylindrical form. This is given by:</p>
+<p class="mathcell">
+$$
+d\mathbf{r} = \dfrac{dr}{ds}\hat e_r + r\dfrac{d\theta}{ds} \hat e_\theta + \dfrac{dz}{ds} \hat e_z
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> here we use the notation $(r, \theta, z)$ rather than $(\rho, \theta, z)$, but both are completely equivalent; it is just a different notational choice.</p>
+</blockquote>
+<p>The arc length is found by <em>integrating</em> over the absolute value (magnitude) line element, the <strong>arc length in cylindrical coordinates</strong> is given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+S &amp;= \int_a^b \|d\mathbf{r}\| \\
+&amp;= \int_a^b \sqrt{\left(\dfrac{dr}{ds}\right)^2 + \left(r \dfrac{d\theta}{ds}\right)^2 + \left(\dfrac{dz}{ds}\right)^2}ds
+\end{align*}
+$$
+</p>
+<p>We may now consider <strong>spherical coordinates</strong>. However, we must first must mention an important fact. There exist two major coordinate conventions for spherical coordinates. In the <strong>physicists' convention</strong>, $(r, \theta, \phi)$, $\theta$ is the angle of elevation (angle <em>above</em> the XY plane) and $\phi$ is the polar angle (angle <em>around</em> the XY plane). In the <strong>mathematicians' convention</strong> the latter two angles are switched around, where $\theta$ is the polar angle and $\phi$ is the angle of elevation. This can be a matter of immense confusion. Therefore, we will provide each of the following results in both conventions.</p>
+<p>In the <em>mathematicians' convention</em>, the conversions from spherical to Cartesian coordinates are as follows:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+x &amp;= r \sin \phi \cos \theta \\
+y &amp;= r \sin \phi \sin \theta \\
+z &amp;= r \cos \phi
+\end{align*}
+$$
+</p>
+<p>While in the <em>physicist's convention</em>, the conversions are as follows:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+x &amp;= r \sin \theta \cos \phi \\
+y &amp;= r \sin \theta \sin \phi \\
+z &amp;= r \cos \theta
+\end{align*}
+$$
+</p>
+<p>A parametric curve in spherical coordinates can be represented as follows:</p>
+<p class="mathcell">
+$$
+\mathbf{r}(t) = r(t) \hat e_r
+$$
+</p>
+<p>This parametric equation is deceptively simple: once again, the unit vectors are <em>non-constant</em>, which means that $\hat e_r = \hat e_r(\theta(t), \phi(t))$. It must be emphasized: in general, basis vectors <strong>are not constant</strong>. In the case of spherical coordinates, the spherical basis vectors in the <em>mathematician's convention</em> are given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat e_r &amp;= \cos \theta \sin \phi \hat i + \sin \theta \sin \phi \hat j + \cos \phi \hat k \\
+\hat e_\theta &amp;= -\sin \theta \hat i + \cos \theta \hat j \\
+\hat e_\phi &amp;= \cos \theta \cos \phi \hat i + \sin \theta \cos \phi \hat j - \sin \phi \hat k
+\end{align*}
+$$
+</p>
+<p>While in the <em>physicist's</em> convention they are given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat e_r &amp;= \cos \phi \sin \theta \hat i + \sin \phi \sin \theta \hat j + \cos \theta \hat k \\
+\hat e_\theta &amp;= \cos \phi \cos \theta \hat i + \sin \phi \cos \theta \hat j - \sin \theta \hat k \\
+\hat e_\phi &amp;= -\sin \phi \hat i + \cos \phi \hat j 
+\end{align*}
+$$
+</p>
+<p>We may therefore write out the line element in the spherical coordinates as:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+d\mathbf{r} = dr\, \hat r + r d\theta\, \hat \theta + r\sin \theta d\phi\, \hat \phi,
+&amp;\text{(physics convention)} \\
+d\mathbf{r} = dr\, \hat r + r d\phi\, \hat \phi + r\sin \phi d\theta\, \hat \theta,
+&amp;\text{(math convention)}
+\end{matrix*}
+$$
+</p>
+<p>Therefore, on integrating the line element, the <strong>arc length in spherical coordinates</strong> becomes (in the <em>mathematician's</em> convention):</p>
+<p class="mathcell">
+$$
+S = \int_a^b \sqrt{\left({\dfrac{dr}{ds}}\right)^2 + \left(r \sin \phi\dfrac{d\theta}{ds}\right)^2 + \left(r \dfrac{d\phi}{ds}\right)^2} \, ds
+$$
+</p>
+<p>In the <em>physicist's</em> convention we have a very similar formula, just with $\theta$ and $\phi$ switched:</p>
+<p class="mathcell">
+$$
+S = \int_a^b \sqrt{\left({\dfrac{dr}{ds}}\right)^2 + \left(r \sin \theta \dfrac{d\phi}{ds}\right)^2 + \left(r \dfrac{d\theta}{ds}\right)^2} \, ds
+$$
+</p><h3 id="review-of-differentiation-in-several-variables">Review of differentiation in several variables</h3>
+<p>From multivariable calculus, we recall that a partial derivative is defined as <em>the rate of change of a function in a particular direction</em>. For instance, consider a function of two variables $f(x, y)$. The partial derivative of $f$ along the $x$-direction (equivalently called _partial derivative with respect to $x$) is written $\dfrac{\partial f}{\partial x}$. It is the limit of the change $\dfrac{\Delta f}{\Delta x}$ as $\Delta x$ approaches zero. We may write this formally as:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial f}{\partial x} = \lim \limits_{\Delta x \to 0}\dfrac{f(x + \Delta x, y) - f(x, y)}{\Delta x}
+$$
+</p>
+<p>By the same approach, we may write the partial derivative of $f$ along the $y$-direction (e) as $\dfrac{\partial f}{\partial y}$, where:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial f}{\partial y} = \lim \limits_{\Delta x \to 0}\dfrac{f(x, y + \Delta y) - f(x, y)}{\Delta y}
+$$
+</p>
+<blockquote>
+<p>It is also common to call these partial derivatives in a slightly different (but mathematically-equivalent) fashion as the <em>partial derivative with respect to $x$</em> and <em>partial derivative with respect to $y$</em>. For a more compact name, it is common to use the abbreviation "w.r.t" (short for <em>with respect to</em>) such that we may say <em>partial derivative w.r.t. $x$</em> and <em>partial derivative w.r.t $y$</em>.</p>
+</blockquote>
+<p>The collection of all partial derivatives of a function in a single vector is known as the <strong>gradient</strong> $\nabla f$, which can be thought of as the partial derivative vector. In our case it is given by:</p>
+<p class="mathcell">
+$$
+\nabla f = \left \langle \dfrac{\partial f}{\partial x}, \dfrac{\partial f}{\partial y}\right\rangle
+$$
+</p>
+<p>Partial derivatives follow very similar rules as ordinary derivatives. In particular, the sum, difference, product, and quotient rules are <em>the same</em> for partial derivatives, just with ordinary derivatives replaced by partial derivatives:</p>
+<table><thead><tr><th>Derivative rule</th><th>Expression for partial derivatives</th></tr></thead><tbody>
+<tr><td>Sum rule</td><td>$\dfrac{\partial}{\partial x}[f(\mathbf{r}) + g(\mathbf{r})] = \dfrac{\partial f}{\partial x} + \dfrac{\partial f}{\partial x}$</td></tr>
+<tr><td>Difference rule</td><td>$\dfrac{\partial}{\partial x}[f(\mathbf{r}) - g(\mathbf{r})] = \dfrac{\partial f}{\partial x} - \dfrac{\partial f}{\partial x}$</td></tr>
+<tr><td>Product rule</td><td>$\dfrac{\partial}{\partial x}[f(\mathbf{r}) g(\mathbf{r})] = f\dfrac{\partial g}{\partial x} + g\dfrac{\partial f}{\partial x}$</td></tr>
+<tr><td>Quotient rule</td><td>$\dfrac{\partial}{\partial x}\left[\dfrac{f(\mathbf{r})}{g(\mathbf{r})}\right] = \dfrac{f\dfrac{\partial g}{\partial x} - g\dfrac{\partial f}{\partial x}}{g^2}$</td></tr>
+</tbody></table>
+<p>Note, however, that the <em>chain rule</em> is not the same for multivariable functions. For a function $f(\mathbf{r(t)}) = f(x(t), y(t), z(t))$, the chain rule for $f$ reads:</p>
+<p class="mathcell">
+$$
+\dfrac{df}{dt} = \dfrac{\partial f}{\partial x} \dfrac{dx}{dt} + \dfrac{\partial f}{\partial y} \dfrac{dy}{dt} + \dfrac{\partial f}{\partial z} \dfrac{dz}{dt}
+$$
+</p>
+<p>Which can also be written as $\dfrac{\partial f}{\partial x} = \nabla f \cdot \mathbf{r}'(t)$. Meanwhile, for a function $f(u(\mathbf{r}), v(\mathbf{r}))$ where $u(\mathbf{r}) = u(x, y, z)$ and $v(\mathbf{r}) = v(x, y, z)$ are themselves multivariable functions, the chain rule for $f$ reads:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial f}{\partial x} &amp;= \dfrac{\partial f}{\partial u} \dfrac{\partial u}{\partial x} + \dfrac{\partial f}{\partial v} \dfrac{\partial v}{\partial x} \\
+\dfrac{\partial f}{\partial y} &amp;= \dfrac{\partial f}{\partial u} \dfrac{\partial u}{\partial y} + \dfrac{\partial f}{\partial v} \dfrac{\partial v}{\partial y} \\
+\dfrac{\partial f}{\partial z} &amp;= \dfrac{\partial f}{\partial u} \dfrac{\partial u}{\partial z} + \dfrac{\partial f}{\partial v} \dfrac{\partial v}{\partial z}
+\end{align*}
+$$
+</p>
+<blockquote>
+<p><strong>Intuition builder:</strong> The multivariable chain rule can thought of as "tree" where one function "branches" into all the functions that depend on it, and you need to "traverse the tree" to collect all the partial derivatives to find the total rate of change.</p>
+</blockquote>
+<p>In the general case for a scalar-valued function $f(u_1, u_2, \dots, u_n)$ that has a dependence on some variables $x_1, x_2, \dots, x_n$, we have:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial f}{\partial x_j} = \sum_i \dfrac{\partial f}{\partial u_i} \dfrac{\partial u_i}{\partial x_j}
+$$
+</p>
+<p>The <strong>total derivative</strong> measures the rate of change of a function of several variables with respect to <em>every direction</em> - it is very similar to <em>implicit differentiation</em> in single-variable calculus, but for multivariable calculus instead. Unlike a partial derivative, it is written $\dfrac{df}{ds}$ or $\dfrac{df}{dt}$. It comes from the application of the chain rule to every variable. For instance, consider a function of the form $f(x(t), y(x(t)))$. The total derivative of the function with respect to $t$ would be the equivalent of applying the chain rule to differentiate every variable dependent on $t$:</p>
+<p class="mathcell">
+$$
+\dfrac{df}{dt} = \dfrac{\partial f}{\partial x} \dfrac{dx}{dt} + \dfrac{\partial f}{\partial y} \dfrac{dy}{dx} \dfrac{dx}{dt}
+$$
+</p><h3 id="tangent-planes">Tangent planes</h3>
+<p>Consider a surface defined by the implicit equation $F(x, y, z) = 0$, or alternatively, $f(x, y) - z = 0$. We may <em>locally approximate</em> the surface at a point $(a, b)$ with a <strong>tangent plane</strong>, which is a generalization of a tangent line in single-variable calculus. A tangent plane is the surface defined as:</p>
+<p class="mathcell">
+$$
+z = \dfrac{\partial f}{\partial x}(x - a) + \dfrac{\partial f}{\partial y}(x - b)
+$$
+</p>
+<p>Note that a tangent plane does not <em>always</em> exist. First, while it may be somewhat obvious, a tangent plane at a point exists only if that point is actually <strong>on</strong> the surface - otherwise a tangent plane is not defined. Mathematically speaking, this means that the surface must be <em>continuous</em> at $(x_0, y_0, z_0)$.</p>
+<p>But continuity is not the only requirement - we also need <em>differentiability</em>. Differentiability implies continuity, but continuity is not enough for differentiability. For a surface $z = f(x, y)$, it is a <strong>requirement for the existence of a tangent plane at $(x_0, y_0)$</strong> that $\dfrac{\partial f}{\partial x}$ and $\dfrac{\partial f}{\partial y}$ exist <strong>and</strong> are well-defined (i.e. continuous) at $(x_0, y_0)$. For $f(x, y)$ to be differentiable at $(x_0, y_0)$ is <em>not</em> a sufficient condition.</p>
+<p>Tangent planes are one specific case of a far more general class of linear approximations in $n$ dimensions. In $n$ dimensions, the linear approximation to a function $f(\mathbf{r})$ is given by:</p>
+<p class="mathcell">
+$$
+L(\mathbf{r}) = f(\mathbf{r}_0) + \nabla f(\mathbf{r}_0) \cdot (\mathbf{r} - \mathbf{r}_0)
+$$
+</p>
+<p>The equivalent expression for the linear approximation for a vector-valued function $\mathbf{F}(\mathbf{r})$ is given as follows:</p>
+<p class="mathcell">
+$$
+\mathbf{L}(\mathbf{r}) = \mathbf{F}(\mathbf{r}_0) + D[\mathbf{F}(\mathbf{r}_0)]\cdot (\mathbf{r} - \mathbf{r}_0)
+$$
+</p>
+<p>Where $D$ is the <strong>Jacobian</strong>, given by:</p>
+<p class="mathcell">
+$$
+D = 
+\begin{bmatrix}
+\nabla F_x \\ \nabla F_y \\ \nabla F_z \\ \vdots \\\nabla F_i
+\end{bmatrix}
+=
+\begin{bmatrix}
+\dfrac{\partial F_x}{\partial x} &amp; \dfrac{\partial F_x}{\partial y} &amp; \dfrac{\partial F_x}{\partial z} &amp; \dots &amp; \\
+\dfrac{\partial F_y}{\partial x} &amp; \dfrac{\partial F_y}{\partial y} &amp; \dfrac{\partial F_y}{\partial z} &amp; \dots &amp; \\
+\dfrac{\partial F_z}{\partial x} &amp; \dfrac{\partial F_z}{\partial y} &amp; \dfrac{\partial F_z}{\partial z} &amp; \dots &amp; \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots \\
+\dfrac{\partial F_i}{\partial x} &amp; \dfrac{\partial F_i}{\partial y} &amp; \dfrac{\partial F_i}{\partial z} &amp;\dots
+\end{bmatrix}
+$$
+</p>
+<p>The Jacobian can also be used to write out the less-commonly-used  <strong>vector chain rule</strong>. For a given vector-valued function $\mathbf{F}(\mathbf{f}(\mathbf{r}))$ where $\mathbf{F} = \langle F_1(\mathbf{f}), F_2(\mathbf{f}), F_3(\mathbf{f}), \dots, F_p(\mathbf{f}) \rangle$ (i.e. $\mathbf{F}$ has $p$ components) and $\mathbf{f} = \langle f_1(\mathbf{r}), f_2(\mathbf{r}), f_3(\mathbf{r}), \dots, f_m(\mathbf{r})\rangle$ (i.e. $\mathbf{f}$ has $m$ components) and $\mathbf{r} = \langle x_1, x_2, x_3, \dots, x_n\rangle$ (i.e. $\mathbf{r}$ has $n$ components), then the vector chain rule reads:</p>
+<p class="mathcell">
+$$
+D_{\vec{\mathbf{r}}}[\mathbf{F}] = D_{\vec{\mathbf{f}}}[\mathbf{F}] D_{\vec{\mathbf{r}}}[\mathbf{f}]
+$$
+</p>
+<p>Or, in full matrix form:</p>
+<p class="mathcell">
+$$
+% 1st matrix
+\underbrace{
+\begin{bmatrix}
+\dfrac{\partial F_1}{\partial x_1} &amp; \dfrac{\partial F_1}{\partial x_2} &amp; \dots \\ 
+\dfrac{\partial F_2}{\partial x_1} &amp; \dfrac{\partial F_2}{\partial x_2} &amp; \dots \\
+\vdots &amp; \vdots &amp; \ddots
+\end{bmatrix}}_{(p \times n) \text{ Jacobian matrix}}
+=
+% 2nd matrix
+\underbrace{
+\begin{bmatrix}
+\dfrac{\partial F_1}{\partial f_1} &amp; \dfrac{\partial F_1}{\partial f_2} &amp; \dots \\ 
+\dfrac{\partial F_2}{\partial f_1} &amp; \dfrac{\partial F_2}{\partial f_2} &amp; \dots \\
+\vdots &amp; \vdots &amp; \ddots
+\end{bmatrix}}_{(p \times m) \text{ Jacobian matrix}}
+% 3rd matrix
+\underbrace{
+\begin{bmatrix}
+\dfrac{\partial f_1}{\partial x_1} &amp; \dfrac{\partial f_1}{\partial x_2} &amp; \dots \\ 
+\dfrac{\partial f_2}{\partial x_1} &amp; \dfrac{\partial f_2}{\partial x_2} &amp; \dots \\
+\vdots &amp; \vdots &amp; \ddots
+\end{bmatrix}}_{(m \times n) \text{ Jacobian matrix}}
+$$
+</p><h3 id="directional-rate-of-change">Directional rate of change</h3>
+<p>We have seen that the <em>partial derivatives</em> of a function of several variables $f(x, y, z)$ measures its rate of change along different directions. But what is the rate of change of $f$ in an <em>arbitrary</em> direction, denoted by $\mathbf{v}$? The answer is given by the <strong>directional derivative</strong>. The directional derivative is written as $\nabla_{\vec{\mathbf{v}}} f$ and is given as follows:</p>
+<p class="mathcell">
+$$
+\nabla_{\vec{\mathbf{v}}} f = \nabla f \cdot \mathbf{v}
+$$
+</p>
+<p>But we recall that the dot product is maximized when two vectors are parallel to each other. Thus, the directional deriative - the rate of change of $f$ in direction $\mathbf{v}$ - is in fact <em>maximized in the direction of the gradient</em>. That is to say, <strong>the gradient points in the direction of greatest increase</strong> of the function. More precisely, the maximum <em>rate</em> of increase is given by:</p>
+<p class="mathcell">
+$$
+\mathbf{v}_\text{max.} = \dfrac{\nabla f}{|\nabla f|}
+$$
+</p>
+<p>And the minimum <em>rate</em> of increase is exactly opposite in direction to the maximum rate of increase (no surprise!) and is given by:</p>
+<p class="mathcell">
+$$
+\mathbf{v}_\text{min.} = -\mathbf{v}_\text{max.} = -\dfrac{\nabla f}{|\nabla f|}
+$$
+</p>
+<p>But what about a vector $\mathbf{v} = \mathbf{r}'(t)$ that is <em>perpendicular</em> to the gradient? Well, then, since we know that the dot product is <em>zero</em> when two vectors are perpendicular, then the directional derivative goes to zero:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+\mathbf{v} \perp \nabla f &amp; \Rightarrow &amp;\nabla_{\vec{\mathbf{v}}} f = \nabla f \cdot \mathbf{v} = 0
+\end{matrix*}
+$$
+</p>
+<p>By the chain rule, since we have $\mathbf{v} = \mathbf{r}'(t)$, then if we take the <em>total derivative</em> of $f$ with respect to $t$, we can write the same result in a slightly different way:</p>
+<p class="mathcell">
+$$
+\dfrac{df}{dt} = \nabla f \cdot \dfrac{d\mathbf{r}}{dt} = 0
+$$
+</p>
+<p>Thus, $f$ takes a <em>constant value</em> along any curve $\mathbf{r}(t)$ which is <em>perpendicular to the gradient</em> (that is, $\mathbf{r}'(t) \perp \nabla f$). These special curves are called <strong>level curves</strong>. Each level curve is defined by the equation $f(\mathbf{r}) = C$ where $C$ is some constant value of $f$. Level curves are a type of <strong>level set</strong>, which we will examine in more depth.</p>
+<h3 id="level-sets">Level sets</h3>
+<p>When we are analyzing functions of several variables, we are often interested in points for which the function takes a <em>constant</em> value. If a surface is described by the function $z = f(x, y)$, a level curve is an implicit curve given by $f(x, y) = c$, where $c$ is a constant. Geometrically, i, level curves can be thought of as "slices" to the surface at constant spacings, as shown (in the red solid lines) on the below plot:</p>
+<img class="natural-img" src="/vector-and-advanced-calculus/level-sets-external.png" alt="A plot of several level curves on a surface, which trace out points along the surface of constant height" />
+<p><em>Source: <a href="https://mathematica.stackexchange.com/questions/36837/how-do-you-plot-level-curves-describing-a-3d-surface-on-the-x-y-plane">Mathematica Stack Exchange</a></em></p>
+<p>We may use level sets to derive the equations of a tangent plane. To illustrate this process, consider an explicit surface in the form $z = f(x, y)$ - for instance, $f(x, y) = x^2 + y^2$ (this is in fact the equation of a paraboloid). The level curves of $f(x, y)$ are the curves for which $f(x, y)$ takes a constant value, and can be parametrized as $f(x, y) = c$ (equivalently, $f(\mathbf{r}(t)) = c$), where  is a constant.</p>
+<p>We know that since $f(\mathbf{r}(t)) = f(x, y) = c$ is a <em>level curve</em>, then $\dfrac{df}{dt} = 0$ (because level curves are where $f(x, y)$ are equal to a constant, and the derivative of a constant is zero). By the chain rule, we may expand $\dfrac{df}{dt}$ as follows:</p>
+<p class="mathcell">
+$$
+\dfrac{df}{dt} = \nabla f \cdot \dfrac{d\mathbf{r}}{dt} = 0
+$$
+</p>
+<p>Since $\dfrac{d\mathbf{r}}{dt}$ is <em>tangent</em> to the level curve $\mathbf{r}(t)$, $\nabla f$ must therefore be <strong>normal</strong> to the level curve for the dot product to become zero (since the dot product is only zero for orthogonal vectors). But recall that the linear approximation equation is $\mathbf{n} \cdot (\mathbf{r} - \mathbf{r}_0) = 0$. Since we know that $\nabla f$ is <strong>normal</strong> to the level curves, then at point $\mathbf{r}_0$, the normal vector becomes $\mathbf{n} = \nabla f(\mathbf{r}_0)$ and thus the tangent line is given (in implicit form) by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\nabla f(\mathbf{r}_0) (\mathbf{r} - \mathbf{r}_0) = 0 \\
+\dfrac{\partial f(x_0, y_0)}{\partial x} (x - x_0) - \dfrac{\partial f(x_0, y_0)}{\partial y} (y - y_0) = 0
+\end{align*}
+$$
+</p>
+<p>We may use the same procedure to find the tangent plane for an <em>implicitly defined</em> surface $F(x, y, z) = g(x, y, z) - c = 0$. In this case, the level sets are not curves but <em>level surfaces</em> in the form $g(x, y, z) = c$. Again, $\nabla F$ is always normal to the level surfaces, and thus the tangent plane is equation is given by $\nabla F (\mathbf{r}_0) \cdot (\mathbf{r} - \mathbf{r}_0) = 0$.</p>
+<h3 id="taylor-expansions-in-several-variables">Taylor expansions in several variables</h3>
+<p>A tangent plane is the <em>geometric representation</em> of a linear approximation to a function of two or three variables. But higher-dimensional functions beyond three dimensions certainly exist, and while it is hard to make geometric sense of them, the idea of a linear approximation is still mathematically sound. We will now extend this idea to $n$-dimensional approximations to $n$-dimensional functions, using <strong>mutivariable Taylor series</strong>.</p>
+<p>We recall that in single-variable calculus, we may approximate complex functions using <strong>Taylor series</strong> (also called <em>Taylor expansions</em>). Specifically, at some point $x = x_0$, the function may be approximated by an $n$-th order polynomial called a <strong>Taylor polynomial</strong>:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+T_n(x) =&amp; f(x_0) + f&#x27;(x_0)(x - x_0) + \dfrac{1}{2!} f&#x27;&#x27;(x_0) (x-x_0)^2 \\
+&amp;+ \dfrac{1}{3!} f&#x27;&#x27;&#x27;(x_0) (x - x_0)^3 + \dots + \dfrac{1}{n!} f^{(n)}(x_0)(x - x_0)^n
+\end{align*}
+$$
+</p>
+<p>Where $f^{(n)}(x_0) = \dfrac{d^n f}{dx^n}\bigg|_{\mathbf{r} = \mathbf{r}_0}$ is the $n$-th derivative of $f$, evaluated at point $x_0$. Taylor polynomials also exist for functions of several variables. The <strong>multivariate Taylor polynomial</strong> for a function $f(x, y)$ takes the form:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+L(x, y) &amp;= f(\mathbf{r}_0) + \nabla f \cdot (\mathbf{r}- \mathbf{r}_0) \\
+&amp;\qquad+ \dfrac{1}{2}\left(\dfrac{\partial^2f(x_0, y_0)}{\partial x^2} (x-x_0)^2 + \dfrac{\partial^2f(x_0, y_0)}{\partial y^2} (y-y_0)^2 + 2\dfrac{\partial^2f(x_0, y_0)}{\partial y \partial x} (x-x_0)(y-y_0)\right) \\
+&amp;\qquad+ \dots
+\end{align*}
+$$
+</p>
+<p>If the point to be approximated happens to be $\mathbf{r} = 0$, then:</p>
+<p class="mathcell">
+$$
+L(x, y) = f_0 + \nabla f \cdot \mathbf{r} +
+\dfrac{1}{2} \left(\dfrac{\partial^2f(x_0, y_0)}{\partial x^2} x^2 + \dfrac{\partial^2f(x_0, y_0)}{\partial y^2} y^2 + 2\dfrac{\partial^2f(x_0, y_0)}{\partial y \partial x} xy \right) + \dots
+$$
+</p>
+<p>Where $f_0 = f(0, 0, 0)$. Note how there also exist cross terms such as $xy$, which make the expression far more complex than the 1D case. There also exist Taylor approximations for functions of three or more variables, as well as terms beyond quadratic order. Their general form (for $\mathbf{r} = x_1, x_2, x_3, \dots, x_n$) is as follows:</p>
+<p class="mathcell">
+$$
+L(\mathbf{r}) = f_0 + \nabla f \cdot (\mathbf{r} - \mathbf{r}_0) + \dfrac{1}{2} (\mathbf{r} - \mathbf{r}_0)\{D^2[f(r_0)] \cdot (\mathbf{r} - \mathbf{r}_0)\} + \dots
+$$
+</p>
+<p>We use the curly braces around the derivatives to indicate that the $(\mathbf{r} - \mathbf{r}_0)^n$ terms are <em>not to be differentiated</em>. Here, $D^2$ is a matrix known as the <strong>Hessian</strong> (one we will extensively use later), containing all of a function's second-order partial derivatives, given by:</p>
+<p class="mathcell">
+$$
+D^2 = \begin{bmatrix}
+\dfrac{\partial^2 f}{\partial x_1^2} &amp; \dfrac{\partial^2 f}{\partial x_1 \partial x_2} &amp; \dots &amp; \dfrac{\partial^2 f}{\partial x_1 \partial x_n} \\[10pt]
+\dfrac{\partial^2 f}{\partial x_2 x_1} &amp; \dfrac{\partial^2 f}{\partial x_2^2} &amp; \dots &amp; \dfrac{\partial^2 f}{\partial x_2 \partial x_n} \\[10pt]
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\[10pt]
+\dfrac{\partial^2 f}{\partial x_n \partial x_1} &amp; \dfrac{\partial^2 f}{\partial x_n \partial x_2} &amp; \dots &amp; \dfrac{\partial^2 f}{\partial x_n^2}
+\end{bmatrix}
+$$
+</p>
+<p>A useful reminder is that the $(i, j)$ entry of the Hessian matrix is given by $\dfrac{\partial^2 f}{\partial x_i \partial x_j}$. For a function $f(x, y)$, the Hessian takes the (thankfully!) much simpler form:</p>
+<p class="mathcell">
+$$
+D^2_{(x, y)} =
+\begin{bmatrix}
+\dfrac{\partial^2 f}{\partial x^2} &amp; \dfrac{\partial^2 f}{\partial x \partial y} \\[10pt]
+\dfrac{\partial^2 f}{\partial y \partial x} &amp; \dfrac{\partial^2 f}{\partial y^2}
+\end{bmatrix}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> The <strong>total degree</strong> of a polynomial of several variables is an easy source of confusion. If a polynomial has a term $x^2 y$, then the term is said to be of <em>3rd-order</em> (or degree 3), because we sum the power of 2 on $x$ and the power of 1 on $y$. Similarly, $x y^3 z^5$ is said to be <em>9th-order</em> (or degree 9), as we have $1 + 3 + 5 = 9$ by summing up the powers on each term. The <strong>total degree</strong> of a polynomial is the order of its highest-order term, so for instance, the polynomial $f(x, y) = 3 + 5xy + 7 x^3 + x^2 y^2$ has a <em>total degree of 4</em>, since the highest order term is $x^2 y^2$ which is a <em>4th-order term</em>.</p>
+</blockquote>
+<p>Note that we do not always have to explicitly calculate partial derivatives term-by-term to find the Taylor series of a function of several variables. Consider, for instance, the function $f(x, y) = e^{-(x^2 + y^2)}$. While we could in theory calculate all of its partial derivatives, this would take a long time and be very prone to mistakes. Rather, recall that the Taylor series of $e^t$ is given by:</p>
+<p class="mathcell">
+$$
+e^t =1 + t + \dfrac{1}{2!} t^2 + \dfrac{1}{3!} t^3 + \dfrac{1}{4!} t^4 + \dots + \dfrac{1}{n!} t^n
+$$
+</p>
+<p>Thus we can substitute in $-(x^2 + y^2)$ into $t$ for the above Taylor series to find the Taylor series of $f(x, y)$:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+  f (x, y) &amp; =  1 + (- (x^2 + y^2)) + \dfrac{(- (x^2 + y^2))^2}{2} +
+  \dfrac{(- (x^2 + y^2))^3}{6} + \dots\\
+  &amp; =  1 - (x^2 + y^2) + \dfrac{1}{2}  (x^2 + y^2)^2 - \dfrac{1}{6}  (x^2 +
+  y^2)^3 + \dots .
+\end{align*}
+$$
+</p><h3 id="optimization-in-several-variables">Optimization in several variables</h3>
+<p>We are often interested in maximizing or minimizing a function of several variables, just like we do in single-variable calculus. The <strong>extrema</strong> (maxima and minima) of a multivariable function also occur at its <em>critical points</em>. The critical points are all points for which:</p>
+<p class="mathcell">
+$$
+\nabla f = 0
+$$
+</p>
+<p>Each point $(x_i, y_i)$ that satisfies $\nabla f = 0$ is a critical point. To find these critical points is then just a matter of solving the system of equations from $\nabla f = 0$ for the solutions $(x_i, y_i)$:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial f}{\partial x} &amp;= 0 \\
+\dfrac{\partial f}{\partial y} &amp;= 0 \\
+\dfrac{\partial f}{\partial z} &amp;= 0 \\
+\vdots \\
+\dfrac{\partial f}{\partial x_i} &amp;= 0
+\end{align*}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> Typically speaking, this is a system of <em>nonlinear equations</em> - see <a href="https://math.libretexts.org/Bookshelves/Algebra/Intermediate_Algebra_1e_(OpenStax)/11%3A_Conics/11.06%3A_Solving_Systems_of_Nonlinear_Equations">this guide here</a> for how to be able to solve such systems.</p>
+</blockquote>
+<p>However, not all critical points are extrema. To be able to determine <em>which</em> of the critical points are, indeed, extrema, we must use the <strong>multivariable second derivative test</strong>. Recall how we previously showed that we could write the Taylor polynomial of a function of several variables up to quadratic order:</p>
+<p class="mathcell">
+$$
+L(\mathbf{r}) = f_0 + \nabla f \cdot (\mathbf{r} - \mathbf{r}_0) + \dfrac{1}{2} (\mathbf{r} - \mathbf{r}_0)\{D^2[f(r_0)] \cdot (\mathbf{r} - \mathbf{r}_0)\} + \mathcal{O}((\mathbf{r} - \mathbf{r}_0)^3)
+$$
+</p>
+<p>(Note that $\mathcal{O}((\mathbf{r} - \mathbf{r}_0)^3)$ means "all terms involving cubes of $x, y, z$", that is, anything above quadratic order). We know that for a quadratic in one variable in the form $ax^2 + bx + c$, we can find the number of roots via its discrimminant $b^2 - 4ac = \det \begin{pmatrix} b &amp; 2a \ 2c &amp; b\end{pmatrix}$ and we can find whether it opens upwards (i.e. $\cup$ shaped) or opens downwards (i.e. $\cap$ shaped) based on the sign of $a$. We can do something very similar with the quadratic Taylor polynomial, just with the Hessian (and the other coefficients of the Taylor polynomial). This results in the <strong>multivariable second derivative test</strong>:</p>
+<blockquote>
+<p><strong>Multivariable second derivative test:</strong> Let $D^2[f(x_i, y_i)]$ be the Hessian evaluated at the critical point $(x_i, y_i)$. If $D^2[f(x_i, y_i)] &gt; 0$, there exists a <strong>local extrenum</strong> at the critical point. If $D^2[f(x_i, y_i)] &lt; 0$, there exists a <strong>saddle point</strong> at the critical point. If $D^2[f(x_i, y_i)] = 0$, the test is <strong>inconclusive</strong>.</p>
+</blockquote>
+<p>If we find that that the critical point is indeed a local extrenum, we may then determine whether it is a local minimum or a local minimum as follows:</p>
+<ul>
+<li>If $\dfrac{\partial^2 f}{\partial x^2}(x_i, y_i) &gt; 0$, then the point is a <strong>local minimum</strong></li>
+<li>If $\dfrac{\partial^2 f}{\partial x^2}(x_i, y_i) &lt; 0$, then the point is a <strong>local maximum</strong></li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> With the second derivative test, we can only determine <em>local</em> minima and maxima. We <strong>cannot guarantee</strong> that they are <em>global</em> minima and maxima without explicitly evaluating the function at all of the boundary points on its domain. With a few exceptions, this is usually not possible to do.</p>
+</blockquote>
+<h3 id="optimization-with-constraints">Optimization with constraints</h3>
+<p>We saw previously that we may optimize a function of multiple variables by solving for its critical points and using the second partial derivative test to characterize each critical point. Strictly speaking, this type of optimization is called <strong>unconstrained optimization</strong>: we search for critical points (and thus possible minima/maxima) <em>anywhere</em> in the function's domain.</p>
+<p>But there is another type of optimization, called <strong>constrained optimization</strong>, in which we only want to find critical points that satisfy a particular condition. Consider the following example problem: find all the minima of $f(x, y)$ at points of unit distance from the origin. We may express this in the following form:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+&amp;{\underset {(x, y)}{\operatorname{minimize}}} &amp;&amp;f(x, y)\\
+&amp;\operatorname {subject\;to} &amp;&amp;\sqrt{x^2 + y^2} = 1
+\end{align*}
+$$
+</p>
+<p>Our distance formula $\sqrt{x^2 + y^2} = 1$ can be expressed as $D(x, y) = \sqrt{x^2 + y^2} -1$, where $D(x, y) = 0$. This is known as our <strong>constraint</strong> (in 2D, specifically, a <em>constraint curve</em>). Now, notice that $D(x, y) = 0$ is an <em>implicit equation</em>. We know from before that the normal vector of an implicit curve/surface $F(x, y, z) = 0$ is given by $\hat{\mathbf{n}} = \nabla F$. In a similar fashion, the normal vector of $D(x, y)$ is given by:</p>
+<p class="mathcell">
+$$
+\hat{\mathbf{n}} = \nabla D(x, y)
+$$
+</p>
+<p>Previously, when we were discussing <em>unconstrained</em> optimization, the condition to find the extrema was to solve for the points that satisfy $\nabla f = 0$, i.e. the function <em>does not change</em>. The condition to find the extrema in <em>constrained</em> optimization, meanwhile, is to solve for the points <em>along the constraint curve</em> for which $\nabla f$ <em>does not change</em>. That is to say, the directional derivative of $f$ must be zero along the tangent $\mathbf{r}'(t)$ to the curve:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+\nabla_{\vec{\mathbf{r}}&#x27;}f = 0 &amp; \Rightarrow &amp; \nabla f \cdot \mathbf{r}&#x27;(t) = 0
+\end{matrix*}
+$$
+</p>
+<p>This can only happen if the <em>gradient</em> of $f$ is <em>perpendicular</em> to the tangent to the curve, that is, $\nabla f \perp \mathbf{r}'(t)$. So the gradient of $f$ must also be parallel to the <em>normal vector</em> of the curve, which is given by $\hat{\mathbf{n}} = \nabla D(x, y)$! This is the key insight behind the idea of Lagrange multipliers. Two vectors that are parallel are scalar multiples of each other, which means that since $\nabla f \parallel \hat{\mathbf{n}}$ and thus $\nabla f \parallel \nabla D$, we have:</p>
+<p class="mathcell">
+$$
+\nabla f \propto \nabla D
+$$
+</p>
+<p>Which can also be written as:</p>
+<p class="mathcell">
+$$
+\nabla f = \lambda \nabla D
+$$
+</p>
+<p>The proportionality constant is called $\lambda$, also known as a <strong>Lagrange multiplier</strong>. From the above equation we can rearrange to get the <strong>Lagrange system of equations</strong>:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\nabla f - \lambda \nabla D = 0 \\
+D(x, y) = 0
+\end{align*}
+$$
+</p>
+<p>Solving these equations gives the critical points $(x_i, y_i)$ that satisfy the given constraint, and then we can use the second derivative test (as usual) to classify the critical points. Note that it is also possible to have multiple constraints on a system; in that case, the Lagrange system of equations becomes:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+&amp;\nabla f - \lambda_1 D_1(x, y) + \lambda_2 D_2 (x, y) + \dots
+ +\lambda_n D_n(x, y) = 0 \\[10pt]
+&amp;\begin{cases}
+ D_1(x, y) &amp;= 0 \\
+ D_2(x, y) &amp;= 0 \\
+ D_3(x, y) &amp;= 0 \\
+ &amp;\vdots \\
+ D_n (x, y) &amp;= 0
+\end{cases}
+\end{align*}
+$$
+</p>
+<p>Where $D_1, D_2, D_3, \dots, D_n$ are implicit equations that each describe a particular constraint.</p>
+<h3 id="implicit-function-theorem">Implicit function theorem</h3>
+<p>Consider an implicit function defined by $f(x, y(x)) = 0$. This may be, for instance, the equation of a circle, where $f(x, y(x)) = x^2 + y^2 - R^2$. How would we find the derivative of such a function, expressed as $\dfrac{dy}{dx}$?</p>
+<p>We recall that we can use implicit differentiation to be able to solve. But there is a more powerful method from multivariable calculus. If we differentiate $f$ with respect to $x$ we have:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial f}{\partial x} + \dfrac{\partial f}{\partial y} \dfrac{dy}{dx} = 0
+$$
+</p>
+<p>Which we may rearrange to:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial f}{\partial y} \dfrac{dy}{dx} = -\dfrac{\partial f}{\partial x}
+$$
+</p>
+<p>And thus we find that:</p>
+<p class="mathcell">
+$$
+\dfrac{dy}{dx} = -\dfrac{\partial_x f}{\partial _y f}
+$$
+</p>
+<blockquote>
+<p>Here we use the notation that $\partial_x f = \frac{\partial f}{\partial x}$ and $\partial_y f = \dfrac{\partial f}{\partial y}$.</p>
+</blockquote>
+<h3 id="inverse-function-theorem">Inverse function theorem</h3>
+<p>In single-variable calculus, we know that if we had some function $y = y(x)$, whose <em>inverse</em> was given by $x = y^{-1}$, then $\dfrac{dx}{dy} = \dfrac{1}{\frac{dy}{dx}}$. This does have some intuitive sense: since $y^{-1}$ (the inverse of $y(x)$) is simply $y(x)$ mirrored across the line $y = x$, the slope of the $y^{-1}$ is the reciprocal of the slope of $y(x)$, hence $(y^{-1})' = 1/y'(x)$. However, this is no longer true in the <em>multivariable case</em>, since the inverse of a multivariable function is not a simple reflection about the line $y = x$; indeed, the inverse may be highly nontrivial.</p>
+<p>Thankfully, there is a way to find the derivative of the inverse of a multivariable function, called the <strong>implicit function theorem</strong>. We will first state it (although the definition is not necessary particularly helpful):</p>
+<blockquote>
+<p><strong>Inverse function theorem:</strong> For given invertible function $f : \mathbb{R}^n \rightarrow \mathbb{R}^m$ given by $f = \langle f_1, f_2, f_3 \ldots f_i \ldots f_{m - 1}, f_m \rangle$ where $f_i = f_i (x_1, x_2, x_3 \ldots x_i \ldots x_{n - 1}, x_n)$ whose inverse  $f^{- 1} : \mathbb{R}^m \rightarrow \mathbb{R}^n$ is given by $f^{-1} = \langle x_1 (f_i), x_2  (f_i), x_3  (f_i) \ldots x_i  (f_i) \ldots x_{n - 1} (f_i), x_n  (f_i) \rangle$ then, given the Jacobian matrix $J [f]$ exists, then $(J [f^{- 1}]) = (J [f])^{- 1}$.</p>
+</blockquote>
+<p>To gain some greater insight, we can express it in matrix form, for which we have the following:</p>
+<p class="mathcell">
+$$
+% Jacobian of f^(-1)
+\begin{bmatrix}
+% row 1
+\frac{\partial x_1}{\partial f_1} &amp; \frac{\partial x_1}{\partial f_2}  &amp; \frac{\partial x_1}{\partial f_3} &amp; \dots \frac{\partial x_1}{\partial f_m} \\[8pt]
+% row 2
+\frac{\partial x_2}{\partial f_1} &amp; \frac{\partial x_2}{\partial f_2}  &amp; \frac{\partial x_2}{\partial f_3} &amp; \dots \frac{\partial x_2}{\partial f_m} \\[8pt]
+% row 3
+\frac{\partial x_3}{\partial f_1} &amp; \frac{\partial x_3}{\partial f_2}  &amp; \frac{\partial x_3}{\partial f_3} &amp; \dots \frac{\partial x_3}{\partial f_m} \\[8pt]
+% row 4
+\vdots &amp; \vdots  &amp; \vdots &amp; \ddots &amp; \vdots \\[8pt]
+% row 5 
+\frac{\partial x_n}{\partial f_1} &amp; \frac{\partial x_n}{\partial f_2}  &amp; \frac{\partial x_n}{\partial f_3} &amp; \dots \frac{\partial x_n}{\partial f_m} \\[8pt]
+\end{bmatrix} =
+% Inverse of the Jacobian of f
+\begin{bmatrix}
+% row 1
+\frac{\partial f_1}{\partial x_1} &amp; \frac{\partial f_1}{\partial x_2} &amp; \frac{\partial f_1}{\partial x_3} &amp; \dots &amp; \frac{\partial f_1}{\partial x_n}
+ \\[8pt]
+ % row 2
+ \frac{\partial f_2}{\partial x_1} &amp; \frac{\partial f_2}{\partial x_2} &amp; \frac{\partial f_2}{\partial x_3} &amp; \dots &amp; \frac{\partial f_2}{\partial x_n} \\[8pt]
+ % row 3
+ \frac{\partial f_3}{\partial x_1} &amp; \frac{\partial f_3}{\partial x_2} &amp; \frac{\partial f_3}{\partial x_3} &amp; \dots &amp; \frac{\partial f_3}{\partial x_n} \\[8pt]
+ % row 4
+ \vdots &amp; \vdots  &amp; \vdots &amp; \ddots &amp; \vdots \\[8pt]
+ % row 5
+ \frac{\partial f_m}{\partial x_1} &amp; \frac{\partial f_m}{\partial x_2} &amp; \frac{\partial f_m}{\partial x_3} &amp; \dots &amp; \frac{\partial f_m}{\partial x_n}
+\end{bmatrix}^{-1}
+$$
+</p>
+<p>Neither of these forms, however, are particularly illustrative, so instead let us give a more familiar example - a coordinate transformation. Frequently, we must complete a change of coordinates given only the new coordinates expressed in terms of the old coordinates. Consider a function $z(u, v) = z(u(x, y), u(x, y))$. Presume we want to express the (unknown) partial derivatives of $z$ with respect to $x, y$ in terms of the (known) partial derivatives of $z$ with respect to $u, v$. That is, we want to do the following:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\underbrace{\dfrac{\partial z}{\partial x}, \dfrac{\partial z}{\partial y}}_\text{unknown} \quad \underbrace{\longrightarrow}_\text{transform} \quad \underbrace{\dfrac{\partial z}{\partial u}, \dfrac{\partial z}{\partial v}}_\text{known}
+\end{align*}
+$$
+</p>
+<p>By the chain rule we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial z}{\partial x} = \dfrac{\partial z}{\partial u} \dfrac{\partial u}{\partial x} + \dfrac{\partial z}{\partial v} \dfrac{\partial v}{\partial x} \\[10pt]
+\dfrac{\partial z}{\partial y} = \dfrac{\partial z}{\partial u} \dfrac{\partial u}{\partial y} + \dfrac{\partial z}{\partial v} \dfrac{\partial v}{\partial y} \\
+\end{align*}
+$$
+</p>
+<p>But we only provided with $x = x(u, v)$ and $y = y(u, v)$ - we <em>don't know</em> $\dfrac{\partial u}{\partial x}, \dfrac{\partial u}{\partial y}$ or $\dfrac{\partial v}{\partial x}, \dfrac{\partial v}{\partial y}$. In principle, we can perform some algebra to find $u, v$ in terms of $x, y$ and then differentiate, but suppose that our coordinate transforms are sufficiently complicated that doing so would be very time-consuming and error-prone (sometimes, not even possible!).</p>
+<p>The inverse function theorem speeds this up immensely: we can directly find the partial derivatives as follows. If we define a vector-valued function containing the <em>known</em> derivatives $\vec f = \langle x(u, v), y(u, v)\rangle$, where $x = x(u, v), y = y(u, v)$ are our given coordinate transforms, then by the inverse function theorem, we may find the derivatives of the vector-valued function containing the <em>unknown derivatives</em> $\vec g = \vec f^{-1} = \langle u(x, y), v(x, y)\rangle$ as follows:</p>
+<p class="mathcell">
+$$
+J[\vec g(u, v)] = (J[\vec f(x, y)])^{-1}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> $f$ and $g$ are just convenient vector-valued functions to "hold" the derivatives to help with expanding the Jacobians. Technically they are not necessary - one can just go directly to the Jacobian with some mental juggling of partial derivatives.</p>
+</blockquote>
+<p>Expanding the Jacobians leads to the following transformation matrix equation:</p>
+<p class="mathcell">
+$$
+\underbrace{
+\begin{bmatrix}
+\dfrac{\partial u}{\partial x} &amp; \dfrac{\partial u}{\partial y} \\[10pt]
+\dfrac{\partial v}{\partial x} &amp; \dfrac{\partial v}{\partial y}
+\end{bmatrix} 
+}_{\text{unknown derivatives of }g(u, v)}
+= 
+\underbrace{
+\begin{bmatrix}
+\dfrac{\partial x}{\partial u} &amp; \dfrac{\partial x}{\partial v} \\[10pt]
+\dfrac{\partial y}{\partial u} &amp; \dfrac{\partial y}{\partial v} 
+\end{bmatrix}^{-1}
+}_{\text{known derivatives of }f(x, y)}
+$$
+</p>
+<p>Which allows us to compute the derivatives we want from the derivatives we know, completing the coordinate transformation.</p>
+<h3 id="motion-along-a-path">Motion along a path</h3>
+<p>Let us return to a familiar topic - the description of a path through space. We may describe such a path using a <strong>parametric representation</strong> $\mathbf{r}(t) = \langle x(t), y(t), z(t)\rangle$. We vary our parameter $t$ within $t \in [a, b]$, such that the endpoints of the curve are located at points $\mathbf{r}(a)$ and $\mathbf{r}(b)$. A visualization is shown below:</p>
+<img class="natural-img" src="/vector-and-advanced-calculus/spatial-curve-external.png" alt="An illustration of a helix-shaped parametric curve in space" />
+<p><em>Source: <a href="https://math.libretexts.org/Bookshelves/Calculus/Calculus_%28OpenStax%29/13%3A_Vector-Valued_Functions/13.01%3A_Vector-Valued_Functions_and_Space_Curves">OpenStax</a></em></p>
+<p>At every point, there exists also a <em>tangent vector</em> to $\mathbf{r}(t)$, which is denoted $\mathbf{r}'(t) \equiv \dfrac{d\mathbf{r}}{dt}$. In a physical scenario, where $\mathbf{r}(t)$ represents a trajectory through space, $\mathbf{r}'(t)$ represents the <em>velocity</em>. Taking another derivative, we have $\mathbf{a}(t) = \mathbf{r}''(t)$, the <em>acceleration</em>.</p>
+<p>We have already seen some examples of parametric paths. For instance, we saw that a <strong>straight line</strong> is given by:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+\mathbf{r}(t) = \mathbf{r}_0 + \mathbf{v}t, &amp; t \in [-\infty, \infty]
+\end{matrix*}
+$$
+</p>
+<p>Meanwhile a semi-circle can be parametrized as:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+\mathbf{r}(t) = \langle a \cos t, a \sin t\rangle, &amp;t \in [-\pi, \pi]
+\end{matrix*}
+$$
+</p>
+<p>Note that this parametrization is <strong>non-unique</strong>. It would just be as valid to parametrize a semi-circle as follows:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+\mathbf{r}(t) = \langle a \cos \tau, a \sin \tau\rangle, &amp;\tau \in \left[-\frac{\pi}{2}, \frac{\pi}{2}\right]
+\end{matrix*}
+$$
+</p>
+<p>From our tools of calculus and geometry, we may measure the <strong>arc length</strong> (that is, total length) of a parametric curve - physically, this represents the <em>distance</em> travelled along a curve. While the arc length formula may be rather familiar from single-variable calculus, we now want to <em>derive it</em> rather than accept it as proof. To do so, we divide up a path $\mathbf{r}(t)$ into many, many small sections $\Delta \mathbf{r} = \mathbf{r}(t + \Delta t) - \mathbf{r}(t)$. The length of each segment $\Delta L$ is then simply the magnitude of $\Delta \mathbf{r}$, that is:</p>
+<p class="mathcell">
+$$
+\Delta L = |\Delta \mathbf{r}|
+$$
+</p>
+<p>Where we use the bar notation to indicate the magnitude. The total length</p>
+<p class="mathcell">
+$$
+\begin{align*}
+L &amp;= \sum_{i = 1}^n \Delta L_i \\
+&amp;= \sum_{i = 1}^n|\Delta \mathbf{r}_i| \\
+&amp;= \sum_{i = 1}^n |\mathbf{r}_i(t + \Delta t) - \mathbf{r}_i|
+\end{align*}
+$$
+</p>
+<p>Recall that from the theory of <em>linear approximations</em> we have $\mathbf{r}_i (t + \Delta t) \approx \mathbf{r}_i(t) + \mathbf{r}_i'(t)$. Therefore, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+L &amp;=\sum_{i = 1}^n |\mathbf{r}_i(t + \Delta t) - \mathbf{r}_i| \\
+&amp;\approx \sum_{i = 1}^n \left|\mathbf{r}_i(t) + \mathbf{r}_i&#x27;(t) - \mathbf{r}_i\right| \\
+&amp;= \sum_{i = 1}^n \left|\cancel{\mathbf{r}_i(t)} + \mathbf{r}_i&#x27;(t) - \cancel{\mathbf{r}_i}\right| \\
+&amp;= \sum_{i = 1}^n |\mathbf{r}_i&#x27;(t)|
+\end{align*}
+$$
+</p>
+<p>If we take the limit as $n \to \infty$, this relation becomes exact, and the sum becomes an integral:</p>
+<p class="mathcell">
+$$
+L = \int_a^b |\mathbf{r}&#x27;(t)|dt = \int_a^b \sqrt{\left(\dfrac{dx}{dt}\right)^2 + \left(\dfrac{dy}{dt}\right)^2 + \left(\dfrac{dz}{dt}\right)^2}\, dt
+$$
+</p>
+<p>For instance, let us calculate the arc length of a circle. Recall that the parametric equations of a circle of radius $R$ are $\mathbf{r}(t) = R\langle \cos t, R\sin t\rangle$, and therefore we have $\mathbf{r}'(t) = \langle -R\sin t, R\cos t\rangle$. Taking the magnitude, we have $|\mathbf{r}'(t)| = \sqrt{(-R\sin t)^2 + (R\cos t)^2} = \sqrt{R^2\left(\sin^2 t + \cos^2 t\right)}$, which, recalling the Pythagorean trigonometric identity $\sin^2 t + \cos^2 t = 1$, becomes $|\mathbf{r}'(t)| = \sqrt{R^2(1)} = R$ and thus $\mathbf{r}'(t) = R$. Since a circle is defined for $t \in [0, 2\pi]$, the integral becomes rather easy to evaluate:</p>
+<p class="mathcell">
+$$
+L = \int_a^b |\mathbf{r}&#x27;(t)|dt = \int_0^{2\pi} R\, dt = 2\pi R - 0(R) = 2\pi R
+$$
+</p>
+<p>Which reproduces the expected result for the circumference of a circle. Note that the arc length is just one topic in the broad field of <strong>differential geometry</strong> that studies geometry using methods of calculus. We will not go into it, but it is a very fun topic to read about for those interested.</p>
+<h4 id="reparametrization-of-parametric-curves">Reparametrization of parametric curves</h4>
+<p>A final topic to mention is that since the parametrization is non-unique, we can choose an arbitrary parametrization. One often-useful parametrization is the <strong>arclength reparametrization</strong>. To do so, we first define the arc length function $s(t)$ as:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+s(t) &amp;= \int_a^t |\dot{\mathbf{r}}(t&#x27;)| dt&#x27; \\
+&amp;= \int_a^t \small{\sqrt{\left(\frac{dx}{dt&#x27;}\right)^2 + \left(\frac{dy}{dt&#x27;}\right)^2 + \left(\frac{dz}{dt&#x27;}\right)^2}}\, dt&#x27;
+\end{align*}
+$$
+</p>
+<p>Here, since we want the arclength function in terms of $t$, we relabel our integration variable from $t$ to $t'$ (but otherwise the integrand stays identical, this is just a <em>relabelling</em>). From $s(t)$, we obtain the inverse function $t(s) = s^{-1}(t)$. Substituting in the parametric path $\mathbf{r}$, we have:</p>
+<p class="mathcell">
+$$
+\mathbf{r}(t) = \mathbf{r}(t(s)) = \mathbf{r}(s)
+$$
+</p>
+<p>This allows us to obtain the parametric equations expressed with respect to the distance along the path, which can be very useful.</p>
+
+        
+        <a id="jump-toc-btn" href="#toc">Show table of contents</a>
+        <a href="/notes" class="return-link">Back to all notes</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        var toc = document.getElementById("toc");
+        var tocPos = toc.offsetTop + toc.offsetHeight;
+        var tocBtn = document.getElementById("jump-toc-btn");
+
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+        // for performance reasons, we **only** render a certain
+        // number of equations that the viewer is actually viewing
+        function VisibleMathRenderer(config) {
+            /*
+            Renders only a limited number of equations on page load
+            to avoid poor performance
+             Params:
+                lastRenderedEquation: the most recently rendered equation.
+                        when this goes out of view, equations under it are rendered. 
+            */
+            var startElement = config.startElement
+            var maxEquations = config.maxEquations ? config?.maxEquations : 30;
+            this.startElement = startElement
+            this.maxEquations = maxEquations
+            // we wait until the user scrolls past the starting/
+            // ending elements to start rendering the whole page
+            this.canRenderWholePage = false;
+            this.pageRendered = false;
+            this.lastRenderedTopEquation = null;
+            this.lastRenderedBottomEquation = null;
+
+            this.render = function() {
+                renderMath(this.startElement);
+                // render previous 25 and following 25 equations
+                var prev = this.startElement.previousElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left prior to the element
+                    if (prev == null) {
+                        break;
+                    }
+                    renderMath(prev);
+                    prev = prev.previousElementSibling;
+                }
+                // store our last rendered equations
+                // we'll track scroll position later to
+                // check when the rest of the page should be rendered
+                this.lastRenderedTopEquation = prev;
+                console.log(this.lastRenderedTopEquation)
+
+                var next = this.startElement.nextElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left following the element
+                    if (next.nextElementSibling == null) {
+                        break;
+                    }
+                    renderMath(next);
+                    next = next.nextElementSibling;
+                }
+                this.lastRenderedBottomEquation = next;
+                // now allow rendering the rest of the equations
+                this.canRenderWholePage = true;
+            }
+
+            // render all math on the whole page
+            this.renderMathOnPage = function() {
+                // don't run until preliminary tasks
+                // are done so that the whole page
+                // can/should be rendered
+                if (!this.canRenderWholePage) {
+                    return;
+                }
+                // if the whole page's worth of equations
+                // are already rendered, don't render more
+                if (this.pageRendered) {
+                    return;
+                }
+                var topBound = this.lastRenderedTopEquation.getBoundingClientRect.top;
+                var bottomBound = this.lastRenderedBottomEquation.getBoundingClientRect.bottom;
+                var scrollTop, scrollBottom = getViewport();
+                // if the user is about to scroll past the initially-rendered equations
+                // we will render the whole page
+                if (scrollTop - 50 + window.scrollY < topBound || scrollBottom + 50 + window.scrollY > bottomBound) {
+                    console.log("Scrolled beyond!")
+                    var article = document.querySelector(".post");
+                    if (article) {
+                        this.renderMath(article);
+                    }
+                    this.pageRendered = true;
+                }
+                
+            }
+            
+        }
+
+        function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        function findFirstRelevantElement() {
+            // finds the first <p> tage that's closest to
+            // the viewer's viewport
+            var regex = /#.*/;
+            var m = regex.exec(window.location.href);
+            if (m !== null) {
+                return document.querySelector(m[0]);
+            } else {
+                return document.querySelector(".post p");
+            }
+        }
+        
+        // initialize page JS components
+        /*
+        var mathRenderer = new VisibleMathRenderer({
+            // start rendering with first <p> tag on the
+            // post
+            startElement: findFirstRelevantElement()
+        });
+        */
+        document.addEventListener("DOMContentLoaded", function() {
+            showTocBtnOnScroll();
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+
+        window.onscroll = function(){
+            // if (!mathRenderer.pageRendered) {
+            //     mathRenderer.renderMathOnPage();
+            // }
+            showTocBtnOnScroll();
+        };
+
+
+    </script>
+    
+
+
+</body>
+
+</html>
