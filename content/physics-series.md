@@ -6,7 +6,7 @@ date = 2024-01-10
 nonarticle = true
 +++
 
-These are extended guides, many of which come from personal physics notes taken at my time at RPI. They include Classical Mechanics, Special Relativity, Quantum Mechanics, and will in the future include General Relativity and possibly Quantum Field Theory.
+These are extended guides, many of which come from personal physics notes taken at my time at RPI. They include guides to classical mechanics, special relativity, quantum mechanics, electrodynamics, and other topics in physics.
 
 <!-- more -->
 
