@@ -1008,7 +1008,7 @@ We observe, in nature, that in addition to electric forces, moving charges also 
 \mathbf{F} = q\mathbf{v} \times \mathbf{B}
 {% end %}
 
-Where $\mathbf{B}$ is the magnetic field defined in the SI unit **Tesla**, denoted $\pu{T}$, where $\pu{1 T = N*s*C^{-1} * m^{-1}}$. Note that the magnetic force is defined in terms of a _cross product_, which means that the magnetic force is always perpendicular to the charge's direction of motion. In addition, it may be surprising to find that magnetic forces are **velocity-independent** - a magnetic force only exists on a moving charge, a charge at rest in a magnetic field does not experience any magnetic force.
+Where $\mathbf{B}$ is the magnetic field defined in the SI unit **Tesla**, denoted $\pu{T}$, where {% inlmath() %}\pu{1 T = N*s*C^{-1} * m^{-1}}{% end %}. Note that the magnetic force is defined in terms of a _cross product_, which means that the magnetic force is always perpendicular to the charge's direction of motion. In addition, it may be surprising to find that magnetic forces are **velocity-independent** - a magnetic force only exists on a moving charge, a charge at rest in a magnetic field does not experience any magnetic force.
 
 > One easy source of confusion is that the direction of the _force_ is _not_ the direction the charge moves in. The direction of the force is simply the direction of the acceleration, which is _always_ perpendicular to the charge's direction of motion.
 
@@ -1279,7 +1279,7 @@ Upon examination, we see a quantity that is an EMF that is related to the induct
 
 The relationship $\mathcal{E} = -L \dfrac{dI}{dt}$ tells us that a change in current produces a **back EMF** that is _opposed_ to the change in current, because of the negative sign. This back EMF is dependent on the rate of change of a current, so a rapid change in current will result in a back EMF in the opposite direction as the current, reducing the current significantly. This property is very useful in many cases, and is why inductors are often used as surge protectors in circuits and for protection against lightning strikes.
 
-In addition, since the back EMF is opposed to the current, we have $-\Delta V = L \dfrac{dI}{dt} = V(a) - V(b)$ where $V(a)$ is the potential on the inside of the inductor and $V(b)$ is the potential on the outside of the inductor. The induced electric field caused by this potential difference $\mathbf{E}_\mathrm{induced} = -\nabla V$ counters the electrostatic field inside the inductor due to its own charge, meaning that the total electric field $\mathbf{E}_\mathrm{net} = 0$, as we would expect because a conductor must have zero net electric field.
+In addition, since the back EMF is opposed to the current, we have $-\Delta V = L \dfrac{dI}{dt} = V(a) - V(b)$ where $V(a)$ is the potential on the inside of the inductor and $V(b)$ is the potential on the outside of the inductor. The induced electric field caused by this potential difference {% inlmath() %}\mathbf{E}_\mathrm{induced} = -\nabla V{% end %} counters the electrostatic field inside the inductor due to its own charge, meaning that the total electric field $\mathbf{E}_\mathrm{net} = 0$, as we would expect because a conductor must have zero net electric field.
 
 ### Inductors as circuit components
 
