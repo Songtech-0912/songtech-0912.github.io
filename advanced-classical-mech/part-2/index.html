@@ -41,7 +41,8 @@
     <article class="post">
         <h1>Advanced Classical Mechanics, Part II</h2>
         
-        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF. <a href="https://forms.gle/msb5wKErDJCjeL5k6">Report an issue or error here</a>.</p>
+
         
         
         <!-- table of contents -->
@@ -445,7 +446,11 @@ $$
 <h3 id="the-simple-pendulum">The simple pendulum</h3>
 <p>In this problem, a pendulum is attached to a string of length $\ell$ which makes an angle of $\theta$ with the vertical axis. The pendulum swings up and down under the action of gravity. We want to find the equations of motion for the pendulum.</p>
 <p>Let us set up the coordinates to make this problem as convenient as possible. First, let us set our $+y$ axis to be the <em>downward-pointing</em> direction. Let our $x$ axis be centered at the position at which the pendulum is attached (i.e. its origin is at the pendulum's attachment point).</p>
-<img class="diagram" src="/advanced-classical-mech/part-2/../simple-pendulum.excalidraw.svg"  />
+<img class="diagram"
+	
+		src="/advanced-classical-mech/part-2/../simple-pendulum.excalidraw.svg"
+	
+	 />
 <p>With this information, then the position of the pendulum at time $t$ is given by:</p>
 <p class="mathcell">
 $$
@@ -524,7 +529,11 @@ $$
 <h3 id="the-centrifugal-force">The centrifugal "force"</h3>
 <p>When an object is placed within a rotating object, it is common to say that the object experiences a <em>fictitious</em> centrifugal force. We will show that what appears to be a "centrifugal force" is nothing but a radial acceleration caused by a moving coordinate system, and is <em>not</em> a real force.</p>
 <p>Consider a moving disk of radius $R$ and mass $M$ that rotates at angular velocity $\omega$ (ignore gravity). A small mass $m$ is placed at the edge of the disk (note: the figure below shows it <em>slightly</em> less than the edge, but it is only for visual clarity). A diagram of our physical scenario is below:</p>
-<img class="diagram" src="/advanced-classical-mech/part-2/../centrifugal-force.excalidraw.svg"  />
+<img class="diagram"
+	
+		src="/advanced-classical-mech/part-2/../centrifugal-force.excalidraw.svg"
+	
+	 />
 <p>If the disk was non-spinning, the position of the mass, relative to the center of the spinnning disk (which is the origin of our rotating coordinate system), would be given by:</p>
 <p class="mathcell">
 $$
@@ -604,7 +613,11 @@ $$
 $$
 </p>
 <p>Where $\vec r$ is the radial vector that points from the axis of rotation to the mass. Thus by the right-hand rule, since the angular acceleration is pointing downards, we find that the acceleration vector actually points <em>outwards</em>, as shown in the below diagram:</p>
-<img class="diagram" src="/advanced-classical-mech/part-2/../rotational-lagrangian-example.excalidraw.svg"  />
+<img class="diagram"
+	
+		src="/advanced-classical-mech/part-2/../rotational-lagrangian-example.excalidraw.svg"
+	
+	 />
 <p>Thus we find that there <em>appears</em> to be a "force" that pushes the particle outwards and produces the acceleration $\vec a$ observed. In reality, such a force <em>does not exist</em>. We can prove this as follows: from the expression $\vec \alpha = - \omega \dot \phi \sin(\phi - \omega t)$, if we take the limit as $\omega \to 0$ (that is, the disk is no longer spinning), then $\vec \alpha \to 0$ and we recover the equations of uniform circular motion (that is, $\ddot \phi = 0$). The "force" (often called the <em>centrifugal force</em>) is merely a consequence of our rotating reference frame (remember, we chose a coordinate system that co-rotated with the disk), and if we choose an alternate frame of reference that is <em>not rotating</em>, this force vanishes. Thus we have shown that the centrifugal "force" is a fictitious force.</p>
 <h3 id="getting-off-a-bus">Getting off a bus</h3>
 <p>Consider a situation that may be familiar: you were riding a bus (or train) moving at speed $v_0$ that suddenly undergoes a constant deceleration of magnitude $a$ until it comes to a stop. This catches you by surprise, and you end up dropping the precious physics textbook you borrowed from your physics professor. To appease your professor after this unfortunate incident, you intend to demonstrate your understanding of Lagrangian mechanics to calculate your equations of motion and thus explain that the deceleration was substantial enough to make you fall.</p>
@@ -1027,7 +1040,11 @@ $$
 <p>Thus, by simply using the modified version of the Euler-Lagrange equations that contains a transformed Lagrangian $\mathcal{L} \to \mathcal{L} + \sum_i \lambda_i F_i$, we are able to solve for constrained systems (relatively) straightforwardly!</p>
 <h3 id="rolling-without-slipping-with-constraints">Rolling without slipping with constraints</h3>
 <p>Consider a problem where this form of the Euler-Lagrange equation is very useful: the problem of a rolling disk of radius $R$ and mass $m$ moving along the $x$ axis that <strong>rolls without slipping</strong> down an inclined plane due to static friction between the disk and the plane. For this problem, we choose our $x$ axis to be parallel to the surface of the inclined plane. The inclined plane is angled at angle $\phi = \text{const.}$ with respect to the horizontal:</p>
-<img class="diagram" src="/advanced-classical-mech/part-2/../rolling-without-slipping-lagrangian.excalidraw.svg" alt="A diagram showing a disk of radius R rolling down an inclined plane, where the x coordinate points down the plane and is parallel to it, and where theta is the angle of the disk&#x27;s rotation" />
+<img class="diagram"
+	
+		src="/advanced-classical-mech/part-2/../rolling-without-slipping-lagrangian.excalidraw.svg"
+	
+	alt="A diagram showing a disk of radius R rolling down an inclined plane, where the x coordinate points down the plane and is parallel to it, and where theta is the angle of the disk&#x27;s rotation" />
 <p>The consequence of rolling without slipping is that the translational velocity $v_t$ is equal to the rotational velocity about the center of mass $v_{CM}$ (see the <a href="https://jackysci.com/classical-dynamics/">classical dynamics guide</a> for more in-depth explanations on why this is the case). We therefore have:</p>
 <p class="mathcell">
 $$

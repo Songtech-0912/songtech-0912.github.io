@@ -41,7 +41,8 @@
     <article class="post">
         <h1>Fundamentals of Electromagnetic Theory</h2>
         
-        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF. <a href="https://forms.gle/msb5wKErDJCjeL5k6">Report an issue or error here</a>.</p>
+
         
         
         <!-- table of contents -->
@@ -464,7 +465,11 @@ $$
 <p><strong>Mathematical interlude:</strong> some texts use the notation $| \mathbf{r} - \mathbf{r}'|$ instead, this is functionally equivalent to $\|\mathbf{r} - \mathbf{r}&#x27; \|$ because of the vector identity $| \mathbf{v} | = \sqrt{v^2} = \sqrt{\mathbf{v} \cdot \mathbf{v}} = \| \mathbf{v}\|$. We will use both interchangeably.</p>
 </blockquote>
 <p>Visually, we may represent the integration process as shown in the below diagram:</p>
-<img class="wide-img" src="/electromagnetism/coulomb-integration.png" alt="A diagram of the integration process, where the distance between a given point in space and a given point on the charge distribution surface is integrated over the entire surface" />
+<img class="wide-img"
+	
+		src="/electromagnetism/coulomb-integration.png"
+	
+	alt="A diagram of the integration process, where the distance between a given point in space and a given point on the charge distribution surface is integrated over the entire surface" />
 <p>Note that these equations apply only for static fields (i.e. unchanging with time). The integrals in general are non-trivial and can only be solved numerically, but symmetries in the problem may simply the integral sufficiently to be solved analytically.</p>
 <p>In practice, due to the difficulties of modelling, when there is a dominant charged object, we often consider only the contribution of a single object and consider the other charges as contributing negligibly to the field. This technically does not model the problem exactly but approximately holds. This is analogous as the classical field theory of Newtonian gravity, where the common approximation $\displaystyle \mathbf{g} = -\frac{GM_\mathrm{sun}}{r^2} \hat r$ is approximately true and yields the correct orbits if one uses it to solve for the gravitational field (and thus orbits of planets) within the solar system, since the Sun is so much more massive than all the planets.</p>
 <blockquote>
@@ -645,10 +650,18 @@ U_E = \frac{1}{2} \sum_{i = 1}^N \sum_{j = 1}^N \frac{kq_i q_j}{r_{ij}}
 $$
 </p>
 <p>However, this is not a very useful formula as it is quite verbose. Rather, it is more useful to use another (more conceptual) approach. Suppose we had a system of three charges, with the magnitude of each charge being $Q$, arranged in an equilateral triangle of side lengths $L$:</p>
-<img class="wide-img" src="/electromagnetism/three-charges.png" alt="A system of charges, separated by equal lengths L and in a triangular arrangement, the bottom left negative and the rest positive charged" />
+<img class="wide-img"
+	
+		src="/electromagnetism/three-charges.png"
+	
+	alt="A system of charges, separated by equal lengths L and in a triangular arrangement, the bottom left negative and the rest positive charged" />
 <p>We aim to obtain the electric potential energy of the system; that is, how much energy is stored in the system of charges if we consider the energy to be zero at infinity, which is important when considering problems that are solved using the conservation of energy.</p>
 <p>To do so, we consider the process of bringing in each charge one by one, as illustrated below (the charges have been color-coded for clarity):</p>
-<img class="wide-img" src="/electromagnetism/electric-potential-energy-calculation.png" alt="The process of calculating electrical potential energy illustrated, by summing the individual potential energy of bringing in each charge" />
+<img class="wide-img"
+	
+		src="/electromagnetism/electric-potential-energy-calculation.png"
+	
+	alt="The process of calculating electrical potential energy illustrated, by summing the individual potential energy of bringing in each charge" />
 <p>In the <strong>first step</strong>, the first charge is brought from infinity. There is nothing to resist its motion, and therefore the contribution to the potential energy is <strong>zero</strong>. In the <strong>second step</strong>, the second charge is brough from infinity to join the system. As it is oppositely charged, the potential energy is negative, meaning that energy must be put <em>into</em> the system to keep the charges separate. Since there are only two charges, $Q$ and $-Q$, the contribution to the potential energy in the second step step is $\dfrac{k(Q)(-Q)}{r} = -\dfrac{kQ^2}{L}$ by application of the electric potential energy formula. In the third step, the third charge is brought from infinity. Its interaction with the existing two-charge system results in a potential energy of $\dfrac{kQ^2}{L}$ with the red charge $+Q$ (the positive charge in the two-charge system) and $-\dfrac{kQ^2}{L}$ with the purple charge $-Q$ (the negative charge in the two-charge system). Therefore the total potential energy contributed by the third step is the sum of these potential energies, i.e. $\dfrac{kQ^2}{L} + \left(-\dfrac{kQ^2}{L}\right) = 0$. Thus the total electrical potential energy is the sum of the potential energy contributions by each of the three steps, that is:</p>
 <p class="mathcell">
 $$
@@ -1366,7 +1379,11 @@ $$
 </blockquote>
 <h3 id="calculating-magnetic-flux">Calculating magnetic flux</h3>
 <p>The process of calculating magnetic flux can be tricky, so let us consider an example to demonstrate the calculation process. Consider a very long wire carrying current $I$ in the rightward direction, with a wire loop of width $w$ and height $b-a$ below it, as shown in the diagram below:</p>
-<img class="wide-img" src="/electromagnetism/magnetic-flux-calculation.excalidraw.svg" alt="A diagram showing the magnetic flux through a wire loop below a current-carrying wire. The magnetic field forms circular loops around the wire, which pass into the loop." />
+<img class="wide-img"
+	
+		src="/electromagnetism/magnetic-flux-calculation.excalidraw.svg"
+	
+	alt="A diagram showing the magnetic flux through a wire loop below a current-carrying wire. The magnetic field forms circular loops around the wire, which pass into the loop." />
 <p>We note that the magnetic field vectors go <em>into</em> the page while the wire loop's normal points <em>out</em> of the page, meaning they are <em>antiparallel</em> (parallel but pointing in opposite directions). Therefore, we know that $\mathbf{B}(r) \cdot d\mathbf{A} = -B(r) dA$ where $dA = dr dx$ is the area of an infinitesimal portion of the loop's surface. Now, recalling that $B = \dfrac{\mu_0 I}{2\pi r}$ for a current-carrying wire of infinite (or at least very long) length, which we derived earlier from Ampère's law, if we substitute our derived expressions into the integral equation for the magnetic flux, we have:</p>
 <p class="mathcell">
 $$
@@ -1406,7 +1423,11 @@ $$
 <p><strong>Note on sign:</strong> a positive current is (by convention) one that flows <em>counterclockwise</em>. A negative current is one that flows <em>clockwise</em>. Thus <strong>positive flux</strong> creates clockwise current and <strong>negative flux</strong> creates counterclockwise current. In both cases, the current direction is <em>opposite</em> to the current in the loop, and the direction of the current will tell us the induced force on the wire without even needing to calculate the flux.</p>
 </blockquote>
 <p>We showcase Lenz's law in the diagram below:</p>
-<img class="wide-img" src="/electromagnetism/Lenz-law-illustration.excalidraw.svg" alt="A diagram of Lenz&#x27;s law, showing an upwards time-varying magnetic field passing through a loop. This produces an EMF and thus an induced current, which is itself countered by an induced magnetic field caused by the induced current." />
+<img class="wide-img"
+	
+		src="/electromagnetism/Lenz-law-illustration.excalidraw.svg"
+	
+	alt="A diagram of Lenz&#x27;s law, showing an upwards time-varying magnetic field passing through a loop. This produces an EMF and thus an induced current, which is itself countered by an induced magnetic field caused by the induced current." />
 <p>If a changing flux occurs as a result of the motion of a conducting surface or loop, we call the resulting EMF <strong>motional EMF</strong>. Lenz's law tells us that a given loop of wire (or any other general conductor) moving at velocity $\mathbf{v}$, then the direction of the net force on the loop/conductor by Lenz's law is <strong>opposite the direction of</strong> $\mathbf{v}$. This also means there is <strong>no force</strong> when $\mathbf{v} = 0$ because the magnetic flux is constant in time (it may vary spatially but would not vary in time).</p>
 <p>When the induced electric field around the boundary of a loop happens to be in a wire, then we find that the EMF creates a current given by Ohm's law:</p>
 <p class="mathcell">
@@ -1730,7 +1751,11 @@ $$
 <h2 id="interference">Interference</h2>
 <p>A peculiar feature of solutions to the electromagnetic wave equation is that a <strong>superposition</strong> of solutions is also a solution to the electromagnetic wave equation. This applies regardless of the shape of the wave and whether it is monochromatic (same-frequency), but it is simplest to first analyze monochromatic plane-waves.</p>
 <p>We know that plane waves are written in the form $E(x, t) = E_0 \cos (kx - \omega t)$. We may write this as $E \propto \cos \phi$, where $\phi = kx - \omega t$ is the argument to the cosine, and is measured in radians. At $\phi = 0, E = E_0$, while at $\phi = \pi$, $E = -E_0$. At $\phi = \pi/2$ and $\phi = 3\pi/2$, we find that $E = 0$. This is shown here:</p>
-<img class="diagram" src="/electromagnetism/./Phase-example-diagram.excalidraw.svg" alt="An electromagnetic wave displayed, showing the phase of the wave on the x-axis and the electric field strength on the y-axis" />
+<img class="diagram"
+	
+		src="/electromagnetism/./Phase-example-diagram.excalidraw.svg"
+	
+	alt="An electromagnetic wave displayed, showing the phase of the wave on the x-axis and the electric field strength on the y-axis" />
 <p>When two waves $E_1(x, t)$ and $E_2(x, t)$ of different phase are added together, we say that the <strong>phase difference</strong> $\Delta \phi$ is simply the difference between the phase of the two waves. By substituting the definition of $\phi \equiv k x - \omega t$ for the two waves of different phase, we find that:</p>
 <ul>
 <li>For two waves that are aligned in time but have spatial separation $\Delta x$ (i.e. the second wave lags behind the first wave by $\Delta x$ units of distance) we have $\Delta \phi = k \Delta x$</li>
@@ -1762,7 +1787,11 @@ $$
 </blockquote>
 <h3 id="the-double-slit-experiment">The double-slit experiment</h3>
 <p>The classic demonstration of interference is Young's <strong>double-slit experiment</strong>, where light from some source is passed between two slits, separated by distance $d$, and thus the incident electromagnetic wave $E$ splits into two waves $E_1$ and $E_2$. The incident light has intensity $I_0$ and a screen is placed a distance $D$ away from the slits, where an <strong>interference pattern</strong> of alternating light and dark regions appears:</p>
-<img class="diagram" src="/electromagnetism/./double-slit.excalidraw.svg" alt="A diagram of the double slit experiment, showing a screen with two slits, and a viewing screen behind. The difference in the path length light travels to the viewing screen at different angles theta causes interference phenomena." />
+<img class="diagram"
+	
+		src="/electromagnetism/./double-slit.excalidraw.svg"
+	
+	alt="A diagram of the double slit experiment, showing a screen with two slits, and a viewing screen behind. The difference in the path length light travels to the viewing screen at different angles theta causes interference phenomena." />
 <p>The angle $\theta$ that the interference fringes make with the centerline (i.e. the straight-line to the screen, labelled $D$ in the below diagram) is given by $\Delta x = d \sin \theta = n \lambda$ where $n = 0, \pm 1, \pm 2, \pm 3, \dots$ where $\Delta x$ is the <em>path length difference</em> (just as we discussed previously). This makes sense because we previously showed that $\Delta x = n \lambda = 0, \pm \lambda, \pm 2 \lambda, \pm 3 \lambda, \dots$ are indeed the values for which <strong>constructive interference</strong> occurs.</p>
 <p>We call the interference pattern <strong>maxima</strong> observed on the screen as the interference <em>fringes</em>. The distance $\Delta s$ (in some texts, this is called $\Delta y$) from the center of the screen to the <em>nth</em> interference fringe (reference the above diagram) is given by:</p>
 <p class="mathcell">
@@ -1810,7 +1839,11 @@ $$
 <p>We have discussed the electric and magnetic field at length, and how they give rise to light in the form of electromagnetic waves, but we have only touched briefly on the topic of the other manifestation of light - <strong>photons</strong>.</p>
 <p>Consider a glass tube with metallic ends connected to a battery. There exists a potential difference $\Delta V_{CA}$ across the two ends of the tube $\Delta V_{CA} = V_C - V_A$, where $V_C$ is the positively-charged end of the tube (the <strong>cathode</strong>) and $V_A$ is the negatively-charged end of the tube (the <strong>anode</strong>). The battery is tuned such that the anode is at a <em>higher</em> potential compared to the cathode.</p>
 <p>The tube also has a spot where light can be shined through. The incident light on the cathode transfers energy to electrons in the metallic cathode (remember, light has energy). This increases the electrons' kinetic energy, allowing them to overcome the potential holding them to the metal and escape the metal's surface, flying into the anode. In informal terms, the light "kicks out" electrons from the metal by giving them kinetic energy to overcome the potential difference $\Delta V_{CA}$ holding them back.</p>
-<img class="diagram" src="/electromagnetism/./photoelectric-effect.excalidraw.svg" alt="A diagram showing the photoelectric effect. Incident photons on a metal plate kick out electrons (called photoelectrons) from the plate when their kinetic energy is sufficient to overcome an applied potential " />
+<img class="diagram"
+	
+		src="/electromagnetism/./photoelectric-effect.excalidraw.svg"
+	
+	alt="A diagram showing the photoelectric effect. Incident photons on a metal plate kick out electrons (called photoelectrons) from the plate when their kinetic energy is sufficient to overcome an applied potential " />
 <p>The <strong>stopping potential</strong> $\Delta V_0 = -\Delta V_{CA}$ is the potential obtained from experimental measurements for which electrons have sufficient kinetic energy that they start to be ejected from the metal, measured from the anode to the cathode. When we conduct the experiment we find that no matter the intensity of the light source (corresponding to how many photons are emitted per second), there is no effect on the <strong>kinetic energy</strong> of the photons (though the measured current <em>does</em> depend on the intensity). Furthermore, the emission of electrons from the cathode happens <strong>instantly</strong>.</p>
 <p>This bizarre fact - that shining more photons on the cathode (higher intensity) do not correspond to ejected electrons having greater energies - was one of the first pieces of empirical evidence for <strong>quantum mechanics</strong>.</p>
 <p>Consider what would happen in terms of classical electromagnetism. We know from before that the intensity $\langle I\rangle$ is proportional to the electric field, that is, $\langle I\rangle \propto \mathbf{E}^2$. Light is described as an electromagnetic wave (i.e. propagating waves caused by oscillating electric and magnetic fields), and therefore we expect higher intensity to transfer more kinetic energy to the electrons, until the intensity is sufficiently high that the electrons are ejected from the cathode. Intensity, however, is independent of frequency, so we wouldn't expect a change in frequency to affect the kinetic energy of the electrons. But this is <em>not</em> what we observe. What we <em>actually</em> observe is that the kinetic energy of the electrons <em>only</em> depends on the frequency of the incident light, plus a constant. Why this occurs had no explanation, until Einstein offered an explanation in a revolutionary paper in 1905, named "<em>On a Heuristic Viewpoint Concerning the Production and Transformation of Light</em>".</p>

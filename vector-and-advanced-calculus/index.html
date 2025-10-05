@@ -41,7 +41,8 @@
     <article class="post">
         <h1>Vector Calculus and Beyond (Incomplete)</h2>
         
-        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF. <a href="https://forms.gle/msb5wKErDJCjeL5k6">Report an issue or error here</a>.</p>
+
         
         
         <!-- table of contents -->
@@ -296,7 +297,11 @@ $$
 <p>Just as we have <em>points</em> of intersection in 2D space, we have <em>curves</em> of intersection in 3D space. The <strong>intersection of two surfaces</strong> given by $F(x, y, z) = 0$ and $G(x, y, z) = 0$ is a parametric curve $\mathbf{r}(t)$. The precise form of this parametric curve may vary. But we will look at a simple case.</p>
 <p>Consider the intersection between the unit sphere, given by $x^2 + y^2 + z^2 = 1$, and the plane $z = 2x$ (see <a href="https://www.math3d.org/K51UuVpjP4">an interactive visualization here</a>). How would we solve this?</p>
 <p>One way we can do so is by converting the plane to <em>parametric form</em>. To do so, we need to find two vectors that are parallel to the plane.</p>
-<img class="wide-img" src="/vector-and-advanced-calculus/intersection-of-surfaces.png" alt="An illustration of the plane z = 2x as well as two vectors parallel to the plane and lying on the plane" />
+<img class="wide-img"
+	
+		src="/vector-and-advanced-calculus/intersection-of-surfaces.png"
+	
+	alt="An illustration of the plane z = 2x as well as two vectors parallel to the plane and lying on the plane" />
 <p>Luckily, this is relatively easy to find (see the above picture for a visualization):</p>
 <p class="mathcell">
 $$
@@ -693,7 +698,11 @@ $$
 <p>Thus, $f$ takes a <em>constant value</em> along any curve $\mathbf{r}(t)$ which is <em>perpendicular to the gradient</em> (that is, $\mathbf{r}'(t) \perp \nabla f$). These special curves are called <strong>level curves</strong>. Each level curve is defined by the equation $f(\mathbf{r}) = C$ where $C$ is some constant value of $f$. Level curves are a type of <strong>level set</strong>, which we will examine in more depth.</p>
 <h3 id="level-sets">Level sets</h3>
 <p>When we are analyzing functions of several variables, we are often interested in points for which the function takes a <em>constant</em> value. If a surface is described by the function $z = f(x, y)$, a level curve is an implicit curve given by $f(x, y) = c$, where $c$ is a constant. Geometrically, i, level curves can be thought of as "slices" to the surface at constant spacings, as shown (in the red solid lines) on the below plot:</p>
-<img class="natural-img" src="/vector-and-advanced-calculus/level-sets-external.png" alt="A plot of several level curves on a surface, which trace out points along the surface of constant height" />
+<img class="natural-img"
+	
+		src="/vector-and-advanced-calculus/level-sets-external.png"
+	
+	alt="A plot of several level curves on a surface, which trace out points along the surface of constant height" />
 <p><em>Source: <a href="https://mathematica.stackexchange.com/questions/36837/how-do-you-plot-level-curves-describing-a-3d-surface-on-the-x-y-plane">Mathematica Stack Exchange</a></em></p>
 <p>We may use level sets to derive the equations of a tangent plane. To illustrate this process, consider an explicit surface in the form $z = f(x, y)$ - for instance, $f(x, y) = x^2 + y^2$ (this is in fact the equation of a paraboloid). The level curves of $f(x, y)$ are the curves for which $f(x, y)$ takes a constant value, and can be parametrized as $f(x, y) = c$ (equivalently, $f(\mathbf{r}(t)) = c$), where  is a constant.</p>
 <p>We know that since $f(\mathbf{r}(t)) = f(x, y) = c$ is a <em>level curve</em>, then $\dfrac{df}{dt} = 0$ (because level curves are where $f(x, y)$ are equal to a constant, and the derivative of a constant is zero). By the chain rule, we may expand $\dfrac{df}{dt}$ as follows:</p>
@@ -998,7 +1007,11 @@ $$
 <p>Which allows us to compute the derivatives we want from the derivatives we know, completing the coordinate transformation.</p>
 <h3 id="motion-along-a-path">Motion along a path</h3>
 <p>Let us return to a familiar topic - the description of a path through space. We may describe such a path using a <strong>parametric representation</strong> $\mathbf{r}(t) = \langle x(t), y(t), z(t)\rangle$. We vary our parameter $t$ within $t \in [a, b]$, such that the endpoints of the curve are located at points $\mathbf{r}(a)$ and $\mathbf{r}(b)$. A visualization is shown below:</p>
-<img class="natural-img" src="/vector-and-advanced-calculus/spatial-curve-external.png" alt="An illustration of a helix-shaped parametric curve in space" />
+<img class="natural-img"
+	
+		src="/vector-and-advanced-calculus/spatial-curve-external.png"
+	
+	alt="An illustration of a helix-shaped parametric curve in space" />
 <p><em>Source: <a href="https://math.libretexts.org/Bookshelves/Calculus/Calculus_%28OpenStax%29/13%3A_Vector-Valued_Functions/13.01%3A_Vector-Valued_Functions_and_Space_Curves">OpenStax</a></em></p>
 <p>At every point, there exists also a <em>tangent vector</em> to $\mathbf{r}(t)$, which is denoted $\mathbf{r}'(t) \equiv \dfrac{d\mathbf{r}}{dt}$. In a physical scenario, where $\mathbf{r}(t)$ represents a trajectory through space, $\mathbf{r}'(t)$ represents the <em>velocity</em>. Taking another derivative, we have $\mathbf{a}(t) = \mathbf{r}''(t)$, the <em>acceleration</em>.</p>
 <p>We have already seen some examples of parametric paths. For instance, we saw that a <strong>straight line</strong> is given by:</p>

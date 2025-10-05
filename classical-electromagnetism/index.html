@@ -41,7 +41,8 @@
     <article class="post">
         <h1>In-Depth Classical Electromagnetism</h2>
         
-        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF. <a href="https://forms.gle/msb5wKErDJCjeL5k6">Report an issue or error here</a>.</p>
+
         
         
         <!-- table of contents -->
@@ -441,7 +442,11 @@ $$
 $$
 </p><h4 id="curvilinear-coordinate-systems">Curvilinear coordinate systems</h4>
 <p>We find that when solving some problems in electromagnetism, it is easier to use a non-Cartesian coordinate system, such as polar, cylindrical, and spherical coordinates. This is especially the case if the problem is rotationally symmetric. We illustrate the three most common non-Cartesian coordinate systems below: <strong>polar coordinates</strong>, <strong>cylindrical coordinates</strong>, and <strong>spherical coordinates</strong>.</p>
-<img class="wide-img" src="/classical-electromagnetism/cartesian-polar-cylindrical-spherical.excalidraw.svg" alt="An illustration of the polar, cylindrical, and spherical coordinate systems" />
+<img class="wide-img"
+	
+		src="/classical-electromagnetism/cartesian-polar-cylindrical-spherical.excalidraw.svg"
+	
+	alt="An illustration of the polar, cylindrical, and spherical coordinate systems" />
 <p>Polar coordinates use $(r, \theta)$ to describe the location of a point, where $r$ is the radial distance from the origin to the point, and $\theta$ is the angle the point makes with the $x$ axis. Polar coordinates are related to Cartesian coordinates by:</p>
 <p class="mathcell">
 $$
@@ -712,7 +717,11 @@ $$
 <p>Materials, of course, are composed of atoms; every atom is naturally neutrally-charged and is composed of a postively-charged nucleus and negatively-charged electrons. While physics at an atom scale is quantum-mechanical in nature, we can, to a good approximation, model the nucleus as a classical positive charge and electrons as classical negative charges.</p>
 <p>Loosely-speaking, a conductor is any material that allows charges to move. Since protons are bound by electrostatic forces to their innermost electrons, protons usually do not move; it is the electrons that typically move, but this distinction is not that significant because the effects of charge separation (that is, an inbalance of positive and negative charges) are equivalent. <strong>All metals are conductors</strong>, and this is because the outermost (valence) electrons of metals are weakly-bound to their nuclei, allowing them to escape the atom. Thus, metals have free electrons.</p>
 <p>Now, consider an external electric field applied on a conductor (for instance, by bringing a charge close to the surface of a conductor). By $\mathbf{F} = -q\mathbf{E}$, the free electrons in the conductor are repelled by the electric field, causing <em>charge separation</em> to occur - the electrons move away from the protons, leading to a region of positive charge and a region of negative charge, as shown:</p>
-<img class="diagram" src="/classical-electromagnetism/polarized-conductor.excalidraw.svg" alt="A diagram showing a conductor placed in an external field, which experiences charge separation (polarization), leading to an induced field created that counters the external field" />
+<img class="diagram"
+	
+		src="/classical-electromagnetism/polarized-conductor.excalidraw.svg"
+	
+	alt="A diagram showing a conductor placed in an external field, which experiences charge separation (polarization), leading to an induced field created that counters the external field" />
 <p>This separation of positive and negative charges is known as <strong>polarization</strong> and the excess of charge accumulated at each end due to the external field is called the <strong>induced charge</strong>. However, as quickly as polarization occurs, the attractive electrostatic forces between the positive and negative charges leads to an <em>induced</em> electric field $\mathbf{E}_\mathrm{induced}$ that pulls the electrons towards the protons. The induced field $\mathbf{E}_\mathrm{ext}$ and the external (also called <em>polarizing</em>) field $\mathbf{E}_\mathrm{ext}$ are in opposite directions and cancel out, such that the <em>net electric field</em> is zero:</p>
 <p class="mathcell">
 $$
@@ -731,7 +740,11 @@ $$
 </blockquote>
 <p>In the special case where a conductor is <strong>grounded</strong>, the conductor is attached by a metal wire to the ground, which acts as an infinite source (and sink) of electrons. Thus, any excess charge on the surface of the conductor is cancelled out by free electrons that enter the conductor from the ground or leave the conductor into the ground, as electrons are free to move. Thus, not only do we have $\mathbf{E}_\mathrm{inside} = 0$, but we <em>also</em> have $V = 0$ throughout the conductor. For a more precise and elaborate discussion, see <a href="https://physics.stackexchange.com/questions/547488/accumulated-charge-in-a-grounded-conductor">this Physics StackExchange post</a>.</p>
 <p>Using the fact that the electric field lines outside a conductor are always perpendicular to the surface, we can derive an expression for the <em>induced charge</em>. We may calculate this induced charge mathematically as follows: recall that the electric field near the surface of a conductor is given by $\mathbf{E} = \dfrac{\sigma}{\varepsilon_0} \hat{\mathbf{n}}$. We illustrate this in the below diagram:</p>
-<img class="diagram" src="/classical-electromagnetism/induced-charge-conductor.excalidraw.svg" alt="A diagram showing how induced charges due to an external field causes positive and negative charges to separate, which we call polarization" />
+<img class="diagram"
+	
+		src="/classical-electromagnetism/induced-charge-conductor.excalidraw.svg"
+	
+	alt="A diagram showing how induced charges due to an external field causes positive and negative charges to separate, which we call polarization" />
 <p>Since $\mathbf{E} = -\nabla V$, and since electric field lines outside a conductor are <em>perpendicular to the surface</em> (which means they are also parallel to the normal of the surface), then $\nabla V = \dfrac{\partial V}{\partial n}$. Therefore, by equating the expressions, we obtain:</p>
 <p class="mathcell">
 $$
@@ -821,9 +834,17 @@ $$
 <p>For cases in which $\rho = 0$ and/or $V(\infty) \neq 0$, we must use the <strong>method of images</strong>, <strong>separation of variables</strong>, or <strong>multipole expansion</strong> to solve, or if we have exhausted all of these methods, to use numerical methods, such as the method of relaxation. We will cover these methods one-by-one.</p>
 <h3 id="the-method-of-images">The method of images</h3>
 <p>Consider the problem of a charge $Q$ placed at position $\mathbf{r}_1 = \langle 0, 0, d\rangle$ placed above a (conducting) metal plate that is grounded (that is, $V = 0$). We show a sketch of this physical situation below:</p>
-<img class="diagram" src="/classical-electromagnetism/method-of-images.excalidraw.svg" alt="A diagram showing a charge placed above a grounded conducting plate" />
+<img class="diagram"
+	
+		src="/classical-electromagnetism/method-of-images.excalidraw.svg"
+	
+	alt="A diagram showing a charge placed above a grounded conducting plate" />
 <p>Our boundary conditions of $V(0) = V(\infty) = 0$ suggests that we place <em>another charge</em> at $\mathbf{r}_2 = \langle 0, 0, -d\rangle$ that has the opposite charge $\tilde Q = -Q$ (called an <strong>image charge</strong>). Such a physical scenario would have <em>the same boundary conditions</em> as our original problem. We illustrate this <em>modified</em> scenario below:</p>
-<img class="natural-img" src="/classical-electromagnetism/method-of-images-2.excalidraw.svg" alt="A diagram showing a fake image charge placed under the aforementioned conducting plate" />
+<img class="natural-img"
+	
+		src="/classical-electromagnetism/method-of-images-2.excalidraw.svg"
+	
+	alt="A diagram showing a fake image charge placed under the aforementioned conducting plate" />
 <p>Of course, the potential below $z = 0$ is unphysical; there is no real charge at $\langle 0, 0, -d\rangle$, as the image charge is imaginary. But the superposition principle means that the potential of the image charge and the potential of the real charge causes the potential to cancel out at $z = 0$, and since both potentials decay with distance, both vanish at $\pm \infty$. Thus this scenario preserves the boundary conditions $V(0) = 0, V(\infty) = 0$.</p>
 <p>This means that, given the uniqueness theorem of Poisson's equation (<em>a solution to certain boundary conditions is the one unique solution</em>), since the two physical scenarios have the <strong>same boundary conditions</strong>, Poisson's equation yields a <strong>unique solution</strong> that is identical for both scenarios.</p>
 <blockquote>
@@ -976,7 +997,11 @@ $$
 <p>Thus, if we input the boundary conditions by setting the edges of the matrix (which are the boundary points) to equal the boundary conditions, we can then perform the iterative process until the solution has converged sufficiently. This is known as the <strong>method of relaxation</strong>.</p>
 <h3 id="boundary-value-problems-by-separation-of-variables">Boundary-value problems by separation of variables</h3>
 <p>Consider two grounded metal plates, separated by a dielectric slab of height $a$ and negligible thickness (both shown on the diagram below). We want to find the potential $V(x, y)$ between the two plates. Since the metal plates are conductors and are grounded, they have $V = 0$, while the dielectric slab has a potential distribution given by $V = V_0(y)$.</p>
-<img class="natural-img" src="/classical-electromagnetism/poisson-bvp.excalidraw.svg" alt="An illustration of the boundary-value problem, where two metal plates are bridged by a thin dielectric slab" />
+<img class="natural-img"
+	
+		src="/classical-electromagnetism/poisson-bvp.excalidraw.svg"
+	
+	alt="An illustration of the boundary-value problem, where two metal plates are bridged by a thin dielectric slab" />
 <blockquote>
 <p><strong>Note:</strong> This problem from Griffiths Example 3.3 from <em>Introduction to Electrodynamics</em>.</p>
 </blockquote>
@@ -1492,7 +1517,11 @@ $$
 <p>Which again also looks (and is!) the potential of a <strong>perfect dipole</strong>! We can continue this process as much as we want, leading to the origin of the name <em>multipole expansion</em>. Essentially, we assume that the potential very far away "looks" like a monopole, plus a dipole, plus all the other <em>nth</em>-poles, and that by summing all of them together, we get the true potential.</p>
 <h2 id="fields-of-polarized-dielectrics">Fields of polarized dielectrics</h2>
 <p>We recall that in a conductor, the electric field is very simple - $\mathbf{E}_\text{interior} = 0$ is true for <em>all conductors</em>. But the field is not so simple in <em>dielectric materials</em> (which can be thought of at this stage as the same thing as insulators, though there <em>is</em> a distinction). Dielectrics have <em>immobile charges</em>, meaning that their charges are <strong>not free</strong> to move freely throughout the material, although they can rotate and slightly shift in place. When a neutral dielectric is placed in an external electric field, <strong>polarization</strong> occurs, which, like in conductors, is due to negative charges experiencing a repulsive force and positive charges experiencing an attractive force in the direction of the external field. Unlike in a conductor, however, the negative and positive charges cannot move, so there is no charge separation; rather, they rotate (or in some cases stretch) in place to align with (or against) the field, as we show in the below diagram.</p>
-<img class="diagram" src="/classical-electromagnetism/dipole-moments-electric.excalidraw.svg" alt="A diagram showing how dipole moments in a dielectric arise as a result of charges aligning towards (and others against) an applied field" />
+<img class="diagram"
+	
+		src="/classical-electromagnetism/dipole-moments-electric.excalidraw.svg"
+	
+	alt="A diagram showing how dipole moments in a dielectric arise as a result of charges aligning towards (and others against) an applied field" />
 <p>This process during polarization leads to a net <strong>dipole moment</strong>, denoted $\mathbf{p}$, where $\mathbf{p} = \alpha \mathbf{E}$ and $\alpha$ is the <strong>polarizability</strong>. The more strongly the dielectric is polarized, the higher the magnitude of its dipole moment.</p>
 <blockquote>
 <p><strong>Note:</strong> For materials that consist of a single type of atom, $\alpha$ is a constant that is only dependent on the type of material; for molecular compounds, however, $\alpha$ is a matrix (technically, a <em>tensor</em>, and we will see the distinction later).</p>
@@ -1713,7 +1742,11 @@ d\mathbf{B} = \dfrac{\mu_0}{4\pi} \dfrac{I \vec{d\ell} \times \hat r&#x27;}{|\ma
 $$
 </p>
 <p>Where $\mathbf{r}$ is the position vector, $\mathbf{r}'$ is the location of an infinitesimal portion of current $I \vec{d\ell}$, and $\hat r' = \dfrac{\mathbf{r} - \mathbf{r}'}{|\mathbf{r} - \mathbf{r}'|}$ is the vector pointing from the location of the infinitesimal portion of current to the position vector. We show this below:</p>
-<img class="diagram" src="/classical-electromagnetism/biot-savart.excalidraw.svg" alt="A diagram of the Biot-Savart law" />
+<img class="diagram"
+	
+		src="/classical-electromagnetism/biot-savart.excalidraw.svg"
+	
+	alt="A diagram of the Biot-Savart law" />
 <p>The magnetic field, in general, must be found by integration of $d\mathbf{B}$ across the <em>entirety</em> of the current-carrying region (which is usually a wire, although it can also be a conductor's surface or some volume of charge). <em>If</em> the current-carrying region is a wire, then the integration must occur across the entire length of the wire, so the integral is a <em>line integral</em> across all infinitesimal length segments of the wire $d\vec \ell$, as shown below:</p>
 <p class="mathcell">
 $$
@@ -1843,7 +1876,11 @@ $$
 <p><img src="https://blogs.wizklub.com/wp-content/uploads/2023/09/right-thumb-rule-768x528.png" alt="A demonstration of the right-hand thumb rule for currents" /></p>
 <p><em>Source: <a href="https://blogs.wizklub.com/question-answers/what-is-the-right-hand-thumb-rule-for-determining-the-direction-of-the-magnetic-field/">Wizklub Future</a></em></p>
 <p>Another important configuration in magnetostatics is the ideal <strong>solenoid</strong>, a type of <em>electromagnet</em>. Consider a wire wrapped $N$ times in a circular fashion around a tube of length $L$, as shown in the drawing below:</p>
-<img class="diagram" src="/classical-electromagnetism/solenoid-field.excalidraw.svg" alt="Magnetic field lines in a solenoid. The field lines are pointing along the x-axis, perpendicular to the current through the coils" />
+<img class="diagram"
+	
+		src="/classical-electromagnetism/solenoid-field.excalidraw.svg"
+	
+	alt="Magnetic field lines in a solenoid. The field lines are pointing along the x-axis, perpendicular to the current through the coils" />
 <p>If we consider just one turn of wire and draw a rectangular Amperian loop within the field (shown above), the only portion of the loop parallel to the magnetic field is the bottom edge of the loop. Since there are $N$ turns in total, the length of the bottom of the loop must be $L/N$, so Ampère's law becomes:</p>
 <p class="mathcell">
 $$
@@ -2305,10 +2342,18 @@ $$
 <li>The wire loop is <em>stationary</em>, but the magnetic field is <em>time-dependent</em>, that is, $\mathbf{B} = \mathbf{B}(t)$</li>
 </ul>
 <p>We show each of these cases below. In case (1), we have a magnetic field that depends on position - it is equal to $\mathbf{B} = \mathbf{B}_0$ for $x \leq a$ and $\mathbf{B} = 0$ for $x &gt; a$. In case (2), we have a loop that is <em>rotating</em> within a magnetic field; since the flux $\Phi = \mathbf{B}\cdot \mathbf{A} = |B||A|\cos \theta$ depends on the angle between the loop and the magnetic field vectors, there is a change in flux as the loop rotates, and therefore an EMF. Lastly, in case (3), we have a time-dependent magnetic field, so the flux through the loop is also changes with time.</p>
-<img class="diagram" src="/classical-electromagnetism/emf-different-types.excalidraw.svg" alt="A diagram of the 3 cases of nonzero magnetic flux, as described above." />
+<img class="diagram"
+	
+		src="/classical-electromagnetism/emf-different-types.excalidraw.svg"
+	
+	alt="A diagram of the 3 cases of nonzero magnetic flux, as described above." />
 <p><em>Reference: <a href="https://learn.mit.edu/c/unit/mitx?resource=4785">MITx electromagnetic theory</a></em></p>
 <p>We can go through even more examples. For instance, consider a bar magnet that moves through a loop. The loop itself is not moving, but since the magnet <em>is</em> moving, the magnetic flux through the loop changes. Or conside a loop that slowly moves away from a wire. Remember, the magnetic field around a long wire is given by $\mathbf{B}(\mathbf{r}) = \dfrac{\mu_0 I}{2\pi r} \hat r$ - so, if we have a loop moving in the $r$ direction away from the wire, the flux changes (decreases) over time.</p>
-<img class="diagram" src="/classical-electromagnetism/emf-more-types.excalidraw.svg" alt="A diagram of the 2 more cases of nonzero magnetic flux described above" />
+<img class="diagram"
+	
+		src="/classical-electromagnetism/emf-more-types.excalidraw.svg"
+	
+	alt="A diagram of the 2 more cases of nonzero magnetic flux described above" />
 <p>Faraday found <em>experimentally</em> that in all three cases, the <em>changing</em> magnetic flux through the loop (not the flux itself, the <em>rate of change</em> of the flux) actually produces an EMF. We call this type of EMF as the <strong>induced EMF</strong> (though we can get sloppy and call it just "the EMF" sometimes). The induced EMF is given by:</p>
 <p class="mathcell">
 $$
@@ -2367,7 +2412,11 @@ $$
 <h3 id="inductance-and-inductors">Inductance and inductors</h3>
 <p>In Faraday's law, we find that interestingly, there is a <em>negative sign</em> on the right-hand side. That is, a <em>faster change in flux</em> results in a <em>smaller</em> EMF, while a <em>slower change in flux</em> results in a <em>larger</em> EMF. It is almost as if there is some "invisible" force that is <em>opposing</em> the change in flux!</p>
 <p>Indeed, this is a real effect, called <strong>Lenz's law</strong>. And it does not come from an invisible force - we find that an induced electric field produced by a changing magnetic flux itself creates a <em>magnetic field</em> that <em>opposes</em> the change in flux. This means that as the magnetic flux changes, which induces an EMF that (in a conducting loop) drives a current through a loop, that current itself induces an <em>opposing</em> magnetic field which tries to <em>push against</em> that current by inducing a magnetic field in the opposite direction. This opposing magnetic field tries to "drive down" the current from the EMF, which produces a change in current $\dfrac{dI}{dt}$. We illustrate this situation below:</p>
-<img class="diagram" src="/classical-electromagnetism/emf-lenz-s-law.excalidraw.svg" alt="An illustration of Lenz&#x27;s law: an induced magnetic field pushing back against a  magnetic field with changing flux" />
+<img class="diagram"
+	
+		src="/classical-electromagnetism/emf-lenz-s-law.excalidraw.svg"
+	
+	alt="An illustration of Lenz&#x27;s law: an induced magnetic field pushing back against a  magnetic field with changing flux" />
 <p>The rate of change of the this current is <em>proportional</em> to the change in flux, and we call this proportionality constant the <strong>inductance</strong>, symbol $L$. Thus, Lenz's law is given by:</p>
 <p class="mathcell">
 $$
@@ -2388,7 +2437,11 @@ $$
 <h4 id="self-inductance">Self-inductance</h4>
 <p>When inductance occurs in the same loop (or coil) as the loop (or coil) where the magnetic field produces an EMF, we call this type of inductance <strong>self-inductance</strong>. Usually, this type of inductance is unwanted, because it decreases the induced current through the coil/loop; in most applications, we want the induced current to be as high as possible, so we say that the self-inductance is <em>parasitic</em>. However, there are some applications where self-inductance <em>is</em> desired: for instance, electrical devices are often shielded with <em>inductors</em>, devices that have a high inductance, to prevent rapid changes in current (such as power surges) from destroying the device. In this part, we will calculate the inductance of a few simple inductors.</p>
 <p>To start things off, we will consider a relatively straightforward example. Consider a solenoid formed by $N$ circular loops of radius $R$, with a total length of $L$ and $n = N/L$ turns per unit length. We show this in the diagram below:</p>
-<img class="diagram" src="/classical-electromagnetism/solenoid-inductance.excalidraw.svg" alt="An illustration of the induced magnetic field of a solenoid with changing current" />
+<img class="diagram"
+	
+		src="/classical-electromagnetism/solenoid-inductance.excalidraw.svg"
+	
+	alt="An illustration of the induced magnetic field of a solenoid with changing current" />
 <p>The solenoid has a current $I(t)$ that passes through it, which produces a time-varying magnetic field $\mathbf{B}(t) = \mu_0 n I(t) \hat x$, causing a changing flux. We can calculate the magnetic flux across a single pool as follows:</p>
 <p class="mathcell">
 $$
@@ -2442,7 +2495,11 @@ $$
 $$
 </p>
 <p>The total flux $\Phi_\text{from 1}$ caused by the magnetic field from the first coil passing through the second coil creates an EMF (and therefore drives a current) in the second coil, which is opposed by the induced magnetic field due to the current (by Lenz's law). We show this in the drawing below:</p>
-<img class="diagram" src="/classical-electromagnetism/mutual-inductance.excalidraw.svg" alt="An illustration of mutual inductance: the EMF through one coil causing an opposing magnetic field in another coil" />
+<img class="diagram"
+	
+		src="/classical-electromagnetism/mutual-inductance.excalidraw.svg"
+	
+	alt="An illustration of mutual inductance: the EMF through one coil causing an opposing magnetic field in another coil" />
 <p>We call this effect <em>mutual inductance</em>, denoted $M$, and is given by:</p>
 <p class="mathcell">
 $$
@@ -2471,7 +2528,11 @@ $$
 </p>
 <p>In the four equations above, the top three equations are all correct: Gauss's law for electricity, Gauss's law for magnetism, and Faraday's law. But the fourth equation - Ampere's law - is not correct, or at least, not <em>completely correct</em>. It holds true for statics (that is, when electrostatics or magnetostatics applies), but <em>not</em> electrodynamics.</p>
 <p>To see why, consider a capacitor on the $+x$ axis, made of two conducting plates some distance $d$ apart, separated by empty space - if you a review of capacitors, see the <a href="https://jackysci.com/electromagnetism/">introductory electromagnetism guide</a>. A current $I$ flows via a wire into one side of the capacitor, charging up one plate. Here is a sketch below:</p>
-<img class="diagram" src="/classical-electromagnetism/displacement-current-demo.png" alt="A diagram showing a magnetic field caused by the electric field changing within a capacitor as it is charged or discharged" />
+<img class="diagram"
+	
+		src="/classical-electromagnetism/displacement-current-demo.png"
+	
+	alt="A diagram showing a magnetic field caused by the electric field changing within a capacitor as it is charged or discharged" />
 <p><em>Source: <a href="https://physics.stackexchange.com/questions/421158/magnetic-field-from-displacement-currents-in-a-capacitor-and-an-applied-exterio">Physics StackExchange</a></em></p>
 <p>We have already calculated the electric field of a capacitor (between its two plates) in the <a href="https://jackysci.com/electromagnetism/">introductory electromagnetism guide</a> - it is given by $\mathbf{E} = \dfrac{\sigma}{\varepsilon_0} \hat{\mathbf{x}}$. But what about the magnetic field of a capacitor? You may be inclined to say that there is no magnetic field in the middle of the capacitor; after all, there is no wire there, just the empty space separating the two plates.</p>
 <p>But recall that the <em>capacitance</em> of a capacitor is related to its charge by $Q = CV$, so if we take the time derivative of both sides (remember $I = dQ/dt$) and rearrange, we get $I_\text{cap.} = C \dfrac{dV}{dt}$. As the capacitor is charged (or discharged), the potential difference between the plates certainly does change, so there is absolutely current within the capacitor!</p>
@@ -2639,7 +2700,11 @@ $$
 <p><strong>Note:</strong> For some it is more illustrative to write $\mathbf{E}(\mathbf{r}, t) = E_0 \hat{\mathbf{n}}_1, e^{i(\mathbf{k} \cdot \mathbf{r} - \omega t)}$ and $\mathbf{B}(\mathbf{r}, t) = B_0 \hat{\mathbf{n}}_2, e^{i(\mathbf{k} \cdot \mathbf{r} - \omega t)}$, where $\hat{\mathbf{n}}_1, \hat{\mathbf{n}}_2$ are the directions of the electric field and magnetic field vectors (respectively). This is because electromagnetic waves <strong>don't</strong> propagate along the electric or magnetic field lines, but rather, <strong>perpendicular to both the electric and magnetic field lines</strong>. So, it is useful to explicitly write out the directions ($\hat{\mathbf{n}}$) that the fields are oscillating in, to not forget that <strong>these aren't the same as the direction the wave travels</strong>.</p>
 </blockquote>
 <p>In the special case that $\mathbf{E}_0 = E_{0y} \hat{\mathbf{y}}$ and $\mathbf{B}_0 = B_{0z} \hat{\mathbf{z}}$, that is, for an electromagnetic plane wave where only the $y$ component of the electric field and $z$ component of the magnetic field is nonzero, our solutions take the form $\mathbf{E}(\mathbf{r}, t) = E_{0y} \hat{\mathbf{y}} e^{i(\mathbf{k} \cdot \mathbf{r} - \omega t)}$ and $\mathbf{B}(\mathbf{r}, t) = B_{0z} \hat{\mathbf{z}} e^{i(\mathbf{k} \cdot \mathbf{r} - \omega t)}$. A visualization of such an electric field is shown below:</p>
-<img class="diagram" src="/classical-electromagnetism/transverse-em-wave-stackexchange.png" alt="A plot of an electric field along the y-direction and a magnetic field around the z-direction" />
+<img class="diagram"
+	
+		src="/classical-electromagnetism/transverse-em-wave-stackexchange.png"
+	
+	alt="A plot of an electric field along the y-direction and a magnetic field around the z-direction" />
 <p><em>Source: <a href="https://physics.stackexchange.com/questions/451751/is-the-direction-of-the-electric-field-relative-to-the-magnetic-field-in-an-elec">Physics StackExchange</a></em></p>
 <blockquote>
 <p><strong>Note:</strong> It is interesting to note that $\mathbf{E}, \mathbf{B}$ are <strong>perpendicular</strong> to the direction that the wave travels, rather than aligned along the travel direction. Thus we say the wave is <strong>transverse</strong>. We will soon see the mathematical reason for why that is.</p>

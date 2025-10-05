@@ -41,7 +41,8 @@
     <article class="post">
         <h1>Advanced Classical Mechanics, Part III</h2>
         
-        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF. <a href="https://forms.gle/msb5wKErDJCjeL5k6">Report an issue or error here</a>.</p>
+
         
         
         <!-- table of contents -->
@@ -394,7 +395,11 @@ $$
 </p>
 <p>So we find that $|\mathbf{v}_1^*| = |\mathbf{v}_1&#x27;^*|$, which also implies that $|\mathbf{v}_2^*| = |\mathbf{v}_2&#x27;^*|$. We would expect this: the conservation of energy would require that this be the case.</p>
 <p>We will now examine a classic problem to be able to showcase using the center-of-momentum frame to solve problems. Consider a mass $m_1$ moving at velocity $\mathbf{v}_1$ that collides with another mass $m_2$ that istationary, so $\mathbf{v}_2 = 0$ (this is a classic billiard-ball style situation). The masses are rigid, so we may assume that the collision is close to perfectly elastic. The collision sends the two massses flying in opposite directions; the first mass is deflected by an angle $\psi$, and the second mass is deflected by an angle $\xi$. We show this scenario in the below diagram:</p>
-<img class="natural-img" src="/advanced-classical-mech/part-3/elastic-collision-demo.excalidraw.svg" alt="My description" />
+<img class="natural-img"
+	
+		src="/advanced-classical-mech/part-3/elastic-collision-demo.excalidraw.svg"
+	
+	alt="My description" />
 <p>Writing out the conservation of momentum yields the following equation:</p>
 <p class="mathcell">
 $$
@@ -465,7 +470,11 @@ $$
 <p>We note that if $m_1 \ll m_2$, then $\tan \psi \approx \tan \theta$ and $\psi \approx \theta$. Meanwhile, if $m_1 = m_2$, then $\tan \psi = \dfrac{\sin \theta}{\cos \theta + 1} = \tan \left(\dfrac{\theta}{2}\right)$. We will not do the derivations but we note that in the case $m_1 = m_2$, we additionally have $\tan \xi = \tan \left(\dfrac{\pi}{2} - \dfrac{\theta}{2}\right)$ and therefore we have $\xi = \dfrac{\pi}{2} - \psi$. And we can now see the significance of center-of-momentum frames: while the math to solve this problem was intense, it would have been much, much harder had we not used a center-of momentum frame to solve the problem.</p>
 <h3 id="scattering-problems">Scattering problems</h3>
 <p>Using the conservation of momentum, we can solve for collisions between two (or perhaps three or four) particles - anything beyond that is intractable. But what if we have a large number of particles, all of them colliding at some surface? That is to say, if we were to shoot a number of particles on some surface, what would be the distribution of the particle impacts on the surface (if the collision is inelastic) or where would the particles be deflected (if the collision is elastic)? This is the problem known as <strong>scattering</strong>.</p>
-<img class="diagram" src="/advanced-classical-mech/part-3/https://upload.wikimedia.org/wikipedia/commons/d/dc/Differential_cross_section.svg" alt="An illustration of scattering. A particle incident on some object at a height b above the collision axis incident on cross-sectional area sigma is deflected at solid angle d omega." />
+<img class="diagram"
+	
+		src="https:&#x2F;&#x2F;upload.wikimedia.org&#x2F;wikipedia&#x2F;commons&#x2F;d&#x2F;dc&#x2F;Differential_cross_section.svg"
+	
+	alt="An illustration of scattering. A particle incident on some object at a height b above the collision axis incident on cross-sectional area sigma is deflected at solid angle d omega." />
 <p><em>Source: <a href="https://en.wikipedia.org/wiki/File:Differential_cross_section.svg">Wikipedia</a></em></p>
 <p>To describe scattering, we begin by defining the collision object (that the particle(s) hit and scatter off of), and draw an axis through its center - we refer to this axis as the <strong>centerline</strong> or <strong>collision axis</strong>. The particle(s)' distance <em>above</em> the centerline is known as the <strong>impact parameter</strong>, which we denote as $b$. If the particle does indeed deflect, then the angle at which it deflects is called the <strong>scattering angle</strong>, and is denoted by $\theta$.</p>
 <p>Now, to analyze scattering, we use something called the <em>scattering cross-section</em>. This describes the ratio of $d\sigma$, an infinitesimal cross-sectional area the particle(s) pass through, to $d\Omega$, an infinitesimal scattering angle (the $\Omega$ is due to the fact that the angle is called a <strong>solid angle</strong>). Using the notation in Griffiths, <em>Introduction to Elementary Particles</em>, the scattering cross-section $D(\theta)$ is therefore defined as:</p>
@@ -498,7 +507,11 @@ $$
 <p>The scattering cross-section has rather unusual units: it is expressed in terms of $\pu{m^2/sr}$, that is, <em>meters squared over steradians</em> (steradians are the standard unit for solid angle and are very similar to radians for regular angles). However, since steradians are dimensionless, the scattering cross-section can equivalently just be expressed in units of $\pu{m^2}$. In (quantum) particle physics, it is common to use the (funnily-named) unit of the <em>barn</em> ($\pu{b}$), where $\pu{1b} = \pu{100 fm^2} = \pu{10^{-28} m^2}$. But for classical physics, we can just use regular meters and centimeters.</p>
 <h3 id="scattering-over-a-hard-sphere">Scattering over a hard sphere</h3>
 <p>Let us consider a particle (or stream of particles) bouncing off a hard sphere of radius $R$ (this problem is also in Griffiths, <em>Introduction to Elementary Particles</em>, example 6.1). By "hard", we mean a completely rigid, impenetrable sphere, which is of course impossible in reality, so this is an idealization. For this problem, it is always helpful to draw a diagram, so we show one below:</p>
-<img class="wide-img" src="/advanced-classical-mech/part-3/./hard-sphere-scattering.excalidraw.svg" alt="A diagram showing a particle of height b passing through cross-section d sigma that hits a solid impenetrable sphere and is deflected at angle theta (measured from the +x axis). The scattering solid angle is d Omega." />
+<img class="wide-img"
+	
+		src="/advanced-classical-mech/part-3/./hard-sphere-scattering.excalidraw.svg"
+	
+	alt="A diagram showing a particle of height b passing through cross-section d sigma that hits a solid impenetrable sphere and is deflected at angle theta (measured from the +x axis). The scattering solid angle is d Omega." />
 <p>Recall that $\dfrac{d\sigma}{d\Omega} = \left|\dfrac{b}{\sin \theta} \left(\dfrac{db}{d\theta}\right)\right|$ is the general result that we found before (one that generalizes to other problems, it is not just true for this particular problem). Unfortunately, to be able to compute the formula explicitly, we need to know $b(\theta)$. This is where our diagram comes in. By defining the angle $\phi$ for which $\theta = \pi - 2\phi$, we have:</p>
 <p class="mathcell">
 $$
@@ -594,7 +607,11 @@ $$
 $$
 </p>
 <p>Let us now consider the case of a particle falling to Earth's surface from some height $h$. We will use $z$ as our radial coordinate, $x$ as the horizontal coordinate, and $\theta$ as the angle made with respect to the center of the Earth, as we show in the below diagram:</p>
-<img class="diagram" src="/advanced-classical-mech/part-3/coriolis-earth.excalidraw.svg" alt="A diagram of the problem&#x27;s coordinate system, showing z as the distance above earth&#x27;s surface, theta as the angle with respect to the center of the earth, and y as the direction tangent to the Earth&#x27;s surface" />
+<img class="diagram"
+	
+		src="/advanced-classical-mech/part-3/coriolis-earth.excalidraw.svg"
+	
+	alt="A diagram of the problem&#x27;s coordinate system, showing z as the distance above earth&#x27;s surface, theta as the angle with respect to the center of the earth, and y as the direction tangent to the Earth&#x27;s surface" />
 <p>The angular velocity of the Earth about its rotational axis is given by:</p>
 <p class="mathcell">
 $$
@@ -845,7 +862,11 @@ $$
 <p><strong>An intuitive look at the inertia tensor for continuous objects:</strong> One way to think of it is that as the number of particles grows to be very, very large, then the individual masses of each particle $m_i$ grows very small, so we have $m_i \to dm$, where $dm$ is an infinitesimal amount of mass. Since the mass density $\rho$ is given by $\rho(\mathbf{r}) = \dfrac{dm}{dV}$, we can rearrange it to find that $dm = \rho dV$, and replace the sum with an integral, from which the inertia tensor for continuous object naturally emerges.</p>
 </blockquote>
 <p>As an example, consider a rectangular plate of uniform density $\rho$, of dimensions length $a$, width $b$, and height $c$, with total mass $M$, as shown:</p>
-<img class="diagram" src="/advanced-classical-mech/part-3/../momentum-of-inertia-box.excalidraw.svg" alt="A diagram of a box of length a, width b, and height c, with a Cartesian coordinate system with the axes x1, x2, x3." />
+<img class="diagram"
+	
+		src="/advanced-classical-mech/part-3/../momentum-of-inertia-box.excalidraw.svg"
+	
+	alt="A diagram of a box of length a, width b, and height c, with a Cartesian coordinate system with the axes x1, x2, x3." />
 <p>Let us calculate the $I_{11}$ component, that is, the moment of inertia with respect to the $x_1$ axis of rotation. By our previous expression for the moment of inertia in the continuous case, we have:</p>
 <p class="mathcell">
 $$
@@ -904,7 +925,11 @@ $$
 <p>The off-diagonal components of the inertia tensor makes using these formulas for calculations much more complicated, because you need to sum over all of the terms on the off-diagonals as well as the diagonal terms. Luckily, there is a way to determine the most preferable choice of axes, for which the inertia tensor <em>is</em> diagonal. These preferred axes are known as the <strong>principal axes</strong>.</p>
 <p>To calculate the principal axes, we must first calculate the <strong>eigenvectors</strong> of the inertia tensor $I_{ij}$ by solving the eigenvalue equation $I_{ij} \mathbf{v} = \lambda \mathbf{v}$ for all possible solutions $\mathbf{v}_n$. If you haven't solved eigenvalue equations before, you can consult <a href="https://math.libretexts.org/Bookshelves/Linear_Algebra/A_First_Course_in_Linear_Algebra_(Kuttler)/07%3A_Spectral_Theory/7.01%3A_Eigenvalues_and_Eigenvectors_of_a_Matrix">this online textbook</a> for a guide. The eigenvectors $\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_n$ are known as the <strong>principal axes</strong>.</p>
 <p>From there, we may construct a matrix $P$ with the principal axes (eigenvectors) $\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_n$ as its columns, as shown below:</p>
-<img class="diagram" src="/advanced-classical-mech/part-3/../matrix-column-space.excalidraw.svg" alt="The matrix P composed of eigenvectors v1, v2, ... as its rows" />
+<img class="diagram"
+	
+		src="/advanced-classical-mech/part-3/../matrix-column-space.excalidraw.svg"
+	
+	alt="The matrix P composed of eigenvectors v1, v2, ... as its rows" />
 <blockquote>
 <p><strong>Note:</strong> in case this was not clear, each of the columns of $P$ are formed by one of the eigenvectors $\mathbf{v}_n$. For instance, column 1 is the first eigenvector, column 2 is the second eigenvector, and so forth.</p>
 </blockquote>
@@ -1112,7 +1137,11 @@ $$
 <h3 id="two-body-systems-of-coupled-oscillators">Two-body systems of coupled oscillators</h3>
 <p>A yet more sophisticated version of the oscillator is the <strong>coupled harmonic oscillator</strong>, where several bodies, connected to each other, are oscillating in motion. The motion of many bodies is quite complicated and very difficult to analyze separately. However, there is a way to make the problem tractable: we can choose a system of coordinates, called <strong>normal coordinates</strong>, such that the motion of each individual oscillating body can be considered <em>relative</em> to the system of normal coordinates. This allows the motion to be constrained so that <em>only one</em> normal coordinate varies with time.</p>
 <p>Let's go through what we mean. Consider a system of $n$ oscillators. The system would have $n$ normal modes (although they are not necessarily distinct; if they are repeated, we call them <strong>degenerate modes</strong>, and yes, physicists are <em>horrible</em> at naming things). In the case that $n = 2$, where we have two bodies of masses $m_1 = m_2$ and positions $x_1(t), x_2(t)$ (using a coordinate systems centered at their equilibrium position), we have two normal modes.</p>
-<img class="diagram" src="/advanced-classical-mech/part-3/../coupled-harmonic-oscillator.excalidraw.svg" alt="A diagram showing two masses that are attached to springs and are also connected to each other by a spring. Their positions are denoted x1, x2 and their masses are equal and of magnitude m." />
+<img class="diagram"
+	
+		src="/advanced-classical-mech/part-3/../coupled-harmonic-oscillator.excalidraw.svg"
+	
+	alt="A diagram showing two masses that are attached to springs and are also connected to each other by a spring. Their positions are denoted x1, x2 and their masses are equal and of magnitude m." />
 <p>Let us make the simplifying assumption that $m_1 = m_2 = M$. We can write down a Lagrangianfor the system, as given by:</p>
 <p class="mathcell">
 $$
@@ -1415,7 +1444,11 @@ $$
 </blockquote>
 <h4 id="normal-modes-and-coordinates-of-two-coupled-oscillators">Normal modes and coordinates of two coupled oscillators</h4>
 <p>Let us consider the system of two coupled harmonic oscillators and use our newfound methods to solve it in a more elegant way. Consider our system of two masses from before, each attached to a spring that is joined to a wall, and joined together by a third spring, as shown:</p>
-<img class="diagram" src="/advanced-classical-mech/part-3/../coupled-harmonic-oscillator.excalidraw.svg" alt="A diagram showing two masses that are attached to springs and are also connected to each other by a spring. Their positions are denoted x1, x2 and their masses are equal and of magnitude m." />
+<img class="diagram"
+	
+		src="/advanced-classical-mech/part-3/../coupled-harmonic-oscillator.excalidraw.svg"
+	
+	alt="A diagram showing two masses that are attached to springs and are also connected to each other by a spring. Their positions are denoted x1, x2 and their masses are equal and of magnitude m." />
 <p>For simplicity, let $m_1 = m_2 = M$, and let $x_1, x_2$ be the position of mass 1 and mass 2 respectively. We may then write out the kinetic and potential energies of the system, as follows:</p>
 <p class="mathcell">
 $$
@@ -1560,7 +1593,11 @@ $$
 </blockquote>
 <p>The oscillatory behavior of molecules in 3 dimensions, however, is rather complex, so we can apply the simplifying assumption that the motion of the atoms in a molecule all occur <strong>with respect to the same plane</strong>, that is, either at $z = 0$ or with $z \perp \hat{\mathbf{n}}$, where $\hat{\mathbf{n}}$ is the normal vector of the plane. Thus, we are left with only $2n$ degrees of freedom: 2 degrees for translation (one each for $x, y$), 1 degree of freedom for rotation, and $2n - 3$ degrees of freedom for vibration. But <em>if</em> the molecule oscillates <strong>with respect to the same plane</strong>, this means that there is only one axis of rotation left (the $z$ axis). Thus its <strong>longitudinal oscillations</strong> (oscillations in-plane, that is, either along $x$ or $y$) reduce to $n - 1$ longitudinal degrees of freedom, whereas its <strong>transverse oscillations</strong> (oscillations out-of plane, that is, along $\hat{\mathbf{n}}$) have $n-2$ degrees of freedom (due to symmetry). Adding those two together gives $2n-3$ <strong>total vibrational degrees of freedom</strong> for such molecules.</p>
 <p>At first, you may think that assuming that molecules can be effectively thought of little connected springs and that they can only vibrate in a plane or parallel to its normal is an <em>absurd</em> set of assumptions. However, there are real molecules that satisfy this condition, such as the carbon dioxide molecule $\ce{CO2}$, so this is <em>actually</em> a reasonable assumption to make. Carbon dioxide has three atoms (two oxygens and a single carbon), joined by a double bond. Thus it has $2n - 3 = 3$ total vibrational degrees of freedom, where there are <em>two longitudinal modes</em> and <em>one transverse mode</em>. We show this in the diagram below:</p>
-<img class="diagram" src="/advanced-classical-mech/part-3/../co2-vibrational-modes.excalidraw.svg" alt="A diagram showing a simplified model of the carbon dioxide atom, composed of two oxygen atoms, each joined by a bond (represented as a line) to the main carbon atom." />
+<img class="diagram"
+	
+		src="/advanced-classical-mech/part-3/../co2-vibrational-modes.excalidraw.svg"
+	
+	alt="A diagram showing a simplified model of the carbon dioxide atom, composed of two oxygen atoms, each joined by a bond (represented as a line) to the main carbon atom." />
 <blockquote>
 <p><strong>Note:</strong> Here $\kappa_1, \kappa_2$ are the spring constants of the longitudinal and transverse vibrations, respectively.</p>
 </blockquote>
@@ -1657,7 +1694,11 @@ $$
 <p>We can then find the eigenvectors to write out the normal modes, and from there, do pattern-matching with the normal coordinates equations to find the normal coordinates. We'll not show the math here. If you try this on your own, you'll find that interestingly, the generalized coordinates $q_1, q_2$ <strong>are the normal coordinates</strong>.</p>
 <h4 id="transverse-normal-modes">Transverse normal modes</h4>
 <p>Now, we switch to analyzing purely the <em>transverse</em> vibrations of the molecule (that is, vibrations along the vertical axis). Since these are up-and-down vibrations, we will be interested in the $z$ coordinates of the atoms, that is, $z_1, z_2, z_3$. We show this in the diagram below (here $\alpha$ is an angle):</p>
-<img class="diagram" src="/advanced-classical-mech/part-3/../molecule-transverse-vibration.excalidraw.svg" alt="A diagram showing the carbon dioxide molecule from earlier, again composed of a single carbon and two oxygen atoms, but now showing the transverse (up-down) motion of the atoms." />
+<img class="diagram"
+	
+		src="/advanced-classical-mech/part-3/../molecule-transverse-vibration.excalidraw.svg"
+	
+	alt="A diagram showing the carbon dioxide molecule from earlier, again composed of a single carbon and two oxygen atoms, but now showing the transverse (up-down) motion of the atoms." />
 <p>We previously saw before that by choosing the center-of-mass coordinates, we can fix the problem of overdetermination. We can do the same here:</p>
 <p class="mathcell">
 $$
@@ -1700,7 +1741,11 @@ $$
 <p>Up to this point we have examined a finite number of $N$ coupled oscillators. But what happens when we take the limit as $N \to \infty$? When this occurs, we have a <em>continuous</em> oscillating system. Familiar examples include the vibrations of a violin string or waves on the ocean - these are all continuous oscillating systems, which we can imagine as a set of infinite coupled harmonic oscillators. Let us now examine the dynamics of such systems.</p>
 <h3 id="the-loaded-string-part-1">The loaded string, part 1</h3>
 <p>We have found the equations of motion for $n$ coupled harmonic oscillator, and analyzed specific cases for $n = 2$ as well as $n = 3$. This gives us a ready-to-use model for a string, which we can think of as a system of $n$ oscillating masses that are separated by a very small distance $d$. We assume the string is fixed on both ends, and thus the total length of the string is $L = (n + 1)d$ (since we have $n+1$ separations for $n$ masses). We illustrate this physical scenario below:</p>
-<img class="diagram" src="/advanced-classical-mech/part-3/../loaded-spring.excalidraw.svg" alt="A diagram of a loaded string, which is visualized as a set of oscillating masses adjacent to each other." />
+<img class="diagram"
+	
+		src="/advanced-classical-mech/part-3/../loaded-spring.excalidraw.svg"
+	
+	alt="A diagram of a loaded string, which is visualized as a set of oscillating masses adjacent to each other." />
 <p>Note that the masses are constrained to oscillate only vertically, which is automatically a transverse mode. If we just use Newton's second law, the interactions between $m_j$ with its two neighbors $m_{j - 1}$ and $m_{j + 1}$ lead to the forces given by:</p>
 <p class="mathcell">
 $$

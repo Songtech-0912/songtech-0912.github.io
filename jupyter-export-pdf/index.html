@@ -41,7 +41,8 @@
     <article class="post">
         <h1>How to export PDFs from Jupyter notebooks</h2>
         
-        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF. <a href="https://forms.gle/msb5wKErDJCjeL5k6">Report an issue or error here</a>.</p>
+
         
         
         <!-- table of contents -->
@@ -52,7 +53,11 @@
 <span id="continue-reading"></span>
 <p>In the past, Jupyter notebooks allowed printing the notebook directly from the browser. This was very convenient; exporting PDFs from the browser took just 2 clicks. But starting with Jupyter notebook version 7, this option no longer worked. So instead, I came up with another method based on <a href="https://stackoverflow.com/a/78390381">this StackOverflow answer</a>.</p>
 <p>The first step is to export your Jupyter notebook as an HTML file. To do so, go to the toolbar, and press <code>File &gt; Save and Export Notebook As &gt; HTML</code>. A picture of this is shown below:</p>
-<img class="natural-img" src="/jupyter-export-pdf/./export-html-demo.png" alt="A picture of the toolbar in Jupyter notebook&#x27;s interface, where you click the File &gt; Save and Export Notebook As &gt; HTML" />
+<img class="natural-img"
+	
+		src="/jupyter-export-pdf/./export-html-demo.png"
+	
+	alt="A picture of the toolbar in Jupyter notebook&#x27;s interface, where you click the File &gt; Save and Export Notebook As &gt; HTML" />
 <p>Jupyter should then automatically prepare an HTML file and download it for you. Locate the downloaded HTML file and move it to <strong>the same directory as your Jupyter notebook</strong>. This is important to make sure that you don't break any relative links (especially for images). Then, you can just use <code>Ctrl + P</code> (or <code>Command + P</code> on macs) to print the webpage as a PDF. I recommend setting the scale in the print dialog to be ~85% as the default setting makes for very large text on the PDF. Then save the PDF wherever you want - and you're done! A quick, easy method that is (relatively) hassle-free and doesn't require installing <em>anything</em> whatsoever.</p>
 
         
