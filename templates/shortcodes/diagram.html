@@ -1,1 +1,7 @@
-<img class="diagram" src="{{ page.path ~ src }}" {% if desc %}alt="{{desc}}"{% endif %} />
+<img class="diagram"
+	{% if src is containing('http') %}
+		src="{{ src }}"
+	{% else %}
+		src="{{ page.path ~ src }}"
+	{% endif %}
+	{% if desc %}alt="{{desc}}"{% endif %} />

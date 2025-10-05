@@ -1,1 +1,7 @@
-<img class="natural-img" src="{{ page.path ~ src }}" alt="{{ desc }}" />
+<img class="natural-img"
+	{% if src is containing('http') %}
+		src="{{ src }}"
+	{% else %}
+		src="{{ page.path ~ src }}"
+	{% endif %}
+	alt="{{ desc }}" />
