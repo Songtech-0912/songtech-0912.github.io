@@ -25,7 +25,7 @@ steps:
       event: [push, pull_request, manual]
 
   publish:
-    image: bitnami/git
+    image: bitnamisecure/git
     environment:
       TOKEN:
         from_secret: cbtoken
