@@ -216,6 +216,17 @@ header {
   	margin-bottom: 0;
   }
 
+  .footnote-definition {
+    p {
+      font-size: smaller;
+    }
+
+    sup {
+      font-size: 0.6rem;
+      margin-right: 0.1rem;
+    }
+  }
+
   .toc {
     margin: 2rem 0 !important;
     @include md { margin: 0; }
