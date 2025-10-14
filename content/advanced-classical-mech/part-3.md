@@ -1409,7 +1409,7 @@ q_y &= a_{y1} \eta_1 + a_{y2} \eta_2
 \end{align*}
 {% end %}
 
-Note that we may not always be using $x, y, z$ as our coordinates, so instead we use the generalized coordinates $\mathbf{q} = \langle q_1, q_2, \dots, q_n\rangle$ and $\mathbf{a}_r = \langle a_{r1}, a_{r2}, \dots, a_{rn}\rangle$ instead. Then, for a two-body system, we will have the following **normal coordinates equations**:
+Note that we may not always be using $x, y, z$ as our coordinates, so instead we use the generalized coordinates {% inlmath() %}\mathbf{q} = \langle q_1, q_2, \dots, q_n\rangle{% end %} and {% inlmath() %}\mathbf{a}_r = \langle a_{r1}, a_{r2}, \dots, a_{rn}\rangle{% end %} instead. Then, for a two-body system, we will have the following **normal coordinates equations**:
 
 {% math() %}
 \begin{align*}
@@ -1459,7 +1459,6 @@ This means that $\eta_1 = 0$ if $q_1 = q_2$, while $\eta_2 = 0$ if $q_1 = -q_2$.
 Let's now take a recap:
 
 > **Normal coordinates** are the coordinates in which the system has a well-defined (eigen-)frequency; that is, when the entire system oscillates with one frequency (and thus fixed phase).
-> 
 > **Normal modes** are the specific excitations (eigenvectors) of the system that match the eigenfrequencies of the system. By finding the **normal modes**, we can isolate the system's complicated motion into independent transverse and longitudinal components, both of which are associated with a specific frequency of vibration.
 
 ### An application of coupled oscillations for molecular vibrations
@@ -1805,7 +1804,7 @@ We've spent the better part of a third of this series on classical mechanics dis
 This idea is tremendously powerful, and allows us to analyze many systems as if they were strings or springs, including:
 
 - Electromagnetic waves in classical electromagnetism
-- Fields in classical field theories
+- Classical fields in classical field theories (e.g. Newtonian gravity)
 - Quantum fields in quantum field theories
 
 Indeed, as the theoretical physicist Sidney Coleman put so aptly:
