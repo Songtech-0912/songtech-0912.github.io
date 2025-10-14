@@ -11,7 +11,7 @@ In this section, we finish our exploration of PDEs, building on what we learned 
 > 
 > - [Part 1](@/intro-pdes/index.md) covers basics of PDEs, solving 1st-order PDEs, and the physical phenomena modelled by PDEs.
 > - [Part 2](@/intro-pdes/chapter-2.md) covers classification and finding solutions to 2nd-order PDEs, and in particular, the diffusion equation, wave equation, and Laplace's equation.
-> - [Part 3](@/intro-pdes/chapter-3.md) concludes this guide with a discussion on Laplace's equations and a few other topics in partial differential equations. **You are reading this part right now.**
+> - [Part 3](@/intro-pdes/chapter-3.md) concludes this guide with a discussion on Laplace's equation and a few other topics in partial differential equations. **You are reading this part right now.**
 
 ## Laplace's equation and harmonic functions
 
