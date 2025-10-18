@@ -420,7 +420,7 @@ Likewise, wavefunctions of the type $\psi(x) \sim \delta(x-x_0)$ are also unphys
 
 ### The particle in a box
 
-We will now consider our first example of a **bound state**: a quantum particle confined within a small region by a step potential, also called the **particle in a box** or the **square well**. Despite its (relative) simplicity, the particle in a box is the basis for the [Fermi gas model](https://en.wikipedia.org/wiki/Fermi_gas) in solid-state physics, so it is very important! (It is also used in describing [polymers](https://en.wikipedia.org/wiki/Conjugated_system), [nanometer-scale semiconductors](https://en.wikipedia.org/wiki/Quantum_dot), and [quantum well lasers](https://en.wikipedia.org/wiki/Quantum_well_laser, for those curious), for those curious). The particle in a box is described by the potential:
+We will now consider our first example of a **bound state**: a quantum particle confined within a small region by a step potential, also called the **particle in a box** or the **square well**. Despite its (relative) simplicity, the particle in a box is the basis for the [Fermi gas model](https://en.wikipedia.org/wiki/Fermi_gas) in solid-state physics, so it is very important! (It is also used in describing [polymers](https://en.wikipedia.org/wiki/Conjugated_system), [nanometer-scale semiconductors](https://en.wikipedia.org/wiki/Quantum_dot), and [quantum well lasers](https://en.wikipedia.org/wiki/Quantum_well_laser), for those curious), for those curious). The particle in a box is described by the potential:
 
 {% math() %}
 \begin{align*}
@@ -530,6 +530,27 @@ We note that a solution is present for every value of $n$. This means that we ha
 _Source: [ResearchGate](https://www.researchgate.net/figure/A-graphical-representation-of-the-particle-in-a-box-as-solution-of-the-time-independent_fig5_337259777). Note that the vertical position of the different wavefunctions is for graphical purposes only._
 
 #### Energy of particle in a box
+
+Now that we have the wavefunctions, we can solve for the possible values of the energies. We can find this by plugging in our solution into the time-independent Schrödinger equation:
+
+{% math() %}
+-\dfrac{\hbar^2}{2m}\dfrac{d^2 \psi}{dx^2} = E \psi(x)
+{% end %}
+
+Upon substituting, we have:
+
+{% math() %}
+\begin{align*}
+-\dfrac{\hbar^2}{2m}\dfrac{d^2 \psi}{dx^2} &= -\frac{\hbar^2}{2m} \left(-\frac{n^2 \pi^2}{L^2}\right) \sqrt{\dfrac{2}{L}} \sin \dfrac{n\pi x}{L} \\
+&= \underbrace{\dfrac{n^2 \pi^2 \hbar^2}{2mL^2} \psi(x)}_{E \psi}
+\end{align*}
+{% end %}
+
+From which we can easily read off the energy to be:
+
+{% math() %}
+E_n = \dfrac{n^2 \pi^2 \hbar^2}{2mL^2}, \quad n = 1, 2, 3, \dots
+{% end %}
 
 We find that the particle always has a nonzero energy, even in its ground state. The lowest energy is called its **ground-state energy**, and the reason it is nonzero is that the energy-time uncertainty principle forbids a particle to have zero energy.
 
@@ -654,11 +675,15 @@ In quantum mechanics, we have *said* that particles are probabilistic waves rath
 
 The fundamental vector describing a particle (or more precisely, a quantum system) is called the **state-vector**, and is written in the rather funny-looking notation $|\Psi\rangle$. This state-vector is not particularly easy to visualize, but one can think of it as an "arrow" of sorts that points not in real space, but in a complex space. As a particle evolves through time, it traces something akin to a "path" through this complex space. Unlike the vectors we might be used to, which live in $\mathbb{R}^3$ (t/hat is, Euclidean 3D space), this complex space (formally called a **Hilbert space** $\mathcal{H}$) can be of *any* number of dimensions!
 
-Of course, visualizing all those dimensions in a Hilbert space is next to impossible. To make things simpler, let's consider a complex space with only *three* dimensions, which we'll call $x$ and $y$ (though remember, these dimensions are not the physical $x,y,z$ axes). Then, the state-vector might look something like this:
+Of course, visualizing all those dimensions in a Hilbert space is next to impossible. However, if we consider only two (complex) dimensions, the state-vector might look something like this:
 
 ![A visualization of the state-vector](https://substackcdn.com/image/fetch/$s_!mS9U!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5e74d8f2-3a44-4cf5-a1f2-ff1cf36c8eaa_1463x787.png)
 
 _Credit: [Dr. Ashish Bamania](https://www.intoquantum.pub/p/an-introduction-to-the-hilbert-space)_
+
+> **Why is this drawn in 3D?** The reason is that _each_ complex dimension is not an _axis_ (as would be the case for real dimensions), but rather a _complex plane_. This is why a two-dimensional complex space is drawn in 3D, not 2D - it is formed by taking two complex planes and placing them at 90 degrees to each other, so it has to stretch into 3D.
+
+To practice, let's consider a complex space with *three* dimensions, which we'll call $x$ and $y$ (though remember, these dimensions are not the physical $x,y,z$ axes). A 3-dimensional complex space is unfortunately not easily drawn, but it is simple enough that the calculations don't get too hairy!
 
 Now, like the vectors we might be used to, like the position vector $\mathbf{r} = \langle x, y, z\rangle$ or momentum vector $\mathbf{p} = \langle p_x, p_y, p_z\rangle$, the state-vector also has **components**, although (as we discussed) these components are in general complex numbers that have no relationship to the physical $x, y, z$ axes. For our three-dimensional example, we can write the state-vector $|\Psi\rangle$ in column-vector form as follows:
 
@@ -791,7 +816,7 @@ In general, for two vectors $|\alpha\rangle, |\beta\rangle$ the matrix $C_{ij} =
 (|\beta\rangle \langle \alpha|)_{ij} = C_{ij} = \alpha_i \beta_j^*
 {% end %}
 
-For instance, if we use this formula, the $C_{11}$ component is equal to $\alpha_1 \beta_1^*$, and the $C_{32}$ component is equal to $\alpha_3 \beta_2^*$. The outer product is a bit hard to understand in intuitive terms, so it is okay at this point to just think of the outer product as an operation that takes two vectors and gives you a matrix, just like the inner product takes two vectors and gives you a scalar.
+For instance, if we use this formula, the $C_{11}$ component is equal to {% inlmath() %}\alpha_1 \beta_1^*{% end %}, and the $C_{32}$ component is equal to {% inlmath() %}\alpha_3 \beta_2^*{% end %}. The outer product is a bit hard to understand in intuitive terms, so it is okay at this point to just think of the outer product as an operation that takes two vectors and gives you a matrix, just like the inner product takes two vectors and gives you a scalar.
 
 > **Note:** For those familiar with more advanced linear algebra, the outer product is formally the **tensor product** of a ket-vector and a bra-vector; in tensor notation one can use the alternate notation with $C_i{}^j = \alpha_i \beta^j$ which shares a [correspondence with relativistic tensor notation](https://www.kattemolle.com/QMvsGR/index.html). Another interesting article to read is this [Math StackExchange explanation](https://math.stackexchange.com/questions/4183973/intuitive-explanation-of-outer-product) of the outer product.
 
@@ -998,7 +1023,7 @@ This *only* works if the projection operator is the outer product of the **same 
 
 ### The adjoint and Hermitian operators
 
-Another important property of nearly all operators we consider in quantum mechanics is that they are **Hermitian operators**. What does that mean? Well, consider an arbitrary operator. The **Hermitian adjoint** (usually just called the *adjoint*) of an operator is defined as its *transpose* with all of its components *complex-conjugated*. We notate the adjoint of an operator $\hat A$ as $\hat A^\dagger$ and read it as "A-dagger" (this is for [historical reasons](https://hsm.stackexchange.com/questions/11426/who-introduced-the-daggersymbol-as-conjugate-transpose-in-quantum-mechanics) as physicists wanted a symbol that wouldn't be confused with the complex conjugate symbol, *not* because physicists like to swordfight!). The idea of adjoints may sound quite abstract, so let's see an example for a 2D Hilbert space. Let us assume that we have some operator $\hat A$, whose matrix representation is as follows:
+Another important property of nearly all operators we consider in quantum mechanics is that they are **Hermitian operators**. What does that mean? Well, consider an arbitrary operator. The **adjoint** of an operator is defined as its *transpose* with all of its components *complex-conjugated*. We notate the adjoint of an operator $\hat A$ as $\hat A^\dagger$ and read it as "A-dagger" (this is for [historical reasons](https://hsm.stackexchange.com/questions/11426/who-introduced-the-daggersymbol-as-conjugate-transpose-in-quantum-mechanics) as physicists wanted a symbol that wouldn't be confused with the complex conjugate symbol, *not* because physicists like to swordfight!). The idea of adjoints may sound quite abstract, so let's see an example for a 2D Hilbert space. Let us assume that we have some operator $\hat A$, whose matrix representation is as follows:
 
 {% math() %}
 \hat A = \begin{pmatrix}
@@ -1030,11 +1055,11 @@ i & 0
 \end{pmatrix}
 {% end %}
 
-Notice here that to find the adjoint of $\hat A$ we **complex-conjugated** every component of the matrix, and then transposed the matrix. This procedure works for *any* operator when it is in matrix representation. This is a straightforward rule to remember - if we're given an operator in matrix form, complex-conjugation and transposing gives us the Hermitian adjoint.
+Notice here that to find the adjoint of $\hat A$ we **complex-conjugated** every component of the matrix, and then transposed the matrix. This procedure works for *any* operator when it is in matrix representation. This is a straightforward rule to remember - if we're given an operator in matrix form, complex-conjugation and transposing gives us the adjoint.
 
 Unfortunately, if we consider an *abstract operator* (for instance, the projection operator) where we don't know its matrix form, there is usually **no general formula** that relates $\hat A$ and $\hat A^\dagger$. However, there are some special cases:
 
-- A **constant** $c$ has adjoint $c^\dagger = c$
+- A **constant** $c$ has adjoint $c^\dagger = c^*$
 - A **ket** $|a\rangle$ has adjoint $|a\rangle^\dagger = \langle a|$
 - A **bra** $\langle b|$ has adjoint $\langle b|^\dagger = |b\rangle$
 - An **operator** $\hat A$ satisfying $\hat A|\alpha\rangle = |\beta\rangle$ has $\langle \alpha|\hat A^\dagger = \langle \beta|$
@@ -1042,14 +1067,14 @@ Unfortunately, if we consider an *abstract operator* (for instance, the projecti
 - An **operator inner product** $\langle a|\hat A|b\rangle$ has adjoint $\langle b|\hat A^\dagger|a\rangle^*$
 - An **outer product** $|a\rangle \langle b|$ has adjoint $(|a\rangle \langle b|)^\dagger = |b\rangle \langle a|$
 
-A few useful properties of the Hermitian adjoint are also listed below:
+A few useful properties of the adjoint are also listed below:
 
 - $(\hat A^\dagger)^\dagger = \hat A$
 - $(\lambda \hat A)^\dagger = \lambda^* A^\dagger$
 - $(\hat A + \hat B)^\dagger = \hat A^\dagger + \hat B^\dagger$
 - $(\hat A \hat B)^\dagger = \hat B^\dagger \hat A^\dagger$
 
-We will now introduce a special class of operators, known as **Hermitian operators**. The essential property of a Hermitian operator $\hat A$ is that it is **equal** to its Hermitian adjoint:
+We will now introduce a special class of operators, known as **Hermitian operators**. The essential property of a Hermitian operator $\hat A$ is that it is **equal** to its adjoint:
 
 {% math() %}
 \hat A = \hat A^\dagger
