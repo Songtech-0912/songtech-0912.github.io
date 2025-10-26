@@ -1278,7 +1278,15 @@ Let's take a closer look at _postulate II(b)_. This postulate is more formally k
 
 > **Born rule (for discrete quantities):** For any discrete (quantized) observable represented by operator $\hat a$, with eigenstates $|\alpha\rangle$ and eigenvalues $\alpha$, the wavefunction $\psi_\alpha$ represents the _probability amplitude_ $c_\alpha$ of measuring the corresponding observable's value to be $\alpha$.
 
+The Born rule is the origin of the probability interpration of the wavefunction. This is because, by the Born rule, we know that for the position operator $\hat{\mathbf{x}}$, its eigenstates are given by $|\mathbf{x}\rangle$. Therefore, by the Born rule, the wavefunction $\psi(\mathbf{x}) = \langle \mathbf{x}|\psi\rangle$ represents the probability amplitude of measuring a particle to be at position $x$. This is indeed the case! From the probability amplitude, we can therefore find that:
 
+{% math() %}
+\rho = |\psi(\mathbf{x})|^2
+{% end %}
+
+Where $\rho$ is the **probability density**, which is the _measurable_ probability of a particle (for instance, an electron) being at a particular position. Thus, by invoking the Born rule, we have made the claim that the wavefunction represents some sort of probabilistic wave fully rigorous.
+
+> **Note for the advanced reader:** In molecular and solid-state physics, it is more typical to call the probability density an [_electron density_](https://en.wikipedia.org/wiki/Electron_density) and represent it as $n(\mathbf{r})$. This is because in these fields, we are interested in many-body systems, typically ones with several (and sometimes very many!) electrons. Thus, we talk of a _particle density_ of finding some particle (usually electron) within a region of volume.
 
 ### Degeneracy and CSCOs
 
