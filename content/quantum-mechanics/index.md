@@ -1349,6 +1349,203 @@ If state $|\psi_1\rangle = \alpha_1 |u_1\rangle + \alpha_2 |u_2\rangle$ and $|\p
 \end{align*}
 {% end %}
 
+### Mathematical properties of operators
+
+We will continue discussing the physics of quantum mechanics shortly, but it is also important to take some time to discuss the mathematics of the operators that are associated with physical quantities. Considering how vital operators are in quantum mechanics, it is important to know how to mathematically manipulate them.
+
+One very common operation we perform with operators is to apply them repeatedly. To demonstrate, consider an operator $\hat A$ with eigenvectors $|\varphi_n\rangle$, corresponding each to a unique eigenvalue $a$. Then, $\hat A^n$ represents applying the operator $n$ times. An important identity here is that:
+
+{% math() %}
+\hat A |\varphi_n\rangle = a |\varphi_n\rangle \quad \Rightarrow \quad \hat A^n|\varphi_n\rangle = a^n |\varphi_n\rangle
+{% end %}
+
+That is to say, the eigenvalues of $\hat A^n$ are simply $a^n$. This is incredibly helpful because when we want to find the eigenvalues of some operator that is applied several times, we don't have to solve for the eigenvalues again.
+
+Another operator we might be interested in is to take an operator and map it to another operator by a particular function. This is a mathematically nuanced concept, because defining an operator-valued function is somewhat complicated to do rigorously. However, we will dispense with the rigor for now, and just state the results. For any function $f(a)$ we have:
+
+{% math() %}
+f(\hat A)  |\varphi_n\rangle = f(a) |\varphi_a\rangle, \quad f'(A)|\varphi_a\rangle = f'(a) |\varphi_a\rangle
+{% end %}
+
+We can also differentiate and integrate operators, which, again, is mathematically nuanced to define rigorously, but straightforward to simply state. For instance, consider two linear operators $\hat F(t)$ and $\hat G(t)$, which both depend on time. Their derivatives with respect to time satisfy the product rule and sum rules, i.e.
+
+{% math() %}
+\begin{align*}
+\dfrac{d}{dt} (\hat F + \hat G) &= \dfrac{d\hat F}{dt} + \dfrac{d\hat G}{dt} \\
+\dfrac{d}{dt} (\hat F \hat G) &= \dfrac{d\hat F}{dt} \hat G + \hat F \dfrac{d \hat G}{dt}
+\end{align*}
+{% end %}
+
+Now, let us consider two arbitrary linear operators $\hat A$ and $\hat B$. If $|\psi\rangle$ is an eigenvector of $\hat A$, then $\hat B|\psi\rangle$ is also an eigenvalue of $\hat A$, because:
+
+{% math() %}
+\begin{align*}
+\hat A|\psi\rangle &= a|\psi\rangle \\
+\hat B \hat A|\psi\rangle &= \hat B(a|\psi\rangle) \\
+&=a \hat B|\psi\rangle
+\end{align*}
+{% end %}
+
+These identities often prove very helpful in taking complex operator algebra (and calculus) and making them much simpler, so it is helpful to keep them in mind.
+
+### The trace
+
+We will now discuss a mathematical operation called the **trace**, which will be very important coming up. The trace is an important *scalar* quantity of an operator. It has a particularly elegant form if an operator can be written as a matrix. For instance, consider an operator $\hat A$ that can be represented as a $(n \times n)$ matrix. Then the trace (denoted $\operatorname{Tr}(\hat A)$) is just the **sum of diagonals** of the matrix:
+
+{% math() %}
+\operatorname{Tr}(\hat A) = \operatorname{Tr} \begin{pmatrix}
+A_{11} & A_{12} & \dots & A_{1n} \\
+A_{21} & A_{22} & \dots & A_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+A_{n1} & A_{n2} & \dots & A_{nn}
+\end{pmatrix}
+=
+A_{11} + A_{22} + A_{33} + \dots + A_{nn}
+{% end %}
+
+In general, as long as a matrix $A_{ij}$ is a $(n \times n)$ square matrix, we can find its trace by just adding up its diagonals:
+
+{% math() %}
+\operatorname{Tr}(A_{ij}) = \sum_{i=1}^n A_{ii}
+{% end %}
+
+Whereas for a generalized operator $\hat A$ (which may or may not have a matrix representation), the trace is given by:
+
+{% math() %}
+\operatorname{Tr}(\hat A) = \sum_i \langle \varphi_i|\hat A |\varphi_i\rangle
+{% end %}
+
+Where $|\varphi_k\rangle$ is an eigenstate of the operator $\hat A$. One can show that these two definitions are equivalent when we substitute $A_{ii} = \langle \varphi_i|\hat A|\varphi_i\rangle$ (which is the matrix representation of $\hat A$ in the $|\varphi_i\rangle$ basis), giving us:
+
+{% math() %}
+\sum_{i=1}^n A_{ii} = \sum_{i=1}^n \langle \varphi_i|\hat A |\varphi_i\rangle = \operatorname{Tr}(\hat A)
+{% end %}
+
+The trace is a **linear operation**, so (among others) it satisfies all identities of a linear operator. In particular, some key identities of the trace are:
+
+{% math() %}
+\begin{gather*}
+\operatorname{Tr}(\hat A \hat B) = \operatorname{Tr}(\hat B \hat A) \\
+\operatorname{Tr}(\hat A \hat B \hat C) = \operatorname{Tr}(\hat C \hat A \hat B) = \operatorname{Tr}(\hat B \hat C \hat A) \\
+\operatorname{Tr}(\hat A \pm \hat B) = \operatorname{Tr}(\hat A) \pm \operatorname{Tr}(\hat B) \\
+\operatorname{Tr}(c \hat A) = c \operatorname{Tr}(\hat A)
+\end{gather*}
+{% end %}
+
+But why do we care about the trace? The answer is that for *any* matrix, the trace is equal to the **sum of its eigenvalues**. Crucially, this is a key **invariant** of a matrix that is independent of the basis chosen. That means that the usual but tedious way to find the sum of a matrix's eigenvalues - by diagonalization (that is, making a matrix have its eigenvalues along its diagonal, and zero everywhere else) - is not needed! Therefore, the trace is a powerful operation that has tremendous significance in the mathematical framework of quantum mechanics
+
+### Commutators and commutation relations
+
+Another key mathematical structure used in quantum mechanics is the **commutator**. We have already seen what a commutator is: for two given operators $\hat A, \hat B$, their commutator is written as $[\hat A, \hat B]$ and is given by $[\hat A, \hat B] = \hat A \hat B - \hat B \hat A$. If the two operators satisfy $[\hat A, \hat B] = 0$, then we say that they **commute**. However, if we find that $[\hat A, \hat B] \neq 0$, then we say they _do not commute_ or (equivalently) that they are **non-commuting**.
+
+The commutator, in essence, measures the *extent to which two operators are incompatible*. Physically, this corresponds to the inherent **uncertainty in measurement** in quantum mechanics, which is what makes quantum mechanics so distinct from classical mechanics. This idea of uncertainty can be mathematically formalized as follows. Consider two **non-commuting** operators $\hat A, \hat B$, which represent two observables $A, B$. Then, the **generalized uncertainty principle** in quantum mechanics tells us that:
+
+{% math() %}
+\Delta A \Delta B \geq \left|\dfrac{\langle [\hat A, \hat B]\rangle}{2}\right|
+{% end %}
+
+Where $\Delta A$ is the uncertainty in measuring observable $A$, $\Delta B$ is the uncertainty in measuring observable $B$, and $|\dots |$ denotes the **complex norm** (absolute value of a complex number). Let's take some time to absorb what this means.
+
+We know that all real-world measurements have *some* amount of inaccuracy just because our measurement instruments aren't perfect. For instance, you might measure a paper clip with a ruler and say that its length is, say, $\pu{2 cm}$. But it would be almost impossible for a paper clip to be _exactly_ $\pu{2cm}$ in length! It is far more likely that the paper clip is within a range of $\pu{2 \pm 0.5 cm}$, because a typical (metric-based) ruler has markings per every centimeter, so it cannot measure anything to more precise than $\pu{1 cm}$. Therefore, in making a measurement with the ruler, the result can be off by $\pm \pu{0.5 cm}$ on either direction and it would be impossible to know! This means that the ruler has a total uncertainty range of $\pu{1 cm}$, and therefore it is important to conduct any measurement with its uncertainty also recorded.
+
+This is all well and good, but in theory, there is no limit to how *arbitrarily good* we can make a measurement instrument - at least, in **classical mechanics**. As an example, we can imagine making a super-accurate ruler that measures distances with an uncertainty of only $\pm\pu{0.5 nm}$ (how you would make such a ruler is an entirely different question altogether, but let's assume you have some superhuman ruler engineering skills and manage to build one). In classical mechanics, there is nothing stopping you from building this ruler and making a measurement as precisely as you want. But this is **no longer true** in **quantum mechanics**! Quantum mechanics says that *if* you measure the momentum and position of some object (let's say, our paperclip) at the **same time**, there is a **theoretical limit** on how accurate you can measure its position. In particular, the uncertainty $\Delta x$ in the position (and therefore the length) that our super-accurate ruler could measure is given by:
+
+{% math() %}
+\Delta x = \frac{\hbar}{2\Delta p}
+{% end %}
+
+Where $\Delta p$ is the uncertainty in the momentum that is measured. For instance, if we assume that our paperclip has a measured uncertainty in momentum of $\pu{3E-28 kg*ms^{-1}}$, then its uncertainty in position is given by:
+
+{% math() %}
+\Delta x = \frac{\hbar}{2\times(\pu{3E-28 kg*ms^{-1}})} \approx \pu{175 nm}
+{% end %}
+
+This means that even though the super-accurate ruler is designed to measure with an uncertainty of only $\pm\pu{0.5 nm}$, its *actual* uncertainty is much higher, due to the uncertainty principle! Note that since the uncertainty in position is inversely proportional to the momentum, the effects of the uncertainty principle only become evident on atomic and subatomic scales, but it most certainly does exist, and it means that our Universe is **inherently uncertain**. We don't precisely know where anything really is, or how fast anything is going, or even the amount of energy or momentum something has. The radical nature of this idea was a complete break from any classical intuition, and even today, it is still a very hard fact for many to accept.
+
+Now, let's derive the important relation $\Delta x = \frac{\hbar}{2\Delta p}$ that we just used to demonstrate the existence of quantum uncertainty in measuring position and momentum. First, let's compute the commutator $[\hat x, \hat p]$. This gives us:
+
+{% math() %}
+\begin{align*}
+[\hat x, \hat p]\psi(x) &= x \hat p \psi(x) - \hat p \hat x \psi(x) \\
+&= x(-i\hbar \nabla) \psi(x) - (-i\hbar \nabla) x \psi \\
+&= -i\hbar x \nabla\psi(x) + i\hbar \underbrace{\nabla (x \psi)}_\text{product rule} \\
+&= -i\hbar x \nabla\psi + i\hbar (\nabla x) \psi + i\hbar  (x \nabla) \psi \\
+&= -i\hbar x \nabla\psi + i\hbar \psi(x) + i\hbar x \nabla \psi \\
+&= i\hbar \psi(x)
+\end{align*}
+{% end %}
+
+Thus, we have found that $[\hat x, \hat p]\psi = i\hbar \psi$, or in other terms:
+
+{% math() %}
+[\hat x, \hat p] = i\hbar
+{% end %}
+
+Which is often called the **canonical commutator**. Now, if we substitute this result into the generalized uncertainty relation, we have:
+
+{% math() %}
+\Delta x \Delta p \geq \left|\dfrac{\langle [\hat x, \hat p]\rangle}{2}\right| 
+\geq \left|\dfrac{i\hbar}{2}\right| \geq \frac{\hbar}{2}
+{% end %}
+
+Thus we now arrive at the infamous **Heisenberg uncertainty principle**, which is described by the equation:
+
+{% math() %}
+\Delta x \Delta p \geq \dfrac{\hbar}{2}
+{% end %}
+
+The *minimum uncertainty* - which corresponds to the *highest accuracy* that we can make - is given by:
+
+{% math() %}
+\Delta x \Delta p = \dfrac{\hbar}{2}
+{% end %}
+
+Rearranging gives us the equation we started with:
+
+{% math() %}
+\Delta x = \dfrac{\hbar}{2\Delta p}
+{% end %}
+
+This is a powerful result that came from using commutators, and is a demonstration of how important commutators are in quantum mechanics. Not surprisingly, it is important to be familiar with several properties of commutators, including the following:
+
+- $[\hat A, \hat A] = [\hat B, \hat B] = 0$
+- $[\hat A, \hat B] = -[\hat B, \hat A]$
+- $[\hat A, \hat B + \hat C] = [\hat A, \hat B] + [\hat A, \hat C]$
+- $[\hat A + \hat B, \hat C] = [\hat A, \hat C] + [\hat B, \hat C]$
+- $[\hat A, \hat B \hat C] = [\hat A, \hat B]\hat C + \hat B[\hat A, \hat C]$
+- $[\hat A \hat B, \hat C] = \hat A[\hat B, \hat C] + [\hat A, \hat C] \hat B$
+- $[c \hat A, \hat B] = [\hat A, c\hat B] = c[\hat A, \hat B]$ where $c$ is some constant
+- $[\hat A, [\hat B, \hat C]] + [\hat B, [\hat C, \hat A]] + [\hat C, [\hat A, \hat B]] = 0$, which is also known as the **Jacobi identity**
+- $[\hat A, f(\hat A)] = 0$
+- If $[\hat A, \hat B] = 0$ then $[\hat A, f(\hat B)] = 0$
+
+In addition, for vector-valued operators $\mathbf{\hat A}$ and $\mathbf{\hat B}$, where $\mathbf{\hat A} = (\hat A_1, \hat A_2, \dots, \hat A_n)$ is a vector of $n$ operators and likewise $\mathbf{\hat B} = (\hat B_1, \hat B_2, \dots, \hat B_n)$ is also a vector of $n$ operators, we have the following identities:
+
+- $[\hat A_i, \hat A_i] = [\hat B_i, \hat B_i] = 0$
+- $[\hat A_i, \hat B_j] = -[\hat A_j, \hat B_i]$
+
+Here, $\hat A_i$ denotes the $i$-th component of $\mathbf{\hat A}$ and $\hat B_i$ denotes the $j$-th component of $\mathbf{\hat B}$. For instance, consider the position operator $\hat{\mathbf{p}} = (\hat p_x, \hat p_y, \hat p_z)$. By the above identities, we know that it satisfies $[\hat p_i, \hat p_i] = 0$, where $i \in (x, y, z)$. We can expand this to component form, giving us $[\hat p_x, \hat p_x] = [\hat p_y, \hat p_y] = [\hat p_z, \hat p_z] = 0$. Using this index notation can be a bit complicated upon first seeing it, but it becomes a powerful notation once you get used to it, and allows us to express complex relationships between operators in a concise way.
+
+> **Note:** More of these identities can be found on the [Wikipedia page of commutator identities](https://en.wikipedia.org/wiki/Commutator#Identities_(ring_theory))
+
+Lastly, let's take a look at the **canonical commutator** $[\hat x, \hat p] = i\hbar$, perhaps the most important commutator in quantum mechanics. We can generalize the canonical commutator to the following identities:
+
+{% math() %}
+\begin{gather*}
+[\hat x, \hat p^n] = (i\hbar n)\hat p^{n - 1} \\
+[\hat x^n, \hat p] = (i\hbar n) \hat
+x^{n-1}
+\end{gather*}
+{% end %}
+
+In higher dimensions (2D and 3D), we write the position operator as $\hat{\mathbf{r}}$ and momentum operator as $\hat{\mathbf{p}}$, which satisfy:
+
+{% math() %}
+[\hat{\mathbf{r}}_i, \hat{\mathbf{p}}_j] = i\hbar \delta_{ij}, \quad 
+{% end %}
+
+Where $\delta_{ij}$ is the **Kronecker delta** and is equal to one when $i = j$ and zero when $i \neq j$, $\hat{\mathbf{r}}_i$ is the $i$-th component of the position operator, and $\hat{\mathbf{p}}$ is the $j$-th component of the momentum operator. This tells us, for instance, that $[\hat y, \hat p_y] = i\hbar$ (since we have $i = j = y$) but that $[\hat y, \hat p_x] = 0$ (since we have $i = y$ and $j = x$, so $i \neq j$).
+
 ### A summary of the state-vector formalism
 
 Let's recap what we've covered so far. We have learned that the quantum state is represented as a vector, called a **state-vector**, and written using Dirac (bra-ket) notation as $|\Psi(t)\rangle$. The quantum state "lives" in a **Hilbert space** $\mathcal{H}$, which is complex-valued and can be finite or infinite-dimensional.
