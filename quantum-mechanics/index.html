@@ -193,6 +193,18 @@
                                 </li>
                             
                                 <li>
+                                    <a href="#mathematical-properties-of-operators">Mathematical properties of operators</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-trace">The trace</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#commutators-and-commutation-relations">Commutators and commutation relations</a>
+                                </li>
+                            
+                                <li>
                                     <a href="#a-summary-of-the-state-vector-formalism">A summary of the state-vector formalism</a>
                                 </li>
                             
@@ -1414,7 +1426,7 @@ $$
 <p class="mathcell">
 $$
 \hat{\mathbf{x}} = \begin{pmatrix} \hat x \\ \hat y \\ \hat z \end{pmatrix}, \quad 
-\hat{\mathbf{p}} = \begin{pmatrix} \hat p_x \\ \hat p_y \\ \hat p_z \end{pmatrix}, \quad
+\mathbf{\hat p} = \begin{pmatrix} \hat p_x \\ \hat p_y \\ \hat p_z \end{pmatrix}, \quad
 $$
 </p>
 <p>And in $N$ dimensions, we have:</p>
@@ -1424,7 +1436,7 @@ $$
 $$
 </p>
 <blockquote>
-<p><strong>Note on notation:</strong> It is sometimes the case that $\hat{\mathbf{x}}$ is written as $\hat{\mathbf{R}}$ or $\hat{\mathbf{X}}$ and $\hat{\mathbf{p}}$ is written as $\hat{\mathbf{P}}$ instead. We will use these notations interchangeably.</p>
+<p><strong>Note on notation:</strong> It is sometimes the case that $\hat{\mathbf{x}}$ is written as $\hat{\mathbf{R}}$ or $\hat{\mathbf{X}}$ and $\mathbf{\hat p}$ is written as $\hat{\mathbf{P}}$ instead. We will use these notations interchangeably.</p>
 </blockquote>
 <h2 id="observables">Observables</h2>
 <p>Having wandered far in math-land, let us return back to physics, and discuss one of the most important topics in quantum mechanics: <strong>observables</strong>. An observable is, roughly speaking, something you can <em>measure</em> about a quantum particle. The position $x$ and the momentum $p$ of a particle, for instance, are observables. We already know that observables in quantum mechanics are represented by <strong>operators</strong>, not numbers or functions. For instance, we saw the position operator $\hat x$, the momentum operator $\hat p$, and the projection operator $\hat P$.</p>
@@ -1527,7 +1539,205 @@ $$
 &amp;\qquad + \alpha_2 \beta_1 |u_2\rangle \otimes |u_1\rangle + \alpha_2 \beta_2 |u_2\rangle \otimes |u_2\rangle
 \end{align*}
 $$
-</p><h3 id="a-summary-of-the-state-vector-formalism">A summary of the state-vector formalism</h3>
+</p><h3 id="mathematical-properties-of-operators">Mathematical properties of operators</h3>
+<p>We will continue discussing the physics of quantum mechanics shortly, but it is also important to take some time to discuss the mathematics of the operators that are associated with physical quantities. Considering how vital operators are in quantum mechanics, it is important to know how to mathematically manipulate them.</p>
+<p>One very common operation we perform with operators is to apply them repeatedly. To demonstrate, consider an operator $\hat A$ with eigenvectors $|\varphi_n\rangle$, corresponding each to a unique eigenvalue $a$. Then, $\hat A^n$ represents applying the operator $n$ times. An important identity here is that:</p>
+<p class="mathcell">
+$$
+\hat A |\varphi_n\rangle = a |\varphi_n\rangle \quad \Rightarrow \quad \hat A^n|\varphi_n\rangle = a^n |\varphi_n\rangle
+$$
+</p>
+<p>That is to say, the eigenvalues of $\hat A^n$ are simply $a^n$. This is incredibly helpful because when we want to find the eigenvalues of some operator that is applied several times, we don't have to solve for the eigenvalues again.</p>
+<p>Another operator we might be interested in is to take an operator and map it to another operator by a particular function. This is a mathematically nuanced concept, because defining an operator-valued function is somewhat complicated to do rigorously. However, we will dispense with the rigor for now, and just state the results. For any function $f(a)$ we have:</p>
+<p class="mathcell">
+$$
+f(\hat A)  |\varphi_n\rangle = f(a) |\varphi_a\rangle, \quad f&#x27;(A)|\varphi_a\rangle = f&#x27;(a) |\varphi_a\rangle
+$$
+</p>
+<p>We can also differentiate and integrate operators, which, again, is mathematically nuanced to define rigorously, but straightforward to simply state. For instance, consider two linear operators $\hat F(t)$ and $\hat G(t)$, which both depend on time. Their derivatives with respect to time satisfy the product rule and sum rules, i.e.</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{d}{dt} (\hat F + \hat G) &amp;= \dfrac{d\hat F}{dt} + \dfrac{d\hat G}{dt} \\
+\dfrac{d}{dt} (\hat F \hat G) &amp;= \dfrac{d\hat F}{dt} \hat G + \hat F \dfrac{d \hat G}{dt}
+\end{align*}
+$$
+</p>
+<p>Now, let us consider two arbitrary linear operators $\hat A$ and $\hat B$. If $|\psi\rangle$ is an eigenvector of $\hat A$, then $\hat B|\psi\rangle$ is also an eigenvalue of $\hat A$, because:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat A|\psi\rangle &amp;= a|\psi\rangle \\
+\hat B \hat A|\psi\rangle &amp;= \hat B(a|\psi\rangle) \\
+&amp;=a \hat B|\psi\rangle
+\end{align*}
+$$
+</p>
+<p>These identities often prove very helpful in taking complex operator algebra (and calculus) and making them much simpler, so it is helpful to keep them in mind.</p>
+<h3 id="the-trace">The trace</h3>
+<p>We will now discuss a mathematical operation called the <strong>trace</strong>, which will be very important coming up. The trace is an important <em>scalar</em> quantity of an operator. It has a particularly elegant form if an operator can be written as a matrix. For instance, consider an operator $\hat A$ that can be represented as a $(n \times n)$ matrix. Then the trace (denoted $\operatorname{Tr}(\hat A)$) is just the <strong>sum of diagonals</strong> of the matrix:</p>
+<p class="mathcell">
+$$
+\operatorname{Tr}(\hat A) = \operatorname{Tr} \begin{pmatrix}
+A_{11} &amp; A_{12} &amp; \dots &amp; A_{1n} \\
+A_{21} &amp; A_{22} &amp; \dots &amp; A_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+A_{n1} &amp; A_{n2} &amp; \dots &amp; A_{nn}
+\end{pmatrix}
+=
+A_{11} + A_{22} + A_{33} + \dots + A_{nn}
+$$
+</p>
+<p>In general, as long as a matrix $A_{ij}$ is a $(n \times n)$ square matrix, we can find its trace by just adding up its diagonals:</p>
+<p class="mathcell">
+$$
+\operatorname{Tr}(A_{ij}) = \sum_{i=1}^n A_{ii}
+$$
+</p>
+<p>Whereas for a generalized operator $\hat A$ (which may or may not have a matrix representation), the trace is given by:</p>
+<p class="mathcell">
+$$
+\operatorname{Tr}(\hat A) = \sum_i \langle \varphi_i|\hat A |\varphi_i\rangle
+$$
+</p>
+<p>Where $|\varphi_k\rangle$ is an eigenstate of the operator $\hat A$. One can show that these two definitions are equivalent when we substitute $A_{ii} = \langle \varphi_i|\hat A|\varphi_i\rangle$ (which is the matrix representation of $\hat A$ in the $|\varphi_i\rangle$ basis), giving us:</p>
+<p class="mathcell">
+$$
+\sum_{i=1}^n A_{ii} = \sum_{i=1}^n \langle \varphi_i|\hat A |\varphi_i\rangle = \operatorname{Tr}(\hat A)
+$$
+</p>
+<p>The trace is a <strong>linear operation</strong>, so (among others) it satisfies all identities of a linear operator. In particular, some key identities of the trace are:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\operatorname{Tr}(\hat A \hat B) = \operatorname{Tr}(\hat B \hat A) \\
+\operatorname{Tr}(\hat A \hat B \hat C) = \operatorname{Tr}(\hat C \hat A \hat B) = \operatorname{Tr}(\hat B \hat C \hat A) \\
+\operatorname{Tr}(\hat A \pm \hat B) = \operatorname{Tr}(\hat A) \pm \operatorname{Tr}(\hat B) \\
+\operatorname{Tr}(c \hat A) = c \operatorname{Tr}(\hat A)
+\end{gather*}
+$$
+</p>
+<p>But why do we care about the trace? The answer is that for <em>any</em> matrix, the trace is equal to the <strong>sum of its eigenvalues</strong>. Crucially, this is a key <strong>invariant</strong> of a matrix that is independent of the basis chosen. That means that the usual but tedious way to find the sum of a matrix's eigenvalues - by diagonalization (that is, making a matrix have its eigenvalues along its diagonal, and zero everywhere else) - is not needed! Therefore, the trace is a powerful operation that has tremendous significance in the mathematical framework of quantum mechanics</p>
+<h3 id="commutators-and-commutation-relations">Commutators and commutation relations</h3>
+<p>Another key mathematical structure used in quantum mechanics is the <strong>commutator</strong>. We have already seen what a commutator is: for two given operators $\hat A, \hat B$, their commutator is written as $[\hat A, \hat B]$ and is given by $[\hat A, \hat B] = \hat A \hat B - \hat B \hat A$. If the two operators satisfy $[\hat A, \hat B] = 0$, then we say that they <strong>commute</strong>. However, if we find that $[\hat A, \hat B] \neq 0$, then we say they <em>do not commute</em> or (equivalently) that they are <strong>non-commuting</strong>.</p>
+<p>The commutator, in essence, measures the <em>extent to which two operators are incompatible</em>. Physically, this corresponds to the inherent <strong>uncertainty in measurement</strong> in quantum mechanics, which is what makes quantum mechanics so distinct from classical mechanics. This idea of uncertainty can be mathematically formalized as follows. Consider two <strong>non-commuting</strong> operators $\hat A, \hat B$, which represent two observables $A, B$. Then, the <strong>generalized uncertainty principle</strong> in quantum mechanics tells us that:</p>
+<p class="mathcell">
+$$
+\Delta A \Delta B \geq \left|\dfrac{\langle [\hat A, \hat B]\rangle}{2}\right|
+$$
+</p>
+<p>Where $\Delta A$ is the uncertainty in measuring observable $A$, $\Delta B$ is the uncertainty in measuring observable $B$, and $|\dots |$ denotes the <strong>complex norm</strong> (absolute value of a complex number). Let's take some time to absorb what this means.</p>
+<p>We know that all real-world measurements have <em>some</em> amount of inaccuracy just because our measurement instruments aren't perfect. For instance, you might measure a paper clip with a ruler and say that its length is, say, $\pu{2 cm}$. But it would be almost impossible for a paper clip to be <em>exactly</em> $\pu{2cm}$ in length! It is far more likely that the paper clip is within a range of $\pu{2 \pm 0.5 cm}$, because a typical (metric-based) ruler has markings per every centimeter, so it cannot measure anything to more precise than $\pu{1 cm}$. Therefore, in making a measurement with the ruler, the result can be off by $\pm \pu{0.5 cm}$ on either direction and it would be impossible to know! This means that the ruler has a total uncertainty range of $\pu{1 cm}$, and therefore it is important to conduct any measurement with its uncertainty also recorded.</p>
+<p>This is all well and good, but in theory, there is no limit to how <em>arbitrarily good</em> we can make a measurement instrument - at least, in <strong>classical mechanics</strong>. As an example, we can imagine making a super-accurate ruler that measures distances with an uncertainty of only $\pm\pu{0.5 nm}$ (how you would make such a ruler is an entirely different question altogether, but let's assume you have some superhuman ruler engineering skills and manage to build one). In classical mechanics, there is nothing stopping you from building this ruler and making a measurement as precisely as you want. But this is <strong>no longer true</strong> in <strong>quantum mechanics</strong>! Quantum mechanics says that <em>if</em> you measure the momentum and position of some object (let's say, our paperclip) at the <strong>same time</strong>, there is a <strong>theoretical limit</strong> on how accurate you can measure its position. In particular, the uncertainty $\Delta x$ in the position (and therefore the length) that our super-accurate ruler could measure is given by:</p>
+<p class="mathcell">
+$$
+\Delta x = \frac{\hbar}{2\Delta p}
+$$
+</p>
+<p>Where $\Delta p$ is the uncertainty in the momentum that is measured. For instance, if we assume that our paperclip has a measured uncertainty in momentum of $\pu{3E-28 kg*ms^{-1}}$, then its uncertainty in position is given by:</p>
+<p class="mathcell">
+$$
+\Delta x = \frac{\hbar}{2\times(\pu{3E-28 kg*ms^{-1}})} \approx \pu{175 nm}
+$$
+</p>
+<p>This means that even though the super-accurate ruler is designed to measure with an uncertainty of only $\pm\pu{0.5 nm}$, its <em>actual</em> uncertainty is much higher, due to the uncertainty principle! Note that since the uncertainty in position is inversely proportional to the momentum, the effects of the uncertainty principle only become evident on atomic and subatomic scales, but it most certainly does exist, and it means that our Universe is <strong>inherently uncertain</strong>. We don't precisely know where anything really is, or how fast anything is going, or even the amount of energy or momentum something has. The radical nature of this idea was a complete break from any classical intuition, and even today, it is still a very hard fact for many to accept.</p>
+<p>Now, let's derive the important relation $\Delta x = \frac{\hbar}{2\Delta p}$ that we just used to demonstrate the existence of quantum uncertainty in measuring position and momentum. First, let's compute the commutator $[\hat x, \hat p]$. This gives us:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+[\hat x, \hat p]\psi(x) &amp;= x \hat p \psi(x) - \hat p \hat x \psi(x) \\
+&amp;= x(-i\hbar \nabla) \psi(x) - (-i\hbar \nabla) x \psi \\
+&amp;= -i\hbar x \nabla\psi(x) + i\hbar \underbrace{\nabla (x \psi)}_\text{product rule} \\
+&amp;= -i\hbar x \nabla\psi + i\hbar (\nabla x) \psi + i\hbar  (x \nabla) \psi \\
+&amp;= -i\hbar x \nabla\psi + i\hbar \psi(x) + i\hbar x \nabla \psi \\
+&amp;= i\hbar \psi(x)
+\end{align*}
+$$
+</p>
+<p>Thus, we have found that $[\hat x, \hat p]\psi = i\hbar \psi$, or in other terms:</p>
+<p class="mathcell">
+$$
+[\hat x, \hat p] = i\hbar
+$$
+</p>
+<p>Which is often called the <strong>canonical commutator</strong>. Now, if we substitute this result into the generalized uncertainty relation, we have:</p>
+<p class="mathcell">
+$$
+\Delta x \Delta p \geq \left|\dfrac{\langle [\hat x, \hat p]\rangle}{2}\right| 
+\geq \left|\dfrac{i\hbar}{2}\right| \geq \frac{\hbar}{2}
+$$
+</p>
+<p>Thus we now arrive at the infamous <strong>Heisenberg uncertainty principle</strong>, which is described by the equation:</p>
+<p class="mathcell">
+$$
+\Delta x \Delta p \geq \dfrac{\hbar}{2}
+$$
+</p>
+<p>The <em>minimum uncertainty</em> - which corresponds to the <em>highest accuracy</em> that we can make - is given by:</p>
+<p class="mathcell">
+$$
+\Delta x \Delta p = \dfrac{\hbar}{2}
+$$
+</p>
+<p>Rearranging gives us the equation we started with:</p>
+<p class="mathcell">
+$$
+\Delta x = \dfrac{\hbar}{2\Delta p}
+$$
+</p>
+<p>This is a powerful result that came from using commutators, and is a demonstration of how important commutators are in quantum mechanics. Not surprisingly, it is important to be familiar with several properties of commutators, including the following:</p>
+<ul>
+<li>$[\hat A, \hat A] = [\hat B, \hat B] = 0$</li>
+<li>$[\hat A, \hat B] = -[\hat B, \hat A]$</li>
+<li>$[\hat A, \hat B + \hat C] = [\hat A, \hat B] + [\hat A, \hat C]$</li>
+<li>$[\hat A + \hat B, \hat C] = [\hat A, \hat C] + [\hat B, \hat C]$</li>
+<li>$[\hat A, \hat B \hat C] = [\hat A, \hat B]\hat C + \hat B[\hat A, \hat C]$</li>
+<li>$[\hat A \hat B, \hat C] = \hat A[\hat B, \hat C] + [\hat A, \hat C] \hat B$</li>
+<li>$[c \hat A, \hat B] = [\hat A, c\hat B] = c[\hat A, \hat B]$ where $c$ is some constant</li>
+<li>$[\hat A, [\hat B, \hat C]] + [\hat B, [\hat C, \hat A]] + [\hat C, [\hat A, \hat B]] = 0$, which is also known as the <strong>Jacobi identity</strong></li>
+<li>$[\hat A, f(\hat A)] = 0$</li>
+<li>If $[\hat A, \hat B] = 0$ then $[\hat A, f(\hat B)] = 0$</li>
+</ul>
+<p>In addition, for vector-valued operators $\mathbf{\hat A}$ and $\mathbf{\hat B}$, where $\mathbf{\hat A} = (\hat A_1, \hat A_2, \dots, \hat A_n)$ is a vector of $n$ operators and likewise $\mathbf{\hat B} = (\hat B_1, \hat B_2, \dots, \hat B_n)$ is also a vector of $n$ operators, we have the following identities:</p>
+<ul>
+<li>$[\hat A_i, \hat A_i] = [\hat B_i, \hat B_i] = 0$</li>
+<li>$[\hat A_i, \hat B_j] = -[\hat A_j, \hat B_i]$</li>
+</ul>
+<p>Here, $\hat A_i$ denotes the $i$-th component of $\mathbf{\hat A}$ and $\hat B_i$ denotes the $j$-th component of $\mathbf{\hat B}$. For instance, consider the position operator $\mathbf{\hat p} = (\hat p_x, \hat p_y, \hat p_z)$. By the above identities, we know that it satisfies $[\hat p_i, \hat p_i] = 0$, where $i \in (x, y, z)$. We can expand this to component form, giving us $[\hat p_x, \hat p_x] = [\hat p_y, \hat p_y] = [\hat p_z, \hat p_z] = 0$. Using this index notation can be a bit complicated upon first seeing it, but it becomes a powerful notation once you get used to it, and allows us to express complex relationships between operators in a concise way.</p>
+<blockquote>
+<p><strong>Note:</strong> More of these identities can be found on the <a href="https://en.wikipedia.org/wiki/Commutator#Identities_(ring_theory)">Wikipedia page of commutator identities</a></p>
+</blockquote>
+<p>Lastly, let's take a look at the <strong>canonical commutator</strong> $[\hat x, \hat p] = i\hbar$, perhaps the most important commutator in quantum mechanics. We can generalize the canonical commutator to the following identities:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+[\hat x, \hat p^n] = (i\hbar n)\hat p^{n - 1} \\
+[\hat x^n, \hat p] = (i\hbar n) \hat
+x^{n-1}
+\end{gather*}
+$$
+</p>
+<p>In higher dimensions (2D and 3D), we write the position operator as $\mathbf{\hat r}$ and momentum operator as $\mathbf{\hat p}$, which satisfy:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+[\mathbf{\hat r}_i, \mathbf{\hat r}_j] &amp;= 0 \\
+[\mathbf{\hat p}_i, \mathbf{\hat p}_j] &amp;= 0 \\
+[\mathbf{\hat r}_i, \mathbf{\hat p}_j] &amp;= i\hbar \delta_{ij}, \quad
+\end{align*}
+$$
+</p>
+<p>Where $\delta_{ij}$ is the <strong>Kronecker delta</strong> and is given by:</p>
+<p class="mathcell">
+$$
+\delta_{ij} = \begin{cases}
+1 &amp; i = j \\
+0 &amp; i \neq j
+\end{cases}
+$$
+</p>
+<p>In addition, $\mathbf{\hat r}_i$ is the $i$-th component of the position operator, and $\mathbf{\hat p}_j$ is the $j$-th component of the momentum operator. Using these commutation relations tells us, for instance, that $[\hat y, \hat p_y] = i\hbar$ (since we have $i = j = y$) but that $[\hat y, \hat p_x] = 0$ (since we have $i = y$ and $j = x$, so $i \neq j$).</p>
+<h3 id="a-summary-of-the-state-vector-formalism">A summary of the state-vector formalism</h3>
 <p>Let's recap what we've covered so far. We have learned that the quantum state is represented as a vector, called a <strong>state-vector</strong>, and written using Dirac (bra-ket) notation as $|\Psi(t)\rangle$. The quantum state "lives" in a <strong>Hilbert space</strong> $\mathcal{H}$, which is complex-valued and can be finite or infinite-dimensional.</p>
 <p>In general, the state-vector is a function of time, that is. But if we consider the state-vector at a particular moment in time, for instance, $t = 0$, we can define $|\Psi\rangle = |\Psi(0)\rangle$ to be the <em>time-independent state-vector</em>. Depending on the type of system, we can decompose $|\Psi\rangle$ as a superposition of basis vectors $|\alpha\rangle$ as either a sum:</p>
 <p class="mathcell">
