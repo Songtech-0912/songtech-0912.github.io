@@ -1229,7 +1229,7 @@ In higher dimensions, we can define the 3D versions of the position and momentum
 
 {% math() %}
 \hat{\mathbf{x}} = \begin{pmatrix} \hat x \\ \hat y \\ \hat z \end{pmatrix}, \quad 
-\hat{\mathbf{p}} = \begin{pmatrix} \hat p_x \\ \hat p_y \\ \hat p_z \end{pmatrix}, \quad 
+\mathbf{\hat p} = \begin{pmatrix} \hat p_x \\ \hat p_y \\ \hat p_z \end{pmatrix}, \quad 
 {% end %}
 
 And in $N$ dimensions, we have:
@@ -1238,7 +1238,7 @@ And in $N$ dimensions, we have:
 \langle \mathbf{x}|\mathbf{p}\rangle = \dfrac{1}{(2\pi)^{3/N}} e^{i\mathbf{p} \cdot \mathbf{x}/\hbar}
 {% end %}
 
-> **Note on notation:** It is sometimes the case that $\hat{\mathbf{x}}$ is written as $\hat{\mathbf{R}}$ or $\hat{\mathbf{X}}$ and $\hat{\mathbf{p}}$ is written as $\hat{\mathbf{P}}$ instead. We will use these notations interchangeably.
+> **Note on notation:** It is sometimes the case that $\hat{\mathbf{x}}$ is written as $\hat{\mathbf{R}}$ or $\hat{\mathbf{X}}$ and $\mathbf{\hat p}$ is written as $\hat{\mathbf{P}}$ instead. We will use these notations interchangeably.
 
 ## Observables
 
@@ -1524,7 +1524,7 @@ In addition, for vector-valued operators $\mathbf{\hat A}$ and $\mathbf{\hat B}$
 - $[\hat A_i, \hat A_i] = [\hat B_i, \hat B_i] = 0$
 - $[\hat A_i, \hat B_j] = -[\hat A_j, \hat B_i]$
 
-Here, $\hat A_i$ denotes the $i$-th component of $\mathbf{\hat A}$ and $\hat B_i$ denotes the $j$-th component of $\mathbf{\hat B}$. For instance, consider the position operator $\hat{\mathbf{p}} = (\hat p_x, \hat p_y, \hat p_z)$. By the above identities, we know that it satisfies $[\hat p_i, \hat p_i] = 0$, where $i \in (x, y, z)$. We can expand this to component form, giving us $[\hat p_x, \hat p_x] = [\hat p_y, \hat p_y] = [\hat p_z, \hat p_z] = 0$. Using this index notation can be a bit complicated upon first seeing it, but it becomes a powerful notation once you get used to it, and allows us to express complex relationships between operators in a concise way.
+Here, $\hat A_i$ denotes the $i$-th component of $\mathbf{\hat A}$ and $\hat B_i$ denotes the $j$-th component of $\mathbf{\hat B}$. For instance, consider the position operator $\mathbf{\hat p} = (\hat p_x, \hat p_y, \hat p_z)$. By the above identities, we know that it satisfies $[\hat p_i, \hat p_i] = 0$, where $i \in (x, y, z)$. We can expand this to component form, giving us $[\hat p_x, \hat p_x] = [\hat p_y, \hat p_y] = [\hat p_z, \hat p_z] = 0$. Using this index notation can be a bit complicated upon first seeing it, but it becomes a powerful notation once you get used to it, and allows us to express complex relationships between operators in a concise way.
 
 > **Note:** More of these identities can be found on the [Wikipedia page of commutator identities](https://en.wikipedia.org/wiki/Commutator#Identities_(ring_theory))
 
@@ -1538,13 +1538,26 @@ x^{n-1}
 \end{gather*}
 {% end %}
 
-In higher dimensions (2D and 3D), we write the position operator as $\hat{\mathbf{r}}$ and momentum operator as $\hat{\mathbf{p}}$, which satisfy:
+In higher dimensions (2D and 3D), we write the position operator as $\mathbf{\hat r}$ and momentum operator as $\mathbf{\hat p}$, which satisfy:
 
 {% math() %}
-[\hat{\mathbf{r}}_i, \hat{\mathbf{p}}_j] = i\hbar \delta_{ij}, \quad 
+\begin{align*}
+[\mathbf{\hat r}_i, \mathbf{\hat r}_j] &= 0 \\
+[\mathbf{\hat p}_i, \mathbf{\hat p}_j] &= 0 \\
+[\mathbf{\hat r}_i, \mathbf{\hat p}_j] &= i\hbar \delta_{ij}, \quad
+\end{align*}
 {% end %}
 
-Where $\delta_{ij}$ is the **Kronecker delta** and is equal to one when $i = j$ and zero when $i \neq j$, $\hat{\mathbf{r}}_i$ is the $i$-th component of the position operator, and $\hat{\mathbf{p}}$ is the $j$-th component of the momentum operator. This tells us, for instance, that $[\hat y, \hat p_y] = i\hbar$ (since we have $i = j = y$) but that $[\hat y, \hat p_x] = 0$ (since we have $i = y$ and $j = x$, so $i \neq j$).
+Where $\delta_{ij}$ is the **Kronecker delta** and is given by:
+
+{% math() %}
+\delta_{ij} = \begin{cases}
+1 & i = j \\
+0 & i \neq j
+\end{cases}
+{% end %}
+
+In addition, $\mathbf{\hat r}_i$ is the $i$-th component of the position operator, and $\mathbf{\hat p}_j$ is the $j$-th component of the momentum operator. Using these commutation relations tells us, for instance, that $[\hat y, \hat p_y] = i\hbar$ (since we have $i = j = y$) but that $[\hat y, \hat p_x] = 0$ (since we have $i = y$ and $j = x$, so $i \neq j$).
 
 ### A summary of the state-vector formalism
 
