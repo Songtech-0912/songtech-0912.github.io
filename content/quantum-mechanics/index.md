@@ -2060,7 +2060,11 @@ This is the starting point, and there are several different ways to proceed from
 \end{gather*}
 {% end %}
 
-This is a differential equation that can indeed be solved, although it is not very easy to solve. Indeed, a much better approach is to use the so-called _algebraic approach_, which originated with the physicist Paul Dirac. The key is to "factor" the Hamiltonian by defining two new operators $\hat a$ and $\hat a^\dagger$, given by:
+This is a differential equation that can indeed be solved, although it is not very easy to solve. Indeed, a much better approach is to use the so-called _algebraic approach_, which originated with the physicist Paul Dirac, which we'll now discuss.
+
+### The ladder operator approach
+
+Dirac's key insight in solving the quantum harmonic oscillator is to "factor" the Hamiltonian by defining two new operators $\hat a$ and $\hat a^\dagger$, given by:
 
 {% math() %}
 \begin{align*}
