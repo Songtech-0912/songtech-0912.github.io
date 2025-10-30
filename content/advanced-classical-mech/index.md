@@ -307,7 +307,7 @@ Where we would typically want to rearrange $t(x) \to x(t)$ upon evaluating the i
 But it is often not even necessary to solve the equation for $t(x) \rightarrow x(t)$. In fact, knowledge of $U(x)$ is often sufficient to understand a great deal about the motion of a moving object. A graph of the potential energy function, for instance, is shown below:
 
 {{ diagram(
-src="./stable-unstable-equilibrium.excalidraw.svg"
+src="../stable-unstable-equilibrium.excalidraw.svg"
 desc="A graph of a potential energy function U(x) that curves up to a local maximum, then curves down to a local minimum, then curves upwards again"
 ) }}
 

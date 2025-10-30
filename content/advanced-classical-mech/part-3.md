@@ -225,8 +225,8 @@ So we find that {% inlmath() %}|\mathbf{v}_1^*| = |\mathbf{v}_1'^*|{% end %}, wh
 We will now examine a classic problem to be able to showcase using the center-of-momentum frame to solve problems. Consider a mass $m_1$ moving at velocity $\mathbf{v}_1$ that collides with another mass $m_2$ that istationary, so $\mathbf{v}_2 = 0$ (this is a classic billiard-ball style situation). The masses are rigid, so we may assume that the collision is close to perfectly elastic. The collision sends the two massses flying in opposite directions; the first mass is deflected by an angle $\psi$, and the second mass is deflected by an angle $\xi$. We show this scenario in the below diagram:
 
 {{ natural_img(
-src="elastic-collision-demo.excalidraw.svg"
-desc="My description"
+src="../elastic-collision-demo.excalidraw.svg"
+desc="A diagram of two colliding masses, which deflect off each other after the collision"
 ) }}
 
 Writing out the conservation of momentum yields the following equation:
@@ -344,7 +344,7 @@ The scattering cross-section has rather unusual units: it is expressed in terms 
 Let us consider a particle (or stream of particles) bouncing off a hard sphere of radius $R$ (this problem is also in Griffiths, _Introduction to Elementary Particles_, example 6.1). By "hard", we mean a completely rigid, impenetrable sphere, which is of course impossible in reality, so this is an idealization. For this problem, it is always helpful to draw a diagram, so we show one below:
 
 {{ wideimg(
-src="./hard-sphere-scattering.excalidraw.svg"
+src="../hard-sphere-scattering.excalidraw.svg"
 desc="A diagram showing a particle of height b passing through cross-section d sigma that hits a solid impenetrable sphere and is deflected at angle theta (measured from the +x axis). The scattering solid angle is d Omega."
 ) }}
 
@@ -450,7 +450,7 @@ Using the effective gravitational acceleration, we can rewrite our expression fo
 Let us now consider the case of a particle falling to Earth's surface from some height $h$. We will use $z$ as our radial coordinate, $x$ as the horizontal coordinate, and $\theta$ as the angle made with respect to the center of the Earth, as we show in the below diagram:
 
 {{ diagram(
-src="coriolis-earth.excalidraw.svg"
+src="../coriolis-earth.excalidraw.svg"
 desc="A diagram of the problem's coordinate system, showing z as the distance above earth's surface, theta as the angle with respect to the center of the earth, and y as the direction tangent to the Earth's surface"
 ) }}
 
