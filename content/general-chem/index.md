@@ -866,8 +866,6 @@ The representations have different uses - pure Lewis structures are good at show
 
 > **How do we know our structural representations are correct?** The oversimplified answer is that we often don't. We can come up with an empirical formula based on experimental measurements of a compound in various ways such as mass spectroscopy (we covered this earlier in stoichiometry). The law of the conservation of mass and the law of definite proportions guarantees this to be the case. However, beyond that, we can only _theorize_ structural representations based on our best understanding of bonding and molecular stability as well as the behavior of compounds. The more advanced answer is that with certain techniques such as [X-ray crystallography](https://en.wikipedia.org/wiki/X-ray_crystallography) and [electron diffraction](https://en.wikipedia.org/wiki/Gas_electron_diffraction) can be used to actually find the structure, and you can [read more about this here](https://en.wikipedia.org/wiki/Chemical_structure#Structural_elucidation).
 
-## Types of organic compounds
-
 ### Hydrocarbons
 
 Hydrocarbons are organic compounds that **only contain carbon and hydrogen**. These are insoluble in water but often used as fuels as they undergo combustion reactions in the presence of oxygen. There are four types of hydrocarbons: **alkanes**, **alkenes**, **alkynes**, and **aromatics**. We will now explore the first three in detail.
@@ -882,7 +880,7 @@ The names of alkanes start with -ane. Each alkane has two hydrogen atoms at eith
 
 | Alkane Name | Molecular Formula | Condensed formula          | Skeleton Formula                                                                                                                                                             |
 | ----------- | ----------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Methane     | $\ce{CH4}$        | $\ce{CH4}$                 | There isn't one (because there are no carbon-carbon bonds to represent). But its Lewis structure is very straightforward - 4 hydrogens branching out of a single carbon atom |
+| Methane     | $\ce{CH4}$        | $\ce{CH4}$                 | N/A |
 | Ethane      | $\ce{C2H6}$       | $\ce{CH3-CH3}$             | ![Ethane diagram: CC](smiles/CC.svg)                                                                                                      |
 | Propane     | $\ce{C3H8}$       | $\ce{CH3-CH2-CH3}$         | ![Propane diagram: CCC](smiles/CCC.svg)                                                                                                   |
 | Butane      | $\ce{C4H10}$      | $\ce{CH3-CH2-CH2-CH3}$     | ![Butane diagram: CCCC](smiles/CCCC.svg)                                                                                                  |
@@ -892,6 +890,8 @@ The names of alkanes start with -ane. Each alkane has two hydrogen atoms at eith
 | Octane      | $\ce{C8H18}$      | $\ce{CH3-(CH2)6-CH3}$      | ![Octane diagram: CCCCCCCC](smiles/CCCCCCCC.svg)                                                                                          |
 | Nonane      | $\ce{C9H20}$      | $\ce{CH3-(CH2)7-CH3}$      | ![Nonane diagram: CCCCCCCCC](smiles/CCCCCCCCC.svg)                                                                                        |
 | Decane      | $\ce{C10H22}$     | $\ce{CH3-(CH2)8-CH3}$      | ![Decane diagram: CCCCCCCCCC](smiles/CCCCCCCCCC.svg)                                                                                      |
+
+For methane, notice that there is no skeleton formula. The reason why is because there are no carbon-carbon bonds (after all, methane has a single carbon atom). But its Lewis structure is very straightforward (4 hydrogens branching out of a single carbon atom) and it is the simplest alkane.
 
 > **Note:** a mnemonic that may be helpful is that for all the alkanes after butane, additionally, follow the typical naming conventions, e.g. _hept-_ for five, _hex-_ for six, _oct-_ for octane, and so forth. In addition, due to the extremely long structural formulas of the larger alkanes (hexane, heptane, octane, nonane, decane) we use an abbreviated notation. As an example, hexane, given by $\ce{CH3-(CH2)4-CH3}$ is equivalent to $\ce{CH3-CH2-CH2-CH2-CH2-CH3}$, i.e. has 4 repeated $\ce{CH2}$ groups. Meanwhile, for the first four alkanes, just memorize "M.E.P.B", this will be extremely useful going forwards
 
@@ -973,12 +973,12 @@ Note that we referred to the base ethyl as _1-pentene_ rather than simply _pente
 | Name      | Location of double bond | Condensed formula        | Skeleton structure                                                                          |
 | --------- | ----------------------- | ------------------------ | ------------------------------------------------------------------------------------------- |
 | 1-pentene | 1st-position carbon     | $\ce{CH2=CH-(CH2)2-CH3}$ | ![1-pentene, SMILES format: C=CCCC](smiles/C=CCCC.svg)   |
-| 2-pentene | 2nd-position carbon     | $\ce{CH3-CH=CH-CH2-CH3}$ | ![2-pentene, SMILES format: CC=CCC](smiles/C%2FC%3DCC%5CC.svg) |
+| 2-pentene | 2nd-position carbon     | $\ce{CH3-CH=CH-CH2-CH3}$ | ![2-pentene, SMILES format: CC=CCC](smiles/CC=CCC.svg) |
 | 3-pentene | 3rd-position carbon     | $\ce{CH3-CH2-CH=CH-CH3}$ | ![3-pentene, SMILES format: CCC=CC](smiles/CCC=CC.svg)   |
 
 > **Note:** bare skeleton structures are very simplified and it is important to remember that implied carbons are located at all endpoints of each line and all points where lines join. Hydrogen atoms are also implied to be attached to the carbon atoms, however many is necessary to fill the carbon atoms' orbitals.
 
-### Alkynes
+#### Alkynes
 
 Alkynes are similar to alkenes in that they are also unsaturated hydrocarbons, and thus contain only carbon and hydrogen, but they are distinct in that they have **triple carbon-carbon bonds**. Their naming convention is almost the same as that of alkenes, except the counting starts from the end with the triple bond. Again, their numbering in the case of both ends being equidistant from the triple bond follows the lowest-number-progression order, and when multiple groups are present, they are ordered in alphabetical order. Additionally, when naming alkynes, we must add the position of the bond to the base alkyne name, such as _2-pentyne_ or _1-butyne_.
 
@@ -986,15 +986,15 @@ Alkynes follow the general formula $C_n H_{2n-2}$. The same general structure of
 
 | Alkane Name | Molecular Formula | Condensed formula               | Skeleton Formula                                                                                   |
 | ----------- | ----------------- | ------------------------------- | -------------------------------------------------------------------------------------------------- |
-| Ethyne      | $\ce{C2H2}$       | $\ce{CH#CH}$                    | ![Ethylyne, SMILES format: C#C](smiles/C#C.svg)               |
-| Propyne     | $\ce{C3H4}$       | $\ce{CH#C-CH3}$                 | ![Propyne, SMILES format: C#CC](smiles/C#CC.svg)              |
-| Butyne      | $\ce{C4H6}$       | $\ce{CH#C-CH2-CH3}$             | ![Butyne, SMILES format: C#CCC](smiles/C#CCC.svg)             |
-| Pentyne     | $\ce{C5H8}$       | $\ce{CH#C-CH2-CH2-CH3}$         | ![Pentyne, SMILES format: C#CCCC](smiles/C#CCCC.svg)          |
-| Hexyne      | $\ce{C6H10}$      | $\ce{CH#C-CH2-CH2-CH2-CH3}$     | ![Hexyne, SMILES format: C#CCCCC](smiles/C#CCCCC.svg)         |
-| Heptyne     | $\ce{C7H12}$      | $\ce{CH#C-CH2-CH2-CH2-CH2-CH3}$ | ![Heptyne, SMILES format: C#CCCCCC](smiles/C#CCCCCC.svg)      |
-| Octyne      | $\ce{C8H14}$      | $\ce{CH#C-(CH2)5-CH3}$          | ![Octyne, SMILES format: C#CCCCCCC](smiles/C#CCCCCCC.svg)     |
-| Nonyne      | $\ce{C9H16}$      | $\ce{CH#C-(CH2)6-CH3}$          | ![Nonyne, SMILES format: C#CCCCCCCC](smiles/C#CCCCCCCC.svg)   |
-| Decyne      | $\ce{C10H18}$     | $\ce{CH#C-(CH2)7-CH3}$          | ![Decyne, SMILES format: C#CCCCCCCCC](smiles/C#CCCCCCCCC.svg) |
+| Ethyne      | $\ce{C2H2}$       | $\ce{CH#CH}$                    | ![Ethylyne, SMILES format: C#C](smiles/C%23C.svg)               |
+| Propyne     | $\ce{C3H4}$       | $\ce{CH#C-CH3}$                 | ![Propyne, SMILES format: C#CC](smiles/C%23CC.svg)              |
+| Butyne      | $\ce{C4H6}$       | $\ce{CH#C-CH2-CH3}$             | ![Butyne, SMILES format: C#CCC](smiles/C%23CCC.svg)             |
+| Pentyne     | $\ce{C5H8}$       | $\ce{CH#C-CH2-CH2-CH3}$         | ![Pentyne, SMILES format: C#CCCC](smiles/C%23CCCC.svg)          |
+| Hexyne      | $\ce{C6H10}$      | $\ce{CH#C-CH2-CH2-CH2-CH3}$     | ![Hexyne, SMILES format: C#CCCCC](smiles/C%23CCCCC.svg)         |
+| Heptyne     | $\ce{C7H12}$      | $\ce{CH#C-CH2-CH2-CH2-CH2-CH3}$ | ![Heptyne, SMILES format: C#CCCCCC](smiles/C%23CCCCCC.svg)      |
+| Octyne      | $\ce{C8H14}$      | $\ce{CH#C-(CH2)5-CH3}$          | ![Octyne, SMILES format: C#CCCCCCC](smiles/C%23CCCCCCC.svg)     |
+| Nonyne      | $\ce{C9H16}$      | $\ce{CH#C-(CH2)6-CH3}$          | ![Nonyne, SMILES format: C#CCCCCCCC](smiles/C%23CCCCCCCC.svg)   |
+| Decyne      | $\ce{C10H18}$     | $\ce{CH#C-(CH2)7-CH3}$          | ![Decyne, SMILES format: C#CCCCCCCCC](smiles/C%23CCCCCCCCC.svg) |
 
 > **Note:** Ethyne is also called *acetylene* and *vinylene* and (even more confusingly) _ethenylene_. These common names all refer to to the same compound, just with different naming conventions.
 
@@ -1006,7 +1006,7 @@ We have already seen alkanes, alkenes and alkynes. Now we will examine _benzenes
 
 Benzene groups have the name _phenyl-_ when they are part of the dominant chain in an organic molecule molecule (i.e. when the chain is much bigger than the benzene). When that is the case, we simply follow the general conventions for naming the molecule, such as the naming conventions of alkanes, alkenes, or alkynes, and append _phenyl-_ and the position number to the compound. For instance, here is 2-phenyl-2-pentene:
 
-![](smiles/CC(C1=CC=CC=CC1)=CCC.svg)
+![2-phenyl-2-pentene, SMILES format](smiles/CC(C1=CC=CC=CC1)=CCC.svg)
 
 However, there are also cases where the benzene ring is the predominant structure of the compound and is where other groups branch off from. In this case, we follow a separate naming convention. We can start counting from wherever we want because benzene is a **cyclic compound** (i.e. has a ring). For instance, consider the following benzene-containing molecule:
 
@@ -1020,7 +1020,7 @@ We start counting from the chlorine because it comes in alphabetical order befor
 | Meta-  | M-           | Two branches attached to carbon atoms that have another carbon in between | ![Meta-chloromethylbenzene, SMILES format: C1(Cl)=CC(C)=CC=CC1](smiles/C1(Cl)=CC(C)=CC=CC1.svg) |
 | Ortho- | O-           | Two branches attached to two adjacent carbons                             | ![Ortho-chloromethylbenzene, SMILES format: C1(Cl)=CC=CC=C(C)C1](smiles/C1(Cl)=CC=CC=C(C)1.svg) |
 
-## Alcohols
+### Alcohols
 
 An **alcohol** is the next type of organic compounds. Alcohols are any organic compound that contain a hydroxyl ($\ce{OH}$) group at some point on their primary (longest) chain, and correspondingly have names that end with _-ol_, such as _ethanol_ and _hexanol_. Typically, they are similar to their corresponding alkanes, but have an appended hydroxyl group on the last carbon. The base names of the alcohols are based on the number of carbon atoms in the chain that the hydroxyl group is attached to, **not counting the hydroxyl group**. The first few alcohols are shown in the table below:
 
