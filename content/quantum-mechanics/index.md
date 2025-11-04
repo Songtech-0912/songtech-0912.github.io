@@ -1687,6 +1687,8 @@ Now, with some careful rewriting, we note that we can also write the equation fo
 \end{align*}
 {% end %}
 
+> **Note:** Notice we used the familiar trick of inserting the closure relation $\hat I = \displaystyle\sum_i |u_i\rangle \langle u_i|$ to derive this result.
+
 Thus, we find that to calculate the expectation value $\langle A\rangle = \langle \psi|\hat A|\psi\rangle$ of an arbitrary operator $\hat A$, we simply need to take the trace of $\hat \rho \hat A$! This approach - using the density operator - allows us to often *completely circumvent* the need for manually finding expectation values. In addition, one of the key properties of the trace is that it is *independent of the basis chosen*, so the density matrix approach is often much faster, as well!
 
 The power of the density matrix is that it contains the **equivalent information** as the wavefunction. It allows us to calculate the expectation values $\langle A\rangle$ of *any observables* of a system by simply taking the trace $\langle A\rangle = \operatorname{Tr}(\hat \rho \hat A)$. And even better, it *guarantees* conservation of probability. That is to say, the projection operator automatically satisfies:
