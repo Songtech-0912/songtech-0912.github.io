@@ -1044,6 +1044,103 @@ When naming alcohols, we must *also* indicate the position of the hydroxyl group
 
 > **Note:** there is no 4-pentanol or 5-pentanol because 4-pentanol would just be 2-pentanol backwards and 5-pentanol would just be 1-pentanol backwards. We only count sub-variants that are structurally different, if a sub-variant is the same, we don't count it.
 
+### Other common organic functional groups
+
+Beyond the ubiquitous hydrocarbons, benzenes and alcohols, there are more groups of organic compounds. Each constitutes a **functional group**, which can be thought of as branches to attach to a carbon chain.
+
+| Functional Group Name      | Minimum components       | Condensed formula                                     | Skeleton formula                                                                                                                                                                                  |
+| -------------------------- | ------------------------ | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Amines                     | Nitrogen                 | $\ce{N,NH,NH2}$ (both possible)                       | ![N-dimethylamine, SMILES format: CNC](http://hulab.rxnfinder.org/smi2img/CNC?height=200) _Also possible:_ ![2-ethylamine, SMILES format: NCC](http://hulab.rxnfinder.org/smi2img/NCC?height=200) |
+| Ether                      | Carbon, oxygen           | $\ce{CO}$ (single bond)                               | ![Ethyl methyl ether, SMILES format: COC](http://hulab.rxnfinder.org/smi2img/COC?height=200)                                                                                                      |
+| Ketones                    | Typically carbon, oxygen | $\ce{CO}$ (double bond)                               | ![SMILES format: C(=O)C](http://hulab.rxnfinder.org/smi2img/C(=O)C?height=200)                                                                                                                    |
+| Aldehydes                  | Carbon, oxygen, hydrogen | $\ce{COH}$ (double bond oxygen, single bond hydrogen) | ![SMILES format: C(=O)C](http://hulab.rxnfinder.org/smi2img/C(=O)(C)CC?height=200) _(Note: implicit hydrogen is the left bottom bond)_                                                            |
+| Carboxyl (carboxylic acid) | Carbon, oxygen, hydrogen | $\ce{COOH}$                                           | ![SMILES format: O=C(C)O](http://hulab.rxnfinder.org/smi2img/O=C(C)O?height=200)                                                                                                                  |
+
+We can also consider functional groups formed by the combination of two simpler groups. For instance, an **esther** is the product of the reaction between an alcohol and a carboxylic acid, where the hydroxyl end of the alcohol and the hydrogen end of the carboxylic acid are joined together with an oxygen atom, forming an ester and water.
+
+Similarly, an **amide** is the product of the reaction between an amine and a carboxylic acid, adding an oxygen and carbon, so an amide has the condensed formula $\ce{CNO}$ (which can also be $\ce{C(NH)O}$ or $\ce{C(NH2)O}$).
+
+The functional groups are still named according to the longest continuous carbon chain (remember, to find the longest continuous carbon chain we count the number of _carbon atoms_ in the chain). For instance, $\ce{H3C-(C=O)-CH3}$, which is a ketone with the $\ce{CH3}$ (methyl) group on either side, is named **2-propanone** (or more simply, just *propanone*) because the longest carbon chain is three carbon atoms long and the ketone group is located at second position, as shown below:
+
+{{ diagram(src="2-propanone.excalidraw.svg"
+           desc="A diagram describing 2-propanone, a ketone with two attached methyl groups") }}
+
+## Isomerism
+
+In inorganic chemistry, a chemical formula is almost certainly a unique identifier. But in organic chemistry, even among compounds that have identical chemical formulas, and thus have identical atomic mass, we find molecules that are structurally different. We term these **isomers**.
+
+A molecule that is drawn simply rotated, flipped, or turned backwards is not an isomer. An isomer must be _structurally different_. For instance, an ether and a ketone can be possibly have the same chemical formula even though we know they are different functional groups. 
+
+In addition, different arrangements of atoms in groups can also yield isomers. When two groups are joined together by single bonds to the central atom, the bond does not hold the two groups very tightly, so free rotation of the groups is possible. This means that even if some groups in particular molecules are oriented in opposite directions with each other, the free rotation quickly corrects for this and no isomerism occurs. However, in double-bonded and triple-bonded molecules, groups that have different orientations _cannot_ freely rotate to change their orientation. Therefore, each possible orientation results in a unique isomer. We can classify these as _cis-isomers_, where the orientations of both groups are the same, or as _trans-isomers_, where the orientations of the two groups are opposite.
+
+We should also mention _iso-_ groups, such as isopropyl and isobutyl. These are Y-shaped groups, and the two most common, isopropyl and isobutyl, have the formulas $\ce{CH3CH2CH3}$ and $\ce{CH3CH2CH2CH3}$ respectively, but are _not_ the same as propane and butane (even though they share the same formulae). In general, isomerism produces even _more_ possible organic compounds, and is a key reason why the number of known organic compounds vastly outnumbers the number of known inorganic compounds.
+
+### Chirality
+
+We consider a molecule **chiral** when there is *at least* one carbon atom with four connected groups that are all different. As an example, consider the propane molecule, $\ce{CH3CH2CH3}$. If we take a look at its central carbon, we find that it is connected to 2 $\ce{-H}$ groups and two $\ce{-CH3}$ groups. Given that there are 2 repeated hydrogen groups, we say that propane is **achiral** (not chiral).
+
+We may also consider the butane molecule, $\ce{CH3CH2CH2CH3}$. If we take a look at its central carbon, we find (again) that it is connected to 2 $\ce{-H}$ groups, one $\ce{CH3}$ group, and (unlike before) one $\ce{CH2CH3}$ group. We still do not have four different groups, so butane is **achiral**.
+
+Now let us consider 2-chloro-2-fluoropentane. If we take a look at its C2 carbon (2nd-position carbon) we find that it is connected to a $\ce{-CH3}$ group, $\ce{-CH2CH2CH3}$ group, $\ce{-Cl}$ group, and $\ce{-F}$ group. We now have found a carbon atom that _does_ have four different groups, so 2-chloro-2-fluoropentane is **chiral**.
+
+Chirality is important because chiral isomers are also called **optical isomers** which means that they polarize light (cause light to have a preferential direction). Polarization can be demonstrated through sunglasses: sunglasses are polarizing filters that allow light to pass through at only a certain angle, and block it otherwise, reducing the total light that enters (although still more than enough to see, because photons at any angle will have already randomly scattered everywhere). This allows sunglasses to block glare. For optical isomers, we refer to two types of isomers, $l$ isomers that rotate light clockwise, and $d$ isometers that rotate light counter-clockwise. However, when more than one isomer is present within a compound, we may not necessarily _observe_ polarization to occur, because a mixture could contain an equal amount of $l$ and $d$ isomers (we call this a **racemic mixture**), which cancel each other out.
+
+## Overview of the primary organic functional groups
+
+Recall that carbon has the ability to form incredibly-many compounds due to its ability to chain different groups of atoms together with its four bonds. Organic compounds are typically built of a mixture of such groups - functional groups - which we have discussed previously. A chart of the most common functional groups is given below:
+
+{{ wideimg(src="functional-groups.excalidraw.svg"
+           desc="Chart of common functional groups and their skeleton structures") }}
+
+_Alt text: An illustration of all common organic functional groups listed in the prior sections._
+
+> **Note:** To zoom into the chart in a web browser, you can right-click on the image and then select "Open Image in New Tab", then scroll to zoom.
+
+## Organic reactions 
+
+Just like organic compounds come in a great variety of structures, they also react in complex ways to form thousands of new compounds. While organic compounds can react in many different ways, we will focus on a few chemical reactions that are incredibly common for organic compounds:
+
+| Reaction type/subtypes (if any)                                                         | Occurence                                                                                                    |
+| --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| **Combustion**                                                                          | Reaction with $\ce{O2}$ (oxygen)                                                                             |
+| **Alkane substitution** (includes chlorination, bromination, halogination)              | Reaction of alkane (single-bond hydrocarbon) with $\ce{Cl, Br, I}$ gas most commonly                         |
+| **Aromatic substitution** (includes benzene chlorination, bromination and halogination) | Reaction of benzene with $\ce{Cl, Br, I}$ gas most commonly                                                  |
+| **Alcohol elimination**                                                                 | Reaction usually requires a strong acid as catalyst, $\ce{OH}$ group is taken from alcohol to form an alkene |
+
+> **Note:** Other common organic reactions that are not covered here are alkene addition, alkene hydrogenation, alcohol substitution, and alcohol oxidation.
+
+We will take a look at each in detail. The first category, combustion, is certainly the most familiar. A common example is the combustion of methane (one of the main components of natural gas) by the following reaction:
+
+{% math() %}
+\ce{CH4(g) + 2O2(g) \to CO2(g) + 2H2O(g)}
+{% end %}
+
+This reaction only produces the inorganic compounds of carbon dioxide and oxygen, which is typical for combustion reactions, and is the case for the combustion of **all hydrocarbons**. The other types of organic reactions are more complex, because they result in the formation of _organic_ compounds.
+
+Now let us examine an example of **aromatic substitution**: the chlorination of benzene. Recall that benzene has molecular formula $\ce{C6H6}$ and the following skeleton formula:
+
+![Benzene, SMILES format: C1C=CC=CC1](http://hulab.rxnfinder.org/smi2img/C1C=CC=CC1?height=100)
+
+When benzene is reacted with chlorine gas in the presence of a catalyst (usually an acid), it reacts to form **chlorobenzene** ($\ce{C6H5Cl}$) as well as hydrogen chloride gas:
+
+{% math() %}
+\ce{C6H6(l) + Cl2(g) \to C6H5Cl(l) + HCl(g)}
+{% end %}
+
+The skeleton formula of chlorobenzene is the same as benzene, but with one of its (implied) hydrogens replaced with a chlorine atom:
+
+![Chlorobenzene, SMILES format: C1C=CC(Cl)=CC1](http://hulab.rxnfinder.org/smi2img/C1C=CC(Cl)=CC1?height=100)
+
+Alkene addition: react with acid (e.g. $\ce{KI, HCl, HF}$ etc.) or halogen (e.g. $\ce{Cl2, I2, F2}$ etc.), turns double bond into single bond, the hydrogen from the acid adds to the carbon atom of the double bond with the most hydrogen atoms, and the halogen from the acid attaches to one side of the other carbon (formerly) in the double bond. 
+
+## Polymers
+
+**Polymers** are long-chain organic molecules containing repeating groups of simpler molecules, called **monomers**. Many biological compounds are made of polymers, including, most famously, DNA. Polymers come in several different varieties.
+
+An **addition polymer** is a polymer that is formed by an addition reaction. This means that addition polymers form by splitting a monomer apart and recombining the monomers into long chains, where monomers link together at the ends of each other. re-using _all_ the original atoms in the monomer without adding and losing any atom. The process of creating an addition polymer is _purely rearrangement_ of the _same_ atoms - moving them around and connecting them in different ways. 
+
+By contrast, in **condensation reactions**, there is the loss of a water molecule or another group to be able to chain the monomers together, unlike addition polymers. Such polymers are known as **condensation polymers**.
+
 ## The kinetic theory of gases
 
 The kinetic theory of gases is the most widely-used theory of molecular gases, developed over the course of countless experiments. It models gases as composed of countless gas particles, which are each very small in size, very rapidly moving, and only interact with each other when they collide. In addition, collisions between gas particles are assumed to be **perfectly elastic**, meaning that there is no loss of energy during collisions. Kinetic theory explains that **temperature** is just a manifestation of the _average kinetic energy_ of the gas molecules, and that **pressure** is just a macroscopic description of the sum of all collision forces between gas molecules.
