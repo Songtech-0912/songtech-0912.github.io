@@ -21,7 +21,7 @@ While physics is usually on the scale of generally big life-sized things (projec
 
 Stability (that is, descent to a lower energy state that is more stable) and conservation (quantities that do not change) are essential to chemistry. In addition, the behavior of electrons is essential to understanding chemical interactions. This is because electrons are the mediators of the electromagnetic interaction and therefore responsible for **all** chemistry (other than nuclear chemistry). Armed with this knowledge, we can explain the rich and diverse landscape of chemistry.
 
-## The quantum origins of chemistry
+### The quantum origins of chemistry
 
 Fundamental chemistry comes from the quantum world that governs matter on the atomic and subatomic scales. Atoms constitute the fundamental building blocks of ordinary matter. Therefore, atoms and the structures they form are the main objects of study in chemistry.
 
@@ -31,7 +31,7 @@ As a high-level overview, matter is anything that occupies space (more technical
 
 > **Note for the advanced reader:** Chemical energy, which we can broadly speak of as energy stored in chemical bonds, is actually the sum of the individual electromagnetic potential energies associated with each of the electrons in matter. Quantum chemistry provides quantitative methods to describe chemical energy in terms of potential surfaces and atomic wavefunctions, but this is far beyond the scope of a general chemistry course.
 
-## The chemistry lexicon
+### The chemistry lexicon
 
 An **intensive property** is a characteristic that is intrinsic to a substance, but an **extensive property** can vary based on how much of the substance there is. 
 
@@ -41,7 +41,7 @@ An **intensive property** is a characteristic that is intrinsic to a substance, 
 
 **Units** are a prerequisite for doing chemistry. The SI system of measurement is the predominant unit system used in science, but regardless of what unit is used, you should **never** report a measurement without units (unless if the quantity is dimensionless).
 
-## Modern atomic theory
+### Modern atomic theory
 
 Modern atomic theory regards substances according to three key observations of nature:
 
@@ -55,17 +55,28 @@ The chemist **John Dalton** was one of the originators of atomic theory. He reco
 
 Due to the equal and opposite charges of electrons as compared to protons, there are equal numbers of electrons and protons in a neutral atom, so that atoms are generally electrically neutral and thus stable. However, the same element can have different numbers of neutrons; variations of the same element are called **isotopes** and are important for nuclear chemistry and nuclear physics. One common example is uranium, which has several well-known isotopes, uranium-238 denoted {% inlmath() %}\ce{^{238}_{92} U}{% end %}, and uranium-235 denoted {% inlmath() %}\ce{^{235}_{92} U}{% end %}.
 
-## Periodic table
+## The periodic table
 
-The **periodic table** categorizes the properties of all known elements. All elements are represented by a specific *chemical symbol*, such as $\ce{Cu}$ for copper, $\ce{Fe}$ for iron, and $\ce{C}$ for carbon. The original periodic table was able to predict the properties of 2 then-unknown elements. The phenomena that allows the periodic table to exist is called **periodicity**, where repeating groups of elements share the same chemical properties. This is caused by the arrangement of valence (outermost) electrons, which are the same in elements of the same group. For example, the alkali metals (sodium, potassium, cesium, etc. referred together as group I) all have one valence electron.
+The **periodic table** categorizes the properties of all known elements. All elements are represented by a specific *chemical symbol*, such as $\ce{Cu}$ for copper, $\ce{Fe}$ for iron, and $\ce{C}$ for carbon. The original periodic table was able to predict the properties of 2 then-unknown elements. The phenomena that allows the periodic table to exist is called **periodicity**, where repeating groups of elements share the same chemical properties. This is caused by the arrangement of valence (outermost) electrons, which are the same in elements of the same group. For example, the alkali metals (sodium, potassium, cesium, etc. referred together as group I) all have one valence electron. The phenomenon of periodicity culminated in the development of the **periodic table**, which organizes elements of common properties in vertical columns and adjacent to one another. The modern periodic table is shown below:
+
+{{ wideimg(
+  src="pubchem-periodic-table.png"
+  desc="The periodic table, listing all known elements in their groups"
+) }}
+
+_Diagram source: [PubChem](https://pubchem.ncbi.nlm.nih.gov/periodic-table/)_
+
+> **Note:** A very useful _interactive_ periodic table can be found at <https://ptable.com/>.
+
+## Classifying chemical compounds
 
 While it is possible to find naturally-occuring substances containing only one element, most chemical substances are composed of **compounds**. Compounds are formed by _chemical bonds_ between atoms of different elements. As an example, water, with the chemical formula $\ce{H2O}$, is composed of hydrogen and oxygen atoms. There are three main types of basic compounds: **covalent compounds**, **ionic compounds**, and **metallic compounds**. We will now examine covalent and ionic compounds in more detail.
 
-## Covalent compounds
+### Covalent compounds
 
 Covalent compounds formed by nonmetals are generally **covalent compounds** held together by **covalent bonds**. In covalent bonding, two atoms overlap and share electrons, creating molecules.
 
-### Naming conventions for covalent compounds
+#### Naming conventions for covalent compounds
 
 - Start with the element furthest to the left of the periodic table
 - Name the second element with the _-ide_ suffix, and a greek prefix based on the number of that second element in the chemical formula:
@@ -78,6 +89,89 @@ Covalent compounds formed by nonmetals are generally **covalent compounds** held
 - e.g. $\ce{O_2}$ is _dioxide_ (e.g. in $\ce{CO2}$ which is carbon dioxide)
 
 Note that this process can be done in reverse to find the molecular formula for a covalent compound. E.g. carbon dioxide has the molecular formula $\ce{CO2}$ because the first element is carbon, which by convention is one carbon when not specified, and dioxide with the _di-_ prefix denotes two oxygen atoms.
+
+### Ionic compounds
+
+**Ionic compounds** are compounds formed by the transfer of electrons between ions. In ionic bonding, an electron (or several) is transferred from a positively-charged ion to a negatively-charged ion, creating a structured lattice. Ions are atoms or combinations of atoms that have a net electric charge.
+
+> **Note for the advanced reader:** ions have a precise description via electromagnetic theory, which can be used to analyze the fundamental electromagnetic interactions of ions by their interaction through the _microscopic_ electric field. However, in general chemistry, we will only describe ions on a _macroscopic_ level.
+
+The word "molecule" applies technically _only_ to covalent compounds. Ionic compounds do not form molecules because their atoms are arranged in lattices in which there is no distinct separation between bonded atoms.
+
+#### Tables of ions
+
+In general, alkali metals and alkaline earth metals have only one type of cation. The following table lists monatomic cations of metals that generally form only one cation:
+
+| Metal     | Cation         | Metal     | Cation         |
+| --------- | -------------- | --------- | -------------- |
+| Lithium   | $\ce{Li^+}$    | Scandium  | $\ce{Sc^{3+}}$ |
+| Sodium    | $\ce{Na^+}$    | Aluminium | $\ce{Al^{3+}}$ |
+| Potassium | $\ce{K^+}$     | Zinc      | $\ce{Zn^{2+}}$ |
+| Rubidium  | $\ce{Rb^+}$    | Silver    | $\ce{Ag^+}$    |
+| Cesium    | $\ce{Cs^+}$    | Magnesium | $\ce{Mg^{2+}}$ |
+| Calcium   | $\ce{Ca^{2+}}$ | Strontium | $\ce{Sr^{2+}}$ |
+| Barium    | $\ce{Ba^{2+}}$ |           |                |
+
+_Table replicated from Chemistry: A Molecular Approach, Pearson, Chapter 3.5, Figure 3.7. Shared under Fair Use._
+
+Other metals can form different cations, and thus the type of cation must be specified, such as $\ce{FeO}$ denoted _iron(II) oxide_ as opposed to simply iron oxide, because the specific cation of iron that forms iron(II) oxide is the $\ce{Fe^{2+}}$ ion. Some examples of cations of common metals that have more than one cation are shown in the table below:
+
+| Metal    | Cation           | Cation Name   |
+| -------- | ---------------- | ------------- |
+| Chromium | $\ce{Cr^{2+}}$   | Chromium(II)  |
+| Chromium | $\ce{Cr^{3+}}$   | Chromium(III) |
+| Iron     | $\ce{Fe^{2+}}$   | Iron(II)      |
+| Iron     | $\ce{Fe^{3+}}$   | Iron(III)     |
+| Cobalt   | $\ce{Co^{2+}}$   | Cobalt(II)    |
+| Cobalt   | $\ce{Co^{3+}}$   | Cobalt(III)   |
+| Copper   | $\ce{Cu^+}$      | Copper(I)     |
+| Copper   | $\ce{Cu^{2+}}$   | Copper(II)    |
+| Tin      | $\ce{Sn^{2+}}$   | Tin(II)       |
+| Tin      | $\ce{Sn^{4+}}$   | Tin(IV)       |
+| Mercury  | $\ce{Hg_2^{2+}}$ | Mercury(I)    |
+| Mercury  | $\ce{Hg^{2+}}$   | Mercury(II)   |
+| Lead     | $\ce{Pb^{2+}}$   | Lead(II)      |
+| Lead     | $\ce{Pb^{4+}}$   | Lead(IV)      |
+
+_Table replicated from Chemistry: A Molecular Approach, Pearson, Chapter 3.5, Table 3.3. Shared under Fair Use._
+
+Non-metals can also often form multiple different anions, but some of the most common are shown in the table below:
+
+| Non-metal  | Anion         | Anion Name |
+| ---------- | ------------- | ---------- |
+| Fluorine   | $\ce{F^-}$    | Fluoride   |
+| Chlorine   | $\ce{Cl^-}$   | Chloride   |
+| Bromine    | $\ce{Br^-}$   | Bromide    |
+| Iodine     | $\ce{I^-}$    | Iodide     |
+| Oxygen     | $\ce{O^{2-}}$ | Oxide      |
+| Sulfur     | $\ce{S^{2-}}$ | Sulfide    |
+| Nitrogen   | $\ce{N^{3-}}$ | Nitride    |
+| Phosphorus | $\ce{P^{3-}}$ | Phosphide  |
+
+_Table replicated from Chemistry: A Molecular Approach, Pearson, Chapter 3.5, Table 3.2. Shared under Fair Use._
+
+Finally, ions are sometimes composed of multiple atoms, and a table of these **polyatomic ions** is given below:
+
+| Name                             | Formula          | Name               | Formula           |
+| -------------------------------- | ---------------- | ------------------ | ----------------- |
+| Acetate                          | $\ce{C2H3O2}^-$  | Carbonate          | $\ce{CO3}^{2-}$   |
+| Hydrogen carbonate (bicarbonate) | $\ce{HCO3}^-$    | Hydroxide          | $\ce{OH}^-$       |
+| Nitrite                          | $\ce{NO2}^-$     | Nitrate            | $\ce{NO3}^-$      |
+| Chromate                         | $\ce{CrO4}^{2-}$ | Dichromate         | $\ce{Cr2O7}^{2-}$ |
+| Phosphate                        | $\ce{PO4}^{3-}$  | Hydrogen phosphate | $\ce{HPO4}^{2-}$  |
+| Dihydrogen phosphate             | $\ce{H2PO4}^-$   | Ammonium           | $\ce{NH4}^+$      |
+| Hypochlorite                     | $\ce{ClO}^-$     | Chlorite           | $\ce{ClO2}^-$     |
+| Chlorate                         | $\ce{ClO3}^-$    | Perchlorate        | $\ce{ClO4}^-$     |
+| Permanganate                     | $\ce{MnO4}^-$    | Sulfite            | $\ce{SO3}^{2-}$   |
+| Hydrogen sulfite (bisulfite)     | $\ce{HSO3}^-$    | Sulfate            | $\ce{SO4}^{2-}$   |
+| Hydrogen sulfate (bisulfate)     | $\ce{HSO4}^-$    | Cyanide            | $\ce{CN}^-$       |
+| Peroxide                         | $\ce{O2}^{2-}$   |                    |                   |
+
+_Table replicated from Chemistry: A Molecular Approach, Pearson, Chapter 3.5, Table 3.4. Shared under Fair Use._
+
+#### Naming conventions for ionic compounds
+
+Ionic compounds have simpler naming conventions as opposed to covalent compounds. The naming convention is simply the name of the cation followed by the name of the anion; the units name of the anion are not necessary (for instance, there is no need to use _dichloride_ for $\ce{MgCl2}$, simply _chloride_) because specifying the cation and anion _uniquely determines_ the chemical formula. One simply writes the cation name followed by the anion, such as magnesium chloride for $\ce{MgCl2}$ and iron(II) sulfate for $\ce{FeSO4}$.
 
 ## Molar calculations, molarity, and stoichiometry
 
@@ -167,89 +261,6 @@ n_\mathrm{moles (\ce{H2O})} = n_\mathrm{moles (\ce{C6H12O6})} \cdot \frac{\ce{6 
 While not the case for this reaction, we sometimes find that a certain reactant cannot produce as many moles of reaction product than another reactant. The reactant that can produce less moles of product is then known as a **limiting reactant**, and the reactant that can produce more moles of product is known as an **excess reactant**.
 
 The limiting reactant determines the **theoretical yield**, the idealized amount of product produced in a chemical reaction. In actuality, due to losses in reactions, the actual amount of product is usually less than the theoretical yield. Thus, we define a **percent yield** given by $\dfrac{\text{actual yield}}{\text{theoretical yield}} \cdot 100$. The percent yield by definition is always less than 100%, and the theoretical yield is **always** higher than the percent yield. If this is not the case, it is likely that a calculation error was made.
-
-## Ionic compounds
-
-**Ionic compounds** are compounds formed by the transfer of electrons between ions. In ionic bonding, an electron (or several) is transferred from a positively-charged ion to a negatively-charged ion, creating a structured lattice. Ions are atoms or combinations of atoms that have a net electric charge.
-
-> **Note for the advanced reader:** ions have a precise description via electromagnetic theory, which can be used to analyze the fundamental electromagnetic interactions of ions by their interaction through the _microscopic_ electric field. However, in general chemistry, we will only describe ions on a _macroscopic_ level.
-
-The word "molecule" applies technically _only_ to covalent compounds. Ionic compounds do not form molecules because their atoms are arranged in lattices in which there is no distinct separation between bonded atoms.
-
-### Tables of ions
-
-In general, alkali metals and alkaline earth metals have only one type of cation. The following table lists monatomic cations of metals that generally form only one cation:
-
-| Metal     | Cation         | Metal     | Cation         |
-| --------- | -------------- | --------- | -------------- |
-| Lithium   | $\ce{Li^+}$    | Scandium  | $\ce{Sc^{3+}}$ |
-| Sodium    | $\ce{Na^+}$    | Aluminium | $\ce{Al^{3+}}$ |
-| Potassium | $\ce{K^+}$     | Zinc      | $\ce{Zn^{2+}}$ |
-| Rubidium  | $\ce{Rb^+}$    | Silver    | $\ce{Ag^+}$    |
-| Cesium    | $\ce{Cs^+}$    | Magnesium | $\ce{Mg^{2+}}$ |
-| Calcium   | $\ce{Ca^{2+}}$ | Strontium | $\ce{Sr^{2+}}$ |
-| Barium    | $\ce{Ba^{2+}}$ |           |                |
-
-_Table replicated from Chemistry: A Molecular Approach, Pearson, Chapter 3.5, Figure 3.7. Shared under Fair Use._
-
-Other metals can form different cations, and thus the type of cation must be specified, such as $\ce{FeO}$ denoted _iron(II) oxide_ as opposed to simply iron oxide, because the specific cation of iron that forms iron(II) oxide is the $\ce{Fe^{2+}}$ ion. Some examples of cations of common metals that have more than one cation are shown in the table below:
-
-| Metal    | Cation           | Cation Name   |
-| -------- | ---------------- | ------------- |
-| Chromium | $\ce{Cr^{2+}}$   | Chromium(II)  |
-| Chromium | $\ce{Cr^{3+}}$   | Chromium(III) |
-| Iron     | $\ce{Fe^{2+}}$   | Iron(II)      |
-| Iron     | $\ce{Fe^{3+}}$   | Iron(III)     |
-| Cobalt   | $\ce{Co^{2+}}$   | Cobalt(II)    |
-| Cobalt   | $\ce{Co^{3+}}$   | Cobalt(III)   |
-| Copper   | $\ce{Cu^+}$      | Copper(I)     |
-| Copper   | $\ce{Cu^{2+}}$   | Copper(II)    |
-| Tin      | $\ce{Sn^{2+}}$   | Tin(II)       |
-| Tin      | $\ce{Sn^{4+}}$   | Tin(IV)       |
-| Mercury  | $\ce{Hg_2^{2+}}$ | Mercury(I)    |
-| Mercury  | $\ce{Hg^{2+}}$   | Mercury(II)   |
-| Lead     | $\ce{Pb^{2+}}$   | Lead(II)      |
-| Lead     | $\ce{Pb^{4+}}$   | Lead(IV)      |
-
-_Table replicated from Chemistry: A Molecular Approach, Pearson, Chapter 3.5, Table 3.3. Shared under Fair Use._
-
-Non-metals can also often form multiple different anions, but some of the most common are shown in the table below:
-
-| Non-metal  | Anion         | Anion Name |
-| ---------- | ------------- | ---------- |
-| Fluorine   | $\ce{F^-}$    | Fluoride   |
-| Chlorine   | $\ce{Cl^-}$   | Chloride   |
-| Bromine    | $\ce{Br^-}$   | Bromide    |
-| Iodine     | $\ce{I^-}$    | Iodide     |
-| Oxygen     | $\ce{O^{2-}}$ | Oxide      |
-| Sulfur     | $\ce{S^{2-}}$ | Sulfide    |
-| Nitrogen   | $\ce{N^{3-}}$ | Nitride    |
-| Phosphorus | $\ce{P^{3-}}$ | Phosphide  |
-
-_Table replicated from Chemistry: A Molecular Approach, Pearson, Chapter 3.5, Table 3.2. Shared under Fair Use._
-
-Finally, ions are sometimes composed of multiple atoms, and a table of these **polyatomic ions** is given below:
-
-| Name                             | Formula          | Name               | Formula           |
-| -------------------------------- | ---------------- | ------------------ | ----------------- |
-| Acetate                          | $\ce{C2H3O2}^-$  | Carbonate          | $\ce{CO3}^{2-}$   |
-| Hydrogen carbonate (bicarbonate) | $\ce{HCO3}^-$    | Hydroxide          | $\ce{OH}^-$       |
-| Nitrite                          | $\ce{NO2}^-$     | Nitrate            | $\ce{NO3}^-$      |
-| Chromate                         | $\ce{CrO4}^{2-}$ | Dichromate         | $\ce{Cr2O7}^{2-}$ |
-| Phosphate                        | $\ce{PO4}^{3-}$  | Hydrogen phosphate | $\ce{HPO4}^{2-}$  |
-| Dihydrogen phosphate             | $\ce{H2PO4}^-$   | Ammonium           | $\ce{NH4}^+$      |
-| Hypochlorite                     | $\ce{ClO}^-$     | Chlorite           | $\ce{ClO2}^-$     |
-| Chlorate                         | $\ce{ClO3}^-$    | Perchlorate        | $\ce{ClO4}^-$     |
-| Permanganate                     | $\ce{MnO4}^-$    | Sulfite            | $\ce{SO3}^{2-}$   |
-| Hydrogen sulfite (bisulfite)     | $\ce{HSO3}^-$    | Sulfate            | $\ce{SO4}^{2-}$   |
-| Hydrogen sulfate (bisulfate)     | $\ce{HSO4}^-$    | Cyanide            | $\ce{CN}^-$       |
-| Peroxide                         | $\ce{O2}^{2-}$   |                    |                   |
-
-_Table replicated from Chemistry: A Molecular Approach, Pearson, Chapter 3.5, Table 3.4. Shared under Fair Use._
-
-### Naming conventions for ionic compounds
-
-Ionic compounds have simpler naming conventions as opposed to covalent compounds. The naming convention is simply the name of the cation followed by the name of the anion; the units name of the anion are not necessary (for instance, there is no need to use _dichloride_ for $\ce{MgCl2}$, simply _chloride_) because specifying the cation and anion _uniquely determines_ the chemical formula. One simply writes the cation name followed by the anion, such as magnesium chloride for $\ce{MgCl2}$ and iron(II) sulfate for $\ce{FeSO4}$.
 
 ## Acids and bases
 
@@ -1044,7 +1055,7 @@ When naming alcohols, we must *also* indicate the position of the hydroxyl group
 
 > **Note:** there is no 4-pentanol or 5-pentanol because 4-pentanol would just be 2-pentanol backwards and 5-pentanol would just be 1-pentanol backwards. We only count sub-variants that are structurally different, if a sub-variant is the same, we don't count it.
 
-### Other common organic functional groups
+### Other functional groups
 
 Beyond the ubiquitous hydrocarbons, benzenes and alcohols, there are more groups of organic compounds. Each constitutes a **functional group**, which can be thought of as branches to attach to a carbon chain.
 
@@ -1065,7 +1076,7 @@ The functional groups are still named according to the longest continuous carbon
 {{ diagram(src="2-propanone.excalidraw.svg"
            desc="A diagram describing 2-propanone, a ketone with two attached methyl groups") }}
 
-## Isomerism
+### Isomerism
 
 In inorganic chemistry, a chemical formula is almost certainly a unique identifier. But in organic chemistry, even among compounds that have identical chemical formulas, and thus have identical atomic mass, we find molecules that are structurally different. We term these **isomers**.
 
@@ -1085,7 +1096,7 @@ Now let us consider 2-chloro-2-fluoropentane. If we take a look at its C2 carbon
 
 Chirality is important because chiral isomers are also called **optical isomers** which means that they polarize light (cause light to have a preferential direction). Polarization can be demonstrated through sunglasses: sunglasses are polarizing filters that allow light to pass through at only a certain angle, and block it otherwise, reducing the total light that enters (although still more than enough to see, because photons at any angle will have already randomly scattered everywhere). This allows sunglasses to block glare. For optical isomers, we refer to two types of isomers, $l$ isomers that rotate light clockwise, and $d$ isometers that rotate light counter-clockwise. However, when more than one isomer is present within a compound, we may not necessarily _observe_ polarization to occur, because a mixture could contain an equal amount of $l$ and $d$ isomers (we call this a **racemic mixture**), which cancel each other out.
 
-## Overview of the primary organic functional groups
+### Summary of the primary organic functional groups
 
 Recall that carbon has the ability to form incredibly-many compounds due to its ability to chain different groups of atoms together with its four bonds. Organic compounds are typically built of a mixture of such groups - functional groups - which we have discussed previously. A chart of the most common functional groups is given below:
 
@@ -1096,7 +1107,7 @@ _Alt text: An illustration of all common organic functional groups listed in the
 
 > **Note:** To zoom into the chart in a web browser, you can right-click on the image and then select "Open Image in New Tab", then scroll to zoom.
 
-## Organic reactions 
+### Organic reactions 
 
 Just like organic compounds come in a great variety of structures, they also react in complex ways to form thousands of new compounds. While organic compounds can react in many different ways, we will focus on a few chemical reactions that are incredibly common for organic compounds:
 
@@ -1133,7 +1144,7 @@ The skeleton formula of chlorobenzene is the same as benzene, but with one of it
 
 Alkene addition: react with acid (e.g. $\ce{KI, HCl, HF}$ etc.) or halogen (e.g. $\ce{Cl2, I2, F2}$ etc.), turns double bond into single bond, the hydrogen from the acid adds to the carbon atom of the double bond with the most hydrogen atoms, and the halogen from the acid attaches to one side of the other carbon (formerly) in the double bond. 
 
-## Polymers
+### Polymers
 
 **Polymers** are long-chain organic molecules containing repeating groups of simpler molecules, called **monomers**. Many biological compounds are made of polymers, including, most famously, DNA. Polymers come in several different varieties.
 
@@ -1280,6 +1291,221 @@ Recall that the ideal gas is an approximate model of gases that makes accurate p
 
 Where $a$ is a correction coefficient to describe the molecular interactions (attraction as well as repulsion) between gas molecules, and $b$ is a correction coefficient to describe the nonzero volume of gas molecules.
 
+## Equilibrium in chemical reactions
+
+While at first glance it may appear that chemical reactions simply occur when two substances are brought together, or at most, combined with a catalyst, the reality of chemical reactions is far more complex. Chemical processes are roughly a result of atoms lowering their potential energy to be as negative as possible, thus creating stabler compounds. The breaking of bonds requires energy, but this is sometimes a suitable trade-off when new bonds are formed that are more stable than the original. Conversely, to go against the potential energy gradient (not to be confused with the mathematical term of the same name) requires an input of positive potential energy.
+
+For a given chemical reaction, we find that the laws of nature may sometimes allow a reaction to occur more naturally in reverse rather than in the conventional forwards order that we write a chemical equation in. Consider the below generic chemical reaction between substances $A, B$ that produces product compounds $C, D$:
+
+{% math() %}
+\ce{a A + b B <=> cC + dD}
+{% end %}
+
+We use the double-sided arrow to show that the reaction may occur in any of the two following ways (that is, going left-to-right, which we term as _forwards_, or right-to-left, which we term as _reverse_):
+
+{% math() %}
+\begin{matrix}
+\text{Forward:} &\ce{a A + b B -> cC + dD} \\
+\text{Reverse:} &\ce{cC + dD -> a A + b B} \\
+\end{matrix}
+{% end %}
+
+In chemical reactions, the direction the reaction proceeds is determined by which reaction - forward or reverse - brings the reaction to equilibrium. This means that a reaction can change from going in forwards to going in reverse, and that one or both may be necessary to attain equilibrium.
+
+### The equilibrium constant
+
+To quantitatively determine whether a reaction tends towards going in the forwards or reverse direction, we use the concept of the **equilibrium constant**. There are in fact two forms of the equilibrium constant, one conventionally used for gases, denoted $K_p$ ($p$ for _partial pressures_), and the other one used for everything else, denoted $K_c$ ($c$ for _concentration_). The names are suggestive of the manner of calculating each.
+
+The **law of mass action** expresses the concentration-based equilibrium constant $K_c$ in terms of the reaction coefficient and the concentration of reactants and products _at equilibrium_. For the reaction we gave above, that is:
+
+{% math() %}
+\ce{a A + b B <=> cC + dD}
+{% end %}
+
+The law of mass action takes the following form:
+
+{% math() %}
+K_c = \dfrac{[C]^c[D]^d}{[A]^a[B]^b}
+{% end %}
+
+> Be careful that the variables are **concentrations**, _not_ numbers of moles. As a side note, the law of mass action can also be written in a more general, if less readable form for the chemical reaction $\displaystyle \sum_i r_i R_i \ce{<=>} \displaystyle \sum_i p_i P_i$ (or expanded, $r_1 R_1 + r_2 R_2 + \dots + r_n R_n \ce{<=>} p_1 P_1 + p_2P_2 + \dots + p_nP_n$) where $r_i$ are the coefficients of the reactants $R_i$ and $p_i$ are the coefficients of the products $P_i$ as $K_c = \dfrac{\prod_i [P_i]^{p_i}}{\prod_i [R_i]^{r_i}} = \dfrac{[P_1]^{p_1}[P_2]^{p_2}[P_3]^{p_3} \times \dots \times [P_n]^{p_n}}{[R_1]^{r_1}[R_2]^{r_2}[R_3]^{r_3} \times \dots \times [R_n]^{r_n}}$ where $\prod$ is the symbol for a product over all terms.
+
+The equilibrium constant has a numerical significance:
+
+- If $K \gg 1$ then the **forward reaction** is favored over the reverse reaction, and we say that the reaction lies to the **right** of the chemical equation
+- If $K \ll 1$ then the **reverse reaction** is favored over the forward reaction, and we say that the reaction lies to the **left** of the chemical equation
+- If $K \approx 1$ there is no favored reaction and the reaction only continues to halfway
+
+The partial-pressure-calculated equilibrium constant $K_p$ is closely related to $K_c$, but is defined specifically for gases, and takes a different form. For the same reaction $\ce{a A + b B <=> cC + dD}$ mentioned above, $K_p$ is given by:
+
+{% math() %}
+K_p = \dfrac{(P_C)^c(P_D)^d}{(P_A)^a (P_B)^b}
+{% end %}
+
+Where $P_A, P_B, P_C, P_D$ are the partial pressures of $A, B, C, D$ respectively. Recall that we may calculate the partial pressure by $P_i = \dfrac{n_i}{n_\mathrm{total}}$ where $n_i$ is the number of moles of the specific gas and $n_\mathrm{total}$ is the total number of moles in the mixture. We may also calculate $K_p$ from $K_c$ as follows:
+
+{% math() %}
+K_p = K_{c}\left(RT\right)^{\left(n_{f}-n_{i}\right)}
+{% end %}
+
+Where $n_i$ is the total number of moles of reactant (i.e. the sum of all reactant coefficients on the left-side of the chemical equation),  $n_f$ is the total number of moles of product (i.e. the sum of all product coefficients on the right-side of the chemical equation), and $R, T$ are the ideal gas constant and temperature respectively. From the equilibrium constant's definition, we can infer several of the mathematical rules governing the equilibrium constant, which are as follows:
+
+- If the reaction is reversed, we must take the reciprocal of the reaction constant
+- If the reaction is scaled by $n$, the equilibrium constant must be taken to the power of $n$, i.e. $n\ce{aA} + n\ce{bB} \ce{<=>} n\ce{cC} + n\ce{dD}$ has the new equilibrium constant $K_{c, new} = (K_{c, old})^n$
+- Only **mixtures** and **solutions** are counted in the equilibrium constant as they have a well-defined concentration. Pure substances and all solids are not counted as by definition their concentration is 100%. For instance, acids and bases (which are by definition aqueous solutions) are counted, but liquid water is not counted (although gaseous water i.e. water vapor _is_ counted).
+
+### The reaction quotient
+
+The equilibrium constants $K_c, K_p$ that we have just seen have a caveat - they are only valid _at the point of equilibrium_. But what if we were to track the progression of a reaction at any time, not just at equilibrium? For this, we introduce the **reaction quotient** $Q$. For the aforementioned reaction $\ce{a A + b B <=> cC + dD}$ the reaction quotient takes the form:
+
+{% math() %}
+Q(t) = \dfrac{[C]^c[D]^d}{[A]^a[B]^b}\quad \forall\, t, [C], [D], [A], [B]
+{% end %}
+
+> $\forall$ is a symbol that means "for all", which shows that the reaction quotient is valid at all times and all conditions. Also, as with the equilibrium constant, be careful that the variables are **concentrations**, _not_ numbers of moles.
+
+The reaction quotient's numerical values has the following numerical significance:
+
+- At $Q < K_c$ the reaction moves towards the products
+- At $Q > K_c$ the reaction moves towards the reactants
+- At $Q = K$ the reaction is at equilibrium and stops
+
+### Calculating equilibria with I.C.E. tables
+
+To calculate the equilibrium constant for a particular reaction, it is useful to create an I.C.E table. Here, I.C.E stands for _initial_, _change_, and _end_. Let us consider an example - we want to analyze the reaction of magnesium with $\pu{0.05 M}$ hydrochloric acid, described by the chemical equation:
+
+{% math() %}
+\ce{Mg(s) + 2HCl(aq) -> MgCl2(g) + H2(g)}
+{% end %}
+
+We first determine the _initial concentrations_ of the four compounds ($\ce{Mg}, \ce{HCl}, \ce{MgCl2}, \ce{H2}$). Since the reaction has not started yet, everything on the right of the equation automatically has an initial concentration of zero (unless otherwise specified in the problem). The initial concentration of the hydrochloric acid is known - it is $\pu{0.05 M}$. Since it is the only solution (for which a concentration can be meaningfully assigned), it will be what we'll be interested in. We can now draw a table with the information we have, like so:
+
+|             | $[\ce{HCl}]$  |
+| ----------- | ------------- |
+| Initial     | $\pu{0.05 M}$ |
+| Change      | ?             |
+| Equilibrium | ?             |
+
+Then, we want to find the *change* in concentration based on how many units of the compound are used up ($+x$) or how many units are created ($-x$) as a result of the reaction, where $x$ denotes a certain, unknown quantity of the compound that *changes* as a result of the reaction. In our particular case, notice that we have a term of $\ce{2HCl}$ (that is, 2 units of $\ce{HCl}$) at the left-hand (reactant) side and no term with $\ce{HCl}$ (that is, zero units of $\ce{HCl}$) on the right-hand (product) side of our chemical equation. Thus, the change can be expressed as $-2x$. Filling in this information, our table now looks like this:
+
+|             | $[\ce{HCl}]$  |
+| ----------- | ------------- |
+| Initial     | $\pu{0.05 M}$ |
+| Change      | $-2x$         |
+| Equilibrium | ?             |
+
+To complete the table, we need to add in the equilibrium value. Luckily, the equilibrium value is simply the initial value plus the change. Thus we have $\ce{[HCl]}_\mathrm{equil.} = 0.05 - 2x$ for the equilibrium concentration of $\ce{HCl}$, which we can write as follows:
+
+|             | $[\ce{HCl}]$  |
+| ----------- | ------------- |
+| Initial     | $\pu{0.05 M}$ |
+| Change      | $-2x$         |
+| Equilibrium | $0.05 - 2x$   |
+
+We can re-apply this process for more complicated chemical reactions to analyze them in the same way and thus find their equilibria.
+
+### Le Châtelier's principle
+
+While making scientific observations of chemical reactions, French chemist Henry Louis Le Châtelier discovered that when chemical reactions are put into disequilibrium by something external to the reaction, they naturally restore themselves back to equilibrium. This is **Le Châtelier's principle**:
+
+> All chemical reactions tend towards equilibrium. If the reaction is disrupted, such as adding or decreasing a reactant or product, a shift in the reaction occurs to counteract the disruption and restore equilibrium.
+
+| Action                                                                                                       | Effect to equilibrium                                                                                                                                                                                                                                                                        | Shift caused according to Le Châtelier's principle                                                                                                                                                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Increasing a reactant's concentration                                                                        | Surplus of reactants, causing a **leftward shift** by undershooting past equilibrium (ending up left of equilibrium)                                                                                                                                                                         | Use more reactants to make products, causing a **rightward shift**                                                                                                                                                                                                                                          |
+| Decreasing a reactant's concentration                                                                        | Surplus of products, causing a **rightward shift** by overshooting past equilibrium (ending up right of equilibrium)                                                                                                                                                                         | Use more products to make reactants, causing a **leftward shift**                                                                                                                                                                                                                                           |
+| Increasing a product's concentration                                                                         | Same as **decreasing** a reactant's concentration                                                                                                                                                                                                                                            | Same as **decreasing** a reactant's concentration                                                                                                                                                                                                                                                           |
+| Decreasing a product's concentration                                                                         | Same as **increasing** a reactant's concentration                                                                                                                                                                                                                                            | Same as **increasing** a reactant's concentration                                                                                                                                                                                                                                                           |
+| Mix of increasing and decreasing the concentrations of different reactants _or_ different products _or_ both | Depends; in the case that the increases and decreases cancel out, there is **no shift**.                                                                                                                                                                                                     | Depends; again, in the case that the increases and decreases cancel out, there is **no shift**.                                                                                                                                                                                                             |
+| Increase volume                                                                                              | Depends on coefficients of reactants vs products. If the coefficients of *products* are greater, there is a **surplus** of *reactants* and a leftward shift. If the coefficients of *reactants* are greater, there is a **surplus** of *products* and a rightward shift.                     | Depends on coefficients of reactants vs products. If the coefficients of *products* are greater, more reactants are used to make products, resulting in a **rightward shift**. If the coefficients of *reactants* are greater, more products are used to make reactants, resulting in a **leftward shift**. |
+| Decrease volume                                                                                              | The opposite of increasing the volume. That is, there is a **surplus** of *products* when the coefficients of *products* are greater, and a **surplus** of *reactants* when the coefficients of *reactants* are greater.                                                                     | The opposite of increasing the volume. That is to saw, if the coefficients of *products* are greater, there is a **leftward shift**, and if the coefficients of *reactants* are greater, there is a **rightward shift**.                                                                                    |
+| Increase temperature                                                                                         | Depends on whether the reaction is exothermic (releases heat, negative $\Delta H^\circ$) or endothermic (absorbs heat, positive $\Delta H^\circ$). For *exothermic* reactions, there is a **surplus** of *reactants*, and for _endothermic_ reactions, there is a **surplus** of *products*. | If the reaction is *exothermic*, then there is a **rightward shift**. However, if the reaction is *endothermic*, there is a **leftward shift**.                                                                                                                                                             |
+| Decrease temperature                                                                                         | The opposite of increasing the temperature.                                                                                                                                                                                                                                                  | The opposite of increasing the temperature.                                                                                                                                                                                                                                                                 |
+
+> Note: the effects of volume changes are counterintuitive, because **volume is inversely proportional to concentration**. A higher volume means a lower concentration, while a lower volume means a higher concentration.
+
+### Acid and base solutions and equilibria
+
+Acids and bases are by definition solutions, and thus their concentration and composition is essential to understanding their behavior. In general, both acids and bases are composed of chemical groups that disassociate into free ions when dissolved in water. However, we can distinguish between "strong" acids and bases, versus "weak" acids and bases. The primary difference is that a strong acid **completely disassociates into its component ions** when dissolved; we therefore say that it is *fully ionized*. A weak acid only partially disassociates into its component ions, so it is *partially ionized*.
+
+A way to measure the level of ionization - and thus to distinguish between weak and strong acids (and bases) - is to measure the pH. The pH is given by the common logarithm ($\log_{10}$) of the concentration of $\ce{H3O+}$ (hydronium) ions:
+
+{% math() %}
+\ce{pH} = -\log [\ce{H3O+}]
+{% end %}
+
+> Recall that $[\ce{H3O+}]$ and $[\ce{H+}]$ are _completely equivalent_. Thus we may also write $\ce{pH} = -\log [\ce{H+}]$.
+
+We may find $\ce{[H3O^+]}$ for an aqueous solution of either pure water or a strong acid/base with the constant $K_w$, the self-ionization constant of water. In an aqueous solution, the relation between $\ce{[OH]^-}$, the concentration of hydroxide anions, and $\ce{[H3O^+]}$, the concentration of hydronium (hydrogen) cations, is given by:
+
+{% math() %}
+\ce{[H3O^+][OH^-]} = K_w
+{% end %}
+
+Which may be rearranged to yield:
+
+{% math() %}
+\begin{align*}
+\ce{[H3O^+]} = \dfrac{K_w}{\ce{[OH^-]}} \\
+\ce{[OH^-]} = \dfrac{K_w}{\ce{[H3O^+]}}
+\end{align*}
+{% end %}
+
+> For strong acids and bases, these assume that there is one cation and one anion bonded together in the compound that disassociates to the acid or base. If one cation is bonded to two anions, then we would have $\ce{[H3O^+]\cdot 2[OH^-]} = K_w$, and in the general case for $n$ cations bonded to $m$ anions we would have $n\ce{[H3O^+]}\cdot m\ce{[OH^-]} = K_w$.
+
+From here, we can give our first *formal* definition of how to distinguish an acid and a base:
+
+{% math() %}
+\begin{align*}
+[\ce{H3O^+}] > [\ce{OH^-}] & \rightarrow \text{acidic solution} \\
+[\ce{H3O^+}] < [\ce{OH^-}] & \rightarrow \text{basic solution}
+\end{align*}
+{% end %}
+
+For weaker acids and bases, we can no longer use the above formulas, as weak acids and bases do not completely ionize water. Rather, we must use compound-specific constants, $K_a$ for a weak acid and $K_b$ for a weak base. These are also given in terms of their logarithms, where $pK_a = -\log K_a$ and $pK_b = -\log K_b$. Conversely, $K_a = 10^{-pK_a}$ and $K_b = 10^{-pK_b}$.
+
+A weak acid in the form $\ce{HA}$ (e.g. $\ce{HNO2, HClO, HF}$) where $\ce{A^-}$ is the anion of the acid has the **acid ionization constant** $K_a$ given by:
+
+{% math() %}
+K_a = \dfrac{\ce{[H3O+][A–]}}{\ce{[HA]}}
+{% end %}
+
+For instance, formic acid, given by $\ce{HCOOH}$, is composed of the $\ce{H+}$ cation and the $\ce{COOH^-}$ anion. The respective concentrations can be found by writing out the chemical equation of the dissociation of the weak acid into water, $\ce{HA -> \ce{H3O+} + \ce{A-}}$. Then, by using an ICE table, we can find the respective concentrations of $[\ce{H3O^+}]$ and $\ce{[A^-]}$.
+
+> For such purposes we use initial concentrations of $[\ce{H3O^+}] = \ce{[A^-]} = 0$ (unless otherwise given in the problem).
+
+In the _small $x$ approximation_ for weak acids in the form $\ce{HA}$ , the $\ce{H3O+}$ concentration (in M, i.e. mol/liter) can be found by the following formula:
+
+{% math() %}
+[\ce{H3O+}] = \sqrt{K_a[\ce{HA}]}
+{% end %}
+
+> We may use this approximation when $\dfrac{x}{\ce{[HA]}} \leq 5\%$.
+
+Similarly, a weak base $\ce{B}$ has the **base ionization constant** $K_b$ given by:
+
+{% math() %}
+K_b = \dfrac{\ce{[BH+][OH–]}}{\ce{[B]}}
+{% end %}
+
+In many cases, we find that a (usually weak) acid and a base differ by only one $\ce{H^+}$ ion. These situations are called **conjugate acid-base pairs**. For a conjugate acid-base pair, we can use the identity $K_a K_b = K_w$ to simplify their calculations.
+
+### pH and pOH
+
+As discussed, the pH is a measure of the acidity or basicity of a solution. The pH is defined by $\mathrm{pH} = -\log \ce{[H3O^+]}$ and generally ranges from 0 to 14 (there are special exceptions). The **pOH** is analogously defined by $\mathrm{pOH} = -\log\ce{[OH^-]}$. The two are related by $\ce{pH + pOH = 14}$.
+
+The numerical value of the pH is often used in the **pH scale** for measuring the relative strengths of acids and bases. For $\mathrm{pH} < 7$ we have an **acidic** solution, for $\ce{pH} > 7$ we have a **basic** solution, and for $\mathrm{pH} = 0$ we have a **neutral** solution.
+
+![The pH scale shown from 0-14, where smaller values indicate stronger acids and bigger value indicate stronger bases](https://upload.wikimedia.org/wikipedia/commons/f/fc/PH_Scale.png)
+
+_An image of the pH scale. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:PH_Scale.png)_
+
+The pH is a consistent measure of the strength of an acid (or a basee). For creating mixtures, we may calculate the pH in the following fashion:
+
+- If it's a mixture of two strong acids, it is given by $\mathrm{pH}_\mathrm{mix.} = -\log(\ce{[A] + [B]})$ where $A$ is the first acid, $B$ is the second acid
+- If it's a mixture of a strong acid with weak acid, it is given by $\mathrm{pH}_\mathrm{mix.} = -\log \ce{[A]}$ where $A$ is the strong acid. We can effectively ignore the contribution of the weak acid.
+- If it's two weak acids, we create an ICE table for the stronger of the two acids based on which has the greater value of $K_a$. Using the ICE table, we may calculate the pH of the stronger acid, and this is the pH of the mixture.
+
 ## Thermochemistry
 
 We have, up until this point, referred to the concept of temperature in only vague terms. In the ideal gas law, it was simply an input parameter; in kinetic gas theory, we described it as a measure of the average kinetic energy of molecules. We must now quantify the concept of temperature.
@@ -1399,3 +1625,13 @@ An expanding (or contracting) gas that has a change in volume $\Delta V$ that ex
 {% end %}
 
 This has the broader consequence that **for _any_ process taking place under constant volume**, $\Delta w = 0$, that is, there is no work done.
+
+## Concluding remarks
+
+We have now reached the end of this introductory guide to chemistry. Of course, chemistry is a far broader topic than one guide could cover, and studying just one topic in chemistry can be an entire career. For the reader interested in learning more, here are some reading suggestions:
+
+- For more on the physics behind chemistry, see the [introductory quantum mechanics](@/intro-quantum-phys.md) and the [quantum mechanics](@/quantum-mechanics/index.md) guides
+- For more on the application of chemistry to biology, see the [biology series](@/intro-bio-series.md)
+- For more intermediate and advanced-level topics in chemistry, read the [free chemistry library](https://chem.libretexts.org/) by LibreTexts
+
+Having now taken a bird's eye view of chemistry, it is up to you to find what to explore next!
