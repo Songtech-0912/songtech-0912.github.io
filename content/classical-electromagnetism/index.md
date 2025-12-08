@@ -1719,9 +1719,18 @@ It would indeed be possible to solve non-symmetrical problems with Ampère's law
 | Physical situation                                                                                            | Magnetic field                                                                                                                          |
 | ------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | Outside finite wire carrying current $I$ of length $L$ aligned along $+x$ axis                                | $\mathbf{B} = -\frac{\mu_0 I}{4\pi}\frac{\hat \theta}{r}\left(\frac{(x-L)}{\sqrt{r^2+(x-L)^2}}-\frac{(x+L)}{\sqrt{r^2+(x+L)^2}}\right)$ |
-| Circular loop of wire with radius $R$ with current $I$ and facing $+x$ axis                                   | $\mathbf{B} =\dfrac{\mu_0 IR^2}{2(x^2+R^2)^{3/2}}\hat{\mathbf{x}}$                                                                      |
+| Center of circular loop of wire with radius $R$ with current $I$ and facing $+x$ axis                                   | $\mathbf{B}_\text{axis} =\dfrac{\mu_0 IR^2}{2(x^2+R^2)^{3/2}}\hat{\mathbf{x}}$                                                                      |
 | Circular arc of radius $R$ on the $xy$ plane (where $z$ is the vertical axis and $\theta$ is the polar angle) | $\mathbf{B} = \dfrac{\mu_0 \theta I}{4\pi R} \hat z$                                                                                    |
 | Ideal magnetic dipole (i.e. perfect bar magnet) and $\mathbf{m}$ is the magnetic moment (more on this later)  | $\mathbf{B} = \nabla \times \dfrac{\mu_0}{4\pi}\left(\dfrac{\mathbf{m} \times \mathbf{r}}{r^3}\right)$                                  |
+
+Of particular interest is the circular loop of wire, with the analytical solution that we have listed above. We show a diagram of this configuration below:
+
+{{ diagram(
+	src="current-loop-field.excalidraw.svg"
+	desc="A diagram showing a loop of wire carrying current and its associated magnetic field"
+) }}
+
+This particular case is important because we'll later find (when we discuss magnetic dipoles) that in the limit of $R \to 0$, that is, when we shrink down a loop of current so that it is infinitely small, we obtain a field $B \propto x^{-3}$. This special field is the field of a **perfect magnetic dipole** and is used as an approximation to model everything from Earth's magnetic field to the magnetic field of a bar magnet.
 
 ## The magnetic vector potential
 
