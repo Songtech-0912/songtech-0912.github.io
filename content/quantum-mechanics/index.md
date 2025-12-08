@@ -2205,7 +2205,7 @@ Now substituting these the explicit form of $\hat a$ in the position basis, we h
 
 {% math() %}
 \begin{gather*}
-\hat a|0\rangle = x + \dfrac{\hbar}{m\omega}  \dfrac{d}{dx}|0\rangle \\
+\hat a|0\rangle = 0 \\
 \Rightarrow ~ \hat a\langle x|0\rangle = \hat a\psi_0(x)  = 0 \\
 \Rightarrow ~ \left(x + \dfrac{\hbar}{m\omega}  \dfrac{d}{dx}\right)\psi_0(x) = 0
 \end{gather*}
@@ -2257,6 +2257,15 @@ This allows us to recursively construct all the eigenstates of the system. For i
 \end{align*}
 {% end %}
 
+In general, we have:
+
+{% math() %}
+\begin{gather*}
+|n\rangle = \dfrac{(\hat a^\dagger)^n}{\sqrt{n!}}|0\rangle, \\
+\psi_n(x) = \langle x|n\rangle = \sqrt{\frac{m\omega}{2\hbar n!}} \left(x - \frac{\hbar}{m\omega} \dfrac{d}{dx}\right)^n \psi_0(x)
+\end{gather*}
+{% end %}
+
 In the same way, we can get $\psi_2$ from applying the $\hat a^\dagger$ operator on $\psi_1$, then get $\psi_3$ from $\psi_2$, then get $\psi_4$ from $\psi_3$, and so on and so forth. With some clever mathematics (that we won't show here), this recursive formula can be solved in closed-form to yield a *generalized* formula for the _nth_ eigenstate's wavefunction representation:
 
 {% math() %}
@@ -2266,7 +2275,7 @@ In the same way, we can get $\psi_2$ from applying the $\hat a^\dagger$ operator
 Here, $H_n(x)$ is a **Hermite polynomial** of order $n$, defined as:
 
 {% math() %}
-H_n(x) = (-1)^n e^{x^2} \frac{d^n}{dx^n} e^{-u^2}
+H_n(x) = (-1)^n e^{x^2} \frac{d^n}{dx^n} e^{-x^2}
 {% end %}
 
 Where the first three Hermite polynomials are given by:
