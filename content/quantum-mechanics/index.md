@@ -970,6 +970,16 @@ Likewise, "sandwiching" a linear operator between a bra $|\psi\rangle$ and a ket
 
 > **Note:** The scalar $c$ is frequently called in the literature as a **c-number** (short for "complex number"). This is to distinguish it from vectors, matrices, and operators in quantum mechanics, which are **not** scalars (even if they are complex-valued).
 
+A frequent use of this "sandwiching" is to calculate the **expectation value** of an operator. The expectation value of a (physically-relevant) operator $\hat A$, denoted $\langle \hat A\rangle$, is the _mean measured value_ of the physical quantity the operator represents. That is to say, if we had a quantum system described by a state-vector $|\Psi\rangle$, and we wanted to measure a certain quantity that is associated with an operator $\hat A$, then the expectation value is the _averaged value_ of repeatedly measuring the system. Mathematically, the expression for the expectation value is given by:
+
+{% math() %}
+\langle A\rangle = \langle \Psi|\hat A|\Psi\rangle
+{% end %}
+
+> **Note:** the expectation value of a vector operator $\mathbf{A}$ (for instance, the 3D position operator or 3D momentum operator) is a vector of its expectation values in each direction, i.e. $\langle \hat{\mathbf{A}} \rangle = (\langle \hat A_x\rangle, \langle \hat A_{y}\rangle, \langle \hat A_{z}\rangle)^T$.
+
+The idea of an expectation value is a very nuanced one, because the "average value" of a series of measurements has to be very precisely defined in the context of an expectation value. The expectation value is the _averaged value_ you would get for some measurement of a system (position, momentum, energy, etc.) if you measure a billion identical copies of the same system _or_ if you repeatedly reset the system to an identical initial state prior to each measurement. Quantum-mechanically, if we just make an arbitrary set of measurements without taking care to make sure the system starts off in the same original state, the measurements will themselves change the state of the system and spoil the average of any measurement!
+
 ### Examples of abstract linear operators
 
 The first example of a linear operator we will consider is called the **projection operator** $\hat P$. The projection operator is defined by:
