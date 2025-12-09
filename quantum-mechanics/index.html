@@ -276,6 +276,49 @@
                 </li>
             
                 <li>
+                    <a href="#time-evolution-in-quantum-systems">Time evolution in quantum systems</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#unitary-operators">Unitary operators</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-unitary-time-evolution-operator">The unitary time-evolution operator</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-heisenberg-picture">The Heisenberg picture</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-correspondence-principle-and-the-classical-limit">The correspondence principle and the classical limit</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-interaction-picture">The interaction picture</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#summary-of-time-evolution">Summary of time evolution</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#angular-momentum">Angular momentum</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#stationary-perturbation-theory">Stationary perturbation theory</a>
+                    
+                </li>
+            
+                <li>
                     <a href="#advanced-quantum-theory">Advanced quantum theory</a>
                     
                         <ul>
@@ -1216,6 +1259,16 @@ $$
 <blockquote>
 <p><strong>Note:</strong> The scalar $c$ is frequently called in the literature as a <strong>c-number</strong> (short for "complex number"). This is to distinguish it from vectors, matrices, and operators in quantum mechanics, which are <strong>not</strong> scalars (even if they are complex-valued).</p>
 </blockquote>
+<p>A frequent use of this "sandwiching" is to calculate the <strong>expectation value</strong> of an operator. The expectation value of a (physically-relevant) operator $\hat A$, denoted $\langle \hat A\rangle$, is the <em>mean measured value</em> of the physical quantity the operator represents. That is to say, if we had a quantum system described by a state-vector $|\Psi\rangle$, and we wanted to measure a certain quantity that is associated with an operator $\hat A$, then the expectation value is the <em>averaged value</em> of repeatedly measuring the system. Mathematically, the expression for the expectation value is given by:</p>
+<p class="mathcell">
+$$
+\langle A\rangle = \langle \Psi|\hat A|\Psi\rangle
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> the expectation value of a vector operator $\mathbf{A}$ (for instance, the 3D position operator or 3D momentum operator) is a vector of its expectation values in each direction, i.e. $\langle \hat{\mathbf{A}} \rangle = (\langle \hat A_x\rangle, \langle \hat A_{y}\rangle, \langle \hat A_{z}\rangle)^T$.</p>
+</blockquote>
+<p>The idea of an expectation value is a very nuanced one, because the "average value" of a series of measurements has to be very precisely defined in the context of an expectation value. The expectation value is the <em>averaged value</em> you would get for some measurement of a system (position, momentum, energy, etc.) if you measure a billion identical copies of the same system <em>or</em> if you repeatedly reset the system to an identical initial state prior to each measurement. Quantum-mechanically, if we just make an arbitrary set of measurements without taking care to make sure the system starts off in the same original state, the measurements will themselves change the state of the system and spoil the average of any measurement!</p>
 <h3 id="examples-of-abstract-linear-operators">Examples of abstract linear operators</h3>
 <p>The first example of a linear operator we will consider is called the <strong>projection operator</strong> $\hat P$. The projection operator is defined by:</p>
 <p class="mathcell">
@@ -2393,7 +2446,7 @@ $$
 <p class="mathcell">
 $$
 \begin{gather*}
-\hat a|0\rangle = x + \dfrac{\hbar}{m\omega}  \dfrac{d}{dx}|0\rangle \\
+\hat a|0\rangle = 0 \\
 \Rightarrow ~ \hat a\langle x|0\rangle = \hat a\psi_0(x)  = 0 \\
 \Rightarrow ~ \left(x + \dfrac{\hbar}{m\omega}  \dfrac{d}{dx}\right)\psi_0(x) = 0
 \end{gather*}
@@ -2447,6 +2500,15 @@ $$
 \end{align*}
 $$
 </p>
+<p>In general, we have:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+|n\rangle = \dfrac{(\hat a^\dagger)^n}{\sqrt{n!}}|0\rangle, \\
+\psi_n(x) = \langle x|n\rangle = \sqrt{\frac{m\omega}{2\hbar n!}} \left(x - \frac{\hbar}{m\omega} \dfrac{d}{dx}\right)^n \psi_0(x)
+\end{gather*}
+$$
+</p>
 <p>In the same way, we can get $\psi_2$ from applying the $\hat a^\dagger$ operator on $\psi_1$, then get $\psi_3$ from $\psi_2$, then get $\psi_4$ from $\psi_3$, and so on and so forth. With some clever mathematics (that we won't show here), this recursive formula can be solved in closed-form to yield a <em>generalized</em> formula for the <em>nth</em> eigenstate's wavefunction representation:</p>
 <p class="mathcell">
 $$
@@ -2456,7 +2518,7 @@ $$
 <p>Here, $H_n(x)$ is a <strong>Hermite polynomial</strong> of order $n$, defined as:</p>
 <p class="mathcell">
 $$
-H_n(x) = (-1)^n e^{x^2} \frac{d^n}{dx^n} e^{-u^2}
+H_n(x) = (-1)^n e^{x^2} \frac{d^n}{dx^n} e^{-x^2}
 $$
 </p>
 <p>Where the first three Hermite polynomials are given by:</p>
@@ -2579,6 +2641,580 @@ $$
 <p>Note that in 2D and 3D, we also have different cases, such as the quantum harmonic oscillator across a disk or in a spherical region. In these cases, the ground-state wavefunction exhibits polar and spherical symmetry respectively, so the general solutions are quite different from the 1D case. This is very important in nuclear and molecular physics, although we will not discuss it further here.</p>
 <blockquote>
 <p><strong>Note for the interested reader:</strong> If you are interested in further applications of the quantum harmonic oscillator, it can be used to model diatomic molecules like $\ce{N2}$ or $\ce{O2}$ and describe atomic nuclei with the <a href="https://en.wikipedia.org/wiki/Nuclear_shell_model">nuclear shell model</a>, as well as serving an important role in <em>second quantization</em> of light - something we'll see more of later.</p>
+</blockquote>
+<h2 id="time-evolution-in-quantum-systems">Time evolution in quantum systems</h2>
+<p>In all areas of physics, we're often interested in how systems <em>evolve</em>. A system that depends on time is usually called a <strong>dynamical system</strong>, and at different points in time, the state of the system changes. Now, if we know that at some initial time $t_0$ a system is in a particular state $A$, and at some arbitrary later time $t$ is in another state $B$, the <em>time evolution</em> of the system describes how the system "gets" from $A$ to $B$.</p>
+<p>Consider a very simple example: a particle moving along a line. Its state is described by a single variable - position - which we describe with $x$. In physics, we would describe the motion of this particle with a function $x(t)$, which is a <strong>trajectory</strong>. This trajectory is the time evolution of the system, because from a certain initial time $t_0$, we can calculate the particle's position at any future time $t$ with $x(t)$.</p>
+<p>In quantum mechanics, we also see quantum systems exhibit time evolution. For instance, the state-vector may have an initial state $|\psi(t_0)\rangle$ at time $t = t_0$, and at some future time $t$ have the final state $|\psi(t)\rangle$. The question is, how does that initial state become the final state? The answer to that question is the <strong>time-evolution operator</strong> $\hat U(t, t_0)$, which satisfies:</p>
+<p class="mathcell">
+$$
+|\psi(t)\rangle = \hat U(t, t_0)|\psi(t_0)\rangle
+$$
+</p>
+<p>That is to say, the time-evolution operator maps the system's state at an initial time $t_0$ to its future state at time $t$. But how does this all work? This is what we'll explore in this section.</p>
+<h3 id="unitary-operators">Unitary operators</h3>
+<p>Before we go more in-depth into the time-evolution operator, we need to introduce the idea of a <strong>unitary operator</strong>. An arbitrary unitary operator $\hat U$ (forget about the time-evolution operator for now) satisfies two <em>essential</em> properties:</p>
+<ol>
+<li>$\hat U^{-1} = U^\dagger$, that is, its inverse is equal to its adjoint.</li>
+<li>$\hat U \hat U^{-1} = \hat U^{-1} \hat U = 1$, that is, multiplying a unitary operator by its adjoint gives the identity matrix. Together with the first rule, this automatically means that $\hat U \hat U^\dagger = \hat U^\dagger \hat U = 1$.</li>
+</ol>
+<blockquote>
+<p><strong>Note on notation:</strong> We will frequently use the shorthand $\hat I = 1$, where $\hat I$ is the identity matrix, when discussing operators, but remember that matrix multiplication always gives another matrix (and not the scalar number 1), so this is just a shorthand!</p>
+</blockquote>
+<p>Note that unitary operator is <em>not necessarily Hermitian</em> - in fact, it usually isn't! So why do we care about a non-Hermitian operator when most of the operators we use in quantum mechanics are Hermitian? Well, if we act a unitary operator $\hat U$ on a (normalized) state-vector, we find that:</p>
+<p class="mathcell">
+$$
+(\hat U |\psi\rangle)^\dagger(\hat U |\psi\rangle) = \langle \psi |\hat U^\dagger \hat U|\psi\rangle = \langle \psi|\psi\rangle = 1
+$$
+</p>
+<p>This is the most important property of a unitary operator - it preserves the <strong>normalization</strong> of the state-vector! That is to say, acting $\hat U$ on $|\psi\rangle$ does <em>not</em> change its normalization $\langle \psi|\psi\rangle = 1$.</p>
+<h3 id="the-unitary-time-evolution-operator">The unitary time-evolution operator</h3>
+<p>Now let's return back to the time-evolution operator. It is no accident that we denoted the time-evolution operator as $\hat U(t, t_0)$ and a unitary operator as $\hat U$. This is because the time-evolution operator <strong><em>is</em> a unitary operator</strong>. It is indeed common to call the time-evolution operator the <em>unitary time-evolution operator</em> for this very reason! So from this point on, anytime you see $\hat U$, that means the time-evolution operator (unless otherwise stated).</p>
+<p>Here is where the unitary nature of the time-evolution operator truly makes sense. This is because by knowing $\hat U \hat U^\dagger = \hat U^\dagger \hat U = 1$, and that $|\psi(t)\rangle = \hat U|\psi\rangle$, we also know that:</p>
+<p class="mathcell">
+$$
+\langle \psi(t)|\psi(t)\rangle = \langle \psi(t_0)|\hat U^\dagger\hat U(t, 0)|\psi(t_0)\rangle = \langle \psi(t_0)|\psi(t_0)\rangle = 1
+$$
+</p>
+<p>That is, if a state-vector $|\psi\rangle$ is normalized at $t = t_0$, it will <em>continue</em> to be normalized for all future times $t$, satisfying the <strong>normalization condition</strong>. This means that the time-evolution operator $\hat U$ automatically guarantees <strong>conservation of probability</strong> in a dynamical quantum system (a system that changes with time). Furthermore, we also add the requirement that the time-evolution operator must satisfy:</p>
+<p class="mathcell">
+$$
+\hat U(t_0, t_0) = 1
+$$
+</p>
+<p>This means that:</p>
+<p class="mathcell">
+$$
+\hat U(t_0, t_0)|\psi(t_0)\rangle = |\psi(t_0)\rangle
+$$
+</p>
+<p>Therefore operating $\hat U$ on the state-vector returns the system in its initial state at $t = t_0$. This makes sense because at the initial time $t_0$, the system hasn't had any time to evolve, so acting the time-evolution operator on it does nothing but tell you the initial state!</p>
+<blockquote>
+<p><strong>Note:</strong> Another name for the unitary time-evolution operator is the <strong>propagator</strong>, which is common in advanced quantum mechanics. Later on in this guide, when we cover the <strong>path integral formulation</strong> of quantum mechanics, we'll speak of $\hat U$ as the propagator. Remember that whether we call $\hat U$ the unitary time-evolution operator or the propagator, we are referring to the same thing!</p>
+</blockquote>
+<p>Now, we've spoken a lot about what the time-evolution operator $\hat U$ <em>does</em>, but how do we express it in explicit form? To be able to start, let's write out the Schrödinger equation in a special form. The most general form of the Schrödinger equation - at least, in the form we've generally seen - is given by:</p>
+<p class="mathcell">
+$$
+i\hbar \dfrac{\partial}{\partial t}|\psi(t)\rangle = \hat H|\psi(t)\rangle
+$$
+</p>
+<p>But since $|\psi(t)\rangle = \hat U|\psi\rangle$, this can <em>also</em> be written as:</p>
+<p class="mathcell">
+$$
+i\hbar \dfrac{\partial}{\partial t}\hat U|\psi(t_0)\rangle = \hat H(\hat U|\psi(t_0)\rangle)
+$$
+</p>
+<p>Since $|\psi(t_0)\rangle$ does not depend on time, we can factor it out from both sides, giving us:</p>
+<p class="mathcell">
+$$
+i\hbar \dfrac{\partial}{\partial t} \hat U = \hat H \hat U
+$$
+</p>
+<p>Which can be written more explicitly as:</p>
+<p class="mathcell">
+$$
+i\hbar \dfrac{\partial}{\partial t} \hat U(t, t_0) = \hat H \hat U(t, t_0)
+$$
+</p>
+<p>This is the <strong>essential equation of motion</strong> for the unitary operator. We'll now do something that may defy intuition but is actually mathematically sound. First, we'll temporarily drop the operator hats and not write out the explicit dependence on $t$ and $t_0$, giving us:</p>
+<p class="mathcell">
+$$
+i\hbar \dfrac{\partial U}{\partial t} = HU
+$$
+</p>
+<p>Now, dividing by $i\hbar$ from both sides gives us:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial U}{\partial t} = \frac{1}{i\hbar}HU = -\frac{i}{\hbar} HU
+$$
+</p>
+<p>(Here we use the fact that $1/i = -i$, and $\dot U = \frac{\partial U}{\partial t}$). This now looks like a differential equation in the form $\dot U = -\frac{i}{\hbar} H U$! Solving this differential equation (using separation of variables) along with our known property $U(t_0) = 1$ gives us:</p>
+<p class="mathcell">
+$$
+U = e^{-i H (t - t_0)&#x2F;\hbar}
+$$
+</p>
+<p>Now, we can restore the operator hats and we can write the most general form of the time evolution operator:</p>
+<p class="mathcell">
+$$
+\hat U(t, t_0) = \exp\left(-\dfrac{i}{\hbar} \hat H (t - t_0)\right)
+$$
+</p>
+<p>If we adopt the convention of choosing $t_0 = 0$, this gives us:</p>
+<p class="mathcell">
+$$
+\hat U(t) = \exp\left(-\dfrac{i}{\hbar} \hat H t\right), \quad \hat U(t) \equiv \hat U(t, 0)
+$$
+</p>
+<p>Perhaps you might be inclined to answer with "You're wrong! What in the world is the exponential function of a matrix??" The way of making sense of this is to recognize that the exponential function can be defined in terms of a <strong>power series</strong>:</p>
+<p class="mathcell">
+$$
+e^X = \exp(X) = \sum_{n = 0}^\infty \dfrac{X^n}{n!}
+$$
+</p>
+<p>Taking powers of a matrix is a perfectly acceptable operation, and therefore a term like $\hat H^n$ would raise no alarms, since $\hat H^n = \underbrace{\hat H \hat H \dots \hat H}_{n \text{ times}}$. This allows us to write $\hat U(t)$ in the form:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat U &amp;= \sum_{n = 0}^\infty \frac{1}{n!}\left(-\dfrac{i}{\hbar} \hat H t\right) \\
+&amp;= 1 -\frac{i}{\hbar} \hat H t - \frac{1}{2\hbar^2} \hat H^2 t^2 + \dots
+\end{align*}
+$$
+</p>
+<p>Usually, applying this definition is quite cumbersome (summing infinite terms is hard!) but if we truncate the series to just a few terms, we can often find a good approximation to the full series. For instance, if we truncate the series to first-order, we have:</p>
+<p class="mathcell">
+$$
+\hat U \approx 1 -\frac{i}{\hbar} \hat H t
+$$
+</p>
+<p>Using this approximation can allow us to calculate the future state of a time-dependent quantum system with only knowledge of the Hamiltonian and the initial state. Of course, since we truncated the series, this calculation can yield only an approximate answer, but in some cases an approximate answer is enough. Thus, the time-evolution operator is the starting-point for <strong>perturbative calculations</strong> in quantum mechanics, where we can make successively more accurate approximations to the future state of a quantum system by invoking the time-evolution operator in series form, and taking only the first few terms.</p>
+<h3 id="the-heisenberg-picture">The Heisenberg picture</h3>
+<p>Introducing the time-evolution operator has an interesting consequence: it allows us to calculate the future state of any quantum system from a known initial state "frozen" in time. This is because the initial state of a quantum system has not had time to evolve yet, so it is <em>independent</em> of time. In fact, it is possible to dispense with time-dependence in calculations almost completely, because it turns out that there is <em>also</em> a way to calculate the measurable quantities of quantum systems at any future point in time without needing to explicitly calculate $|\psi(t)\rangle$. This approach is known as the <strong>Heisenberg picture</strong> in quantum mechanics.</p>
+<p>Consider the position operator $\hat X$ (we will use an uppercase $X$ here for clarity). Normally, this is a time-independent operator, since we know it is defined by $\hat X|\psi_0\rangle = x|\psi_0\rangle$, where $|\psi_0\rangle$ is a stationary state and $x$ is a position eigenvalue: notice here that time does not appear <em>at all</em> as a variable. Taking the inner product of both sides with the bra $\langle \psi_0|$ gives us the <em>expectation value</em> of the position:</p>
+<p class="mathcell">
+$$
+\langle \psi_0|\hat X |\psi_0\rangle = \langle \psi_0| x|\psi_0\rangle
+$$
+</p>
+<p>Now, we want to find a <em>time-dependent</em> version of the position operator, which we'll call $\hat x_H(t)$, which also satisfies an eigenvalue equation:</p>
+<p class="mathcell">
+$$
+\hat X_H(t)|\psi(t)\rangle = x(t)|\psi(t)\rangle
+$$
+</p>
+<p>Notice how our position eigenvalue is now time-dependent, because as the state of the system changes, the positions $x(t)$ also change. Our challenge will be able to write $\hat X_H(t)$ in terms of $\hat X$. How can we do so? Well, recall that $|\psi(t)\rangle = \hat U|\psi(t_0)\rangle$, and $|\psi(t_0)\rangle$ is the same thing as $|\psi_0\rangle$. Thus we can write:</p>
+<p class="mathcell">
+$$
+\hat X_H(t)|\psi(t)\rangle = \hat X\hat U|\psi_0\rangle
+$$
+</p>
+<p>Now, let us take its inner product with the bra $\langle \psi(t)|$, which gives us:</p>
+<p class="mathcell">
+$$
+\langle \psi(t)|\hat X_H(t)|\psi(t)\rangle = \langle \psi(t) |x\hat U|\psi_0\rangle
+$$
+</p>
+<p>We'll now use the identity that:</p>
+<p class="mathcell">
+$$
+|\psi(t)\rangle = \hat U |\psi_0\rangle \quad \Leftrightarrow \quad |\psi_0\rangle  = \hat U^\dagger |\psi(t)\rangle
+$$
+</p>
+<p>You can prove this rigorously, but it can be intuitively understood by recognizing that $\hat U^\dagger = \hat U^{-1}$, meaning that just as $\hat U$ evolves the system <em>forwards</em> in time, $\hat U^\dagger$ evolves the system <em>backwards</em> in time (the "inverse" direction in time). Hence acting $\hat U^\dagger$ on a system at some time $t$ returns it to its original state at some past time $t_0$. With the same result, we note that:</p>
+<p class="mathcell">
+$$
+\langle \psi(t)|\hat X_H(t)|\psi(t)\rangle = \langle \psi(t) |x\hat U|\psi_0\rangle = \langle \psi_0|\hat U^\dagger x \hat U|\psi_0\rangle
+$$
+</p>
+<p>Thus by pattern-matching we have:</p>
+<p class="mathcell">
+$$
+\hat X_H(t) = \hat U^\dagger x \hat U = \hat U^\dagger \hat X \hat U
+$$
+</p>
+<p>Notice that the latter result holds for all time $t$! We have indeed arrived at our expression for the time-dependent version of the position operator $\hat X_H(t)$:</p>
+<p class="mathcell">
+$$
+\hat X_H(t) = \hat U^\dagger \hat X \hat U
+$$
+</p>
+<p>It is also common to say that $\hat X_H$ is the position operator in the <strong>Heisenberg picture</strong>. Unlike the <strong>Schrödinger picture</strong> that we've gotten familiar working with, the Heisenberg picture uses <em>time-dependent operators</em> that operate on a constant state-vector $|\psi\rangle = |\psi_{0}\rangle$. It is <em>completely equivalent</em> to the Schrödinger picture, but it is sometimes more useful, since we can dispense with calculating the state-vector's time evolution as long as we know the $\hat U$ operator, which can simplify (some) calculations. In the most general case, for any operator $\hat A$, its equivalent time-dependent version $\hat A_H$ in the Heisenberg picture is given by:</p>
+<p class="mathcell">
+$$
+\hat A_H(t) = \hat U^\dagger \hat A \hat U
+$$
+</p>
+<p>If we don't know $\hat U$, it is also possible to calculate $\hat A_H$ via the <strong>Heisenberg equation of motion</strong>, the analogue of the Schrödinger equation in the Heisenberg picture:</p>
+<p class="mathcell">
+$$
+\dfrac{d}{dt} \hat{A}_{H}(t) = \frac{i}{\hbar}[\hat{H}, \hat{A}_{H}(t)]
+$$
+</p>
+<p>A particularly powerful consequence of the Heisenberg picture is how easily it maps classical systems into a corresponding quantum system. For instance, the classical harmonic oscillator follows the equation of motion $\dfrac{d^2 x}{dt^2} + \omega^2 x = 0$, which has the (classical) solution:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+x(t) &amp;= a e^{-i\omega t} + a^* e^{i\omega t} \\
+p(t) &amp;= m \dfrac{dx}{dt} = b^*e^{-i\omega t} + be^{i\omega t}, \quad b =i\omega ma^*
+\end{align*}
+$$
+</p>
+<p>Where $a$ and $a^<em>$ here are some amplitude constants that can be specified by the initial conditions, and for generality, we assume that they can be complex-valued. Now, the Heisenberg picture tells us that if we want to find the corresponding quantum operators $\hat X_H(t), \hat p(t)$, all we have to do is to replace our <em>constants</em> $a, a^</em>$ to <em>operators</em> $\hat a, \hat a^\dagger$ (same with $b, b^*$), giving us:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat X_H(t) &amp;= \hat ae^{-i\omega t} + \hat a^\dagger e^{i\omega t} \\
+\hat p(t) &amp;= \hat be^{-i\omega t} + \hat b^\dagger e^{i\omega t}, \quad \hat b = i\omega m a^\dagger
+\end{align*}
+$$
+</p>
+<p>Indeed, we can then identify $\hat a, \hat a^\dagger$ as just the <strong>ladder operators</strong> we're already familiar with from studying the quantum harmonic oscillator! In addition, we can also show that $\hat x$ satisfies a <em>nearly identical</em> equation of motion as the classical case ($\frac{d^2 x}{dt^2} + \omega^2 x = 0$), with the exception that the position <em>function</em> $x$ is replaced by the <em>operator</em> $\hat X_{H}$:</p>
+<p class="mathcell">
+$$
+\dfrac{d^2 \hat X_H(t)}{dt^2} + \omega^2 \hat X_H(t) = 0
+$$
+</p>
+<p>Notice the elegance correspondence between the classical and quantum pictures. By doing very little work, we have <em>quantized</em> a classical system, taking a classical variable ($x(t)$, representing a particle's position) and turning it ("promoting it") into a quantum operator $\hat X_{H}(t)$, a process formally called <strong>first quantization</strong>. This method will be essential once we discuss <strong>second quantization</strong>, where we take <em>classical</em> field theories and use them to construct <em>quantum</em> field theories. But we've not gotten to there yet! We'll save a more in-depth discussion of second quantization for later.</p>
+<blockquote>
+<p><strong>Note for the advanced reader:</strong> In second quantization, we essentially do the same thing as first quantization, but rather than quantizing the position (by taking the classical variable $x(t)$ and promoting it to an operator $\hat X_{H}$) we are interested in taking a classical field $\phi(x, t)$ and promoting it to an quantum field operator $\hat \phi$. Just as in first quantization, second-quantized fields follow the same equations of motion as their classical field analogues. In particular, the simplest type of quantum field (known as the <em>free scalar field</em>) obeys the equation $\partial^2_{t}\hat \phi - \nabla^2 \phi + m^2\phi = 0$, which is very similar to the harmonic oscillator equation of motion.</p>
+</blockquote>
+<h3 id="the-correspondence-principle-and-the-classical-limit">The correspondence principle and the classical limit</h3>
+<p>As we have seen, the Heisenberg picture makes it easy to show the intricate connection between quantum mechanics and classical mechanics, which is also known as the <strong>correspondence principle</strong>. The correspondence principle is essential because it explains why we live in a world that can be so well-described by classical mechanics, even though we know that everything in the Universe is fundamentally quantum at the tiniest scales. A key part of the correspondence principle is <strong>Ehrenfest's theorem</strong>, which is straightforward to prove from the Heisenberg picture. We start by writing down the Heisenberg equation of motion (which we introduced earlier), given by:</p>
+<p class="mathcell">
+$$
+\dfrac{d}{dt} \hat{A}_{H}(t) = \frac{i}{\hbar}[\hat{H}, \hat{A}_{H}(t)]
+$$
+</p>
+<p>The Heisenberg equations of motion for the position and momentum operators $\hat X_{H}(t)$, $\hat P_{H}(t)$ are therefore:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{d \hat X_H(t)}{dt} = \frac{i}{\hbar}[\hat{H}, \hat X_H(t)] \\
+\dfrac{d \hat P_H(t)}{dt} = \frac{i}{\hbar}[\hat{H}, \hat P_H(t)]
+\end{align*}
+$$
+</p>
+<p>If we take the expectation values for each equation on both sides, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\left\langle\dfrac{d \hat X_H(t)}{dt}\right\rangle = \frac{i}{\hbar}\langle[\hat{H}, \hat X_H(t)]\rangle   \\
+\left\langle\dfrac{d \hat P_H(t)}{dt}\right\rangle = \frac{i}{\hbar}\langle[\hat{H}, \hat P_H(t)]\rangle
+\end{align*}
+$$
+</p>
+<p>Now making use of the fact that $[\hat H, \hat X_{H}(t)] = -i\hbar \frac{\hat{P}<em>{H}}{m}$ and $[\hat H, \hat P</em>{H}(t)] = i\hbar \nabla V$ (we won't prove this, but you can show this yourself by calculating the commutators with $\hat H = \hat P^2/2m + V$) we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\left\langle\dfrac{d \hat X_H(t)}{dt}\right\rangle = \frac{\langle \hat{P}_{H}\rangle}{m}   \\
+\left\langle\dfrac{d \hat P_H(t)}{dt}\right\rangle = \langle -\nabla V\rangle
+\end{align*}
+$$
+</p>
+<p>The first equation tells us that the <em>expectation value of the position</em> is equal to the <em>expectation value of the momentum</em>, divided by the mass. In the classical limit, this is <em>exactly</em> $\dot x = p/m$, which comes directly from the classical definition of the momentum $p = mv = m\dot x$! Meanwhile, the second equation tells us that the <em>expectation value of the momentum</em> is equal to $\langle -\nabla V\rangle$. This is (approximately) the same as Newton's second law $F = \frac{dp}{dt} = -\nabla V$. Thus, Ehrenfest's theorem says that at classical scales, quantum mechanics reduces to classical mechanics; this is why we don't observe any quantum phenomena in our everyday lives!</p>
+<h3 id="the-interaction-picture">The interaction picture</h3>
+<p>Using Heisenberg's approach to quantum mechanics is powerful, but it often comes at the cost of needing to compute a <em>lot</em> of operators. The physicist Paul Dirac looked at the Heisenberg picture, and decided that there was a <em>better way</em> that would simplify the calculations substantially, while preserving all of the physics of a quantum system. His equivalent approach is known as the <strong>interaction picture</strong>, although it is often also called the <strong>Dirac picture</strong> (obviously after him).</p>
+<p>We will quickly go over the interaction picture for the sake of brevity. Essentially, it says that we can split a quantum system into two parts - a non-interacting part and an interacting part. When we say "non-interacting", we mean a hypothetical system that is completely isolated from the outside world and is essentially in a Universe of its own. To do this, we write the Hamiltonian of the system as the sum of a non-interacting Hamiltonian $\hat H_0$ and an interaction Hamiltonian $\hat W$:</p>
+<p class="mathcell">
+$$
+\hat{H} = \hat{H}_{0} + \hat{W}
+$$
+</p>
+<p>As with the Schrödinger picture, the state-vector of the system $|\psi(t)\rangle$ will depend on time. But here is where the interaction picture begins to differ from the Schrödinger picture. First, let us consider the time-evolution operator $\hat U_0(t, t_{0}) = e^{-i\hat H_0 (t-t_{0})/\hbar}$. Strictly-speaking, this time-evolution operator is only valid for the non-interacting part of the system, since it comes from $\hat H_0$, the non-interacting Hamiltonian. We will now define a <em>modified</em> state-vector $|\psi_I(t)\rangle$, which is related to the original state-vector of the system $|\psi(t)\rangle$ by:</p>
+<p class="mathcell">
+$$
+|\psi_{I}(t)\rangle = \hat U_{0}^{\dagger} |\psi(t)\rangle = e^{i \hat{H}_{0} (t - t_{0})&#x2F;\hbar} |\psi(t)\rangle
+$$
+</p>
+<p>We can of course also invert this relation to write $|\psi(t)\rangle$ in terms of $|\psi_I\rangle$, as follows:</p>
+<p class="mathcell">
+$$
+|\psi(t)\rangle = \hat U_{0} |\psi_{I}(t)\rangle = e^{-i \hat{H}_{0} (t - t_{0})&#x2F;\hbar} |\psi_{I}(t)\rangle
+$$
+</p>
+<p>We can write an arbitrary operator $\hat A$ in its <strong>interaction picture representation</strong>, which we will denote with $\hat A_I$, via:</p>
+<p class="mathcell">
+$$
+\hat{A}_{I}(t) = \hat U_{0}^{\dagger} \hat{A} \hat U_{0} = e^{i \hat{H}_{0} (t - t_{0})&#x2F;\hbar} \hat{A} e^{-i \hat{H}_{0} (t - t_{0})&#x2F;\hbar}
+$$
+</p>
+<p>In addition, an operator's representation in the interaction picture follows the equation of motion:</p>
+<p class="mathcell">
+$$
+i\hbar\frac{d \hat{A}_{I}}{dt} = [\hat{A}_{I}, \hat{H}_{0}]
+$$
+</p>
+<p>Our modified state-vector $|\psi_I(t)\rangle$ then satisfies the following equation of motion:</p>
+<p class="mathcell">
+$$
+i\hbar \frac{d}{dt}|\psi_{I}(t)\rangle = \hat{W}_{I}|\psi_{I}(t)\rangle
+$$
+</p>
+<p>Where $\hat W_I = \hat U_{0}^{\dagger} \hat{W} \hat U_{0}$ is the interaction picture representation of the interaction Hamiltonian $\hat W$. What this means is that using the interaction picture, we can <em>isolate</em> the interacting parts of the system from the non-interacting parts of the system - something that <em>isn't possible</em> to do in the Heisenberg or Schrödinger pictures! The interacting part of the system follow the equation of motion we already presented for $|\psi_I(t)\rangle$, whereas the non-interacting part satisfies the equation of motion for $\hat U_0$:</p>
+<p class="mathcell">
+$$
+i\hbar \dfrac{\partial}{\partial t} \hat U_{0}(t, t_0) = \hat H_{0} \hat U_{0}(t, t_0)
+$$
+</p>
+<p>Since these two equations of motion are completely decoupled from each other, we can solve for the interacting and non-interacting parts separately. Once we have successfully solved for $|\psi_I(t)\rangle$ and $\hat U_0$, the state-vector of the full system is just a unitary transformation away, since:</p>
+<p class="mathcell">
+$$
+|\psi(t)\rangle = \hat U_{0} |\psi_{I}(t)\rangle
+$$
+</p>
+<p>The interaction picture is powerful because it allows us to describe a quantum system that undergoes very complicated interactions <em>as if</em> those interactions were not present, and simply "layer" the interactions on top. This is an idea essential to solving very complicated quantum systems, especially once we get to the topic of <strong>time-dependent perturbation theory</strong> in quantum mechanics. As an added bonus, it turns out that under certain circumstances it is possible to write out an <em>exact series solution</em> to solve for the interacting part of a system. As long as we assume that interactions are reasonably "small", we can convert the equation of motion for the interacting part of the system into an integral equation:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+i\hbar \frac{d}{dt}|\psi_{I}(t)\rangle = \hat{W}_{I}|\psi_{I}(t)\rangle \\
+\downarrow \\
+|\psi_{I}(t) = |\psi_{I}(t_{0})\rangle + \frac{1}{i\hbar} \int_{t_{0}}^t dt&#x27; W_{I}(t&#x27;)|\psi_{I}(t&#x27;)\rangle
+\end{gather*}
+$$
+</p>
+<p>One can then write out a series solution that solves the integral equation, which is given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+|\psi_{I}(t) = \bigg\{1 &amp;+ \frac{1}{i\hbar} \int dt_{1} W_{I}(t_{1}) + \frac{1}{(i\hbar)^2}\int dt_{1} dt_{2}  W_{I}(t_{1})W_{I}(t_{2}) \\ 
+&amp;+ \dots + \frac{1}{(i\hbar)^n} \int dt_{1}dt_{2} \dots dt_{n} W_{I}(t_{1})W_{I}(t_{2}) \dots W_{I}(t_{n})\bigg\}|\psi_{I}(t_{0})\rangle
+\end{align*}
+$$
+</p>
+<p>This is the <a href="https://en.wikipedia.org/wiki/Dyson_series">Dyson series</a> and is of tremendous importance in advanced quantum mechanics (especially quantum field theory)</p>
+<h3 id="summary-of-time-evolution">Summary of time evolution</h3>
+<p>We have seen that there are <strong>three equivalent approaches</strong> to understanding the time evolution of the quantum system: the Schrödinger picture, Heisenberg picture, and interaction (or Dirac) picture. In the Schrödinger picture, operators are time-independent but states are time-dependent; in the Heisenberg picture, operators are time-dependent but states are time-independent; and finally, in the interaction picture, both are time-dependent. Each of these approaches has their own strengths and weaknesses, and they are useful in different scenarios. The key idea is that <em>having</em> these different approaches to describing quantum systems gives us powerful tools to solve these systems, even if we don't have to use them all the time.</p>
+<h2 id="angular-momentum">Angular momentum</h2>
+<p>In quantum mechanics, we are often interested in <strong>central potentials</strong>, that is, potentials in the form $V = V(r)$. For instance, the hydrogen atom can be modelled by a <strong>Coulomb potential</strong> $V(r) \propto 1/r$, and a basic model of the atomic nucleus uses a <strong>harmonic potential</strong> $V(r) \propto r^2$.</p>
+<blockquote>
+<p><strong>Note:</strong> In case it was unclear, in central potential problems, $r = \sqrt{x^2 + y^2 + z^2}$ is the radial coordinate.</p>
+</blockquote>
+<p>Due to the symmetry of such problems, it is often convenient to use a radially-symmetric coordinate system, like polar coordinates (in 2D) or cylindrical/spherical coordinates (in 3D). This leads to an interesting result - the <strong>conservation of angular momentum</strong>. A rigorous explanation of why this is the case requires <a href="https://en.wikipedia.org/wiki/Noether&#x27;s_theorem">Noether's theorem</a>, which is explained in more detail in the <a href="https://jackysci.com/advanced-classical-mech/part-2/">classical mechanics guide</a>. There are a few differences, however. For instance, while classical central potentials lead to <strong>orbits</strong> around the center-of-mass of a system, the idea of orbits is somewhat vague in quantum mechanics since the idea of probability waves "orbiting" doesn't really make sense. However, for ease of visualization (and also due to some <a href="https://en.wikipedia.org/wiki/Bohr_model">historical reasons</a>), it is still common to say that central potential problems in quantum mechanics have "orbits", and thus we conventionally call this associated type of angular momentum the <strong>orbital angular momentum</strong>, denoted $\mathbf{L}$.</p>
+<p>In addition, a classical spinning object also has angular momentum, and likewise a quantum particle also does - again, this is why we say that electrons (and other spin-1/2 particles) have <strong>spin</strong>, since they do have angular momentum in the form of <em>spin angular momentum</em>. Since we know the relationship between the magnetic moment $\boldsymbol{\mu}$ and the spin angular momentum $\mathbf{S}$ (it is proportional to a factor of $\gamma$, the gyromagnetic ratio), we can rearrange to find $\mathbf{S}$:</p>
+<p class="mathcell">
+$$
+\boldsymbol{\mu} = \gamma \mathbf{S} \quad \Rightarrow \quad \mathbf{S} = \frac{\boldsymbol{\mu}}{\gamma}
+$$
+</p>
+<p>It is important to recognize that spin angular momentum $\mathbf{S}$ is different from the orbital angular momentum $\mathbf{L}$. They, however, share one important similarity - they are both <strong>conserved quantities</strong>. This means they obey some similar behaviors. Additionally, the study of orbital angular momentum is extremely important for understanding some of the most important problems in quantum mechanics, so we will explore it in detail.</p>
+<h2 id="stationary-perturbation-theory">Stationary perturbation theory</h2>
+<p>Perturbation theory exists when we come upon a problem that is too complicated to solve exactly. These problems are often (but not always) variations of existing problems. For instance, we know the solution of the hydrogen atom, since that can be solved exactly, but it turns out that for the <em>helium atom</em>, which has just one more electron than the hydrogen atom, there is no analytical solution! In such cases, we typically resort to one of two options:</p>
+<ol>
+<li>Solve the system on a computer using <a href="https://ui.adsabs.harvard.edu/abs/2013PhDT.......102J/abstract">numerical methods</a></li>
+<li>Find an <em>approximate</em> analytical solution</li>
+</ol>
+<p>The second option is what we'll focus on here, since numerical methods in quantum mechanics is a topic broad enough for an entire textbook on its own. This approach - making calculations using approximations - is known as <strong>perturbation theory</strong>, and it allows us to solve many kinds of problems that cannot be solved exactly.</p>
+<blockquote>
+<p><strong>Note:</strong> Perturbation theory, despite its association with quantum mechanics, is actually a <em>far more general</em> technique for solving complicated differential equations (even those describing classical systems). For more information, see <a href="https://jacopobertolotti.com/PerturbationIntro.html">this excellent article</a> on a classical application of perturbation theory.</p>
+</blockquote>
+<p>First off, we should mention that there are two general kinds of perturbation theory in quantum mechanics: <strong>stationary perturbation theory</strong>, which (as the name suggests) applies only for stationary (time-independent) problems, and <strong>time-dependent perturbation theory</strong>, which applies for problems that explicitly depend on time. Right now, we'll be focusing on stationary perturbation theory; we'll get to the time-dependent version later. While there are notable differences, both types of perturbation theory use the same general method: a complicated system is approximated as a simpler, more familiar system with some added corrections (called <em>perturbations</em>). By computing these correction terms, we are then able to find an <em>approximate solution</em> to the system, even if there is no exact analytical solution.</p>
+<p><img src="https://imgs.xkcd.com/comics/physicists_2x.png" alt="A comic humorously describing the concept of perturbation theory" /></p>
+<p><em>A description of perturbation theory from <a href="https://xkcd.com/793/">XKCD</a>.</em></p>
+<p>Mathematically-speaking, perturbation theory assumes that the Hamiltonian of a complicated system can be written as a sum of a Hamiltonian $\hat H_0$ with an <em>exact</em> solution and a small <em>perturbation</em> $\hat{W}$, such that:</p>
+<p class="mathcell">
+$$
+\hat{H} = \hat{H}_{0} + \lambda\hat{W}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> Here $\hat H_0$ is known as the <strong>unperturbed Hamiltonian</strong> or <em>free Hamiltonian</em>. Also, it is common to write $\hat W$ without the operator hat, and it is also common to denote it as $V$ (confusingly). Be aware that in all cases, $W$ is an <strong>operator</strong>, not a function!</p>
+</blockquote>
+<p>For instance, $\hat H_0$ might be the Hamiltonian of a free particle, or of the hydrogen atom, or the quantum harmonic oscillator. The key commonality here is that $\hat H_0$ must be the Hamiltonian of a <strong>simpler system</strong> that can be analytically solved. On top of $\hat H_0$ we add the perturbation $\hat W$, which represents the <em>deviations</em> (also called <em>perturbations</em>) of the system's Hamiltonian as compared to the simpler system. This perturbation is assumed to be small, so we scale it by a small number $\lambda$ (where $\lambda \ll 1$), giving us a term of $\lambda \hat W$. If we write out the Schrödinger equation for the system, we have:</p>
+<p class="mathcell">
+$$
+\hat{H}|\varphi_{n}\rangle = E_{n} |\varphi_{n}\rangle \quad \Rightarrow \quad (\hat{H}_{0} + \lambda\hat{W})\varphi_{n}\rangle = E_{n} |\varphi_{n}\rangle
+$$
+</p>
+<p>Note that when we take the limit $\lambda \to 0$, the perturbation vanishes, and the Hamiltonian is exactly the unperturbed Hamiltonian $\hat H_0$. This is why perturbation theory is an <em>approximation</em>; it assumes that the simpler system's Hamiltonian $\hat H_{0}$ is already close enough to the more complicate system's Hamiltonian $\hat H$ that $\hat H_0$ can be used to approximate $\hat H$.</p>
+<p>The key idea of perturbation theory is that we assume a <strong>series solution</strong> for $\hat{H}|\varphi_{n}\rangle = E_{n}|\varphi_{n}\rangle$. More accurately, we assume that we can write the solution in terms of a <em>power series</em> in powers of $\lambda$. Now, this assumption doesn't always work - in fact there are some systems where it doesn't work at all - but using this assumption makes it possible to find an approximate solution using analytical methods, which is "good enough" for most purposes. Remember, in the real world, it is <em>impossible</em> to measure anything to infinite precision, so having an approximate answer to a problem that is <em>close enough</em> to the exact solution is often more than sufficient to make testable predictions that align closely with experimental data.</p>
+<p>But let's get back to the math. For our solution to be expressed as a power series in $\lambda$, we would write:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+|\varphi_{n}\rangle &amp;= \sum_{m = 0}^\infty \lambda^m|\varphi_{n}^{(m)}\rangle \\
+&amp;=|\varphi_{n}^{(0)}\rangle + \lambda|\varphi_{n}^{(1)}\rangle + \lambda^2|\varphi_{n}^{(2)}\rangle + \dots
+\end{align*}
+$$
+</p>
+<p>Here, remember that $|\varphi_{n}\rangle$ is the <em>exact</em> solution to the system (representing all $n$ <em>exact</em> eigenstates of the complicated Hamiltonian $\hat H$), but $|\varphi_{n}^{(0)}\rangle, |\varphi_{n}^{(1)}\rangle, |\varphi_{n}^{(2)}\rangle, \dots$ are <em>successive states</em> whose sum <em>converges</em> to the exact eigenstates of the system. (For those who need a refreshed on power series please see the <a href="https://jackysci.com/series-sequences/">series and sequences guide</a>). Be aware that the brackets $(1), (2), \dots$ are <strong>not</strong> exponents; rather they are labels for the successive sets of eigenstates (the first set of eigenstates, the second, the third, and so forth). By summing up infinitely many of these terms in the expansion of the Hamiltonian's eigenstates, we would in principle get the <em>exact eigenstates</em> of the complicated Hamiltonian.</p>
+<p>In the same way, we assume that the system's energy eigenvalues $E_n$ can also be written as a power series in $\lambda$, given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+E_{n} &amp;= \sum_{m=0}^\infty \lambda^m E_{n}^{(m)} \\
+&amp;= E_{n}^{(0)} + \lambda E_{n}^{(1)} + \lambda^2 E_{{n}}^{(2)} + \dots
+\end{align*}
+$$
+</p>
+<p>The first term in the expansion, $E_n^{(0)}$, as we'll see, are simply the energy eigenvalues of the unperturbed Hamiltonian $\hat H_0$. The subsequent terms $E_{n}^{(1)}$, $E_{n}^{(2)}$ are known as the <strong>first-order correction</strong> and <strong>second-order correction</strong> to the energy eigenvalues, since they respectively have coefficients of $\lambda^1$ and $\lambda^2$. By summing up infinitely many of these terms in the expansion of the energy, we would in principle get the <em>exact energies</em>.</p>
+<p>Now, if we substitute our power series solution into the Hamiltonian's eigenvalue equation $\hat{H}|\varphi_{n}\rangle = E_{n}|\varphi_{n}\rangle$, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+(\hat{H}_{0} + \lambda \hat{W})(|\varphi_{n}^{(0)}\rangle &amp;+ \lambda|\varphi_{n}^{(1)}\rangle + \lambda^2|\varphi_{n}^{(2)}\rangle + \dots) \\
+&amp;= (E_{n}^{(0)} + \lambda E_{n}^{(1)} + \lambda^2 E_{{n}}^{(2)} + \dots)(|\varphi_{n}^{(0)}\rangle + \lambda|\varphi_{n}^{(1)}\rangle + \lambda^2|\varphi_{n}^{(2)}\rangle + \dots)
+\end{align*}
+$$
+</p>
+<p>Distributing the left-hand side gives us:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat{H}_{0}\bigg(|\varphi_{n}^{(0)}\rangle &amp;+ \lambda|\varphi_{n}^{(1)}\rangle + \lambda^2|\varphi_{n}^{(2)}\rangle + \dots\bigg)
++ \lambda \hat{W}\bigg(|\varphi_{n}^{(0)}\rangle + \lambda|\varphi_{n}^{(1)}\rangle + \lambda^2|\varphi_{n}^{(2)}\rangle + \dots\bigg)
+\\
+&amp;= E_{n}^{(0)}\left(|\varphi_{n}^{(0)}\rangle + \lambda|\varphi_{n}^{(1)}\rangle + \lambda^2|\varphi_{n}^{(2)}\rangle + \dots\right) \\
+&amp;\qquad+ \lambda E_{n}^{(1)}\left(|\varphi_{n}^{(0)}\rangle + \lambda|\varphi_{n}^{(1)}\rangle + \lambda^2|\varphi_{n}^{(2)}\rangle + \dots\right)\\
+&amp;\qquad+ \lambda^2 E_{n}^{(2)}\left(|\varphi_{n}^{(0)}\rangle + \lambda|\varphi_{n}^{(1)}\rangle + \lambda^2|\varphi_{n}^{(2)}\rangle + \dots\right)
+\end{align*}
+$$
+</p>
+<p>If we do some algebraic manipulation to group terms by powers of $\lambda$, we get:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+% LHS of equation
+\hat{H}_{0}|\varphi_{n}^{(0)}\rangle &amp;+ \lambda \left(\hat{H}_{0}|\varphi_{n}^{(1)}\rangle + \hat{ W}|\varphi_{n}^{(0)}\rangle\right) + \lambda^2\left(\hat{H}_{0}|\varphi_{n}^{(2)}\rangle + \hat{W}|\varphi_{n}^{(1)}\rangle\right) + \dots \\
+&amp;= 
+% RHS of equation
+E_{n}^{(0)}|\varphi_{n}^{(0)}\rangle + \lambda\left(E_{n}^{(0)}|\varphi_{n}^{(1)}\rangle + E_{n}^{(1)}|\varphi_{n}^{(0)}\rangle\right)
++ \lambda^2 \left(E_{n}^{(0)}|\varphi_{n}^{(2)}\rangle + E_{n}^{(1)}|\varphi_{n}^{(1)}\rangle + E_{n}^{(2)}|\varphi_{n}^{(0)}\rangle\right) + \dots
+\end{align*}
+$$
+</p>
+<p>Notice how each term on the left-hand side of the equation now corresponds to a term on the right-hand side with the same power of $\lambda$. Thus, by equating the quantities in the brackets for every power of $\lambda$, we get a <strong>system of equations</strong> to solve for each order of $\lambda$:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{O}(\lambda^0):&amp; \quad E_{n}^{(0)}|\varphi_{n}^{(0)}\rangle \\
+\mathcal{O}(\lambda^1):&amp; \quad \lambda \left(\hat{H}_{0}|\varphi_{n}^{(1)}\rangle 
++ \hat{W}|\varphi_{n}^{(0)}\rangle\right) = \lambda\left(E_{n}^{(0)}|\varphi_{n}^{(1)}\rangle + E_{n}^{(1)}|\varphi_{n}^{(0)}\rangle\right) \\ 
+\mathcal{O}(\lambda^2):&amp; \quad \lambda^2\left(\hat{H}_{0}|\varphi_{n}^{(2)}\rangle + \hat{W}|\varphi_{n}^{(1)}\rangle\right) = \lambda^2 \left(E_{n}^{(0)}|\varphi_{n}^{(2)}\rangle + E_{n}^{(1)}|\varphi_{n}^{(1)}\rangle + E_{n}^{(2)}|\varphi_{n}^{(0)}\rangle\right) \\
+&amp; \qquad\vdots  \\
+\mathcal{O}(\lambda^n): &amp;\quad \lambda^n\left(\hat{H}_{0}|\varphi_{n}^{(n)}\rangle 
++ \hat{W}|\varphi_{n}^{(n-1)}\rangle\right) = \lambda^n\left( E_{n}^{(0)}|\varphi_{n}^{(n)}\rangle + \sum_{j = 1}^n E_{n}^{(j)} \left|\varphi_{n}^{(n - j)}\right\rangle\right)
+\end{align*}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> The final, generalized expression for $\mathcal{O}(\lambda^n)$ comes from <a href="https://web.pa.msu.edu/people/mmoore/TIPT.pdf">Dr. Moore's Lecture Notes</a> from Michigan State University.</p>
+</blockquote>
+<p>If we solve every single one of these equations and substituted our found values of the energy corrections $E_n^{(1)}, E_n^{(2)}, E_n^{(3)}, \dots$ and the corrections to the eigenstates $|\varphi_{n}^{(1)}\rangle, |\varphi_{n}^{(2)}\rangle, |\varphi_{n}^{(3)}\rangle, \dots$ we would in principle know the <strong>exact eigenstates and energies</strong> of the system.</p>
+<p>However, in practice, we obviously wouldn't want to solve infinitely many equations, so we usually truncate the series to just a few terms to get an approximate answer to our desired accuracy. For the lowest-order approximation (also called the <strong>zeroth-order approximation</strong>) we keep only terms of order $\mathcal{O}(\lambda^0)$ - or in simpler terms, drop all terms containing $\lambda$. We are thus left with just the equation for $\mathcal{O}(\lambda^0)$, that is:</p>
+<p class="mathcell">
+$$
+\hat H_0|\varphi_n^{(0)}\rangle = E_n^{(0)}|\varphi_n^{(0)}\rangle
+$$
+</p>
+<p>The result is trivial - this is just the eigenvalue equation of the unperturbed Hamiltonian, which we can solve exactly, and tells us nothing new. However, let's keep going, because the <strong>first-order approximation</strong> will be where we'll find a crucial result from perturbation theory. In the first-order approximation we include all terms up to <em>first-order</em> in $\lambda$, but no higher-order terms (i.e. ignoring $\lambda^2, \lambda^3, \lambda^4, \dots$ terms). This means that:</p>
+<p class="mathcell">
+$$
+|\varphi_{n}\rangle \approx |\varphi_{n}^{(0)}\rangle + \lambda|\varphi_{n}^{(1)}\rangle, \quad E_n \approx E_{n}^{(0)} + \lambda E_{n}^{(1)}
+$$
+</p>
+<p>We will thus also need to solve the second equation in the system of equations we previously derived, given by:</p>
+<p class="mathcell">
+$$
+(\hat{H}_{0} - E_{n}^{(0)})|\varphi_{n}^{(1)}\rangle 
++ \hat{W}|\varphi_{n}^{(0)}\rangle =  E_{n}^{(1)}|\varphi_{n}^{(0)}\rangle
+$$
+</p>
+<p>Now, the trick is to take the inner product of the above equation with the bra $\langle \varphi_n^{(0)}|$. This gives us:</p>
+<p class="mathcell">
+$$
+\langle \varphi_n^{(0)}|(\hat{H}_{0} - E_{n}^{(0)})|\varphi_{n}^{(1)}\rangle 
++ \langle \varphi_n^{(0)}|\hat{W}|\varphi_{n}^{(0)}\rangle =  \langle \varphi_n^{(0)}|E_{n}^{(1)}|\varphi_{n}^{(0)}\rangle
+$$
+</p>
+<p>Since $\hat H_0$ is a Hermitian operator, we know that for any two states $|\phi\rangle, |\psi\rangle$, it must be the case that $\langle \phi|\hat H_0|\psi\rangle = \big(\langle \phi|\hat H_0\big)\cdot|\psi\rangle$, meaning that:</p>
+<p class="mathcell">
+$$
+\langle \varphi_n^{(0)}|(\hat{H}_{0} - E_{n}^{(0)})|\varphi_{n}^{(1)}\rangle = \underbrace{ \bigg(\langle \varphi_n^{(0)}|\hat{H}_{0} - \langle \varphi_n^{(0)}|E_{n}^{(0)}U\bigg) }_{ \hat H_0|\varphi_n^{(0)}\rangle = E_n^{(0)}|\varphi_n^{(0)}\rangle }|\varphi_{n}^{(1)}\rangle = 0
+$$
+</p>
+<p>Thus the entire first term goes to zero, and we are simply left with:</p>
+<p class="mathcell">
+$$
+\langle \varphi_n^{(0)}|\hat{W}|\varphi_{n}^{(0)}\rangle = \langle \varphi_n^{(0)}|E_{n}^{(1)}|\varphi_{n}^{(0)}\rangle
+$$
+</p>
+<p>But since our states are normalized, then it must be the case that the right-hand side reduces to:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\langle \varphi_n^{(0)}|E_{n}^{(1)}|\varphi_{n}^{(0)}\rangle &amp;= E_{n}^{(1)} \underbrace{ \langle \varphi_n^{(0)}|\varphi_{n}^{(0)}\rangle }_{ 1 } = E_{n}^{(1)} \\
+&amp;\Rightarrow~\langle \varphi_n^{(0)}|\hat{W}|\varphi_{n}^{(0)}\rangle = \langle \varphi_n^{(0)}|E_{n}^{(1)}|\varphi_{n}^{(0)}\rangle = E_{n}^{(1)}
+\end{align*}
+$$
+</p>
+<p>Finally, after fully simplifying our results, we come to a refreshingly-simple expression for the first-order correction to the eigenenergies:</p>
+<p class="mathcell">
+$$
+E_n^{(1)} = \langle \varphi_n^{(0)}|\hat W |\varphi_{n}^{(0)}\rangle
+$$
+</p>
+<p>This is one of the <strong>most important</strong> equations in all of quantum mechanics and in most cases gives a good approximation to the exact eigenenergies of the system, at least where $\lambda$ is small. Note that the result is very general since it applies for <em>all</em> $n$ eigenstates of the system. Adding in the first-order corrections gives us the (approximate) eigenenergies of the system:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+E_n &amp;\approx E_{n}^{(0)} + \lambda E_{n}^{(1)} \\
+&amp;= E_{n}^{(0)} + \lambda \langle \varphi_n^{(0)}|\hat W |\varphi_{n}^{(0)}\rangle
+\end{align*}
+$$
+</p>
+<p>We can use a similar process to get the first-order correction $|\varphi_n^{(1)}\rangle$ to the eigenstates of the system. We'll spare the derivation for now and just state the results - the first-order correction to the system's eigenstates are given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+|\varphi_n^{(1)}\rangle &amp;= \sum_{m\,(m \neq n)} \frac{E_{n}^{(1)}}{\left(\small E_{n}^{(0)} - E_{m}^{(0)}\right)}|\varphi_m^{(0)}\rangle \\
+&amp;= \sum_{m\,(m \neq n)} \frac{\langle \varphi_m^{(0)}|\hat W |\varphi_{n}^{(0)}\rangle}{\left(\small E_{n}^{(0)} - E_{m}^{(0)}\right)}|\varphi_m^{(0)}\rangle
+\end{align*}
+$$
+</p>
+<p>In most cases, the first-order correction is sufficient to get a "good enough" answer. But we can go further to get a more accurate result! We'll now use a <strong>second-order approximation</strong>, where we include all terms up to <em>second-order</em> in $\lambda$, but no higher-order terms (i.e. ignoring $\lambda^3, \lambda^4, \lambda^5, \dots$ terms). This means that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+|\varphi_{n}^{(0)}\rangle &amp;\approx 
+|\varphi_{n}^{(0)}\rangle + \lambda|\varphi_{n}^{(1)}\rangle + \lambda^2|\varphi_{n}^{(2)}\rangle \\ E_{n} &amp;\approx E_{n}^{(0)} + \lambda E_{n}^{(1)} + \lambda^2 E_{{n}}^{(2)}
+\end{align*}
+$$
+</p>
+<p>We'll therefore need the third equation in the system of equations we derived at the start of this section, which is given by:</p>
+<p class="mathcell">
+$$
+\lambda^2\left(\hat{H}_{0}|\varphi_{n}^{(2)}\rangle + \hat{W}|\varphi_{n}^{(1)}\rangle\right) = \lambda^2 \left(E_{n}^{(0)}|\varphi_{n}^{(2)}\rangle + E_{n}^{(1)}|\varphi_{n}^{(1)}\rangle + E_{n}^{(2)}|\varphi_{n}^{(0)}\rangle\right)
+$$
+</p>
+<p>Again, making some algebraic simplifications gives us:</p>
+<p class="mathcell">
+$$
+(\hat{H}_{0} - E_{n}^{(0)})|\varphi_{n}^{(2)}\rangle + \hat{W}|\varphi_{n}^{(1)}\rangle =  E_{n}^{(1)}|\varphi_{n}^{(1)}\rangle + E_{n}^{(2)}|\varphi_{n}^{(0)}\rangle
+$$
+</p>
+<p>Using our trick from before by taking the inner product with $\langle \varphi_n^{(0)}|$ and exploiting orthogonality, we get:</p>
+<p class="mathcell">
+$$
+\underbrace{ \langle \varphi_n^{(0)}|(\hat{H}_{0} - E_{n}^{(0)}) }_{ 0 }|\varphi_{n}^{(2)}\rangle + \langle \varphi_n^{(0)}|\hat{W}|\varphi_{n}^{(1)}\rangle =  E_{n}^{(1)}\cancel{ \langle \varphi_n^{(0)}|\varphi_{n}^{(1)}\rangle }^0 + E_{n}^{(2)}\cancel{ \langle \varphi_n^{(0)}|\varphi_{n}^{(0)}\rangle }^1
+$$
+</p>
+<p>Where the first term again becomes zero since $\hat{H}<em>{0}|\varphi</em>{n}^{(0)}\rangle = E_{n}^{(0)}|\varphi_{n}^{(0)}\rangle$ and since $\hat H_0$ is Hermitian - this follows the same reasoning we explained for the first-order case. We thus have:</p>
+<p class="mathcell">
+$$
+E_{n}^{(2)} =  \langle \varphi_n^{(0)}|\hat{W}|\varphi_{n}^{(1)}\rangle
+$$
+</p>
+<p>But we previously found that $|\varphi_n^{(1)}\rangle$ is given by:</p>
+<p class="mathcell">
+$$
+|\varphi_n^{(1)}\rangle = \sum_{m\,(m \neq n)} \frac{\langle \varphi_m^{(0)}|\hat W |\varphi_{n}^{(0)}\rangle}{\left(\small E_{n}^{(0)} - E_{m}^{(0)}\right)}|\varphi_m^{(0)}\rangle
+$$
+</p>
+<p>Thus substituting it into our expression for $E_n^{(2)}$ gives us an explicit expression for the second-order corrections to the eigenenergies of the system:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+E_{n}^{(2)} &amp;= \langle \varphi_n^{(0)}|\hat{W}|\varphi_{n}^{(1)}\rangle \\
+&amp;= \langle \varphi_{n}^{(0)}|\hat{W} \left(\sum_{m\,(m \neq n)} \frac{\langle \varphi_m^{(0)}|\hat W |\varphi_{n}^{(0)}\rangle}{\left(\small E_{n}^{(0)} - E_{m}^{(0)}\right)}|\varphi_m^{(0)}\rangle\right) \\
+&amp;= \sum_{m\,(m \neq n)} \frac{|\langle \varphi_m^{(0)}|\hat W |\varphi_{n}^{(0)}\rangle|^2}{\left(\small E_{n}^{(0)} - E_{m}^{(0)}\right)}
+\end{align*}
+$$
+</p>
+<p>While we will not derive it here, one may show that the <em>third-order corrections</em> to the eigenenergies of the system are given by:</p>
+<p class="mathcell">
+$$
+E_{n}^{(n)} = \sum_{m~(m \neq n)}\sum_{l} \frac{V_{nl} V_{lm} V_{mn}}{\small (E_{n}^{(0)} - E_{l}^{(0)})(E_{n}^{(0)} - E_{m}^{(0)})} - V_{nn}\sum_{m\,(m \neq n)} \frac{|V_{nm}|^2}{\left(\small E_{n}^{(0)} - E_{m}^{(0)}\right)^2}|\varphi_m^{(0)}\rangle
+$$
+</p>
+<p>Where here, $V_{ij} \equiv \langle \varphi_{i}^{(0)}|\hat{W}|\varphi_{j}^{(0)}\rangle$. Note that in the most general case, we can find the $k$-th order correction to the eigenenergies of the system via:</p>
+<p class="mathcell">
+$$
+E_{n}^{(k)} = \langle \varphi_{n}^{(0)}|\hat{W}|\varphi_{n}^{(k - 1)}\rangle
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> For more in-depth discussion of the formulas for perturbation theory up to arbitrary order, see this <a href="https://physics.stackexchange.com/questions/717102/higher-order-e-g-nth-order-corrections-to-non-degenerate-time-independent">Physics StackExchange post</a>.</p>
 </blockquote>
 <h2 id="advanced-quantum-theory">Advanced quantum theory</h2>
 <h3 id="relativistic-wave-equations-and-the-dirac-equation">Relativistic wave equations and the Dirac equation</h3>

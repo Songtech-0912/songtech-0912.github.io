@@ -1958,10 +1958,17 @@ $$
 <p>It would indeed be possible to solve non-symmetrical problems with Ampère's law on a computer using numerical methods, but an analytical solution (at least, an <em>exact</em> solution) cannot be found. This is why we say that in most cases, Ampère's law cannot give us an analytical solution, and we have to fall back to using the longer and more cumbersome Biot-Savart law instead. As the computation of integrals with the Biot-Savart law is frequently quite laborious, we may refer to the below table of solutions to common field configurations:</p>
 <table><thead><tr><th>Physical situation</th><th>Magnetic field</th></tr></thead><tbody>
 <tr><td>Outside finite wire carrying current $I$ of length $L$ aligned along $+x$ axis</td><td>$\mathbf{B} = -\frac{\mu_0 I}{4\pi}\frac{\hat \theta}{r}\left(\frac{(x-L)}{\sqrt{r^2+(x-L)^2}}-\frac{(x+L)}{\sqrt{r^2+(x+L)^2}}\right)$</td></tr>
-<tr><td>Circular loop of wire with radius $R$ with current $I$ and facing $+x$ axis</td><td>$\mathbf{B} =\dfrac{\mu_0 IR^2}{2(x^2+R^2)^{3/2}}\hat{\mathbf{x}}$</td></tr>
+<tr><td>Center of circular loop of wire with radius $R$ with current $I$ and facing $+x$ axis</td><td>$\mathbf{B}_\text{axis} =\dfrac{\mu_0 IR^2}{2(x^2+R^2)^{3/2}}\hat{\mathbf{x}}$</td></tr>
 <tr><td>Circular arc of radius $R$ on the $xy$ plane (where $z$ is the vertical axis and $\theta$ is the polar angle)</td><td>$\mathbf{B} = \dfrac{\mu_0 \theta I}{4\pi R} \hat z$</td></tr>
 <tr><td>Ideal magnetic dipole (i.e. perfect bar magnet) and $\mathbf{m}$ is the magnetic moment (more on this later)</td><td>$\mathbf{B} = \nabla \times \dfrac{\mu_0}{4\pi}\left(\dfrac{\mathbf{m} \times \mathbf{r}}{r^3}\right)$</td></tr>
 </tbody></table>
+<p>Of particular interest is the circular loop of wire, with the analytical solution that we have listed above. We show a diagram of this configuration below:</p>
+<img class="diagram"
+	
+		src="/classical-electromagnetism/current-loop-field.excalidraw.svg"
+	
+	alt="A diagram showing a loop of wire carrying current and its associated magnetic field" />
+<p>This particular case is important because we'll later find (when we discuss magnetic dipoles) that in the limit of $R \to 0$, that is, when we shrink down a loop of current so that it is infinitely small, we obtain a field $B \propto x^{-3}$. This special field is the field of a <strong>perfect magnetic dipole</strong> and is used as an approximation to model everything from Earth's magnetic field to the magnetic field of a bar magnet.</p>
 <h2 id="the-magnetic-vector-potential">The magnetic vector potential</h2>
 <p>We have previously seen that many problems in electrostatics can be solved by solving Poisson's equation $\nabla^2 V = -\rho / \varepsilon_0$ (which often reduces to the much simpler $\nabla^2 V = 0$) for suitable boundary conditions. This formulation is useful because there are many techniques to solve Poisson's/Laplace's equation that we can use, and because Poisson's/Laplace's equation describes the <strong>scalar-valued</strong> electric potential rather than the <strong>vector-valued</strong> electric field. Scalar-valued means that we don't have to worry about vectors, and once we're done finding the electric potential, we can easily obtain the field from $\mathbf{E} = -\nabla V$.</p>
 <p>We can apply the same idea to the magnetic field by defining a <strong>magnetic vector potential</strong>, denoted $\mathbf{A}$, which we'll also call the <em>magnetic potential</em> for short. The magnetic potential is defined implicitly by:</p>
