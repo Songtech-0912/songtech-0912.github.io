@@ -1,5 +1,5 @@
 +++
-title = "Notes on special relativity"
+title = "Introduction to Special Relativity"
 date = 2023-10-06
 +++
 
