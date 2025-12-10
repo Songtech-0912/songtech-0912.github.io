@@ -316,6 +316,14 @@
                 <li>
                     <a href="#stationary-perturbation-theory">Stationary perturbation theory</a>
                     
+                        <ul>
+                            
+                                <li>
+                                    <a href="#non-degenerate-perturbation-theory">Non-degenerate perturbation theory</a>
+                                </li>
+                            
+                        </ul>
+                    
                 </li>
             
                 <li>
@@ -2991,7 +2999,9 @@ $$
 <p>First off, we should mention that there are two general kinds of perturbation theory in quantum mechanics: <strong>stationary perturbation theory</strong>, which (as the name suggests) applies only for stationary (time-independent) problems, and <strong>time-dependent perturbation theory</strong>, which applies for problems that explicitly depend on time. Right now, we'll be focusing on stationary perturbation theory; we'll get to the time-dependent version later. While there are notable differences, both types of perturbation theory use the same general method: a complicated system is approximated as a simpler, more familiar system with some added corrections (called <em>perturbations</em>). By computing these correction terms, we are then able to find an <em>approximate solution</em> to the system, even if there is no exact analytical solution.</p>
 <p><img src="https://imgs.xkcd.com/comics/physicists_2x.png" alt="A comic humorously describing the concept of perturbation theory" /></p>
 <p><em>A description of perturbation theory from <a href="https://xkcd.com/793/">XKCD</a>.</em></p>
-<p>Mathematically-speaking, perturbation theory assumes that the Hamiltonian of a complicated system can be written as a sum of a Hamiltonian $\hat H_0$ with an <em>exact</em> solution and a small <em>perturbation</em> $\hat{W}$, such that:</p>
+<h3 id="non-degenerate-perturbation-theory">Non-degenerate perturbation theory</h3>
+<p>We will first review the <em>simplest</em> type of stationary perturbation theory, known as <strong>non-degenerate perturbation theory</strong>, which applies to quantum systems <em>without</em> degeneracy (meaning that each eigenstate is uniquely specified by an energy eigenvalue of the Hamiltonian). It turns out that this is in many cases an <em>overly simplified</em> assumption, but the methods we will develop here will be extremely useful for our later discussion of <strong>degenerate perturbation theory</strong> that accurately describes a variety of real-world quantum systems.</p>
+<p>The starting point in perturbation theory is to assume that the Hamiltonian of a complicated system can be written as a sum of a Hamiltonian $\hat H_0$ with an <em>exact</em> solution and a small <em>perturbation</em> $\hat{W}$, such that:</p>
 <p class="mathcell">
 $$
 \hat{H} = \hat{H}_{0} + \lambda\hat{W}
