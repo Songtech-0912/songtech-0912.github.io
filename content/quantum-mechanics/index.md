@@ -1873,7 +1873,7 @@ And $\varepsilon_{ijk}$ is called the [Levi-Civita symbol](en.wikipedia.org/wiki
 \end{cases}
 {% end %}
 
-> **Note:** A very useful property of the Levi-Civita symbol is that it can be used to define the cross product of two vectors $\mathbf{A} \times \mathbf{B}$ via $(\mathbf{A} \times \mathbf{B})_i = \varepsilon_{ijk} A_i B_j$. There is also the so-called [permutation definition](https://en.wikipedia.org/wiki/Levi-Civita_symbol#Three_dimensions) of the Levi-Civita symbol, although we will not cover that here.
+> **Note:** A very useful property of the Levi-Civita symbol is that it can be used to define the cross product of two vectors $\mathbf{A} \times \mathbf{B}$ via {% inlmath() %}(\mathbf{A} \times \mathbf{B})_i = \varepsilon_{ijk} A_i B_j{% end %}. There is also the so-called [permutation definition](https://en.wikipedia.org/wiki/Levi-Civita_symbol#Three_dimensions) of the Levi-Civita symbol, although we will not cover that here.
 
 While the eigenstates of the $\hat S_x, \hat S_y, \hat S_z$ operators are distinct, it is possible to express eigenstates in one particular spin basis as a superposition of eigenstates in another spin basis. For instance, the eigenstates of the $\hat S_x$ operator can be written in terms of the eigenstates of the $\hat S_z$ operator:
 
@@ -2621,7 +2621,7 @@ p(t) &= m \dfrac{dx}{dt} = b^*e^{-i\omega t} + be^{i\omega t}, \quad b =i\omega 
 \end{align*}
 {% end %}
 
-Where $a$ and $a^*$ here are some amplitude constants that can be specified by the initial conditions, and for generality, we assume that they can be complex-valued. Now, the Heisenberg picture tells us that if we want to find the corresponding quantum operators $\hat X_H(t), \hat p(t)$, all we have to do is to replace our *constants* $a, a^*$ to *operators* $\hat a, \hat a^\dagger$ (same with $b, b^*$), giving us:
+Where {% inlmath() %}a, a^*{% end %} here are some amplitude constants that can be specified by the initial conditions, and for generality, we assume that they can be complex-valued. Now, the Heisenberg picture tells us that if we want to find the corresponding quantum operators $\hat X_H(t), \hat p(t)$, all we have to do is to change our *constants* {% inlmath() %}a, a^*{% end %} to *operators* {% inlmath() %}\hat a, \hat a^\dagger{% end %} (same with {% inlmath() %}b, b^*{% end %}), giving us:
 
 {% math() %}
 \begin{align*}
@@ -2666,7 +2666,7 @@ If we take the expectation values for each equation on both sides, we have:
 \end{align*}
 {% end %}
 
-Now making use of the fact that $[\hat H, \hat X_{H}(t)] = -i\hbar \frac{\hat{P}_{H}}{m}$ and $[\hat H, \hat P_{H}(t)] = i\hbar \nabla V$ (we won't prove this, but you can show this yourself by calculating the commutators with $\hat H = \hat P^2/2m + V$) we have:
+Now making use of the fact that {% inlmath() %}[\hat H, \hat X_{H}(t)] = -i\hbar \frac{\hat{P}_{H}}{m}{% end %} and $[\hat H, \hat P_{H}(t)] = i\hbar \nabla V$ (we won't prove this, but you can show this yourself by calculating the commutators with $\hat H = \hat P^2/2m + V$) we have:
 
 {% math() %}
 \begin{align*}
@@ -2982,7 +2982,7 @@ Using our trick from before by taking the inner product with $\langle \varphi_n^
 \underbrace{ \langle \varphi_n^{(0)}|(\hat{H}_{0} - E_{n}^{(0)}) }_{ 0 }|\varphi_{n}^{(2)}\rangle + \langle \varphi_n^{(0)}|\hat{W}|\varphi_{n}^{(1)}\rangle =  E_{n}^{(1)}\cancel{ \langle \varphi_n^{(0)}|\varphi_{n}^{(1)}\rangle }^0 + E_{n}^{(2)}\cancel{ \langle \varphi_n^{(0)}|\varphi_{n}^{(0)}\rangle }^1
 {% end %}
 
-Where the first term again becomes zero since $\hat{H}_{0}|\varphi_{n}^{(0)}\rangle = E_{n}^{(0)}|\varphi_{n}^{(0)}\rangle$ and since $\hat H_0$ is Hermitian - this follows the same reasoning we explained for the first-order case. We thus have:
+Where the first term again becomes zero since {% inlmath() %}\hat{H}_{0}|\varphi_{n}^{(0)}\rangle = E_{n}^{(0)}|\varphi_{n}^{(0)}\rangle{% end %} and since $\hat H_0$ is Hermitian - this follows the same reasoning we explained for the first-order case. We thus have:
 
 {% math() %}
 E_{n}^{(2)} =  \langle \varphi_n^{(0)}|\hat{W}|\varphi_{n}^{(1)}\rangle
