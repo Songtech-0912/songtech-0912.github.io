@@ -2787,7 +2787,11 @@ First off, we should mention that there are two general kinds of perturbation th
 
 _A description of perturbation theory from [XKCD](https://xkcd.com/793/)._
 
-Mathematically-speaking, perturbation theory assumes that the Hamiltonian of a complicated system can be written as a sum of a Hamiltonian $\hat H_0$ with an _exact_ solution and a small *perturbation* $\hat{W}$, such that:
+### Non-degenerate perturbation theory
+
+We will first review the _simplest_ type of stationary perturbation theory, known as **non-degenerate perturbation theory**, which applies to quantum systems _without_ degeneracy (meaning that each eigenstate is uniquely specified by an energy eigenvalue of the Hamiltonian). It turns out that this is in many cases an _overly simplified_ assumption, but the methods we will develop here will be extremely useful for our later discussion of **degenerate perturbation theory** that accurately describes a variety of real-world quantum systems.
+
+The starting point in perturbation theory is to assume that the Hamiltonian of a complicated system can be written as a sum of a Hamiltonian $\hat H_0$ with an _exact_ solution and a small *perturbation* $\hat{W}$, such that:
 
 {% math() %}
 \hat{H} = \hat{H}_{0} + \lambda\hat{W}
