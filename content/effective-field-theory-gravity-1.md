@@ -6,9 +6,11 @@ date = 2025-09-06
 non_note = true
 +++
 
-**Abstract.** Effective field theory is an idea that comes from [quantum field theory](https://learntheoreticalphysics.com/quantum-field-theory/), and forms the backbone of the Standard Model. The core idea of effective field theory is that it gives us an "entry point" to new physics we don't know by assuming that the new physics is hidden behind suppressed high-energy terms; these terms reduce to physics we do know in the low-energy limit. By finding approximate forms for these high-energy terms, we can often successfully make predictions with an incomplete theory. With that in mind, effective field theory is very often discussed purely in the context of quantum field theory, even though it is a far more general idea. In this article, I'll discuss the interesting examples of treating Newtonian gravity and General Relativity as effective field theories, and how it fits in with our currently incomplete _quantum_ theory of gravity.
+Effective field theory is an idea that comes from [quantum field theory](https://learntheoreticalphysics.com/quantum-field-theory/), and forms the backbone of the [Standard Model of particle physics](https://en.wikipedia.org/wiki/Standard_Model). In this article, I'll discuss the interesting examples of treating Newtonian gravity and General Relativity as effective field theories, and how it fits in with our currently incomplete _quantum_ theory of gravity.
 
 <!-- more -->
+
+The core idea of effective field theory is that it gives us an "entry point" to new physics we don't know by assuming that the new physics is hidden behind suppressed high-energy terms; these terms reduce to physics we do know in the low-energy limit. By finding approximate forms for these high-energy terms, we can often successfully make predictions with an incomplete theory. With that in mind, effective field theory is very often discussed purely in the context of quantum field theory, even though it is a far more general idea. But enough talk - let's dive into the actual physics!
 
 ## Newtonian gravity as an effective field theory
 
@@ -17,10 +19,10 @@ I will begin with this claim: _Newtonian gravity is an effective field theory in
 I will now make the claim that by starting with only three primary assumptions, which can all be derived from observation, we can reconstruct the theory of Newtonian gravity from scratch. These assumptions are:
 
 1. Gravity is characterized by the gravitational constant $G$, which controls the strength of gravitational interactions.
-2. The strength of the gravitational force decreases with distance. In mathematical terms, this means that the gravitational potential $\Phi$ must be constructed from terms proportional to $r^{-n}$, where $n$ is a positive nonzero integer. This should be trivial, since if gravity was constant or increased with distance, orbiting bodies would spontaneously accelerate away from each other, which of course doesn't happen.
+2. The gravitational force is _attractive_ and its strength decreases rapidly with distance. In mathematical terms, this means that the gravitational potential $\Phi$ must be constructed from terms proportional to $r^{-n}$, where $n$ is a positive nonzero integer. This should be trivial, since if gravity was constant or increased with distance, orbiting bodies would spontaneously accelerate towards each other and (eventually) smash into each other, which of course doesn't happen.
 3. The effects of gravity are only apparent for massive astronomical bodies like planets and stars, meaning that $G$ must be very small in magnitude. We know from experiments that $G \sim 10^{-11}$, but this is actually not necessary to know; the only requirement for this assumption is that $G \ll 1$.
 
-> **Note:** Assumption (1) can be justified by noting that all the fundamental interactions of nature have characteristic constants (the fine-structure constant $\alpha$ for electromagnetism, the strong coupling constant $g_s$ for the strong force, and so forth). Also, we do assume Newton's second law (and other basic physics) applies to gravity, which technically counts as a fourth (implicit) assumption.
+> **Note:** Assumption (1) can be justified by noting that all the fundamental interactions of nature have characteristic constants (the fine-structure constant $\alpha$ for electromagnetism, the strong coupling constant $g_s$ for the strong force, and so forth). Assumption (2) is a modified form of [Bertrand's theorem](https://en.wikipedia.org/wiki/Bertrand's_theorem), but with a harmonic potential ruled out by the fact that the gravitational force is too weak to vary linearly with distance (as a harmonic potential would lead to). Also, we do assume Newton's second law (and other basic physics) applies to gravity, which technically counts as a fourth (implicit) assumption.
 
 With these assumptions, we can already write down the general form of the gravitational potential as a series expansion involving $G$:
 
