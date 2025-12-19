@@ -250,6 +250,14 @@
                                     <a href="#generalized-two-level-systems">Generalized two-level systems</a>
                                 </li>
                             
+                                <li>
+                                    <a href="#the-bloch-sphere">The Bloch sphere</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#conclusion-to-two-level-systems">Conclusion to two-level systems</a>
+                                </li>
+                            
                         </ul>
                     
                 </li>
@@ -367,7 +375,7 @@
         <!-- page content -->
         <p>This is a guide to quantum mechanics beyond the basics, and is a follow-up to <a href="https://jackysci.com/intro-quantum-phys/">introductory quantum physics</a>. Topics convered include state-vectors, Hilbert spaces, intrinsic spin and the Pauli matrices, the hydrogen atom in detail, the quantum harmonic oscillator, time-independent perturbation theory, and a basic overview of second quantization and relativistic quantum mechanics.</p>
 <span id="continue-reading"></span>
-<p>I thank <a href="https://www.xmeng.io">Professor Meng</a> at Rensselaer Polytechnic Institute, without whom this guide would not have been possible.</p>
+<p>I thank <a href="https://www.xmeng.io">Professor Meng</a> and <a href="https://faculty.rpi.edu/jian-shi">Professor Shi</a> at Rensselaer Polytechnic Institute, without whom this guide would not have been possible.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>This guide will assume considerable prior knowledge, including multivariable &amp; vector calculus, linear algebra, basic quantum mechanics, integration with delta functions, classical waves, Fourier series, solving boundary-value problems, and (in later chapters) tensors and special relativity. If you don't know some (or all) of these, that's okay! There are dedicated guides about each of these topics on this site:</p>
 <ul>
@@ -2255,7 +2263,86 @@ $$
 [\sigma_z, \sigma_x] =  \sigma_y
 \end{align*}
 $$
+</p><h3 id="the-bloch-sphere">The Bloch sphere</h3>
+<p>A common generalization of the spin-1/2 system we have discussed at length is known as the <strong>Bloch sphere</strong>. The Bloch sphere is a formulation of a generalized two-level system with two states, which we notate as $|0\rangle$ and $|1\rangle$. Here, $|0\rangle$ is the ground state, so it is associated with a lower energy, whereas $|1\rangle$ is the excited state, so it is associated with a higher energy.</p>
+<p>The Bloch sphere (illustrated in the diagram below) allows us to visualize the abstract space in which these states "live", much like the complex plane can be drawn as a 2D coordinate grid. The state space of the system is parametrized in spherical coordinates by the angles $(\theta, \phi)$ - it is important to note that these <em>aren't</em> physical locations in space, but are rather located in the abstract Hilbert space of the two-state system.</p>
+<img class="diagram"
+	
+		src="https:&#x2F;&#x2F;upload.wikimedia.org&#x2F;wikipedia&#x2F;commons&#x2F;f&#x2F;f0&#x2F;Bloch_Sphere_representation.svg"
+	
+	alt="A visualization of the Bloch sphere" />
+<p><em>An illustration of the Bloch sphere. Source: <a href="https://en.wikipedia.org/wiki/File:Bloch_Sphere_representation.svg">Wikipedia</a></em></p>
+<p>On the Bloch sphere, $|0\rangle$ "lives" at the north pole of the Bloch sphere, and $|1\rangle$ "lives" at the south pole. Other states of the system lie somewhere between the two poles. The general state-vector of the system can thus be written as:</p>
+<p class="mathcell">
+$$
+|\psi\rangle = \cos\left( \frac{\theta}{2} \right) |0\rangle + e^{i\phi} \sin\left( \frac{\theta}{2} \right) |1\rangle
+$$
 </p>
+<p>Where $e^{i\phi}$ is the phase of the state-vector, and where the basis states are given by:</p>
+<p class="mathcell">
+$$
+|0\rangle = 
+\begin{pmatrix}
+1 \\ 0
+\end{pmatrix}, \quad
+|1\rangle =
+\begin{pmatrix}
+0 \\ 1
+\end{pmatrix}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> in the standard convention, the $x$ axis represents the <strong>real part</strong> of the phase, whereas the $y$ axis represents the <strong>imaginary part</strong> of the phase.</p>
+</blockquote>
+<p>In the case that the two-level system models a spin-1/2 particle (a very common but not universal case), then we have:</p>
+<p class="mathcell">
+$$
+|\psi\rangle = \cos\left( \frac{\theta}{2} \right) |\uparrow\rangle + e^{i\phi} \sin\left( \frac{\theta}{2} \right) |\downarrow\rangle
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> the choice is mathematically-arbitrary, so it does not matter whether we call $|0\rangle$ the spin-up or spin-down state, as long as our choice is consistent. However, $|\uparrow\rangle$ is usually associated with $|0\rangle$ in physics and engineering, and likewise $|\downarrow\rangle$ is usually associated with $|1\rangle$.</p>
+</blockquote>
+<p>Along the "equator" of the Bloch sphere, we have $\theta = \pi/2$, and thus the state-vector takes the simpler form:</p>
+<p class="mathcell">
+$$
+|\psi\rangle = \frac{1}{\sqrt{ 2 }}\big(|0\rangle + e^{i\phi}|1\rangle\big)
+$$
+</p>
+<p>Note that this corresponds to a state with 50% probability of measuring $|0\rangle$ and $|1\rangle$ since the complex phase factor has unit magnitude (you can check it for yourself by computing $P_0 = |\langle 0|\psi\rangle|^2$ and $P_1 = |\langle 1|\psi\rangle|^2$). However, the phase is still physically-relevant</p>
+<h4 id="hamiltonian-of-a-generalized-two-level-system">Hamiltonian of a generalized two-level system</h4>
+<p>A very common basic Hamiltonian for a generalized two-level system is given by:</p>
+<p class="mathcell">
+$$
+\hat{H} = \frac{\hbar \omega}{2} \sigma_{z}
+$$
+</p>
+<p>The energy eigenvalues are then $E = \pm \frac{1}{2} \hbar \omega$, with an energy difference of $\Delta E = \hbar \omega$ between the ground state and the excited state. Thus, the general time-dependent state-vector of the system, valid for all $t$, is given by:</p>
+<p class="mathcell">
+$$
+|\psi(t)\rangle = \cos\left( \frac{\theta}{2} \right) |0\rangle e^{-i \omega t&#x2F;2} + e^{i\phi} \sin\left( \frac{\theta}{2} \right) |1\rangle e^{i \omega t&#x2F;2}
+$$
+</p>
+<p>This comes from tacking on a factor of $e^{-i E t/\hbar}$ to each of the eigenstates, and substituting in our known values of $E = \pm \frac{1}{2}\hbar\omega$. It is standard to factor out the phase factor of $e^{-i\omega t/2}$, giving us:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+|\psi(t)\rangle &amp;= e^{-i \omega t&#x2F;2}\left[\cos\left( \frac{\theta}{2} \right) |0\rangle  + e^{i\phi} \sin\left( \frac{\theta}{2} \right) |1\rangle e^{i \omega t} \right] \\
+&amp;= e^{-i \omega t&#x2F;2}\left[\cos\left( \frac{\theta}{2} \right) |0\rangle  + e^{i(\phi +  \omega t)} \sin\left( \frac{\theta}{2} \right) |1\rangle\right]
+\end{align*}
+$$
+</p>
+<p>Since the factor $e^{-i\omega t/2}$ is a phase factor, its magnitude is one, and thus it is not directly observable; thus, the physics of the system are identical if it is dropped. Defining $\phi_{r}(t) = \phi + \omega t$ as the <strong>relative phase</strong> of the system (since it is a phase that comes from the <em>difference</em> in energy of the two states, which is a relative quantity), we can rewrite the state-vector as:</p>
+<p class="mathcell">
+$$
+|\psi(t)\rangle = \cos\left( \frac{\theta}{2} \right) |0\rangle  + e^{i\phi_{r}(t)} \sin\left( \frac{\theta}{2} \right) |1\rangle
+$$
+</p>
+<p>As long as the system is undisturbed and the Hamiltonian is time-independent, the relative phase $\phi_r$ changes by a <em>constant</em> rate $\omega$ (the <strong>Larmor frequency</strong>) as the state-vector precesses along the Bloch sphere - note this is independent of the $\theta$ coordinate! If we imagine the state-vector of the system to be represented by an arrow, the change in the relative phase can be visualized as the rotation of this "arrow" as it precesses (i.e. rotates) around the Bloch sphere.</p>
+<blockquote>
+<p><strong>Note:</strong> For an application of the Bloch sphere in quantum optics, please see <a href="https://www.wbt.uni-rostock.de/storages/uni-rostock/Alle_MNF/Physik_Qms/Lehre_Scheel/quantenoptik/Quantenoptik-Vorlesung10.pdf">these lecture notes</a>.</p>
+</blockquote>
+<h3 id="conclusion-to-two-level-systems">Conclusion to two-level systems</h3>
 <p>Two-level systems are the fundamental model behind a vast variety of quantum systems, including <a href="https://qubit.guide">qubits</a> in quantum computing, <a href="https://en.wikipedia.org/wiki/Rabi_cycle">optically-pumped lasers</a>, and <a href="https://web1.eng.famu.fsu.edu/~dommelen/quantum/style_a/hion.html">molecular ions</a>, as well as playing an important role in understanding the emission and absorption of radiation at the quantum level. We will discuss more examples of them throughout this guide - stay tuned!</p>
 <h2 id="the-quantum-harmonic-oscillator">The quantum harmonic oscillator</h2>
 <p>One of the simplest, but most important quantum systems is the <strong>quantum harmonic oscillator</strong>. At face value, it describes a particle in a harmonic potential well. To start, let us recall that the classical harmonic potential is given by:</p>
@@ -2970,7 +3057,7 @@ $$
 \end{align*}
 $$
 </p>
-<p>This is the <a href="https://en.wikipedia.org/wiki/Dyson_series">Dyson series</a> and is of tremendous importance in advanced quantum mechanics (especially quantum field theory)</p>
+<p>This is the <a href="https://en.wikipedia.org/wiki/Dyson_series">Dyson series</a>. Right now, the Dyson series is unimportant to us, but it has a great deal of importance in analyzing <strong>scattering</strong>. We have already seen scattering-state solutions to the Schrödinger equation, like the case of the rectangular potential barrier. But quantum-mechanical scattering is far more broad, and the Dyson series provides us with a way to calculate very complex scattering interactions in a solvable way. In fact, this technique is so general that it is even used in quantum field theory!</p>
 <h3 id="summary-of-time-evolution">Summary of time evolution</h3>
 <p>We have seen that there are <strong>three equivalent approaches</strong> to understanding the time evolution of the quantum system: the Schrödinger picture, Heisenberg picture, and interaction (or Dirac) picture. In the Schrödinger picture, operators are time-independent but states are time-dependent; in the Heisenberg picture, operators are time-dependent but states are time-independent; and finally, in the interaction picture, both are time-dependent. Each of these approaches has their own strengths and weaknesses, and they are useful in different scenarios. The key idea is that <em>having</em> these different approaches to describing quantum systems gives us powerful tools to solve these systems, even if we don't have to use them all the time.</p>
 <h2 id="angular-momentum">Angular momentum</h2>
