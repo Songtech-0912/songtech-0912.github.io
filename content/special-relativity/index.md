@@ -393,4 +393,4 @@ Using the invariance of the dot product of a 4-vector, that is, $\mathbf{P} \cdo
 
 ## More about special relativity
 
-We've come to the end of this (very) introductory treatment of special relativity. For more on special relativity, see the [advanced classical mechanics guide](@/advanced-classical-mech/index.md), and for more on both special and general relativity, you might like reading my (free) online book [Special & General Relativity](https://learntheoreticalphysics.com/relativity/).
+We've come to the end of this (very) introductory treatment of special relativity. For more on special relativity, see the [advanced classical mechanics guide](@/advanced-classical-mech/index.md), and for more on general relativity, see the [general relativity guide](@/general-relativity/index.md). Additionally, you might like reading my (free) online book [Special & General Relativity](https://learntheoreticalphysics.com/relativity/), which contains a comprehensive treatment of special and general relativity.
