@@ -29,6 +29,6 @@ to really be put on the same page with my other notes/guides
 
 Where external licensed/copyrighted material is included, it is used under fair-use for purely educational purposes. Other than that, these notes are my own work and are **freely usable with no restrictions**. That is to say, they are dedicated to the public domain, or if your jurisdiction does not support that, provided under [CC0](https://creativecommons.org/public-domain/cc0/). However, while I don't enforce it, I would _prefer_ that you don't sell these notes or make/sell print editions. These notes are meant to be freely available online, and it is only right to show respect to the professors whose courses made these notes possible.
 
-Also note that a lot of these notes contain graphics/equations. Equations can be copied just by selecting and Ctrl/Command + C; for graphics, right-click and you should be able to choose "save as image" to download. There is work-in-progress support for AI-generated image descriptions for screenreaders.
+Also note that a lot of these notes contain graphics/equations. Equations can be copied just by selecting and Ctrl/Command + C; for graphics, right-click and you should be able to choose "save as image" to download. I try my best to provide good alt text for images, but if you find an issue with the alt text on any image (or have any other accessibility-related concerns), please [file an issue here](https://codeberg.org/songtech-0912/website/issues).
 
 **Interested in how I make these notes?** See [here](@/notes-process.md) for my workflow.
