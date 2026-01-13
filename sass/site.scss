@@ -477,6 +477,17 @@ header {
     font-size: 0.85rem;
   }
 
+  img {
+  	display: block;
+  	break-inside: avoid !important;
+  	page-break-inside: avoid !important;
+  }
+
+  // see https://alistapart.com/article/goingtoprint/
+  a[href^="/"]:after {
+  	content: " (https://jackysci.com" attr(href) ") ";
+  }
+
   .return-link {
     display: none;
   }
