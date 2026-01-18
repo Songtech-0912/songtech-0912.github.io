@@ -83,6 +83,27 @@
                     
                 </li>
             
+                <li>
+                    <a href="#a-geometric-theory-of-physics">A geometric theory of physics</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#the-effects-of-spacetime-curvature-on-particle-trajectories">The effects of spacetime curvature on particle trajectories</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#manifolds-and-differential-geometry">Manifolds and differential geometry</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#introduction-to-the-metric">Introduction to the metric</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
             </ul>
         </div>
         </details>
@@ -198,6 +219,164 @@ $$
 <li>There are <strong>no preferred reference frames</strong>: mathematically, this is governed by the fact that GR is formulated using mathematical objects called <strong>tensors</strong></li>
 <li>Gravity is not a force, but rather a consequence of <strong>spacetime geometry</strong> which is described by the <strong>Einstein field equations</strong> using the mathematics of differential geometry</li>
 </ul>
+<h2 id="a-geometric-theory-of-physics">A geometric theory of physics</h2>
+<p>When we say general relativity is a <strong>geometric theory</strong>, we want to be careful about what we mean by "geometry". In one sense, most of classical physics can be described as geometric in origin, but the geometry used was <strong>Euclidean geometry</strong> - a system formalized by Euclid over 2,000 years ago. General relativity, however, uses <strong>non-Euclidean geometry</strong>, which was developed by Gauss, Riemann, and other 19th- and 20th-century mathematicians. It is only with this unconventional mathematical paradigm that Einstein was able to model gravity geometrically.</p>
+<p>General relativity, specifically, uses a form of non-Euclidean geometry that has the following features:</p>
+<ul>
+<li>The Universe is described by four-dimensional spacetime, which is a geometric object (technically, a <em>manifold</em>) that possesses <strong>curvature</strong></li>
+<li>There may be curvature in time as well as space; that is, spacetime is <strong>dynamical</strong> (time-dependent)</li>
+</ul>
+<p>The presence of <strong>curvature</strong> in the geometry of spacetime is especially relevant, because it challenges one of the foundational axioms of Euclidean geometry. In Euclidean geometry, the shortest path between two points is a <strong>straight line</strong>. But in general relativity, even a particle attempting to travel along a "straight line" in curved spacetime ends up following a <em>curved path</em> due to the spacetime curvature. Thus, the shortest path between two points in general relativity is no longer (always) a straight line. Instead, it is a special curve called a <strong>geodesic curve</strong>, which is usually curved.</p>
+<h3 id="the-effects-of-spacetime-curvature-on-particle-trajectories">The effects of spacetime curvature on particle trajectories</h3>
+<p>Consider a ball thrown up and then allowed to fall back down to Earth under the influence of gravity. In relativity, the trajectory of a particle through space and time is known as its <strong>worldline</strong>. For our ball, the initial position of the ball is at $h = 0, t = 0$, where $h$ is the height of the ball above the ground. We may draw a <strong>spacetime diagram</strong> (a glorified graph) plotting the trajectory of the thrown ball, with the height on the $x$ axis and the time (multiplied by the speed of light, $c$) on the $y$ axis:</p>
+<img class="diagram"
+	
+		src="/general-relativity/gr-curvature-plot.excalidraw.svg"
+	
+	alt="Diagram showing the trajectory of a thrown ball in weak (Newtonian) and strong (GR) gravity" />
+<p>In weak gravity, there is approximately no spacetime curvature, and thus the trajectory of the ball is almost exactly a straight line, with nearly infinite slope (since $c \sim 10^8$ is such a large number). However, in strong gravity, there is non-negligible spacetime curvature, and thus the trajectory of the ball becomes a curve. From this basic example, we can already see that adding curvature dramatically changes the dynamics of particles travelling through spacetime.</p>
+<blockquote>
+<p><strong>Note:</strong> For another (more professional) visualization of the curvature of gravity, please see <a href="https://timhutton.github.io/GravityIsNotAForce/">this interactive website</a>.</p>
+</blockquote>
+<h3 id="manifolds-and-differential-geometry">Manifolds and differential geometry</h3>
+<p>Since we use non-Euclidean geometry in general relativity, we must abandon the idea of straight lines and flat spaces and consider curved spaces. (Here, we use the word "space" as opposed to "plane" or "cube" or "line" to be more general, since an infinite line, infinite plane, and infinite cube are just special cases of Cartesian space).</p>
+<p>To describe any sort of curved space, we need to introduce the idea of a <strong>manifold</strong>. A manifold is any space that is locally flat - that is to say, if we zoom in close enough, we can locally approximate it with Euclidean geometry. For instance, the Earth is roughly a manifold on human scales; indeed, while we obviously know that the Earth is (to a good approximation) a sphere, we do not perceive its curvature significantly on everyday distances, meaning that it <em>seems flat</em> to us. Generalizing this concept, we can say that an <em>infinitesimal portion</em> of a sphere can be regarded as flat, but a sphere is ultimately curved.</p>
+<img class="diagram"
+	
+		src="/general-relativity/sphere-curvature.excalidraw.svg"
+	
+	alt="An illustration of a triangle on a sphere&#x27;s surface, showing how its angles add up to greater than 180 degrees." />
+<p><em>A triangle placed on a sphere can have a sum of angles greater than 180 degrees!</em></p>
+<p>Since a sphere is curved, it does not follow the typical rules of Euclidean geometry. Indeed, if we try to apply Euclidean geometry for shapes on the surface of a sphere of radius $a$, we find that we get completely unexpected results:</p>
+<table><thead><tr><th></th><th>Sphere</th><th>Flat 2D space</th></tr></thead><tbody>
+<tr><td>Sum of angles of an inscribed triangle</td><td>$&gt;\pi$</td><td>$\pi$</td></tr>
+<tr><td>Circumference of an inscribed circle</td><td>$C = 2\pi a \sin(r/a)$</td><td>$C = 2\pi r$</td></tr>
+</tbody></table>
+<p>These results stem from the fact that the surface of a sphere is a <strong>curved space</strong>. Since the surface is curved, we must use <em>non-Euclidean geometry</em>. However, note that in the limit that $a$ is large (that is, the sphere has a very large radius), $\sin(r/a) \approx r/a$ and therefore $C \approx 2\pi a\left( \frac{r}{a} \right) = 2\pi r$. This tells us that for very large spheres (like the Earth), the curvature becomes hardly noticeable and we can essentially ignore it and use the results of Euclidean geometry.</p>
+<blockquote>
+<p><strong>Note:</strong> We must be careful to note that we speak of the <em>surface of a sphere</em> as a curved space, but we do not say the <em>sphere itself</em> is a curved space. There is a major difference; the surface of a sphere is essentially <strong>two-dimensional</strong> (since a particle confined to move along the sphere can only travel in two directions - along the lines of longitude or latitude) while looking at a sphere is to consider a three-dimensional shape <em>embedded</em> within 3D Euclidean space.</p>
+</blockquote>
+<p>By considering <strong>non-Euclidean geometry</strong>, we can describe curved spaces as well as flat spaces. Indeed, we can categorize curved spaces into several categories, depending on their properties:</p>
+<ul>
+<li><strong>Hyperbolic space:</strong> negative curvature (e.g. surface of a hyperboloid)</li>
+<li><strong>Flat space:</strong> zero curvature; the currently-accepted model of the universe suggests close to zero (spatial) curvature, though with non-zero curvature in the time dimension</li>
+<li><strong>Elliptic space:</strong> positive curvature (e.g. surface of a sphere)</li>
+</ul>
+<p>The following diagram illustrates the properties of each of these categories of spaces:</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Comparison_of_geometries.svg" alt="A visualization of several different types of curved spaces, including elliptic, flat, and hyperbolic spaces" /></p>
+<p><em>Source: <a href="https://commons.wikimedia.org/wiki/File:Comparison_of_geometries.svg">Wikipedia</a></em></p>
+<h3 id="introduction-to-the-metric">Introduction to the metric</h3>
+<p>To understand how it could be possible that a sphere may have such drastically-different geometry as compared to what Euclidean geometry predicts, we must introduce the tools of <strong>differential geometry</strong>, which generalizes the concepts of Euclidean geometry to curved spaces. Differential geometry can be applied to any manifold, and uses the fact that if you zoom up close, any manifold is <em>locally flat</em> to describe highly-complex curved spaces as a combination of infinitesimally-flat patches.</p>
+<p>As a basic introduction, recall Pythagoras's theorem in 2D space reads $s^2 = x^2 + y^2$. This tells us the distance $s$ between the origin and a point $(x, y)$ on the Cartesian 2D plane. Now, for two points $(x_1, y_1)$ and $(x_2, y_2)$, Pythagoras's theorem reads:</p>
+<p class="mathcell">
+$$
+\Delta s^2 = (x_{2} - x_{1})^2 + (y_{2} - y_{1})^2 = \Delta x^2 + \Delta y^2
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> Here we use the notation that $\Delta s^2 = (\Delta s)^2$. Thus, $\Delta x^2 = (\Delta x)^2$ and $\Delta y^2 = (\Delta y)^2$.</p>
+</blockquote>
+<p>Where $\Delta s$ is the distance between the two points. Now, we can generalize this result for <em>infinitesimal displacements</em> $dx, dy$ with:</p>
+<p class="mathcell">
+$$
+ds^2 = dx^2 + dy^2
+$$
+</p>
+<p>Unlike the prior two formulae, which was only valid for flat 2D space (Euclidean space), this expression for Pythagoras's theorem holds true for curved 2D spaces as well. For instance, consider a sphere of unit radius. As we discussed prior, the surface of a sphere is a 2D space, since a particle constrained to the surface of a sphere can only move in one of two directions (corresponding to the $\theta$ and $\phi$ coordinates in spherical coordinates). Unlike a plane, however, the surface of a sphere is a <em>curved space</em>, as we show in the below diagram:</p>
+<img class="diagram"
+	
+		src="/general-relativity/spherical-line-element.excalidraw.svg"
+	
+	alt="Illustration of infinitesimal displacements on the surface of a sphere" />
+<p><em>Infinitesimal displacements $dx, dy, ds$ on a unit sphere. Note: size of the displacements are exaggerated.</em></p>
+<p>Indeed, we see that for infinitesimally-small displacements, Pythagoras's theorem holds true on the surface of the sphere, even though it doesn't hold true for finite displacements $\Delta x, \Delta y,\Delta s$. We have a special name for $ds$: it is called the <strong>line element</strong>. For the surface of the unit sphere, we can express the line element in the following form:</p>
+<p class="mathcell">
+$$
+ds^2 = d \theta^2 + \sin^2 \theta d \phi^2
+$$
+</p>
+<p>In the most general case, the line element in $n$ dimensions is given by the following expression:</p>
+<p class="mathcell">
+$$
+ds^2 = \sum_{a}^n \sum_{b}^n g_{ab} dx^a dx^b
+$$
+</p>
+<p>Where $g_{ab}$ is called the <strong>metric tensor</strong> (or just <em>metric</em> for short), and is a $(n \times n)$ matrix that describes the <em>geometry</em> of the space; it thus packages the information about the curvature of the space. Here, we use what is known as <strong>index notation</strong>, meaning that when we have a superscript or subscript index (like $dx^a$ or $g_{ab}$) we use the index to denote a <em>coordinate</em>. For instance, if we were using Cartesian coordinates $(x, y, z)$, then $dx^a = (dx, dy, dz)$ such that $dx^1 = dx$, $dx^2 = dy$ and $dx^3 = dz$. Meanwhile, if we were using cylindrical coordinates $(r, \phi, z)$ then $dx^a = (dr, d\phi, dz)$ so $dx^1 = dr$, $dx^2 = d\phi$, and $dx^3 = dz$. It is important to remember that in index notation, <strong>indices are NOT exponents!</strong> That is to say, $dx^3$ should be interpreted as "the infinitesimal displacement along the third <em>coordinate</em> ($z$)" rather than "$dx$ raised to the power of three".</p>
+<p>With that clarified, we can now consider some examples of metrics. For instance, a metric tensor for a two-dimensional space takes the general form:</p>
+<p class="mathcell">
+$$
+g_{ab} = \begin{pmatrix}
+g_{11} &amp; g_{12} \\
+g_{21} &amp; g_{22}
+\end{pmatrix}
+$$
+</p>
+<p>For 2D Euclidean space expressed in Cartesian coordinates, the metric is simply the 2D identity matrix:</p>
+<p class="mathcell">
+$$
+g_{ab} = \begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}
+$$
+</p>
+<p>From which we can see that the only two nonzero components of the metric are $g_{11} = 1$ and $g_{22} = 1$. Thus, the line element is given by:</p>
+<p class="mathcell">
+$$
+ds^2 = g_{11}  dx^1 dx^1 + g_{22} dx^2 dx^2 = dx^2 + dy^2
+$$
+</p>
+<p>Note that in 3D Euclidean space, the metric is the 3D identity matrix:</p>
+<p class="mathcell">
+$$
+g_{ab} = \begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{pmatrix}
+$$
+</p>
+<p>For which the nonzero elements are $g_{11} = 1$, $g_{22} = 1$, $g_{33} = 1$, and thus:</p>
+<p class="mathcell">
+$$
+ds^2 = g_{11} dx^1 dx^1 + g_{22} dx^2 dx^2 + g_{33} dx^3 dx^3 = dx^2 + dy^2 + dz^2
+$$
+</p>
+<p>Finally, let us take the example of 3D Euclidean space in spherical coordinates. The line element reads:</p>
+<p class="mathcell">
+$$
+ds^2 = dr^2 + r^2 d \theta^2 + r^2 \sin^2 \theta d \phi^2
+$$
+</p>
+<p>And the metric reads:</p>
+<p class="mathcell">
+$$
+g_{ab} = \begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; r^2 &amp; 0 \\
+0 &amp; 0 &amp; r^2 \sin^2 \theta
+\end{pmatrix}
+$$
+</p>
+<p>Using the metric, we can generalize quantities in conventional flat space to curved spaces. For instance, an infinitesimal patch of area $dA$ can be described in an arbitrary curved space with the <strong>area element</strong>:</p>
+<p class="mathcell">
+$$
+d A = \sqrt{ g }\, dx^1 dx^2 = \sqrt{ g }\, d^2x
+$$
+</p>
+<p>Where here, $g = \sqrt{ \det g_{ab} }$ is the determinant of $g_{ab}$, the metric tensor, and $d^2 x = dx^1 dx^2$ is the product of the infinitesimal displacements in the two coordinate directions (for instance, $dx^1 = dx$ and $dx^2 = dy$ in 2D Euclidean space in cartesian coordinates, so $d^2 x = dx dy$). Meanwhile, an infinitesimal patch of volume $dV$ can be described in an arbitrary curved space with the <strong>volume element</strong>:</p>
+<p class="mathcell">
+$$
+dV = \sqrt{ g }\, dx^1 dx^2 dx^3 = \sqrt{g }\, d^3 x
+$$
+</p>
+<p>We'll later see that the famous <a href="https://en.wikipedia.org/wiki/Einstein%E2%80%93Hilbert_action">Einstein-Hilbert action</a> in General Relativity can also be expressed in terms of the metric:</p>
+<p class="mathcell">
+$$
+S = \frac{c^4}{16 \pi G} \int R \sqrt{ -g }\, d^4x
+$$
+</p>
+<p>Where here, $R$ is a scalar-valued function that depends on the metric and its derivatives. The essential feature of the metric is that it is the <strong>complete description</strong> of a space - whether flat or curved - and therefore, the metric is the essential quantity of interest in general relativity, since the curvature of spacetime, which is described by the metric, is <em>what we perceive as gravity</em>.</p>
 
         
         <a id="jump-toc-btn" href="#toc">Show table of contents</a>
