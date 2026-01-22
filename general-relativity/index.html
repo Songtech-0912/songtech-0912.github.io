@@ -249,12 +249,15 @@ $$
 <p><em>A triangle placed on a sphere can have a sum of angles greater than 180 degrees!</em></p>
 <p>Since a sphere is curved, it does not follow the typical rules of Euclidean geometry. Indeed, if we try to apply Euclidean geometry for shapes on the surface of a sphere of radius $a$, we find that we get completely unexpected results:</p>
 <table><thead><tr><th></th><th>Sphere</th><th>Flat 2D space</th></tr></thead><tbody>
-<tr><td>Sum of angles of an inscribed triangle</td><td>$&gt;\pi$</td><td>$\pi$</td></tr>
+<tr><td>Sum of angles of an inscribed triangle</td><td>$\pi + A/a^2$</td><td>$\pi$</td></tr>
 <tr><td>Circumference of an inscribed circle</td><td>$C = 2\pi a \sin(r/a)$</td><td>$C = 2\pi r$</td></tr>
 </tbody></table>
+<blockquote>
+<p><strong>Note:</strong> It is also common to use the term <strong><a href="https://en.wikipedia.org/wiki/Solution_of_triangles#Solving_spherical_triangles">spherical triangle</a></strong> to refer to an inscribed triangle on a sphere, and likewise the term <strong><a href="https://en.wikipedia.org/wiki/Spherical_circle">spherical circle</a></strong> to refer to an inscribed circle on a sphere. Note that a spherical circle is <strong>defined</strong> as a curve of constant $\theta$; in geography, they are called <em>latitudinal lines</em> or <em>parallels</em>, and are used to describe circles on the (nearly) spherical Earth.</p>
+</blockquote>
 <p>These results stem from the fact that the surface of a sphere is a <strong>curved space</strong>. Since the surface is curved, we must use <em>non-Euclidean geometry</em>. However, note that in the limit that $a$ is large (that is, the sphere has a very large radius), $\sin(r/a) \approx r/a$ and therefore $C \approx 2\pi a\left( \frac{r}{a} \right) = 2\pi r$. This tells us that for very large spheres (like the Earth), the curvature becomes hardly noticeable and we can essentially ignore it and use the results of Euclidean geometry.</p>
 <blockquote>
-<p><strong>Note:</strong> We must be careful to note that we speak of the <em>surface of a sphere</em> as a curved space, but we do not say the <em>sphere itself</em> is a curved space. There is a major difference; the surface of a sphere is essentially <strong>two-dimensional</strong> (since a particle confined to move along the sphere can only travel in two directions - along the lines of longitude or latitude) while looking at a sphere is to consider a three-dimensional shape <em>embedded</em> within 3D Euclidean space.</p>
+<p><strong>Note:</strong> We must be careful to note that we speak of the <em>surface of a sphere</em> as a curved space, but we do not say the <em>sphere itself</em> is a curved space. There is a major difference; the surface of a sphere is essentially <strong>two-dimensional</strong> (since a particle confined to move along the sphere can only travel in two directions - along the lines of longitude or latitude) while looking at a sphere is to consider a three-dimensional shape <em>embedded</em> within 3D Euclidean space. This is why the surface of a sphere is often called a <strong>2-sphere</strong>, since it is a 2D space.</p>
 </blockquote>
 <p>By considering <strong>non-Euclidean geometry</strong>, we can describe curved spaces as well as flat spaces. Indeed, we can categorize curved spaces into several categories, depending on their properties:</p>
 <ul>
@@ -370,13 +373,28 @@ $$
 dV = \sqrt{ g }\, dx^1 dx^2 dx^3 = \sqrt{g }\, d^3 x
 $$
 </p>
+<p>Collectively, this allows us to find the areas and volumes of shapes in different spaces; one may use it, for instance, to calculate the area of a triangle lying on the surface of a sphere or hyperboloid, or that of a sphere in curved 3D space. One simply needs to integrate over the regions the shapes occupy to find their total volume $V_{shape}$ and total surface area $S_{shape}$, that is:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+S_{shape} &amp;= \int \limits_\text{shape} dA = \int \limits_\text{shape} \sqrt{ g }\, dx^1 dx^2 \\
+V_{shape} &amp;= \int \limits_\text{shape} dV = \int \limits_\text{shape} \sqrt{ g }\, dx^1 dx^2 dx^3 \\
+\end{align*}
+$$
+</p>
+<p>Similarly, one may find the length $s$ of some curve in an arbitrary space (for instance, the circumference of a circle on the surface of a sphere) by integrating over the line element:</p>
+<p class="mathcell">
+$$
+s = \int \limits_\text{curve} \sqrt{ds^2}
+$$
+</p>
 <p>We'll later see that the famous <a href="https://en.wikipedia.org/wiki/Einstein%E2%80%93Hilbert_action">Einstein-Hilbert action</a> in General Relativity can also be expressed in terms of the metric:</p>
 <p class="mathcell">
 $$
 S = \frac{c^4}{16 \pi G} \int R \sqrt{ -g }\, d^4x
 $$
 </p>
-<p>Where here, $R$ is a scalar-valued function that depends on the metric and its derivatives. The essential feature of the metric is that it is the <strong>complete description</strong> of a space - whether flat or curved - and therefore, the metric is the essential quantity of interest in general relativity, since the curvature of spacetime, which is described by the metric, is <em>what we perceive as gravity</em>.</p>
+<p>Where here, $S$ is the GR action and $R$ is a scalar-valued function that depends on the metric and its derivatives (it's called the <em>Ricci scalar</em>, but we'll get to that later). The essential feature of the metric is that it is the <strong>complete description</strong> of a space - whether flat or curved - and therefore, the metric is the essential quantity of interest in general relativity, since the curvature of spacetime, which is described by the metric, is <em>what we perceive as gravity</em>.</p>
 
         
         <a id="jump-toc-btn" href="#toc">Show table of contents</a>
