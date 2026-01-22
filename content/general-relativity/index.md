@@ -178,12 +178,14 @@ Since a sphere is curved, it does not follow the typical rules of Euclidean geom
 
 |                                        | Sphere                  | Flat 2D space |
 | -------------------------------------- | ----------------------- | ------------- |
-| Sum of angles of an inscribed triangle | $>\pi$                  | $\pi$         |
+| Sum of angles of an inscribed triangle | $\pi + A/a^2$           | $\pi$         |
 | Circumference of an inscribed circle   | $C = 2\pi a \sin(r/a)$  | $C = 2\pi r$  |
+
+> **Note:** It is also common to use the term **[spherical triangle](https://en.wikipedia.org/wiki/Solution_of_triangles#Solving_spherical_triangles)** to refer to an inscribed triangle on a sphere, and likewise the term **[spherical circle](https://en.wikipedia.org/wiki/Spherical_circle)** to refer to an inscribed circle on a sphere. Note that a spherical circle is **defined** as a curve of constant $\theta$; in geography, they are called _latitudinal lines_ or _parallels_, and are used to describe circles on the (nearly) spherical Earth.
 
 These results stem from the fact that the surface of a sphere is a **curved space**. Since the surface is curved, we must use *non-Euclidean geometry*. However, note that in the limit that $a$ is large (that is, the sphere has a very large radius), $\sin(r/a) \approx r/a$ and therefore $C \approx 2\pi a\left( \frac{r}{a} \right) = 2\pi r$. This tells us that for very large spheres (like the Earth), the curvature becomes hardly noticeable and we can essentially ignore it and use the results of Euclidean geometry.
 
-> **Note:** We must be careful to note that we speak of the *surface of a sphere* as a curved space, but we do not say the *sphere itself* is a curved space. There is a major difference; the surface of a sphere is essentially **two-dimensional** (since a particle confined to move along the sphere can only travel in two directions - along the lines of longitude or latitude) while looking at a sphere is to consider a three-dimensional shape *embedded* within 3D Euclidean space.
+> **Note:** We must be careful to note that we speak of the *surface of a sphere* as a curved space, but we do not say the *sphere itself* is a curved space. There is a major difference; the surface of a sphere is essentially **two-dimensional** (since a particle confined to move along the sphere can only travel in two directions - along the lines of longitude or latitude) while looking at a sphere is to consider a three-dimensional shape *embedded* within 3D Euclidean space. This is why the surface of a sphere is often called a **2-sphere**, since it is a 2D space.
 
 By considering **non-Euclidean geometry**, we can describe curved spaces as well as flat spaces. Indeed, we can categorize curved spaces into several categories, depending on their properties:
 
@@ -306,10 +308,25 @@ Where here, $g = \sqrt{ \det g_{ab} }$ is the determinant of $g_{ab}$, the metri
 dV = \sqrt{ g }\, dx^1 dx^2 dx^3 = \sqrt{g }\, d^3 x
 {% end %}
 
+Collectively, this allows us to find the areas and volumes of shapes in different spaces; one may use it, for instance, to calculate the area of a triangle lying on the surface of a sphere or hyperboloid, or that of a sphere in curved 3D space. One simply needs to integrate over the regions the shapes occupy to find their total volume {% inlmath() %}V_{shape}{% end %} and total surface area $S_{shape}$, that is:
+
+{% math() %}
+\begin{align*}
+S_{shape} &= \int \limits_\text{shape} dA = \int \limits_\text{shape} \sqrt{ g }\, dx^1 dx^2 \\
+V_{shape} &= \int \limits_\text{shape} dV = \int \limits_\text{shape} \sqrt{ g }\, dx^1 dx^2 dx^3 \\
+\end{align*}
+{% end %}
+
+Similarly, one may find the length $s$ of some curve in an arbitrary space (for instance, the circumference of a circle on the surface of a sphere) by integrating over the line element:
+
+{% math() %}
+s = \int \limits_\text{curve} \sqrt{ds^2}
+{% end %}
+
 We'll later see that the famous [Einstein-Hilbert action](https://en.wikipedia.org/wiki/Einstein%E2%80%93Hilbert_action) in General Relativity can also be expressed in terms of the metric:
 
 {% math() %}
 S = \frac{c^4}{16 \pi G} \int R \sqrt{ -g }\, d^4x
 {% end %}
 
-Where here, $R$ is a scalar-valued function that depends on the metric and its derivatives. The essential feature of the metric is that it is the **complete description** of a space - whether flat or curved - and therefore, the metric is the essential quantity of interest in general relativity, since the curvature of spacetime, which is described by the metric, is *what we perceive as gravity*.
+Where here, $S$ is the GR action and $R$ is a scalar-valued function that depends on the metric and its derivatives (it's called the _Ricci scalar_, but we'll get to that later). The essential feature of the metric is that it is the **complete description** of a space - whether flat or curved - and therefore, the metric is the essential quantity of interest in general relativity, since the curvature of spacetime, which is described by the metric, is *what we perceive as gravity*.
