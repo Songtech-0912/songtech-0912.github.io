@@ -49,7 +49,7 @@
         
 
         <!-- page content -->
-        <p>This is the first article in a multi-part series detailing the process of building a neural network library in pure Rust, based off my experience making the <a href="https://github.com/elaraproject/elara-math"><code>elara-math</code></a> library.</p>
+        <p>This is the first article in a multi-part series detailing the process of building a neural network library in pure Rust, based off my experience making the <a href="https://codeberg.org/elaraproject/elara-math"><code>elara-math</code></a> library.</p>
 <span id="continue-reading"></span><h2 id="what-is-a-neural-network">What is a neural network?</h2>
 <p>Put simply, a neural network is just a mathematical model for predicting a value given existing values. The simplest neural networks, one-layer feedforward neural networks, are basically just a linear function:</p>
 <p class="mathcell">
@@ -138,7 +138,7 @@ $$
 <li>An automatic differentiation library</li>
 <li>A tensor class (in Rust, it would be a struct)</li>
 </ul>
-<p>While building my personal neural network library <a href="https://github.com/elaraproject/elara-math"><code>elara-math</code></a>, I aimed to build all three components from scratch in pure Rust, using as few dependencies as possible.</p>
+<p>While building my personal neural network library <a href="https://codeberg.org/elaraproject/elara-math"><code>elara-math</code></a>, I aimed to build all three components from scratch in pure Rust, using as few dependencies as possible.</p>
 <p>To start with, I built <code>NdArray</code>, my n-dimensional array, by heavily referencing <a href="https://crates.io/crates/nd_array">nd_array</a>. The trick both <code>elara-math</code> and <code>nd_array</code> used for fast n-dimensional arrays is to define <code>NdArray</code> like so:</p>
 <pre data-lang="rust" style="background-color:#fafafa;color:#61676c;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#61676ccc;">#</span><span>[</span><span style="color:#f29718;">derive</span><span>(Debug</span><span style="color:#61676ccc;">,</span><span> Clone)]
 </span><span style="color:#fa6e32;">pub struct </span><span style="color:#399ee6;">NdArray</span><span>&lt;T</span><span style="color:#61676ccc;">: </span><span style="font-style:italic;color:#55b4d4;">Clone</span><span>, </span><span style="color:#fa6e32;">const</span><span> N</span><span style="color:#61676ccc;">: </span><span style="color:#fa6e32;">usize</span><span>&gt; {
