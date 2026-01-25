@@ -6,7 +6,7 @@ date = 2023-05-25
 non_note = true
 +++
 
-This is the first article in a multi-part series detailing the process of building a neural network library in pure Rust, based off my experience making the [`elara-math`](https://github.com/elaraproject/elara-math) library.
+This is the first article in a multi-part series detailing the process of building a neural network library in pure Rust, based off my experience making the [`elara-math`](https://codeberg.org/elaraproject/elara-math) library.
 
 <!-- more -->
 
@@ -109,7 +109,7 @@ The key building blocks of a neural network are three components:
 - An automatic differentiation library
 - A tensor class (in Rust, it would be a struct)
 
-While building my personal neural network library [`elara-math`](https://github.com/elaraproject/elara-math), I aimed to build all three components from scratch in pure Rust, using as few dependencies as possible.
+While building my personal neural network library [`elara-math`](https://codeberg.org/elaraproject/elara-math), I aimed to build all three components from scratch in pure Rust, using as few dependencies as possible.
 
 To start with, I built `NdArray`, my n-dimensional array, by heavily referencing [nd_array](https://crates.io/crates/nd_array). The trick both `elara-math` and `nd_array` used for fast n-dimensional arrays is to define `NdArray` like so:
 

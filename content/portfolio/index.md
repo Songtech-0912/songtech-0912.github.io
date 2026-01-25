@@ -12,23 +12,23 @@ nonarticle = true
 
 ## Portfolio
 
-I am a current undergraduate student at [Rensselaer Polytechnic Institute](https://www.rpi.edu/) majoring in Applied Physics. I engage in a multidisplinary range of organizations and activities, and am always glad to learn new skills and work on new things!
+I am a current undergraduate student at [Rensselaer Polytechnic Institute](https://www.rpi.edu/) majoring in Applied Physics. In addition, I am the **[Head of Project Elara](https://elaraproject.org/)**, a not-for-profit research organization that develops open-source technologies. I am always glad to learn new skills and work on new things!
 
 ### Research
 
-My research is in the fields of computational electromagnetics for space-based energy applications. I am the director of [Project Elara](https://elaraproject.github.io/), the nonprofit I do this research through. In addition, I am a member of the Rensselaer-based [Materials Intelligence](https://materials-intelligence.com/) group that uses machine learning for materials discovery.
+[My research](https://research.elaraproject.org/) is in the fields of computational electromagnetics for space-based energy applications. I develop theoretical models and numerical simulations for power transmission in the microwave spectrum, which may one day allow for beaming power from space to Earth. In addition, I previously did research with the Rensselaer-based [Materials Intelligence](https://materials-intelligence.com/) group, using machine learning for materials discovery.
 
 ### Technical writing and science outreach
 
-I believe firmly in the importance of scientific education and making it accessible to everyone. I have written [several hundred pages](@/notes.md) of STEM notes aimed at providing a complete undergraduate-level education in the sciences (in particular physics) to anyone, as well as being a major contributor to the official Handbook of [Project Elara](https://elaraproject.github.io/elara-handbook/). Currently, I am also working on [a series of theoretical physics books](https://learntheoreticalphysics.com/) designed for a general audience.
+I believe firmly in the importance of scientific education and making it accessible to everyone. I have written [several hundred pages](@/notes.md) of STEM notes aimed at providing a complete undergraduate-level education in the sciences (in particular physics) to anyone, as well as being a major contributor to the official Handbook of [Project Elara](https://elaraproject.org/elara-handbook/). Currently, I am also working on [a series of theoretical physics books](https://learntheoreticalphysics.com/) designed for a general audience.
 
 ### Software development
 
-I am an active developer with experience in web development, scientific computing, and Python development, with over 80 open-source GitHub repositories. See my GitHub [here](https://github.com/songtech-0912/).
+I am an active developer with experience in web development, scientific computing, Rust, and Python development, with over 80 open-source GitHub repositories. See my GitHub [here](https://github.com/songtech-0912/).
 
 ### Design, VFX, and 3D graphics
 
-In addition to scientific work, I have experience in UI/UX design and have been a longtime web designer for the visual effects software [Natron](https://github.com/NatronGitHub/Natron). I am also a 3D/VFX artist, with a portfolio on [Artstation](https://www.artstation.com/songtech-0912).
+In addition to scientific work, I have experience in UI/UX design and have been a longtime web designer and contributor to the visual effects software [Natron](https://github.com/NatronGitHub/Natron). I am also a 3D/VFX artist, with a portfolio on [Artstation](https://www.artstation.com/songtech-0912).
 
 ### Musical performance and composition
 
