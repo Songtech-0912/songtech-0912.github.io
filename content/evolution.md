@@ -25,7 +25,7 @@ It is recommended to use `Ctrl F` or the equivalent search function to find the 
 ### Formation of Earth
 
 Billions of years ago, a supernova explosion created a nebula in where the solar system is today. While the majority of the gases in the solar system gathered to form the sun, the cloud of rocks and dust clumped together to form planets, which became rounded because of gravity. Earth itself was formed around 4.5 billion years ago.
-Due to the molten conditions on Earth at the time, heavy elements such as iron sank deep inside the Earth, and lighter elements floated to the top - this is called the **iron catastrophe**. This in turn created Earth's molten inner core, which created Earth's magnetic field, protecting it from damaging solar radiation.
+Due to the molten conditions on Earth at the time, heavy elements such as iron sank deep inside the Earth, and lighter elements floated to the top - this is called the **iron catastrophe**. This in turn created Earth's molten outer core, which created Earth's magnetic field, protecting it from damaging solar radiation.
 
 ## Stages of Earth
 
@@ -114,11 +114,11 @@ Protocells emerge at the start of the Hadeon eon (4 BYA). Bacteria becomes the f
 
 ### Archean Eon
 
-Archaea becomes the second domain of life, thriving in extreme environments (3.7 BYA). Later on, (initially anaerobic) photosynthetic bacteria such as _Aquifex_.
+Archaea becomes the second domain of life, thriving in extreme environments (3.7 BYA). Later on, (initially anaerobic) photosynthetic bacteria such as _Aquifex_ evolve.
 
 ### Great oxidation event
 
-Aerobic cyanobacteria develop and form stromatolites (3.5 - 3 BYA). Eukaryotes (complex cells with nucleus and membrane-bound organelles) develop from archea and appear (2.7 BYA).
+Aerobic cyanobacteria develop and form stromatolites (3.5 - 3 BYA). Eukaryotes (complex cells with nucleus and membrane-bound organelles) develop from archea and appear (2.7 BYA). The **Great Oxidation Event** ocurred around 2.46-2.42 BYA, where Earth's atmosphere experienced the rapid rise of free oxygen from photosynthesizing microbes.
 
 **Endosymbiotic theory** is used to explain how eukaryote cells formed - various prokaryotic cells that shared a symbiotic relationship engulfed each other to form the first eukaryotic cells.
 
