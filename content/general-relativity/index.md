@@ -302,11 +302,13 @@ Using the metric, we can generalize quantities in conventional flat space to cur
 d A = \sqrt{ g }\, dx^1 dx^2 = \sqrt{ g }\, d^2x
 {% end %}
 
-Where here, $g = \sqrt{ \det g_{ab} }$ is the determinant of $g_{ab}$, the metric tensor, and $d^2 x = dx^1 dx^2$ is the product of the infinitesimal displacements in the two coordinate directions (for instance, $dx^1 = dx$ and $dx^2 = dy$ in 2D Euclidean space in cartesian coordinates, so $d^2 x = dx dy$). Meanwhile, an infinitesimal patch of volume $dV$ can be described in an arbitrary curved space with the **volume element**:
+Where here, $g = \sqrt{ \det g_{ab} }$ is the determinant of the metric tensor $g_{ab}$, and $d^2 x = dx^1 dx^2$ is the product of the infinitesimal displacements in the two coordinate directions (for instance, $dx^1 = dx$ and $dx^2 = dy$ in 2D Euclidean space in cartesian coordinates, so $d^2 x = dx dy$). Meanwhile, an infinitesimal patch of volume $dV$ can be described in an arbitrary curved space with the **volume element**:
 
 {% math() %}
-dV = \sqrt{ g }\, dx^1 dx^2 dx^3 = \sqrt{g }\, d^3 x
+dV = \sqrt{ g }\, dx^1 dx^2 dx^3 = \sqrt{\det g }\, d^3 x
 {% end %}
+
+> **Note:** It is very common to use the notation $\det g$ to represent the determinant of the metric, but the determinant of the metric is sometimes (confusingly!) also denoted as $g$. We will use the former notation and stick with it for consistency.
 
 Collectively, this allows us to find the areas and volumes of shapes in different spaces; one may use it, for instance, to calculate the area of a triangle lying on the surface of a sphere or hyperboloid, or that of a sphere in curved 3D space. One simply needs to integrate over the regions the shapes occupy to find their total volume {% inlmath() %}V_{shape}{% end %} and total surface area $S_{shape}$, that is:
 
@@ -712,11 +714,11 @@ From which we can find that the metric is given by:
 ds^2 = R^2 d\psi^2 + R^2\sin^2 \psi  d\theta^2 + R^2 \sin^2 \theta d\phi^2
 {% end %}
 
-It can be shown that the determinant of the metric $g = \det g_{\mu \nu}$ is given by $g = R^6 \sin^4 \psi \sin^2 \theta$, from which we can find that $\sqrt{g} = R^3 \sin^2 \psi \sin \theta$. The volume element is thus given by:
+It can be shown that the determinant of the metric $\det g_{\mu \nu}$ is given by $g = R^6 \sin^4 \psi \sin^2 \theta$, from which we can find that $\sqrt{\det g} = R^3 \sin^2 \psi \sin \theta$. The volume element is thus given by:
 
 {% math() %}
 \begin{align*}
-dV = \sqrt{g}~ dx\, d\psi\, d\theta\, d\phi
+dV = \sqrt{\det g}~ dx\, d\psi\, d\theta\, d\phi
 \end{align*}
 {% end %}
 
