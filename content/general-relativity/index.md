@@ -178,10 +178,10 @@ Since a sphere is curved, it does not follow the typical rules of Euclidean geom
 
 |                                        | Sphere                  | Flat 2D space |
 | -------------------------------------- | ----------------------- | ------------- |
-| Sum of angles of an inscribed triangle | $\pi + A/a^2$           | $\pi$         |
-| Circumference of an inscribed circle   | $C = 2\pi a \sin(r/a)$  | $C = 2\pi r$  |
+| Sum of angles of an inscribed triangle | $\pi + A/a^2$ where $A$ is the area of the triangle | $\pi$         |
+| Circumference of an inscribed circle   | $C = 2\pi a \sin(r/a)$ where $r = a\theta$ | $C = 2\pi r$  |
 
-> **Note:** It is also common to use the term **[spherical triangle](https://en.wikipedia.org/wiki/Solution_of_triangles#Solving_spherical_triangles)** to refer to an inscribed triangle on a sphere, and likewise the term **[spherical circle](https://en.wikipedia.org/wiki/Spherical_circle)** to refer to an inscribed circle on a sphere. Note that a spherical circle is **defined** as a curve of constant $\theta$; in geography, they are called _latitudinal lines_ or _parallels_, and are used to describe circles on the (nearly) spherical Earth.
+> **Note:** It is also common to use the term **[spherical triangle](https://en.wikipedia.org/wiki/Solution_of_triangles#Solving_spherical_triangles)** to refer to an inscribed triangle on a sphere, and likewise the term **[spherical circle](https://en.wikipedia.org/wiki/Spherical_circle)** to refer to an inscribed circle on a sphere. Note that a spherical circle is **defined** as a curve of constant $\theta$ (colatitude); in geography, they are called _latitudinal lines_ or _parallels_, and are used to describe circles on the (nearly) spherical Earth.
 
 These results stem from the fact that the surface of a sphere is a **curved space**. Since the surface is curved, we must use *non-Euclidean geometry*. However, note that in the limit that $a$ is large (that is, the sphere has a very large radius), $\sin(r/a) \approx r/a$ and therefore $C \approx 2\pi a\left( \frac{r}{a} \right) = 2\pi r$. This tells us that for very large spheres (like the Earth), the curvature becomes hardly noticeable and we can essentially ignore it and use the results of Euclidean geometry.
 
@@ -400,10 +400,14 @@ This integral cannot be solved directly, but we have some options. First, if we 
 s = \int_{A}^B \sqrt{ dx^2 + y'(x)^2 dx^2 } = \int_{x_{A}}^{x_{B}} \sqrt{ 1 + y'(x) }\, dx
 {% end %}
 
-Another option, which is often more useful is to parametrize $x, y$ in terms of some parameter $\tau$ (this can, although does not *have to*, represent time). Thus we have $dx = x’(t) dt$ and $dy = y’(t) dt$ and we have:
+Another option, which is often more useful is to parametrize $x, y$ in terms of some parameter $\tau$ (this can, although does not *have to*, represent time). Thus we have $dx = x'(t) dt$ and $dy = y'(t) dt$ and we have:
 
 {% math() %}
-s = \int_{A}^B \sqrt{ dx^2 + dy^2 } = \int_{A}^B \sqrt{ x'(t)^2 dt^2 + y'(t)^2 dt^2 } = \int_{t_{A}}^{t_{B}} \sqrt{ x'(t)^2 + y'(t)^2 } dt
+\begin{align*}
+s &= \int_{A}^B \sqrt{ dx^2 + dy^2 } \\
+&= \int_{A}^B \sqrt{ x'(t)^2 dt^2 + y'(t)^2 dt^2 } \\
+&= \int_{t_{A}}^{t_{B}} \sqrt{ x'(t)^2 + y'(t)^2 } dt
+\end{align*}
 {% end %}
 
 These methods are simply the standard formulas for the arc length from single-variable calculus, and only apply in **flat spaces**. Let us now generalize the same methods to an arbitrary **curved 2D space**. It turns out that the general formula for the length of a curve to an arbitrary curved space is given by:
@@ -435,8 +439,33 @@ R^2 & 0 \\
 For a sphere, the coordinates we use are $(\theta, \phi)$, and since $a, b$ sum over the coordinates, we have:
 
 {% math() %}
-g_{ab} \frac{dx^a}{d\tau} \frac{dx^b}{d\tau} = g_{aa}
+\begin{align*}
+g_{ab} \frac{dx^a}{d\tau} \frac{dx^b}{d\tau} &= g_{aa} \frac{dx^a}{d\tau} \frac{dx^a}{d\tau} \\
+&= g_{11} \left(\frac{d\theta}{d\tau}\right)^2 + g_{22} \left(\frac{d\phi}{d\tau}\right)^2 \\
+&= R^2 \left(\frac{d\theta}{d\tau}\right)^2 + R^2 \sin^2 (\theta) \left(\frac{d\phi}{d\tau}\right)^2
+\end{align*}
 {% end %}
+
+Therefore, the arc length for $\tau \in [a, b]$ (where $\tau$ is some parameter; it can be time in a physical setting) is given by:
+
+{% math() %}
+\begin{align*}
+s &= \oint ds \\
+&= \int_a^b d\tau \sqrt{g_{ab} \frac{dx^a}{d\tau} \frac{dx^b}{d\tau}} \\
+&= \int_a^b d\tau \sqrt{R^2 \left(\frac{d\theta}{d\tau}\right)^2 + R^2 \sin^2 (\theta) \left(\frac{d\phi}{d\tau}\right)^2} \\
+&= R\int_a^b d\tau \sqrt{\left(\frac{d\theta}{d\tau}\right)^2 + \sin^2 (\theta) \left(\frac{d\phi}{d\tau}\right)^2}
+\end{align*}
+{% end %}
+
+If we supply the explicit forms of $\theta(\tau)$ and $\phi(\tau)$, we can therefore compute the arc length of any path on a sphere! For instance, we may want to find the circumference of the sphere at some fixed polar angle $\theta$ (on a globe this would be lines of constant latitude, known to navigators as _parallels_). Then, we treat $\theta$ as a constant (meaning that $\frac{d\theta}{d\tau} = 0$) while we let $\phi(\tau) = \tau$, meaning that $\phi(0) = 0$ and $\phi(2\pi) = 2\pi$ - allowing us to cover all the way around the sphere's circumference. Performing the integral gives us:
+
+{% math() %}
+s = R\int_0^{2\pi} d\tau \sqrt{\sin^2 (\theta)\left(\frac{d\phi}{d\tau}\right)^2} = R\int_0^{2\pi} d\tau \sin \theta = 2\pi R \sin \theta
+{% end %}
+
+Notice that this is _not_ the formula $s = 2\pi R$, as it would be on a circle of radius $R$, except at the equator ($\theta = \pi/2$). Of course it's not, because a sphere is curved! Thus we see that - as we expected - curvature causes **distances to change**.
+
+> **Note:** Here, $\theta$ is more accurately referred to as the **colatitude**, which is different from the _latitude_ typically used in cartography and geography. In the case of the latitude $\alpha$, the formula becomes $s = 2\pi R \cos \alpha$.
 
 Now, we still haven’t answered a very important question: what if we only know the metric, but we *don’t know* the parametric forms of the curves? Can we use the formula for $s$ to work backwards to *determine* the trajectory $x^a(\tau)$ of a particle moving in a curved space? The answer, in fact, is **yes**. Answering this question is in fact one of the most important problems in general relativity, and will be the critical link between the abstract mathematics of differential geometry and the physics of gravity.
 
