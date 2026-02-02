@@ -296,11 +296,11 @@ $$
 <p><em>A triangle placed on a sphere can have a sum of angles greater than 180 degrees!</em></p>
 <p>Since a sphere is curved, it does not follow the typical rules of Euclidean geometry. Indeed, if we try to apply Euclidean geometry for shapes on the surface of a sphere of radius $a$, we find that we get completely unexpected results:</p>
 <table><thead><tr><th></th><th>Sphere</th><th>Flat 2D space</th></tr></thead><tbody>
-<tr><td>Sum of angles of an inscribed triangle</td><td>$\pi + A/a^2$</td><td>$\pi$</td></tr>
-<tr><td>Circumference of an inscribed circle</td><td>$C = 2\pi a \sin(r/a)$</td><td>$C = 2\pi r$</td></tr>
+<tr><td>Sum of angles of an inscribed triangle</td><td>$\pi + A/a^2$ where $A$ is the area of the triangle</td><td>$\pi$</td></tr>
+<tr><td>Circumference of an inscribed circle</td><td>$C = 2\pi a \sin(r/a)$ where $r = a\theta$</td><td>$C = 2\pi r$</td></tr>
 </tbody></table>
 <blockquote>
-<p><strong>Note:</strong> It is also common to use the term <strong><a href="https://en.wikipedia.org/wiki/Solution_of_triangles#Solving_spherical_triangles">spherical triangle</a></strong> to refer to an inscribed triangle on a sphere, and likewise the term <strong><a href="https://en.wikipedia.org/wiki/Spherical_circle">spherical circle</a></strong> to refer to an inscribed circle on a sphere. Note that a spherical circle is <strong>defined</strong> as a curve of constant $\theta$; in geography, they are called <em>latitudinal lines</em> or <em>parallels</em>, and are used to describe circles on the (nearly) spherical Earth.</p>
+<p><strong>Note:</strong> It is also common to use the term <strong><a href="https://en.wikipedia.org/wiki/Solution_of_triangles#Solving_spherical_triangles">spherical triangle</a></strong> to refer to an inscribed triangle on a sphere, and likewise the term <strong><a href="https://en.wikipedia.org/wiki/Spherical_circle">spherical circle</a></strong> to refer to an inscribed circle on a sphere. Note that a spherical circle is <strong>defined</strong> as a curve of constant $\theta$ (colatitude); in geography, they are called <em>latitudinal lines</em> or <em>parallels</em>, and are used to describe circles on the (nearly) spherical Earth.</p>
 </blockquote>
 <p>These results stem from the fact that the surface of a sphere is a <strong>curved space</strong>. Since the surface is curved, we must use <em>non-Euclidean geometry</em>. However, note that in the limit that $a$ is large (that is, the sphere has a very large radius), $\sin(r/a) \approx r/a$ and therefore $C \approx 2\pi a\left( \frac{r}{a} \right) = 2\pi r$. This tells us that for very large spheres (like the Earth), the curvature becomes hardly noticeable and we can essentially ignore it and use the results of Euclidean geometry.</p>
 <blockquote>
@@ -414,12 +414,15 @@ $$
 d A = \sqrt{ g }\, dx^1 dx^2 = \sqrt{ g }\, d^2x
 $$
 </p>
-<p>Where here, $g = \sqrt{ \det g_{ab} }$ is the determinant of $g_{ab}$, the metric tensor, and $d^2 x = dx^1 dx^2$ is the product of the infinitesimal displacements in the two coordinate directions (for instance, $dx^1 = dx$ and $dx^2 = dy$ in 2D Euclidean space in cartesian coordinates, so $d^2 x = dx dy$). Meanwhile, an infinitesimal patch of volume $dV$ can be described in an arbitrary curved space with the <strong>volume element</strong>:</p>
+<p>Where here, $g = \sqrt{ \det g_{ab} }$ is the determinant of the metric tensor $g_{ab}$, and $d^2 x = dx^1 dx^2$ is the product of the infinitesimal displacements in the two coordinate directions (for instance, $dx^1 = dx$ and $dx^2 = dy$ in 2D Euclidean space in cartesian coordinates, so $d^2 x = dx dy$). Meanwhile, an infinitesimal patch of volume $dV$ can be described in an arbitrary curved space with the <strong>volume element</strong>:</p>
 <p class="mathcell">
 $$
-dV = \sqrt{ g }\, dx^1 dx^2 dx^3 = \sqrt{g }\, d^3 x
+dV = \sqrt{ g }\, dx^1 dx^2 dx^3 = \sqrt{\det g }\, d^3 x
 $$
 </p>
+<blockquote>
+<p><strong>Note:</strong> It is very common to use the notation $\det g$ to represent the determinant of the metric, but the determinant of the metric is sometimes (confusingly!) also denoted as $g$. We will use the former notation and stick with it for consistency.</p>
+</blockquote>
 <p>Collectively, this allows us to find the areas and volumes of shapes in different spaces; one may use it, for instance, to calculate the area of a triangle lying on the surface of a sphere or hyperboloid, or that of a sphere in curved 3D space. One simply needs to integrate over the regions the shapes occupy to find their total volume $V_{shape}$ and total surface area $S_{shape}$, that is:</p>
 <p class="mathcell">
 $$
@@ -507,10 +510,14 @@ $$
 s = \int_{A}^B \sqrt{ dx^2 + y&#x27;(x)^2 dx^2 } = \int_{x_{A}}^{x_{B}} \sqrt{ 1 + y&#x27;(x) }\, dx
 $$
 </p>
-<p>Another option, which is often more useful is to parametrize $x, y$ in terms of some parameter $\tau$ (this can, although does not <em>have to</em>, represent time). Thus we have $dx = x’(t) dt$ and $dy = y’(t) dt$ and we have:</p>
+<p>Another option, which is often more useful is to parametrize $x, y$ in terms of some parameter $\tau$ (this can, although does not <em>have to</em>, represent time). Thus we have $dx = x'(t) dt$ and $dy = y'(t) dt$ and we have:</p>
 <p class="mathcell">
 $$
-s = \int_{A}^B \sqrt{ dx^2 + dy^2 } = \int_{A}^B \sqrt{ x&#x27;(t)^2 dt^2 + y&#x27;(t)^2 dt^2 } = \int_{t_{A}}^{t_{B}} \sqrt{ x&#x27;(t)^2 + y&#x27;(t)^2 } dt
+\begin{align*}
+s &amp;= \int_{A}^B \sqrt{ dx^2 + dy^2 } \\
+&amp;= \int_{A}^B \sqrt{ x&#x27;(t)^2 dt^2 + y&#x27;(t)^2 dt^2 } \\
+&amp;= \int_{t_{A}}^{t_{B}} \sqrt{ x&#x27;(t)^2 + y&#x27;(t)^2 } dt
+\end{align*}
 $$
 </p>
 <p>These methods are simply the standard formulas for the arc length from single-variable calculus, and only apply in <strong>flat spaces</strong>. Let us now generalize the same methods to an arbitrary <strong>curved 2D space</strong>. It turns out that the general formula for the length of a curve to an arbitrary curved space is given by:</p>
@@ -542,9 +549,34 @@ $$
 <p>For a sphere, the coordinates we use are $(\theta, \phi)$, and since $a, b$ sum over the coordinates, we have:</p>
 <p class="mathcell">
 $$
-g_{ab} \frac{dx^a}{d\tau} \frac{dx^b}{d\tau} = g_{aa}
+\begin{align*}
+g_{ab} \frac{dx^a}{d\tau} \frac{dx^b}{d\tau} &amp;= g_{aa} \frac{dx^a}{d\tau} \frac{dx^a}{d\tau} \\
+&amp;= g_{11} \left(\frac{d\theta}{d\tau}\right)^2 + g_{22} \left(\frac{d\phi}{d\tau}\right)^2 \\
+&amp;= R^2 \left(\frac{d\theta}{d\tau}\right)^2 + R^2 \sin^2 (\theta) \left(\frac{d\phi}{d\tau}\right)^2
+\end{align*}
 $$
 </p>
+<p>Therefore, the arc length for $\tau \in [a, b]$ (where $\tau$ is some parameter; it can be time in a physical setting) is given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+s &amp;= \oint ds \\
+&amp;= \int_a^b d\tau \sqrt{g_{ab} \frac{dx^a}{d\tau} \frac{dx^b}{d\tau}} \\
+&amp;= \int_a^b d\tau \sqrt{R^2 \left(\frac{d\theta}{d\tau}\right)^2 + R^2 \sin^2 (\theta) \left(\frac{d\phi}{d\tau}\right)^2} \\
+&amp;= R\int_a^b d\tau \sqrt{\left(\frac{d\theta}{d\tau}\right)^2 + \sin^2 (\theta) \left(\frac{d\phi}{d\tau}\right)^2}
+\end{align*}
+$$
+</p>
+<p>If we supply the explicit forms of $\theta(\tau)$ and $\phi(\tau)$, we can therefore compute the arc length of any path on a sphere! For instance, we may want to find the circumference of the sphere at some fixed polar angle $\theta$ (on a globe this would be lines of constant latitude, known to navigators as <em>parallels</em>). Then, we treat $\theta$ as a constant (meaning that $\frac{d\theta}{d\tau} = 0$) while we let $\phi(\tau) = \tau$, meaning that $\phi(0) = 0$ and $\phi(2\pi) = 2\pi$ - allowing us to cover all the way around the sphere's circumference. Performing the integral gives us:</p>
+<p class="mathcell">
+$$
+s = R\int_0^{2\pi} d\tau \sqrt{\sin^2 (\theta)\left(\frac{d\phi}{d\tau}\right)^2} = R\int_0^{2\pi} d\tau \sin \theta = 2\pi R \sin \theta
+$$
+</p>
+<p>Notice that this is <em>not</em> the formula $s = 2\pi R$, as it would be on a circle of radius $R$, except at the equator ($\theta = \pi/2$). Of course it's not, because a sphere is curved! Thus we see that - as we expected - curvature causes <strong>distances to change</strong>.</p>
+<blockquote>
+<p><strong>Note:</strong> Here, $\theta$ is more accurately referred to as the <strong>colatitude</strong>, which is different from the <em>latitude</em> typically used in cartography and geography. In the case of the latitude $\alpha$, the formula becomes $s = 2\pi R \cos \alpha$.</p>
+</blockquote>
 <p>Now, we still haven’t answered a very important question: what if we only know the metric, but we <em>don’t know</em> the parametric forms of the curves? Can we use the formula for $s$ to work backwards to <em>determine</em> the trajectory $x^a(\tau)$ of a particle moving in a curved space? The answer, in fact, is <strong>yes</strong>. Answering this question is in fact one of the most important problems in general relativity, and will be the critical link between the abstract mathematics of differential geometry and the physics of gravity.</p>
 <h3 id="transformation-of-coordinates-and-the-origin-of-tensors">Transformation of coordinates and the origin of tensors</h3>
 <p>The coordinates we have been working with have primarily been the familiar coordinate systems of flat space: Cartesian, spherical, polar, and so forth. However, recall that the line element is a very general quantity that is also defined in curved spaces. Moreover, it can be expressed in <em>arbitrary</em> coordinate systems, and in fact it will often be <em>easier</em> for us to work with the line element in one coordinate system rather than another, especially in problems with symmetry.</p>
@@ -805,11 +837,11 @@ $$
 ds^2 = R^2 d\psi^2 + R^2\sin^2 \psi  d\theta^2 + R^2 \sin^2 \theta d\phi^2
 $$
 </p>
-<p>It can be shown that the determinant of the metric $g = \det g_{\mu \nu}$ is given by $g = R^6 \sin^4 \psi \sin^2 \theta$, from which we can find that $\sqrt{g} = R^3 \sin^2 \psi \sin \theta$. The volume element is thus given by:</p>
+<p>It can be shown that the determinant of the metric $\det g_{\mu \nu}$ is given by $g = R^6 \sin^4 \psi \sin^2 \theta$, from which we can find that $\sqrt{\det g} = R^3 \sin^2 \psi \sin \theta$. The volume element is thus given by:</p>
 <p class="mathcell">
 $$
 \begin{align*}
-dV = \sqrt{g}~ dx\, d\psi\, d\theta\, d\phi
+dV = \sqrt{\det g}~ dx\, d\psi\, d\theta\, d\phi
 \end{align*}
 $$
 </p>
