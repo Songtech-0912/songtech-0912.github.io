@@ -368,7 +368,7 @@ The ODE for $G(\theta)$ is fairly straightforward to solve. We already know how 
 G(\theta) = A \sin n \theta + B \cos n \theta
 {% end %}
 
-However, the ODE for $F(r)$ is more complicated, because while it is still a linear ODE, it has _non-constant_ coefficients. This particular differential equation is actually called the **Euler differential equation**. If you don't know (or need a reminder) for how to solve it, see the relevant section on [the intro differential equations guide](@/differential equations/index.md#special-cases-of-linear-second-order-odes). Here, we will simply state the solution:
+However, the ODE for $F(r)$ is more complicated, because while it is still a linear ODE, it has _non-constant_ coefficients. This particular differential equation is actually called the **Euler differential equation**. If you don't know (or need a reminder) for how to solve it, see the relevant section on [the intro differential equations guide](@/differential-equations/index.md#special-cases-of-linear-second-order-odes) (under "special cases of linear second-order ODEs"). Here, we will simply state the solution:
 
 {% math() %}
 F(r) = r^n + C + D \ln r
