@@ -20,6 +20,8 @@ This guide will assume considerable prior knowledge, including multivariable & v
 - For a review of boundary-value problems, Fourier series, and see the [PDEs guide](@/intro-pdes/index.md)
 - For a review of special relativity and tensors, see the [advanced classical mechanics guide](@/advanced-classical-mech/index.md)
 
+[TU Delft's guide to quantum mechanics](https://mathforquantum.quantumtinkerer.tudelft.nl/) is also **highly recommended** for its wealth of practice problems and explanations for learning quantum mechanics.
+
 ## Foreword
 
 Quantum mechanics is a fascinating subject. Developed primarily in the early 20th-century, it is a theory that (at the time of writing) is barely a hundred years old, but its impact on physics and technology is immense. Without quantum mechanics, we would not have solid-state hard drives, phones, LED lights, or MRI scanners. Quantum mechanics has revolutionized the world we live in, and this is despite the fact that it governs the behavior of particles smaller than we could ever possibly see. But understanding how matter behaves at tiny, microscopic scales is the key to understanding how matter on macroscopic scales behaves. Quantum mechanics unlocks the secrets of the microscopic world, and however unintuitive it may be, it is the best (nonrelativistic) theory we have to understand this strange, mysterious world.
