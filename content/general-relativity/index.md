@@ -1351,3 +1351,283 @@ Where $\partial_\mu = \frac{\partial}{\partial \mu} = \left(\frac{1}{c}, \nabla\
 {% end %}
 
 Where $F^{\mu \nu}$ is the Faraday tensor and $U_\nu$ is the covariant ("downstairs") form of the 4-velocity. This formulation of electromagnetism clearly manifests the relativistic nature of Maxwell's equations and electromagnetism in general. As such, it is frequently used in general relativity and relativistic quantum mechanics.
+
+### Length contraction, time dilation, and relativistic time travel
+
+The results of special relativity lead to some truly bizarre consequences: most famously, **length contraction** and **time dilation**:
+
+- Length contraction: an observer sees a moving object *contracted in length* (“squished”)
+- Time dilation: an observer sees a moving clock ticking more slowly in time (and therefore everything in a moving frame seems to be moving in “slow motion”)
+
+These two effects are summarized by the following equations:
+
+{% math() %}
+L_{moving} = \frac{L_{proper}}{\gamma},  t_{moving} = \gamma \Delta \tau
+{% end %}
+
+Where:
+
+- $L_{proper}$ is the **proper length**, which is the length of an object in their rest frame
+- $\tau$ is the **proper time**, which is the time a clock would measure in an object’s rest frame
+- $L_{moving}$ is the length a moving object would be measured to have, according to an observer in a different (non-rest) frame
+- $t_{moving}$ is the time a moving clock would be measured to have, according to an observer in a different (non-rest) frame
+
+Note that the proper time is related to the line element $ds^2$ by:
+
+{% math() %}
+d\tau^2 = -\frac{ds^2}{c^2}
+{% end %}
+
+Why the negative sign? It is because the Minkowski line element $ds^2$ can actually be negative (and indeed is negative for all physical particles), so we add in a negative sign to ensure that the proper time is positive. This is a key formula that we’ll need to keep in mind for later.
+
+The consequences of length contraction and time dilation are both incredibly strange — so strange that they defy intuition. Imagine, for instance, that you were travelling aboard an ultra-fast spaceship travelling at a speed of $v = 0.999 c$ (nevermind how you managed to get on that spaceship). The Lorentz factor is given by:
+
+{% math() %}
+\gamma = \frac{1}{\sqrt{ 1 - 0.999^2 }} \approx 22
+{% end %}
+
+Using the time dilation formula $\Delta t_{moving} = \gamma \Delta \tau$, for every $\Delta \tau = \text{1 year}$ that passes aboard the spaceship, 22 years would’ve passed on Earth! This means that if you were to take a round trip with the spacecraft and travel a year, you could in principle travel to 22 years in the future!
+
+Likewise, using the length contraction formula $\Delta L_{moving} = L_{proper}/\gamma$, you would measure the Earth’s equatorial radius of $R_\oplus = \text{6378 km}$ as just 290 km. Crucially, this is only in the $x$ direction; the distance along the vertical direction is unchanged, so the Earth would appear to have an oval-like shape.
+
+The results of relativistic length contraction and time dilation have also been demonstrated here on Earth by another phenomenon: the decay of elementary particles. Specifically, an unstable particle known as the **muon** is found in large quantities on Earth’s surface. This would be highly unusual, considering that the muon’s lifetime is only around 2.2 microseconds, meaning that Newtonian mechanics predicts that even extremely fast-moving muons would’ve decayed in the upper atmosphere before they ever got a chance to reach Earth’s surface.
+
+> **Note:** Particle decay is a random process. The amount of particles left a certain time $t$ is given by $e^{-t/\tau_p}$, where $\tau_p$ is the lifetime of the particle.
+
+This mystery is resolved by special relativity. As the muons travel close to the speed of light, from their reference frame, the height of the atmosphere is contracted and they “see” clocks on Earth ticking more slowly than an equivalent clock in their reference frame. Assuming, for instance, that the muons were moving at $v = 0.99999c$; they would therefore see the height of the atmosphere contracted by 223 times(!), shortening the distance they must travel to reach the ground. This means that — to the muon at least — the Earth’s 100 km atmosphere is only around 400 m in their rest frame.
+
+Now, the muon’s lifetime doesn’t magically change — in a clock within the muon’s rest frame, the lifetime of the muons is still 2.2 microseconds. But since the muons move so insanely fast, they can cover the much shorter distance of (around) 400 m in just 1.5 microseconds, allowing them to reach the Earth’s surface before decaying. This comes purely as a result of length contraction!
+
+Meanwhile, an observer on Earth would see the “muon clock” ticking slow; on clocks on Earth, they would register a time of around 500 microseconds by the time the muons reached the Earth’s surface. Thus the observer on Earth would conclude that the muons had a longer lifetime in their frame, compared with the muon’s rest frame. This is why, when particle physicists talk about particle lifetimes, they generally refer to the **lifetime in the particle’s rest frame**. In summary:
+
+|                  | Lifetime of muon | Height of Earth’s atmosphere |
+| ---------------- | ---------------- | ---------------------------- |
+| In muon frame    | $\pu{2.2 \mu s}$ | $\pu{447 m}$                 |
+| In Earth’s frame | $\pu{491 \mu s}$ | $\pu{100 km}$                |
+
+### Relativistic Doppler shift
+
+The effects of time dilation are not just limited to muons and spaceships; they are also significant for *light*. Remember that time dilation causes clocks in a moving reference frame to tick slow. This is true *even* for light!
+
+Consider a moving emitter of light with velocity $v$, that is later measured by another observer located at point $P$. Since the observer at time $P$ sees a clock in the moving emitter’s frame as ticking slow, while the speed of light is constant in all reference frames, they observe the wavelength $\lambda$ in their own frame to be either longer or shorter (depending on whether the emitter is moving *towards them* or *away from them*). This is a *relativistic* correction to the classical Doppler effect formula for light, which is given by:
+
+{% math() %}
+f = f_0 \left(1 - \beta \cos \theta_{0} \right)
+{% end %}
+
+![A diagram of the relativistic Doppler effect](https://galileo-unbound.blog/wp-content/uploads/2021/06/angulardopplereffect-1.jpg?w=2400)
+
+_Source: [Galileo unbound blog](https://galileo-unbound.blog/2021/06/03/the-transverse-doppler-effect-and-relativistic-time-dilation/)_
+
+The relativistically-correct Doppler effect equation is:
+
+{% math() %}
+\lambda = \lambda_{0} \frac{1 - \beta \cos \theta_{0}}{\sqrt{ 1 - \beta^2 }}
+= \lambda_{0} \gamma(1 - \beta \cos \theta_{0})
+{% end %}
+
+Where $\theta_0$ is the angle measured in the frame of the *light emitter* from its origin with respect to the point $P$, $\lambda_0$ is the *proper wavelength* (the wavelength in the light emitter’s frame), and $\lambda$ is the wavelength measured by the observer at $P$. Note that the equivalent formula in terms of frequency $f$ is given by:
+
+{% math() %}
+f = f_{0} \frac{\sqrt{ 1 - \beta^2 }}{1 - \beta \cos \theta_{0}} = \frac{f_{0}}{\gamma(1 - \beta \cos \theta_{0})}
+{% end %}
+
+The result is that light emitted by a source moving *away* from an observer becomes **redshifted** (longer wavelength, shorter frequency) while light emitted by a source moving *towards* an observer becomes **blueshifted** (shorter wavelength, higher frequency). This is significant in astronomical observations of particle jets moving close to the speed of light.
+
+### The action principle and the Lagrangian formulation
+
+Before we continue further, it is useful to give a brief description of **Lagrangian mechanics**, since it will be used a lot when we discuss motion in general relativity. The action principle says that everything in the universe has a special quantity known as the **action** $S$, which takes the form:
+
+{% math() %}
+S[\mathbf{r}, \dot{\mathbf{r}}, t] = \int \mathcal{L}(\mathbf{r}, \dot{\mathbf{r}}, t) dt, \quad \mathcal{L} = K - U
+{% end %}
+
+Where $\mathcal{L}$ is known as the **Lagrangian**, and (classically) is the difference between an object’s kinetic energy $K$ and potential energy $U$. In the case of a (Newtonian) free particle, we can set $U = 0$, giving us:
+
+{% math() %}
+\mathcal{L} = \frac{1}{2} mv^2
+{% end %}
+
+Of course, this is not relativistically-correct, but is a good approximation for low velocities. The equations of motion can be obtained by the **calculus of variations**, which says that the path $x^i(t)$ travelled by a particle with Lagrangian $\mathcal{L}$ is given by the **Euler-Lagrange equation**:
+
+{% math() %}
+\frac{d}{dt}\left( \frac{\partial \mathcal{L}}{\partial \dot{x}^{i} } \right) = \frac{\partial \mathcal{L}}{\partial x^{i} }
+{% end %}
+
+Where $x^i$ is the three-position of an object, and $\dot x^i = \frac{dx^i}{dt}$ is its three-velocity. Note that the Euler-Lagrange equation is actually a *system of differential equations*, with one for each component of $x^i$. For instance, in three dimensions and in Cartesian coordinates, we have three Euler-Lagrange equations:
+
+{% math() %}
+\begin{align*}
+\frac{d}{dt}\left( \frac{\partial \mathcal{L}}{\partial \dot{x} } \right) = \frac{\partial \mathcal{L}}{\partial x } \\\frac{d}{dt}\left( \frac{\partial \mathcal{L}}{\partial \dot{y} } \right) = \frac{\partial \mathcal{L}}{\partial y } \\
+\frac{d}{dt}\left( \frac{\partial \mathcal{L}}{\partial \dot{z} } \right) = \frac{\partial \mathcal{L}}{\partial z }
+\end{align*}
+{% end %}
+
+In special relativity, we must replace $dt$ with $d\tau$, and the Lagrangian of a free particle (where $U = 0$) is given by:
+
+{% math() %}
+S = \int mc^2 d\tau = mc \int \sqrt{ -ds^2 } = mc^2 \int \frac{dt}{\gamma(v)}
+{% end %}
+
+Which comes from the fact that $ds^2 = -c^2 d\tau^2$ and $dt = \gamma d\tau$, as we have seen previously. The Lagrangian is thus:
+
+{% math() %}
+\mathcal{L} = \frac{mc^2}{\gamma(v)}
+{% end %}
+
+This Lagrangian is only dependent on the velocity of the particle, so $\frac{\partial \mathcal{L}}{\partial x^i} = 0$. Meanwhile:
+
+{% math() %}
+\frac{\partial \mathcal{L}}{\partial \dot{x}^i} = mc^2 \frac{\partial}{\partial \dot{x}^i} \left( \frac{1}{\gamma(v)} \right)
+{% end %}
+
+Since $\gamma(v) = \dfrac{1}{\sqrt{1 - \beta^2}} = \dfrac{1}{\sqrt{1 - (\dot x^i / c)^2}}$, upon differentiation, we have:
+
+{% math() %}
+\frac{\partial}{\partial \dot{x}^i} \left( \frac{1}{\gamma(v)} \right) = \frac{1}{2\sqrt{ 1 - (\dot{x}^i / c)^2 }} \cdot \frac{2 \dot{x}^i}{c} = \frac{\gamma \dot{x}^i}{c}
+{% end %}
+
+Substituting into the Euler-Lagrange equation, we have:
+
+{% math() %}
+\frac{d}{dt}(\gamma m \dot{x}^i) = 0
+{% end %}
+
+This may be written in a more familiar form if we use standard vector notation, giving us:
+
+{% math() %}
+\frac{d}{dt}(\gamma m \mathbf{v})  = 0
+{% end %}
+
+Where we see $\gamma m \mathbf{v}$ is just the relativistic 3-momentum! Note that in the limit of small velocities, $\gamma \approx 1$, so the above reduces to:
+
+{% math() %}
+\frac{d}{dt}(m \mathbf{v})  = m \mathbf{a}  = 0
+{% end %}
+
+Which is simply Newton’s second law for a free particle, as we would expect.
+
+> **Note:** For a much more gentle introduction to Lagrangian mechanics, please see the [guide to Lagrangian and Hamiltonian mechanics](@/advanced-classical-mech/part-2.md).
+
+## The equivalence principle
+
+A key result that led to the development of general relativity is a peculiar fact of the Universe. We observe that gravity is *indistinguishable* from an accelerating reference frame. For instance, imagine you were in a rocket in interstellar space, far away from all other objects. The rocket is accelerating upwards (along $z$) with constant acceleration $g$, where $g = \pu{9.81 m/s^2}$ is the standard gravitational acceleration of the Earth. You would then feel a “force” pushing you down, although strictly speaking this is *not a force*; it is the effect of being in an accelerating reference frame (i.e. the accelerating rocket). Mathematically, your acceleration would be $\vec a = -g \hat{z}$.
+
+Now, imagine that your clone is on another rocket, except this time, the rocket on Earth. Your clone would *still* feel an acceleration of $g$ downwards, because it is on Earth; that is, their acceleration is *also* $\vec a = -g \hat z$. Imagine both you and your clone are in a completely isolated rocket, with no windows and no other way to see the outside world. Could you or your clone tell which rocket they were in, if they were mysteriously teleported to one of the two rockets? No! They would experience **exactly the same acceleration** in either rocket, so there is no way they can tell!
+
+![[equivalence-principle.excalidraw.svg|400]]
+
+The mathematical reason why is that gravity acts on *all masses* equivalently. Recall that the gravitational force from a mass $M$ on another mass $m$ takes the form:
+
+{% math() %}
+\mathbf{F} = G Mm\left( \frac{\mathbf{r}_{1} - \mathbf{r}_{2}}{|\mathbf{r}_{1} - \mathbf{r}_{2}|^3} \right)
+{% end %}
+
+Meanwhile, Newton’s second law tells us that:
+
+{% math() %}
+\mathbf{F} = m \mathbf{a}
+{% end %}
+
+Thus, equating the two expressions, we have:
+
+{% math() %}
+\begin{gather*}
+m \mathbf{a} = G Mm\left( \frac{\mathbf{r}_{1} - \mathbf{r}_{2}}{|\mathbf{r}_{1} - \mathbf{r}_{2}|^3} \right) \\
+\Rightarrow \,\mathbf{a} = GM \left( \frac{\mathbf{r}_{1} - \mathbf{r}_{2}}{|\mathbf{r}_{1} - \mathbf{r}_{2}|^3} \right)
+\end{gather*}
+{% end %}
+
+Notice that the gravitational acceleration of the mass $m$ **does not depend** on its own mass! Neglecting air resistance, this is why a feather and a hammer fall at the same speed in a gravitational field, despite their very different masses (famously demonstrated by astronaut David Scott on the moon; see [this YouTube video](https://www.youtube.com/watch?v=KDp1tiUsZw8)). The ideas we have presented are backed by more than a century of experiments, and are together known as the **equivalence principle**. There are actually two formulations of the equivalence principle:
+
+- The **weak equivalence principle** says that in any gravitational field, a particle in freefall (i.e. without any non-gravitational forces) has the *same acceleration* regardless of its mass
+- The **strong equivalence principle** says that it is **impossible** to perform any experiment that could distinguish between an accelerating reference frame and a gravitational field
+
+The equivalence principle is the *fundamental basis* of general relativity and pretty much the entire theory is based on it. It is also very useful in performing approximate calculations without needing to use the full Einstein field equations (more on that later). We'll look at three examples: **gravitational redshift**, **gravitational time dilation**, and **gravitational bending of light**.
+
+### Gravitational redshift
+
+When light travels through a gravitational field, we find that it becomes *redshifted* (increases in wavelength). This is known as **gravitational redshift**, which can be derived directly from the equivalence principle.
+
+Consider a rocket travelling through space with uniform acceleration $\mathbf{a} = a \hat y$. A light pulse is emitted at the bottom of the rocket and travels upwards, reaching the top of the rocket after a certain time interval $\Delta t$. We know that light travels at the constant speed of $c$, which is independent of the reference frame. However, the top of the rocket (like the rest of the rocket) is accelerating upwards, meaning that in the same time interval, the top of the rocket has increased in velocity by $v = a \Delta t$. As we saw earlier, the Doppler shift formula is given by:
+
+{% math() %}
+f = f_0 \left(1 + \frac{v}{c}\right)
+{% end %}
+
+Where $f_0$ is the original frequency of the light, $f$ is its Doppler-shifted frequency, and $v$ is the velocity of the moving reference frame (in this case, the rocket). We know that $v = a \Delta t$, and since light travels at a constant velocity $c$, we have $h = c \Delta t$, so $\Delta t = h/c$. Combining the two together, we get $v = a h/c$, so if we substitute this in for $v$ we get:
+
+{% math() %}
+f = f_0 \left(1 + \frac{a h}{c^2}\right)
+{% end %}
+
+Therefore, the (Doppler-shifted) frequency $f$ by the time it reaches the top of the rocket is related to its original frequency by:
+
+{% math() %}
+\frac{f}{f_0} = 1 + \frac{ah}{c^2}
+{% end %}
+
+So far, there is nothing particularly gravitational about this formula; it would hold for any accelerating reference frame. But since we know from the equivalence principle that an accelerating reference frame is **indistinguishable** from gravity. This means that we can just substitute in $\mathbf{a} = -g \hat y$ for the gravitational field of the Earth, giving us:
+
+{% math() %}
+\frac{f}{f_0} = 1 - \frac{gh}{c^2}
+{% end %}
+
+Note that $f/f_0 = \lambda_0/\lambda$ in terms of wavelength, so we can equivalently write this as:
+
+{% math() %}
+\frac{\lambda_0}{\lambda} = 1 - \frac{gh}{c^2}
+{% end %}
+
+We can also write this equivalently in terms of the dimensionless redshift factor $z$, as follows:
+
+{% math() %}
+z \equiv \frac{\lambda}{\lambda_{0}} -1  = \frac{\Delta \lambda}{\lambda} = \frac{gh}{c^2}
+{% end %}
+
+We identify $gh = \Phi$ as the gravitational potential near the surface of the Earth, so we can generalize the above formula to:
+
+{% math() %}
+\frac{\Delta \lambda}{\lambda} = \frac{\Phi}{c^2} = \frac{GM}{c^2 R}
+{% end %}
+
+Where $R$ is the distance from the center of the gravitating body (for instance, the Earth) to the light receiver and $M$ is its mass. Alternatively, we have:
+
+{% math() %}
+f = \left( 1 - \frac{\Phi}{c^2} \right) f_{0} = \left( 1 - \frac{GM}{c^2} \right) f_{0}
+{% end %}
+
+The effects of gravitational redshift are very small, but it can be detected using sensitive instruments: most famously in the [Pound-Rebka experiment](https://en.wikipedia.org/wiki/Pound%E2%80%93Rebka_experiment) in the 1950s. The effects are far more substantial in strong gravitational fields, such as around white dwarfs and neutron stars.
+
+> **Note:** Gravitational redshift occurs because light is travelling *out* of a gravity well and losing energy; lower energy light has a longer wavelength by the time it reaches a receiver. But if light is travelling *into* a gravity well, it actually *gains* energy. This is known as **gravitational blueshift** and it results in light that has a *shorter wavelength* at the receiver compared to the emitter.
+
+### Gravitational time dilation
+
+Consider two clocks in a gravitational field, separated by a vertical distance $h$. To make this scenario more concrete, let’s say that one clock is located on a GPS satellite (which carry atomic clocks) and one clock is located on the surface of the Earth. A light ray is sent from the ground and arrives at the satellite at some time later. What time does the satellite’s clock measure?
+
+Here, we won’t do the full derivation, but the equivalence principle allows us to switch to an accelerating frame, perform the calculations, and simply make the replacements $\mathbf{a} = -g\hat y$ and $gh = \Phi$. to generalize the result to gravitational fields. The end result is:
+
+{% math() %}
+\tau_{1} = \left( 1 + \frac{\Phi_{1} - \Phi_{2}}{c^2} \right)\tau_{2}
+{% end %}
+
+Or in terms of differentials:
+
+{% math() %}
+d\tau_{1} = \left( 1 + \frac{\Phi_{1} - \Phi_{2}}{c^2} \right)d\tau_{2}
+{% end %}
+
+Where $(\Phi_1 - \Phi_2)$ is *always positive* (so $\tau_1 \geq \tau_2$) and:
+
+- $\tau_1$ is the time elapsed on the satellite (or in general, for any distant observer)
+- $\tau_2$ is the time elapsed on the ground (or in general, for any observer closer to the gravitating body)
+- $\Phi_1$ is the gravitational potential at the satellite (or in general, for any distant observer)
+- $\Phi_2$ is the gravitational potential at the ground (or in general, for any observer closer to the gravitating body)
+
+If we integrate both sides, we obtain:
+
+{% math() %}
+\Delta \tau_{1} = \left( 1 + \frac{\Delta \Phi}{c^2} \right) \Delta \tau_{2}
+{% end %}
+
+Where once again, $\Delta \Phi$ is *always* positive, meaning that the time elapsed on the satellite will always be *greater* than that elapsed on the Earth. That is to say, clocks tick slower in a gravitational field. This has an interesting consequence in that it allows for the possibility of **gravitational time travel**. In principle, it is possible to send a person very close to an astronomical body with an extremely strong gravitational field (e.g. a black hole) and then return them to Earth (ignoring that obviously we cannot do this with today’s technology). The person would then have *travelled forward* in time, since less time would’ve elapsed for them as compared to a distance observer on Earth.
