@@ -823,3 +823,531 @@ Why do we care so much about curved spaces in higher dimensions that we can’t 
 > “Spacetime tells matter how to move; matter tells spacetime how to curve.” - **John Archibald Wheeler**
 
 The consequences of spacetime curvature are profound; light becomes bent, distances are stretched and shortened, and gravity slows down time. Indeed, understanding the phenomena that arise from the curvature of spacetime forms the essence of general relativity!
+
+## Overview of Newtonian gravity
+
+Before we go over the *relativistic* description of gravity that general relativity provides, it is invaluable to go over classical Newtonian gravity. While (as we saw) Newtonian gravity is inconsistent with special relativity and breaks down in relativistic conditions, it is a remarkably accurate *approximation* of general relativity that makes good predictions for gravitational interactions in our solar system.
+
+### The gravitational potential
+
+In Newtonian gravity, gravity is described using a force field - the **gravitational field** $\mathbf{g}$. This field is a *vector field*, meaning that it is a function of space, that is, $\mathbf{g} = \mathbf{g}(\mathbf{r})$. A particle at position $\mathbf{r}$ in a gravitational field experiences a *gravitational force* $\mathbf{F}_g$, given by:
+
+{% math() %}
+\mathbf{F}_{g} = m \mathbf{g}
+{% end %}
+
+From Newton’s second law $m\ddot{\mathbf{r}} = \mathbf{F}$, we therefore obtain the equation of motion of a particle in a gravitational field:
+
+{% math() %}
+\ddot{\mathbf{r}} = \frac{d^2 r}{dt^2} = \mathbf{g}
+{% end %}
+
+Classically, the gravitational field is a conservative vector field, so (by the gradient theorem in vector calculus) it is possible to write $\mathbf{g}$ in terms of a *scalar-valued* potential $\Phi$, where:
+
+{% math() %}
+\mathbf{g} = -\nabla \Phi
+{% end %}
+
+The gravitational potential $\Phi$ is often far more useful than the gravitational field itself, so much so that we often loosely speak of $\Phi$ as the “gravitational field”, even though $\mathbf{g}$ is technically the vector field and $\Phi$ is “just” a potential. The gravitational potential around any spherically-symmetric mass distribution (e.g. star, planet, etc.) with total mass $M$ is given by:
+
+{% math() %}
+\Phi = -\frac{GM}{r}
+{% end %}
+
+> **Note:** Here, we assume that the mass distribution is centered at the origin ($r = 0$). It is possible to define the gravitational potential for a mass distribution centered at an arbitrary location $\mathbf{r}’$ via $\Phi = -\dfrac{GM}{|\mathbf{r} - \mathbf{r}’|}$.
+
+To find the vector-valued field $\mathbf{g}$ from $\Phi$, we just take its gradient, which gives us:
+
+{% math() %}
+\mathbf{g} = -\nabla \Phi = - \frac{GM}{r^2}
+{% end %}
+
+For which the gravitational force exerted on a particle of mass $m$ at radial distance $r$ away from the origin of the central mass takes the form:
+
+{% math() %}
+\mathbf{F}_{g} = m\mathbf{g} = -\frac{GMm}{r^2}
+{% end %}
+
+We have thus recovered the classical inverse-square law for the gravitational force! Now, there is a trick we can use to calculate $\mathbf{g}$ and $\mathbf{F}_g$ for more complex mass distributions, which may not be spherically symmetric. This comes due to **Gauss’s law for gravity**, which says that if we take the surface integral over some closed surface $S$, the gravitational field $\mathbf{g}$ is related to the *total enclosed mass* $M$ (that is, the amount of mass within the surface) via:
+
+{% math() %}
+\oint_{S} \mathbf{g} \cdot d\mathbf{A} = -4\pi GM
+{% end %}
+
+Where the total enclosed mass $M$ can be written as a volume integral of the *mass density* $\rho$ within the volume enclosed by the surface:
+
+{% math() %}
+M = \int_{S} \rho(\mathbf{r}) dV
+ = \int_{S} \rho(\mathbf{r}) d^3 \mathbf{r}
+{% end %}
+
+> **Note:** Here, $d^3 \mathbf{r}$ is an alternative notation for the volume element $dV$; it is a common notation encountered in theoretical physics.
+
+Now, the **divergence theorem** in vector calculus tells us that any arbitrary vector field $\mathbf{H}$ satisfies:
+
+{% math() %}
+\oint_{S} \mathbf{H} \cdot d\mathbf{A} = \int_{S} (\nabla \cdot \mathbf{H}) d^3 \mathbf{r}
+{% end %}
+
+Substituting this result into Gauss’s law for gravity gives us:
+
+{% math() %}
+\oint_{S} \mathbf{g} \cdot d\mathbf{A} = \int_{S} (\nabla \cdot \mathbf{g})d^3 \mathbf{r} = -4\pi G \int_{S} \rho(\mathbf{r}) d^3 \mathbf{r}
+{% end %}
+
+Doing some pattern-matching therefore gives us the **differential form** of Gauss’s law for gravity:
+
+{% math() %}
+\nabla \cdot \mathbf{g} = -4\pi G \rho
+{% end %}
+
+Now if we substitute in $\mathbf{g} = -\nabla \Phi$ and use the vector calculus identity that $\nabla \cdot \nabla = \nabla^2$ (where $\nabla^2$ is the Laplacian), we get the all-important **Poisson equation for gravity**:
+
+{% math() %}
+\nabla^2 \Phi = 4\pi G\rho
+{% end %}
+
+For which the equation of motion $\ddot{\mathbf{r}} = \mathbf{g}$ for a mass in a gravitational field translates into:
+
+{% math() %}
+\ddot{\mathbf{r}} = -\nabla \Phi
+{% end %}
+
+A very general solution to Poisson's equation for some arbitrary mass density $\rho$ is given by:
+
+{% math() %}
+\Phi(\mathbf{r})= -G \int \frac{\rho(\mathbf{r}')}{|\mathbf{r} - \mathbf{r}'|} d^3 \mathbf{r}'
+{% end %}
+
+It is important to note here that the **integration variable** is $\mathbf{r}’$. By contrast, $\mathbf{r}$ is essentially a constant within the integral, since it is **not** integrated over!
+
+> **Note:** This integral is only valid assuming that $\rho \to 0$ at $\mathbf{r} \to \infty$. So it is not strictly-speaking the “general” solution, although for most physical situations we consider, it is pretty much the exact solution
+
+We can thus find $\mathbf{g}$ via $\mathbf{g} = -\nabla \Phi$, giving us a general expression for the gravitational (vector) field for an arbitrary density:
+
+{% math() %}
+\mathbf{g} = -G \int \rho(\mathbf{r}') \frac{\mathbf{r} - \mathbf{r}'}{|\mathbf{r} - \mathbf{r}'|^3} d^3 \mathbf{r}'
+{% end %}
+
+### Point charge solution
+
+The simplest possible case is when we have a point mass, whose mass density is of the following form:
+
+{% math() %}
+\rho(\mathbf{r}) = M \delta^3(\mathbf{r} - \mathbf{r}')
+{% end %}
+
+Where $\mathbf{r}’$ is the location of the point charge, and $\delta^3$ is the 3D **Dirac delta function**, which is not really a function; it describes an infinitely-concentrated point of mass. The delta function, however, is a mathematically useful tool due to the following identities:
+
+{% math() %}
+\begin{align*}
+\int d^3 \mathbf{r}'\, \delta(\mathbf{r} - \mathbf{r}')  &= 1 \\
+\int d^3 \mathbf{r}'\, f(\mathbf{r}')\delta(\mathbf{r} - \mathbf{r}')  &= f(\mathbf{r}) \\
+\end{align*}
+{% end %}
+
+Thus, if we substitute in this mass density into the integral form of $\Phi$ we saw earlier, we recover the classical potential of a point mass:
+
+{% math() %}
+\begin{align*}
+\Phi(\mathbf{r}) &= -G \int \frac{\rho(\mathbf{r}')}{|\mathbf{r} - \mathbf{r}'|} d^3 \mathbf{r}' \\
+&= -GM \int \frac{\delta(\mathbf{r} - \mathbf{r}')}{|\mathbf{r} - \mathbf{r}'|} d^3 \mathbf{r}' \\
+&= -\frac{GM}{|\mathbf{r}|} \\
+&= -\frac{GM}{r}
+\end{align*}
+{% end %}
+
+> **Note:** Due to a theorem known as **Newton’s shell theorem**, this solution is *also* the solution for **any** spherically-symmetric mass distribution! This means that the same solution is applicable for the gravitational potential of a solid sphere, which is why it offers a good first approximation for the gravitational potential of planets and stars.
+
+### The multipole expansion
+
+Let us now consider the case of a much more complicated mass density $\rho(\mathbf{r})$ that may not be spherically symmetric. In such a case, performing the integral for the gravitational potential might be next to impossible. However, there is still a strategy we can use to analytically solve for the potential. The trick is to write out $\Phi$ in terms of an infinite series in spherical coordinates, in the form:
+
+{% math() %}
+\Phi(r, \theta, \phi) = -G \sum_{\ell = 0}^\infty \sum_{m = -\ell}^\ell \frac{1}{r^{\ell + 1}} C_{\ell}^m Y_\ell^m(\theta, \phi)
+{% end %}
+
+Where $Y_\ell^m$ is a [spherical harmonic function](https://en.wikipedia.org/wiki/Spherical_harmonics) parametrized by the constants $m, \ell$, and $C_\ell^m$ are constant coefficients defined by:
+
+{% math() %}
+C_{\ell}^m = \int \rho(\mathbf{r}) r^\ell Y_{\ell}^m(\theta, \phi) d^3 \mathbf{r}
+{% end %}
+
+Where $\rho = (r, \theta, \phi)$ is the position in spherical coordinates, $d^3 \mathbf{r} = r^2 \sin \theta dr d\theta d\phi$ is the volume element, and we integrate over all space to find the potential at every point in space. Assuming that the mass distribution is azimuthally symmetric, the multipole expansion takes the simpler form:
+
+{% math() %}
+\Phi(r, \theta, \phi) = G \sum_{\ell = 0}^\infty \frac{1}{r^{\ell + 1}} \int (r')^\ell P_\ell (\cos \theta') \rho(\mathbf{r}') d^3 \mathbf{r}'
+{% end %}
+
+Where $P_\ell$ is a [Legendre polynomial](https://en.wikipedia.org/wiki/Legendre_polynomials), and the first few Legendre polynomials are given by:
+
+{% math() %}
+\begin{align*}
+P_{0}(\cos \theta) &= 1 \\
+P_{1}(\cos \theta) &= \cos \theta \\
+P_{2}(\cos \theta) &= \frac{1}{2}(3 \cos^2 \theta - 1) \\
+P_{3}(\cos \theta) &= \frac{1}{2}(5 \cos^3 \theta - 3 \cos \theta)
+\end{align*}
+{% end %}
+
+If we take the first few terms of the expansion, we have:
+
+{% math() %}
+\begin{align*}
+\Phi(r, \theta, \phi) = -\frac{G}{r} \bigg[&\int \rho(\mathbf{r}') d^3\mathbf{r}' + \frac{1}{r} \int ( r' \cos \theta') \rho(\mathbf{r}') d^3 \mathbf{r} \\
+&\qquad + \frac{1}{r^2} \int \frac{1}{2}(r')^2 (3 \cos^2 \theta' - 1) \rho(\mathbf{r}') d^3 \mathbf{r}' + \dots \bigg]
+\end{align*}
+{% end %}
+
+Here, $d^3 \mathbf{r}' = (r')^2 \sin \theta' dr' d\theta' d\phi'$ is the volume element to integrate over, and $\rho(\mathbf{r}’) = \rho(r’, \theta’, \phi’)$. Note that the first term reduces to $-\frac{GM}{r}$ since the integral over the mass density is the total mass, which corresponds with the gravitational potential of a point mass, so we call it the **monopole** term. The following terms are known as the **dipole** term and the **quadrupole** term. We typically don’t go beyond the quadrupole term in the multipole expansion, since those three terms already provide a very good approximation for the gravitational potential.
+
+Of particular interest to us is the fact that the dipole term in the multipole expansion is **always zero**. Why is this? The reason is because gravity is a *purely attractive force*. There is no such thing as negative mass, at least classically (once we get into quantum field theory this becomes more complicated, but we’ll not go that far). Therefore, there is no way to form a gravitational dipole, so the dipole term must be zero.
+
+It is important to note that most gravitating bodies are very nearly spherical (due to something known as [hydrostatic equilibrium](https://en.wikipedia.org/wiki/Hydrostatic_equilibrium)), meaning that $\Phi = -\frac{GM}{r}$ is already a good approximation. So, why would we care about the multipole expansion? It turns out that there are several important application of the multipole expansion. For instance, it is used in describing the precise gravitational field of the Earth, which is not perfectly uniform. This is especially important in computing spacecraft orbits for satellites. It is also used for numerical simulations of millions of gravitationally-interacting masses, which are called **N-body simulations**. These are incredibly essential for understanding the evolution of the solar system and of galaxies. The **fast multipole method** is based on the gravitational multipole expansion. For further reading about this method, please see [this article](https://andyljones.com/posts/multipole-methods.html)
+
+## The geometry of special relativity
+
+We are now ready to talk about special relativity from a geometric perspective. As we know from earlier, while special relativity is formulated *flat spacetime* - that is, there is no curvature - the spatial distance between two points is nonetheless *not constant* (and neither is the separation of two events in time). Time and space become compressed (“squished”) and extended (“stretched”). This means that observers in two reference frames that are moving with respect to each other will measure different times and spaces for each other as compared to within their own reference frames.
+
+To explain why, let us consider the line element of Minkowski space, which is the space that we use for special relativity:
+
+{% math() %}
+ds^2 = -(cdt)^2 + dx^2 + dy^2 + dz^2
+{% end %}
+
+Thus, the Minkowski metric (denoted as $\eta_{\mu \nu}$) is given by:
+
+{% math() %}
+g_{\mu \nu} = \eta_{\mu \nu} = \begin{pmatrix}
+-1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix} = 
+\begin{pmatrix}
+-1 & 0 \\
+0 & I_{3}
+\end{pmatrix}
+{% end %}
+
+> **Note:** Here, we use Greek letters $\mu, \nu$ as our indices. This is a convention in General Relativity; we use Greek letters for 4D coordinates (spacetime) and Latin letters for 3D coordinates (space).
+
+Where here, $I_3$ is the 3D identity matrix; we will use the latter notational shorthand for convenience. Now, remember that the line element is by definition given by:
+
+{% math() %}
+ds^2 = g_{\mu \nu} dx^\mu dx^\nu
+{% end %}
+
+For Minkowski space, since we are working with four-dimensional space, we need to work with **4-vectors** (4-dimensional vectors in spacetime). Thus, the infinitesimal displacement vectors are $dx^\nu = (cdt, dx, dy, dz)$ and $dx^\mu = (cdt, dx, dy, dz)^T$, and we can write the line element as:
+
+{% math() %}
+\begin{align*}
+ds^2 &= \begin{pmatrix}
+cdt \\
+dx \\
+dy \\
+dz
+\end{pmatrix}^T
+\begin{pmatrix}
+-1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+cdt \\
+dx \\
+dy \\
+dz
+\end{pmatrix} \\
+&= -c^2 dt^2 + dx^2 + dy^2 + dz^2
+\end{align*}
+{% end %}
+
+Which is simply the Minkowski line element! Now, what if we wanted to transform the displacement vector $dx^\mu$ from one reference frame to another reference frame? That is, we want to find the matrix $\Lambda$ that satisfies:
+
+{% math() %}
+dx^\mu = \Lambda^\mu{}_{\nu} dx^\nu
+{% end %}
+
+The answer is the **Lorentz transformation matrix**, which we’ve seen before. This tells us that:
+
+{% math() %}
+\begin{pmatrix}
+cdt' \\
+dx' \\
+dy' \\
+dz'
+\end{pmatrix} = \underbrace{ \begin{pmatrix}
+\gamma & -\gamma \beta & 0 & 0 \\
+-\gamma \beta & \gamma & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix} }_{\Lambda^\mu{}_\nu}
+\begin{pmatrix}
+cdt \\
+dx \\
+dy \\
+dz
+\end{pmatrix}
+{% end %}
+
+> **Note:** This transformation in special relativity is also known as a **Lorentz boost** or more simply as just a boost, since it is a “boost” from one reference frame to another.
+
+Interestingly, the Lorentz transformations were originally developed to make Maxwell’s equations of electromagnetism consistent with Newtonian physics. It was found that instead of the conventional transformation matrix, the Lorentz transformation matrix was necessary to make Maxwell’s equations hold in all reference frames. Today, though, we know that this is a direct consequence of special relativity.
+
+Note that there is another formulation of the Lorentz transformation matrix using the hyperbolic functions. If we define $\gamma = \cosh \eta, \gamma \beta = \sinh \eta$ then we have:
+
+{% math() %}
+\begin{pmatrix}
+ct' \\
+x' \\
+y' \\
+z'
+\end{pmatrix} = \begin{pmatrix}
+\cosh \eta & -\sinh \eta & 0 & 0 \\
+-\sinh \eta & \cosh \eta & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+ct \\
+x \\
+y \\
+z
+\end{pmatrix}
+{% end %}
+
+Or, if we ignore the $y$ and $z$ dimensions (they aren’t important here) we can write them as:
+
+{% math() %}
+\begin{pmatrix}
+ct' \\
+x'
+\end{pmatrix} = \begin{pmatrix}
+\cosh \eta & -\sinh \eta \\
+-\sinh \eta & \cosh \eta
+\end{pmatrix}
+\begin{pmatrix}
+ct \\
+x \\
+\end{pmatrix}
+{% end %}
+
+This looks suspiciously like the 2D rotation matrix, which is given by:
+
+{% math() %}
+\begin{pmatrix}
+\cos \theta & -\sin \theta \\
+\sin \theta & \cos \theta
+\end{pmatrix}
+{% end %}
+
+Indeed, if we recognize that $\cos(ix) = \cosh x$ and $\sin(ix) = i \sinh (x)$ we find that (to a difference in sign) we can recover the 2D rotation matrix. Thus it is commonly said that the Lorentz transformations represent a rotation in *imaginary time*. If this is too much abstraction, it is sufficient to understand that the Lorentz transformations are the unique set of transformations that keep the line element $ds^2$ invariant.
+
+> **Note:** The line element is also called the _spacetime interval_ in the context of special relativity. We will use both terms interchangeably.
+
+### Four-vectors
+
+Special relativity is formulated in 4 dimensions: three dimensions of space and one dimension of time. We have already seen this reflected in the infinitesimal displacement vector $dx^\mu = (cdt, dx, dy, dz)^T$, which has *four* components, instead of the regular three. In fact, special relativity has a variety of 4-dimensional vectors, which we call **4-vectors** (or _four-vectors_). These are distinguished from **3-vectors**, which have only three components, such as the Cartesian position $\mathbf{r}$, Cartesian velocity $\mathbf{v}$, and so on. Below is a short list of common four-vectors:
+
+| 4-vector                                                         | Definition                                                                               | Details                                                                                                                                                                 |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 4-position $x^\mu$                                               | $x^\mu = (ct, x, y, z)^T = (ct, \mathbf{r})^T$                                           | Represents the coordinates of a particular event (for instance, the position of a particle) in space and time                                                           |
+| 4-velocity $U^\mu$                                               | $U^\mu = \dfrac{dx^\mu}{d\tau} = (\gamma c, \gamma \mathbf{v})^T$                        | Represents the derivative of the 4-position with respect to proper time ($\tau$)                                                                                        |
+| 4-momentum $P^\mu$                                               | $P^\mu = (E/c, \mathbf{p})^T$                                                            | The $P^0$ component is related to the energy of a particle, while the spatial components $\mathbf{p}$ is the relativistic 3-momentum $\mathbf{p} = \gamma m \mathbf{v}$ |
+| 4-force $F^\mu$                                                  | $F^\mu = \dfrac{dP^\mu}{d\tau}$                                                          | Represents the derivative of the moment with respect to proper time ($\tau$)                                                                                            |
+| 4-wavevector $k^\mu$                                             | $k^\mu = (\frac{\omega}{c}, \mathbf{k})$                                                 | Represents the angular frequency $\omega$ and wavevector $\mathbf{k}$ of a wave propagating through spacetime                                                           |
+| 4-gradient $\frac{\partial}{\partial x^\mu}$ (or $\partial_\mu$) | $\dfrac{\partial}{\partial x^\mu} = (\frac{1}{c} \frac{\partial}{\partial t}, \nabla)^T$ | Represents the partial derivative in the time dimension and the three spatial dimensions                                                                                |
+
+We will now start using the standard convention for indices:
+
+- When we are describing 4-vectors and other *spacetime quantities* in four dimensions, we will use **Greek letters as indices** ($\mu, \nu, \alpha, \beta$, etc.) where the indices range over $0, 1, 2, 3$
+- When we are describing 3-vectors and other *purely spatial quantities* in three dimensions, we will use **Latin letters as indices** ($a, b, c, j, k$, etc.) where the indices range over $1, 2, 3$
+
+With this convention, it is common to write the spatial components of a four-vector with the same symbol but a Latin rather than Greek letter. For instance, we can denote the spatial components of the 4-momentum $P^\mu$ as $P^i$, while the $P^0$ component is the time component. It is also very useful to note that proper time $\tau$ (the time an observer measures in their rest frame) is related to $t$ (the an observer measures of a distant moving frame) is related by $dt = \gamma d\tau$, so $\frac{dt}{d\tau} = \gamma$.
+
+4-vectors are not just important on their own; various combinations of 4-vectors are also essential. The most classical example (which we’ve already seen) is the line element, which is written as:
+
+{% math() %}
+ds^2 = g_{\mu \nu} dx^\mu dx^\nu
+{% end %}
+
+It is no coincidence that this expression gives an **invariant quantity** ($ds^2$) and contains the metric. In fact, the metric is how we combine two 4-vectors in an invariant way! Thus, expressions with four-vectors almost *always* contain the metric in some way. For instance, we have:
+
+{% math() %}
+\begin{align*}
+\eta_{\mu \nu} U^\mu U^\nu &= c^2 \\
+\eta_{\mu \nu} P^\mu P^\nu &= m^2 c^2 = \frac{E^2}{c^2} - p^2
+\end{align*}
+{% end %}
+
+In the latter of the two equations, $\mathbf{p}$ is the (relativistic) 3-momentum (where $p^2 = \mathbf{p} \cdot \mathbf{p}$), and rearrangement yields:
+
+{% math() %}
+E^2 = \mathbf{p}^2 c^2 + (mc^2)^2
+{% end %}
+
+This is **Einstein’s energy-momentum relation** and is essential in special relativity, quantum mechanics, and particle physics. It tells us, for instance, that for massless particles, we have:
+
+{% math() %}
+E = pc
+{% end %}
+
+Einstein therefore predicted that even particles with zero mass can carry momentum! This is why light, which is composed of massless photons, nonetheless carries energy and momentum.
+
+### Contravariant and covariant
+
+So far, we have written 4-vectors with an upper index only. For instance, we’ve written $U^\mu$, but we haven’t yet written $U_\mu$. This is not just a notational difference! The reason is that upper (“upstairs”) indices and lower (“downstairs”) indices are fundamentally different. Specifically, the relationship between a vector in its upper-index form and lower-index form is given by:
+
+{% math() %}
+U^\mu = g^{\mu \nu} U_{\nu}, \quad U_{\mu} = g_{\mu \nu} U^\nu
+{% end %}
+
+In the case of Minkowski spacetime, this means that the upper-index form of a 4-vector acquires a **negative sign** compared to its lower-index form. For instance, in the case of the 4-velocity $U^\mu$, we have:
+
+{% math() %}
+U^\mu = (-U_{0}, U_{1}, U_{2}, U_{3}) = (-U_{0}, U_{i})
+{% end %}
+
+Where $U_i$ are the spatial components $U_1, U_2, U_3$. This is a fundamental property of tensors, which includes four-vectors. Upper-index tensors are known as **contravariant tensors** while lower-index tensors are known as **covariant tensors**, and this has to do with the way they transform. Contravariant tensors transform by the following formula:
+
+{% math() %}
+T'^{\alpha' \beta' \gamma' \dots \lambda'} = \frac{\partial x^{\alpha'}}{\partial x^\alpha} \frac{\partial x^{\beta'}}{\partial x^\beta} \frac{\partial x^{\gamma'}}{\partial x^\gamma} \dots \frac{\partial x^{\lambda'}}{\partial x^\lambda} T^{\alpha \beta \gamma \dots \lambda}
+{% end %}
+
+While covariant tensors transform by the following formula:
+
+{% math() %}
+T'_{\alpha' \beta' \gamma' \dots \lambda'} =\frac{\partial x^\alpha}{\partial x^{\alpha'}} \frac{\partial x^\beta}{\partial x^{\beta'}} \frac{\partial x^\gamma}{\partial x^{\gamma'}} \dots \frac{\partial x^\lambda}{\partial x^{\lambda'}} T_{\alpha \beta \gamma \dots \lambda} 
+{% end %}
+
+A contravariant tensor can be transformed into a covariant tensor by multiplying by the metric, and vice-versa with the inverse metric:
+
+{% math() %}
+\begin{align*}
+V^{\alpha' \beta' \gamma' \dots \lambda'} &= g^{\alpha \alpha'} g^{\beta \beta'} g^{\gamma \gamma'} \dots g^{\lambda \lambda'} V_{\alpha \beta \gamma \dots \lambda} \\
+V_{\alpha' \beta' \gamma' \dots \lambda'} &= g_{\alpha \alpha'} g_{\beta \beta'} g_{\gamma \gamma'} \dots g_{\lambda \lambda'} V^{\alpha \beta \gamma \dots \lambda}
+\end{align*}
+{% end %}
+
+> **Note:** This is often called "raising or lowering indices" since it transforms a contravariant (upper) index to a covariant (lower) index, and vice-versa. The formal mathematical term for this is **tensor contraction** with the metric.
+
+While these formulas might look daunting, in the case of special relativity, the formulas are considerably simpler. For 4-vectors in special relativity, we have:
+
+{% math() %}
+\frac{\partial x^\mu}{\partial x^{\mu'}} = \Lambda^\mu{}_{\mu'}, \quad
+\frac{\partial x^{\mu'}}{\partial x^\mu} = \Lambda^{\mu'}{}_\mu
+{% end %}
+
+Where {% inlmath() %}\Lambda^\mu{}_{\mu'}{% end %} and {% inlmath() %}\Lambda^{\mu'}{}_\mu{% end %} are simply different versions of the Lorentz transformation matrix! This gives us the following transformations for 4-vectors in Minkowski space:
+
+{% math() %}
+V^\mu = \Lambda^\mu{}_{\nu} V^\nu, \quad V_{\mu} = \Lambda^\nu{}_{\mu} V_{\nu}
+{% end %}
+
+Where we have the following:
+
+{% math() %}
+V^\mu = g^{\mu \nu} V_{\nu}, \quad V_{\mu} = g_{\mu \nu} V^\nu
+{% end %}
+
+And likewise, we have the following transformations for a tensor $T^{\mu \nu}$ in Minkowski space:
+
+{% math() %}
+T^{'\mu \nu} = \Lambda^\mu{}_{\sigma} \Lambda^\nu{}_{\rho} T^{\sigma \rho}, \quad T_{\mu \nu}' = \Lambda^\sigma{}_{\mu} \Lambda^\rho{}_{\nu} T_{\sigma \rho}
+{% end %}
+
+### Relativistic electrodynamics
+
+A natural application of 4-vectors and special relativity is in the context of electromagnetism. Electromagnetism is a *fundamentally relativistic theory* - it predicted special relativity even before Einstein invented it! However, it can be hard to see its relativistic nature directly. To make the equations of special relativity *manifestly relativistic* (that is, clearly relativistic), it is useful to write them using tensors.
+
+In the tensor formulation of electromagnetism, we actually dispense with the electric field $\mathbf{E}$ and magnetic field $\mathbf{B}$ (which we would write in tensor notation as 3-vectors $E^i$ and $B^i$). Instead, it is much better to use the electric (scalar) potential $\phi$ and magnetic (vector) potential $\mathbf{A}$. We can combine the two together into a 4-vector $A^\mu$, the **electromagnetic 4-potential**, which is a 4-vector, where:
+
+{% math() %}
+A^\mu = \left(\frac{\phi}{c}, \mathbf{{A}}\right)
+{% end %}
+
+We can also define the **4-current** $J^\mu$, which combines the charge density $\rho(\mathbf{r})$ and current density $\mathbf{J}(\mathbf{r})$ into the following 4-vector:
+
+{% math() %}
+J^\mu = (\rho c, \mathbf{J})
+{% end %}
+
+We can then define the **Faraday tensor** $F^{\mu \nu}$ as follows:
+
+{% math() %}
+F^{\mu \nu} = \partial^\mu A^\nu - \partial^\nu A^\mu
+{% end %}
+
+The precise components of the Faraday tensor depend on the choice of units. SI units are the most commonly used across the science, but in high-energy physics and relativity, the Gaussian units system is often preferred. The two can easily be confused, leading to major calculation errors, so it is best to stick with one. Assuming we are using Gaussian units, the components of the Faraday tensor are given by:
+
+{% math() %}
+F^{\mu \nu} = \begin{pmatrix}
+0 & E^{1} & E^{2} & E^{3} \\
+-E^{1} & 0 & B^{3} & -B^{2} \\
+-E^{2} & -B^{3} & 0 & B^{1} \\
+-E^{3} & B^{2} & -B^{1} & 0
+\end{pmatrix}
+{% end %}
+
+If we want to use Cartesian coordinates, then the Faraday tensor takes the form:
+
+{% math() %}
+F^{\mu \nu} = \begin{pmatrix}
+0 & E^{x} & E^{y} & E^{z} \\
+-E^{x} & 0 & B^{z} & -B^{y} \\
+-E^{y} & -B^{z} & 0 & B^{x} \\
+-E^{z} & B^{y} & -B^{x} & 0
+\end{pmatrix}
+{% end %}
+
+Upon performing a Lorentz boost, it turns out that the transformed Faraday tensor is in the form:
+
+{% math() %}
+F'^{\mu \nu} = \Lambda^\mu{}_{\rho} \Lambda^\nu{}_{\sigma} F^{\rho \sigma}
+{% end %}
+
+Which is exactly the same as the transformation law we found earlier for tensors in special relativity! If we expand the indices, we get:
+
+{% math() %}
+\begin{align*}
+F'^{\mu \nu} &= \begin{pmatrix}
+0 & E'^{1} & E'^{2} & E'^{3} \\
+-E'^{1} & 0 & B'^{3} & -B'^{2} \\
+-E'^{2} & -B'^{3} & 0 & B'^{1} \\
+-E'^{3} & B'^{2} & -B'^{1} & 0
+\end{pmatrix} \\
+&= \begin{pmatrix}
+0 & E_{1} & \gamma(E_{2} - \beta B_{3}) & \gamma(E_{3} + \beta B_{2}) \\
+-E_{1} & 0 & \gamma(B_{3} - \beta E_{2}) & -\gamma(B_{2} + \beta E_{3}) \\
+-\gamma(E_{2} - \beta B_{3}) & -\gamma(B_{3} - \beta E_{2}) & 0 & B_{1} \\
+-\gamma(E_{3} + \beta B_{2}) & \gamma(B_{2} + \beta E_{3}) & -B_{1} & 0
+\end{pmatrix}
+\end{align*} 
+{% end %}
+
+The result is that the fields transform according to:
+
+{% math() %}
+\begin{align*}
+E_{1}' = E_{1},\qquad & E_2' = \gamma(E_{2} - \beta B_{3}), & E_{3}' = \gamma(E_{3} + \beta B_{2}) \\
+B_{1}' = B_{1},\qquad & B_{2}' = \gamma(B_{2} + \beta E_{3}), & B_{3}' = \gamma(B_{3} - \beta E_{2})
+\end{align*}
+{% end %}
+
+> **Note:** Again, remember that all of these formulas are in *Gaussian units*. They are incompatible with formulas using SI units!
+
+We end up finding that an electric field in one frame might have a magnetic field component in another frame, and vice-versa. This is why the electromagnetic 4-potential (as a 4-vector) is much more fundamental, since it is an *invariant* 4-vector, while the electric and magnetic fields change from frame to frame. Indeed, with the electromagnetic 4-potential, we can write the four Maxwell equations in just one line:
+
+{% math() %}
+\partial^\mu \partial_{\mu} A^\nu = \frac{4\pi}{c} J^\nu
+{% end %}
+
+Where $\partial_\mu = \frac{\partial}{\partial \mu} = \left(\frac{1}{c}, \nabla\right)^T$ is the 4-gradient in shorthand notation, and $\partial^\mu = \eta^{\mu \nu} \partial_\nu$ is the contraction of the 4-gradient with the inverse metric. We can pair this with the Lorentz force law, which reads as follows in tensor notation:
+
+{% math() %}
+\frac{dP^\mu}{d\tau} = F^\mu = qF^{\mu \nu} U_\nu
+{% end %}
+
+Where $F^{\mu \nu}$ is the Faraday tensor and $U_\nu$ is the covariant ("downstairs") form of the 4-velocity. This formulation of electromagnetism clearly manifests the relativistic nature of Maxwell's equations and electromagnetism in general. As such, it is frequently used in general relativity and relativistic quantum mechanics.
