@@ -20,5 +20,6 @@ These are extended guides, many of which come from personal physics notes taken 
 - [In-depth classical electromagnetism](@/classical-electromagnetism/index.md) - a more advanced guide to electromagnetic theory, covering the potential formulations of electrostatics and magnetostatics with boundary-valued problems, dielectrics and magnetic materials, and electrodynamics with special relativity.
 - [In-depth quantum mechanics](@/quantum-mechanics/index.md) - a more advanced guide to quantum mechanics, covering intrinsic spin and the Pauli matrices, in-depth studies of the Schrödinger equation, perturbation theory, and an introduction to relativistic quantum mechanics and quantum field theory.
 - [Fundamentals of General Relativity](@/general-relativity/index.md) - a guide to the basics of Einstein's theory of gravity, covering the geometry of spacetime, the metric tensor, the geodesic equation, and applications of general relativity in black hole astrophysics and cosmology
+	- Bonus: [Gravity as an effective field theory](@/effective-field-theory-gravity-1.md)
 
 > **Want more advanced physics content?** See my [full-length book series](https://learntheoreticalphysics.com) on theoretical physics.
