@@ -1331,10 +1331,10 @@ We note that if we let $q = x$ (that is, if we choose Cartesian coordinates) and
 Just as we found with the Lagrangian, we can show that the Hamiltonian _guarantees_ conseration of particular quantities. Let us consider some quantity $A$ (perhaps this is energy) that may be dependent on any one (or all) of $q_i, p_i, t$. If we take the _total derivative_ of $A$ with respect to $t$, by the chain rule, we have:
 
 {% math() %}
-\dfrac{dA}{dt} = \dfrac{\partial A}{\partial t} + \sum_i\bigg[\underbrace{\dfrac{\partial A}{\partial \dot q_i} \dfrac{\partial H}{\partial p_i} - \dfrac{\partial A}{\partial p_i}\dfrac{\partial H}{\partial q_i}}_{\text{often written }\{H, A\}}\bigg]
+\dfrac{dA}{dt} = \dfrac{\partial A}{\partial t} + \sum_i\bigg[\underbrace{\dfrac{\partial A}{\partial q_i} \dfrac{\partial H}{\partial p_i} - \dfrac{\partial A}{\partial p_i}\dfrac{\partial H}{\partial q_i}}_{\text{often written }\{H, A\}}\bigg] = \{H, A\}
 {% end %}
 
-If $\dfrac{dA}{dt} = 0$, then $A$ must be constant in time, and is thus *conserved*. This can _only_ be the case if the quantity within the square brackets (which we write as $\{H, A\}$, this is called a **Poisson bracket**) is **zero**. Indeed, this has great resemblance to the _quantum mechanical_ equation of motion (in the Heisenberg picture):
+If $\dfrac{dA}{dt} = 0$, then $A$ must be constant in time, and is thus *conserved*. This can _only_ be the case if the quantity within the square brackets (which we write as {% inlmath() %}\{H, A\}{% end %}, this is called a **Poisson bracket**) is **zero**. Indeed, this has great resemblance to the _quantum mechanical_ equation of motion (in the Heisenberg picture):
 
 {% math() %}
 \dfrac{d\hat A}{dt} = \dfrac{\partial \hat A}{\partial t} + \dfrac{i}{\hbar} [\hat H, \hat A]
