@@ -52,7 +52,8 @@
         <p>This is an in-depth step-by-step derivation for elastic collisions in 1D, a companion guide to the <a href="https://jackysci.com/classical-dynamics/">Classical Dynamics Notes</a>.</p>
 <span id="continue-reading"></span>
 <p>Elastic collisions are collisions in which there is no loss of total mechanical energy - no emission of heat, light, or sound. While elastic collisions are idealizations, any collision that results in deflection (a "bounce" informally speaking) can approximately modelled as an elastic collision, and so formulas for elastic collisions are still of practical value.</p>
-<p>We start with the conservation of energy and the conservation of momentum:</p>
+<p>Consider two particles of masses $m_1$ and $m_2$, which are travelling towards one another and collide. Let the particle of mass $m_1$ have an initial velocity of $v_1(a)$, and the particle of mass $m_2$ have an initial velocity of $v_2(a)$. We wish to find their final velocities $v_2(a), v_2(b)$ in terms of their initial velocities.</p>
+<p>We start by writing out the conservation of energy and the conservation of momentum equations for the system:</p>
 <p><p class="mathcell">
 $$
 \frac{1}{2} m_1 v_1(a)^2 + \frac{1}{2} m_2 v_2(a)^2 = \frac{1}{2} m_1 v_1(b)^2 + \frac{1}{2} m_2 v_2(b)^2
@@ -148,7 +149,7 @@ $$
 v_2(b) = \frac{2m_1 v_1(a)}{m_1 + m_2} + v_2(a) \frac{m_2 - m_1}{m_1 + m_2}
 $$
 </p></p>
-<p>We can use a similar approach to solve for $v_2(a)$. Since:</p>
+<p>We can use a similar approach to solve for $v_1(b)$. Since:</p>
 <p class="mathcell">
 $$
 v_1(a) - v_2(a) = v_2(b) - v_1(b)
@@ -172,6 +173,22 @@ $$
 v_1(b) = \frac{2m_2 v_2(a)}{m_1 + m_2} + v_1(a) \frac{m_1 - m_2}{m_1 + m_2}
 $$
 </p></p>
+<p>Thus we obtain:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+v_1(b) &amp;= \frac{2m_2 v_2(a)}{m_1 + m_2} + v_1(a) \frac{m_1 - m_2}{m_1 + m_2} \\
+v_2(b) &amp;= \frac{2m_1 v_1(a)}{m_1 + m_2} + v_2(a) \frac{m_2 - m_1}{m_1 + m_2}
+\end{align*}
+$$
+</p>
+<p>Where:</p>
+<ul>
+<li>$v_1(a)$ is the <strong>initial velocity</strong> of mass $m_1$</li>
+<li>$v_1(b)$ is the <strong>final velocity</strong> of mass $m_1$</li>
+<li>$v_2(a)$ is the <strong>initial velocity</strong> of mass $m_2$</li>
+<li>$v_2(b)$ is the <strong>final velocity</strong> of mass $m_2$</li>
+</ul>
 
         
         <a href="/" class="return-link">Back to home</a>

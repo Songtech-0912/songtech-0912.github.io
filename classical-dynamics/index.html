@@ -1553,7 +1553,7 @@ $$
 </blockquote>
 <p>Most collisions, at least on a non-atomic level, are inelastic, dissipating some but not all of their initial total mechanical energy during the collision. However, when the loss is small enough to be considered negligible, collisions can be modelled as elastic, and when the loss is sufficiently large as to be considered total, collisions can be modelled as perfectly inelastic.</p>
 <h3 id="elastic-collisions">Elastic collisions</h3>
-<p>In an elastic collision, the final velocities of the colliding objects are <strong>completely determined</strong> by the initial velocities and masses of the two colliding objects. That is, given initial velocities $v_1(a)$ and $v_2(a)$ and initial masses $m_1$ and $m_2$, we can find the final velocities $v_1(b)$ and $v_2(b)$.</p>
+<p>In an elastic collision, the final velocities of the colliding objects are <strong>completely determined</strong> by the initial velocities and masses of the two colliding objects, which have masses $m_1$ and $m_2$. That is, given their initial velocities $v_1(a)$ and $v_2(a)$, we can find their final velocities $v_1(b)$ and $v_2(b)$. (Here, $v_1(a), v_1(b)$ are respectively the initial and final velocities of mass $m_1$, and $v_2(a), v_2(b)$ are respectively the initial and final velocities of mass $m_2$).</p>
 <p>Both energy and momentum are conserved in elastic collisions. Conservation of energy and momentum together give:</p>
 <p class="mathcell">
 $$
@@ -1595,11 +1595,18 @@ $$
 <p class="mathcell">
 $$
 \begin{align*}
-v_1(b) &amp;= \frac{2m_2 v_2(a)}{m_1 + m_2} + v_1(a) \frac{m_1 - m_2}{m_1 + m_2}
+v_1(b) &amp;= \frac{2m_2 v_2(a)}{m_1 + m_2} + v_1(a) \frac{m_1 - m_2}{m_1 + m_2} \\
 v_2(b) &amp;= \frac{2m_1 v_1(a)}{m_1 + m_2} + v_2(a) \frac{m_2 - m_1}{m_1 + m_2}
 \end{align*}
 $$
 </p>
+<p>Where:</p>
+<ul>
+<li>$v_1(a)$ is the <strong>initial velocity</strong> of mass $m_1$</li>
+<li>$v_1(b)$ is the <strong>final velocity</strong> of mass $m_1$</li>
+<li>$v_2(a)$ is the <strong>initial velocity</strong> of mass $m_2$</li>
+<li>$v_2(b)$ is the <strong>final velocity</strong> of mass $m_2$</li>
+</ul>
 <p>A full derivation is given <a href="https://jackysci.com/collision-derivations/">on a separate page with the calculations</a>.</p>
 <h3 id="perfectly-inelastic-collisions">Perfectly inelastic collisions</h3>
 <p>In a perfectly inelastic collision, the final velocities of the two colliding objects are the same, and is also <strong>completely determined</strong> by the initial velocities and masses. For two bodies of masses $m_1$ and $m_2$, conservation of momentum takes the form of the following equation, where $v_\mathrm{after}$ is the final velocity of both bodies after the collision:</p>
