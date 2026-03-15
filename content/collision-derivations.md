@@ -12,7 +12,9 @@ This is an in-depth step-by-step derivation for elastic collisions in 1D, a comp
 
 Elastic collisions are collisions in which there is no loss of total mechanical energy - no emission of heat, light, or sound. While elastic collisions are idealizations, any collision that results in deflection (a "bounce" informally speaking) can approximately modelled as an elastic collision, and so formulas for elastic collisions are still of practical value.
 
-We start with the conservation of energy and the conservation of momentum:
+Consider two particles of masses $m_1$ and $m_2$, which are travelling towards one another and collide. Let the particle of mass $m_1$ have an initial velocity of $v_1(a)$, and the particle of mass $m_2$ have an initial velocity of $v_2(a)$. We wish to find their final velocities $v_2(a), v_2(b)$ in terms of their initial velocities.
+
+We start by writing out the conservation of energy and the conservation of momentum equations for the system:
 
 {% math() %}
 \frac{1}{2} m_1 v_1(a)^2 + \frac{1}{2} m_2 v_2(a)^2 = \frac{1}{2} m_1 v_1(b)^2 + \frac{1}{2} m_2 v_2(b)^2 
@@ -104,7 +106,7 @@ So:
 v_2(b) = \frac{2m_1 v_1(a)}{m_1 + m_2} + v_2(a) \frac{m_2 - m_1}{m_1 + m_2}
 {% end %}
 
-We can use a similar approach to solve for $v_2(a)$. Since:
+We can use a similar approach to solve for $v_1(b)$. Since:
 
 {% math() %}
 v_1(a) - v_2(a) = v_2(b) - v_1(b)
@@ -127,3 +129,18 @@ Which after tedious algebra simplifies to:
 v_1(b) = \frac{2m_2 v_2(a)}{m_1 + m_2} + v_1(a) \frac{m_1 - m_2}{m_1 + m_2}
 {% end %}
 
+Thus we obtain:
+
+{% math() %}
+\begin{align*}
+v_1(b) &= \frac{2m_2 v_2(a)}{m_1 + m_2} + v_1(a) \frac{m_1 - m_2}{m_1 + m_2} \\
+v_2(b) &= \frac{2m_1 v_1(a)}{m_1 + m_2} + v_2(a) \frac{m_2 - m_1}{m_1 + m_2}
+\end{align*}
+{% end %}
+
+Where:
+
+- $v_1(a)$ is the **initial velocity** of mass $m_1$
+- $v_1(b)$ is the **final velocity** of mass $m_1$
+- $v_2(a)$ is the **initial velocity** of mass $m_2$
+- $v_2(b)$ is the **final velocity** of mass $m_2$

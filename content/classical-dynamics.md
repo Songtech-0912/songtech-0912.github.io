@@ -1216,7 +1216,7 @@ Most collisions, at least on a non-atomic level, are inelastic, dissipating some
 
 ### Elastic collisions
 
-In an elastic collision, the final velocities of the colliding objects are **completely determined** by the initial velocities and masses of the two colliding objects. That is, given initial velocities $v_1(a)$ and $v_2(a)$ and initial masses $m_1$ and $m_2$, we can find the final velocities $v_1(b)$ and $v_2(b)$. 
+In an elastic collision, the final velocities of the colliding objects are **completely determined** by the initial velocities and masses of the two colliding objects, which have masses $m_1$ and $m_2$. That is, given their initial velocities $v_1(a)$ and $v_2(a)$, we can find their final velocities $v_1(b)$ and $v_2(b)$. (Here, $v_1(a), v_1(b)$ are respectively the initial and final velocities of mass $m_1$, and $v_2(a), v_2(b)$ are respectively the initial and final velocities of mass $m_2$).
 
 Both energy and momentum are conserved in elastic collisions. Conservation of energy and momentum together give:
 
@@ -1258,10 +1258,17 @@ The solution to this system of equations is given by:
 
 {% math() %}
 \begin{align*}
-v_1(b) &= \frac{2m_2 v_2(a)}{m_1 + m_2} + v_1(a) \frac{m_1 - m_2}{m_1 + m_2}
+v_1(b) &= \frac{2m_2 v_2(a)}{m_1 + m_2} + v_1(a) \frac{m_1 - m_2}{m_1 + m_2} \\
 v_2(b) &= \frac{2m_1 v_1(a)}{m_1 + m_2} + v_2(a) \frac{m_2 - m_1}{m_1 + m_2}
 \end{align*}
 {% end %}
+
+Where:
+
+- $v_1(a)$ is the **initial velocity** of mass $m_1$
+- $v_1(b)$ is the **final velocity** of mass $m_1$
+- $v_2(a)$ is the **initial velocity** of mass $m_2$
+- $v_2(b)$ is the **final velocity** of mass $m_2$
 
 A full derivation is given [on a separate page with the calculations](@/collision-derivations.md).
 
