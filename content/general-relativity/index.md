@@ -1,5 +1,5 @@
 +++
-title = "Fundamentals of General Relativity"
+title = "Fundamentals of General Relativity, Part I"
 date = 2026-01-13
 +++
 
@@ -8,6 +8,11 @@ This is a guide to the fundamentals of General Relativity and its applications i
 <!-- more -->
 
 I thank [Professor Giedt](https://faculty.rpi.edu/joel-giedt) at Rensselaer Polytechnic for teaching the GR course that made this guide possible.
+
+> ### Chapter guide for General Relativity
+> 
+> - [Part 1](@/general-relativity/index.md) covers the basic ideas of general relativity, spacetime, and the mathematics of curved spaces. **You are reading this part right now.**
+> - [Part 2](@/general-relativity/part-2.md) covers the geodesic equation, relativistic orbits, and black holes.
 
 ## Mathematical prerequisites
 
