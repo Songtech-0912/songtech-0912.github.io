@@ -22,7 +22,7 @@ This guide presumes strong knowledge of vector calculus, basic linear algebra, d
 - For a review of basic differential equations, see the [introductory differential equations guide](@/differential-equations/index.md)
 - For a review of electromagnetic theory, see the [fundamentals of electromagnetism guide](@/electromagnetism/index.md) as well as the [in-depth electromagnetism guide](@/classical-electromagnetism/index.md)
 - For a review of partial differential equations, boundary-value problems, and Fourier series, and see the [PDEs guide](@/intro-pdes/index.md)
-- For a review of special relativity and tensors, see the [advanced classical mechanics guide](@/advanced-classical-mech/index.md)
+- For a review of classical mechanics, special relativity, and tensors, see the [advanced classical mechanics guide](@/advanced-classical-mech/index.md)
 - For an **optional** review of quantum mechanics, see the [introductory quantum mechanics guide](@/intro-quantum-phys.md) as well as the [in-depth quantum mechanics guide](@/quantum-mechanics/index.md). There _might_ be a brief discussion on quantum gravity at the very end of this guide.
 
 ## An introduction to General Relativity
@@ -666,7 +666,7 @@ c' = v + c
 
 This, of course, is in **direct contradiction** with the predictions of Maxwell’s equations. Einstein’s solution to resolving this paradox was profound, and extremely radical. He said that **time and space** are no longer absolute, but rather, they are *relative concepts* that are perceived differently by each observer (more generally, dependent on the *chosen coordinates*). Rather, it is necessary to consider **four-dimensional spacetime**, the fusion of space and time, as the background over which all events in the Universe occur.
 
-> **Note:** We won’t go over special relativity much; for more information see the [special relativity guide](https://jackysci.com/special-relativity/).
+> **Note:** We won’t go over the basics of special relativity in much detail; for more information see the [special relativity guide](@/special-relativity/index.md) as well as the [relativity section in the classical mechanics guide](@/advanced-classical-mech/index.md#special-relativity).
 
 ### An quick review of tensors for special relativity
 
