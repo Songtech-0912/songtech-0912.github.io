@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="48"
+   height="48"
+   viewBox="0 0 48 48"
+   fill="none"
+   version="1.1"
+   id="svg6"
+   sodipodi:docname="personal-logo.svg"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="7.0829694"
+     inkscape:cx="7.2003699"
+     inkscape:cy="52.30857"
+     inkscape:window-width="1920"
+     inkscape:window-height="1046"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg6" />
+  <path
+     d="m 23.909168,11.5 c -7.276176,-8e-5 -13.174596,5.875663 -13.174494,13.123776 5.1e-5,5.248724 3.093622,9.77704 7.563165,11.876224 0.410153,-0.414337 0.834699,-0.832857 1.286429,-1.25602 -2.042041,-0.354082 -3.924898,-1.485409 -5.659033,-2.276123 1.716329,0.782551 4.323012,1.696174 6.435563,1.565816 3.07592,-2.752959 7.00398,-5.518112 11.65296,-7.249183 -0.87347,-0.355255 -1.82551,-0.65801 -2.83571,-0.775102 -5.33521,-0.618368 -11.292352,3.487041 -11.292352,3.487041 0,0 6.282142,-5.671786 9.862242,-5.671786 1.81225,0 4.21888,1.169541 6.15715,2.325612 1.02959,-0.305714 2.09132,-0.556684 3.18316,-0.745867 0.15051,-0.977602 0.20306,-1.901327 0.16531,-2.765102 -0.60154,0.408418 -1.35,0.723571 -2.22858,0.723571 -2.49693,0 -3.39642,-2.004694 -3.39642,-2.004694 0,0 2.49642,1.463061 5.55408,0.379133 -0.22449,-1.80551 -0.87806,-3.306174 -1.88725,-4.429541 -0.79745,-1.164796 -5.3903,-4.679143 -5.3903,-4.679143 3.29234,5.201745 1.43724,4.517357 1.43724,4.517357 -5.10306,-0.999693 -9.84235,6.293062 -14.958009,5.228368 -5.115461,-1.064643 4.391019,-11.21078 7.655459,-11.372586 -0.0434,-0.0013 -0.0872,-0.0013 -0.13061,-0.0017 z m 11.97449,0.738755 c -0.003,0.0042 -0.005,0.02717 -0.009,0.08044 0.0143,0.21949 0.0189,-0.05007 0.0112,-0.07872 -5.1e-4,-0.0026 -10e-4,-0.003 -0.002,-0.0017 z"
+     fill="url(#paint0_radial_1874_23)"
+     id="path1"
+     style="opacity:0.996;fill:url(#paint0_radial_1874_23);stroke-width:0.510204"
+     clip-path="none" />
+  <defs
+     id="defs6">
+    <filter
+       id="filter0_dd_1874_23"
+       x="0"
+       y="0"
+       width="212"
+       height="229"
+       filterUnits="userSpaceOnUse"
+       color-interpolation-filters="sRGB">
+      <feFlood
+         flood-opacity="0"
+         result="BackgroundImageFix"
+         id="feFlood1" />
+      <feColorMatrix
+         in="SourceAlpha"
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+         result="hardAlpha"
+         id="feColorMatrix1" />
+      <feOffset
+         dy="64.8148"
+         id="feOffset1" />
+      <feGaussianBlur
+         stdDeviation="23.4259"
+         id="feGaussianBlur1" />
+      <feColorMatrix
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0531481 0"
+         id="feColorMatrix2" />
+      <feBlend
+         mode="normal"
+         in2="BackgroundImageFix"
+         result="effect1_dropShadow_1874_23"
+         id="feBlend2" />
+      <feColorMatrix
+         in="SourceAlpha"
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+         result="hardAlpha"
+         id="feColorMatrix3" />
+      <feOffset
+         dy="100"
+         id="feOffset3" />
+      <feGaussianBlur
+         stdDeviation="40"
+         id="feGaussianBlur3" />
+      <feColorMatrix
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.07 0"
+         id="feColorMatrix4" />
+      <feBlend
+         mode="normal"
+         in2="effect1_dropShadow_1874_23"
+         result="effect2_dropShadow_1874_23"
+         id="feBlend4" />
+      <feBlend
+         mode="normal"
+         in="SourceGraphic"
+         in2="effect2_dropShadow_1874_23"
+         result="shape"
+         id="feBlend5" />
+    </filter>
+    <radialGradient
+       id="paint0_radial_1874_23"
+       cx="0"
+       cy="0"
+       r="1"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(13.265306,0,0,13.123622,23.999978,24.623674)">
+      <stop
+         stop-color="#272B35"
+         id="stop5" />
+      <stop
+         offset="1"
+         stop-color="#474F57"
+         id="stop6" />
+    </radialGradient>
+  </defs>
+</svg>
