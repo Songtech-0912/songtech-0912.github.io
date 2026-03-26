@@ -113,6 +113,10 @@
                                     <a href="#the-rectangular-potential-barrier">The rectangular potential barrier</a>
                                 </li>
                             
+                                <li>
+                                    <a href="#the-josephson-effect">The Josephson effect</a>
+                                </li>
+                            
                         </ul>
                     
                 </li>
@@ -999,7 +1003,215 @@ $$
 $$
 T = 1 - R = \dfrac{4kk&#x27;}{(k + k&#x27;)^2}
 $$
-</p><h2 id="the-state-vector-and-its-representations">The state-vector and its representations</h2>
+</p><h3 id="the-josephson-effect">The Josephson effect</h3>
+<p>Another manifestation of quantum tunnelling occurs in the <strong>Josephson effect</strong>, which occurs between two superconductors separated by a barrier. The Josephson effect technically describes two different (but related) effects:</p>
+<ul>
+<li><strong>DC Josephson effect</strong>: the presence of a superconducting current (supercurrent) between two superconductors separated by a thin barrier (Josephson junction), from quantum tunneling.</li>
+<li><strong>AC Josephson effect:</strong> if a potential difference $V$ is applied across a Josephson junction, then there is a linearly-varying phase and sinusoidal supercurrent.</li>
+</ul>
+<p>The DC Josephson effect can be derived as a special case of the AC Josephson effect for $V \to 0$, so we will first show the derivation of the AC Josephson effect and then generalize it to the DC case.</p>
+<h4 id="derivation-of-the-ac-josephson-effect">Derivation of the AC Josephson effect</h4>
+<p>We start by writing the Schrodinger equation for the system, which is actually a set of coupled differential equations due to the interactions between the wavefunctions $\psi$ of the two superconductors. We will assume that they take the following form:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+i\hbar \frac{\partial \psi_{1}}{\partial t} = \hbar T \psi_{2} - e V \psi_{1} \\
+i\hbar \frac{\partial \psi_{2}}{\partial t} = \hbar T \psi_{1} + e V \psi_{2}
+\end{align*}
+$$
+</p>
+<p>Where $V$ is the applied potential across the boundary between the two superconductors and $T$ is the tunneling coefficient. Dividing by $i\hbar$ on all sides gives us:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{\partial \psi_{1}}{\partial t} =  -iT \psi_{2} + \frac{ie V}{\hbar} \psi_{1} \\
+\frac{\partial \psi_{2}}{\partial t} =  -iT \psi_{1} - \frac{ie V}{\hbar} \psi_{2}
+\end{align*}
+$$
+</p>
+<p>We choose the following <em>ansatz</em> for the wavefunctions $\psi_1, \psi_2$:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\psi_{1} &amp;= \sqrt{ n_{1} } e^{i\theta_{1}} \\
+\psi_{2} &amp;= \sqrt{ n_{2} } e^{i\theta_{1}}
+\end{align*}
+$$
+</p>
+<p>Where $n_1, n_2$ are real-valued functions of space and time, i.e. $n_i = n_i(\mathbf{x}, t)$ and (roughly) represent the density of charge carriers, while $\theta_1, \theta_2$ are time-dependent phase factors. Substituting in this ansatz gives:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{\partial \psi_{1}}{\partial t} &amp;= \frac{1}{2\sqrt{ n_{1} }} \frac{\partial n_{1}}{\partial t} e^{i\theta_{1}} + i \sqrt{ n_{1} }e^{i\theta_{1}} \frac{\partial \theta_{1}}{\partial t} \\
+&amp;= \frac{1}{2\sqrt{ n_{1} }} \dot{n}_{1} e^{i\theta_{1}} + i \psi_{1} \dot{\theta}_{1} \\
+\frac{\partial \psi_{2}}{\partial t} &amp;= \frac{1}{2\sqrt{ n_{2} }} \frac{\partial n_{2}}{\partial t} e^{i\theta_{2}} + i \sqrt{ n_{2} }e^{i\theta_{2}} \frac{\partial \theta_{2}}{\partial t} \\
+&amp;= \frac{1}{2\sqrt{ n_{2} }} \dot{n}_{2} e^{i\theta_{2}} + i \psi_{2} \dot{\theta}_{2} \\
+\end{align*}
+$$
+</p>
+<p>Substituting these into the Schrodinger equations from earlier gives us:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\left[\frac{1}{2\sqrt{ n_{1} }} \dot{n}_{1} e^{i\theta_{1}} + i \psi_{1} \dot{\theta}_{1}\right ]=  -iT \psi_{2} + \frac{ie V}{\hbar} \psi_{1} \\
+\left[\frac{1}{2\sqrt{ n_{2} }} \dot{n}_{2} e^{i\theta_{2}} + i \psi_{2} \dot{\theta}_{2}\right] = -i T \psi_{1} - \frac{ie V}{\hbar} \psi_{2}
+\end{align*}
+$$
+</p>
+<p>Now multiply the <em>top equation</em> by $\psi_1^\dagger = \sqrt{n_1} e^{-i\theta_1}$ (the conjugate of $\psi_1$) and multiply the <em>bottom</em> equation by $\psi_2^\dagger = \sqrt{n_2} e^{-i\theta_2}$ (the conjugate of $\psi_2$). Thus we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\bigg[\frac{1}{2} \dot{n}_{1} + i \underbrace{ \psi_{1} \psi_{1}^{\dagger} }_{ n_{1} } \dot{\theta}_{1}\bigg]=  -iT \psi_{1}^{\dagger}\psi_{2} + \frac{ie V}{\hbar} \underbrace{ \psi_{1} \psi_{1}^{\dagger} }_{ n_{1} } \\
+\bigg[\frac{1}{2} \dot{n}_{2} + i \underbrace{ \psi_{2} \psi_{2}^{\dagger} }_{ n_{2} } \dot{\theta}_{2}\bigg]=  -iT \psi_{2}^{\dagger}\psi_{1} - \frac{ie V}{\hbar} \underbrace{ \psi_{2} \psi_{2}^{\dagger} }_{ n_{2} } \\
+\end{align*}
+$$
+</p>
+<p>Thus one finds that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{1}{2} \dot{n}_{1} + i n_{1} \dot{\theta}_{1} = -i T \sqrt{ n_{1}n_{2} }e^{i(\theta_{2} - \theta_{1})} + \frac{ieV}{\hbar} n_{1} \\
+\frac{1}{2} \dot{n}_{2} + i n_{2} \dot{\theta}_{2} = -i T \sqrt{ n_{1}n_{2} }e^{i(\theta_{1} - \theta_{2})} - \frac{ieV}{\hbar} n_{2} \\
+\end{align*}
+$$
+</p>
+<p>If we define $\delta = \theta_2 - \theta_1$ to be the relative phase difference, then we can rewrite the above more simply as:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{1}{2} \dot{n}_{1} + i n_{1} \dot{\theta}_{1} &amp;= -i T \sqrt{ n_{1}n_{2} }e^{i \delta} + \frac{ieV}{\hbar} n_{1} \\
+\frac{1}{2} \dot{n}_{2} + i n_{2} \dot{\theta}_{2} &amp;= -i T \sqrt{ n_{1}n_{2} }e^{-i\delta} - \frac{ieV}{\hbar} n_{2} \\
+\end{align*}
+$$
+</p>
+<p>Note that by Euler's formula, we can write $e^{i\delta} = \cos \delta + i \sin \delta$, which gives us:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{1}{2} \dot{n}_{1} + i n_{1} \dot{\theta}_{1} &amp;= -i T \sqrt{ n_{1}n_{2} }(\cos \delta + i \sin \delta) + \frac{ieV}{\hbar} n_{1} \\
+\frac{1}{2} \dot{n}_{2} + i n_{2} \dot{\theta}_{2} &amp;= -i T \sqrt{ n_{1}n_{2} }(\cos \delta - i \sin \delta) - \frac{ieV}{\hbar} n_{2} \\
+\end{align*}
+$$
+</p>
+<p>We can now group terms by those that are real-valued, versus those that are complex-valued, as follows:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{1}{2} \dot{n}_{1} + i n_{1} \dot{\theta}_{1} &amp;= T \sqrt{ n_{1}n_{2} } \sin \delta + i\left[ \frac{eV}{\hbar} n_{1} -T \sqrt{ n_{1}n_{2} } \cos \delta\right] \\
+\frac{1}{2} \dot{n}_{2} + i n_{2} \dot{\theta}_{2} &amp;= -T \sqrt{ n_{1}n_{2}} \sin \delta + i\left[- \frac{eV}{\hbar} n_{2} - T \sqrt{ n_{1}n_{2} }\cos \delta\right] \\
+\end{align*}
+$$
+</p>
+<p>Thus, by equating the real-valued terms and the imaginary terms, we end up with a system of four equations:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{1}{2} \dot{n}_{1} &amp;= T \sqrt{ n_{1}n_{2} } \sin \delta \\
+\frac{1}{2} \dot{n}_{2} &amp;= -T \sqrt{ n_{1}n_{2} } \sin \delta \\
+n_{1} \dot{\theta}_{1} &amp;= \frac{eV}{\hbar} n_{1} -T \sqrt{ n_{1}n_{2} } \cos \delta \\
+n_{2} \dot{\theta}_{2} &amp;= - \frac{eV}{\hbar} n_{2} - T \sqrt{ n_{1}n_{2} }\cos \delta
+\end{align*}
+$$
+</p>
+<p>With some algebraic manipulations to tidy things up, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dot{n}_{1} &amp;= 2T \sqrt{ n_{1}n_{2} } \sin \delta \\
+\dot{n}_{2} &amp;= -2T \sqrt{ n_{1}n_{2} } \sin \delta \\
+\dot{\theta}_{1} &amp;= \frac{eV}{\hbar} -T \sqrt{ \frac{n_{2}}{n_{1}} } \cos \delta \\
+\dot{\theta}_{2} &amp;= - \frac{eV}{\hbar} - T \sqrt{ \frac{n_{1}}{n_{2}} }\cos \delta
+\end{align*}
+$$
+</p>
+<p>These describe the dynamics of the Josephson junction, and give us the evolution of the phases $\theta_1, \theta_2$ as well as the charge carrier number densities $n_1, n_2$ through time. Now, if we combine the third and fourth equations, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dot{\theta}_{2} - \dot{\theta}_{1} &amp;= \left[- \frac{eV}{\hbar} - T \sqrt{ \frac{n_{1}}{n_{2}} }\cos \delta\right] - \left[\frac{eV}{\hbar} -T \sqrt{ \frac{n_{2}}{n_{1}} } \cos \delta \right] \\
+&amp;= -\frac{2eV}{\hbar} - T \cos \delta\left( \sqrt{ \frac{n_{1}}{n_{2}} } - \sqrt{ \frac{n_{2}}{n_{1}} } \right)
+\end{align*}
+$$
+</p>
+<p>But $\dot \theta_2 - \dot \theta_1$ is the same thing as $\dfrac{d\delta}{dt}$, and thus:</p>
+<p class="mathcell">
+$$
+\frac{d\delta}{dt} = -\frac{2eV}{\hbar} - T \cos \delta\left( \sqrt{ \frac{n_{1}}{n_{2}} } - \sqrt{ \frac{n_{2}}{n_{1}} } \right)
+$$
+</p>
+<p>Now, if we assume that $n_1 \approx n_2$ (that is, the two superconductors have similar number densities) then the second term goes to zero, and we are left with:</p>
+<p class="mathcell">
+$$
+\frac{d\delta}{dt} = -\frac{2eV}{\hbar}
+$$
+</p>
+<p>This is a differential equation that can easily be solved; the solution is given by:</p>
+<p class="mathcell">
+$$
+\delta(t) = \delta(0) - \frac{2eV}{\hbar}t, \quad \delta(0) = \theta_{2}(0) - \theta_{1}(0)
+$$
+</p>
+<p>Which tells us that there is a phase difference that is linear in time across the Josephson junction. Defining $\omega \equiv 2eV/\hbar$ as the <strong>Josephson frequency</strong> allows us to write:</p>
+<p class="mathcell">
+$$
+\delta(t) = \delta(0) - \omega t
+$$
+</p>
+<p>Meanwhile, if we solve the differential equations we obtained earlier for $n_1$ and $n_2$, which if we may recall, are given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dot{n}_{1} &amp;= 2T \sqrt{ n_{1}n_{2} } \sin \delta \\
+\dot{n}_{2} &amp;= -2T \sqrt{ n_{1}n_{2} } \sin \delta
+\end{align*}
+$$
+</p>
+<p>The (super-)currents in the two superconductors are proportional to $\dot n_1, \dot n_2$ respectively, and thus we have:</p>
+<p class="mathcell">
+$$
+J = J_{0} \sin \delta, \quad J_{0} \propto T
+$$
+</p>
+<p>Accordingly (where $I_c$ is the supercurrent):</p>
+<p class="mathcell">
+$$
+I = I_{c} \sin \delta
+$$
+</p>
+<p>Note that one can also show that $\delta = \dfrac{2e}{\hbar} \Phi$, where $\Phi$ is the total magnetic flux. Then the potential $V$ may be written in terms of the <strong>flux quantum</strong> $\Phi_0 = \dfrac{h}{2e} = \dfrac{2\pi\hbar}{2e}$ as:</p>
+<p class="mathcell">
+$$
+V = \frac{\hbar}{2e} \dot{\Phi} = \frac{\Phi_{0}}{2\pi} \dot{\Phi}
+$$
+</p>
+<blockquote>
+<p><strong>Additional note:</strong> the value of the flux quantum in physical units is $\Phi_0 \approx \pu{483.6 MHz}/\mu \mathrm{V}$.</p>
+</blockquote>
+<p>Thus, we have:</p>
+<p class="mathcell">
+$$
+\delta(t) = \delta(0) - \frac{2eV}{\hbar}t = \delta(0) - \frac{2e}{\hbar}\left(\frac{\Phi_{0}}{2\pi} \dot{\Phi}\right)t
+$$
+</p>
+<p>We can also compute the energy in a Josephson junction. Since we know that $P = IV$ that  (in this case, $I = I_c$) and energy is just power integrated over time, we have:</p>
+<p class="mathcell">
+$$
+E = \int_{0}^T P(t) dt = \int_{0}^T I_{c}\sin \Phi&#x27; \frac{\Phi_{0}}{2\pi} \frac{d\Phi&#x27;}{dt} dt = \frac{\Phi_{0} I_{c}}{2\pi} \int_{0}^{\Phi&#x27;}\sin(\Phi&#x27;)d\Phi&#x27; = \frac{\Phi_{0}I_{c}}{2\pi}(1 - \cos \Phi)
+$$
+</p>
+<p>Or written in terms of the Josephson energy $E_J = \dfrac{\Phi_{0}I_{c}}{2\pi}$, we have:</p>
+<p class="mathcell">
+$$
+E = E_{J}(1 - \cos \Phi)
+$$
+</p><h4 id="derivation-of-the-dc-josephson-effect">Derivation of the DC Josephson effect</h4>
+<p>Now we just take the limit $V \to 0$ and $\Phi \to 0$ for our previous results. This tells us that:</p>
+<p>$$
+\delta = \theta_{2} - \theta_{1}, \quad J = J_{0} \sin \delta
+$$</p>
+<p>Therefore, there is indeed a supercurrent (density) $J$ between the two superconductors in the DC case, as well as in the AC case.</p>
+<h2 id="the-state-vector-and-its-representations">The state-vector and its representations</h2>
 <p>In quantum mechanics, we have <em>said</em> that particles are probabilistic waves rather than discrete objects. This is actually only a half-truth. The more accurate picture is that quantum particles are represented by <strong>vectors in an complex space</strong>. "What??", you might say. But however strange this may first appear to be, recognizing that particles are represented by vectors is actually crucial, particularly for more advanced quantum physics (e.g. quantum field theory).</p>
 <p>The fundamental vector describing a particle (or more precisely, a quantum system) is called the <strong>state-vector</strong>, and is written in the rather funny-looking notation $|\Psi\rangle$. This state-vector is not particularly easy to visualize, but one can think of it as an "arrow" of sorts that points not in real space, but in a complex space. As a particle evolves through time, it traces something akin to a "path" through this complex space. Unlike the vectors we might be used to, which live in $\mathbb{R}^3$ (t/hat is, Euclidean 3D space), this complex space (formally called a <strong>Hilbert space</strong> $\mathcal{H}$) can be of <em>any</em> number of dimensions!</p>
 <p>Of course, visualizing all those dimensions in a Hilbert space is next to impossible. However, if we consider only two (complex) dimensions, the state-vector might look something like this:</p>
