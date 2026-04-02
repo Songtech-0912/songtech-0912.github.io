@@ -1620,7 +1620,7 @@ The effects of gravitational redshift are very small, but it can be detected usi
 
 > **Note:** Gravitational redshift occurs because light is travelling *out* of a gravity well and losing energy; lower energy light has a longer wavelength by the time it reaches a receiver. But if light is travelling *into* a gravity well, it actually *gains* energy. This is known as **gravitational blueshift** and it results in light that has a *shorter wavelength* at the receiver compared to the emitter.
 
-### Summary for gravitational Doppler shift
+### Summary for gravitational redshift
 
 The following formulas and tables are suitable for both calculating gravitational blueshift (when light travels into a gravity well) and gravitational redshift (when light travels out of a gravity well). In below formulae, assume that location $A$ is **higher up in a gravity well** compared to location $B$. For instance, $A$ could be on a satellite/spacecraft and $B$ could be on the surface of the Earth.
 
