@@ -220,6 +220,10 @@
                                 </li>
                             
                                 <li>
+                                    <a href="#summary-for-gravitational-doppler-shift">Summary for gravitational Doppler shift</a>
+                                </li>
+                            
+                                <li>
                                     <a href="#gravitational-time-dilation">Gravitational time dilation</a>
                                 </li>
                             
@@ -1685,7 +1689,7 @@ $$
 </ul>
 <p>The equivalence principle is the <em>fundamental basis</em> of general relativity and pretty much the entire theory is based on it. It is also very useful in performing approximate calculations without needing to use the full Einstein field equations (more on that later). We'll look at three examples: <strong>gravitational redshift</strong>, <strong>gravitational time dilation</strong>, and <strong>gravitational bending of light</strong>.</p>
 <h3 id="gravitational-redshift">Gravitational redshift</h3>
-<p>When light travels through a gravitational field, we find that it becomes <em>redshifted</em> (increases in wavelength). This is known as <strong>gravitational redshift</strong>, which can be derived directly from the equivalence principle.</p>
+<p>When light travels out of a gravitational field, we find that it becomes <em>redshifted</em> (increases in wavelength). This is known as <strong>gravitational redshift</strong>, which can be derived directly from the equivalence principle.</p>
 <p>Consider a rocket travelling through space with uniform acceleration $\mathbf{a} = a \hat y$. A light pulse is emitted at the bottom of the rocket and travels upwards, reaching the top of the rocket after a certain time interval $\Delta t$. We know that light travels at the constant speed of $c$, which is independent of the reference frame. However, the top of the rocket (like the rest of the rocket) is accelerating upwards, meaning that in the same time interval, the top of the rocket has increased in velocity by $v = a \Delta t$. As we saw earlier, the Doppler shift formula is given by:</p>
 <p class="mathcell">
 $$
@@ -1716,27 +1720,76 @@ $$
 \frac{\lambda_0}{\lambda} = 1 - \frac{gh}{c^2}
 $$
 </p>
-<p>We can also write this equivalently in terms of the dimensionless redshift factor $z$, as follows:</p>
+<p>We can also write this equivalently in terms of the dimensionless <strong>Doppler shift factor</strong> $z$, as follows:</p>
 <p class="mathcell">
 $$
-z \equiv \frac{\lambda}{\lambda_{0}} -1  = \frac{\Delta \lambda}{\lambda} = \frac{gh}{c^2}
+z \equiv \frac{\lambda}{\lambda_{0}} -1  = \frac{\Delta \lambda}{\lambda_{0}} = \frac{gh}{c^2}
 $$
 </p>
-<p>We identify $gh = \Phi$ as the gravitational potential near the surface of the Earth, so we can generalize the above formula to:</p>
+<blockquote>
+<p><strong>Note:</strong> It may also be useful to know that the Doppler shift factor $z$ can be expressed in terms of frequency as $z = \frac{f_0 - f}{f} = -\Delta f/f$, where $\Delta f = f - f_0$.</p>
+</blockquote>
+<p>Where $\Delta \lambda = \lambda - \lambda_{0}$ is the change in the wavelength due to gravitational redshift, assuming a constant gravitational field. We identify $gh = |\Phi|$ as an approximation for the (Newtonian) gravitational potential near the surface of the Earth, so we can generalize the above formula to:</p>
 <p class="mathcell">
 $$
-\frac{\Delta \lambda}{\lambda} = \frac{\Phi}{c^2} = \frac{GM}{c^2 R}
+\frac{\Delta \lambda}{\lambda_{0}} = \frac{|\Phi(R)|}{c^2} = \frac{GM}{c^2 R}, \quad \Phi(r) = -\frac{GM}{r}
 $$
 </p>
-<p>Where $R$ is the distance from the center of the gravitating body (for instance, the Earth) to the light receiver and $M$ is its mass. Alternatively, we have:</p>
+<p>Where $R$ is the distance from the center of the gravitating body (for instance, the Earth) to the light receiver and $M$ is its mass. This formula is valid <em>with respect to a receiver located infinitely-far away</em>, since $\Phi(\infty) = 0$, meaning that gravity (and therefore gravitational redshift) vanishes at infinity. But if we want to compare two observers at known distances $r_1, r_2$ from the center of the gravitating body, where $r_1 &gt; r_2$, then the more precise formula would be:</p>
 <p class="mathcell">
 $$
-f = \left( 1 - \frac{\Phi}{c^2} \right) f_{0} = \left( 1 - \frac{GM}{c^2} \right) f_{0}
+\begin{align*}
+\frac{\Delta \lambda}{\lambda_{0}} &amp;= \frac{\Phi(r_{1}) - \Phi(r_{2})}{c^2} \\
+&amp;= \frac{GM}{c^2}\left( \frac{1}{r_{2}} - \frac{1}{r_{1}} \right), \quad r_{1} &gt; r_{2}
+\end{align*}
+$$
+</p>
+<p>Where we can see that in the limit $r_1 \to \infty$, and with $r_2 = R$ (for an observer on the surface of the Earth), this reduces to $\Delta \lambda/\lambda_0 = GM/(c^2 R)$. Alternatively, expressed in terms of frequency, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{\Delta f}{f} &amp;= \frac{\Phi(r_{1}) - \Phi(r_{2})}{c^2} \\
+&amp;= \frac{GM}{c^2} \left( \frac{1}{r_{2}} - \frac{1}{r_{1}} \right), \quad r_{1} &gt; r_{2}
+\end{align*}
 $$
 </p>
 <p>The effects of gravitational redshift are very small, but it can be detected using sensitive instruments: most famously in the <a href="https://en.wikipedia.org/wiki/Pound%E2%80%93Rebka_experiment">Pound-Rebka experiment</a> in the 1950s. The effects are far more substantial in strong gravitational fields, such as around white dwarfs and neutron stars.</p>
 <blockquote>
 <p><strong>Note:</strong> Gravitational redshift occurs because light is travelling <em>out</em> of a gravity well and losing energy; lower energy light has a longer wavelength by the time it reaches a receiver. But if light is travelling <em>into</em> a gravity well, it actually <em>gains</em> energy. This is known as <strong>gravitational blueshift</strong> and it results in light that has a <em>shorter wavelength</em> at the receiver compared to the emitter.</p>
+</blockquote>
+<h3 id="summary-for-gravitational-doppler-shift">Summary for gravitational Doppler shift</h3>
+<p>The following formulas and tables are suitable for both calculating gravitational blueshift (when light travels into a gravity well) and gravitational redshift (when light travels out of a gravity well). In below formulae, assume that location $A$ is <strong>higher up in a gravity well</strong> compared to location $B$. For instance, $A$ could be on a satellite/spacecraft and $B$ could be on the surface of the Earth.</p>
+<table><thead><tr><th>Variable</th><th>Definition</th></tr></thead><tbody>
+<tr><td>$r_A$</td><td>Position of location $A$ from the center of the gravitating body (e.g. from the center of the Earth). Note that $r_A &gt; r_B$.</td></tr>
+<tr><td>$r_B$</td><td>Position of location $B$ from the center of the gravitating body (e.g. from the center of the Earth). Note that $r_A &gt; r_B$.</td></tr>
+<tr><td>$\lambda_A$</td><td>Wavelength measured at $A$</td></tr>
+<tr><td>$\lambda_{B}$</td><td>Wavelength measured at $B$</td></tr>
+<tr><td>$f_A$</td><td>Frequency measured at $A$</td></tr>
+<tr><td>$f_{B}$</td><td>Frequency measured at $B$</td></tr>
+<tr><td>$\Delta \lambda = \lambda_{B} - \lambda_A$</td><td>Change in wavelength between $A$ and $B$</td></tr>
+<tr><td>$\Delta f = f_{B} - f_A$</td><td>Change in frequency between $A$ and $B$</td></tr>
+<tr><td>$\Phi(\mathbf{r}) = -\frac{GM}{r}$</td><td>Gravitational potential</td></tr>
+<tr><td>$\Delta \Phi = \Phi(r_{A}) - \Phi(r_{B})$</td><td>Difference in gravitational potential between $A$ and $B$; $\Delta \Phi$ is <em>always</em> positive</td></tr>
+<tr><td>$z$</td><td>Doppler shift factor; $z = \Delta \lambda/\lambda_A = -\Delta f/f_{B}$</td></tr>
+</tbody></table>
+<p>A qualitative summary of the effects of gravitational redshift/blueshift is given below:</p>
+<table><thead><tr><th>Scenario</th><th>Effect</th><th>Doppler shift</th><th>Wavelength</th><th>Frequency</th></tr></thead><tbody>
+<tr><td>Light travelling $A \to B$</td><td>Blueshift</td><td>$z &lt; 0$</td><td>$\Delta \lambda &lt; 0$</td><td>$\Delta f &gt; 0$</td></tr>
+<tr><td>Light travelling $B \to A$</td><td>Redshift</td><td>$z &gt; 0$</td><td>$\Delta \lambda &gt; 0$</td><td>$\Delta f &lt; 0$</td></tr>
+</tbody></table>
+<p>Assuming $r_A &gt; r_B$, the formulas for the change in wavelength and change in frequency, respectively, are:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{\Delta \lambda}{\lambda_A} &amp;= \frac{GM}{c^2}\left( \frac{1}{r_B} - \frac{1}{r_A} \right) \\
+\frac{\lambda_B}{\Delta \lambda} &amp;= 1 + \left[ \frac{GM}{c^2}\left( \frac{1}{r_B} - \frac{1}{r_A} \right) \right]^{-1} \\
+\frac{\Delta f}{f_{B}} &amp;= \frac{GM}{c^2} \left( \frac{1}{r_B} - \frac{1}{r_A} \right) \\
+\frac{f_A}{\Delta f} &amp;= \left[ \frac{GM}{c^2}\left( \frac{1}{r_B} - \frac{1}{r_A} \right) \right]^{-1} - 1
+\end{align*}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> The <a href="https://www.desmos.com/calculator/n1znbjqt2c">interactive calculator here</a> can be used to compute actual values of blueshift/redshift in different scenarios.</p>
 </blockquote>
 <h3 id="gravitational-time-dilation">Gravitational time dilation</h3>
 <p>Consider two clocks in a gravitational field, separated by a vertical distance $h$. To make this scenario more concrete, let’s say that one clock is located on a GPS satellite (which carry atomic clocks) and one clock is located on the surface of the Earth. A light ray is sent from the ground and arrives at the satellite at some time later. What time does the satellite’s clock measure?</p>
