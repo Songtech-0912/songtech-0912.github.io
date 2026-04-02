@@ -1584,27 +1584,79 @@ Note that $f/f_0 = \lambda_0/\lambda$ in terms of wavelength, so we can equivale
 \frac{\lambda_0}{\lambda} = 1 - \frac{gh}{c^2}
 {% end %}
 
-We can also write this equivalently in terms of the dimensionless redshift factor $z$, as follows:
+We can also write this equivalently in terms of the dimensionless **Doppler shift factor** $z$, as follows:
 
 {% math() %}
-z \equiv \frac{\lambda}{\lambda_{0}} -1  = \frac{\Delta \lambda}{\lambda} = \frac{gh}{c^2}
+z \equiv \frac{\lambda}{\lambda_{0}} -1  = \frac{\Delta \lambda}{\lambda_{0}} = \frac{gh}{c^2}
 {% end %}
 
-We identify $gh = \Phi$ as the gravitational potential near the surface of the Earth, so we can generalize the above formula to:
+> **Note:** It may also be useful to know that the Doppler shift factor $z$ can be expressed in terms of frequency as $z = \frac{f_0 - f}{f} = -\Delta f/f$, where $\Delta f = f - f_0$.
+
+Where $\Delta \lambda = \lambda - \lambda_{0}$ is the change in the wavelength between when it was emitted (higher up in a gravitational field) and when it was received (lower down in a gravitational field), assuming a constant gravitational field. We identify $gh = |\Phi|$ as an approximation for the (Newtonian) gravitational potential near the surface of the Earth, so we can generalize the above formula to:
 
 {% math() %}
-\frac{\Delta \lambda}{\lambda} = \frac{\Phi}{c^2} = \frac{GM}{c^2 R}
+\frac{\Delta \lambda}{\lambda_{0}} = \frac{|\Phi(R)|}{c^2} = \frac{GM}{c^2 R}, \quad \Phi(r) = -\frac{GM}{r}
 {% end %}
 
-Where $R$ is the distance from the center of the gravitating body (for instance, the Earth) to the light receiver and $M$ is its mass. Alternatively, we have:
+Where $R$ is the distance from the center of the gravitating body (for instance, the Earth) to the light receiver and $M$ is its mass. This formula is valid *with respect to an observer infinitely-far away*, since $\Phi(\infty) = 0$. But if we want to compare two observers at known distances $r_1, r_2$ from the center of the gravitating body, where $r_1 > r_2$, then the more precise formula would be:
 
 {% math() %}
-f = \left( 1 - \frac{\Phi}{c^2} \right) f_{0} = \left( 1 - \frac{GM}{c^2} \right) f_{0}
+\begin{align*}
+\frac{\Delta \lambda}{\lambda_{0}} &= \frac{\Phi(r_{1}) - \Phi(r_{2})}{c^2} \\
+&= \frac{GM}{c^2}\left( \frac{1}{r_{2}} - \frac{1}{r_{1}} \right), \quad r_{1} > r_{2}
+\end{align*}
+{% end %}
+
+Where we can see that in the limit $r_1 \to \infty$, and with $r_2 = R$ (for an observer on the surface of the Earth), this reduces to $\Delta \lambda/\lambda_0 = GM/(c^2 R)$. Alternatively, expressed in terms of frequency, we have:
+
+{% math() %}
+\begin{align*}
+\frac{\Delta f}{f} &= \frac{\Phi(r_{1}) - \Phi(r_{2})}{c^2} \\
+&= \frac{GM}{c^2} \left( \frac{1}{r_{2}} - \frac{1}{r_{1}} \right), \quad r_{1} > r_{2}
+\end{align*}
 {% end %}
 
 The effects of gravitational redshift are very small, but it can be detected using sensitive instruments: most famously in the [Pound-Rebka experiment](https://en.wikipedia.org/wiki/Pound%E2%80%93Rebka_experiment) in the 1950s. The effects are far more substantial in strong gravitational fields, such as around white dwarfs and neutron stars.
 
 > **Note:** Gravitational redshift occurs because light is travelling *out* of a gravity well and losing energy; lower energy light has a longer wavelength by the time it reaches a receiver. But if light is travelling *into* a gravity well, it actually *gains* energy. This is known as **gravitational blueshift** and it results in light that has a *shorter wavelength* at the receiver compared to the emitter.
+
+### Summary for gravitational Doppler shift
+
+The following formulas and tables are suitable for both calculating gravitational blueshift (when light travels out of a gravity well) and gravitational redshift (when light travels into a gravity well). In below formulae, assume that location $A$ is **higher up in a gravity well** compared to location $B$. For instance, $A$ could be on a satellite/spacecraft and $B$ could be on the surface of the Earth.
+
+| Variable                                   | Definition                                                                                                                   |
+| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| $r_A$                                      | Position of location $A$ from the center of the gravitating body (e.g. from the center of the Earth). Note that $r_A > r_B$. |
+| $r_B$                                      | Position of location $B$ from the center of the gravitating body (e.g. from the center of the Earth). Note that $r_A > r_B$. |
+| $\lambda_A$                                | Wavelength measured at $A$                                                                                                   |
+| $\lambda_{B}$                              | Wavelength measured at $B$                                                                                                   |
+| $f_A$                                      | Frequency measured at $A$                                                                                                    |
+| $f_{B}$                                    | Frequency measured at $B$                                                                                                    |
+| $\Delta \lambda = \lambda_{B} - \lambda_A$ | Change in wavelength between $A$ and $B$                                                                                     |
+| $\Delta f = f_{B} - f_A$                   | Change in frequency between $A$ and $B$                                                                                      |
+| $\Phi(\mathbf{r}) = -\frac{GM}{r}$         | Gravitational potential                                                                                                      |
+| $\Delta \Phi = \Phi(r_{A}) - \Phi(r_{B})$  | Difference in gravitational potential between $A$ and $B$; $\Delta \Phi$ is *always* positive                                |
+| $z$                                        | Doppler shift factor; $z = \Delta \lambda/\lambda_A = -\Delta f/f_{B}$                                                       |
+
+A qualitative summary of the effects of gravitational redshift/blueshift is given below:
+
+| Scenario                   | Effect    | Doppler shift | Wavelength           | Frequency      |
+| -------------------------- | --------- | ------------- | -------------------- | -------------- |
+| Light travelling $A \to B$ | Redshift  | $z > 0$       | $\Delta \lambda > 0$ | $\Delta f < 0$ |
+| Light travelling $B \to A$ | Blueshift | $z < 0$       | $\Delta \lambda < 0$ | $\Delta f > 0$ |
+
+Assuming $r_A > r_B$, the formulas for the change in wavelength and change in frequency, respectively, are:
+
+{% math() %}
+\begin{align*}
+\frac{\Delta \lambda}{\lambda_A} &= \frac{GM}{c^2}\left( \frac{1}{r_B} - \frac{1}{r_A} \right) \\
+\frac{\lambda_B}{\Delta \lambda} &= 1 + \left[ \frac{GM}{c^2}\left( \frac{1}{r_B} - \frac{1}{r_A} \right) \right]^{-1} \\
+\frac{\Delta f}{f_{B}} &= \frac{GM}{c^2} \left( \frac{1}{r_B} - \frac{1}{r_A} \right) \\
+\frac{f_A}{\Delta f} &= \left[ \frac{GM}{c^2}\left( \frac{1}{r_B} - \frac{1}{r_A} \right) \right]^{-1} - 1
+\end{align*}
+{% end %}
+
+> **Note:** The [interactive calculator here](https://www.desmos.com/calculator/n1znbjqt2c) can be used to compute actual values of blueshift/redshift in different scenarios.
 
 ### Gravitational time dilation
 
