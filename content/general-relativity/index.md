@@ -1552,7 +1552,7 @@ The equivalence principle is the *fundamental basis* of general relativity and p
 
 ### Gravitational redshift
 
-When light travels through a gravitational field, we find that it becomes *redshifted* (increases in wavelength). This is known as **gravitational redshift**, which can be derived directly from the equivalence principle.
+When light travels out of a gravitational field, we find that it becomes *redshifted* (increases in wavelength). This is known as **gravitational redshift**, which can be derived directly from the equivalence principle.
 
 Consider a rocket travelling through space with uniform acceleration $\mathbf{a} = a \hat y$. A light pulse is emitted at the bottom of the rocket and travels upwards, reaching the top of the rocket after a certain time interval $\Delta t$. We know that light travels at the constant speed of $c$, which is independent of the reference frame. However, the top of the rocket (like the rest of the rocket) is accelerating upwards, meaning that in the same time interval, the top of the rocket has increased in velocity by $v = a \Delta t$. As we saw earlier, the Doppler shift formula is given by:
 
@@ -1592,13 +1592,13 @@ z \equiv \frac{\lambda}{\lambda_{0}} -1  = \frac{\Delta \lambda}{\lambda_{0}} = 
 
 > **Note:** It may also be useful to know that the Doppler shift factor $z$ can be expressed in terms of frequency as $z = \frac{f_0 - f}{f} = -\Delta f/f$, where $\Delta f = f - f_0$.
 
-Where $\Delta \lambda = \lambda - \lambda_{0}$ is the change in the wavelength between when it was emitted (higher up in a gravitational field) and when it was received (lower down in a gravitational field), assuming a constant gravitational field. We identify $gh = |\Phi|$ as an approximation for the (Newtonian) gravitational potential near the surface of the Earth, so we can generalize the above formula to:
+Where $\Delta \lambda = \lambda - \lambda_{0}$ is the change in the wavelength due to gravitational redshift, assuming a constant gravitational field. We identify $gh = |\Phi|$ as an approximation for the (Newtonian) gravitational potential near the surface of the Earth, so we can generalize the above formula to:
 
 {% math() %}
 \frac{\Delta \lambda}{\lambda_{0}} = \frac{|\Phi(R)|}{c^2} = \frac{GM}{c^2 R}, \quad \Phi(r) = -\frac{GM}{r}
 {% end %}
 
-Where $R$ is the distance from the center of the gravitating body (for instance, the Earth) to the light receiver and $M$ is its mass. This formula is valid *with respect to an observer infinitely-far away*, since $\Phi(\infty) = 0$. But if we want to compare two observers at known distances $r_1, r_2$ from the center of the gravitating body, where $r_1 > r_2$, then the more precise formula would be:
+Where $R$ is the distance from the center of the gravitating body (for instance, the Earth) to the light receiver and $M$ is its mass. This formula is valid *with respect to a receiver located infinitely-far away*, since $\Phi(\infty) = 0$, meaning that gravity (and therefore gravitational redshift) vanishes at infinity. But if we want to compare two observers at known distances $r_1, r_2$ from the center of the gravitating body, where $r_1 > r_2$, then the more precise formula would be:
 
 {% math() %}
 \begin{align*}
@@ -1622,7 +1622,7 @@ The effects of gravitational redshift are very small, but it can be detected usi
 
 ### Summary for gravitational Doppler shift
 
-The following formulas and tables are suitable for both calculating gravitational blueshift (when light travels out of a gravity well) and gravitational redshift (when light travels into a gravity well). In below formulae, assume that location $A$ is **higher up in a gravity well** compared to location $B$. For instance, $A$ could be on a satellite/spacecraft and $B$ could be on the surface of the Earth.
+The following formulas and tables are suitable for both calculating gravitational blueshift (when light travels into a gravity well) and gravitational redshift (when light travels out of a gravity well). In below formulae, assume that location $A$ is **higher up in a gravity well** compared to location $B$. For instance, $A$ could be on a satellite/spacecraft and $B$ could be on the surface of the Earth.
 
 | Variable                                   | Definition                                                                                                                   |
 | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -1642,8 +1642,8 @@ A qualitative summary of the effects of gravitational redshift/blueshift is give
 
 | Scenario                   | Effect    | Doppler shift | Wavelength           | Frequency      |
 | -------------------------- | --------- | ------------- | -------------------- | -------------- |
-| Light travelling $A \to B$ | Redshift  | $z > 0$       | $\Delta \lambda > 0$ | $\Delta f < 0$ |
-| Light travelling $B \to A$ | Blueshift | $z < 0$       | $\Delta \lambda < 0$ | $\Delta f > 0$ |
+| Light travelling $A \to B$ | Blueshift | $z < 0$       | $\Delta \lambda < 0$ | $\Delta f > 0$ |
+| Light travelling $B \to A$ | Redshift  | $z > 0$       | $\Delta \lambda > 0$ | $\Delta f < 0$ |
 
 Assuming $r_A > r_B$, the formulas for the change in wavelength and change in frequency, respectively, are:
 
