@@ -112,6 +112,46 @@
                     
                 </li>
             
+                <li>
+                    <a href="#falling-into-a-schwarzschild-black-hole">Falling into a Schwarzschild black hole</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#passing-the-event-horizon">Passing the event horizon</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#eddington-finkelstein-coordinates">Eddington-Finkelstein coordinates</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#interlude-embedding-diagrams">Interlude: embedding diagrams</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#kruskal-szekeres-coordinates-and-maximal-extension">Kruskal-Szekeres coordinates and maximal extension</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#extra-christoffel-symbols-of-the-schwarzschild-metric">Extra: Christoffel symbols of the Schwarzschild metric</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#extra-the-weak-field-metric">Extra: the weak-field metric</a>
+                    
+                </li>
+            
             </ul>
         </div>
         </details>
@@ -1236,6 +1276,410 @@ $$
 <p>This result has units of <strong>radians per revolution</strong>, and is directly proportional to the number of orbits completed by the test particle.</p>
 <h4 id="perihelion-precession-of-mercury">Perihelion precession of Mercury</h4>
 <p>Perihelion precession was infamously observed in the case of the planet Mercury, which has a semi-major axis of $A = 5.791 \times 10^{10} \text{ m}$, an orbital period $T$ of 115.88 days, and an orbital eccentricity of $e = 0.20564$. Since Mercury orbits the Sun, whose mass is $M \approx 2 \times 10^{30} \text{ kg}$, its orbit slowly precesses by $\delta \phi = 6.61 \times 10^{-7}$ arcseconds per orbit. This precession is all but unnoticeable over short times, but over a period of a century, this adds up to an angular precession of around 43 arcseconds - almost <em>exactly</em> the amount found by astronomical observations. The prediction of the perihelion precession of Mercury to such an astounding degree of accuracy was one of the first triumphs of the theory of general relativity!</p>
+<h2 id="falling-into-a-schwarzschild-black-hole">Falling into a Schwarzschild black hole</h2>
+<p>The Schwarzschild geometry we have seen so far is a very general metric, since it is applicable to <em>any</em> spherically-symmetric gravitating body, which can describe the spacetime outside a non-rotating (or slowly-rotating) moon, planet, or star. In practice, “slowly-rotating” means “rotating at non-relativistic ”. For instance, it is reasonably applicable (to a good approximation) to describe weak relativistic effects near the Earth or the Sun, despite both being rotating bodies. To obtain a rough approximation, we can use the formula $J = I\omega$ for the angular momentum of a spinning observer, and $I = \frac{2}{5} MR^2$ is the moment of inertia of a solid sphere of radius $R$. Then the characteristic length scale $a$ is given by:</p>
+<p class="mathcell">
+$$
+a = \frac{J}{Mc} = \frac{I\omega}{Mc} = \frac{2}{5} \frac{MR^2 \omega }{Mc} = \frac{2R^2 \omega}{c} = \frac{4\pi R^2 }{cT}
+$$
+</p>
+<p>Which comes from the fact that $\omega = 2\pi/T$. For most observers (including the Sun and Earth), we find that $r_s/a \ll 1$, in which case the effects of rotation on the spacetime geometry can be ignored. This is why we can describe stars and planets well with the Schwarzschild metric.</p>
+<p>But the most famous example of Schwarzschild spacetime is the spacetime outside a black hole. Such idealized black holes are known as <strong>Schwarzschild black holes</strong>. Schwarzschild black holes form whether an observer is sufficiently compact that all of its mass is concentrated within its Schwarzschild radius $r_s$. This generally occurs whether <em>a lot</em> matter is compressed into a tiny amount of space, for instance, during the explosive death of a massive star. For such a black hole, the location $r = r_s$ is then known as the <strong>event horizon</strong> of the black hole, because (for reasons we’ll soon see) not even light can escape from inside the event horizon.</p>
+<p>The peculiar features of Schwarzschild black holes can be understood by considering what happens when you fall into a black hole. Consider an observer at $r = \infty$; for instance, this can represent a spaceship in empty space, far away from a black hole. The observer is stationary (in space) and watches as an observer is released and falls towards the black hole. The falling observer is initially stationary, so it has $\mathcal{E} = j = 0$. This gives us:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{1}{2} m\left( \frac{dr}{d\tau} \right)^2 &amp;= \cancel{ \mathcal{E} }^0 - \left[  -\frac{GMm}{r} + \cancel{ \frac{m j^2}{2r^2} } - \cancel{ \frac{GMm j^2}{c^2r^3} } \right] \\
+&amp;= \frac{GMm}{r}
+\end{align*}
+$$
+</p>
+<p>Multiplying by $2/m$ on all sides, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\left( \frac{dr}{d\tau} \right)^2 = \frac{2GM}{r} = \frac{c^2 r_{s}}{r}
+\end{align*}
+$$
+</p>
+<p>From which we obtain:</p>
+<p class="mathcell">
+$$
+d\tau = \pm \frac{1}{c} \sqrt{ \frac{r}{r_{s}} } dr
+$$
+</p>
+<p>The faraway observer now sees the observer fall towards the black hole, and at some time $\tau_0$, the observer is located at $r = r_0$. We can obtain the proper time of a clock in the proper frame of the observer as it moves closer and closer to the black hole by integrating $d\tau$, giving us:</p>
+<p class="mathcell">
+$$
+\begin{align*} \\
+\int_{\tau_{0}}^\tau d\tau&#x27; &amp;= \pm \int_{r_{0}}^r \frac{1}{c} \sqrt{ \frac{r&#x27;}{r_{s}} } dr&#x27; \\
+\tau(r) - \tau_{0} &amp;= - \frac{2r_{s}}{3c}\left[ \left( \frac{r&#x27;}{r_{s}} \right)^{3&#x2F;2} \right]_{r&#x27; = r_{0}}^{r&#x27; = r} \\
+\tau(r) &amp;= \tau_{0} - \frac{2r_{s}}{3c}\left[ \left( \frac{r}{r_{s}} \right)^{3&#x2F;2} - \left( \frac{r_{0}}{r_{s}} \right)^{3&#x2F;2} \right]
+\end{align*}
+$$
+</p>
+<p>What about the time measured by the distant observer on the spaceship? Well, let us recall the equation of motion for $\dot t$, which is given by:</p>
+<p class="mathcell">
+$$
+\frac{dt}{d\tau} = \frac{\kappa}{c}\left(1 - \frac{r_s}{r}\right)^{-1}
+$$
+</p>
+<p>Using the chain rule, we have:</p>
+<p class="mathcell">
+$$
+\frac{dt}{dr} = \frac{dt}{d\tau} \frac{d\tau}{dr}
+$$
+</p>
+<p>We know that $d\tau = \pm \frac{1}{c} \sqrt{ \frac{r}{r_{s}} } dr$ and thus $\frac{d\tau}{dr} = \pm \frac{1}{c} \sqrt{ \frac{r}{r_{s}} }$, giving us:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{dt}{dr} = \pm \frac{1}{c} \sqrt{ \frac{r}{r_{s}} } \frac{dt}{d\tau} = \pm \frac{1}{c} \sqrt{ \frac{r}{r_{s}} }\frac{\kappa}{c}\left(1 - \frac{r_s}{r}\right)^{-1}
+\end{align*}
+$$
+</p>
+<p>But for the faraway observer at $r = \infty$, we find that $\kappa = c$, since for them, $dt = d\tau$, and thus we have:</p>
+<p class="mathcell">
+$$
+\lim_{ r \to \infty } \kappa = \lim_{ r \to \infty } \left( 1 - \cancel{ \frac{r_{s}}{r} }^0 \right) c \underbrace{ \frac{dt}{d\tau} }_{ 1} = c
+$$
+</p>
+<p>Substituting in $\kappa = c$ and rearranging the equation for $\frac{dt}{dr}$, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{dt}{dr} &amp;= \pm \frac{1}{c} \sqrt{ \frac{r}{r_{s}} }\frac{\kappa}{c}\left(1 - \frac{r_s}{r}\right)^{-1} \\
+&amp;= \pm \frac{1}{c} \sqrt{ \frac{r}{r_{s}} }\frac{c}{c}\left(1 - \frac{r_s}{r}\right)^{-1} \\
+\Rightarrow dt &amp;= -\frac{1}{c} \sqrt{ \frac{r}{r_{s}} } \left( 1 - \frac{r_{s}}{r} \right)^{-1} dr
+\end{align*}
+$$
+</p>
+<p>Where in the last line, we choose the <em>negative root</em> as the distance observer is observing the falling observer moving <em>towards</em> the black hole, that is, for $dr &lt; 0$ (since $r$ is decreasing). Notice that as $r \to r_s$, we get an infinite time interval! Thus, an observer far outside a black hole would actually <em>never</em> see anything falling into the black hole, but rather, “frozen” in time at <em>exactly</em> the point they pass the black hole’s surface. Of course, this frozen image of infalling observers would get redshifted over time until it would be so redshifted that it would be basically invisible, but this does mean that black holes are not <em>truly</em> black.</p>
+<h3 id="passing-the-event-horizon">Passing the event horizon</h3>
+<p>Now let’s return to the falling observer. Let us consider the falling observer precisely calibrates their geodesic to fall with constant $\theta$ and $\phi$, such that $d\theta = d\phi = 0$. We may then write the Schwarzschild metric as:</p>
+<p class="mathcell">
+$$
+ds^2 = -\left( 1 - \frac{r_{s}}{r} \right) c^2 dt^2 + \left( 1 - \frac{r_{s}}{r} \right)^{-1} dr^2
+$$
+</p>
+<p>However, <em>after</em> the falling observer has passed through the event horizon, assuming they have survived so far, something very strange and mysterious happens. The metric’s $g_{00}$ and $g_{11}$ components <em>switch sign</em> inside the black hole, such that the metric becomes:</p>
+<p class="mathcell">
+$$
+ds^2 = - \left( 1 - \frac{r_{s}}{r} \right)^{-1} dr^2 + \left( 1 - \frac{r_{s}}{r} \right) c^2 dt^2
+$$
+</p>
+<p>This mysterious result tells us that $dr^2$ is now negative while $dt^2$ is now positive. Thus, the spatial coordinate $r$ now has the same sign as the original time coordinate $t$, and similarly the time coordinate $t$ now has the same sign as the original spatial coordinate $r$. Physically, time and space swap roles; having travelled through the event horizon, the observer is now <em>travelling in time</em>.</p>
+<h3 id="eddington-finkelstein-coordinates">Eddington-Finkelstein coordinates</h3>
+<p>Up to now, we have been using the Schwarzschild metric using spherical coordinates (plus a time coordinate). This choice is conventional and is the form in which the metric is most commonly presented. But it is also possible to choose an <em>alternate</em> set of coordinates, because general relativity tells us that the laws of physics do not depend on the coordinates we use. A popular alternative choice to describe the Schwarzschild geometry are <strong>Eddington-Finkelstein coordinates</strong>. The $ct$ coordinate is replaced with the new coordinate $p$ via the coordinate transformation $p = c\overline{t} + r$, where $\overline t$ is defined such that:</p>
+<p class="mathcell">
+$$
+c\overline t = ct + r_{s} \ln|r - r_{s}| \quad \Rightarrow \quad 
+cd\overline t = cdt + \frac{r_{s}}{r - r_{s}} dr
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> These are formally known as the <em>advanced</em> (ingoing) Eddington coordinates. It is also possible to define the <em>retarded</em> (outgoing) Eddington coordinates; we will look at those later.</p>
+</blockquote>
+<p>If we rearrange and expand the differentials, we obtain:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+cd\overline{t} &amp;= dp - dr \\
+cdr d\overline{t} &amp;= dr(d p - dr) \\
+&amp;= dr dp - dr^2 \\
+c^2 d\overline{t}^2 &amp;= dp^2 - 2 dp dr + dr^2 \\
+\end{align*}
+$$
+</p>
+<p>Also, since $\left( 1 - \frac{r_s}{r} \right) = \frac{r - r_s}{r}$ and $\left( 1 - \frac{r_s}{r} \right)^{-1} = \frac{r}{r - r_s}$,  the Schwarzschild metric may be rewritten in the following alternative form:</p>
+<p class="mathcell">
+$$
+ds^2 = -\left( \frac{r-r_s}{r} \right)c^2 dt^2 + \left( \frac{r}{r - r_s} \right) dr^2 + r^2 d\Omega^2
+$$
+</p>
+<p>If we substitute our coordinate transformations into the Schwarzschild metric, we are able to obtain the following line element in the transformed coordinates:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+ds^2 &amp;= -\left( \frac{r-r_s}{r} \right)\left[c^2 d\overline{t}^2 - 2c\left( \frac{r_s}{r-r*} \right) dr d\overline{t} + \left( \frac{r_s}{r - r_s} \right)^2 dr^2\right] \\
+&amp;\qquad \qquad+ \left( \frac{r}{r - r_s} \right) dr^2 + r^2 d\Omega^2 \\
+&amp;= -\left( \frac{r - r_s}{r} \right)c^2 d\overline{t}^2 - \left( \frac{r - r_s}{r}  \right) \left( \frac{r_s}{r  - r_s} \right)^2 dr^2 + 2c \left( \frac{r - r_s}{r}  \right)\left( \frac{r_s}{r - r_s} \right)dr d\overline{t} \\
+&amp;= -\left( 1 - \frac{r_s}{r} \right)c^2 d\overline{t}^2 + 2c\left( \frac{r_s}{r} \right) dr d\overline{t} + \left( 1 + \frac{r_s}{r} \right)dr^2 + r^2 d\Omega^2
+\end{align*}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> In this calculation, it may be useful to use the identity that $\frac{r}{r - r_s} - \frac{r_s}{r} \left( \frac{r_s}{r - r_s} \right) = 1 + \frac{r_s}{r}$.</p>
+</blockquote>
+<p>Finally, substituting in $c^2 d\overline{t}^2 = dp^2 - 2 dp dr + dr^2$ and $c dr d\overline{t} = dr dp - dr^2$ into our transformed line element, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+ds^2 &amp;= -\left( 1 - \frac{r_s}{r} \right)c^2 d\overline{t}^2 + 2c\left( \frac{r_s}{r} \right) dr d\overline{t} + \left( 1 + \frac{r_s}{r} \right)dr^2 + r^2 d\Omega^2 \\
+&amp;= -\left( 1 - \frac{r_s}{r} \right)(dp^2 - 2 dp dr + dr^2) + 2\left( \frac{r_s}{r} \right) (dr dp - dr^2) + \left( 1 + \frac{r_s}{r} \right)dr^2 + r^2 d\Omega^2 \\
+&amp;= -\left( 1 - \frac{r_s}{r} \right)dp^2 + 2 dr dp + \text{(terms cancelling out)} + r^2 d \Omega^2
+\end{align*}
+$$
+</p>
+<p>This gives us the Schwarzschild metric in <strong>Eddington-Finkelstein coordinates</strong> $(p, r, \theta, \phi)$:</p>
+<p class="mathcell">
+$$
+ds^2 = -\left( 1 - \frac{r_s}{r} \right) dp^2 + 2 dr dp + r^2 d\Omega^2
+$$
+</p>
+<p>Notice that the metric now has a component $g_{rp}$, and thus the metric is no longer diagonal. Indeed, the metric tensor now takes the form:</p>
+<p class="mathcell">
+$$
+g_{\mu \nu} = \begin{pmatrix}
+-\left( 1 - \frac{r_{s}}{r} \right) &amp; 1 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; r^2 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; r^2 \sin^2 \theta
+\end{pmatrix}
+$$
+</p>
+<p>Notice that unlike the original form for the Schwarzschild metric in spherical coordinates, the singularity of the metric at $r = r_s$ has been removed; thus we say that it is a <strong>coordinate singularity</strong> because there is nothing <em>physically preventing</em> any observer from being positioned at $r = r_s$; the singularity is just an artifact of our coordinate system. However, the singularity of the (inverse) metric at $r = 0$ remains, because this is a <strong>physical singularity</strong>. A physical singularity cannot be removed via a coordinate transformation; it is a place where physics as we know it (or at least, general relativity) breaks down.</p>
+<p>All this tells us a colorful, if dark, story of an observer that falls into a black hole. As the observer travels past the event horizon at $r = r_s$, they will keep travelling inwards. The Universe outside the black hole looks normal to them, because there is nothing to stop light from <em>entering</em> the black hole past the event horizon; the only restriction is that light cannot <em>leave</em>, meaning that the observer will fade from view to anyone outside the black hole. Since the Schwarzschild metric switches sign, the falling observer is now travelling <em>in time</em>, rather than space. They will then inevitably impact the event horizon, since it is an event in their future.</p>
+<blockquote>
+<p><strong>Note:</strong> The story is a bit different with rotating black holes, which are <em>not</em> described by the Schwarzschild metric. In rotating black holes, we find that instead of a point singularity at $r = 0$, there is a <em>ring singularity</em>, and it may (theoretically) be possible to fly through the middle of such a singularity and survive.</p>
+</blockquote>
+<p>It is useful to note that there also exist <strong>retarded Einstein-Finkelstein coordinates</strong>. Here, the new coordinate $q$ replaces $ct$, where $q = c\tilde{t} -r$, and:</p>
+<p class="mathcell">
+$$
+c\tilde{t} = ct - r_{s} \ln |r - r_{s}|, \quad \Rightarrow \quad cd\tilde{t} = cdt - \frac{r_{s}}{r - r_{s}} dr
+$$
+</p>
+<p>The metric in retarded Einstein-Finkelstein coordinates $(q, r, \theta, \phi)$ is then given by:</p>
+<p class="mathcell">
+$$
+ds^2 = -\left( 1 - \frac{r_{s}}{r} \right) dq^2 + 2dq dr + r^2 d\Omega^2
+$$
+</p>
+<p>These coordinates describe a <strong>white hole</strong>, which, unlike a black hole, prevents anything from <em>entering</em> inside. We have no observational evidence of while holes, but let us simply entertain the thought for a moment. If white holes did indeed exist, then the requirement of a smooth solution over tells us that there would be something connecting a black hole and a white hole: a <strong>Schwarzschild wormhole</strong>.</p>
+<h2 id="interlude-embedding-diagrams">Interlude: embedding diagrams</h2>
+<p>We can visualize a Schwarzschild wormhole by first examining a popular diagram of the Schwarzschild metric for $r &gt; r_s$. This can be done if we ignore the $\theta$ and $t$ coordinates for now (setting $\theta = \pi/2$ and $t$ to an arbitrary constant), so that we are left with:</p>
+<p class="mathcell">
+$$
+ds^2 = \left( 1 - \frac{r_{s}}{r} \right)^{-1} dr^2 + r^2 d\phi^2
+$$
+</p>
+<p>This describes a 2D “slice” of the spacetime (where $d\theta = dt = 0$), which we can understand as a two-dimensional space with coordinates $(r, \phi)$. Now, if we treat this as a 2D surface embedded in a higher-dimensional 3D space, we can find an extrinsic description of the space. The metric of flat 3D space in cylindrical coordinates $(\rho, \phi, z)$ is given by:</p>
+<p class="mathcell">
+$$
+ds^2 = d\rho^2 + dz^2 + \rho^2 d\phi^2
+$$
+</p>
+<p>(The reason we chose cylindrical coordinates is because we already use the coordinates $(r, \phi)$ to describe our 2D surface, so we just need one extra dimension to project the surface into). Now, if we equate the value of $ds^2$ from the two metrics, we obtain:</p>
+<p class="mathcell">
+$$
+ds^2 = d\rho^2 + dz^2 + \rho^2 d\phi^2 =  \left( 1 - \frac{r_{s}}{r} \right)^{-1} dr^2 + r^2 d\phi^2
+$$
+</p>
+<p>By term-by-term comparison, this equality is satisfied under the conditions that:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\rho^2 d\phi^2 = r^2 d \phi^2, \\
+d\rho^2 + dz^2 = \left( 1 - \frac{r_{s}}{r} \right)^{-1} dr^2
+\end{gather*}
+$$
+</p>
+<p>From the top equation, we may conclude that $\rho = r$, so $d\rho = dr$. If we substitute this into the bottom equation, we have:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+dr^2 + dz^2 = \left( 1 - \frac{r_{s}}{r} \right)^{-1} dr^2 \\
+dz^2 = \left( 1 - \frac{r_{s}}{r} \right)^{-1} dr^2 - dr^2 \\
+dz = dr\sqrt{ \left( 1 - \frac{r_{s}}{r} \right)^{-1} - 1 } \\
+= dr \left( \frac{r}{r_{s}} - 1 \right)^{-1&#x2F;2} 
+\end{gather*}
+$$
+</p>
+<p>Therefore, upon integration, we may find $z(r)$, which describes the curvature of the 2D slice of the Schwarzschild metric <em>as if</em> it was a 2D surface that was embedded in a third, higher dimension. The solution for $z = z(r, \phi)$ is given by:</p>
+<p class="mathcell">
+$$
+z = \int \left( \frac{r}{r_{s}} - 1 \right)^{-1&#x2F;2} dr = 2 r_{s} \sqrt{ \frac{r}{r_{s}} - 1 } + \text{const.}
+$$
+</p>
+<p>This corresponds to a surface known as <a href="https://en.wikipedia.org/wiki/Schwarzschild_metric#Flamm&#x27;s_paraboloid">Flamm’s paraboloid</a>, shown in the diagram below (also called an <strong>embedding diagram</strong>):</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flamm.svg" alt="An embedding diagram of the exterior Schwarzschild metric" /></p>
+<p>_Source: <a href="https://commons.wikimedia.org/wiki/File:Flamm.svg">Wikipedia</a>. Note that the paraboloid is plotted for values of $r &gt; r_s$ only.</p>
+<p>It is important to recognize that Flamm’s paraboloid does <em>not</em> describe particles “sliding” down into the “hole” in its center; it is a visualization of <em>spacetime curvature</em>. We can tell that for $r \to \infty$ (towards the outer boundary of the paraboloid), the curvature goes to zero. This tells us that the spacetime curvature vanishes far away from the black hole, which we know is true; Schwarzschild spacetime reduces to Minkowski spacetime as $r \to \infty$. But as we get closer to the event horizon, the curvature becomes non-trivial, which we can both see on Flamm’s paraboloid and intuitively know from the Schwarzschild metric.</p>
+<p>Now, a white hole would have the same embedding diagram, just flipped upside down, since it would be expelling matter <em>outwards</em> rather than <em>inwards</em>. If we connected the black and white holes together in a smooth fashion, we obtain the <strong>Schwarzschild wormhole</strong>:</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Lorentzian_Wormhole.svg" alt="A visualization of a Schwarzschild wormhole" /></p>
+<p>The embedding diagram is obtained by simply extending Flamm’s paraboloid $z = 2 r_{s} \sqrt{ \frac{r}{r_{s}} - 1 }$ (which we’ll call $z^+$) to also accommodate the symmetric negative case $z^- = -2 r_{s} \sqrt{ \frac{r}{r_{s}} - 1 }$. Then, the surface of revolution is given by:</p>
+<p class="mathcell">
+$$
+z(r, \phi) = \begin{cases}
+z^+, &amp; r \in U_{1} \\
+z^- &amp; r \in U_{2}
+\end{cases}
+$$
+</p>
+<p>Where $U_1$ are the set of coordinates describing the universe in which the “mouth” of the black hole is located, while $U_2$ are the set of coordinates in another universe in which the “mouth” of the white hole is located.</p>
+<blockquote>
+<p><strong>Note:</strong> An interactive visualization is available <a href="https://www.desmos.com/3d/j2pnyuyl4u">on this page</a> and might be useful for getting an intuitive understanding of these wormholes, although once again we will emphasize that the $z$-curvature is not in physical space, but rather meant to represent <em>curvature</em>.</p>
+</blockquote>
+<p>Is it theoretically possible to travel through a Schwarzschild black hole? Sadly, no. First of all, it would be a one-way trip, since it would require passing through two event horizons; one for the black hole, and another for the white hole. But second, a traveler must travel faster than the speed of light to pass through while avoiding the singularity. Thus, a Schwarzschild black hole, if one physically exists, would be an <strong>un-traversable wormhole</strong> (much to the chagrin of science fiction fans).</p>
+<h3 id="kruskal-szekeres-coordinates-and-maximal-extension">Kruskal-Szekeres coordinates and maximal extension</h3>
+<p>When using Eddington-Finkelstein coordinates, we mostly neglected the retarded (outgoing) coordinates and only considered the advanced (ingoing) coordinates. We previously said that the outgoing coordinates (representing a white hole) were probably unphysical, since we have never observed a white hole. But that doesn’t mean they have no use whatsoever. If we go and expand $dp, dq$ in terms of $dt, dr$, recalling that $p = c\overline{t} + r$ and $q = c\tilde t - r$, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+dp &amp;= cd\overline t + dr \\
+&amp;= cdt + \frac{r}{r - r_s}dr \\
+dq &amp;= c d\tilde{t} - dr \\
+&amp;= cdt - \frac{r}{r - r_s}dr
+\end{align*}
+$$
+</p>
+<p>Now, if we evaluate the product of the two differentials, we find that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+dpdq &amp;= \left( c dt + \frac{r}{r - r_s} \right)\left( c dt - \frac{r}{r - r_s} \right) \\
+&amp;= c^2 dt^2 - \left( \frac{r}{r-r_s} \right)^2 dr^2 \\
+&amp;= c^2 dt^2 - \left( 1 - \frac{r_s}{r} \right)^{-2} dr^2 \\
+&amp;= -\left( 1 - \frac{r_{s}}{r} \right)^{-1} d\mathcal{S}^2
+\end{align*}
+$$
+</p>
+<p>Where $d\mathcal{S}^2$ is the Schwarzschild metric but with $d\Omega = 0$, meaning that:</p>
+<p class="mathcell">
+$$
+d\mathcal{S}^2 = -\left( 1 - \frac{r_{s}}{r} \right)c^2 dt^2 + \left( 1 - \frac{r_{s}}r{} \right)^{-1} dr^2 = ds^2 - r^2 d \Omega^2
+$$
+</p>
+<p>and here, $ds^2$ is the Schwarzschild metric’s line element. Therefore, by rearrangement, we have the following expression for the line element:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+ds^2 &amp;= d\mathcal{S}^2 + r^2 d \Omega^2 \\
+&amp;= -\left( 1 - \frac{r_{s}}{r} \right) dp dq
++ r^2 d \Omega^2
+\end{align*}
+$$
+</p>
+<p>Now, let us perform a coordinate transformation to the following new set of coordinates:</p>
+<p class="mathcell">
+$$
+p&#x27; = \exp\left( \frac{p}{2r_s} \right), \quad q&#x27; = -\exp\left( -\frac{q}{2r_s} \right)
+$$
+</p>
+<p>Therefore:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+dp&#x27; &amp;= \frac{1}{2r_{s}} \exp\left( \frac{p}{2r_{s}} \right) dp, \quad
+dp = 2 r_{s} \exp\left( -\frac{p}{2 r_{s}} \right) dp&#x27; \\
+dq&#x27; &amp;= \frac{1}{2r_{s}} \exp\left( -\frac{q}{2r_{s}} \right) dq,
+\quad dq = 2 r_{s} \exp\left( \frac{q}{2r_{s}} \right)dq&#x27;
+\end{align*}
+$$
+</p>
+<p>(It is also helpful to know that $p - q = 2 r + 2 r_{s} \ln|r - r_{s}|$). Substituting $dp$ and $dq$ into the transformed line element we derived previously, we obtain:</p>
+<p class="mathcell">
+$$
+ds^2 = -\left( \frac{4 r_{s}^3}{r} \right)  e^{-r&#x2F;r_{s}} dp&#x27; dq&#x27; + r^2 d \Omega^2
+$$
+</p>
+<p>Finally, let us define the coordinates $U, V$, as follows:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+V &amp;= \frac{1}{2}(p&#x27; + q&#x27;) \\
+U &amp;= \frac{1}{2}(p&#x27; - q&#x27;)
+\end{align*}
+$$
+</p>
+<p>From which we find that $dV = (dp' + dq')/2$ and $dU= (dp' - dq')/2$. Thus:</p>
+<p class="mathcell">
+$$
+dp&#x27; = dV + dU, \quad dq&#x27; = dV - dU, \quad dp&#x27; dq&#x27; = dV^2 - dU^2
+$$
+</p>
+<p>Thus, substituting into the line element gives us:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+ds^2 &amp;= -\left( \frac{4 r_{s}^3}{r} \right)  e^{-r&#x2F;r_{s}} dp&#x27; dq&#x27; + r^2 d \Omega^2 \\
+&amp;= -\left( \frac{4 r_{s}^3}{r} \right)  e^{-r&#x2F;r_{s}} (dV^2 - dU^2) + r^2 d \Omega^2 
+\end{align*}
+$$
+</p>
+<p>Upon simplification, we arrive at the Schwarzschild metric in <strong>Kruskal–Szekeres coordinates</strong> $(V, U, \theta, \phi)$:</p>
+<p class="mathcell">
+$$
+ds^2 = \frac{4r_s^3}{r} e^{-r&#x2F; r_s}(-dV^2 + dU^2) + r^2 d \Omega^2
+$$
+</p>
+<p>Notice that if we set $d\Omega = 0$ (that is, along constant angles) and consider the path of light (where $ds^2 = 0$), then we have:</p>
+<p class="mathcell">
+$$
+\frac{4(r_s)^3}{r} e^{-r&#x2F; r_s}(-dV^2 + dU^2)  = 0 \quad \Rightarrow \quad dV = \pm dU
+$$
+</p>
+<p>Therefore, in Kruskal-Szekeres coordinates, light rays travel at a 45-degree angle, just like the Minkowski light cone. Moreover, note that:</p>
+<p class="mathcell">
+$$
+V^2 - U^2 = \left( 1 - \frac{r}{r_{s}} \right)e^{r&#x2F;r_s}
+$$
+</p>
+<p>For values of constant $r$, this is in the form of the equation of a hyperbola $V^2 - U^2 = \text{const}$. Plotting out these hyperbolae for different values of $r$ then gives us a “map” that a brave traveler wishing to travel through a black hole could use, known as a Kruskal diagram:</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Kruskal_diagram_of_Schwarzschild_chart.svg" alt="A Kruskal diagram showing spacetime extended beyond a black hole" /></p>
+<p><em>Source: <a href="https://commons.wikimedia.org/wiki/File:Kruskal_diagram_of_Schwarzschild_chart.svg">Wikipedial</a></em></p>
+<p>Just like we already saw from Eddington-Finkelstein coordinates, Kruskal coordinates reveal the existence of a white hole, connected to the black hole by a wormhole. But the Kruskal coordinates can also be <em>maximally extended</em> so that they not only describe regions inside the black/white hole, but, it turns out, an <em>entirely separate universe</em>! Therefore, the black hole is not only connected to a white hole via a wormhole, but also connects parallel universes by another wormhole! Thus, we arrive at four connected regions (quadrants), which we can interpret as follows:</p>
+<table><thead><tr><th>Region</th><th>Describes</th></tr></thead><tbody>
+<tr><td>Quadrant I</td><td>Our universe, outside black hole</td></tr>
+<tr><td>Quadrant II</td><td>Inside of black hole, with the top edge being the event horizon</td></tr>
+<tr><td>Quadrant III</td><td>Parallel universe, outside black hole</td></tr>
+<tr><td>Quadrant IV</td><td>Inside of white hole, with the bottom edge being the event horizon</td></tr>
+</tbody></table>
+<p>In particular, the metric within the region connecting each of the four quadrants of the Kruskal diagram is given by the <strong>Einstein-Rosen bridge</strong> wormhole metric:</p>
+<p class="mathcell">
+$$
+ds^{2}=\frac{u^2}{u^2 + r_{s}} c^2d t^{2}-4(u^2 + r_{s})du^2-(u^2 + r_{s})^2 d \Omega^{2}, \quad u \equiv r - r_s
+$$
+</p>
+<p>We could go a lot more detail into the topic of parallel/alternate universes, wormholes, and whether maximal extension is actually how our Universe works, or a purely mathematical phenomenon that appears from certain coordinate systems. A wonderful video that explains more of these subjects in detail is <a href="https://www.youtube.com/watch?v=6akmv1bsz1M">this Veritasium video</a>; give it a watch if you’re interested!</p>
+<h2 id="extra-christoffel-symbols-of-the-schwarzschild-metric">Extra: Christoffel symbols of the Schwarzschild metric</h2>
+<p>Previously, we have omitted discussing the Schwarzschild metric’s Christoffel symbols, but they are given by:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+&amp;\Gamma^r_{tt} = \frac{r_s(r - r_s)}{2r^3}, 
+&amp;\Gamma^t_{tr} = \frac{r_s}{2r(r - r_s)},
+&amp;\Gamma^r_{rr} = -\frac{r_s}{2r(r - r_s)} \\
+&amp;\Gamma^\theta_{r\theta} = \frac{1}{r},
+&amp; \Gamma^\phi_{r\phi} = \frac{1}{r},
+&amp; \Gamma^r_{\theta \theta} = r_s - r \\
+&amp;\Gamma^\phi_{\theta \phi} = \cot \theta, 
+&amp;\Gamma^r_{\phi \phi} = (r_s - r)\sin^2 \theta,
+&amp; \Gamma^\theta_{\phi \phi} = -\sin \theta \cos \theta
+\end{gather*}
+$$
+</p>
+<p>It is indeed possible to figure out the Schwarzschild geodesics by plugging these Christoffel symbols into the geodesic equation, but it is a time-consuming process; the Lagrangian method we used, by obtaining the constants of motion, is a much simpler and efficient method.</p>
+<h2 id="extra-the-weak-field-metric">Extra: the weak-field metric</h2>
+<p>The Schwarzschild metric is an <em>exact</em> solution that describes the spacetime around a spherically-symmetric gravitating mass. But it is interesting to see what happens when we take the <em>weak-field limit</em> of the Schwarzschild metric. That is, what happens when gravity is sufficiently weak that the Schwarzschild radius is very small, or near-negligible? For this, we can start by applying the binomial approximation $(1 + x)^\alpha \approx 1 + \alpha x$. The approximation is valid whenever $x \ll 1$. In our case, this allows us to write:</p>
+<p class="mathcell">
+$$
+\left( 1 - \frac{r_{s}}{r} \right)^{-1} \approx 1 + \frac{r_{s}}{r}
+$$
+</p>
+<p>Meanwhile, since we know that $r_s = 2GM/c^2$ and the Newtonian potential of a spherically-symmetric body is given by $\Phi = -GM/r$, we can rearrange to obtain $\frac{r_s}{r} = -2\Phi/c^2$. Substituting this into the Schwarzschild metric, we obtain:</p>
+<p class="mathcell">
+$$
+ds^2 = -\left( 1 + \frac{2\Phi}{c^2} \right) c^2 dt^2 + \left( 1 - \frac{2\Phi}{c^2} \right) dr^2 + r^2 d\Omega^2
+$$
+</p>
+<p>In Schwarzschild spacetime, we interpret $dr^2$ as the one-dimensional <em>radial displacement</em> while $r^2 d\Omega^2 = r^2 d\theta^2 + r^2 \sin^2 d\phi^2$ is the <em>angular displacement</em> in the $\theta, \phi$ directions. But since the metric is spherically symmetric, we can argue that we can simply get rid of the $r^2 d\Omega^2$ term by <em>reinterpreting</em> $dr^2$ as the 3D line element $dr^2 = dx^2 + dy^2 + dz^2$. We can do this more formally with a coordinate transformation, but either way, it just comes down to the fact that in general relativity, the coordinates we use <em>do not matter</em> and we are free to choose whichever are useful for understanding a geometry. In any case, with this reinterpretation (or coordinate transform), we finally obtain:</p>
+<p class="mathcell">
+$$
+ds^2 = -\left( 1 + \frac{2\Phi}{c^2} \right) c^2 dt^2 + \left( 1 - \frac{2\Phi}{c^2} \right) (dx^2 + dy^2 + dz^2)
+$$
+</p>
+<p>This is the metric from which we initially started our study of general relativity — from which we were able to find successful approximate expressions of gravitational redshift, curvature of light, and time dilation!</p>
 
         
         <a id="jump-toc-btn" href="#toc">Show table of contents</a>
