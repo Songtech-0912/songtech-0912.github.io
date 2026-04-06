@@ -1391,7 +1391,7 @@ ds^2 = -\left( 1 - \frac{r_{s}}{r} \right) dq^2 + 2dq dr + r^2 d\Omega^2
 
 These coordinates describe a **white hole**, which, unlike a black hole, prevents anything from *entering* inside. We have no observational evidence of while holes, but let us simply entertain the thought for a moment. If white holes did indeed exist, then the requirement of a smooth solution over tells us that there would be something connecting a black hole and a white hole: a **Schwarzschild wormhole**.
 
-## Interlude: embedding diagrams
+### Interlude: embedding diagrams
 
 We can visualize a Schwarzschild wormhole by first examining a popular diagram of the Schwarzschild metric for $r > r_s$. This can be done if we ignore the $\theta$ and $t$ coordinates for now (setting $\theta = \pi/2$ and $t$ to an arbitrary constant), so that we are left with:
 
