@@ -865,10 +865,94 @@ This is the equation of motion for $r$, the last of our four equations of motion
 
 Which is the form that is often presented in textbooks, and tells us that the radial motion of the particle is closely related to its energy and angular momentum.
 
-
 ### Extra: numerically plotting Schwarzschild geodesics
 
-(Will be completed later)
+While Schwarzschild geodesics do not generally have a solution that can be expressed in terms of elementary functions, we can plot them using a computer. For this, we set $\theta = \pi/2$ and ignore the ODE for $\dot t$ because we only care about the spatial progression of the orbits. This leaves us with two equations of motion:
+
+{% math() %}
+\begin{align*}
+\frac{d\phi}{d\tau} &= \frac{j}{r^2} \\
+\left( \frac{dr}{d\tau} \right)^2 &= \frac{\kappa^2}{c^2} -\left(1 - \frac{r_s}{r}\right)\left( c^2 + \frac{j^2}{r^2} \right)
+\end{align*}
+{% end %}
+
+> **Note:** Be aware that these equations are only valid for $r > r_s$. The reason for this is that the coordinates we are using for the Schwarzschild metric blow up at $r = r_s$. This *does not* mean that it is not possible to travel to $r < r_s$, but there will be important physical consequences that we will discuss later.
+
+The bad news is that the equation for $\dot r$ is numerically unstable, since $\dot r$ would have a square root when expressed explicitly, making it yield nonsensical values if the quantity inside the square root were to vanish. The good news is that with a change of variables, the two differential equations can be combined together into a new, second-order differential equation:
+
+{% math() %}
+\frac{d^2 u}{d\phi^2} + u = \frac{r_s c^2}{2j^2} + \frac{3}{2}r_s u^2, \quad u \equiv \frac{1}{r}
+{% end %}
+
+This is called the **relativistic Binet equation** and is much more numerically stable. It is useful when doing numerical simulations to set $c \to 1$, which leads to a redefinition of our units, but doesn’t change the physics. This then means that the Schwarzschild radius becomes $r_s = 2GM$. For solving we will use a numerical integration technique known as the [semi-implicit Euler method](https://en.wikipedia.org/wiki/Semi-implicit_Euler_method), where the differential equation is discretized such that we define the acceleration $A$ as follows:
+
+{% math() %}
+A(\phi_{n}, x_{n}) \equiv \frac{d^2 u}{d\phi^2} \bigg|_{u_{i}, \phi_{i}} = 
+ \frac{r_s}{2j^2} - u_{i} + \frac{3}{2}r_s u_{i}^2, \quad i = 0, 1, 2, \dots, N
+{% end %}
+
+Where we define $h = (\phi_{end} - \phi_{start})/N$ as the **step size**. Then, we use a time-stepping scheme to advance $u_i$ and $v_i \equiv \dot u_i$ (the velocity) as follows:
+
+{% math() %}
+\begin{align*}
+v_{i + 1} &= v_{i} + A(\phi_{i}, x_{i}) h \\
+u_{i + 1} &= u_{i} + v_{i + 1} h
+\end{align*}
+{% end %}
+
+> **Note:** For those who have studied numerical analysis, this method of numerical integration is a **symplectic method**, which avoids energy drift, making it suitable for analyzing orbits without causing artificial orbital decay through numerical artifacts.
+
+It is useful to set $v_0 = 0$ to reflect an orbit where a particle’s motion is initially purely tangential (i.e. purely along $\hat \phi$). We will show an example code in Python. First, we define the constants to be used:
+
+```python
+# Import libraries to use
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+t_span = 100 # equal to t_end - t0
+r0 = 10
+j = 8
+M = 2
+
+# Step size
+h = 0.005
+# Schwarzschild radius
+rs = 2*G*M
+print("Schwarzschild radius:", rs)
+
+assert r0 > rs # initial radius must be greater than schwarzschild radius
+print(f"r0 = {r0/rs:.2f} rs")
+```
+
+Then, we initialize arrays for holding our values of $u_i$ and $v_i$:
+
+```python
+N = int(t_span/h)
+phi = np.linspace(0, 4*np.pi, N)
+u = np.zeros(N) # stores u(phi)
+u_prime = np.zeros(N) # stores du/dphi
+
+u[0] = 1/r0
+u_prime[0] = 0 # assuming initial velocity is purely tangential (i.e. only along phi)
+```
+
+Now, we perform the numerical integration:
+
+```python
+for i in range(N-1):
+    # acceleration, i.e. second derivative of u
+    A = rs/(2*j**2) - u[i] + 3/2 * rs * u[i]**2
+    u_prime[i + 1] = u_prime[i] + A*h
+    u[i + 1] = u[i] + u_prime[i + 1] * h
+```
+
+Finally, we will save the simulation results to a file:
+
+```python
+plt.polar(phi, 1/u)
+plt.savefig('geodesic_plot.png')
+```
 
 ### The Schwarzschild effective potential
 
