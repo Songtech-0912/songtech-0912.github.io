@@ -22,6 +22,7 @@
       <!--Inter-->
       <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
   
+  <a rel="me" id="mastodon-link" href="https://mastodon.social/@songtech0912">Mastodon</a>
 
 </head>
 
@@ -956,7 +957,83 @@ $$
 </p>
 <p>Which is the form that is often presented in textbooks, and tells us that the radial motion of the particle is closely related to its energy and angular momentum.</p>
 <h3 id="extra-numerically-plotting-schwarzschild-geodesics">Extra: numerically plotting Schwarzschild geodesics</h3>
-<p>(Will be completed later)</p>
+<p>While Schwarzschild geodesics do not generally have a solution that can be expressed in terms of elementary functions, we can plot them using a computer. For this, we set $\theta = \pi/2$ and ignore the ODE for $\dot t$ because we only care about the spatial progression of the orbits. This leaves us with two equations of motion:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{d\phi}{d\tau} &amp;= \frac{j}{r^2} \\
+\left( \frac{dr}{d\tau} \right)^2 &amp;= \frac{\kappa^2}{c^2} -\left(1 - \frac{r_s}{r}\right)\left( c^2 + \frac{j^2}{r^2} \right)
+\end{align*}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> Be aware that these equations are only valid for $r &gt; r_s$. The reason for this is that the coordinates we are using for the Schwarzschild metric blow up at $r = r_s$. This <em>does not</em> mean that it is not possible to travel to $r &lt; r_s$, but there will be important physical consequences that we will discuss later.</p>
+</blockquote>
+<p>The bad news is that the equation for $\dot r$ is numerically unstable, since $\dot r$ would have a square root when expressed explicitly, making it yield nonsensical values if the quantity inside the square root were to vanish. The good news is that with a change of variables, the two differential equations can be combined together into a new, second-order differential equation:</p>
+<p class="mathcell">
+$$
+\frac{d^2 u}{d\phi^2} + u = \frac{r_s c^2}{2j^2} + \frac{3}{2}r_s u^2, \quad u \equiv \frac{1}{r}
+$$
+</p>
+<p>This is called the <strong>relativistic Binet equation</strong> and is much more numerically stable. It is useful when doing numerical simulations to set $c \to 1$, which leads to a redefinition of our units, but doesn’t change the physics. This then means that the Schwarzschild radius becomes $r_s = 2GM$. For solving we will use a numerical integration technique known as the <a href="https://en.wikipedia.org/wiki/Semi-implicit_Euler_method">semi-implicit Euler method</a>, where the differential equation is discretized such that we define the acceleration $A$ as follows:</p>
+<p class="mathcell">
+$$
+A(\phi_{n}, x_{n}) \equiv \frac{d^2 u}{d\phi^2} \bigg|_{u_{i}, \phi_{i}} = 
+ \frac{r_s}{2j^2} - u_{i} + \frac{3}{2}r_s u_{i}^2, \quad i = 0, 1, 2, \dots, N
+$$
+</p>
+<p>Where we define $h = (\phi_{end} - \phi_{start})/N$ as the <strong>step size</strong>. Then, we use a time-stepping scheme to advance $u_i$ and $v_i \equiv \dot u_i$ (the velocity) as follows:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+v_{i + 1} &amp;= v_{i} + A(\phi_{i}, x_{i}) h \\
+u_{i + 1} &amp;= u_{i} + v_{i + 1} h
+\end{align*}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> For those who have studied numerical analysis, this method of numerical integration is a <strong>symplectic method</strong>, which avoids energy drift, making it suitable for analyzing orbits without causing artificial orbital decay through numerical artifacts.</p>
+</blockquote>
+<p>It is useful to set $v_0 = 0$ to reflect an orbit where a particle’s motion is initially purely tangential (i.e. purely along $\hat \phi$). We will show an example code in Python. First, we define the constants to be used:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span style="font-style:italic;color:#abb0b6;"># Import libraries to use
+</span><span style="color:#fa6e32;">import </span><span>numpy </span><span style="color:#fa6e32;">as </span><span>np
+</span><span style="color:#fa6e32;">import </span><span>matplotlib</span><span style="color:#ed9366;">.</span><span>pyplot </span><span style="color:#fa6e32;">as </span><span>plt
+</span><span>
+</span><span style="font-style:italic;color:#abb0b6;"># Constants
+</span><span>t_span </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">100 </span><span style="font-style:italic;color:#abb0b6;"># equal to t_end - t0
+</span><span>r0 </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">10
+</span><span>j </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">8
+</span><span>M </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">2
+</span><span>
+</span><span style="font-style:italic;color:#abb0b6;"># Step size
+</span><span>h </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">.</span><span style="color:#ff8f40;">005
+</span><span style="font-style:italic;color:#abb0b6;"># Schwarzschild radius
+</span><span>rs </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">2</span><span style="color:#ed9366;">*</span><span>G</span><span style="color:#ed9366;">*</span><span>M
+</span><span style="color:#f07171;">print</span><span>(</span><span style="color:#86b300;">&quot;Schwarzschild radius:&quot;</span><span style="color:#61676ccc;">, </span><span>rs)
+</span><span>
+</span><span style="color:#fa6e32;">assert </span><span>r0 </span><span style="color:#ed9366;">&gt; </span><span>rs </span><span style="font-style:italic;color:#abb0b6;"># initial radius must be greater than schwarzschild radius
+</span><span style="color:#f07171;">print</span><span>(</span><span style="color:#fa6e32;">f</span><span style="color:#86b300;">&quot;r0 = </span><span>{r0</span><span style="color:#ed9366;">/</span><span>rs</span><span style="color:#ff8f40;">:.2f</span><span>}</span><span style="color:#86b300;"> rs&quot;</span><span>)
+</span></code></pre>
+<p>Then, we initialize arrays for holding our values of $u_i$ and $v_i$:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span>N </span><span style="color:#ed9366;">= </span><span style="font-style:italic;color:#55b4d4;">int</span><span>(t_span</span><span style="color:#ed9366;">/</span><span>h)
+</span><span>phi </span><span style="color:#ed9366;">= </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">linspace</span><span>(</span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">4</span><span style="color:#ed9366;">*</span><span>np</span><span style="color:#ed9366;">.</span><span>pi</span><span style="color:#61676ccc;">, </span><span>N)
+</span><span>u </span><span style="color:#ed9366;">= </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">zeros</span><span>(N) </span><span style="font-style:italic;color:#abb0b6;"># stores u(phi)
+</span><span>u_prime </span><span style="color:#ed9366;">= </span><span>np</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">zeros</span><span>(N) </span><span style="font-style:italic;color:#abb0b6;"># stores du/dphi
+</span><span>
+</span><span>u[</span><span style="color:#ff8f40;">0</span><span>] </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">1</span><span style="color:#ed9366;">/</span><span>r0
+</span><span>u_prime[</span><span style="color:#ff8f40;">0</span><span>] </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">0 </span><span style="font-style:italic;color:#abb0b6;"># assuming initial velocity is purely tangential (i.e. only along phi)
+</span></code></pre>
+<p>Now, we perform the numerical integration:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#fa6e32;">for </span><span>i </span><span style="color:#fa6e32;">in </span><span style="color:#f07171;">range</span><span>(N</span><span style="color:#ed9366;">-</span><span style="color:#ff8f40;">1</span><span>):
+</span><span>    </span><span style="font-style:italic;color:#abb0b6;"># acceleration, i.e. second derivative of u
+</span><span>    A </span><span style="color:#ed9366;">= </span><span>rs</span><span style="color:#ed9366;">/</span><span>(</span><span style="color:#ff8f40;">2</span><span style="color:#ed9366;">*</span><span>j</span><span style="color:#ed9366;">**</span><span style="color:#ff8f40;">2</span><span>) </span><span style="color:#ed9366;">- </span><span>u[i] </span><span style="color:#ed9366;">+ </span><span style="color:#ff8f40;">3</span><span style="color:#ed9366;">/</span><span style="color:#ff8f40;">2 </span><span style="color:#ed9366;">* </span><span>rs </span><span style="color:#ed9366;">* </span><span>u[i]</span><span style="color:#ed9366;">**</span><span style="color:#ff8f40;">2
+</span><span>    u_prime[i </span><span style="color:#ed9366;">+ </span><span style="color:#ff8f40;">1</span><span>] </span><span style="color:#ed9366;">= </span><span>u_prime[i] </span><span style="color:#ed9366;">+ </span><span>A</span><span style="color:#ed9366;">*</span><span>h
+</span><span>    u[i </span><span style="color:#ed9366;">+ </span><span style="color:#ff8f40;">1</span><span>] </span><span style="color:#ed9366;">= </span><span>u[i] </span><span style="color:#ed9366;">+ </span><span>u_prime[i </span><span style="color:#ed9366;">+ </span><span style="color:#ff8f40;">1</span><span>] </span><span style="color:#ed9366;">* </span><span>h
+</span></code></pre>
+<p>Finally, we will save the simulation results to a file:</p>
+<pre data-lang="python" style="background-color:#fafafa;color:#61676c;" class="language-python "><code class="language-python" data-lang="python"><span>plt</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">polar</span><span>(phi</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">1</span><span style="color:#ed9366;">/</span><span>u)
+</span><span>plt</span><span style="color:#ed9366;">.</span><span style="color:#f29718;">savefig</span><span>(</span><span style="color:#86b300;">&#39;geodesic_plot.png&#39;</span><span>)
+</span></code></pre>
 <h3 id="the-schwarzschild-effective-potential">The Schwarzschild effective potential</h3>
 <p>Let’s take another look at the equation of motion for $\dot r$, which is given by:</p>
 <p class="mathcell">
