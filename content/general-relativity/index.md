@@ -1263,6 +1263,112 @@ And likewise, we have the following transformations for a tensor $T^{\mu \nu}$ i
 T^{'\mu \nu} = \Lambda^\mu{}_{\sigma} \Lambda^\nu{}_{\rho} T^{\sigma \rho}, \quad T_{\mu \nu}' = \Lambda^\sigma{}_{\mu} \Lambda^\rho{}_{\nu} T_{\sigma \rho}
 {% end %}
 
+However, when we are working with a curved space, the formulas become dramatically more complicated. For instance, the general case of the vector transformation law in curved spacetime is:
+
+{% math() %}
+V^{\mu'} = \frac{\partial x^{\mu'}}{\partial x^\mu} V^\mu
+{% end %}
+
+Assuming initial coordinates $x^\mu = (x^0, x^1, x^2, x^3)$ and transformed coordinates $x^{\mu'} = (x^{0'}, x^{1'}, x^{2'}, x^{3'})$, this can be written out in the following matrix form:
+
+{% math() %}
+\begin{pmatrix}
+V^{0'} \\
+V^{1'} \\
+V^{2'} \\
+V^{3'}
+\end{pmatrix}
+= \begin{pmatrix}
+\frac{\partial x^{0'}}{\partial x^0} & \frac{\partial x^{0'}}{\partial x^1}  & \frac{\partial x^{0'}}{\partial x^2}  & \frac{\partial x^{0'}}{\partial x^3} \\
+\frac{\partial x^{1'}}{\partial x^0} & \frac{\partial x^{1'}}{\partial x^1}  & \frac{\partial x^{1'}}{\partial x^2}  & \frac{\partial x^{1'}}{\partial x^3} \\
+\frac{\partial x^{2'}}{\partial x^0} & \frac{\partial x^{2'}}{\partial x^1}  & \frac{\partial x^{2'}}{\partial x^2}  & \frac{\partial x^{2'}}{\partial x^3} \\
+\frac{\partial x^{3'}}{\partial x^0} & \frac{\partial x^{3'}}{\partial x^1}  & \frac{\partial x^{3'}}{\partial x^2}  & \frac{\partial x^{3'}}{\partial x^3}
+\end{pmatrix}
+\begin{pmatrix}
+V^0 \\
+V^1 \\
+V^2 \\
+V^3
+\end{pmatrix}
+{% end %}
+
+In the case of a 3-dimensional space, this reduces to:
+
+{% math() %}
+\begin{pmatrix}
+V^{1'} \\
+V^{2'} \\
+V^{3'}
+\end{pmatrix}
+= \begin{pmatrix}
+\frac{\partial x^{1'}}{\partial x^1}  & \frac{\partial x^{1'}}{\partial x^2}  & \frac{\partial x^{1'}}{\partial x^3} \\
+\frac{\partial x^{2'}}{\partial x^1}  & \frac{\partial x^{2'}}{\partial x^2}  & \frac{\partial x^{2'}}{\partial x^3} \\
+\frac{\partial x^{3'}}{\partial x^1}  & \frac{\partial x^{3'}}{\partial x^2}  & \frac{\partial x^{3'}}{\partial x^3}
+\end{pmatrix}
+\begin{pmatrix}
+V^1 \\
+V^2 \\
+V^3
+\end{pmatrix}
+{% end %}
+
+
+> **Note:** This is _very similar_ to the Jacobian matrix of a vector-valued function $\mathbf{f}$, with the only difference that the vector-valued function in this case is the transformed 4-position $x^{\mu'}$.
+
+And finally, in the case of two-dimensional space, we have:
+
+{% math() %}
+\begin{pmatrix}
+V^{1'} \\
+V^{2'}
+\end{pmatrix}
+= \begin{pmatrix}
+\frac{\partial x^{1'}}{\partial x^1}  & \frac{\partial x^{1'}}{\partial x^2} \\
+\frac{\partial x^{2'}}{\partial x^1}  & \frac{\partial x^{2'}}{\partial x^2}
+\end{pmatrix}
+\begin{pmatrix}
+V^1 \\
+V^2 \\
+\end{pmatrix}
+{% end %}
+
+For instance, consider the case of polar coordinates $(r, \theta)$, where $r = \sqrt{x^2 + y^2}$ and $\theta = \operatorname{arctan}(y/x)$. Let $x^\mu = (x^1, x^2) = (x, y)^T$ be the position vector as expressed in Cartesian coordinates, and $x^{\mu'} = (x^{1'}, x^{2'}) = (r, \theta)^T$ be the position vector as expressed in polar coordinates. The partial derivatives are then:
+
+{% math() %}
+\begin{align*}
+\frac{\partial x^{1'}}{\partial x^1} &= \frac{\partial r}{\partial x}
+= \frac{x}{\sqrt{x^2 + y^2}} = \frac{x}{r} \\
+\frac{\partial x^{1'}}{\partial x^2} &= \frac{\partial r}{\partial y}
+= \frac{y}{\sqrt{x^2 + y^2}} = \frac{y}{r} \\
+\frac{\partial x^{2'}}{\partial x^1} &= \frac{\partial \theta}{\partial x}
+= - \frac{y}{x^{2} \left(1 + \frac{y^{2}}{x^{2}}\right)} = -\frac{y}{r^2} \\
+\frac{\partial x^{2'}}{\partial x^2} &= \frac{\partial \theta}{\partial y}
+= \frac{1}{x \left(1 + \frac{y^{2}}{x^{2}}\right)} = \frac{x}{r^2}
+\end{align*}
+{% end %}
+
+Substituting in $x = r \cos \theta$ and $y = r \sin \theta$, we obtain:
+
+{% math() %}
+\begin{align*}
+\frac{\partial x^{1'}}{\partial x^1} &= \frac{r \cos \theta}{r} = \cos \theta \\
+\frac{\partial x^{1'}}{\partial x^2} &= \frac{r \sin \theta}{r} = \sin \theta \\
+\frac{\partial x^{2'}}{\partial x^1} &= -\frac{r \sin \theta}{r^2} = -\frac{\sin \theta}{r} \\
+\frac{\partial x^{2'}}{\partial x^2} &= \frac{r \cos \theta}{r^2} = \frac{\cos \theta}{r}
+\end{align*}
+{% end %}
+
+Therefore, the matrix form of the transformation becomes:
+
+{% math() %}
+\begin{pmatrix} V^r \\ V^\theta \end{pmatrix} =
+\begin{pmatrix}
+\cos \theta & \sin \theta \\
+-\frac{\sin \theta}{r} & \frac{\cos \theta}{r}
+\end{pmatrix}
+\begin{pmatrix} V^x \\ V^y \end{pmatrix}
+{% end %}
+
 ### Relativistic electrodynamics
 
 A natural application of 4-vectors and special relativity is in the context of electromagnetism. Electromagnetism is a *fundamentally relativistic theory* - it predicted special relativity even before Einstein invented it! However, it can be hard to see its relativistic nature directly. To make the equations of special relativity *manifestly relativistic* (that is, clearly relativistic), it is useful to write them using tensors.
