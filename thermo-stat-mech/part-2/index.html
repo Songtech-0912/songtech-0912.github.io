@@ -80,6 +80,61 @@
                                     <a href="#quantum-systems">Quantum systems</a>
                                 </li>
                             
+                                <li>
+                                    <a href="#density-of-states">Density of states</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#constrained-systems-in-statistical-mechanics">Constrained systems in statistical mechanics</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#classical-statistical-distributions">Classical statistical distributions</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#the-boltzmann-distribution">The Boltzmann distribution</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-fermi-dirac-distribution">The Fermi-Dirac distribution</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-bose-einstein-distribution">The Bose-Einstein Distribution</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-maxwell-boltzmann-distribution">The Maxwell-Boltzmann distribution</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-chemical-potential-from-a-statistical-perspective">The chemical potential from a statistical perspective</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#statistical-ensembles">Statistical ensembles</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#classical-statistics-of-the-ideal-gas">Classical statistics of the ideal gas</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#derivation-of-the-ideal-gas-equation">Derivation of the ideal gas equation</a>
+                                </li>
+                            
                         </ul>
                     
                 </li>
@@ -233,7 +288,7 @@ $$
 <p>Where $\hbar = h/2\pi$ is the reduced Planck constant, $h = 6.62 \times 10^{-34}\ \mathrm{J \cdot s}$ is the Planck constant, and $n$ is an integer. We can extend this to three dimensions with a box of dimensions $(L_x, L_y, L_z)$, giving us:</p>
 <p class="mathcell">
 $$
-\varepsilon_{q, \ell, k} = \frac{\pi^2 \hbar^2}{2m} \left( \left( \frac{q}{L_{x}} \right)^2 + \left( \frac{\ell}{L_{y}} \right)^2 + \left( \frac{k}{L_{z}} \right)^2 \right), \quad q, \ell, k \in 1, 2, 3, \dots
+\varepsilon_{q, \ell, k} = \frac{\pi^2 \hbar^2}{2m} \left[ \left( \frac{q}{L_{x}} \right)^2 + \left( \frac{\ell}{L_{y}} \right)^2 + \left( \frac{k}{L_{z}} \right)^2 \right], \quad q, \ell, k \in 1, 2, 3, \dots
 $$
 </p>
 <p>Where $q = n_x$, $\ell = n_y$, $k = n_z$ are the quantum numbers in each direction. The <strong>principal quantum number</strong> $n_j$ for the $j$-th energy level is given by:</p>
@@ -247,7 +302,565 @@ $$
 $$
 \varepsilon_{j} = \frac{n_{j}^2 \pi^2 \hbar^2 }{2m}V^{-2&#x2F;3}
 $$
+</p><h3 id="density-of-states">Density of states</h3>
+<p>If the quantum numbers are large and that the energy levels are closely spaced-together, then we may consider an infinitesimal energy $d\varepsilon$. We may then define a function $g(\varepsilon)$, called the <strong>density of states</strong>. This relates an infinitesimal number of quantum states $dn$ in the energy levels $\varepsilon$ to that of $\varepsilon + d\varepsilon$ as given by:</p>
+<p class="mathcell">
+$$
+dn = g(\varepsilon) d\varepsilon \quad \Leftrightarrow \quad \frac{dn}{d\varepsilon} = g(\varepsilon)
+$$
 </p>
+<p>This is a <em>linear approximation</em> for the difference between the number of quantum states at energy level $\varepsilon$ and the number of quantum states at energy level $\varepsilon + d\varepsilon$. That is to say:</p>
+<p class="mathcell">
+$$
+d n \approx  n(\varepsilon + d\varepsilon) - n(\varepsilon), \quad n = n(\varepsilon)
+$$
+</p>
+<p>Where $n(\varepsilon)$ gives the number of states at an energy (level) of $\varepsilon$. First, note that $n_j^2$ can be written in terms of the energy as:</p>
+<p class="mathcell">
+$$
+n^2_{j} = n_{x}^2 + n_{y}^2 + n_{z}^2 = \frac{8mV^{2&#x2F;3}}{h^2} \varepsilon_{j}
+$$
+</p>
+<p>Notice how this is very similar to the equation of a sphere, $x^2 + y^2 + z^2 = R^2$, where in this case, the “radius” $R$ becomes:</p>
+<p class="mathcell">
+$$
+R^2 = \left[ \varepsilon_{j}\left( \frac{8mV^{2&#x2F;3}}{h^2} \right) \right]
+$$
+</p>
+<p>Here, we will drop the indices and simply write $n, \varepsilon$ instead of $n_j, \varepsilon_j$ for notational convenience; the indices are now implied. Thus, we have:</p>
+<p class="mathcell">
+$$
+R^2 = \varepsilon \left( \frac{8mV^{2&#x2F;3}}{h^2} \right)
+$$
+</p>
+<p>Assuming that the energy levels are spaced closely together, we can let $n = n(\varepsilon)$ be a continuous function of energy. Now, let $g(\varepsilon) d\varepsilon = n(\varepsilon + d\varepsilon) - n(\varepsilon)$ be the number of energy levels between $n(\varepsilon)$ and $n(\varepsilon + d\varepsilon)$. In our analogy of a sphere, this would be thin shell on an octant of a sphere of radius $R$.  Since the volume of a sphere is given by $V = \frac{4}{3} \pi R^3$ we simply divide this by 8 for the volume of a quadrant. Therefore, we may solve for $n(\varepsilon)$ as follows:</p>
+<p class="mathcell">
+$$
+n(\varepsilon) = \frac{1}{8}\left( \frac{4}{3} \pi R^3 \right) = \frac{\pi}{6} \left[ \varepsilon \left( \frac{8mV^{2&#x2F;3}}{h^2} \right) \right]^{3&#x2F;2} = \frac{\pi}{6} V \left( \frac{8m \varepsilon}{h^2} \right)^{3&#x2F;2}
+$$
+</p>
+<p>So the density of states $g(\varepsilon)$ is then given by:</p>
+<p class="mathcell">
+$$
+dn = g(\varepsilon) d\varepsilon
+ \quad \Rightarrow \quad g(\varepsilon) = \frac{dn}{d\varepsilon} = \frac{4\pi\sqrt{2}(V m^{3&#x2F;2} \varepsilon^{1&#x2F;2})}{h^3}
+$$
+</p>
+<p>A more careful calculation would yield the solution of:</p>
+<p class="mathcell">
+$$
+g(\varepsilon) = \gamma_{s} \frac{4\pi\sqrt{2}(V m^{3&#x2F;2} \varepsilon^{1&#x2F;2})}{h^3}
+$$
+</p>
+<p>Where $\gamma_s = 1$ for <strong>bosons</strong> (particles with integer spin, like photons) and $\gamma_s = 2$ for <strong>fermions</strong> (particles with half-integer spin, like electrons).</p>
+<h3 id="constrained-systems-in-statistical-mechanics">Constrained systems in statistical mechanics</h3>
+<p>In statistical mechanics, we aim to find the <em>most probable</em> state of the system. We already know how to find the macrostates of a system; to find the most probable state, we must use optimization methods from multivariable calculus. However, it is important to note that for the physics to be consistent, we need to perform <strong>constrained optimization</strong>, since we have two physical constraints, corresponding to the conservation of particle number and conservation of energy:</p>
+<p class="mathcell">
+$$
+\sum_{j = 1}^n N_{j} = N, \quad \sum_{j = 1}^n N_{j} \varepsilon_{j} = U
+$$
+</p>
+<p>For this, we use the <strong>method of Lagrange multipliers</strong>. This tells us that if we have two equations $f(x_1, x_2, \dots, x_n) = 0$ and $g(x_1, x_2, \dots, x_n) = 0$ that impose constraints on the system, we must solve the following equation to find the maxima (or minima) of the system</p>
+<p class="mathcell">
+$$
+\frac{\partial f}{\partial x_{j}} + \alpha \frac{\partial g}{\partial x_{j}} + \beta \frac{\partial g}{\partial x_{j}} = 0
+$$
+</p>
+<p>where $\alpha, \beta$ are the <strong>Lagrange multipliers</strong>. Now, consider a system of $N$ particles The number of ways to put $N_1$ particles into the first energy level containing $g_1$ distinct options is:</p>
+<p class="mathcell">
+$$
+\frac{N!(g_{1})^{N_{1}}}{N_{1}!(N - N_{1})!}
+$$
+</p>
+<p>This gives us the thermodynamic probability $\omega_B$ of Boltzmann statistics, given by:</p>
+<p class="mathcell">
+$$
+\omega_{B} = N! \prod_{j = 1}^n \frac{(g_{j})^{N_{j}}}{N_{j}!}
+$$
+</p>
+<p>Where $g_j$ is the degeneracy of the $j$-th state. This is the <strong>Boltzmann statistics equation</strong>. Taking the logarithm of the aforementioned equation and switching indices from $j \to i$ gives us:</p>
+<p class="mathcell">
+$$
+\ln \omega_{B} = \ln N! + \sum_{i = 1}^n N_{i} \ln g_{i} - \sum_{i = 1}^n \ln (N_{i}!)
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> Here, the notation $\ln N!$ is equivalent to $\ln (N!)$ in case that was unclear.</p>
+</blockquote>
+<p>Applying Stirling’s approximation $\ln (N_{i}!) \approx (N_{i} \ln N_{i}) - N_{i}$ to the last term, we have:</p>
+<p class="mathcell">
+$$
+\ln \omega_{B} \approx \ln N! + \sum_{i = 1}^n N_{i} \ln g_{i}
+- \sum_{i = 1}^nN_{i} \ln N_{i} + \sum_{i = 1}^n N_{i}
+$$
+</p>
+<p>To calculate the maximum of $\omega_B$ under our two constraints (conservation of particle number and conservation of energy), we can combine our two constraint equations and the Lagrange multipliers equation to give us:</p>
+<p class="mathcell">
+$$
+\frac{N_{j}}{g_{j}} = \exp(\alpha + \beta \varepsilon_{j}) =  f (\varepsilon_{j})
+$$
+</p>
+<p>Where $\alpha, \beta$ are our Lagrange multipliers. This us the number of particles per quantum state for the equilibrium configuration of the $j$-th energy level.</p>
+<h2 id="classical-statistical-distributions">Classical statistical distributions</h2>
+<p>We will now consider four of the most common statistical distributions in statisical mechanics. With some derivations, we will arrive at the <strong>distribution functions</strong> of these four distributions. These tell us the probable number of particles in each state (the <em>occupancy number</em>), divided by the degrees of degeneracy, and as we will soon see, it will be the crucial link between statistical and classical thermodynamics.</p>
+<h3 id="the-boltzmann-distribution">The Boltzmann distribution</h3>
+<p>The Boltzmann distribution (not to be confused with the similarly-named <em>Maxwell-Boltzmann distribution</em>) is an idealized statistical model of a gas composed of distinguishable particles. As mentioned before, it is described by the following equation:</p>
+<p class="mathcell">
+$$
+\frac{N_{j}}{g_{j}} = f(\varepsilon_{j}), \quad f(t_{j}) = \exp(\alpha + \beta \varepsilon_{j})
+$$
+</p>
+<p>Where $N_j$ are the number of particles in the $j$-th energy level, which has energy $\varepsilon_j$ and degeneracy $g_j$, while $\alpha, \beta$ are Lagrange multipliers. Note that if we take the natural log of both sides and rearrange, we obtain:</p>
+<p class="mathcell">
+$$
+\ln g_{j} - \ln N_{j} + \alpha + \beta \varepsilon_{j} = 0
+$$
+</p>
+<p>If we sum over all energy levels, we obtain:</p>
+<p class="mathcell">
+$$
+\sum_{j} N_{j} \ln g_{j} - \sum_{j} N_{j} \ln N_{j} + \alpha \sum_{j}N_{j} + \beta \sum_{j} N_{j} \varepsilon_{j} = 0
+$$
+</p>
+<p>Now, $\sum_j N_j$ is the same thing as $N$, the total number of particles, and $\sum_j N_j \varepsilon_j$ is simply the internal energy $U$ of the system. We can therefore rearrange and simplify the above expression as:</p>
+<p class="mathcell">
+$$
+\sum_{j} N_{j} \ln g_{j} - \sum_{j} N_{j} \ln N_{j} = -\alpha N - \beta U
+$$
+</p>
+<p>We can now combine the above equation with the Boltzmann statistics equation (given below):</p>
+<p class="mathcell">
+$$
+\ln \omega = \ln N! + \sum_{i = 1}^n N_{i} \ln g_{i}
+- \sum_{i = 1}^nN_{i} \ln N_{i} + \sum_{i = 1}^n N_{i}
+$$
+</p>
+<p>By substitution, we therefore obtain:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\ln \omega &amp;= \ln N!  - \alpha N - \beta U + N \\
+&amp;= c - \beta U
+\end{align*}
+$$
+</p>
+<p>Where $c \equiv  \ln N! - \alpha N + N$ is a constant. This allows us to use the Boltzmann entropy formula to obtain:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+S &amp;= k \ln w \\
+&amp;= k(c - \beta U) \\
+&amp;= S_{0} - \beta k U, \quad S_{0} = kc = \text{const.}
+\end{align*}
+$$
+</p>
+<p>We have now cast a statistical distribution in a form that can be analyzed with classical thermodynamics. Physically, we have related the number of particles in each energy level to the entropy of the system. Now, in classical thermodynamics, if we write out the entropy $S = S(U, V)$ in (total) differential form, we have:</p>
+<p class="mathcell">
+$$
+dS = \left( \frac{\partial S}{\partial U} \right)_{V}dU + \left( \frac{\partial S}{\partial V} \right)_{U} dV
+$$
+</p>
+<p>Meanwhile, via the Clausius definition of entropy, we equivalently may arrive at another differential expression for the entropy:</p>
+<p class="mathcell">
+$$
+dS = \frac{dQ}{T} =  \frac{dU}{T} + \frac{P dV}{T}
+$$
+</p>
+<p>Via term-by-term comparison, we thus have:</p>
+<p class="mathcell">
+$$
+\left( \frac{\partial S}{\partial U} \right)_{V} = \frac{1}{T}, 
+\quad \left( \frac{\partial S}{\partial V} \right)_{U} = \frac{P}{T}
+$$
+</p>
+<p>Now, by combining this result with $S = S_0 - \beta kU$, if we take the partial derivative of $S$ with respect to $U$, we have:</p>
+<p class="mathcell">
+$$
+\left( \frac{\partial S}{\partial U} \right) = -k \beta = \frac{1}{T}
+\quad \Rightarrow \quad \beta = -\frac{1}{kT}
+$$
+</p>
+<p>Therefore we have derived the value of our Lagrange multiplier $\beta$! If we substitute this back into the Boltzmann distribution equation, we have:</p>
+<p class="mathcell">
+$$
+\frac{N_{j}}{g_{j}} = \exp(\alpha + \beta \varepsilon_{j}) \quad \Rightarrow \quad N_{j} = g_{j} \exp(\alpha) \exp\left( -\frac{\varepsilon_{j}}{k T} \right)
+$$
+</p>
+<p>Summing again over all energy levels, and noting that $\sum_j N_j = N$, we have:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\sum_{j} N_{j} = \sum_{j} g_{j} \exp(\alpha) \exp\left( -\frac{\varepsilon_{j}}{kT} \right) \\
+\Rightarrow \quad \exp(\alpha) = \frac{N}{\sum_{j} g_{j} e^{- \varepsilon_{j} &#x2F; k T}}
+\end{gather*}
+$$
+</p>
+<p>Substituting this value of $\exp(\alpha)$ into the original Boltzmann distribution equation, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+N_{j} &amp;= g_{j} \exp(\alpha) \exp\left( -\frac{\varepsilon_{j}}{k T} \right) \\
+\frac{N_{j}}{g_{j}} &amp;= \exp(\alpha) \exp\left( -\frac{\varepsilon_{j}}{k T} \right) \\
+&amp;= \frac{N}{\sum_{j} g_{j} e^{- \varepsilon_{j} &#x2F; k T} } \exp\left( -\frac{\varepsilon_{j}}{k T} \right) \\
+&amp;= \frac{N}{Z} \exp\left( -\frac{\varepsilon_{j}}{kT} \right)
+\end{align*}
+$$
+</p>
+<p>Here, $Z \equiv  \sum_{j} g_{j} e^{- \varepsilon_{j} / k T}$ is known as the <strong>partition function</strong> and is an essential quantity in statistical mechanics, because it contains <strong>all of the statistical information</strong> about the system. The Boltzmann distribution is fundamentally dependent on the partition function. Now, an important note that if the energy levels are spaced close, then the discrete energies $\varepsilon_j$ becomes continuous energies $\varepsilon$, the occupancy number $N_{j}$ becomes a function of energy $N(\varepsilon)$, and the partition function becomes an integral over all energies:</p>
+<p class="mathcell">
+$$
+\frac{N(\varepsilon)}{g(\varepsilon)} = \frac{N}{Z} \exp\left( -\frac{\varepsilon}{kT} \right), \quad Z = \int g(\varepsilon) e^{-\varepsilon &#x2F; kT} d\varepsilon
+$$
+</p><h3 id="the-fermi-dirac-distribution">The Fermi-Dirac distribution</h3>
+<p>In the Boltzmann statistics, we considered <em>distinguishable</em> particles. But what if the particles are identical and <em>indistinguishable</em>? Then, we must use one of two distributions, depending on what type of particles make up the system. If these particles are <strong>fermions</strong>, then the distribution to use is the <strong>Fermi-Dirac distribution</strong>.</p>
+<p>Fermions obey the <strong>Pauli exclusion principle</strong>, meaning that a given state can either be occupied by <em>one</em> particle or <em>zero</em> particles, but never more than one. This can be equivalently stated as the requirement that $g_j \geq N_j$. Thus, for each energy level, the thermodynamic probability for each of the $j$-th energy levels is given by:</p>
+<p class="mathcell">
+$$
+\omega_{j} = \frac{g_{j}!}{N_{j}!(g_{j} - N_{j})!}
+$$
+</p>
+<p>This gives us the <strong>Fermi-Dirac statistics equation</strong>:</p>
+<p class="mathcell">
+$$
+\omega_{FD} = \prod_{j = 1}^n \frac{g_{j}!}{N_{j}!(g_{j} - N_{j})!}
+$$
+</p>
+<p>We can solve for the corresponding distribution for fermions again by taking the natural logarithm of both sides and using the method of Lagrange multipliers.</p>
+<p class="mathcell">
+$$
+\frac{N_{j}}{g_{j}} = \frac{1}{\exp(-\alpha - \beta \varepsilon_{j}) + 1}
+$$
+</p>
+<p>Setting $\beta = -1/KT$ and $\alpha = \mu/kT$ (where $\mu$ is the chemical potential), we obtain the famous <strong>Fermi-Dirac distribution</strong>:</p>
+<p class="mathcell">
+$$
+\frac{N_{j}}{g_{j}} = \frac{1}{e^{(\varepsilon_{j} - \mu_{j})&#x2F; kT} + 1}
+$$
+</p>
+<p>Which, in the continuous case (that is, when we can consider the energy spectrum to be approximately continuous), is given by:</p>
+<p class="mathcell">
+$$
+\frac{N(\varepsilon)}{g(\varepsilon)} = \frac{1}{e^{(\varepsilon - \mu) &#x2F; kT} + 1}
+$$
+</p><h3 id="the-bose-einstein-distribution">The Bose-Einstein Distribution</h3>
+<p>Lastly, we will consider the case where we have identical and <em>indistinguishable</em> particles that are <strong>bosons</strong>, which <em>do not</em> follow the Pauli exclusion principle. This means that we cannot use the Fermi-Dirac distribution; instead, we must use the <strong>Bose-Einstein distribution</strong>. This means that there is no limitation on how many particles are allowed in each state, meaning that $N_j$ can be arbitrary, regardless of what $g_j$ is. It turns out that the thermodynamic probability for the $j$-th state is then given by:</p>
+<p class="mathcell">
+$$
+\omega_{j} = \frac{(N_{j} + (g_{j} - 1))!}{N_{j}!(g_{j} - 1)!}
+$$
+</p>
+<p>And thus the <strong>Bose-Einstein statistics equation</strong> is given by:.</p>
+<p class="mathcell">
+$$
+\omega_{BE} = \prod_{j = 1}^n  \frac{(N_{j} + (g_{j} - 1))!}{N_{j}!(g_{j} - 1)!}
+$$
+</p>
+<p>Using the same Lagrange multiplier approach, we obtain:</p>
+<p class="mathcell">
+$$
+\frac{N_{j}}{g_{j}} = \frac{1}{\exp(-\alpha - \beta \varepsilon_{j}) - 1}
+$$
+</p>
+<p>We then find that $\alpha = \frac{\mu}{kT}$ and $\beta = -\frac{1}{kT}$, which, upon substitution, gives us:</p>
+<p class="mathcell">
+$$
+\frac{N_{j}}{g_{j}} = \frac{1}{e^{(\varepsilon_{j} - \mu_{j})&#x2F; kT} - 1}
+$$
+</p>
+<p>This is the <strong>Bose-Einstein distribution</strong>. In the continuous case, it reduces to:</p>
+<p class="mathcell">
+$$
+\frac{N(\varepsilon)}{g(\varepsilon)} = \frac{1}{e^{(\varepsilon - \mu)&#x2F;kT} - 1}
+$$
+</p><h3 id="the-maxwell-boltzmann-distribution">The Maxwell-Boltzmann distribution</h3>
+<p>Finally, in the limiting case of indistinguishable particles with large degeneracies ($g_j \gg N_j$), it turns out that the Fermi-Dirac statistics and Bose-Einstein statistics both reduce to a new statistics equation, given by:</p>
+<p class="mathcell">
+$$
+\omega_{MB} = \prod_{j = 1}^n \frac{(g_{j})^{N_{j}}}{N_{j}!}
+$$
+</p>
+<p>This is the <strong>Maxwell-Boltzmann statistics equation</strong>, which is closely related to the Boltzmann statistics equation. Indeed, the thermodynamic probability $\omega_B$ for Boltzmann statistics is related to that of Maxwell-Boltzmann statistics via $\omega_B = (N!) \omega_{MB}$. It turns out that their distribution functions are also the same; that is:</p>
+<p class="mathcell">
+$$
+\frac{N_{j}}{g_{j}} = \frac{N}{Z} \exp\left( -\frac{\varepsilon_{j}}{kT} \right), \quad Z = \sum_{j} g_{j} e^{-\varepsilon_{j} &#x2F; kT}
+$$
+</p>
+<p>Likewise, the continuous energy spectrum case is also the same:</p>
+<p class="mathcell">
+$$
+\frac{N(\varepsilon)}{g(\varepsilon)} = \frac{N}{Z} \exp\left( -\frac{\varepsilon}{kT} \right), \quad Z = \int g(\varepsilon) e^{-\varepsilon &#x2F; kT} d\varepsilon
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> It is important to understand that the Maxwell-Boltzmann distribution <em>fails at low temperatures</em>. It is only an approximate model that can describe the statistical behavior of particles at high temperatures.</p>
+</blockquote>
+<h4 id="the-helmholtz-function-for-the-maxwell-boltzmann-distribution">The Helmholtz function for the Maxwell-Boltzmann distribution</h4>
+<p>There is another link between classical and statistical thermodynamics, using the Helmholtz function $F$. To see why, recall that in classical thermodynamics, we can write out the Helmholtz function in differential form as:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+dF &amp;= dU - TdS - SdT \\
+&amp;= -S dT - P dV + \mu dN
+\end{align*}
+$$
+</p>
+<p>Where $\mu^*$ is the chemical potential per kilomole, that is, $\mu^* = \mu N_A$. Now, if we take $T, V = \text{const.}$ we find that:</p>
+<p class="mathcell">
+$$
+\mu = \left( \frac{\partial F}{\partial N} \right)_{T, V}
+$$
+</p>
+<p>Let us try to obtain the Helmholtz function for the Maxwell-Boltzmann distribution. Using Stirling’s approximation and taking the natural logarithm of the Maxwell-Boltzmann statistics equation, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\ln \omega_{MB} &amp;= N - \sum_{j = 1}^n N_{j} \ln N + \sum_{j = 1}^n N_{j} \frac{\varepsilon_{j}}{k T} + \sum_{j = 1}^n N_{j} \ln Z \\
+&amp;= N - N \ln N + \frac{U}{kT} + N \ln Z
+\end{align*}
+$$
+</p>
+<p>Where we have omitted the intermediate steps for brevity. From which substituting into Boltzmann’s entropy equation yields:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+S &amp;= k \ln \omega_{MB} \\
+&amp;= \frac{U}{T} + N k [\ln Z - \ln N + 1]
+\end{align*}
+$$
+</p><h3 id="the-chemical-potential-from-a-statistical-perspective">The chemical potential from a statistical perspective</h3>
+<p>Recall that previously, we have seen that the chemical potential satisfies:</p>
+<p class="mathcell">
+$$
+\mu = \left( \frac{\partial F}{\partial N} \right)_{T, V}
+$$
+</p>
+<p>If we combine Boltzmann’s entropy equation $S = k \ln \omega$ with $\omega = \omega_B$, where $\omega_B$ is the thermodynamic probability of the Maxwell-Boltzmann distribution, we obtain:</p>
+<p class="mathcell">
+$$
+S = \frac{U}{T} + Nk(\ln Z - \ln N + 1)
+$$
+</p>
+<p>Therefore, the <strong>Helmholtz function</strong> $F = U - TS$ gives us:</p>
+<p class="mathcell">
+$$
+F = -N k T (\ln Z - \ln N + 1)
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> This the case for a <strong>Maxwell-Boltzmann distribution</strong>. For a Boltzmann distribution, the Helmholtz function can be shown to be given by $F = -Nk T \ln Z$.</p>
+</blockquote>
+<p>Therefore we may obtain an expression for the chemical potential as follows:</p>
+<p class="mathcell">
+$$
+\mu = \left( \frac{\partial F}{\partial N} \right)_{{T, V}} =  k T \ln \frac{N}{Z}
+$$
+</p>
+<p>We notice that $\mu$ is directly proportional to the number of particles per unit volume and the temperature. Physically, this reflects the fact that particles flow from higher to lower chemical potential and higher to lower concentration. Moreover, we may rearrange to express $N/A$ in terms of the chemical potential:</p>
+<p class="mathcell">
+$$
+\frac{N}{Z} = e^{\mu &#x2F; k T}
+$$
+</p>
+<p>If we substitute this into the Boltzmann distribution, we obtain:</p>
+<p class="mathcell">
+$$
+\frac{N_{j}}{g_{j}} = \frac{Ne^{- \varepsilon &#x2F; k T}}{Z} = e^{\mu &#x2F; k T} e^{- \varepsilon &#x2F; k T} = \frac{1}{e^{(\varepsilon_{j}- \mu)&#x2F;kT}}
+$$
+</p>
+<p>(Note that this is the same for the Maxwell-Boltzmann distribution). In the most general case, we can write a generalized distribution in the form:</p>
+<p class="mathcell">
+$$
+\frac{N_{j}}{g_{j}} = \frac{1}{e^{(\varepsilon_{j} - \mu)&#x2F; k T} + a}
+$$
+</p>
+<p>Where $a$ can take one of three dimensionless values:</p>
+<ul>
+<li>$a = +1$ for the Fermi-Dirac distribution</li>
+<li>$a = -1$ for the Bose-Einstein statistics</li>
+<li>$a = 0$ for the Boltzmann/Maxwell-Boltzmann statistics</li>
+</ul>
+<h2 id="statistical-ensembles">Statistical ensembles</h2>
+<p>In more advanced statistical mechanics, it is frequent to consider three different <em>ensembles</em> to model statistical systems:</p>
+<ul>
+<li>Microcanonical ensemble</li>
+<li>Canonical ensemble</li>
+<li>Grand canonical ensemble</li>
+</ul>
+<p>However, we will not go into these for now in our elementary discussion.</p>
+<h2 id="classical-statistics-of-the-ideal-gas">Classical statistics of the ideal gas</h2>
+<p>Let us now take the classical limit of statistical thermodynamics. That is, we consider the following assumptions:</p>
+<ul>
+<li>Temperatures much higher than absolute zero</li>
+<li>Gas is composed entirely of non-interacting molecules, and thus the effects of spin are unimportant (since molecules have negligible net spin)</li>
+<li>No phase changes</li>
+</ul>
+<p>We can show that in this limit, statistical thermodynamics agrees exactly with classical thermodynamics.</p>
+<h3 id="derivation-of-the-ideal-gas-equation">Derivation of the ideal gas equation</h3>
+<p>To start, let us recall the Maxwell-Boltzmann distribution:</p>
+<p class="mathcell">
+$$
+\frac{N_{j}}{g_{j}} = \frac{Ne^{- \varepsilon_{j}&#x2F;k T}}{Z} \quad \Rightarrow \quad N_{j} = \frac{g_{j} Ne^{-\varepsilon_{j}&#x2F; kT}}{Z}
+$$
+</p>
+<p>Previously, we have also found that:</p>
+<p class="mathcell">
+$$
+F = -NkT(\ln Z - \ln N + 1)
+$$
+</p>
+<p>Therefore, the internal energy $U$ can be expressed as follows:</p>
+<p class="mathcell">
+$$
+U = \sum_{j} N_{j} \varepsilon_{j} = \sum_{j} \frac{g_{j} \varepsilon_{j} Ne^{-\varepsilon_{j}&#x2F; kT}}{Z}
+$$
+</p>
+<p>Meanwhile, recall that we have defined the partition function $Z$ as:</p>
+<p class="mathcell">
+$$
+Z = \sum_{j} g_{j} e^{-\varepsilon_{j} &#x2F; k T}
+$$
+</p>
+<p>With some mathematical rewriting, we can express $Z$ in the following form:</p>
+<p class="mathcell">
+$$
+\left( \frac{\partial Z}{\partial T} \right)_{V} = \frac{1}{k T^2} \sum_{j} g_{j} e^{-\varepsilon_{j}&#x2F; kT} = \frac{Z}{kT^2}\quad \Rightarrow \quad Z = k T^2 \left( \frac{\partial Z}{\partial T} \right)_{V}
+$$
+</p>
+<p>Substituting this expression for $Z$ into $U$, we obtain an expression for the <strong>total internal energy</strong> of a classical gas:</p>
+<p class="mathcell">
+$$
+U = NkT^2 \left( \frac{\partial \ln Z}{\partial T} \right)_{V}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> It so happens that this is the same result for the <em>Boltzmann distribution</em>, as well as for the <em>Maxwell-Boltzmann</em> distribution.</p>
+</blockquote>
+<p>From the Helmholtz function, internal energy, and chemical potential, we can now derive classical thermodynamic quantities straight from statistical mechanics. For instance, the classical Gibbs function $G$ can be expressed as:</p>
+<p class="mathcell">
+$$
+G = \mu N = -NkT(\ln Z - \ln N)
+$$
+</p>
+<p>Thus, the enthalpy of a classical ideal gas is given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+H &amp;= U + PV \\
+&amp;= (U + PV - T S ) + TS \\
+&amp;= G + TS \\
+&amp;= N kT^2 \left( \frac{\partial \ln Z}{\partial T} \right)_{V} + NkT
+\end{align*}
+$$
+</p>
+<p>Differentiating the Helmholtz function $F = -NkT(\ln Z - \ln N + 1)$ and holding temperature constant, we can then obtain the pressure:</p>
+<p class="mathcell">
+$$
+P = -\left( \frac{\partial F}{\partial V} \right)_{T} =NkT\left( \frac{\partial \ln Z}{\partial V} \right)_{T}
+$$
+</p>
+<p>What about the partition function for a classical ideal gas? Well, first, we can make the reasonable approximation that the gas has a continuous energy spectrum, and therefore we can use the integral expression for the partition function:</p>
+<p class="mathcell">
+$$
+Z = \int g(\varepsilon) e^{-\varepsilon &#x2F; k T} d \varepsilon
+$$
+</p>
+<p>We also recall that the expression for the density of states we calculated before was given by:</p>
+<p class="mathcell">
+$$
+g(\varepsilon) d\varepsilon = \frac{4\pi\sqrt{ 2 } V m^{3&#x2F;2}\varepsilon^{1&#x2F;2}}{h^3} d\varepsilon
+$$
+</p>
+<p>Therefore, if we substitute $g(\varepsilon)$ into the integral expression for $Z$, we obtain:</p>
+<p class="mathcell">
+$$
+Z = \int_{0}^\infty g(\varepsilon) e^{-\varepsilon&#x2F;kT} d\varepsilon = \frac{4\pi \sqrt{ 2 }V m^{3&#x2F;2}}{h^3} \int_{0}^\infty \varepsilon^{1&#x2F;2} e^{-\varepsilon &#x2F; k T} d \varepsilon
+$$
+</p>
+<p>This integral is non-trivial (it is a very hard integral to evaluate), but it can be shown that:</p>
+<p class="mathcell">
+$$
+\int_{0}^\infty \varepsilon^{1&#x2F;2} e^{-\varepsilon &#x2F; k T} d \varepsilon = \frac{\sqrt{ \pi }}{2} (kT)^{3&#x2F;2}
+$$
+</p>
+<p>This gives us the partition function for a classical ideal gas with a continuous energy spectrum:</p>
+<p class="mathcell">
+$$
+Z = V\left( \frac{2\pi m k T}{h^2} \right)^{3&#x2F;2}
+$$
+</p>
+<p>Let’s see what happens when we take the logarithm of the partition function. We find:</p>
+<p class="mathcell">
+$$
+\ln Z = \ln V + \frac{3}{2} \ln T + \frac{3}{2} \ln\left( \frac{2\pi m k}{h^2} \right)
+$$
+</p>
+<p>Therefore:</p>
+<p class="mathcell">
+$$
+\left( \frac{\partial \ln Z}{\partial V} \right)_{T} = \frac{1}{V},
+\quad \Rightarrow \quad \left( \frac{\partial \ln Z}{\partial T} \right)_{V} = \frac{3}{2T}
+$$
+</p>
+<p>Now recall that we previously derived that:</p>
+<p class="mathcell">
+$$
+P = NkT\left( \frac{\partial \ln Z}{\partial V} \right)_{T}
+$$
+</p>
+<p>Therefore, substituting our obtained value of $\left( \frac{\partial \ln Z}{\partial V} \right)_{V}$ in our formula for $P$, we have:</p>
+<p class="mathcell">
+$$
+P = Nk T \left( \frac{1}{V} \right) = \frac{N kT}{V}
+$$
+</p>
+<p>Defining $n = N/N_A$ and $R = k N_A$, we obtain the famous <strong>ideal gas law</strong> upon rearrangement:</p>
+<p class="mathcell">
+$$
+PV = n R T
+$$
+</p>
+<p>Meanwhile, if we substitue in our obtained value of $\left( \frac{\partial \ln Z}{\partial T} \right)_{V}$ into our formula for $U$, we have the famous <strong>temperature-energy relation</strong>, which can also be derived from the classical kinetic theory of molecules:</p>
+<p class="mathcell">
+$$
+U = NkT^2 \left( \frac{\partial \ln Z}{\partial T} \right)_{V} = \frac{3}{2} N kT
+$$
+</p>
+<p>Finally, we can also compute the entropy of a classical ideal gas:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+S &amp;= \frac{U}{T} + Nk(\ln Z - \ln N + 1) \\
+&amp;= \frac{3}{2} Nk + Nk\left(\ln \left[ V \left( \frac{2\pi mkT}{h^2} \right)^{3&#x2F;2} \right]- \ln N + 1 \right) \\
+&amp;= \frac{3}{2} Nk + Nk\left( \ln\left[ \frac{V}{N} \left( \frac{2\pi m k T}{h^2} \right)^{3&#x2F;2} \right] + 1 \right)
+\end{align*}
+$$
+</p>
+<p>Rearrangement yields the famous <strong>Sackur-Tetrode equation</strong>:</p>
+<p class="mathcell">
+$$
+S = Nk\left[ \ln\left[ \frac{V}{N}\left( \frac{4\pi mU}{3h^2N} \right)^{3&#x2F;2} \right] + \frac{5}{2}\right]
+$$
+</p>
+<p>This may be well and good, but a question we might want to ask, is: how good is this model for real gases? Well, let us define $n_Q$ as:</p>
+<p class="mathcell">
+$$
+n_{Q} \equiv \left( \frac{2\pi m kT}{h^2} \right)^{3&#x2F;2}, \quad Z = n_{Q} V
+$$
+</p>
+<p>Therefore, we have:</p>
+<p class="mathcell">
+$$
+\frac{N_{j}}{g_{j}} = \frac{Ne^{-\varepsilon_{j}&#x2F;kT}}{Z} = \left( \frac{N}{V} \right) \frac{e^{-\varepsilon_{j}&#x2F;kT}}{n_{Q}}
+$$
+</p>
+<p>For low temperatures, we can make the approximation that $e^{-\varepsilon_j/kT} \approx e^{-1} \approx 1$. With these approximations, we have:</p>
+<p class="mathcell">
+$$
+\frac{N_{j}}{g_{j}} \approx \frac{N}{n_{Q}V}
+$$
+</p>
+<p>Under standard conditions for most gases, $N_j \ll g_j$. The gas is then said to be in the <strong>classical regime</strong>, and the ideal gas law is highly-accurate.</p>
+
         
         <a id="jump-toc-btn" href="#toc">Show table of contents</a>
         <a href="/notes" class="return-link">Back to all notes</a>
