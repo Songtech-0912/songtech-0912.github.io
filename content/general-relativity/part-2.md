@@ -1525,7 +1525,7 @@ This corresponds to a surface known as [Flamm’s paraboloid](https://en.wikiped
 
 ![An embedding diagram of the exterior Schwarzschild metric](https://upload.wikimedia.org/wikipedia/commons/2/21/Flamm.svg)
 
-_Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Flamm.svg). Note that the paraboloid is plotted for values of $r > r_s$ only.
+_Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Flamm.svg). Note that the paraboloid is plotted for values of $r > r_s$ only._
 
 It is important to recognize that Flamm’s paraboloid does *not* describe particles “sliding” down into the “hole” in its center; it is a visualization of *spacetime curvature*. We can tell that for $r \to \infty$ (towards the outer boundary of the paraboloid), the curvature goes to zero. This tells us that the spacetime curvature vanishes far away from the black hole, which we know is true; Schwarzschild spacetime reduces to Minkowski spacetime as $r \to \infty$. But as we get closer to the event horizon, the curvature becomes non-trivial, which we can both see on Flamm’s paraboloid and intuitively know from the Schwarzschild metric.
 
@@ -1546,7 +1546,7 @@ Where $U_1$ are the set of coordinates describing the universe in which the “m
 
 > **Note:** An interactive visualization is available [on this page](https://www.desmos.com/3d/j2pnyuyl4u) and might be useful for getting an intuitive understanding of these wormholes, although once again we will emphasize that the $z$-curvature is not in physical space, but rather meant to represent *curvature*.
 
-Is it theoretically possible to travel through a Schwarzschild black hole? Sadly, no. First of all, it would be a one-way trip, since it would require passing through two event horizons; one for the black hole, and another for the white hole. But second, a traveler must travel faster than the speed of light to pass through while avoiding the singularity. Thus, a Schwarzschild black hole, if one physically exists, would be an **un-traversable wormhole** (much to the chagrin of science fiction fans).
+Is it theoretically possible to travel through a Schwarzschild black hole? Sadly, no. First of all, it would be a one-way trip, since it would require passing through two event horizons; one for the black hole, and another for the white hole. But second, a traveler must travel faster than the speed of light to pass through while avoiding the singularity. Thus, a Schwarzschild black hole, if one physically exists, would be a **non-traversable wormhole** (much to the chagrin of science fiction fans).
 
 ### Kruskal-Szekeres coordinates and maximal extension
 
