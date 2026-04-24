@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thermodynamics and Statistical Mechanics, Part II</title>
+  <meta name="description" content=" This is a guide to statistical mechanics - a fascinating branch of physics that explains, among other things, what entropy is, how objects emit radiation, and why fermions (like electrons) act so differently than bosons (like photons). It is the second part of a two-part guide to thermodynamics and statistical mechanics
+">
+
+  
+      <link rel="icon" type="image/svg+xml" href="https://jackysci.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://jackysci.com/favicon.ico">
+  
+
+  
+      <link rel="stylesheet" href="https://jackysci.com/site.css">
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://jackysci.com/katex/katex.min.css">
+
+      <!--Inter-->
+      <link rel="stylesheet" href="https://jackysci.com/inter/inter.css">
+  
+  <a rel="me" id="mastodon-link" href="https://mastodon.social/@songtech0912">Mastodon</a>
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="active">Home</a>
+    <!--incomplete about page
+    <a href="about.html">About</a>
+    -->
+    <a href="https://jackysci.com/notes/">Notes</a>
+    <a href="https://lightofhope.site/">Music</a>
+    <a href="https://codeberg.org/songtech-0912/">Code</a>
+  </nav>
+
+  
+    <article class="post">
+        <h1>Thermodynamics and Statistical Mechanics, Part II</h2>
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF. <a href="https://forms.gle/msb5wKErDJCjeL5k6">Report an issue or error here</a>.</p>
+
+        
+        
+        <!-- table of contents -->
+        
+        <details class="toc" id="toc" open>
+        <summary>Table of contents</summary>
+        <p class="toc-info">Note: it is highly recommended to navigate by clicking links in the table of contents! It means you can use the back button in your browser to go back to any section you were reading, so you can jump back and forth between sections!</p>
+        <div>
+            <ul>
+            
+                <li>
+                    <a href="#chapter-guide-for-thermodynamics-and-statistical-mechanics">Chapter guide for Thermodynamics and Statistical Mechanics</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#introduction-to-statistical-mechanics">Introduction to statistical mechanics</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#a-toy-statistical-model-of-a-coin-toss">A toy statistical model of a coin toss</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#a-statistical-model-of-distinguishable-particles">A statistical model of distinguishable particles</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#statistical-interpretation-of-entropy">Statistical interpretation of entropy</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#quantum-systems">Quantum systems</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
+        </details>
+        
+
+        <!-- page content -->
+        <p>This is a guide to statistical mechanics - a fascinating branch of physics that explains, among other things, what entropy is, how objects emit radiation, and why fermions (like electrons) act so differently than bosons (like photons). It is the second part of a two-part guide to thermodynamics and statistical mechanics</p>
+<span id="continue-reading"></span>
+<blockquote>
+<h3 id="chapter-guide-for-thermodynamics-and-statistical-mechanics">Chapter guide for Thermodynamics and Statistical Mechanics</h3>
+<ul>
+<li><a href="https://jackysci.com/thermo-stat-mech/">Part 1</a> covers classical thermodynamics, mostly focusing on the ideal gas and its behavior according to the laws of thermodynamics.</li>
+<li><a href="https://jackysci.com/thermo-stat-mech/part-2/">Part 2</a> covers introductory statistical mechanics and quantum systems, including the Bose-Einstein and Fermi-Dirac statistics, the Einstein and Debye theories of solids, blackbody radiation, and boson condensates. <strong>You are reading this part right now.</strong></li>
+</ul>
+</blockquote>
+<h2 id="introduction-to-statistical-mechanics">Introduction to statistical mechanics</h2>
+<p>Classical thermodynamics is the classical limit of a more fundamental theory: that being <strong>statistical mechanics</strong>. Statistical mechanics not only explains everything that classical thermodynamics could — remarkably, it also allows us to <em>derive</em> classical thermodynamics as the classical limit of a more fundamental theory.</p>
+<p>In statistical mechanics, we consider <strong>assemblies</strong>, which are roughly a certain number of identical entities (such as atoms, electrons, phonons, photons, etc.). Here, whenever we consider an assembly, it will generally be synonymous with the number of particles. For the $j$-th energy level of the system, we will denote the number of particles as $N_j$.</p>
+<p>A system, particularly a quantum system, has different energy levels. <strong>Macrostates</strong> are then the number of particles in each energy level (in practice, they are more complicated, but we will stick to this interpretation for now). Meanwhile, <strong>microstates</strong> are the number of particles in each energy state (quantum state). Microstates and macrostates are <em>not</em> the same thing due to the fact that there may be more than one energy state per energy level; there may be <em>multiple</em> microstates in each macrostate. As in quantum mechanics, this is known as <strong>degeneracy</strong>.</p>
+<p>When applied to thermodynamics, statistical mechanics tells us that <strong>all possible microstates</strong> of an isolated assembly are <strong>equally probable</strong>. That is, while which <em>exact</em> microstate the system is in at a particular time is not known, we know that the system is <em>equally likely</em> to be in each of its microstate (for a given macrostate).</p>
+<p>The <strong>thermodynamic probability</strong> is the number of microstates that can be found for a given macrostate. For the $k$-th macrostate, the thermodynamic probability is denoted as $\omega_k$. It important to note that this is an <em>unnormalized</em> and can be anything from zero to infinity; in fact, the thermodynamic probability is not really a probability at all! In mathematical terms, it is more accurately considered a <em>multiplicity</em>; the association with probability is due to the fact that a higher thermodynamic probability means that a macrostate is more likely to be observed.</p>
+<p>The <strong>true probability</strong> $p_k$, meanwhile, is an actual probability, which is properly normalized (constrained to be between zero and one). It can be found from the thermodynamic probability $\omega_k$ by dividing by the <em>total</em> number of microstates $\Omega$. That is, $p_{k} = \omega_{k} / \Omega$.</p>
+<h3 id="a-toy-statistical-model-of-a-coin-toss">A toy statistical model of a coin toss</h3>
+<p>To understand how our fundamental statistical quantities (microstates, macrostates, and the thermodynamic probability) work, it is instructive to start with the simplest model possible: the coin toss. For instance, consider four distinguishable coins. The coils are tossed and the results are measured. Since each coin can either be heads ($H$) or tails ($T$), there are <strong>five macrostates</strong> depending on the number of heads and the number of tails that are measured after the coil flip, as given below:</p>
+<table><thead><tr><th>Macrostate</th><th>Macrostate</th></tr></thead><tbody>
+<tr><td>$k = 1$</td><td>$H = 0, T = 4$</td></tr>
+<tr><td>$k = 2$</td><td>$H = 1, T = 3$</td></tr>
+<tr><td>$k = 3$</td><td>$H = 2, T =2$</td></tr>
+<tr><td>$k = 4$</td><td>$H = 3, T= 1$</td></tr>
+<tr><td>$k = 5$</td><td>$H = 4, T = 0$</td></tr>
+</tbody></table>
+<p>Meanwhile, for each of the macrostates, there are a certain number of microstates. In the $k =1$ macrostate, the only possible microstate is $T,T,T,T$ (4 tails); similarly, in the $k = 5$ macrostate, the only possible microstate is $H, H, H, H$ (4 heads). In all other macrostates, there are 4 possible microstates for each macrostate, which are each some combination of heads and tails. The <strong>average occupation number</strong> $\overline N_j$ for the $j$-th macrostate is defined as:</p>
+<p class="mathcell">
+$$
+\overline N_{j} = \frac{\sum_{k}N_{jk}\omega_{k}}{\sum_{k}\omega_{k}} = \frac{\sum_{k}N_{jk}\omega_{k}}{\Omega} = \sum_{k} N_{jk} p_{k}
+$$
+</p>
+<p>Where here, we sum over macrostate label $k$. The thermodynamic probability is the highest for $k = 3$: that is, rolling 2 heads and 2 tails is the <em>most</em> probable result.</p>
+<p>This is well and good for cases in which we can count the possible combinations, but in many cases the number of permutations becomes impossible to count. If we increase the number of (distinguishable) coins to $N$, how many ways are there to select the number of heads or tails?</p>
+<blockquote>
+<p><strong>Note:</strong> the requirement of distinguishability is important here. For a coin, it is clearly possible to distinguish between heads and tails (by just looking at the coin); but we will see cases where it is not so simple.</p>
+</blockquote>
+<p>It turns out that if we have $N$ coins, the number of possible heads $N_1$ is given by the <strong>binomial coefficient</strong> for $N_1$ according to the formula:</p>
+<p class="mathcell">
+$$
+\omega_{1} = \begin{pmatrix}
+N \\ N_{1}
+\end{pmatrix} = 
+\frac{N_{1}!}{N_{1}!(N-N_{1})!}
+$$
+</p>
+<p>Where $\omega_1$ is the thermodynamic probability of selecting $N_1$ heads. The same is true for the number of possible tails $N_2$, which is given by the binomial coefficient for $N_2$:</p>
+<p class="mathcell">
+$$
+\omega_{2}
+=\begin{pmatrix}
+N \\ N_{2}
+\end{pmatrix} = 
+\frac{N_{2}!}{N_{2}!(N-N_{2})!}
+$$
+</p>
+<p>And as before, $\omega_2$ is the thermodynamic probability of selecting $N_2$ tails, and by definition:</p>
+<p class="mathcell">
+$$
+N = N_{1} + N_{2}
+$$
+</p>
+<p>From this, we can calculate that the most probable macrostate for $N = 1000$ is to have $N_1 = N_2 = 500$ (that is, 500 heads and 500 tails). This tells us what we already intuitively know: that the most likely result of a coin toss is half heads and half tails.</p>
+<h4 id="the-stiring-approximation">The Stiring approximation</h4>
+<p>Calculating factorials for large numbers is tedious and extremely slow, both manually and even on a computer. However, it turns out that there is a way to approximate factorials for large numbers, called the <strong>Stirling approximation</strong>. This tells us that for large values of $n$, we have:</p>
+<p class="mathcell">
+$$
+\ln n! \approx (n \ln n) - n
+$$
+</p>
+<p>This means that we can simply take the natural log of the factorial we want to compute, which is much simpler because calculators can easily calculate logarithms (and we can reasonably approximate them by hands as well).</p>
+<h4 id="generalizing-the-coin-toss">Generalizing the coin toss</h4>
+<p>Now, let us generalize our two-level system (in which the coins can only be either heads or tails) to an $n$-level system. You can think of this as having a magical coin with $n$ different sides. In that case, we have:</p>
+<p class="mathcell">
+$$
+\omega_{n} = \frac{N!}{N_{1}! N_{2}! N_{3}! \dots N_{n}!} = \frac{N!}{\prod_{j = 1}^n N_{n}!}
+$$
+</p>
+<p>Where $\omega_n$ is the thermodynamic probability of selecting the $n$-th macrostate of the system.</p>
+<h3 id="a-statistical-model-of-distinguishable-particles">A statistical model of distinguishable particles</h3>
+<p>Now, let us switch from our toy model of a coin toss to a more realistic model of particles. The <strong>macrostates</strong> of a system of particles confined in a box can be labelled with $(N, V, U)$, where $U$ is the internal energy of the system, $N$ is the number of distinguishable particles, and $V$ is the volume of the box. Here, we use “box” as a generic term; the system does not necessarily need to be in a physical box, it simply has to be an isolated system.</p>
+<blockquote>
+<p><strong>Note:</strong> We assume that the particles are non-interacting or weakly-interacting and are in equilibrium states.</p>
+</blockquote>
+<p>We know that the system has $n$ total energy levels; we denote the energy of the $j$-th energy level as $\varepsilon_j$. We want to find the expected number of particles in each macrostate of the system. To start, we can constrain the problem by imposing conservation of particle number and conservation of energy:</p>
+<p class="mathcell">
+$$
+\sum_{j = 1}^n N_{j} = N, \quad \sum_{j = 1}^n N_{j} \varepsilon_{j} = U
+$$
+</p>
+<p>These two requirements restrict the possible microstates of the system, and once again (through some tedious calculation) we can find the probabilities of the system being in each macrostate.</p>
+<h3 id="statistical-interpretation-of-entropy">Statistical interpretation of entropy</h3>
+<p>We have already introduced the classical concept of entropy in thermodynamics, which we may variously interpret as quantifying the useful work that the system can perform or as a measure of the fundamental irreversibility (and thus, imperfect efficiency) of all real-world thermal systems. But we can also interpret entropy from a statistical perspective: a far more powerful perspective that allows us to <em>derive</em> the form of entropy we encounter in classical thermodynamics.</p>
+<p>Let the entropy $S$ be a function of the thermodynamic probability $\omega$ (we will drop the indices for the states for simplicity). That is to say, $S = f(\omega)$. Now, entropy itself is an extensive property, since it changes depending on the number of particles. Therefore, the total entropy of the system $S$ is a sum of the individual entropies of each of the subsystems in the system. If we denote these subsystems as $A, B, C, \dots$ then we can express this mathematically as:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+S &amp;= S_{A} + S_{B} + S_{C} + \dots + S_{N} \\
+&amp;= f(\omega_{A})  + f(\omega_{B}) + f(\omega_{C}) + \dots + f(\omega_{N})
+\end{align*}
+$$
+</p>
+<p>The thermodynamic probabilities $\omega_A, \omega_B, \dots$ are independent, and we know that we can combine independent probabilities via multiplication. Thus $\omega$ is given by:</p>
+<p class="mathcell">
+$$
+\omega = \omega_{A} \omega_{B} \omega_{C} \dots \omega_{N} = \prod_{j} \omega_{j}
+$$
+</p>
+<p>But we know that $S = f(\omega)$. Therefore we have:</p>
+<p class="mathcell">
+$$
+S = f(\omega) = f(\omega_{A} \omega_{B} \omega_{C} \dots \omega_{N})
+$$
+</p>
+<p>Now, if we equate this with our other expression for $S$:</p>
+<p class="mathcell">
+$$
+S = f(\omega_{A})  + f(\omega_{B}) + f(\omega_{C}) + \dots + f(\omega_{N})
+$$
+</p>
+<p>We thus have:</p>
+<p class="mathcell">
+$$
+f(\omega_{A} \omega_{B} \omega_{C} \dots \omega_{N}) = f(\omega_{A})  + f(\omega_{B}) + f(\omega_{C}) + \dots + f(\omega_{N})
+$$
+</p>
+<p>There is only one real-valued function that satisfies this property: the logarithm, which satisfies $\ln(a b) = \ln a + \ln b$. Therefore, the function $f(\omega)$ must be in the form $k \ln(\omega)$, where $k$ is some constant, giving us the famous <strong>Boltzmann entropy formula</strong>:</p>
+<p class="mathcell">
+$$
+S = k \ln \omega
+$$
+</p>
+<p>Where $k$ is the Boltzmann constant (sometimes also denoted $k_{B}$), and $\omega$ (sometimes denoted $\Omega$) is the total number of microstates of the system. This equation allows us to relate the <em>microscopic</em> properties of a system (that is, its microstates)</p>
+<h3 id="quantum-systems">Quantum systems</h3>
+<p>Up to this point, we have mostly stayed within classical physics and simply applied statistical methods to analyze them. But the true power of statistical mechanics is when describing <em>quantum systems</em>. Quantum systems frequently have quantized energy levels, that is, energy levels with discrete energies. These energy levels may be non-degenerate (only one quantum state per energy level) or degenerate (more than one quantum state per energy level). The <strong>degeneracy</strong> of the $n$-th energy state is denoted $g_n$ where $n \geq 1$.</p>
+<p>For instance, consider the quantum particle of mass $m$ trapped in a 1D box of width $L$. Assume that the box has infinite height. The energies of the particle are then quantized, and are given by:</p>
+<p class="mathcell">
+$$
+\varepsilon_{n} = \frac{n^2 \pi^2 \hbar^2}{2mL^2}, \quad n = 1, 2, 3, \dots
+$$
+</p>
+<p>Where $\hbar = h/2\pi$ is the reduced Planck constant, $h = 6.62 \times 10^{-34}\ \mathrm{J \cdot s}$ is the Planck constant, and $n$ is an integer. We can extend this to three dimensions with a box of dimensions $(L_x, L_y, L_z)$, giving us:</p>
+<p class="mathcell">
+$$
+\varepsilon_{q, \ell, k} = \frac{\pi^2 \hbar^2}{2m} \left( \left( \frac{q}{L_{x}} \right)^2 + \left( \frac{\ell}{L_{y}} \right)^2 + \left( \frac{k}{L_{z}} \right)^2 \right), \quad q, \ell, k \in 1, 2, 3, \dots
+$$
+</p>
+<p>Where $q = n_x$, $\ell = n_y$, $k = n_z$ are the quantum numbers in each direction. The <strong>principal quantum number</strong> $n_j$ for the $j$-th energy level is given by:</p>
+<p class="mathcell">
+$$
+n_{j}^2 = q^2 + \ell^2 + k^2 = n_{x}^2 + n_{y}^2 + n_{z}^2
+$$
+</p>
+<p>Meanwhile, the degeneracy of the $j$-th energy level is always greater than 1 for anything except the ground state (where $n = \ell = k = 1$). Assuming that the box has volume $V = L_{x}L_{y} L_{z}$, we can then write the energy levels with:</p>
+<p class="mathcell">
+$$
+\varepsilon_{j} = \frac{n_{j}^2 \pi^2 \hbar^2 }{2m}V^{-2&#x2F;3}
+$$
+</p>
+        
+        <a id="jump-toc-btn" href="#toc">Show table of contents</a>
+        <a href="/notes" class="return-link">Back to all notes</a>
+        
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://jackysci.com/katex/katex.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://jackysci.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    </script>
+    
+    <script defer>
+        var toc = document.getElementById("toc");
+        var tocPos = toc.offsetTop + toc.offsetHeight;
+        var tocBtn = document.getElementById("jump-toc-btn");
+
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+        // for performance reasons, we **only** render a certain
+        // number of equations that the viewer is actually viewing
+        function VisibleMathRenderer(config) {
+            /*
+            Renders only a limited number of equations on page load
+            to avoid poor performance
+             Params:
+                lastRenderedEquation: the most recently rendered equation.
+                        when this goes out of view, equations under it are rendered. 
+            */
+            var startElement = config.startElement
+            var maxEquations = config.maxEquations ? config?.maxEquations : 30;
+            this.startElement = startElement
+            this.maxEquations = maxEquations
+            // we wait until the user scrolls past the starting/
+            // ending elements to start rendering the whole page
+            this.canRenderWholePage = false;
+            this.pageRendered = false;
+            this.lastRenderedTopEquation = null;
+            this.lastRenderedBottomEquation = null;
+
+            this.render = function() {
+                renderMath(this.startElement);
+                // render previous 25 and following 25 equations
+                var prev = this.startElement.previousElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left prior to the element
+                    if (prev == null) {
+                        break;
+                    }
+                    renderMath(prev);
+                    prev = prev.previousElementSibling;
+                }
+                // store our last rendered equations
+                // we'll track scroll position later to
+                // check when the rest of the page should be rendered
+                this.lastRenderedTopEquation = prev;
+                console.log(this.lastRenderedTopEquation)
+
+                var next = this.startElement.nextElementSibling;
+                for (i = 0; i < this.maxEquations / 2; i++) {
+                    // if there are no elements left following the element
+                    if (next.nextElementSibling == null) {
+                        break;
+                    }
+                    renderMath(next);
+                    next = next.nextElementSibling;
+                }
+                this.lastRenderedBottomEquation = next;
+                // now allow rendering the rest of the equations
+                this.canRenderWholePage = true;
+            }
+
+            // render all math on the whole page
+            this.renderMathOnPage = function() {
+                // don't run until preliminary tasks
+                // are done so that the whole page
+                // can/should be rendered
+                if (!this.canRenderWholePage) {
+                    return;
+                }
+                // if the whole page's worth of equations
+                // are already rendered, don't render more
+                if (this.pageRendered) {
+                    return;
+                }
+                var topBound = this.lastRenderedTopEquation.getBoundingClientRect.top;
+                var bottomBound = this.lastRenderedBottomEquation.getBoundingClientRect.bottom;
+                var scrollTop, scrollBottom = getViewport();
+                // if the user is about to scroll past the initially-rendered equations
+                // we will render the whole page
+                if (scrollTop - 50 + window.scrollY < topBound || scrollBottom + 50 + window.scrollY > bottomBound) {
+                    console.log("Scrolled beyond!")
+                    var article = document.querySelector(".post");
+                    if (article) {
+                        this.renderMath(article);
+                    }
+                    this.pageRendered = true;
+                }
+                
+            }
+            
+        }
+
+        function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        function findFirstRelevantElement() {
+            // finds the first <p> tage that's closest to
+            // the viewer's viewport
+            var regex = /#.*/;
+            var m = regex.exec(window.location.href);
+            if (m !== null) {
+                return document.querySelector(m[0]);
+            } else {
+                return document.querySelector(".post p");
+            }
+        }
+        
+        // initialize page JS components
+        /*
+        var mathRenderer = new VisibleMathRenderer({
+            // start rendering with first <p> tag on the
+            // post
+            startElement: findFirstRelevantElement()
+        });
+        */
+        document.addEventListener("DOMContentLoaded", function() {
+            showTocBtnOnScroll();
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+
+        window.onscroll = function(){
+            // if (!mathRenderer.pageRendered) {
+            //     mathRenderer.renderMathOnPage();
+            // }
+            showTocBtnOnScroll();
+        };
+
+
+    </script>
+    
+
+
+</body>
+
+</html>
