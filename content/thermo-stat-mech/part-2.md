@@ -466,7 +466,7 @@ This is the **Bose-Einstein distribution**. In the continuous case, it reduces t
 \frac{N(\varepsilon)}{g(\varepsilon)} = \frac{1}{e^{(\varepsilon - \mu)/kT} - 1}
 {% end %}
 
-### Maxwell-Boltzmann distribution
+### The Maxwell-Boltzmann distribution
 
 Finally, in the limiting case of indistinguishable particles with large degeneracies ($g_j \gg N_j$), it turns out that the Fermi-Dirac statistics and Bose-Einstein statistics both reduce to a new statistics equation, given by:
 
@@ -488,7 +488,7 @@ Likewise, the continuous energy spectrum case is also the same:
 
 > **Note:** It is important to understand that the Maxwell-Boltzmann distribution *fails at low temperatures*. It is only an approximate model that can describe the statistical behavior of particles at high temperatures.
 
-### The Helmholtz function for the Maxwell-Boltzmann distribution
+#### The Helmholtz function for the Maxwell-Boltzmann distribution
 
 There is another link between classical and statistical thermodynamics, using the Helmholtz function $F$. To see why, recall that in classical thermodynamics, we can write out the Helmholtz function in differential form as:
 
