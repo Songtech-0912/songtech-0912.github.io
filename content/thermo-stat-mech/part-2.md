@@ -761,3 +761,641 @@ For low temperatures, we can make the approximation that $e^{-\varepsilon_j/kT} 
 {% end %}
 
 Under standard conditions for most gases, $N_j \ll g_j$. The gas is then said to be in the **classical regime**, and the ideal gas law is highly-accurate.
+
+### The equipartition theorem
+
+Lastly, we can calculate the average energy of a molecule in a classical ideal gas. To start, we can combining the three equations we’ve used extensively:
+
+{% math() %}
+\begin{gather*}
+\frac{N(\varepsilon)}{g(\varepsilon)} = \frac{Ne^{-\varepsilon / kT}}{Z} \\
+Z = V\left( \frac{2\pi m k T}{h^2} \right)^{3/2} \\
+g(\varepsilon) d\varepsilon = \frac{4\pi\sqrt{ 2 } V m^{3/2}\varepsilon^{1/2}}{h^3} d\varepsilon
+\end{gather*}
+{% end %}
+
+This allows us to obtain:
+
+{% math() %}
+N(\varepsilon) d\varepsilon = \frac{2\pi N\varepsilon^{1/2}e^{-\varepsilon / k T}}{(n k T)^{3/2}}
+{% end %}
+
+Combining all three together and using the classical kinetic velocity relation $\varepsilon(v) = \frac{1}{2} mv^2$, and thus $d\varepsilon = mvdv$, then we have:
+
+{% math() %}
+N(v) dv = 4\pi N e^{- m v^2 / 2 kT} v^2 \left( \frac{m}{2\pi k T} \right)^{3/2} dv
+{% end %}
+
+To find the average energy $\overline \varepsilon$, we have:
+
+{% math() %}
+\overline \varepsilon(v) = \frac{U_{\text{total}}}{N_\text{total}} = \frac{\displaystyle \int_{0}^\infty \varepsilon(v) N(v)dv}{\displaystyle \int_{0}^\infty N(v) dv}
+{% end %}
+
+The integrals are very difficult to solve, but they do have an analytical solution, and it is given by:
+
+{% math() %}
+\overline \varepsilon(v) = \frac{3}{2} kT
+{% end %}
+
+This is *exactly* the same as the formula we saw before for the classical theory of gases, where $U = \frac{3}{2}N k T$ and thus $\overline \varepsilon = U/N = \frac{3}{2}kT$ (we divide by $N$, since here we are interested in the average energy per molecule). Indeed, the more generalized case of this formula is given by:
+
+{% math() %}
+\overline \varepsilon = \frac{d}{2} kT
+{% end %}
+
+Where $d$ is the number of degrees of freedom; in the case of velocity, $d = 3$ since the velocity vector has three components. This is called the **equipartition of energy states** or the **equipartition theorem**.
+
+## Molecular degrees of freedom and heat capacity
+
+Previously, we saw that monatomic and diatomic gases have *different* heat capacities. We did not previously explain the reasons behind these different heat capacities, and simply took it as a fact. With statistical thermodynamics, we can finally answer *why*.
+
+It turns out that different heat capacities have all to do with *molecular degrees of freedom*. A monatomic gas has a single atom, so it has only *translational* degrees of freedom. But a diatomic gas has two atoms, so in addition to its translational degrees of freedom, it also has *vibrational* and *rotational* degrees of freedom. These vibrations and rotations are fundamentally quantized, which has a tangible macroscopic effect.
+
+In a more mathematical form, we can say that the partition function of a monatomic gas satisfies $Z_\text{monatomic} = Z_\text{trans}$, while the partition function of a diatomic gas satisfies $Z_\text{diatomic} = Z_\text{trans} + Z_\text{rot} + Z_\text{vib}$, where $Z_\text{trans}, Z_\text{rot},Z_\text{vib}$ are the contributions to the partition function from the translational, rotational, and vibrational degrees of freedom, respectively.
+
+We have already considered the case of a monatomic gas, whose internal energy (more specifically, the internal energy due to the translational degrees of freedom) was given by:
+
+{% math() %}
+U_\text{trans} = N k T^2 \left( \frac{\partial \ln Z_\text{trans}}{\partial T} \right)_{V} = \frac{3}{2} NkT
+{% end %}
+
+However, for a diatomic gas, we must also consider the vibrational and rotational degrees of freedom. In the case of a monatomic gas, a single molecule has no rotational or vibrational degree of freedom, so $Z_\text{rot} = Z_\text{vib} = 0$.
+
+### Vibrational degrees of freedom
+
+We will calculate the former first. To start, let us recall the Maxwell-Boltzmann distribution:
+
+{% math() %}
+\frac{N_{j}}{g_{j}} = \frac{N}{Z} e^{-\varepsilon_{j}/kT}
+{% end %}
+
+The vibrational degrees of freedom of a diatomic molecule can be modelled as a quantum harmonic oscillator, which has quantized energy levels $\varepsilon_j$ given by:
+
+{% math() %}
+\varepsilon_{j} = \left( j + \frac{1}{2} \right) h \nu
+{% end %}
+
+Here, $\nu$ is the *natural frequency* of oscillation, and the ground-state energy (for the $j = 0$ state) is given by $\varepsilon_0 = \frac{1}{2} h \nu$, and is also called the **zero-point energy**. It is important to note that the energy levels of the quantum harmonic oscillator are **non-degenerate**; thus, $g_j = 1$.
+
+From this information, we can then calculate the partition function. Substituting in the above expression for the energy for $\varepsilon_j$ in the partition function formula, we obtain:
+
+{% math() %}
+\begin{align*}
+Z &= \sum_{j} g_{j} \exp\left( -\frac{\varepsilon_{j}}{kT} \right) \\
+&= \sum_{j} \exp\left( -\frac{\left( j + \frac{1}{2}\right) h \nu}{k T} \right)
+\end{align*}
+{% end %}
+
+Let us define $\theta \equiv h\nu/k$ as the **characteristic temperature**. This allows us to simplify the partition function:
+
+{% math() %}
+\begin{align*}
+Z &= \sum_{j} \exp\left( -\frac{\left( j + \frac{1}{2} \right)\theta}{T} \right) \\
+&= e^{- \theta/2T} \sum_{j} e^{-j \theta / T} \\
+&= e^{- \theta/2T}(1 + e^{-\theta/T} + e^{-2\theta / T} + \dots) \\
+&= \frac{e^{-\theta / 2 T}}{1 - e^{- \theta / T}}
+\end{align*}
+{% end %}
+
+Where the last step comes from the fact that the sum is in the form of a convergent **geometric series**, which has an exact analytical expression. Substituting this into the Maxwell-Boltzmann distribution (with $g_j = 1$), we obtain:
+
+{% math() %}
+\begin{align*}
+\frac{N_{j}}{\cancel{ g_{j} }^1} &= \frac{N}{Z} e^{-\varepsilon_{j}/kT} \\
+&= Ne^{-\varepsilon_{j}/kT} \left( \frac{1 - e^{- \theta / T}}{e^{-\theta / 2 T}} \right) \\
+N_{j} &= N(1 - e^{-\theta/T}) e^{-j \theta/T} \\
+\frac{N_{j}}{N} &= (1 - e^{-\theta/T}) e^{-j \theta/T}
+\end{align*}
+{% end %}
+
+We can also find the internal energy contribution from vibrations, $U_\text{vib}$, through our known formula:
+
+{% math() %}
+\begin{align*}
+U_\text{vib} &= N kT^2 \left( \frac{\partial \ln Z}{\partial T} \right)_{V} \\
+&= N k T^2 \frac{\partial}{\partial T} [\ln e^{-\theta / 2 T} - \ln (1 - e^{-\theta/T})] \\
+&= Nk \theta\left[ \frac{1}{2} + \frac{1}{e^{\theta / T} - 1} \right]
+\end{align*}
+{% end %}
+
+In the limit as $T \to 0$, then $U_\text{vib} \to \frac{N k \theta}{2} = \frac{N h \nu}{2}$, which is simply the zero-point energy $\varepsilon_0$ multiplied by $N$. This tells us that at very low temperatures, the molecules all condense into the ground state. Conversely, in the opposite limit $T/\theta \gg 1$ (that is, for high temperatures), we can use the approximation $e^{\theta/T} - 1 \approx \theta/T$. This gives us:
+
+{% math() %}
+U_\text{vib} \approx N k \theta \left( \frac{1}{2} + \frac{T}{\theta} \right) \approx N k T
+{% end %}
+
+Where we have dropped the $N k \theta/2$ term (which represents the zero-point energy) since it is negligible at high temperatures. Now, from $C_{V} = \left( \frac{\partial U}{\partial T} \right)_{V}$, we obtain:
+
+{% math() %}
+C_{V} = \left( \frac{\partial U_\text{vib}}{\partial T} \right)_{V} = N k \left( \frac{\theta}{T} \right)^2 \frac{e^{\theta / T}}{(e^{\theta / T} - 1)}
+{% end %}
+
+In the low and high temperature limits respectively, we have:
+
+{% math() %}
+C_{V} \approx \begin{cases}
+N k, & T / \theta \gg 1 \\
+N k \left( \frac{\theta}{T} \right)^2 e^{-\theta/T},  & T / \theta \ll 1
+\end{cases}
+{% end %}
+
+As $T \to 0$, we notice that $C_V \to 0$. This is consistent with the third law of thermodynamics, which says that all thermodynamical properties of a system go to zero as $T \to 0$.
+
+### Rotational degrees of freedom
+
+Let us now consider the rotational degrees of freedom for a diatomic molecule. In 3D space, there are 3 rotation axes for any object. This means that a diatomic molecule would have *two* rotational degrees of freedom ($d = 2$), since it is symmetric about one axis, but can rotate among the other two axes. Therefore, by the equipartition theorem $U = d NkT/2$, we can directly arrive at the following expression for the internal energy contribution due to rotations:
+
+{% math() %}
+U_\text{rot} = \frac{d}{2} NkT = N k T, \quad T \gg \theta_\text{rot}
+{% end %}
+
+Where $\theta_\text{rot}$ is the characteristic temperature for rotations (we’ll show the exact expression for this later). This result applies for **high temperatures**, but is a generally reasonable assumption, and is certainly one for a classical gas.
+
+> **Note:** In theory, there is also a contribution from electron excitations to the total internal energy. In practice, the temperatures at which this applies is so high that it does not matter for a classical gas.
+
+#### Quantum calculation of rotations
+
+We will also show a first-principles derivation of the rotational degrees of freedom. To start, the (squared) quantum angular momentum operator $\hat L$ has eigenvalues given by:
+
+{% math() %}
+L^2 = l (l + 1) \hbar^2, \quad l = 0, 1, 2, \dots
+{% end %}
+
+From classical mechanics, the rotational energy is given by:
+
+{% math() %}
+\varepsilon = \frac{1}{2} I \omega^2, \quad L = I \omega
+{% end %}
+
+Therefore, equating the two expressions, we have the following expression for the energy levels due to rotations:
+
+{% math() %}
+\varepsilon_{l} = \frac{l(l + 1)}{2I} \hbar^2
+{% end %}
+
+Defining $\theta_\text{rot} = \frac{\hbar^2}{2Ik}$ as the **characteristic temperature for rotations**, we therefore obtain:
+
+{% math() %}
+\varepsilon_{l} = l(l + 1) k \theta_\text{rot}
+{% end %}
+
+Thus, the partition function becomes:
+
+{% math() %}
+\begin{align*}
+Z &= \sum_{l} g_{l} e^{-\varepsilon_{l} / k T} \\
+&= \sum_{l} (2 l + 1) \exp\left( -\frac{l(l + 1)\theta_\text{rot}}{T} \right) \\
+&= 1 + 3 e^{-2 \theta_\text{rot} / T} + 5 e^{-6 \theta_\text{rot} / T} + \dots
+\end{align*}
+{% end %}
+
+Where $g_l$ is the rotational degrees of degeneracy, and $g_l = 2l + 1$ (this can be determined by solving the Schrödinger equation). For diatomic gases (*except hydrogen*, where the characteristic temperature is 85.4 K), $\theta_\text{rot} \leq 10K$. Therefore, we can truncate the series to the first two terms. This gives us:
+
+{% math() %}
+\ln Z \approx \ln(1 + 3e^{- 2 \theta_\text{rot} / T})
+{% end %}
+
+Now with the approximation $\ln(1 + x) \approx x$ (valid for small $x$) we thus have:
+
+{% math() %}
+\ln Z \approx 3e^{-2 \theta_\text{rot} / T}
+{% end %}
+
+From which we obtain:
+
+{% math() %}
+\begin{align*}
+U &= N k T^2 \left( \frac{\partial \ln Z}{\partial T} \right)_{V} = 6 N k \theta_\text{rot} e^{-2 \theta_\text{rot} / T}, \quad \theta_\text{rot} \gg T \\
+C_{V, \text{rot}} &= \left( \frac{\partial U}{\partial T} \right)_{V} 
+= 3Nk \left( \frac{2\theta_\text{rot}}{T} \right)^2 e^{-2 \theta_\text{rot} / T} , \quad \theta_\text{rot} \gg T
+\end{align*}
+{% end %}
+
+### Combined degrees of freedom
+
+Recall the expression for the total internal energy of a classical (Maxwell-Boltzmann) gas is given by:
+
+{% math() %}
+U = N k T^2 \left( \frac{\partial \ln Z}{\partial T} \right)_{V}
+{% end %}
+
+The total internal energy of the diatomic molecule gives us:
+
+{% math() %}
+\begin{align*}
+U_\text{total} &= U_\text{trans} + U_\text{rot} + U_\text{vib} \\
+&= NkT^2\left[ \frac{\partial}{\partial T} (Z_\text{trans} + Z_\text{rot} + Z_\text{vib}) \right] \\
+\end{align*}
+{% end %}
+
+For a monatomic gas, $U_\text{total}$ is simply equal to $U_\text{trans}$. However, for diatomic gases, the incorporation of rotational and vibrational degrees of free adds additional terms that change the internal energy, and thus naturally, the heat capacity. To summarize:
+
+| Regime                | Typical value (for molecular hydrogen) | Situation               |
+| --------------------- | -------------------------------------- | ----------------------- |
+| Low temperature       | ~10 K to 85 K                          | $C_V = \frac{3}{2} kNT$ |
+| High temperature      | 85 K to 6140 K                         | $C_V = \frac{5}{2} NkT$ |
+| Very high temperature | > 6140 K                               | $C_V = \frac{7}{2} NkT$ |
+
+## Introduction to solid-state physics
+
+Having primarily studied fluids (gases and liquids), we will now take a look at the study of solids. This is the branch of physics known as **solid-state physics**. In solid-state physics, we study different types of solids:
+
+- Crystals, which are **ordered**
+- Amorphous solids, which are **disordered**
+- Quasi-crystals, which are **quasi-ordered**
+
+At the beginning of the 20th century, major efforts were taken to try to describe and explain the properties of solids, and particularly crystals. The **electronic properties** of a crystal can be studied in a reasonably straightforward manner, due to their symmetries. This allows a crystal to be understood as a periodic lattice, essentially a repeating series of a basic building block (called a **unit cell**) extending in all directions in space. Thus, it is possible to simply study the properties of just one unit cell and apply periodic boundary conditions to generalize these properties to those of the entire crystal. But the **thermodynamic properties** of a crystal are less easy to study. Here, we will focus on the *heat capacity* of a crystal.
+
+### Einstein’s theory of crystalline solids
+
+Einstein modelled a crystal as a lattice composed of $N$ atoms, each of which was fixed in place but allowed to vibrate. Since the atoms in a 3D crystal can vibrate in any of the 3 $x, y, z$ directions, there will be 3 degrees of freedom, and thus could be described as $3N$ quantum harmonic oscillators. Recall we previously derived the following expression for the internal energy of $N$ harmonic oscillators, corresponding to the degrees of freedom for a gas:
+
+{% math() %}
+U_\text{vib} = Nk \theta\left[ \frac{1}{2} + \frac{1}{e^{\theta / T} - 1} \right]
+{% end %}
+
+In Einstein’s model, we simply multiply this by three to obtain the internal energy of $3N$ harmonic oscillators:
+
+{% math() %}
+U_\text{vib} = 3Nk \theta_{E}\left[ \frac{1}{2} + \frac{1}{e^{\theta / T} - 1} \right]
+{% end %}
+
+Where we have the **Einstein characteristic temperature** $\theta_E = h\nu/k$. Thus, we find that:
+
+{% math() %}
+C_{V} = \left( \frac{\partial U}{\partial T} \right)_{V} 
+= 3 Nk\left( \frac{\theta_{E}}{T} \right)^2 \frac{e^{\theta_{E}/T}}{(e^{\theta_{E}/T} - 1)^2}
+{% end %}
+
+This can be approximated in the higher and low temperature regimes as follows:
+
+{% math() %}
+C_{V} \approx \begin{cases}
+3 Nk, & T \gg \theta_{E} \\
+3 Nk \left( \frac{\theta_{E}}{T} \right)^2 e^{-\theta_{E} / T}, & T \ll \theta_{E}
+\end{cases}
+{% end %}
+
+(Note that $3 Nk = 3 nR$, where $R$ is the ideal gas constant, and $n$ is the number of kilomoles). At high temperature, $C_V$ approaches a constant temperature, reproducing the **Dulong-Petit law**, which we previously showed:
+
+{{ diagram(
+	src="../specific-heat-capacity-comparison.excalidraw.svg"
+	desc="A plot of the specific heat capacity for a solid across different temperatures"
+	width=400
+) }}
+
+It turns out that while the Einstein model works well for the high-temperature regime, it fails at low temperatures. The search for a low-temperature theory to improve on Einstein’s theory resulted in **Debye’s theory**.
+
+### Debye’s theory of crystalline solids
+
+Debye’s model associates the internal energy with quasi-particles called **phonons** (lattice vibrations). Phonons have no mass, but they can vibrate at different (quantized) frequencies; that is to say, they are essentially waves. Thus they can be described by a wavefunction. Due to the boundary conditions of a single unit cell, the solutions for the wavefunctions are given by the same wavefunctions for the particle in a box/infinite square well. In one dimension, these are given by:
+
+{% math() %}
+\psi_{n}(x) = A \sin \frac{n\pi x}{L}, \quad n = \frac{2L}{\lambda}, \quad n = 1, 2, 3, \dots
+{% end %}
+
+The vibrational frequency $\nu$ is related to the wavelength $\lambda$ of the phonon waves with $v = \lambda \nu$, where $v$ is the velocity of the wave. This gives us the following relation for a 1D phonon:
+
+{% math() %}
+n = \frac{2L \nu}{v}
+{% end %}
+
+If we work in 3 dimensions, considering a solid crystal of volume $V = L^3$ with side lengths $L$ (we assume the crystal is a square), then we have:
+
+{% math() %}
+n = \frac{2V^{1/3} \nu}{v}, \quad n^2 = n_{x}^2 + n_{y}^2 + n_{z}^2
+{% end %}
+
+Then, we may deduce the following expression for the density of states $g(\nu)$ for a given frequency $\nu$:
+
+{% math() %}
+g(\nu) = \frac{dn}{d\nu} \quad \Rightarrow \quad g(\nu) d\nu = \frac{n^2 \pi}{2} dn = \frac{4 \pi V \nu^2}{v^3} d \nu
+{% end %}
+
+In a vibrating solid, we encounter the three types of waves: longitudinal modes (with velocity $v_l$) and two kinds of transverse modes (with velocity $v_t$). Thus, we may write the density of states as:
+
+{% math() %}
+g(\nu) d\nu = 4\pi V \nu^2 \left( \frac{1}{v_{l}^3} + \frac{2}{v_{t}^3} \right) d\nu
+{% end %}
+
+The phonons in a solid may have different vibrational frequencies $\nu$, up to a maximum allowable frequency $\nu_m$. It can be shown (we won’t do the calculation here) that the density of states can be expressed in the equivalent form in terms of $\nu_m$:
+
+{% math() %}
+g(\nu) d\nu = \frac{9N}{\nu_{m}^3} \nu^2 d\nu
+{% end %}
+
+Despite being quasiparticles, phonons can be regarded as bosons. Therefore, their individual energies are given by $\varepsilon = h\nu$ (just like photons), and they can be modelled by the Bose-Einstein distribution:
+
+{% math() %}
+\frac{N(\varepsilon)}{g(\varepsilon)} = \frac{1}{e^{(\varepsilon - \mu)/kT} - 1}
+{% end %}
+
+The number of phonons is *not constant*; as temperature increases, the number of phonons increases, and as the temperature decreases, the number of phonons decreases. But we want to find the number of phonons (which we denote as $N$) in an *equilibrium state*. This can be found by minimizing the Helmholtz function $F$:
+
+{% math() %}
+\mu = \left( \frac{\partial F}{\partial N} \right)_{T, V} = 0
+{% end %}
+
+From which we can show that $N(\nu)$, the number of phonons are a given frequency $\nu$, is given by:
+
+{% math() %}
+N(\nu)dn = \frac{g(\nu) d\nu}{e^{h\nu / kT} - 1}
+{% end %}
+
+If we substitute in the value of $g(\nu)d\nu$ into the above expression, we may express $N(\nu)$ in explicit form:
+
+{% math() %}
+N(\nu) = \begin{cases}
+\dfrac{9N\nu^2}{\nu_{m}^3(e^{h\nu / k T} - 1)}, & \nu \leq \nu_{m} \\
+0, & \nu > \nu_{m}
+\end{cases}
+{% end %}
+
+Where we see that the frequency $\nu$ of a phonon is physically limited to $\nu \leq \nu_m$. Thus, the total internal energy due to the phonons is given by:
+
+{% math() %}
+\begin{align*}
+U &= \int_{0}^{\nu_{m}} N(\nu) \varepsilon(\nu) d\nu \\
+&= \int_{0}^{\nu_{m}} h\nu N(\nu) d\nu \\
+&= \frac{9 Nh}{\nu_{m}^3} \int_{0}^{\nu_{m}} h\nu \frac{\nu^3 d\nu}{e^{h\nu / k T} - 1}
+\end{align*}
+{% end %}
+
+Where $\varepsilon(\nu)$ is the energy of a phonon of frequency $\nu$, which we know is given by $\varepsilon = h\nu$. It is useful to define $\theta_D$, the **characteristic Debye temperature**, given by:
+
+{% math() %}
+\theta_{D} = \frac{h\nu_{m}}{k}
+{% end %}
+
+Therefore, with a couple of transformation of variables, we find that:
+
+{% math() %}
+C_{V} =  \left( \frac{\partial U}{\partial T} \right)_{V} =  \frac{9NkT^3}{(\theta_{D}^3)} \int_{0}^{\theta_{D}/T} \frac{x^4 e^x dx}{(e^x - 1)^2}
+{% end %}
+
+This integral is highly-nontrivial to evaluate; however, if we simply consider the low-temperature regime (at temperatures at or below the Debye temperature), we have:
+
+{% math() %}
+C_{V} \approx \frac{12 \pi^4 Nk}{5} \left( \frac{T}{\theta_{D}} \right)^3, \quad T \leq \theta_{D}
+{% end %}
+
+#### Partition function of a Debye solid
+
+The partition function of a Debye solid can be written as:
+
+{% math() %}
+\ln Z = -9 \left( \frac{T}{\theta_{D}} \right)^3 \int_{0}^{\theta_{D} / T} x^2 \ln(1 - e^{-x}) dx
+{% end %}
+
+The Helmholtz function $F = -Nk T \ln Z$ can then be written as:
+
+{% math() %}
+F = 3 N k T \ln (1 - e^{- \theta_{D} / T}) - N k T D\left( \frac{\theta_{D}}{T} \right)
+{% end %}
+
+Where:
+
+{% math() %}
+D(\theta_{D} / T) = \frac{3}{(\theta_{D} / T)^3} \int_{0}^{\theta_{D} / T} \frac{x^3 dx}{e^x - 1}
+{% end %}
+
+This integral is non-trivial, but can be evaluated in the limit $\theta_D/T \gg 1$ and $\theta_D/T \ll 1$. We can then use this to calculate other characteristics of a Debye solid, although we will not do so here.
+
+## Statistical mechanics of bosons
+
+We will now take a look at two of the most famous predictions of statistical mechanics, both of which involve boson statistics:
+
+- Blackbody radiation
+- Bose-Einstein condensation
+
+We will cover the former first. **Blackbody radiation** refers to the phenomenon that we observe the emission of electromagnetic radiation from all objects in the Universe, even those that are not actively producing light. A so-called *blackbody* is an idealized model of an object that has no color, since it absorbs all light across the electromagnetic spectrum, but emits *only* thermal radiation, making them black. It is important to keep in mind that a blackbody is an idealization; real objects usually have *some* amount of reflection (there are exceptions, such as black holes). However, with the idealized blackbody, we can apply the methods of statistical mechanics to analyze the electromagnetic radiation emitted. Importantly, blackbody radiation is *independent* of the type of atoms the object is composed of. This means we can use it to deduce an (effective) temperature of a body by just observing its color, which is very useful in astronomical studies.
+
+To start, we know that electromagnetic radiation is technically composed of photons, so we must use a Bose-Einstein distribution for a “photon gas”. (Technically, there are other ways to derive the blackbody radiation formula, but this is the most straightforward method). Recall that the Bose-Einstein distribution is given by:
+
+{% math() %}
+\frac{N(\varepsilon)}{g(\varepsilon)} = \frac{1}{e^{\varepsilon / k T} - 1}
+{% end %}
+
+Using $\varepsilon = h\nu$, we can rewrite this as:
+
+{% math() %}
+\frac{N(\nu)}{g(\nu)} = \frac{1}{e^{h \nu / k T} - 1}
+{% end %}
+
+Where the density of states is similar to that for phonons, except with $v = c$ (since photons travel at the speed of light):
+
+{% math() %}
+g(\nu) d\nu = \frac{8\pi V \nu^2 d \nu}{c^3}
+{% end %}
+
+Meanwhile, the internal energy $U(\nu)$, expressed as a function of frequency, satisfies:
+
+{% math() %}
+U(\nu) d\nu = N (\nu) \varepsilon(\nu) d\nu = N(\nu) h \nu d \nu
+{% end %}
+
+Therefore, substituting this into $g(\nu) d\nu$ into $N(\nu)$, we obtain:
+
+{% math() %}
+\begin{align*}
+N(\nu) &= \frac{g(\nu)}{e^{h \nu / k T}} - 1 \\
+U(\nu) d \nu&= \frac{8\pi h V}{c^3}\left[ \frac{\nu^3 d\nu}{e^{h \nu / k T} - 1} \right]
+\end{align*}
+{% end %}
+
+If we perform a change of variables to express $U(\nu)$ in terms of wavelength $\lambda$, we have:
+
+{% math() %}
+U(\lambda) = \frac{8\pi h c V}{\lambda^5(e^{hc / k T \lambda} - 1)}
+{% end %}
+
+The *energy density* $u$ is simply this value divided by the volume, that is, $u = U/V$, giving us the famous **Planck’s law** (also called the *Planck radiation distribution*):
+
+{% math() %}
+u(\lambda) = \frac{8\pi h c}{\lambda^5} \frac{1}{e^{hc / k T \lambda} - 1}
+{% end %}
+
+Or in terms of frequency:
+
+{% math() %}
+u(\nu) = \frac{8\pi h }{c^3} \frac{\nu^3}{e^{h \nu / k T} - 1}
+{% end %}
+
+![A plot of Planck’s law, showing different radiation curves at different temperatures](https://upload.wikimedia.org/wikipedia/commons/1/19/Black_body.svg)
+
+_A plot of the Planck radiation distribution. Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Black_body.svg)_
+
+The *total radiated energy density* can be found by integrating across all wavelengths, giving us:
+
+{% math() %}
+\begin{align*}
+u_{total} &= \int_{0}^\infty u(\lambda) d\lambda \\
+&= \frac{8\pi (kT)^4}{(hc)^3} \underbrace{ \int_{0}^\infty \frac{x^3 dx}{e^x - 1} dx }_{ \pi^4 / 15 }, \quad x \equiv \frac{hc}{k T \lambda} \\
+&= \frac{8\pi (kT)^4}{h^3 c^3} \left( \frac{\pi^4}{15} \right)
+\end{align*}
+{% end %}
+
+This gives us the **Stefan-Boltzmann law** $u_{total} = a T^4$, which gives a quadratic dependence of the radiated energy density on the temperature, with the proportionality constant given by:
+
+{% math() %}
+a = \frac{8\pi^5 k^4}{15 h^3 c^3} \approx 7.55 \times 10^{-16} \pu{ J*m^{-3} K^{-4} }
+{% end %}
+
+The Stefan-Boltzmann law is also often expressed in the form $e = \sigma T^4$, where $e$ is the **energy flux**, and $\sigma$ is the **Stefan-Boltzmann constant**, given by:
+
+{% math() %}
+\sigma = \frac{c a}{4}= 5.67 \times 10^{-8} \pu{ W*m^3 K^{-4} }
+{% end %}
+
+The maximum of the Planck radiation distribution, $\lambda_{max}$, is found at:
+
+{% math() %}
+\lambda_{max} = \frac{hc}{4.96 kT} \approx \frac{\pu{2.9E-3 m\cdot K }}{T}
+{% end %}
+
+If the wavelength is large such that $hc/\lambda k T \ll 1$, we may use the approximation $e^{hc / k T \lambda} \approx 1 + \frac{hc}{k T \lambda}$ (which comes from the first two terms in the Taylor series for the exponential function). This gives us:
+
+{% math() %}
+u(\lambda) = \frac{8\pi k T}{\lambda^4}, \quad \frac{hc}{\lambda k T} \ll 1
+{% end %}
+
+This is known as the **Rayleigh-Jeans law**, which is a good approximation to Planck’s law at long wavelengths (visible light and infrared), but fails in the UV spectrum, leading to the famous **ultraviolet catastrophe** that is now widely regarded as a failure of classical physics. Meanwhile, for short wavelengths such that $e^{hc / k T \lambda} \ll 1$, we can use the approximation $e^{hc / k T \lambda} -1 \approx e^{hc / k T \lambda}$. This gives us **Wien’s law**, a good approximation to Planck’s law at short wavelengths:
+
+{% math() %}
+u(\lambda) = \frac{8\pi h c}{\lambda^5} e^{-hc / k T \lambda}, \quad e^{hc / k T \lambda} \ll 1
+{% end %}
+
+We can also consider the heat capacity of the photon gas. Using the Stefan-Boltzmann relation $u_{total} \equiv \frac{U}{V} = a T^4$, we have:
+
+{% math() %}
+U = V a T^4
+{% end %}
+
+From which we may calculate the heat capacity at constant volume:
+
+{% math() %}
+C_{V} = \left( \frac{\partial U}{\partial T} \right)_{V} = 4 V a T^3
+{% end %}
+
+This allows us to calculate the entropy:
+
+{% math() %}
+S = \int \frac{dQ}{T} = \int \frac{C_{V}}{T} d T = \frac{4}{3} V a T^3
+{% end %}
+
+It can also be shown that the Helmholtz function $F$ of a photon gas is given by:
+
+{% math() %}
+F = U - TS =  -\frac{1}{3} V aT^4
+{% end %}
+
+And the pressure $P$ is given by:
+
+{% math() %}
+P = -\left( \frac{\partial F}{\partial V} \right)_{T, N} = \frac{1}{3} a T^4
+{% end %}
+
+### Bose-Einstein condensation
+
+Bosons are uniquely distinguished from fermions by the fact that they do not obey the Pauli exclusion principle. This means that it is possible for a system of bosons to all occupy the ground state, forming what is known as a **Bose-Einstein condensate** (BEC). Moreover, it applies not only for *elementary particles* that are bosons, but also *composite particles*, including all atoms with integer spin. Bose-Einstein condensation has been observed in, among other elements, rubidium and helium atoms at very low temperatures.
+
+To begin, recall that the Bose-Einstein distribution is given by:
+
+{% math() %}
+\frac{\mathcal{N}(\varepsilon)}{g(\varepsilon)} = \frac{1}{e^{(\varepsilon - \mu)/k T} - 1}
+{% end %}
+
+Where here we use the script $\mathcal{N}$ to represent the occupancy number (number of particles per energy level) because we will be using $N$ as the *total number* of particles in every energy level. Assuming a system of bosons (a “boson gas”) is in its ground state, where $\varepsilon = 0$, then the chemical potential $\mu$ *must* be a negative value for the units to make sense. Therefore, $\mu$ must switch sign at some temperature, meaning that is has to be a *function* of temperature.
+
+To make the problem more tractable, it is useful to express the total number of particles $N$ as a sum of particles in the ground state, $N_0$, and the number of particles in the excited state, $N_{ex}$, as follows:
+
+{% math() %}
+N = N_{0} + N_{ex}
+{% end %}
+
+Then, we can integrate the Bose-Einstein distribution to find the total number of particles  in the excited and ground states. We will denote this as $N$:
+
+{% math() %}
+\begin{align*}
+\int_{0}^\infty \mathcal{N}(\varepsilon) d\varepsilon
+&= \int_{0}^\infty \frac{\mathcal{N}(\varepsilon)}{g(\varepsilon)} g(\varepsilon) d\varepsilon, \quad g(\varepsilon) 
+= \frac{4\pi\sqrt{2}(V m^{3/2} \varepsilon^{1/2})}{h^2} \\
+&= 2\pi V \left( \frac{2m}{h^2} \right)^{3/2} \int_{0}^\infty \frac{\varepsilon^{1/2} d\varepsilon}{e^{(\varepsilon - \mu) / k T} - 1}
+\end{align*}
+{% end %}
+
+At low temperatures where $\varepsilon \approx 0$ and where $x = \mu/kT$, this integral can be simplified and evaluated (numerically) to find a value of:
+
+{% math() %}
+N \approx 2.612 V \left( \frac{2\pi m k T}{h^2} \right)^{3/2}
+{% end %}
+
+One then defines the **Bose temperature** $T_B$ to delineate between the high-temperature regime (where a Bose-Einstein condensate does not form) and the low-temperature regime (where a Bose-Einstein condense *can* form), where:
+
+{% math() %}
+T_{B} = \frac{h^2}{2\pi m k} \left( \frac{N}{2.612 V} \right)^{2/3}
+{% end %}
+
+Such that we may express the ratios of the ground state and excited state particle numbers to the total particle number as follows:
+
+{% math() %}
+\frac{N_{0}}{N} = 1 - \left( \frac{T}{T_{B}} \right)^{3/2}, \quad \frac{N_{ex}}{N} = \left( \frac{T}{T_{B}} \right)^{3/2}
+{% end %}
+
+We can understand these ratios as per the plot below:
+
+{{ diagram(
+	desc="A plot of the normalized excited vs ground state occupancy numbers of a boson gas"
+	src="../bose-temp.excalidraw.svg"
+	width=400
+) }}
+
+### Thermodynamic properties of a boson gas
+
+We can also consider other properties of a boson gas, such as the internal energy:
+
+{% math() %}
+\begin{align*}
+U &= \int_{0}^\infty \varepsilon N(\varepsilon) d\varepsilon \\
+&= \frac{2V}{\sqrt{ \pi }} k T \left( \frac{2\pi m k T}{h^2} \right)^{3/2} \int_{0}^\infty \frac{x^{3/2} dx}{e^x - 1} , \quad x = \frac{\varepsilon}{kT} \\
+&\approx 0.77 N k T \left( \frac{T}{T_{B}} \right)^{3/2}, \quad T < T_{B}
+\end{align*}
+{% end %}
+
+Notice how the internal energy of an ideal gas, $U = (3/2) N k T$, is more than twice this value, meaning that this is a *very small* amount of energy. Meanwhile, the heat capacity is given by:
+
+{% math() %}
+C_{V} = \left( \frac{\partial U}{\partial T} \right)_{V} \approx 1.92 Nk \left( \frac{T}{T_{B}} \right)^{3/2}, \quad T < T_{B}
+{% end %}
+
+Which we can also express (approximately) as follows:
+
+{% math() %}
+C_{V} \approx \frac{5}{2} \left( \frac{U}{T} \right)
+{% end %}
+
+Meanwhile, the absolute entropy is:
+
+{% math() %}
+S = \int_{0}^T \frac{C_{V}}{T'} dT' = 1.28 N k \left( \frac{T}{T_{B}} \right)^{3/2}, \quad T < T_{B}
+{% end %}
+
+Which can also be written as:
+
+{% math() %}
+S \approx \frac{5}{3} \left( \frac{U}{T} \right)
+{% end %}
+
+Finally, the Helmholtz function and pressure are respectively given by:
+
+{% math() %}
+\begin{align*}
+F &= U - TS \\ 
+& \approx -0.51 N k T\left( \frac{T}{T_{B}} \right)^{3/2}, \quad T < T_{B} \\
+& \approx -\frac{2}{3}U , \quad T < T_{B} \\
+P &= -\left( \frac{\partial F}{\partial V} \right)_{T, N} \\
+&\approx 1.33 k T\left( \frac{2\pi m k T}{h^2} \right)^{3/2}, \quad T < T_{B} \\
+&\approx \frac{2}{3}\left( \frac{U}{V} \right),\quad T < T_{B} \\
+\end{align*}
+{% end %}
