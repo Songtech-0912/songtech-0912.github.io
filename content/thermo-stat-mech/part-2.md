@@ -972,6 +972,14 @@ C_{V, \text{rot}} &= \left( \frac{\partial U}{\partial T} \right)_{V}
 \end{align*}
 {% end %}
 
+Note that a **generalization** of the the **Sackur-Tetrode equation** (for diatomic gases where both atoms are of the same element) can be expressed in terms of the characteristic temperature of rotations as:
+
+{% math() %}
+S = Nk\left\{\frac{7}{2}
++ \ln \left[\frac{V}{N} \left(\frac{2\pi m k}{h^2}\right)^{3/2} \frac{T^{5/2}}{2 \theta_\text{rot}}\right]
+\right\}
+{% end %}
+
 ### Combined degrees of freedom
 
 Recall the expression for the total internal energy of a classical (Maxwell-Boltzmann) gas is given by:
