@@ -1,12 +1,12 @@
 #!/bin/sh
+# Taken from: https://codeberg.org/elaraproject/elara-labs/src/commit/29db9fdabf1dc91ccf2b80f1a4a151865bcc4c92/scripts/githooks/pre-commit
 
-# Patch all excalidraw svgs to fix
-# distorted LaTeX
-# Replace preserveAspectRatio="none"
-# into preserveAspectRatio="true"
+# Patch all excalidraw SVG drawings to fix
+# distorted LaTeX in the SVGs by replacing
+# `preserveAspectRatio="none"``
+# into `preserveAspectRatio=true``
+# this requires you have fd installed
 
-original='preserveAspectRatio="none"'
-replacement='preserveAspectRatio="true"'
-replace_command="s/$original/$replacement/g"
-
-find . -name "*.excalidraw.svg" -exec sed -i $replace_command {} +
+original='preserveAspectRatio=.none.' # here . matches single AND double quotes
+replacement='preserveAspectRatio=true'
+fd -e "excalidraw.svg" -x sed -i "s/$original/$replacement/g" "{}"
