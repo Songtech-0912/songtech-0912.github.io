@@ -2063,22 +2063,25 @@ $$
 <p class="mathcell">
 $$
 \delta(t - c) = \begin{cases}
-0, t \neq c \\
-1, t = c
+0, &amp; t \neq c \\
+\infty, &amp; t = c
 \end{cases}
 $$
 </p>
-<p>It has the special properties that:</p>
+<p>It has the special property that its integral over all space (or in this case, all time) is equal to one:</p>
 <p class="mathcell">
 $$
 \int_{-\infty}^\infty \delta(t - c)~dt = 1
 $$
-</p><p class="mathcell">
+</p>
+<p>This property makes it very useful for modelling so-called <em>point sources</em>, such as point charges in electromagnetism or point masses in mechanics, as well as <em>impulse responses</em>, such as sudden shocks in a time-varying signal (for instance, in electrical or acoustic systems). Moreover, it is also useful for "picking out" the value of a function at a specific point, as it satisfies:</p>
+<p class="mathcell">
 $$
-\int_{c - \epsilon}^{c + \epsilon} f(t) \delta(t - c)~dt = f(c)
+\int_{-\infty}^\infty f(t) \delta(t - c)~dt = f(c)
 $$
 </p>
-<p>The Laplace transform of the Dirac Delta function is therefore:</p>
+<p>This fact is very useful when doing complex integrals in which the Dirac delta function appears.</p>
+<p>The Laplace transform of the Dirac delta function is:</p>
 <p class="mathcell">
 $$
 \mathscr{L}\{\delta(t - c)\} = e^{-sc}
