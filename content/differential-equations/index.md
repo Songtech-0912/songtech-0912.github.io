@@ -1910,22 +1910,26 @@ The **Dirac Delta function** is a "spike" function defined with:
 
 {% math() %}
 \delta(t - c) = \begin{cases}
-0, t \neq c \\
-1, t = c
+0, & t \neq c \\
+\infty, & t = c
 \end{cases}
 {% end %}
 
-It has the special properties that:
+It has the special property that its integral over all space (or in this case, all time) is equal to one:
 
 {% math() %}
 \int_{-\infty}^\infty \delta(t - c)~dt = 1
 {% end %}
 
+This property makes it very useful for modelling so-called _point sources_, such as point charges in electromagnetism or point masses in mechanics, as well as _impulse responses_, such as sudden shocks in a time-varying signal (for instance, in electrical or acoustic systems). Moreover, it is also useful for "picking out" the value of a function at a specific point, as it satisfies:
+
 {% math() %}
-\int_{c - \epsilon}^{c + \epsilon} f(t) \delta(t - c)~dt = f(c)
+\int_{-\infty}^\infty f(t) \delta(t - c)~dt = f(c)
 {% end %}
 
-The Laplace transform of the Dirac Delta function is therefore:
+This fact is very useful when doing complex integrals in which the Dirac delta function appears.
+
+The Laplace transform of the Dirac delta function is:
 
 {% math() %}
 \mathscr{L}\{\delta(t - c)\} = e^{-sc}
