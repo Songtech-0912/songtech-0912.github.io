@@ -457,13 +457,13 @@ Position eigenstates are similar in nature to momentum eigenstates, but they are
 But the Dirac delta function obeys the identity:
 
 {% math() %}
-\int_{-\infty}^\infty f(x)\delta(x - x') dx = f(x)
+\int_{-\infty}^\infty f(x')\delta(x - x') dx = f(x)
 {% end %}
 
 Which means that:
 
 {% math() %}
-\psi(x) = \int_{-\infty}^\infty C(x)\delta(x - x')\, dx = C(x)
+\psi(x) = \int_{-\infty}^\infty C(x')\delta(x - x')\, dx = C(x)
 {% end %}
 
 We now see that $\psi(x) = C(x)$ - that is to say, the spectrum of probability coefficients for continuous position eigenstates _are_ the wavefunction. This somewhat perplexing result means that there are _infinitely-many position eigenstates_ $\varphi(x) = \delta(x - x')$, one at every point in space, and the wavefunction is just the collection of probability coefficients of all of those eigenstates. 
