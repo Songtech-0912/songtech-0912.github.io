@@ -60,7 +60,45 @@
                 </li>
             
                 <li>
-                    <a href="#work-in-progress">Work in progress...</a>
+                    <a href="#introduction-to-thermodynamics-and-statistical-mechanics">Introduction to thermodynamics and statistical mechanics</a>
+                    
+                </li>
+            
+                <li>
+                    <a href="#foundations-of-thermodynamics">Foundations of thermodynamics</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#types-of-systems">Types of systems</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#thermodynamic-quantities">Thermodynamic quantities</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#equations-of-state">Equations of state</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#state-variables-and-exact-differentials">State variables and exact differentials</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#units-in-thermodynamics">Units in thermodynamics</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-zeroeth-law-of-thermodynamics">The zeroeth law of thermodynamics</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
+                    <a href="#types-of-processes">Types of processes</a>
                     
                 </li>
             
@@ -80,7 +118,270 @@
 <li><a href="https://jackysci.com/thermo-stat-mech/part-2/">Part 2</a> covers introductory statistical mechanics and quantum systems, including the Bose-Einstein and Fermi-Dirac statistics, the Einstein and Debye theories of solids, blackbody radiation, and boson condensates.</li>
 </ul>
 </blockquote>
-<h2 id="work-in-progress">Work in progress...</h2>
+<p>You will need familiarity with multivariable calculus to best understand this guide. If you have not had a course in multivariable calculus or need a refresher, please see the <a href="https://jackysci.com/multivariable-calculus/">multivariable calculus guide</a>.</p>
+<h2 id="introduction-to-thermodynamics-and-statistical-mechanics">Introduction to thermodynamics and statistical mechanics</h2>
+<p>Classical thermodynamics involves the study of systems where <strong>temperature and heat</strong> play an important role. Such systems encompass a large number of physical systems, from the quintessential theory of gases to more exotic solid-state and magnetic systems. Developed primarily during the 19th century, thermodynamics was historically essential in the development of heat engines during the industrial revolution. The invention of the steam engine required an understanding of the mechanics of heat. Improvements in steam (and later, diesel and gasoline engines) required major breakthroughs in our understanding of thermodynamics. However, it stays as relevant in the modern day, which may be partly attributed to its universality: indeed, it describes everything from jet engines to the insides of stars!</p>
+<p>Over the 20th century, a new, more fundamental theory began to emerge — that of <strong>statistical mechanics</strong>. It explained thermodynamics in terms of the particle constituents of matter and based on quantum mechanics. As the name suggests, statistical mechanics describes the behavior of a <strong>collective</strong> of particles: we cannot simply do statistics with a single atom or a single molecule or any other single particle. We may quantify <em>how many particles</em> are needed such that statistical methods can be applied. In the classical limit, statistical mechanics reduces to thermodynamics, which we now understand as a phenomenological theory. Given the deep connections between statistical mechanics and thermodynamics, we will first cover thermodynamics before discussing statistical mechanics in this two-part series.</p>
+<h2 id="foundations-of-thermodynamics">Foundations of thermodynamics</h2>
+<p>While thermodynamics is perhaps most famous for describing the behavior of gases under thermal processes, the theory itself predates the development of molecular and kinetic theory, and even predates the modern concept of atoms! Thus, we say that thermodynamics was a <strong>phenomenological theory</strong>; it was invented prior to our understanding to our understanding of molecules and predates the discovery and empirical confirmation of atoms.</p>
+<p>Indeed, the theoretical foundations of thermodynamics does not require <em>any</em> notion of the constituents of matter. Instead, the most basic constituent of thermodynamics is that of a <strong>system</strong> and its <strong>surroundings</strong>. A physical system cannot exist alone. Instead, it interacts (to greater or lesser extent) with its surroundings.</p>
+<blockquote>
+<p><strong>Note:</strong> Here, we assume that the system is generally at equilibrium with its surroundings. Classical thermodynamics, at least the level at which we will discuss it, generally applies only for systems in <strong>equilibrium</strong>. Equilibrium requires that the system be in a steady-state; that is, unchanging with time. It is a mathematical idealization that only approximates real-world systems. However, it is possible to use mathematical methods and calculus to describe so-called <em>quasi-static</em> systems.</p>
+</blockquote>
+<h3 id="types-of-systems">Types of systems</h3>
+<p>As mentioned, we may categorize systems depending on the degree to which they permit the exchange of matter (mass) or heat:</p>
+<table><thead><tr><th>Type of system</th><th>Allowed interactions</th></tr></thead><tbody>
+<tr><td>Closed system</td><td>Can have heat transfer, but no mass transfer</td></tr>
+<tr><td>Open system</td><td>Can have both heat and mass transfer</td></tr>
+<tr><td>Isolated system</td><td>Can have neither mass or energy transfer</td></tr>
+</tbody></table>
+<h3 id="thermodynamic-quantities">Thermodynamic quantities</h3>
+<p>A thermodynamic system is characterized by its <strong>state variables</strong>: typically, these are pressure (denoted $P$), volume (denoted $V$), and temperature (denoted $T$). They are called as such since they describe the <em>state</em> of the system. One can then also construct derived quantities from these state variables.</p>
+<blockquote>
+<p><strong>Note:</strong> We will see a more mathematically-rigorous of state variables soon (in terms of so-called <em>exact differentials</em>). The two definitions — one physical, the other mathematical — are closely-related, and we will explain why shortly.</p>
+</blockquote>
+<p>The behavior of thermodynamic systems also depends on the <strong>mass</strong> of the system. The generic term of “mass” in thermodynamics can refer to two different types of mass: the physical mass (denoted $m$, and measured in SI units of grams or kilograms) and the closely-related <em>amount of substance</em> (denoted $n$, and measured in SI units of moles or kilomoles), which is the number of particles in a system. The latter unit is actually more general because it is <em>independent</em> of the constituents of a thermodynamic system, whether they be composed of atoms, molecules, or larger particles. The two are related as follows:</p>
+<p class="mathcell">
+$$
+\pu{1 mol} = N_{A} \text{ units of something}
+$$
+</p>
+<p>Where $N_A = \pu{6.02214076 * 10^{23} mol^{-1}}$ is known as <a href="https://en.wikipedia.org/wiki/Avogadro_constant">Avogadro’s number</a> and is the number of constituents (the “something”) in a mole, which usually turns out to be molecules in the context of classical thermodynamics. It is also common to use kilomoles (symbol $\pu{kmol}$), where $\pu{1 kmol} = \pu{1000 mol}$. This is especially convenient because for all elemental compounds one can use the direct conversion formula:</p>
+<p class="mathcell">
+$$
+n = m_{AMU} \cdot \pu{ kg }
+$$
+</p>
+<p>Where $n$ is the number of kilomoles and $m_{AMU}$ is the atomic mass of the element in question. For instance, since hydrogen has an atomic mass of 1, a kilomole of hydrogen atoms would have a mass of 1 kilogram, whereas a kilomole of oxygen atoms (which has an atomic mass of 16) would have a mass of 16 kilograms.</p>
+<blockquote>
+<p><strong>Note:</strong> We do not consider isotopes here and use only the most common elemental mass of the specific element(s) in question when applying this formula.</p>
+</blockquote>
+<p>Due to the mass-dependence of certain state variables, such as volume, two otherwise-identical systems with different amounts of mass will behave differently. To remove the dependence on mass of the system, it is common to divide the state variables by the mass. This allows us to obtain so-called <strong>specific quantities</strong>. For instance, volume divided by mass (or more specifically, the number of moles/kilomoles) is the <strong>specific volume</strong>. One may always construct specific “versions” for any quantities that are <strong>mass-dependent</strong>. We say such quantities are <strong>extensive properties</strong> of a system, since they are mass-dependent.</p>
+<p>However, there are also some properties of a system that are <em>not</em> mass-dependent, like temperature and pressure. We refer to such properties as <strong>intensive properties</strong>, as they are not mass-dependent. An extensive property can be converted into an intensive property (like volume converted to specific volume). But there are certain quantities for which there are no corresponding specific quantities. For instance, there is no such thing as “specific temperature” or “specific pressure”!</p>
+<p>It is common practice in thermodynamics to denote <em>extensive quantities</em> by <strong>capital letters</strong> and <em>intensive quantities</em> by <strong>lowercase letters</strong>. For example, volume (which is extensive) is denoted $V$ while specific volume (which is intensive) is denoted $v$. There are some exceptions, most notably for pressure and temperature, which, for historical reasons, are generally only written with capital letters.</p>
+<blockquote>
+<p><strong>Note:</strong> A useful identity is that the reciprocal of the specific volume is the density. That is, $\rho = 1/v$.</p>
+</blockquote>
+<h3 id="equations-of-state">Equations of state</h3>
+<p>To relate the state variables of a system, we need more than just the values of the state variables; we also need an <strong>equation of state</strong> that mathematically relates the state variables to each other. Any equation of state can be written in the form:</p>
+<p class="mathcell">
+$$
+f(P, V, T) = 0
+$$
+</p>
+<p>We may plot all possible values of $(P, V, T)$ on a 3-dimensional coordinate system and plot a system’s evolution in terms of curves within this state space. The equation of state forms an <strong>implicit surface</strong> in 3D space and all possible intermediate states of the system must lie on this surface. By allowing for a graphical interpretation of the state space of a system, and enabling calculus-based methods for analyzing processes, the equation of state plays a fundamental role in thermodynamics.</p>
+<p>The most famous equation of state, and the most commonly-used, is the <strong>ideal gas law</strong>, which applies (as the name would suggest) to an idealized gas, but is a good approximation for real gases under everyday conditions. It is given by:</p>
+<p class="mathcell">
+$$
+PV = n RT
+$$
+</p>
+<p>Where $P$ is the pressure, $T$ is the temperature, $V$ is the volume, $n$ is the number of moles (or kilomoles) of the ideal gas, and $R \approx \pu{ 8.314 J * K^{-1} mol^{-1} }$ is the universal gas constant (also called the <em>ideal gas constant</em>). It can also be written in intensive form (that is, only using intensive variables) as:</p>
+<p class="mathcell">
+$$
+Pv = RT
+$$
+</p>
+<p>Where $v \equiv V/n$ is the specific volume. The ideal gas law can be derived theoretically (which we will do after we go into statistical mechanics) but was first found empirically from experimental observations in the 19th century by a series of proportional relationships. Specifically, it comes from the observed proportionality given by:</p>
+<p class="mathcell">
+$$
+\frac{P_{1} v_{1}}{T_{1}}  = \frac{P_{2}v_{2}}{T_{2}}
+$$
+</p>
+<p>Where $(P_1, v_1, T_1)$, $(P_2, v_2, T_2)$ are any two states of an ideal gas (written in intensive form). This form is frequently useful in solving a variety of problems. The proportionality constant, as we now know, is given by $R$, the universal gas constant.</p>
+<p>As discussed previously, it is possible to construct implicit surfaces in 3D space for any given configuration of state variables using the ideal gas equation. Moreover, if we hold one of the three state variables constant, we can obtain 2D curves (<a href="https://en.wikipedia.org/wiki/Contour_line">isolines</a>, also commonly called <em>contour lines</em>). These have specific names, depending on which of the state variable(s) is held constant:</p>
+<ul>
+<li><strong>Isotherms</strong> are lines of constant temperature</li>
+<li><strong>Isobars</strong> are lines of constant pressure</li>
+<li><strong>Isochors</strong> are lines of constant pressure</li>
+<li><strong>Adiabats</strong> (which we’ll cover later) are lines for which $PV^\gamma$ is a constant value, where $\gamma$ is a constant exponent</li>
+</ul>
+<p>From the ideal gas law, isotherms take the form $P \propto v^{-1}$ with a constant proportionality factor, while isothors take the form $P \propto T$ and isobars take the form $v \propto T$. We show a few isotherms calculated from the ideal gas law below:</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/9/92/Ideal_gas_isotherms.svg?utm_source=en.wikipedia.org&amp;utm_campaign=index&amp;utm_content=original" alt="Plot of isotherms (curves at constant temperature) on a pressure-volume graph" /></p>
+<p><em>Source: <a href="https://en.wikipedia.org/wiki/File:Ideal_gas_isotherms.svg">Wikipedia</a></em></p>
+<h4 id="the-van-der-waals-gas-law">The van der Waals gas law</h4>
+<p>While relatively accurate in describing real gases at high temperatures and low pressures (i.e. everyday conditions), the ideal gas law is only an idealized approximation and fails to adequately describe gases at low temperatures and/or high pressures. A better, more accurate description of real gases uses the <strong>van der Waals equation of state</strong>, which is given by:</p>
+<p class="mathcell">
+$$
+\left(P + \frac{a}{v^2}\right)\left(v - b\right) = RT
+$$
+</p>
+<p>Where $P, T, R$ are the same as in the ideal gas law, $v$ is still the specific volume, and $a, b$ are gas-specific constants that account for intermolecular forces and nonzero molecular sizes. Multiplying the terms out, we may also express the van der Waals equation in the following form, which is a cubic polynomial of the (specific) volume:</p>
+<p class="mathcell">
+$$
+Pv^3 - (Pb + RT) v^2 + av - ab = 0
+$$
+</p>
+<p>At a certain point, even the van der Waals equation fails completely, since gases under very high pressure or very low temperature liquefy (in thermodynamic terms, they undergo a <strong>phase transition</strong>) and are no longer gaseous in form. During a phase transition, the pressure and temperature are <strong>constant</strong> and only volume changes. The boundary beyond which a phase transition happens is known as the <strong>critical curve</strong> and occurs where:</p>
+<p class="mathcell">
+$$
+\left( \frac{\partial P}{\partial v} \right)_{T = \text{const.}} = 0, \quad \left( \frac{\partial^2P}{\partial v^2} \right)_{T = \text{const.}} = 0
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> Mathematically, we are finding the inflection point of the isotherms of the van der Waals equation of state, hence why the above conditions must be satisfied.</p>
+</blockquote>
+<p>By calculating these derivatives from the van der Waals equation, we obtain the <strong>critical point</strong> at which liquid and gas phases become indistinguishable, where the critical (specific) volume $v_C$, the critical temperature $T_C$, and the critical pressure $P_C$ are respectively given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+v_{C} &amp;= 3 b \\
+T_{C} &amp;= \frac{8a}{27 Rb} \\
+P_{C} &amp;= \frac{a}{27 b^2}
+\end{align*}
+$$
+</p><h4 id="equation-of-state-for-liquids-and-solids">Equation of state for liquids and solids</h4>
+<p>Unlike gases, liquids and solids are typically incompressible (that is, they have a nearly constant (specific) volume, which we denote by $v_0$, where $v \approx v_0$). A general equation of state that can describe liquids and solids is given by:</p>
+<p class="mathcell">
+$$
+v = v_{0} \left(1 + \beta(T - T_{0}) - \kappa (P - P_{0})\right)
+$$
+</p>
+<p>Where $\beta$ is the <strong>expansivity</strong>, and $\kappa$ is the <strong>compressibility</strong>, which are generally constants for a specific liquid or solid, and where $T_0, P_0$ are the initial temperature and pressure of the liquid/solid prior to any change in the system (we can let these be room temperature and standard atmospheric pressure for convenience).</p>
+<h4 id="equations-of-state-for-real-substances">Equations of state for real substances</h4>
+<p>We have seen 3 different equations of state that describe different phases, but real substances are more complex and generally cannot be described with a single equation of state, requiring interpolation between different equations of state for different phases, often from empirical data. These are known as $P$-$v$-$T$ surfaces and are 3-dimensional surfaces, as shown below:</p>
+<p><img src="http://hyperphysics.phy-astr.gsu.edu/hbase/thermo/imgheat/pvtconr.gif" alt="PvT surface of a typical substance" /></p>
+<p><em>Source: <a href="http://hyperphysics.phy-astr.gsu.edu/hbase/thermo/pvtsur.html">HyperPhysics</a></em></p>
+<p>A non-elementary discussion of $P$-$v$-$T$ surfaces is beyond the scope of this guide. However, we will highlight two notable features that one finds on them which is not described by simple equations of state. First, it is possible for a substance to be solid, liquid, and gas at the same time(!) which is known as a triple state, and marked by a line on a $P$-$v$-$T$ surface. It is also possible at certain pressures and temperatures for a gas to directly transition to a solid (sublimation), which we commonly observe in solid carbon dioxide (dry ice).</p>
+<h3 id="state-variables-and-exact-differentials">State variables and exact differentials</h3>
+<p>The mathematical basis for state variables comes from multivariable calculus, which we will take a moment to revisit. Consider an arbitrary function of two variables $z = z(x, y)$ (in thermodynamics this is typically the equation of state). The total differential $dz$ may be expressed as:</p>
+<p class="mathcell">
+$$
+dz = \frac{\partial z}{\partial x} dx + \frac{\partial z}{\partial y}dy
+$$
+</p>
+<p>We may also rewrite this as:</p>
+<p class="mathcell">
+$$
+dz = A dx + B dy, \quad A \equiv \frac{\partial z}{\partial x}, \quad B \equiv \frac{\partial z}{\partial y}
+$$
+</p>
+<p>Now, if the above is true, it <em>must</em> also be true that:</p>
+<p class="mathcell">
+$$
+\left( \frac{\partial A}{\partial y} \right)_{x} = \left( \frac{\partial B}{\partial x} \right)_{y}
+$$
+</p>
+<p>Where the subscript $x$ means “with $x$ held constant” and the subscript $y$ means “with $y$ held constant”. This becomes clear if we substitute in the definitions of $A$ and $B$, since:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\left( \frac{\partial A}{\partial y} \right)_{x} &amp;= \left( \frac{\partial}{\partial y}\left[ \frac{\partial z}{\partial x} \right] \right)_{x} = \frac{\partial^2 z}{\partial y \partial x} \\
+\left( \frac{\partial B}{\partial x} \right)_{y} &amp;= \left( \frac{\partial}{\partial x} \left[ \frac{\partial z}{\partial y} \right] \right)_{y} = \frac{\partial^2 z}{\partial x \partial y}
+\end{align*}
+$$
+</p>
+<p>Since we know that mixed 2nd (partial) derivatives are equal, one has:</p>
+<p class="mathcell">
+$$
+\frac{\partial^2 z}{\partial y \partial x} = \frac{\partial^2 z}{\partial x \partial y} \implies \left( \frac{\partial A}{\partial y} \right)_{x} = \left( \frac{\partial B}{\partial x} \right)_{y}
+$$
+</p>
+<p>We thus say that $dz$ is an <strong>exact differential</strong> as a result, and state variables in thermodynamics <strong>must</strong> be expressible as exact differentials. State variables in thermodynamics are not just expressible as exact differentials — any function of state variables is <em>also</em> a state variable, making it an exact differential too!</p>
+<p>As an example, let $v = v(T, P)$, where $v$ is the specific volume, $T$ is the temperature, and $P$ is the pressure. Since volume (and therefore specific volume) is a state variable, we may express it as an exact differential $dv$, where $dv$ is given by:</p>
+<p class="mathcell">
+$$
+dv = \left( \frac{\partial v}{\partial T} \right)_{P} dT + \left( \frac{\partial v}{dP} \right)_{T} dP
+$$
+</p>
+<p>Where the subscripts $P$ and $T$ indicate that pressure and temperature should respectively be held constant when taking the derivative. It is common to rewrite $dv$ in the form:</p>
+<p class="mathcell">
+$$
+dv = v \beta dT - v \kappa dP
+$$
+</p>
+<p>Where $\beta$ is the <strong>expansivity</strong>, $\kappa$ is <strong>compressibility</strong>, and where:</p>
+<p class="mathcell">
+$$
+\beta \equiv \frac{1}{v} \left( \frac{\partial v}{\partial T} \right)_{P}, \kappa \equiv -\frac{1}{v} \left( \frac{\partial v}{\partial P} \right)_{T}
+$$
+</p>
+<p>For an ideal gas, we can rearrange the ideal gas law $Pv = RT$ into $v = RT/P$. From there, we find that:</p>
+<p class="mathcell">
+$$
+\beta = \frac{1}{T}, \quad \kappa = \frac{1}{P} \quad \text{(ideal gas)}
+$$
+</p>
+<p>For a liquid or solid, where we assume that the volume is roughly constant ($v \approx v_0 = \text{const.}$) and where we consider discrete changes in temperature ($\Delta T$) and pressure ($\Delta P$), the change in specific volume may then be expressed as:</p>
+<p class="mathcell">
+$$
+\Delta v = v_0(\beta \Delta T - \kappa \Delta P)
+$$
+</p>
+<p>A key property of exact differentials is that they are <em>path-independent</em> for any given path through their state space. This is due to the gradient theorem, which states that for an exact differential $dz$, its line integral between points $A$ and $B$ in the state space is given by:</p>
+<p class="mathcell">
+$$
+\int_{A}^B dz = z(B) - z(A)
+$$
+</p>
+<p>In thermodynamics, this is important because it means that as long as we are dealing with state variables, we can decompose arbitrarily-complex processes as a <em>sequence</em> of simpler processes (typically isothermal, isobaric, isochoric, and/or adiabatic processes) which together have the same initial and final states as the more complex process under examination. Path independence means that the simpler sequence of processes is <em>mathematically equivalent</em> to the complex single process. Moreover, it means that for a reversible process, there is no net change in the state variable if the process is subsequently reversed:</p>
+<p class="mathcell">
+$$
+\oint dz = \int_{A}^B dz + \int_{B}^A dz = 0
+$$
+</p>
+<p>Exact differentials satisfy some special relations, which are useful for solving problems. First, they satisfy the <strong>reciprocity relation</strong>:</p>
+<p class="mathcell">
+$$
+\left( \frac{\partial z}{\partial x} \right)_{y} = \left( \frac{\partial x}{\partial z} \right)_{y}^{-1}
+$$
+</p>
+<p>Second, they satisfy the <strong>cyclic relation</strong>:</p>
+<p class="mathcell">
+$$
+\left( \frac{\partial x}{\partial y} \right)_{z} \left( \frac{\partial y}{\partial z} \right)_{x} \left( \frac{\partial z}{\partial x} \right)_{y} = -1
+$$
+</p><h3 id="units-in-thermodynamics">Units in thermodynamics</h3>
+<p>In this guide we will primarily be using SI units, where:</p>
+<ul>
+<li><strong>Pressure</strong> is in units of Pascals (denoted $\pu{Pa}$), where $\pu{1 Pa} = \pu{1 N/m^2}$</li>
+<li><strong>Temperature</strong> is in units of Kelvin (denoted $\pu{K}$)</li>
+<li><strong>Volume</strong> is in units of liters (denoted $\pu{L}$) or cubic meters (denoted $\pu{m^3}$) or cubic centimeters (denoted $\pu{cm^3}$). Note that $\pu{1 L} = \pu{1000 cm^3} = \pu{0.001 m^3}$</li>
+</ul>
+<p>However, we will also be using some non-SI units. For instance, we will use the Celsius scale and Fahrenheit scale for temperature where appropriate. We may convert between Celsius and Kelvin using the formula:</p>
+<p class="mathcell">
+$$
+T[{}^\circ\text{C}] = T[\pu{K}] - 273.15
+$$
+</p>
+<p>Where $T[{}^\circ\text{C}]$ is the temperature in degrees Celsius and $T[\pu{K}]$ is the temperature in Kelvin. We may also convert temperature between Celsius and Fahrenheit as follows:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+T[{}^\circ\text{F}] &amp;= \frac{9}{5} T[{}^\circ\text{C}] + 32 \\
+T[{}^\circ\text{C}] &amp;= \frac{5}{9} (T[{}^\circ\text{F}] - 32)
+\end{align*}
+$$
+</p>
+<p>Where $9/5 = 1.8 \approx 2$, hence a rule of thumb when roughly converting between Fahrenheit and Celsius is to double the temperature in Celsius, then add 32. A useful table for common conversion values can be found <a href="https://www.nfcacademy.com/wp-content/uploads/1/2/8/6/12864732/celsius-to-fahrenheit-conversion-chart-5s.pdf">on this PDF</a>.</p>
+<blockquote>
+<p><strong>Note:</strong> In certain fields of engineering, the antiquated <a href="https://en.wikipedia.org/wiki/Rankine_scale">Rankine scale</a> is used as an alternative scale for measuring temperature, although it is rarely used nowadays. We will thus not use it in this guide. However, for interested readers, the Rankine scale is defined such that 1 Rankine (symbol ${}^\circ R$) is equal to five-ninths of a Kelvin, that is, $\pu{1 {}^\circ R} = \frac{5}{9}\pu{K}$.</p>
+</blockquote>
+<p>We will also use other pressure units. One common unit for pressure is the <strong>standard atmosphere</strong> (symbol $\pu{atm}$), where $\pu{1 atm} = \pu{101325 Pa} \approx \pu{10^5 Pa}$ and is approximately equal to Earth’s atmospheric pressure at sea level. Another unit is the <strong>torr</strong>, where $\pu{1 atm} = \pu{760 torr}$. In medicine, a common alternative pressure unit is the <strong>millimeter of mercury</strong> (symbol $\pu{mmHg}$) which is approximately equal to 1 torr. A variety of other pressure units can be found on <a href="https://en.wikipedia.org/wiki/Standard_atmosphere_(unit)#Pressure_units_and_equivalencies">this table on Wikipedia</a>.</p>
+<h3 id="the-zeroeth-law-of-thermodynamics">The zeroeth law of thermodynamics</h3>
+<p>Thermodynamic systems, no matter their behavior or constituents, obey several fundamental laws. We will start with the <strong>zeroeth law of thermodynamics</strong>, which was discovered empirically. It states that if we have three isolated systems $A, B, C$, where system $A$ is in thermal equilibrium with system $B$ and system $B$ is in thermal equilibrium with system $C$, then system $A$ <strong>must</strong> be in equilibrium with system $C$.</p>
+<p>This conclusion may seem trivial, but it actually has important consequences. First, it is the physical principle that permits thermometers to be possible, because one cannot measure the temperature of a system <em>directly</em>; we can only ever measure the temperature of another system that is <em>at thermal equilibrium</em> with the system we’re studying. Indeed, temperature is only defined thanks to the zeroeth law! Second, and more importantly, it sets a limit on how “cold” something can be. This is because it implies that to cool a system, you must allow it to achieve thermal equilibrium with a colder system. However, this can only go down to a certain point, below which you simply cannot go colder. This is known as <a href="https://en.wikipedia.org/wiki/Absolute_zero">absolute zero</a> and is the theoretically coldest temperature possible, which is defined to be at zero Kelvin or $\pu{-273.15^\circ C}$.</p>
+<h2 id="types-of-processes">Types of processes</h2>
+<p>Physically, a <strong>thermodynamic process</strong> is a change in a system, where pressure, volume, and/or temperature change. Mathematically, a thermodynamic process is a transition between two points in the thermodynamic state space. We can characterize processes using the following classifications:</p>
+<table><thead><tr><th>Type</th><th>Defining characteristics</th></tr></thead><tbody>
+<tr><td>Reversible process</td><td>Process in which there is no energy dissipation, allowing it to be perfectly reversed</td></tr>
+<tr><td>Irreversible process</td><td>Process in which there is unavoidable energy dissipation, making it impossible to perfectly reverse</td></tr>
+<tr><td>Cyclic process</td><td>Combination of several processes that repeat in an infinite cycle in the form $A \to B \to C \to A \to B \to C \to \dots$</td></tr>
+<tr><td>Diathermal process</td><td>No mass transfer but there is heat transfer</td></tr>
+<tr><td>Adiabatic process</td><td>No heat transfer is present</td></tr>
+<tr><td>Isobaric process</td><td>Process occurs at constant <strong>pressure</strong> ($dP = 0$)</td></tr>
+<tr><td>Isothermal process</td><td>Process occurs at constant <strong>temperature</strong> ($dT = 0$)</td></tr>
+<tr><td>Isochoric process</td><td>Process occurs at constant <strong>volume</strong> ($dV = 0$)</td></tr>
+<tr><td>Quasi-static process</td><td>Process that happens slow enough that a system remains in thermodynamic equilibrium. All reversible processes and <em>some</em> irreversible processes are quasi-static.</td></tr>
+</tbody></table>
+<blockquote>
+<p><strong>Note:</strong> In physical nature, <strong>all</strong> processes are ultimately irreversible, but can be approximated by ideal, reversible processes, or at least a sequence of reversible processes. We will later show that this is an inevitable consequence of the second law of thermodynamics</p>
+</blockquote>
+<blockquote>
+<p><strong>Note for the advanced reader:</strong> The term <em>adiabatic</em> is also used loosely in other fields of physics; the well-known <em>adiabatic approximation</em> in quantum mechanics does not strictly correspond to thermodynamically-adiabatic processes, but rather is a general form of quasi-static approximation.</p>
+</blockquote>
+<p>There is an important link between the physical and mathematical descriptions of a process. Specifically, isobaric processes correspond mathematically to isobars of the equation of state, while isothoric processes similarly correspond to isothors and isothermal processes correspond to isotherms.</p>
+<p>Finally, the notion of a quasi-static process is essential, because (as we mentioned earlier) (classical) thermodynamics <em>only</em> applies for systems in thermal equilibrium. This means that we can only analyze processes that can be described as a set of (potentially-infinite) equilibrium states. An explosive reaction or a rapid compression of a piston is <em>not</em> quasi-static and therefore cannot be formally described using thermodynamics.</p>
 
         
         <a id="jump-toc-btn" href="#toc">Show table of contents</a>
