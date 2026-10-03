@@ -1397,6 +1397,223 @@ In practice, the first few terms of the series are usually enough to yield an ex
 
 > **Note:** For more in-depth discussion of the formulas for perturbation theory up to arbitrary order, see this [Physics StackExchange post](https://physics.stackexchange.com/questions/717102/higher-order-e-g-nth-order-corrections-to-non-degenerate-time-independent).
 
+### The ramp in an infinite square well
+
+In our first example of using perturbation theory, let us consider a 1-dimensional infinite square well of length $L$, which has the standard "box" potential:
+
+{% math() %}
+V_\mathrm{box}(x) = \begin{cases}
+0, & 0 \leq x \leq L \\
+\infty , & \text{otherwise}
+\end{cases}
+{% end %}
+
+The Hamiltonian is therefore:
+
+{% math() %}
+H = \frac{\hat{p}^2}{2m} + V_\mathrm{box}(x) = \begin{cases}
+\frac{\hat{p}^2}{2m}, & 0 \leq x \leq L \\
+\infty, & \text{otherwise}
+\end{cases}
+{% end %}
+
+We have previously calculated energy eigenfunctions and eigenvalues of this potential to be:
+
+{% math() %}
+\psi_{n}(x) = \sqrt{ \frac{2}{L} } \sin\left( \frac{n \pi x}{L} \right), \quad 
+E_{n} = \frac{n^2 \pi^2 \hbar^2}{2mL^2}
+{% end %}
+
+Now, let us consider the modified square well with a linear potential term:
+
+{% math() %}
+H = \frac{p^2}{2m} + V_\mathrm{box} + \alpha x
+{% end %}
+
+Where $\alpha \ll 1$ is some small constant. We want to find the first-order energy shift caused by this potential (which we may imaginatively call a "ramp potential" since it does look like (and act like) a ramp). Applying the formula for the first-order energy shift, we obtain:
+
+{% math() %}
+\begin{align*}
+\Delta E_{n}^{(1)} &= \langle \varphi_n^{(0)}| \Delta \hat{H} |\varphi_{n}^{(0)}\rangle \\
+&= \int_{0}^L \psi_{n}(x) \alpha x \psi_{n}(x) dx \\
+&= \frac{2 \alpha}{L} \int_{0}^L x \sin^2\left( \frac{n\pi x}{L} \right) dx \\
+&= \frac{2\alpha}{L}\left[ \int_{0}^L \frac{x}{2} dx - \cancel{ \int_{0}^L \frac{\cos(2n\pi x / L)}{2}dx }^0\right] \\
+&= \frac{\alpha L}{2}
+\end{align*}
+{% end %}
+
+Where we applied the identity $\sin^2 x = \frac{1}{2} - \frac{\cos(2x)}{2}$ to split the integral into two simpler integrals. The result tells us that we would observe a first-order energy shift of $\Delta E = \alpha L/2$ upon applying the ramp potential. This makes sense: if the ramp potential is a positive potential (for $\alpha > 0$) the particle is pushed "up" by the ramp and has increased potential energy, while if the ramp potential is a negative potential (for $\alpha < 0$) the particle falls "down" the ramp and has less potential energy.
+
+### The quantum pendulum
+
+The quantum pendulum is a simple model of a nonlinear harmonic oscillator and a classical problem in perturbation theory. Due to its nonlinearity, it behaves differently from the otherwise-similar quantum harmonic oscillator. The quantum pendulum is described by a Hamiltonian of the form:
+
+{% math() %}
+\hat{H} = \frac{\hat{L}_{z}^2}{2 m a^2} -\lambda \cos \phi
+{% end %}
+
+Where $m$ is the mass of the pendulum, while $a$ and $\lambda$ are two constants (with units of length and energy respectively), and it is assumed that $\lambda$ is small such that we can use perturbation theory. The first part of the Hamiltonian is the free Hamiltonian $H_0 = \frac{\hat{L}_{z}^2}{2ma^2}$, which describes a quantum rigid rotor (a rigid rotor is like a spinning top). The Schrödinger equation for the rigid rotor is:
+
+{% math() %}
+\hat{H}_{0}|\psi_{n}\rangle = \frac{\hat{L}_{z}^2}{2ma^2} |\psi_{n}\rangle = E_{n} |\psi_{n}\rangle
+{% end %}
+
+It is straightforward to solve for the rigid rotor's eigenstates and energy eigenvalues, since we already know the eigenvalues of $\hat{L}_{z}$, which are simply $n\hbar$ for integer $n$ (we use $n$ instead of the typical $m_l$ for notational clarity). Therefore, the eigenvalues of $\hat L_z^2$ are $n^2\hbar^2$ and:
+
+{% math() %}
+\frac{\hat{L}_{z}^2}{2ma^2}|\psi_{n}\rangle = \frac{\hbar^2 n^2}{2ma^2}|\psi_{n}\rangle = E |\psi_{n}\rangle
+{% end %}
+
+From which we can easily "read off" the energy eigenvalues as:
+
+{% math() %}
+E_{n} = \frac{\hbar^2 n^2}{2ma^2}
+{% end %}
+
+Meanwhile, the eigenstates can be obtained if we write $L_z^2 = \hbar^2 \frac{\partial^2}{\partial \phi^2}$ in explicit form and solve the eigenvalue equation $L_z^2 \psi = n^2 \hbar^2 \psi$. This gives us eigenfunctions in the form $\psi = A e^{i n \phi}$, upon which the normalization constant can be straightforwardly calculated:
+
+{% math() %}
+\int_{0}^{2\pi} |\psi(\phi)|^2 d\phi = 2\pi A^2 = 1 \implies A = \frac{1}{\sqrt{ 2\pi }}
+{% end %}
+
+This gives us the following set of eigenfunctions:
+
+{% math() %}
+\psi_{n}(\phi) = \frac{e^{in\phi}}{\sqrt{ 2\pi }}, \quad n = 0, 1, 2, 3, \dots
+{% end %}
+
+First, let's find the first-order correction to the energy eigenvalues, so we will use the first-order perturbation theory formula:
+
+{% math() %}
+\Delta E_{n}^{(1)} = \langle \varphi_n^{(0)}| \Delta \hat{H} |\varphi_{n}^{(0)}\rangle
+{% end %}
+
+Here, the perturbation is $\Delta \hat{H} = - \lambda\cos \phi$. Expanding the inner product (which, for our continuous eigenfunctions becomes an integral) therefore gives us:
+
+{% math() %}
+\Delta E_{n}^{(1)} = -\lambda \int_{0}^{2\pi} \frac{e^{-in\phi}}{\sqrt{ 2\pi }} \cos \phi \frac{e^{in\phi}}{\sqrt{ 2\pi }} d\phi = -\frac{\lambda}{2\pi} \int_{0}^{2\pi} \cos \phi d\phi = 0
+{% end %}
+
+We thus find that the first-order correction to the energy eigenvalues are zero. The lack of a first-order correction to the energy, however, doesn't mean the perturbation has *no effect*. Rather, it suggests that we need to go to second-order. The second-order corrections to the energy eigenvalues are given by:
+
+{% math() %}
+\Delta E_n^{(2)} = \sum_{m\,(m \neq n)} \frac{|\langle \varphi_m^{(0)}|\Delta\hat H |\varphi_{n}^{(0)}\rangle|^2}{\left(\small E_{n}^{(0)} - E_{m}^{(0)}\right)}
+{% end %}
+
+Substituting in $\Delta \hat H = -\lambda \cos \phi$ and expanding the inner products, we have:
+
+{% math() %}
+\begin{align*}
+\Delta E_{n}^{(2)} &= \sum_{m\,(m \neq n)} \frac{1}{\small E_{n}^{(0)} - E_{m}^{(0)}}
+\left|(-\lambda)\int_{0}^{2\pi} \psi_{m}(x) \cos \phi \psi_{n}(x) d\phi \right|^2 \\
+&= \sum_{m\,(m \neq n)} \frac{\lambda^2}{\small E_{n}^{(0)} - E_{m}^{(0)}} \left| \frac{1}{2\pi} \int_{0}^{2\pi} \cos \phi e^{i(n - m)\phi} d\phi \right|^2
+\end{align*}
+{% end %}
+
+We will now use the following identity:
+
+{% math() %}
+\frac{1}{\pi}\int_{0}^{2\pi} \cos \phi e^{i(n - m)\phi} d\phi = \delta_{n, 1-m} + \delta_{n, -(1+m)}
+{% end %}
+
+Where $\delta_{nm}$ is the Kronecker delta, and has a value of zero unless $n = m$ (in which case it equals one). Hence, we have:
+
+{% math() %}
+\Delta E_{n}^{(2)} = \frac{\lambda^2}{4}\sum_{m\,(m \neq n)} \frac{\left|\delta_{n, 1-m} + \delta_{n, -(1+m)}\right|^2}{\small E_{n}^{(0)} - E_{m}^{(0)}}
+{% end %}
+
+This allows us to collapse the infinite sum over $m$ because all of its terms are zero except for the cases where $\delta_{n, 1-m}$ and/or $\delta_{n, -(1+m)}$ are nonzero, which occur (respectively) when $n = 1 - m$ and when $n = -(1 + m)$. This gives us three possibilities, where we can rule out one of them easily:
+
+1. $n = 1-m$ is individually satisfied.
+2. $n = -(1 + m)$ is individually satisfied.
+3. *both* of the above are satisfied at the same time (this turns out to be impossible because $1 - m = -(1 + m)$ is an equation with no solutions for $m$).
+
+Hence, we need now only examine the first and second possibilities. In the first case, we can rearrange $n = 1-m$ into $m = 1 - n$. Therefore:
+
+{% math() %}
+E_{n}^{(0)} - E_{m}^{(0)} = E_{n} - E_{1-n} = \frac{\hbar^2 n^2}{2ma^2} - \frac{\hbar^2 (1 - n)^2}{2ma^2} = \frac{\hbar^2}{2ma^2}(2n - 1)
+{% end %}
+
+In the second case, where $n = -(1 + m)$, we have $n = -1 - m$ hence $m = -1 - n = -(1 + n)$:
+
+{% math() %}
+E_{n}^{(0)} - E_{m}^{(0)} = E_{n} - E_{-(1 + n)} = \frac{\hbar^2 n^2}{2ma^2} - \frac{\hbar^2 (1 + n)^2}{2ma^2} = -\frac{\hbar^2}{2ma^2}(2n + 1)
+{% end %}
+
+The formerly infinite sum therefore collapses into two terms (with respective values of $E_{n}^{(0)} - E_{m}^{(0)}$ as given above) giving us:
+
+{% math() %}
+\begin{align*}
+\Delta E_{n}^{(2)} &= \frac{\lambda^2}{4} \left( \frac{1}{\hbar^2(2n - 1) / 2 m a^2} - \frac{1}{\hbar^2(2n + 1) / 2 m a^2} \right) \\
+&= \frac{ma^2 \lambda^2}{2\hbar^2} \left( \frac{1}{2n-1} - \frac{1}{2n+1} \right) \\
+&= \frac{ma^2 \lambda^2}{\hbar^2(4n^2 - 1)}
+\end{align*}
+{% end %}
+
+Unlike the first-order correction, the second-order correction is *decidedly nonzero*. In addition, it is always positive *except* for the ground state (where it is negative), meaning that it effectively *decreases* the ground-state energy of the particle and *increases* the energy of all excited states. This has interesting implications, since a lower (as in *more negative*) ground state energy generally means that a particle is more tightly bound to a potential. Indeed, an important application of the quantum pendulum model is to describe the **Josephson effect** in Josephson junctions, a class of superconducting circuits whose operating principle is based on electron tunneling through a gap between two superconductors.
+
+### The quartic harmonic oscillator
+
+Lastly, we will consider the quartic harmonic oscillator, which is a nonlinear modification of the quantum harmonic oscillator with the following potential:
+
+{% math() %}
+U_\mathrm{quartic} = \frac{1}{2} m \omega^2 x^2 - \frac{\lambda^4}{4!} x^4
+{% end %}
+
+Where $4! = 4 \cdot 3 \cdot 2 \cdot 1 = 24$ and $\lambda$ is a constant that is much smaller than 1. It corresponds to the following Hamiltonian:
+
+{% math() %}
+\hat{H} = \underbrace{ \frac{\hat{p}^2}{2m} + \frac{1}{2}m \omega^2 x^2 }_{ \hat{H}_{0} } + \underbrace{ \frac{-\lambda}{4!} x^4 }_{ \Delta \hat{H} }
+{% end %}
+
+This is a toy model frequently used in quantum field theory; in that context, it is known as the *quartic theory* and is a simple model for interacting particles with no spin (and a precursor to the mathematical description of the [Higgs field](https://en.wikipedia.org/wiki/Higgs_field)). It also has an interesting link to our previous example of the quantum pendulum: the quartic potential is effectively (up to some constants) the pendulum potential Taylor-expanded to 4th-order, since:
+
+{% math() %}
+\Delta \hat{H} = -\lambda \cos \phi = -\lambda + \frac{\lambda}{2!} - \frac{\lambda}{4!} + \dots
+{% end %}
+
+We want to compute the first-order correction to the energy eigenvalues for the ground state. To start off, the zeroeth-order energy eigenvalues are simply those of the quantum harmonic oscillator:
+
+{% math() %}
+E_{n}^{(0)} = \left( n + \frac{1}{2} \right)\hbar \omega
+{% end %}
+
+Hence, the ground state energy (with $n = 0$) is simply:
+
+{% math() %}
+E_0^{(0)} = \frac{1}{2} \hbar \omega
+{% end %}
+
+Now, we will compute the first-order energy shift. Recall that the ground state wavefunction of the quantum harmonic oscillator is given by:
+
+{% math() %}
+\psi_0(x) = \left(\dfrac{m\omega}{\pi \hbar}\right)^{1/4} e^{-m\omega x^2 / (2\hbar)}
+{% end %}
+
+Therefore, the first-order energy shift is given by:
+
+{% math() %}
+\begin{align*}
+\Delta E_{0}^{(1)} &= \langle \psi_{0}^{(0)}|\Delta \hat{H} |\psi_{0}^{(0)}\rangle \\
+&= \int_{-\infty}^{\infty} \psi_{0}(x) \frac{-\lambda}{4!} x^4 \psi_{0}(x) dx \\
+&= \frac{\lambda}{24} \left( \frac{m\omega}{\pi \hbar} \right)^{1/2} \int_{-\infty}^\infty x^4 e^{-m\omega x^2 / \hbar} dx
+\end{align*}
+{% end %}
+
+Now, we make use of the integral identity:
+
+{% math() %}
+\int_{-\infty}^\infty x^{2n} e^{-ax^2} dx = \sqrt{ \frac{\pi}{a} } \frac{(2n - 1)!!}{(2a)^n}
+{% end %}
+
+Where $!!$ denotes the double factorial. In our case, letting $n = 2$ and $a = m\omega/\hbar$ we would thus get:
+
+{% math() %}
+\Delta E_{0}^{(1)} = \frac{\hbar^2 \lambda}{32 m^2 \omega^2}
+{% end %}
+
+This result is particularly interesting because it is a result that depends on the mass $m$ of the particle. In fact, the ground-state energy shift due to the quartic term is actually *inversely-proportional* to the mass! This tells us that lighter particles "feel" the quartic potential more strongly, even though the mass of the particle doesn't appear in the quartic potential itself. Additionally, the correction to the ground-state energy is *positive*, meaning that the particle becomes less tightly bound as a result of the quartic potential. Hence, while a "toy model", the quartic harmonic oscillator is still an important model to study, and even serves as simplified (0+1)-dimensional version of the [Higgs mechanism](https://en.wikipedia.org/wiki/Spontaneous_symmetry_breaking#Sombrero_potential) in particle physics.
+
 ## Advanced quantum theory
 
 ### Relativistic wave equations and the Dirac equation
