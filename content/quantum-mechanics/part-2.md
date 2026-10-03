@@ -1154,7 +1154,11 @@ Note that when we take the limit $\lambda \to 0$, the perturbation vanishes, and
 
 The key idea of perturbation theory is that we assume a **series solution** for $\hat{H}|\varphi_{n}\rangle = E_{n}|\varphi_{n}\rangle$. More accurately, we assume that we can write the solution in terms of a *power series* in powers of $\lambda$. Now, this assumption doesn't always work - in fact there are some systems where it doesn't work at all - but using this assumption makes it possible to find an approximate solution using analytical methods, which is "good enough" for most purposes. Remember, in the real world, it is *impossible* to measure anything to infinite precision, so having an approximate answer to a problem that is *close enough* to the exact solution is often more than sufficient to make testable predictions that align closely with experimental data.
 
-But let's get back to the math. For our solution to be expressed as a power series in $\lambda$, we would write:
+### Non-degenerate perturbation theory
+
+The simplest type of stationary perturbation theory is **non-degenerate perturbation theory**, also known as _Rayleigh-Schrödinger perturbation theory_. This type of perturbation theory works only in cases where each of a quantum system's states have distinct energies (that is, the Hamiltonian's eigenspectrum is non-degenerate), and where the Hamiltonian is time-independent.
+
+To start, non-degenerate perturbation theory assumes that the exact solution for the quantum state $|\psi\rangle$ to be expressed as a power series in $\lambda$:
 
 {% math() %}
 \begin{align*}
