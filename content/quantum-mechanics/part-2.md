@@ -622,7 +622,7 @@ In general, we have:
 In the same way, we can get $\psi_2$ from applying the $\hat a^\dagger$ operator on $\psi_1$, then get $\psi_3$ from $\psi_2$, then get $\psi_4$ from $\psi_3$, and so on and so forth. With some clever mathematics (that we won't show here), this recursive formula can be solved in closed-form to yield a *generalized* formula for the _nth_ eigenstate's wavefunction representation:
 
 {% math() %}
-\psi_n(x) = \left(\dfrac{m\omega}{\pi \hbar}\right) \dfrac{1}{\sqrt{2^nn!}}H_n\left(\sqrt{\dfrac{m\omega}{\hbar}}x\right)\exp \left(-\dfrac{m\omega x^2}{2\hbar}\right)
+\psi_n(x) = \left(\dfrac{m\omega}{\pi \hbar}\right)^{1/4} \dfrac{1}{\sqrt{2^nn!}}H_n\left(\sqrt{\dfrac{m\omega}{\hbar}}x\right)\exp \left(-\dfrac{m\omega x^2}{2\hbar}\right)
 {% end %}
 
 Here, $H_n(x)$ is a **Hermite polynomial** of order $n$, defined as:
@@ -1134,15 +1134,17 @@ _A description of perturbation theory from [XKCD](https://xkcd.com/793/)._
 
 We will first review the _simplest_ type of stationary perturbation theory, known as **non-degenerate perturbation theory**, which applies to quantum systems _without_ degeneracy (meaning that each eigenstate is uniquely specified by an energy eigenvalue of the Hamiltonian). It turns out that this is in many cases an _overly simplified_ assumption, but the methods we will develop here will be extremely useful for our later discussion of **degenerate perturbation theory** that accurately describes a variety of real-world quantum systems.
 
-The starting point in perturbation theory is to assume that the Hamiltonian of a complicated system can be written as a sum of a Hamiltonian $\hat H_0$ with an _exact_ solution and a small *perturbation* $\hat{W}$, such that:
+Mathematically-speaking, non-degenerate perturbation theory assumes that the Hamiltonian of a complicated system can be written as a sum of a Hamiltonian $\hat H_0$ with an _exact_ solution and a small *perturbation* $\Delta \hat{H}$, such that:
 
 {% math() %}
-\hat{H} = \hat{H}_{0} + \lambda\hat{W}
+\hat{H} = \hat{H}_{0} + \Delta \hat{H}, \quad \Delta \hat{H} = \lambda\hat{W}
 {% end %}
 
-> **Note:** Here $\hat H_0$ is known as the **unperturbed Hamiltonian** or _free Hamiltonian_. Also, it is common to write $\hat W$ without the operator hat, and it is also common to denote it as $V$ (confusingly). Be aware that in all cases, $W$ is an **operator**, not a function!
+Here $\hat H_0$ is known as the **unperturbed Hamiltonian** or **free Hamiltonian**. For instance, $\hat H_0$ might be the Hamiltonian of a free particle, or of the hydrogen atom, or the quantum harmonic oscillator. The key commonality here is that $\hat H_0$ must be the Hamiltonian of a **simpler system** that can be analytically solved.
 
-For instance, $\hat H_0$ might be the Hamiltonian of a free particle, or of the hydrogen atom, or the quantum harmonic oscillator. The key commonality here is that $\hat H_0$ must be the Hamiltonian of a **simpler system** that can be analytically solved. On top of $\hat H_0$ we add the perturbation $\hat W$, which represents the *deviations* (also called _perturbations_) of the system's Hamiltonian as compared to the simpler system. This perturbation is assumed to be small, so we scale it by a small number $\lambda$ (where $\lambda \ll 1$), giving us a term of $\lambda \hat W$. If we write out the Schrödinger equation for the system, we have:
+> **Note:** It is common to write $\Delta \hat{H}$ without the operator hat, and it is also common to denote it as $V$ (confusingly). Be aware that in all cases, $W$ is an **operator**, not a function!
+
+On top of $\hat H_0$ we add the perturbation $\Delta \hat{H}$, which represents the *deviations* (also called _perturbations_) of the system's Hamiltonian as compared to the simpler system. This perturbation is assumed to be small, so we scale it by a small number $\lambda$ (where $\lambda \ll 1$), giving us a term of $\Delta \hat{H} = \lambda \hat W$ where $\hat W$ is some arbitrary operator representing perturbations to the Hamiltonian. If we write out the Schrödinger equation for the system, we have:
 
 {% math() %}
 \hat{H}|\varphi_{n}\rangle = E_{n} |\varphi_{n}\rangle \quad \Rightarrow \quad (\hat{H}_{0} + \lambda\hat{W})\varphi_{n}\rangle = E_{n} |\varphi_{n}\rangle
@@ -1280,7 +1282,7 @@ Finally, after fully simplifying our results, we come to a refreshingly-simple e
 E_n^{(1)} = \langle \varphi_n^{(0)}|\hat W |\varphi_{n}^{(0)}\rangle
 {% end %}
 
-This is one of the **most important** equations in all of quantum mechanics and in most cases gives a good approximation to the exact eigenenergies of the system, at least where $\lambda$ is small. Note that the result is very general since it applies for _all_ $n$ eigenstates of the system. Adding in the first-order corrections gives us the (approximate) eigenenergies of the system:
+Note that the result is very general since it applies for _all_ $n$ eigenstates of the system. Adding in the first-order corrections gives us the (approximate) eigenenergies of the system:
 
 {% math() %}
 \begin{align*}
@@ -1288,6 +1290,14 @@ E_n &\approx E_{n}^{(0)} + \lambda E_{n}^{(1)} \\
 &= E_{n}^{(0)} + \lambda \langle \varphi_n^{(0)}|\hat W |\varphi_{n}^{(0)}\rangle
 \end{align*}
 {% end %}
+
+Alternatively, if written in terms of the perturbation term $\Delta \hat H$ in the Hamiltonian, we can express the first-order shift in the energy eigenvalues $\Delta E_n^{(1)}$ as:
+
+{% math() %}
+\Delta E_{n}^{(1)} = \lambda \langle \varphi_n^{(0)}|\hat W |\varphi_{n}^{(0)}\rangle = \langle \varphi_n^{(0)}| \Delta \hat{H} |\varphi_{n}^{(0)}\rangle
+{% end %}
+
+This is one of the **most important** equations in all of quantum mechanics and in most cases gives a good approximation to the exact eigenenergies of the system, at least where $\lambda$ is small. It allows us to solve a variety of quantum systems that would otherwise be impossible to solve exactly, and to a large extent, is responsible for why we can perform quantum-mechanical calculations for complicated real-world systems at all!
 
 We can use a similar process to get the first-order correction $|\varphi_n^{(1)}\rangle$ to the eigenstates of the system. We'll spare the derivation for now and just state the results - the first-order correction to the system's eigenstates are given by:
 
@@ -1347,17 +1357,43 @@ E_{n}^{(2)} &= \langle \varphi_n^{(0)}|\hat{W}|\varphi_{n}^{(1)}\rangle \\
 \end{align*}
 {% end %}
 
+Equivalently, the second-order shift in the energy eigenvalues $\Delta E_n^{(2)}$ is given by:
+
+{% math() %}
+\Delta E_n^{(2)} = \sum_{m\,(m \neq n)} \frac{|\langle \varphi_m^{(0)}|\Delta\hat H |\varphi_{n}^{(0)}\rangle|^2}{\left(\small E_{n}^{(0)} - E_{m}^{(0)}\right)}
+{% end %}
+
 While we will not derive it here, one may show that the *third-order corrections* to the eigenenergies of the system are given by:
 
 {% math() %}
-E_{n}^{(n)} = \sum_{m~(m \neq n)}\sum_{l} \frac{V_{nl} V_{lm} V_{mn}}{\small (E_{n}^{(0)} - E_{l}^{(0)})(E_{n}^{(0)} - E_{m}^{(0)})} - V_{nn}\sum_{m\,(m \neq n)} \frac{|V_{nm}|^2}{\left(\small E_{n}^{(0)} - E_{m}^{(0)}\right)^2}|\varphi_m^{(0)}\rangle
+E_{n}^{(3)} = \sum_{m~(m \neq n)}\sum_{l} \frac{V_{nl} V_{lm} V_{mn}}{\small (E_{n}^{(0)} - E_{l}^{(0)})(E_{n}^{(0)} - E_{m}^{(0)})} - V_{nn}\sum_{m\,(m \neq n)} \frac{|V_{nm}|^2}{\left(\small E_{n}^{(0)} - E_{m}^{(0)}\right)^2}|\varphi_m^{(0)}\rangle
 {% end %}
 
-Where here, $V_{ij} \equiv \langle \varphi_{i}^{(0)}|\hat{W}|\varphi_{j}^{(0)}\rangle$. Note that in the most general case, we can find the $k$-th order correction to the eigenenergies of the system via:
+Where here, $V_{ij} \equiv \langle \varphi_{i}^{(0)}|\hat{W}|\varphi_{j}^{(0)}\rangle$. Therefore, the third-order shift in the energy eigenvalues $\Delta E_n^{(3)}$ is:
+
+{% math() %}
+\Delta E_{n}^{(3)} = \sum_{m~(m \neq n)}\sum_{l} \frac{E_{nl} E_{lm} E_{mn}}{\small (E_{n}^{(0)} - E_{l}^{(0)})(E_{n}^{(0)} - E_{m}^{(0)})} - V_{nn}\sum_{m\,(m \neq n)} \frac{|E_{nm}|^2}{\left(\small E_{n}^{(0)} - E_{m}^{(0)}\right)^2}|\varphi_m^{(0)}\rangle
+{% end %}
+
+Where $E_{ij} = \langle \varphi_{i}^{(0)}|\Delta\hat{H}|\varphi_{j}^{(0)}\rangle$. Note that in the most general case, we can find the $k$-th order correction to the eigenenergies of the system via:
 
 {% math() %}
 E_{n}^{(k)} = \langle \varphi_{n}^{(0)}|\hat{W}|\varphi_{n}^{(k - 1)}\rangle
 {% end %}
+
+Equivalently, the $k$-th order energy shift is given by:
+
+{% math() %}
+\Delta E_{n}^{(k)} = \langle \varphi_{n}^{(0)}|\Delta \hat{H}|\varphi_{n}^{(k - 1)}\rangle
+{% end %}
+
+And the exact energies $E_{n}$ of the system are given by the infinite series:
+
+{% math() %}
+E_{n} = E_{n}^{(0)} + \sum_{m = 1}^\infty \Delta E_{n}^{(m)}
+{% end %}
+
+In practice, the first few terms of the series are usually enough to yield an exceedingly accurate calculation for the system's energy eigenvalues, and there is no need to calculate beyond the second or third term.
 
 > **Note:** For more in-depth discussion of the formulas for perturbation theory up to arbitrary order, see this [Physics StackExchange post](https://physics.stackexchange.com/questions/717102/higher-order-e-g-nth-order-corrections-to-non-degenerate-time-independent).
 
