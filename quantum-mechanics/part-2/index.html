@@ -159,6 +159,22 @@
                                     <a href="#non-degenerate-perturbation-theory">Non-degenerate perturbation theory</a>
                                 </li>
                             
+                                <li>
+                                    <a href="#non-degenerate-perturbation-theory-1">Non-degenerate perturbation theory</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-ramp-in-an-infinite-square-well">The ramp in an infinite square well</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-quantum-pendulum">The quantum pendulum</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-quartic-harmonic-oscillator">The quartic harmonic oscillator</a>
+                                </li>
+                            
                         </ul>
                     
                 </li>
@@ -794,7 +810,7 @@ $$
 <p>In the same way, we can get $\psi_2$ from applying the $\hat a^\dagger$ operator on $\psi_1$, then get $\psi_3$ from $\psi_2$, then get $\psi_4$ from $\psi_3$, and so on and so forth. With some clever mathematics (that we won't show here), this recursive formula can be solved in closed-form to yield a <em>generalized</em> formula for the <em>nth</em> eigenstate's wavefunction representation:</p>
 <p class="mathcell">
 $$
-\psi_n(x) = \left(\dfrac{m\omega}{\pi \hbar}\right) \dfrac{1}{\sqrt{2^nn!}}H_n\left(\sqrt{\dfrac{m\omega}{\hbar}}x\right)\exp \left(-\dfrac{m\omega x^2}{2\hbar}\right)
+\psi_n(x) = \left(\dfrac{m\omega}{\pi \hbar}\right)^{1&#x2F;4} \dfrac{1}{\sqrt{2^nn!}}H_n\left(\sqrt{\dfrac{m\omega}{\hbar}}x\right)\exp \left(-\dfrac{m\omega x^2}{2\hbar}\right)
 $$
 </p>
 <p>Here, $H_n(x)$ is a <strong>Hermite polynomial</strong> of order $n$, defined as:</p>
@@ -1275,16 +1291,17 @@ $$
 <p><em>A description of perturbation theory from <a href="https://xkcd.com/793/">XKCD</a>.</em></p>
 <h3 id="non-degenerate-perturbation-theory">Non-degenerate perturbation theory</h3>
 <p>We will first review the <em>simplest</em> type of stationary perturbation theory, known as <strong>non-degenerate perturbation theory</strong>, which applies to quantum systems <em>without</em> degeneracy (meaning that each eigenstate is uniquely specified by an energy eigenvalue of the Hamiltonian). It turns out that this is in many cases an <em>overly simplified</em> assumption, but the methods we will develop here will be extremely useful for our later discussion of <strong>degenerate perturbation theory</strong> that accurately describes a variety of real-world quantum systems.</p>
-<p>The starting point in perturbation theory is to assume that the Hamiltonian of a complicated system can be written as a sum of a Hamiltonian $\hat H_0$ with an <em>exact</em> solution and a small <em>perturbation</em> $\hat{W}$, such that:</p>
+<p>Mathematically-speaking, non-degenerate perturbation theory assumes that the Hamiltonian of a complicated system can be written as a sum of a Hamiltonian $\hat H_0$ with an <em>exact</em> solution and a small <em>perturbation</em> $\Delta \hat{H}$, such that:</p>
 <p class="mathcell">
 $$
-\hat{H} = \hat{H}_{0} + \lambda\hat{W}
+\hat{H} = \hat{H}_{0} + \Delta \hat{H}, \quad \Delta \hat{H} = \lambda\hat{W}
 $$
 </p>
+<p>Here $\hat H_0$ is known as the <strong>unperturbed Hamiltonian</strong> or <strong>free Hamiltonian</strong>. For instance, $\hat H_0$ might be the Hamiltonian of a free particle, or of the hydrogen atom, or the quantum harmonic oscillator. The key commonality here is that $\hat H_0$ must be the Hamiltonian of a <strong>simpler system</strong> that can be analytically solved.</p>
 <blockquote>
-<p><strong>Note:</strong> Here $\hat H_0$ is known as the <strong>unperturbed Hamiltonian</strong> or <em>free Hamiltonian</em>. Also, it is common to write $\hat W$ without the operator hat, and it is also common to denote it as $V$ (confusingly). Be aware that in all cases, $W$ is an <strong>operator</strong>, not a function!</p>
+<p><strong>Note:</strong> It is common to write $\Delta \hat{H}$ without the operator hat, and it is also common to denote it as $V$ (confusingly). Be aware that in all cases, $W$ is an <strong>operator</strong>, not a function!</p>
 </blockquote>
-<p>For instance, $\hat H_0$ might be the Hamiltonian of a free particle, or of the hydrogen atom, or the quantum harmonic oscillator. The key commonality here is that $\hat H_0$ must be the Hamiltonian of a <strong>simpler system</strong> that can be analytically solved. On top of $\hat H_0$ we add the perturbation $\hat W$, which represents the <em>deviations</em> (also called <em>perturbations</em>) of the system's Hamiltonian as compared to the simpler system. This perturbation is assumed to be small, so we scale it by a small number $\lambda$ (where $\lambda \ll 1$), giving us a term of $\lambda \hat W$. If we write out the Schrödinger equation for the system, we have:</p>
+<p>On top of $\hat H_0$ we add the perturbation $\Delta \hat{H}$, which represents the <em>deviations</em> (also called <em>perturbations</em>) of the system's Hamiltonian as compared to the simpler system. This perturbation is assumed to be small, so we scale it by a small number $\lambda$ (where $\lambda \ll 1$), giving us a term of $\Delta \hat{H} = \lambda \hat W$ where $\hat W$ is some arbitrary operator representing perturbations to the Hamiltonian. If we write out the Schrödinger equation for the system, we have:</p>
 <p class="mathcell">
 $$
 \hat{H}|\varphi_{n}\rangle = E_{n} |\varphi_{n}\rangle \quad \Rightarrow \quad (\hat{H}_{0} + \lambda\hat{W})\varphi_{n}\rangle = E_{n} |\varphi_{n}\rangle
@@ -1292,7 +1309,9 @@ $$
 </p>
 <p>Note that when we take the limit $\lambda \to 0$, the perturbation vanishes, and the Hamiltonian is exactly the unperturbed Hamiltonian $\hat H_0$. This is why perturbation theory is an <em>approximation</em>; it assumes that the simpler system's Hamiltonian $\hat H_{0}$ is already close enough to the more complicate system's Hamiltonian $\hat H$ that $\hat H_0$ can be used to approximate $\hat H$.</p>
 <p>The key idea of perturbation theory is that we assume a <strong>series solution</strong> for $\hat{H}|\varphi_{n}\rangle = E_{n}|\varphi_{n}\rangle$. More accurately, we assume that we can write the solution in terms of a <em>power series</em> in powers of $\lambda$. Now, this assumption doesn't always work - in fact there are some systems where it doesn't work at all - but using this assumption makes it possible to find an approximate solution using analytical methods, which is "good enough" for most purposes. Remember, in the real world, it is <em>impossible</em> to measure anything to infinite precision, so having an approximate answer to a problem that is <em>close enough</em> to the exact solution is often more than sufficient to make testable predictions that align closely with experimental data.</p>
-<p>But let's get back to the math. For our solution to be expressed as a power series in $\lambda$, we would write:</p>
+<h3 id="non-degenerate-perturbation-theory-1">Non-degenerate perturbation theory</h3>
+<p>The simplest type of stationary perturbation theory is <strong>non-degenerate perturbation theory</strong>, also known as <em>Rayleigh-Schrödinger perturbation theory</em>. This type of perturbation theory works only in cases where each of a quantum system's states have distinct energies (that is, the Hamiltonian's eigenspectrum is non-degenerate), and where the Hamiltonian is time-independent.</p>
+<p>To start, non-degenerate perturbation theory assumes that the exact solution for the quantum state $|\psi\rangle$ to be expressed as a power series in $\lambda$:</p>
 <p class="mathcell">
 $$
 \begin{align*}
@@ -1418,7 +1437,7 @@ $$
 E_n^{(1)} = \langle \varphi_n^{(0)}|\hat W |\varphi_{n}^{(0)}\rangle
 $$
 </p>
-<p>This is one of the <strong>most important</strong> equations in all of quantum mechanics and in most cases gives a good approximation to the exact eigenenergies of the system, at least where $\lambda$ is small. Note that the result is very general since it applies for <em>all</em> $n$ eigenstates of the system. Adding in the first-order corrections gives us the (approximate) eigenenergies of the system:</p>
+<p>Note that the result is very general since it applies for <em>all</em> $n$ eigenstates of the system. Adding in the first-order corrections gives us the (approximate) eigenenergies of the system:</p>
 <p class="mathcell">
 $$
 \begin{align*}
@@ -1427,6 +1446,13 @@ E_n &amp;\approx E_{n}^{(0)} + \lambda E_{n}^{(1)} \\
 \end{align*}
 $$
 </p>
+<p>Alternatively, if written in terms of the perturbation term $\Delta \hat H$ in the Hamiltonian, we can express the first-order shift in the energy eigenvalues $\Delta E_n^{(1)}$ as:</p>
+<p class="mathcell">
+$$
+\Delta E_{n}^{(1)} = \lambda \langle \varphi_n^{(0)}|\hat W |\varphi_{n}^{(0)}\rangle = \langle \varphi_n^{(0)}| \Delta \hat{H} |\varphi_{n}^{(0)}\rangle
+$$
+</p>
+<p>This is one of the <strong>most important</strong> equations in all of quantum mechanics and in most cases gives a good approximation to the exact eigenenergies of the system, at least where $\lambda$ is small. It allows us to solve a variety of quantum systems that would otherwise be impossible to solve exactly, and to a large extent, is responsible for why we can perform quantum-mechanical calculations for complicated real-world systems at all!</p>
 <p>We can use a similar process to get the first-order correction $|\varphi_n^{(1)}\rangle$ to the eigenstates of the system. We'll spare the derivation for now and just state the results - the first-order correction to the system's eigenstates are given by:</p>
 <p class="mathcell">
 $$
@@ -1485,21 +1511,257 @@ E_{n}^{(2)} &amp;= \langle \varphi_n^{(0)}|\hat{W}|\varphi_{n}^{(1)}\rangle \\
 \end{align*}
 $$
 </p>
+<p>Equivalently, the second-order shift in the energy eigenvalues $\Delta E_n^{(2)}$ is given by:</p>
+<p class="mathcell">
+$$
+\Delta E_n^{(2)} = \sum_{m\,(m \neq n)} \frac{|\langle \varphi_m^{(0)}|\Delta\hat H |\varphi_{n}^{(0)}\rangle|^2}{\left(\small E_{n}^{(0)} - E_{m}^{(0)}\right)}
+$$
+</p>
 <p>While we will not derive it here, one may show that the <em>third-order corrections</em> to the eigenenergies of the system are given by:</p>
 <p class="mathcell">
 $$
-E_{n}^{(n)} = \sum_{m~(m \neq n)}\sum_{l} \frac{V_{nl} V_{lm} V_{mn}}{\small (E_{n}^{(0)} - E_{l}^{(0)})(E_{n}^{(0)} - E_{m}^{(0)})} - V_{nn}\sum_{m\,(m \neq n)} \frac{|V_{nm}|^2}{\left(\small E_{n}^{(0)} - E_{m}^{(0)}\right)^2}|\varphi_m^{(0)}\rangle
+E_{n}^{(3)} = \sum_{m~(m \neq n)}\sum_{l} \frac{V_{nl} V_{lm} V_{mn}}{\small (E_{n}^{(0)} - E_{l}^{(0)})(E_{n}^{(0)} - E_{m}^{(0)})} - V_{nn}\sum_{m\,(m \neq n)} \frac{|V_{nm}|^2}{\left(\small E_{n}^{(0)} - E_{m}^{(0)}\right)^2}|\varphi_m^{(0)}\rangle
 $$
 </p>
-<p>Where here, $V_{ij} \equiv \langle \varphi_{i}^{(0)}|\hat{W}|\varphi_{j}^{(0)}\rangle$. Note that in the most general case, we can find the $k$-th order correction to the eigenenergies of the system via:</p>
+<p>Where here, $V_{ij} \equiv \langle \varphi_{i}^{(0)}|\hat{W}|\varphi_{j}^{(0)}\rangle$. Therefore, the third-order shift in the energy eigenvalues $\Delta E_n^{(3)}$ is:</p>
+<p class="mathcell">
+$$
+\Delta E_{n}^{(3)} = \sum_{m~(m \neq n)}\sum_{l} \frac{E_{nl} E_{lm} E_{mn}}{\small (E_{n}^{(0)} - E_{l}^{(0)})(E_{n}^{(0)} - E_{m}^{(0)})} - V_{nn}\sum_{m\,(m \neq n)} \frac{|E_{nm}|^2}{\left(\small E_{n}^{(0)} - E_{m}^{(0)}\right)^2}|\varphi_m^{(0)}\rangle
+$$
+</p>
+<p>Where $E_{ij} = \langle \varphi_{i}^{(0)}|\Delta\hat{H}|\varphi_{j}^{(0)}\rangle$. Note that in the most general case, we can find the $k$-th order correction to the eigenenergies of the system via:</p>
 <p class="mathcell">
 $$
 E_{n}^{(k)} = \langle \varphi_{n}^{(0)}|\hat{W}|\varphi_{n}^{(k - 1)}\rangle
 $$
 </p>
+<p>Equivalently, the $k$-th order energy shift is given by:</p>
+<p class="mathcell">
+$$
+\Delta E_{n}^{(k)} = \langle \varphi_{n}^{(0)}|\Delta \hat{H}|\varphi_{n}^{(k - 1)}\rangle
+$$
+</p>
+<p>And the exact energies $E_{n}$ of the system are given by the infinite series:</p>
+<p class="mathcell">
+$$
+E_{n} = E_{n}^{(0)} + \sum_{m = 1}^\infty \Delta E_{n}^{(m)}
+$$
+</p>
+<p>In practice, the first few terms of the series are usually enough to yield an exceedingly accurate calculation for the system's energy eigenvalues, and there is no need to calculate beyond the second or third term.</p>
 <blockquote>
 <p><strong>Note:</strong> For more in-depth discussion of the formulas for perturbation theory up to arbitrary order, see this <a href="https://physics.stackexchange.com/questions/717102/higher-order-e-g-nth-order-corrections-to-non-degenerate-time-independent">Physics StackExchange post</a>.</p>
 </blockquote>
+<h3 id="the-ramp-in-an-infinite-square-well">The ramp in an infinite square well</h3>
+<p>In our first example of using perturbation theory, let us consider a 1-dimensional infinite square well of length $L$, which has the standard "box" potential:</p>
+<p class="mathcell">
+$$
+V_\mathrm{box}(x) = \begin{cases}
+0, &amp; 0 \leq x \leq L \\
+\infty , &amp; \text{otherwise}
+\end{cases}
+$$
+</p>
+<p>The Hamiltonian is therefore:</p>
+<p class="mathcell">
+$$
+H = \frac{\hat{p}^2}{2m} + V_\mathrm{box}(x) = \begin{cases}
+\frac{\hat{p}^2}{2m}, &amp; 0 \leq x \leq L \\
+\infty, &amp; \text{otherwise}
+\end{cases}
+$$
+</p>
+<p>We have previously calculated energy eigenfunctions and eigenvalues of this potential to be:</p>
+<p class="mathcell">
+$$
+\psi_{n}(x) = \sqrt{ \frac{2}{L} } \sin\left( \frac{n \pi x}{L} \right), \quad 
+E_{n} = \frac{n^2 \pi^2 \hbar^2}{2mL^2}
+$$
+</p>
+<p>Now, let us consider the modified square well with a linear potential term:</p>
+<p class="mathcell">
+$$
+H = \frac{p^2}{2m} + V_\mathrm{box} + \alpha x
+$$
+</p>
+<p>Where $\alpha \ll 1$ is some small constant. We want to find the first-order energy shift caused by this potential (which we may imaginatively call a "ramp potential" since it does look like (and act like) a ramp). Applying the formula for the first-order energy shift, we obtain:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\Delta E_{n}^{(1)} &amp;= \langle \varphi_n^{(0)}| \Delta \hat{H} |\varphi_{n}^{(0)}\rangle \\
+&amp;= \int_{0}^L \psi_{n}(x) \alpha x \psi_{n}(x) dx \\
+&amp;= \frac{2 \alpha}{L} \int_{0}^L x \sin^2\left( \frac{n\pi x}{L} \right) dx \\
+&amp;= \frac{2\alpha}{L}\left[ \int_{0}^L \frac{x}{2} dx - \cancel{ \int_{0}^L \frac{\cos(2n\pi x &#x2F; L)}{2}dx }^0\right] \\
+&amp;= \frac{\alpha L}{2}
+\end{align*}
+$$
+</p>
+<p>Where we applied the identity $\sin^2 x = \frac{1}{2} - \frac{\cos(2x)}{2}$ to split the integral into two simpler integrals. The result tells us that we would observe a first-order energy shift of $\Delta E = \alpha L/2$ upon applying the ramp potential. This makes sense: if the ramp potential is a positive potential (for $\alpha &gt; 0$) the particle is pushed "up" by the ramp and has increased potential energy, while if the ramp potential is a negative potential (for $\alpha &lt; 0$) the particle falls "down" the ramp and has less potential energy.</p>
+<h3 id="the-quantum-pendulum">The quantum pendulum</h3>
+<p>The quantum pendulum is a simple model of a nonlinear harmonic oscillator and a classical problem in perturbation theory. Due to its nonlinearity, it behaves differently from the otherwise-similar quantum harmonic oscillator. The quantum pendulum is described by a Hamiltonian of the form:</p>
+<p class="mathcell">
+$$
+\hat{H} = \frac{\hat{L}_{z}^2}{2 m a^2} -\lambda \cos \phi
+$$
+</p>
+<p>Where $m$ is the mass of the pendulum, while $a$ and $\lambda$ are two constants (with units of length and energy respectively), and it is assumed that $\lambda$ is small such that we can use perturbation theory. The first part of the Hamiltonian is the free Hamiltonian $H_0 = \frac{\hat{L}_{z}^2}{2ma^2}$, which describes a quantum rigid rotor (a rigid rotor is like a spinning top). The Schrödinger equation for the rigid rotor is:</p>
+<p class="mathcell">
+$$
+\hat{H}_{0}|\psi_{n}\rangle = \frac{\hat{L}_{z}^2}{2ma^2} |\psi_{n}\rangle = E_{n} |\psi_{n}\rangle
+$$
+</p>
+<p>It is straightforward to solve for the rigid rotor's eigenstates and energy eigenvalues, since we already know the eigenvalues of $\hat{L}_{z}$, which are simply $n\hbar$ for integer $n$ (we use $n$ instead of the typical $m_l$ for notational clarity). Therefore, the eigenvalues of $\hat L_z^2$ are $n^2\hbar^2$ and:</p>
+<p class="mathcell">
+$$
+\frac{\hat{L}_{z}^2}{2ma^2}|\psi_{n}\rangle = \frac{\hbar^2 n^2}{2ma^2}|\psi_{n}\rangle = E |\psi_{n}\rangle
+$$
+</p>
+<p>From which we can easily "read off" the energy eigenvalues as:</p>
+<p class="mathcell">
+$$
+E_{n} = \frac{\hbar^2 n^2}{2ma^2}
+$$
+</p>
+<p>Meanwhile, the eigenstates can be obtained if we write $L_z^2 = \hbar^2 \frac{\partial^2}{\partial \phi^2}$ in explicit form and solve the eigenvalue equation $L_z^2 \psi = n^2 \hbar^2 \psi$. This gives us eigenfunctions in the form $\psi = A e^{i n \phi}$, upon which the normalization constant can be straightforwardly calculated:</p>
+<p class="mathcell">
+$$
+\int_{0}^{2\pi} |\psi(\phi)|^2 d\phi = 2\pi A^2 = 1 \implies A = \frac{1}{\sqrt{ 2\pi }}
+$$
+</p>
+<p>This gives us the following set of eigenfunctions:</p>
+<p class="mathcell">
+$$
+\psi_{n}(\phi) = \frac{e^{in\phi}}{\sqrt{ 2\pi }}, \quad n = 0, 1, 2, 3, \dots
+$$
+</p>
+<p>First, let's find the first-order correction to the energy eigenvalues, so we will use the first-order perturbation theory formula:</p>
+<p class="mathcell">
+$$
+\Delta E_{n}^{(1)} = \langle \varphi_n^{(0)}| \Delta \hat{H} |\varphi_{n}^{(0)}\rangle
+$$
+</p>
+<p>Here, the perturbation is $\Delta \hat{H} = - \lambda\cos \phi$. Expanding the inner product (which, for our continuous eigenfunctions becomes an integral) therefore gives us:</p>
+<p class="mathcell">
+$$
+\Delta E_{n}^{(1)} = -\lambda \int_{0}^{2\pi} \frac{e^{-in\phi}}{\sqrt{ 2\pi }} \cos \phi \frac{e^{in\phi}}{\sqrt{ 2\pi }} d\phi = -\frac{\lambda}{2\pi} \int_{0}^{2\pi} \cos \phi d\phi = 0
+$$
+</p>
+<p>We thus find that the first-order correction to the energy eigenvalues are zero. The lack of a first-order correction to the energy, however, doesn't mean the perturbation has <em>no effect</em>. Rather, it suggests that we need to go to second-order. The second-order corrections to the energy eigenvalues are given by:</p>
+<p class="mathcell">
+$$
+\Delta E_n^{(2)} = \sum_{m\,(m \neq n)} \frac{|\langle \varphi_m^{(0)}|\Delta\hat H |\varphi_{n}^{(0)}\rangle|^2}{\left(\small E_{n}^{(0)} - E_{m}^{(0)}\right)}
+$$
+</p>
+<p>Substituting in $\Delta \hat H = -\lambda \cos \phi$ and expanding the inner products, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\Delta E_{n}^{(2)} &amp;= \sum_{m\,(m \neq n)} \frac{1}{\small E_{n}^{(0)} - E_{m}^{(0)}}
+\left|(-\lambda)\int_{0}^{2\pi} \psi_{m}(x) \cos \phi \psi_{n}(x) d\phi \right|^2 \\
+&amp;= \sum_{m\,(m \neq n)} \frac{\lambda^2}{\small E_{n}^{(0)} - E_{m}^{(0)}} \left| \frac{1}{2\pi} \int_{0}^{2\pi} \cos \phi e^{i(n - m)\phi} d\phi \right|^2
+\end{align*}
+$$
+</p>
+<p>We will now use the following identity:</p>
+<p class="mathcell">
+$$
+\frac{1}{\pi}\int_{0}^{2\pi} \cos \phi e^{i(n - m)\phi} d\phi = \delta_{n, 1-m} + \delta_{n, -(1+m)}
+$$
+</p>
+<p>Where $\delta_{nm}$ is the Kronecker delta, and has a value of zero unless $n = m$ (in which case it equals one). Hence, we have:</p>
+<p class="mathcell">
+$$
+\Delta E_{n}^{(2)} = \frac{\lambda^2}{4}\sum_{m\,(m \neq n)} \frac{\left|\delta_{n, 1-m} + \delta_{n, -(1+m)}\right|^2}{\small E_{n}^{(0)} - E_{m}^{(0)}}
+$$
+</p>
+<p>This allows us to collapse the infinite sum over $m$ because all of its terms are zero except for the cases where $\delta_{n, 1-m}$ and/or $\delta_{n, -(1+m)}$ are nonzero, which occur (respectively) when $n = 1 - m$ and when $n = -(1 + m)$. This gives us three possibilities, where we can rule out one of them easily:</p>
+<ol>
+<li>$n = 1-m$ is individually satisfied.</li>
+<li>$n = -(1 + m)$ is individually satisfied.</li>
+<li><em>both</em> of the above are satisfied at the same time (this turns out to be impossible because $1 - m = -(1 + m)$ is an equation with no solutions for $m$).</li>
+</ol>
+<p>Hence, we need now only examine the first and second possibilities. In the first case, we can rearrange $n = 1-m$ into $m = 1 - n$. Therefore:</p>
+<p class="mathcell">
+$$
+E_{n}^{(0)} - E_{m}^{(0)} = E_{n} - E_{1-n} = \frac{\hbar^2 n^2}{2ma^2} - \frac{\hbar^2 (1 - n)^2}{2ma^2} = \frac{\hbar^2}{2ma^2}(2n - 1)
+$$
+</p>
+<p>In the second case, where $n = -(1 + m)$, we have $n = -1 - m$ hence $m = -1 - n = -(1 + n)$:</p>
+<p class="mathcell">
+$$
+E_{n}^{(0)} - E_{m}^{(0)} = E_{n} - E_{-(1 + n)} = \frac{\hbar^2 n^2}{2ma^2} - \frac{\hbar^2 (1 + n)^2}{2ma^2} = -\frac{\hbar^2}{2ma^2}(2n + 1)
+$$
+</p>
+<p>The formerly infinite sum therefore collapses into two terms (with respective values of $E_{n}^{(0)} - E_{m}^{(0)}$ as given above) giving us:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\Delta E_{n}^{(2)} &amp;= \frac{\lambda^2}{4} \left( \frac{1}{\hbar^2(2n - 1) &#x2F; 2 m a^2} - \frac{1}{\hbar^2(2n + 1) &#x2F; 2 m a^2} \right) \\
+&amp;= \frac{ma^2 \lambda^2}{2\hbar^2} \left( \frac{1}{2n-1} - \frac{1}{2n+1} \right) \\
+&amp;= \frac{ma^2 \lambda^2}{\hbar^2(4n^2 - 1)}
+\end{align*}
+$$
+</p>
+<p>Unlike the first-order correction, the second-order correction is <em>decidedly nonzero</em>. In addition, it is always positive <em>except</em> for the ground state (where it is negative), meaning that it effectively <em>decreases</em> the ground-state energy of the particle and <em>increases</em> the energy of all excited states. This has interesting implications, since a lower (as in <em>more negative</em>) ground state energy generally means that a particle is more tightly bound to a potential. Indeed, an important application of the quantum pendulum model is to describe the <strong>Josephson effect</strong> in Josephson junctions, a class of superconducting circuits whose operating principle is based on electron tunneling through a gap between two superconductors.</p>
+<h3 id="the-quartic-harmonic-oscillator">The quartic harmonic oscillator</h3>
+<p>Lastly, we will consider the quartic harmonic oscillator, which is a nonlinear modification of the quantum harmonic oscillator with the following potential:</p>
+<p class="mathcell">
+$$
+U_\mathrm{quartic} = \frac{1}{2} m \omega^2 x^2 - \frac{\lambda^4}{4!} x^4
+$$
+</p>
+<p>Where $4! = 4 \cdot 3 \cdot 2 \cdot 1 = 24$ and $\lambda$ is a constant that is much smaller than 1. It corresponds to the following Hamiltonian:</p>
+<p class="mathcell">
+$$
+\hat{H} = \underbrace{ \frac{\hat{p}^2}{2m} + \frac{1}{2}m \omega^2 x^2 }_{ \hat{H}_{0} } + \underbrace{ \frac{-\lambda}{4!} x^4 }_{ \Delta \hat{H} }
+$$
+</p>
+<p>This is a toy model frequently used in quantum field theory; in that context, it is known as the <em>quartic theory</em> and is a simple model for interacting particles with no spin (and a precursor to the mathematical description of the <a href="https://en.wikipedia.org/wiki/Higgs_field">Higgs field</a>). It also has an interesting link to our previous example of the quantum pendulum: the quartic potential is effectively (up to some constants) the pendulum potential Taylor-expanded to 4th-order, since:</p>
+<p class="mathcell">
+$$
+\Delta \hat{H} = -\lambda \cos \phi = -\lambda + \frac{\lambda}{2!} - \frac{\lambda}{4!} + \dots
+$$
+</p>
+<p>We want to compute the first-order correction to the energy eigenvalues for the ground state. To start off, the zeroeth-order energy eigenvalues are simply those of the quantum harmonic oscillator:</p>
+<p class="mathcell">
+$$
+E_{n}^{(0)} = \left( n + \frac{1}{2} \right)\hbar \omega
+$$
+</p>
+<p>Hence, the ground state energy (with $n = 0$) is simply:</p>
+<p class="mathcell">
+$$
+E_0^{(0)} = \frac{1}{2} \hbar \omega
+$$
+</p>
+<p>Now, we will compute the first-order energy shift. Recall that the ground state wavefunction of the quantum harmonic oscillator is given by:</p>
+<p class="mathcell">
+$$
+\psi_0(x) = \left(\dfrac{m\omega}{\pi \hbar}\right)^{1&#x2F;4} e^{-m\omega x^2 &#x2F; (2\hbar)}
+$$
+</p>
+<p>Therefore, the first-order energy shift is given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\Delta E_{0}^{(1)} &amp;= \langle \psi_{0}^{(0)}|\Delta \hat{H} |\psi_{0}^{(0)}\rangle \\
+&amp;= \int_{-\infty}^{\infty} \psi_{0}(x) \frac{-\lambda}{4!} x^4 \psi_{0}(x) dx \\
+&amp;= \frac{\lambda}{24} \left( \frac{m\omega}{\pi \hbar} \right)^{1&#x2F;2} \int_{-\infty}^\infty x^4 e^{-m\omega x^2 &#x2F; \hbar} dx
+\end{align*}
+$$
+</p>
+<p>Now, we make use of the integral identity:</p>
+<p class="mathcell">
+$$
+\int_{-\infty}^\infty x^{2n} e^{-ax^2} dx = \sqrt{ \frac{\pi}{a} } \frac{(2n - 1)!!}{(2a)^n}
+$$
+</p>
+<p>Where $!!$ denotes the double factorial. In our case, letting $n = 2$ and $a = m\omega/\hbar$ we would thus get:</p>
+<p class="mathcell">
+$$
+\Delta E_{0}^{(1)} = \frac{\hbar^2 \lambda}{32 m^2 \omega^2}
+$$
+</p>
+<p>This result is particularly interesting because it is a result that depends on the mass $m$ of the particle. In fact, the ground-state energy shift due to the quartic term is actually <em>inversely-proportional</em> to the mass! This tells us that lighter particles "feel" the quartic potential more strongly, even though the mass of the particle doesn't appear in the quartic potential itself. Additionally, the correction to the ground-state energy is <em>positive</em>, meaning that the particle becomes less tightly bound as a result of the quartic potential. Hence, while a "toy model", the quartic harmonic oscillator is still an important model to study, and even serves as simplified (0+1)-dimensional version of the <a href="https://en.wikipedia.org/wiki/Spontaneous_symmetry_breaking#Sombrero_potential">Higgs mechanism</a> in particle physics.</p>
 <h2 id="advanced-quantum-theory">Advanced quantum theory</h2>
 <h3 id="relativistic-wave-equations-and-the-dirac-equation">Relativistic wave equations and the Dirac equation</h3>
 <p>Thus, we arrive at the Dirac equation for a <strong>free particle</strong>:</p>
