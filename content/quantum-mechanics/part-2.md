@@ -1113,6 +1113,571 @@ In addition, a classical spinning object also has angular momentum, and likewise
 
 It is important to recognize that spin angular momentum $\mathbf{S}$ is different from the orbital angular momentum $\mathbf{L}$. They, however, share one important similarity - they are both **conserved quantities**. This means they obey some similar behaviors. Additionally, the study of orbital angular momentum is extremely important for understanding some of the most important problems in quantum mechanics, so we will explore it in detail.
 
+## The hydrogen atom
+
+Hydrogen is the most abundant element in the Universe. In stellar nebulas, it provides the raw material for stars to form. Within stars, the fusion of hydrogen atoms into helium generates immense heat and light, the same energy that ultimately powers all life on Earth. By reacting with oxygen, it forms liquid water, giving us our rivers, lakes, and oceans. In organic compounds, it bonds with oxygen, nitrogen, and carbon to form our proteins, amino acids, and DNA. It is not an exaggeration to say that without hydrogen, humanity could not exist.
+
+Additionally, the hydrogen atom is a classical example of a quantum-mechanical system, well-known because it is one of the few quantum systems with an *exact* analytical solution yet still complex enough to describe a real-world system. In addition, it has great historical importance as one of the first systems successfully described by Schrödinger's wave mechanics, and while it in theory applies only for hydrogen (and a few other types of atoms with similar properties) it continues to form the basis of our modern understanding of atomic physics.
+
+### The Bohr model
+
+Before we solve the hydrogen atom using the Schrödinger equation and quantum mechanics, it is useful to briefly go over the older **Bohr model** of the hydrogen atom. The Bohr model was first derived by the physicist Niels Bohr and was the basis of the theoretical understanding of the hydrogen atom in the early 20th century. Although now outdated, it offers important insights into the hydrogen atom and predicts *some* of its behavior correctly.
+
+![An illustration of a single proton orbited by a single electron in Bohr's model of the hydrogen atom](https://study.com/cimages/multimages/16/hydrogen_bohr_model8259738646372964480.jpg)
+_Bohr's model of the hydrogen atom, with a single proton and electron bound by electromagnetic forces. Source: [study.com](https://study.com/academy/lesson/what-is-hydrogen-formula-production-uses.html)_
+
+The Bohr model is known as a *semiclassical model* because it is based primarily off classical mechanics, with the sole exception of one distinctly *quantum* postulate: the **quantization of angular momentum**. Historically, the quantization of angular momentum was derived to fix a major theoretical problem. Physicists initially assumed (incorrectly) that the hydrogen atom was similar to a miniature solar system, with a single negatively-charged electron orbiting a positively-charged atomic radius, held together by electromagnetic forces. However, classical electromagnetism predicts that accelerating charges emit electromagnetic radiation, which carry away energy. Since an orbiting electron would indeed be accelerating (as per Newton's second law), the electron would therefore lose energy due to electromagnetic radiation. However, while the solar system emits so little gravitational radiation that orbits remain stable for millions of years, the classical model of the hydrogen atom predicted that the electron would radiate electromagnetic energy so quickly that the electron would fall into the nucleus! (Clearly, if this was so, then we would all be dead and you would not be reading this guide right now.)
+
+This theoretical inconsistency prompted Bohr to propose that electrons orbited at fixed **orbitals**, which are classical circular orbits with a fixed radius (the name has stuck around to this day despite the fact that we know electrons don't really orbit, at least not in the classical sense anyway). Electrons would be able to "jump" between orbitals if they absorbed (or emitted) energy. However, they could never be found *between* orbitals. Bohr's orbitals meant that electrons would be kept in stable orbits that wouldn't decay, solving the theoretical problem of the electron falling into the radius (and predicting correctly that humans are alive). Mathematically, his proposal required that angular momentum be **quantized** according to the following rule:
+
+{% math() %}
+L = n \hbar, \quad n = 1, 2, 3, \dots
+{% end %}
+
+Where $L = L_{z}$ is the orbital angular momentum of the electron and $n$ is an integer called the **principal quantum number** (remember this, it will be very important later). As we now know, Bohr's proposal was indeed correct, since we know the eigenvalues of the $\hat L_z$ operator are indeed integer multiples of $\hbar$. However, it defied the classical physics, and there was no explanation for *why* quantization of angular momentum was the case, other than the fact that it offered an (albeit unsatisfying) answer for the stability of atoms, which would not come until Schrödinger's theory of the hydrogen atom in 1926.
+
+On the basis of the quantization of angular momentum, Bohr set to work solving the problem of the hydrogen atom. He knew that the nucleus and electron were held together by electromagnetic forces, so he used the classical **Coulomb potential**:
+
+{% math() %}
+V(r) = -\frac{Ze^2}{4\pi\varepsilon_{0}r}
+{% end %}
+
+Where $Z$ is the **nuclear charge** of the atom (equal to the atomic number; for the hydrogen atom, $Z = 1$), $e = \pu{1.60218 * 10^{-19} C}$ is the **elementary charge constant**, $\varepsilon_0 = \pu{8.85419 * 10^{-12} C^2 * s^2 * kg^{-1} \cdot m^{-3}}$ is the **permittivity of free space** (also known as the *electric constant*) and $r$ is the radial coordinate. This potential applies both classically and quantum-mechanically (it is the same potential as the one we'll use in the quantum Hamiltonian later), so Bohr was essentially correct on this count, although he did not (and could not) know it at the time.
+
+> **Note:** Technically the Coulomb potential only applies to a nucleus that is completely stationary; we know now that the nucleus does *slightly* move, albeit much less than the electron, so the assumption of a stationary nucleus is indeed sound. Also, the Coulomb potential is no longer valid in the regime of highly-relativistic energies, where we must consider quantum-electrodynamical effects, but these are negligible for the hydrogen atom which can be described quite well without relativity.
+
+The force corresponding to the Coulomb potential is the **Coulomb force**, and since force is the negative derivative of the potential, we have:
+
+{% math() %}
+F = -\frac{dV}{dr} = -\frac{Ze^2}{4\pi \varepsilon_{0}r^2}
+{% end %}
+
+Since the system had radial symmetry, the Coulomb force must be equal to the centripetal force, which was given by $F_c = mv^2/r$. Thus, equating the two gives us:
+
+{% math() %}
+\frac{m_{e} v^2}{r} = \left|-\frac{Ze^2}{4\pi \varepsilon_{0}r^2}\right|
+{% end %}
+
+Where $m_e = \pu{9.10938 * 10^{-31} kg}$ is the electron mass. Now, Bohr applied his quantization postulate to solve for the squared velocity $v^2$. Since angular momentum is given classically by $\mathbf{L} = \mathbf{r} \times \mathbf{p} = \mathbf{r} \times m\mathbf{v}$, the *magnitude* of the angular momentum $L = |\mathbf{L}|$ would be equal to $rmv$ (here the cross product is equal to the relative product because the velocity vector $\mathbf{v}$ is tangential to the electron's orbit while the radial position vector $\mathbf{r}$ is pointed towards the nucleus, hence they are perpendicular to each other and thus $|\mathbf{r} \times m\mathbf{v}| = \mathbf{r}m|\mathbf{v}| \sin \theta = rmv$). Combining with $L = n\hbar$ then gives us:
+
+{% math() %}
+n \hbar = rmv \implies v^2 = \left(\frac{n\hbar}{mr} \right)^2
+{% end %}
+
+Substituting this into the centripetal force (and setting $m = m_e$) gives us:
+
+{% math() %}
+\frac{m_{e}}{r} \left(\frac{n\hbar}{m_{e}r} \right)^2 = \frac{Ze^2}{4\pi \varepsilon_{0}r^2}
+{% end %}
+
+Thus, solving for $r$ gives us:
+
+{% math() %}
+r = \frac{4\pi \varepsilon_{0}}{Ze^2} \frac{n^2 \hbar^2}{m_{e}}
+{% end %}
+
+Since the orbital radius depends on integer $n$, we can make this explicitly by writing $r = r_n$, where:
+
+{% math() %}
+r_{n} = \frac{4\pi \varepsilon_{0}}{Ze^2} \frac{n^2 \hbar^2}{m_{e}}, \quad n = 1, 2, 3, \dots
+{% end %}
+
+Thus, Bohr came up with a result for the orbital radii $r_n$, which indeed matched experimental measurements. For the $n = 1$ orbital in hydrogen (called the **ground state** since it has the smallest orbital), the radius was:
+
+{% math() %}
+r_{0} = \frac{4\pi \varepsilon_{0} \hbar^2}{m_{e}e^2} \equiv a_{0}
+{% end %}
+
+This quantity, denoted $a_0$ and with a value of approximately $\pu{5.29 * 10^{-11} m}$, is called the **Bohr radius** and is often synonymous with the atomic radius of hydrogen. Written in terms of the Bohr radius, the orbital radii take the form:
+
+{% math() %}
+r_{n} = \frac{n^2 a_{0}}{Z}, \quad n = 1, 2, 3, \dots
+{% end %}
+
+Recalling that $r m v = n \hbar$, we can now solve for the speed $v$ of the electrons for the $n$-th orbital:
+
+{% math() %}
+v_{n} = \frac{n\hbar}{mr_{n}} = \frac{\hbar Z}{n a_{0}m_{e}} = \frac{Z e^2}{4\pi \varepsilon_{0} n \hbar}, \quad m_{e} = 1, 2, 3, \dots
+{% end %}
+
+One may also express this in terms of the fine structure constant $\alpha$, defined as $\alpha = \frac{e^2}{4\pi \varepsilon_0 \hbar c}$ (which has a numerical value of around $\frac{1}{137}$), as:
+
+{% math() %}
+v_{n} = \frac{Z \alpha c}{n} \approx \frac{Z}{137 n}c
+{% end %}
+
+In hydrogen's ground state, where $n = 1$, we have:
+
+{% math() %}
+v_{0} \approx \frac{c}{137} \approx 0.007 c \approx 0.01 c
+{% end %}
+
+Hence, the electron in a hydrogen atom orbits close to 1% of the speed of light. This is a fortunate fact, because we now know that in certain atoms this is not the case. For example, in gold atoms, the electrons orbit at 58% the speed of light. The Bohr atom does not account for relativity and thus cannot accurately describe these relativistic electrons. Hence, Bohr's theory would not have succeeded to the extent it did if he had been studying gold atoms instead of hydrogen atoms!
+
+Next, Bohr solved for the total energy of the hydrogen atom. As we know, the total mechanical energy is the sum of the kinetic and potential energies. Bohr used the [virial theorem](https://en.wikipedia.org/wiki/Virial_theorem), which states that for any central force potential in the form $V(r) = ar^m$ where $m$ is some power, the average value of the kinetic energy $\langle K\rangle$ and the average potential energy $\langle V\rangle$ are related by:
+
+{% math() %}
+V(r) = a r^m \implies 2\langle K\rangle = m \langle V\rangle
+{% end %}
+
+By the conservation of energy, the total energy of a system held by a central force must therefore be in the form:
+
+{% math() %}
+E = \langle K \rangle + \langle V\rangle = \frac{2}{m}\langle K\rangle + \langle K\rangle
+{% end %}
+
+For the Coulomb potential, we have $m = -1$, and hence:
+
+{% math() %}
+E = \langle K\rangle + (-2\langle K\rangle) = -\langle K\rangle
+{% end %}
+
+Where the energy is negative because the system is in a stable *bound state* (meaning that energy must be *added to* the system to pull the electron and nucleus apart; specifically, around 13.6 electron-volts (abbreviated eV, where $\pu{1 eV} = \pu{1.60218 * 10^{-19} J}$), a number that will be important soon). Now substituting our expression for the speeds $v_n$ of the $n$-th orbital into the classical kinetic energy $K = \frac{1}{2} mv^2$, we obtain:
+
+{% math() %}
+E = -\langle K\rangle = -\frac{1}{2}mv^2 = -\frac{Z^2 m_{e} e^4}{32\pi^2 \varepsilon_{0}^2 n^2 \hbar^2} = - \frac{Z^2 m_{e} \alpha^2 c^2}{2n^2}
+{% end %}
+
+We have found that the total energy depends on $n$, hence as per our prior conventions we write the energy of the $n$-th orbital as $E_n$, where:
+
+{% math() %}
+E_{n} = -\frac{Z^2}{2n^2} m_{e}\alpha^2 c^2 \approx -Z^2\left( \frac{\pu{13.6 eV}}{n^2} \right), \quad n = 1, 2, 3, \dots
+{% end %}
+
+In the case of hydrogen, with $Z = 1$, we have:
+
+{% math() %}
+E_{n} = -\frac{\pu{13.6 eV}}{n^2}, \quad n = 1, 2, 3, \dots
+{% end %}
+
+Bohr had found something extraordinary: each of the orbitals corresponded to *distinct* energy values with fixed $n$. Thus, atomic orbitals were not just specific orbits of fixed radii; they also corresponded to **energy levels** of fixed energy! Therefore, if an atom were to *transition* between higher and lower energy levels (which happens when the electron "falls" from a higher orbital to a lower one), by the conservation of energy, the energy difference must go *somewhere*. Einstein's then-new concept of the *photon*, particles of light, provided the answer to where that missing energy went: a photon is what carries the missing energy away! An atomic transition thus causes the **emission of light**! In fact, nearly all the light we see in the Universe (among which includes light from hydrogen gas clouds in space) comes from transitions between energy levels of atoms (as well as molecules and crystals). Light, previously understood as purely an *electromagnetic* phenomenon, was now inseparable from atomic and quantum physics.
+
+![Diagram of the Bohr model, showing orbitals of fixed radii parametrized by integer n and a photon emitted during an atomic transition](https://upload.wikimedia.org/wikipedia/commons/9/93/Bohr_atom_model.svg)
+
+_A diagram of an atom emitting a photon of energy $\Delta E = h\nu$ in the Bohr model. Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Bohr_atom_model.svg)_
+
+
+Using the energy of a single photon $E = h\nu = hc/\lambda$ predicted by Max Planck (where $\nu$ is the frequency, $\lambda$ is the wavelength, and $c$ is the speed of light), Bohr could calculate the wavelength of light emitted by an atom. Specifically, by equating Planck's formula and his calculated energy levels, we have:
+
+{% math() %}
+\frac{hc}{\lambda} = E_{f} - E_{i} = -(\pu{13.6 eV}) Z^2\left( \frac{1}{n_{f}^2} - \frac{1}{n_{i}^2} \right), \quad n_{f} < n_{i}
+{% end %}
+
+Where $E_f, E_i$ are the energies of the final and initial energy levels, $n_f$ is the final energy level's principal quantum number, and $n_i$ is the initial energy level's principal quantum number. Some straightforward rearrangement yields the famous **Rydberg formula**:
+
+{% math() %}
+\frac{1}{\lambda} = -\frac{(\pu{13.6 eV})Z^2}{hc} \left( \frac{1}{n_{f}^2} - \frac{1}{n_{i}^2} \right), \quad n_{f} < n_{i}
+{% end %}
+
+Bohr predicted that each of these wavelengths would show up as distinct lines in the hydrogen spectrum, rather than the continuous spectrum, as would be predicted by classical mechanics. Indeed, this formula matched spectroscopic measurements of hydrogen's spectral lines extremely well, making it one of the major triumph's of Bohr's theory, and of early quantum theory in general.
+
+![Image of the hydrogen spectrum](https://upload.wikimedia.org/wikipedia/commons/4/41/Hydrogen_spectrum.svg)
+
+_Hydrogen's spectral lines over different wavelengths. Source: [Wikipedia](https://en.wikipedia.org/wiki/File:Hydrogen_spectrum.svg)_
+
+### The quantum mechanical model of the hydrogen atom
+
+We will now go through the exact, quantum-mechanical model of the hydrogen atom. While our derivation will be primarily focused on hydrogen, the exact solution technically also applies to other types of atoms that have a single electron:
+
+| Atomic species | Chemical symbol | Number of electrons | Number of protons |
+| -------------- | --------------- | ------------------- | ----------------- |
+| Helium ion     | $\ce{He^+}$     | 1                   | 2                 |
+| Lithium ion    | $\ce{Li^{2+}}$  | 1                   | 3                 |
+| Beryllium ion  | $\ce{Be^{3+}}$  | 1                   | 4                 |
+
+Moreover, it also applies to all the *isotopes* of hydrogen as well as each of the above atoms (isotopes are atoms with the same number of protons and electrons but different numbers of neutrons); for instance, it applies to deuterium and tritium, which are isotopes with hydrogen with two and three neutrons, respectively. The exact solution also applies to so-called *exotic atoms* with a single electron, including the following:
+
+- **Positronium**, an unstable bound state of an electron and a positron (the antimatter counterpart to an electron). It is of interest in theoretical physics since it uniquely has half the reduced mass of the hydrogen atom and thus its ground-state energy is $E_0 \approx -\pu{6.8 eV}$, half that of the hydrogen atom. It is also used in some particle physics experiments.
+- **Muonium**, an unstable bound state of a muon (which behaves very similarly to an electron but with a much greater mass) and an antimuon. It finds uses in [muon spin spectroscopy](https://en.wikipedia.org/wiki/Muon_spin_spectroscopy)
+- **Muonic hydrogen**, an unstable bound state of a proton with a muon (effectively a normal hydrogen atom with the electron replaced by a muon). The muon's greater mass means that the atomic radius of muonic hydrogen is $\frac{1}{186}$ that of normal hydrogen atom, allowing nuclear fusion reactions to happen even at room temperature, a phenomenon exploited in [muon-catalyzed fusion](https://en.wikipedia.org/wiki/Muon-catalyzed_fusion).
+- **Muonic helium**, an unstable bound state of an alpha particle (helium atom nucleus) with an electron and muon. However, the muon's orbit is so close to the nucleus that, to a good approximation, muonic helium behaves like a single-electron atom
+
+The exact solution for hydrogen-like atom is also an approximate description for atoms with a single *valence electron*, including all the alkaline metals (sodium, potassium, etc.) and ions of other metallic atoms. However, the approximation is imperfect due to the presence of other electrons within the atom (the so-called *quantum defect*).
+
+#### The Hamiltonian of the hydrogen atom
+
+To start, let us write down the Hamiltonian corresponding to the hydrogen atom. As we know from the Bohr model, the hydrogen atom is held together by electromagnetic forces, and in particular the Coulomb force. Thus, our Hamiltonian is given by:
+
+{% math() %}
+\hat{H} = \frac{\hat{\mathbf{p}}^2}{2\mu} + V(r) = \frac{\hat{\mathbf{p}}^2}{2\mu} - \frac{Ze^2}{4\pi\varepsilon_{0}r}
+{% end %}
+
+Where $\hat{\mathbf{p}}^2$ is the 3-dimensional squared momentum and $\mu$ is the **reduced mass** of hydrogen, which is related to the proton mass $m_p$ and electron mass $m_e$ as:
+
+{% math() %}
+\mu = \frac{m_{p}m_{e}}{m_{p} + m_{e}}
+{% end %}
+
+To a good approximation $\mu \approx m_e$ (accurate to within 0.5% of the actual value) within the hydrogen atom. We use the reduced mass because the center of mass of the electron-proton system is not technically in the middle of the nucleus; it is slightly offset from it, which is accounted for by the reduced mass.
+
+Owing to the radial symmetry of the hydrogen atom it is most convenient to solve in **spherical coordinates**. There are (at least) two ways to proceed with this. The first way is to expand the Hamiltonian operator, which yields the following extremely-ugly expression:
+
+{% math() %}
+\hat{H} =  -{\frac {\hbar ^{2}}{2m}}\left[{\frac {1}{r^{2}}}{\frac {\partial }{\partial r}}\left(r^{2}{\frac {\partial }{\partial r}}\right)+{\frac {1}{r^{2}\sin \theta }}{\frac {\partial }{\partial \theta }}\left(\sin \theta {\frac {\partial }{\partial \theta }}\right)+{\frac {1}{r^{2}\sin ^{2}\theta }}{\frac {\partial ^{2} }{\partial \phi ^{2}}}\right]-{\frac {e^{2}}{4\pi \varepsilon_{0}r}}
+{% end %}
+
+One can then treat the eigenvalue equation $\hat H \psi = E \psi$ as a partial differential equation which can be solved using separation of variables. This approach was the one used by Schrödinger and is still commonly-taught today, but it is (in my opinion at least) an inelegant method that makes you think you are learning math instead of quantum mechanics.
+
+Instead, the derivation shown here will use a *different approach* that puts quantum mechanics front-and-center and reveals the intricate quantum theory behind the hydrogen atom. This approach uses an **operator-centric method** that allows us to solve most of the problem using operators that we already know. It is not only *simpler*, but also hopefully provides a *deeper intuition* into the quantum nature of the hydrogen atom.
+
+To begin, we must split the kinetic energy term in the Hamiltonian into a radial part and an angular part. That is to say, we must express $\hat{\mathbf{p}}^2$ in terms of the radial momentum $\hat p_r$ and the angular momentum $\hat{\mathbf{L}}$ (or more precisely, the $\hat{L}^2$ operator). One can derive this by expanding the Laplacian in spherical coordinates and pattern-matching with the expression of the $\hat{L}^2$ (which we have already seen previously), but we will just give the answer here:
+
+{% math() %}
+\frac{\hat{\mathbf{p}}^2}{2\mu} = \frac{\hat p_{r}^2}{2\mu} + \frac{\hat{L}^2}{2\mu r^2}
+{% end %}
+
+Where $\hat p_r$ and $\hat p_r^2$ are respectively given by:
+
+{% math() %}
+\begin{align*}
+\hat{p}_{r} &= -i\hbar\left( \frac{\partial}{\partial r} + \frac{1}{r} \right) \\
+\hat{p}_{r}^2 &= -\frac{\hbar^2}{r^2} \frac{\partial}{\partial r} \left( r^2 \frac{\partial}{\partial r} \right)
+\end{align*}
+{% end %}
+
+Thus, our Hamiltonian is given by:
+
+{% math() %}
+\hat{H} = \frac{\hat p_{r}^2}{2\mu} + \frac{\hat{L}^2}{2\mu r^2} - \frac{Ze^2}{4\pi \varepsilon_{0}r}
+{% end %}
+
+The eigenvalue equation for the Hamiltonian is thus:
+
+{% math() %}
+\hat{H}|\psi\rangle = \left( \frac{\hat p_{r}^2}{2\mu} + \frac{\hat{L}^2}{2\mu r^2} - \frac{Ze^2}{4\pi \varepsilon_{0}r} \right)|\psi\rangle = E|\psi \rangle
+{% end %}
+
+Now, we will assume that the Hamiltonian is separable, such that we may write the eigenstates of the Hamiltonian as a product of a radial part $|R\rangle$ that only depends on $r$ and an angular part $|\theta, \phi\rangle$ that only depends on $\theta$ and $\phi$. The eigenstates are then a product of the two parts:
+
+{% math() %}
+|\psi\rangle = |R\rangle \otimes |\theta, \phi\rangle
+{% end %}
+
+(We are using the notation rather loosely here; the product is not technically a tensor product). Similarly, the total energy is a sum of the radial energy $E_{r}$ and angular energy $E_{\theta \phi} = \varepsilon_{\theta \phi} / r^2$ (where the reason we divide by $r^2$ will be evident later):
+
+{% math() %}
+E = E_{r} + \frac{\varepsilon_{\theta \phi}}{r^2}
+{% end %}
+
+This gives us:
+
+{% math() %}
+\left( \frac{\hat p_{r}^2}{2\mu} + \frac{\hat{L}^2}{2\mu r^2} - \frac{Ze^2}{4\pi \varepsilon_{0}r} \right)(|R\rangle \otimes |\theta, \phi\rangle) = \left(E_{r} + \frac{\varepsilon_{\theta \phi}}{r^2}\right)(|R\rangle \otimes |\theta, \phi\rangle)
+{% end %}
+
+Now multiplying by $r^2$ on all sides, we have:
+
+{% math() %}
+\left( r^2\frac{\hat p_{r}^2}{2\mu} + \frac{\hat{L}^2}{2\mu} - \frac{Ze^2r}{4\pi \varepsilon_{0}} \right)(|R\rangle \otimes |\theta, \phi\rangle) = \left(r^2 E_{r} + \varepsilon_{\theta \phi}\right)(|R\rangle \otimes |\theta, \phi\rangle)
+{% end %}
+
+(See why we used the normalized angular energy $\varepsilon_{\theta \phi}/r^2$ rather than just $\varepsilon_{\theta \phi}$ earlier — this allows us to remove the $r^2$ in the $\hat L^2$ term and makes our life easier!) Expanding all the terms and organizing them gives us two eigenvalue equations:
+
+{% math() %}
+\begin{align*}
+\left( r^2\frac{\hat{p}_{r}^2}{2\mu} - \frac{Ze^2 r}{4\pi\varepsilon_{0}} \right) |R\rangle &= r^2 E_{r}|R\rangle \\
+\frac{1}{2\mu} \hat{L}^2 |\theta, \phi\rangle &= \varepsilon_{\theta \phi}|\theta, \phi\rangle
+\end{align*}
+{% end %}
+
+We will call the top equation the *radial eigenvalue equation* and the bottom equation the *angular eigenvalue equation* and will solve the two separately.
+
+#### Solving the angular eigenvalue equation
+
+The angular eigenvalue equation is straightforward to solve, since we already know the eigenvalues of $\hat L^2$, which are simply $\ell(\ell + 1)\hbar^2$. Thus we have:
+
+{% math() %}
+2\mu\varepsilon_{\theta \phi} = \ell(\ell + 1) \hbar^2, \quad -\ell \leq m \leq \ell
+{% end %}
+
+We also know that the eigenstates of $\hat L^2$ are simply the spherical harmonics $Y^\ell_m(\theta, \phi)$! Hence, we can write the angular part with the new notation $|\ell, m\rangle$, since we know they depend on the quantum numbers $\ell$ and $m$:
+
+{% math() %}
+|\theta, \phi\rangle = |\ell, m\rangle
+{% end %}
+
+#### Solving the radial eigenvalue equation
+
+We can now tackle the radial part $|R\rangle$. It is convenient to switch from the operator representation to the functional representation by working in the position basis, where $\langle r|R\rangle = R(r)$ is a function of the radial coordinate. Hence, by multiplying all sides by the position bra-vector $\langle r|$ we have:
+
+{% math() %}
+r^2\frac{\hat{p}_{r}^2}{2\mu} R(r) - \frac{Ze^2 r}{4\pi\varepsilon_{0}} R(r) = r^2 E_{r} R(r)
+{% end %}
+
+Now, substituting in the explicit form of $\hat{p}_{r}^2 = -\frac{\hbar^2}{r^2} \frac{\partial}{\partial r} \left( r^2 \frac{\partial}{\partial r} \right)$:
+
+{% math() %}
+-\frac{\hbar^2}{2\mu} \frac{d}{d r} \left( r^2 \frac{d}{d r} \right) R(r) - \frac{Ze^2 r}{4\pi\varepsilon_{0}} R(r) = r^2 E_{r} R(r)
+{% end %}
+
+Where we have switched from partial derivatives to ordinary derivatives ($\frac{\partial}{\partial r} \to \frac{d}{dr}$) since $R(r)$ is only a function of $r$, so the partial derivatives reduce to ordinary derivatives. Now, recall that $E = E_{r} + \frac{\varepsilon_{\theta \phi}}{r^2}$, which we can combine with our previous result (from the angular equation) of $2\mu\varepsilon_{\theta \phi} = \ell(\ell + 1) \hbar^2$. Thus, we may rearrange for $E_r$ as follows:
+
+{% math() %}
+E_{r} = E - \frac{\varepsilon_{\theta \phi}}{r^2} = E - \frac{\ell(\ell + 1) \hbar^2}{2\mu r^2}
+{% end %}
+
+Substituting this in gives us the following ordinary differential equation:
+
+{% math() %}
+-\frac{\hbar^2}{2\mu} \frac{d}{d r} \left( r^2 \frac{d}{d r} \right) R(r) - \frac{Ze^2 r}{4\pi\varepsilon_{0}} R(r) = r^2 \left[E - \frac{\ell(\ell + 1) \hbar^2}{2\mu r^2}\right] R(r)
+{% end %}
+
+We'll now use a clever trick for solving differential equations: a change of variables from $R$ to $u$, where $u(r) = rR(r)$. This means that (by the chain rule):
+
+{% math() %}
+R = \frac{u}{r}, \quad \frac{dR}{dr} = \frac{1}{r^2}\left( r \frac{du}{dr} - u \right), \quad \frac{d}{dr}\left( r^2 \frac{dR}{dr} \right) = r \frac{d^2 u}{dr^2}
+{% end %}
+
+Substituting everything in and simplifying therefore gives us:
+
+{% math() %}
+-\frac{\hbar^2}{2\mu} \frac{d^2 u}{dr^2} + \left[ \frac{\hbar^2 \ell(\ell + 1)}{2\mu r^2} - \frac{Ze^2}{4\pi \varepsilon_{0} r} \right] u = Eu
+{% end %}
+
+We have therefore obtained the **radial equation** describing the radial part $R(r)$ of the hydrogen atom's wavefunction (which we will just call the *radial wavefunction* for short). Note that the $-\frac{Ze^2}{4\pi \varepsilon_0 r}$ term is specific to the Coulomb potential, but it can be shown (with some tedious math) that the Coulomb potential can be swapped for any central-force potential $V(r)$, giving us a *generalized radial equation*:
+
+{% math() %}
+-\frac{\hbar^2}{2\mu} \frac{d^2 u}{dr^2} + \left[ \frac{\hbar^2 \ell(\ell + 1)}{2\mu r^2} + V(r) \right] u = Eu
+{% end %}
+
+This generalized radial equation is valid for **all radially-symmetric potentials**. For instance, it can be used for solving the 3D isotropic harmonic oscillator, an infinite spherical well, or a particle quantum-tunneling through a spherical potential barrier (these problems are notably encountered in nuclear physics).
+
+But let's return back to the hydrogen atom with its Coulomb potential. To be able to find $u(r)$, we'll need to solve the radial equation, which is an ordinary differential equation. This is good news and bad news. First, we have reduced a physics problem (of an eigenvalue equation for $\hat p_r^2$) into a math problem. Second, we have reduced a *partial* differential equation into a much simpler *ordinary* differential equation. Third, the radial equation is a *linear* differential equation, which are much easier to solve than nonlinear ODEs frequently encountered in math and physics. Hence, in a meaningful sense, we have greatly reduced the complexity of the problem.
+
+However, the bad news is that we are still left with a differential equation that must be solved, and it isn't particularly clear *how* we would go about solving it. It turns out while the radial equation has an analytical solution, the solution is in terms of *special functions*. This means that instead of elementary functions (like rational, trigonometric, logarithmic, and exponential functions) which are easy to analyze and differentiate, we'll need to use more creativity and more complex mathematics to analyze the solutions of the radial equation.
+
+When we are stuck on solving a differential equation, an excellent technique is to try to cast the differential equation using a change of variables into a well-known ODE with an analytical solution. For instance, we already know that ODEs of the form $u'' = -k^2u$ are simply a variant of the **simple harmonic oscillator ODE** and correspond to analytical solutions of the form $Ae^{-ikr} + Be^{ikr}$. We'll now do the same for the radial equation. It turns out that there *is* a known differential equation that we can transform the radial equation into, called the **associated Laguerre's differential equation**:
+
+{% math() %}
+x \frac{d^2 L}{dx^2} + (p + 1 - x) \frac{dL}{dx} + (q-p)L = 0
+{% end %}
+
+The solutions to this differential equation are known as the **associated Laguerre polynomials** and are denoted $L^p_{q-p}(x)$, where $p, q$ are nonzero integers (and hence $p - q$ is also an integer). They are given by the [Rodrigues formula](https://en.wikipedia.org/wiki/Rodrigues_formula):
+
+{% math() %}
+L^p_{q-p}(x) = (-1)^p \left( \frac{d}{dx} \right)^p L_{q}(x)
+{% end %}
+
+Where $L_q$ is a **Laguerre polynomial**, defined as:
+
+{% math() %}
+L_{q}(x) = e^x \left( \frac{d}{dx} \right)^q (e^{-x}x^q)
+{% end %}
+
+> **Note:** There are several different conventions for the associated Laguerre polynomials; we have chosen the physics convention, which is different from the mathematical convention by a constant factor (and uses some different symbols for the constants).
+
+While the Rodrigues formula may look scary, the associated Laguerre polynomials are ultimately just polynomials. The first few Laguerre polynomials are shown below:
+
+{% math() %}
+\begin{align*}
+L^0_{0} &= 1 \\
+L^0_{1} &= 1 - x \\
+L^1_{0} &= 1 \\
+L^1_{1} &= 4 - 2x \\
+L^2_{0} &= 2 \\
+L^2_{1} &= 18 - 6x \\
+L^2_{2} &= 12x^2 - 96x + 144 \\
+L^3_{0} &= 6 \\
+L^3_{1} &= 96 - 24x \\
+L^3_{2} &= 60x^2 - 600x + 1200
+\end{align*}
+{% end %}
+
+To map the radial equation to the associated Laguerre's differential equation, we must perform a series of steps. First, let us define:
+
+{% math() %}
+\kappa = \frac{\sqrt{ -2\mu E }}{\hbar}
+{% end %}
+
+> **Note:** since $E < 0$ for bound states, $\kappa$ will always be positive, hence the square-root is always well-defined.
+
+Using the substitution for $\kappa$, the radial equation becomes:
+
+{% math() %}
+\frac{1}{\kappa^2} \frac{d^2 u}{dr^2} + \left[-\frac{\ell(\ell + 1)}{(\kappa r)^2} + \frac{\mu}{\hbar^2 \kappa^2} \frac{Ze^2}{2\pi \varepsilon_{0} r} \right] u = u
+{% end %}
+
+Let us now define:
+
+{% math() %}
+\rho_{0} = \frac{Z \mu e^2}{2\pi\varepsilon_{0}\hbar^2 \kappa}
+{% end %}
+
+So that we can write the radial equation in the following form (after multiplying all sides by $\kappa^2$ and simplifying):
+
+{% math() %}
+\frac{d^2 u}{dr^2} + \left[\frac{\kappa\rho_{0}}{r}-\frac{\ell(\ell + 1)}{r^2} \right] u - \kappa^2 u = 0
+{% end %}
+
+Now we can perform a change of coordinates that will turn our equation into an exactly-solvable form. In particular, we will need to use the following change of coordinates to go from $u(r)$ to $L(x)$:
+
+{% math() %}
+x = 2 \kappa r, \quad u = x^{\ell + 1} e^{-x / 2} L
+{% end %}
+
+Where $x$ is a dimensionless variable. By the chain rule, we have:
+
+{% math() %}
+\begin{align*}
+\frac{du}{dr} &= \frac{du}{dx} \frac{dx}{dr} = 2\kappa  \frac{du}{dx} \\
+\frac{d^2 u}{dr^2} &= \frac{d}{dr}\left( \frac{du}{dr} \right) = \frac{dx}{dr} \frac{d}{dx}\left( 2\kappa \frac{du}{dx} \right) = 4\kappa^2 \frac{d^2 u}{dx^2}
+\end{align*}
+{% end %}
+
+Substituting these into the simplified radial equation and simplifying gives us:
+
+{% math() %}
+4\kappa^2 \frac{d^2 u}{dx^2} + \left[\frac{2\kappa^2 \rho_{0}}{x}-\frac{4\kappa^2\ell(\ell + 1)}{x^2} \right] u - \kappa^2 u = 0
+{% end %}
+
+The derivatives $du/dx$ and $d^2u/dx^2$ are rather tedious to compute (since $L$ depends on $x$), but if you compute them (perhaps with the help of a computer algebra system), you will get:
+
+{% math() %}
+\begin{align*}
+\frac{du}{dx} &= x^\ell e^{-x/2} \left( x \frac{dL}{dx} - \frac{x}{2}L + (\ell + 1)L \right) \\
+\frac{d^2 u}{dx^2} &= x^{\ell - 1} e^{-x/2}\left\{ x^2 \frac{d^2 L}{dx^2} - (x^2 -  2x(\ell + 1)) \frac{dL}{dx} + \left[\frac{x^2}{4} - (\ell + 1)x + \ell(\ell + 1) \right] L \right\}
+\end{align*}
+{% end %}
+
+Substituting these derivatives in and simplifying, we get:
+
+{% math() %}
+x \frac{d^2 L}{dx^2} + [2(\ell + 1) - x] \frac{dL}{dx} + \left( \frac{\rho_{0}}{2} - (\ell + 1) \right) L = 0
+{% end %}
+
+Now, let's compare with the general form of the associated Laguerre's differential equation that we found earlier:
+
+{% math() %}
+x \frac{d^2 L}{dx^2} + (p + 1 - x) \frac{dL}{dx} + (q-p)L = 0
+{% end %}
+
+By term-by-term comparison we identify the following:
+
+{% math() %}
+p + 1 = 2(\ell + 1), \quad q-p = \frac{\rho_{0}}{2} - (\ell + 1)
+{% end %}
+
+From which it is not hard to see that $p = 2\ell + 1$. Also, remember that we mentioned that both $p$ and $q$ *must* be non-negative integers, hence $q-p$ is also an integer.
+
+{% math() %}
+q - p = q - [2 \ell + 1] = (q - \ell) - (\ell + 1)
+{% end %}
+
+But we *also* know that $q - p = \rho_0 / 2 - (\ell + 1)$. Therefore, by term-by-term comparison:
+
+{% math() %}
+\frac{\rho_{0}}{2} - \cancel{ (\ell + 1) } = (q - \ell) - \cancel{ (\ell + 1) } \implies q - \ell = \frac{\rho_{0}}{2} = n
+{% end %}
+
+Where we have defined a new integer $n \equiv q - \ell$, called the **principal quantum number**, meaning that:
+
+{% math() %}
+q-p = (n + \ell) - (2\ell + 1) = n - \ell - 1
+{% end %}
+
+We therefore obtain the following solutions in terms of the associated Laguerre polynomials:
+
+{% math() %}
+L^p_{q-p}(x) = L^{2\ell + 1}_{n - \ell - 1}(x), \quad n = 1, 2, 3, \dots, \quad \ell = 0, 1, 2, \dots, (n-1)
+{% end %}
+
+Where the condition $n \geq 1$ comes from the fact that $q - p$ (which, as we saw, is equal to $n - \ell - 1$) must be a non-negative integer and the spherical harmonics require that $\ell \geq 0$, meaning that $n - \ell -1 \geq 0$ and thus $n \geq 1$. We can now work backwards to get the radial wavefunction. For this, we use our coordinate transformations $u = rR(r)$, $x = 2\kappa r$, and $u = x^{\ell + 1} e^{-x / 2} L$, giving us:
+
+{% math() %}
+\begin{align*}
+R(r) &= \frac{u}{r} = 2\kappa x^{-1} u \\
+&= 2\kappa x^{-1} x^{\ell + 1} e^{-x / 2} L^{2\ell + 1}_{n - \ell - 1}(x) \\
+&= 2\kappa x^{\ell} e^{-x / 2} L^{2\ell + 1}_{n - \ell - 1}(x)
+\end{align*}
+{% end %}
+
+It is conventional to use the symbol $\rho$ instead of $x$. In addition, it is common to label $R(r)$ with the indices $n$ and $\ell$ to indicate that it is a function parametrized by the constants $n, \ell$. Hence we may write $R(r) = R_{n\ell}(r)$ as:
+
+{% math() %}
+R_{n\ell}(r) = 2\kappa e^{-\rho / 2} \rho^\ell L^{2\ell + 1}_{n-\ell - 1}(\rho), \quad \rho = 2\kappa r
+{% end %}
+
+After much ado, we have finally found the radial wavefunction! Now, we just need to solve for $\kappa$. We know that $\rho_{0} = \frac{Z \mu e^2}{2\pi\varepsilon_{0}\hbar^2 \kappa}$ and that $\rho_0/2 = n$. Combining these two together, we get:
+
+{% math() %}
+2n = \frac{Z \mu e^2}{2\pi\varepsilon_{0}\hbar^2 \kappa} \implies \kappa = \frac{Z \mu e^2}{4\pi\varepsilon_{0}\hbar^2 n}
+{% end %}
+
+The above expression for $\kappa$ may not mean anything just yet, but it becomes far more illustrative when we realize that it can *also* be written as:
+
+{% math() %}
+\kappa = \frac{Z}{na_{0}^*}
+{% end %}
+
+Where $a_0^*$ is the **reduced Bohr radius**, and is related to the regular Bohr radius $a_0$, the reduced mass $\mu$, and electron mass $m_e$ via:
+
+{% math() %}
+a_{0}^* = \frac{m_{e}}{\mu} a_{0} \approx a_{0}, \quad a_{0} = \frac{4\pi \varepsilon_{0} \hbar^2}{m_{e}e^2}
+{% end %}
+
+(The approximation of $a_0^* \approx a_0$ is correct to within 0.5%). This is the *same Bohr radius* as the one predicted by Bohr's older atomic theory! We can also now give a *physical interpretation* of the Bohr radius. While we will not do the full calculation, it turns out that the *maximum* of the probability density function (which is proportional to the square of $R_{n\ell}$) occurs at $r = a_0^* \approx a_0$. Hence, the Bohr radius (or more accurately, the reduced Bohr radius) is the radius at which an electron is **most likely** to be found in the ground-state of hydrogen. While the idea of electrons going in circular orbits around the nucleus in Bohr's theory is physically-incorrect, its predictions coincide with the predictions of quantum theory!
+
+#### The wavefunctions and energy levels of the hydrogen atom
+
+With both the angular and radial wavefunctions solved for, we can now put everything together. The full wavefunctions are simply a product of the angular and radial parts, that is:
+
+{% math() %}
+\psi_{n\ell m} = A_{n \ell m} R_{n\ell}(r) Y^m_\ell(\theta, \phi)
+{% end %}
+
+Where $A_{n\ell m}$ is a normalization constant that can be found using the normalization condition:
+
+{% math() %}
+\int_{0}^{2\pi} \int_{0}^\pi \int_{0}^\infty |\psi_{n \ell m}(r, \theta, \phi)|^2 r^2 \sin \theta dr d\theta d\phi = 1
+{% end %}
+
+(We will not perform the integral here, but curious readers are welcome to do so). Upon completing normalization, we finally get the *glorious* wavefunctions of the hydrogen atom!
+
+{% math() %}
+\psi_{n\ell m}(r, \theta, \phi) = \sqrt{ \left( \frac{2}{na_{0}^*} \right)^3 \frac{(n - \ell - 1)!}{2n[(n + \ell)!]^3} } e^{-\rho / 2} \rho^\ell L^{2\ell + 1}_{n-\ell - 1}(\rho) Y^m_{\ell}(\theta, \phi), \quad \rho = \frac{2Zr}{na_{0}^*}
+{% end %}
+
+Where $a_0^*$ is the reduced Bohr radius, $\ell = 0, 1, \dots, \pm (n-1)$ and $m = -\ell, \dots, \ell$. This may seem extremely complicated (perhaps even overcomplicated!) but nature has at least given us an *exact solution*; most quantum systems don't have an exact solution, so we should be grateful!
+
+> **Note:** We can also denote the wavefunctions in bra-ket notation as $|n, \ell, m\rangle$. This is a form we will often use in calculations.
+
+Having found the wavefunctions, let's now calculate the energy eigenvalues of the Hamiltonian, which correspond to energy levels of the atom. We can start by finding $E$ in terms of $\kappa$:
+
+{% math() %}
+\kappa = \frac{\sqrt{ -2\mu E }}{\hbar} \implies E = - \frac{\hbar^2 \kappa^2}{2\mu}
+{% end %}
+
+Now, recall that we found that $\kappa = \frac{Z}{na_{0}^*}$. Substituting this in, we get an expression for the energies of the hydrogen atom:
+
+{% math() %}
+E_{n} = -\frac{\hbar^2}{2\mu} \left( \frac{Z}{na_{0}^*} \right)^2 = -\frac{\hbar^2 Z^2}{2\mu (a_{0}^*)^2 n^2} = -\frac{Z^2 \mu e^4}{32\pi^2 \varepsilon_{0}^2 \hbar^2} \approx -(\pu{13.6 eV})\frac{Z^2}{n^2}
+{% end %}
+
+This is the same result as in the Bohr atom! Note that the energy levels are *always negative* which is what we expect for a bound state; if the electron were not bound to a nucleus, atoms would no longer be atoms! However, in the limit of very large $n$, the electron becomes close to unbound, and a bit of extra energy is enough to ionize the atom and cause the electron to become a free particle.
+
+> **Note for the advanced reader:** If an electron has $E> 0$ then we have Coulomb scattering (electrons scattering off a nucleus instead of becoming bound to a nucleus and forming an atom). This is a modified form of Rutherford scattering, which is itself a variety of generalized [electron scattering](http://hyperphysics.phy-astr.gsu.edu/hbase/Nuclear/elescat.html). However, to handle these sorts of problems, we will need to wait until we discuss the **Born approximation** much later in this guide.
+
+#### Degeneracy in the hydrogen atom
+
+Most of the eigenstates of the hydrogen atom are degenerate (that is, sharing the same energy as one or more other states). In fact, the **degree of degeneracy** of the hydrogen atom is $n^2$. This means that for the $n$-th energy level, there will be $n^2$ states that share the same energy, as described in the table below:
+
+| $n$ | Number of same-energy states |
+| --- | ---------------------------- |
+| 1   | 1                            |
+| 2   | 4                            |
+| 3   | 9                            |
+| 4   | 16                           |
+| 5   | 25                           |
+| 6   | 36                           |
+
+We will now give a short derivation. Since the energy levels $E_n$ only depend upon $n$, we need to count all the possible states $|n, \ell, m\rangle$ that share the same $n$. We know that $\ell$ ranges from zero to $n -1$, so there are $n$ states that have the same value of $\ell$ for a given energy level. We also know that $-\ell \leq m \leq \ell$, meaning that there are $2n$ states with the same value of $\ell$. To avoid double-counting, we divide by two. Therefore, summing over the states yields us:
+
+{% math() %}
+\sum_{\ell} \sum_{m} = \frac{1}{2} \sum_{\ell = 0}^{n - 1} \sum_{m = -\ell}^\ell = \frac{1}{2}\sum_{\ell = 0}^{n - 1} 2n = n^2
+{% end %}
+
+> **Note:** Our calculation of the number of degenerate states is not *technically accurate* since it neglects the effect of **spin**. If we include spin (giving us a fourth quantum number) the degrees of degeneracy are $2n^2$ instead of $n^2$.
+
 ## Stationary perturbation theory
 
 Perturbation theory exists when we come upon a problem that is too complicated to solve exactly. These problems are often (but not always) variations of existing problems. For instance, we know the solution of the hydrogen atom, since that can be solved exactly, but it turns out that for the _helium atom_, which has just one more electron than the hydrogen atom, there is no analytical solution! In such cases, we typically resort to one of two options:
@@ -1132,7 +1697,7 @@ _A description of perturbation theory from [XKCD](https://xkcd.com/793/)._
 
 ### Non-degenerate perturbation theory
 
-We will first review the _simplest_ type of stationary perturbation theory, known as **non-degenerate perturbation theory**, which applies to quantum systems _without_ degeneracy (meaning that each eigenstate is uniquely specified by an energy eigenvalue of the Hamiltonian). It turns out that this is in many cases an _overly simplified_ assumption, but the methods we will develop here will be extremely useful for our later discussion of **degenerate perturbation theory** that accurately describes a variety of real-world quantum systems.
+We will first review the _simplest_ type of stationary perturbation theory, known as **non-degenerate perturbation theory** (also known as _Rayleigh-Schrödinger perturbation theory_), which applies to quantum systems _without_ degeneracy (meaning that each eigenstate is uniquely associated with a distinct energy eigenvalue of the Hamiltonian). It turns out that this is in many cases an _overly simplified_ assumption, but the methods we will develop here will be extremely useful for our later discussion of **degenerate perturbation theory** that accurately describes a variety of real-world quantum systems.
 
 Mathematically-speaking, non-degenerate perturbation theory assumes that the Hamiltonian of a complicated system can be written as a sum of a Hamiltonian $\hat H_0$ with an _exact_ solution and a small *perturbation* $\Delta \hat{H}$, such that:
 
@@ -1154,11 +1719,9 @@ Note that when we take the limit $\lambda \to 0$, the perturbation vanishes, and
 
 The key idea of perturbation theory is that we assume a **series solution** for $\hat{H}|\varphi_{n}\rangle = E_{n}|\varphi_{n}\rangle$. More accurately, we assume that we can write the solution in terms of a *power series* in powers of $\lambda$. Now, this assumption doesn't always work - in fact there are some systems where it doesn't work at all - but using this assumption makes it possible to find an approximate solution using analytical methods, which is "good enough" for most purposes. Remember, in the real world, it is *impossible* to measure anything to infinite precision, so having an approximate answer to a problem that is *close enough* to the exact solution is often more than sufficient to make testable predictions that align closely with experimental data.
 
-### Non-degenerate perturbation theory
+### Derivation of non-degenerate perturbation theory
 
-The simplest type of stationary perturbation theory is **non-degenerate perturbation theory**, also known as _Rayleigh-Schrödinger perturbation theory_. This type of perturbation theory works only in cases where each of a quantum system's states have distinct energies (that is, the Hamiltonian's eigenspectrum is non-degenerate), and where the Hamiltonian is time-independent.
-
-To start, non-degenerate perturbation theory assumes that the exact solution for the quantum state $|\psi\rangle$ to be expressed as a power series in $\lambda$:
+To begin, remember that we aim to find the approximate wavefunctions and eigenenergies of the Hamiltonian. We also assume that the exact eigenstates $|\psi\rangle$ can be expressed as a power series in $\lambda$:
 
 {% math() %}
 \begin{align*}
