@@ -1670,10 +1670,12 @@ Most of the eigenstates of the hydrogen atom are degenerate (that is, sharing th
 | 5   | 25                           |
 | 6   | 36                           |
 
-We will now give a short derivation. Since the energy levels $E_n$ only depend upon $n$, we need to count all the possible states $|n, \ell, m\rangle$ that share the same $n$. We know that $\ell$ ranges from zero to $n -1$, so there are $n$ states that have the same value of $\ell$ for a given energy level. We also know that $-\ell \leq m \leq \ell$, meaning that there are $2n$ states with the same value of $\ell$. To avoid double-counting, we divide by two. Therefore, summing over the states yields us:
+We will now give a short derivation. Since the energy levels $E_n$ only depend upon $n$, we need to count all the possible states $|n, \ell, m\rangle$ that share the same $n$. We know that $\ell$ ranges from zero to $n -1$.
+
+We also know that $-\ell \leq m \leq \ell$, meaning that there are $2\ell + 1$ states with the same value of $\ell$ but different $m$ (the $+1$ is due to $m = 0$ being a possibility as well). Therefore, summing over the states yields us:
 
 {% math() %}
-\sum_{\ell} \sum_{m} = \frac{1}{2} \sum_{\ell = 0}^{n - 1} \sum_{m = -\ell}^\ell = \frac{1}{2}\sum_{\ell = 0}^{n - 1} 2n = n^2
+\sum_{\ell} \sum_{m} = \sum_{\ell = 0}^{n - 1} (2\ell + 1) = n^2
 {% end %}
 
 > **Note:** Our calculation of the number of degenerate states is not *technically accurate* since it neglects the effect of **spin**. If we include spin (giving us a fourth quantum number) the degrees of degeneracy are $2n^2$ instead of $n^2$.
