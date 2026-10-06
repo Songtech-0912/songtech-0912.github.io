@@ -197,6 +197,31 @@
                 </li>
             
                 <li>
+                    <a href="#the-variational-method">The variational method</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#solving-the-hydrogen-atom-by-the-variational-method">Solving the hydrogen atom by the variational method</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#solving-the-helium-atom-by-the-variational-method">Solving the helium atom by the variational method</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#solving-the-screened-coulomb-potential-by-the-variational-method">Solving the screened Coulomb potential by the variational method</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#computational-techniques-using-the-variational-method">Computational techniques using the variational method</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                <li>
                     <a href="#advanced-quantum-theory">Advanced quantum theory</a>
                     
                         <ul>
@@ -1816,10 +1841,11 @@ $$
 <tr><td>5</td><td>25</td></tr>
 <tr><td>6</td><td>36</td></tr>
 </tbody></table>
-<p>We will now give a short derivation. Since the energy levels $E_n$ only depend upon $n$, we need to count all the possible states $|n, \ell, m\rangle$ that share the same $n$. We know that $\ell$ ranges from zero to $n -1$, so there are $n$ states that have the same value of $\ell$ for a given energy level. We also know that $-\ell \leq m \leq \ell$, meaning that there are $2n$ states with the same value of $\ell$. To avoid double-counting, we divide by two. Therefore, summing over the states yields us:</p>
+<p>We will now give a short derivation. Since the energy levels $E_n$ only depend upon $n$, we need to count all the possible states $|n, \ell, m\rangle$ that share the same $n$. We know that $\ell$ ranges from zero to $n -1$.</p>
+<p>We also know that $-\ell \leq m \leq \ell$, meaning that there are $2\ell + 1$ states with the same value of $\ell$ but different $m$ (the $+1$ is due to $m = 0$ being a possibility as well). Therefore, summing over the states yields us:</p>
 <p class="mathcell">
 $$
-\sum_{\ell} \sum_{m} = \frac{1}{2} \sum_{\ell = 0}^{n - 1} \sum_{m = -\ell}^\ell = \frac{1}{2}\sum_{\ell = 0}^{n - 1} 2n = n^2
+\sum_{\ell} \sum_{m} = \sum_{\ell = 0}^{n - 1} (2\ell + 1) = n^2
 $$
 </p>
 <blockquote>
@@ -2310,6 +2336,385 @@ $$
 $$
 </p>
 <p>This result is particularly interesting because it is a result that depends on the mass $m$ of the particle. In fact, the ground-state energy shift due to the quartic term is actually <em>inversely-proportional</em> to the mass! This tells us that lighter particles "feel" the quartic potential more strongly, even though the mass of the particle doesn't appear in the quartic potential itself. Additionally, the correction to the ground-state energy is <em>positive</em>, meaning that the particle becomes less tightly bound as a result of the quartic potential. Hence, while a "toy model", the quartic harmonic oscillator is still an important model to study, and even serves as simplified (0+1)-dimensional version of the <a href="https://en.wikipedia.org/wiki/Spontaneous_symmetry_breaking#Sombrero_potential">Higgs mechanism</a> in particle physics.</p>
+<h2 id="the-variational-method">The variational method</h2>
+<p>Perturbation theory is all well and good for finding approximate solutions to the Schrödinger equation, but it is not perfect. This is because it <em>requires</em> an arbitrary Hamiltonian to be able to be written as the sum of a simple, analytically-solvable Hamiltonian plus a small perturbation. It no longer works if the perturbation is large, or if this decomposition is not possible!</p>
+<p>However, this does <em>not</em> mean we are out of options! Indeed, physicists have developed a variety of other techniques to solve problems that neither perturbation theory nor exact analytical methods can handle. One of these methods is called the <strong>variational method</strong>. This comes from the fact that one can show that the true ground-state energy $E_0$ associated with <em>any</em> Hamiltonian $\hat H$ satisfies the following inequality:</p>
+<p class="mathcell">
+$$
+E_{0} \leq \frac{\langle \psi_{0} |\hat{H} | \psi_{0}\rangle}{\langle \psi |\psi\rangle}
+$$
+</p>
+<p>If $|\psi_0\rangle$ normalized, that is, $|\langle \psi_0|\hat H|\psi_0\rangle|^2$, this reduces to the simplified form:</p>
+<p class="mathcell">
+$$
+E_{0} \leq \langle \psi_{0} |\hat{H} | \psi_{0}\rangle
+$$
+</p>
+<p>If we are working in the position basis, this can be rewritten as:</p>
+<p class="mathcell">
+$$
+E_{0} \leq \frac{\displaystyle \int \psi_{0}^*(\mathbf{r}) \hat{H} \psi_{0}(\mathbf{r}) d\tau}{\displaystyle \int \psi_{0}^*(\mathbf{r}) \psi_{0}(\mathbf{r}) d\tau}
+$$
+</p>
+<p>Where $d\tau$ is the integration element (e.g. $dx$ in 1D Cartesian coordinates, $dxdy$ in 2D Cartesian coordinates, $dx dy dz$ in 3D, $r^2 d r d\Omega$ in spherical coordinates, etc.). This reduces to the following if $\psi_0$ is normalized:</p>
+<p class="mathcell">
+$$
+E_{0} \leq \int \psi_{0}^*(\mathbf{r}) \hat{H} \psi_{0}(\mathbf{r}) d\tau
+$$
+</p>
+<p>This immediately makes the problem of finding the ground-state wavefunctions (and energies) a <em>minimization problem</em> (or, in the language of mathematicians, a <em>variational problem</em>). What we can then do is to guess a wavefunction parameterized in terms of one or more constant parameters $\gamma$:</p>
+<p class="mathcell">
+$$
+\psi_{0}(\mathbf{r}) = \psi_{0}(\mathbf{r}; \gamma), \quad \gamma = (a, b, c, \dots, \gamma_{n})
+$$
+</p>
+<p>Where the integral is over the entire domain over which the ground-state wavefunction is defined. To find the values of the parameters $a, b, c, \dots$ we can use a classic method from multivariable calculus. Recall that for a function of several variables, its minima are located at its <strong>critical points</strong>, where the first derivatives of the function are all zero. Hence, to minimize the energy of the ground state, we set the first derivatives of the ground-state wavefunctions with respect to the parameters equal to zero:</p>
+<p class="mathcell">
+$$
+\frac{\partial}{\partial (\text{params})} \left(\frac{\langle \psi_{0} |\hat{H} | \psi_{0}\rangle}{\langle \psi |\psi\rangle}\right) = 0
+$$
+</p>
+<p>Expanding this, we can rewrite the above as:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\frac{\partial \psi_{0}}{\partial a} &amp;= 0 \\
+\frac{\partial \psi_{0}}{\partial b} &amp;= 0 \\
+\frac{\partial \psi_{0}}{\partial c} &amp;= 0 \\
+\vdots &amp;\quad \vdots \\
+\frac{\partial \psi_{0}}{\partial \gamma_{n}} &amp;= 0
+\end{align*}
+$$
+</p>
+<p>From here, we get a system of equations, which can be solved to find the values of $a, b, c, \dots$ that would <em>minimize</em> $\dfrac{\langle\psi_{0} |\hat{H} | \psi_{0}\rangle}{\langle \psi_{0}|\psi_{0}\rangle}$ (which is called the <strong>energy functional</strong> and which we will denote as $\varepsilon$). Once this is done, we can substitute those parameters back into $\psi_0$, which will (hopefully) have a good approximation of the ground-state energy:</p>
+<p class="mathcell">
+$$
+E_{0} \approx \varepsilon = \frac{\langle\psi_{0} |\hat{H} | \psi_{0}\rangle}{\langle \psi_{0}|\psi_{0}\rangle}
+$$
+</p>
+<p>This technique is powerful because it does <em>not</em> rely on $\hat H$ being able to be separated into a small perturbation on top of a simpler Hamiltonian. However, the accuracy of the approximate ground-state energy obtained from the variational method may greatly vary, depending on how many parameters we put (more parameters generally makes the approximation more accurate) and how close our guess for $\psi_0$ is to the true ground-state wavefunction.</p>
+<blockquote>
+<p><strong>Note:</strong> Typically-speaking, the variational method can only compute the ground-state wavefunction and ground-state energy of a system. However, it is possible to find (or at least) <em>estimate</em> the higher-energy states (excited states) of a system using the <strong>Gram–Schmidt algorithm</strong>.</p>
+</blockquote>
+<h3 id="solving-the-hydrogen-atom-by-the-variational-method">Solving the hydrogen atom by the variational method</h3>
+<p>Let us return to the hydrogen atom, whose Hamiltonian, as we saw, is given by:</p>
+<p class="mathcell">
+$$
+H = -\frac{\hbar^2}{2\mu} \nabla^2 - \frac{Ze^2}{4\pi \varepsilon_{0} r}
+$$
+</p>
+<p>With $\mu$ being the reduced mass and $Z$ being the atomic number, and where we use $q$ for the electron's charge. We will use the variational method to attempt to approximate the ground-state energy and ground-state wavefunction of the hydrogen atom. We will rewrite this as:</p>
+<p class="mathcell">
+$$
+H = b_{1} \nabla^2 + \frac{b_{2}}{r}, \quad b_{1} = -\frac{\hbar^2}{2\mu}, \quad b_{2} = -\frac{Ze^2}{4\pi \varepsilon_{0}}
+$$
+</p>
+<p>Next, we choose the following <em>ansatz</em> (educated guess) for the ground-state wavefunction:</p>
+<p class="mathcell">
+$$
+\psi_{0}(r) = a e^{-r &#x2F;\lambda}
+$$
+</p>
+<p>Where $a$ and $\lambda$ are unknown constants. We can justify this heuristically: we know that the wavefunction must be normalizable and that it must be well-defined for all real numbers: this suggests a function that smoothly decays to zero at infinity. Moreover, we know that it must be spherically-symmetric due to the spherical symmetry of the hydrogen atom. The above <em>ansatz</em> satisfies all the above: the $e^{-r/\lambda}$ decay ensures a smooth decay as $r \to \infty$ and is normalizable, and moreover it is only dependent on $r$, making it spherically-symmetric. In addition — and this is especially important when doing calculations by hand — it is reasonably <em>simple</em>, hence calculating the resulting integrals will be less of a nightmare. We can always add more parameters later. It is useful to note the following identities:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+\frac{d}{dr} e^{-r &#x2F; \lambda} = -\frac{1}{\lambda} e^{-r&#x2F;\lambda}, \quad \frac{d^2}{dr^2} e^{-r &#x2F; \lambda} = \frac{1}{\lambda^2} e^{-r &#x2F; \lambda} \\
+\nabla^2 f(r) = \frac{1}{r^2} \frac{d}{dr}\left( r^2 \frac{d f}{dr} \right) = \frac{2}{r} \frac{df}{dr} + \frac{d^2 f}{dr^2}
+\end{gather*}
+$$
+</p>
+<p>Where $f(r)$ is any spherically-symmetric function of purely the radial coordinate $r$. Substituting into the Hamiltonian, and computing the derivatives, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat H \psi_{0} &amp;= \left[b_{1} \nabla^2 + \frac{b_{2}}{r}\right] \psi_{0}(r) \\
+&amp;= b_{1}\left( \psi_{0}&#x27;&#x27; + \frac{2}{r} \psi_{0}&#x27; \right) + \frac{b_{2}}{r} \psi_{0} \\
+&amp;= \frac{ab_{1}}{\lambda^2} e^{-r &#x2F; \lambda} - \frac{2ab_{1}}{\lambda} \frac{e^{-r &#x2F; \lambda}}{r} + \frac{ab_{2}}{r} e^{-r &#x2F; \lambda} \\
+&amp;= a \left\{\frac{b_{1}}{\lambda^2} + \frac{1}{r} \left[ b_{2} - \frac{2b_{1}}{\lambda} \right]
+\right\}e^{-r &#x2F; \lambda}
+\end{align*}
+$$
+</p>
+<p>Hence, we obtain (upon integrating in spherical coordinates):</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\langle \psi_{0} | \hat{H} | \psi_{0} \rangle &amp;= \int_{0}^{2\pi} \int_{0}^\pi \int_{0}^\infty \psi_{0}(r) \hat{H} \psi_{0}(r) r^2 \sin \theta dr d\theta d \phi \\
+&amp;= 4\pi \int_{0}^\infty \psi_{0}(r) \hat{H} \psi_{0}(r) r^2  dr \\
+&amp;= 4\pi a^2 \int_{0}^\infty \left\{\frac{b_{1}}{\lambda^2} + \frac{1}{r} \left[ b_{2} - \frac{2b_{1}}{\lambda} \right]
+\right\}e^{-2r &#x2F; \lambda} r^2 dr \\
+&amp;= \pi a^2 \left( \frac{b_{1}}{\lambda^2} \lambda^3 + \left[ b_{2} - \frac{2b_{1}}{\lambda} \right]\lambda^2 \right) \\
+&amp;=\pi a^2 (b_{1}\lambda + b_{2}\lambda^2 -2b_{1}\lambda) \\
+&amp;= \pi a^2 (b_{2}\lambda^2 - b_{1}\lambda) \\
+\langle \psi_{0} | \psi_{0}\rangle &amp;= \int_{0}^{2\pi} \int_{0}^\pi \int_{0}^\infty |\psi_{0}|^2 r^2 \sin \theta dr d\theta d\phi \\
+&amp;= 4\pi \int_{0}^\infty a^2 e^{-2r &#x2F;\lambda}r^2 dr \\
+&amp;= \pi a^2 \lambda^3 \\
+&amp;= 1
+\end{align*}
+$$
+</p>
+<p>Where we used the following identities (both can be derived from integration by parts):</p>
+<p class="mathcell">
+$$
+\int_{0}^\infty re^{-2r&#x2F;\lambda} dr = \frac{\lambda^2}{4}, \quad \int_{0}^\infty r^2 e^{-2r &#x2F; \lambda} dr = \frac{\lambda^3}{4}
+$$
+</p>
+<p>Thus, the energy functional $\varepsilon$ is given by:</p>
+<p class="mathcell">
+$$
+\varepsilon = \frac{\langle\psi_{0} |\hat{H} | \psi_{0}\rangle}{\langle \psi_{0}|\psi_{0}\rangle} = \frac{\pi a^2 (b_{2}\lambda^2 - b_{1}\lambda)}{\pi a^2 \lambda^3} = \frac{b_{2}}{\lambda} - \frac{b_{1}}{\lambda^2}
+$$
+</p>
+<p>In this case, we would conventionally differentiate with respect to <em>both</em> $a$ and $\lambda$ to get our system of equations. But we are fortunate that the normalization procedure has already told us that $\pi a^2 \lambda^3 = 1$, hence $a = 1 / \sqrt{\pi \lambda^3}$. Therefore, we only need to minimize with respect to $\lambda$. Taking the derivative with respect to $\lambda$ and setting it equal to zero yields:</p>
+<p class="mathcell">
+$$
+\frac{d\varepsilon}{d\lambda} = -\frac{b_{2}}{\lambda^2} + \frac{2b_{1}}{\lambda^3} = 0
+$$
+</p>
+<p>We can now solve for the value of $\lambda$ that satisfies the above equation, which is just a matter of some straightforward algebra. The solution is:</p>
+<p class="mathcell">
+$$
+\lambda = \frac{2 b_{1}}{b_{2}} = \frac{4\pi \varepsilon_{0} \hbar^2}{Z \mu e^2} = \frac{a_{0}^*}{Z}
+$$
+</p>
+<p>Where $a_{0}^* = \frac{m_{e}}{\mu} a_{0}$ is the <strong>reduced Bohr radius</strong>, and $a_0 \approx \pu{5.29 * 10^{-11} m}$ is the Bohr radius, as we saw in the derivation of the hydrogen atom. Thus we find that $\lambda = a_0^* / Z$, the Bohr radius, while $a = 1/\sqrt{\pi \lambda^3}$. Substituting back into our ansatz $\psi_{0}(r) = a e^{-r /\lambda}$ gives us a ground-state wavefunction of:</p>
+<p class="mathcell">
+$$
+\psi_{0} = \frac{1}{\sqrt{ \pi }} \left( \frac{Z}{a_{0}^*} \right)^{3&#x2F;2} e^{-Zr &#x2F; a_{0}^*}
+$$
+</p>
+<p>This is actually the <strong>exact ground-state wavefunction</strong> of hydrogen! Thus, using the variational method, we were able to derive the ground-state wavefunction <em>without</em> needing to solve complicated differential equations. In addition, if we substitute our parameters into the energy functional, we get an estimated ground-state energy of:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\varepsilon &amp;= \frac{b_{2}}{\lambda} - \frac{b_{1}}{\lambda^2}
+\\
+&amp;= -Z^2\left( \frac{e^2}{4\pi \varepsilon_{0} a_{0}^*} + \frac{\hbar^2}{2\mu {a_{0}^*}^2} \right), \quad a_{0}^*= \frac{4\pi \varepsilon_{0} \hbar^2}{\mu e^2} \\
+&amp;= -\frac{Z^2 \mu e^4}{32\pi^2 \varepsilon_{0}^2 \hbar^2} \\
+&amp; \approx -(\pu{13.6 eV})Z^2
+\end{align*}
+$$
+</p>
+<p>We know this is indeed the correct ground-state energy of hydrogen! In this particular case, we got lucky, since our <em>ansatz</em> happened to exactly match the hydrogen ground-state wavefunction and hence the variational method gave us an exact answer. Usually, we'll end up with an <em>approximate answer</em> instead of an exact one, albeit an answer that is "good enough" to approximate the ground-state energy pretty well.</p>
+<h3 id="solving-the-helium-atom-by-the-variational-method">Solving the helium atom by the variational method</h3>
+<p>As we mentioned earlier in the guide, the solution for the hydrogen atom is only valid for atoms with a single electron. While it can approximately describe multi-electron atoms, its predicted energy levels are not very accurate. This is because our treatment does not include a variety of effects in multi-electron atoms that affect the total energy:</p>
+<ul>
+<li><strong>Nuclear screening</strong>, which comes from the inner electrons forming a negatively-charged "cloud" around the nucleus</li>
+<li><strong>Electron correlation</strong>, which comes from inter-electron interactions within the atom, due to their electrostatic repulsion</li>
+<li>The <strong>exchange interaction</strong>, which comes from the Pauli exclusion principle that forbids electrons from sharing the same quantum state, causing electron-electron repulsion</li>
+</ul>
+<p>The next-simplest atom after hydrogen is the <strong>helium atom</strong>, composed of 2 protons, (usually) 2 neutrons, and 2 electrons. The solution for the hydrogen atom can easily be generalized to helium by setting $Z = 2$. This would give us a predicted ground-state energy of:</p>
+<p class="mathcell">
+$$
+E_\mathrm{predicted} = -\pu{54.4228 eV}
+$$
+</p>
+<p>Unfortunately, this is quite a bit off from the experimental value, and the reason is because the helium Hamiltonian has a different form from the hydrogen Hamiltonian. In particular, the helium Hamiltonian (disregarding spin and fine/hyperfine-structure corrections) is given by:</p>
+<p class="mathcell">
+$$
+\hat H = \underbrace{-\dfrac{\hbar^2}{2\mu}(\nabla_1^2 + \nabla_2^2)}_\text{electron kinetic energy} -\underbrace{\dfrac{Z}{4\pi \varepsilon_0}\left(\dfrac{e^2}{|\mathbf{r}_1|} + \dfrac{e^2}{|\mathbf{r}_2|}\right)}_\text{nucleus-electron attraction} + \underbrace{\dfrac{1}{4\pi \varepsilon_0}\dfrac{e^2}{|\mathbf{r}_1 - \mathbf{r}_2|}}_\text{electron-electron repulsion}
+$$
+</p>
+<p>Where $Z = 2$ (since helium has two protons), $\mathbf{r}<em>1 = (r</em>{1}, \theta_{1}, \phi_{1})$ and $\mathbf{r}<em>2 = (r</em>{2}, \theta_{2}, \phi_{2})$ are the position coordinates for each of the two electrons and $\nabla_1^2, \nabla_2^2$ are respectively the Laplacians with respect to the coordinates $\mathbf{r}_1$ and $\mathbf{r}_2$. The first 4 terms in the helium Hamiltonian are more or less familiar: they are just the kinetic and potential terms for the first and second electron in helium. However, it is the <em>last term</em> that matters to us. This is the <strong>electron correlation term</strong> and it means that <em>no analytical solution</em> can be found for helium. Hence, we must tackle the problem using variational techniques.</p>
+<p>To start, we choose the following <em>ansatz</em> for the ground-state wavefunction with two parameters, $Z_e$ and $\lambda$:</p>
+<p class="mathcell">
+$$
+\psi_{0}(\mathbf{r}_{1}, \mathbf{r}_{2}) = \frac{Z_{e}^3}{\pi \lambda^3} e^{-Z_{e}(r_{1} + r_{2}) &#x2F; \lambda}
+$$
+</p>
+<p>This is similar with our <em>ansatz</em> for the hydrogen atom ($\psi_{0}(r) = a e^{-r /\lambda}$, where we found that $a = \sqrt{\pi \lambda^3}$ and $\lambda = a_0^*/Z$). In fact, it is <em>almost</em> equal to the product of two hydrogen ground-state wavefunctions, with the exception of replacing $Z$ by $Z_e$, which represents an <em>effective nuclear charge</em>. We would expect that the negatively-charged electrons would counter the positive charge of the nucleus, resulting in a lower effective nuclear charge $Z_{e} &lt; Z$ (in the case of helium specifically, this reduces to $Z_e &lt; 2$).</p>
+<p>Now, we can begin the variational procedure. First, we need to compute $\hat H \psi_{0}$. This becomes more complicated due to the electron correlation term, which is the magnitude of a difference of vectors; hence we must rewrite it in explicitly terms of coordinates. For this, we can use the well-known identity (which comes from the law of cosines):</p>
+<p class="mathcell">
+$$
+|\mathbf{r}_1 - \mathbf{r}_2| = \sqrt{ r_{1}^2 + r_{2}^2 + 2 r_{1}r_{2} \cos \theta_{2} }
+$$
+</p>
+<p>It is also useful to use the following identity when computing the Laplacians $\nabla_1^2, \nabla_2^2$:</p>
+<p class="mathcell">
+$$
+\nabla_{i}^2 \psi(r) = \frac{2}{r} \frac{d\psi}{dr_{i}} + \frac{d^2 \psi}{dr_{i}^2}
+$$
+</p>
+<p>Hence we have:</p>
+<p class="mathcell">
+$$
+\nabla_1^2 \psi(r) = \frac{2}{r} \frac{d\psi}{dr_{1}} + \frac{d^2 \psi}{dr_{1}^2}, \quad \nabla_{2}^2 \psi(r) = \frac{2}{r} \frac{d\psi}{dr_{2}} + \frac{d^2 \psi}{dr_{2}^2}
+$$
+</p>
+<p>It is recommended to perform the remainder of the calculation with a computer algebra system such as Maple, Mathematica, or SymPy as the calculations get quite involved: we will state just the general steps. However, while tedious, the math is just a combination of differentiation, integration, and algebra. There will be no need to solve differential equations or eigenvalue equations. This is part of the beauty of the variational method: it allows you to find the ground-state wavefunction and energy by performing a series of <em>explicit steps</em>, removing the guesswork from the problem (as long as you have already come up with an <em>ansatz</em>). Just substitute everything into the helium Hamiltonian, which will give you (after some simplifications and moving terms around) the following:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat{H} \psi_{0} &amp;= \underbrace{ \left[-\frac{\hbar^2}{2\mu}(\nabla_{1}^2 + \nabla_{2}^2 ) - \frac{e^2}{4\pi \varepsilon_{0}}\left( \frac{Z_{e}}{r_{1}} + \frac{Z_{e}}{r_{2}} \right)\right] \psi_{0} }_{\hat{H}_{1}} \\
+&amp;\qquad + \underbrace{ \frac{e^2}{4\pi\varepsilon_{0}}\left[ \frac{Z_{e} - Z}{r_{1}} + \frac{Z_{e} - Z}{r_{2}}\right] \psi_{0} }_{\hat{H}_{2}} + \underbrace{ \frac{e^2}{4\pi\varepsilon_{0}} \frac{1}{|\mathbf{r}_{1} - \mathbf{r}_{2}|} \psi_{0} }_{\hat{H}_{3}}
+\end{align*}
+$$
+</p>
+<p>Notice how we have written the Hamiltonian as a sum of three distinct terms: this will be important shortly. Next, we'll compute $\langle \psi_0 |\hat H|\psi_0\rangle$. We could brute-force it by plugging everything into the formula, but there is a clever and faster way. Notice that the Hamiltonian is <em>linear</em> in $\psi_{0}$ and has three terms; hence its eigenvalue equation can also be written in the following three-term form:</p>
+<p class="mathcell">
+$$
+\langle \psi_{0}|\hat{H} |\psi_{0}\rangle = (\hat{H}_{1} + \hat{H}_{2} + \hat{H}_{3})|\psi_{0}\rangle = (A E_\mathrm{hydrogen} + E_\mathrm{screening} + E_\mathrm{correlation})|\psi_{0}\rangle
+$$
+</p>
+<p>Where $E_\mathrm{hydrogen} = -\pu{13.6 eV}$ is the ground-state energy of hydrogen and $A$ is a to-be-determined constant; the reasoning for the energies will be explained shortly. If we take the inner product with $\langle \psi_{0}|$ we get:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\langle \psi_{0} | \hat{H}_{1} | \psi_{0}\rangle &amp;= A E_\mathrm{hydrogen} \\
+\langle \psi_{0} | \hat{H}_{2} | \psi_{0}\rangle &amp;= E_\mathrm{screening} \\
+\langle \psi_{0} | \hat{H}_{3} | \psi_{0}\rangle &amp;= E_\mathrm{correlation} \\
+\end{align*}
+$$
+</p>
+<p>This gives us the three following equations, upon expanding the inner product:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\int \psi_{0}\left[-\frac{\hbar^2}{2\mu}(\nabla_{1}^2 + \nabla_{2}^2 ) - \frac{e^2}{4\pi \varepsilon_{0}}\left( \frac{Z_{e}}{r_{1}} + \frac{Z_{e}}{r_{2}} \right)\right] \psi_{0}\,dV_{1} dV_{2} &amp;= A E_\mathrm{hydrogen} \\
+\int \psi_{0}\frac{e^2}{4\pi\varepsilon_{0}}\left[ \frac{Z_{e} - Z}{r_{1}} + \frac{Z_{e} - Z}{r_{2}}\right] \psi_{0}\, dV_{1} dV_{2} &amp;= E_\mathrm{screening}  \\
+\int \psi_{0}\frac{e^2}{4\pi \varepsilon_{0}} \frac{1}{|\mathbf{r}_{1} - \mathbf{r}_{2}|} \psi_{0}\, dV_{1} dV_{2} &amp;= E_\mathrm{correlation}
+\end{align*}
+$$
+</p>
+<p>(Where $dV_i = r_i^2 dr_i d\theta_i d\phi_i$ and we integrate over a 6-dimensional domain for all $r_1, r_2, \theta_1, \theta_2, \phi_1, \phi_2$) We observe that the first equation is effectively two "copies" of the hydrogen Hamiltonian (except with respect to different coordinates, and with $Z$ replaced by $Z_e$). Hence, the energy eigenvalue must be <em>twice</em> that predicted by the ground-state energy formula for hydrogen (which is given by $E_0 = -Z^2 \cdot \pu{13.6 eV}$; here we'll have to replace $Z$ with $Z_e$). That is to say:</p>
+<p class="mathcell">
+$$
+AE_\mathrm{hydrogen} = 2 \cdot(-Z_{e}^2 \cdot \pu{13.6 eV}) = 2Z_{e}^2 \cdot E_\mathrm{hydrogen} \implies A = -2Z_{e}^2
+$$
+</p>
+<p>Hence, we have:</p>
+<p class="mathcell">
+$$
+\langle \psi_{0} | \hat{H}_{1} | \psi_{0}\rangle = 2Z_{e}^2 E_\mathrm{hydrogen}
+$$
+</p>
+<p>For the second term, we will now evaluate the integral:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+E_\mathrm{screening} &amp;=
+\frac{e^2}{4\pi\varepsilon_{0}}\int \psi_{0}\left[ \frac{Z_{e} - Z}{r_{1}} + \frac{Z_{e} - Z}{r_{2}}\right] \psi_{0}\, dV_{1} dV_{2} \\
+&amp;= \frac{e^2}{4\pi\varepsilon_{0}} \left( \frac{Z_{e}^3}{\pi \lambda^3} \right)^2
+\int_{0}^{2\pi} \int_{0}^\pi \int_{0}^\infty\int_{0}^{2\pi} \int_{0}^\pi \int_{0}^\infty e^{-2Z_{e}(r_{1} + r_{2}) &#x2F; \lambda} \\
+&amp;\qquad \times \left[ \frac{Z_{e} - Z}{r_{1}} + \frac{Z_{e} - Z}{r_{2}}\right] r_{1}^2 \sin \theta_{1} d\theta_{1} d\phi_{1} ~ r_{2}^2 \sin \theta_{2} d\theta_{2} d\phi_{2}
+\end{align*}
+$$
+</p>
+<p>What looks like a horrible integral is made immediately-easier by spherical symmetry, meaning that:</p>
+<p class="mathcell">
+$$
+\int_{0}^{2\pi} \int_{0}^\pi \sin \theta_{1} d \theta_{1} d\phi_{1} = \int_{0}^{2\pi} \int_{0}^\pi \sin \theta_{2} d \theta_{2} d\phi_{2} = 4\pi
+$$
+</p>
+<p>Hence, four of the six integrals reduce down to a factor of $(4\pi)^2$, giving us:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+E_\mathrm{screening} &amp;= \frac{e^2}{4\pi\varepsilon_{0}} \left( \frac{Z_{e}^3}{\pi \lambda^3} \right)^2(4\pi)^2 \int_{0}^\infty \left[ \frac{Z_{e} - Z}{r_{1}} + \frac{Z_{e} - Z}{r_{2}}\right]e^{-2Z_{e}(r_{1} + r_{2}) &#x2F; \lambda}r_{1}^2 dr_{1} r_{2}^2 dr_{2} \\
+&amp;= \frac{e^2}{4\pi\varepsilon_{0}} \left( \frac{Z_{e}^3}{\pi \lambda^3} \right)^2(4\pi)^2 \int_{0}^\infty \left( r_{1}(Z_{e} - Z) r_{2}^2 + r_{2}(Z_{e} - Z) r_{1}^2 \right) e^{-2Z_{e}(r_{1} + r_{2}) &#x2F; \lambda} dr_{1} dr_{2} \\
+&amp;= 2(Z_{e} - Z)\left( \frac{Z_{e}e^2}{4\pi \varepsilon_{0} \lambda} \right), \quad \lambda = a_{0}^*
+\end{align*}
+$$
+</p>
+<p>Which can be written in terms of $E_\mathrm{hydrogen}$ as:</p>
+<p class="mathcell">
+$$
+E_\mathrm{screening} =-4Z_{e}(Z_{e} - Z) E_\mathrm{hydrogen}
+$$
+</p>
+<p>The final (and most challenging) integral to perform is the third term, which, unlike the others, <em>does</em> have angular dependence. It is given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+E_\mathrm{correlation} &amp;= \int \psi_{0}\frac{e^2}{4\pi \varepsilon_{0}} \frac{1}{|\mathbf{r}_{1} - \mathbf{r}_{2}|} \psi_{0}\, dV_{1} dV_{2} \\
+&amp;= \frac{e^2}{4\pi \varepsilon_{0}} \left(\frac{Z_{e}^3}{\pi \lambda^3} \right)^2 \int \frac{e^{-Z_{e}(r_{1} + r_{2}) &#x2F; \lambda}}{\sqrt{ r_{1}^2 + r_{2}^2 + 2 r_{1}r_{2} \cos \theta_{2} }} dV_{1} dV_{2} \\
+&amp;= \frac{5Z_{e}}{8a_{0}^*} \left( \frac{e^2}{4\pi \varepsilon_{0}} \right) \\
+&amp;= -\frac{5Z_{e}}{4} E_\mathrm{hydrogen}
+\end{align*}
+$$
+</p>
+<p>Therefore, putting all the terms together, we obtain:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\langle \psi_{0}|\hat{H} |\psi_{0}\rangle  &amp;= A E_\mathrm{hydrogen} + E_\mathrm{screening} + E_\mathrm{correlation} \\
+&amp;= \left( 2Z_{e}^2 - 4Z_{e}(Z_{e} - Z) - \frac{5}{4}Z_{e} \right) E_\mathrm{hydrogen} \\
+&amp;= \left[ -2Z_{e}^2 +\left( 4Z - \frac{5}{4} \right)Z_{e} \right]E_\mathrm{hydrogen}
+\end{align*}
+$$
+</p>
+<p>Now, all that's left to do is to minimize this functional! This gives us:</p>
+<p class="mathcell">
+$$
+\frac{d}{dZ_{e}} = -4 Z_{e} + \left( 4Z - \frac{5}{4} \right) = 0
+$$
+</p>
+<p>Substituting in $Z = 2$ for helium, we obtain:</p>
+<p class="mathcell">
+$$
+-4Z_{e} + 8 - \frac{5}{4} = 0 \implies Z_{e} = \frac{27}{16} \approx 1.69
+$$
+</p>
+<p>Finally, substituting back this value of $Z_e$ into $\langle \psi_0 | \hat H| \psi_0\rangle$, we obtain:</p>
+<p class="mathcell">
+$$
+E_{0} \approx \langle \psi_{0}|\hat{H}|\psi_{0}\rangle \approx 5.7E_\mathrm{hydrogen} \approx -\pu{77.5 eV}
+$$
+</p>
+<p>This value is in extremely good agreement with the experimental value of the helium ground state energy of $\pu{-78.975 eV}$ and illustrates how powerful the variational method can be.</p>
+<h3 id="solving-the-screened-coulomb-potential-by-the-variational-method">Solving the screened Coulomb potential by the variational method</h3>
+<p>While solving the helium atom using the variational approach we mentioned the importance of <em>nuclear screening</em>. In particular, nuclear screening has the effect of reducing the nuclear charge $Z$ (the charge of the atomic nucleus). It can be modelled by modifying the Coulomb potential slightly to the following form (called the <strong>screened Coulomb potential</strong>):</p>
+<p class="mathcell">
+$$
+V(r) \to -\frac{Ze^2}{4\pi\varepsilon_{0 }r} e^{-\alpha r}
+$$
+</p>
+<p>Where $\alpha$ is a constant and is the inverse of the characteristic length scale at which screening occurs (if there is no screening, $\alpha = \infty$). This is a potential which <em>cannot</em> be solved exactly <em>and</em> cannot be easily treated with perturbation theory, hence this is a perfect opportunity to make use of the variational method. The reader is encouraged to work this problem out by themselves, but here's a hint: use the following <em>ansatz</em> for the screened ground-state wavefunction:</p>
+<p class="mathcell">
+$$
+\psi_{0} = f(r) e^{-r &#x2F; \lambda}, \quad f(r) = \frac{1 - e^{-a r}}{r}
+$$
+</p>
+<p>Where $a, \lambda$ are our two parameters. Why choose this <em>ansatz</em>? Well, it is just a guess, but it is an educated guess. First of all, our guess reduces to the $\psi_0 = a$ as $r \to 0$ (you can show this via L'Hôpital's rule), just like the solution for the normal (unscreened) hydrogen ground state. The net effect of the screening, however, is to reduce the effect of the nuclear charge at larger distances from the nucleus, hence $f(r)$ would need to be a smoothly-decaying function, and our chosen form of $f(r)$ also satisfies this criterion.</p>
+<p>The detailed solutions are available <a href="https://inspirehep.net/files/47754796bfedebbea305a6c09a975ed0">on this paper</a>, but we will simply state the approximate energy levels for the screened Coulomb potential, which are given by:</p>
+<p class="mathcell">
+$$
+E_{n\ell m}^\mathrm{(screened)} = -\frac{\hbar^2 \alpha^2}{2\mu}\left( \frac{\mu V_{0} &#x2F; (\hbar^2\alpha) - (n + \ell + 1)^2}{n + \ell + 1} \right)^2
+$$
+</p>
+<p>Where $V_0 = Ze^2/(4\pi \varepsilon_{0})$, $\mu$ is the reduced mass, and $\alpha$ is the same as in the screened potential; it has units of inverse length and has a value of $\approx \pu{0.2 fm^{-1}}$ (the paper uses $\hbar = 1$ units; we have converted the formula to SI units). Note that here $n$ is <strong>not</strong> the same as the usual principal quantum number $n$ (which we instead denote as $n'$, where $n' = n + \ell + 1$). From this formula, we obtain the following expression for the approximate ground-state ($n' = 1$) energy, which should be what you got (or close to what you got) by solving via the variational method:</p>
+<p class="mathcell">
+$$
+E_{0} \approx -\frac{\hbar^2 \alpha^2}{2\mu}\left( \frac{\mu V_{0}}{\hbar^2\alpha} - 1 \right)^2
+$$
+</p>
+<p>In the limit $\alpha \to \infty$ (that is, in the limit where the nucleus has zero screening) we recover the ground-state energy of the hydrogen atom:</p>
+<p class="mathcell">
+$$
+E_{0} \to -\frac{\mu V_{0}^2}{2\hbar^2} = -\frac{\mu e^4}{32 \pi^2 \varepsilon_{0}^2 \hbar^2} \approx -\pu{13.6 eV}
+$$
+</p><h3 id="computational-techniques-using-the-variational-method">Computational techniques using the variational method</h3>
+<p>Manually calculating using the variational method can be very hit-and-miss and require tedious calculations. This is where it is useful to solve problems using a <em>numerical</em> implementation of the variational method to run on a computer, which can be far faster than doing it by hand.</p>
+<p>In the computational implementation of the variational method, we write the ground-state wavefunction as a sum of orthonormal basis functions $\phi_i(\mathbf{r})$ multiplied by various coefficients $c_i$:</p>
+<p class="mathcell">
+$$
+\psi_{0}(\mathbf{r}) = \sum_{i} c_{i} \phi_{i} (\mathbf{r})
+$$
+</p>
+<p>Since the basis functions are a complete orthonormal basis, the above series can represent an <em>arbitrary</em> ground-state wavefunction. A common choice of basis is a <strong>Gaussian basis function</strong> in the form $\phi_{n \ell m} = x^n y^m z^\ell e^{-\alpha r^2}$ though other basis functions can also be used. The energy functional $\varepsilon$ is then given by:</p>
+<p class="mathcell">
+$$
+\varepsilon[\mathbf{r}, c_{i}]  = \frac{\displaystyle \int_{\Omega} \psi_{0} \hat{H} \psi_{0} d\tau}{\displaystyle \int_{\Omega} \psi_{0}^* \psi d\tau}
+$$
+</p>
+<p>Where we integrate over a chosen domain $\Omega$ and where (as mentioned) $\psi_0$ is a linear combination of basis functions. These multidimensional integrals are often computed using the <strong>Monte Carlo algorithm</strong>, hence this method is frequently called <a href="https://en.wikipedia.org/wiki/Variational_Monte_Carlo">Variational Monte Carlo</a>. Then, the variational method gives:</p>
+<p class="mathcell">
+$$
+\frac{\partial \varepsilon}{\partial c_{i}} = 0
+$$
+</p>
+<p>The Variational Monte-Carlo method can yield extremely accurate estimations of the ground-state wavefunction and energy of complicated quantum systems that cannot be tackled perturbatively. Moreover, it can be more efficient than discretizing the Hamiltonian on a computer and solving it as an eigenvalue problem, which requires exponentially longer time and computing power for quantum systems with many degrees of freedom (a major problem for quantum chemistry). Readers interested in learning more can consult <a href="https://adambaskerville.github.io/posts/Variational-Method-Hydrogen/">this blog article</a> on computational implementations based on the variational method.</p>
 <h2 id="advanced-quantum-theory">Advanced quantum theory</h2>
 <h3 id="relativistic-wave-equations-and-the-dirac-equation">Relativistic wave equations and the Dirac equation</h3>
 <p>Thus, we arrive at the Dirac equation for a <strong>free particle</strong>:</p>
