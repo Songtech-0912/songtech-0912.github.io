@@ -10,7 +10,7 @@ We continue our exploration of quantum mechanics in detail in this second part o
 > - [Part 1](@/quantum-mechanics/index.md) covers the basic ideas of quantum mechanics and its fundamental formalism.
 > - [Part 2](@/quantum-mechanics/part-2.md) covers applications of quantum mechanics as well as more advanced techniques for solving quantum-mechanical systems. **You are reading this part right now.**
 
-_Note: this section is currently incomplete; some topics have not yet been added, including discussion of the hydrogen atom, completion of the section on angular momentum, and a mention of the variational principle as well as applications of perturbation theory (Zeeman effect, Stark effect, fine/hyperfine structure). Finally, advanced quantum theory, scattering (in the Born approximation), and the path integral are not covered. Despite this, it is hoped that the existing content will be of educational interest._
+_Note: this section is currently incomplete; in particular, advanced quantum theory, scattering (in the Born approximation), and the path integral are not covered. Despite this, it is hoped that the existing content will be of educational interest._
 
 ## Introduction to intrinsic spins
 
@@ -2182,6 +2182,178 @@ Where $!!$ denotes the double factorial. In our case, letting $n = 2$ and $a = m
 {% end %}
 
 This result is particularly interesting because it is a result that depends on the mass $m$ of the particle. In fact, the ground-state energy shift due to the quartic term is actually *inversely-proportional* to the mass! This tells us that lighter particles "feel" the quartic potential more strongly, even though the mass of the particle doesn't appear in the quartic potential itself. Additionally, the correction to the ground-state energy is *positive*, meaning that the particle becomes less tightly bound as a result of the quartic potential. Hence, while a "toy model", the quartic harmonic oscillator is still an important model to study, and even serves as simplified (0+1)-dimensional version of the [Higgs mechanism](https://en.wikipedia.org/wiki/Spontaneous_symmetry_breaking#Sombrero_potential) in particle physics.
+
+## Applications of stationary perturbation theory
+
+Having solved a few toy models, we now move on to applications of stationary (time-independent) perturbation theory for real quantum systems. We will develop the techniques to analyze complicated systems — and, in the process, go through some of the most famous calculations in the history of quantum mechanics.
+
+### The Zeeman effect
+
+We will start with a very famous application of perturbation theory: calculating the energy splitting of an atom within a magnetic field. We observe experimentally that when an atom is subjected to a magnetic field, the wavelengths of light it emits change. Quantum mechanics provides an explanation for why.
+
+To analyze the Zeeman effect, we must go beyond the basic Hamiltonian $\hat H = \dfrac{\hat p^2}{2m} + V(\mathbf{r})$, which has been the staple of all our calculations so far. We need to add a new term to the Hamiltonian that incorporates the effect of the magnetic field, which we denote as $\Delta \hat H_\mathrm{Zeeman}$ and which we call the *Zeeman term*, leading to the following Hamiltonian:
+
+{% math() %}
+\hat{H} = \frac{\hat{\mathbf{p}}^2}{2\mu} + V_\mathrm{coulomb}(\mathbf{r}) + \Delta \hat H_\mathrm{Zeeman}
+{% end %}
+
+Where $\mu$ is the reduced mass. For a uniform magnetic field the Zeeman term $\Delta \hat H_\mathrm{Zeeman}$ is proportional to the magnetic moment operator $\boldsymbol{\mu}_{M}$ and linear in the field, where:
+
+{% math() %}
+\Delta \hat H_\mathrm{Zeeman} = -\boldsymbol{\mu}_{M} \cdot \mathbf{B}, \quad \boldsymbol{\mu}_{M} = -g\frac{q}{2m_{q}} \hat{\mathbf{L}}
+{% end %}
+
+Where $\hat{\mathbf{L}}$ is the angular momentum operator, and $g$ is a constant known as the **g-factor** that describes the ratio between the quantum magnetic dipole moment and the classical magnetic dipole moment. Here, we use $m_q$ to denote the mass of the charged particle we are studying in question (in atoms, the dominant contribution is from electrons, but the nuclei can also play a part in the Zeeman effect). Therefore, the expanded version of the Zeeman term is given by:
+
+{% math() %}
+\Delta \hat H_\mathrm{Zeeman} = g\frac{q}{2m_{q}} \hat{\mathbf{L}} \cdot \mathbf{B}
+{% end %}
+
+Up to this point, we have kept our treatment very general and have not assumed a fixed value of the g-factor or the charge of the particle. This is important because an advanced treatment of the Zeeman effect would also take into account the *nuclear spin angular momentum*, which must take into account (among other things) the different charge and mass of protons compared to electrons. However, in the case of electrons, we have, $m_q = m_e$ (where $m_e$ is the electron mass), and $q = -e$ (where $e$ is the elementary charge constant), giving us:
+
+{% math() %}
+\Delta \hat H_\mathrm{Zeeman} = -\frac{ge}{2m_{e}} \hat{\mathbf{L}} \cdot \mathbf{B}
+{% end %}
+
+It is common to express the above in terms of the so-called **Bohr magneton** $\mu_B$ given by:
+
+{% math() %}
+\mu_{B} = \frac{e\hbar}{2m_{e}} \approx \pu{9.274 * 10^{−24} J/T}
+{% end %}
+
+Where $m_e$ is the electron mass. Hence, our rewritten Zeeman Hamiltonian (without taking into account spin) is given by:
+
+{% math() %}
+\Delta \hat H_\mathrm{Zeeman} = -\frac{g\mu_{B}}{\hbar} \hat{\mathbf{L}} \cdot \mathbf{B}
+{% end %}
+
+#### The weak Zeeman effect
+
+If the magnetic field is relatively weak, we may treat the Zeeman term in the Hamiltonian as a perturbation. Therefore, we can use the methods of perturbation theory very straightforwardly. We will first compute the first-order correction with our favorite perturbation theory formula, with our eigenstates being those of the hydrogen atom (that is $|n, \ell, m\rangle$ where we are *not* including spin yet):
+
+{% math() %}
+\begin{align*}
+\Delta E_{n}^{(1)} &= \langle \varphi_n^{(0)}| \Delta \hat{H}_\mathrm{Zeeman} |\varphi_{n}^{(0)}\rangle \\
+&= -\frac{g\mu_{B}}{\hbar}\langle n, \ell, m|(\hat{\mathbf{L}} \cdot \mathbf{B}) |n, \ell, m\rangle
+\end{align*}
+{% end %}
+
+We will assume a uniform magnetic field $|\mathbf{B}| = B_0 \hat{z}$, hence the component of $\hat{\mathbf{L}}$ that is aligned in the same direction as the field would be $\hat L_z$. As we know eigenvalues of $\hat L_z$ are $m\hbar$, reducing the above to:
+
+{% math() %}
+\Delta E_{n}^{(1)} = -\frac{g\mu_{B} B_{0}}{\hbar}(m\hbar) \langle n, \ell, m|n, \ell, m\rangle
+{% end %}
+
+Now, since the eigenstates of the hydrogen atom are normalized (that is, $\langle n, \ell, m|n, \ell, m\rangle = 1$), the bra-ket is simply one, giving us:
+
+{% math() %}
+\begin{align*}
+\Delta E_{n}^{(1)} &= -\frac{g\mu_{B} B_{0}}{\hbar}(m\hbar) = -gm \mu_{B}B_{0} \\ n &= 1, 2, \dots, \\ \ell &= 0, 1, 2, \dots, (n-1), \\ m &= -\ell, -(\ell + 1), \dots, (\ell - 1), \ell
+\end{align*}
+{% end %}
+
+(Note that $g = 1$ for the weak Zeeman effect as it depends only on orbital angular momentum and not on spin.) Since the energy shift is explicitly dependent on $m$, it is zero for states where $\ell = 0$ and also zero for any states where $m = 0$. However, where $m \neq 0$ the Zeeman effect predicts that the existence of _additional_ energy levels separated by a constant value of $g\mu_B B_0$. These additional energy levels correspond with new eigenstates parametrized by $\ell, m$. The total energy of each state now depends on $n$, $\ell$, and $m$, so instead of $E_n$, we write the energy levels as $E_{n \ell m}$, and they are given by:
+
+{% math() %}
+\begin{align*}
+E_{n\ell m} &= E_{n}^{(0)} + \Delta E_{n}^{(1)} \\
+&= -\pu{13.6 eV} \cdot \frac{Z^2}{n^2} - m \mu_{B} B_{0}
+\end{align*}
+{% end %}
+
+Hence we say that the Zeeman effect *lifts the degeneracy* of the energy levels, since previously degenerate states have now become non-degenerate. In plainer language, the states that previously shared the same energy now have *distinct energies* that allow us to easily tell them apart. This will be a continuing theme within our exploration of quantum systems: the application of an external electric or magnetic field lifts the degeneracy of the eigenstates and allows new transitions to become possible (which manifest as new spectral lines within the hydrogen spectrum).
+
+> **Note:** The weak Zeeman effect holds for most "everyday" magnetic fields ($B_0 < \pu{1 T}$). In comparison, Earth's magnetic field has an average strength of $\approx \pu{30-60 \mu T}$, which is 100,000 times weaker. Some exceptions include extremely powerful laboratory magnets and astrophysical magnetic fields (e.g. in stars, pulsars, quasars, etc.), where the weak Zeeman effect is replaced by the *strong Zeeman effect*.
+
+#### The anomalous Zeeman effect
+
+It is all well and good using our modified Hamiltonian to describe the Zeeman effect, but if we do out our calculation, we'll find that its predicted energy levels actually deviate a significant amount from experimental values. The discrepancy between experimental observations of Zeeman spectral splitting and our theoretical predictions using our basic formula is known as the **anomalous Zeeman effect**. An explanation of the anomalous Zeeman effect requires us to consider the effects of **electron spin**, which we have previously neglected. This means that we must modify the Zeeman term in the Hamiltonian as follows:
+
+{% math() %}
+\Delta \hat H_\mathrm{Zeeman} \to \frac{q}{2m_{e}}(g_{l}\hat{\mathbf{L}} \cdot \mathbf{B} + g_{s}\hat{\mathbf{L}} \cdot \hat{\mathbf{S}})
+{% end %}
+
+Here, $g_l = 1$ and $g_s = 2.0023193$ are the electron orbital g-factor and electron spin g-factor respectively (it is common to simply write $g_s = 2$ as an approximation). The $\hat{\mathbf{L}} \cdot \hat{\mathbf{S}}$ term is known as the **LS coupling** or **spin-orbital coupling** term, and comes from the interaction between the electron's spin and the magnetic field of the nucleus in the electron's rest frame. The nucleus is (to a very good approximation) at rest within the atom's rest frame, and hence possesses no magnetic field in that frame; however, in the *electron's* rest frame the nucleus appears to be moving (an effect of relativity) and hence it has a magnetic field. We will later see LS coupling reappear in the explanation of fine structure, which are tiny corrections to the energy levels of the hydrogen atom that cannot be explained within spin or relativity.
+
+But back to calculating the anomalous Zeeman effect. First, note that it is common to write the Zeeman term in the Hamiltonian (including the spin contribution) in an alternate form as:
+
+{% math() %}
+\Delta \hat{H}_{Zeeman} = g_{J}\frac{q}{2m_{e}} \hat{\mathbf{J}} \cdot \mathbf{B}
+{% end %}
+
+Where $\hat{\mathbf{J}} = \hat{\mathbf{L}} + \hat{\mathbf{S}}$ is the total angular momentum operator, $\mu$ is the reduced mass of the atom, and $g_J$ is the [Landé g-factor](https://en.wikipedia.org/wiki/Land%C3%A9_g-factor), which is defined as:
+
+{% math() %}
+\begin{align*}
+g_{J} &= g_{l} \frac{j(j+1) + \ell(\ell + 1) - s(s+1)}{2j(j+1)} + g_{s} \frac{j(j+1) + s(s+1) - \ell(\ell +1)}{2j(j+1)} \\
+&\approx 1 + \frac{j(j+1) + s(s + 1) - \ell(\ell + 1)}{2j(j+1)}
+\end{align*}
+{% end %}
+
+Where $\ell$ is the orbital angular momentum quantum number, $s$ is the spin quantum number, $j \equiv \ell + s$ is the total angular momentum quantum number, $g_l = 1$ is the *electron orbital g-factor* and $g_s = 2.0023193 \dots \approx 2$ is the *electron spin g-factor*. If you think the formula looks horrible, early 20th-century physicists had it worse: the Landé g-factor was the painstaking result of essentially guess-and-checking based on empirically-observed data. Imagine needing to try essentially every combination of quantum numbers just to get that formula in the end!
+
+However, given that we *do* know the formula for the g-factor the rest of the derivation is straightforward. Simply apply first-order perturbation theory to the perturbation term $\Delta \hat H_\mathrm{Zeeman}$ (but this time including spin in the hydrogen atom's eigenstates $|n, j, m_{j}, s\rangle$, and recalling that the eigenvalues of $\hat J_z$ are $m_j \hbar$ instead of $m\hbar$), which gives us:
+
+{% math() %}
+\begin{align*}
+\Delta E_{n}^{(1)} &= \langle \varphi_n^{(0)}| \Delta \hat{H} |\varphi_{n}^{(0)}\rangle \\
+&= -\frac{g_{J}\mu_{B}}{\hbar}\langle n, j, m_{j}, s|(\hat{\mathbf{J}} \cdot \mathbf{B}) |n, j, m_{j}, s\rangle \\
+&= -\frac{g\mu_{B} B_{0}}{\hbar}(m_{j}\hbar) = -g_{J}m_{j} \mu_{B}B_{0} \\ n &= 1, 2, \dots, \\ \ell &= 0, 1, 2, \dots, (n-1), \\ 
+s &= \pm \small \frac{1}{2}, \\
+j &= 0, \frac{1}{2}, 1, \frac{3}{2}, \dots, \quad |\ell - s\vert \leq j \leq \ell + s, \\
+m_{j} &= -j, (-j + 1), \dots, (j - 1), j
+\end{align*}
+{% end %}
+
+#### The vector potential approach
+
+Our derivation so far has followed the approach used by most introductory texts, but it turns out that there is another way to derive the Zeeman effect that is more rigorous. To start, we use the *generalized* electromagnetic Hamiltonian for a charged particle of mass $m$ and charge $q$ in an electromagnetic field (called the *Pauli Hamiltonian*, which we'll see again later):
+
+{% math() %}
+\begin{align*}
+\hat{H} &= \frac{1}{2m}(\hat{\mathbf{p}} - q \hat{\mathbf{A}})^2 + q\phi \\
+&= \frac{1}{2m} \left( \hat{\mathbf{p}}^2 - 2q \hat{\mathbf{p}} \cdot \mathbf{A}
+ + q^2 \mathbf{A}^2 \right) + q\phi
+ \end{align*}
+ {% end %}
+
+ > **Note:** Here, $m$ is just the mass of the charged particle, not the magnetic quantum number that we have previously denoted with $m$. We have also **ignored spin** here for simplicity; we'll see the more generalized treatment with spin later.
+
+ Where $\phi$ is the **electric scalar potential** and $\mathbf{A}$ is the **magnetic vector potential** (read more on this in the [electromagnetic theory guide](@/classical-electromagnetism/index.md) if unfamiliar), and $\mathbf{B} = \nabla \times \mathbf{A}$. For reasons that we'll cover more in-depth later, we may arbitrarily chose $\mathbf{A}$ such that it is given by:
+
+ {% math() %}
+ \mathbf{A} = \frac{1}{2} \mathbf{B} \times \mathbf{r}
+ = \begin{pmatrix}
+ -By \\ Bx \\ 0
+ \end{pmatrix}, \quad B = \|\mathbf{B}\|
+ {% end %}
+
+ > **Note:** If you don't want to wait for the explanation, this is due to a phenomenon called [gauge freedom](https://en.wikipedia.org/wiki/Gauge_freedom). Specifically, we choose the *symmetric gauge* by imposing the aforementioned gauge condition $\mathbf{A} = \frac{1}{2}\mathbf{B} \times \mathbf{r}$, in which $\mathbf{B} = \nabla \times \mathbf{A}$.
+
+ By substituting in our vector potential, using $\hat{\mathbf{L}} = \mathbf{r} \times \hat{\mathbf{p}}$, and expanding terms, we obtain:
+
+ {% math() %}
+ \hat{H} = \frac{1}{2m} \left\{ \hat{\mathbf{p}}^2 + q\mathbf{B} \cdot  \hat{\mathbf{L}} + \frac{q^2}{4} (\mathbf{B}^2 \mathbf{r}^2 - (\mathbf{B} \cdot \mathbf{r})^2) \right\}
+ {% end %}
+
+ Where the second term is called the **diamagnetic term** and the third is the **paramagnetic term**; each successive term is weaker than the last. If we turn off the magnetic field ($\mathbf{B} = 0$) and use the Coulomb potential $\phi = \dfrac{Q}{4\pi \varepsilon_0 r}$ with $Q = Ze$, we recover the Hamiltonian of the hydrogen atom. However, when $\mathbf{B}$ is nonzero, we observe the splitting of energy levels, which is what we find in the Zeeman effect. Indeed, if we ignore the paramagnetic term we *exactly* reproduce the weak Zeeman effect Hamiltonian that we have been using previously! (As stated previously, it does not cover the anomalous Zeeman effect since we have ignored spin, but a more detailed derivation would also incorporate effect of spin.)
+
+ #### The strong Zeeman effect
+
+ For most cases, our formulas for the Zeeman effect and anomalous Zeeman effect work very well, but they fail in the case of strong magnetic fields. In such cases, the Zeeman term can *no longer* be treated as a small perturbation to the Hamiltonian, and becomes non-perturbative. Instead, we must treat it on equal footing with the rest of the Hamiltonian terms, giving us a Hamiltonian in the form:
+
+ {% math() %}
+ \begin{align*}
+ \hat{H} &= \frac{\hat{\mathbf{p}}^2}{2\mu} + V_\mathrm{Coulomb} + \hat H_\mathrm{Zeeman} + \dots \\
+ &= \frac{\hat{\mathbf{p}}^2}{2\mu} + V_\mathrm{Coulomb} + g_{J}\frac{q}{2m_{e}} \hat{\mathbf{J}} \cdot \mathbf{B} + \dots
+ \end{align*}
+ {% end %}
+
+ Where the terms after the Zeeman Hamiltonian represent terms that are much smaller than the Zeeman term. This will be significant once we get to the calculation of the **fine structure of hydrogen**, where when the Zeeman energy splitting is comparable to (or greater than) the fine-structure energy splitting, the fine-structure contribution will need to be treated as a *perturbation* "on top of" the Zeeman effect rather than the other way around. Solving this Hamiltonian to find the energy shifts shall be left as an exercise for the reader.
+
+### The Stark effect
+
+To be completed...
 
 ## The variational method
 
