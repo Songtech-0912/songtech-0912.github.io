@@ -1721,7 +1721,7 @@ Note that when we take the limit $\lambda \to 0$, the perturbation vanishes, and
 
 The key idea of perturbation theory is that we assume a **series solution** for $\hat{H}|\varphi_{n}\rangle = E_{n}|\varphi_{n}\rangle$. More accurately, we assume that we can write the solution in terms of a *power series* in powers of $\lambda$. Now, this assumption doesn't always work - in fact there are some systems where it doesn't work at all - but using this assumption makes it possible to find an approximate solution using analytical methods, which is "good enough" for most purposes. Remember, in the real world, it is *impossible* to measure anything to infinite precision, so having an approximate answer to a problem that is *close enough* to the exact solution is often more than sufficient to make testable predictions that align closely with experimental data.
 
-### Derivation of non-degenerate perturbation theory
+#### Derivation of non-degenerate perturbation theory
 
 To begin, remember that we aim to find the approximate wavefunctions and eigenenergies of the Hamiltonian. We also assume that the exact eigenstates $|\psi\rangle$ can be expressed as a power series in $\lambda$:
 
@@ -1966,7 +1966,7 @@ In practice, the first few terms of the series are usually enough to yield an ex
 
 > **Note:** For more in-depth discussion of the formulas for perturbation theory up to arbitrary order, see this [Physics StackExchange post](https://physics.stackexchange.com/questions/717102/higher-order-e-g-nth-order-corrections-to-non-degenerate-time-independent).
 
-### The ramp in an infinite square well
+### Example: The ramp in an infinite square well
 
 In our first example of using perturbation theory, let us consider a 1-dimensional infinite square well of length $L$, which has the standard "box" potential:
 
@@ -2013,7 +2013,7 @@ Where $\alpha \ll 1$ is some small constant. We want to find the first-order ene
 
 Where we applied the identity $\sin^2 x = \frac{1}{2} - \frac{\cos(2x)}{2}$ to split the integral into two simpler integrals. The result tells us that we would observe a first-order energy shift of $\Delta E = \alpha L/2$ upon applying the ramp potential. This makes sense: if the ramp potential is a positive potential (for $\alpha > 0$) the particle is pushed "up" by the ramp and has increased potential energy, while if the ramp potential is a negative potential (for $\alpha < 0$) the particle falls "down" the ramp and has less potential energy.
 
-### The quantum pendulum
+### Example 2: The quantum pendulum
 
 The quantum pendulum is a simple model of a nonlinear harmonic oscillator and a classical problem in perturbation theory. Due to its nonlinearity, it behaves differently from the otherwise-similar quantum harmonic oscillator. The quantum pendulum is described by a Hamiltonian of the form:
 
@@ -2121,7 +2121,7 @@ The formerly infinite sum therefore collapses into two terms (with respective va
 
 Unlike the first-order correction, the second-order correction is *decidedly nonzero*. In addition, it is always positive *except* for the ground state (where it is negative), meaning that it effectively *decreases* the ground-state energy of the particle and *increases* the energy of all excited states. This has interesting implications, since a lower (as in *more negative*) ground state energy generally means that a particle is more tightly bound to a potential. Indeed, an important application of the quantum pendulum model is to describe the **Josephson effect** in Josephson junctions, a class of superconducting circuits whose operating principle is based on electron tunneling through a gap between two superconductors.
 
-### The quartic harmonic oscillator
+### Example 3: The quartic harmonic oscillator
 
 Lastly, we will consider the quartic harmonic oscillator, which is a nonlinear modification of the quantum harmonic oscillator with the following potential:
 
@@ -2182,6 +2182,86 @@ Where $!!$ denotes the double factorial. In our case, letting $n = 2$ and $a = m
 {% end %}
 
 This result is particularly interesting because it is a result that depends on the mass $m$ of the particle. In fact, the ground-state energy shift due to the quartic term is actually *inversely-proportional* to the mass! This tells us that lighter particles "feel" the quartic potential more strongly, even though the mass of the particle doesn't appear in the quartic potential itself. Additionally, the correction to the ground-state energy is *positive*, meaning that the particle becomes less tightly bound as a result of the quartic potential. Hence, while a "toy model", the quartic harmonic oscillator is still an important model to study, and even serves as simplified (0+1)-dimensional version of the [Higgs mechanism](https://en.wikipedia.org/wiki/Spontaneous_symmetry_breaking#Sombrero_potential) in particle physics.
+
+Non-degenerate perturbation theory works as long as we are dealing with non-degenerate states. Unfortunately, most quantum systems exhibit some amount of degeneracy. The hydrogen atom, for instance, contains $n^2$ or $2n^2$ (depending on whether you count spin) degenerate states for the $n$-th energy level. In the case of $n = 2$ (the first excited state of hydrogen) this means we have 4 (or 8, if you count spin) degenerate states!
+
+The problem with degenerate eigenstates of the Hamiltonian in perturbation theory arises due to the fact that such eigenstates *by definition* share the same energy. Recall that previously, we noted that the first-order correction to the eigenstates are given by:
+
+{% math() %}
+|\varphi_n^{(1)}\rangle = \sum_{m\,(m \neq n)} \frac{\langle \varphi_m^{(0)}|\hat W |\varphi_{n}^{(0)}\rangle}{\left(\small E_{n}^{(0)} - E_{m}^{(0)}\right)}|\varphi_m^{(0)}\rangle
+{% end %}
+
+In degenerate systems, $E_n^{(0)} = E_m^{(0)}$, so we have $E_n^{(0)} - E_m^{(0)} = 0$. This gives us an undefined value of $\frac{1}{0}$. Clearly, this is not a physical solution! Hence, we must turn to **degenerate perturbation theory**, a version of stationary perturbation theory that specifically applies to degenerate states.
+
+The trick to making degenerate states work in perturbation theory is to perform a *change of basis* into a new basis. In linear algebra, this process is known as **diagonalization**. To start with, assume that we have a set of $N$ degenerate eigenstates $\{|\varphi_{1}\rangle, |\varphi_{2}\rangle, \dots, |\varphi_{i}\rangle, \dots, |\varphi_{N}\rangle\}$. The fact that they are **all degenerate** is essential here! We now compute the following matrix $H_{ij}$, where:
+
+{% math() %}
+H_{ij} = \langle \varphi_{i} | \Delta \hat{H} | \varphi_{j} \rangle
+{% end %}
+
+If we were to write it out explicitly in matrix form, we'd have:
+
+{% math() %}
+H_{ij} = \begin{pmatrix}
+\langle \varphi_{1} | \Delta \hat{H} | \varphi_{1} \rangle & \langle \varphi_{1} | \Delta \hat{H} | \varphi_{2} \rangle & \langle \varphi_{1} | \Delta \hat{H} | \varphi_{3} \rangle & \dots & \langle \varphi_{1} | \Delta \hat{H} | \varphi_{N} \rangle \\
+\langle \varphi_{2} | \Delta \hat{H} | \varphi_{1} \rangle & \langle \varphi_{2} | \Delta \hat{H} | \varphi_{2} \rangle & \langle \varphi_{2} | \Delta \hat{H} | \varphi_{3} \rangle & \dots & \langle \varphi_{2} | \Delta \hat{H} | \varphi_{N} \rangle \\
+\vdots & \vdots & \vdots & \vdots & \vdots \\
+\langle \varphi_{i} | \Delta \hat{H} | \varphi_{1} \rangle & \langle \varphi_{i} | \Delta \hat{H} | \varphi_{2} \rangle & \langle \varphi_{i} | \Delta \hat{H} | \varphi_{3} \rangle & \dots & \langle \varphi_{i} | \Delta \hat{H} | \varphi_{N} \rangle \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+\langle \varphi_{N} | \Delta \hat{H} | \varphi_{1} \rangle & \langle \varphi_{N} | \Delta \hat{H} | \varphi_{2} \rangle & \langle \varphi_{N} | \Delta \hat{H} | \varphi_{3} \rangle & \dots & \langle \varphi_{N} | \Delta \hat{H} | \varphi_{N} \rangle
+\end{pmatrix}
+{% end %}
+
+While computing all of these inner products may *look* scary, we often don't need to compute all of them due to orthogonality relations between different states. To find the corrections to the eigenenergies, we must diagonalize this matrix. We can do this by solving the following **eigenvalue equation**:
+
+{% math() %}
+\det(H_{ij} - \varepsilon \delta_{ij}) = 0
+{% end %}
+
+Where $\delta_{ij}$ is the identity matrix. Our aim is to solve for $\varepsilon$, the eigenvalues of $H_{ij}$. Once we do so, we get a new, diagonalized matrix in the form:
+
+{% math() %}
+H_{ij}' = \begin{pmatrix}
+\varepsilon_{1} &  &  &  &  &  \\
+ & \varepsilon_{2} &  &  &  &  \\
+ &  & \ddots & & &  \\
+ &  &  & \varepsilon_{i} &  &  \\
+ & & & & \ddots &  \\
+ &  &  &  & & \varepsilon_{N - 1} \\
+ &  &  &  & &  & \varepsilon_{N}
+\end{pmatrix}, \quad H_{ij}' = 0 \text{ if } i \neq j
+{% end %}
+
+(By definition all the components of $H_{ij}'$ are zero except on the diagonal.) Here, $\varepsilon_i$ is the $i$-th eigenvalue of $H_{ij}$ and there are $N$ eigenvalues total. They physically correspond to the energy eigenvalues of the perturbation $\Delta \hat H$.
+
+> **Note:** while there will always be $N$ eigenvalues, some of these may be repeated eigenvalues or zero. If you see these, don't freak out!
+
+The corresponding **eigenvectors** of $H_{ij}$ are the basis vectors for the new basis, and are the solutions of the following equation:
+
+{% math() %}
+(H_{ij} - \varepsilon \delta_{ij}) |\phi\rangle = 0
+{% end %}
+
+We therefore now have a set of eigenvalues and a set of eigenvectors at our disposal:
+
+{% math() %}
+\{\varepsilon_{1}, \varepsilon_{2}, \varepsilon_{3}, \dots, \varepsilon_{N} \}, \quad
+\{|\phi_{1}\rangle, |\phi_{2}\rangle, |\phi_{3}\rangle, \dots, |\phi_{N}\rangle \}
+{% end %}
+
+Now is the key part: the **energy corrections (shifts)** $\Delta E_i$ to the $i$-th *eigenstate* are **exactly equal** to the $i$-th *eigenvalue* of $H_{ij}$! That is, we have:
+
+{% math() %}
+\Delta E_{i} = \varepsilon_{i}
+{% end %}
+
+Meanwhile, the **corrections to the eigenstates** $|\tilde{\varphi}_{i}\rangle$ are:
+
+{% math() %}
+|\tilde{\varphi}_{i}\rangle = \sum_{j = 1}^N c_{ij} |\varphi_{j}\rangle
+{% end %}
+
+Where $c_{ij}$ is the $j$-th component of eigenvector $|\phi_i\rangle$. We therefore observe that the new eigenstates have *mixed* the original degenerate eigenstates into new eigenstates. This "lifts" the degeneracy (a fancy term for essentially saying that the degenerate eigenstates have been made no longer degenerate) and allows the eigenstates of the Hamiltonian to be well-defined, at the cost of requiring the mixing of the original eigenstates.
 
 ## Applications of stationary perturbation theory
 
