@@ -2449,7 +2449,7 @@ The calculation of the fine structure corrections to the energy levels of the hy
 
 > **Historical note:** Interestingly enough, the fine-structure expression for the energy levels of hydrogen predates (modern) quantum mechanics! In fact, it was first derived in the now-antiquated [Bohr-Sommerfeld model](https://en.wikipedia.org/wiki/Bohr%E2%80%93Sommerfeld_model#Relativistic_orbit) by Arnold Sommerfeld in 1919. It is remarkable that Sommerfeld managed to find the relativistically-correct expression for the energy levels of hydrogen without the use of perturbation theory or even the Schrödinger equation!
 
-> **Note:** In the entire calculation for the fine structure, we will assume that the Bohr radius $a_0$ of the atom is approximately equal to its reduced Bohr radius $a_0^*$. The difference between the two is so small that except for exotic atoms (like positronium and muonium) $a_0$ and $a_0^*$ are effectively equal.
+> **Note:** In the entire calculation for the fine structure, we will assume that the Bohr radius $a_0$ of the atom is approximately equal to its reduced Bohr radius {% inlmath() %}a_0^*{% end %}. The difference between the two is so small that except for exotic atoms (like positronium and muonium) {% inlmath() %}a_0{% end %} and {% inlmath() %}a_0^*{% end %} are effectively equal.
 
 #### The relativistic energy correction
 
@@ -2728,7 +2728,7 @@ Note that this energy shift only affects $s$ orbitals (those with $\ell = 0$) si
 |\psi_{100}(0)|^2 = \frac{1}{\pi a_{0}^3} = \frac{1}{\pi}\left( \frac{m_{e}c\alpha}{\hbar} \right)^3 \implies \Delta E_\mathrm{Darwin} = \frac{Z\alpha^4 m_{e}c^2}{2}
 {% end %}
 
-(We use the approximation $a_0 \approx a_0^*$ here; technically we should use the reduced Bohr radius $a_0^*$ in $|\psi(0)|$, but to a good approximation $a_0^*$ is equal to the regular Bohr radius of $a_0 \approx \pu{52.92 pm}$). Substituting in numbers, the Darwin energy correction for the hydrogen ground state has a numerical value of:
+(We use the approximation {% inlmath() %}a_0 \approx a_0^*{% end %} here; technically we should use the reduced Bohr radius {% inlmath() %}a_0^*{% end %} in $|\psi(0)|$, but to a good approximation {% inlmath() %}a_0^*{% end %} is equal to the regular Bohr radius of {% inlmath() %}a_0 \approx \pu{52.92 pm}{% end %}). Substituting in numbers, the Darwin energy correction for the hydrogen ground state has a numerical value of:
 
 {% math() %}
 \Delta E_\mathrm{Darwin} \approx \pu{7.245 * 10^{-5} eV}
