@@ -2918,6 +2918,96 @@ It is instructive to ask the question: how do fine structure and hyperfine struc
 | Fine structure           | Around $\pu{1 meV}$        | UV, visible light, near-infrared |
 | Hyperfine structure      | Around $\pu{1 \mu eV}$     | Microwaves (GHz range)           |
 
+### The Lamb shift
+
+Although fine (and hyperfine) structure lifts the degeneracy of many of the states of the hydrogen atom, it does not do so for all of them. For instance, the transition $2s^{1/2} \to 2p^{1/2}$ is conventionally impossible since they share the same $n$ and $j$ quantum numbers; hence, the fine-structure formula would tell us that the two states are degenerate (and thus share the same energies). Nevertheless, we physically *do* observe the transition, and it is due to something called the **Lamb shift**.
+
+The Lamb shift originates from the quantum fluctuations of the electromagnetic field, much like the Darwin term in our calculation of the fine structure. Roughly-speaking, the quantum fluctuations have the net effect of "smearing" out the electron's position, which in turn modifies the Coulomb potential:
+
+{% math() %}
+V(r) = -\frac{Qe^2}{4\pi \varepsilon_{0}r} \to -\frac{Qe^2}{4\pi \varepsilon_{0}(r + \delta r)}
+{% end %}
+
+Where $\delta r$ is the average size of the fluctuations and $Q = Z$.  While a full derivation of the Lamb shift would require relativistic quantum field theory (which is something we'll cover much later), we can use a non-relativistic approximation to calculate the Lamb shift in the context of perturbation theory. The precise details are a bit complex (see [these lecture notes](https://quantummechanics.ucsd.edu/ph130a/130_notes/node476.html) if you want to see the derivation), but the general result is:
+
+{% math() %}
+\Delta E_{n} = \frac{2\alpha}{3\pi m_{e}^2 c^2} \frac{\hbar^2 \ln(k_0)}{2} \langle \nabla^2 V_{C}\rangle
+{% end %}
+
+Where $V_{C} = -Ze^2/4\pi \varepsilon_0 r$ is the Coulomb potential and $\ln(k_0) \approx \ln(1/8.9 \alpha^2)$ is known as the **Bethe logarithm**. To compute the energy shifts explicitly, we must compute $\langle \nabla^2 V_{C}\rangle$. The following identity is useful:
+
+{% math() %}
+\nabla^2\left( \frac{1}{r} \right) = -4\pi \delta^3(\mathbf{r})
+{% end %}
+
+Where $\delta^3(r)$ is the 3-dimensional Dirac delta function. Thus we have:
+
+{% math() %}
+\langle \nabla^2 V\rangle = -\frac{Z e^2}{4\pi\varepsilon_{0}} \int \psi_{n}^*(\mathbf{r}) \delta(\mathbf{r}) \psi_{n}(\mathbf{r}) dV = -\frac{Z e^2}{\varepsilon_{0}}|\psi_{n}(0)|^2
+{% end %}
+
+In the case of hydrogen and similar atoms, we know that the wavefunction at the origin is only nonzero for $\ell = m = 0$, for which it is given by:
+
+{% math() %}
+|\psi_{n00}(0)|^2 = \frac{1}{\pi} \left( \frac{Z}{na_{0}} \right)^3 = \frac{1}{\pi} \left( \frac{Z}{n} \frac{\alpha m_{e}c}{\hbar} \right)^3
+{% end %}
+
+Substituting this back into our expression for $\Delta E_n$, we have:
+
+{% math() %}
+\begin{align*}
+\frac{\hbar^2}{2}
+\langle \nabla^2 V\rangle &= -\frac{Ze^2 \hbar^2}{2 \varepsilon_{0}} |\psi_{n}(0)|^2 \\
+&= -\frac{Z^4e^2 \hbar^2}{2\pi \varepsilon_{0} n^3} \left(\frac{\alpha m_{e}c}{\hbar} \right)^3 \\
+&= Z^4 \hbar^2 \left( \frac{2\hbar c \alpha}{n^3} \right) \left( \frac{\alpha m_{e}c}{\hbar} \right)^3 \\
+&= \frac{2Z^4 \alpha^4}{n^3} m_{e}^3 c^4
+\end{align*}
+{% end %}
+
+Where it is useful to note that $\frac{e^2}{2\pi \varepsilon_{0}} = 2\hbar c \alpha$. Hence, the energy shifts are given by:
+
+{% math() %}
+\Delta E_{n} = \frac{2\alpha}{3\pi m_{e}^2 c^2} \frac{2Z^4 \alpha^4}{n^3} m_{e}c^4\ln(k_0) = \frac{4Z^4\alpha^5 m_{e}c^2}{3\pi n^3} \ln k_{0} \approx \pu{34.37 \mu eV} \cdot\frac{Z^4}{n^3}
+{% end %}
+
+For the transition $2s^{1/2} \to 2p^{1/2}$, this corresponds to a frequency of $\nu \approx \pu{1085.15 MHz}$, which is within 3% of the experimentally measured value of $\pu{1057.864 MHz}$. This is a *tiny energy difference* many orders of magnitude below that of electronic energy levels, which explains why we typically don't notice the Lamb shift. Indeed, since it depends on $\alpha^5$ it is an order of magnitude smaller than fine structure, which depends on $\alpha^4$. However, notice that the Lamb shift also grows with the fourth power of the atomic number. Hence, while the Lamb shift is an extremely tiny correction to the energy levels of the hydrogen atom and is usually negligible, it can become a *much larger* energy shift for super-heavy atoms (e.g. uranium), for which it cannot be ignored.
+
+We will now account for the discrepancy between our theoretically-predicted transition frequency and the experimental data. This discrepancy comes as a result of several factors: first, our treatment is non-relativistic, and second, it includes only the so-called *self-energy correction*. There are two other smaller effects that contribute towards the Lamb shift, as shown below:
+
+| Effect                    | Energy contribution |
+| ------------------------- | ------------------- |
+| Electron self-energy\*    | +1017 MHz           |
+| Anomalous magnetic moment | +68 MHz             |
+| Vacuum polarization       | -27 MHz             |
+| Total                     | **+1058 MHz**       |
+
+_Source: [LibreTexts](https://phys.libretexts.org/Bookshelves/Quantum_Mechanics/Quantum_Mechanics_(Walet)/12%3A_Quantum_Mechanics_of_the_Hydrogen_Atom/12.05%3A_Smaller_Effects/12.5.02%3A_The_Lamb_Shift)_
+
+<small>*: Also known as "electron mass renormalization" in the quantum electrodynamics</small>
+
+The effect of **vacuum polarization** can be described by replacing the Coulomb potential with a modified potential in the form:
+
+{% math() %}
+\begin{align*}
+V(r) &= -\frac{Ze^2}{4\pi\varepsilon_{0}}\left( 1 +  \frac{4}{15} \left( \frac{e^2 \hbar^3}{4\pi \varepsilon_{0} m_{e}^2 c} \right) \delta^{(3)}(r) \right) \\
+&= -\left( \frac{\alpha \hbar c}{r} + \frac{4\alpha^2 \hbar^3}{15m_{e}^2 c} \delta^{(3)}(r) \right)
+\end{align*}
+{% end %}
+
+Where $\alpha$ is the fine-structure constant and $\delta^{(3)}(r)$ is the 3-dimensional Dirac delta function (for those curious, see _Quantum Field Theory for the Gifted Amateur Ch. 41.1_ for the derivation from the renormalized photon propagator). The second term in the potential can be treated as a perturbation $\Delta V$ to the potential, that is:
+
+{% math() %}
+\Delta V = -\frac{4\alpha^2 \hbar^3}{15m_{e}^2 c} \delta^{(3)}(r)
+{% end %}
+
+Using first-order perturbation theory with this as our perturbation gives us an energy shift of:
+
+{% math() %}
+\Delta E = \int \psi_{n}^*(\mathbf{r}) \Delta V \psi_{n}(\mathbf{r})dV =  -\frac{4\alpha^2 \hbar^3}{15m_{e}^2 c} |\psi(0)|^2 =-\frac{4\alpha^2 \hbar^3}{15\pi m_{e}^2 c} \left( \frac{Z}{na_{0}} \right)^3
+{% end %}
+
+Finally, the effect of the **anomalous magnetic moment** can be incorporated by replacing $g_{s} = 2$ in the spin-orbital coupling terms in the Hamiltonian with the actual value of $g_s = 2 + \frac{\alpha}{\pi} + \dots$ which is approximately $g_{s} = 2.0023193$. For those curious, this effect comes from the non-trivial terms in the QED vertex function, but that is beyond the scope of this guide. Finally, while our computation predicts that the Lamb shift is only nonzero for $s$ orbitals, we do observe a (much smaller) shift for $p$ orbitals as well; this suggests that we have to be more careful with our approximations. A detailed calculation of the Lamb shift using relativistic quantum field theory leads to a result that differs from the experimental value by under $10^{-6}$, making it one of the [most accurate predictions in all of physics](https://en.wikipedia.org/wiki/Precision_tests_of_QED).
+
 ## The variational method
 
 Perturbation theory is all well and good for finding approximate solutions to the Schrödinger equation, but it is not perfect. This is because it *requires* an arbitrary Hamiltonian to be able to be written as the sum of a simple, analytically-solvable Hamiltonian plus a small perturbation. It no longer works if the perturbation is large, or if this decomposition is not possible!
