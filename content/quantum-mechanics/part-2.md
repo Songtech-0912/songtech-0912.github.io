@@ -2435,6 +2435,489 @@ Our derivation so far has followed the approach used by most introductory texts,
 
 To be completed...
 
+### The fine structure of hydrogen
+
+We observe that among the spectral lines of the hydrogen atom, there are lines at wavelengths not accounted for by the Rydberg formula. In particular, these lines indicate transitions between eigenstates with different values of $\ell$ but the same value of $n$. But in the basic solution to the hydrogen atom, these states are degenerate, and therefore should have the same energies, making it impossible for a transition to occur between them. So why do they occur?
+
+The answer lies in the **fine structure** of hydrogen. Fine structure is a combination of several different effects that shift the energy levels of the hydrogen atom and lift the degeneracy of the energy levels:
+
+- **Spin-orbit coupling** (_SO coupling_), which comes from considering the interaction of the electron's magnetic moment with the nuclear magnetic field
+- The **relativistic energy correction**, which comes from the difference between the relativistic expression and non-relativistic expressions for the kinetic energy operator
+- The **Darwin term**, which comes from the interaction of the electron with the quantum fluctuations of the electromagnetic field (called _zitterbewegung_)
+
+The calculation of the fine structure corrections to the energy levels of the hydrogen atom is interesting in that it actually does have an *exact solution*. This involves solving the relativistic [Dirac equation](https://en.wikipedia.org/wiki/Dirac_equation) (which we'll get more to later), and gives the precise energy levels including all relativistic effects as well as spin. However, this solution is complicated, and using perturbation theory, we can arrive at an *approximate solution* that is close enough to the exact solution that it is essentially "correct".
+
+> **Historical note:** Interestingly enough, the fine-structure expression for the energy levels of hydrogen predates (modern) quantum mechanics! In fact, it was first derived in the now-antiquated [Bohr-Sommerfeld model](https://en.wikipedia.org/wiki/Bohr%E2%80%93Sommerfeld_model#Relativistic_orbit) by Arnold Sommerfeld in 1919. It is remarkable that Sommerfeld managed to find the relativistically-correct expression for the energy levels of hydrogen without the use of perturbation theory or even the Schrödinger equation!
+
+> **Note:** In the entire calculation for the fine structure, we will assume that the Bohr radius $a_0$ of the atom is approximately equal to its reduced Bohr radius $a_0^*$. The difference between the two is so small that except for exotic atoms (like positronium and muonium) $a_0$ and $a_0^*$ are effectively equal.
+
+#### The relativistic energy correction
+
+Let's start with the relativistic energy correction, the first major contribution to the fine-structure constant. This correction is due to the fact that in the Hamiltonian for the hydrogen atom, we started from the non-relativistic expression for the kinetic energy:
+
+{% math() %}
+K_\mathrm{nonrelativistic} = \frac{p^2}{2m}
+{% end %}
+
+Where $p$ is the momentum and $m$ is the mass of a (classical) particle. But special relativity tells us that the relativistically-correct formula for the kinetic energy is:
+
+{% math() %}
+\begin{align*}
+K_\mathrm{relativistic} &= \sqrt{ (pc)^2 + (mc^2)^2 } - mc^2 \\
+&= mc^2 \sqrt{ 1 + \left( \frac{p}{mc} \right)^2 } - mc^2 \\
+&= mc^2 + \left( \frac{p^2}{2m} - \frac{p^4}{8m^3 c^2} + \dots\right) - mc^2 \\
+&= \frac{p^2}{2m} - \frac{p^4}{8m^3 c^2}
+\end{align*}
+{% end %}
+
+Where in the third step, we utilized a Taylor expansion to approximate the square root (where here, $x = p/mc$):
+
+{% math() %}
+\sqrt{ 1 + x^2} \approx 1 + \frac{1}{2}x^2 - \frac{1}{8}x^4 + \frac{1}{16}x^6 - \frac{5}{128}x^8 + \dots
+{% end %}
+
+> **Note:** Higher-order terms in the Taylor expression for the relativistic kinetic energy are suppressed by powers of $1/c^4 \sim 10^{-34}$ and hence we can safely ignore them in our perturbative calculations.
+
+Hence, the difference between the relativistic and non-relativistic expressions is given (to first-order) by:
+
+{% math() %}
+K_\mathrm{nonrelativistic} - K_\mathrm{relativistic} = -\frac{p^4}{8m^3 c^2}
+{% end %}
+
+The corresponding perturbation $\Delta \hat H_\mathrm{relativity}$ is obtained by changing the classical momentum $p$ into the quantum momentum operator $\hat p$, giving us:
+
+{% math() %}
+\Delta \hat H_\mathrm{relativity} = -\frac{\hat{p}^4}{8m^3 c^2}
+{% end %}
+
+Hence, first-order perturbation theory gives us:
+
+{% math() %}
+\begin{align*}
+\Delta E^{(1)}_\mathrm{relativity} &= \langle \varphi_{n}|\Delta \hat{H}_\mathrm{relativity}|\varphi_{n}\rangle \\
+&= -\frac{1}{8m^3 c^2}\langle \varphi_{n}|\hat{p}^4|\varphi_{n}\rangle
+\end{align*}
+{% end %}
+
+Now, we can use a clever trick to compute the inner product in a simpler way. Recall that the Bohr energies $E_n$ are the solutions to the non-relativistic Hamiltonian $\hat H_0 = \frac{\hat p^2}{2m} + V(r)$, where $V(r)$ is the Coulomb potential. Therefore, we have:
+
+{% math() %}
+\hat{H}_{0}|\varphi_{n}\rangle = \left(\frac{\hat p^2}{2m} + V(r)\right)|\varphi_{n}\rangle = E_{n}|\varphi_{n}\rangle
+{% end %}
+
+Now, since this is a linear eigenvalue equation, we can rearrange it to:
+
+{% math() %}
+E_{n}|\varphi_{n}\rangle - V(r) |\varphi_{n}\rangle = \frac{\hat{p}^2}{2m}|\varphi_{n}\rangle
+{% end %}
+
+Therefore, we have:
+
+{% math() %}
+\hat{p}^2|\varphi_{n}\rangle = 2m(E_{n} - V(r))|\varphi_{n}\rangle
+{% end %}
+
+This tells us that:
+
+{% math() %}
+\begin{align*}
+\hat{p}^4|\varphi_{n}\rangle &= \hat{p}^2[\hat{p}^2|\varphi_{n}\rangle] \\
+&= \big(2m[E_{n} - V(r)]\big)^2|\varphi_{n}\rangle \\
+&= 4m^2(E_{n} - 2E_{n}V(r) + V(r)^2)|\varphi_{n}\rangle
+\end{align*}
+{% end %}
+
+Hence, we have avoided needed to explicitly evaluate $\hat p^4$, which would otherwise involve taking fourth-derivatives of the eigenfunctions — that would not be fun at all! Now, we can expand the terms out and substitute them back into the first-order energy correction equation:
+
+{% math() %}
+\begin{align*}
+\Delta E_\mathrm{relativity} &= -\frac{1}{8m^3 c^2}\langle \varphi_{n}|\hat{p}^4|\varphi_{n}\rangle \\
+&= -\frac{4m^2}{8m^3 c^2} \langle \varphi_{n}|(E_{n} - 2E_{n}V(r) + V(r)^2)|\varphi_{n}\rangle \\
+&= -\frac{1}{2m_{e} c^2}(E_{n}^2 - 2 E_{n}\langle V(r)\rangle + \langle V(r)^2\rangle)
+\end{align*}
+{% end %}
+
+In the last step, we have chosen to explicitly set $m = m_e$, where $m_e$ is the electron mass; this was implied in the previous steps but not written out explicitly. All that is left is computing the expectation values $\langle V(r)\rangle$ and $\langle V(r)^2\rangle$ of the Coulomb potential $V(r) = -\frac{Ze^2}{4\pi \varepsilon_{0}r}$, which are respectively given by:
+
+{% math() %}
+\langle V(r)\rangle = -\frac{Ze^2}{4\pi\varepsilon_{0}} \left\langle \frac{1}{r}\right\rangle, \quad \langle V(r)^2\rangle = \left( \frac{Ze^2}{4\pi\varepsilon_{0}} \right)^2\left\langle \frac{1}{r^2}\right\rangle
+{% end %}
+
+We may evaluate these with the following identities:
+
+{% math() %}
+\left\langle \frac{1}{r}\right\rangle = \frac{Z}{a_{0}n^2}, \quad \left\langle \frac{1}{r^2}\right\rangle = \frac{Z^2}{n^3 a_{0}^2 \left( \ell + \frac{1}{2} \right)}
+{% end %}
+
+Where $a_0$ is the Bohr radius and $n, \ell$ are the principal and azimuthal quantum numbers respectively. Substituting these in gives us:
+
+{% math() %}
+\langle V(r)\rangle = -\frac{Z^2e^2}{4\pi\varepsilon_{0} a_{0}n^2}, \quad \langle V(r)^2\rangle = \frac{Z^4 e^4}{16\pi^2 \varepsilon_{0}^2} \frac{1}{n^3 a_{0}^2 \left( \ell + \frac{1}{2} \right)}
+{% end %}
+
+There is a more elegant way to write these two expressions, using the **fine structure constant** $\alpha$, which is given by:
+
+{% math() %}
+\alpha = \frac{e^2}{4\pi\varepsilon_{0}\hbar c} = 0.00729735 \approx \frac{1}{137}
+{% end %}
+
+The Bohr radius $a_0$ is itself related to the fine structure constant by $a_0 = \hbar/(m_ec\alpha)$. In fact, nearly every quantum system that has anything to do with an atom can be written in some way in terms of the fine-structure constant! Its ubiquity throughout quantum physics is all the more mysterious considering that it is a *dimensionless number* whose value, to this day, *cannot* be predicted from first principles. Moreover, its reciprocal $\frac{1}{\alpha}$ is *very nearly* 137, a value that has fascinated (and spooked) generations of physicists. Attempting to find an explanation for its value (or trying to find a formula that predicts that value of $\alpha$ from pure numbers) has led some on a path to [numerology](https://en.wikipedia.org/wiki/Numerology#Related_uses), others to begrudging acceptance, and still others to denial. Regardless, the fine structure constant has become an integral part of quantum physics and is here to stay.
+
+But back on topic! In terms of the fine-structure constant, the expectation values we calculated take the following (much more elegant) forms:
+
+{% math() %}
+\begin{align*}
+\langle V(r)\rangle &= -\frac{Z^2 \alpha \hbar c}{n^2 a_{0}} = -\frac{Z^2}{n^2} \alpha \hbar c \frac{m_{e}c \alpha}{\hbar} \\ &= -\frac{Z^2}{n^2}m_{e}c^2 \alpha^2 \\
+\langle V(r)^2\rangle &= \frac{Z^4 (\alpha \hbar c)^2}{n^3\left( \ell + \frac{1}{2} \right)} \frac{1}{a_{0}^2} = \frac{Z^4 (\alpha \hbar c)^2}{n^3\left( \ell + \frac{1}{2} \right)} \frac{1}{a_{0}^2}\frac{(m_{e}c \alpha)^2}{\hbar^2} \\&= \frac{Z^4 \alpha^4}{n^3} \frac{m_{e}^2 c^4}{\left( \ell + \frac{1}{2} \right)}
+\end{align*}
+{% end %}
+
+Meanwhile, the Bohr energies $E_n$ can also be expressed in terms of the fine structure constant as:
+
+{% math() %}
+E_{n} = -\frac{Z^2}{2n^2}m_{e}c^2 \alpha^2 = \frac{1}{2}\langle V(r)\rangle \implies \langle V(r)\rangle = 2E_{n}
+{% end %}
+
+(This relation is not coincidental; it is a consequence of the virial theorem, which we discussed when we went over the Bohr model.) Substituting these in gives us our final expression(s) for the relativistic energy correction:
+
+{% math() %}
+\begin{align*}
+\Delta E_\mathrm{relativity} &= -\frac{1}{2m_{e} c^2}(E_{n}^2 - 2 E_{n}\langle V(r)\rangle + \langle V(r)^2\rangle) \\
+&= -\frac{1}{2m_{e}c^2}\left\{ E_{n}^2 - 2E_{n}(2E_{n}) + \frac{Z^4 \alpha^4}{n^3} \frac{m_{e}^2 c^4}{\left( \ell + \frac{1}{2} \right)} \right\} \\
+&= -\frac{1}{2m_{e}c^2}\left\{\frac{Z^4 \alpha^4}{n^3} \frac{m_{e}^2 c^4}{\left( \ell + \frac{1}{2} \right)}-3E_{n}^2\right\} \\
+&= -\frac{Z^4 \alpha^4}{2n^3} \frac{m_{e}c^2}{\left( \ell + \frac{1}{2} \right)} -\frac{3}{2m_{e}c^2}\left( -\frac{Z^2}{2n^2}m_{e}c^2 \alpha^2 \right)^2 \\
+&= -\frac{Z^4 \alpha^4}{2n^3} \frac{m_{e}c^2}{\left( \ell + \frac{1}{2} \right)} - \frac{3Z^4 \alpha^4 m_{e} c^2}{4n^4} \\
+&= -\frac{Z^4 \alpha^4 m_{e}c^2}{2n^3}\left( \frac{1}{\ell + \frac{1}{2}} - \frac{3}{4n} \right)
+\end{align*}
+{% end %}
+
+Where $n$ is the principal quantum number and $\ell$ is the azimuthal quantum number, as before. For the ground state of hydrogen (with $n = 1, \ell = 0$) this gives us an energy shift of:
+
+{% math() %}
+\Delta E_\mathrm{relativity} \approx -\pu{9.056 * 10^{-4} eV}
+{% end %}
+
+#### Spin-orbit coupling
+
+Let's now analyze the effect of spin-orbit coupling (sometimes abbreviated as "SO coupling"). Spin-orbit coupling comes from the interaction between electron spin and the magnetic field generated by the a moving nucleus. _"But wait! Isn't the nucleus stationary?"_ Indeed that is essentially correct, but only in the *rest frame of the atom*. Einstein's theory of relativity tells us that in the electron's rest frame, the electron is stationary, while the nucleus is moving! And since a moving charge generates a magnetic field, that magnetic field can then interact with the electron's spin, leading to spin-orbit coupling!
+
+First, let's calculate the magnetic field of the nucleus in the rest frame of the electron. We can assume (to a good approximation) that the nucleus is a classical point charge. The magnetic field of a point charge of charge $q$ moving at velocity $\mathbf{v}'$ is given by the Biot-Savart law, which (in its simplified form) is given by:
+
+{% math() %}
+\mathbf{B}(\mathbf{r}) = \frac{\mu_{0}}{4\pi} \frac{q\mathbf{v}' \times \mathbf{r}}{r^3}
+{% end %}
+
+Where $\mu_0$ is the *permeability of free space*, and is a fundamental constant of electromagnetism. The nucleus is positively-charged, so its charge is $Ze$. Meanwhile, by the principle of relativity, its velocity $\mathbf{v}'$ is equal to $-\mathbf{v}$ (the negative of the electron's velocity in the atom's rest frame). This gives us:
+
+{% math() %}
+\mathbf{B}(\mathbf{r}) = -\frac{\mu_{0}}{4\pi} \frac{Ze\mathbf{v} \times \mathbf{r}}{r^3} = \frac{(Ze)\mu_{0}}{4\pi} \frac{\mathbf{r} \times \mathbf{v}}{r^3}
+{% end %}
+
+Where we used the fact that cross products are anti-commutative ($\mathbf{A} \times \mathbf{B} = -\mathbf{B} \times \mathbf{A}$). Now, in the atom's rest frame, we know that the velocity $\mathbf{v}$ of the electron is related to its momentum $\mathbf{p}$ by $\mathbf{p} = m_{e}\mathbf{v}$. We can therefore write $\mathbf{v} = \mathbf{p}/m_{e}$, upon which substitution into the expression for the magnetic field gives us:
+
+{% math() %}
+\mathbf{B}(\mathbf{r}) = \frac{(Ze)\mu_{0}}{4\pi m_{e}} \frac{\mathbf{r} \times \mathbf{p}}{r^3} = \frac{(Ze)\mu_{0}}{4\pi m_{e}} \frac{\mathbf{L}}{r^3}
+{% end %}
+
+Where $\mathbf{L}$ is the classical angular momentum of the electron (we'll soon quantize this). We'll also make another small change by replacing $\mu_0$ with $1/(\varepsilon_0 c^2)$. This comes from the definition of the speed of light, which is given by:
+
+{% math() %}
+c = \frac{1}{\sqrt{ \mu_{0}\varepsilon_{0} }}
+{% end %}
+
+The reason for this change is to match the standard convention and to make it easier for our simplifications later. With this change, the magnetic field becomes:
+
+{% math() %}
+\mathbf{B}(\mathbf{r}) = \frac{Ze}{4\pi m_{e} \varepsilon_{0}c^2} \frac{\mathbf{L}}{r^3}
+{% end %}
+
+Now, recall from our calculation of the Zeeman effect that the interaction between an electron and a magnetic field can be expressed with the following perturbation in the Hamiltonian:
+
+{% math() %}
+\Delta \hat{H} = -\boldsymbol{\mu}_{M} \cdot \mathbf{B} = -g\frac{q}{2m} (\hat{\mathbf{S}} \cdot \mathbf{B})
+{% end %}
+
+Where $\hat{\mathbf{S}}$ is the spin operator, $\boldsymbol{\mu}_{M}$ is the magnetic dipole moment operator, $\mu_B$ is the Bohr magneton, and $g$ is the g-factor, which varies depending on the type of particle and whether the coupling is to orbital or spin angular momentum. In our case, we have an interesting situation, since *both* orbital and spin angular momentum play a role. It turns out that the right g-factor to use is given by:
+
+{% math() %}
+g = g_{s} - 1 = 1.0023193
+{% end %}
+
+Note that this is *almost* but not *exactly* equal to $g_l$, the electron orbital g-factor, which has a value of exactly one. The reason why $g_s - 1 \neq g_l$ is due to quantum electrodynamics, but that's a topic we'll reserve for later. In any case, we can plug our magnetic field and our not-one-but-almost-one g-factor to construct the following *spin-orbit coupling correction term* to the Hamiltonian:
+
+{% math() %}
+\Delta \hat{H}_\mathrm{SO} = -g\frac{q}{2m} (\hat{\mathbf{S}} \cdot \mathbf{B}) = \frac{Ze^2}{4\pi \varepsilon_{0}} \left( \frac{g_{s} - 1}{2m_{e}^2 c^2} \right) \frac{\hat{\mathbf{L}} \cdot \hat{\mathbf{S}}}{r^3}
+{% end %}
+
+Where $q = -e$ and $m = m_e$ for an electron, and we exchanged the *classical* angular momentum $\mathbf{L}$ for the *quantum* angular momentum operator $\hat{\mathbf{L}}$. Most of our work is now done, but we still have to apply perturbation theory to find the energy shifts. The spin-orbital energy shift $\Delta E_\mathrm{SO}$ is therefore given by:
+
+{% math() %}
+\begin{align*}
+\Delta E_\mathrm{SO} &= \langle \varphi_{n}| \Delta \hat{H}_\mathrm{SO} |\varphi_{n}\rangle \\
+&= \frac{Ze^2}{4\pi \varepsilon_{0}} \left( \frac{g_{s} - 1}{2m_{e}^2 c^2} \right) \left\langle \frac{\hat{\mathbf{L}} \cdot \hat{\mathbf{S}}}{r^3}\right\rangle
+\end{align*}
+{% end %}
+
+To evaluate the expectation value without needing to do explicit inner products, we can use a few shortcuts. First, we may use the identity:
+
+{% math() %}
+\langle \hat{\mathbf{L}} \cdot \hat{\mathbf{S}}\rangle = \frac{\hbar^2}{2}[j(j + 1) - \ell(\ell + 1) - s(s + 1)]
+{% end %}
+
+Where $s$ is the spin quantum number, $\ell$ is the azimuthal quantum number, and $j = \ell + s$ is the total angular momentum quantum number. Since electrons are spin-1/2 particles, we only have $s = \frac{1}{2}$ and thus:
+
+{% math() %}
+\langle \hat{\mathbf{L}} \cdot \hat{\mathbf{S}}\rangle = \frac{\hbar^2}{2}\left[ j(j + 1) - \ell(\ell + 1) - \frac{3}{4} \right]
+{% end %}
+
+Second, we can use the Kramers-Pasternack relation, which tells us that:
+
+{% math() %}
+\left\langle \frac{1}{r^3} \right\rangle = \frac{Z^3}{n^3 a_{0}^3} \frac{1}{\ell\left( \ell + \frac{1}{2} \right) (\ell + 1)}
+{% end %}
+
+You are welcome to derive these identities yourself if you so wish; however, we will not attempt to rigorously prove them. With these identities, the energy shift simplifies to:
+
+{% math() %}
+\begin{align*}
+\Delta E_\mathrm{SO} &= \frac{Ze^2}{4\pi \varepsilon_{0}} \left( \frac{g_{s} - 1}{2m_{e}^2 c^2} \right) \frac{\hbar^2}{2}\left(j(j + 1) - \ell(\ell + 1) - \frac{3}{4}\right) \left\langle \frac{1}{r^3}\right\rangle \\
+&= \frac{Ze^2}{4\pi \varepsilon_{0}} \left( \frac{g_{s} - 1}{2m_{e}^2 c^2} \right) \frac{\hbar^2}{2} \frac{Z^3}{n^3 a_{0}^3} \frac{j(j + 1) - \ell(\ell + 1) - \frac{3}{4}}{\ell\left( \ell + \frac{1}{2} \right) (\ell + 1)}
+\end{align*}
+{% end %}
+
+This can be expressed in terms of the fine-structure constant as:
+
+{% math() %}
+\Delta E_\mathrm{SO} = \frac{Z^4}{4n^3}m_{e} c^2 \alpha^4 (g_{s} - 1) \left[ \frac{j(j + 1) - \ell(\ell + 1) - \frac{3}{4}}{\ell\left( \ell + \frac{1}{2} \right) (\ell + 1)} \right]
+{% end %}
+
+Unfortunately, our theoretical results have one major error: we assumed $\mathbf{v}' = -\mathbf{v}$ at the beginning of our derivation, which only technically holds true for *inertial reference frames*. By contrast, the electron undergoes acceleration from the Coulomb force, which requires us to modify the relation. This is known as **Thomas precession**, and if we had included Thomas precession in our calculation, we find that the spin-orbital energies would be halved, giving us the corrected energies of:
+
+{% math() %}
+\begin{align*}
+\Delta E_\mathrm{SO} &= \frac{Z^4}{8n^3}m_{e} c^2 \alpha^4 (g_{s} - 1) \left[ \frac{j(j + 1) - \ell(\ell + 1) - \frac{3}{4}}{\ell\left( \ell + \frac{1}{2} \right) (\ell + 1)} \right] \\
+&\approx \frac{Z^4}{8n^3}m_{e} c^2 \alpha^4 \left[ \frac{j(j + 1) - \ell(\ell + 1) - \frac{3}{4}}{\ell\left( \ell + \frac{1}{2} \right) (\ell + 1)} \right]
+\end{align*}
+{% end %}
+
+> **Note:** in the last line we used the approximation $g_s = 2$, hence $g_s - 1 \approx 1$. This approximation is accurate enough for practically all purposes.
+
+#### The Darwin term
+
+The Darwin term arises from the quantum fluctuations of the electromagnetic field. This is because the electromagnetic field is fundamentally quantum. An oversimplified explanation can be found from the Heisenberg uncertainty principle, which tells us that $\Delta E \Delta t \geq \hbar/2$. This means that over very short time intervals, the total amount of energy in the electromagnetic field is uncertain, leading to *energy fluctuations*. This behavior is captured in the **Darwin Hamiltonian**, which we will not derive, but is given by:
+
+{% math() %}
+\Delta \hat{H}_\mathrm{Darwin} = \frac{Ze^2 \hbar^2}{8m_{e}^2 c^2 \varepsilon_{0}} \delta^3(\mathbf{r})
+{% end %}
+
+Where $\delta^3(\mathbf{r})$ is the Dirac delta function in three dimensions (here it has units of inverse volume). This is a delta function potential in the form $V = a \delta(x)$, and luckily, we already know how to solve potentials of the form from our exploration of the bound states of the delta function ("spike") potential. The solution, as we found, is:
+
+{% math() %}
+E_{n} = a|\psi_{n}(0)|^2
+{% end %}
+
+Therefore, substituting this in gives us an energy shift of:
+
+{% math() %}
+\Delta E_\mathrm{Darwin} = \frac{Ze^2 \hbar^2}{8m_{e}^2 c^2 \varepsilon_{0}}|\psi(0)|^2 = \frac{Z\alpha\hbar^3 \pi}{2m_{e}^2c} |\psi(0)|^2
+{% end %}
+
+Note that this energy shift only affects $s$ orbitals (those with $\ell = 0$) since only $s$ orbitals are nonzero at the origin. Since delta function potentials are zero everywhere except at the origin, they cannot affect states that have $\psi(0) = 0$, which corresponds to all states with $\ell \geq 1$. In the case of the hydrogen ground-state we have:
+
+{% math() %}
+|\psi_{100}(0)|^2 = \frac{1}{\pi a_{0}^3} = \frac{1}{\pi}\left( \frac{m_{e}c\alpha}{\hbar} \right)^3 \implies \Delta E_\mathrm{Darwin} = \frac{Z\alpha^4 m_{e}c^2}{2}
+{% end %}
+
+(We use the approximation $a_0 \approx a_0^*$ here; technically we should use the reduced Bohr radius $a_0^*$ in $|\psi(0)|$, but to a good approximation $a_0^*$ is equal to the regular Bohr radius of $a_0 \approx \pu{52.92 pm}$). Substituting in numbers, the Darwin energy correction for the hydrogen ground state has a numerical value of:
+
+{% math() %}
+\Delta E_\mathrm{Darwin} \approx \pu{7.245 * 10^{-5} eV}
+{% end %}
+
+In general, we may express $|\psi(0)|^2$ for arbitrary $n$ (with the approximation $a_0 \approx a_0^*$) as:
+
+{% math() %}
+|\psi_{n00}(0)|^2 = \frac{1}{\pi} \left( \frac{Z}{na_{0}} \right)^3
+{% end %}
+
+Using the above result, it is a straightforward calculation to calculate the general expression for the Darwin energy shifts for arbitrary $n$:
+
+{% math() %}
+\Delta E_\mathrm{Darwin} = \frac{Z\alpha\hbar^3 \pi}{2m_{e}^2c} |\psi(0)|^2
+= \frac{Z\alpha\hbar^3}{2m_{e}^2c}  \left( \frac{Z}{na_{0}} \right)^3 = \frac{Z^4\alpha^4 m_{e}c^2}{2n^3}
+{% end %}
+
+In numerical form, this can be expressed as:
+
+{% math() %}
+\Delta E_\mathrm{Darwin} \approx \frac{Z^4}{n^3} \cdot (\pu{7.245 * 10^{-5} eV})
+{% end %}
+
+#### Total effect of fine structure corrections
+
+The total energy shift due to fine-structure corrections is a combination of the three effects we have discussed, and (after tedious algebra that we will not show) they are given by:
+
+{% math() %}
+\begin{align*}
+\Delta E &= \Delta E_\mathrm{relativity} + \Delta E_\mathrm{SO} + \Delta E_\mathrm{Darwin} \\
+&= -\frac{Z^4 \alpha^4}{2n^4}m_{e}c^2 \left[ \frac{n}{j + \frac{1}{2}} - \frac{3}{4} \right]
+\end{align*}
+{% end %}
+
+Where $n$ is the principal quantum number and $j = \ell + s$ is the angular momentum quantum number. This formula is a non-trivial result because it shows us that states with **different total angular momenta** $j$ are non-degenerate. However, states that share the same $j$ are *still* degenerate. This means that the $2p^{1/2}$ and $2p^{3/2}$ states are non-degenerate but the $2s^{1/2}$ and $2p^{1/2}$ states are still degenerate. Putting together the fine-structure structure and the base energy levels of hydrogen gives us the following expression for the atomic energy levels:
+
+{% math() %}
+\begin{align*}
+E_{nj} &= -\frac{Z^2 \alpha^2}{2n^2} m_{e}c^2\left[ 1 + \frac{Z^2\alpha^2}{n^2} \left( \frac{n}{j + \frac{1}{2}} - \frac{3}{4} \right) \right] \\
+&\approx -\pu{13.6 eV}\cdot \frac{Z^2}{n^2}\left[ 1 + (5.325 \times 10^{-5}) \cdot \frac{Z^2}{n^2} \left( \frac{n}{j + \frac{1}{2}} - \frac{3}{4} \right) \right] 
+\end{align*}
+{% end %}
+
+> **Note for the advanced reader:** This solution can also be derived non-perturbatively, but we'll need to use relativistic quantum mechanics (in particular, the [Dirac equation](https://en.wikipedia.org/wiki/Dirac_equation)).
+
+In the lowest excited state of the hydrogen atom, the total effect of the fine-structure corrections is an energy shift on the order of $10^{-4} \text{ eV}$. This effect is indeed very small, which is why we can solve the Schrödinger equation for the hydrogen atom while ignoring spin (and relativity) and still have a very accurate result. The two corrections are much more important for heavy atoms (which have highly-relativistic electrons) and in the presence of magnetic or electric fields (as is the case in the Zeeman effect and Stark effect).
+
+![](https://upload.wikimedia.org/wikipedia/commons/6/64/Hydrogen_fine_structure_energy_2.svg)
+
+_From left to right: energy levels of hydrogen with (a) Coulomb potential only, (b) Coulomb potential + relativistic correction, (c) Coulomb potential + all fine-structure corrections, and (d) Coulomb potential + fine structure + Zeeman effect terms._
+
+#### The exact fine-structure energy levels of the hydrogen atom
+
+The fine-structure corrections to the energy levels of hydrogen can also be calculated with the relativistic **Dirac equation**, which yield the *fine-structure energy levels* of the hydrogen atom without needing to invoke approximations. They are given by:
+
+{% math() %}
+E_{jn} = -m_{e}c^2 + m_{e}c^2\left( 1 + \left[ \frac{Z\alpha}{n - j - \frac{1}{2} + \sqrt{ \left( j + \frac{1}{2} \right)^2 - (Z\alpha)^2 }} \right]^2 \right)^{-1/2}
+{% end %}
+
+(Technically we should use the reduced mass $\mu$ instead of the electron mass $m_e$, though the substitution is straightforward.) Something very interesting happens if we Taylor-expand the exact solution from the Dirac equation, and this is sufficiently important that we will do it step-by-step. First, we use the Taylor series $(1 + x^2)^{-1/2} = 1 - \frac{1}{2}x^2 + \frac{3}{8}x^4 \dots$ to expand out the second term, giving us:
+
+{% math() %}
+\begin{align*}
+E_{jn} &\approx -m_{e}c^2 + m_{e}c^2\left\{ 1 - \frac{1}{2}\left[ \frac{Z\alpha}{n - j - \frac{1}{2} + \sqrt{ \left( j + \frac{1}{2} \right)^2 - (Z\alpha)^2 }} \right]^2 + \dots\right\} \\
+&= \cancel{ -m_{e}c^2 } + \cancel{ m_{e}c^2 } -\frac{m_{e}c^2}{2} \left[ \frac{Z\alpha}{n - j - \frac{1}{2} + \sqrt{ \left( j + \frac{1}{2} \right)^2 - (Z\alpha)^2 }} \right]^2 + \dots \\
+&= -\frac{m_{e}c^2(Z\alpha)^2}{2} \left[ \frac{1}{n - j - \frac{1}{2}+ \sqrt{ \left( j + \frac{1}{2} \right)^2 - (Z \alpha)^2 }} \right]^2 \\
+&= -\frac{m_{e}c^2 (Z\alpha)^2}{2}\left[ n - \left( j + \frac{1}{2} \right) + \left( j + \frac{1}{2} \right)\sqrt{ 1 - \left(\small \frac{Z\alpha}{j + \frac{1}{2}} \right)^2 } \right]^{-2} \\
+&\approx -\frac{m_{e}c^2 (Z\alpha)^2}{2}\left[ n - \left( j + \frac{1}{2} \right) + \left( j + \frac{1}{2} \right)\left( 1 - \frac{1}{2}\left(\small \frac{Z\alpha}{j + \frac{1}{2}} \right)^2 + \dots \right) \right]^{-2} \\
+&= -\frac{m_{e}c^2 (Z\alpha)^2}{2} \left[ n - \cancel{ \left( j + \frac{1}{2} \right) } + \cancel{ \left( j + \frac{1}{2} \right) } -\frac{1}{2} \left( j + \frac{1}{2} \right)\left(\small \frac{Z\alpha}{j + \frac{1}{2}} \right)^2 + \dots \right]^{-2} \\
+&= -\frac{m_{e}c^2 (Z\alpha)^2}{2n^2}\left[ 1 -\frac{1}{2n} \frac{(Z \alpha)^2}{\left( j + \frac{1}{2} \right)} + \dots \right]^{-2}
+\end{align*}
+{% end %}
+
+Here, in the first step, we perform our initial Taylor expansion; this naturally allows the $m_ec^2$ dependence to cancel out in the second step. Then, in the third step we factor out $(Z \alpha)^2$ from inside the fraction. In the fifth step, we factor out $\left(j + \frac{1}{2}\right)$ from the square root, which then allows us to use the following Taylor approximation:
+
+{% math() %}
+\sqrt{ 1 - \left(\small \frac{Z\alpha}{j + \frac{1}{2}} \right)^2 } = 1 - \frac{1}{2}\left(\small \frac{Z\alpha}{j + \frac{1}{2}} \right)^2 + \mathcal{O}((Z\alpha)^4)
+{% end %}
+
+Where $\mathcal{O}(Z^4\alpha^4)$ denotes terms that are fourth-order or higher in $Z\alpha$. This cancels out the first $j + \frac{1}{2}$ term, making the expression far simpler. Finally, in the last step, we factor out $n$ from the fraction. To finish, we use the binomial approximation $(1 - x)^{-2} \approx 1 + 2x$, giving us:
+
+{% math() %}
+\left[ 1 -\frac{1}{2n} \frac{(Z \alpha)^2}{\left( j + \frac{1}{2} \right)} + \dots \right]^{-2} \approx 1 + \frac{1}{n} \frac{(Z \alpha)^2}{\left( j + \frac{1}{2} \right)}
+{% end %}
+
+Plugging this in, our resulting energies become:
+
+{% math() %}
+E_{jn} \approx -\frac{m_{e}c^2 (Z\alpha)^2}{2n^2} \left[1 + \frac{1}{n} \frac{(Z \alpha)^2}{\left( j + \frac{1}{2} \right)} + \dots\right]
+{% end %}
+
+Which matches what we got from perturbation theory! Hence, the Dirac equation's solution *reproduces the result from perturbation theory* at low orders of $\alpha$. This is why the fine-structure constant is so important in quantum physics: it is the *natural expansion parameter* for perturbative expansions. Since $\alpha \ll 1$, higher powers of $\alpha$ become increasingly smaller, meaning that higher-power terms in series expansions involving $\alpha$ are much weaker. Hence, we can safely ignore higher-power terms when doing perturbative calculations. In contrast, if $\alpha \gg 1$, then higher-power terms in series expansions would actually grow *increasingly larger*, making perturbation theory useless. This phenomenon remains true even when we go into the world of quantum field theory, where the fine-structure constant occupies a fundamental role as the [coupling constant](https://en.wikipedia.org/wiki/Coupling_constant) of quantum electrodynamics!
+
+> **Note:** While the Dirac equation provides an exact solution for the energy levels due to fine-structure, it does *not* predict smaller effects, including hyperfine structure and the Lamb shift, which (respectively) arise due to nuclear structure and quantum electrodynamics. We will examine these effects shortly.
+
+### The hyperfine structure of hydrogen
+
+Up to this point, we have considered the nucleus as a stationary point-like charge generating an electrostatic (Coulomb) potential, essentially like a classical point charge. However, we know now that this is not the case. Atomic nuclei are composed of protons and neutrons, which are also quantum particles. Crucially, atomic nuclei also have *spin*, and while nuclear spin can be neglected in a lot of problems, it is essential for explaining the **hyperfine transitions** of hydrogen.
+
+The hyperfine transition occurs due to an interaction between the nuclear magnetic dipole moment and the magnetic field (in the nuclear rest frame) generated by the atomic electrons. Therefore, it is similar to spin-orbit coupling, except the spin is now nuclear spin, instead of electron spin. The *nuclear magnetic dipole moment operator* is given by:
+
+{% math() %}
+\boldsymbol{\mu}_{N} = g_I\frac{e}{2m_p} \hat{\mathbf{I}} = g_I \frac{\mu_{N}}{\hbar} \hat{\mathbf{I}}
+{% end %}
+
+Where $g_I$ is the nuclear spin g-factor, $m_{p}$ is the proton mass, $\mu_N$ is the nuclear magneton (a natural constant), and $\hat{\mathbf{I}}$ is the nuclear spin operator (similar to $\hat{\mathbf{S}}$, the electron spin operator). Since nuclei generally have both protons and neutrons, which have different masses, and may have different numbers of protons from neutrons, the nuclear g-factor does not have a simple formula (it is a constant that you generally have to look up). In the case of hydrogen, which has a nucleus made only of a single proton, $g_N \approx 5.6$.
+
+In any case, the nuclear spin couples to the magnetic field generated by the electron. However, since the electron both has spin and orbital angular momentum, it has a more complicated magnetic field than a classical moving point charge. The orbital part of its magnetic field is straightforward: it is actually the same as what we used in calculating the spin-orbital contribution to fine structure, except we make the replacement $Ze \to -e$ to account for the different charge of the nucleus. This gives us the orbital magnetic field $\mathbf{B}_{\ell}$:
+
+{% math() %}
+\mathbf{B}_{\ell} = -\frac{e}{4\pi m_{e} \varepsilon_{0}c^2} \frac{\mathbf{L}}{r^3} = -\mu_{B} \frac{\mu_{0}}{2\pi} \frac{\mathbf{L}}{r^3}
+{% end %}
+
+Where $\mu_B = e\hbar/(2m_e)$ is the **Bohr magneton**. So far, so good; unfortunately, getting the contribution from the electron's spin is a much more complicated issue. This is because there is no *classical analogue* for spin. The closest approximation we can use is to model an electron as a magnetic dipole. The magnetic vector potential of a classical magnetic dipole is given by:
+
+{% math() %}
+\mathbf{A}(\mathbf{r}) = \frac{\mu_{0}}{4\pi} \frac{\mathbf{m} \times \mathbf{r}}{r^3}
+{% end %}
+
+Where $\mathbf{m}$ is the magnetic moment. The magnetic moment of an electron can be expressed as:
+
+{% math() %}
+\mathbf{m}_\mathrm{electron} = -\frac{g_{s}\mu_{B}\mathbf{S}}{\hbar}
+{% end %}
+
+Where $g_s \approx 2$ is the electron spin g-factor, $\mu_B$ is the Bohr magneton, and $\mathbf{S}$ is the spin angular momentum. The magnetic field is related to the magnetic vector potential by $\mathbf{B} = \nabla \times \mathbf{A}$, so the spin magnetic field $\mathbf{B}_{s}$ is:
+
+{% math() %}
+\mathbf{B}_{s} = \nabla \times \left( \frac{\mu_{0}}{4\pi} \frac{\mathbf{m} \times \mathbf{r}}{r^3} \right) = -\frac{g_{s} \mu_{0} \mu_{B}}{4\pi \hbar} \nabla \times \left( \frac{\mathbf{S} \times \mathbf{r}}{r^3} \right)
+{% end %}
+
+If we evaluate the curl here, it will expand to three terms:
+
+{% math() %}
+\nabla \times \left( \frac{\mathbf{S} \times \mathbf{r}}{r^3} \right) = \frac{3\mathbf{r}(\mathbf{S} \cdot \mathbf{r})}{r^5} - \frac{\mathbf{S}}{r^3} + \frac{8\pi}{3r^3} \delta^3(\mathbf{r}) \mathbf{S}
+{% end %}
+
+Where $\delta^3(\mathbf{r})$ is the 3-dimensional delta function. The total magnetic field from the electron is thus given by:
+
+{% math() %}
+\mathbf{B} = \mathbf{B}_{\ell} + \mathbf{B}_{s}
+{% end %}
+
+Now, we will construct the perturbation of the Hamiltonian describing hyperfine structure. As usual, when we go from a classical to quantum treatment, we replace the classical angular momentum $\mathbf{L}$ with its quantum counterpart, the angular momentum operator $\hat{\mathbf{L}}$. This gives us:
+
+{% math() %}
+\begin{align*}
+\Delta \hat{H}_\mathrm{hyperfine} &= -\boldsymbol{\mu}_{N} \cdot \mathbf{B} \\
+&= -\boldsymbol{\mu}_{N} \cdot (\mathbf{B}_{\ell} + \mathbf{B}_{s}) \\
+&= g_I \frac{\mu_{N}}{\hbar} \left\{ \mu_{B} \frac{\mu_{0}}{2\pi} \frac{\hat{\mathbf{L}} \cdot \hat{\mathbf{I}}}{r^3} + \frac{g_{s} \mu_{0} \mu_{B}}{4\pi \hbar} \hat{\mathbf{I}} \cdot \left[ \frac{3\mathbf{r}(\hat{\mathbf{S}} \cdot \mathbf{r})}{r^5} - \frac{\hat{\mathbf{S}}}{r^3} + \frac{8\pi}{3r^3} \delta^3(\mathbf{r}) \hat{\mathbf{S}} \right] \right\} \\
+&= g_I \frac{\mu_{N}}{\hbar} \left\{ \mu_{B} \frac{\mu_{0}}{2\pi} \frac{\hat{\mathbf{L}} \cdot \hat{\mathbf{I}}}{r^3} + \frac{g_{s} \mu_{0} \mu_{B}}{4\pi \hbar r^3} \left[ \frac{3(\hat{\mathbf{I}} \cdot\mathbf{r})(\hat{\mathbf{S}} \cdot \mathbf{r})}{r^2} - \hat{\mathbf{I}} \cdot\hat{\mathbf{S}}+ \frac{8\pi}{3} \delta^3(\mathbf{r}) \hat{\mathbf{I}} \cdot\hat{\mathbf{S}} \right] \right\}
+\end{align*}
+{% end %}
+
+The delta function term is zero for $\ell = 0$, and evaluates to a term proportional to $|\psi(0)|^2$ otherwise. If one only computes the shifts for $\ell \neq 0$, we can can combine the term dependent on $\hat{\mathbf{L}} \cdot \hat{\mathbf{I}}$ and the term dependent on $\hat{\mathbf{I}} \cdot \hat{\mathbf{S}}$ into a single term dependent only on $\hat{\mathbf{J}}$, and apply the following identity:
+
+{% math() %}
+\hat{\mathbf{J}} \cdot \hat{\mathbf{I}} = \frac{\hbar^2}{2} [F(F + 1) - I(I + 1) - J(J + 1)]
+{% end %}
+
+Where $F = I + J$ is the total atomic angular momentum (as usual, $J = \ell + s$, we have simply written it with uppercase $J$ rather than lowercase $j$ as this is standard convention). We will *not* aim to calculate the general expressions for the energy corrections; that is left as an exercise for the reader, although the techniques are much the same as those we used to calculate the fine-structure corrections. Instead, we will simply give the result for the ground-state hyperfine corrections in hydrogen: it is:
+
+{% math() %}
+\Delta E = \frac{2}{3n^3}Z^4 \alpha^4 \left( \frac{m_{e}}{m_{p}} \right) (m_{e}c^2)g_I\left[ F(F + 1) - \frac{3}{2} \right] \quad (n = 1)
+{% end %}
+
+Since we are in the ground state ($n = 1, \ell = 0$) and the hydrogen nucleus (which is a single proton) always has a spin of $I = \frac{1}{2}$, the two possible states are $F = 0$ (spin-down) and $F = 1$ (spin-up). The ground-state hyperfine transition ($F = 1 \to F = 0$) is thus a spin-flip transition, where the electron goes from spin-up to spin-down, emitting a photon with an energy of $\Delta E \approx \pu{5.78 \mu eV}$. The hyperfine structure is an example of a so-called *forbidden transition* (the name is a misnomer because a "forbidden transition" really just means a transition is much less probable than a "allowed transition"). This originates from the (electric dipole coupling) selection rules for hydrogen, which mandate that for any transition, one has:
+
+{% math() %}
+\Delta \ell = \pm 1, \quad \Delta m = 0,\quad \Delta s = 0
+{% end %}
+
+(This comes from the electric dipole transition that we'll calculate later on in time-dependent perturbation theory.) Normally, this means that a spin-flip transition is impossible, since we have a change of the spin quantum number. But in the hyperfine transition this *is possible*. However, it is far more unlikely; in fact a hyperfine transition happens (on average) once every *11 million years*!
+
+We can convert the hyperfine transition energy to frequency to find that a photon emitted (or absorbed) as a result of a hyperfine transition has a frequency of $\pu{1.42 GHz}$ (or more precisely, $1.420405751768(2) \text{{ GHz}}$, a value that has been measured to incredible precision). Converted to wavelength, this results in a wavelength of $\lambda \approx \pu{21 cm}$, which is in the microwave range of the electromagnetic spectrum.
+
+While hyperfine splitting may seem like a tiny quantum correction that barely matters, it actually has tremendous importance in timekeeping and astronomy. The 21-centimeter spectral line of hydrogen is found almost everywhere in outer space, due to the prevalence of hydrogen in the Universe (particularly in hydrogen gas clouds), and observations of the 21 cm line were responsible for revealing the spiral structure of our galaxy. Hydrogen masers (microwave lasers) used for precision interferometry and in atomic clocks rely on the hyperfine transition and are used as some of the most accurate clocks because of the highly-stable frequency of the beams they emit.
+
+### Order of magnitude of fine and hyperfine energy corrections
+
+It is instructive to ask the question: how do fine structure and hyperfine structure compare in the relative magnitudes? First of all, both effects are to the same order in $\alpha$, the fine structure constant. Specifically, they are of order $\mathcal{O}(\alpha^4)$ in magnitude, which tells us that they are *at least* weaker by a factor of $\alpha^2$ than the electronic transitions (unperturbed energy levels) of the hydrogen atom, which are $\mathcal{O}(\alpha^2)$. This explains why we can afford to neglect fine (and hyperfine) structure in the hydrogen atom while still predicting spectral lines to good accuracy. However, this is not the full story: the energies associated with hyperfine transitions are *much smaller* in magnitude than that of fine structure transitions, since they also depend on the ratio $m_e/m_p \approx \frac{1}{1836}$ of the electron mass to the proton mass. Hence, hyperfine transitions are typically suppressed by lower-order effects and are not easily observed. The table below gives an overview of the comparison between electronic, fine-structure, and hyperfine transitions:
+
+| Transition               | Typical energy splitting   | Type of EM radiation emitted     |
+| ------------------------ | -------------------------- | -------------------------------- |
+| Electronic (unperturbed) | Around $\pu{1 eV - 10 eV}$ | UV, visible light, near-infrared |
+| Fine structure           | Around $\pu{1 meV}$        | UV, visible light, near-infrared |
+| Hyperfine structure      | Around $\pu{1 \mu eV}$     | Microwaves (GHz range)           |
+
 ## The variational method
 
 Perturbation theory is all well and good for finding approximate solutions to the Schrödinger equation, but it is not perfect. This is because it *requires* an arbitrary Hamiltonian to be able to be written as the sum of a simple, analytically-solvable Hamiltonian plus a small perturbation. It no longer works if the perturbation is large, or if this decomposition is not possible!
