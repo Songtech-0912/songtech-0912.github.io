@@ -464,6 +464,8 @@ header {
   p, li {
     font-size: 0.8rem !important;
     line-height: 1.65;
+    orphans: 3;
+    widows: 3;
   }
 
   td, th {
@@ -494,6 +496,18 @@ header {
 
   .return-link {
     display: none;
+  }
+  
+  // Prevent elements from being cut off from page breaks
+  // See: https://dev.to/digital_trubador/how-to-fix-pdf-page-breaks-in-html-the-complete-guide-1m7g
+  tr, figure, blockquote {
+  	break-inside: avoid;
+  	page-break-inside: avoid;
+  }
+
+  // Repeat table headers on every page
+  thead {
+  	display: table-header-group;
   }
 }
 
