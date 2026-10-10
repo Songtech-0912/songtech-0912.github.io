@@ -2433,7 +2433,280 @@ Our derivation so far has followed the approach used by most introductory texts,
 
 ### The Stark effect
 
-To be completed...
+If magnetic fields can split energy levels, can an electric field do so too? The answer is yes! This is known as the **Stark effect**. It is weaker than the Zeeman effect, so we will derive both the first and second-order energy corrections using perturbation theory.
+
+The Stark effect is conceptually extremely similar to the Zeeman effect, except we swap the magnetic field with the electric field. To start, we assume a uniform electric field in the form $\vec{\mathcal{E}} = \mathcal{E}_0 \hat z$, where $\mathcal{E}_0$ is the electric field strength. Note that we call the field direction $z$ as a matter of convention, but the choice is technically arbitrary, because we can always rotate our coordinate system such that the electric field aligns with the $z$ axis. The Hamiltonian for the Stark effect can be expressed via the electric dipole moment operator $\boldsymbol{\mu}_E = q\mathbf{r}$ and the electric field as:
+
+{% math() %}
+\Delta \hat{H}_\mathrm{Stark} = -\boldsymbol{\mu}_{E} \cdot \vec{\mathcal{E}} = -q\mathbf{r} \cdot \vec{\mathcal{E}}
+{% end %}
+
+From trigonometry, $\mathbf{r} \cdot \hat z = r \cos \theta$, hence one obtains:
+
+{% math() %}
+\Delta \hat{H}_\mathrm{Stark} = e \mathcal{E}_0 r \cos \theta
+{% end %}
+
+Where we have also substituted in $q = -e$ (since the Stark effect affects electrons in an atom). We will now do the calculation of the energy shifts that occur due to the Stark effect.
+
+#### The linear Stark effect
+
+To start, we will calculate the energy shifts to first-order. This is known as the **linear Stark effect** as it is linear in the electric field strength ($\Delta E \sim \mathcal{E}_0$).
+
+To first-order, we obtain:
+
+{% math() %}
+\begin{align*}
+\Delta E_{n}^{(1)} &= \langle \varphi_n^{(0)}| \Delta \hat{H}_\mathrm{Stark}|\varphi_{n}^{(0)}\rangle \\
+&= e \mathcal{E}_0 \langle n, \ell, m|r|n, \ell, m\rangle
+\end{align*}
+{% end %}
+
+ Now, the hydrogen atom's wavefunctions satisfy:
+
+{% math() %}
+\langle n, \ell, m|\mathbf{r}|n, \ell, m\rangle = 0
+{% end %}
+
+One can find this via direct calculation, but we will give a physical argument for why this must be the case. An electric dipole moment only exists where one has an asymmetrical configuration of charge. For states with $\ell = 0$, the orbitals are spherical and therefore exhibit spherical symmetry, hence there can be no dipole moment. Meanwhile, for states with $\ell \neq 0$, the probability density of the orbitals is symmetric along the $z$ axis. Since the charge density is proportional to the probability density, there is no dipole moment either. It is only in the case of *mixed orbitals* (that is, superpositions of multiple orbitals) that the electric dipole moment is nonzero, *not* the standard orbitals!
+
+{{ diagram(
+desc="Probability density of the pure hydrogen orbitals"
+src="hydrogen-orbitals-stark.jpg"
+) }}
+
+_Probability density (proportional to charge density) of the "pure" hydrogen atomic orbitals. Original author: [Henning Schomerus from Lancaster University](https://www.lancaster.ac.uk/staff/schomeru/lecturenotes/Quantum%20Mechanics/S17.html)_
+
+Therefore, by direct application of non-degenerate perturbation theory, it would _appear_ that the first-order correction to the energies is also identically zero:
+
+{% math() %}
+\Delta E_{n}^{(1)} = 0
+{% end %}
+
+But not so fast! It would be more accurate to say that the first-order correction to the energies of **non-degenerate states** is zero. This is because we have not considered the fact that many of the eigenstates of the hydrogen atom are *degenerate*! We know that *non-degenerate perturbation theory* fails for degenerate states, hence we must now use *degenerate perturbation theory instead* (for which, it turns out, that nonzero first-order corrections *are* indeed present).
+
+##### Using first-order degenerate perturbation theory
+
+To start, we need to pick a set of states that we are degenerate. In the hydrogen atom, the energy levels (at least without correction terms due to fine/hyperfine structure, which we'll talk about later) are only depend on the principal quantum number $n$. (The Stark effect is not directly affected by spin.) Hence, any set of degenerate states *must share the same value of $n$*. The converse is *almost true*; states with the same value of $n$ are generally degenerate, with the exception of $n = 1$.
+
+To make our analysis easier, we will only calculate the energy shifts for the *first excited state* (which has $n = 2$). We could in principal calculate the Stark shift for any energy level (that is, for any $n$) we choose, but the number of degenerate states grows $\sim n^2$ meaning that e.g. $n = 3$ splits into at least 9 states, $n = 4$ splits into at least 16, and (for sake of example) $n = 20$ splits into at least 400 states! That is way too many to analyze for an elementary treatment so we will start with the simplest case of $n = 2$, though we will give a general formula at the end.
+
+##### The brute-force way to do degenerate perturbation theory
+
+The first way we can go about solving the problem is what I call the "brute-force" approach. Basically, we proceed as follows:
+
+1. Create a list of degenerate states for the $n$-th energy level; this will be our basis $\{|\varphi_i\rangle\}$
+2. Calculate the matrix elements $H_{ij} = \langle \varphi_i|\Delta \hat H|\varphi_j\rangle$ one by one
+3. Calculate the eigenvalues and eigenvectors of $H_{ij}$ to get the perturbed energy levels and perturbed eigenstates
+
+Let's start at the first step. In the $n = 2$ energy level, the possible values of $\ell$ are $\ell = 0, 1$ and the possible values of $m$ are $m = 0, \pm 1$. Hence, the 4 states $|2, \ell, m\rangle$ are respectively:
+
+{% math() %}
+\{|\varphi_i\rangle\} = \left\{|2, 0, 0\rangle, |2, 1, 0\rangle, |2, 1, 1\rangle, |2, 1, -1\rangle \right\}
+{% end %}
+
+One can write these more explicitly as:
+
+{% math() %}
+\begin{align*}
+|\varphi_{1}\rangle &= |2, 0, 0\rangle \\
+|\varphi_{2}\rangle &= |2, 1, 0\rangle  \\
+|\varphi_{3}\rangle &= |2, 1, 1\rangle \\
+|\varphi_{4}\rangle &= |2, 1, -1\rangle
+\end{align*}
+{% end %}
+
+Note that the specific ordering here is not important since the basis is orthonormal. For instance, we could've chosen $|\varphi_1\rangle$ to be $|2, 1, 0\rangle$ and $|\varphi_2\rangle$ to be $|2, 1, 1\rangle$. The important thing is to list all the degenerate states for a given energy level and make sure you don't accidentally include non-degenerate states.
+
+Now, we compute the matrix elements $\langle \varphi_i|\Delta \hat H|\varphi_j\rangle$ where $\Delta \hat H$ is the Stark Hamiltonian. This is where things become a bit hairy! After all, if we directly substitute into the matrix we get:
+
+{% math() %}
+H_{ij} = \begin{pmatrix}
+\langle \varphi_1|\Delta \hat H|\varphi_1\rangle & \langle \varphi_1|\Delta \hat H|\varphi_2\rangle & \langle \varphi_1|\Delta \hat H|\varphi_3\rangle & \langle \varphi_1|\Delta \hat H|\varphi_4\rangle \\
+\langle \varphi_2|\Delta \hat H|\varphi_1\rangle & \langle \varphi_2|\Delta \hat H|\varphi_2\rangle & \langle \varphi_2|\Delta \hat H|\varphi_3\rangle & \langle \varphi_2|\Delta \hat H|\varphi_4\rangle \\
+\langle \varphi_3|\Delta \hat H|\varphi_1\rangle & \langle \varphi_3|\Delta \hat H|\varphi_2\rangle & \langle \varphi_3|\Delta \hat H|\varphi_3\rangle & \langle \varphi_3|\Delta \hat H|\varphi_4\rangle \\
+\langle \varphi_4|\Delta \hat H|\varphi_1\rangle & \langle \varphi_4|\Delta \hat H|\varphi_2\rangle & \langle \varphi_4|\Delta \hat H|\varphi_3\rangle & \langle \varphi_4|\Delta \hat H|\varphi_4\rangle
+\end{pmatrix}
+{% end %}
+
+Now, with some patience and grit computing all of those inner products (each of which is an integral) you will find that the matrix elements are the following:
+
+{% math() %}
+H_{ij} = -3a_{0} e E_{0} \begin{pmatrix}
+0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+{% end %}
+
+We now need to find the eigenvalues of this matrix. For starters, we don't actually have to find the eigenvalues of the entire $(4 \times 4)$ matrix, since it is zero except for the top-left "corner". This means we ultimately only need to calculate the eigenvalues of this much simpler matrix:
+
+{% math() %}
+\begin{pmatrix}
+0 & 1 \\
+1 & 0
+\end{pmatrix}
+{% end %}
+
+The eigenvalues are $\pm 1$, which gives the (correct) energy shifts of:
+
+{% math() %}
+\Delta E_\mathrm{Stark} = \pm 3 a_{0} e E_{0} \quad (n = 2)
+{% end %}
+
+There is nothing specifically wrong with this approach; it *does work*. Unfortunately, it involves a lot of integrals to compute, because there are $n^2$ degenerate states for the $n$-th energy levels. We saw that even for the first excited state ($n = 2$) we have to get all the eigenvalues for a $(4 \times 4)$ matrix; the next excited state ($n = 3$) would involve solving for the eigenvalues of a $(9 \times 9)$ matrix! Now, I don't know about you, but I'd rather not compute that many integrals or eigenvalues! Hence, let us turn to another, more clever approach that saves us time and avoids the need to calculate so many matrix elements.
+
+##### The clever way to do degenerate perturbation theory
+
+The "clever" way to do degenerate perturbation theory is to rule out as many of the matrix elements as possible, until we are left with only the nonzero ones. This is generally a *much quicker method* and involves less work, but does require some reasoning, hence why I call it the "clever" approach.
+
+This approach relies heavily on the *selection rules* of atomic transitions, which dictate which transitions are possible and which are not. We can figure out a lot of these ourselves! First of all, we know that an atomic transition between two energy levels $E_2 \to E_1$ corresponds to the release of a photon carried an energy $\Delta E = E_{2} - E_{1}$ equal to the difference between the energy levels. Unlike electrons, photons are spin-1 particles, meaning that they carry $\pm 1 \hbar$ units of angular momentum (the sign depends on their specific spin state). To conserve angular momentum, we therefore require that the initial and final states' orbital angular momentum changes by a factor of $\Delta \ell = 1$ or $\Delta \ell = -1$. That is, we obtain the selection rule $\Delta \ell = \pm 1$.
+
+In addition, we know that the allowable values of $m$ range from zero to $\pm \ell$. By the restriction $\Delta \ell = \pm 1$, this means that the change in $m$ must therefore be zero, 1, or -1. Hence we obtain the selection rule $\Delta m = 0, \pm 1$.
+
+Finally, since electrons are spin-1/2 particles, their spin quantum number is *always* $s = \frac{1}{2}$. Therefore the spin quantum number cannot change during a transition, so $\Delta s = 0$. (This becomes a bit more complicated once we need to consider nuclear spin, which we'll explore once we talk about hyperfine structure, but we can assume $\Delta s = 0$ to be the case for now.)
+
+Collectively, our selection rules are therefore:
+
+{% math() %}
+\begin{cases}
+\Delta \ell = \pm 1 \\
+\Delta m = 0, \pm 1 \\
+\Delta s = 0
+\end{cases}
+{% end %}
+
+> **Note:** These are known as the *electric dipole transition selection rules* (or E1 selection rules for short) and are not simply the case for the Stark effect, but for all transitions mediated by an electric field!
+
+These selection rules heavily restrict the types of transitions possible in the Stark effect. In our case, it means that each transition between the $n = 2$ states must involve one state with $\ell = 1$ and one state with $\ell = 0$ to satisfy the first selection rule. Hence, we know that the nonzero matrix elements *must* have $|\varphi_{1}\rangle = |2, 0, 0\rangle$ as one of the states since it is the only state with $n = 2$ that also has $\ell = 0$. Therefore, we only need to consider matrix elements of the forms $\langle \varphi_1|\Delta \hat H|\varphi_i\rangle$ or $\langle \varphi_i|\Delta \hat H|\varphi_1\rangle$. Indeed, since these are symmetric we actually only need to explicitly calculate *one* of the two forms (the other matrix element would be equal), leaving us with just 4 matrix elements in total out of the original 16. Quite an improvement!
+
+Now, the second selection rule is less immediately helpful because all transitions to/from $|2, 0, 0\rangle$ for the $n = 2$ states satisfy it. However, the Stark effect Hamiltonian is azimuthally-symmetric. This is clear from the form of the Hamiltonian, which explicitly depends on the $r$ and $\theta$ coordinates, but *doesn't* depend on the $\phi$ coordinate, hence a rotation about the $z$ axis has no effect on the Hamiltonian. Therefore, the $z$-component of the angular component *must be conserved*. Since $L_z = m\hbar$, it is clear that if $\Delta L_z = 0$, then $\Delta m = 0$ must be true as well! Therefore, our selection rules become additionally restricted to the following:
+
+{% math() %}
+\begin{cases}
+\Delta \ell = \pm 1 \\
+\Delta m = 0 \\
+\Delta s = 0
+\end{cases}
+{% end %}
+
+There is only **one** transition involving the $|2, 0, 0\rangle$ state that *also* satisfies $\Delta m = 0$, and it is the transition between the $|2, 0, 0\rangle$ and $|2,1, 0\rangle$ states. Hence, this is the only matrix element we'll need to calculate! By using this "clever" approach, we have drastically cut down the number of matrix elements we need to calculate! Upon doing the calculation, we have:
+
+{% math() %}
+\begin{align*}
+\langle 2, 0, 0|\Delta \hat{H} |2, 1, 0\rangle &= e\mathcal{E}_{0} \langle \varphi_{1}|r \cos \theta|\varphi_{2}\rangle \\
+&= e\mathcal{E}_{0} \int_{0}^\infty R_{20}(r)R_{21}(r) r^2 dr \int_{0}^{2\pi} \int_{0}^\pi Y^0_{0}(\theta, \phi)^* Y^0_{1}(\theta, \phi) \cos \theta(\sin \theta d \theta d\phi) \\
+&= -3a_{0}e \mathcal{E}_{0}
+\end{align*}
+{% end %}
+
+And likewise (due to symmetry):
+
+{% math() %}
+\langle 2,1, 0|\Delta \hat{H}|2, 0, 0\rangle = \langle 2, 0, 0|\Delta \hat{H} |2, 1, 0\rangle = -3a_{0}e \mathcal{E}_{0}
+{% end %}
+
+The $H_{ij}$ matrix is therefore zero for all terms except for the $H_{12}$ and $H_{21}$ elements, which correspond to the two above transitions. Therefore, we have:
+
+{% math() %}
+H_{ij} = -3a_{0} e E_{0} \begin{pmatrix}
+0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+{% end %}
+
+This is the same matrix that we got earlier, and we've already calculated what its eigenvalues are: they are respectively $\pm 3 a_{0}eE_{0}$, hence the energy shifts due to the linear Stark effect are:
+
+{% math() %}
+\Delta E_\mathrm{Stark} = \pm 3 a_{0}eE_{0}
+{% end %}
+
+The resulting (normalized) eigenvectors are:
+
+{% math() %}
+|\phi_{1}\rangle = \frac{1}{\sqrt{ 2 }} \begin{pmatrix}
+-1 \\ 1
+\end{pmatrix}, \quad
+|\phi_{1}\rangle = \frac{1}{\sqrt{ 2 }} \begin{pmatrix}
+1 \\ 1
+\end{pmatrix}
+{% end %}
+
+(The first corresponds to the eigenvalue of $-3a_0 eE_0$ and the second corresponds to the eigenvalue of $+3 a_0 eE_0$). We can now construct the perturbed eigenstates $|\tilde{\varphi}_{i}\rangle$, which are given by:
+
+{% math() %}
+|\tilde{\varphi}_{i}\rangle = \sum_{j = 1}^N \phi_{ij} |\varphi_{j}\rangle
+{% end %}
+
+Here, we have $N = 2$ (technically $N = 4$ but there are only two nonzero eigenvectors) and $\phi_{ij}$ denotes the $j$-th component of the eigenvector $|\phi_i\rangle$, which are (respectively):
+
+{% math() %}
+\phi_{ij} = \frac{1}{\sqrt{ 2 }} \begin{pmatrix}
+-1 & 1 \\
+1 & 1
+\end{pmatrix}
+{% end %}
+
+Therefore, the perturbed eigenstates are:
+
+{% math() %}
+\begin{align*}
+|\tilde{\varphi}_{1}\rangle &= \frac{1}{\sqrt{ 2 }}(|2, 1, 0\rangle - |2, 0, 0\rangle) \\
+|\tilde{\varphi}_{2}\rangle &= \frac{1}{\sqrt{ 2 }}(|2, 0, 0\rangle + |2, 1, 0\rangle)
+\end{align*}
+{% end %}
+
+Notice how the Stark effect has given us *mixed orbitals*. These orbitals, unlike the regular atomic orbitals, have asymmetric probability densities (and therefore asymmetric charge distributions) which gives rise to a nonzero electric dipole moment, resulting in the splitting of the spectral lines!
+
+##### Summary of degenerate perturbation theory in the Stark effect
+
+In the **general case** for arbitrary $n$, the linear Stark effect predicts that the $n$-th state will split into $2n - 1$ distinct energy levels. A diagram of (some of) the Stark shifts is shown below:
+
+![Image of energy levels splitting due to the Stark effect](https://upload.wikimedia.org/wikipedia/commons/4/44/Stark_splitting.png)
+
+_Source: [Wikipedia](https://en.wikipedia.org/wiki/File:Stark_splitting.png)_
+
+The Stark effect has applications [in spectroscopy](https://en.wikipedia.org/wiki/Stark_spectroscopy) as well as [in semiconductor optics](https://en.wikipedia.org/wiki/Coherent_effects_in_semiconductor_optics#The_excitonic_optical_Stark_effect). The observations of the spectral lines arising from the Stark effect was also historically important in the development of quantum theory, as it could not be explained by classical physics. For those interested in the history of the Stark effect, [this YouTube video](https://youtu.be/CQ1kgzCXDe8) and [this other YouTube video](https://www.youtube.com/watch?v=OvQMIif3ty0) (both by the excellent channel of [Dr. Jorge S. Diaz](https://www.youtube.com/@jkzero)) for more information regarding the history of the Stark effect.
+
+#### The quadratic Stark effect
+
+Now, we will go beyond first-order and examine the energy shifts to *second-order*. This is known as the **quadratic Stark effect** as it is quadratic in the electric field strength ($\Delta E \sim \mathcal{E}_0^2$). Using second-order perturbation theory, it can be shown that the energy shifts are given by:
+
+{% math() %}
+\Delta E_{n}^{(2)} = -\frac{1}{2} \sum_{i} \sum_{j} \alpha_{ij} \mathbf{E}_i \mathbf{E}_{j}
+{% end %}
+
+Where $\mathbf{E}$ is the $i$-th component of the electric field (in our simplified case, $\mathbf{E} = \mathbf{E} = 0$ except for $i = j = 3$, where $\mathbf{E}_3 = E_0$ Note that if the material is isotropic (which most materials can be assumed to be), the polarizability tensor $\alpha_{ij}$ can be expressed as:
+
+{% math() %}
+\alpha_{ij} = \alpha \delta_{ij}, \quad
+\alpha_{0} = 4\pi \varepsilon_{0} a_{0}^3 = \text{const.}
+{% end %}
+
+Where $\alpha_0$ is known as the **static electric polarizability**. Hence, the expression for the second-order energy shifts for isotropic materials reduces to:
+
+{% math() %}
+\Delta E_{n}^{(2)} = -\frac{1}{2} \alpha_{0} E_{0}^2
+{% end %}
+
+Unlike the linear Stark effect, the quadratic Stark effect does predict an energy shift for the $n = 1$ state (ground state), albeit a very small energy shift. In fact, it predicts an energy shift for all the energy levels! However, even in an extremely powerful electric field of $E_0 = \pu{10^7 V/cm}$ the quadratic stark shift for the $n = 1$ state is only around $\pu{0.05 meV}$, which is a *tiny shift*. Hence, the Stark effect is generally dominated by the first-order (linear) contribution rather than the second-order (quadratic) contribution.
+
+### The generalized Stark effect
+
+We can use the procedure we performed for the first and second-order energy shifts to come up with energy corrections to any desired order. It is left as a challenge for the reader to derive a *generalized formula* for the Stark energy shifts for arbitrary $n, \ell, m$ (this is an exercise for the adventurous reader because it is not easy to do!) The general solutions for the first, second, and third-order energy shifts are as follows (from section 3.10.2 of [_Elementary Molecular Quantum Mechanics 2nd ed._](https://www.sciencedirect.com/science/chapter/monograph/abs/pii/B9780444626479000038)):
+
+{% math() %}
+\begin{align*}
+\Delta E^{(1)}_{n} &= -\frac{3}{2} e E_{0} a_{0} n(k_{1} - k_{2}) \\
+\Delta E^{(2)}_{n} &= -\frac{1}{16} \alpha_{0} E_{0}^2 n^4(17n^2 - 3n_{e}^2 - 9m^2 + 19), \quad n_{e} \equiv k_{1} - k_{2} \\
+\Delta E^{(3)}_{n} &= \frac{3}{32} \frac{(4\pi \varepsilon_{0})^2 a_{0}^5}{e} E_{0}^3 n^7 n_{e}(23 n^2 - n_{e}^2 + 11 m^2 + 39)
+\end{align*}
+{% end %}
+
+Where $n$ is the principal quantum number, $m$ is the magnetic quantum number, $k_1, k_2$ are known as the *parabolic quantum numbers* that satisfy $n = k_1 + k_2 + m + 1$, and $\alpha_{0} =  4\pi \varepsilon_{0} a_{0}^3$ is the static electric polarizability. In the case of $n = 2$ and $m = 0$ (which we previously analyzed), one has $k_1 + k_2 = 1$; in the case that $k_1 = 2$ and $k_2 = 1$ (or the other way around when $k_1 = 1$ and $k_2 = 2$), we recover the first-order expression for the linear Stark effect for the $n = 2$ state (that is, $\Delta E^{(1)}_{2} = \pm 3 eE_0 a_0$) that we derived earlier!
 
 ### The fine structure of hydrogen
 
