@@ -2013,7 +2013,7 @@ It is therefore common to write the electron configuration of elements with a la
 [\ce{Ar}] (4s)^2 (3d)^{10}(4p)^2
 {% end %}
 
-Determining the electron configuration requires a set of rules that we won't cover here for brevity's sake (if you *really* want to know, they are Madelung's rule and the Aufbau principle). If you would like to read more about electron configurations, please consult the [general chemistry guide](@/general-chem.md). However, there is one rule that we *will* cover, and that is **Hund's rule**, which states that:
+Determining the electron configuration requires a set of rules that we won't cover here for brevity's sake (if you *really* want to know, they are Madelung's rule and the Aufbau principle). If you would like to read more about electron configurations, please consult the [general chemistry guide](@/general-chem/index.md). However, there is one rule that we *will* cover, and that is **Hund's rule**, which states that:
 
 > *Each empty orbital will be filled by single electrons before being filled by paired electrons.*
 
