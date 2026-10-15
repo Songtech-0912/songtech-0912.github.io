@@ -1617,7 +1617,7 @@ a_{0}^* = \frac{m_{e}}{\mu} a_{0} \approx a_{0}, \quad a_{0} = \frac{4\pi \varep
 
 (The approximation of $a_0^* \approx a_0$ is correct to within 0.5%). This is the *same Bohr radius* as the one predicted by Bohr's older atomic theory! We can also now give a *physical interpretation* of the Bohr radius. While we will not do the full calculation, it turns out that the *maximum* of the probability density function (which is proportional to the square of $R_{n\ell}$) occurs at $r = a_0^* \approx a_0$. Hence, the Bohr radius (or more accurately, the reduced Bohr radius) is the radius at which an electron is **most likely** to be found in the ground-state of hydrogen. While the idea of electrons going in circular orbits around the nucleus in Bohr's theory is physically-incorrect, its predictions coincide with the predictions of quantum theory!
 
-#### The wavefunctions and energy levels of the hydrogen atom
+#### The solution to the hydrogen atom
 
 With both the angular and radial wavefunctions solved for, we can now put everything together. The full wavefunctions are simply a product of the angular and radial parts, that is:
 
@@ -1657,6 +1657,62 @@ This is the same result as in the Bohr atom! Note that the energy levels are *al
 
 > **Note for the advanced reader:** If an electron has $E> 0$ then we have Coulomb scattering (electrons scattering off a nucleus instead of becoming bound to a nucleus and forming an atom). This is a modified form of Rutherford scattering, which is itself a variety of generalized [electron scattering](http://hyperphysics.phy-astr.gsu.edu/hbase/Nuclear/elescat.html). However, to handle these sorts of problems, we will need to wait until we discuss the **Born approximation** much later in this guide.
 
+### Wavefunctions of the hydrogen atom
+
+Now that we have seen the (scary-looking) eigenstates of the hydrogenic atom, let's discuss what these solutions physically represent. First, remember that in quantum mechanics, the eigenstates of a system are the states that it can take, which in the case of hydrogen would be the specific states that the atom can take. The *generalized* wavefunction that describes the state of the atom is a linear superposition of these possible states:
+
+{% math() %}
+\psi(r, \theta, \phi) = \sum_{n}\sum_{m}\sum_{\ell} R_{n\ell}(r) Y^\ell_{m}(\theta, \phi)
+{% end %}
+
+Where $R_{n\ell}(r)$ is the *radial* component of the wavefunction and $Y^m_{\ell}(\theta, \phi)$ (spherical harmonics) is the *angular* component of the wavefunction. However, we are generally more interested in the wavefunctions $\psi_{n \ell m}$ that correspond to specific eigenstates of the Hamiltonian for the hydrogen atom, where $n$, $\ell$, and $m$ are the **quantum numbers**. The quantum numbers of hydrogen are so important that they have specific names:
+
+- $n$ is known as the **principal quantum number** and can be any integer that is 1 (or greater than 1)
+- $\ell$ is known as the **azimuthal quantum number** (or more formally as the *orbital angular momentum quantum number*). The values $\ell$ can take are $0 \leq \ell \leq (n - 1)$
+- $m$ is known as the **magnetic quantum number** (or more formally as the *orbital magnetic quantum number*). The values $m$ can take are $-\ell \leq m \leq \ell$.
+
+All in all, the dizzying combination of different quantum numbers gives rise to the many hydrogenic wavefunctions. The square of the wavefunctions is the probability density, which can be plotted in 3D space via spherical coordinates, giving us the popular illustrations of hydrogen wavefunctions:
+
+![An image of the wavefunctions for different atomic orbitals](hydrogen-orbitals.jpg)
+
+_See [original image here](https://www.physics.umd.edu/courses/Phys401/AnlageSpring20/orbitals.jpg). Source: [PHYS 401 supplemental course materials at UMD](https://www.physics.umd.edu/courses/Phys401/AnlageSpring20/Supp.htm) _
+
+> **Note:** Be careful to not confuse these plots of orbitals with the actual shapes of the electrons! Remember that wavefunctions are (roughly speaking) probability distributions; the electrons therefore do not have a definite shape and exist in a "probability cloud". Generally, the 3D plots of wavefunctions are made by plotting the (imaginary) bounding surface of a spherically-symmetric region, inside of which the electron has a high probability (something like 90% or 95%) of being found. But electrons should *not* be confused with spheres (or donuts or dumbbells or whatever the shapes look like in your eyes) and wavefunctions are mathematical objects, not physical reality!
+
+Since $n$ is unbounded ($n = 1,000,000,000$ is a perfectly-valid value!) there are a *lot* of wavefunctions and it is pointless illustrating or memorizing all of them. The one wavefunction that you absolutely *must know* (and probably should memorize!) is the ground-state wavefunction:
+
+{% math() %}
+\psi_{100} = \frac{1}{\sqrt{ \pi }} \left( \frac{Z}{a_{0}} \right)^{3/2} e^{-r / a_{0}}
+{% end %}
+
+Where $a_0$ is the Bohr radius and $Z$ is the atomic number (for hydrogen $Z = 1$ and $a_0 \approx \pu{52.9 pm}$). We have also included the first few wavefunctions (for $n = 1$ through $n = 3$) below for reference purposes:
+
+| $n$ | $\ell$ | $m$     | Wavefunction $\psi_{n\ell m}$                                                                                                                                             |
+| --- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| $1$ | $0$    | $0$     | $\psi_{100} = \frac{1}{\sqrt{\pi}}\left( \frac{Z}{a_{0}} \right)^{\frac{3}{2}}e^{- \frac{Zr}{a_{0}}}$                                                                     |
+| $2$ | $0$    | $0$     | $\psi_{200} = \frac{1}{\sqrt{32\pi}}\left( \frac{Z}{a_{0}} \right)^{\frac{3}{2}}\left( 2 - \frac{Zr}{a_{0}} \right)e^{- \frac{Zr}{2a_{0}}}$                               |
+| $2$ | $1$    | $0$     | $\psi_{210} = \frac{1}{\sqrt{32\pi}}\left( \frac{Z}{a_{0}} \right)^{\frac{5}{2}}re^{- \frac{Zr}{2a_{0}}}\cos\theta$                                                       |
+| $2$ | $1$    | $\pm 1$ | $\psi_{21\pm 1} = \frac{1}{\sqrt{64\pi}}\left( \frac{Z}{a_{0}} \right)^{\frac{5}{2}}re^{- \frac{Zr}{2a_{0}}}\sin\theta e^{\pm i\phi}$                                     |
+| $3$ | $0$    | $0$     | $\psi_{300} = \frac{1}{81\sqrt{3\pi}}\left( \frac{Z}{a_{0}} \right)^{\frac{3}{2}}\left( 27 - 18\frac{Zr}{a_{0}} + 2\frac{Z^2r^2}{a_{0}^2} \right)e^{- \frac{Zr}{3a_{0}}}$ |
+| $3$ | $1$    | $0$     | $\psi_{310} = \frac{\sqrt{2}}{81\sqrt{\pi}}\left( \frac{Z}{a_{0}} \right)^{\frac{5}{2}}r\left( 6 - \frac{Zr}{a_{0}} \right)e^{- \frac{Zr}{3a_{0}}}\cos\theta$             |
+| $3$ | $1$    | $\pm 1$ | $\psi_{31\pm 1} = \frac{1}{81\sqrt{\pi}}\left( \frac{Z}{a_{0}} \right)^{\frac{5}{2}}r\left( 6 - \frac{Zr}{a_{0}} \right)e^{- \frac{Zr}{3a_{0}}}\sin\theta e^{\pm i\phi}$  |
+| $3$ | $2$    | $0$     | $\psi_{320} = \frac{1}{81\sqrt{6\pi}}\left( \frac{Z}{a_{0}} \right)^{\frac{7}{2}}r^{2}e^{- \frac{Zr}{3a_{0}}}\left( 3\cos^{2}\theta - 1 \right)$                          |
+| $3$ | $2$    | $\pm 1$ | $\psi_{32\pm 1} = \frac{1}{81\sqrt{\pi}}\left( \frac{Z}{a_{0}} \right)^{\frac{7}{2}}r^{2}e^{- \frac{Zr}{3a_{0}}}\sin\theta\cos\theta e^{\pm i\phi}$                       |
+| $3$ | $2$    | $\pm 2$ | $\psi_{32\pm 2} = \frac{1}{162\sqrt{\pi}}\left( \frac{Z}{a_{0}} \right)^{\frac{7}{2}}r^{2}e^{- \frac{Zr}{3a_{0}}}\sin^{2}\theta e^{\pm 2i\phi}$                           |
+
+_Table of wavefunctions originally from [LibreTexts: Physical and Theoretical Chemistry Ch. 6.2](https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Physical_Chemistry_(LibreTexts)/06%3A_The_Hydrogen_Atom/6.02%3A_The_Wavefunctions_of_a_Rigid_Rotator_are_Called_Spherical_Harmonics_)
+
+The wavefunctions of hydrogen are orthogonal, meaning that:
+
+{% math() %}
+\int_{0}^{2\pi} \int_{0}^\pi \int_{0}^\infty \psi_{n\ell m}^*(r, \theta, \phi)\psi_{n'\ell' m'}(r, \theta, \phi) r^2 \sin \theta d \theta d\phi = \delta_{nn'}\delta_{\ell \ell'} \delta_{mm'}
+{% end %}
+
+Moreover, the wavefunctions are also symmetric under spatial inversion (up to at most a difference in sign, which doesn't affect the probability density). This means that if you invert your coordinate system (such that $r \to -r$, $\theta \to -\theta$, $\phi \to -\phi$) the wavefunctions are either the exact same ("even parity") or change sign ("odd parity"). The rule of thumb for determining parity is:
+
+- If $\ell$ is an even integer, then the parity is even
+- If $\ell$ is an odd integer, then the parity is odd
+
 #### Degeneracy in the hydrogen atom
 
 Most of the eigenstates of the hydrogen atom are degenerate (that is, sharing the same energy as one or more other states). In fact, the **degree of degeneracy** of the hydrogen atom is $n^2$. This means that for the $n$-th energy level, there will be $n^2$ states that share the same energy, as described in the table below:
@@ -1679,6 +1735,384 @@ We also know that $-\ell \leq m \leq \ell$, meaning that there are $2\ell + 1$ s
 {% end %}
 
 > **Note:** Our calculation of the number of degenerate states is not *technically accurate* since it neglects the effect of **spin**. If we include spin (giving us a fourth quantum number) the degrees of degeneracy are $2n^2$ instead of $n^2$.
+
+## Multi-electron atoms
+
+The hydrogen atom is unique because it has an exact solution, due to its single electron. But all other elements in the universe have more than a single electron, which complicates the problem significantly and means that exact solutions are generally impossible. However, we may still analyze multi-electronic atoms by generalizing our solution for hydrogen.
+
+### Identical particles and the Pauli exclusion principle
+
+In the classical world of everyday life, each object can in principle be distinguished from others. Even two objects of the same color, same mass, same momentum and so forth can be differentiated if you keep track of the trajectory of each. Not so in the quantum world! Indeed, most quantum particles are *indistinguishable* from each other. For instance, every electron in the Universe has the exact same charge, mass, and spin quantum number as every other electron. Remember, position in quantum mechanics satisfies the Heisenberg uncertainty principle, making the notion of a classical trajectory ill-defined. All we can calculate from quantum mechanics are ultimately just probabilities.
+
+Indistinguishability manifests in an important way in how many-body wavefunctions — that is, wavefunctions describing the state of a system of particles — can be constructed. To understand this, consider the case of two identical quantum particles (we could consider arbitrarily-many, but starting with two is simpler). The two quantum particles have wavefunctions $\psi_{1}(\mathbf{r}_{1})$ and $\psi_{2}(\mathbf{r}_{2})$, respectively. What is the many-body wavefunction $\psi(\mathbf{r}_1, \mathbf{r}_2)$ of the whole system? Well, a simple guess could be that we just multiply the two particles' respective wavefunctions together:
+
+{% math() %}
+\psi(\mathbf{r}_1, \mathbf{r}_2) \stackrel{?}{=} \psi_{1}(\mathbf{r}_{1})\psi_{2}(\mathbf{r}_{2})
+{% end %}
+
+After all, we saw that states could be combined with a tensor product, and the tensor product of two functions of different variables is just multiplication, so this would work, right? Wrong! Because the particles are indistinguishable, we must be able to swap their positions *without changing the overall probability density*. If we make the swap $\mathbf{r}_1 \leftrightarrow \mathbf{r}_2$ for each of the component wavefunctions, we get:
+
+{% math() %}
+\psi(\mathbf{r}_2, \mathbf{r}_1) = \psi_{1}(\mathbf{r}_{2})\psi_{2}(\mathbf{r}_{1})
+{% end %}
+
+But this many-body wavefunction with the particles swapped now has a *different* probability density! Mathematically, we have:
+
+{% math() %}
+|\psi_{1}(\mathbf{r}_{2})\psi_{2}(\mathbf{r}_{1})|^2 \neq \psi_{1}(\mathbf{r}_{1})\psi_{2}(\mathbf{r}_{2})
+{% end %}
+
+If this is too abstract, let's go over an example. Consider the case of the infinite-square well, except occupied by *two particles*. According to our guess, they would have the respective (normalized) wavefunctions:
+
+{% math() %}
+\begin{align*}
+\psi_{n_{1}}(x_{1}) &= \sqrt{ \frac{2}{L} } \sin\left( \frac{n_{1}\pi x_{1}}{L} \right) \\
+\psi_{n_{2}}(x_{2}) &= \sqrt{ \frac{2}{L} } \sin\left( \frac{n_{2}\pi x_{2}}{L} \right)
+\end{align*}
+{% end %}
+
+Where $n_1, n_2$ are respectively the quantum numbers labelling the allowable energy levels. The overall probability density from our guessed many-body wavefunction would be:
+
+{% math() %}
+|\psi_{n_{1}}(x_{1})\psi_{n_{2}}(x_{2})|^2 = \frac{2}{L} \sin^2\left( \frac{n_{1}\pi x_{1}}{L} \right) \sin^2\left( \frac{n_{2}\pi x_{2}}{L} \right)
+{% end %}
+
+Let's write this in a cleaner form by defining $A = n_1 \pi/L$ and $B = n_2 \pi/L$. This gives us:
+
+{% math() %}
+|\psi_{n_{1}}(x_{1})\psi_{n_{2}}(x_{2})|^2 = \frac{2}{L} \sin^2\left( A x_{1}\right) \sin^2\left( B x_{2}\right)
+{% end %}
+
+Now, let's swap the particles (mathematically, perform the transformation $x_1 \to x_2$ and $x_2 \to x_1$). That gives us the new probability density of:
+
+{% math() %}
+|\psi_{n_{1}}(x_{2})\psi_{n_{2}}(x_{1})|^2 = \frac{2}{L} \sin^2\left( A x_{2}\right) \sin^2\left( B x_{1}\right)
+{% end %}
+
+But this is clearly *not equal* to the probability density of the original many-body wavefunction, because (by term-by-term comparison):
+
+{% math() %}
+\sin^2(A x_{2}) \neq \sin^2 (A x_{1}), \quad \sin^2(B x_{1}) \neq \sin^2(B x_{2})
+{% end %}
+
+The **only way** we could make the two probability densities equal is if the many-body wavefunction of the system is modified to:
+
+{% math() %}
+\psi(x_{1}, x_{2}) = \frac{1}{\sqrt{ 2 }}(\psi_{n_{1}}(x_{1}) \psi_{n_{2}}(x_{2}) \pm \psi_{n_{1}}(x_{2}) \psi_{n_{2}}(x_{1}))
+{% end %}
+
+By direct calculation you can verify that $|\psi(x_1, x_2)|^2$ is *indeed equal* to $|\psi(\mathbf{r}_2, \mathbf{r}_1)|^2$. The $\pm$ sign is actually important here, because it tells us that there are *two distinct possibilities* for a physically-consistent wavefunction, which we will write as $\psi_+$ and $\psi_-$, defined as:
+
+{% math() %}
+\begin{align*}
+\psi_{+} = \frac{1}{\sqrt{ 2 }}(\psi_{n_{1}}(x_{1}) \psi_{n_{2}}(x_{2}) + \psi_{n_{1}}(x_{2}) \psi_{n_{2}}(x_{1})) \\
+\psi_{-} = \frac{1}{\sqrt{ 2 }}(\psi_{n_{1}}(x_{1}) \psi_{n_{2}}(x_{2}) - \psi_{n_{1}}(x_{2}) \psi_{n_{2}}(x_{1}))
+\end{align*}
+{% end %}
+
+Now, the choice of sign *does not* change the probability density, because $(-1)^2 = (+1)^2 = 1$. This preserves the principle of indistinguishability. However, the two wavefunctions are still different! That is to say, $|\psi_+|^2 = |\psi_-|^2$ *does not imply* $\psi_+ = \psi_-$. This is most clear when we (mathematically) swap the particles again (the technical term is *particle exchange*). One finds that:
+
+{% math() %}
+\begin{align*}
+\psi_{+}(x_{2}, x_{1}) &= \psi_{+}(x_{1}, x_{2}) \\
+\psi_{-}(x_{2}, x_{1}) &= -\psi_{-}(x_{1}, x_{2})
+\end{align*}
+{% end %}
+
+Notably, $\psi_+$ *does not change* from particle exchange, whereas $\psi_-$ acquires a negative sign. Thus, we say that the wavefunction $\psi_+$ is **symmetric** while the wavefunction $\psi_-$ is **antisymmetric**. Also, importantly, if the two particles are in the same position $x_1 = x_2 = x$, then an antisymmetric wavefunction would mean that:
+
+{% math() %}
+\psi_{-}(x, x) =-\psi(x, x) \implies \psi_-(x, x) = 0 \implies |\psi_{-}(x, x)|^2 = 0
+{% end %}
+
+However, if we perform the same calculation with the symmetric wavefunction $\psi_+$, we obtain:
+
+{% math() %}
+\psi_{+}(x, x) = \psi_{+}(x, x) \implies \psi_+(x, x) = \text{anything} \implies |\psi_{-}(x, x)|^2 = \text{anything}
+{% end %}
+
+This chain of reasoning tells us that a system of two particles with an *antisymmetric* wave function has **zero probability** of having two particles occupy the same position, whereas a system of two particles with a *symmetric* wave function has no such limitation. Clearly, the two wavefunctions, despite differing only by a sign, have very different physical implications! More generally, we can summarize this fact as follows:
+
+> Particles with **antisymmetric** many-body wavefunctions **cannot share the same quantum state**.
+
+This is called the **Pauli exclusion principle**, and it both applies to the specific case of the two particles in a box as well as for arbitrary systems of particles. In the general case, the many-body wavefunction of a system of two **indistinguishable particles** is given by:
+
+{% math() %}
+\psi(\mathbf{r}_{1}, \mathbf{r}_{2}) = \frac{1}{\sqrt{ 2 }}(\psi_{1}(\mathbf{r}_{1}) \psi_{2}(\mathbf{r}_{2}) \pm \psi_{1}(\mathbf{r}_{2}) \psi_{2}(\mathbf{r}_{1}))
+{% end %}
+
+The $+$ sign corresponds to particles called **fermions**, which have antisymmetric wavefunctions, whereas the $-$ sign correspond to particles called **bosons**, which have symmetric wavefunctions. The most well-known fermion, and indeed the original particle for which the Pauli exclusion principle was formulated for, is the **electron**. Meanwhile, the most well-known boson is the **photon**, and the fact that photons are bosons is responsible for making lasers possible (through something called [stimulated emission](https://en.wikipedia.org/wiki/Stimulated_emission)).
+
+Fermions and bosons are very different, and the ultimate origin can be traced back to the simple postulate of symmetry (for bosons) or asymmetry (for fermions) of their wavefunctions under particle exchange. They have different statistical behavior, with fermions obeying [Fermi-Dirac statistics](https://en.wikipedia.org/wiki/Fermi%E2%80%93Dirac_statistics) and bosons obeying [Bose-Einstein statistics](https://en.wikipedia.org/wiki/Bose%E2%80%93Einstein_statistics) (which is covered more in the [statistical mechanics guide](@/thermo-stat-mech/part-2.md)). Moreover, by something called the [spin-statistics theorem](https://en.wikipedia.org/wiki/Spin%E2%80%93statistics_theorem), fermions must have half-integer spin ($\frac{1}{2}, \frac{3}{2}, \dots$) and bosons must have integer spin ($0, 1, 2, 3, \dots$). All elementary particles that we know of are either spin-1/2 (electrons, neutrinos, quarks), spin-1 (gluons, photons, W and Z bosons), or spin-0 (the Higgs boson). Moreover, for reasons too complicated to cover here, elementary bosons are massless while elementary fermions are massive (as in "they have mass", not as in "they have a lot of mass"). Hence, fermions are what make up matter, and bosons are what make up forces (in a very general sense). Why the Universe has both bosons and fermions is a question that I am not qualified to answer, but is an interesting question to ponder about. Presumably, without both bosons and fermions, we wouldn't be alive to ponder that question in the first place!
+
+### Spin and total angular momentum
+
+The basic wavefunctions of the hydrogen atom, which we have been working with up to this point, have an important problem: they *do not satisfy* the Heisenberg uncertainty principle! This is because all the eigenstates of hydrogen that we have derived are uniquely specified by three quantum numbers: $n, m, \ell$. Let us naively assume that the same eigenstates to apply for multi-electron atoms, like helium (which has two electrons). Then, if two or more electrons had the same $n, m, \ell$ (which is mathematically possible in the regular hydrogen wavefunctions), they would therefore share the same quantum state, which (by the Pauli Exclusion Principle) is impossible for fermions!
+
+This issue troubled physicists for quite some time, until 1925, when two PhD students ([Samuel Goudsmit](https://en.wikipedia.org/wiki/Samuel_Goudsmit) and [George Uhlenbeck](https://en.wikipedia.org/wiki/George_Uhlenbeck)) proposed the concept of *spin*. They postulated that two electrons that occupied the same orbital (with the same $n, \ell, m$) must have **opposite spin**. This additional degree of freedom meant that two electrons in the *same* orbital would nonetheless have *different quantum states*. (Unfortunately, Goudsmit and Uhlenbeck did not get the Nobel Prize for the discovery of spin and have mostly been forgotten nowadays; perhaps because they were PhD students at the time.)
+
+To incorporate spin into the eigenstates that we originally solved for the hydrogen atom, we must change the quantum numbers we used, since $n, \ell, m$ are degenerate for multi-electronic atoms. To do so, we define a new quantum number known as the **total angular momentum quantum number** and denoted as $j$, where $j = 0, \frac{1}{2}, 1, \frac{3}{2}, \dots$ and ranges from $|\ell - s|$ to $|\ell + s|$ (where $s$ is the spin quantum number). We also define the **total angular momentum operator**, denoted $\hat{\mathbf{J}}$, which is given by:
+
+{% math() %}
+\hat{\mathbf{J}} = \hat{\mathbf{L}} + \hat{\mathbf{S}}, \quad \hat{\mathbf{J}} = (\hat{J}_{x}, \hat{J}_{y}, \hat{J}_{z})^T
+{% end %}
+
+(Where for electrons, the spin quantum number $s$ is always equal to 1/2.) The total angular momentum operator $\hat{\mathbf{J}}$ behaves very similar to the orbital angular momentum operator $\hat{\mathbf{L}}$; both describe angular momentum within atoms. The analogies are evident: $\hat J_x, \hat J_y, \hat J_z$ take the place of $\hat L_x, \hat L_y, \hat L_z$, and the quantum number $j$ takes the place of $\ell$. There is even an $\hat J^2$ operator (where $\hat{J}^2 \equiv \hat{\mathbf{J}}^2$) that is roughly analogous to the $\hat L^2$ operator, which satisfies a very similar-looking eigenvalue equation, given by:
+
+{% math() %}
+\hat J^2 |j, m_j\rangle = \hbar^2 j(j + 1)|j, m_j\rangle, \quad m_j = -j, (-j + 1), \dots, (j - 1), j
+{% end %}
+
+Where $|j, m_j\rangle$ denote the eigenstates of the $\hat J^2$ operator, and are known as the [spinor spherical harmonics](https://en.wikipedia.org/wiki/Spinor_spherical_harmonics) (which are effectively combinations of spin states weighted by the regular spherical harmonics). However, the total angular momentum operator crucially also includes spin, something that the (regular) angular momentum operator does not. Using the total angular momentum, we can denote the corrected eigenstates of the Hamiltonian (and thus the new orbitals) as $|n, j, m_j\rangle$. One may *conceptually* understand these eigenstates as a combination of the "old" eigenstates $|n, \ell, m\rangle$ with the spin eigenstates $|\chi_\pm\rangle$. That is to say:
+
+{% math() %}
+|n, j, m_{j}\rangle \to |\chi_{\pm}\rangle \otimes |n, \ell, m\rangle
+{% end %}
+
+This is mathematically not very rigorous, so it should be more conceptual than mathematical, but it communicates the essential idea: spin fixes the degeneracy in atomic orbitals by adding an additional quantum number to the mix, ensuring that no two electrons in an orbital have the same state. By the same reason, orbitals occupied by a pair of electrons will always have one spin-up electron and one spin-down. An orbital could have one electron or two electrons, but it can never have more than two, so as to ensure the Pauli exclusion principle is satisfied.
+
+### The total angular momentum in (some) more detail
+
+We will take a brief look at some of the mathematical properties of the $\hat{\mathbf{J}}$ operator, which will turn out to be (unsurprisingly) very similar to $\hat{\mathbf{L}}$. For example, $\hat{\mathbf{J}}$ has its own version of the ladder operators (which we denote $\hat J_+$ and $\hat J_-$) and these are respectively given by:
+
+{% math() %}
+\begin{gather*}
+\hat J_{+} = \hat J_{x} + i \hat J_{y}, \quad \hat J_{-} = \hat J_{x} - i \hat J_{y} \\
+\hat J_x = \frac{1}{2}(\hat J_+ + \hat J_-), \quad \hat J_y = \frac{i}{2}(\hat{J}_{-} - \hat{J}_{+})
+\end{gather*}
+{% end %}
+
+Moreover, the eigenvalues and eigenfunctions of $\hat{\mathbf{J}}$ and its cousins are given in the table below:
+
+| Operator    | Eigenstates                                                                                                    | Eigenvalues                                                                                                        |
+| ----------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| $\hat J^2$  | $\vert j, m_j\rangle$ ([spinor spherical harmonics](https://en.wikipedia.org/wiki/Spinor_spherical_harmonics)) | $\hbar^2 j(j + 1)$ where $j = 0, \frac{1}{2}, 1, \frac{3}{2}, \dots$ and $\vert\ell - s\vert \leq j \leq \ell + s$ |
+| $\hat J_z$  | $\vert j, m_j\rangle$ ([spinor spherical harmonics](https://en.wikipedia.org/wiki/Spinor_spherical_harmonics)) | $\hbar m_j$ where $m_j = -j, (-j + 1), \dots, (j - 1), j$                                                          |
+| $\hat J_+$  | $\vert j, m_j + 1\rangle$                                                                                      | $\hbar\sqrt{j(j + 1) - m_j(m_j + 1)}$                                                                              |
+| $\hat J_-$  | $\vert j, m_j - 1\rangle$                                                                                      | $\hbar\sqrt{j(j + 1) - m_j(m_j - 1)}$                                                                              |
+
+> **Note:** $\hat J_x$ and $\hat J_y$ have the same eigenvalues as $\hat J_z$, but have different eigenvectors.
+
+And just like $\hat{\mathbf{L}}$, $\hat{\mathbf{J}}$ can be written in the eigenbasis of its eigenfunctions (the spinor spherical harmonics) such that it can be represented in matrix form by computing the matrix elements $\langle j, m_j|\hat J | j', m_j'\rangle$ (where here, $\hat J$ represents any one of the operators in the above table.) The matrix representations are as follows:
+
+- For $j = 0$, all $\hat{\mathbf{J}}$ operators are zero (including $\hat J_x$, $\hat J_y$, $\hat J_z$, $\hat J^2$, and the raising and lowering operators for $\hat{\mathbf{J}}$)
+- For $j = \frac{1}{2}$ the operators take the form of $2 \times 2$ matrices (where $\sigma_i$ are the Pauli matrices):
+
+{% math() %}
+\begin{align*}
+&\hat{J}_{x} = \frac{\hbar}{2}\sigma_{x}, \quad \hat{J}_{y} = \frac{\hbar}{2}\sigma_{y}, \quad \hat{J}_{z} = \frac{\hbar}{2} \sigma_{z} \\
+&\hat{J}^2 = \frac{3}{4}\hbar^2 \begin{pmatrix}
+1 & 0 \\ 0 & 1
+\end{pmatrix}, \quad \hat{J}_{+} = \hbar \begin{pmatrix}
+0 & 1 \\
+0 & 0
+\end{pmatrix}, \quad \hat{J}_{-} = \hbar \begin{pmatrix}
+0 & 0 \\
+1 & 0
+\end{pmatrix}
+\end{align*}
+{% end %}
+
+- For $j = 1$ the operators take the form of $3 \times 3$ matrices:
+
+{% math() %}
+\begin{align*}
+&\hat{J}_{x} = \frac{\hbar}{2} \begin{pmatrix}
+0 & 1 & 0 \\
+1 & 0 & 1 \\
+0 & 1 & 0
+\end{pmatrix},
+\quad \hat{J}_{y} = \frac{\hbar}{2} \begin{pmatrix}
+0 & -i & 0 \\
+i & 0 & -i \\
+0 & i & 0
+\end{pmatrix},
+\quad \hat{J}_{z} = \hbar \begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & -1
+\end{pmatrix} \\
+&\hat{J}^2 = 2\hbar^2 \begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}, \quad \hat{J}_{+} = \hbar \begin{pmatrix}
+0 & \sqrt{ 2 } & 0 \\
+0 & 0 & \sqrt{ 2 } \\
+0 & 0 & 0
+\end{pmatrix}, \quad
+\hat{J}_{-} = \hbar \begin{pmatrix}
+0 & 0 & 0 \\
+\sqrt{ 2 } & 0 & 0 \\
+0 & \sqrt{ 2 } & 0
+\end{pmatrix}
+\end{align*}
+{% end %}
+
+We could go on and on forever, but you get the idea.
+
+### Shells, subshells, and spectroscopic notation
+
+We'll now return to the hydrogen atom, where we need to mention a crucial topic when describing any atom: **spectroscopic notation**. For better or worse, spectroscopic notation is the standard way of describing the states of atoms, so we better take a look at it!
+
+First of all, recall that (excluding spin) the eigenstates of hydrogen (and other atoms) are given by $|n, \ell, m\rangle$, with $n$ being the principal quantum number, $\ell$ being the azimuthal quantum number, and $m$ being the magnetic quantum number. Hence, $|2, 0, 0\rangle$ is the orbital with quantum numbers $n = 2$, $\ell = 0$, and $m = 0$. Meanwhile, $|1, 0, 0\rangle$ (the ground state) is the orbital with quantum numbers $n = 1$ and $\ell = m = 0$. But this notation is quite mathematical and physicists and chemists like to give names to things.
+
+To start with, the set of all states with the same principal quantum number is called an **electron shell** (or just "shell" for short). These shells have letter names, as given by the table below:
+
+| Shell | Value of $n$ | Max. number of electrons ($2n^2$) |
+| ----- | ------------ | --------------------------------- |
+| $K$   | $n = 1$      | 2                                 |
+| $L$   | $n = 2$      | 8                                 |
+| $M$   | $n = 3$      | 18                                |
+| $N$   | $n = 4$      | 32                                |
+| $O$   | $n = 5$      | 50                                |
+| $P$   | $n = 6$      | 72                                |
+| $Q$   | $n = 7$      | 98                                |
+
+Don't ask me why these are the names; their origins are from [X-ray spectroscopy](https://en.wikipedia.org/wiki/X-ray_notation) and this has unfortunately remained the case to this day. Now, electron shells are important because they tell us the **energy level**, and (to a good approximation) the energy levels are *completely determined* by the principal quantum number $n$. In addition, the outermost shell (called the **valence shell**) is responsible for the majority of chemical reactions and therefore has great significance in chemistry.
+
+However, just specifying the shell is often not enough; there are $2n^2$ electrons per shell, meaning that as we go to higher and higher shells, the number of electrons increases greatly. The $n = 7$ shell, for instance, has 98 electrons! Hence, just knowing the shell doesn't tell us the state of the electrons in the shell. We can be a bit more specific by also specifying $\ell$, the azimuthal quantum number. This gives us the **subshell**, and these also have names, which are unfortunately equally confusing. They are, respectively:
+
+| Subshell | Value of $\ell$ | Max. number of electrons |
+| -------- | --------------- | ------------------------ |
+| $s$      | $\ell = 0$      | 2                        |
+| $p$      | $\ell = 1$      | 6                        |
+| $d$      | $\ell = 2$      | 10                       |
+| $f$      | $\ell = 3$      | 14                       |
+| $g$      | $\ell = 4$      | 18                       |
+| $h$      | $\ell = 5$      | 22                       |
+
+> **Note:** If you think that the names of shells and subshells make no sense, you would be completely right; these names come from archaic spectroscopy notation from more than a hundred years ago, but have unfortunately stuck around to this day. Also, the maximum number of electrons per subshell is always $2(2 \ell + 1)$ which follows from the Pauli exclusion principle and the fact that $-\ell \leq m \leq \ell$.
+
+The notation for subshells is to include the principal quantum number as a number and the azimuthal quantum number using the letter name of that subshell. The notation therefore takes the form:
+
+{% math() %}
+n[L]
+{% end %}
+
+Where $[L]$ stands for an alphabetical letter that maps to a specific value of $\ell$. Therefore, the ground state of hydrogen $|1, 0, 0\rangle$ would be written as $1s$ in spectroscopic notation, since it has $n = 1$ and $\ell = 0$, and as per the table above, the letter $s$ corresponds to $\ell = 0$. A few more examples of the notation are shown below:
+
+| Subshell | Quantum numbers                               | Eigenstate(s) of hydrogen                                                                                                          |
+| -------- | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| $1s$     | $n = 1, \ell = 0, m = 0$                      | $\vert 1, 0, 0\rangle$ (ground state)                                                                                              |
+| $2s$     | $n = 2, \ell = 0, m = 0$                      | $\vert 2, 0, 0\rangle$                                                                                                             |
+| $2p$     | $n = 2, \ell = 1, m = 0, \pm 1$               | $\vert 2, 1, \pm 1\rangle$                                                                                                         |
+| $3s$     | $n = 3, \ell = 0, m = 0$                      | $\vert 3, 0, 0\rangle$                                                                                                             |
+| $3p$     | $n = 3, \ell = 1, m = 0, \pm 1$               | $\vert 3, 1, 0\rangle$ or $\vert 3, 1, \pm 1\rangle$                                                                               |
+| $3d$     | $n = 3$, $\ell = 1, 2$, $m = 0, \pm 1, \pm 2$ | $\vert 3, 1, 0\rangle$, $\vert 3, 1, \pm 1\rangle$, $\vert 3, 2, 0\rangle$, $\vert 3, 2, \pm 1\rangle$, $\vert 3, 2, \pm 2\rangle$ |
+
+Since multiple electrons can occupy a given subshell, it is typical to also specify the number of electrons present in a subshell as a superscript. For instance, $(1s)^1$ means that there is a single electron present in the $1s$ subshell; this is, of course, the case for hydrogen. For helium, the next lightest-atom, it has two electrons in its $1s$ subshell and hence we would write $(1s)^2$. Oxygen has 8 electrons, which go into its $1s$ subshell, $2s$ subshell, and $2p$ subshell (having 2 electrons, 2 electrons, and 4 electrons respectively). We therefore write $(1s)^2 (2s)^2 (2p)^4$, which is called its **electron configuration**. Electron configurations can get *pretty complicated*; for instance, the following is the electron configuration of germanium ($\ce{Ge}$, atomic number 32):
+
+{% math() %}
+(1s)^2 (2s)^2 (2p)^6 (3s)^2 (3p)^6 (4s)^2 (3d)^{10}(4p)^2
+{% end %}
+
+It is therefore common to write the electron configuration of elements with a large number of subshells in terms of the electron configuration of the closest noble gas (closest meaning "nearest on the periodic table"), since noble gases have completely-filled valence shells. For germanium, the closest noble gas is argon, which has the electron configuration $(1s)^2 (2s)^2 (2p)^6 (3s)^2 (3p)^6$. Hence, germanium's electron configuration is abbreviated as:
+
+{% math() %}
+[\ce{Ar}] (4s)^2 (3d)^{10}(4p)^2
+{% end %}
+
+Determining the electron configuration requires a set of rules that we won't cover here for brevity's sake (if you *really* want to know, they are Madelung's rule and the Aufbau principle). If you would like to read more about electron configurations, please consult the [general chemistry guide](@/general-chem.md). However, there is one rule that we *will* cover, and that is **Hund's rule**, which states that:
+
+> *Each empty orbital will be filled by single electrons before being filled by paired electrons.*
+
+And:
+
+> *All singly-occupied orbitals have the parallel (same-direction) spin.*
+
+A way of understanding Hund's rule is to imagine a bus with each row having only two seats. Passengers boarding the bus will (almost) always want to keep to themselves, and hence all the rows will be filled with a single person before any row has two people sharing the row. In the same way, electrons will first fill all the available orbitals such that each orbital only has a single electron, and only once all the orbitals are occupied, will they start "sharing" orbitals with each other. Meanwhile, the parallel spins allows the electrons to lower their total energy, settling into a more stable configuration. Conventionally, the electrons will all be spin-up, although there is nothing in physics that says they can't all be spin-down; however, the customary convention is that orbitals occupied by single electrons will all be spin-up.
+
+### Orbitals and spin-states
+
+We can go one step further than the specifying the subshell (that is, the value of both $n$ and $\ell$) by also specifying the magnetic quantum number $m$. The set of three quantum numbers forms an **orbital**. Due to indistinguishability (and as we discussed earlier), an orbital can contain a **maximum of *two* electrons**. Of course, it needn't always contain two electrons: it can contain just one spin-up electron, or just one spin-down electron. The three possibilities allowed by Pauli's exclusion principle for *one orbital* are therefore:
+
+| Spin-up electron(s) | Spin-down electron(s) | Total spin of orbital |
+| ------------------- | --------------------- | --------------------- |
+| 1                   | 0                     | $+\frac{1}{2}$        |
+| 0                   | 1                     | $-\frac{1}{2}$        |
+| 1                   | 1                     | Zero                  |
+
+> **Note:** When an orbital contains two electrons, we say that they are **paired electrons** because we know that they must have opposite spins. Meanwhile, if an orbital contains only one electron, we say it is an **unpaired electron**. In most cases, electrons are paired rather than unpaired, because paired electrons have a lower total energy and are thus more stable.
+
+If we consider *two orbitals*, the possibilities become more complex, because electrons in different orbitals are not constrained by the Pauli exclusion principle (they have different principal quantum numbers, so they can have identical spins). We therefore have three cases specifically when *two orbitals* are involved:
+
+- A total spin of **zero**, when the first orbital has two electrons (of opposite spin) and the second orbital is unoccupied. This is called a **singlet state**.
+- A total spin of $\pm \frac{1}{2}$, when the first orbital has two electrons (of opposite spin) and the second orbital has a single electron. This is called a **doublet state** because the second orbital's lone electron has two possibilities (spin-up or spin-down) that both result in a doublet state.
+- A total spin of either zero or $\pm 1$, when the first orbital has a single electron and the second orbital has a single electron. This is called a **triplet state** because of the three possibilities: both electrons are spin-up, both electrons are spin-down, or the two electrons have opposite spins
+
+As a summary, singlet, doublet, and triplet states have the following characteristics:
+
+| Type of state | Electrons in orbital 1        | Electrons in orbital 2             | Total spin        |
+| ------------- | ----------------------------- | ---------------------------------- | ----------------- |
+| Singlet       | Two electrons, opposite spins | None                               | Zero              |
+| Doublet       | Two electrons, opposite spin  | One electron, spin-up or spin-down | $\pm \frac{1}{2}$ |
+| Triplet       | One electron                  | One electron                       | $0, \pm 1$        |
+
+These states are collectively known as **spin states**. The astute reader may notice that the spin states are the _same ones_ as those present in a two-level system of spin-1/2 particles, *precisely because* two orbitals are just two levels! In fact, we can draw them as two literal levels to illustrate the point further.
+
+![A diagram showing the possible electron spins of two orbitals, corresponding to singlet, doublet, and triplet states](https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Spin_multiplicity_diagram.svg/960px-Spin_multiplicity_diagram.svg.png)
+
+_Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Spin_multiplicity_diagram.svg)_
+
+### Term symbols
+
+We have seen that specifying the orbital allows us to narrow down the vast number of possible states in any given shell of an atom into just four possible states (which have respective spins $\uparrow \downarrow$, $\downarrow \uparrow$, $\uparrow$ and $\downarrow$) of the two (or one) electron(s) in a given orbital. The only remaining piece of information to specify is the **spin**. This is where things take a different turn, because the inclusion of spin means that we need to consider the **total angular momentum** instead of just the orbital angular momentum. Therefore, our quantum numbers become $n, j, m_j$ where $n$ is (as before) the principal quantum number, $j$ is the total angular momentum quantum number, and $m_j$ is the total angular momentum magnetic quantum number (that's a mouthful to say!)
+
+The notation for specifying the *total angular momentum* of a specific state is known as a **term symbol**. Crucially, unlike shells, subshells, or orbitals, a term symbol captures information about spin. It is written in the following form:
+
+{% math() %}
+{}^{2S + 1}[L]_{J}
+{% end %}
+
+Where $S$ is the **total spin quantum number**, $J$ is the **total angular momentum quantum number**, and $[L]$ denotes the **total azimuthal (orbital angular momentum) quantum number** (which is denoted by a letter, although usually written in uppercase (that is, $[L] \in \{S, P, D, F, \dots\}$ instead of the $s, p, d, f, \dots$ that we used before)). Here, the superscript of $2S + 1$ is known as the **spin multiplicity**. The total spin quantum number is equal to the number of *unpaired electrons* in an atom divided by two (remember, unpaired electrons are those in orbitals where they are the only electron). Meanwhile, the total angular momentum quantum number is the sum of the magnetic quantum numbers of any unfilled subshells; the magnetic quantum numbers will always be the maximum they can be without violating the Pauli exclusion principle. And the total angular momentum quantum number is simply the sum of the total spin and total angular momentum quantum numbers. In formula form, we thus have:
+
+{% math() %}
+\begin{align*}
+L &= \mathrm{max}\left\{\sum_{i} m_{i}\right\} \\
+S &= \frac{n}{2} \\
+J &= S + L
+\end{align*}
+{% end %}
+
+Where $n$ is the number of unpaired electrons and $m_i$ is the magnetic quantum number of the $i$-th electron. For every **full orbital** (that is, with paired electrons), the magnetic number of each electron is always 1 and hence the total magnetic number for the orbital is 2. In the case where all electrons are paired, by definition $n = 0$ so $S = 0$. Moreover, if all shells are completely filled, then $L = 0$. This tells us that **all noble gases** (helium, neon, argon, etc.) have the term symbol of ${}^1 S_0$ for their ground state. (Note that we are generally most interested in the ground state ($n = 1$) term symbol, though you can also write them for excited states.)
+
+Let's now consider the case of nitrogen, which has the electron configuration $(1s)^2 (2s)^2 (2p)^3$ for a grand total of $2 + 2 + 3 = 7$ electrons. We'll do our calculation in several parts:
+
+- **Determine $S$:** We know its $1s$ subshell has two electrons, so those are paired; same for its $2s$ subshell, which also has paired electrons. However, of its $2p$ subshells, it has *three* electrons total out of the 6 electrons needed to completely fill the subshell. The three electrons occupy separate orbitals due to Hund's rule (remember, orbitals are always filled by a single electron before being filled by paired electrons) and are all spin-up (by convention). The electrons will thus have a total spin of $S = 3 \cdot \frac{1}{2} = \frac{3}{2}$.
+- **Determine $L$:** We ignore any fully filled subshells, meaning that the $1s$ and $2s$ subshells don't count. This means we only have to care about the $2p$ subshell. As we found while determining $S$, the $2p$ subshell contains three orbitals, each occupied by a single electron. Since all three electrons share the same values of $n$ and $\ell$ and since they all share the same spin of $+\frac{1}{2}$, they must have different magnetic quantum numbers to satisfy the Pauli exclusion principle. We know that the $2p$ subshell is associated with $n  = 2$ and $\ell = 1$, so the allowable values of $m$ are $m = 0, \pm 1$. The electrons would thus have the magnetic quantum numbers $1, 0, -1$ meaning that the total orbital angular momentum is $L = 1 + 0 + (-1) = 0$.
+- **Determine the letter for $L$:** We found that $L = 0$ which corresponds to the letter $s$ (but we use uppercase letters for *total* orbital angular momentum, so the letter is written as $S$)
+- **Determine $J$:** Since $S = 3/2$ and $L = 0$ the total angular momentum is $J = 0 + 3/2 = 3/2$.
+- **Determine the spin multiplicity:** Since $S = 3/2$, the spin multiplicity is $2S + 1 = 4$
+- Hence putting everything together, the ground-state term symbol for nitrogen is ${}^4 S_{3/2}$.
+
+> **Note:** Term symbols are *distinct* from subshell notation (e.g. ${}^2S_{1/2}$ and ${}^2 P_{1/2}$ *do not* mean the same thing compared to the $2s$ and $2p$ subshells in electron configuration notation).
+
+### The hierarchy of spectroscopic notation
+
+We can conclude our foray into spectroscopic notation with a short summary. First, the states of electrons in an atom are determined by various quantum numbers ($n, \ell, m$ if spin is not considered, or $n, j, m_j$ if spin is considered). The group of all states with the same $n$ is known as a *shell*; the group of all states with the same $n$ and $\ell$ is known as a *subshell*; and the group of all states with the same $n, \ell, m$ is known as an *orbital*. Finally, we can capture information about the *total angular momentum* (including the contributions from both spin and orbital angular momentum) and package it up in a term symbol. We can summarize what we discussed as follows:
+
+| Word        | Place in hierarchy                           |
+| ----------- | -------------------------------------------- |
+| Shell       | Specific value of $n$                        |
+| Subshell    | Specific value of $n$ and $\ell$             |
+| Orbital     | Specific value of $n$, $\ell$, and $m$       |
+| State       | Specific value of $n$, $\ell$, $m$, and spin |
+| Term symbol | Specific value of $n$, $L$, $S$, and $J$     |
+
+### Degeneracy pressure and the stability of matter
+
+We will now venture into an interesting topic that follows from our discussion of fermions and bosons, where we mentioned that fermions, not bosons, are the basic constituents of matter. But what if this was not the case? What if matter was made of bosons? This is not entirely unprecedented, because we have discovered exotic types of matter, such as [Bose-Einstein condensates](https://en.wikipedia.org/wiki/Bose%E2%80%93Einstein_condensate), which are indeed made entirely of bosons. However, these are the exception, not the rule. As it turns out, if matter were comprised primarily of bosons, the effects would be catastrophic, because bosonic matter is unstable — it would collapse or blow apart, making any macroscopic structures (including human beings) impossible. The reason why? Our old friend, the Pauli exclusion principle, gives us the answer.
+
+We know that the positions of quantum particles are generally uncertain. Instead of being at a definite position, quantum particles have an *uncertainty in position* $\Delta x$. In principle, this means that two side-by-side quantum particles could have a nonzero probability of being found *inside* each other! However, electrons are not simply any quantum particle: they are **fermions**, meaning that two (indistinguishable) electrons cannot occupy the same position. Therefore, no matter what, their uncertainty in position $\Delta x$ must remain **small enough** such that no two electrons could be found at the same position at once. By the Heisenberg uncertainty principle $\Delta x \Delta p = \hbar/2$, a small uncertainty in *position* corresponds to a large uncertainty in *momentum*. Thus, as electrons are confined more closely-together, they have more momentum, which manifests macroscopically as a pressure known as **electron degeneracy pressure** (owing to its effect being most prominent in so-called *degenerate gases*). While we will not derive it here, the electron degeneracy pressure $P_E$ is given by:
+
+{% math() %}
+P_{E} = \frac{(3\pi^2)^{2/3}}{5} \frac{\hbar^2}{m_{e}} \left[ \left( \frac{Z}{A} \right) \frac{\rho}{m_{H}} \right]^{5/3}
+{% end %}
+
+Where $h$ is Planck's constant, $m_e$ is the electron mass, $Z$ is the number of protons and $A$ is the number of nucleons in a certain amount of matter, $\rho$ is the density, and $m_H$ is the mass of the hydrogen atom (which is around $\pu{1.008 Da}$, equivalent to around $\pu{1.674E-24 g}$. Most matter found on Earth contains carbon, which has 6 protons and 12 nucleons in total, so $Z/A = 0.5$. Elemental carbon has a density of around $\pu{2.26 g/cm^3}$, so the electron degeneracy pressure of carbon is $P_E \approx \pu{1.214E12 N/m^2}$. That is a *lot of pressure* to overcome! Unsurprisingly, matter is very hard to crush on a *microscopic level*, which in turn means that in our Universe, matter is **stable**. The same would *not* be true for bosons; we know that two photons, for instance, can be in the same place at once (this is why two light waves can pass through each other). Hence, if matter was made of bosons, there would be little to stop it from collapsing, and we would all turn into a (homogenous) goo!
+
+We have seen that the fundamental stability of matter owes itself to the unique properties of fermions. But under certain cases, typically under extreme pressures, electron degeneracy pressure is not enough to hold matter together. This occurs in stellar supernovae — the final death of a massive star — where pressures are so extreme that matter is crushed beyond the limits of what degeneracy pressure can withstand. The result is a neutron star (where the strong force acts as a final barrier towards further collapse) or a black hole (where the collapse cannot be stopped and eventually a singularity forms). However, in everyday life, we are far from exceeding electron degeneracy pressure, meaning — thankfully for us — we don't have to worry about a singularity forming soon!
 
 ## Stationary perturbation theory
 
