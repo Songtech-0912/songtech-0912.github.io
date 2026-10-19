@@ -563,6 +563,193 @@ We find that the particle always has a nonzero energy, even in its ground state.
 
 > **Note for the advanced reader:** Quantum field theory gives the complete explanation for why a particle can have nonzero energy even in its ground state. The reason is that the vacuum in quantum field theory is never empty; spontaneous energy fluctuations in the vacuum lead to a nonzero energy even in the ground state, and it would take an infinite amount of energy (or equivalently, infinite time) to suppress all of these fluctuations.
 
+### The delta function potential
+
+We'll now look at a more involved problem for a bound-state system. Consider a 1D potential given by:
+
+{% math() %}
+V(x) = -\lambda \delta(x) = \begin{cases}
+-\infty,  & x = 0 \\
+0, & x\neq 0
+\end{cases}
+{% end %}
+
+Where $\delta(x)$ is known as the **Dirac delta function**; one can think of it as a sharp "spike" which is infinite at $x = 0$ and zero everywhere else. We can substitute this potential into the 1D Schrödinger equation, giving us:
+
+{% math() %}
+\left( -\frac{\hbar^2}{2m} \frac{d^2}{dx^2} + V \right) \psi = -\frac{\hbar^2}{2m} \psi'' - \lambda \delta(x) \psi = E \psi
+{% end %}
+
+At $x \neq 0$, the potential is zero, so the Schrödinger equation reduces to:
+
+{% math() %}
+-\frac{\hbar^2}{2m} \psi'' = E \psi, \quad x \neq 0
+{% end %}
+
+This can be arranged to:
+
+{% math() %}
+\psi'' = -\frac{2mE}{\hbar^2} \psi, \quad x \neq 0
+{% end %}
+
+To solve for the wavefunctions, we assume an *ansatz* (educated guess) for the wavefunction of:
+
+{% math() %}
+\psi(x) = \begin{cases}
+Ae^{\kappa x}, & x \geq 0 \\
+Be^{-\kappa x}, & x < 0 
+\end{cases}
+{% end %}
+
+This *ansatz* comes as a result of several factors. First, exponentials are easy to differentiate, so it's simply easy to start with a solution written in terms of exponentials. Second, because the delta function potential is symmetric about $x$, we would also assume the wavefunction to be symmetric, and this *ansatz* does indeed satisfy the symmetry requirement if $A = B$. Lastly, the wavefunction has to be continuous everywhere in space, even if the potential isn't. This is because we know that $|\psi(x)|^2$ corresponds to the *probability density function* that describes how likely a particle can be found at a particular point in space. Therefore, a discontinuity of the wavefunction would mean that the probability sharply "jumps" from one value to another without anything in between, which is of course unphysical. The conditions of symmetry and continuity are the **boundary conditions** that allow for us to solve this problem.
+
+We now encounter a problem: at $x = 0$, the potential is infinite, so the Schrödinger equation breaks down. This, however, can be avoided if we can get *arbitrarily close* to $x = 0$ without actually reaching $x = 0$, allowing us to use a clever trick. We'll first integrate both sides of the Schrödinger equation across an arbitrarily-small interval $[-\epsilon, \epsilon]$ (where $\epsilon$ is a very small number). Then, we'll take the limit $\epsilon \to 0$ to recover a physical result. Setting up the integral gives us:
+
+{% math() %}
+\int_{-\epsilon}^{\epsilon}\bigg(  \underbrace{ -\frac{\hbar^2}{2m} \psi'' }_{ (1) } - \underbrace{ \lambda \delta(x) \psi(x) }_{ (2) } \bigg)dx = \int_{-\epsilon}^{\epsilon} \underbrace{ E \psi(x) }_{ (3) } dx
+{% end %}
+
+We have marked the three key terms in the integral as (1), (2), and (3). It is now useful to evaluate the integral term-by-term. The first term is straightforward, as the integral of a second derivative is a first derivative (evaluated at the bounds). That is:
+
+{% math() %}
+\int_{-\epsilon}^\epsilon \left( -\frac{\hbar^2}{2m} \psi''  \right)dx = -\frac{\hbar^2}{2m}\frac{d\psi}{dx}\bigg|_{-\epsilon}^\epsilon
+{% end %}
+
+To evaluate the second term, let us recall the following identify for the Dirac delta function:
+
+{% math() %}
+\int_{a}^b f(x) \delta(x) dx = f(0), \quad a, b \neq 0
+{% end %}
+
+Therefore, we have:
+
+{% math() %}
+-\int_{-\epsilon}^\epsilon \lambda \delta(x) \psi(x) dx = -\lambda \psi(0)
+{% end %}
+
+For the third term, we recall that the wavefunction is symmetric (that is, $\psi(x) = \psi(-x)$) so we have:
+
+{% math() %}
+\int_{-\epsilon}^\epsilon E \psi(x) dx = E(\psi(\epsilon) - \psi(-\epsilon)) = 0
+{% end %}
+
+Putting everything together, we get:
+
+{% math() %}
+-\frac{\hbar^2}{2m}\frac{d\psi}{dx}\bigg|_{-\epsilon}^\epsilon - \lambda \psi(0) = 0
+{% end %}
+
+Or, upon rearranging:
+
+{% math() %}
+\frac{d\psi}{dx}\bigg|_{-\epsilon}^\epsilon = -\frac{2m\lambda}{\hbar^2}\psi(0)
+{% end %}
+
+To solve, we will need to substitute in our wavefunction, which is given by:
+
+{% math() %}
+\psi(x) = \begin{cases}
+Ae^{\kappa x}, & x \geq 0 \\
+Ae^{-\kappa x}, & x < 0 
+\end{cases}
+{% end %}
+
+If we substitute in $x = 0$, we find that $\psi(0) = A$. Meanwhile, if we take the derivative of this wavefunction, we get:
+
+{% math() %}
+\frac{d\psi}{dx} = \begin{cases}
+A\kappa e^{\kappa x}, & x \geq 0 \\
+-A\kappa e^{-\kappa x}, & x < 0 
+\end{cases}
+{% end %}
+
+Therefore, we have:
+
+{% math() %}
+\frac{d\psi}{dx}\bigg|_{-\epsilon}^\epsilon = A\kappa (e^{\kappa \epsilon} - e^{-\kappa x})
+{% end %}
+
+Substituting this back into $\frac{d\psi}{dx}\big|_{-\epsilon}^\epsilon = -\frac{2m\lambda}{\hbar^2}\psi(0)$ gives us:
+
+{% math() %}
+A\kappa (e^{\kappa \epsilon} - e^{-\kappa x}) = -\frac{2m \lambda}{\hbar^2} A
+{% end %}
+
+Now, we can finally take the $\epsilon \to 0$ limit to recover a physical result:
+
+{% math() %}
+\lim_{ \epsilon \to 0 } \big(A\kappa (e^{\kappa \epsilon} - e^{-\kappa x})\big) = 2\kappa A =-\frac{2m \lambda}{\hbar^2} A
+{% end %}
+
+$A$ can be factored out from both sides, giving us:
+
+{% math() %}
+2\kappa = -\frac{2m\lambda}{\hbar^2} \implies \kappa = -\frac{m\lambda}{\hbar^2}
+{% end %}
+
+We have now the value of our previously-undetermined constant $\kappa$. But what about $A$? We can get it via the normalization condition:
+
+{% math() %}
+\int_{-\infty}^\infty |\psi(x)|^2 dx = 1
+{% end %}
+
+Our wavefunction is a piecewise function, so we apply the rules for integrating a piecewise function:
+
+{% math() %}
+\begin{align*}
+\int_{-\infty}^\infty |\psi(x)|^2 dx &= \int_{-\infty}^0 (Ae^{\kappa x})^2 dx + \int_{0}^\infty (Ae^{-\kappa x})^2 dx \\
+&= \int_{-\infty}^0 A^2 e^{2\kappa x}dx + \int_{0}^\infty A^2 e^{-2\kappa x} dx \\
+&= \frac{A^2}{2\kappa} + \frac{A^2}{2\kappa} \\
+&= \frac{A^2}{\kappa} \\
+&= 1
+\end{align*}
+{% end %}
+
+Solving $A^2/\kappa = 1$ immediately gives us $A = \sqrt{\kappa}$. Hence, we have fully determined our wavefunctions! They are:
+
+{% math() %}
+\psi(x) = \begin{cases}
+\sqrt{ \kappa }e^{\kappa x}, & x \geq 0 \\
+\sqrt{ \kappa }e^{-\kappa x}, & x < 0 
+\end{cases}, \quad \kappa = -\frac{m\lambda}{\hbar^2}
+{% end %}
+
+We are *so close* to solving the problem, but we have yet to find the bound-state energies! Normally this is not hard to do: just plug $\psi$ into the Hamiltonian and find its corresponding eigenvalues. Unfortunately, the delta function term makes the Hamiltonian ill-defined at $x = 0$, so we'll have to be a bit more careful. We can get around the problem at $x = 0$ by evaluating the Hamiltonian for anywhere where $x \neq 0$. The Hamiltonian then reduces to:
+
+{% math() %}
+\hat{H} = -\frac{\hbar^2}{2m} \psi'', \quad x \neq 0
+{% end %}
+
+Taking the second derivative of the wavefunction gives us:
+
+{% math() %}
+\psi''(x) = \begin{cases}
+\kappa^{5/2} e^{\kappa x}, & x \geq 0 \\
+\kappa^{-3/2}e^{-\kappa x}, & x < 0 
+\end{cases}
+{% end %}
+
+Since $\hat H \psi = E\psi$ we get:
+
+{% math() %}
+\begin{align*}
+-\frac{\hbar^2}{2m} \kappa^{5/2} e^{\kappa x} &= E \sqrt{ \kappa } e^{\kappa x}, \quad x \geq 0 \\
+-\frac{\hbar^2}{2m} \kappa^{-3/2} e^{\kappa x} &= E \sqrt{ \kappa } e^{-\kappa x}, \quad x < 0
+\end{align*}
+{% end %}
+
+These two equations have the same solution:
+
+{% math() %}
+E = -\frac{\hbar^2 \kappa^2}{2m}
+{% end %}
+
+Substituting in $\kappa = -\frac{m\lambda}{\hbar^2}$ finally gives us the bound-state energy of the system:
+
+{% math() %}
+E = -\frac{m\lambda^2}{2\hbar^2}
+{% end %}
+
 ### The rectangular potential barrier
 
 We will now tackle solving our first **scattering-state problem**, the famous problem of the **particle at a potential barrier** (which is a simple model that can be used to model, among other things, the mechanics of [scanning electron microscopes](https://en.wikipedia.org/wiki/Scanning_tunneling_microscope)). In this example, a quantum particle with energy $E$ is placed at some position in a potential given by:
