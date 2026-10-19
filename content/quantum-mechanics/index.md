@@ -12,7 +12,9 @@ I thank [Professor Meng](https://www.xmeng.io) and [Professor Shi](https://facul
 > ### Chapter guide for Quantum Mechanics
 > 
 > - [Part 1](@/quantum-mechanics/index.md) covers the basic ideas of quantum mechanics and its fundamental formalism. **You are reading this part right now.**
-> - [Part 2](@/quantum-mechanics/part-2.md) covers applications of quantum mechanics as well as more advanced techniques for solving quantum-mechanical systems.
+> - [Part 2](@/quantum-mechanics/part-2.md) covers applications of quantum mechanics as well as more advanced quantum-mechanical systems.
+> - [Part 3](@/quantum-mechanics/part-3.md) covers approximation methods in quantum mechanics, as well as applications to a variety of systems.
+> - [Part 4](@/quantum-mechanics/part-4.md) covers advanced topics in quantum mechanics, including relativistic quantum mechanics, second quantization, and quantum field theory.
 
 ## Prerequisites
 
