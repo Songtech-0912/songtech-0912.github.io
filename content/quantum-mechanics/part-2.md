@@ -1237,7 +1237,7 @@ From the Heisenberg uncertainty principle, we know that non-commuting operators 
 
 > **Note:** Here, we use $L_x, L_y, L_z$ as a shorthand to denote the eigenvalues of the $\hat L_x, \hat L_y, \hat L_z$ operators, respectively, not the operators themselves (which will always be denoted with a little hat symbol!) Therefore, if we say "the values of $L_z$ are $m \hbar$" we are actually saying "the *eigenvalues of the $\hat L_z$ operator* are $m\hbar$".
 
-Interestingly, another operator — the *squared orbital angular momentum operator* {% inlmath %}\hat L^2 \equiv \hat{L}_{x}^2 + \hat{L}_{y}^2 + \hat{L}_{z}^2{% end %} — does commute with $\hat L_z$. In fact, it commutes with all the orbital angular momentum operators! That is:
+Interestingly, another operator — the *squared orbital angular momentum operator* $\hat L^2$, which is defined as {% inlmath %}\hat L^2 \equiv \hat{L}_{x}^2 + \hat{L}_{y}^2 + \hat{L}_{z}^2{% end %} — does commute with $\hat L_z$. In fact, it commutes with all the orbital angular momentum operators! That is:
 
 {% math() %}
 [\hat{L}_{x}, \hat{L}^2] = [\hat{L}_{y}, \hat{L}^2] = [\hat{L}_{z}, \hat{L}^2] = 0
@@ -1763,13 +1763,44 @@ We can also consider the case of a central potential $V(r)$, of which a particul
 \end{align*}
 {% end %}
 
-Where $f(r, \theta, \phi)$ are some eigenfunctions of the Hamiltonian and $\otimes$ denotes a coupling between the spin states and the eigenfunctions (you can very roughly think of this as analogous to the tensor product). By the superposition principle, a general state can then be written as:
+Where $f(r, \theta, \phi)$ are some eigenfunctions of the Hamiltonian and $\otimes$ denotes a coupling between the spin states and the eigenfunctions (more precisely, a tensor product). By the superposition principle, a general state can then be written as:
 
 {% math() %}
 \psi(r, \theta, \phi) = \sum_i a_i \chi_\uparrow + b_i \chi_\downarrow
 {% end %}
 
 Where $a_i, b_i$ are some constant coefficients in the superposition. (If we want to add time dependence, we can simply add in factors of $e^{i \omega_i t}$ where $\omega_i = E_i / \hbar$, but you get the idea.) Indeed, we'll later see that such states represent a variety of systems, including the inclusion of spin to lift the degeneracy of atomic wavefunctions, which (among other things) explains how electrons are distributed inside atoms!
+
+### Independence of spin-dependent and position-dependent operators
+
+We saw that in a wavefunction $\psi$, spin states $|\chi\rangle$ and position-space eigenfunctions $\varphi(x)$ are coupled via:
+
+{% math() %}
+\psi(x) = |\chi\rangle \otimes \varphi(x)
+{% end %}
+
+Now, notice that $|\chi\rangle$ (the spin state) is independent of position; hence, only $\varphi(x)$ has position dependence. The spin operators ($\hat S_x$, $\hat S_y$, $\hat S_z$, $\hat S^2$, etc.) *only* act on the spin part of the wavefunction, and don't do anything to the position-dependent part. Hence:
+
+{% math() %}
+\hat S_z |\psi\rangle = \hat S_z|\chi\rangle \otimes \varphi(x)
+{% end %}
+
+Moreover, the momentum operator and angular momentum operator(s) (as well as the ladder operators for the quantum harmonic oscillator) act only on the position-dependent part and don't do anything to the spin part:
+
+{% math() %}
+\begin{align*}
+\hat p |\psi\rangle &= |\chi\rangle \otimes \hat p \varphi(x) \\
+\hat L_z |\psi\rangle &= |\chi\rangle \otimes \hat L_z \varphi(x)
+\end{align*}
+{% end %}
+
+The same is not always true for other operators, like the Hamiltonian which can act on both the spin part and position-dependent part. However, for *any* operator $\hat A$ applied on $|\psi\rangle$, the result can always be decomposed into the form:
+
+{% math() %}
+\hat A |\psi\rangle = \hat a|\chi\rangle \otimes \hat b\varphi(x)
+{% end %}
+
+Where $\hat a$ is some part of $\hat A$ that only acts upon the spin part and $\hat b$ is some part of $\hat A$ that only acts upon the position-dependent part. This tells us that the spin-dependent and position-dependent parts of a wavefunction are always **independent of each other**.
 
 ### Particles with more general spin
 
