@@ -1125,7 +1125,7 @@ But first, why do we care about angular momentum? Well, just as *linear* momentu
 \hat{\mathbf{L}} = \hat{\mathbf{r}} \times \hat{\mathbf{p}} = \mathbf{r} \times (-i\hbar \nabla) = -i\hbar(\mathbf{r} \times \nabla)
 {% end %}
 
-The individual components of $\hat{\mathbf{L}} = (\hat{L}_{x}, \hat{L}_{y}, \hat{L}_{z})$ can therefore be obtained by computing the cross product, which gives the following expressions:
+The individual components of {% inlmath() %}\hat{\mathbf{L}} = (\hat{L}_{x}, \hat{L}_{y}, \hat{L}_{z}){% end %} can therefore be obtained by computing the cross product, which gives the following expressions:
 
 {% math() %}
 \begin{align*}
@@ -1227,7 +1227,7 @@ With some straightforward math, we have arrived at a *very important* conclusion
 
 ### Properties of the orbital angular momentum operator
 
-As with the other quantum operators that have physical significance, the $\hat{\mathbf{L}}$ operator is Hermitian, since we know that guarantees it represents an observable (angular momentum) with real eigenvalues. Naturally, its component operators $\hat{L}_{x}, \hat{L}_{y}, \hat{L}_{z}$ — which represent components angular momentum along specific axes — also are Hermitian. What becomes stranger is that the three components of the angular momentum operator do not commute! In particular, they obey the following commutation relations with each other:
+As with the other quantum operators that have physical significance, the $\hat{\mathbf{L}}$ operator is Hermitian, since we know that guarantees it represents an observable (angular momentum) with real eigenvalues. Naturally, its component operators {% inlmath() %}\hat{L}_{x}, \hat{L}_{y}, \hat{L}_{z}{% end %} — which represent components angular momentum along specific axes — also are Hermitian. What becomes stranger is that the three components of the angular momentum operator do not commute! In particular, they obey the following commutation relations with each other:
 
 {% math() %}
 [\hat{L}_{x}, \hat{L}_{y}] = i\hbar \hat{L}_{z}, \quad [\hat{L}_{y}, \hat{L}_{z}] = i \hbar \hat{L}_{x}, \quad [\hat{L}_{z}, \hat{L}_{x}] = i \hbar \hat{L}_{y}
@@ -1237,7 +1237,7 @@ From the Heisenberg uncertainty principle, we know that non-commuting operators 
 
 > **Note:** Here, we use $L_x, L_y, L_z$ as a shorthand to denote the eigenvalues of the $\hat L_x, \hat L_y, \hat L_z$ operators, respectively, not the operators themselves (which will always be denoted with a little hat symbol!) Therefore, if we say "the values of $L_z$ are $m \hbar$" we are actually saying "the *eigenvalues of the $\hat L_z$ operator* are $m\hbar$".
 
-Interestingly, another operator — the *squared orbital angular momentum operator* $\hat L^2 \equiv \hat{L}_{x}^2 + \hat{L}_{y}^2 + \hat{L}_{z}^2$ — does commute with $\hat L_z$. In fact, it commutes with all the orbital angular momentum operators! That is:
+Interestingly, another operator — the *squared orbital angular momentum operator* {% inlmath %}\hat L^2 \equiv \hat{L}_{x}^2 + \hat{L}_{y}^2 + \hat{L}_{z}^2{% end %} — does commute with $\hat L_z$. In fact, it commutes with all the orbital angular momentum operators! That is:
 
 {% math() %}
 [\hat{L}_{x}, \hat{L}^2] = [\hat{L}_{y}, \hat{L}^2] = [\hat{L}_{z}, \hat{L}^2] = 0
@@ -1355,7 +1355,7 @@ _Table of spherical harmonics, adapted from [LibreTexts: Physical and Theoretica
 
 *Plots of some of the (real-valued) spherical harmonics; the plots are in the form $r = Y^m_\ell(\theta, \phi)$ where the radial displacement at a given point $(\theta, \phi)$ is given by the value of the spherical harmonic at that point. Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Spherical_Harmonics.png)*
 
-Finally, we arrive at one important point that we glossed over previously, when we claimed that the eigenfunctions of $\hat L_z$ are $\Phi_m$. While it is indeed true that $\Phi_m$ are eigenfunctions of $\hat L_z$, the *more general eigenfunctions* of $\hat L_z$ are actually the **spherical harmonics**! This makes sense when you think about it, since the spherical harmonics are a product of $\Theta^{m}_\ell (\theta)$ (which purely depends on the polar coordinate $\theta$) and $\Phi_m$ (which purely depends on the azimuthal coordinate $\phi$). We know that eigenfunctions are not necessarily unique, since an eigenfunction multiplied by a constant is another eigenfunction. Here, since $\Theta^{m}_\ell (\theta)$ is *independent* of $\phi$ and the $\hat L_z$ operator is *only dependent* on (the derivative of) $\phi$, the polar part of the spherical harmonics effectively acts like a "constant"! Therefore, the spherical harmonics are also the eigenfunctions of $\hat L_z$. Thus, we may more correctly write our eigenvalue equations as thus:
+Finally, we arrive at one important point that we glossed over previously, when we claimed that the eigenfunctions of $\hat L_z$ are $\Phi_m$. While it is indeed true that $\Phi_m$ are eigenfunctions of $\hat L_z$, the *more general eigenfunctions* of $\hat L_z$ are actually the **spherical harmonics**! This makes sense when you think about it, since the spherical harmonics are a product of {% inlmath() %}\Theta^{m}_\ell (\theta){% end %} (which purely depends on the polar coordinate $\theta$) and {% inlmath() %}\Phi_m{% end %} (which purely depends on the azimuthal coordinate $\phi$). We know that eigenfunctions are not necessarily unique, since an eigenfunction multiplied by a constant is another eigenfunction. Here, since {% inlmath() %}\Theta^{m}_\ell (\theta){% end %} is *independent* of $\phi$ and the {% inlmath() %}\hat L_z{% end %} operator is *only dependent* on (the derivative of) $\phi$, the polar part of the spherical harmonics effectively acts like a "constant"! Therefore, the spherical harmonics are also the eigenfunctions of {% inlmath() %}\hat L_z{% end %}. Thus, we may more correctly write our eigenvalue equations as thus:
 
 {% math() %}
 \begin{align*}
@@ -1480,7 +1480,7 @@ Now, by expanding the commutation relation $[\hat{L}^2, \hat{L}_{\pm}] = 0$ and 
 \end{align*}
 {% end %}
 
-This tells us that $\hat L^2 (\hat L_\pm Y) = \tilde{\lambda} (\hat{L}_{\pm}Y)$, which will be useful later. In addition, by expanding the commutation relation $[\hat{L}_{z}, \hat{L}_{\pm}] = \pm \hbar \hat{L}_{\pm}$ and substituting in $\hat{L}_{\pm} \hat{L}_{z} Y = \lambda L_{\pm} Y$ (as derived earlier) we get:
+This tells us that {% inlmath() %}\hat L^2 (\hat L_\pm Y) = \tilde{\lambda} (\hat{L}_{\pm}Y){% end %}, which will be useful later. In addition, by expanding the commutation relation {% inlmath() %}[\hat{L}_{z}, \hat{L}_{\pm}] = \pm \hbar \hat{L}_{\pm}{% end %} and substituting in {% inlmath() %}\hat{L}_{\pm} \hat{L}_{z} Y = \lambda L_{\pm} Y{% end %} (as derived earlier) we get:
 
 {% math() %}
 \begin{align*}
@@ -1505,7 +1505,7 @@ Therefore, the operators have the effect of increasing (or decreasing) the angul
 \hat{L}_{z} Y = m \hbar Y \implies \lambda = m\hbar
 {% end %}
 
-> **Note:** Going from the exact expression of $\hat{L}_{z} (\hat{L}_{\pm} Y )= (\lambda \pm \hbar) \hat{L}_{\pm} Y$ to saying "the eigenvalues of $\hat L_z$ are integer multiples of $\hbar$" is not *technically* mathematically-rigorous; if you'd like to prove it more rigorously it takes a few more steps of algebra.
+> **Note:** Going from the exact expression of {% inlmath() %}\hat{L}_{z} (\hat{L}_{\pm} Y )= (\lambda \pm \hbar) \hat{L}_{\pm} Y{% end %} to saying "the eigenvalues of $\hat L_z$ are integer multiples of $\hbar$" is not *technically* mathematically-rigorous; if you'd like to prove it more rigorously it takes a few more steps of algebra.
 
 Now, since no object can have infinite angular momentum, we also expect there to be a state of *maximum* orbital angular momentum, that is, where:
 
@@ -1537,7 +1537,7 @@ Now, let's see what happens when we act $\hat L^2$ on $Y_{max}$:
 \end{align*}
 {% end %}
 
-Where we used the identity $L_{\pm} L_{\mp} = \hat{L}^2 - \hat{L}_{z}^2 \pm \hbar\hat{L}_{z}$ previously mentioned, which could be arranged to $\hat L^2 = L_{\pm} L_{\mp} + \hat{L}_{z}^2 \mp \hbar \hat{L}_{z}$. Thus, we have:
+Where we used the identity {% inlmath() %}L_{\pm} L_{\mp} = \hat{L}^2 - \hat{L}_{z}^2 \pm \hbar\hat{L}_{z}{% end %} previously mentioned, which could be arranged to {% inlmath() %}\hat L^2 = L_{\pm} L_{\mp} + \hat{L}_{z}^2 \mp \hbar \hat{L}_{z}{% end %}. Thus, we have:
 
 {% math() %}
 \hat{L}^2 Y = \ell(\ell + 1)\hbar^2 Y \implies \tilde{\lambda} = \ell(\ell + 1)\hbar^2
@@ -1563,7 +1563,7 @@ Let us define another integer $\tilde{\ell}$ such that $m_{min} = \tilde{\ell}$ 
 \hat{L}_{z} Y_{min} = \tilde{\ell}\hbar Y_{min}, \quad m \geq \tilde{\ell}
 {% end %}
 
-We can now fish out our identity $\hat L^2 = \hat{L}_{\pm} \hat{L}_{\mp} + \hat{L}_{z}^2 \mp \hbar \hat{L}_{z}$ once again, and act $\hat L^2$ on $Y_{min}$:
+We can now fish out our identity {% inlmath() %}\hat L^2 = \hat{L}_{\pm} \hat{L}_{\mp} + \hat{L}_{z}^2 \mp \hbar \hat{L}_{z}{% end %} once again, and act $\hat L^2$ on $Y_{min}$:
 
 {% math() %}
 \begin{align*}
@@ -2408,7 +2408,7 @@ The hydrogen atom is unique because it has an exact solution, due to its single 
 
 In the classical world of everyday life, each object can in principle be distinguished from others. Even two objects of the same color, same mass, same momentum and so forth can be differentiated if you keep track of the trajectory of each. Not so in the quantum world! Indeed, most quantum particles are *indistinguishable* from each other. For instance, every electron in the Universe has the exact same charge, mass, and spin quantum number as every other electron. Remember, position in quantum mechanics satisfies the Heisenberg uncertainty principle, making the notion of a classical trajectory ill-defined. All we can calculate from quantum mechanics are ultimately just probabilities.
 
-Indistinguishability manifests in an important way in how many-body wavefunctions — that is, wavefunctions describing the state of a system of particles — can be constructed. To understand this, consider the case of two identical quantum particles (we could consider arbitrarily-many, but starting with two is simpler). The two quantum particles have wavefunctions $\psi_{1}(\mathbf{r}_{1})$ and $\psi_{2}(\mathbf{r}_{2})$, respectively. What is the many-body wavefunction $\psi(\mathbf{r}_1, \mathbf{r}_2)$ of the whole system? Well, a simple guess could be that we just multiply the two particles' respective wavefunctions together:
+Indistinguishability manifests in an important way in how many-body wavefunctions — that is, wavefunctions describing the state of a system of particles — can be constructed. To understand this, consider the case of two identical quantum particles (we could consider arbitrarily-many, but starting with two is simpler). The two quantum particles have wavefunctions {% inlmath() %}\psi_{1}(\mathbf{r}_{1}){% end %} and {% inlmath() %}\psi_{2}(\mathbf{r}_{2}){% end %}, respectively. What is the many-body wavefunction {% inlmath() %}\psi(\mathbf{r}_1, \mathbf{r}_2){% end %} of the whole system? Well, a simple guess could be that we just multiply the two particles' respective wavefunctions together:
 
 {% math() %}
 \psi(\mathbf{r}_1, \mathbf{r}_2) \stackrel{?}{=} \psi_{1}(\mathbf{r}_{1})\psi_{2}(\mathbf{r}_{2})
@@ -2465,7 +2465,7 @@ The **only way** we could make the two probability densities equal is if the man
 \psi(x_{1}, x_{2}) = \frac{1}{\sqrt{ 2 }}(\psi_{n_{1}}(x_{1}) \psi_{n_{2}}(x_{2}) \pm \psi_{n_{1}}(x_{2}) \psi_{n_{2}}(x_{1}))
 {% end %}
 
-By direct calculation you can verify that $|\psi(x_1, x_2)|^2$ is *indeed equal* to $|\psi(\mathbf{r}_2, \mathbf{r}_1)|^2$. The $\pm$ sign is actually important here, because it tells us that there are *two distinct possibilities* for a physically-consistent wavefunction, which we will write as $\psi_+$ and $\psi_-$, defined as:
+By direct calculation you can verify that {% inlmath() %}|\psi(x_1, x_2)|^2{% end %} is *indeed equal* to {% inlmath() %}|\psi(\mathbf{r}_2, \mathbf{r}_1)|^2{% end %}. The $\pm$ sign is actually important here, because it tells us that there are *two distinct possibilities* for a physically-consistent wavefunction, which we will write as {% inlmath() %}\psi_+{% end %} and {% inlmath() %}\psi_-{% end %}, defined as:
 
 {% math() %}
 \begin{align*}
