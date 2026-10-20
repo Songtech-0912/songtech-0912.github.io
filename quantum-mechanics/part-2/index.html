@@ -175,6 +175,22 @@
                                     <a href="#summary-of-orbital-angular-momentum">Summary of orbital angular momentum</a>
                                 </li>
                             
+                                <li>
+                                    <a href="#a-revisit-of-spin-angular-momentum">A revisit of spin angular momentum</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#the-ladder-operators-for-spin-angular-momentum">The ladder operators for spin angular momentum</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#a-reflection-on-spin-and-degeneracy">A reflection on spin and degeneracy</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#particles-with-more-general-spin">Particles with more general spin</a>
+                                </li>
+                            
                         </ul>
                     
                 </li>
@@ -1801,6 +1817,137 @@ $$
 <blockquote>
 <p><strong>Note:</strong> These expectation values only apply for <em>eigenstates</em> and do not in general apply for superpositions (linear combinations) of states.</p>
 </blockquote>
+<h3 id="a-revisit-of-spin-angular-momentum">A revisit of spin angular momentum</h3>
+<p>When we discuss angular momentum in quantum mechanics, one topic that is unavoidable is that of <strong>spin angular momentum</strong>. Indeed, we have already looked at spin extensively before, but (for better or worse) we're not done with spin yet!</p>
+<p>To start, it is important to emphasize that spin is a <strong>physical quantity</strong> and not just a mathematical abstraction. Spin has been repeatedly proven <em>over and over and over</em> because it leads to a wealth of otherwise inexplicable effects:</p>
+<ol>
+<li>The <a href="https://en.wikipedia.org/wiki/Stern%E2%80%93Gerlach_experiment">Stern-Gerlach experiment</a>, the splitting of a beam of silver atoms in a homogeneous magnetic field (which we saw earlier);</li>
+<li>The <a href="https://en.wikipedia.org/wiki/Zeeman_effect">anomalous Zeeman effect</a>, the anomalous spectral lines of atoms in magnetic fields that cannot be (fully) explained by just their orbital angular momentum; and</li>
+<li><a href="https://en.wikipedia.org/wiki/Fine_structure">Fine structure</a> and <a href="https://en.wikipedia.org/wiki/Hyperfine_structure">hyperfine structure</a>, which are observed spectral lines of the hydrogen atom that <em>cannot</em> be explained without spin</li>
+</ol>
+<p>From these experiments, as well as others, it is possible to "derive" the spin operator $\mathbf{\hat S}$ with a bit of clever reasoning. Let us outline this approach, which is completely non-rigorous but a good way to gain intuition about spin.</p>
+<p>To begin we know that the spin operator is associated with <strong>angular momentum</strong>. This would explain why it leads to the first two effects (the Stern-Gerlach experiment and the anomalous Zeeman effect), because we know that any sort of angular momentum would lead to a <em>magnetic moment</em> $\vec{\boldsymbol{\mu}}$ that allows magnetic fields to influence their behavior.</p>
+<p>Knowing this is very convenient because it allows us to expect that the spin operator take many of the same properties as the other type of angular momentum we know, namely the <em>orbital angular momentum</em> we previously described. For instance, just like orbital angular momentum) its components should in general be <strong>non-commutative</strong>. In particular, we can essentially just "copy" the commutation relations for the $\mathbf{\hat L}$ operator; for instance, we would expect the spin angular momentum to satisfy $[\hat S_x, \hat S_y] = i\hbar \hat S_z$, just like orbital angular momentum satisfies $[\hat L_x, \hat L_y] = i\hbar \hat L_z$.</p>
+<p>Second, by virtue of (ironically enough) describing particles that are not <em>actually</em> spinning, spin must exist in a <strong>completely separate state space</strong> that is unlinked to any sort of position space and is independent of physical position. For instance, the $\hat S_x$ operator doesn't actually describe a particle that is "rotating" with respect to the $x$ axis. Instead, it describes the orientation of its <em>angular momentum vector</em> along the $x$ axis. But if we now define a $\hat S^2$ operator, we lose even that component information! Thus, the $\hat S^2$ and $\hat S_z$ operators <strong>commute</strong>, since $\hat S^2$ has no relationship to any physical axis whatsoever, and thus it commutates with basically anything that has coordinate dependence.</p>
+<p>Based on this reasoning, we can then conveniently construct a C.S.C.O using $(\hat S^2, \hat S_z)$, meaning that they have <strong>unique eigenvalue pairs</strong> that can be used to label an arbitrary eigenstate. Since we know that particles can only have certain values of spin, we would assume that the eigenvalues of the spin operators and $\hat S^2$ are all <em>quantized</em>, so they must depend on some integer quantum numbers. Let us take $s$ and $m_{s}$ to label these eigenvalues for $\hat S^2$ and $\hat S_z$ respectively. Then, our C.S.C.O would have eigenstates parametrized by both $m_{s}$ and $s$ - which we can write as $|s, m_{s}\rangle$ - and eigenvalues parametrized by $(s, m_{s})$. We can then write down eigenvalue equations in general form:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat S^2|s, m_s\rangle &amp;= \lambda_1(s) |s, m_s\rangle \\
+\hat S_z|s, m_s\rangle &amp;= \lambda_2(m)|s, m_s\rangle
+\end{align*}
+$$
+</p>
+<p>Where $\lambda_1(s)$ is some eigenvalue dependent on $s$ and $\lambda_2(m_{s})$ is some eigenvalue dependent on $m$. With a clever bit of imagination it is not hard to determine that $\lambda_1(s) = s(s + 1)\hbar^2$ and $\lambda_2(m_{s}) = m_{s}\hbar$, which can be intuitively "derived" as follows. First, we observe that since the spin angular momentum $S_x, S_y, S_z$ all have units of <em>angular momentum</em>, and the reduced Planck constant $\hbar$ <em>also</em> has units of angular momentum, then the simplest combination is $S_z \propto \hbar$ with the proportionality factor being $m_{s}$ (after all, we need $m_{s}$ <em>somewhere</em> to satisfy the quantization requirement). Thus, a good guess would be $\lambda_2 = m\hbar$. Meanwhile, since $S^2$ is the <em>square</em> of the spin angular momentum, we would also expect it to have units of <em>squared</em> angular momentum, and thus proportional to $\hbar^2$. Thus we would expect $S^2 \propto \hbar^2$ where that proportionality factor would also be dependent on $s^2$. We can write this proportionality factor in the most general form as $as^2 + bs$, of which the simplest possibility is $a = b = 1$, giving us $\lambda_1 = (s^2 + s) \hbar^2 = s(s+1)\hbar^2$. Substituting these (correct) guesses for the eigenvalues, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat S^2|s, m_s\rangle &amp;= s(s+1)\hbar^2 |s, m_s\rangle \\
+\hat S_z|s, m_s\rangle &amp;= m_{s}\hbar|s, m_s\rangle
+\end{align*}
+$$
+</p>
+<p>Which are indeed the correct eigenvalue equations for the $\hat S^2$ and $\hat S_z$ operators. Lastly, and perhaps most importantly, given that the state space of the spin operator is discrete (after all, particles can only take certain spins), we can tell that spin <em>cannot</em> be described by a wavefunction, or at least not by a <em>scalar</em> wavefunction. This tells us that <em>in general</em>, the eigenstates of the spin operator must be <strong>vectors</strong> instead of functions. And if our eigenstates are vectors, then we can reasonably expect our spin operators to be matrices. This simplifies the problem of finding the spin operators to finding matrices that have eigenvectors that can span the state space of spin.</p>
+<blockquote>
+<p><strong>Note:</strong> Historically, in the development of the theoretical description of spin, physicists understood the characteristics of spin well before calling it spin. Indeed, the physicist Wolfgang Pauli called spin <em>"classically non-describable two-valuedness"</em>, a rather lengthy (but pretty accurate) name!</p>
+</blockquote>
+<p>We know from the experiments we described previously that for electrons, the state space is two-dimensional, corresponding to electrons that can only have two values of spin (spin-up or spin-down). So our problem reduces to finding matrix representations of $\hat S_x, \hat S_y, \hat S_z$ that have only two eigenvectors and satisfy the cyclical commutation relations we're familiar with from angular momentum, such as $[\hat S_x, \hat S_y] = i\hbar \hat S_z$, $[\hat S_y, \hat S_z] = i\hbar \hat S_x]$, etc. The problem can be further simplified if we recall that operators corresponding to physical observables must be Hermitian. Subject to these conditions, we can then solve for the matrices with linear algebra (or just take a look at Wikipedia and realize that there are indeed matrices that <em>exactly</em> satisfy these properties...) Either result gives us the <a href="https://en.wikipedia.org/wiki/Pauli_matrices">Pauli matrices</a> $(\sigma_x, \sigma_y, \sigma_z)$, which is not surprising to us because the spin operators are <em>defined</em> as $\hat S_i = \frac{\hbar}{2} \sigma_i$ (the $\hbar/2$ factor comes from the fact that electrons are spin-1/2 particles). This gives us:</p>
+<p class="mathcell">
+$$
+\hat S_z = \frac{\hbar}{2}\begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; -1
+\end{pmatrix}
+$$
+</p>
+<p>Finally, going back to our eigenvalue equation $\hat S_z|s, m_s\rangle = m\hbar|s, m_s\rangle$, we can now solve it to find the eigenvectors, which are called <em>eigenspinors</em>. The solutions, as we know, are:</p>
+<p class="mathcell">
+$$
+|\uparrow_z\rangle = \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \quad |\downarrow_z\rangle = \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+$$
+</p>
+<p>Thus we have essentially "derived" the spin operators and the spin eigenstates with "just" some linear algebra, clever reasoning, and patience!</p>
+<h3 id="the-ladder-operators-for-spin-angular-momentum">The ladder operators for spin angular momentum</h3>
+<p>Having seen the method of using ladder operators for the orbital angular momentum, a natural question to ask is: <em>can we do the same for spin angular momentum</em>? The answer is <strong>yes</strong>! One can define spin ladder operators just as one can define ladder operators for other forms of angular momentum. The spin ladder operators are given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat{S}_{+} &amp;= \hat{S}_{x} + i \hat{S}_{y} \\
+\hat{S}_{-} &amp;= \hat{S}_{x} - i \hat{S}_{y} 
+\end{align*}
+$$
+</p>
+<p>Which are almost exactly the same as the orbital angular momentum ones, except with $\hat L_x, \hat L_y$ replaced with $\hat S_x, \hat S_y$. The ladder operators for spin act on the spin eigenstates as follows:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat{S}_{+}|s, m_{s}\rangle &amp;= \lambda_{+}|s, m_{s} + 1\rangle \\
+\hat{S}_{-}|s, m_{s}\rangle &amp;= \lambda_{-}|s, m_{s} - 1\rangle
+\end{align*}
+$$
+</p>
+<p>Where $m_s = -s, (-s + 1), \dots,  (s-1), s$ is the <strong>magnetic spin quantum number</strong> (just like $m$ for orbital angular momentum), and $\lambda_+$ and $\lambda_-$ are normalization factors, given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\lambda_{+} &amp;= \hbar\sqrt{s(s + 1) - m_s(m_s + 1)} \\
+\lambda_{-} &amp;= \hbar \sqrt{s(s + 1) - m_s(m_s - 1)}
+\end{align*}
+$$
+</p>
+<p>Which, in the case of spin-1/2 particles, takes the form:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\lambda_{+} &amp;= \hbar\sqrt{\small \frac{3}{4} - m_s(m_s + 1)} \\
+\lambda_{-} &amp;= \hbar \sqrt{\small \frac{3}{4} - m_s(m_s - 1)}
+\end{align*}, \quad m_{s} = \pm \frac{1}{2}
+$$
+</p>
+<p>In the case of spin-1/2 particles, we can also write the spin operators in the following matrix representation:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat{S}_{+} &amp;= \hbar \begin{pmatrix}
+0 &amp; 1 \\
+0 &amp; 0
+\end{pmatrix} \\
+\hat{S}_- &amp;= \hbar \begin{pmatrix}
+0 &amp; 0 \\
+1 &amp; 0
+\end{pmatrix}
+\end{align*}
+$$
+</p>
+<p>The finite state space of spin (for spin-1/2 there are only two eigenstates!) means that rather than dealing with spherical harmonics and complex differential equations, we can use purely algebraic methods in analyzing spin, somewhat negating the advantage of the ladder operators. However, they are still a perfectly-valid approach to describing spin and are a common link between the different angular momentum operators. Crucially, it allows us to see that spin angular momentum is indeed just another form of angular momentum, allowing us to have some intuition for a fundamentally non-classical (and certainly very confusing!) concept.</p>
+<h3 id="a-reflection-on-spin-and-degeneracy">A reflection on spin and degeneracy</h3>
+<p>Besides describing intrinsic angular momentum of quantum particles, there is another reason why spin appears everywhere in quantum mechanics: it provides a way to distinguish between states in a system. Recall that unlike a classical system, we can only know the <em>possible states</em> (eigenstates) of a quantum system, and the specific eigenstate we end up measuring is impossible to (precisely) determine. Furthermore, even if we conduct a measurement (giving us an <em>eigenvalue</em> of the quantum system), it may not be enough to tell us which state the system is in, since multiple eigenstates can have <em>identical</em> eigenvalues! This phenomenon of <strong>degeneracy</strong> severely limits our ability to probe the quantum world.</p>
+<p>Luckily, spin provides us a way to tell which state we are measuring. The reason is that spin introduces extra information - a so-called <em>degree of freedom</em> - to a quantum system. This means that if we measure some physical property of a system - say, the energy of a particle - <em>as well as its spin</em>, then the pair of measurements can be used to uniquely determine a particular eigenstate. For instance, the combination $(E, S_z)$ - that is, the energy and the component of spin angular momentum along $z$ - is a frequent combination that allows us to find unique eigenstates in a variety of quantum systems. Thus, we say that spin "lifts" (gets rid of) the degeneracy of quantum systems with otherwise degenerate eigenstates.</p>
+<p>As an example, a free particle (in 3D) can be written as a sum of plane waves in the form $e^{ip\mathbf{r}/\hbar}$. We've seen before that these plane waves are <strong>eigenstates</strong> of the momentum operator. However, in 3D (or in general, for anything greater than 2 dimensions) we have a problem. The eigenvalues $p_x, p_y, p_z$ are <em>no longer</em> able to specify a particular eigenstate - in other words, we have <strong>degeneracy</strong>! This can be fixed by also including $\hat S_z$ (the component of the spin operator along $z$). Including the $\hat S_z$ operator alongside the momentum operators creates a C.S.C.O $(\hat p_x, \hat p_y, \hat p_z, \hat S_z)$.</p>
+<blockquote>
+<p><strong>Note:</strong> It is possible to replace the $\hat S_z$ operator with another observable known as the <a href="https://en.wikipedia.org/wiki/Helicity_(particle_physics)">helicity</a>, which is a spin-related quantity. We will not discuss this in much detail here, since it is unimportant to the overall idea.</p>
+</blockquote>
+<p>We can also consider the case of a central potential $V(r)$, of which a particular case (which we'll solve later) is the hydrogen atom. In this case, if we take only the $\hat L^2$ and $\hat L_z$ operators, they <em>cannot</em> be used to specify a particular eigenstate (the dead giveaway is that they commute!) The Hamiltonian can lift the degeneracy for some eigenstates, but not all of them. To fix this issue and for us to uniquely specify eigenstates by their eigenvalues, we need to include the $\hat S_z$ operator again. With this combination, $(\hat H, \hat L^2, \hat L_z, \hat S_z)$ form a C.S.C.O. The significance is that the eigenstates are not <em>just</em> spherical harmonics (which are the eigenstates of $\hat L^2$ and $\hat L_z$), but also of the $\hat S_z$ operator. Thus, our eigenstates are no longer scalar functions, but rather <em>vectors</em> — in fact, at least for a spin-1/2 particle, we end up with <em>two eigenstates</em> for spin-up and spin-down, given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\chi_\uparrow(r, \theta, \phi) &amp;= \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+\otimes f(r, \theta, \phi) \\
+\chi_\downarrow(r, \theta, \phi) &amp;= \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+\otimes f(r, \theta, \phi)
+\end{align*}
+$$
+</p>
+<p>Where $f(r, \theta, \phi)$ are some eigenfunctions of the Hamiltonian and $\otimes$ denotes a coupling between the spin states and the eigenfunctions (you can very roughly think of this as analogous to the tensor product). By the superposition principle, a general state can then be written as:</p>
+<p class="mathcell">
+$$
+\psi(r, \theta, \phi) = \sum_i a_i \chi_\uparrow + b_i \chi_\downarrow
+$$
+</p>
+<p>Where $a_i, b_i$ are some constant coefficients in the superposition. (If we want to add time dependence, we can simply add in factors of $e^{i \omega_i t}$ where $\omega_i = E_i / \hbar$, but you get the idea.) Indeed, we'll later see that such states represent a variety of systems, including the inclusion of spin to lift the degeneracy of atomic wavefunctions, which (among other things) explains how electrons are distributed inside atoms!</p>
+<h3 id="particles-with-more-general-spin">Particles with more general spin</h3>
+<p>In nature, we observe particles with spins other than spin-1/2. For instance, the photon (which carries electromagnetic radiation, i.e. light) is a spin-1 particle. Short-lived particles called $\pi$ mesons (also called <em>pions</em>) have zero spin, and other composite particles can have spins of 3/2 or even 5/2!</p>
+<p>To make things more interesting (or more complicated, depending on your point of view), electrons and other fundamental particles are not the only ones to have spin! Since protons and neutrons also have spin, an atom can have an overall spin, which is the combination of its <em>nuclear spin</em> (total spin of its protons and neutrons) and <em>total electron spin</em>. For some examples, the helium-4 atom has an <em>overall</em> spin of zero, whereas the sodium atom has an <em>overall</em> spin of 3/2 (although confusingly it can behave like a spin-1/2 particle due to having a single valence electron; this leads to the famous <a href="https://en.wikipedia.org/wiki/Fraunhofer_lines">sodium D-lines</a>). Finally, atoms that have a single unpaired electron in their valence (outermost) shells, including silver atoms, can be <em>effectively</em> considered as spin-1/2. This is why the Stern-Gerlach experiment used silver atoms, because their spin comes from their single valence electrons, so silver atoms behave <em>exactly</em> like free electrons in a magnetic field.</p>
 <h2 id="the-hydrogen-atom">The hydrogen atom</h2>
 <p>Hydrogen is the most abundant element in the Universe. In stellar nebulas, it provides the raw material for stars to form. Within stars, the fusion of hydrogen atoms into helium generates immense heat and light, the same energy that ultimately powers all life on Earth. By reacting with oxygen, it forms liquid water, giving us our rivers, lakes, and oceans. In organic compounds, it bonds with oxygen, nitrogen, and carbon to form our proteins, amino acids, and DNA. It is not an exaggeration to say that without hydrogen, humanity could not exist.</p>
 <p>Additionally, the hydrogen atom is a classical example of a quantum-mechanical system, well-known because it is one of the few quantum systems with an <em>exact</em> analytical solution yet still complex enough to describe a real-world system. In addition, it has great historical importance as one of the first systems successfully described by Schrödinger's wave mechanics, and while it in theory applies only for hydrogen (and a few other types of atoms with similar properties) it continues to form the basis of our modern understanding of atomic physics.</p>
