@@ -188,6 +188,10 @@
                                 </li>
                             
                                 <li>
+                                    <a href="#independence-of-spin-dependent-and-position-dependent-operators">Independence of spin-dependent and position-dependent operators</a>
+                                </li>
+                            
+                                <li>
                                     <a href="#particles-with-more-general-spin">Particles with more general spin</a>
                                 </li>
                             
@@ -1441,7 +1445,7 @@ $$
 <blockquote>
 <p><strong>Note:</strong> Here, we use $L_x, L_y, L_z$ as a shorthand to denote the eigenvalues of the $\hat L_x, \hat L_y, \hat L_z$ operators, respectively, not the operators themselves (which will always be denoted with a little hat symbol!) Therefore, if we say "the values of $L_z$ are $m \hbar$" we are actually saying "the <em>eigenvalues of the $\hat L_z$ operator</em> are $m\hbar$".</p>
 </blockquote>
-<p>Interestingly, another operator — the <em>squared orbital angular momentum operator</em> {% inlmath %}\hat L^2 \equiv \hat{L}<em>{x}^2 + \hat{L}</em>{y}^2 + \hat{L}_{z}^2{% end %} — does commute with $\hat L_z$. In fact, it commutes with all the orbital angular momentum operators! That is:</p>
+<p>Interestingly, another operator — the <em>squared orbital angular momentum operator</em> $\hat L^2$, which is defined as {% inlmath %}\hat L^2 \equiv \hat{L}<em>{x}^2 + \hat{L}</em>{y}^2 + \hat{L}_{z}^2{% end %} — does commute with $\hat L_z$. In fact, it commutes with all the orbital angular momentum operators! That is:</p>
 <p class="mathcell">
 $$
 [\hat{L}_{x}, \hat{L}^2] = [\hat{L}_{y}, \hat{L}^2] = [\hat{L}_{z}, \hat{L}^2] = 0
@@ -1938,13 +1942,42 @@ $$
 \end{align*}
 $$
 </p>
-<p>Where $f(r, \theta, \phi)$ are some eigenfunctions of the Hamiltonian and $\otimes$ denotes a coupling between the spin states and the eigenfunctions (you can very roughly think of this as analogous to the tensor product). By the superposition principle, a general state can then be written as:</p>
+<p>Where $f(r, \theta, \phi)$ are some eigenfunctions of the Hamiltonian and $\otimes$ denotes a coupling between the spin states and the eigenfunctions (more precisely, a tensor product). By the superposition principle, a general state can then be written as:</p>
 <p class="mathcell">
 $$
 \psi(r, \theta, \phi) = \sum_i a_i \chi_\uparrow + b_i \chi_\downarrow
 $$
 </p>
 <p>Where $a_i, b_i$ are some constant coefficients in the superposition. (If we want to add time dependence, we can simply add in factors of $e^{i \omega_i t}$ where $\omega_i = E_i / \hbar$, but you get the idea.) Indeed, we'll later see that such states represent a variety of systems, including the inclusion of spin to lift the degeneracy of atomic wavefunctions, which (among other things) explains how electrons are distributed inside atoms!</p>
+<h3 id="independence-of-spin-dependent-and-position-dependent-operators">Independence of spin-dependent and position-dependent operators</h3>
+<p>We saw that in a wavefunction $\psi$, spin states $|\chi\rangle$ and position-space eigenfunctions $\varphi(x)$ are coupled via:</p>
+<p class="mathcell">
+$$
+\psi(x) = |\chi\rangle \otimes \varphi(x)
+$$
+</p>
+<p>Now, notice that $|\chi\rangle$ (the spin state) is independent of position; hence, only $\varphi(x)$ has position dependence. The spin operators ($\hat S_x$, $\hat S_y$, $\hat S_z$, $\hat S^2$, etc.) <em>only</em> act on the spin part of the wavefunction, and don't do anything to the position-dependent part. Hence:</p>
+<p class="mathcell">
+$$
+\hat S_z |\psi\rangle = \hat S_z|\chi\rangle \otimes \varphi(x)
+$$
+</p>
+<p>Moreover, the momentum operator and angular momentum operator(s) (as well as the ladder operators for the quantum harmonic oscillator) act only on the position-dependent part and don't do anything to the spin part:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat p |\psi\rangle &amp;= |\chi\rangle \otimes \hat p \varphi(x) \\
+\hat L_z |\psi\rangle &amp;= |\chi\rangle \otimes \hat L_z \varphi(x)
+\end{align*}
+$$
+</p>
+<p>The same is not always true for other operators, like the Hamiltonian which can act on both the spin part and position-dependent part. However, for <em>any</em> operator $\hat A$ applied on $|\psi\rangle$, the result can always be decomposed into the form:</p>
+<p class="mathcell">
+$$
+\hat A |\psi\rangle = \hat a|\chi\rangle \otimes \hat b\varphi(x)
+$$
+</p>
+<p>Where $\hat a$ is some part of $\hat A$ that only acts upon the spin part and $\hat b$ is some part of $\hat A$ that only acts upon the position-dependent part. This tells us that the spin-dependent and position-dependent parts of a wavefunction are always <strong>independent of each other</strong>.</p>
 <h3 id="particles-with-more-general-spin">Particles with more general spin</h3>
 <p>In nature, we observe particles with spins other than spin-1/2. For instance, the photon (which carries electromagnetic radiation, i.e. light) is a spin-1 particle. Short-lived particles called $\pi$ mesons (also called <em>pions</em>) have zero spin, and other composite particles can have spins of 3/2 or even 5/2!</p>
 <p>To make things more interesting (or more complicated, depending on your point of view), electrons and other fundamental particles are not the only ones to have spin! Since protons and neutrons also have spin, an atom can have an overall spin, which is the combination of its <em>nuclear spin</em> (total spin of its protons and neutrons) and <em>total electron spin</em>. For some examples, the helium-4 atom has an <em>overall</em> spin of zero, whereas the sodium atom has an <em>overall</em> spin of 3/2 (although confusingly it can behave like a spin-1/2 particle due to having a single valence electron; this leads to the famous <a href="https://en.wikipedia.org/wiki/Fraunhofer_lines">sodium D-lines</a>). Finally, atoms that have a single unpaired electron in their valence (outermost) shells, including silver atoms, can be <em>effectively</em> considered as spin-1/2. This is why the Stern-Gerlach experiment used silver atoms, because their spin comes from their single valence electrons, so silver atoms behave <em>exactly</em> like free electrons in a magnetic field.</p>
