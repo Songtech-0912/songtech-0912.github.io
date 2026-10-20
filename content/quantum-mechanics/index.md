@@ -7,7 +7,7 @@ This is a guide to quantum mechanics beyond the basics, and is a follow-up to [i
 
 <!-- more -->
 
-I thank [Professor Meng](https://www.xmeng.io) and [Professor Shi](https://faculty.rpi.edu/jian-shi) at Rensselaer Polytechnic Institute, without whom this guide would not have been possible.
+I thank [Professor Meng](https://www.xmeng.io) and [Professor Shi](https://faculty.rpi.edu/jian-shi) at Rensselaer Polytechnic Institute, without whom this guide would not have been possible. In addition, I referenced Griffith's acclaimed textbook _Introduction to Quantum Mechanics_ over and over in the making of this guide, and I highly recommend it for anyone learning (or reviewing) quantum mechanics.
 
 > ### Chapter guide for Quantum Mechanics
 > 
