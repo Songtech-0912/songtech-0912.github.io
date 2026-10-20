@@ -1113,7 +1113,522 @@ In addition, a classical spinning object also has angular momentum, and likewise
 \boldsymbol{\mu} = \gamma \mathbf{S} \quad \Rightarrow \quad \mathbf{S} = \frac{\boldsymbol{\mu}}{\gamma}
 {% end %}
 
-It is important to recognize that spin angular momentum $\mathbf{S}$ is different from the orbital angular momentum $\mathbf{L}$. They, however, share one important similarity - they are both **conserved quantities**. This means they obey some similar behaviors. Additionally, the study of orbital angular momentum is extremely important for understanding some of the most important problems in quantum mechanics, so we will explore it in detail.
+It is important to recognize that spin angular momentum $\mathbf{S}$ is different from the orbital angular momentum $\mathbf{L}$. They, however, share one important similarity - they are both **conserved quantities**. This means they obey some similar behaviors. Additionally, the study of orbital angular momentum is extremely important for understanding some of the most important problems in quantum mechanics (including the hydrogen atom that we'll get to later), so it is essential that we examine it thoroughly.
+
+### The orbital angular momentum operator
+
+We've seen that there are generally two main types of angular momentum that are relevant in the quantum world: _spin_ angular momentum, and _orbital angular momentum_. Both also have respective operators - $\mathbf{\hat S}$ is the spin angular momentum operator (which we've already seen), as well as $\mathbf{\hat L}$ for the orbital angular momentum (which we'll see soon). The sum of these two operators $\hat{\mathbf{J}} = \mathbf{\hat L} + \mathbf{\hat S}$ is also an operator itself, and is usually called the *total angular momentum operator*. We'll see that spin, orbital, and total angular momentum operators share much in common, so it is straightforward to generalize the properties of one to all three.
+
+But first, why do we care about angular momentum? Well, just as *linear* momentum becomes quantized in quantum mechanics and takes the form of the momentum operator, *angular* momentum also gets quantized in quantum mechanics. In the case of classical linear momentum $\mathbf{p}$, we saw that we needed to make the replacement $\mathbf{p} \to \hat{\mathbf{p}}$, where $\hat{\mathbf{p}}$ is the momentum operator, which is given by $-i\hbar \nabla$ (or equivalently $\frac{\hbar}{i} \nabla$ which is mathematically the same thing). The classical angular momentum is $\mathbf{L} = \mathbf{r} \times \mathbf{p}$, so a good guess (and indeed the right one!) is to replace $\mathbf{r}$ with the position operator and $\mathbf{p}$ with the momentum operator. This gives us the following expression for the angular momentum operator:
+
+{% math() %}
+\hat{\mathbf{L}} = \hat{\mathbf{r}} \times \hat{\mathbf{p}} = \mathbf{r} \times (-i\hbar \nabla) = -i\hbar(\mathbf{r} \times \nabla)
+{% end %}
+
+The individual components of $\hat{\mathbf{L}} = (\hat{L}_{x}, \hat{L}_{y}, \hat{L}_{z})$ can therefore be obtained by computing the cross product, which gives the following expressions:
+
+{% math() %}
+\begin{align*}
+\hat{L}_{x} &= y \hat{p}_{z} - z \hat{p}_{y} \\
+&=i \hbar\left(z \frac{\partial}{\partial y} -  y \frac{\partial}{\partial z}\right) \\
+\hat{L}_{y} &= z \hat{p}_{x} - x \hat{p}_{z}\\
+&= i\hbar\left( x \frac{\partial}{\partial z} - z \frac{\partial}{\partial x} \right) \\
+\hat{L}_{z} &= x \hat{p}_{y} - y \hat{p}_{x} \\
+&=i\hbar \left( y \frac{\partial}{\partial x} - x \frac{\partial}{\partial y} \right)
+\end{align*}
+{% end %}
+
+> **Note:** Some texts use the pre-factor $\frac{\hbar}{i}$ instead of $-i\hbar$ (here the negative sign is "invisible" since we have absorbed it into the expressions). The result is the same since $-i\hbar = \frac{\hbar}{i}$.
+
+To be precise, $\hat{\mathbf{L}}$, which we have been calling the "angular momentum operator", is more specifically the **orbital angular momentum operator**. This is because it is associated with particles that are in **rotational motion around an axis**, which we would classically associate with **orbits**. For some classical examples, Earth has orbital angular momentum due to its orbit around the Sun, and a child on a merry-go-round would also have orbital angular momentum due to their "orbit" around the center. Quantum examples would include an electron orbiting a nucleus or molecular rotations in diatomic (two-atom) molecules, which are effectively two atoms orbiting about their center of mass. Crucially, both the classical and quantum cases are associated with **central-force potentials**; that is, radially-symmetric potentials that can be written as $V(r)$, where $r$ is the radial coordinate. This lends itself to the natural association of orbital angular momentum with spherical coordinates. In spherical coordinates, the angular momentum operator takes the following form:
+
+{% math() %}
+\begin{align*}
+\hat{L}_{x} &= -i\hbar \left(-\sin \phi \frac{\partial}{\partial \theta} - \cos \phi \cot \theta \frac{\partial}{\partial \phi}\right) \\
+\hat{L}_{y} &= -i\hbar \left( \cos \phi \frac{\partial}{\partial \theta} - \sin \phi \cot \theta \frac{\partial}{\partial \phi}\right) \\
+\hat{L}_{z} &= -i\hbar \frac{\partial}{\partial \phi} \\
+\end{align*}
+{% end %}
+
+> **Note:** One may use the conversions $x = r \sin \theta \cos \phi$, $y = r \sin \theta \sin \phi$, and $z = r \cos \theta$, alongside the chain rule $\dfrac{\partial}{\partial v_i} = \displaystyle \sum_i \dfrac{\partial u_i}{\partial v_i} \dfrac{\partial}{\partial u_i}$ to switch from Cartesian to spherical coordinates. Please see the [vector calculus guide](@/vector-and-advanced-calculus/index.md#curvilinear-coordinate-systems) if you need a refresher or guide to spherical coordinates.
+
+Notice how $\hat L_z$ now takes a particularly simple form! In fact, it is so simple that we can easily solve for its eigenfunctions, which we will call $\Phi (\phi)$ for reasons that will become more clear later. The eigenvalue equation then reads:
+
+{% math() %}
+\hat{L}_{z} \Phi = \lambda \Phi
+{% end %}
+
+Where $\lambda$ is an as-yet unknown eigenvalue of $\hat L_z$. Substituting in the specific form of $\hat L_z$, we obtain:
+
+{% math() %}
+\hat{L}_{z} \Phi = -i\hbar \frac{\partial \Phi}{\partial \phi} = -i\hbar \frac{d\Phi}{d\phi} \implies -i\hbar \frac{d\Phi}{d \phi} = \lambda \Phi
+{% end %}
+
+Where we replaced the partial derivative with an ordinary derivative since $\Phi(\phi)$ is a function of only a single variable, $\phi$. This gives us a differential equation that we can now solve. But first, let's clean up the equation a bit by multiply by $i/\hbar$ on both sides, giving us:
+
+{% math() %}
+\frac{d\Phi}{d\phi} = i \frac{\lambda}{\hbar} \Phi
+{% end %}
+
+The imaginary unit on the right-hand side of the equation suggests that we have a solution with complex exponentials. Let us assume the *ansatz* (guess solution) of $\Phi(\phi) = Ae^{i m \phi}$ where $A$ and $m$ are two arbitrary constants. This gives us:
+
+{% math() %}
+\frac{d\Phi}{d\phi} = A im e^{i m \phi} = i \frac{\lambda}{\hbar} \Phi = i\frac{\lambda}{\hbar} A e^{im \phi}
+{% end %}
+
+
+By term-by-term comparison, we see that $Aim = Ai \lambda/\hbar$, which tells us that $m = \lambda/\hbar$, or equivalently, $\lambda = m \hbar$. We have found the eigenvalues of $\hat L_z$! However, there is still one more thing to do: we need to find what values that $m$ can take. To do so, we must impose boundary conditions. Since the orbital angular momentum is associated with *spherical symmetry*, it must be symmetric along $\phi$. We can capture this with a **periodic boundary condition**, given by:
+
+{% math() %}
+\Phi(\phi + 2\pi) = \Phi(\phi)
+{% end %}
+
+Which tells us that the eigenfunctions must be periodic with a period of $2\pi$, corresponding to a full revolution of $2\pi$ radians (that is, 360 degrees). Substituting this boundary condition into $\Phi$, we get:
+
+{% math() %}
+\Phi(\phi + 2\pi) = Ae^{im (\phi + 2\pi)} = \Phi(\phi) = Ae^{im\phi}
+{% end %}
+
+Now, note that we can write $e^{im (\phi + 2\pi)}$ as $e^{im\phi} e^{2\pi i m}$. Therefore, we have:
+
+{% math() %}
+Ae^{im\phi} e^{2\pi i m} = Ae^{im\phi} \implies e^{2\pi i m} = 1
+{% end %}
+
+This condition is only possible if $m$ is an integer; that is, if $m = 0, \pm 1, \pm 2, \dots$ Hence, we now know the eigenvalues of $\hat L_z$ are:
+
+{% math() %}
+\lambda = m \hbar = 0, \pm \hbar, \pm 2 \hbar, \pm 3\hbar, \dots
+{% end %}
+
+The case of $m = 0$ physically corresponds to a particle that is not rotating along the $z$ axis (it does *not* necessarily mean it has no orbital angular momentum!) Now, let's complete our calculation of the eigenfunctions $\Phi(\phi)$, which we have solved for, but have not yet normalized. Hence, we impose the normalization condition on $\Phi$:
+
+{% math() %}
+\int_{0}^{2\pi} |\Phi(\phi)|^2 d\phi = A^2\int_{0}^{2\pi} e^{-im\phi} e^{im\phi} d\phi = 2\pi A^2 = 1 \implies A = \frac{1}{\sqrt{2\pi}}
+{% end %}
+
+Hence we have found that our normalization constant is $1/\sqrt{2\pi}$, so the eigenfunctions of $\hat L_z$ are:
+
+{% math() %}
+\Phi_{m}(\phi) = \frac{1}{\sqrt{2\pi}} e^{i m \phi}, \quad m = 0, \pm 1, \pm 2, \pm 3, \dots
+{% end %}
+
+> **Note:** Technically, these are not the *only* eigenfunctions of $\hat L_z$ which is something we'll discuss in more detail later.
+
+Where here we add the subscript $m$ to the eigenfunctions to indicate that they are dependent on $m$. A few of these eigenfunctions are depicted below (with the $m = 3$ eigenfunction in purple highlighted):
+
+![A plot of eigenfunctions of the Lz operator](eigenfunctions-Lz.png)
+
+_Real part of the first four eigenfunctions of $\hat L_z$. Eigenfunctions are color-coded; grey is $m = 0$, blue is $m = 1$, green is $m = 2$, and purple is $m = 3$._
+
+With some straightforward math, we have arrived at a *very important* conclusion: the orbital angular momentum along $z$ is **quantized**, with $m \hbar$ being its eigenvalues. This is the **quantization of angular momentum** in quantum mechanics, and a complete departure from classical mechanics!
+
+> **Note for the curious reader:** Interestingly, in a 2D space (for instance, for a particle constrained to be on a plane), there would be only one angular momentum operator (that being $\hat{L}_z$). In general there are $\frac{N(N-1)}{2}$ angular momentum operators for an $N$-dimensional space. Having three angular momentum operators is a unique property of 3D space.
+
+### Properties of the orbital angular momentum operator
+
+As with the other quantum operators that have physical significance, the $\hat{\mathbf{L}}$ operator is Hermitian, since we know that guarantees it represents an observable (angular momentum) with real eigenvalues. Naturally, its component operators $\hat{L}_{x}, \hat{L}_{y}, \hat{L}_{z}$ — which represent components angular momentum along specific axes — also are Hermitian. What becomes stranger is that the three components of the angular momentum operator do not commute! In particular, they obey the following commutation relations with each other:
+
+{% math() %}
+[\hat{L}_{x}, \hat{L}_{y}] = i\hbar \hat{L}_{z}, \quad [\hat{L}_{y}, \hat{L}_{z}] = i \hbar \hat{L}_{x}, \quad [\hat{L}_{z}, \hat{L}_{x}] = i \hbar \hat{L}_{y}
+{% end %}
+
+From the Heisenberg uncertainty principle, we know that non-commuting operators represent observables that *cannot both be measured to arbitrary precision*. This tells that if we were to measure the orbital angular momentum of a quantum particle along one axis, we would lose information about its orbital angular momentum along another axis. Hence, if we were to measure $L_z$, then $L_x$ and $L_y$ would be indeterminate!
+
+> **Note:** Here, we use $L_x, L_y, L_z$ as a shorthand to denote the eigenvalues of the $\hat L_x, \hat L_y, \hat L_z$ operators, respectively, not the operators themselves (which will always be denoted with a little hat symbol!) Therefore, if we say "the values of $L_z$ are $m \hbar$" we are actually saying "the *eigenvalues of the $\hat L_z$ operator* are $m\hbar$".
+
+Interestingly, another operator — the *squared orbital angular momentum operator* $\hat L^2 \equiv \hat{L}_{x}^2 + \hat{L}_{y}^2 + \hat{L}_{z}^2$ — does commute with $\hat L_z$. In fact, it commutes with all the orbital angular momentum operators! That is:
+
+{% math() %}
+[\hat{L}_{x}, \hat{L}^2] = [\hat{L}_{y}, \hat{L}^2] = [\hat{L}_{z}, \hat{L}^2] = 0
+{% end %}
+
+> **Note:** This is sometimes written more tersely as $[\hat{\mathbf{L}}, \hat L^2] = 0$ to indicate it applies for all the components of the orbital angular momentum operator.
+
+Therefore, we can measure $L^2$ with any one of $L_x, L_y, L_z$, but the choice is important: once we measure one of the three components, we immediately lose all information about the other two!
+
+That is to say, we can always know the *magnitude* $|\mathbf{L}|$ of a quantum particle's angular momentum (which is just $\sqrt{L^2}$) but measuring more than one component is impossible. Consider, for instance, if we were to measure $L_z$. We know that the magnitude $|\mathbf{L}| = \sqrt{L_x^2 + L_y^2 + L_z^2}$ can always be known, but now that we have measured $L_z$, the other two components can be anything. We can illustrate this graphically as "cones" of (orbital) angular momentum, as below:
+
+![Diagram illustrating the range of orbital angular momenta along x and y for different known values of the orbital angular momentum along z](angular-momentum-uncertainty.png)
+
+_Image credit: [LibreTexts, Introduction to Applied Nuclear Physics (Cappellaro)](https://phys.libretexts.org/Bookshelves/Nuclear_and_Particle_Physics/Introduction_to_Applied_Nuclear_Physics_%28Cappellaro%29/04%3A_Energy_Levels/4.02%3A_Quantum_Mechanics_in_3D_-_Angular_momentum)_
+
+Each of the "cones" illustrates the range of possible $L_x$ and $L_y$ that corresponds to a specific value of $L_z$, which obey the implicit equation $\sqrt{L_x^2 + L_y^2 + L_z^2} = \text{constant}$ for different $L_z$ (which we know is given by $m \hbar$). The uncertainty in the values of $L_x$ and $L_y$ is indicated by the fact that the orbital angular momentum vector lies along a continuous 3D "surface" of possible values, but no one knows exactly where on the "cone" it is!
+
+### Non-uniqueness of the orbital angular momentum operators
+
+There is an important point we want to stress at this point, as it can easily be a point of confusion. In the prior derivation, we saw that $\hat L_z$ took on a particularly-simple form in spherical coordinates and then found the eigenstates of $\hat L_z$. This makes it appear like the $z$ axis somehow unique in the three $x, y, z$ coordinate axes. But there is **nothing particularly special** about the $z$ axis, since we can redefine our coordinate system such that (for instance) the $x$ axis becomes the $z$ axis and the $z$ axis becomes the $y$ axis. Quantum mechanics *doesn't* care about our choice of coordinates because they are a human creation, not a feature of the Universe. But it *does* tell us that **only one component of the orbital angular momentum can be measured at a time**, and this fact *is actually fundamental*. By convention, we choose this component to be the $z$-component, and hence it is associated with the $\hat L_z$ operator; but if we had rotated our coordinates, this component could be the $x$ component or $y$ component. What matters is not what we call the coordinates or operators, but the fact that the Universe forces us to choose one — and *only* one — component of orbital angular momentum to measure.
+
+### The spherical harmonics
+
+ Let's take a closer look at the $\hat L^2$ operator, and try to derive an expression for it in spherical coordinates, just like we did for $\hat L_x$, $\hat L_y$, and $\hat L_z$. If we plug in our expressions for $\hat L_x, \hat L_y, \hat L_z$ in spherical coordinates and do some algebraic simplifications, we get:
+
+{% math() %}
+\begin{align*}
+\hat{L}^{2} &= \hat{L}_x^2+\hat{L}_y^2+\hat{L}_z^2 \\ &= -\hbar^2\left[\frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial}{\partial\theta}\right)+\frac{1}{\sin^2\theta}\frac{\partial^2}{\partial\phi^2}\right]
+\end{align*}
+{% end %}
+
+Just as we did for $\hat L_z$, let's also calculate the eigenfunctions and eigenvalues of $\hat L^2$. The eigenvalue equation for $\hat L^2$ would be as follows:
+
+{% math() %}
+\hat{L}^2 Y(\theta, \phi) = \tilde{\lambda} Y(\theta, \phi)
+{% end %}
+
+Where $Y(\theta, \phi)$ is the eigenfunction (that we need to solve for) and $\tilde{\lambda}$ is the eigenvalue; the notation will make more sense later. If we explicitly plug in our expression for $\hat L^2$ into this eigenvalue equation, we get:
+
+{% math() %}
+-\hbar^2\left[\frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial}{\partial\theta}\right)+\frac{1}{\sin^2\theta}\frac{\partial^2}{\partial\phi^2}\right] Y(\theta, \phi) = \tilde{\lambda} Y(\theta, \phi)
+{% end %}
+
+Good news: we have a differential equation now, which we can solve with the tools of calculus instead of needing to do abstract operator algebra. Bad news: it's a complicated *partial* differential equation (PDE), unlike the simple *ordinary* differential equation (ODE) we got from the eigenvalue equation of $\hat L_z$! And indeed, the PDE looks quite intimidating, with all of those partial derivatives and $\sin \theta$ terms! Luckily, there's one clever trick that we can use. To start, let's review a bit of vector calculus. Recall that the **Laplacian operator** $\nabla^2$ (also written $\Delta$) is given by:
+
+{% math() %}
+\nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}
+{% end %}
+
+Now, if we write the Laplacian operator in spherical coordinates, we get this ugly mess:
+
+{% math() %}
+\nabla^2 = {\frac {1}{r^{2}}}{\frac {\partial }{\partial r}}\left(r^{2}{\frac {\partial }{\partial r}}\right)+{\frac {1}{r^{2}\sin \theta }}{\frac {\partial }{\partial \theta }}\left(\sin \theta {\frac {\partial }{\partial \theta }}\right)+{\frac {1}{r^{2}\sin ^{2}\theta }}{\frac {\partial ^{2} }{\partial \phi ^{2}}}
+{% end %}
+
+But notice what happens if we take the special case of a **unit sphere** (a sphere of a radius of one). The unit sphere by definition has a constant radius, so all the derivatives in $r$ become zero, and upon substituting in $r = 1$ we get:
+
+{% math() %}
+\nabla^2 = \frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial}{\partial\theta}\right)+\frac{1}{\sin^2\theta}\frac{\partial^2}{\partial\phi^2} \quad \text{(unit sphere)}
+{% end %}
+
+Let's compare this to our eigenvalue equation:
+
+{% math() %}
+-\hbar^2\left[\frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial}{\partial\theta}\right)+\frac{1}{\sin^2\theta}\frac{\partial^2}{\partial\phi^2}\right] Y(\theta, \phi) = \tilde{\lambda} Y(\theta, \phi)
+{% end %}
+
+Notice how the Laplacian on the unit sphere is *exactly the same* as the quantity in the square brackets in our eigenvalue equation! Indeed, we can directly substitute it in, giving us:
+
+{% math() %}
+-\hbar^2 \nabla^2 Y(\theta, \phi) = \tilde{\lambda} Y(\theta, \phi)
+{% end %}
+
+Or, with some quick simplifications and more compact notation:
+
+{% math() %}
+\nabla^2 Y = -\frac{\tilde{\lambda}}{\hbar^2} Y
+{% end %}
+
+This gives us a much more elegant eigenvalue equation to work it, but we didn't do all this work to just make an equation look prettier. Instead, it's because this has the form of a well-known PDE: the **Helmholtz equation**, which takes the form $\nabla^2 u = -k^2 u$ for an arbitrary function $u(\mathbf{r})$. And the Helmholtz equation has well-known analytical solutions in the case of a unit sphere! The solutions are called **spherical harmonics**, and they are written as $Y^m_{\ell}(\theta, \phi)$ (the "harmonic" part of the name comes from the fact that they are [harmonic functions](https://en.wikipedia.org/wiki/Harmonic_function)). The spherical harmonics can be written as:
+
+{% math() %}
+Y^m_{\ell}(\theta, \phi) = \Theta^{m}_\ell (\theta) \Phi_{m}(\phi)
+{% end %}
+
+Where $\Theta^m_\ell$ is an [associated Legendre polynomial](https://en.wikipedia.org/wiki/Associated_Legendre_polynomial) parametrized by two constants $(m, \ell)$ and $\Phi_m(\phi)$ is — surprise! — our eigenfunctions for the $\hat L_z$ operator! In hindsight, it is not surprising that the eigenfunctions for $\hat L_z$ would appear in our eigenfunctions, since we know that $\hat L^2$ is related to $\hat L_z$. Moreover, the known solution of the Helmholtz equation also tells us that:
+
+{% math() %}
+k^2 = \ell(\ell + 1), \quad \ell = 0, 1, 2, 3, \dots
+{% end %}
+
+By comparing the form of the Helmholtz equation $\nabla^2 u = -k^2 u$ with our eigenvalue equation $\nabla^2 Y = -\frac{\tilde{\lambda}}{\hbar^2} Y$, we make the identification that $\tilde \lambda/\hbar^2 = k^2$. This gives us:
+
+{% math() %}
+\tilde{\lambda} = \hbar^2 k^2 = \ell(\ell + 1)\hbar^2
+{% end %}
+
+These are the **eigenvalues of the $\hat L^2$ operator**! We have therefore obtained both the eigenfunctions (the spherical harmonics) and the eigenvalues of $\hat L^2$. A table of the first few eigenfunctions as well as their associated eigenvalues are given below:
+
+| $m$ | $\ell$ | $\Theta^{m}_\ell (\theta)$                       | $\Phi_{m} (\phi)$                      | $Y^m_{\ell} (\theta , \phi)$                                   | $L_z$     | $L^2$      |
+| --- | ------ | ------------------------------------------------ | -------------------------------------- | -------------------------------------------------------------- | --------- | ---------- |
+| 0   | 0      | $\dfrac {1}{\sqrt {2}}$                          | $\dfrac {1}{\sqrt {2 \pi}}$            | $\dfrac {1}{\sqrt {4 \pi}}$                                    | 0         | 0          |
+| 0   | 1      | $\sqrt {\dfrac {3}{2}}\cos \theta$               | $\dfrac {1}{\sqrt {2 \pi}}$            | $\sqrt {\dfrac {3}{4 \pi}}\cos \theta$                         | 0         | $2\hbar^2$ |
+| 1   | 1      | $\sqrt {\dfrac {3}{4}}\sin \theta$               | $\dfrac {1}{\sqrt {2 \pi}}e^{i \phi}$  | $\sqrt {\dfrac {3}{8 \pi}}\sin \theta e^{i \phi}$              | $\hbar$   | $2\hbar^2$ |
+| -1  | 1      | $\sqrt {\dfrac {3}{4}}\sin \theta$               | $\dfrac {1}{\sqrt {2 \pi}}e^{-i\phi}$  | $\sqrt {\dfrac {3}{8 \pi}}\sin \theta e^{-i \phi}$             | $-\hbar$  | $2\hbar^2$ |
+| 0   | 2      | $\sqrt {\dfrac {5}{8}}(3\cos ^2 \theta - 1)$     | $\dfrac {1}{\sqrt {2 \pi}}$            | $\sqrt {\dfrac {5}{16\pi}}(3\cos ^2 \theta - 1)$               | 0         | $3\hbar^2$ |
+| 1   | 2      | $\sqrt {\dfrac {15}{4}} \sin \theta \cos \theta$ | $\dfrac {1}{\sqrt {2 \pi}}e^{i \phi}$  | $\sqrt {\dfrac {15}{8\pi}} \sin \theta \cos \theta e^{i\phi}$  | $\hbar$   | $3\hbar^2$ |
+| -1  | 2      | $\sqrt {\dfrac {15}{4}} \sin \theta \cos \theta$ | $\dfrac {1}{\sqrt {2 \pi}}e^{-i\phi}$  | $\sqrt {\dfrac {15}{8\pi}} \sin \theta \cos \theta e^{-i\phi}$ | $-\hbar$  | $3\hbar^2$ |
+| 2   | 2      | $\sqrt {\dfrac {15}{16}} \sin ^2 \theta$         | $\dfrac {1}{\sqrt {2 \pi}}e^{2i\phi}$  | $\sqrt {\dfrac {15}{32\pi}} \sin ^2 \theta e^{2i\phi}$         | $2\hbar$  | $3\hbar^2$ |
+| -2  | 2      | $\sqrt {\dfrac {15}{16}} \sin ^2 \theta$         | $\dfrac {1}{\sqrt {2 \pi}}e^{-2i\phi}$ | $\sqrt {\dfrac {15}{32\pi}} \sin ^2 \theta e^{-2i\phi}$        | $-2\hbar$ | $3\hbar^2$ |
+
+_Table of spherical harmonics, adapted from [LibreTexts: Physical and Theoretical Chemistry Ch. 6.2](https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Physical_Chemistry_(LibreTexts)/06%3A_The_Hydrogen_Atom/6.02%3A_The_Wavefunctions_of_a_Rigid_Rotator_are_Called_Spherical_Harmonics_). Here, $L_z$ denotes the eigenvalue of the $\hat L_z$ operator, and $L^2$ denotes the eigenvalue of the $\hat L^2$ operator._
+
+![Image of plots of the spherical harmonics in spherical coordinates](https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Spherical_Harmonics.png/960px-Spherical_Harmonics.png)
+
+*Plots of some of the (real-valued) spherical harmonics; the plots are in the form $r = Y^m_\ell(\theta, \phi)$ where the radial displacement at a given point $(\theta, \phi)$ is given by the value of the spherical harmonic at that point. Source: [Wikipedia](https://commons.wikimedia.org/wiki/File:Spherical_Harmonics.png)*
+
+Finally, we arrive at one important point that we glossed over previously, when we claimed that the eigenfunctions of $\hat L_z$ are $\Phi_m$. While it is indeed true that $\Phi_m$ are eigenfunctions of $\hat L_z$, the *more general eigenfunctions* of $\hat L_z$ are actually the **spherical harmonics**! This makes sense when you think about it, since the spherical harmonics are a product of $\Theta^{m}_\ell (\theta)$ (which purely depends on the polar coordinate $\theta$) and $\Phi_m$ (which purely depends on the azimuthal coordinate $\phi$). We know that eigenfunctions are not necessarily unique, since an eigenfunction multiplied by a constant is another eigenfunction. Here, since $\Theta^{m}_\ell (\theta)$ is *independent* of $\phi$ and the $\hat L_z$ operator is *only dependent* on (the derivative of) $\phi$, the polar part of the spherical harmonics effectively acts like a "constant"! Therefore, the spherical harmonics are also the eigenfunctions of $\hat L_z$. Thus, we may more correctly write our eigenvalue equations as thus:
+
+{% math() %}
+\begin{align*}
+\hat{L}^2 Y^m_{\ell}(\theta, \phi) &= \ell(\ell + 1) \hbar^2 Y^m_{\ell}(\theta, \phi) \\
+\hat{L}_{z} Y^m_{\ell}(\theta, \phi) &= m\hbar Y^m_{\ell}(\theta, \phi)
+\end{align*}
+{% end %}
+
+Or, in more abstract notation (note that sometimes you will see $m_\ell$ rather than just $m$):
+
+{% math() %}
+\begin{align*}
+\hat{L}^2 |\ell, m\rangle &= \ell(\ell + 1)\hbar^2 |\ell, m\rangle \\
+\hat{L}_{z} |\ell, m\rangle &= m\hbar |\ell, m\rangle
+\end{align*}
+{% end %}
+
+Where the spherical harmonics are now interpreted as the eigenstates of the $\hat L^2$ and $\hat L_z$ operators in the position basis:
+
+{% math() %}
+Y^m_{\ell}(\theta, \phi) = \langle \mathbf{r}|\ell, m\rangle
+{% end %}
+
+This allows us to draw a profound statement: **$\hat L_z$ and $\hat L^2$ share the same eigenstates, and those eigenstates are the spherical harmonics**. This is significant because two operators that share the same eigenstates (in more formal language we'd say that they _share a common eigenbasis_) must commute with one another (hence explaining why $\hat L_z$ and $\hat L^2$ commute). And if two operators commute, then they can be measured simultaneously, which is why we can always measure the norm of the orbital angular momentum vector as well as its component on the $z$ axis at the same time!
+
+> **Note for the advanced reader:** We could have simply solved the eigenvalue equation for $\hat L^2$ using the method of separation of variables to obtain the same result (which we implicitly used here). The mathematical justification is that position-space operators are separable if they have a complete, orthogonal basis. This is by definition required for all position-space operators in quantum mechanics, hence their eigenfunctions are separable.
+
+### The ladder operators for orbital angular momentum
+
+We derived the eigenfunctions and eigenvalues of $\hat L_z$ and $\hat L^2$ by solving their eigenvalue equations, which we solved in the position basis as differential equations. Of course, we took a shortcut for solving for the eigenvalues of $\hat L^2$ by casting its eigenvalue equation into the form of the Helmholtz equation and using its known solution (some would call this cheating!) but what we did ultimately relied on solving differential equations. It turns out, however, that there is an *alternative method* to derive the eigenvalues of the orbital angular momentum operators, using the same approach as the quantum harmonic oscillator. This is the method of **ladder operators**.
+
+To begin, let us define two operators: the **raising operator** $\hat L_+$, and the **lowering operator** $\hat L_-$, which are respectively given by:
+
+{% math() %}
+\begin{align*}
+\hat L_{+} = \hat L_{x} + i \hat L_{y} \\ \hat L_{-} = \hat L_{x} - i \hat L_{y} 
+\end{align*}
+{% end %}
+
+Equivalently, we have:
+
+{% math() %}
+\begin{align*}
+\hat L_x = \frac{1}{2}(\hat L_+ + \hat L_-) \\ \hat L_y = \frac{i}{2}(\hat{L}_{-} - \hat{L}_{+})
+\end{align*}
+{% end %}
+
+In the position space representation, the raising and laddering operators take the respective forms (which can be found by substituting in the explicit expressions for $\hat L_x$ and $\hat L_y$):
+
+{% math() %}
+\begin{align*}
+L_\pm &= \hat{L}_{x} \pm i \hat{L}_{y} \\
+&= i\hbar \left(\sin \phi \frac{\partial}{\partial \theta} + \cos \phi \cot \theta \frac{\partial}{\partial \phi}\right) \mp i\hbar \left( \cos \phi \frac{\partial}{\partial \theta} - \sin \phi \cot \theta \frac{\partial}{\partial \phi}\right) \\
+&= \pm \hbar \left( \frac{\partial}{\partial \theta} \pm i \cot \theta \frac{\partial}{\partial \phi}\right)e^{\pm i\phi}
+\end{align*}
+{% end %}
+
+The operators also obey the following *very important* commutation relations (which can be verified through direct, though tedious, calculation):
+
+{% math() %}
+[\hat{L}_{z}, \hat{L}_{\pm}] = \pm \hbar \hat{L}_{\pm}, \quad [\hat{L}^2, \hat{L}_{\pm}] = 0
+{% end %}
+
+In addition, the operators also obey another useful identity (which again, we will not derive, but you can verify through direct calculation):
+
+{% math() %}
+\hat{L}_{\pm} \hat{L}_{\mp} = \hat{L}^2 - \hat{L}_{z}^2 \mp i[\hat{L}_{x}, \hat{L}_{y}]
+{% end %}
+
+Which, if we substitute in the commutation relation $[\hat L_x, \hat L_y] = i\hbar \hat L_z$, gives us:
+
+{% math() %}
+\hat{L}_{\pm} \hat{L}_{\mp} = \hat{L}^2 - \hat{L}_{z}^2 \pm \hbar\hat{L}_{z}
+{% end %}
+
+Now comes the important part. Let $\lambda$ denote the eigenvalue of $\hat L_z$ and let $\tilde{\lambda}$ denote the eigenvalue of $\hat L^2$. Since $\hat L_z$ and $\hat L^2$ commute, it is possible to find a set of eigenstates that are common to both of them, which we will call $Y$. Therefore, the eigenvalue equations we have are:
+
+{% math() %}
+\begin{align*}
+\hat{L}_{z} Y &= \lambda Y \\
+\hat{L}^2 Y &= \tilde{\lambda} Y
+\end{align*}
+{% end %}
+
+Given that we have claimed that $\hat L_+$ and $\hat L_-$ are ladder operators, consider what happens if we apply them to our eigenvalue equations above. First, let's start with $\hat L_z$:
+
+{% math() %}
+\begin{align*}
+\hat{L}_{+} (\hat{L}_{z} Y) &= \hat{L}_{+} \lambda Y = \lambda (\hat{L}_{+}Y) \\
+\hat{L}_{-} (\hat{L}_{z} Y) &= \hat{L}_{-} \lambda Y = \lambda (\hat{L}_{-}Y) \\
+\end{align*}
+{% end %}
+
+Therefore, we conclude that:
+
+{% math() %}
+\hat{L}_{\pm} \hat{L}_{z} Y = \lambda L_{\pm} Y
+{% end %}
+
+Likewise, with $\hat L^2$, we have:
+
+{% math() %}
+\begin{align*}
+\hat{L}_{+} (\hat{L}^2 Y) &= \hat{L}_{+} \tilde{\lambda} Y = \tilde{\lambda} (\hat{L}_{+}Y) \\
+\hat{L}_{-} (\hat{L}^2 Y) &= \hat{L}_{-} \tilde{\lambda} Y = \tilde{\lambda} (\hat{L}_{-}Y) \\
+\end{align*}
+{% end %}
+
+Which gives us:
+
+{% math() %}
+\hat{L}_{\pm} \hat{L}^2 Y = \tilde{\lambda} \hat{L}_{\pm} Y
+{% end %}
+
+Now, by expanding the commutation relation $[\hat{L}^2, \hat{L}_{\pm}] = 0$ and substituting in our above result, we get:
+
+{% math() %}
+\begin{align*}
+[\hat{L}^2, \hat{L}_{\pm}] Y &= \hat L^2 \hat L_\pm Y - \hat L_\pm \hat L^2 Y \\
+&= \hat L^2 \hat L_\pm Y - \tilde{\lambda} \hat{L}_{\pm} Y \\
+&= 0
+\end{align*}
+{% end %}
+
+This tells us that $\hat L^2 (\hat L_\pm Y) = \tilde{\lambda} (\hat{L}_{\pm}Y)$, which will be useful later. In addition, by expanding the commutation relation $[\hat{L}_{z}, \hat{L}_{\pm}] = \pm \hbar \hat{L}_{\pm}$ and substituting in $\hat{L}_{\pm} \hat{L}_{z} Y = \lambda L_{\pm} Y$ (as derived earlier) we get:
+
+{% math() %}
+\begin{align*}
+[\hat{L}_{z}, \hat{L}_{\pm}] Y &= \hat{L}_{z} \hat{L}_{\pm} Y - L_{\pm} \hat{L}_{z} Y \\
+&= \hat{L}_{z} \hat{L}_{\pm} Y - \lambda L_{\pm} Y \\
+&= \pm \hbar \hat{L}_{\pm} Y
+\end{align*}
+{% end %}
+
+Expanding this out and rearranging gives us:
+
+{% math() %}
+\begin{gather*}
+\hat{L}_{z} \hat{L}_{\pm} Y = \lambda L_{\pm} Y \pm \hbar \hat{L}_{\pm} Y \\
+\implies \hat{L}_{z} (\hat{L}_{\pm} Y )= (\lambda \pm \hbar) \hat{L}_{\pm} Y
+\end{gather*}
+{% end %}
+
+Therefore, the operators have the effect of increasing (or decreasing) the angular momentum $L_z$ by one unit of $\hbar$. This is like a "ladder" with each of the rungs of the ladder separated by a "space" of $\hbar$, hence the name of *ladder operators*. Since we know the "spaces" between the angular momentum ladder are increments of $\hbar$, then we would expect the eigenvalues to be integer multiples of $\hbar$ multiplied by some integer, which we'll call $m$. That is to say:
+
+{% math() %}
+\hat{L}_{z} Y = m \hbar Y \implies \lambda = m\hbar
+{% end %}
+
+> **Note:** Going from the exact expression of $\hat{L}_{z} (\hat{L}_{\pm} Y )= (\lambda \pm \hbar) \hat{L}_{\pm} Y$ to saying "the eigenvalues of $\hat L_z$ are integer multiples of $\hbar$" is not *technically* mathematically-rigorous; if you'd like to prove it more rigorously it takes a few more steps of algebra.
+
+Now, since no object can have infinite angular momentum, we also expect there to be a state of *maximum* orbital angular momentum, that is, where:
+
+{% math() %}
+\hat{L}_{+} Y_{max} = 0
+{% end %}
+
+Where $Y_{max}$ represents the state of maximum orbital angular momentum. A way to think about it is that you cannot go higher than the highest "rung" on the angular momentum "ladder". The ladder is a finite one, so to speak! And it is precisely this finiteness that will prove to be *extremely useful* for us. To understand why, see what happens when we apply both $\hat L_z$ and $\hat L^2$ on $Y_{max}$. For $\hat L_z$, using the fact that $\hat{L}_{z} Y = m \hbar Y$, we get:
+
+{% math() %}
+\hat{L}_{z} Y_{max} = m_{max}\hbar Y_{max}
+{% end %}
+
+This tells us that in the maximum orbital angular momentum state, there also is a maximum allowable value of $m$, which must be an integer (since $m$ is always an integer). Let us call this maximum integer $\ell$ such that $m_{max} = \ell$. Mathematically, we can therefore rewrite the above eigenvalue equation as:
+
+{% math() %}
+\hat{L}_{z} Y_{max} = \ell \hbar Y_{max},\quad m \leq \ell
+{% end %}
+
+Now, let's see what happens when we act $\hat L^2$ on $Y_{max}$:
+
+{% math() %}
+\begin{align*}
+\hat{L}^2 Y_{max} &= (L_{-} L_{+} + \hat{L}_{z}^2 + \hbar \hat{L}_{z}) Y_{max} \\
+&= \cancel{ L_{-} (L_{+} Y_{max}) }^0 + \hat{L}_{z}(\hat{L}_{z} Y_{max}) + \hbar \hat{L}_{z}Y_{max} \\
+&= (\ell\hbar)^2 Y_{max} + (\ell\hbar^2) Y_{max} \\
+&= (\ell^2 + \ell)\hbar^2 Y_{max} \\
+&= \ell(\ell + 1) \hbar^2 Y_{max}
+\end{align*}
+{% end %}
+
+Where we used the identity $L_{\pm} L_{\mp} = \hat{L}^2 - \hat{L}_{z}^2 \pm \hbar\hat{L}_{z}$ previously mentioned, which could be arranged to $\hat L^2 = L_{\pm} L_{\mp} + \hat{L}_{z}^2 \mp \hbar \hat{L}_{z}$. Thus, we have:
+
+{% math() %}
+\hat{L}^2 Y = \ell(\ell + 1)\hbar^2 Y \implies \tilde{\lambda} = \ell(\ell + 1)\hbar^2
+{% end %}
+
+This result is exactly the same as what we derived from the differential equation approach, but we've done it without needing to solve a *single* differential equation! Note that $\hat{L}^2 Y = \ell(\ell + 1)\hbar^2 Y$ also implies that $\ell \geq 0$, since if $\ell$ is negative, then the squared angular momentum would be negative, and hence the norm of the angular momentum would be imaginary, which would be unphysical.
+
+Now, just as there is a maximum orbital angular momentum, there must also be a *minimum* orbital angular momentum. After all, there is no such thing as "negative" orbital angular momentum (at least, its magnitude cannot be negative). One can fancifully think of this as the presence of a "bottom rung" on the orbital angular momentum "ladder". Once again, the ladder is finite! The state of minimal angular momentum $Y_{min}$ thus obeys:
+
+{% math() %}
+\hat{L}_{-} Y_{min} = 0
+{% end %}
+
+Analogous to what we had before for $Y_{max}$, the eigenvalue equation for $\hat L_z$ becomes:
+
+{% math() %}
+\hat{L}_{z} Y_{min} = m_{min}\hbar Y_{min}
+{% end %}
+
+Let us define another integer $\tilde{\ell}$ such that $m_{min} = \tilde{\ell}$ (just as we had $m_{max} = \ell$). Thus, the above equation becomes:
+
+{% math() %}
+\hat{L}_{z} Y_{min} = \tilde{\ell}\hbar Y_{min}, \quad m \geq \tilde{\ell}
+{% end %}
+
+We can now fish out our identity $\hat L^2 = \hat{L}_{\pm} \hat{L}_{\mp} + \hat{L}_{z}^2 \mp \hbar \hat{L}_{z}$ once again, and act $\hat L^2$ on $Y_{min}$:
+
+{% math() %}
+\begin{align*}
+\hat{L}^2 Y_{min} &= (\hat{L}_{+} \hat{L}_{-} + \hat{L}_{z}^2 - \hbar \hat{L}_{z}) Y_{min} \\
+&= \cancel{ \hat{L}_{+} (\hat{L}_{-}Y_{min}) }^0 + \hat{L}_{z} (\hat{L}_{z} Y_{min}) - \hbar (\hat{L}_{z} Y_{min}) \\
+&= (\tilde{\ell}\hbar)^2 Y_{min} - \tilde{\ell}\hbar^2 Y_{min} \\
+&= \tilde{\ell}(\tilde{\ell} - 1)\hbar^2 Y_{min}
+\end{align*}
+{% end %}
+
+But we already find that the eigenvalues of $\hat L^2$ were $\ell(\ell + 1)\hbar^2$, so:
+
+{% math() %}
+\ell(\ell + 1)\hbar^2 = \tilde{\ell}(\tilde{\ell} - 1)\hbar^2 \implies \tilde{\ell} = -\ell
+{% end %}
+
+Thus, our condition that $m \geq \tilde{\ell}$ therefore reduces to $m \geq -\ell$, and from before, we also know that $\ell \geq 0$. We have now thus derived the full set of possible integer values for $m$ and $\ell$:
+
+{% math() %}
+\begin{align*}
+\ell &= 0, 1, 2, 3, \dots \\
+m &= -\ell, -|\ell + 1|, \dots, 0, \dots, |\ell - 1|, \ell
+\end{align*}
+{% end %}
+
+### Summary of orbital angular momentum
+
+As we've discussed, the (orbital) angular momentum operators are given by:
+
+| Operator    | Eigenstates/eigenfunctions                                                                      | Eigenvalues                                                       |
+| ----------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| $\hat{L}^2$ | $\vert\ell, m\rangle$ (spherical harmonics)                                                     | $\hbar^2 \ell(\ell + 1)$ where $\ell = 0, 1, 2, \dots$            |
+| $\hat L_x$  | $\sum_\ell \sum_m c_{\ell m} \vert \ell, m\rangle$ (linear combinations of spherical harmonics) | $\hbar^2 \ell(\ell + 1)$ where $\ell = 0, 1, 2, \dots$            |
+| $\hat L_y$  | $\sum_\ell \sum_m c_{\ell m} \vert \ell, m\rangle$ (linear combinations of spherical harmonics) | $\hbar^2 \ell(\ell + 1)$ where $\ell = 0, 1, 2, \dots$            |
+| $\hat L_z$  | $\vert\ell, m\rangle$ (spherical harmonics)                                                     | $m \hbar$ where $m = -\ell, (-\ell + 1), \dots, (\ell - 1), \ell$ |
+| $\hat L_+$  | $\vert\ell, m + 1\rangle$ (technically not eigenstates)                                         | $\hbar\sqrt{\ell(\ell + 1) - m(m + 1)}$                           |
+| $\hat L_-$  | $\vert\ell, m - 1\rangle$ (technically not eigenstates)                                         | $\hbar\sqrt{\ell(\ell + 1) - m(m - 1)}$                           |
+
+> **Note:** Technically speaking, the ladder operators $\hat L_+$ and $\hat L_-$ do not *really* have eigenstates since they take one state and transform them to another, so calling them "eigenstates" is mathematically-correct (but hopefully provides some *physical* intuition).
+
+Note that $\hat L_x$ and $\hat L_y$ have the *same* eigenvalues as $\hat L_z$, but have *different* eigenstates. The eigenstates of $\hat L_x$ and $\hat L_y$ are a linear combination of spherical harmonics, though there is not a general formula or general name for them. For more information, see [this Physics SE article](https://physics.stackexchange.com/questions/567906/can-we-solve-the-general-eigenfunction-of-l-x).
+
+It is also useful to know the expectation values (average values) of the angular momentum operators. To start with, the expectation values of all three angular momentum operator components are zero:
+
+{% math() %}
+\langle L_x\rangle = \langle L_y\rangle = 0, \quad  \langle L_z\rangle =  m \hbar
+{% end %}
+
+The first two follow from the uncertainty of the orbital angular momentum components (other than the $z$ component) because of the non-commutativity of the orbital angular momentum's component operators. However, just because the *average* of $\langle L_x\rangle$ and $\langle L_y\rangle$ is zero, that does not mean their *variance* (that is, $\langle L_x^2\rangle$ and $\langle L_y^2\rangle$) is also zero. Instead, they are respectively:
+
+{% math() %}
+\begin{align*}
+\langle L_x^2 \rangle &= \dfrac{\hbar^2}{2}\big[\ell(\ell + 1) - m^2 \big] \\
+\langle L_y^2\rangle &= \dfrac{\hbar^2}{2}[\ell(\ell + 1) - m^2] \\
+\langle L_z^2 \rangle &= (m \hbar)^2
+\end{align*}
+{% end %}
+
+Finally, the expectation value of $L^2$ is given by:
+
+{% math() %}
+\langle L^2\rangle = \ell(\ell + 1)\hbar^2
+{% end %}
+
+> **Note:** These expectation values only apply for *eigenstates* and do not in general apply for superpositions (linear combinations) of states.
 
 ## The hydrogen atom
 
