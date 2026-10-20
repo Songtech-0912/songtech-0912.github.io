@@ -272,6 +272,9 @@ header {
     @include sm { max-width: 75%; }
     @include xsm { max-width: 80%; }
     margin: 1.5rem auto;
+    // avoids images w/ transparency become invisible in dark mode
+    background-color: white;
+    border-radius: 0.3rem;
   }
 
   .wide-img {
