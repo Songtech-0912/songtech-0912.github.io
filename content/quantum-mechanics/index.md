@@ -529,7 +529,7 @@ A^2 L/2 = 1 \quad \Rightarrow \quad A = \sqrt{\dfrac{2}{L}}
 From which we obtain our **position-space wavefunctions**:
 
 {% math() %}
-\psi(x) = \sqrt{\frac{2}{L}} \sin \left(\dfrac{n\pi x}{L}\right), \quad n =1, 2, 3, \dots
+\psi_n(x) = \sqrt{\frac{2}{L}} \sin \left(\dfrac{n\pi x}{L}\right), \quad n =1, 2, 3, \dots
 {% end %}
 
 We note that a solution is present for every value of $n$. This means that we have technically found an infinite family of solutions $\psi_1, \psi_2, \psi_3, \dots, \psi_n$, each parameterized by a different value of $n$. We show a few of these solutions in the figure below:
@@ -538,12 +538,12 @@ We note that a solution is present for every value of $n$. This means that we ha
 
 _Source: [ResearchGate](https://www.researchgate.net/figure/A-graphical-representation-of-the-particle-in-a-box-as-solution-of-the-time-independent_fig5_337259777). Note that the vertical position of the different wavefunctions is for graphical purposes only._
 
-#### Energy of particle in a box
+#### Finding the energies
 
 Now that we have the wavefunctions, we can solve for the possible values of the energies. We can find this by plugging in our solution into the time-independent Schrödinger equation:
 
 {% math() %}
--\dfrac{\hbar^2}{2m}\dfrac{d^2 \psi}{dx^2} = E \psi(x)
+-\dfrac{\hbar^2}{2m}\dfrac{d^2 \psi_n}{dx^2} = E \psi_n(x)
 {% end %}
 
 Upon substituting, we have:
@@ -555,7 +555,7 @@ Upon substituting, we have:
 \end{align*}
 {% end %}
 
-From which we can easily read off the energy to be:
+From which we can easily read off the energy:
 
 {% math() %}
 E_n = \dfrac{n^2 \pi^2 \hbar^2}{2mL^2}, \quad n = 1, 2, 3, \dots
@@ -564,6 +564,46 @@ E_n = \dfrac{n^2 \pi^2 \hbar^2}{2mL^2}, \quad n = 1, 2, 3, \dots
 We find that the particle always has a nonzero energy, even in its ground state. The lowest energy is called its **ground-state energy**, and the reason it is nonzero is that the energy-time uncertainty principle forbids a particle to have zero energy.
 
 > **Note for the advanced reader:** Quantum field theory gives the complete explanation for why a particle can have nonzero energy even in its ground state. The reason is that the vacuum in quantum field theory is never empty; spontaneous energy fluctuations in the vacuum lead to a nonzero energy even in the ground state, and it would take an infinite amount of energy (or equivalently, infinite time) to suppress all of these fluctuations.
+
+#### The symmetric infinite square well
+
+We can repeat our derivation for the infinite square well and apply it to the *symmetric infinite square well*, which is almost exactly the same, except for the fact that we now consider the range $x \in [-L/2, L/2]$ (instead of $[0, L]$) and:
+
+{% math() %}
+\begin{align*}
+V(x) = \begin{cases}
+V_0, & x < -\frac{L}{2} \\
+0, & -\frac{L}{2}\leq x \leq \frac{L}{2} \\
+V_0, & x > \frac{L}{2}
+\end{cases}
+\end{align*}
+{% end %}
+
+For which $V_0 = \infty$. If we repeat the same calculation (imposing the boundary condition that $\psi$ vanishes at the boundaries, that is, $\psi(L/2) = \psi(-L/2) = 0$) we find the following eigenfunctions:
+
+{% math() %}
+\psi_{n} = \begin{cases}
+\sqrt{ \frac{2}{L} } \cos \dfrac{n\pi x}{L}, & n = \text{odd} \\ \\
+\sqrt{ \frac{2}{L} } \sin \dfrac{n\pi x}{L}, & n = \text{even}
+\end{cases}
+{% end %}
+
+The possible energies remain unchanged:
+
+{% math() %}
+E_{n}= \frac{n^2 \pi^2 \hbar^2}{2mL^2}
+{% end %}
+
+We may also consider the case of the symmetric infinite square well over the range $x \in [-L, L]$, which is twice as wide as the standard infinite square well. Again, the same methods apply (set $\psi(L) = \psi(-L) = 0$) and the eigenfunctions are:
+
+{% math() %}
+\psi_{n} = \begin{cases}
+\sqrt{ \frac{1}{L} } \cos \dfrac{n\pi x}{2L}, & n = \text{odd} \\ \\
+\sqrt{ \frac{1}{L} } \sin \dfrac{n\pi x}{2L}, & n = \text{even}
+\end{cases}
+{% end %}
+
+In this case, the possible energies
 
 ### The delta function potential
 
