@@ -2808,3 +2808,69 @@ P_{E} = \frac{(3\pi^2)^{2/3}}{5} \frac{\hbar^2}{m_{e}} \left[ \left( \frac{Z}{A}
 Where $h$ is Planck's constant, $m_e$ is the electron mass, $Z$ is the number of protons and $A$ is the number of nucleons in a certain amount of matter, $\rho$ is the density, and $m_H$ is the mass of the hydrogen atom (which is around $\pu{1.008 Da}$, equivalent to around $\pu{1.674E-24 g}$. Most matter found on Earth contains carbon, which has 6 protons and 12 nucleons in total, so $Z/A = 0.5$. Elemental carbon has a density of around $\pu{2.26 g/cm^3}$, so the electron degeneracy pressure of carbon is $P_E \approx \pu{1.214E12 N/m^2}$. That is a *lot of pressure* to overcome! Unsurprisingly, matter is very hard to crush on a *microscopic level*, which in turn means that in our Universe, matter is **stable**. The same would *not* be true for bosons; we know that two photons, for instance, can be in the same place at once (this is why two light waves can pass through each other). Hence, if matter was made of bosons, there would be little to stop it from collapsing, and we would all turn into a (homogenous) goo!
 
 We have seen that the fundamental stability of matter owes itself to the unique properties of fermions. But under certain cases, typically under extreme pressures, electron degeneracy pressure is not enough to hold matter together. This occurs in stellar supernovae — the final death of a massive star — where pressures are so extreme that matter is crushed beyond the limits of what degeneracy pressure can withstand. The result is a neutron star (where the strong force acts as a final barrier towards further collapse) or a black hole (where the collapse cannot be stopped and eventually a singularity forms). However, in everyday life, we are far from exceeding electron degeneracy pressure, meaning — thankfully for us — we don't have to worry about a singularity forming soon!
+
+## The quantum harmonic oscillator in 2D and 3D
+
+We've discussed the hydrogen atom at length because it was a quantum-mechanical system with an *exact solution*, and quantum systems with exact solutions are rare. With this in mind, we'll consider another system with an exact solution, one that should be *very* familiar by this point: the quantum harmonic oscillator! But unlike the 1D quantum harmonic oscillator we've discussed at length, we'll now explore the quantum harmonic oscillator in two (and three) dimensions, using the tools we've learned from studying the hydrogen atom to gain some new insights.
+
+Alright, let's begin! The Hamiltonian of the 2D quantum harmonic oscillator is given by:
+
+{% math() %}
+\hat H_\mathrm{(2D)} = \frac{\hat p_x^2}{2m} + \frac{\hat p_y^2}{2m} + \frac{1}{2} m\omega^2 r^2
+{% end %}
+
+Where $r^2 = x^2 + y^2$ in two dimensions and $\hat p_x, \hat p_y$ are the components of the momentum operator along $x$ and $y$. The resulting energies are given by:
+
+{% math() %}
+E_{xy} = \left[\left(n_x + \frac{1}{2}\right) + \left(n_y + \frac{1}{2}\right)\right]\hbar \omega = (n_{x} + n_{y} + 1)\hbar \omega
+{% end %}
+
+Where $n_x, n_y = 0, 1, 2, \dots$ are the labels for the possible states. It is useful to define $n \equiv n_x + n_y$ such that the energies can be written in a form that we are familiar with from the 1D quantum harmonic oscillator:
+
+{% math() %}
+E_{n}^\mathrm{(2D)} = (n + 1) \hbar \omega, \quad n = 0, 1, 2, 3, \dots, (n_{x} + n_{y} - 1),  (n_{x} + n_{y})
+{% end %}
+
+Interestingly, the quantum harmonic oscillator in two dimensions is degenerate, as it has $n + 1$ states for each energy level $n$. This is in contrast to the 1D harmonic oscillator, which is non-degenerate for all its states. Remember this, because the degeneracy of the 2D (and as we'll soon see, 3D) quantum harmonic oscillators will be very important soon!
+
+The 3D quantum harmonic oscillator, meanwhile, has the following Hamiltonian:
+
+{% math() %}
+\hat H = \frac{\hat p_x^2}{2m} + \frac{\hat p_y^2}{2m} + \frac{\hat p_z^2}{2m} + \frac{1}{2} m\omega^2 r^2
+{% end %}
+
+Where $r^2 = x^2 + y^2 + z^2$ in three dimensions and $\hat p_x, \hat p_y, \hat p_z$ are the component momentum operators in three dimensions. The energies of the 3D quantum harmonic oscillator are:
+
+{% math() %}
+\begin{align*}
+E_{xyz} &= \left[\left(n_x + \frac{1}{2}\right) + \left(n_y + \frac{1}{2}\right) + \left(n_z + \frac{1}{2}\right)\right]\hbar \omega \\
+&= \left( n_{x} + n_{y} + n_{z} + \frac{3}{2} \right)\hbar \omega \\
+&= \left( n + \frac{3}{2} \right)\hbar \omega, \quad n \equiv n_{x} + n_{y} + n_{z}
+\end{align*}
+{% end %}
+
+Just like the 2D quantum harmonic oscillator (but *unlike* the 1D quantum harmonic oscillator), the 3D quantum harmonic oscillator is degenerate, with $\frac{(n + 1)(n + 2)}{2}$ states for each energy level $n$. To get rid of this degeneracy, we can use the same approach that we used for the hydrogen atom: change into spherical coordinates and express the Hamiltonian in terms of a *radial part* as well as an *angular part*. In fact this technique works for both the 2D and 3D quantum harmonic oscillators, though we use polar coordinates for 2D and spherical coordinates for 3D. The respective Hamiltonians are:
+
+{% math() %}
+\begin{align*}
+\hat H_\mathrm{(2D)} &= \frac{\hat p_r^2}{2m} + \frac{\hat{L}_{z}^2}{2mr^2} + \frac{1}{2} m\omega^2 r^2 \\
+\hat H_\mathrm{(3D)} &= \frac{\hat p_r^2}{2m} + \frac{\hat{L}^2}{2mr^2} + \frac{1}{2} m\omega^2 r^2
+\end{align*}
+{% end %}
+
+Solving for the eigenfunctions is left as an exercise to the reader (hint: start by writing out the eigenvalue equation for the Hamiltonian, $\hat H |\psi\rangle = E|\psi\rangle$; both Hamiltonians are separable). The solution in 2D is a product of a generalized Laguerre polynomial and $\frac{1}{\sqrt{2\pi}}e^{im\phi}$ (where $m$ is an integer), while the solution in 3D is a product of a generalized Laguerre polynomial and a spherical harmonic (similar to the hydrogen atom). The 3D case is of particular interest in nuclear physics, since it forms the basis of the [nuclear shell model](https://en.wikipedia.org/wiki/Nuclear_shell_model).
+
+In the most general case, the quantum harmonic oscillator in $N$ dimensions has the Hamiltonian:
+
+{% math() %}
+\hat{H}_\mathrm{(3D)} = \frac{\hat{\mathbf{p}}^2}{2m} + \frac{1}{2} m \omega^2 \mathbf{r}^2 = \sum_{i = 1}^N \frac{\hat{p}_{i}^2}{2m} + \frac{1}{2} m \omega^2\sum_{i = 1}^N x_{i}^2
+{% end %}
+
+Where $x_i = x, y, z, \dots$ are the components of the position vector $\mathbf{r}$ and $\hat p_x, \hat p_y, \hat{p}_{z}, \dots$ are the components of the momentum operator $\hat{\mathbf{p}}$. The energy levels are:
+
+{% math() %}
+\begin{align*}
+E_{n} &= \left( n + \frac{N}{2} \right) \hbar \omega, \\
+n &= n_{x_{1}} + n_{x_{2}} + \dots + n_{x_{N-1}} + n_{x_{N}} = 0, 1, 2, 3, \dots
+\end{align*}
+{% end %}
