@@ -1232,7 +1232,7 @@ The volume of a sphere can be computed from the following triple integral:
 \begin{align*}
 V_\text{sphere} &= \int_{-R}^R \int_{-\sqrt{R^2 - x^2}}^{\sqrt{R^2 - x^2}} \int_{-\sqrt{R^2 - x^2 - y^2}}^{\sqrt{R^2 - x^2-y^2}} 1 dz\, dy\, dx \tag{1} \\
 &= \int_{-R}^R \int_{-\sqrt{R^2 - x^2}}^{\sqrt{R^2 - x^2}} \int_{-\sqrt{R^2 - x^2 - y^2}}^{\sqrt{R^2 - x^2-y^2}} dz\, dy\, dx \tag{2} \\
-&= \int_{-R}^R \int_{-\sqrt{R^2 - x^2}}^{\sqrt{R^2 - x^2}} \bigg[~z~\bigg]_{-\sqrt{R^2 - x^2 - y^2}}^\sqrt{R^2 - x^2 - y^2} dy~dx \tag{3} \\
+&= \int_{-R}^R \int_{-\sqrt{R^2 - x^2}}^{\sqrt{R^2 - x^2}} \bigg[~z~\bigg]_{-\sqrt{R^2 - x^2 - y^2}}^{\sqrt{R^2 - x^2 - y^2}} dy~dx \tag{3} \\
 &= \int_{-R}^R \int_{-\sqrt{R^2 - x^2}}^{\sqrt{R^2 - x^2}} 2\sqrt{(R^2 - x^2) - y^2}~ dy~dx \tag{4} \\
 &= \int_{-R}^R \pi (R^2 - x^2) ~dx \tag{5} \\
 &= \pi\left[R^2 x - \dfrac{x^3}{3}\right]_{-R}^R \tag{6} \\
