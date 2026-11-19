@@ -127,6 +127,31 @@
                     
                 </li>
             
+                <li>
+                    <a href="#fields-in-vector-calculus">Fields in vector calculus</a>
+                    
+                        <ul>
+                            
+                                <li>
+                                    <a href="#introduction-to-multiple-integration">Introduction to multiple integration</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#change-of-variables-for-multiple-integrals">Change of variables for multiple integrals</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#applications-of-multiple-integration">Applications of multiple integration</a>
+                                </li>
+                            
+                                <li>
+                                    <a href="#line-integrals">Line integrals</a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
             </ul>
         </div>
         </details>
@@ -1096,6 +1121,526 @@ $$
 $$
 </p>
 <p>This allows us to obtain the parametric equations expressed with respect to the distance along the path, which can be very useful.</p>
+<h2 id="fields-in-vector-calculus">Fields in vector calculus</h2>
+<p>In vector calculus, we often study <strong>fields</strong>. Fields, at least in vector calculus, are quantities that <em>span all space</em> and <em>propagate interactions</em> between objects. Fields, for instance, may describe the temperature distribution in a room, the pressure at every point within a fluid, or the force exerted by an object on all objects in its vicinity. The last type are known as <strong>force fields</strong>, which are commonly used to model gravitational and electrostatic forces (not the Star Wars or Star Trek variety!) Thus we speak of <em>gravitational fields</em> and <em>electrostatic fields</em>.</p>
+<p>Fields are mathematically defined by a function of spatial variables that span all space. If this function is scalar-valued, we refer to the field as a <strong>scalar field</strong>. Such a field could take the form $\phi(x, y, z)$, or $\phi(\mathbf{r})$ for short. An example of a scalar field is the <strong>gravitational potential</strong>, which is given by:</p>
+<p class="mathcell">
+$$
+\phi(x, y, z) = -\dfrac{GM}{(x^2 + y^2 + z^2)^{1&#x2F;2}} = -\dfrac{GM}{r}
+$$
+</p>
+<p>Where we define $r$ as $r \equiv |\mathbf{r}| = \sqrt{x^2 + y^2 + z^2}$, and $G, M$ are constants.</p>
+<blockquote>
+<p><strong>Note:</strong> $\phi$ is the name of our scalar-valued function and has no relation to the $\phi$ coordinate in spherical coordinates.</p>
+</blockquote>
+<p>Meanwhile, if the field is described by a vector-valued function, we refer to the field as a <strong>vector field</strong>. Such a field is often written $\mathbf{F}(x, y, z)$, or $\mathbf{F}(\mathbf{r})$ for short, which can be written in component form as $\mathbf{F} = \langle F_x(\mathbf{r}), F_y(\mathbf{r}), F_z(\mathbf{r})\rangle$. An example is the <strong>electric field</strong>, which is given (for a single point charge) by:</p>
+<p class="mathcell">
+$$
+\mathbf{E} = \dfrac{kQ}{r^2} \hat{\mathbf{r}}
+$$
+</p>
+<p>Where $r$ is defined the same way as previously, and $k, Q$ are constants. The <strong>integral curves</strong> of a vector field are the solutions to the differential equation $\dot{\mathbf{r}} = \mathbf{F}(\mathbf{r}(t))$. In physics these are also often called <em>field lines</em> and represent trajectories of particles within the field.</p>
+<p>On a field, we are able to define a variety of <strong>differential operators</strong>. The first is the <strong>gradient</strong> (or "del") operator $\nabla$, defined for <em>scalar</em> fields:</p>
+<p class="mathcell">
+$$
+\nabla \phi = \left\langle \dfrac{\partial \phi}{\partial x}, \dfrac{\partial \phi}{\partial y}, \dfrac{\partial \phi}{\partial z}\right\rangle
+$$
+</p>
+<p>Physically, the gradient evaluated at each point in space outputs a vector that points in the direction the field <em>increases most quickly</em>. We therefore often say that the gradient is the direction of <em>fastest ascent</em>. By the same reason, the negative of the gradient, that is, $-\nabla \phi$, is the direction of <em>fastest descent</em>.</p>
+<p>Another operator is the <strong>divergence</strong> (or "div") operator $\nabla \cdot$, defined for <em>vector</em> fields:</p>
+<p class="mathcell">
+$$
+\nabla \cdot \mathbf{F} = \dfrac{\partial F_x}{\partial x} + \dfrac{\partial F_y}{\partial y} + \dfrac{\partial F_z}{\partial z}
+$$
+</p>
+<p>If a field satisfies $\nabla \cdot \mathbf{F}$, it is said to be <em>incompressible</em> or <em>solenoidal</em> (you may also see this referred to as "source-free" or "divergence-free"). This is because the divergence physically measures how much the field spreads out from a region (towards a point we call the "source") or contracts within a region (towards a poin we call the "sink"). If the field vectors are all pointing <em>out of</em> some region, we say that region is a <strong>source</strong> and the divergence is <strong>positive</strong>. By contrast, if the field vectors are all pointing <em>in towards</em> some region, we say that region is a <strong>sink</strong> and the divergence is <strong>negative</strong>. If the sources and sinks cancel out, or if there are <strong>no sources or sinks</strong> at all, the divergence becomes zero. Fields that model fluid flows that have zero divergence describe fluids that <em>cannot be compressed</em> into a region (or expanded out of another region), hence the name <em>incompressible</em>.</p>
+<p>Finally, we have the <strong>curl</strong> (or "rot", short for <em>rotation</em>) operator $\nabla \times$, also defined for <em>vector</em> fields:</p>
+<p class="mathcell">
+$$
+\nabla \times \mathbf{F} = \left \langle \frac{\partial F_z}{\partial y} - \frac{\partial F_y}{\partial z}, \frac{\partial F_x}{\partial z} - \frac{\partial F_z}{\partial x}, \frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y}\right \rangle
+$$
+</p>
+<p>The curl can also be calculated with a cross product-style formula:</p>
+<p class="mathcell">
+$$
+\nabla \times \mathbf{F} = \begin{vmatrix*}
+\hat{\mathbf{i}} &amp; \hat{\mathbf{j}} &amp; \hat{\mathbf{k}} \\
+\dfrac{\partial}{\partial x} &amp; \dfrac{\partial}{\partial y} &amp; \dfrac{\partial}{\partial z} \\
+F_x &amp; F_y &amp; F_z
+\end{vmatrix*}
+$$
+</p>
+<p>If a field satisfies $\nabla \times \mathbf{F} = 0$, then we say it is <strong>irrotational</strong>. Irrotational fields are special in physics because they satisfy <em>energy conservation</em>, which means that particles travelling in the field will always have the same amount of total energy, regardless of where they are in the field. We thus call such fields <strong>conservative fields</strong>. A conservative field $\mathbf{F}$ can be expressed as the <em>gradient</em> of a scalar field $\phi$, as follows:</p>
+<p class="mathcell">
+$$
+\mathbf{F} = \nabla \phi
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> In physics, this scalar field is often called a <em>potential field</em> or just <em>potential</em> for short.</p>
+</blockquote>
+<p>In particular, all <em>inverse-square fields</em>, which are fields in the form $\mathbf{F}(\mathbf{r}) = \dfrac{k}{r^2}$ (where $k$ is a constant) satisfy $\nabla \times \mathbf{F} = 0$, so they are conservative fields. The gravitational and electrostatic fields are two classical examples of inverse-square fields, and are conservative. Thus, they also each possess corresponding <em>potential fields</em>, namely the gravitational potential and electric potential.</p>
+<p>Finally, we have the <strong>Laplacian</strong> operator, sometimes written as $\Delta$ and sometimes written as $\nabla^2$ (we will go with the latter). It is defined for both scalar and vector-valued functions. In the scalar case, it becomes:</p>
+<p class="mathcell">
+$$
+\nabla^2 \phi = \dfrac{\partial^2 \phi}{\partial x^2} + \dfrac{\partial^2 \phi}{\partial y^2} + \dfrac{\partial^2 \phi}{\partial z^2}
+$$
+</p>
+<p>Whereas in the vector case it becomes:</p>
+<p class="mathcell">
+$$
+\nabla^2 \mathbf{F} = \begin{bmatrix}
+\nabla^2 F_x \\
+\nabla^2 F_y \\
+\nabla^2 F_z
+\end{bmatrix}
+$$
+</p>
+<p>Where, again, $F_x(\mathbf{r}), F_y(\mathbf{r}), F_z(\mathbf{r})$ are the <em>components</em> of the vector field in the $x, y, z$ directions respectively, which are in general functions of position.</p>
+<p>A few curious identities emerge from the definitions for the div, grad, and curl operators, namely:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+\nabla \times (\nabla f) = 0, &amp; \nabla \cdot (\nabla \times \mathbf{F}) = 0
+\end{matrix*}
+$$
+</p><h3 id="introduction-to-multiple-integration">Introduction to multiple integration</h3>
+<p>Consider a function of two variables $f(x, y)$ defined on some domain $D$. Perhaps this is the function of a force on a 2D surface, or a charge density on a plate of charge, or the displacement of a stretched thin film. Suppose we want to <em>integrate</em> the function across the domain. Since the function is of two variables, we would have to integrate <em>twice</em>: first, across all $x$, and then, across all $y$. Note that we <em>cannot</em> integrate across $x$ and $y$ at the same time - we must do them in order. We call such an integral over two variables as a <strong>double integral</strong> and write it as follows:</p>
+<p class="mathcell">
+$$
+\iint_{D^2} f(x, y)\, dA
+$$
+</p>
+<p>Where our domain is written $D^2$ to show that it is a <em>2D domain</em>. If our domain is in the form $D^2 \in {a &lt; x &lt; b,, g(x) &lt; y &lt; h(x)}$, then we say the domain is <strong>vertically simple</strong> or <strong>y-simple</strong> (i.e. bounded by vertical bounds in $y$). We show such a domain below:</p>
+<p>![[iterated-integral-1.excalidraw]]</p>
+<p>Then, if we integrate $f$ across the domain, we can integrate over $y$ first, and then integrate the result of that integral over $x$, resulting in what is known as an <em>iterated integral</em>:</p>
+<p class="mathcell">
+$$
+\iint_D f(x, y)\, dA = \int_a^b \left[\int_{g(x)}^{h(x)} f(x, y) dy\right] dx
+$$
+</p>
+<p>Similarly, if our domain is in the form $D \in {c &lt; y &lt; d,, \phi(y) &lt; x &lt; \varphi(y)}$, then we say that the domain is <strong>horizontally simple</strong> or <strong>x-simple</strong> (i.e. bounded by horizontal bounds in $x$). We show such a domain below:</p>
+<p>![[iterated-integral-2.excalidraw]]</p>
+<p>In this case, then we can integrate over $x$ first, and then integrate the result of that integral over $y$, which gives us another <em>iterated integral</em>:</p>
+<p class="mathcell">
+$$
+\iint_D f(x, y) dA = \int_c^d \left[\int_{\phi(y)}^{\varphi(y)} f(x, y) dx\right] dy
+$$
+</p>
+<p>In a region that is <em>both</em> horizontally- and vertically-simple, it is possible to switch the order of integration:</p>
+<p class="mathcell">
+$$
+\iint_D f(x, y) dA = \int_a^b \int_{g(x)}^{h(x)} f(x, y)\,dy\,dx = \int_c^d \int_{\phi(y)}^{\varphi(y)} f(x, y)\, dx\, dy
+$$
+</p>
+<p>This is very useful in many cases, where integrating $y$ first, and then $x$, results in simpler integrals than integrating $x$ first, and then $y$. Of course, not every domain will satisfy these requirements of being either horizontally-or vertically-simple. In such cases, however, one can always <em>split the region</em> into pieces that are horizontally or vertically-simple and use the same methods to integrate as described above.</p>
+<p>Let us perform a relatively straightforward double integral for demonstrative purposes. Let us assume that the energy density $\rho(x, y)$ of sunlight hitting a rectangular (thin) solar panel of length $L$ and height $h$ is given by $\rho(x, y) = \sin\left(\dfrac{\pi x}{L}\right) e^{-y}$, where $x$ is the horizontal direction (i.e. along the solar panel's length) and $y$ is the vertical direction (i.e. along the solar panel's height). A plot of this energy density function $\rho(x, y)$ is shown below:</p>
+<p><img src="https://jackysci.com/vector-and-advanced-calculus/./double-integral-energy-density.svg" alt="A plot of the energy density function described above" /></p>
+<p>We want to find the <em>total energy</em> $E$ incident on the solar panel. Therefore, our double integral becomes:</p>
+<p class="mathcell">
+$$
+E = \iint \limits_\text{panel} \rho\, dA = \int_0^L \int_0^h \sin\left(\dfrac{\pi x}{L}\right) e^{-y}\, dy~dx
+$$
+</p>
+<p>To evaluate this integral, we must first remember that it is a <em>partial integral</em> (which means we must first integrate with respect to $y$, treating $x$ as a constant, very similar to a partial derivative). That is to say, we can in fact <em>factor</em> out the terms in $x$ for the first integral:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+&amp;\int_0^L \int_0^h \sin\left(\dfrac{\pi x}{L}\right) e^{-y}\, dy~dx \\
+&amp;\quad = \int_0^L \bigg[\underbrace{\int_0^h \sin\left(\dfrac{\pi x}{L}\right) e^{-y}\, dy}_{\text{We treat all } x \text{ terms as const.}}\bigg]~dx
+\\
+&amp;\quad = \int_0^L \left[\sin\left(\dfrac{\pi x}{L}\right)\int_0^h e^{-y}\, dy\right]~dx \\
+&amp;\quad = \int_0^L \left[\sin\left(\dfrac{\pi x}{L}\right)(-e^{-h} - (-e^0)\right]~dx \\
+&amp;\quad = \int_0^L \left[\sin\left(\dfrac{\pi x}{L}\right)(1-e^{-h})\right]~dx \\
+&amp;\quad = \int_0^L \sin\left(\dfrac{\pi x}{L}\right)(1-e^{-h})~dx \\
+&amp;\quad = (1-e^{-h})\int_0^L \sin\left(\dfrac{\pi x}{L}\right)~dx
+\end{align*}
+$$
+</p>
+<p>After performing our integral in $y$, we find that we now no longer have any terms dependent on $y$, so the integral that remains is just an ordinary integral! Furthermore, it is an integral that we can do relatively easily. The steps are as follows:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+E &amp;= (1-e^{-h})\int_0^L \sin\left(\dfrac{\pi x}{L}\right)~dx \\
+ &amp;= (1-e^{-h}) \dfrac{L}{\pi}\left[-\cos\left(\dfrac{\pi x}{L}\right)\right]_0^L \\
+ &amp;=(1-e^{-h}) \dfrac{L}{\pi} (1 - (-1)) \\
+ &amp;= \dfrac{2L}{\pi}(1-e^{-h})
+\end{align*}
+$$
+</p>
+<p>And thus we have solved the double integral, finding that the total solar energy incident on the solar panel is given by $E = \dfrac{2L}{\pi}(1-e^{-h})$.</p>
+<p>We can extend our idea of multiple integration into higher dimensions. An integral over a function of three variables, that is, $f(x, y, z)$, is called a <strong>triple integral</strong> and is written as follows:</p>
+<p class="mathcell">
+$$
+\iiint_{D^3} f(x, y, z)\, dV
+$$
+</p>
+<p>Where our domain is written $D^3$ to show that it is a <em>3D domain</em>. In Cartesian coordinates, $dV = dx, dy, dz$, and thus, just as with a double integral, the triple integral can be expanded in any of the 6 following ways:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\iiint_{D^3} f(x, y, z)\, dV &amp;= \underbrace{\int_a^b}_{z \text{ bounds}} \underbrace{\int_c^d}_{y \text{ bounds}} \underbrace{\int_e^g}_{x \text{ bounds}} f(x, y, z)\, dx\,dy\, dz \\
+&amp;= \int_c^d \int_a^b \int_e^g f(x, y, z)\, dx\, dz\, dy \\
+&amp;= \int_a^b \int_e^g \int_c^d f(x, y, z)\, dy\, dx\, dz \\
+&amp;= \int_e^g \int_a^b \int_c^d f(x, y, z)\, dy\, dz\, dx \\
+&amp;= \int_e^g \int_c^d \int_a^b f(x, y, z)\, dz\, dy\, dx \\
+&amp;= \int_c^d \int_e^g  \int_a^b f(x, y, z)\, dz\, dx\, dy
+\end{align*}
+$$
+</p>
+<p>Where in general, $a = a(x, y), b = b(x, y), c= c(x, z), d = d(x, z)$, and $e = e(y, z), g = g(y, z$. Once again, this is because we can swap the order of the integral without changing the mathematics. Note that it is also possible to expand $dV$ in cylindrical coordinates or spherical coordinates - the integrals then range over those coordinates instead.</p>
+<p>One may ask why triple integrals are useful. The answer is that they are <em>extremely useful</em> for anything that involves 3D space. For instance, in the special case that $f(x, y, z) = 1$, the triple integral over the domain $D^3$ gives the <strong>total volume</strong> of the region. For instance, if we let $D^3$ be the domain of a sphere, which is given by the following domain:</p>
+<p class="mathcell">
+$$
+D^3 = \begin{cases}
+x \in [-R, R], \\y \in \pm \sqrt{R^2 - x^2}, \\z \in\pm \sqrt{R^2 - (x^2 + y^2)}
+\end{cases}
+$$
+</p>
+<p>The volume of a sphere can be computed from the following triple integral:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+V_\text{sphere} &amp;= \int_{-R}^R \int_{-\sqrt{R^2 - x^2}}^{\sqrt{R^2 - x^2}} \int_{-\sqrt{R^2 - x^2 - y^2}}^{\sqrt{R^2 - x^2-y^2}} 1 dz\, dy\, dx \tag{1} \\
+&amp;= \int_{-R}^R \int_{-\sqrt{R^2 - x^2}}^{\sqrt{R^2 - x^2}} \int_{-\sqrt{R^2 - x^2 - y^2}}^{\sqrt{R^2 - x^2-y^2}} dz\, dy\, dx \tag{2} \\
+&amp;= \int_{-R}^R \int_{-\sqrt{R^2 - x^2}}^{\sqrt{R^2 - x^2}} \bigg[~z~\bigg]_{-\sqrt{R^2 - x^2 - y^2}}^\sqrt{R^2 - x^2 - y^2} dy~dx \tag{3} \\
+&amp;= \int_{-R}^R \int_{-\sqrt{R^2 - x^2}}^{\sqrt{R^2 - x^2}} 2\sqrt{(R^2 - x^2) - y^2}~ dy~dx \tag{4} \\
+&amp;= \int_{-R}^R \pi (R^2 - x^2) ~dx \tag{5} \\
+&amp;= \pi\left[R^2 x - \dfrac{x^3}{3}\right]_{-R}^R \tag{6} \\
+&amp;= \pi \left[\left(R^3 - \dfrac{R^3}{3}\right) - \left(-R^3 + \dfrac{R^3}{3}\right)\right] \tag{7} \\
+&amp;= \dfrac{4}{3}\pi R^3
+\end{align*}
+$$
+</p>
+<p>Where in step (4) we used the integral formula (which can be derived by a trigonometric substitution):</p>
+<p class="mathcell">
+$$
+\int \sqrt{a^2 - y^2} d y = 
+\frac{1}{2} y \sqrt{a^2 - y^2} + 
+\frac{1}{2} a^2 \tan^{- 1} \frac{y}{\sqrt{a^2 - y^2}}
+$$
+</p>
+<p>And thus using $a^2 = R^2 - x^2$ (which in this case can be treated as a constant), since we are integrating with respect to $y$, not $x$) we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+&amp;\int_{-\sqrt{R^2 - x^2}}^{\sqrt{R^2 - x^2}} \sqrt{(R^2 - x^2) - y^2} d y \\
+&amp;\quad= 
+\frac{1}{2} y \sqrt{(R^2 - x^2) - y^2} + 
+\frac{1}{2} (R^2 - x^2) \tan^{- 1} \frac{y}{\sqrt{(R^2 - x^2) - y^2}} \bigg|_{y = -\sqrt{R^2 - x^2}}^{y = \sqrt{R^2 - x^2}} \\
+&amp;\quad =\left[0 + \dfrac{R^2 - x^2}{2}\left(\pi \over 2\right)\right] - \left[0 + \dfrac{R^2 - x^2}{2}\left(-\frac{\pi}{2}\right)\right] \\
+&amp;\quad = 2 \cdot \dfrac{R^2 - x^2}{2}\left(\pi \over 2\right) \\
+&amp;\quad = \dfrac{1}{2} \pi (R^2 - x^2)
+\end{align*}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> We only did the triple integral in Cartesian coordinates for educational purposes. The <em>proper</em> way to do this triple integral would be to use <strong>spherical coordinates</strong> instead, which would simplify the integral a great deal.</p>
+</blockquote>
+<p>Triple integrals are used in quantum mechanics for finding electron distributions in atoms, in classical physics for finding the total amount of some quantity in a region of variable density, and are used to formulate integral equations in electromagnetic theory and quantum field theory. Finally, triple integrals are also used in some important vector calculus theorems (which we'll see later) which are essential to the study of partial differential equations. That is to say, they are ubiquitous in many areas of math, engineering, and physics (although they are typically evaluated by computer rather than manually!)</p>
+<h3 id="change-of-variables-for-multiple-integrals">Change of variables for multiple integrals</h3>
+<p>Suppose we want to evaluate some integral in the form:</p>
+<p class="mathcell">
+$$
+I = \int_a^b F(u(x)) dx
+$$
+</p>
+<p>Where $u(x)$ is some function of $x$. We know from single-variable calculus that we can transform this integral into a simpler form. To do so, we take the derivative of $u$ with respect to $x$, in which we get:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{du}{dx} = u&#x27;(x)  &amp;\Rightarrow du = u&#x27;(x) dx \quad \\ &amp;\Rightarrow dx = \dfrac{du}{u&#x27;(x)}
+\end{align*}
+$$
+</p>
+<p>Meanwhile, if we evaluate $[a, b]$ in $u(x)$, then our bounds can be transformed to $[u(a), u(b)]$. Substituting this all into our original integral yields:</p>
+<p class="mathcell">
+$$
+I = \int_{u(a)}^{u(b)}\dfrac{1}{u&#x27;(x)} F(u(x)) du = \int_{u(a)}^{u(b)}\dfrac{1}{u&#x27;} F(u) du
+$$
+</p>
+<p>We have now transformed the integral in $x$ into an integral in $u$, and in many cases, we find that this integral is <em>much</em> easier to evaluate. For instance, consider the integral:</p>
+<p class="mathcell">
+$$
+I = \int_0^3 \dfrac{1}{3x + 5} dx
+$$
+</p>
+<p>This integral is not able to be evaluated in its conventional form. But we can choose $u = 3x+5$, which leads to $u'(x) = 3$ and $[u(a), u(b)] = [5, 14]$. Substituting into the formula, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+I &amp;= \int_0^3 \dfrac{1}{3x + 5} dx \\
+&amp;= \int_{\underbrace{u(a)}_5}^{\underbrace{u(b)}_{14}}\dfrac{1}{\underbrace{u&#x27;}_3} \underbrace{F(u)}_{1&#x2F;u} du \\
+&amp;= \int_5^{14} \dfrac{1}{3}\dfrac{1}{u} du \\
+&amp;= \dfrac{1}{3} \ln u \bigg|_5^{14} \\
+&amp;= \dfrac{1}{3} [\ln 14 - \ln 5] \\
+&amp;= \dfrac{1}{3} \ln \left(\dfrac{14}{5}\right)
+\end{align*}
+$$
+</p>
+<p>This process, often called <em>u-substitution</em> can be thought of as a <em>coordinate transformation</em> or a <em>change of coordinates</em> to change from our coordinate $x$ to a new coordinate $u$, where we find that the integral in $u$ coordinates is often much easier to evaluate.</p>
+<p>We can carry over the idea of a coordinate transformation to simplify an integral for <em>multiple integrals</em>. In multiple dimensions, a coordinate transformation from one coordinate to another is given by the <strong>Jacobian</strong>, which we have seen before. For a coordinate transformation given by $x = x(u, v)$, $y = y(u, v)$, then the Jacobian is given by:</p>
+<p class="mathcell">
+$$
+J_{u, v} = \begin{bmatrix}
+\dfrac{\partial x}{\partial u} &amp; \dfrac{\partial x}{\partial v} \\
+\dfrac{\partial y}{\partial u} &amp; \dfrac{\partial y}{\partial v}
+\end{bmatrix}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> the Jacobian is sometimes also written $D$ or $\dfrac{\partial(x, y)}{\partial(u, v)}$.</p>
+</blockquote>
+<p>Intuitively, the Jacobian is the equivalent of our derivative $u'(x)$ from the single-variable change of variables. The determinant of the Jacobian serves the role of dividing by $u'(x)$. Thus the <strong>multivariable substitution formula</strong> is given by:</p>
+<p class="mathcell">
+$$
+\iint_{D_{x, y}^2} f(x, y)\, dx\,dy = \iint_{D_{u, v}^2} f(u, v) \det(J_{u, v}) \, du\, dv
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> Here, we use $D^2_{x, y}$ to express the 2D domain we are integrating over in $x, y$ coordinates, and $D^2_{u, v}$ to express the same 2D domain expressed in $u, v$ coordinates.</p>
+</blockquote>
+<p>For instance, when we have certain classes of integrals with rotational symmetries, it is often easier to switch to polar coordinates. Since we know that $x = r \cos \theta, y = r \sin \theta$, we have $u = r, v = \theta$ and the Jacobian becomes:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+J_{r, \theta} &amp;= \begin{bmatrix}
+\dfrac{\partial x}{\partial r} &amp; \dfrac{\partial x}{\partial \theta} \\
+\dfrac{\partial y}{\partial r} &amp; \dfrac{\partial y}{\partial \theta}
+\end{bmatrix} \\
+&amp;= \begin{bmatrix}
+\cos \theta &amp; -r \sin \theta \\
+\sin \theta &amp; r \cos \theta
+\end{bmatrix}
+\end{align*}
+$$
+</p>
+<p>Thus the determinant of the Jacobian for polar coordinates becomes:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\det J_{r, \theta} &amp;= \cos \theta (r \cos \theta) - (\sin \theta)(-r \sin \theta) \\
+&amp;= r \cos^2 \theta + r\sin^2 \theta \\
+&amp;= r(\cos^2 \theta + \sin^2 \theta) \\
+&amp;= r
+\end{align*}
+$$
+</p>
+<p>Meanwhile, since we have $u = r, v = \theta$, $du dv$ would be $dr d\theta$ for polar coordinates. Thus substituting everything into the $u, v$-substitution formula, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\iint_{D_{x, y}^2} f(x, y)\, dx\,dy &amp;= \iint_{D_{u, v}^2} f(\underbrace{u, v}_{r, \theta}) \underbrace{\det(J_{u, v})}_r \, \underbrace{du\, dv}_{dr\, d\theta} \\
+&amp;= \iint_{D^2_{r, \theta}} f(r, \theta) r\, dr\, d\theta
+\end{align*}
+$$
+</p>
+<p>We can do the same for triple integrals. Suppose we wanted to take a triple integral expressed in terms of $x,y,z$ and transform it to use coordinates $u, v, w$. The Jacobian would then take the form:</p>
+<p class="mathcell">
+$$
+J_{u, v, w} = \begin{bmatrix}
+\dfrac{\partial x}{\partial u} &amp; \dfrac{\partial x}{\partial v} &amp; \dfrac{\partial x}{\partial w} \\
+\dfrac{\partial y}{\partial u} &amp; \dfrac{\partial y}{\partial v} &amp; \dfrac{\partial y}{\partial w} \\
+\dfrac{\partial z}{\partial u} &amp; \dfrac{\partial z}{\partial v} &amp; \dfrac{\partial z}{\partial w} \\
+\end{bmatrix}
+$$
+</p>
+<p>And the substitution formula becomes:</p>
+<p class="mathcell">
+$$
+\iiint_{D^3_{xyz}} f(x, y, z)dx\, dy\, dz = \iiint_{D^3_{uvw}} f(u, v, w) \det(J_{u, v, w})\, du\,dv\, dw
+$$
+</p>
+<p>Where $D^3$ denotes the 3D domain that is integrated over, and where $D^3_{xyz}$ denotes the domain expressed as bounds in $x, y, z$, while $D^3_{uvw}$ denotes the domain expressed as bounds in $u, v, w$. In practice, the most common set of coordinate transformations are those that switch to polar, cylindrical, or spherical coordinates. Thus, for general double and triple integrals in the form:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+\displaystyle \iint f(x, y) \, dA, &amp; \displaystyle \iiint f(x, y, z)\, dV
+\end{matrix*}
+$$
+</p>
+<p>The Jacobian and correct expressions of $dA$ and $dV$ in these coordinate systems are as follows:</p>
+<table><thead><tr><th>Coordinate system</th><th>Jacobian</th><th>Area element $dA$</th><th>Volume element $dV$</th></tr></thead><tbody>
+<tr><td>Polar $(r, \theta)$</td><td>$r$</td><td>$r dr d\theta$</td><td>-</td></tr>
+<tr><td>Cylindrical $(\rho, \phi, z)$</td><td>$\rho$</td><td>$\rho, d\rho, d\phi$</td><td>$\rho, d\rho, d\phi, dz$</td></tr>
+<tr><td>Spherical $(r, \phi, \theta)$ (mathematical convention)</td><td>$r^2 \sin^2 \phi$</td><td>$r^2 \sin \phi, d\theta, d\phi$</td><td>$r^2 \sin \phi, dr, d\theta, d\phi$</td></tr>
+<tr><td>Spherical $(r, \theta, \phi)$ (physics convention)</td><td>$r^2 \sin^2 \theta$</td><td>$r^2 \sin \theta, d\phi, d\theta$</td><td>$r^2 \sin \theta , dr, d\phi, d\theta$</td></tr>
+</tbody></table>
+<blockquote>
+<p><strong>Note:</strong> In the <strong>physics convention</strong> for spherical coordinates, $\phi$ ranges over $[0, 2\pi]$ and $\theta$ ranges over $[0, \pi]$ (or alternatively, over $[-\pi/2, \pi/2]$). Meanwhile, in the <strong>mathematics convention</strong> for spherical corodinates, $\phi$ ranges over $[0, \pi]$ (or alternatively, over $[-\pi/2, \pi/2]$) and $\theta$ ranges over $[0, 2\pi]$.</p>
+</blockquote>
+<h3 id="applications-of-multiple-integration">Applications of multiple integration</h3>
+<p>Vector calculus was developed with applications in mind, so it is no surprise that multiple integration also finds a variety of applications, particularly in physics and engineering.</p>
+<p>As an example, one commonly finds <em>density functions</em> in physics, such as mass density, charge density, current density, probability density, among many, many other examples. To be able to find the <em>total amount</em> of a particular quantity from its density function, we perform its triple integral over our desired region of space. For instance, if we had the mass density function $\rho(x, y, z)$, we could find the total mass $M_\text{total}$ within region $D$ (which might be a box-shaped region, a sphere, or even all of space) by performing the following integral:</p>
+<p class="mathcell">
+$$
+M_\text{total} = \iiint_D \rho(x, y, z)\, dV
+$$
+</p>
+<p>As another example, suppose we wanted to find the <em>average value</em> of a function in space (or in space <em>and</em> time). For a function of two variables, we could do so with:</p>
+<p class="mathcell">
+$$
+f_\text{avg} = \dfrac{\displaystyle\iint f(x, y) dA}{\displaystyle \iint dA}
+$$
+</p>
+<p>Meanwhile, for a function of three variables this becomes:</p>
+<p class="mathcell">
+$$
+f_\text{avg} = \dfrac{\displaystyle\iiint f(x, y, z) dV}{\displaystyle \iiint dV}
+$$
+</p>
+<p>Multiple integration may also be used to calculate the <strong>center of mass</strong> of an object. For an object described by a mass density function $\rho(\mathbf{r})$, the center of mass is given by:</p>
+<p class="mathcell">
+$$
+\mathbf{r}_{CM} = \dfrac{\displaystyle \iiint \mathbf{r} \rho(\mathbf{r})\,dV}{\displaystyle \iiint \rho(\mathbf{r})\, dV}
+$$
+</p>
+<p>For rotating objects, we can also use multiple integration to find the <strong>moment of inertia</strong>. If we let $s(\mathbf{r})$ denote the distance from a point on a rotating object to the axis of rotation, where the mass density of the object is given by $\rho(\mathbf{r})$, the moment of inertia is given by:</p>
+<p class="mathcell">
+$$
+I = \iiint \rho(\mathbf{r}) s(\mathbf{r})^2 \, dV
+$$
+</p>
+<p>These, of course, are just a few of the many, many applications of multiple integrals, which are extensively used in countless fields of science and technology. Indeed, we will be ourselves using multiple integration in the following sections to explore more advanced topics in vector calculus.</p>
+<h3 id="line-integrals">Line integrals</h3>
+<p>There are many applications in which we must integrate over a path in space. For instance, we may want to find the center of gravity of a curved rod with variable mass density, or the total work (transfer of energy by a force/force field) of a particle along a path in space. Furthermore, line integrals over vector fields in physics describe many phenomena.</p>
+<p>Let us note that there are <em>two types</em> of line integrals. First, we may define <em>scalar</em> line integrals, which are line integrals over paths in <em>scalar</em> fields. Consider, for instance, a scalar field given by $\phi(x, y, z) = \phi(\mathbf{r})$. The line integral along some parametric path $C = {, \mathbf{r}(t), t \in [a, b], }$ in the scalar field $\phi(\mathbf{r})$ is given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\int_C \phi(\mathbf{r})\, ds &amp;= \int_a^b \phi(\mathbf{r}(t)) |\mathbf{r}&#x27;(t)|dt \\
+&amp;= \int_a^b \phi(\mathbf{r}(t)) \sqrt{x&#x27;(t)^2 + y&#x27;(t)^2 + z&#x27;(t)^2}\, dt
+\end{align*}
+$$
+</p>
+<p>Notice that $ds$ is the same as the <em>arc length</em> that we saw from before - it describes an infinitesimal displacement along the path. We evaluate the line integral by <em>parametrizing</em> the curve $C$, which allows us to express our scalar field $\phi(\mathbf{r}) = \phi(x, y, z)$, which is a function of space, <em>in terms of</em> $t$ instead, becoming $\phi(x(t), y(t), z(t)$. To parametrize a given path, we can use the techniques we have seen before. For instance, a quadratic path could be parametrized with:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+\begin{align*}
+x(t) &amp;= t \\
+y(t) &amp;= t^2
+\end{align*}
+&amp; t \in [a, b]
+\end{matrix*}
+$$
+</p>
+<p>And a circular path of radius $R$ could be parametrized with:</p>
+<p class="mathcell">
+$$
+\begin{matrix*}
+\begin{align*}
+x(t) &amp;= R \cos t \\
+y(t) &amp;= R \sin t
+\end{align*}
+&amp; t \in [a, b]
+\end{matrix*}
+$$
+</p>
+<p>After parametrizing the path and using the line integral formula, we can then compute the resulting integral in $t$ using the standard integration methods. The parametrization <strong>does not</strong> matter; we can choose an arbitrary variable to be our parameter, and it would not change the value of the line integral. That is to say, we can reparametrize however we want - the scalar line integral always evaluates to the same value.</p>
+<p>The same general process also applies for <em>vector fields</em> in the form of $\mathbf{F}(\mathbf{r}) = \mathbf{F}(x, y, z)$. The line integral along some parametric path $C = {, \mathbf{r}(t), t \in [a, b], }$ in the vector field $\mathbf{F}(\mathbf{r})$ is defined by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\int_C \mathbf{F}(\mathbf{r}) \cdot d\mathbf{r} &amp;= \int_a^b \mathbf{F}(\mathbf{r}(t)) \cdot |\mathbf{r}&#x27;(t)| dt \\
+&amp;= \int_a^b F_x (\mathbf{r}(t)) x&#x27;(t) + F_y(\mathbf{r}(t)) y&#x27;(t) + F_z(\mathbf{r}(t)) z&#x27;(t)\, dt \\
+\end{align*}
+$$
+</p>
+<p>This formula may look like a bit of a mass, but essentially, it says that to evaluate the line integral, we first parametrize the path $C$ as $\mathbf{r}(t)$, then take its derivatives $x'(t), y'(t), z'(t)$. This allows us to express the components of the vector field $\mathbf{F}$, which were defined as functions of space, in terms of $t$ instead, upon which we can finally integrate over all $t$ to compute the line integral. Note that if the path is <em>closed</em>, then we say that the vector line integral represents the <strong>circulation</strong>, and we denote it with a closed circle sign:</p>
+<p class="mathcell">
+$$
+\oint_C \mathbf{F}(\mathbf{r}) \cdot d\mathbf{r} = \int_a^b \mathbf{F}(\mathbf{r}(t)) \cdot |\mathbf{r}&#x27;(t)| dt
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> Line integrals evaluate to the same absolute value upon reparametrization, but the sign of the answer can change if a new parameter we choose, say $q$, is in the opposite direction as the original parameter, say $t$, meaning that any reparametrization $t \to q = f(-t)$ will reverse the sign of the answer.</p>
+</blockquote>
+<p>As an example, consider the vector field $\mathbf{F}(\mathbf{r}) = \langle xy, -y, xz\rangle$. Let us find the line integral across a helical path. We know that a circular path can be parametrized with $\mathbf{r}(t) = \langle R \cos t, R \sin t\rangle$; a helical path is very similar, as it has the parametrization $\mathbf{r}(t) = \langle R \cos t, R \sin t, t\rangle$. Helical paths occur in physics when charged particles enter a magnetic field (which is a vector field), but here we will focus on just the mathematics, not the physics.</p>
+<p>Having parametrized our path, we can now write the components of $\mathbf{F}(\mathbf{r})$ in terms of $t$, using our parametric equations $x = R \cos t, y = R \sin t, z = t$ for the path:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+F_x(\mathbf{r}) &amp;= xy \to F_x = (R \cos t)(R \sin t) = R^2 \cos t \sin t \\
+F_y(\mathbf{r}) &amp;= -y \to F_y = -(R \sin t) = -R \sin t \\
+F_z(\mathbf{r}) &amp;= xz \to F_z = (R \cos t)(t) = R t \cos t 
+\end{align*}
+$$
+</p>
+<p>Where, for the helix, we integrate over $[0, 2\pi]$, which is one complete rotation. Calculating the derivatives yields:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+x&#x27;(t) &amp;= \dfrac{d}{dt} \left(R \cos \theta\right) \\
+&amp;= R\sin \theta \\
+y&#x27;(t) &amp;= \dfrac{d}{dt} (R \sin t) \\
+&amp;= -R \cos t \\
+z&#x27;(t) &amp;= \dfrac{d}{dt} (t)) \\
+&amp;= 1
+\end{align*}
+$$
+</p>
+<p>Substituting both the derivatives $x'(t), y'(t), z'(t)$ and the vector-valued components $F_x, F_y, F_z$ into the formula for the line integral, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\int_C \mathbf{F} \cdot d\mathbf{r} &amp;= \int_0^{2\pi} F_x \,x&#x27;(t) + F_y\, y&#x27;(t) + F_z\, z&#x27;(t)\, dt \\
+&amp;= \int_0^{2\pi} R t \cos\left(t \right)- R^{3} \sin^{2}\left(t \right) \cos\left(t \right) - R^{2} \sin\left(t \right) \cos\left(t \right) \, dt \\
+&amp;= \displaystyle - \frac{R^{3} \sin^{3}{\left(t \right)}}{3} - \frac{R^{2} \sin^{2}{\left(t \right)}}{2} + R \left(t \sin{\left(t \right)} + \cos{\left(t \right)}\right)\bigg|_0^{2\pi} \\
+&amp;= 0
+\end{align*}
+$$
+</p>
+<p>Note that a very common use of the vector line integral is in defining <em>work</em> in physics. Work, denoted $W$, has units of energy, and the work done in the opposite direction of a force $\mathbf{F}$ is given by:</p>
+<p class="mathcell">
+$$
+W = \int_C \mathbf{F}(\mathbf{r}) \cdot d\mathbf{r} = \int_a^b \mathbf{F}(\mathbf{r}(t)) \cdot |\mathbf{r}&#x27;(t)|\, dt
+$$
+</p><h4 id="green-s-theorem">Green's theorem</h4>
+<p>We saw before that a closed vector line integral, like the one shown below, represents the <em>circulation</em>:</p>
+<p class="mathcell">
+$$
+\oint_C \mathbf{F}(\mathbf{r}) \cdot d\mathbf{r}
+$$
+</p>
+<p>This name is no coincidence, because there is a theorem fundamental to vector calculus that relates the curl of a vector field in two dimensions and the circulation along a path through that field. This is called <strong>Green's theorem</strong>:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\oint_C \mathbf{F}(\mathbf{r}) \cdot d\mathbf{r} &amp;= \iint_S (\nabla \times \mathbf{F})_{2D} \cdot d\mathbf{A} \\
+&amp;= \iint_S \left(\dfrac{\partial F_y}{\partial x} - \dfrac{\partial F_x}{\partial y}\right)\, dA
+\end{align*}
+$$
+</p>
+<p>The critical condition for Green's theorem to be applicable is that the <em>edge</em> of the surface $S$ on which we perform the double integral is the <strong>closed path</strong> $C$. Thus, we say that $S$ is the surface <strong>bounded by</strong> the closed path $C$, and that $C$ is the <strong>boundary</strong> of the surface $S$ (in equation form, this is often written $C = \partial S$, where $\partial$ here denotes "boundary"). Thus Green's theorem is also often written:</p>
+<p class="mathcell">
+$$
+\oint_{\partial S} \mathbf{F}(\mathbf{r}) \cdot d\mathbf{r} = \iint_S \left(\dfrac{\partial F_y}{\partial x} - \dfrac{\partial F_x}{\partial y}\right)\, dA
+$$
+</p>
+<p>In addition, the direction for integration along the closed path must be <em>counterclockwise</em>, because again, line integrals will yield the same absolute value but with the opposite sign if you change your direction of integration. Green's theorem is so fundamental because it relates <em>double integrals</em> to <em>line integrals</em>: there is a fundamental connection between what is happening in a 2D region (the surface $S$) and the 1D boundary of the region (the closed path $C$). It is the first of several vector calculus theorems we will see throughout our study of vector calculus, all of which are some variation of this form: an $N + 1$ dimensional region is related to its $N$-dimensional boundary in <em>some</em> way. So Green's theorem is not only a handy way to calculate a tricky double integral (if the line integral around the boundary is easier to calculate); it holds deeper significance because it tells us that we can know what is happening inside a 2D region as long as we have information about its 1D boundary (with the requirement that the boundary be a closed path).</p>
+<h4 id="calculation-of-areas-of-domains-with-green-s-theorem">Calculation of areas of domains with Green's theorem</h4>
+<p>One important application of Green's theorem is in calculating the <em>areas</em> of arbitrary 2D shapes. We know, for instance, the formulas for the area of a rectangle and that of a circle, and we can (with some effort) derive formulas for the areas of ellipses, roses, lemniscates, cardioids, and so forth. But what about more complicated shapes? While other methods may not always work, Green's theorem provides a way for us to calculate the areas of such shapes precisely.</p>
+<p>The key is to take the line integral of the vector-valued function $\mathbf{F} = \langle 0, x\rangle$ around the boundary of the shape. Let us denote the shape as $D$ (for "domain"), and the boundary of the surface as $\partial D$, which is a closed loop around the surface. By Green's theorem, we find that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\oint_{\partial D} \mathbf{F} \cdot d\mathbf{r} &amp;= \iint_D\left(\dfrac{\partial F_y}{\partial x} - \dfrac{\partial F_x}{\partial y}\right)\, dA \\
+&amp;= \iint_D\left(\dfrac{\partial}{\partial x}(x) - \cancel{\dfrac{\partial F_x}{\partial y}(0)}^0\right)\, dA \\
+&amp;= \iint_D dA \\
+&amp;= A_\text{shape}
+\end{align*}
+$$
+</p>
+<p>Thus, we have found that simply computing the line integral of $\mathbf{F} = \langle 0, x\rangle$ around the boundary of the shape allows us to find the area of any 2D shape! In fact, this is not the only formula that achieves this effect: all the below formulas can be used to calculate the area of a 2D shape by simply computing a line integral along its boundary:</p>
+<p class="mathcell">
+$$
+A = \oint_{\partial D} x dy =-\oint_{\partial D} ydx = \dfrac{1}{2}\oint_{\partial D} x dy - ydx
+$$
+</p>
+<blockquote>
+<p><strong>Additional info:</strong> this is in fact the working principle of a type of analog measuring instrument known as the <a href="https://en.wikipedia.org/wiki/Planimeter">planimeter</a>, which uses Green's theorem to be able to calculate the surface area of a shape just by tracing around the boundary of the shape.</p>
+</blockquote>
 
         
         <a id="jump-toc-btn" href="#toc">Show table of contents</a>
