@@ -7,7 +7,7 @@ These are notes taken during RPI's MATH 1010 course, relating to a review of exp
 
 <!-- more -->
 
-It is recommended to use `Ctrl F` or the equivalent search function to find the relevant section, as these notes are quite long.
+> **Note:** This guide is undergoing a major overhaul to improve its quality, readability, and content. For more information, see the [relevant issue on Codeberg](https://codeberg.org/songtech-0912/website/issues/4). Patience is appreciated!
 
 ## Exponential functions
 

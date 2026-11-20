@@ -7,6 +7,10 @@ These are notes taken in MATH 1020 (Calculus II) at RPI, covering sequences, ser
 
 <!-- more -->
 
+I thank [Professor Klyachko](https://faculty.rpi.edu/kseniya-klyachko) at Rensselaer Polytechnic Institute who taught the course that made this guide possible.
+
+> **Note:** This guide is undergoing a major overhaul to improve its quality, readability, and content. For more information, see the [relevant issue on Codeberg](https://codeberg.org/songtech-0912/website/issues/4). Patience is appreciated!
+
 ## Sequences
 
 A **sequence** can be thought of as a list of numbers written in a definite order. They are notated $\{ a_n \}$ where $a_n$ is the formula for the _nth_ term, which expands to $\{a_1, a_2, a_3, \dots, a_n\}$. Unlike a function, which can have continuous inputs, sequences must always use integer values of $n$ as input. For instance:

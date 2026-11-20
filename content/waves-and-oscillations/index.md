@@ -9,6 +9,8 @@ These are notes taken during RPI's PHYSICS 1140 course, relating to a review of 
 
 It is recommended to use `Ctrl F` or the equivalent search function to find the relevant section, as these notes are quite long.
 
+> **Note:** This guide is undergoing a major overhaul to improve its quality, readability, and content. For more information, see the [relevant issue on Codeberg](https://codeberg.org/songtech-0912/website/issues/4). Patience is appreciated!
+
 ## Oscillating systems
 
 A system that **oscillates** is described as undergoing **periodic motion** - motion that repeats. 

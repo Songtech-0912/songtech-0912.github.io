@@ -7,6 +7,8 @@ These are notes taken in RPI's Physics 1140 class, relating to special relativit
 
 <!-- more -->
 
+> **Note:** This guide is undergoing a major overhaul to improve its quality, readability, and content. For more information, see the [relevant issue on Codeberg](https://codeberg.org/songtech-0912/website/issues/4). Patience is appreciated!
+
 ## The standard model
 
 The standard model is one of the most successful theories in physics. Within the standard model, there are several categories of particles. The standard model describes a number of elementary particles - point particles that have no volume and are indivisible. The elementary particles include:

@@ -7,9 +7,9 @@ These are notes taken during RPI's MATH 1010 course, on the topic of limits in c
 
 <!-- more -->
 
-Note: some problems are taken Rogawski 4e Calculus Early Transcendentals, the questions are not original work.
+I thank [Professor Kiehl](https://faculty.rpi.edu/maya-kiehl) at Rensselaer Polytechnic Institute who taught the course that made this guide possible, as well as the _Calculus: Early Transcendentals_ (4th edition) textbook, from which some of the example problems are taken from. All problems are used under [fair use](https://en.wikipedia.org/wiki/Fair_use) and intended for educational purposes only.
 
-It is recommended to use `Ctrl F` or the equivalent search function to find the relevant section, as these notes are quite long.
+> **Note:** This guide is undergoing a major overhaul to improve its quality, readability, and content. For more information, see the [relevant issue on Codeberg](https://codeberg.org/songtech-0912/website/issues/4). Patience is appreciated!
 
 ## Investigating limits
 

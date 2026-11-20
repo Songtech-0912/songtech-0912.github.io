@@ -7,6 +7,10 @@ These are notes taken during RPI's MATH 1010 course, on the topic of integrals a
 
 <!-- more -->
 
+I thank [Professor Kiehl](https://faculty.rpi.edu/maya-kiehl) and [Professor Klyachko](https://faculty.rpi.edu/kseniya-klyachko) at Rensselaer Polytechnic Institute who taught the courses that made this guide possible, as well as the _Calculus: Early Transcendentals_ (4th edition) textbook, from which some of the example problems are taken from. All problems are used under [fair use](https://en.wikipedia.org/wiki/Fair_use) and intended for educational purposes only.
+
+> **Note:** This guide is undergoing a major overhaul to improve its quality, readability, and content. For more information, see the [relevant issue on Codeberg](https://codeberg.org/songtech-0912/website/issues/4). Patience is appreciated!
+
 ## Antiderivatives
 
 To introduce the topic of integral calculus, we must begin with understanding the notion of an _antiderivative_. An antiderivative (also called an _indefinite integral_, and we'll see why later) is the opposite of a derivative. The antiderivative of a particular function $f(x)$ is the function whose _derivative_ is $f(x)$. For example, $x^2$ is the antiderivative of $2x$, because $2x$ is the _derivative_ of $x^2$.
